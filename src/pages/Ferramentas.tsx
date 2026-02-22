@@ -1,245 +1,197 @@
-import { motion } from "framer-motion";
-import { useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import { ArrowLeft, Bitcoin, BookOpen, Shield, Compass, BarChart3, Zap } from "lucide-react";
-import { AreaChart, Area, ResponsiveContainer } from "recharts";
-import NoiseBackground from "@/components/NoiseBackground";
-import AppSidebar from "@/components/AppSidebar";
-import MobileNav from "@/components/MobileNav";
-import NetworkTicker from "@/components/NetworkTicker";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import {
+  ArrowLeft, ArrowRight, Calculator, Plane,
+  BookA, ShieldCheck, Clock, Terminal
+} from 'lucide-react';
 
-const miniChartData = [
-  { v: 100 }, { v: 95 }, { v: 88 }, { v: 80 }, { v: 70 },
-  { v: 55 }, { v: 45 }, { v: 35 }, { v: 22 }, { v: 15 }, { v: 8 },
+import BitcoinVsImovel from './BitcoinVsImovel';
+import TaxaDeFuga from './TaxaDeFuga';
+import Novilingua from './Novilingua';
+import GeradorEntropy from './GeradorEntropy';
+
+const VerdadeSalarial = () => (
+  <div className="p-8 text-center text-foreground pt-32">
+    <div className="inline-flex items-center gap-2 bg-purple-500/10 text-purple-400 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest mb-6">
+      <Clock className="w-4 h-4" />
+      Em Desenvolvimento
+    </div>
+    <h2 className="text-3xl font-bold mb-4">Calculadora Salarial</h2>
+    <p className="text-muted-foreground">Em codificação. Disponível em breve.</p>
+  </div>
+);
+
+const TOOLS_LIST = [
+  {
+    id: 'novilingua',
+    title: 'Tradutor de Novilíngua',
+    badge: 'Decifre a Mídia',
+    desc: 'Um dicionário satírico que traduz termos jornalísticos e estatais — "Justiça Social", "Regulação" — para a realidade nua e crua.',
+    cta: 'Traduzir Mentiras',
+    color: 'from-red-500/20 to-red-500/0',
+    borderColor: 'group-hover:border-red-500/50',
+    textColor: 'text-red-400',
+    icon: BookA,
+    component: Novilingua
+  },
+  {
+    id: 'fuga',
+    title: 'Calculadora Taxa de Fuga',
+    badge: 'O Preço da Liberdade',
+    desc: 'Calcule quanto custa sair do alcance estatal. Passaporte, vistos e custos de realocação para refúgios soberanos ao redor do mundo.',
+    cta: 'Calcular Saída',
+    color: 'from-sky-500/20 to-sky-500/0',
+    borderColor: 'group-hover:border-sky-500/50',
+    textColor: 'text-sky-400',
+    icon: Plane,
+    component: TaxaDeFuga
+  },
+  {
+    id: 'btc-imovel',
+    title: 'Bitcoin vs. Imóveis',
+    badge: 'Cálculo de Valorização',
+    desc: 'Simulador de valorização histórica. Compare dinheiro escasso versus setor imobiliário inflado com dados reais e atualizados.',
+    cta: 'Abrir Calculadora',
+    color: 'from-amber-500/20 to-amber-500/0',
+    borderColor: 'group-hover:border-amber-500/50',
+    textColor: 'text-gold',
+    icon: Calculator,
+    component: BitcoinVsImovel
+  },
+  {
+    id: 'entropy',
+    title: 'Gerador de Entropia Real',
+    badge: 'Crie sua Seed Offline',
+    desc: 'Ferramenta de segurança máxima que usa o caos dos seus movimentos do mouse para gerar chaves privadas completamente offline.',
+    cta: 'Gerar Seed',
+    color: 'from-emerald-500/20 to-emerald-500/0',
+    borderColor: 'group-hover:border-emerald-500/50',
+    textColor: 'text-emerald-400',
+    icon: ShieldCheck,
+    component: GeradorEntropy
+  },
+  {
+    id: 'verdade-salarial',
+    title: 'Amigo CLT — Salário Líquido',
+    badge: 'O Custo do Estado',
+    desc: 'Descubra o custo real do trabalho formal. Quanto o Estado extrai do seu esforço antes que o dinheiro chegue na sua mão.',
+    cta: 'Calcular Roubo',
+    color: 'from-purple-500/20 to-purple-500/0',
+    borderColor: 'group-hover:border-purple-500/50',
+    textColor: 'text-purple-400',
+    icon: Clock,
+    component: VerdadeSalarial
+  },
+  {
+    id: 'dev',
+    title: 'Em Desenvolvimento',
+    badge: 'Em Breve',
+    desc: 'Novas ferramentas para P2P e gestão de UTXO chegando em breve. Desenvolvimento ativo e contínuo.',
+    cta: 'Aguarde',
+    color: 'from-slate-500/20 to-slate-500/0',
+    borderColor: 'group-hover:border-slate-500/30',
+    textColor: 'text-muted-foreground',
+    icon: Terminal,
+    component: null
+  }
 ];
 
-const tools = [
-  {
-    id: "verdade-salarial",
-    title: "VERDADE SALARIAL",
-    icon: Compass,
-    description: "Coloque o valor da sua hora de trabalho e descubra quanto, em minutos, você trabalha por dia apenas para sustentar a máquina pública.",
-    button: "Calcular Custos de Saída",
-    tag: "SIMULADOR",
-    route: "/taxa-de-fuga",
-    origin: "NÍVEL 01 · ECONOMIA",
-  },
-  {
-    id: "btc-vs-imoveis",
-    title: "BITCOIN VS. IMÓVEIS",
-    icon: Bitcoin,
-    description: "Uma análise matemática fria sobre qual ativo realmente preservou o seu esforço de vida contra a inflação na última década.",
-    button: "Abrir Simulador",
-    tag: "CALCULADORA",
-    route: "/bitcoin-vs-imovel",
-    origin: "NÍVEL 02 · BITCOIN",
-  },
-  {
-    id: "pix-bitcoin",
-    title: "PIX VIA BITCOIN",
-    icon: Zap,
-    description: "O guia de execução para converter seus Satoshis em liquidez imediata no balcão do comércio local, sem pedir permissão a gerente de banco.",
-    button: "Configurar Agora",
-    tag: "LIGHTNING",
-    origin: "NÍVEL 03 · SAÍDA",
-  },
-  {
-    id: "tradutor-novilingua",
-    title: "TRADUTOR DE NOVILÍNGUA",
-    icon: BookOpen,
-    description: "A mídia e o Estado operam através de eufemismos. Decifre a linguagem da manipulação antes que ela se torne o seu pensamento. Banco de dados offline.",
-    button: "Traduzir Mentiras",
-    tag: "OFFLINE",
-    origin: "EM DESENVOLVIMENTO",
-  },
-  {
-    id: "gerador-seed",
-    title: "GERADOR DE SEED BIP39",
-    icon: Shield,
-    description: "Não confie em geradores automáticos. Crie suas 12 ou 24 palavras de segurança com aleatoriedade real usando o caos dos seus movimentos de mouse. 100% offline.",
-    button: "Gerar Fortaleza (Offline)",
-    tag: "AIR-GAPPED",
-    origin: "EM DESENVOLVIMENTO",
-  },
-  {
-    id: "supply-shock",
-    title: "SUPPLY SHOCK",
-    icon: BarChart3,
-    description: "Visualização matemática do choque de oferta. Menos de 7% de todo o Bitcoin restante no mundo está disponível para mineração. A porta está fechando.",
-    button: "Acessar Painel de Dados",
-    tag: "93%+ MINERADOS",
-    progress: 93.4,
-    origin: "EM DESENVOLVIMENTO",
-  },
-];
+const Ferramentas: React.FC = () => {
+  const [activeToolId, setActiveToolId] = useState<string | null>(null);
+  const activeTool = TOOLS_LIST.find(t => t.id === activeToolId);
 
-const Ferramentas = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  useEffect(() => {
-    if (location.hash) {
-      setTimeout(() => {
-        const el = document.getElementById(location.hash.slice(1));
-        el?.scrollIntoView({ behavior: "smooth", block: "center" });
-      }, 600);
+  // Render active tool inline
+  if (activeTool && activeTool.id !== 'dev') {
+    const Component = activeTool.component;
+    if (Component) {
+      return (
+        <div className="relative min-h-screen bg-background">
+          <div className="fixed top-0 left-0 w-full z-50 p-6 bg-gradient-to-b from-background via-background/90 to-transparent pointer-events-none">
+            <motion.button
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              onClick={() => setActiveToolId(null)}
+              className="pointer-events-auto inline-flex items-center gap-2 px-6 py-3 bg-card border border-border hover:border-gold hover:text-gold rounded-lg text-muted-foreground text-xs font-bold uppercase tracking-widest transition-all shadow-2xl"
+            >
+              <ArrowLeft className="w-4 h-4" /> Voltar aos Aplicativos
+            </motion.button>
+          </div>
+          <div className="pt-24 pb-12">
+            <Component />
+          </div>
+        </div>
+      );
     }
-  }, [location.hash]);
+  }
 
   return (
-    <div className="min-h-screen text-foreground">
-      <NoiseBackground />
-      <AppSidebar />
-      <MobileNav />
+    <div className="min-h-screen bg-background pt-28 pb-20 px-4 font-sans">
+      <div className="max-w-7xl mx-auto">
 
-      <div className="relative z-10 lg:ml-[260px] pb-10">
-        {/* Back button */}
-        <div className="section-padding pt-6 pb-0">
-          <motion.button
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.4 }}
-            onClick={() => navigate("/")}
-            className="flex items-center gap-2 text-sm text-muted-foreground hover:text-gold transition-colors group"
-          >
-            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-            <span className="font-mono tracking-wider text-xs">VOLTAR AO COMANDO</span>
-          </motion.button>
+        <motion.header
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="mb-16"
+        >
+          <Link to="/" className="text-muted-foreground hover:text-gold flex items-center gap-2 text-xs uppercase tracking-widest transition-colors w-fit mb-8">
+            <ArrowLeft className="w-4 h-4" /> Centro de Comando
+          </Link>
+          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            Arsenal <span className="text-gold">Operacional</span>
+          </h1>
+          <p className="text-muted-foreground text-lg max-w-3xl">
+            Aplicativos desenvolvidos para auxiliar no cálculo de custos de oportunidade, verificação de privacidade e gestão de patrimônio fora do sistema tradicional. Todas gratuitas, sem rastreamento e com código auditável.
+          </p>
+        </motion.header>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {TOOLS_LIST.map((tool, i) => {
+            const Icon = tool.icon;
+            const isDev = tool.id === 'dev';
+
+            return (
+              <motion.div
+                key={tool.id}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.05 + i * 0.08 }}
+                onClick={() => !isDev && setActiveToolId(tool.id)}
+                className={`group relative bg-card rounded-2xl p-8 overflow-hidden border transition-all duration-500 ${isDev ? 'border-dashed border-border cursor-default opacity-80' : `border-border cursor-pointer hover:-translate-y-1 ${tool.borderColor} shadow-lg hover:shadow-2xl`}`}
+              >
+                {!isDev && (
+                  <div className={`absolute top-0 right-0 w-64 h-64 bg-gradient-to-br ${tool.color} blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none rounded-full transform translate-x-1/2 -translate-y-1/2`} />
+                )}
+
+                <div className="relative z-10 flex flex-col h-full">
+                  <div className="flex justify-between items-start mb-6">
+                    <div className={`p-4 rounded-xl bg-secondary border border-border ${tool.textColor} shadow-inner`}>
+                      <Icon className={`w-7 h-7 ${isDev && 'animate-pulse'}`} />
+                    </div>
+                    <span className={`text-[10px] font-bold uppercase tracking-widest ${tool.textColor} bg-secondary px-3 py-1.5 rounded-full border border-border`}>
+                      {tool.badge}
+                    </span>
+                  </div>
+
+                  <h3 className="text-2xl font-bold text-foreground mb-4 tracking-tight">
+                    {tool.title}
+                  </h3>
+
+                  <p className="text-muted-foreground text-sm leading-relaxed mb-8 flex-grow">
+                    {tool.desc}
+                  </p>
+
+                  <div className={`mt-auto inline-flex items-center gap-2 ${tool.textColor} font-bold text-sm uppercase tracking-wider ${!isDev && 'group-hover:gap-4'} transition-all`}>
+                    {tool.cta} {!isDev && <ArrowRight className="w-4 h-4" />}
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
 
-        <section className="section-padding pt-8">
-          <div className="max-w-6xl mx-auto">
-            {/* Header */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="mb-14"
-            >
-              <div className="flex items-center gap-3 mb-4">
-                <span className="font-mono text-[10px] tracking-widest text-gold bg-gold/10 px-2.5 py-1 rounded">
-                  PAINEL OPERACIONAL
-                </span>
-                <span className="font-mono text-[10px] tracking-widest text-muted-foreground bg-secondary px-2.5 py-1 rounded">
-                  {tools.length} FERRAMENTAS
-                </span>
-              </div>
-
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-4 leading-tight">
-                Central de Ferramentas{" "}
-                <span className="text-gradient-gold">Soberanas</span>
-              </h1>
-
-              <p className="text-muted-foreground text-lg max-w-3xl">
-                Simuladores, calculadoras e protocolos de execução. Todas as armas do arsenal
-                reunidas em um único painel de operação. Escolha sua ferramenta de blindagem.
-              </p>
-            </motion.div>
-
-            {/* Divider */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.3 }}
-              className="flex items-center gap-4 mb-10"
-            >
-              <div className="h-px flex-1 bg-gradient-to-r from-transparent via-border to-transparent" />
-              <span className="font-mono text-[10px] tracking-[0.3em] text-muted-foreground">
-                ARSENAL DISPONÍVEL
-              </span>
-              <div className="h-px flex-1 bg-gradient-to-r from-transparent via-border to-transparent" />
-            </motion.div>
-
-            {/* Tools Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-              {tools.map((tool, i) => {
-                const Icon = tool.icon;
-                return (
-                  <motion.div
-                    key={tool.id}
-                    id={tool.id}
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.1 + i * 0.1 }}
-                    whileHover={{ y: -6, scale: 1.02 }}
-                    className="card-wealth flex flex-col relative overflow-hidden group cursor-pointer"
-                  >
-                    {/* Background mini chart */}
-                    <div className="absolute inset-0 opacity-[0.06] pointer-events-none">
-                      <ResponsiveContainer width="100%" height="100%">
-                        <AreaChart data={miniChartData}>
-                          <Area type="monotone" dataKey="v" stroke="hsl(0 72% 51%)" fill="hsl(0 72% 51%)" fillOpacity={0.3} strokeWidth={1} />
-                        </AreaChart>
-                      </ResponsiveContainer>
-                    </div>
-
-                    {/* Top bar */}
-                    <div className="flex items-start justify-between mb-4">
-                      <div className="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center">
-                        <Icon className="w-6 h-6 text-gold" />
-                      </div>
-                      <div className="flex flex-col items-end gap-1">
-                        <span className="font-mono text-[9px] tracking-widest text-gold bg-gold/10 px-2 py-0.5 rounded">
-                          {tool.tag}
-                        </span>
-                        <span className="font-mono text-[8px] tracking-wider text-muted-foreground/60">
-                          {tool.origin}
-                        </span>
-                      </div>
-                    </div>
-
-                    <h3 className="text-lg font-bold tracking-tight mb-3 group-hover:text-gold transition-colors">
-                      {tool.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed flex-1 mb-6">
-                      {tool.description}
-                    </p>
-
-                    {tool.progress !== undefined && (
-                      <div className="mb-6">
-                        <div className="flex items-center justify-between mb-2">
-                          <span className="font-mono text-xs text-muted-foreground">Minerados</span>
-                          <span className="font-mono text-xs text-gold">{tool.progress}%</span>
-                        </div>
-                        <div className="h-2 bg-secondary rounded-full overflow-hidden">
-                          <motion.div
-                            initial={{ width: 0 }}
-                            animate={{ width: `${tool.progress}%` }}
-                            transition={{ duration: 1.5, delay: 0.5 }}
-                            className="h-full gradient-gold rounded-full"
-                          />
-                        </div>
-                      </div>
-                    )}
-
-                    <button
-                      onClick={() => tool.route && navigate(tool.route)}
-                      className="w-full py-3.5 rounded-lg border border-gold-dim text-gold font-semibold text-sm hover:bg-gold/5 transition-all duration-300 flex items-center justify-center gap-2 group-hover:gap-3"
-                    >
-                      {tool.button}
-                    </button>
-                  </motion.div>
-                );
-              })}
-            </div>
-
-            {/* Bottom CTA */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1 }}
-              className="mt-16 text-center"
-            >
-              <p className="font-mono text-[10px] tracking-[0.3em] text-muted-foreground/50 mb-4">
-                SISTEMA OPERACIONAL DE SOBERANIA
-              </p>
-              <div className="h-px w-32 mx-auto bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
-            </motion.div>
-          </div>
-        </section>
       </div>
-
-      <NetworkTicker />
     </div>
   );
 };
