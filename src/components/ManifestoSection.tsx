@@ -3,7 +3,6 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContai
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 
-// BRL/USD purchasing power decay data (simplified representation)
 const purchasingPowerData = [
   { year: "1994", value: 100 },
   { year: "1998", value: 82 },
@@ -40,12 +39,41 @@ const ManifestoSection = () => {
   return (
     <section className="section-padding" ref={ref}>
       <div className="max-w-5xl mx-auto">
+        {/* Manifesto Text */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7 }}
+          className="max-w-3xl mb-14"
+        >
+          <p className="pre-title">MANIFESTO</p>
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6">
+            Por que este site <span className="text-gradient-gold">existe</span>?
+          </h2>
+          <div className="space-y-4 text-muted-foreground leading-relaxed text-base md:text-lg">
+            <p>
+              O sistema monetário é uma fraude. A educação formal é propaganda. A mídia
+              tradicional é manipulação sistemática da realidade. Isso não é teoria da
+              conspiração — é matemática, história e economia documentada.
+            </p>
+            <p>
+              Bancos centrais criam dinheiro do nada e transferem riqueza de quem trabalha
+              para quem controla a emissão. Universidades produzem conformidade intelectual,
+              não pensamento crítico.
+            </p>
+            <p className="text-foreground font-medium">
+              Este arsenal existe para compartilhar conhecimento sistematicamente escondido
+              por responsabilidade com quem ainda consegue pensar.
+            </p>
+          </div>
+        </motion.div>
+
         {/* Chart */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="card-wealth p-4 md:p-8 mb-12"
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="card-wealth p-4 md:p-8"
         >
           <div className="flex items-center justify-between mb-6">
             <div>
@@ -83,35 +111,6 @@ const ManifestoSection = () => {
                 />
               </LineChart>
             </ResponsiveContainer>
-          </div>
-        </motion.div>
-
-        {/* Manifesto text */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, delay: 0.3 }}
-          className="max-w-3xl"
-        >
-          <p className="pre-title">ANÁLISE FUNDAMENTAL</p>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6">
-            Manifesto: A matemática da <span className="text-gradient-gold">fraude</span>.
-          </h2>
-          <div className="space-y-4 text-muted-foreground leading-relaxed text-base md:text-lg">
-            <p>
-              O sistema monetário é uma fraude. A educação formal é propaganda. A mídia
-              tradicional é manipulação sistemática da realidade. Isso não é teoria da
-              conspiração — o gráfico acima é matemática documentada.
-            </p>
-            <p>
-              Bancos centrais criam dinheiro do nada e transferem riqueza de quem trabalha
-              para quem controla a emissão. Universidades produzem conformidade intelectual,
-              não pensamento crítico.
-            </p>
-            <p className="text-foreground font-medium">
-              Este arsenal existe para compartilhar conhecimento sistematicamente escondido
-              por responsabilidade com quem ainda consegue pensar.
-            </p>
           </div>
         </motion.div>
       </div>
