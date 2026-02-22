@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowLeft, Download, ArrowRight, Key, Lock, CheckCircle2, ShieldCheck } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import coverImage from '@/assets/cover-silencio-queda.jpg';
 
 const SilencioQueda: React.FC = () => {
   const handleDownload = () => {
@@ -29,23 +30,8 @@ const SilencioQueda: React.FC = () => {
              
              {/* Coluna Esquerda: Mockup da Capa do Livro */}
              <div className="lg:col-span-5 flex justify-center lg:justify-start">
-                <div className="relative w-full max-w-[400px] aspect-[3/4] rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/10 group bg-[#05070A]">
-                   <div className="absolute inset-0 bg-gradient-to-br from-gold-900/40 via-black to-black"></div>
-                   <div className="absolute top-0 left-0 w-full h-full bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_0%,transparent_5%,transparent_95%,rgba(255,255,255,0.02)_100%)] pointer-events-none"></div>
-                   
-                   <div className="absolute inset-0 p-8 flex flex-col justify-between">
-                      <div className="flex justify-between items-start">
-                         <ShieldCheck className="w-8 h-8 text-gold-500" />
-                         <span className="text-[10px] uppercase tracking-widest text-gold-500 font-bold bg-gold-500/10 px-3 py-1 rounded-full border border-gold-500/20">Edição 2026</span>
-                      </div>
-                      <div>
-                         <h2 className="text-4xl md:text-5xl font-serif font-bold text-white leading-tight mb-6">O Silêncio<br/>da Queda</h2>
-                         <p className="text-gold-500 font-mono text-sm tracking-widest uppercase border-l-2 border-gold-500 pl-4">Entenda o Bitcoin<br/>ainda hoje</p>
-                      </div>
-                      <div className="border-t border-white/10 pt-6">
-                         <p className="text-xs text-slate-400 uppercase tracking-widest font-bold">Lord Junnior</p>
-                      </div>
-                   </div>
+                <div className="relative w-full max-w-[400px] aspect-[3/4] rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/10 group">
+                   <img src={coverImage} alt="O Silêncio da Queda - Entenda o Bitcoin" className="w-full h-full object-cover" />
                 </div>
              </div>
 
@@ -83,10 +69,10 @@ const SilencioQueda: React.FC = () => {
 
                 {/* Botão Pulsante */}
                 <div className="relative inline-block w-full sm:w-fit mt-auto">
-                  <div className="absolute -inset-1 bg-gold-500 rounded-xl blur-[14px] opacity-60 animate-pulse"></div>
+                  <div className="absolute -inset-1.5 bg-amber-500 rounded-xl blur-md opacity-50 animate-pulse"></div>
                   <button
                     onClick={handleDownload}
-                    className="relative w-full sm:w-auto bg-gold-500 hover:bg-gold-400 text-black font-bold py-5 px-12 rounded-xl transition-all transform hover:-translate-y-1 flex items-center justify-center gap-3 uppercase tracking-wider text-sm shadow-[0_0_20px_rgba(234,179,8,0.4)]"
+                    className="relative w-full sm:w-auto bg-amber-500 hover:bg-amber-400 text-black font-bold py-5 px-12 rounded-xl transition-all transform hover:-translate-y-1 flex items-center justify-center gap-3 uppercase tracking-wider text-sm shadow-xl"
                   >
                     <Download className="w-5 h-5" /> Baixar PDF Gratuito
                   </button>
