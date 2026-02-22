@@ -3,14 +3,31 @@ import { motion } from "framer-motion";
 import { Activity } from "lucide-react";
 
 const NetworkTicker = () => {
-  const [block, setBlock] = useState(893421);
-  const [price, setPrice] = useState(104872);
+  const [block, setBlock] = useState<number | null>(null);
+  const [price, setPrice] = useState<number | null>(null);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setBlock((prev) => prev + Math.floor(Math.random() * 2));
-      setPrice((prev) => prev + Math.floor(Math.random() * 200 - 80));
-    }, 12000);
+    const fetchData = async () => {
+      try {
+        const [priceRes, blockRes] = await Promise.all([
+          fetch("https://mempool.space/api/v1/prices"),
+          fetch("https://mempool.space/api/blocks/tip/height"),
+        ]);
+        if (priceRes.ok) {
+          const priceData = await priceRes.json();
+          setPrice(priceData.USD);
+        }
+        if (blockRes.ok) {
+          const blockData = await blockRes.text();
+          setBlock(parseInt(blockData, 10));
+        }
+      } catch {
+        // keep null on error
+      }
+    };
+
+    fetchData();
+    const interval = setInterval(fetchData, 60000);
     return () => clearInterval(interval);
   }, []);
 
@@ -25,13 +42,13 @@ const NetworkTicker = () => {
         <div className="flex items-center gap-2">
           <Activity className="w-3 h-3 text-chart-green animate-pulse" />
           <span className="font-mono text-[11px] text-muted-foreground">BLOCK</span>
-          <span className="font-mono text-[11px] text-foreground">{block.toLocaleString()}</span>
+          <span className="font-mono text-[11px] text-foreground">{block !== null ? block.toLocaleString("pt-BR") : "---"}</span>
         </div>
         <div className="w-px h-3 bg-border" />
         <div className="flex items-center gap-2">
           <span className="font-mono text-[11px] text-muted-foreground">BTC/USD</span>
           <span className="font-mono text-[11px] text-chart-green">
-            ${price.toLocaleString()}
+            {price !== null ? `$${price.toLocaleString("en-US")}` : "---"}
           </span>
         </div>
         <div className="w-px h-3 bg-border" />
