@@ -11,6 +11,7 @@ const cards = [
     color: 'text-gold',
     borderHover: 'hover:border-gold/50',
     bg: 'from-gold/10 to-gold/0',
+    route: '/autocustodia',
   },
   {
     icon: Globe,
@@ -19,6 +20,7 @@ const cards = [
     color: 'text-sky-400',
     borderHover: 'hover:border-sky-500/50',
     bg: 'from-sky-500/10 to-sky-500/0',
+    route: undefined,
   },
   {
     icon: Server,
@@ -27,6 +29,7 @@ const cards = [
     color: 'text-emerald-400',
     borderHover: 'hover:border-emerald-500/50',
     bg: 'from-emerald-500/10 to-emerald-500/0',
+    route: undefined,
   },
   {
     icon: Zap,
@@ -35,10 +38,12 @@ const cards = [
     color: 'text-purple-400',
     borderHover: 'hover:border-purple-500/50',
     bg: 'from-purple-500/10 to-purple-500/0',
+    route: undefined,
   },
 ];
 
 const Educacao: React.FC = () => {
+  const navigate = useNavigate();
   return (
     <div className="min-h-screen bg-background pt-28 pb-20 px-4 font-sans">
       <div className="max-w-5xl mx-auto">
@@ -104,7 +109,8 @@ const Educacao: React.FC = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.15 + i * 0.08 }}
-                className={`group relative bg-card rounded-2xl p-8 overflow-hidden border border-border ${card.borderHover} transition-all duration-500 cursor-default hover:-translate-y-1 shadow-lg hover:shadow-2xl`}
+                onClick={() => card.route && navigate(card.route)}
+                className={`group relative bg-card rounded-2xl p-8 overflow-hidden border border-border ${card.borderHover} transition-all duration-500 ${card.route ? 'cursor-pointer' : 'cursor-default'} hover:-translate-y-1 shadow-lg hover:shadow-2xl`}
               >
                 <div className={`absolute top-0 right-0 w-64 h-64 bg-gradient-to-br ${card.bg} blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none rounded-full transform translate-x-1/2 -translate-y-1/2`} />
                 <div className="relative z-10">
@@ -112,7 +118,12 @@ const Educacao: React.FC = () => {
                     <Icon className="w-7 h-7" />
                   </div>
                   <h3 className="text-xl font-bold text-foreground mb-2 tracking-tight">{card.title}</h3>
-                  <p className="text-muted-foreground text-sm">{card.desc}</p>
+                  <p className="text-muted-foreground text-sm mb-4">{card.desc}</p>
+                  {card.route && (
+                    <span className={`inline-flex items-center gap-2 ${card.color} font-bold text-sm uppercase tracking-wider group-hover:gap-4 transition-all`}>
+                      Acessar <ArrowRight className="w-4 h-4" />
+                    </span>
+                  )}
                 </div>
               </motion.div>
             );
