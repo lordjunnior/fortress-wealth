@@ -1,12 +1,23 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { 
-  ArrowLeft, BookOpen, Download, ShieldCheck, 
-  Swords, Flame, Lock, Eye, ArrowRight
+  ArrowLeft, BookOpen, Download, 
+  Swords, Flame, Lock, Eye, ArrowRight, Star
 } from 'lucide-react';
 
-// Acervo Extraído do Banco de Dados do Projeto
 const EBOOKS_DB = [
+  {
+    id: 'entenda-bitcoin',
+    title: 'Entenda o Bitcoin — ainda hoje',
+    author: 'Lord Junnior',
+    desc: 'Guia definitivo para leigos absolutos. A história do dinheiro, o valor do Bitcoin e a mecânica da rede explicados sem jargões. A porta de entrada para a soberania.',
+    category: 'Essencial / Autoral',
+    color: 'from-emerald-500/20 to-transparent',
+    borderColor: 'border-emerald-500/50 shadow-[0_0_15px_rgba(16,185,129,0.2)] hover:border-emerald-400',
+    textColor: 'text-emerald-500',
+    bgIcon: 'bg-emerald-500/10 border-emerald-500/30',
+    isAuthoral: true
+  },
   {
     id: 'servidao',
     title: 'O Discurso da Servidão Voluntária',
@@ -14,9 +25,10 @@ const EBOOKS_DB = [
     desc: 'Por que as massas aceitam estruturas que as exploram e como o poder se sustenta apenas pela obediência.',
     category: 'Fundamentos',
     color: 'from-purple-500/20 to-transparent',
-    borderColor: 'group-hover:border-purple-500/50',
+    borderColor: 'border-white/5 hover:border-purple-500/50',
     textColor: 'text-purple-500',
-    bgIcon: 'bg-purple-500/10 border-purple-500/20'
+    bgIcon: 'bg-purple-500/10 border-purple-500/20',
+    isAuthoral: false
   },
   {
     id: 'estado-nao',
@@ -25,9 +37,10 @@ const EBOOKS_DB = [
     desc: 'A desconstrução lógica da necessidade do Estado para a organização da sociedade e da justiça.',
     category: 'Fundamentos',
     color: 'from-red-500/20 to-transparent',
-    borderColor: 'group-hover:border-red-500/50',
+    borderColor: 'border-white/5 hover:border-red-500/50',
     textColor: 'text-red-500',
-    bgIcon: 'bg-red-500/10 border-red-500/20'
+    bgIcon: 'bg-red-500/10 border-red-500/20',
+    isAuthoral: false
   },
   {
     id: 'ciclos',
@@ -36,9 +49,10 @@ const EBOOKS_DB = [
     desc: 'Como a manipulação monetária e o sistema de reservas fracionárias criam bolhas e crises inevitáveis.',
     category: 'Economia',
     color: 'from-blue-500/20 to-transparent',
-    borderColor: 'group-hover:border-blue-500/50',
+    borderColor: 'border-white/5 hover:border-blue-500/50',
     textColor: 'text-blue-500',
-    bgIcon: 'bg-blue-500/10 border-blue-500/20'
+    bgIcon: 'bg-blue-500/10 border-blue-500/20',
+    isAuthoral: false
   },
   {
     id: 'intervencionismo',
@@ -47,9 +61,10 @@ const EBOOKS_DB = [
     desc: 'A prova matemática e lógica de por que controles e regulações sempre geram efeitos colaterais destrutivos.',
     category: 'Economia',
     color: 'from-orange-500/20 to-transparent',
-    borderColor: 'group-hover:border-orange-500/50',
+    borderColor: 'border-white/5 hover:border-orange-500/50',
     textColor: 'text-orange-500',
-    bgIcon: 'bg-orange-500/10 border-orange-500/20'
+    bgIcon: 'bg-orange-500/10 border-orange-500/20',
+    isAuthoral: false
   },
   {
     id: 'fim-bc',
@@ -58,15 +73,22 @@ const EBOOKS_DB = [
     desc: 'A anatomia da fraude institucionalizada e o argumento definitivo para a separação entre dinheiro e Estado.',
     category: 'Bitcoin & Fiat',
     color: 'from-gold-500/20 to-transparent',
-    borderColor: 'group-hover:border-gold-500/50',
+    borderColor: 'border-white/5 hover:border-gold-500/50',
     textColor: 'text-gold-500',
-    bgIcon: 'bg-gold-500/10 border-gold-500/20'
+    bgIcon: 'bg-gold-500/10 border-gold-500/20',
+    isAuthoral: false
   }
 ];
 
 const Ebooks: React.FC = () => {
-  const handleDownload = (title: string) => {
-    alert(`Iniciando download seguro de: ${title}`);
+  const navigate = useNavigate();
+
+  const handleAction = (book: any) => {
+    if (book.isAuthoral) {
+      navigate('/silencio-queda');
+    } else {
+      alert(`Iniciando download seguro de: ${book.title}`);
+    }
   };
 
   return (
@@ -138,7 +160,7 @@ const Ebooks: React.FC = () => {
           </div>
        </section>
 
-       {/* Grid de Ebooks (Glassmorphism + Glow) */}
+       {/* Grid de Ebooks */}
        <section className="max-w-6xl mx-auto pb-24 px-4">
           <div className="flex items-center gap-4 mb-12 border-l-2 border-slate-500 pl-6">
              <div>
@@ -147,20 +169,19 @@ const Ebooks: React.FC = () => {
              </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
              
              {EBOOKS_DB.map((book) => (
-                <div key={book.id} className={`bg-[#0B0F19]/80 backdrop-blur-sm border border-white/5 rounded-3xl p-8 transition-all duration-500 group relative overflow-hidden shadow-lg hover:shadow-2xl ${book.borderColor}`}>
+                <div key={book.id} className={`bg-[#0B0F19]/80 backdrop-blur-sm border rounded-3xl p-8 transition-all duration-500 group relative overflow-hidden shadow-lg hover:shadow-2xl ${book.borderColor}`}>
                    
-                   {/* Efeito de Luz Fundo */}
                    <div className={`absolute top-0 right-0 w-64 h-64 bg-gradient-to-br ${book.color} blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none rounded-full transform translate-x-1/2 -translate-y-1/2`}></div>
                    
                    <div className="relative z-10 flex flex-col h-full">
                       <div className="flex justify-between items-start mb-6">
                          <div className={`p-4 rounded-xl border ${book.bgIcon}`}>
-                            <BookOpen className={`w-6 h-6 ${book.textColor}`} />
+                            {book.isAuthoral ? <Star className={`w-6 h-6 ${book.textColor}`} /> : <BookOpen className={`w-6 h-6 ${book.textColor}`} />}
                          </div>
-                         <span className="text-[10px] text-slate-400 uppercase tracking-widest font-bold bg-black px-3 py-1.5 rounded-full border border-white/5">
+                         <span className={`text-[10px] uppercase tracking-widest font-bold bg-black px-3 py-1.5 rounded-full border border-white/5 ${book.isAuthoral ? book.textColor : 'text-slate-400'}`}>
                            {book.category}
                          </span>
                       </div>
@@ -176,10 +197,14 @@ const Ebooks: React.FC = () => {
                       </p>
                       
                       <button 
-                        onClick={() => handleDownload(book.title)}
-                        className={`w-full flex items-center justify-center gap-3 bg-black hover:bg-white/5 text-white font-bold uppercase tracking-widest text-xs py-4 rounded-xl border border-white/10 transition-all ${book.borderColor}`}
+                        onClick={() => handleAction(book)}
+                        className={`w-full flex items-center justify-center gap-3 bg-black hover:bg-white/5 text-white font-bold uppercase tracking-widest text-xs py-4 rounded-xl border border-white/10 transition-all ${book.isAuthoral ? 'border-emerald-500/50 hover:border-emerald-400' : 'group-hover:border-slate-500/50'}`}
                       >
-                         <Download className="w-4 h-4" /> Baixar PDF
+                         {book.isAuthoral ? (
+                           <><ArrowRight className="w-4 h-4 text-emerald-500" /> Ver Material Completo</>
+                         ) : (
+                           <><Download className="w-4 h-4" /> Baixar PDF</>
+                         )}
                       </button>
                    </div>
                 </div>
