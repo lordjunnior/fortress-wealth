@@ -1,117 +1,152 @@
 import React from 'react';
-import { ArrowLeft, Download, ArrowRight, Key, Lock } from 'lucide-react';
+import { ArrowLeft, Download, ArrowRight, Key, Lock, CheckCircle2, ShieldCheck } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const SilencioQueda: React.FC = () => {
   const handleDownload = () => {
-    alert("Iniciando download do seu material autoral...");
+    alert("Iniciando o download do Material Autoral...");
   };
 
   return (
     <div className="min-h-screen bg-[#070A12] pt-28 pb-12 px-4 animate-fade-in font-sans">
        
        {/* Navegação */}
-       <div className="max-w-3xl mx-auto mb-12">
+       <div className="max-w-6xl mx-auto mb-8">
          <Link to="/" className="text-slate-500 hover:text-gold-500 flex items-center gap-2 text-xs uppercase tracking-widest transition-colors w-fit group">
            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" /> Retornar ao Início
          </Link>
        </div>
 
-       {/* Hero Content */}
-       <div className="max-w-3xl mx-auto space-y-8 mb-16 border-b border-white/5 pb-12">
-          <span className="text-gold-500 text-[10px] font-bold uppercase tracking-widest border border-gold-500/20 px-3 py-1.5 rounded bg-gold-500/5">
-            Para Leigos Absolutos
-          </span>
-          <h1 className="text-4xl md:text-6xl font-serif font-bold text-white leading-tight">
-            Entenda o Bitcoin <br/>
-            <span className="text-slate-500 italic font-normal text-3xl md:text-5xl">— ainda hoje</span>
-          </h1>
+       {/* O CARD GIGANTE (Módulo Central) */}
+       <main className="max-w-6xl mx-auto bg-[#0B0F19] border border-white/10 rounded-[2.5rem] p-8 md:p-16 shadow-2xl relative overflow-hidden mb-16">
           
-          <div className="space-y-6 text-lg text-slate-300 leading-relaxed font-light">
-            <p>
-              Você não precisa entender de economia, programação ou gráficos.
-            </p>
-            <p>
-              Escrevi este material usando linguagem simples e analogias do dia a dia. Se você sabe enviar um e-mail ou usar o banco, você vai entender o Bitcoin ao terminar esta leitura.
-            </p>
-            <p className="text-xl text-white font-medium border-l-2 border-gold-500 pl-6 py-2 bg-gold-500/5 rounded-r-lg">
-              É o fim das dúvidas e o início da sua liberdade.
-            </p>
-          </div>
-       </div>
+          {/* Efeitos de Luz de Fundo do Card */}
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gold-500/5 blur-[120px] rounded-full pointer-events-none"></div>
+          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-500/5 blur-[100px] rounded-full pointer-events-none"></div>
 
-       {/* Bloco de Citação */}
-       <div className="max-w-3xl mx-auto mb-16">
-          <blockquote className="bg-[#0B0F19] border border-white/5 rounded-2xl p-8 md:p-10 relative overflow-hidden shadow-lg">
-             <div className="absolute top-0 right-0 p-24 bg-gold-500/5 blur-[80px] rounded-full pointer-events-none"></div>
-             <p className="text-slate-400 italic mb-8 relative z-10 leading-relaxed text-lg">
-               "Este material não é um convite à especulação. É uma introdução à soberania individual. Avance apenas se estiver disposto a assumir a responsabilidade total sobre suas escolhas."
-             </p>
-             <footer className="text-gold-500 font-bold text-sm tracking-widest relative z-10 uppercase flex items-center gap-3">
-               <span className="w-8 h-[1px] bg-gold-500/50"></span> Lord Junnior
-             </footer>
-          </blockquote>
-       </div>
-
-       {/* O que você vai entender */}
-       <div className="max-w-3xl mx-auto mb-20">
-          <h2 className="text-2xl md:text-3xl font-serif text-white mb-8">O que você vai entender</h2>
-          <div className="grid gap-4">
-            {[
-              "A história do dinheiro (explicada como uma história, não uma aula).",
-              "Por que o Bitcoin vale algo e por que não pode ser copiado.",
-              "Como funciona sua \"senha mestre\" e a segurança da rede."
-            ].map((item, idx) => (
-              <div key={idx} className="flex gap-6 items-start p-6 border border-white/5 rounded-xl bg-[#0B0F19] hover:border-gold-500/30 transition-colors group">
-                 <span className="text-3xl font-serif text-slate-700 font-bold leading-none select-none group-hover:text-gold-500/50 transition-colors">0{idx + 1}.</span>
-                 <p className="text-slate-300 pt-1 text-lg">{item}</p>
-              </div>
-            ))}
-          </div>
-       </div>
-
-       {/* Por que este material existe & CTA */}
-       <div className="max-w-3xl mx-auto mb-20">
-          <div className="p-8 md:p-12 bg-gradient-to-br from-[#0B0F19] to-black border border-white/10 rounded-3xl relative overflow-hidden">
-            <div className="relative z-10">
-              <h2 className="text-3xl font-serif text-white mb-10">Por que este material existe</h2>
-              <div className="space-y-6 text-slate-400 leading-relaxed mb-12 text-lg">
-                <p>A queda não é do mercado. <strong className="text-white">É da consciência.</strong></p>
-                <p>A maioria só começa a perguntar como o dinheiro funciona quando percebe que já não tem controle sobre ele.</p>
-                <div className="pl-6 border-l border-gold-500/50 py-2">
-                  <p className="text-white">Bitcoin não surge como solução mágica.</p>
-                  <p className="text-slate-400">Surge como explicação tardia.</p>
+          {/* PARTE SUPERIOR DO CARD: Capa + Hero Text */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 relative z-10 mb-20">
+             
+             {/* Coluna Esquerda: Mockup da Capa do Livro */}
+             <div className="lg:col-span-5 flex justify-center lg:justify-start">
+                <div className="relative w-full max-w-[400px] aspect-[3/4] rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/10 group bg-[#05070A]">
+                   <div className="absolute inset-0 bg-gradient-to-br from-gold-900/40 via-black to-black"></div>
+                   <div className="absolute top-0 left-0 w-full h-full bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_0%,transparent_5%,transparent_95%,rgba(255,255,255,0.02)_100%)] pointer-events-none"></div>
+                   
+                   <div className="absolute inset-0 p-8 flex flex-col justify-between">
+                      <div className="flex justify-between items-start">
+                         <ShieldCheck className="w-8 h-8 text-gold-500" />
+                         <span className="text-[10px] uppercase tracking-widest text-gold-500 font-bold bg-gold-500/10 px-3 py-1 rounded-full border border-gold-500/20">Edição 2026</span>
+                      </div>
+                      <div>
+                         <h2 className="text-4xl md:text-5xl font-serif font-bold text-white leading-tight mb-6">O Silêncio<br/>da Queda</h2>
+                         <p className="text-gold-500 font-mono text-sm tracking-widest uppercase border-l-2 border-gold-500 pl-4">Entenda o Bitcoin<br/>ainda hoje</p>
+                      </div>
+                      <div className="border-t border-white/10 pt-6">
+                         <p className="text-xs text-slate-400 uppercase tracking-widest font-bold">Lord Junnior</p>
+                      </div>
+                   </div>
                 </div>
-                <p>Quando a água bate no pescoço, muitos finalmente entendem o que ignoraram enquanto tudo parecia normal.</p>
-              </div>
+             </div>
 
-              <div className="bg-black/50 rounded-2xl p-8 border border-white/5 backdrop-blur-sm text-center">
-                <p className="text-sm text-slate-400 mb-8 max-w-lg mx-auto">
-                  Este material é gratuito, não exige cadastro e não é uma "isca" para vender curso. Baixe, leia e tire suas conclusões.
-                </p>
+             {/* Coluna Direita: Argumentação e CTA */}
+             <div className="lg:col-span-7 flex flex-col justify-center">
+                <span className="text-gold-500 text-[10px] font-bold uppercase tracking-widest border border-gold-500/20 px-3 py-1.5 rounded bg-gold-500/5 w-fit mb-6">
+                  Para Leigos Absolutos
+                </span>
                 
-                {/* Botão com Efeito Pulsante (Glow Animado) */}
-                <div className="relative inline-block w-full sm:w-auto">
-                  <div className="absolute -inset-1 bg-gold-500 rounded-xl blur opacity-40 animate-pulse"></div>
+                <h1 className="text-4xl md:text-5xl font-serif font-bold text-white leading-tight mb-8">
+                  Entenda o Bitcoin <br/>
+                  <span className="text-slate-400 italic font-normal">— ainda hoje</span>
+                </h1>
+
+                <div className="space-y-6 text-lg text-slate-300 leading-relaxed font-light mb-10">
+                  <p>
+                    Você não precisa entender de economia, programação ou gráficos.
+                  </p>
+                  <p>
+                    Escrevi este material usando linguagem simples e analogias do dia a dia. Se você sabe enviar um e-mail ou usar o banco, você vai entender o Bitcoin ao terminar esta leitura.
+                  </p>
+                  <p className="text-xl text-white font-medium border-l-2 border-gold-500 pl-6 py-2 bg-gold-500/5 rounded-r-lg">
+                    É o fim das dúvidas e o início da sua liberdade.
+                  </p>
+                </div>
+
+                <blockquote className="border-l-4 border-slate-700 pl-6 mb-12">
+                   <p className="text-slate-400 italic mb-4 relative z-10 text-base">
+                     "Este material não é um convite à especulação. É uma introdução à soberania individual. Avance apenas se estiver disposto a assumir a responsabilidade total sobre suas escolhas."
+                   </p>
+                   <footer className="text-gold-500 font-bold text-xs tracking-widest uppercase">
+                     — Lord Junnior
+                   </footer>
+                </blockquote>
+
+                {/* Botão Pulsante */}
+                <div className="relative inline-block w-full sm:w-fit mt-auto">
+                  <div className="absolute -inset-1 bg-gold-500 rounded-xl blur-[14px] opacity-60 animate-pulse"></div>
                   <button
                     onClick={handleDownload}
-                    className="relative w-full sm:w-auto mx-auto bg-gold-500 hover:bg-gold-400 text-black font-bold py-4 px-10 rounded-xl transition-all transform hover:-translate-y-1 flex items-center justify-center gap-3 uppercase tracking-wide text-sm shadow-[0_0_15px_rgba(234,179,8,0.5)]"
+                    className="relative w-full sm:w-auto bg-gold-500 hover:bg-gold-400 text-black font-bold py-5 px-12 rounded-xl transition-all transform hover:-translate-y-1 flex items-center justify-center gap-3 uppercase tracking-wider text-sm shadow-[0_0_20px_rgba(234,179,8,0.4)]"
                   >
                     <Download className="w-5 h-5" /> Baixar PDF Gratuito
                   </button>
                 </div>
-              </div>
-            </div>
+             </div>
           </div>
-       </div>
+
+          {/* PARTE INFERIOR DO CARD */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 pt-16 border-t border-white/5 relative z-10">
+             
+             <div>
+                <h3 className="text-2xl font-serif text-white mb-8">O que você vai entender</h3>
+                <ul className="space-y-6">
+                  <li className="flex items-start gap-4">
+                     <div className="mt-1 bg-black p-1 rounded-full border border-white/10 shrink-0">
+                        <CheckCircle2 className="w-4 h-4 text-gold-500" />
+                     </div>
+                     <p className="text-slate-300">A história do dinheiro (explicada como uma história, não uma aula).</p>
+                  </li>
+                  <li className="flex items-start gap-4">
+                     <div className="mt-1 bg-black p-1 rounded-full border border-white/10 shrink-0">
+                        <CheckCircle2 className="w-4 h-4 text-gold-500" />
+                     </div>
+                     <p className="text-slate-300">Por que o Bitcoin vale algo e por que não pode ser copiado.</p>
+                  </li>
+                  <li className="flex items-start gap-4">
+                     <div className="mt-1 bg-black p-1 rounded-full border border-white/10 shrink-0">
+                        <CheckCircle2 className="w-4 h-4 text-gold-500" />
+                     </div>
+                     <p className="text-slate-300">Como funciona sua "senha mestre" e a segurança da rede.</p>
+                  </li>
+                </ul>
+             </div>
+
+             <div className="bg-black/30 p-8 rounded-2xl border border-white/5">
+                <h3 className="text-2xl font-serif text-white mb-6">Por que este material existe</h3>
+                <div className="space-y-4 text-slate-400 text-sm leading-relaxed">
+                   <p>A queda não é do mercado. <strong className="text-white">É da consciência.</strong></p>
+                   <p>A maioria só começa a perguntar como o dinheiro funciona quando percebe que já não tem controle sobre ele.</p>
+                   <div className="pl-4 border-l-2 border-gold-500/50 py-1 my-4">
+                     <p className="text-white">Bitcoin não surge como solução mágica.</p>
+                     <p className="text-slate-400">Surge como explicação tardia.</p>
+                   </div>
+                   <p>Quando a água bate no pescoço, muitos finalmente entendem o que ignoraram enquanto tudo parecia normal.</p>
+                   <p className="mt-6 pt-6 border-t border-white/5 italic">
+                     Este material é gratuito, não exige cadastro e não é uma "isca" para vender curso. Baixe, leia e tire suas conclusões.
+                   </p>
+                </div>
+             </div>
+
+          </div>
+       </main>
 
        {/* Next Steps */}
-       <div className="max-w-3xl mx-auto text-center py-16 border-t border-white/5">
-          <div className="inline-flex p-5 rounded-2xl bg-[#0B0F19] border border-white/5 mb-8">
-             <Key className="w-8 h-8 text-gold-500" />
+       <div className="max-w-3xl mx-auto text-center py-12">
+          <div className="inline-flex p-4 rounded-2xl bg-[#0B0F19] border border-white/5 mb-6 shadow-lg">
+             <Key className="w-6 h-6 text-gold-500" />
           </div>
-          <h3 className="text-3xl font-serif text-white mb-6">Próximo Nível</h3>
-          <p className="text-slate-400 mb-10 max-w-md mx-auto text-lg leading-relaxed">
+          <h3 className="text-3xl font-serif text-white mb-4">Próximo Nível</h3>
+          <p className="text-slate-400 mb-8 max-w-md mx-auto text-base leading-relaxed">
             Depois de ler, você não será mais leigo. Aí sim, estará pronto para a prática.
           </p>
           <Link to="/educacao" className="inline-flex items-center gap-3 text-gold-500 hover:text-gold-400 font-bold uppercase tracking-widest text-sm border-b border-gold-500/30 pb-2 hover:border-gold-500 transition-all group">
@@ -120,7 +155,7 @@ const SilencioQueda: React.FC = () => {
        </div>
 
        {/* Footer Soberano */}
-       <footer className="max-w-3xl mx-auto text-center pt-12 border-t border-white/5 space-y-6 mt-12">
+       <footer className="max-w-6xl mx-auto text-center pt-12 border-t border-white/5 space-y-6 mt-8 mb-12">
           <p className="text-2xl font-serif text-white opacity-80">Not your keys, not your money.</p>
           <div className="text-slate-500 text-sm space-y-1 opacity-80">
             <p>Quem não assume a custódia aceita a dependência.</p>
@@ -133,7 +168,7 @@ const SilencioQueda: React.FC = () => {
           <p className="text-[10px] text-slate-600 uppercase tracking-widest pt-4">
             Lord Junnior © 2026
           </p>
-          <div className="flex items-center justify-center gap-6 pt-8 pb-8">
+          <div className="flex items-center justify-center gap-6 pt-8 pb-4">
             <Link to="#" className="text-xs text-slate-600 hover:text-gold-500 uppercase tracking-wider transition-colors">Termos</Link>
             <span className="text-slate-800">•</span>
             <Link to="#" className="text-xs text-slate-600 hover:text-gold-500 uppercase tracking-wider transition-colors">Privacidade</Link>
