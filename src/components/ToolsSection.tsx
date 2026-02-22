@@ -1,6 +1,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { BookOpen, Shield, Compass, BarChart3 } from "lucide-react";
+import { BookOpen, Shield, Compass, BarChart3, Bitcoin } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import { AreaChart, Area, ResponsiveContainer } from "recharts";
 
 const miniChartData = [
@@ -9,6 +10,14 @@ const miniChartData = [
 ];
 
 const tools = [
+  {
+    title: "BITCOIN VS. IMÓVEIS",
+    icon: Bitcoin,
+    description: "Simulador de valorização histórica. Compare dinheiro escasso versus setor imobiliário inflado com dados reais e atualizados.",
+    button: "Abrir Calculadora",
+    tag: "CALCULADORA",
+    route: "/bitcoin-vs-imovel",
+  },
   {
     title: "TRADUTOR DE NOVILÍNGUA",
     icon: BookOpen,
@@ -29,6 +38,7 @@ const tools = [
     description: "O Estado mede o quanto pode te extrair antes de você ir embora. Calcule o custo matemático da sua saída e planeje sua liberdade geográfica.",
     button: "Calcular Custos de Saída",
     tag: "SIMULADOR",
+    route: "/taxa-de-fuga",
   },
   {
     title: "SUPPLY SHOCK",
@@ -43,6 +53,7 @@ const tools = [
 const ToolsSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const navigate = useNavigate();
 
   return (
     <section className="section-padding bg-card/30" ref={ref}>
@@ -111,7 +122,10 @@ const ToolsSection = () => {
                   </div>
                 )}
 
-                <button className="w-full py-3 rounded-lg border border-gold-dim text-gold font-medium text-sm hover:bg-gold/5 transition-all duration-300">
+                <button
+                  onClick={() => tool.route && navigate(tool.route)}
+                  className="w-full py-3 rounded-lg border border-gold-dim text-gold font-medium text-sm hover:bg-gold/5 transition-all duration-300"
+                >
                   {tool.button}
                 </button>
               </motion.div>
