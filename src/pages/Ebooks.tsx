@@ -107,7 +107,7 @@ const Ebooks: React.FC = () => {
           </div>
 
           <div className="relative z-20 max-w-7xl mx-auto px-4 md:px-12 w-full pt-20">
-             <div className="max-w-2xl">
+             <div className="max-w-3xl">
                 <div className="flex flex-wrap gap-2 mb-6">
                   {FEATURED_BOOK.tags.map(tag => (
                     <span key={tag} className="text-[10px] font-bold uppercase tracking-widest text-emerald-400 bg-emerald-500/10 px-2 py-1 rounded border border-emerald-500/20 shadow-[0_0_10px_rgba(16,185,129,0.1)]">
@@ -116,26 +116,26 @@ const Ebooks: React.FC = () => {
                   ))}
                 </div>
                 
-                <h1 className="text-5xl md:text-7xl font-serif font-bold text-white mb-6 leading-tight drop-shadow-2xl">
+                <h1 className="text-5xl md:text-7xl lg:text-8xl font-sans font-black text-white mb-6 leading-[1.1] tracking-tighter drop-shadow-2xl">
                   {FEATURED_BOOK.title}
                 </h1>
                 
-                <p className="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed drop-shadow-md max-w-xl font-light">
+                <p className="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed drop-shadow-md max-w-2xl font-medium">
                   {FEATURED_BOOK.desc}
                 </p>
 
                 <div className="flex flex-wrap items-center gap-4">
                    <button 
                      onClick={() => navigate('/silencio-queda')}
-                     className="flex items-center gap-3 bg-white hover:bg-slate-200 text-black font-bold py-3 px-8 rounded-lg transition-transform hover:scale-105 text-sm uppercase tracking-wide shadow-xl"
-                   >
-                     <Play className="w-5 h-5 fill-current" /> Acessar Material
-                   </button>
-                   <button 
-                     onClick={() => navigate('/silencio-queda')}
-                     className="flex items-center gap-3 bg-black/40 hover:bg-white/10 text-white backdrop-blur-md font-bold py-3 px-8 rounded-lg transition-colors text-sm uppercase tracking-wide border border-white/20"
-                   >
-                     <Info className="w-5 h-5" /> Sinopse
+                      className="flex items-center gap-3 bg-white hover:bg-slate-200 text-black font-extrabold py-3.5 px-8 rounded-md transition-transform hover:scale-105 text-sm tracking-wide shadow-xl"
+                    >
+                      <Play className="w-6 h-6 fill-current" /> Acessar Material
+                    </button>
+                    <button 
+                      onClick={() => navigate('/silencio-queda')}
+                      className="flex items-center gap-3 bg-[#6d6d6eb3] hover:bg-[#6d6d6e] text-white backdrop-blur-md font-bold py-3.5 px-8 rounded-md transition-colors text-sm tracking-wide"
+                    >
+                      <Info className="w-6 h-6" /> Mais Informações
                    </button>
                 </div>
              </div>
@@ -148,7 +148,7 @@ const Ebooks: React.FC = () => {
           {CATEGORIES.map((category, catIdx) => (
              <section key={catIdx} className="w-full">
                 <div className="flex items-center justify-between mb-4 group cursor-pointer w-fit">
-                   <h2 className="text-xl md:text-2xl font-bold text-white tracking-wide">{category.title}</h2>
+                   <h2 className="text-xl md:text-2xl font-extrabold text-white tracking-tight">{category.title}</h2>
                    <ChevronRight className="w-6 h-6 text-slate-500 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                 </div>
                 
@@ -162,12 +162,12 @@ const Ebooks: React.FC = () => {
 
                          <div className="absolute inset-0 p-4 flex flex-col justify-end bg-gradient-to-t from-black via-black/50 to-transparent group-hover:opacity-0 transition-opacity duration-300">
                             <span className="text-[10px] text-slate-400 uppercase tracking-widest mb-1 font-bold">{book.author}</span>
-                            <h3 className="text-lg font-bold text-white leading-tight shadow-black drop-shadow-md">{book.title}</h3>
+                            <h3 className="text-xl font-bold text-white leading-tight shadow-black drop-shadow-md tracking-tight">{book.title}</h3>
                          </div>
 
                          <div className="absolute inset-0 bg-black/95 p-5 flex flex-col justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 backdrop-blur-sm">
-                            <h3 className="text-base font-bold text-white mb-2">{book.title}</h3>
-                            <p className="text-slate-400 text-xs mb-6 leading-relaxed">
+                            <h3 className="text-base font-extrabold text-white mb-2 leading-tight">{book.title}</h3>
+                            <p className="text-slate-400 text-xs mb-6 leading-relaxed font-medium">
                               {book.desc}
                             </p>
                             <button 
@@ -187,9 +187,9 @@ const Ebooks: React.FC = () => {
 
        {/* Footer Soberano */}
        <footer className="max-w-7xl mx-auto text-center pt-16 border-t border-white/5 space-y-6 mt-8 relative z-30">
-          <p className="text-xl font-serif text-white opacity-80">Not your keys, not your money.</p>
+          <p className="text-xl font-sans font-bold text-white opacity-80 tracking-tight">Not your keys, not your money.</p>
           <div className="w-8 h-[1px] bg-white/10 mx-auto my-4"></div>
-          <p className="text-[10px] text-slate-600 uppercase tracking-widest pt-2">
+          <p className="text-[10px] text-slate-600 uppercase tracking-widest pt-2 font-bold">
             Lord Junnior © 2026
           </p>
           <div className="flex items-center justify-center gap-6 pt-2">
