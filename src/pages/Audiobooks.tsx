@@ -98,7 +98,69 @@ const Audiobooks: React.FC<AudiobooksProps> = ({ onPlay }) => {
   };
 
   return (
-    <div className="min-h-screen bg-[#070A12] font-sans selection:bg-gold-500 selection:text-black pb-24">
+    <div className="min-h-screen bg-[#070A12] font-sans selection:bg-gold-500 selection:text-black pb-24 relative overflow-hidden">
+
+       {/* Sound Wave Particles Background */}
+       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-50">
+         <div className="sound-wave-layer"></div>
+         <div className="sound-wave-layer sound-wave-layer-2"></div>
+         <div className="sound-wave-layer sound-wave-layer-3"></div>
+       </div>
+
+       {/* Horizontal Frequency Lines */}
+       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+         <div className="freq-line freq-line-1"></div>
+         <div className="freq-line freq-line-2"></div>
+         <div className="freq-line freq-line-3"></div>
+         <div className="freq-line freq-line-4"></div>
+         <div className="freq-line freq-line-5"></div>
+       </div>
+
+       <style>{`
+         @keyframes driftSound {
+           0% { transform: translateY(0) translateX(0) scale(1); }
+           50% { transform: translateY(-500px) translateX(60px) scale(1.05); }
+           100% { transform: translateY(-1000px) translateX(120px) scale(1); }
+         }
+         @keyframes pulseLine {
+           0%, 100% { opacity: 0.03; transform: scaleY(1); }
+           50% { opacity: 0.08; transform: scaleY(1.5); }
+         }
+         .sound-wave-layer {
+           position: absolute; width: 100%; height: 200%;
+           background-image:
+             radial-gradient(2px 2px at 10% 15%, rgba(234,179,8,0.35) 100%, transparent),
+             radial-gradient(1.5px 1.5px at 25% 40%, rgba(234,179,8,0.25) 100%, transparent),
+             radial-gradient(1px 1px at 45% 65%, rgba(255,255,255,0.2) 100%, transparent),
+             radial-gradient(2px 2px at 65% 25%, rgba(234,179,8,0.3) 100%, transparent),
+             radial-gradient(1px 1px at 85% 75%, rgba(255,255,255,0.15) 100%, transparent),
+             radial-gradient(1.5px 1.5px at 50% 50%, rgba(234,179,8,0.2) 100%, transparent);
+           background-size: 200px 200px;
+           animation: driftSound 60s linear infinite;
+         }
+         .sound-wave-layer-2 {
+           background-size: 280px 280px;
+           animation: driftSound 85s linear infinite reverse;
+           opacity: 0.6;
+         }
+         .sound-wave-layer-3 {
+           background-size: 350px 350px;
+           animation: driftSound 110s linear infinite;
+           opacity: 0.3;
+         }
+         .freq-line {
+           position: absolute;
+           left: 0; right: 0;
+           height: 1px;
+           background: linear-gradient(90deg, transparent 0%, rgba(234,179,8,0.15) 30%, rgba(234,179,8,0.25) 50%, rgba(234,179,8,0.15) 70%, transparent 100%);
+           animation: pulseLine 4s ease-in-out infinite;
+         }
+         .freq-line-1 { top: 18%; animation-delay: 0s; }
+         .freq-line-2 { top: 35%; animation-delay: 0.8s; }
+         .freq-line-3 { top: 52%; animation-delay: 1.6s; }
+         .freq-line-4 { top: 70%; animation-delay: 2.4s; }
+         .freq-line-5 { top: 87%; animation-delay: 3.2s; }
+       `}</style>
        
        <div className="pt-28 px-4 max-w-6xl mx-auto mb-8">
          <Link to="/" className="text-slate-500 hover:text-white flex items-center gap-2 text-xs uppercase tracking-widest transition-colors w-fit group">
