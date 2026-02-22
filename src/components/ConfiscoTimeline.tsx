@@ -42,10 +42,10 @@ const bulletPoints = [
 ];
 
 const connectorCards = [
-  { icon: BookOpen, emoji: "📚", title: "Economia que Faz Sentido", desc: "A lógica da pilhagem estatal." },
-  { icon: Bitcoin, emoji: "₿", title: "Bitcoin sem Enrolação", desc: "Autocustódia e proteção real." },
-  { icon: Scale, emoji: "⚖️", title: "Filosofia da Liberdade", desc: "Ética de propriedade e mercado." },
-  { icon: Shield, emoji: "🛡️", title: "Estratégias de Saída", desc: "Ferramentas de independência operacional." },
+  { icon: BookOpen, title: "Economia que Faz Sentido", desc: "A lógica da pilhagem estatal." },
+  { icon: Bitcoin, title: "Bitcoin sem Enrolação", desc: "Autocustódia e proteção real." },
+  { icon: Scale, title: "Filosofia da Liberdade", desc: "Ética de propriedade e mercado." },
+  { icon: Shield, title: "Estratégias de Saída", desc: "Ferramentas de independência operacional." },
 ];
 
 const ConfiscoTimeline = () => {
@@ -174,19 +174,29 @@ const ConfiscoTimeline = () => {
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
-            {connectorCards.map((card, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.4, delay: 0.7 + i * 0.1 }}
-                className="card-wealth flex flex-col items-center text-center p-6"
-              >
-                <span className="text-3xl mb-3">{card.emoji}</span>
-                <h4 className="text-sm font-bold mb-1">{card.title}</h4>
-                <p className="text-xs text-muted-foreground">{card.desc}</p>
-              </motion.div>
-            ))}
+            {connectorCards.map((card, i) => {
+              const Icon = card.icon;
+              return (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.4, delay: 0.7 + i * 0.1 }}
+                  whileHover={{ y: -4, transition: { duration: 0.25 } }}
+                  className="group relative rounded-lg border border-border bg-background p-6 cursor-pointer overflow-hidden transition-colors duration-300 hover:border-gold/30"
+                >
+                  {/* Subtle gradient glow on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-gold/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="relative z-10">
+                    <div className="w-10 h-10 rounded-md border border-border bg-card flex items-center justify-center mb-4 group-hover:border-gold/30 transition-colors duration-300">
+                      <Icon className="w-5 h-5 text-muted-foreground group-hover:text-gold transition-colors duration-300" />
+                    </div>
+                    <h4 className="text-sm font-semibold mb-1.5 group-hover:text-gold transition-colors duration-300">{card.title}</h4>
+                    <p className="text-xs text-muted-foreground leading-relaxed">{card.desc}</p>
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
 
           {/* CTA Button */}
