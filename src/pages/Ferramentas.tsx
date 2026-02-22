@@ -139,8 +139,36 @@ const Ferramentas: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background pt-28 pb-20 px-4 font-sans">
-      <div className="max-w-7xl mx-auto">
+    <div className="min-h-screen bg-background pt-28 pb-20 px-4 font-sans relative overflow-hidden">
+
+      {/* Tool/Gear Particles */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-30">
+        <div className="tool-layer"></div>
+        <div className="tool-layer tool-layer-2"></div>
+      </div>
+      <style>{`
+        @keyframes driftTool {
+          0% { transform: translateY(0) translateX(0) rotate(0deg); }
+          100% { transform: translateY(-1000px) translateX(70px) rotate(3deg); }
+        }
+        .tool-layer {
+          position: absolute; width: 100%; height: 200%;
+          background-image:
+            radial-gradient(1.5px 1.5px at 18% 22%, rgba(234,179,8,0.3) 100%, transparent),
+            radial-gradient(1px 1px at 42% 58%, rgba(255,255,255,0.15) 100%, transparent),
+            radial-gradient(2px 2px at 68% 32%, rgba(234,179,8,0.2) 100%, transparent),
+            radial-gradient(1px 1px at 88% 72%, rgba(255,255,255,0.1) 100%, transparent);
+          background-size: 210px 210px;
+          animation: driftTool 58s linear infinite;
+        }
+        .tool-layer-2 {
+          background-size: 310px 310px;
+          animation: driftTool 82s linear infinite reverse;
+          opacity: 0.5;
+        }
+      `}</style>
+
+      <div className="max-w-7xl mx-auto relative z-10">
 
         <motion.header
           initial={{ opacity: 0, y: 20 }}

@@ -10,8 +10,36 @@ const fadeUp = {
 
 const EntendaBitcoin: React.FC = () => {
   return (
-    <div className="min-h-screen bg-background pt-28 pb-20 px-4 font-sans">
-      <div className="max-w-4xl mx-auto">
+    <div className="min-h-screen bg-background pt-28 pb-20 px-4 font-sans relative overflow-hidden">
+
+      {/* Knowledge Particles - partículas de aprendizado */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-35">
+        <div className="learn-layer"></div>
+        <div className="learn-layer learn-layer-2"></div>
+      </div>
+      <style>{`
+        @keyframes driftLearn {
+          0% { transform: translateY(0) translateX(0); }
+          100% { transform: translateY(-1000px) translateX(60px); }
+        }
+        .learn-layer {
+          position: absolute; width: 100%; height: 200%;
+          background-image:
+            radial-gradient(1.5px 1.5px at 20% 30%, rgba(234,179,8,0.25) 100%, transparent),
+            radial-gradient(1px 1px at 45% 55%, rgba(255,255,255,0.15) 100%, transparent),
+            radial-gradient(1.5px 1.5px at 70% 40%, rgba(234,179,8,0.2) 100%, transparent),
+            radial-gradient(1px 1px at 90% 70%, rgba(255,255,255,0.1) 100%, transparent);
+          background-size: 200px 200px;
+          animation: driftLearn 55s linear infinite;
+        }
+        .learn-layer-2 {
+          background-size: 300px 300px;
+          animation: driftLearn 80s linear infinite reverse;
+          opacity: 0.5;
+        }
+      `}</style>
+
+      <div className="max-w-4xl mx-auto relative z-10">
 
         <motion.div {...fadeUp} transition={{ duration: 0.5 }}>
           <Link

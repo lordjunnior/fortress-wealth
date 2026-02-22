@@ -6,7 +6,57 @@ export default function EconomiaParalela() {
   React.useEffect(() => { window.scrollTo(0, 0); }, []);
 
   return (
-    <div className="min-h-screen bg-[#070A12] text-white font-sans selection:bg-red-600 pb-32">
+    <div className="min-h-screen bg-[#070A12] text-white font-sans selection:bg-red-600 pb-32 relative overflow-hidden">
+
+      {/* Stealth Network Particles - rede P2P invisível */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-35">
+        <div className="p2p-layer"></div>
+        <div className="p2p-layer p2p-layer-2"></div>
+        <div className="p2p-layer p2p-layer-3"></div>
+      </div>
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <div className="p2p-scan"></div>
+      </div>
+      <style>{`
+        @keyframes driftP2P {
+          0% { transform: translateY(0) translateX(0); }
+          33% { transform: translateY(-400px) translateX(50px); }
+          66% { transform: translateY(-800px) translateX(-30px); }
+          100% { transform: translateY(-1200px) translateX(20px); }
+        }
+        @keyframes scanLine {
+          0% { top: -10%; opacity: 0; }
+          10% { opacity: 0.08; }
+          90% { opacity: 0.08; }
+          100% { top: 110%; opacity: 0; }
+        }
+        .p2p-layer {
+          position: absolute; width: 100%; height: 200%;
+          background-image:
+            radial-gradient(1.5px 1.5px at 12% 22%, rgba(220,38,38,0.25) 100%, transparent),
+            radial-gradient(1px 1px at 30% 60%, rgba(255,255,255,0.15) 100%, transparent),
+            radial-gradient(2px 2px at 50% 40%, rgba(220,38,38,0.2) 100%, transparent),
+            radial-gradient(1px 1px at 70% 80%, rgba(255,255,255,0.1) 100%, transparent),
+            radial-gradient(1.5px 1.5px at 88% 30%, rgba(220,38,38,0.3) 100%, transparent);
+          background-size: 250px 250px;
+          animation: driftP2P 70s linear infinite;
+        }
+        .p2p-layer-2 {
+          background-size: 320px 320px;
+          animation: driftP2P 95s linear infinite reverse;
+          opacity: 0.6;
+        }
+        .p2p-layer-3 {
+          background-size: 400px 400px;
+          animation: driftP2P 130s linear infinite;
+          opacity: 0.3;
+        }
+        .p2p-scan {
+          position: absolute; left: 0; right: 0; height: 1px;
+          background: linear-gradient(90deg, transparent, rgba(220,38,38,0.3), transparent);
+          animation: scanLine 8s linear infinite;
+        }
+      `}</style>
       <div className="relative z-10 max-w-5xl mx-auto px-6 pt-28">
         
         <Link to="/arsenal" className="inline-flex items-center gap-2 text-slate-600 hover:text-white mb-16 text-[10px] font-black uppercase tracking-[0.4em]">

@@ -7,10 +7,56 @@ export default function ProtocoloInicial() {
 
   return (
     <div className="min-h-screen bg-[#070A12] text-white font-sans selection:bg-red-600 pb-32 overflow-x-hidden">
-      {/* Poeira Atmosférica */}
-      <div className="fixed inset-0 pointer-events-none opacity-20 z-0">
-        <div className="absolute inset-0 bg-[radial-gradient(1px_1px_at_50%_50%,#fff,transparent)] bg-[length:150px_150px] animate-[pulse_8s_infinite]"></div>
+      {/* Alert System Particles - simulando estado de alerta */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-35">
+        <div className="alert-layer"></div>
+        <div className="alert-layer alert-layer-2"></div>
+        <div className="alert-layer alert-layer-3"></div>
       </div>
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <div className="alert-pulse"></div>
+      </div>
+      <style>{`
+        @keyframes driftAlert {
+          0% { transform: translateY(0) translateX(0); }
+          50% { transform: translateY(-500px) translateX(60px); }
+          100% { transform: translateY(-1000px) translateX(0px); }
+        }
+        @keyframes alertPulse {
+          0%, 100% { opacity: 0; transform: scale(0.8); }
+          50% { opacity: 0.04; transform: scale(1.2); }
+        }
+        .alert-layer {
+          position: absolute; width: 100%; height: 200%;
+          background-image:
+            radial-gradient(2px 2px at 15% 15%, rgba(220,38,38,0.35) 100%, transparent),
+            radial-gradient(1px 1px at 35% 45%, rgba(255,255,255,0.2) 100%, transparent),
+            radial-gradient(1.5px 1.5px at 55% 70%, rgba(220,38,38,0.25) 100%, transparent),
+            radial-gradient(1px 1px at 75% 25%, rgba(255,255,255,0.15) 100%, transparent),
+            radial-gradient(2px 2px at 92% 60%, rgba(220,38,38,0.2) 100%, transparent);
+          background-size: 200px 200px;
+          animation: driftAlert 50s linear infinite;
+        }
+        .alert-layer-2 {
+          background-size: 280px 280px;
+          animation: driftAlert 70s linear infinite reverse;
+          opacity: 0.6;
+        }
+        .alert-layer-3 {
+          background-size: 360px 360px;
+          animation: driftAlert 100s linear infinite;
+          opacity: 0.3;
+        }
+        .alert-pulse {
+          position: absolute;
+          top: 30%; left: 50%;
+          width: 400px; height: 400px;
+          margin: -200px 0 0 -200px;
+          border-radius: 50%;
+          border: 1px solid rgba(220,38,38,0.1);
+          animation: alertPulse 5s ease-in-out infinite;
+        }
+      `}</style>
 
       <div className="relative z-10 max-w-4xl mx-auto px-6 pt-28">
         <Link to="/" className="inline-flex items-center gap-2 text-slate-600 hover:text-white mb-20 text-[10px] font-black uppercase tracking-[0.4em] transition-all">
