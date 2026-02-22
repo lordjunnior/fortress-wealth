@@ -3,13 +3,14 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
   ArrowLeft, ArrowRight, Calculator, Plane,
-  BookA, ShieldCheck, Clock, Terminal
+  BookA, ShieldCheck, Clock, Terminal, Hourglass
 } from 'lucide-react';
 
 import BitcoinVsImovel from './BitcoinVsImovel';
 import TaxaDeFuga from './TaxaDeFuga';
 import Novilingua from './Novilingua';
 import GeradorEntropy from './GeradorEntropy';
+import SupplyShock from './SupplyShock';
 
 const VerdadeSalarial = () => (
   <div className="p-8 text-center text-foreground pt-32">
@@ -70,6 +71,18 @@ const TOOLS_LIST = [
     textColor: 'text-emerald-400',
     icon: ShieldCheck,
     component: GeradorEntropy
+  },
+  {
+    id: 'supply-shock',
+    title: 'Supply Shock',
+    badge: 'A Porta Está Fechando',
+    desc: 'Visualize o choque de oferta do Bitcoin em tempo real. Moedas perdidas, ETFs absorvendo e menos de 9% disponível. A matemática não mente.',
+    cta: 'Ver os Números',
+    color: 'from-orange-500/20 to-orange-500/0',
+    borderColor: 'group-hover:border-orange-500/50',
+    textColor: 'text-orange-400',
+    icon: Hourglass,
+    component: SupplyShock
   },
   {
     id: 'verdade-salarial',
