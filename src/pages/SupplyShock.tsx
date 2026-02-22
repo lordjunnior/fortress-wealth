@@ -1,5 +1,6 @@
 import React from 'react';
-import { Hourglass, TrendingDown, Lock, AlertTriangle } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Hourglass, TrendingDown, Lock, AlertTriangle, Pickaxe } from 'lucide-react';
 
 const SupplyShock: React.FC = () => {
   const MAX_SUPPLY = 21000000;
@@ -10,6 +11,8 @@ const SupplyShock: React.FC = () => {
 
   const REAL_AVAILABLE = EXCHANGE_BALANCE;
   const PERCENT_MINED = (MINED_SUPPLY / MAX_SUPPLY) * 100;
+  const REMAINING = MAX_SUPPLY - MINED_SUPPLY;
+  const PERCENT_REMAINING = 100 - PERCENT_MINED;
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-12 font-mono">
@@ -27,13 +30,55 @@ const SupplyShock: React.FC = () => {
       <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
 
         {/* Card 1: Mined */}
-        <div className="bg-card border border-border p-6 rounded-lg">
-          <span className="text-xs text-muted-foreground uppercase tracking-widest">Minerados</span>
-          <div className="text-3xl text-foreground font-bold mt-2">19.65 M</div>
-          <div className="w-full bg-secondary h-1 mt-4 rounded-full overflow-hidden">
-            <div className="bg-foreground h-full" style={{ width: `${PERCENT_MINED}%` }}></div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          whileHover={{ y: -4, boxShadow: '0 0 30px hsla(var(--gold), 0.15)' }}
+          className="bg-card border border-gold/20 p-6 rounded-lg relative overflow-hidden group"
+        >
+          {/* Animated shimmer */}
+          <motion.div
+            className="absolute inset-0 bg-gradient-to-r from-transparent via-gold/5 to-transparent"
+            animate={{ x: ['-100%', '200%'] }}
+            transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
+          />
+
+          <div className="relative z-10">
+            <span className="text-xs text-gold uppercase tracking-widest flex items-center gap-2">
+              <Pickaxe className="w-3 h-3" /> Minerados
+            </span>
+            <div className="text-3xl text-foreground font-bold mt-2">
+              {(MINED_SUPPLY / 1000000).toFixed(2)} M
+            </div>
+
+            {/* Progress bar minerados */}
+            <div className="w-full bg-secondary h-2 mt-4 rounded-full overflow-hidden">
+              <motion.div
+                className="bg-gold h-full rounded-full"
+                initial={{ width: 0 }}
+                animate={{ width: `${PERCENT_MINED}%` }}
+                transition={{ duration: 1.5, ease: 'easeOut' }}
+              />
+            </div>
+            <div className="flex justify-between mt-2">
+              <span className="text-[10px] text-gold font-bold">{PERCENT_MINED.toFixed(1)}% minerado</span>
+              <span className="text-[10px] text-muted-foreground">{PERCENT_REMAINING.toFixed(1)}% restante</span>
+            </div>
+
+            {/* Remaining detail */}
+            <div className="mt-4 pt-3 border-t border-border/50 flex items-center justify-between">
+              <div>
+                <p className="text-[10px] text-muted-foreground uppercase tracking-widest">Ainda por minerar</p>
+                <p className="text-lg text-foreground font-bold">{(REMAINING / 1000000).toFixed(2)} M</p>
+              </div>
+              <div className="text-right">
+                <p className="text-[10px] text-muted-foreground uppercase tracking-widest">Limite absoluto</p>
+                <p className="text-lg text-gold font-bold">21 M</p>
+              </div>
+            </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Card 2: Lost */}
         <div className="bg-card border border-border p-6 rounded-lg opacity-60">
