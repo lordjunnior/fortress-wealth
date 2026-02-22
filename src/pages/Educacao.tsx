@@ -20,7 +20,7 @@ const cards = [
     color: 'text-sky-400',
     borderHover: 'hover:border-sky-500/50',
     bg: 'from-sky-500/10 to-sky-500/0',
-    route: undefined,
+    route: '/economia-paralela',
   },
   {
     icon: Server,
