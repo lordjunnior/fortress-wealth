@@ -1,7 +1,13 @@
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
-import { ArrowRight, Download, BookOpen } from "lucide-react";
+import { useRef, useState } from "react";
+import { ArrowRight, Download, BookOpen, FileText } from "lucide-react";
 import FormationSection from "@/components/FormationSection";
+
+import bookSeisLicoes from "@/assets/book-seis-licoes.jpg";
+import bookDemocracia from "@/assets/book-democracia.jpg";
+import bookBancoCentral from "@/assets/book-banco-central.jpg";
+import bookWhitepaper from "@/assets/book-whitepaper.jpg";
+import bookRedpill from "@/assets/book-redpill.jpg";
 
 const trails = [
   { level: "Iniciante", title: "Fundamentos do Dinheiro", desc: "Entenda por que o sistema fiduciário falha e a história da moeda.", btn: "Ler Artigo" },
@@ -13,11 +19,46 @@ const trails = [
 ];
 
 const books = [
-  { title: "As Seis Lições", author: "Ludwig von Mises" },
-  { title: "Democracia: O Deus que Falhou", author: "Hans-Hermann Hoppe" },
-  { title: "Pelo Fim do Banco Central", author: "Murray Rothbard" },
-  { title: "Bitcoin White Paper", author: "Satoshi Nakamoto" },
-  { title: "Bitcoin Red Pill", author: "Renato Amoedo & Alan Schramm" },
+  {
+    title: "As Seis Lições",
+    author: "Ludwig von Mises",
+    cover: bookSeisLicoes,
+    desc: "A cartilha definitiva da Escola Austríaca: inflação, intervencionismo e o colapso inevitável do estado planejador.",
+    pages: "106 págs",
+    tag: "ECONOMIA",
+  },
+  {
+    title: "Democracia: O Deus que Falhou",
+    author: "Hans-Hermann Hoppe",
+    cover: bookDemocracia,
+    desc: "Por que a democracia destrói a civilização mais rápido que qualquer monarquia. Análise radical e sem filtros.",
+    pages: "322 págs",
+    tag: "FILOSOFIA POLÍTICA",
+  },
+  {
+    title: "Pelo Fim do Banco Central",
+    author: "Murray Rothbard",
+    cover: bookBancoCentral,
+    desc: "Rothbard disseca o sistema bancário de reservas fracionárias e demonstra como o Fed rouba seu poder de compra.",
+    pages: "198 págs",
+    tag: "SISTEMA MONETÁRIO",
+  },
+  {
+    title: "Bitcoin White Paper",
+    author: "Satoshi Nakamoto",
+    cover: bookWhitepaper,
+    desc: "O documento que iniciou a revolução: um sistema de dinheiro eletrônico peer-to-peer sem terceiros de confiança.",
+    pages: "9 págs",
+    tag: "CRIPTOGRAFIA",
+  },
+  {
+    title: "Bitcoin Red Pill",
+    author: "Renato Amoedo & Alan Schramm",
+    cover: bookRedpill,
+    desc: "O despertar sobre dinheiro, liberdade e soberania individual através do Bitcoin. A pílula vermelha brasileira.",
+    pages: "284 págs",
+    tag: "BITCOIN",
+  },
 ];
 
 const KnowledgeSection = () => {
@@ -82,20 +123,56 @@ const KnowledgeSection = () => {
             <h3 className="text-xl font-semibold">Biblioteca em PDF</h3>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
             {books.map((book, i) => (
-              <div
+              <motion.div
                 key={i}
-                className="card-wealth flex items-center gap-4 group cursor-pointer"
+                initial={{ opacity: 0, y: 40, scale: 0.95 }}
+                animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+                transition={{ duration: 0.5, delay: 0.6 + i * 0.1 }}
+                whileHover={{ y: -8, scale: 1.03 }}
+                className="group cursor-pointer"
               >
-                <div className="w-10 h-14 rounded bg-secondary flex items-center justify-center flex-shrink-0">
-                  <Download className="w-4 h-4 text-muted-foreground group-hover:text-gold transition-colors" />
+                <div className="card-wealth p-0 overflow-hidden flex flex-col h-full">
+                  {/* Cover Image */}
+                  <div className="relative overflow-hidden aspect-[3/4]">
+                    <img
+                      src={book.cover}
+                      alt={book.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    {/* Overlay on hover */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400 flex items-end justify-center pb-6">
+                      <span className="flex items-center gap-2 text-gold font-semibold text-sm">
+                        <Download className="w-4 h-4" />
+                        Baixar PDF
+                      </span>
+                    </div>
+                    {/* Tag */}
+                    <span className="absolute top-3 left-3 font-mono text-[9px] tracking-widest text-gold bg-background/80 backdrop-blur-sm px-2 py-1 rounded">
+                      {book.tag}
+                    </span>
+                  </div>
+
+                  {/* Info */}
+                  <div className="p-4 flex-1 flex flex-col">
+                    <h4 className="text-sm font-bold mb-1 group-hover:text-gold transition-colors leading-tight">
+                      {book.title}
+                    </h4>
+                    <p className="text-xs text-muted-foreground mb-2">{book.author}</p>
+                    <p className="text-xs text-muted-foreground/80 leading-relaxed flex-1">
+                      {book.desc}
+                    </p>
+                    <div className="flex items-center justify-between mt-3 pt-3 border-t border-border">
+                      <span className="font-mono text-[10px] text-muted-foreground flex items-center gap-1">
+                        <FileText className="w-3 h-3" />
+                        {book.pages}
+                      </span>
+                      <ArrowRight className="w-3.5 h-3.5 text-muted-foreground group-hover:text-gold group-hover:translate-x-1 transition-all duration-300" />
+                    </div>
+                  </div>
                 </div>
-                <div className="min-w-0">
-                  <p className="text-sm font-medium truncate">{book.title}</p>
-                  <p className="text-xs text-muted-foreground">{book.author}</p>
-                </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </motion.div>
