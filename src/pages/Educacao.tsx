@@ -29,7 +29,7 @@ const cards = [
     color: 'text-emerald-400',
     borderHover: 'hover:border-emerald-500/50',
     bg: 'from-emerald-500/10 to-emerald-500/0',
-    route: undefined,
+    route: '/infraestrutura',
   },
   {
     icon: Zap,
