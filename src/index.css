@@ -149,6 +149,9 @@
 
   .section-padding {
     @apply py-20 md:py-28 px-4 md:px-8;
+    max-width: 1920px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .pre-title {

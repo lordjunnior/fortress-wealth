@@ -1,6 +1,12 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { BookOpen, Shield, Compass, BarChart3 } from "lucide-react";
+import { AreaChart, Area, ResponsiveContainer } from "recharts";
+
+const miniChartData = [
+  { v: 100 }, { v: 95 }, { v: 88 }, { v: 80 }, { v: 70 },
+  { v: 55 }, { v: 45 }, { v: 35 }, { v: 22 }, { v: 15 }, { v: 8 },
+];
 
 const tools = [
   {
@@ -39,7 +45,7 @@ const ToolsSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="section-padding bg-card/30" id="ferramentas" ref={ref}>
+    <section className="section-padding bg-card/30" ref={ref}>
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -56,7 +62,7 @@ const ToolsSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
           {tools.map((tool, i) => {
             const Icon = tool.icon;
             return (
@@ -65,8 +71,15 @@ const ToolsSection = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.1 + i * 0.1 }}
-                className="card-wealth flex flex-col"
-              >
+                className="card-wealth flex flex-col relative overflow-hidden">
+                {/* Background mini chart */}
+                <div className="absolute inset-0 opacity-[0.06] pointer-events-none">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <AreaChart data={miniChartData}>
+                      <Area type="monotone" dataKey="v" stroke="hsl(0 72% 51%)" fill="hsl(0 72% 51%)" fillOpacity={0.3} strokeWidth={1} />
+                    </AreaChart>
+                  </ResponsiveContainer>
+                </div>
                 <div className="flex items-start justify-between mb-4">
                   <div className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center">
                     <Icon className="w-5 h-5 text-gold" />
