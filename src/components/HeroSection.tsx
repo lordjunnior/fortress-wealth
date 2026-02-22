@@ -15,25 +15,16 @@ const HeroSection = () => {
       }} />
 
       <div className="relative z-10 max-w-4xl mx-auto text-center">
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="pre-title"
-        >
-          SISTEMA OPERACIONAL V1.0
-        </motion.p>
-
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.15 }}
+          transition={{ duration: 0.8 }}
           className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] mb-8"
         >
-          O TRIO DA{" "}
-          <span className="text-gradient-gold">BLINDAGEM</span>
+          CENTRO DE COMANDO
           <br />
-          PATRIMONIAL.
+          DA SUA{" "}
+          <span className="text-gradient-gold">SOBERANIA</span>.
         </motion.h1>
 
         <motion.p
