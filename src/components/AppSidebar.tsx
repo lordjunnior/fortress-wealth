@@ -14,7 +14,7 @@ const menuItems: MenuItem[] = [
   { icon: BookOpen, label: "Educação", targetId: "educacao" },
   { icon: Headphones, label: "Audioteca", targetId: "audioteca" },
   { icon: Wrench, label: "Ferramentas", route: "/ferramentas" },
-  { icon: QrCode, label: "PIX Crypto", targetId: "pix-crypto" },
+  { icon: QrCode, label: "PIX Crypto", route: "/pix-cripto" },
 ];
 
 const socialLinks = [
