@@ -19,6 +19,7 @@ import Infraestrutura from "./pages/Infraestrutura";
 import LightningPage from "./pages/Lightning";
 import Gateway from "./pages/Gateway";
 import PixCripto from "./pages/PixCripto";
+import Audiobooks from "./pages/Audiobooks";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -46,6 +47,7 @@ const App = () => (
           <Route path="/infraestrutura" element={<Infraestrutura />} />
           <Route path="/lightning" element={<LightningPage />} />
           <Route path="/pix-cripto" element={<PixCripto />} />
+          <Route path="/audiobooks" element={<Audiobooks />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
