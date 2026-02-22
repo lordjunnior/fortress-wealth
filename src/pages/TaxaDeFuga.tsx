@@ -49,7 +49,7 @@ const TaxaDeFuga: React.FC = () => {
 
       <div className="max-w-6xl mx-auto px-4 py-12 relative z-10">
         <button
-          onClick={() => navigate('/')}
+          onClick={() => navigate(-1)}
           className="flex items-center gap-2 text-muted-foreground hover:text-foreground mb-8 transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
