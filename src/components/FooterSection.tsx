@@ -171,7 +171,7 @@ const FooterSection = () => {
               <Zap className="w-4 h-4" />
             </a>
             <Link
-              to="/guia-lightning"
+              to="/lightning"
               className="px-8 py-3.5 rounded-lg border border-border text-muted-foreground font-medium text-sm hover:border-gold-dim hover:text-foreground transition-all duration-300 flex items-center gap-2"
             >
               Aprender sobre Lightning
