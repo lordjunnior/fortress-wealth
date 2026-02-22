@@ -6,6 +6,7 @@ import NoiseBackground from "@/components/NoiseBackground";
 import AppSidebar from "@/components/AppSidebar";
 import MobileNav from "@/components/MobileNav";
 import NetworkTicker from "@/components/NetworkTicker";
+import EmergencyManual from "@/components/EmergencyManual";
 
 type Stage = "input" | "processing" | "success";
 
@@ -372,6 +373,9 @@ const Gateway = () => {
             </div>
           </div>
         </section>
+
+        {/* Emergency Manual */}
+        <EmergencyManual />
       </div>
 
       <NetworkTicker />
