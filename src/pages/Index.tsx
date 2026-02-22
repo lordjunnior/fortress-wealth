@@ -12,10 +12,12 @@ import FaqSection from "@/components/FaqSection";
 import FooterSection from "@/components/FooterSection";
 import QuoteCarousel from "@/components/QuoteCarousel";
 import NetworkTicker from "@/components/NetworkTicker";
+import SovereignTermModal from "@/components/SovereignTermModal";
 
 const Index = () => {
   return (
     <div className="min-h-screen text-foreground">
+      <SovereignTermModal />
       <NoiseBackground />
       <AppSidebar />
       <MobileNav />
