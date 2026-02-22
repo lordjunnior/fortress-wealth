@@ -39,29 +39,29 @@ export default function Arsenal() {
         {/* OS QUATRO PILARES TÉCNICOS */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           
-          <div className="bg-[#0B0F19] border border-white/5 p-10 hover:border-red-600/50 transition-all group cursor-help">
+          <Link to="/autocustodia" className="bg-[#0B0F19] border border-white/5 p-10 hover:border-red-600/50 transition-all group">
             <Lock className="text-red-600 mb-8" size={32} />
             <h3 className="text-xl font-black uppercase tracking-tighter mb-4">Arquitetura de Autocustódia</h3>
             <p className="text-slate-500 text-[10px] font-black leading-relaxed uppercase tracking-widest">Cold Wallets, PGP, Multisig & Wasabi.</p>
-          </div>
+          </Link>
 
-          <div className="bg-[#0B0F19] border border-white/5 p-10 hover:border-red-600/50 transition-all cursor-help">
+          <Link to="/economia-paralela" className="bg-[#0B0F19] border border-white/5 p-10 hover:border-red-600/50 transition-all group">
             <Globe className="text-red-600 mb-8" size={32} />
             <h3 className="text-xl font-black uppercase tracking-tighter mb-4">Economia Paralela</h3>
             <p className="text-slate-500 text-[10px] font-black leading-relaxed uppercase tracking-widest">Mercados BISQ, P2P & OpSec.</p>
-          </div>
+          </Link>
 
-          <div className="bg-[#0B0F19] border border-white/5 p-10 hover:border-red-600/50 transition-all cursor-help">
+          <Link to="/infraestrutura" className="bg-[#0B0F19] border border-white/5 p-10 hover:border-red-600/50 transition-all group">
             <Cpu className="text-red-600 mb-8" size={32} />
             <h3 className="text-xl font-black uppercase tracking-tighter mb-4">Rodando com o Urso Dov</h3>
             <p className="text-slate-500 text-[10px] font-black leading-relaxed uppercase tracking-widest">Full Nodes, Hardware & Validação.</p>
-          </div>
+          </Link>
 
-          <div className="bg-[#0B0F19] border border-white/5 p-10 hover:border-red-600/50 transition-all cursor-help">
+          <Link to="/lightning" className="bg-[#0B0F19] border border-white/5 p-10 hover:border-red-600/50 transition-all group">
             <Zap className="text-red-600 mb-8" size={32} />
             <h3 className="text-xl font-black uppercase tracking-tighter mb-4">Lightning no Bolso</h3>
             <p className="text-slate-500 text-[10px] font-black leading-relaxed uppercase tracking-widest">Camada 2, Phoenix & Velocidade.</p>
-          </div>
+          </Link>
 
         </div>
 
