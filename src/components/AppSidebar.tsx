@@ -1,4 +1,5 @@
-import { Instagram, Youtube, Twitter, Github, LayoutGrid, BookOpen, Headphones, Wrench, QrCode, Zap, Library } from "lucide-react";
+import { Instagram, Youtube, Twitter, Github, LayoutGrid, BookOpen, Headphones, Wrench, QrCode, Zap, Library, ShieldAlert } from "lucide-react";
+import { Link } from "react-router-dom";
 import { useNavigate, useLocation } from "react-router-dom";
 import profilePhoto from "@/assets/profile-photo.jpg";
 
@@ -106,6 +107,21 @@ const AppSidebar = () => {
             <span className="text-sm font-medium">{item.label}</span>
           </button>
         ))}
+
+        {/* Protocolo Inicial - harmonizado */}
+        <Link
+          to="/protocolo-inicial"
+          className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-all duration-200 group"
+        >
+          <div className="relative">
+            <ShieldAlert className="w-4 h-4 text-destructive/80 group-hover:text-destructive transition-colors" />
+            <span className="absolute -top-1 -right-1 flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-destructive/60 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-destructive"></span>
+            </span>
+          </div>
+          <span className="text-sm font-medium">Protocolo inicial</span>
+        </Link>
       </nav>
 
       {/* Lightning Support Button */}
