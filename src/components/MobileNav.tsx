@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Menu, X, LayoutGrid, BookOpen, Headphones, Wrench, QrCode, Zap } from "lucide-react";
 
 const menuItems = [
@@ -11,12 +12,23 @@ const menuItems = [
 
 const MobileNav = () => {
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  const scrollTo = (id: string) => {
+  const handleNav = (item: typeof menuItems[0]) => {
     setOpen(false);
-    setTimeout(() => {
-      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-    }, 100);
+    if (item.targetId) {
+      if (location.pathname !== "/") {
+        navigate("/");
+        setTimeout(() => {
+          document.getElementById(item.targetId!)?.scrollIntoView({ behavior: "smooth" });
+        }, 300);
+      } else {
+        setTimeout(() => {
+          document.getElementById(item.targetId!)?.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+      }
+    }
   };
 
   return (
@@ -32,8 +44,8 @@ const MobileNav = () => {
         <div className="absolute top-12 left-0 w-56 bg-card/95 backdrop-blur-xl border border-border rounded-lg p-3 space-y-1 shadow-2xl">
           {menuItems.map((item) => (
             <button
-              key={item.targetId}
-              onClick={() => scrollTo(item.targetId)}
+              key={item.label}
+              onClick={() => handleNav(item)}
               className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-all"
             >
               <item.icon className="w-4 h-4" />
@@ -42,7 +54,7 @@ const MobileNav = () => {
           ))}
           <div className="pt-1 border-t border-border mt-1">
             <button
-              onClick={() => scrollTo("apoio")}
+              onClick={() => handleNav({ icon: Zap, label: "Apoio", targetId: "apoio" })}
               className="w-full flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg border border-gold-dim/50 text-gold text-sm font-semibold"
             >
               <Zap className="w-4 h-4" />
