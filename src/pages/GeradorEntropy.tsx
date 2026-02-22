@@ -15,6 +15,7 @@ const BIP39_MOCK = [
 ];
 
 const GeradorEntropy: React.FC = () => {
+  const [wordCount, setWordCount] = useState<12 | 24>(12);
   const [progress, setProgress] = useState(0);
   const [seed, setSeed] = useState<string[]>([]);
   const [isOnline, setIsOnline] = useState(navigator.onLine);
@@ -33,12 +34,12 @@ const GeradorEntropy: React.FC = () => {
 
   const generateSeed = useCallback(() => {
     const newSeed: string[] = [];
-    for (let i = 0; i < 12; i++) {
+    for (let i = 0; i < wordCount; i++) {
       const randomIndex = Math.floor(Math.random() * BIP39_MOCK.length);
       newSeed.push(BIP39_MOCK[randomIndex]);
     }
     setSeed(newSeed);
-  }, []);
+  }, [wordCount]);
 
   const handleMouseMove = () => {
     if (progress < 100) {
@@ -60,11 +61,16 @@ const GeradorEntropy: React.FC = () => {
   };
 
   const handleCopy = () => {
-    if (seed.length === 12) {
+    if (seed.length > 0) {
       navigator.clipboard.writeText(seed.join(' '));
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     }
+  };
+
+  const handleWordCountChange = (count: 12 | 24) => {
+    setWordCount(count);
+    handleReset();
   };
 
   return (
@@ -77,7 +83,7 @@ const GeradorEntropy: React.FC = () => {
           </div>
           <div>
             <h2 className="text-3xl font-bold text-foreground tracking-tight">Gerador de Seed</h2>
-            <p className="text-muted-foreground text-sm">Crie suas 12 palavras de segurança com aleatoriedade real.</p>
+            <p className="text-muted-foreground text-sm">Crie suas {wordCount} palavras de segurança com aleatoriedade real.</p>
           </div>
         </div>
 
@@ -94,6 +100,29 @@ const GeradorEntropy: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
 
         <div className="flex flex-col gap-6">
+          {/* Word count selector */}
+          <div className="flex items-center gap-3">
+            <span className="text-xs text-muted-foreground uppercase tracking-widest font-bold">Palavras:</span>
+            <div className="flex rounded-lg border border-border overflow-hidden">
+              {([12, 24] as const).map(count => (
+                <button
+                  key={count}
+                  onClick={() => handleWordCountChange(count)}
+                  className={`px-5 py-2 text-sm font-bold transition-all ${
+                    wordCount === count
+                      ? 'bg-chart-green text-background'
+                      : 'bg-card text-muted-foreground hover:text-foreground'
+                  }`}
+                >
+                  {count}
+                </button>
+              ))}
+            </div>
+            <span className="text-[10px] text-muted-foreground">
+              {wordCount === 24 ? '256 bits · máxima segurança' : '128 bits · padrão'}
+            </span>
+          </div>
+
           <div className="flex-1 border-2 border-dashed border-border bg-card rounded-2xl p-8 flex flex-col items-center justify-center min-h-[320px] transition-all">
             {progress < 100 ? (
               <div className="text-center opacity-70">
@@ -137,12 +166,12 @@ const GeradorEntropy: React.FC = () => {
         <div className="bg-card border border-border rounded-2xl p-6 md:p-8 flex flex-col">
           <div className="flex items-center gap-3 mb-8">
             <ShieldCheck className="w-5 h-5 text-muted-foreground" />
-            <h3 className="text-lg font-bold text-foreground">Sua Seed Phrase (Simulação)</h3>
+            <h3 className="text-lg font-bold text-foreground">Sua Seed Phrase — {wordCount} palavras (Simulação)</h3>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-8 flex-1">
+          <div className={`grid gap-3 mb-8 flex-1 ${wordCount === 24 ? 'grid-cols-3 sm:grid-cols-4' : 'grid-cols-2 sm:grid-cols-3'}`}>
             {progress < 100 ? (
-              Array.from({ length: 12 }).map((_, i) => (
+              Array.from({ length: wordCount }).map((_, i) => (
                 <div key={i} className="bg-background/50 border border-border rounded-lg py-3 px-4 flex gap-3 opacity-30">
                   <span className="text-muted-foreground font-mono text-sm">{i + 1}.</span>
                   <div className="w-full bg-secondary/50 rounded h-4 mt-0.5"></div>
@@ -155,7 +184,7 @@ const GeradorEntropy: React.FC = () => {
                   className="bg-background border border-border rounded-lg py-3 px-4 flex gap-3 items-center animate-fade-in"
                   style={{ animationDelay: `${i * 50}ms` }}
                 >
-                  <span className="text-muted-foreground font-mono text-xs font-bold w-4 text-right">{i + 1}.</span>
+                  <span className="text-muted-foreground font-mono text-xs font-bold w-5 text-right">{i + 1}.</span>
                   <span className="text-foreground font-mono font-bold text-sm tracking-wide">{word}</span>
                 </div>
               ))
