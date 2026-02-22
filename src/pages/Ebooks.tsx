@@ -4,6 +4,11 @@ import {
   ArrowLeft, Download, Play, 
   Info, ChevronRight, Lock
 } from 'lucide-react';
+import coverServidao from '@/assets/cover-servidao.jpg';
+import coverEstadoNao from '@/assets/cover-estado-nao.jpg';
+import coverCiclos from '@/assets/cover-ciclos.jpg';
+import coverIntervencionismo from '@/assets/cover-intervencionismo.jpg';
+import coverFimBc from '@/assets/cover-fim-bc.jpg';
 
 const FEATURED_BOOK = {
   id: 'entenda-bitcoin',
@@ -23,14 +28,16 @@ const CATEGORIES = [
         title: 'O Discurso da Servidão Voluntária',
         author: 'Étienne de La Boétie',
         desc: 'Por que as massas aceitam estruturas que as exploram e como o poder se sustenta pela obediência.',
-        color: 'from-purple-900/60 to-black'
+        color: 'from-purple-900/60 to-black',
+        cover: coverServidao
       },
       {
         id: 'estado-nao',
         title: 'Estado Não, Obrigado',
         author: 'James J. Martin',
         desc: 'A desconstrução lógica da necessidade do Estado para a organização da sociedade.',
-        color: 'from-red-900/60 to-black'
+        color: 'from-red-900/60 to-black',
+        cover: coverEstadoNao
       }
     ]
   },
@@ -42,21 +49,24 @@ const CATEGORIES = [
         title: 'Moeda, Crédito e Ciclos',
         author: 'Jesús Huerta de Soto',
         desc: 'Como a manipulação monetária cria bolhas e crises inevitáveis.',
-        color: 'from-blue-900/60 to-black'
+        color: 'from-blue-900/60 to-black',
+        cover: coverCiclos
       },
       {
         id: 'intervencionismo',
         title: 'Crítica ao Intervencionismo',
         author: 'Ludwig von Mises',
         desc: 'A prova de por que regulações sempre geram efeitos colaterais destrutivos.',
-        color: 'from-orange-900/60 to-black'
+        color: 'from-orange-900/60 to-black',
+        cover: coverIntervencionismo
       },
       {
         id: 'fim-bc',
         title: 'Pelo Fim do Banco Central',
         author: 'Murray N. Rothbard',
         desc: 'A anatomia da fraude e o argumento para a separação entre dinheiro e Estado.',
-        color: 'from-gold-900/60 to-black'
+        color: 'from-gold-900/60 to-black',
+        cover: coverFimBc
       }
     ]
   }
@@ -148,8 +158,7 @@ const Ebooks: React.FC = () => {
                         key={book.id} 
                         className="relative shrink-0 w-[200px] md:w-[240px] aspect-[2/3] rounded-md overflow-hidden snap-start group cursor-pointer transition-transform duration-300 hover:scale-105 hover:z-40 shadow-lg border border-white/5"
                       >
-                         <div className={`absolute inset-0 bg-gradient-to-br ${book.color}`}></div>
-                         <div className="absolute inset-0 opacity-10 mix-blend-overlay" style={{ backgroundImage: 'radial-gradient(circle, #ffffff 1px, transparent 1px)', backgroundSize: '4px 4px' }}></div>
+                         <img src={book.cover} alt={book.title} className="absolute inset-0 w-full h-full object-cover" />
 
                          <div className="absolute inset-0 p-4 flex flex-col justify-end bg-gradient-to-t from-black via-black/50 to-transparent group-hover:opacity-0 transition-opacity duration-300">
                             <span className="text-[10px] text-slate-400 uppercase tracking-widest mb-1 font-bold">{book.author}</span>
