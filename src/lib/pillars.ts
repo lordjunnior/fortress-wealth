@@ -9,6 +9,7 @@ export interface PillarResource {
   description: string;
   action: string;
   route?: string;
+  anchorId?: string;
 }
 
 export interface PillarObjective {
@@ -45,6 +46,7 @@ export const pillars: Pillar[] = [
         title: "O Caminho da Soberania",
         description: "O guia de entrada para entender a transição do sistema de dívida para o sistema de capital real.",
         action: "Baixar Ebook",
+        anchorId: "fundamentos",
       },
       {
         type: "audio",
@@ -97,12 +99,14 @@ export const pillars: Pillar[] = [
         title: "Guia de Autocustódia",
         description: "O passo a passo para configurar sua carteira e realizar o seu primeiro saque soberano.",
         action: "Ouvir Tutorial",
+        anchorId: "autocustodia",
       },
       {
         type: "ebook",
         title: "O Padrão Bitcoin",
         description: "A leitura técnica obrigatória para entender por que o Bitcoin é o sucessor natural do padrão-ouro.",
         action: "Baixar Livro",
+        anchorId: "node",
       },
     ],
     objectives: [
@@ -135,18 +139,21 @@ export const pillars: Pillar[] = [
         title: "PIX via Bitcoin (Lightning)",
         description: "O guia de execução para converter seus Satoshis em liquidez imediata no balcão do comércio local, sem pedir permissão a gerente de banco.",
         action: "Configurar Agora",
+        anchorId: "lightning",
       },
       {
         type: "ebook",
         title: "Herança Cripto",
         description: "Como configurar chaves multisig e timelocks para garantir que seu patrimônio chegue aos seus herdeiros de forma privada e segura.",
         action: "Baixar Protocolo",
+        anchorId: "heranca",
       },
       {
         type: "audio",
         title: "Privacidade On-chain",
         description: "Ferramentas e práticas de CoinJoin e nós (Nodes) próprios para apagar o seu rastro financeiro do sistema de vigilância.",
         action: "Ouvir Estudo",
+        anchorId: "p2p",
       },
     ],
     objectives: [
