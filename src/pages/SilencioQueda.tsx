@@ -9,7 +9,41 @@ const SilencioQueda: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#070A12] pt-28 pb-12 px-4 animate-fade-in font-sans">
+    <div className="min-h-screen bg-[#070A12] pt-28 pb-12 px-4 animate-fade-in font-sans relative overflow-hidden">
+
+      {/* Ink/Literary Particles - páginas caindo */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-40">
+        <div className="ink-layer"></div>
+        <div className="ink-layer ink-layer-2"></div>
+        <div className="ink-layer ink-layer-3"></div>
+      </div>
+      <style>{`
+        @keyframes driftInk {
+          0% { transform: translateY(0) translateX(0) rotate(0deg); }
+          100% { transform: translateY(-1000px) translateX(50px) rotate(2deg); }
+        }
+        .ink-layer {
+          position: absolute; width: 100%; height: 200%;
+          background-image:
+            radial-gradient(1.5px 1.5px at 10% 20%, rgba(234,179,8,0.25) 100%, transparent),
+            radial-gradient(1px 1px at 30% 50%, rgba(255,255,255,0.15) 100%, transparent),
+            radial-gradient(2px 2px at 55% 30%, rgba(234,179,8,0.2) 100%, transparent),
+            radial-gradient(1px 1px at 75% 70%, rgba(255,255,255,0.1) 100%, transparent),
+            radial-gradient(1.5px 1.5px at 90% 45%, rgba(234,179,8,0.15) 100%, transparent);
+          background-size: 240px 240px;
+          animation: driftInk 55s linear infinite;
+        }
+        .ink-layer-2 {
+          background-size: 320px 320px;
+          animation: driftInk 75s linear infinite reverse;
+          opacity: 0.6;
+        }
+        .ink-layer-3 {
+          background-size: 400px 400px;
+          animation: driftInk 100s linear infinite;
+          opacity: 0.3;
+        }
+      `}</style>
        
        {/* Navegação */}
        <div className="max-w-6xl mx-auto mb-8">

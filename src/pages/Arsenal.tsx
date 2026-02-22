@@ -4,7 +4,50 @@ import { ShieldAlert, Lock, Globe, Cpu, Zap, ArrowRight, ArrowLeft } from 'lucid
 
 export default function Arsenal() {
   return (
-    <div className="min-h-screen bg-[#070A12] text-white font-sans selection:bg-red-600 pb-32">
+    <div className="min-h-screen bg-[#070A12] text-white font-sans selection:bg-red-600 pb-32 relative overflow-hidden">
+
+      {/* Tactical Radar Particles */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-30">
+        <div className="radar-layer"></div>
+        <div className="radar-layer radar-layer-2"></div>
+      </div>
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <div className="radar-sweep"></div>
+      </div>
+      <style>{`
+        @keyframes driftRadar {
+          0% { transform: translateY(0) translateX(0); }
+          100% { transform: translateY(-1000px) translateX(60px); }
+        }
+        @keyframes radarSweep {
+          0% { transform: rotate(0deg); opacity: 0.04; }
+          100% { transform: rotate(360deg); opacity: 0.04; }
+        }
+        .radar-layer {
+          position: absolute; width: 100%; height: 200%;
+          background-image:
+            radial-gradient(2px 2px at 20% 15%, rgba(220,38,38,0.3) 100%, transparent),
+            radial-gradient(1px 1px at 40% 45%, rgba(255,255,255,0.2) 100%, transparent),
+            radial-gradient(1.5px 1.5px at 60% 75%, rgba(220,38,38,0.2) 100%, transparent),
+            radial-gradient(1px 1px at 80% 25%, rgba(255,255,255,0.15) 100%, transparent);
+          background-size: 200px 200px;
+          animation: driftRadar 55s linear infinite;
+        }
+        .radar-layer-2 {
+          background-size: 300px 300px;
+          animation: driftRadar 80s linear infinite reverse;
+          opacity: 0.5;
+        }
+        .radar-sweep {
+          position: absolute;
+          top: 50%; left: 50%;
+          width: 600px; height: 600px;
+          margin: -300px 0 0 -300px;
+          background: conic-gradient(from 0deg, transparent 0deg, rgba(220,38,38,0.06) 30deg, transparent 60deg);
+          border-radius: 50%;
+          animation: radarSweep 12s linear infinite;
+        }
+      `}</style>
       <div className="relative z-10 max-w-7xl mx-auto px-6 pt-28">
         
         <Link to="/" className="inline-flex items-center gap-2 text-slate-500 hover:text-white mb-16 text-[10px] font-black uppercase tracking-[0.3em]">

@@ -45,8 +45,36 @@ const cards = [
 const Educacao: React.FC = () => {
   const navigate = useNavigate();
   return (
-    <div className="min-h-screen bg-background pt-28 pb-20 px-4 font-sans">
-      <div className="max-w-5xl mx-auto">
+    <div className="min-h-screen bg-background pt-28 pb-20 px-4 font-sans relative overflow-hidden">
+
+      {/* Shield Arsenal Particles */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-40">
+        <div className="shield-layer"></div>
+        <div className="shield-layer shield-layer-2"></div>
+      </div>
+      <style>{`
+        @keyframes driftShield {
+          0% { transform: translateY(0) translateX(0); }
+          100% { transform: translateY(-1000px) translateX(80px); }
+        }
+        .shield-layer {
+          position: absolute; width: 100%; height: 200%;
+          background-image:
+            radial-gradient(1.5px 1.5px at 15% 25%, rgba(234,179,8,0.3) 100%, transparent),
+            radial-gradient(1px 1px at 40% 60%, rgba(255,255,255,0.15) 100%, transparent),
+            radial-gradient(2px 2px at 65% 35%, rgba(234,179,8,0.2) 100%, transparent),
+            radial-gradient(1px 1px at 85% 75%, rgba(255,255,255,0.1) 100%, transparent);
+          background-size: 220px 220px;
+          animation: driftShield 60s linear infinite;
+        }
+        .shield-layer-2 {
+          background-size: 320px 320px;
+          animation: driftShield 85s linear infinite reverse;
+          opacity: 0.5;
+        }
+      `}</style>
+
+      <div className="max-w-5xl mx-auto relative z-10">
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}

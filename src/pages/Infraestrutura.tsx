@@ -13,7 +13,53 @@ const fadeUp = {
 
 const Infraestrutura: React.FC = () => {
   return (
-    <article className="min-h-screen bg-background pt-28 pb-12 px-4 animate-fade-in font-sans">
+    <article className="min-h-screen bg-background pt-28 pb-12 px-4 animate-fade-in font-sans relative overflow-hidden">
+
+      {/* Circuit/Data Particles - simulando fluxo de dados */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-30">
+        <div className="circuit-layer"></div>
+        <div className="circuit-layer circuit-layer-2"></div>
+      </div>
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <div className="data-stream data-stream-1"></div>
+        <div className="data-stream data-stream-2"></div>
+        <div className="data-stream data-stream-3"></div>
+      </div>
+      <style>{`
+        @keyframes driftCircuit {
+          0% { transform: translateY(0) translateX(0); }
+          100% { transform: translateY(-1000px) translateX(40px); }
+        }
+        @keyframes streamDown {
+          0% { top: -20%; opacity: 0; }
+          10% { opacity: 0.06; }
+          90% { opacity: 0.06; }
+          100% { top: 120%; opacity: 0; }
+        }
+        .circuit-layer {
+          position: absolute; width: 100%; height: 200%;
+          background-image:
+            radial-gradient(1.5px 1.5px at 10% 20%, rgba(168,85,247,0.3) 100%, transparent),
+            radial-gradient(1px 1px at 35% 50%, rgba(255,255,255,0.15) 100%, transparent),
+            radial-gradient(2px 2px at 60% 30%, rgba(168,85,247,0.2) 100%, transparent),
+            radial-gradient(1px 1px at 80% 70%, rgba(255,255,255,0.1) 100%, transparent);
+          background-size: 200px 200px;
+          animation: driftCircuit 60s linear infinite;
+        }
+        .circuit-layer-2 {
+          background-size: 300px 300px;
+          animation: driftCircuit 85s linear infinite reverse;
+          opacity: 0.5;
+        }
+        .data-stream {
+          position: absolute; width: 1px; height: 60px;
+          background: linear-gradient(180deg, transparent, rgba(168,85,247,0.2), transparent);
+          animation: streamDown 6s linear infinite;
+        }
+        .data-stream-1 { left: 20%; animation-delay: 0s; }
+        .data-stream-2 { left: 55%; animation-delay: 2s; }
+        .data-stream-3 { left: 80%; animation-delay: 4s; }
+      `}</style>
 
       {/* Navegação */}
       <div className="max-w-5xl mx-auto mb-12">

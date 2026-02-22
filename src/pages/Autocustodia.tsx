@@ -6,7 +6,57 @@ export default function Autocustodia() {
   React.useEffect(() => { window.scrollTo(0, 0); }, []);
 
   return (
-    <div className="min-h-screen bg-[#070A12] text-white font-sans selection:bg-red-600 pb-32">
+    <div className="min-h-screen bg-[#070A12] text-white font-sans selection:bg-red-600 pb-32 relative overflow-hidden">
+
+      {/* Vault Lock Particles - simulando partículas de cofre/blindagem */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-40">
+        <div className="vault-layer"></div>
+        <div className="vault-layer vault-layer-2"></div>
+        <div className="vault-layer vault-layer-3"></div>
+      </div>
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <div className="vault-grid"></div>
+      </div>
+      <style>{`
+        @keyframes driftVault {
+          0% { transform: translateY(0) translateX(0) rotate(0deg); }
+          50% { transform: translateY(-600px) translateX(40px) rotate(1deg); }
+          100% { transform: translateY(-1200px) translateX(80px) rotate(0deg); }
+        }
+        @keyframes pulseGrid {
+          0%, 100% { opacity: 0.02; }
+          50% { opacity: 0.06; }
+        }
+        .vault-layer {
+          position: absolute; width: 100%; height: 200%;
+          background-image:
+            radial-gradient(2px 2px at 15% 20%, rgba(220,38,38,0.3) 100%, transparent),
+            radial-gradient(1px 1px at 35% 55%, rgba(255,255,255,0.2) 100%, transparent),
+            radial-gradient(1.5px 1.5px at 55% 35%, rgba(220,38,38,0.25) 100%, transparent),
+            radial-gradient(1px 1px at 75% 70%, rgba(255,255,255,0.15) 100%, transparent),
+            radial-gradient(2px 2px at 90% 15%, rgba(220,38,38,0.2) 100%, transparent);
+          background-size: 220px 220px;
+          animation: driftVault 65s linear infinite;
+        }
+        .vault-layer-2 {
+          background-size: 300px 300px;
+          animation: driftVault 90s linear infinite reverse;
+          opacity: 0.5;
+        }
+        .vault-layer-3 {
+          background-size: 380px 380px;
+          animation: driftVault 120s linear infinite;
+          opacity: 0.3;
+        }
+        .vault-grid {
+          position: absolute; inset: 0;
+          background-image: 
+            linear-gradient(rgba(220,38,38,0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(220,38,38,0.03) 1px, transparent 1px);
+          background-size: 80px 80px;
+          animation: pulseGrid 6s ease-in-out infinite;
+        }
+      `}</style>
       <div className="relative z-10 max-w-5xl mx-auto px-6 pt-28">
         
         <Link to="/arsenal" className="inline-flex items-center gap-2 text-slate-600 hover:text-white mb-16 text-[10px] font-black uppercase tracking-[0.4em]">

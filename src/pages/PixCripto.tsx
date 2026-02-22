@@ -129,8 +129,55 @@ const PixCripto: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background pt-28 pb-0 px-4 font-sans">
-      <div className="max-w-6xl mx-auto">
+    <div className="min-h-screen bg-background pt-28 pb-0 px-4 font-sans relative overflow-hidden">
+
+      {/* Electric/Zap Particles */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-35">
+        <div className="zap-layer"></div>
+        <div className="zap-layer zap-layer-2"></div>
+      </div>
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <div className="zap-flash zap-flash-1"></div>
+        <div className="zap-flash zap-flash-2"></div>
+        <div className="zap-flash zap-flash-3"></div>
+      </div>
+      <style>{`
+        @keyframes driftZap {
+          0% { transform: translateY(0) translateX(0); }
+          100% { transform: translateY(-1000px) translateX(50px); }
+        }
+        @keyframes flashZap {
+          0%, 90%, 100% { opacity: 0; }
+          92%, 96% { opacity: 0.12; }
+          94% { opacity: 0; }
+        }
+        .zap-layer {
+          position: absolute; width: 100%; height: 200%;
+          background-image:
+            radial-gradient(2px 2px at 12% 18%, rgba(234,179,8,0.35) 100%, transparent),
+            radial-gradient(1px 1px at 32% 52%, rgba(255,255,255,0.15) 100%, transparent),
+            radial-gradient(1.5px 1.5px at 58% 38%, rgba(234,179,8,0.25) 100%, transparent),
+            radial-gradient(1px 1px at 78% 68%, rgba(255,255,255,0.1) 100%, transparent),
+            radial-gradient(2px 2px at 95% 22%, rgba(234,179,8,0.2) 100%, transparent);
+          background-size: 230px 230px;
+          animation: driftZap 55s linear infinite;
+        }
+        .zap-layer-2 {
+          background-size: 320px 320px;
+          animation: driftZap 78s linear infinite reverse;
+          opacity: 0.5;
+        }
+        .zap-flash {
+          position: absolute; width: 1px; 
+          background: linear-gradient(180deg, transparent, rgba(234,179,8,0.4), transparent);
+          animation: flashZap 4s ease-in-out infinite;
+        }
+        .zap-flash-1 { left: 25%; top: 10%; height: 80px; animation-delay: 0s; }
+        .zap-flash-2 { left: 60%; top: 30%; height: 60px; animation-delay: 1.5s; }
+        .zap-flash-3 { left: 82%; top: 55%; height: 50px; animation-delay: 3s; }
+      `}</style>
+
+      <div className="max-w-6xl mx-auto relative z-10">
 
         <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}>
           <Link to="/ferramentas" className="text-muted-foreground hover:text-gold flex items-center gap-2 text-xs uppercase tracking-widest transition-colors w-fit mb-12">
