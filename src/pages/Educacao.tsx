@@ -5,6 +5,15 @@ import { ArrowLeft, ArrowRight, ShieldCheck, Globe, Server, Zap, BookOpen, Alert
 
 const cards = [
   {
+    icon: AlertTriangle,
+    title: 'Protocolo Inicial',
+    desc: 'A blindagem mental antes de tocar em qualquer ferramenta.',
+    color: 'text-destructive',
+    borderHover: 'hover:border-destructive/50',
+    bg: 'from-destructive/10 to-destructive/0',
+    route: '/protocolo-inicial',
+  },
+  {
     icon: ShieldCheck,
     title: 'Arquitetura de Autocustódia',
     desc: 'Cold Wallets, PGP, Multisig & Wasabi.',
