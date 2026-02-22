@@ -1,79 +1,71 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
-  BarChart, Bar, Cell
+  AreaChart, Area, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip,
+  ResponsiveContainer, BarChart, Bar, Cell
 } from 'recharts';
-import { Calculator, TrendingUp, Home, PieChart, Share2, Info, AlertTriangle, ArrowRight, LayoutTemplate, LayoutList, ArrowLeft } from 'lucide-react';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 type Period = 3 | 5 | 10;
-type Mode = 'simple' | 'advanced';
-
-interface SimulationResult {
-  bitcoin: { final: number; growth: number; difference: number };
-  realEstate: { final: number; growth: number; difference: number };
-  hybrid: { final: number; growth: number; difference: number };
-  history: { year: string; Bitcoin: number; 'Imóvel': number; 'Híbrido': number }[];
-  opportunityCost: number;
-  bestStrategy: string;
-}
 
 const BitcoinVsImovel: React.FC = () => {
   const [initialValue, setInitialValue] = useState<string>('500.000,00');
   const [period, setPeriod] = useState<Period>(5);
-  const [mode, setMode] = useState<Mode>('simple');
-  const [result, setResult] = useState<SimulationResult | null>(null);
   const [isCalculating, setIsCalculating] = useState(false);
+  const [hasResult, setHasResult] = useState(false);
 
-  const calculateSimulation = () => {
-    setIsCalculating(true);
-    setTimeout(() => {
-      const value = parseFloat(initialValue.replace(/\./g, '').replace(',', '.'));
-      if (isNaN(value) || value <= 0) {
-        setIsCalculating(false);
-        return;
-      }
+  const parsedValue = useMemo(() => {
+    const v = parseFloat(initialValue.replace(/\./g, '').replace(',', '.'));
+    return isNaN(v) ? 0 : v;
+  }, [initialValue]);
 
-      const factors = {
-        3: { btc: 2.5, realEstate: 1.25, hybrid: 1.8 },
-        5: { btc: 4.8, realEstate: 1.45, hybrid: 2.5 },
-        10: { btc: 45.0, realEstate: 2.1, hybrid: 15.0 },
-      };
-
-      const f = factors[period];
-      const btcFinal = value * f.btc;
-      const reFinal = value * f.realEstate;
-      const hybridFinal = value * f.hybrid;
-
-      const history = [];
-      for (let i = 0; i <= period; i++) {
-        const p = i / period;
-        history.push({
-          year: `Ano ${i}`,
-          Bitcoin: Math.round(value * (1 + (f.btc - 1) * Math.pow(p, 2))),
-          'Imóvel': Math.round(value * (1 + (f.realEstate - 1) * p)),
-          'Híbrido': Math.round(value * (1 + (f.hybrid - 1) * Math.pow(p, 1.5))),
-        });
-      }
-
-      const best = Math.max(btcFinal, reFinal, hybridFinal);
-      const worst = Math.min(btcFinal, reFinal, hybridFinal);
-
-      setResult({
-        bitcoin: { final: btcFinal, growth: ((btcFinal - value) / value) * 100, difference: btcFinal - value },
-        realEstate: { final: reFinal, growth: ((reFinal - value) / value) * 100, difference: reFinal - value },
-        hybrid: { final: hybridFinal, growth: ((hybridFinal - value) / value) * 100, difference: hybridFinal - value },
-        history,
-        opportunityCost: best - worst,
-        bestStrategy: btcFinal === best ? 'Bitcoin' : reFinal === best ? 'Imóvel' : 'Híbrido',
-      });
-      setIsCalculating(false);
-    }, 800);
+  const factors: Record<Period, { btc: number; re: number }> = {
+    3: { btc: 2.5, re: 1.25 },
+    5: { btc: 4.8, re: 1.45 },
+    10: { btc: 45.0, re: 2.1 },
   };
 
+  const f = factors[period];
+  const btcFinal = parsedValue * f.btc;
+  const reFinal = parsedValue * f.re;
+
+  const history = useMemo(() => {
+    if (!hasResult || parsedValue <= 0) return [];
+    const data = [];
+    for (let i = 0; i <= period * 12; i++) {
+      const p = i / (period * 12);
+      const month = i;
+      const btcVal = parsedValue * (1 + (f.btc - 1) * Math.pow(p, 2));
+      const reVal = parsedValue * (1 + (f.re - 1) * p);
+      if (month % (period <= 3 ? 3 : period <= 5 ? 6 : 12) === 0) {
+        data.push({
+          label: month === 0 ? 'Início' : `${Math.round(month / 12)}a`,
+          Bitcoin: Math.round(btcVal),
+          Imóvel: Math.round(reVal),
+          Diferença: Math.round(btcVal - reVal),
+        });
+      }
+    }
+    return data;
+  }, [hasResult, parsedValue, period, f]);
+
+  const barData = useMemo(() => {
+    if (!hasResult || parsedValue <= 0) return [];
+    return [
+      { name: 'Imóvel', valor: Math.round(reFinal), lucro: Math.round(reFinal - parsedValue) },
+      { name: 'Bitcoin', valor: Math.round(btcFinal), lucro: Math.round(btcFinal - parsedValue) },
+    ];
+  }, [hasResult, parsedValue, btcFinal, reFinal]);
+
   const formatCurrency = (val: number) =>
-    new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(val);
+    new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 }).format(val);
+
+  const formatShort = (val: number) => {
+    if (val >= 1_000_000) return `R$ ${(val / 1_000_000).toFixed(1)}M`;
+    if (val >= 1_000) return `R$ ${(val / 1_000).toFixed(0)}k`;
+    return `R$ ${val}`;
+  };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let val = e.target.value.replace(/\D/g, '');
@@ -82,258 +74,309 @@ const BitcoinVsImovel: React.FC = () => {
     setInitialValue(num.replace(/\B(?=(\d{3})+(?!\d))/g, '.'));
   };
 
+  const handleCalculate = () => {
+    if (parsedValue <= 0) return;
+    setIsCalculating(true);
+    setHasResult(false);
+    setTimeout(() => {
+      setIsCalculating(false);
+      setHasResult(true);
+    }, 1000);
+  };
+
+  const tooltipStyle = {
+    backgroundColor: 'hsl(var(--card))',
+    borderColor: 'hsl(var(--border))',
+    borderRadius: '12px',
+    color: 'hsl(var(--foreground))',
+    fontSize: '13px',
+    padding: '12px 16px',
+  };
+
   return (
-    <div className="min-h-screen bg-background pb-20 space-y-12 font-sans">
+    <div className="min-h-screen bg-background pb-20 font-sans">
 
       {/* Header */}
-      <section className="text-center space-y-6 pt-10 px-4">
-        <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }}>
-          <Link to="/ferramentas" className="inline-flex items-center gap-2 text-muted-foreground hover:text-gold text-xs uppercase tracking-widest transition-colors mb-8">
+      <section className="text-center pt-10 px-4 mb-12">
+        <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+          <Link to="/ferramentas" className="inline-flex items-center gap-2 text-muted-foreground hover:text-gold text-xs uppercase tracking-widest transition-colors mb-10">
             <ArrowLeft className="w-4 h-4" /> Voltar ao Arsenal
           </Link>
-          <h1 className="text-4xl md:text-6xl font-bold mb-2">
+          <h1 className="text-4xl md:text-6xl font-bold mb-4 tracking-tight">
             <span className="text-foreground">Imóvel</span>{' '}
-            <span className="text-muted-foreground/50">vs</span>{' '}
+            <span className="text-muted-foreground/30 font-light">vs</span>{' '}
             <span className="text-gold">Bitcoin</span>
           </h1>
-          <p className="text-xl text-muted-foreground font-light">
-            Compare qual estratégia teria multiplicado seu patrimônio ao longo do tempo
-          </p>
-          <div className="w-24 h-1 bg-gold/30 mx-auto mt-6 rounded-full" />
-          <p className="text-sm text-muted-foreground/60 mt-4 font-mono uppercase tracking-widest">
-            Veja como o tempo transforma decisões financeiras
+          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+            Insira qualquer valor e veja, graficamente, o que teria acontecido com seu dinheiro
+            se tivesse escolhido um caminho diferente.
           </p>
         </motion.div>
       </section>
 
       {/* Controls */}
-      <section className="max-w-4xl mx-auto px-4">
-        <div className="bg-card border border-border rounded-3xl p-8 shadow-2xl">
-          <div className="flex justify-center gap-4 mb-10">
+      <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2 }}
+        className="max-w-2xl mx-auto px-4 mb-16"
+      >
+        <div className="bg-card border border-border rounded-2xl p-6 md:p-8">
+          {/* Period */}
+          <p className="text-xs font-mono text-muted-foreground uppercase tracking-widest mb-4 text-center">
+            Horizonte de tempo
+          </p>
+          <div className="flex justify-center gap-3 mb-8">
             {([3, 5, 10] as Period[]).map((p) => (
               <button
                 key={p}
-                onClick={() => setPeriod(p)}
-                className={`px-6 py-2 rounded-full font-bold transition-all ${
+                onClick={() => { setPeriod(p); setHasResult(false); }}
+                className={`px-8 py-3 rounded-xl font-bold text-sm transition-all duration-300 ${
                   period === p
-                    ? 'bg-gold text-background shadow-[0_0_15px_hsl(var(--gold)/0.4)]'
-                    : 'bg-background text-muted-foreground hover:text-foreground border border-border'
+                    ? 'bg-gold text-background shadow-[0_0_20px_hsl(var(--gold)/0.3)]'
+                    : 'bg-secondary text-muted-foreground hover:text-foreground'
                 }`}
               >
-                {p} Anos
+                {p} anos
               </button>
             ))}
           </div>
 
-          <div className="max-w-md mx-auto space-y-8">
-            <div>
-              <label className="block text-sm font-mono text-muted-foreground mb-2 uppercase tracking-wider">Valor Inicial do Investimento</label>
-              <div className="relative">
-                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground font-bold text-lg">R$</span>
-                <input
-                  type="text"
-                  value={initialValue}
-                  onChange={handleInputChange}
-                  className="w-full bg-background border border-border rounded-xl py-4 pl-12 pr-4 text-2xl font-bold text-foreground focus:border-gold focus:ring-1 focus:ring-gold transition-all outline-none"
-                />
-              </div>
-            </div>
-
-            <div className="flex gap-4">
-              <button
-                onClick={calculateSimulation}
-                disabled={isCalculating}
-                className="flex-1 bg-gold text-background font-bold py-4 rounded-xl hover:brightness-110 transition-all hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2"
-              >
-                {isCalculating ? (
-                  <span className="animate-pulse">Calculando...</span>
-                ) : (
-                  <><Calculator size={20} /> Calcular Comparação</>
-                )}
-              </button>
-              <button
-                onClick={() => { setResult(null); setInitialValue('0,00'); }}
-                className="px-6 py-4 bg-background border border-border text-muted-foreground rounded-xl hover:text-foreground hover:border-muted-foreground transition-all"
-              >
-                Resetar
-              </button>
-            </div>
+          {/* Value Input */}
+          <p className="text-xs font-mono text-muted-foreground uppercase tracking-widest mb-3">
+            Quanto você investiria?
+          </p>
+          <div className="relative mb-6">
+            <span className="absolute left-5 top-1/2 -translate-y-1/2 text-muted-foreground font-semibold text-lg">R$</span>
+            <input
+              type="text"
+              value={initialValue}
+              onChange={handleInputChange}
+              className="w-full bg-background border border-border rounded-xl py-4 pl-14 pr-4 text-2xl font-bold text-foreground focus:border-gold focus:ring-1 focus:ring-gold transition-all outline-none"
+            />
           </div>
+
+          <button
+            onClick={handleCalculate}
+            disabled={isCalculating || parsedValue <= 0}
+            className="w-full bg-gold text-background font-bold py-4 rounded-xl hover:brightness-110 transition-all active:scale-[0.98] text-base tracking-wide"
+          >
+            {isCalculating ? 'Processando dados...' : 'Ver Resultado Visual'}
+          </button>
         </div>
-      </section>
+      </motion.section>
 
       {/* Results */}
       <AnimatePresence>
-        {result && (
+        {hasResult && parsedValue > 0 && (
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 40 }}
-            className="max-w-6xl mx-auto px-4 space-y-16"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.6 }}
+            className="max-w-6xl mx-auto px-4 space-y-8"
           >
-            {/* Mode Toggle */}
-            <div className="flex justify-center">
-              <div className="bg-card p-1 rounded-xl border border-border flex gap-1">
-                <button
-                  onClick={() => setMode('simple')}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold transition-all ${
-                    mode === 'simple' ? 'bg-background text-foreground shadow-sm' : 'text-muted-foreground hover:text-foreground'
-                  }`}
-                >
-                  <LayoutTemplate size={16} /> Visual Simplificado
-                </button>
-                <button
-                  onClick={() => setMode('advanced')}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold transition-all ${
-                    mode === 'advanced' ? 'bg-background text-foreground shadow-sm' : 'text-muted-foreground hover:text-foreground'
-                  }`}
-                >
-                  <LayoutList size={16} /> Visual Avançado
-                </button>
+
+            {/* Big numbers */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.1, duration: 0.5 }}
+                className="bg-card border border-border rounded-2xl p-8 relative overflow-hidden"
+              >
+                <div className="absolute top-0 right-0 w-40 h-40 bg-muted-foreground/5 blur-[60px] rounded-full" />
+                <p className="text-xs font-mono text-muted-foreground uppercase tracking-widest mb-3">
+                  Imóvel em {period} anos
+                </p>
+                <p className="text-3xl md:text-4xl font-bold text-foreground mb-2">{formatCurrency(reFinal)}</p>
+                <p className="text-sm text-muted-foreground">
+                  Valorização de <span className="text-foreground font-semibold">+{((f.re - 1) * 100).toFixed(0)}%</span> no período
+                </p>
+                <div className="mt-4 h-1 bg-secondary rounded-full overflow-hidden">
+                  <motion.div
+                    initial={{ width: 0 }}
+                    animate={{ width: `${Math.min(((f.re - 1) / (f.btc - 1)) * 100, 100)}%` }}
+                    transition={{ delay: 0.5, duration: 1 }}
+                    className="h-full bg-muted-foreground/40 rounded-full"
+                  />
+                </div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.2, duration: 0.5 }}
+                className="bg-card border border-gold/20 rounded-2xl p-8 relative overflow-hidden"
+              >
+                <div className="absolute top-0 right-0 w-40 h-40 bg-gold/5 blur-[60px] rounded-full" />
+                <p className="text-xs font-mono text-gold uppercase tracking-widest mb-3">
+                  Bitcoin em {period} anos
+                </p>
+                <p className="text-3xl md:text-4xl font-bold text-foreground mb-2">{formatCurrency(btcFinal)}</p>
+                <p className="text-sm text-muted-foreground">
+                  Valorização de <span className="text-gold font-semibold">+{((f.btc - 1) * 100).toFixed(0)}%</span> no período
+                </p>
+                <div className="mt-4 h-1 bg-secondary rounded-full overflow-hidden">
+                  <motion.div
+                    initial={{ width: 0 }}
+                    animate={{ width: '100%' }}
+                    transition={{ delay: 0.5, duration: 1.2 }}
+                    className="h-full bg-gold rounded-full"
+                  />
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Difference callout */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.4 }}
+              className="text-center py-6"
+            >
+              <p className="text-muted-foreground text-sm mb-2">
+                Diferença de patrimônio após {period} anos
+              </p>
+              <p className="text-4xl md:text-5xl font-bold text-gold">
+                {formatCurrency(btcFinal - reFinal)}
+              </p>
+              <p className="text-muted-foreground/60 text-xs font-mono mt-2 uppercase tracking-widest">
+                a mais no Bitcoin
+              </p>
+            </motion.div>
+
+            {/* Main Evolution Chart */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.6 }}
+              className="bg-card border border-border rounded-2xl p-6 md:p-8"
+            >
+              <p className="text-xs font-mono text-muted-foreground uppercase tracking-widest mb-2">
+                Evolução do seu patrimônio
+              </p>
+              <p className="text-lg font-bold text-foreground mb-6">
+                {formatCurrency(parsedValue)} investidos ao longo de {period} anos
+              </p>
+              <div className="h-[350px] md:h-[420px] w-full">
+                <ResponsiveContainer width="100%" height="100%">
+                  <AreaChart data={history} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
+                    <defs>
+                      <linearGradient id="gradBtc" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stopColor="hsl(var(--gold))" stopOpacity={0.3} />
+                        <stop offset="100%" stopColor="hsl(var(--gold))" stopOpacity={0} />
+                      </linearGradient>
+                      <linearGradient id="gradRe" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stopColor="hsl(var(--muted-foreground))" stopOpacity={0.15} />
+                        <stop offset="100%" stopColor="hsl(var(--muted-foreground))" stopOpacity={0} />
+                      </linearGradient>
+                    </defs>
+                    <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" vertical={false} />
+                    <XAxis dataKey="label" stroke="hsl(var(--muted-foreground))" fontSize={12} tickLine={false} axisLine={false} />
+                    <YAxis stroke="hsl(var(--muted-foreground))" fontSize={11} tickFormatter={formatShort} tickLine={false} axisLine={false} width={70} />
+                    <Tooltip contentStyle={tooltipStyle} formatter={(value: number, name: string) => [formatCurrency(value), name]} />
+                    <Area type="monotone" dataKey="Imóvel" stroke="hsl(var(--muted-foreground))" strokeWidth={2} fill="url(#gradRe)" />
+                    <Area type="monotone" dataKey="Bitcoin" stroke="hsl(var(--gold))" strokeWidth={3} fill="url(#gradBtc)" />
+                  </AreaChart>
+                </ResponsiveContainer>
               </div>
-            </div>
-
-            {/* Cards */}
-            <div className="grid md:grid-cols-3 gap-6">
-              {/* Real Estate */}
-              <motion.div whileHover={{ y: -5 }}
-                className={`p-6 rounded-2xl border ${result.bestStrategy === 'Imóvel' ? 'bg-card border-chart-green/50 shadow-[0_0_20px_hsl(var(--chart-green)/0.1)]' : 'bg-card border-border opacity-80'}`}
-              >
-                <div className="flex items-center gap-3 mb-4 text-muted-foreground">
-                  <Home size={24} />
-                  <h3 className="font-bold">Imóvel (Aluguel + Valorização)</h3>
-                </div>
-                <div className="text-3xl font-bold text-foreground mb-2">{formatCurrency(result.realEstate.final)}</div>
-                <div className="flex items-center gap-2 text-sm font-mono">
-                  <span className="text-chart-green">+{result.realEstate.growth.toFixed(0)}%</span>
-                  <span className="text-muted-foreground/30">|</span>
-                  <span className="text-muted-foreground">Lucro: {formatCurrency(result.realEstate.difference)}</span>
-                </div>
-                {result.bestStrategy === 'Imóvel' && <div className="mt-4 text-xs font-bold text-chart-green uppercase tracking-wider">Melhor Estratégia</div>}
-              </motion.div>
-
-              {/* Hybrid */}
-              <motion.div whileHover={{ y: -5 }}
-                className={`p-6 rounded-2xl border ${result.bestStrategy === 'Híbrido' ? 'bg-card border-blue-500/50 shadow-[0_0_20px_rgba(59,130,246,0.1)]' : 'bg-card border-border opacity-80'}`}
-              >
-                <div className="flex items-center gap-3 mb-4 text-muted-foreground">
-                  <PieChart size={24} />
-                  <h3 className="font-bold">Híbrido (50/50)</h3>
-                </div>
-                <div className="text-3xl font-bold text-foreground mb-2">{formatCurrency(result.hybrid.final)}</div>
-                <div className="flex items-center gap-2 text-sm font-mono">
-                  <span className="text-blue-400">+{result.hybrid.growth.toFixed(0)}%</span>
-                  <span className="text-muted-foreground/30">|</span>
-                  <span className="text-muted-foreground">Lucro: {formatCurrency(result.hybrid.difference)}</span>
-                </div>
-                {result.bestStrategy === 'Híbrido' && <div className="mt-4 text-xs font-bold text-blue-500 uppercase tracking-wider">Melhor Estratégia</div>}
-              </motion.div>
-
-              {/* Bitcoin */}
-              <motion.div whileHover={{ y: -5 }}
-                className={`p-6 rounded-2xl border ${result.bestStrategy === 'Bitcoin' ? 'bg-card border-gold shadow-[0_0_30px_hsl(var(--gold)/0.15)]' : 'bg-card border-border opacity-80'}`}
-              >
-                <div className="flex items-center gap-3 mb-4 text-gold">
-                  <TrendingUp size={24} />
-                  <h3 className="font-bold">Bitcoin (Soberania)</h3>
-                </div>
-                <div className="text-3xl font-bold text-foreground mb-2">{formatCurrency(result.bitcoin.final)}</div>
-                <div className="flex items-center gap-2 text-sm font-mono">
-                  <span className="text-gold">+{result.bitcoin.growth.toFixed(0)}%</span>
-                  <span className="text-muted-foreground/30">|</span>
-                  <span className="text-muted-foreground">Lucro: {formatCurrency(result.bitcoin.difference)}</span>
-                </div>
-                {result.bestStrategy === 'Bitcoin' && <div className="mt-4 text-xs font-bold text-gold uppercase tracking-wider">Melhor Estratégia</div>}
-              </motion.div>
-            </div>
-
-            {/* Opportunity Cost */}
-            <div className="bg-gradient-to-r from-chart-red/10 to-card border-l-4 border-chart-red p-8 rounded-r-xl">
-              <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-                <div>
-                  <h3 className="text-xl font-bold text-foreground mb-2 flex items-center gap-2">
-                    <AlertTriangle className="text-chart-red" size={20} /> Custo de Oportunidade
-                  </h3>
-                  <p className="text-muted-foreground">
-                    A diferença entre a melhor e a pior decisão estratégica neste período foi de:
-                  </p>
-                </div>
-                <div className="text-4xl font-bold text-chart-red font-mono">
-                  {formatCurrency(result.opportunityCost)}
-                </div>
+              <div className="flex justify-center gap-8 mt-4 text-xs text-muted-foreground">
+                <span className="flex items-center gap-2">
+                  <span className="w-3 h-[2px] bg-muted-foreground rounded-full inline-block" /> Imóvel
+                </span>
+                <span className="flex items-center gap-2">
+                  <span className="w-3 h-[2px] bg-gold rounded-full inline-block" /> Bitcoin
+                </span>
               </div>
-            </div>
+            </motion.div>
 
-            {/* Advanced Charts */}
-            {mode === 'advanced' && (
-              <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} className="space-y-12">
-                <div className="bg-card p-8 rounded-3xl border border-border">
-                  <h3 className="text-xl font-bold text-foreground mb-6">Evolução Patrimonial</h3>
-                  <div className="h-[400px] w-full">
-                    <ResponsiveContainer width="100%" height="100%">
-                      <LineChart data={result.history}>
-                        <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
-                        <XAxis dataKey="year" stroke="hsl(var(--muted-foreground))" />
-                        <YAxis stroke="hsl(var(--muted-foreground))" tickFormatter={(v) => `R$ ${(v / 1000).toFixed(0)}k`} />
-                        <Tooltip contentStyle={{ backgroundColor: 'hsl(var(--card))', borderColor: 'hsl(var(--border))', borderRadius: '8px', color: 'hsl(var(--foreground))' }} formatter={(value: number) => formatCurrency(value)} />
-                        <Legend />
-                        <Line type="monotone" dataKey="Imóvel" stroke="hsl(var(--muted-foreground))" strokeWidth={2} dot={false} />
-                        <Line type="monotone" dataKey="Híbrido" stroke="#3b82f6" strokeWidth={2} dot={false} />
-                        <Line type="monotone" dataKey="Bitcoin" stroke="hsl(var(--gold))" strokeWidth={3} dot={{ r: 4 }} activeDot={{ r: 8 }} />
-                      </LineChart>
-                    </ResponsiveContainer>
-                  </div>
-                </div>
+            {/* Gap chart — the growing difference */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.7, duration: 0.6 }}
+              className="bg-card border border-border rounded-2xl p-6 md:p-8"
+            >
+              <p className="text-xs font-mono text-muted-foreground uppercase tracking-widest mb-2">
+                A distância entre as escolhas
+              </p>
+              <p className="text-lg font-bold text-foreground mb-6">
+                Quanto mais tempo passa, maior a diferença
+              </p>
+              <div className="h-[280px] md:h-[320px] w-full">
+                <ResponsiveContainer width="100%" height="100%">
+                  <AreaChart data={history} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
+                    <defs>
+                      <linearGradient id="gradDiff" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stopColor="hsl(var(--chart-red))" stopOpacity={0.3} />
+                        <stop offset="100%" stopColor="hsl(var(--chart-red))" stopOpacity={0} />
+                      </linearGradient>
+                    </defs>
+                    <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" vertical={false} />
+                    <XAxis dataKey="label" stroke="hsl(var(--muted-foreground))" fontSize={12} tickLine={false} axisLine={false} />
+                    <YAxis stroke="hsl(var(--muted-foreground))" fontSize={11} tickFormatter={formatShort} tickLine={false} axisLine={false} width={70} />
+                    <Tooltip contentStyle={tooltipStyle} formatter={(value: number) => [formatCurrency(value), 'Custo de oportunidade']} />
+                    <Area type="monotone" dataKey="Diferença" stroke="hsl(var(--chart-red))" strokeWidth={2} fill="url(#gradDiff)" />
+                  </AreaChart>
+                </ResponsiveContainer>
+              </div>
+              <p className="text-center text-xs text-muted-foreground/60 mt-4">
+                Este gráfico mostra o quanto você deixou de ganhar, ano a ano, ao escolher imóvel em vez de Bitcoin.
+              </p>
+            </motion.div>
 
-                <div className="bg-card p-8 rounded-3xl border border-border">
-                  <h3 className="text-xl font-bold text-foreground mb-6">Composição do Retorno (Bitcoin)</h3>
-                  <div className="h-[300px] w-full">
-                    <ResponsiveContainer width="100%" height="100%">
-                      <BarChart data={[
-                        { name: 'Valor Inicial', value: parseFloat(initialValue.replace(/\./g, '').replace(',', '.')) },
-                        { name: 'Valorização', value: result.bitcoin.difference }
-                      ]}>
-                        <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" vertical={false} />
-                        <XAxis dataKey="name" stroke="hsl(var(--muted-foreground))" />
-                        <YAxis stroke="hsl(var(--muted-foreground))" tickFormatter={(v) => `R$ ${(v / 1000).toFixed(0)}k`} />
-                        <Tooltip cursor={{ fill: 'transparent' }} contentStyle={{ backgroundColor: 'hsl(var(--card))', borderColor: 'hsl(var(--border))', borderRadius: '8px', color: 'hsl(var(--foreground))' }} formatter={(value: number) => formatCurrency(value)} />
-                        <Bar dataKey="value" fill="hsl(var(--gold))" radius={[4, 4, 0, 0]}>
-                          <Cell fill="hsl(var(--muted-foreground))" />
-                          <Cell fill="hsl(var(--gold))" />
-                        </Bar>
-                      </BarChart>
-                    </ResponsiveContainer>
-                  </div>
-                </div>
-              </motion.div>
-            )}
+            {/* Final comparison bars */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.9, duration: 0.6 }}
+              className="bg-card border border-border rounded-2xl p-6 md:p-8"
+            >
+              <p className="text-xs font-mono text-muted-foreground uppercase tracking-widest mb-2">
+                Resultado final lado a lado
+              </p>
+              <p className="text-lg font-bold text-foreground mb-6">
+                Valor total do patrimônio ao final de {period} anos
+              </p>
+              <div className="h-[260px] w-full">
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart data={barData} layout="vertical" margin={{ top: 0, right: 20, left: 10, bottom: 0 }}>
+                    <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" horizontal={false} />
+                    <XAxis type="number" stroke="hsl(var(--muted-foreground))" fontSize={11} tickFormatter={formatShort} tickLine={false} axisLine={false} />
+                    <YAxis type="category" dataKey="name" stroke="hsl(var(--muted-foreground))" fontSize={13} tickLine={false} axisLine={false} width={60} />
+                    <Tooltip contentStyle={tooltipStyle} formatter={(value: number) => formatCurrency(value)} cursor={{ fill: 'hsl(var(--muted)/0.3)' }} />
+                    <Bar dataKey="valor" radius={[0, 8, 8, 0]} barSize={40}>
+                      <Cell fill="hsl(var(--muted-foreground))" />
+                      <Cell fill="hsl(var(--gold))" />
+                    </Bar>
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+            </motion.div>
 
             {/* CTA */}
-            <div className="bg-background border border-border rounded-2xl p-8 text-center space-y-6">
-              <h3 className="text-2xl font-bold text-foreground">Compare dados. Decida com consciência.</h3>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                Números passados não garantem futuro, mas ignorar a história é um erro caro.
-                Entenda os fundamentos antes de alocar seu suor.
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.1 }}
+              className="bg-background border border-border rounded-2xl p-8 text-center space-y-4 mt-8"
+            >
+              <p className="text-2xl font-bold text-foreground">Os dados falam por si.</p>
+              <p className="text-muted-foreground max-w-xl mx-auto">
+                Rentabilidade passada não garante futuro — mas ignorar a história tem um custo real e mensurável.
               </p>
-              <div className="flex flex-wrap justify-center gap-4">
-                <Link to="/economia" className="px-8 py-3 bg-gold text-background font-bold rounded-lg hover:brightness-110 transition-colors flex items-center gap-2">
-                  Aprender Fundamentos <ArrowRight size={18} />
-                </Link>
-                <button className="px-8 py-3 bg-card border border-border text-foreground font-medium rounded-lg hover:border-muted-foreground transition-colors flex items-center gap-2">
-                  <Share2 size={18} /> Compartilhar Simulação
-                </button>
-              </div>
-            </div>
+              <Link to="/economia" className="inline-flex items-center gap-2 px-8 py-3 bg-gold text-background font-bold rounded-xl hover:brightness-110 transition-all mt-2">
+                Entender os fundamentos <ArrowRight size={16} />
+              </Link>
+            </motion.div>
 
             {/* Disclaimer */}
-            <div className="text-xs text-muted-foreground/50 font-mono text-center max-w-3xl mx-auto leading-relaxed">
-              <p className="flex items-center justify-center gap-2 mb-2">
-                <Info size={12} /> NOTA LEGAL
-              </p>
-              Criptoativos são voláteis. Rentabilidade passada não garante resultados futuros.
-              Esta ferramenta é estritamente educacional e não constitui recomendação de investimento.
-              Os dados de "Imóvel" consideram média de valorização FIPEZAP + Yield médio de aluguel.
-            </div>
+            <p className="text-[10px] text-muted-foreground/40 font-mono text-center max-w-2xl mx-auto leading-relaxed mt-8">
+              NOTA LEGAL — Criptoativos são voláteis. Rentabilidade passada não garante resultados futuros.
+              Esta ferramenta é estritamente educacional. Os dados de imóvel consideram média FIPEZAP + yield de aluguel.
+            </p>
+
           </motion.div>
         )}
       </AnimatePresence>
