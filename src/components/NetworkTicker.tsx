@@ -36,7 +36,7 @@ const NetworkTicker = () => {
         </div>
         <div className="w-px h-3 bg-border" />
         <span className="font-mono text-[10px] text-muted-foreground/50 hidden sm:block">
-          REDE SOBERANA · 24/7 · SEM INTERMEDIÁRIOS
+          BITCOIN · FUNCIONA 24H, TODO DIA · SEM BANCOS
         </span>
       </div>
     </motion.div>
