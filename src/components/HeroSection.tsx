@@ -1,7 +1,17 @@
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 
 const HeroSection = () => {
+  const [seedOffset, setSeedOffset] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSeedOffset((prev) => prev + 5);
+    }, 300000);
+    return () => clearInterval(interval);
+  }, []);
+
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
@@ -78,14 +88,20 @@ const HeroSection = () => {
           className="flex items-center justify-center gap-3"
         >
           <div className="flex -space-x-2">
-            {[0, 1, 2, 3, 4].map((i) => (
-              <img
-                key={i}
-                src={`https://i.pravatar.cc/100?u=${i}`}
-                alt=""
-                className="w-8 h-8 rounded-full border-2 border-[#070A12] object-cover grayscale opacity-80"
-              />
-            ))}
+            <AnimatePresence mode="wait">
+              {[0, 1, 2, 3, 4].map((i) => (
+                <motion.img
+                  key={`${i}-${seedOffset}`}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 0.8 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.6, delay: i * 0.08 }}
+                  src={`https://i.pravatar.cc/100?u=${i + seedOffset}`}
+                  alt=""
+                  className="w-8 h-8 rounded-full border-2 border-[#070A12] object-cover grayscale"
+                />
+              ))}
+            </AnimatePresence>
           </div>
           <p className="text-sm text-muted-foreground">
             Junte-se a <span className="text-foreground font-semibold">2.400+</span> soberanos que já baixaram.
