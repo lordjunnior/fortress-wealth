@@ -97,18 +97,7 @@ const AppSidebar = () => {
 
       {/* Navigation */}
       <nav className="flex-1 px-3 py-4 space-y-1">
-        {menuItems.map((item) => (
-          <button
-            key={item.label}
-            onClick={() => handleNav(item)}
-            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-all duration-200 group"
-          >
-            <item.icon className="w-4 h-4 group-hover:text-gold transition-colors" />
-            <span className="text-sm font-medium">{item.label}</span>
-          </button>
-        ))}
-
-        {/* Protocolo Inicial - harmonizado */}
+        {/* Protocolo Inicial - primeiro item */}
         <Link
           to="/protocolo-inicial"
           className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-all duration-200 group"
@@ -122,6 +111,17 @@ const AppSidebar = () => {
           </div>
           <span className="text-sm font-medium">Protocolo inicial</span>
         </Link>
+
+        {menuItems.map((item) => (
+          <button
+            key={item.label}
+            onClick={() => handleNav(item)}
+            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-all duration-200 group"
+          >
+            <item.icon className="w-4 h-4 group-hover:text-gold transition-colors" />
+            <span className="text-sm font-medium">{item.label}</span>
+          </button>
+        ))}
       </nav>
 
       {/* Lightning Support Button */}
