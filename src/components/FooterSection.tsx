@@ -55,20 +55,20 @@ const FooterSection = () => {
           </motion.div>
 
           {/* 2. MÓDULO DE EXECUÇÃO */}
-          <motion.div {...fadeUp(0.1)} className="text-center mb-16">
+          <motion.div {...fadeUp(0.1)} className="flex flex-col items-center mb-16">
             <div className="card-wealth inline-block p-8 mb-4">
               <img
                 src={qrCodeImage}
                 alt="QR Code Lightning"
-                className="w-52 h-52 mx-auto rounded-lg"
+                className="w-52 h-52 rounded-lg block"
               />
             </div>
 
             <div
-              className="inline-flex items-center gap-2 mb-3 cursor-pointer group"
+              className="flex items-center justify-center gap-2 mb-3 cursor-pointer group"
               onClick={handleCopy}
             >
-              <code className="font-mono text-sm text-muted-foreground group-hover:text-foreground transition-colors select-all break-all">
+              <code className="font-mono text-sm text-muted-foreground group-hover:text-foreground transition-colors select-all break-all text-center">
                 {LIGHTNING_ADDRESS}
               </code>
               {copied ? (
