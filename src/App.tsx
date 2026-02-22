@@ -12,6 +12,7 @@ import Filosofia from "./pages/Filosofia";
 import Saida from "./pages/Saida";
 import Ferramentas from "./pages/Ferramentas";
 import Educacao from "./pages/Educacao";
+import EntendaBitcoin from "./pages/EntendaBitcoin";
 import Gateway from "./pages/Gateway";
 import PixCripto from "./pages/PixCripto";
 import NotFound from "./pages/NotFound";
@@ -35,6 +36,7 @@ const App = () => (
           <Route path="/saida/gateway" element={<Gateway />} />
           <Route path="/ferramentas" element={<Ferramentas />} />
           <Route path="/educacao" element={<Educacao />} />
+          <Route path="/entenda-bitcoin" element={<EntendaBitcoin />} />
           <Route path="/pix-cripto" element={<PixCripto />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
