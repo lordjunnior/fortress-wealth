@@ -1,11 +1,6 @@
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { motion, useInView, AnimatePresence } from "framer-motion";
+import { useRef, useState, useCallback, useEffect } from "react";
+import { ChevronLeft, ChevronRight, HelpCircle } from "lucide-react";
 
 const faqItems = [
   {
@@ -58,6 +53,33 @@ const faqItems = [
 const FaqSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [current, setCurrent] = useState(0);
+  const [direction, setDirection] = useState(0);
+
+  const paginate = useCallback(
+    (dir: number) => {
+      setDirection(dir);
+      setCurrent((prev) => {
+        const next = prev + dir;
+        if (next < 0) return faqItems.length - 1;
+        if (next >= faqItems.length) return 0;
+        return next;
+      });
+    },
+    []
+  );
+
+  // Auto-advance every 8s
+  useEffect(() => {
+    const timer = setInterval(() => paginate(1), 8000);
+    return () => clearInterval(timer);
+  }, [paginate]);
+
+  const variants = {
+    enter: (d: number) => ({ x: d > 0 ? 80 : -80, opacity: 0 }),
+    center: { x: 0, opacity: 1 },
+    exit: (d: number) => ({ x: d > 0 ? -80 : 80, opacity: 0 }),
+  };
 
   return (
     <section className="section-padding" ref={ref}>
@@ -79,22 +101,74 @@ const FaqSection = () => {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.2 }}
         >
-          <Accordion type="single" collapsible className="space-y-3">
-            {faqItems.map((item, i) => (
-              <AccordionItem
-                key={i}
-                value={`faq-${i}`}
-                className="rounded-lg border border-border bg-background px-6 data-[state=open]:border-gold/30 transition-colors duration-300"
+          {/* Card container */}
+          <div className="relative rounded-lg border border-border bg-background overflow-hidden min-h-[280px] md:min-h-[240px]">
+            {/* Counter */}
+            <div className="absolute top-5 right-5 z-10">
+              <span className="font-mono text-[10px] tracking-widest text-muted-foreground">
+                {String(current + 1).padStart(2, "0")}/{String(faqItems.length).padStart(2, "0")}
+              </span>
+            </div>
+
+            <AnimatePresence mode="wait" custom={direction}>
+              <motion.div
+                key={current}
+                custom={direction}
+                variants={variants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{ duration: 0.35, ease: "easeInOut" }}
+                className="p-8 md:p-10"
               >
-                <AccordionTrigger className="text-sm font-semibold text-left hover:text-gold transition-colors duration-300 py-5 [&[data-state=open]]:text-gold">
-                  {item.question}
-                </AccordionTrigger>
-                <AccordionContent className="text-sm text-muted-foreground leading-relaxed pb-5">
-                  {item.answer}
-                </AccordionContent>
-              </AccordionItem>
+                <div className="flex items-start gap-4 mb-5">
+                  <div className="w-9 h-9 rounded-md border border-border bg-card flex items-center justify-center shrink-0 mt-0.5">
+                    <HelpCircle className="w-4 h-4 text-gold" />
+                  </div>
+                  <h3 className="text-base md:text-lg font-semibold leading-snug">
+                    {faqItems[current].question}
+                  </h3>
+                </div>
+                <p className="text-sm md:text-base text-muted-foreground leading-relaxed pl-[52px]">
+                  {faqItems[current].answer}
+                </p>
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Navigation */}
+            <div className="absolute bottom-5 right-5 flex items-center gap-2 z-10">
+              <button
+                onClick={() => paginate(-1)}
+                className="w-8 h-8 rounded-md border border-border bg-card flex items-center justify-center hover:border-gold/30 hover:text-gold transition-colors duration-300 text-muted-foreground"
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </button>
+              <button
+                onClick={() => paginate(1)}
+                className="w-8 h-8 rounded-md border border-border bg-card flex items-center justify-center hover:border-gold/30 hover:text-gold transition-colors duration-300 text-muted-foreground"
+              >
+                <ChevronRight className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+
+          {/* Dot indicators */}
+          <div className="flex justify-center gap-1.5 mt-5">
+            {faqItems.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => {
+                  setDirection(i > current ? 1 : -1);
+                  setCurrent(i);
+                }}
+                className={`h-1 rounded-full transition-all duration-300 ${
+                  i === current
+                    ? "w-6 bg-gold"
+                    : "w-1.5 bg-border hover:bg-muted-foreground"
+                }`}
+              />
             ))}
-          </Accordion>
+          </div>
         </motion.div>
       </div>
     </section>
