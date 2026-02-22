@@ -2,28 +2,40 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, BookOpen, Download, ShieldCheck } from 'lucide-react';
 
+import coverWhitepaper from '@/assets/cover-whitepaper-btc.jpg';
+import coverRedpill from '@/assets/cover-redpill-btc.jpg';
+import coverProgramadores from '@/assets/cover-btc-programadores.jpg';
+import coverMoedaDigital from '@/assets/cover-moeda-digital.jpg';
+import coverIniciantes from '@/assets/cover-btc-iniciantes.jpg';
+import coverSeisLicoes from '@/assets/cover-seis-licoes.jpg';
+import coverFimBc from '@/assets/cover-fim-banco-central.jpg';
+import coverDeusFalhou from '@/assets/cover-deus-falhou.jpg';
+import coverEconomiaIndividuo from '@/assets/cover-economia-individuo.jpg';
+import coverEconomiaHistoria from '@/assets/cover-economia-historia.jpg';
+import coverPaiRico from '@/assets/cover-pai-rico-pobre.jpg';
+
 const EBOOKS_DATA = [
   {
     category: "Engenharia da Liberdade",
     description: "Protocolos técnicos e a matemática da soberania digital.",
     books: [
-      { title: "White Paper", author: "Satoshi Nakamoto", file: "White Paper - S.Nakamoto.pdf", color: "from-orange-600 to-yellow-600" },
-      { title: "Bitcoin Red Pill", author: "Renato Amoedo", file: "Livro Bitcoin Red Pill - 3a Edicao.pdf", color: "from-red-700 to-black" },
-      { title: "Bitcoin p/ Programadores", author: "Marco Agner", file: "bitcoin-para-programadores.pdf", color: "from-blue-700 to-slate-900" },
-      { title: "Moeda na Era Digital", author: "Fernando Ulrich", file: "Bitcoin a Moeda Na Era Digital - Fernando Ulrich (2).pdf", color: "from-amber-500 to-orange-800" },
-      { title: "Bitcoin para Iniciantes", author: "Ney Carvalho", file: "Bitcoin_para_iniciantes.pdf", color: "from-emerald-600 to-teal-900" }
+      { title: "White Paper", author: "Satoshi Nakamoto", file: "White Paper - S.Nakamoto.pdf", color: "from-orange-600 to-yellow-600", cover: coverWhitepaper },
+      { title: "Bitcoin Red Pill", author: "Renato Amoedo", file: "Livro Bitcoin Red Pill - 3a Edicao.pdf", color: "from-red-700 to-black", cover: coverRedpill },
+      { title: "Bitcoin p/ Programadores", author: "Marco Agner", file: "bitcoin-para-programadores.pdf", color: "from-blue-700 to-slate-900", cover: coverProgramadores },
+      { title: "Moeda na Era Digital", author: "Fernando Ulrich", file: "Bitcoin a Moeda Na Era Digital - Fernando Ulrich (2).pdf", color: "from-amber-500 to-orange-800", cover: coverMoedaDigital },
+      { title: "Bitcoin para Iniciantes", author: "Ney Carvalho", file: "Bitcoin_para_iniciantes.pdf", color: "from-emerald-600 to-teal-900", cover: coverIniciantes }
     ]
   },
   {
     category: "Fundamentos Soberanos",
     description: "A base moral, econômica e histórica para a independência individual.",
     books: [
-      { title: "As Seis Lições", author: "Ludwig von Mises", file: "As Seis Licoes - Ludwig Von Mises.pdf", color: "from-purple-800 to-indigo-950" },
-      { title: "Fim do Banco Central", author: "Murray Rothbard", file: "Pelo-fim-do-Banco-Central.pdf", color: "from-slate-800 to-black" },
-      { title: "Deus que Falhou", author: "Hans-Hermann Hoppe", file: "Democracia -o-deus-que-falhou.pdf", color: "from-zinc-900 to-black" },
-      { title: "Economia do Indivíduo", author: "Rodrigo Constantino", file: "Economia-do-Individuo-O-Legado-da-Escola-Austriaca.pdf", color: "from-blue-900 to-black" },
-      { title: "Economia e História", author: "Hans-Hermann Hoppe", file: "Economia-Sociedade-Historia.pdf", color: "from-red-900 to-slate-900" },
-      { title: "Pai Rico, Pai Pobre", author: "Robert Kiyosaki", file: "Pai_Rico_Pai_Pobre_Edicao_Atualizada_25anos_ExcertoSITE.pdf", color: "from-green-800 to-emerald-950" }
+      { title: "As Seis Lições", author: "Ludwig von Mises", file: "As Seis Licoes - Ludwig Von Mises.pdf", color: "from-purple-800 to-indigo-950", cover: coverSeisLicoes },
+      { title: "Fim do Banco Central", author: "Murray Rothbard", file: "Pelo-fim-do-Banco-Central.pdf", color: "from-slate-800 to-black", cover: coverFimBc },
+      { title: "Deus que Falhou", author: "Hans-Hermann Hoppe", file: "Democracia -o-deus-que-falhou.pdf", color: "from-zinc-900 to-black", cover: coverDeusFalhou },
+      { title: "Economia do Indivíduo", author: "Rodrigo Constantino", file: "Economia-do-Individuo-O-Legado-da-Escola-Austriaca.pdf", color: "from-blue-900 to-black", cover: coverEconomiaIndividuo },
+      { title: "Economia e História", author: "Hans-Hermann Hoppe", file: "Economia-Sociedade-Historia.pdf", color: "from-red-900 to-slate-900", cover: coverEconomiaHistoria },
+      { title: "Pai Rico, Pai Pobre", author: "Robert Kiyosaki", file: "Pai_Rico_Pai_Pobre_Edicao_Atualizada_25anos_ExcertoSITE.pdf", color: "from-green-800 to-emerald-950", cover: coverPaiRico }
     ]
   }
 ];
@@ -72,17 +84,18 @@ const Ebooks: React.FC = () => {
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 md:gap-8">
               {section.books.map((book, bIdx) => (
                 <div key={bIdx} className="group cursor-pointer">
-                  <div className={`aspect-[2/3] rounded-xl bg-gradient-to-br ${book.color} p-5 md:p-6 flex flex-col justify-between shadow-2xl transition-all duration-500 group-hover:scale-[1.03] group-hover:shadow-red-900/20 relative overflow-hidden border border-white/10`}>
-                    <div className="absolute top-0 right-0 p-4 opacity-20 group-hover:opacity-100 transition-opacity">
-                      <ShieldCheck size={20} />
-                    </div>
-                    <BookOpen size={32} className="text-white/40" />
-                    <div>
-                      <span className="text-[10px] font-black uppercase tracking-widest text-white/60 block mb-2">{book.author}</span>
-                      <h3 className="text-lg md:text-xl font-black leading-tight tracking-tighter">{book.title}</h3>
+                  <div className="aspect-[2/3] rounded-xl shadow-2xl transition-all duration-500 group-hover:scale-[1.03] group-hover:shadow-red-900/20 relative overflow-hidden border border-white/10">
+                    {/* Cover image */}
+                    <img src={book.cover} alt={book.title} className="absolute inset-0 w-full h-full object-cover" />
+                    {/* Gradient overlay for text readability */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                    {/* Default info */}
+                    <div className="absolute inset-0 p-5 flex flex-col justify-end group-hover:opacity-0 transition-opacity duration-300">
+                      <span className="text-[10px] font-black uppercase tracking-widest text-white/70 block mb-1">{book.author}</span>
+                      <h3 className="text-lg font-black leading-tight tracking-tighter drop-shadow-md">{book.title}</h3>
                     </div>
                     {/* Hover overlay */}
-                    <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col items-center justify-center gap-4 backdrop-blur-sm">
+                    <div className="absolute inset-0 bg-black/85 opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col items-center justify-center gap-4 backdrop-blur-sm">
                       <h3 className="text-base font-black tracking-tight text-center px-4">{book.title}</h3>
                       <p className="text-[10px] text-slate-400 font-bold">{book.author}</p>
                       <button
