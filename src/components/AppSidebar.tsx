@@ -1,7 +1,15 @@
 import { Instagram, Youtube, Twitter, Github, LayoutGrid, BookOpen, Headphones, Wrench, QrCode, Zap } from "lucide-react";
+import { useNavigate, useLocation } from "react-router-dom";
 import profilePhoto from "@/assets/profile-photo.jpg";
 
-const menuItems = [
+interface MenuItem {
+  icon: typeof LayoutGrid;
+  label: string;
+  targetId?: string;
+  route?: string;
+}
+
+const menuItems: MenuItem[] = [
   { icon: LayoutGrid, label: "Manifesto", targetId: "manifesto" },
   { icon: BookOpen, label: "Educação", targetId: "educacao" },
   { icon: Headphones, label: "Audioteca", targetId: "audioteca" },
@@ -16,11 +24,36 @@ const socialLinks = [
   { icon: Github, url: "https://github.com/lordjunnior", label: "Github" },
 ];
 
-const scrollToSection = (id: string) => {
-  document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-};
-
 const AppSidebar = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleNav = (item: MenuItem) => {
+    if (item.route) {
+      navigate(item.route);
+    } else if (item.targetId) {
+      if (location.pathname !== "/") {
+        navigate("/");
+        setTimeout(() => {
+          document.getElementById(item.targetId!)?.scrollIntoView({ behavior: "smooth" });
+        }, 300);
+      } else {
+        document.getElementById(item.targetId)?.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
+
+  const handleApoio = () => {
+    if (location.pathname !== "/") {
+      navigate("/");
+      setTimeout(() => {
+        document.getElementById("apoio")?.scrollIntoView({ behavior: "smooth" });
+      }, 300);
+    } else {
+      document.getElementById("apoio")?.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <aside className="hidden lg:flex fixed left-0 top-0 bottom-0 w-[260px] z-50 flex-col border-r border-border/50 bg-[#070A12]/95 backdrop-blur-xl">
       {/* Profile Photo - Square, full width */}
@@ -64,8 +97,8 @@ const AppSidebar = () => {
       <nav className="flex-1 px-3 py-4 space-y-1">
         {menuItems.map((item) => (
           <button
-            key={item.targetId}
-            onClick={() => scrollToSection(item.targetId)}
+            key={item.label}
+            onClick={() => handleNav(item)}
             className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-all duration-200 group"
           >
             <item.icon className="w-4 h-4 group-hover:text-gold transition-colors" />
@@ -77,7 +110,7 @@ const AppSidebar = () => {
       {/* Lightning Support Button */}
       <div className="px-3 pb-4">
         <button
-          onClick={() => scrollToSection("apoio")}
+          onClick={handleApoio}
           className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-lg border border-gold-dim/50 bg-card text-gold font-semibold text-sm hover:border-gold hover:bg-gold/5 transition-all duration-300"
         >
           <Zap className="w-4 h-4" />

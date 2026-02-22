@@ -1,11 +1,15 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { formationLevels } from "@/lib/constants";
 import { Shield } from "lucide-react";
+
+const pillarRoutes = ["/economia", "/bitcoin", "/saida", "/filosofia"];
 
 const FormationSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const navigate = useNavigate();
 
   return (
     <div className="mb-16">
@@ -21,7 +25,8 @@ const FormationSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.4, delay: 0.1 + i * 0.1 }}
-            className="card-wealth flex flex-col"
+            className="card-wealth flex flex-col cursor-pointer hover:border-gold/30 transition-colors"
+            onClick={() => navigate(pillarRoutes[i])}
           >
             <div className="flex items-center justify-between mb-3">
               <span className="font-mono text-2xl font-bold text-gold">{level.level}</span>
