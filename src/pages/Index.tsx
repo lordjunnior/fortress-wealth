@@ -8,6 +8,7 @@ import PixBitcoinSection from "@/components/PixBitcoinSection";
 import ToolsSection from "@/components/ToolsSection";
 import KnowledgeSection from "@/components/KnowledgeSection";
 import AudiotecaSection from "@/components/AudiotecaSection";
+import FaqSection from "@/components/FaqSection";
 import FooterSection from "@/components/FooterSection";
 import QuoteCarousel from "@/components/QuoteCarousel";
 import NetworkTicker from "@/components/NetworkTicker";
@@ -50,6 +51,10 @@ const Index = () => {
 
         <div id="audioteca">
           <AudiotecaSection />
+        </div>
+
+        <div id="faq">
+          <FaqSection />
         </div>
 
         <div id="apoio">
