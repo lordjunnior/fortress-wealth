@@ -1,10 +1,12 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Zap, ArrowRight, Smartphone } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const PixBitcoinSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const navigate = useNavigate();
 
   return (
     <section className="section-padding" ref={ref}>
@@ -94,7 +96,10 @@ const PixBitcoinSection = () => {
               </p>
             </div>
 
-            <button className="px-8 py-4 rounded-lg gradient-gold text-primary-foreground font-semibold tracking-wide text-sm glow-gold hover:glow-gold-strong transition-all duration-300 flex items-center gap-3">
+            <button
+              onClick={() => navigate("/saida/gateway")}
+              className="px-8 py-4 rounded-lg gradient-gold text-primary-foreground font-semibold tracking-wide text-sm glow-gold hover:glow-gold-strong transition-all duration-300 flex items-center gap-3"
+            >
               <Zap className="w-4 h-4" />
               EXECUTAR PRIMEIRA OPERAÇÃO SOBERANA
             </button>
