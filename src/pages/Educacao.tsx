@@ -1,7 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, ShieldCheck, Globe, Server, Zap, BookOpen, AlertTriangle } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ShieldCheck, Globe, Server, Zap, BookOpen, AlertTriangle } from 'lucide-react';
 
 const cards = [
   {
@@ -70,23 +70,28 @@ const Educacao: React.FC = () => {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="mb-12"
         >
-          <div className="bg-card border border-gold/20 rounded-2xl p-8 relative overflow-hidden group hover:border-gold/40 transition-all">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-gold/10 to-transparent blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none rounded-full transform translate-x-1/2 -translate-y-1/2" />
-            <div className="relative z-10">
-              <div className="flex items-center gap-3 mb-4">
-                <span className="text-[10px] font-bold uppercase tracking-widest text-gold bg-gold/10 px-3 py-1.5 rounded-full border border-gold/20">
-                  Essencial
-                </span>
-                <span className="text-[10px] font-bold uppercase tracking-widest text-chart-green bg-chart-green/10 px-3 py-1.5 rounded-full border border-chart-green/20">
-                  Fácil e Rápido
+          <Link to="/entenda-bitcoin" className="block mb-12">
+            <div className="bg-card border border-gold/20 rounded-2xl p-8 relative overflow-hidden group hover:border-gold/40 transition-all cursor-pointer hover:-translate-y-1 shadow-lg hover:shadow-2xl">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-gold/10 to-transparent blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none rounded-full transform translate-x-1/2 -translate-y-1/2" />
+              <div className="relative z-10">
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-gold bg-gold/10 px-3 py-1.5 rounded-full border border-gold/20">
+                    Essencial
+                  </span>
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-chart-green bg-chart-green/10 px-3 py-1.5 rounded-full border border-chart-green/20">
+                    Fácil e Rápido
+                  </span>
+                </div>
+                <h2 className="text-2xl font-bold text-foreground mb-3">Comece pelo Básico</h2>
+                <p className="text-muted-foreground text-sm leading-relaxed max-w-2xl mb-4">
+                  Antes de operar as ferramentas abaixo, leia <strong className="text-foreground">"Entenda o Bitcoin — ainda hoje"</strong>. É um guia para leigos absolutos, sem termos técnicos. Entenda o "porquê" antes do "como".
+                </p>
+                <span className="inline-flex items-center gap-2 text-gold font-bold text-sm uppercase tracking-wider group-hover:gap-4 transition-all">
+                  Acessar <ArrowRight className="w-4 h-4" />
                 </span>
               </div>
-              <h2 className="text-2xl font-bold text-foreground mb-3">Comece pelo Básico</h2>
-              <p className="text-muted-foreground text-sm leading-relaxed max-w-2xl">
-                Antes de operar as ferramentas abaixo, leia <strong className="text-foreground">"Entenda o Bitcoin — ainda hoje"</strong>. É um guia para leigos absolutos, sem termos técnicos. Entenda o "porquê" antes do "como".
-              </p>
             </div>
-          </div>
+          </Link>
         </motion.div>
 
         {/* Cards Grid */}
