@@ -1,6 +1,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { ArrowRight, Download, BookOpen } from "lucide-react";
+import FormationSection from "@/components/FormationSection";
 
 const trails = [
   { level: "Iniciante", title: "Fundamentos do Dinheiro", desc: "Entenda por que o sistema fiduciário falha e a história da moeda.", btn: "Ler Artigo" },
@@ -24,7 +25,7 @@ const KnowledgeSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="section-padding" id="arsenal" ref={ref}>
+    <section className="section-padding" ref={ref}>
       <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -41,6 +42,9 @@ const KnowledgeSection = () => {
             e teoria econômica sem rastro de CPF e sem propagandas.
           </p>
         </motion.div>
+
+        {/* Formation Levels */}
+        <FormationSection />
 
         {/* Learning trails */}
         <div className="space-y-3 mb-16">
@@ -78,7 +82,7 @@ const KnowledgeSection = () => {
             <h3 className="text-xl font-semibold">Biblioteca em PDF</h3>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
             {books.map((book, i) => (
               <div
                 key={i}
