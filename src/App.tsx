@@ -23,6 +23,7 @@ import Audiobooks from "./pages/Audiobooks";
 import Ebooks from "./pages/Ebooks";
 import SilencioQueda from "./pages/SilencioQueda";
 import ProtocoloInicial from "./pages/ProtocoloInicial";
+import Arsenal from "./pages/Arsenal";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -54,6 +55,7 @@ const App = () => (
           <Route path="/ebooks" element={<Ebooks />} />
           <Route path="/silencio-queda" element={<SilencioQueda />} />
           <Route path="/protocolo-inicial" element={<ProtocoloInicial />} />
+          <Route path="/arsenal" element={<Arsenal />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
