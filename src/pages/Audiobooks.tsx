@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { 
-  ArrowLeft, Headphones, Play, Clock, 
-  Lock, BookOpen, ShieldCheck, TrendingUp
+  ArrowLeft, Play, Pause, Clock, 
+  Headphones, Lock, Volume2, FastForward, Rewind, BarChart2
 } from 'lucide-react';
 
 interface AudiobooksProps {
@@ -16,11 +16,8 @@ const AUDIOBOOKS_DB = [
     author: 'Robert T. Kiyosaki',
     duration: '16:31:00',
     category: 'Educação Financeira',
-    icon: TrendingUp,
-    color: 'from-emerald-500/20 to-emerald-500/0',
-    accent: 'text-emerald-500',
-    border: 'group-hover:border-emerald-500/50',
-    bgIcon: 'bg-emerald-500/10 border-emerald-500/20'
+    coverGradient: 'bg-gradient-to-br from-emerald-900 via-emerald-600 to-black',
+    accent: 'text-emerald-500'
   },
   {
     id: 'padrao-bitcoin',
@@ -28,11 +25,8 @@ const AUDIOBOOKS_DB = [
     author: 'Saifedean Ammous',
     duration: '10:45:00',
     category: 'Soberania Monetária',
-    icon: ShieldCheck,
-    color: 'from-orange-500/20 to-orange-500/0',
-    accent: 'text-orange-500',
-    border: 'group-hover:border-orange-500/50',
-    bgIcon: 'bg-orange-500/10 border-orange-500/20'
+    coverGradient: 'bg-gradient-to-br from-orange-900 via-orange-600 to-black',
+    accent: 'text-orange-500'
   },
   {
     id: 'etica-liberdade',
@@ -40,137 +34,180 @@ const AUDIOBOOKS_DB = [
     author: 'Murray N. Rothbard',
     duration: '14:20:00',
     category: 'Fundamentos',
-    icon: BookOpen,
-    color: 'from-blue-500/20 to-blue-500/0',
-    accent: 'text-blue-500',
-    border: 'group-hover:border-blue-500/50',
-    bgIcon: 'bg-blue-500/10 border-blue-500/20'
+    coverGradient: 'bg-gradient-to-br from-blue-900 via-blue-600 to-black',
+    accent: 'text-blue-500'
+  },
+  {
+    id: 'anatomia-estado',
+    title: 'A Anatomia do Estado',
+    author: 'Murray N. Rothbard',
+    duration: '02:15:00',
+    category: 'Fundamentos',
+    coverGradient: 'bg-gradient-to-br from-red-900 via-red-600 to-black',
+    accent: 'text-red-500'
   }
 ];
 
+const VisualEqualizer = ({ active }: { active: boolean }) => (
+  <div className="flex items-end gap-1 h-4">
+    <div className={`w-1 bg-gold-500 rounded-t-sm ${active ? 'animate-[bounce_1s_infinite]' : 'h-1'}`} style={{ animationDelay: '0ms' }}></div>
+    <div className={`w-1 bg-gold-500 rounded-t-sm ${active ? 'animate-[bounce_1.2s_infinite]' : 'h-2'}`} style={{ animationDelay: '150ms' }}></div>
+    <div className={`w-1 bg-gold-500 rounded-t-sm ${active ? 'animate-[bounce_0.8s_infinite]' : 'h-1'}`} style={{ animationDelay: '300ms' }}></div>
+    <div className={`w-1 bg-gold-500 rounded-t-sm ${active ? 'animate-[bounce_1.1s_infinite]' : 'h-3'}`} style={{ animationDelay: '450ms' }}></div>
+  </div>
+);
+
 const Audiobooks: React.FC<AudiobooksProps> = ({ onPlay }) => {
-  
-  const handlePlayClick = (book: any) => {
+  const [activeTrack, setActiveTrack] = useState(AUDIOBOOKS_DB[1]);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const handleTrackClick = (book: any) => {
+    setActiveTrack(book);
+    setIsPlaying(true);
     if (onPlay) {
       onPlay({
         id: book.id,
         title: book.title,
         author: book.author,
-        url: '#'
+        url: '#' 
       });
-    } else {
-      alert(`Iniciando a reprodução de: ${book.title}`);
     }
   };
 
+  const togglePlayState = () => {
+    setIsPlaying(!isPlaying);
+  };
+
   return (
-    <div className="min-h-screen bg-[#070A12] pt-28 pb-12 px-4 animate-fade-in font-sans">
+    <div className="min-h-screen bg-[#070A12] font-sans selection:bg-gold-500 selection:text-black pb-24">
        
-       {/* Navegação */}
-       <div className="max-w-6xl mx-auto mb-12">
-         <Link to="/" className="text-slate-500 hover:text-gold-500 flex items-center gap-2 text-xs uppercase tracking-widest transition-colors w-fit group">
-           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" /> Voltar ao Início
+       <div className="pt-28 px-4 max-w-6xl mx-auto mb-8">
+         <Link to="/" className="text-slate-500 hover:text-white flex items-center gap-2 text-xs uppercase tracking-widest transition-colors w-fit group">
+           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" /> Retornar ao Comando
          </Link>
        </div>
 
-       {/* Hero Section */}
-       <header className="max-w-6xl mx-auto mb-20 border-b border-white/5 pb-12">
-          <div className="inline-block px-3 py-1 mb-6 border border-gold-500/20 rounded bg-gold-500/5 backdrop-blur-md">
-            <span className="text-gold-500 text-[10px] font-bold uppercase tracking-[0.2em] flex items-center gap-2">
-              <Headphones className="w-3 h-3" /> Biblioteca Sonora
-            </span>
-          </div>
-          <h1 className="text-4xl md:text-6xl font-serif font-bold text-white mb-6 leading-tight">
-            Conhecimento <br/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-400 via-yellow-500 to-orange-500">Injetável</span>
-          </h1>
-          <p className="text-xl text-slate-400 font-light max-w-3xl leading-relaxed">
-            O tempo é o seu ativo mais escasso. Absorva a base intelectual da soberania enquanto opera no mundo real. <strong className="text-white font-medium">Sem desculpas.</strong>
-          </p>
-       </header>
-
-       {/* Grid de Audiolivros */}
-       <section className="max-w-6xl mx-auto mb-24">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-             
-             {AUDIOBOOKS_DB.map((book) => {
-                const Icon = book.icon;
+       <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-12 gap-10">
+          
+          {/* LADO ESQUERDO: Player em Destaque */}
+          <div className="lg:col-span-5 flex flex-col gap-8">
+             <div className="sticky top-32">
+                <div className="text-white text-[10px] font-bold uppercase tracking-[0.2em] flex items-center gap-2 mb-6 opacity-60">
+                  <Headphones className="w-4 h-4" /> Em Destaque
+                </div>
                 
-                return (
-                  <div key={book.id} className={`bg-[#0B0F19] border border-white/5 rounded-2xl p-6 transition-all duration-500 hover:-translate-y-1 group relative overflow-hidden shadow-lg hover:shadow-2xl ${book.border}`}>
-                     
-                     {/* Efeito de Luz */}
-                     <div className={`absolute top-0 right-0 w-48 h-48 bg-gradient-to-br ${book.color} blur-[60px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none rounded-full transform translate-x-1/2 -translate-y-1/2`}></div>
-                     
-                     <div className="relative z-10 flex flex-col h-full">
-                        <div className="flex justify-between items-start mb-8">
-                           <div className={`p-4 rounded-xl border ${book.bgIcon}`}>
-                              <Icon className={`w-6 h-6 ${book.accent}`} />
-                           </div>
-                           <span className="text-[10px] text-slate-400 uppercase tracking-widest font-bold bg-black px-3 py-1.5 rounded-full border border-white/5">
-                             {book.category}
-                           </span>
+                <div className="w-full aspect-square rounded-3xl mb-8 relative overflow-hidden shadow-2xl border border-white/5 group">
+                   <div className={`absolute inset-0 ${activeTrack.coverGradient} opacity-80 transition-all duration-700`}></div>
+                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                   <button 
+                     onClick={togglePlayState}
+                     className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 bg-black/40 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center text-white hover:scale-110 hover:bg-gold-500 hover:text-black hover:border-gold-500 transition-all duration-300 shadow-[0_0_30px_rgba(0,0,0,0.5)] group-hover:shadow-[0_0_40px_rgba(234,179,8,0.3)]"
+                   >
+                     {isPlaying ? <Pause className="w-8 h-8" /> : <Play className="w-8 h-8 translate-x-1" />}
+                   </button>
+                </div>
+
+                <div>
+                   <h1 className="text-4xl font-serif font-bold text-white mb-2 leading-tight tracking-tight">
+                     {activeTrack.title}
+                   </h1>
+                   <p className="text-xl text-slate-400 font-light mb-6">
+                     {activeTrack.author}
+                   </p>
+                   
+                   <div className="flex items-center justify-between p-4 bg-[#0B0F19] border border-white/5 rounded-2xl">
+                      <div className="flex items-center gap-4">
+                         <button className="text-slate-500 hover:text-white transition-colors"><Rewind className="w-5 h-5" /></button>
+                         <button onClick={togglePlayState} className="w-10 h-10 bg-white text-black rounded-full flex items-center justify-center hover:bg-gold-500 transition-colors">
+                           {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 translate-x-0.5" />}
+                         </button>
+                         <button className="text-slate-500 hover:text-white transition-colors"><FastForward className="w-5 h-5" /></button>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Volume2 className="w-4 h-4 text-slate-500" />
+                        <div className="w-16 h-1 bg-white/10 rounded-full overflow-hidden">
+                           <div className="w-2/3 h-full bg-slate-400 rounded-full"></div>
                         </div>
-                        
-                        <h3 className="text-2xl font-bold text-white mb-2 tracking-tight group-hover:text-white transition-colors">
-                          {book.title}
-                        </h3>
-                        <p className="text-slate-400 text-sm mb-8 flex-grow">
-                          {book.author}
-                        </p>
-                        
-                        <div className="flex items-center justify-between mt-auto pt-6 border-t border-white/5">
-                           <div className="flex items-center gap-2 text-slate-500 text-xs font-mono">
-                              <Clock className="w-4 h-4" /> {book.duration}
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+
+          {/* LADO DIREITO: Tracklist */}
+          <div className="lg:col-span-7 pt-4 lg:pt-14">
+             <div className="flex items-center justify-between mb-8 border-b border-white/5 pb-4">
+                <h2 className="text-2xl font-serif text-white">Acervo Sonoro</h2>
+                <span className="text-xs text-slate-500 font-mono">{AUDIOBOOKS_DB.length} Obras</span>
+             </div>
+
+             <div className="space-y-3">
+                {AUDIOBOOKS_DB.map((book, index) => {
+                   const isActive = activeTrack.id === book.id;
+
+                   return (
+                     <div 
+                       key={book.id} 
+                       onClick={() => handleTrackClick(book)}
+                       className={`group flex items-center gap-4 p-4 rounded-2xl cursor-pointer transition-all duration-300 border ${
+                         isActive 
+                           ? 'bg-white/5 border-white/10 shadow-lg' 
+                           : 'bg-transparent border-transparent hover:bg-[#0B0F19] hover:border-white/5'
+                       }`}
+                     >
+                        <div className="w-8 flex justify-center shrink-0">
+                           {isActive && isPlaying ? (
+                             <VisualEqualizer active={true} />
+                           ) : (
+                             <span className={`text-sm font-mono font-bold ${isActive ? 'text-gold-500' : 'text-slate-600 group-hover:text-white'}`}>
+                               {(index + 1).toString().padStart(2, '0')}
+                             </span>
+                           )}
+                        </div>
+
+                        <div className={`w-12 h-12 rounded-lg shrink-0 ${book.coverGradient} shadow-md`}></div>
+
+                        <div className="flex-1 min-w-0">
+                           <h3 className={`text-base font-bold truncate transition-colors ${isActive ? 'text-gold-500' : 'text-white group-hover:text-gold-400'}`}>
+                             {book.title}
+                           </h3>
+                           <div className="flex items-center gap-3 text-sm mt-0.5">
+                              <span className="text-slate-400 truncate">{book.author}</span>
+                              <span className="w-1 h-1 bg-slate-700 rounded-full"></span>
+                              <span className="text-slate-500 text-xs uppercase tracking-widest truncate">{book.category}</span>
                            </div>
-                           <button 
-                             onClick={() => handlePlayClick(book)}
-                             className={`flex items-center gap-2 ${book.accent} hover:text-white text-xs font-bold uppercase tracking-widest transition-colors bg-black px-4 py-2 rounded-lg border border-white/5 hover:border-white/20`}
-                           >
-                              <Play className="w-4 h-4 fill-current" /> Ouvir Agora
+                        </div>
+
+                        <div className="flex items-center gap-6 shrink-0 pl-4">
+                           <span className="text-slate-500 font-mono text-xs hidden sm:block">
+                             {book.duration}
+                           </span>
+                           <button className={`w-10 h-10 rounded-full border flex items-center justify-center transition-all ${
+                             isActive
+                               ? 'border-gold-500 text-gold-500 bg-gold-500/10'
+                               : 'border-white/10 text-white opacity-0 group-hover:opacity-100 group-hover:bg-white group-hover:text-black group-hover:border-white'
+                           }`}>
+                             {isActive && isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 translate-x-0.5" />}
                            </button>
                         </div>
                      </div>
-                  </div>
-                );
-             })}
-
-             {/* Card Placeholder para futuros áudios */}
-             <div className="bg-[#0B0F19]/50 border border-dashed border-white/10 rounded-2xl p-6 flex flex-col items-center justify-center text-center min-h-[300px] opacity-60">
-                <Headphones className="w-8 h-8 text-slate-600 mb-4" />
-                <h3 className="text-lg font-bold text-slate-400 mb-2">Acervo em Expansão</h3>
-                <p className="text-slate-500 text-xs uppercase tracking-widest">Mais títulos em breve</p>
+                   );
+                })}
              </div>
 
+             <div className="mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
+                <p className="text-[10px] text-slate-600 uppercase tracking-widest">
+                  Lord Junnior © 2026
+                </p>
+                <div className="flex items-center gap-6">
+                  <Link to="#" className="text-[10px] text-slate-600 hover:text-white uppercase tracking-wider transition-colors">Termos</Link>
+                  <Link to="#" className="text-[10px] text-slate-600 hover:text-white uppercase tracking-wider transition-colors flex items-center gap-1">
+                    <Lock className="w-3 h-3" /> PGP
+                  </Link>
+                </div>
+             </div>
           </div>
-       </section>
-
-       {/* Footer Soberano */}
-       <footer className="max-w-6xl mx-auto text-center pt-12 border-t border-white/5 space-y-6 mt-12">
-          <p className="text-2xl font-serif text-white opacity-80">Not your keys, not your money.</p>
-          <div className="text-slate-500 text-sm space-y-1 opacity-80">
-            <p>Quem não assume a custódia aceita a dependência.</p>
-            <p>Autocustódia exige responsabilidade.</p>
-          </div>
-          <div className="w-12 h-[1px] bg-white/10 mx-auto my-6"></div>
-          <p className="text-gold-600/80 text-sm font-medium">
-            Dependência financeira nunca foi acidente. Sempre foi projeto.
-          </p>
-          <p className="text-[10px] text-slate-600 uppercase tracking-widest pt-4">
-            Lord Junnior © 2026
-          </p>
-
-          <div className="flex items-center justify-center gap-6 pt-8 pb-8">
-            <Link to="#" className="text-xs text-slate-600 hover:text-gold-500 uppercase tracking-wider transition-colors">Termos</Link>
-            <span className="text-slate-800">•</span>
-            <Link to="#" className="text-xs text-slate-600 hover:text-gold-500 uppercase tracking-wider transition-colors">Privacidade</Link>
-            <span className="text-slate-800">•</span>
-            <Link to="#" className="text-xs text-slate-600 hover:text-gold-500 uppercase tracking-wider transition-colors flex items-center gap-1">
-              <Lock className="w-3 h-3" /> PGP
-            </Link>
-          </div>
-       </footer>
-
+       </div>
     </div>
   );
 };
