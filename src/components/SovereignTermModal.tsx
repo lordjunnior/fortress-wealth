@@ -80,6 +80,7 @@ const SovereignTermModal = () => {
       clearInterval(interval);
       localStorage.setItem("sovereign-term-accepted", "true");
       document.body.style.overflow = "";
+      window.scrollTo(0, 0);
       setVisible(false);
     }, 2000);
   }, []);
