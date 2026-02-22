@@ -9,39 +9,49 @@ import {
 
 const faqItems = [
   {
-    question: "O que é Bitcoin e por que ele é importante?",
+    question: "E se o governo proibir Bitcoin no Brasil?",
     answer:
-      "Bitcoin é um sistema de dinheiro eletrônico peer-to-peer criado em 2009 por Satoshi Nakamoto. Diferente do dinheiro fiduciário (Real, Dólar), ele não pode ser impresso por governos, confiscado por bancos ou inflacionado por políticas monetárias. Sua importância está em devolver ao indivíduo o controle total sobre seu próprio patrimônio.",
+      "Governos podem dificultar o acesso, mas não podem impedir o funcionamento do protocolo. O Bitcoin opera em uma rede descentralizada global — não existe um servidor para desligar. Países como China tentaram proibir e falharam. O que você precisa é de conhecimento técnico para operar com soberania, independentemente da regulação local.",
   },
   {
-    question: "O que significa Autocustódia?",
+    question: "Preciso ser programador para usar?",
     answer:
-      'Autocustódia significa que você — e somente você — controla as chaves privadas que dão acesso aos seus bitcoins. Sem banco, sem corretora, sem intermediário. A frase "not your keys, not your coins" resume o conceito: se outra pessoa guarda suas chaves, o dinheiro não é seu de verdade.',
+      "Absolutamente não. Assim como você não precisa entender TCP/IP para usar a internet, você não precisa programar para usar Bitcoin. As ferramentas modernas de autocustódia são intuitivas. O que você precisa é de educação financeira — e é exatamente isso que este arsenal oferece gratuitamente.",
   },
   {
-    question: "Preciso de muito dinheiro para começar?",
+    question: "Bitcoin é pirâmide financeira?",
     answer:
-      "Não. O Bitcoin é divisível em até 100 milhões de partes (satoshis). Você pode começar comprando frações com qualquer valor. O importante não é quanto você investe, mas que você comece a entender o sistema e proteger o que é seu.",
+      "Não. Pirâmides dependem de novos participantes pagando os antigos e colapsam quando param de entrar. O Bitcoin é um protocolo matemático com oferta fixa de 21 milhões de unidades, sem dono, sem empresa por trás, sem promessa de retorno. Ele é dinheiro — não um esquema de investimento.",
   },
   {
-    question: "O confisco de 1990 pode acontecer de novo?",
+    question: "Já perdi muito tempo, não vale a pena comprar BTC hoje?",
     answer:
-      "O mecanismo legal que permitiu o confisco do Plano Collor nunca foi revogado. Qualquer patrimônio que dependa de um banco de dados centralizado — contas bancárias, investimentos em corretoras — está sujeito a bloqueio por decreto. O Bitcoin em autocustódia é a única forma comprovada de proteção contra esse risco.",
+      "O melhor momento para comprar Bitcoin foi ontem. O segundo melhor é hoje. O Bitcoin ainda está no início da curva de adoção global. Menos de 5% da população mundial possui Bitcoin. Você não está atrasado — a maioria das pessoas ainda nem começou a entender o que está acontecendo com o sistema monetário.",
   },
   {
-    question: "Lightning Network é segura?",
+    question: "Posso deixar Bitcoin em corretora?",
     answer:
-      "Sim. A Lightning Network é uma camada de pagamentos construída sobre o Bitcoin que permite transações instantâneas e com taxas mínimas. Ela herda a segurança da blockchain do Bitcoin e é ideal para transações do dia a dia, enquanto a camada base serve para poupança de longo prazo.",
+      'Pode, mas não deveria. Corretoras são bancos de dados centralizados — sujeitas a hacks, bloqueios judiciais, falências e confiscos. A FTX colapsou com bilhões de dólares de clientes. A regra é simples: "Not your keys, not your coins." Aprenda autocustódia e durma em paz.',
   },
   {
-    question: "Este site vende alguma coisa?",
+    question: "Bitcoin substitui bancos?",
     answer:
-      "Não. Este arsenal é 100% educacional e gratuito. Não vendemos cursos, mentorias, tokens ou qualquer produto financeiro. O objetivo é compartilhar conhecimento que o sistema educacional e a mídia tradicional sistematicamente escondem. Se o conteúdo te ajudou, você pode apoiar voluntariamente via Lightning Network.",
+      "O Bitcoin não substitui bancos — ele torna bancos opcionais. Você pode enviar, receber e guardar valor sem precisar de permissão de nenhuma instituição. Pela primeira vez na história, o indivíduo pode ser seu próprio banco com soberania total sobre seu patrimônio.",
   },
   {
-    question: "Por onde devo começar?",
+    question: "Lightning é seguro?",
     answer:
-      'Comece pela seção "Arsenal de Conhecimento" neste site. Leia os fundamentos sobre dinheiro e sistema monetário, entenda por que a autocustódia é essencial, e depois avance para os guias operacionais de Lightning Network e economia paralela. O ebook gratuito é um excelente ponto de partida.',
+      "Sim. A Lightning Network é uma camada de pagamentos construída sobre o Bitcoin que permite transações instantâneas com taxas próximas de zero. Ela herda a segurança da blockchain e é ideal para pagamentos do dia a dia, enquanto a camada base serve como reserva de valor de longo prazo.",
+  },
+  {
+    question: "Existe risco regulatório?",
+    answer:
+      "Sempre existe risco regulatório em qualquer ativo. Governos podem criar impostos, restrições de acesso ou regras de compliance. Mas o Bitcoin foi projetado para ser resistente à censura. Com autocustódia e conhecimento técnico de operações P2P, você minimiza drasticamente a exposição regulatória.",
+  },
+  {
+    question: "Como começar com pouco dinheiro?",
+    answer:
+      "O Bitcoin é divisível em 100 milhões de satoshis. Você pode começar com R$50, R$100 — o valor não importa. O que importa é começar. Compre uma fração, transfira para sua própria carteira, aprenda autocustódia. O hábito de empilhar satoshis regularmente é mais poderoso do que qualquer aporte único.",
   },
 ];
 
