@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft, Download, ShieldCheck, ArrowRight } from 'lucide-react';
 
 export default function ProtocoloInicial() {
+  React.useEffect(() => { window.scrollTo(0, 0); }, []);
+
   return (
     <div className="min-h-screen bg-[#070A12] text-white font-sans selection:bg-red-600 pb-32 overflow-x-hidden">
       {/* Poeira Atmosférica */}
