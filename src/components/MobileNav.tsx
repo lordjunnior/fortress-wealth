@@ -46,7 +46,7 @@ const MobileNav = () => {
               className="w-full flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg border border-gold-dim/50 text-gold text-sm font-semibold"
             >
               <Zap className="w-4 h-4" />
-              Apoio ⚡
+              Apoio
             </button>
           </div>
         </div>

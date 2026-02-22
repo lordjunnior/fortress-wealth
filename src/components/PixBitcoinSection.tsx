@@ -58,7 +58,7 @@ const PixBitcoinSection = () => {
                   </div>
 
                   <div className="gradient-gold rounded-lg py-3 text-center">
-                    <span className="text-sm font-semibold text-primary-foreground">Confirmar via Lightning ⚡</span>
+                    <span className="text-sm font-semibold text-primary-foreground">Confirmar via Lightning</span>
                   </div>
 
                   <p className="text-[9px] text-muted-foreground text-center mt-3 font-mono">
