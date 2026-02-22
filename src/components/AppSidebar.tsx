@@ -13,7 +13,7 @@ const menuItems: MenuItem[] = [
   { icon: LayoutGrid, label: "Manifesto", targetId: "manifesto" },
   { icon: BookOpen, label: "Educação", targetId: "educacao" },
   { icon: Headphones, label: "Audioteca", targetId: "audioteca" },
-  { icon: Wrench, label: "Ferramentas", targetId: "ferramentas" },
+  { icon: Wrench, label: "Ferramentas", route: "/ferramentas" },
   { icon: QrCode, label: "PIX Crypto", targetId: "pix-crypto" },
 ];
 

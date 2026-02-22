@@ -6,7 +6,7 @@ const menuItems = [
   { icon: LayoutGrid, label: "Manifesto", targetId: "manifesto" },
   { icon: BookOpen, label: "Educação", targetId: "educacao" },
   { icon: Headphones, label: "Audioteca", targetId: "audioteca" },
-  { icon: Wrench, label: "Ferramentas", targetId: "ferramentas" },
+  { icon: Wrench, label: "Ferramentas", route: "/ferramentas" },
   { icon: QrCode, label: "PIX Crypto", targetId: "pix-crypto" },
 ];
 
@@ -17,7 +17,9 @@ const MobileNav = () => {
 
   const handleNav = (item: typeof menuItems[0]) => {
     setOpen(false);
-    if (item.targetId) {
+    if ((item as any).route) {
+      navigate((item as any).route);
+    } else if (item.targetId) {
       if (location.pathname !== "/") {
         navigate("/");
         setTimeout(() => {

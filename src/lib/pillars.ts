@@ -59,7 +59,7 @@ export const pillars: Pillar[] = [
         title: "Calculadora da Verdade Salarial",
         description: "Coloque o valor da sua hora de trabalho e descubra quanto, em minutos, você trabalha por dia apenas para sustentar a máquina pública.",
         action: "Calcular Agora",
-        route: "/taxa-de-fuga",
+        route: "/ferramentas#verdade-salarial",
       },
     ],
     objectives: [
@@ -92,7 +92,7 @@ export const pillars: Pillar[] = [
         title: "Simulador: Bitcoin vs Imóveis",
         description: "Uma análise matemática fria sobre qual ativo realmente preservou o seu esforço de vida contra a inflação na última década.",
         action: "Abrir Simulador",
-        route: "/bitcoin-vs-imovel",
+        route: "/ferramentas#btc-vs-imoveis",
       },
       {
         type: "audio",
