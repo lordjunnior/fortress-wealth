@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
+import { useEffect } from "react";
 import { ArrowLeft, BookOpen, Headphones, Wrench, Download, Play, ArrowRight, Target } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import NoiseBackground from "@/components/NoiseBackground";
 import AppSidebar from "@/components/AppSidebar";
 import MobileNav from "@/components/MobileNav";
@@ -27,6 +28,16 @@ const resourceLabel = {
 
 const PillarLayout = ({ pillar }: { pillar: Pillar }) => {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      setTimeout(() => {
+        const el = document.getElementById(location.hash.slice(1));
+        el?.scrollIntoView({ behavior: "smooth", block: "center" });
+      }, 600);
+    }
+  }, [location.hash]);
 
   return (
     <div className="min-h-screen text-foreground">
@@ -134,6 +145,7 @@ const PillarLayout = ({ pillar }: { pillar: Pillar }) => {
                 return (
                   <motion.div
                     key={i}
+                    id={resource.anchorId}
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.6 + i * 0.15 }}

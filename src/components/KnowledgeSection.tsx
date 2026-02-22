@@ -1,5 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { ArrowRight, Download, BookOpen, FileText } from "lucide-react";
 import FormationSection from "@/components/FormationSection";
 
@@ -10,12 +11,12 @@ import bookWhitepaper from "@/assets/book-whitepaper.jpg";
 import bookRedpill from "@/assets/book-redpill.jpg";
 
 const trails = [
-  { level: "Iniciante", title: "Fundamentos do Dinheiro", desc: "Entenda por que o sistema fiduciário falha e a história da moeda.", btn: "Ler Artigo" },
-  { level: "Essencial", title: "Autocustódia", desc: "Arquitetura de chaves privadas, Cold Wallets e o fim da dependência bancária.", btn: "Acessar Guia" },
-  { level: "Intermediário", title: "Rede Lightning", desc: "A camada de liquidez que torna o Bitcoin dinheiro corrente instantâneo.", btn: "Acessar Guia" },
-  { level: "Técnico", title: "Infraestrutura Soberana", desc: "Rode seu próprio Node. 'Don't Trust, Verify'.", btn: "Acessar Guia" },
-  { level: "Avançado", title: "Economia Paralela", desc: "Operações P2P via BISQ e transações sem intermediários e KYC.", btn: "Acessar Guia" },
-  { level: "Extremo", title: "Herança Soberana", desc: "Estruture suas chaves (multisig/timelock) para seus herdeiros acessarem seu patrimônio sem inventários.", btn: "Acessar Protocolo" },
+  { level: "Iniciante", title: "Fundamentos do Dinheiro", desc: "Entenda por que o sistema fiduciário falha e a história da moeda.", btn: "Ler Artigo", route: "/economia#fundamentos" },
+  { level: "Essencial", title: "Autocustódia", desc: "Arquitetura de chaves privadas, Cold Wallets e o fim da dependência bancária.", btn: "Acessar Guia", route: "/bitcoin#autocustodia" },
+  { level: "Intermediário", title: "Rede Lightning", desc: "A camada de liquidez que torna o Bitcoin dinheiro corrente instantâneo.", btn: "Acessar Guia", route: "/saida#lightning" },
+  { level: "Técnico", title: "Infraestrutura Soberana", desc: "Rode seu próprio Node. 'Don't Trust, Verify'.", btn: "Acessar Guia", route: "/bitcoin#node" },
+  { level: "Avançado", title: "Economia Paralela", desc: "Operações P2P via BISQ e transações sem intermediários e KYC.", btn: "Acessar Guia", route: "/saida#p2p" },
+  { level: "Extremo", title: "Herança Soberana", desc: "Estruture suas chaves (multisig/timelock) para seus herdeiros acessarem seu patrimônio sem inventários.", btn: "Acessar Protocolo", route: "/filosofia#heranca" },
 ];
 
 const books = [
@@ -64,6 +65,7 @@ const books = [
 const KnowledgeSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const navigate = useNavigate();
 
   return (
     <section className="section-padding" ref={ref}>
@@ -96,6 +98,7 @@ const KnowledgeSection = () => {
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.4, delay: 0.1 + i * 0.08 }}
               className="card-wealth flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 group cursor-pointer"
+              onClick={() => navigate(trail.route)}
             >
               <span className="font-mono text-[10px] tracking-widest text-gold bg-gold/10 px-2.5 py-1 rounded w-fit whitespace-nowrap">
                 {trail.level.toUpperCase()}
