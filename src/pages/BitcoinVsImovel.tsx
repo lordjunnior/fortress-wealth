@@ -20,15 +20,16 @@ const BitcoinVsImovel: React.FC = () => {
     return isNaN(v) ? 0 : v;
   }, [initialValue]);
 
-  const factors: Record<Period, { btc: number; re: number }> = {
-    3: { btc: 2.5, re: 1.25 },
-    5: { btc: 4.8, re: 1.45 },
-    10: { btc: 45.0, re: 2.1 },
+  const factors: Record<Period, { btc: number; re: number; hybrid: number }> = {
+    3: { btc: 2.5, re: 1.25, hybrid: 1.8 },
+    5: { btc: 4.8, re: 1.45, hybrid: 2.5 },
+    10: { btc: 45.0, re: 2.1, hybrid: 15.0 },
   };
 
   const f = factors[period];
   const btcFinal = parsedValue * f.btc;
   const reFinal = parsedValue * f.re;
+  const hybridFinal = parsedValue * f.hybrid;
 
   const history = useMemo(() => {
     if (!hasResult || parsedValue <= 0) return [];
@@ -38,11 +39,13 @@ const BitcoinVsImovel: React.FC = () => {
       const month = i;
       const btcVal = parsedValue * (1 + (f.btc - 1) * Math.pow(p, 2));
       const reVal = parsedValue * (1 + (f.re - 1) * p);
+      const hybVal = parsedValue * (1 + (f.hybrid - 1) * Math.pow(p, 1.5));
       if (month % (period <= 3 ? 3 : period <= 5 ? 6 : 12) === 0) {
         data.push({
           label: month === 0 ? 'Início' : `${Math.round(month / 12)}a`,
           Bitcoin: Math.round(btcVal),
           Imóvel: Math.round(reVal),
+          'Híbrido': Math.round(hybVal),
           Diferença: Math.round(btcVal - reVal),
         });
       }
@@ -177,23 +180,65 @@ const BitcoinVsImovel: React.FC = () => {
             className="max-w-6xl mx-auto px-4 space-y-8"
           >
 
-            {/* Big numbers */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+            {/* 3 Cenários */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-4">
+
+              {/* Full Bitcoin */}
               <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1, duration: 0.5 }}
-                className="bg-card border border-border rounded-2xl p-8 relative overflow-hidden"
+                whileHover={{ y: -6, borderColor: 'hsl(var(--gold) / 0.5)', boxShadow: '0 8px 40px hsl(var(--gold) / 0.08)' }}
+                className="bg-card border border-gold/20 rounded-2xl p-8 relative overflow-hidden transition-colors duration-300"
+              >
+                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
+                <div className="absolute top-0 right-0 w-40 h-40 bg-gold/5 blur-[60px] rounded-full" />
+                <p className="text-xs font-mono text-gold uppercase tracking-widest mb-6">Full Bitcoin</p>
+                <p className="text-muted-foreground text-xs mb-1">Patrimônio Final</p>
+                <p className="text-3xl md:text-4xl font-bold text-foreground mb-4">{formatCurrency(btcFinal)}</p>
+                <div className="space-y-3 border-t border-border pt-4">
+                  <div className="flex justify-between">
+                    <span className="text-xs text-muted-foreground">Ganho Total</span>
+                    <span className="text-sm font-bold text-gold">{formatCurrency(btcFinal - parsedValue)}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-xs text-muted-foreground">Valorização</span>
+                    <span className="text-sm font-bold text-gold">+{((f.btc - 1) * 100).toFixed(0)}%</span>
+                  </div>
+                </div>
+                <div className="mt-5 h-1 bg-secondary rounded-full overflow-hidden">
+                  <motion.div
+                    initial={{ width: 0 }}
+                    animate={{ width: '100%' }}
+                    transition={{ delay: 0.5, duration: 1.2 }}
+                    className="h-full bg-gold rounded-full"
+                  />
+                </div>
+              </motion.div>
+
+              {/* Imóvel Puro */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2, duration: 0.5 }}
+                whileHover={{ y: -6, borderColor: 'hsl(var(--muted-foreground) / 0.3)', boxShadow: '0 8px 40px hsl(var(--muted-foreground) / 0.05)' }}
+                className="bg-card border border-border rounded-2xl p-8 relative overflow-hidden transition-colors duration-300"
               >
                 <div className="absolute top-0 right-0 w-40 h-40 bg-muted-foreground/5 blur-[60px] rounded-full" />
-                <p className="text-xs font-mono text-muted-foreground uppercase tracking-widest mb-3">
-                  Imóvel em {period} anos
-                </p>
-                <p className="text-3xl md:text-4xl font-bold text-foreground mb-2">{formatCurrency(reFinal)}</p>
-                <p className="text-sm text-muted-foreground">
-                  Valorização de <span className="text-foreground font-semibold">+{((f.re - 1) * 100).toFixed(0)}%</span> no período
-                </p>
-                <div className="mt-4 h-1 bg-secondary rounded-full overflow-hidden">
+                <p className="text-xs font-mono text-muted-foreground uppercase tracking-widest mb-6">Imóvel Puro</p>
+                <p className="text-muted-foreground text-xs mb-1">Patrimônio Final</p>
+                <p className="text-3xl md:text-4xl font-bold text-foreground mb-4">{formatCurrency(reFinal)}</p>
+                <div className="space-y-3 border-t border-border pt-4">
+                  <div className="flex justify-between">
+                    <span className="text-xs text-muted-foreground">Ganho Total</span>
+                    <span className="text-sm font-bold text-foreground">{formatCurrency(reFinal - parsedValue)}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-xs text-muted-foreground">Valorização</span>
+                    <span className="text-sm font-bold text-foreground">+{((f.re - 1) * 100).toFixed(0)}%</span>
+                  </div>
+                </div>
+                <div className="mt-5 h-1 bg-secondary rounded-full overflow-hidden">
                   <motion.div
                     initial={{ width: 0 }}
                     animate={{ width: `${Math.min(((f.re - 1) / (f.btc - 1)) * 100, 100)}%` }}
@@ -203,26 +248,35 @@ const BitcoinVsImovel: React.FC = () => {
                 </div>
               </motion.div>
 
+              {/* Híbrido */}
               <motion.div
-                initial={{ opacity: 0, x: 30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.2, duration: 0.5 }}
-                className="bg-card border border-gold/20 rounded-2xl p-8 relative overflow-hidden"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3, duration: 0.5 }}
+                whileHover={{ y: -6, borderColor: 'hsl(220 70% 55% / 0.4)', boxShadow: '0 8px 40px hsl(220 70% 55% / 0.06)' }}
+                className="bg-card border border-border rounded-2xl p-8 relative overflow-hidden transition-colors duration-300"
               >
-                <div className="absolute top-0 right-0 w-40 h-40 bg-gold/5 blur-[60px] rounded-full" />
-                <p className="text-xs font-mono text-gold uppercase tracking-widest mb-3">
-                  Bitcoin em {period} anos
-                </p>
-                <p className="text-3xl md:text-4xl font-bold text-foreground mb-2">{formatCurrency(btcFinal)}</p>
-                <p className="text-sm text-muted-foreground">
-                  Valorização de <span className="text-gold font-semibold">+{((f.btc - 1) * 100).toFixed(0)}%</span> no período
-                </p>
-                <div className="mt-4 h-1 bg-secondary rounded-full overflow-hidden">
+                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[hsl(220_70%_55%/0.3)] to-transparent" />
+                <div className="absolute top-0 right-0 w-40 h-40 bg-[hsl(220_70%_55%/0.05)] blur-[60px] rounded-full" />
+                <p className="text-xs font-mono text-[hsl(220_70%_55%)] uppercase tracking-widest mb-6">Híbrido (50/50)</p>
+                <p className="text-muted-foreground text-xs mb-1">Patrimônio Final</p>
+                <p className="text-3xl md:text-4xl font-bold text-foreground mb-4">{formatCurrency(hybridFinal)}</p>
+                <div className="space-y-3 border-t border-border pt-4">
+                  <div className="flex justify-between">
+                    <span className="text-xs text-muted-foreground">Ganho Total</span>
+                    <span className="text-sm font-bold text-[hsl(220_70%_55%)]">{formatCurrency(hybridFinal - parsedValue)}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-xs text-muted-foreground">Valorização</span>
+                    <span className="text-sm font-bold text-[hsl(220_70%_55%)]">+{((f.hybrid - 1) * 100).toFixed(0)}%</span>
+                  </div>
+                </div>
+                <div className="mt-5 h-1 bg-secondary rounded-full overflow-hidden">
                   <motion.div
                     initial={{ width: 0 }}
-                    animate={{ width: '100%' }}
-                    transition={{ delay: 0.5, duration: 1.2 }}
-                    className="h-full bg-gold rounded-full"
+                    animate={{ width: `${Math.min(((f.hybrid - 1) / (f.btc - 1)) * 100, 100)}%` }}
+                    transition={{ delay: 0.5, duration: 1.1 }}
+                    className="h-full bg-[hsl(220_70%_55%)] rounded-full"
                   />
                 </div>
               </motion.div>
@@ -242,7 +296,7 @@ const BitcoinVsImovel: React.FC = () => {
                 {formatCurrency(btcFinal - reFinal)}
               </p>
               <p className="text-muted-foreground/60 text-xs font-mono mt-2 uppercase tracking-widest">
-                a mais no Bitcoin
+                a mais no Bitcoin vs Imóvel
               </p>
             </motion.div>
 
@@ -277,6 +331,7 @@ const BitcoinVsImovel: React.FC = () => {
                     <YAxis stroke="hsl(var(--muted-foreground))" fontSize={11} tickFormatter={formatShort} tickLine={false} axisLine={false} width={70} />
                     <Tooltip contentStyle={tooltipStyle} formatter={(value: number, name: string) => [formatCurrency(value), name]} />
                     <Area type="monotone" dataKey="Imóvel" stroke="hsl(var(--muted-foreground))" strokeWidth={2} fill="url(#gradRe)" />
+                    <Area type="monotone" dataKey="Híbrido" stroke="hsl(220 70% 55%)" strokeWidth={2} fill="none" strokeDasharray="6 3" />
                     <Area type="monotone" dataKey="Bitcoin" stroke="hsl(var(--gold))" strokeWidth={3} fill="url(#gradBtc)" />
                   </AreaChart>
                 </ResponsiveContainer>
@@ -284,6 +339,9 @@ const BitcoinVsImovel: React.FC = () => {
               <div className="flex justify-center gap-8 mt-4 text-xs text-muted-foreground">
                 <span className="flex items-center gap-2">
                   <span className="w-3 h-[2px] bg-muted-foreground rounded-full inline-block" /> Imóvel
+                </span>
+                <span className="flex items-center gap-2">
+                  <span className="w-3 h-[2px] bg-[hsl(220_70%_55%)] rounded-full inline-block" /> Híbrido
                 </span>
                 <span className="flex items-center gap-2">
                   <span className="w-3 h-[2px] bg-gold rounded-full inline-block" /> Bitcoin
