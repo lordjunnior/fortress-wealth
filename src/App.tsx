@@ -11,6 +11,7 @@ import Bitcoin from "./pages/Bitcoin";
 import Filosofia from "./pages/Filosofia";
 import Saida from "./pages/Saida";
 import Ferramentas from "./pages/Ferramentas";
+import Gateway from "./pages/Gateway";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -29,6 +30,7 @@ const App = () => (
           <Route path="/bitcoin" element={<Bitcoin />} />
           <Route path="/filosofia" element={<Filosofia />} />
           <Route path="/saida" element={<Saida />} />
+          <Route path="/saida/gateway" element={<Gateway />} />
           <Route path="/ferramentas" element={<Ferramentas />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
