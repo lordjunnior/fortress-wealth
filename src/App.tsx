@@ -21,6 +21,7 @@ import Gateway from "./pages/Gateway";
 import PixCripto from "./pages/PixCripto";
 import Audiobooks from "./pages/Audiobooks";
 import Ebooks from "./pages/Ebooks";
+import SilencioQueda from "./pages/SilencioQueda";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -50,6 +51,7 @@ const App = () => (
           <Route path="/pix-cripto" element={<PixCripto />} />
           <Route path="/audiobooks" element={<Audiobooks />} />
           <Route path="/ebooks" element={<Ebooks />} />
+          <Route path="/silencio-queda" element={<SilencioQueda />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
