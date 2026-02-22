@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, User } from "lucide-react";
 
 const avatars = [
   "bg-amber-700", "bg-amber-800", "bg-amber-600", "bg-amber-900", "bg-amber-500",
@@ -87,9 +87,7 @@ const HeroSection = () => {
                 key={i}
                 className={`w-8 h-8 rounded-full ${bg} border-2 border-background flex items-center justify-center`}
               >
-                <span className="text-[9px] font-bold text-white/80">
-                  {String.fromCharCode(65 + i)}
-                </span>
+                <User className="w-4 h-4 text-white/80" />
               </div>
             ))}
           </div>
