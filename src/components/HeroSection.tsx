@@ -1,9 +1,5 @@
 import { motion } from "framer-motion";
-import { ChevronDown, User } from "lucide-react";
-
-const avatars = [
-  "bg-amber-700", "bg-amber-800", "bg-amber-600", "bg-amber-900", "bg-amber-500",
-];
+import { ChevronDown } from "lucide-react";
 
 const HeroSection = () => {
   const scrollTo = (id: string) => {
@@ -82,13 +78,13 @@ const HeroSection = () => {
           className="flex items-center justify-center gap-3"
         >
           <div className="flex -space-x-2">
-            {avatars.map((bg, i) => (
-              <div
+            {[0, 1, 2, 3, 4].map((i) => (
+              <img
                 key={i}
-                className={`w-8 h-8 rounded-full ${bg} border-2 border-background flex items-center justify-center`}
-              >
-                <User className="w-4 h-4 text-white/80" />
-              </div>
+                src={`https://i.pravatar.cc/100?u=${i}`}
+                alt=""
+                className="w-8 h-8 rounded-full border-2 border-[#070A12] object-cover grayscale opacity-80"
+              />
             ))}
           </div>
           <p className="text-sm text-muted-foreground">
