@@ -38,7 +38,7 @@ const cards = [
     color: 'text-purple-400',
     borderHover: 'hover:border-purple-500/50',
     bg: 'from-purple-500/10 to-purple-500/0',
-    route: undefined,
+    route: '/lightning',
   },
 ];
 
