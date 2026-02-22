@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowLeft, BookOpen, Headphones, Wrench, Download, Play, ArrowRight } from "lucide-react";
+import { ArrowLeft, BookOpen, Headphones, Wrench, Download, Play, ArrowRight, Target } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import NoiseBackground from "@/components/NoiseBackground";
 import AppSidebar from "@/components/AppSidebar";
@@ -173,11 +173,51 @@ const PillarLayout = ({ pillar }: { pillar: Pillar }) => {
               })}
             </div>
 
+            {/* Objectives */}
+            {pillar.objectives && pillar.objectives.length > 0 && (
+              <>
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 1 }}
+                  className="flex items-center gap-4 mt-16 mb-10"
+                >
+                  <div className="h-px flex-1 bg-gradient-to-r from-transparent via-border to-transparent" />
+                  <span className="font-mono text-[10px] tracking-[0.3em] text-muted-foreground">
+                    O QUE VOCÊ VAI EXECUTAR AQUI
+                  </span>
+                  <div className="h-px flex-1 bg-gradient-to-r from-transparent via-border to-transparent" />
+                </motion.div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  {pillar.objectives.map((obj, i) => (
+                    <motion.div
+                      key={i}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: 1.1 + i * 0.15 }}
+                      className="relative pl-6 border-l-2 border-gold/30 group"
+                    >
+                      <div className="absolute left-[-9px] top-0 w-4 h-4 rounded-full bg-background border-2 border-gold flex items-center justify-center">
+                        <Target className="w-2.5 h-2.5 text-gold" />
+                      </div>
+                      <h4 className="font-bold text-sm mb-1.5 group-hover:text-gold transition-colors">
+                        {obj.title}
+                      </h4>
+                      <p className="text-xs text-muted-foreground leading-relaxed">
+                        {obj.description}
+                      </p>
+                    </motion.div>
+                  ))}
+                </div>
+              </>
+            )}
+
             {/* Bottom CTA */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.2 }}
+              transition={{ delay: 1.5 }}
               className="mt-16 text-center"
             >
               <p className="font-mono text-[10px] tracking-[0.3em] text-muted-foreground/50 mb-4">

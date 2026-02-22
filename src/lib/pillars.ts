@@ -11,6 +11,11 @@ export interface PillarResource {
   route?: string;
 }
 
+export interface PillarObjective {
+  title: string;
+  description: string;
+}
+
 export interface Pillar {
   slug: string;
   level: string;
@@ -21,6 +26,7 @@ export interface Pillar {
   impactText: string;
   impactSub: string;
   resources: PillarResource[];
+  objectives?: PillarObjective[];
 }
 
 export const pillars: Pillar[] = [
@@ -28,30 +34,44 @@ export const pillars: Pillar[] = [
     slug: "economia",
     level: "NÍVEL 01",
     badge: "DESPERTAR MONETÁRIO",
-    title: "Economia que Faz Sentido",
+    title: "A Lógica da Pilhagem",
     subtitle: "A base para entender como o sistema fiduciário rouba o tempo do indivíduo.",
     cover: cardEconomia,
-    impactText: "Você trabalha 5 meses por ano só para pagar impostos. E nos outros 7, a inflação devora o que sobrou. Isso não é economia — é extorsão legalizada.",
-    impactSub: "Antes de proteger seu dinheiro, você precisa entender por que ele derrete. Este é o ponto zero da soberania.",
+    impactText: "A maioria das pessoas acredita que a economia é um sistema complexo demais para ser compreendido. Isso é um projeto. A complexidade serve apenas para esconder o fato de que a inflação é um imposto silencioso, cobrado sem votação e sem consentimento.",
+    impactSub: "Seu dinheiro não está perdendo valor por 'forças de mercado'; ele está sendo diluído por design para financiar o agigantamento estatal e o curral bancário. Entender a matemática do dinheiro fiduciário é o primeiro passo para parar de ser a vítima preferencial do sistema.",
     resources: [
       {
         type: "ebook",
         title: "O Caminho da Soberania",
-        description: "O manual que desmonta o mito do dinheiro estatal e revela a engenharia por trás do confisco silencioso.",
+        description: "O guia de entrada para entender a transição do sistema de dívida para o sistema de capital real.",
         action: "Baixar Ebook",
       },
       {
         type: "audio",
         title: "Série: Mitos Econômicos",
-        description: "7 episódios que destroem as mentiras que você aprendeu na escola sobre dinheiro, bancos e governo.",
+        description: "Desmontando as mentiras sistemáticas sobre juros, inflação e PIB em áudios de 15 minutos.",
         action: "Ouvir Agora",
       },
       {
         type: "tool",
         title: "Calculadora da Verdade Salarial",
-        description: "Descubra quanto do seu salário é realmente seu após impostos diretos, indiretos e inflação acumulada.",
+        description: "Coloque o valor da sua hora de trabalho e descubra quanto, em minutos, você trabalha por dia apenas para sustentar a máquina pública.",
         action: "Calcular Agora",
         route: "/taxa-de-fuga",
+      },
+    ],
+    objectives: [
+      {
+        title: "Identificar o Roubo",
+        description: "Aprender a ver a inflação como expropriação de tempo de vida.",
+      },
+      {
+        title: "Mudar a Unidade de Conta",
+        description: "Parar de medir seu patrimônio em uma moeda que derrete e começar a pensar em poder de compra real.",
+      },
+      {
+        title: "Estabelecer Defesa",
+        description: "Baixar o material de apoio para fundamentar sua saída estratégica.",
       },
     ],
   },
