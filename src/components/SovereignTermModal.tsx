@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ShieldAlert, Lock, Skull, Crosshair } from "lucide-react";
 
-const MATRIX_CHARS = "01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン₿⚡";
+const BTC_CHARS = "₿⚡🔑⛓️▓░▒█ SATOSHI NAKAMOTO HODL 21M NOT YOUR KEYS NOT YOUR COINS GENESIS BLOCK ₿₿₿ 00000000000000000 PROOF OF WORK SHA-256 HALVING LIGHTNING ⚡⚡⚡ TRUSTLESS PERMISSIONLESS DECENTRALIZED ₿";
 const TYPEWRITER_SPEED = 28;
 
 const terms = [
@@ -57,24 +57,33 @@ const SovereignTermModal = () => {
     return () => clearInterval(interval);
   }, [visible]);
 
-  // Matrix unlock effect
+  // BTC unlock effect
   const triggerUnlock = useCallback(() => {
     setUnlocking(true);
-    const cols = 40;
-    const rows = 25;
-    const total = cols * rows;
-    const chars: string[] = [];
-    for (let i = 0; i < total; i++) {
-      chars.push(MATRIX_CHARS[Math.floor(Math.random() * MATRIX_CHARS.length)]);
-    }
-    setMatrixChars(chars);
+    const btcLines = [
+      "₿ GENESIS BLOCK: 03/Jan/2009 Chancellor on brink of second bailout for banks",
+      "⚡ BLOCK HEIGHT: 840,000 | HALVING #4 COMPLETE | REWARD: 3.125 BTC",
+      "🔑 NOT YOUR KEYS, NOT YOUR COINS | SELF-CUSTODY ACTIVATED",
+      "₿ SUPPLY: 21,000,000 | MINED: 19,700,000 | REMAINING: 1,300,000",
+      "⚡ LIGHTNING NETWORK: 16,000+ NODES | 5,000+ BTC CAPACITY",
+      "₿ SHA-256 PROOF OF WORK | TRUSTLESS | PERMISSIONLESS | CENSORSHIP-RESISTANT",
+      "🔑 SEED PHRASE GENERATED | 256-BIT ENTROPY | BIP39 COMPLIANT",
+      "₿ DIFFICULTY ADJUSTMENT: EVERY 2,016 BLOCKS | ANTIFRAGILE BY DESIGN",
+      "⚡ TRANSACTION VERIFIED | 6 CONFIRMATIONS | IMMUTABLE LEDGER",
+      "₿ HODL | STACK SATS | RUN YOUR NODE | VERIFY DON'T TRUST",
+    ];
+    const generateScreen = () => {
+      const lines: string[] = [];
+      for (let i = 0; i < 30; i++) {
+        lines.push(btcLines[Math.floor(Math.random() * btcLines.length)]);
+      }
+      return lines;
+    };
+    setMatrixChars(generateScreen());
 
-    // Cycle matrix chars
     const interval = setInterval(() => {
-      setMatrixChars((prev) =>
-        prev.map(() => MATRIX_CHARS[Math.floor(Math.random() * MATRIX_CHARS.length)])
-      );
-    }, 60);
+      setMatrixChars(generateScreen());
+    }, 80);
 
     setTimeout(() => {
       clearInterval(interval);
@@ -119,12 +128,14 @@ const SovereignTermModal = () => {
               exit={{ opacity: 0 }}
               className="absolute inset-0 z-[10000] flex flex-col items-center justify-center overflow-hidden"
             >
-              <div className="absolute inset-0 bg-black/90" />
+              <div className="absolute inset-0 bg-black/95" />
               <div
-                className="absolute inset-0 font-mono text-[10px] leading-[14px] text-green-500/70 break-all p-2 overflow-hidden"
-                style={{ textShadow: "0 0 8px rgba(34,197,94,0.5)" }}
+                className="absolute inset-0 font-mono text-[9px] md:text-[11px] leading-[16px] md:leading-[20px] p-3 overflow-hidden flex flex-col gap-0.5"
+                style={{ color: "hsl(40, 92%, 56%)", textShadow: "0 0 8px rgba(234,179,8,0.4)" }}
               >
-                {matrixChars.join("")}
+                {matrixChars.map((line, i) => (
+                  <div key={i} className="whitespace-nowrap opacity-70">{line}</div>
+                ))}
               </div>
               <motion.div
                 initial={{ opacity: 0, scale: 0.5 }}
@@ -139,10 +150,10 @@ const SovereignTermModal = () => {
                     textShadow: "0 0 30px rgba(234,179,8,0.6), 0 0 60px rgba(234,179,8,0.3)",
                   }}
                 >
-                  ACESSO AUTORIZADO
+                  ₿ ACESSO AUTORIZADO
                 </p>
-                <p className="font-mono text-xs text-green-500 mt-3 tracking-[0.3em] animate-pulse">
-                  SISTEMA DESTRAVADO
+                <p className="font-mono text-xs mt-3 tracking-[0.3em] animate-pulse" style={{ color: "hsl(var(--gold))" }}>
+                  SOBERANIA ATIVADA · BLOCO GÊNESIS CONFIRMADO
                 </p>
               </motion.div>
             </motion.div>
