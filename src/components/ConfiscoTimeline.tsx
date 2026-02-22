@@ -2,6 +2,11 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Vault, Lock, AlertTriangle, BookOpen, Bitcoin, Scale, Shield, ArrowDown } from "lucide-react";
 
+import cardEconomia from "@/assets/card-economia.jpg";
+import cardBitcoin from "@/assets/card-bitcoin.jpg";
+import cardFilosofia from "@/assets/card-filosofia.jpg";
+import cardEstrategias from "@/assets/card-estrategias.jpg";
+
 const timelineEvents = [
   {
     date: "15/Mar/1990",
@@ -42,10 +47,10 @@ const bulletPoints = [
 ];
 
 const connectorCards = [
-  { icon: BookOpen, title: "Economia que Faz Sentido", desc: "A lógica da pilhagem estatal." },
-  { icon: Bitcoin, title: "Bitcoin sem Enrolação", desc: "Autocustódia e proteção real." },
-  { icon: Scale, title: "Filosofia da Liberdade", desc: "Ética de propriedade e mercado." },
-  { icon: Shield, title: "Estratégias de Saída", desc: "Ferramentas de independência operacional." },
+  { icon: BookOpen, title: "Economia que Faz Sentido", desc: "A lógica da pilhagem estatal.", image: cardEconomia },
+  { icon: Bitcoin, title: "Bitcoin sem Enrolação", desc: "Autocustódia e proteção real.", image: cardBitcoin },
+  { icon: Scale, title: "Filosofia da Liberdade", desc: "Ética de propriedade e mercado.", image: cardFilosofia },
+  { icon: Shield, title: "Estratégias de Saída", desc: "Ferramentas de independência operacional.", image: cardEstrategias },
 ];
 
 const ConfiscoTimeline = () => {
@@ -182,13 +187,20 @@ const ConfiscoTimeline = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.4, delay: 0.7 + i * 0.1 }}
-                  whileHover={{ y: -4, transition: { duration: 0.25 } }}
-                  className="group relative rounded-lg border border-border bg-background p-6 cursor-pointer overflow-hidden transition-colors duration-300 hover:border-gold/30"
+                  whileHover={{ y: -6, transition: { duration: 0.3 } }}
+                  className="group relative rounded-lg border border-border bg-background cursor-pointer overflow-hidden transition-colors duration-300 hover:border-gold/30 aspect-[3/4]"
                 >
-                  {/* Subtle gradient glow on hover */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-gold/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <div className="relative z-10">
-                    <div className="w-10 h-10 rounded-md border border-border bg-card flex items-center justify-center mb-4 group-hover:border-gold/30 transition-colors duration-300">
+                  {/* Background image with fade */}
+                  <img
+                    src={card.image}
+                    alt=""
+                    className="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-35 transition-opacity duration-700 scale-105 group-hover:scale-110"
+                  />
+                  {/* Dark overlay gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/40" />
+                  {/* Content */}
+                  <div className="relative z-10 h-full flex flex-col justify-end p-6">
+                    <div className="w-10 h-10 rounded-md border border-border/50 bg-card/80 backdrop-blur-sm flex items-center justify-center mb-4 group-hover:border-gold/30 transition-colors duration-300">
                       <Icon className="w-5 h-5 text-muted-foreground group-hover:text-gold transition-colors duration-300" />
                     </div>
                     <h4 className="text-sm font-semibold mb-1.5 group-hover:text-gold transition-colors duration-300">{card.title}</h4>
