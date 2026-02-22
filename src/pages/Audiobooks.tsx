@@ -8,6 +8,7 @@ import coverPaiRico from '@/assets/cover-pai-rico.jpg';
 import coverPadraoBitcoin from '@/assets/cover-padrao-bitcoin.jpg';
 import coverEticaLiberdade from '@/assets/cover-etica-liberdade.jpg';
 import coverAnatomiaEstado from '@/assets/cover-anatomia-estado.jpg';
+import coverRiquezaNacoes from '@/assets/cover-riqueza-nacoes.jpg';
 
 interface AudiobooksProps {
   onPlay?: (track: any) => void;
@@ -53,6 +54,16 @@ const AUDIOBOOKS_DB = [
     coverGradient: 'bg-gradient-to-br from-red-900 via-red-600 to-black',
     accent: 'text-red-500',
     coverImage: coverAnatomiaEstado
+  },
+  {
+    id: 'riqueza-nacoes',
+    title: 'A Riqueza das Nações',
+    author: 'Adam Smith',
+    duration: '18:45:00',
+    category: 'Economia Clássica',
+    coverGradient: 'bg-gradient-to-br from-amber-900 via-amber-700 to-black',
+    accent: 'text-amber-500',
+    coverImage: coverRiquezaNacoes
   }
 ];
 
