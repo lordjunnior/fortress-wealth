@@ -1,6 +1,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { Copy, Check, Zap } from "lucide-react";
+import qrCodeImage from "@/assets/qrcode-lightning.jpeg";
 
 const LIGHTNING_ADDRESS = "securecorn53@walletofsatoshi.com";
 
@@ -25,36 +26,38 @@ const FooterSection = () => {
           transition={{ duration: 0.7 }}
           className="max-w-3xl mx-auto text-center"
         >
-          <p className="pre-title">SUSTENTABILIDADE</p>
           <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-4">
-            Fortalecer a <span className="text-gradient-gold">Infraestrutura</span>
+            Apoie Este Projeto <span className="text-gradient-gold">Independente</span>
           </h2>
           <p className="text-muted-foreground leading-relaxed mb-8 max-w-xl mx-auto">
-            Diferente do sistema tradicional, aqui não há anúncios, venda de dados ou
-            cursos de "fique rico". Valor se paga com valor. Se os manuais e aplicativos
-            foram úteis para a sua blindagem patrimonial, considere manter o projeto ativo
-            para os próximos enviando satoshis diretamente.
+            Sem anúncios. Sem rastreadores. Sem paywall. Este projeto é mantido de forma
+            aberta, direta e voluntária. Se o conteúdo, as ferramentas e os estudos
+            publicados aqui geraram valor para você, existe uma forma simples de fortalecer
+            essa missão agora.
           </p>
 
-          {/* Lightning address */}
-          <div className="card-wealth inline-flex items-center gap-3 mb-6">
-            <Zap className="w-4 h-4 text-gold flex-shrink-0" />
-            <code className="font-mono text-sm text-foreground select-all break-all">
-              {LIGHTNING_ADDRESS}
-            </code>
+          {/* QR Code */}
+          <div className="mb-6">
+            <img
+              src={qrCodeImage}
+              alt="QR Code Lightning"
+              className="w-48 h-48 mx-auto rounded-lg"
+            />
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-            <button
-              onClick={handleCopy}
-              className="px-6 py-3 rounded-lg border border-border text-foreground font-medium text-sm hover:border-gold-dim transition-all duration-300 flex items-center gap-2"
-            >
-              {copied ? <Check className="w-4 h-4 text-chart-green" /> : <Copy className="w-4 h-4" />}
-              {copied ? "Copiado!" : "Copiar Endereço"}
-            </button>
-            <button className="px-6 py-3 rounded-lg gradient-gold text-primary-foreground font-semibold text-sm glow-gold hover:glow-gold-strong transition-all duration-300 flex items-center gap-2">
+          {/* Lightning address */}
+          <div className="inline-flex items-center gap-2 mb-6 cursor-pointer" onClick={handleCopy}>
+            <code className="font-mono text-sm text-muted-foreground select-all break-all">
+              {LIGHTNING_ADDRESS}
+            </code>
+            {copied ? <Check className="w-4 h-4 text-chart-green" /> : <Copy className="w-4 h-4 text-muted-foreground" />}
+          </div>
+          {copied && <p className="text-xs text-chart-green mb-4">Copiado!</p>}
+
+          <div>
+            <button className="px-6 py-3 rounded-lg gradient-gold text-primary-foreground font-semibold text-sm glow-gold hover:glow-gold-strong transition-all duration-300 flex items-center gap-2 mx-auto">
               <Zap className="w-4 h-4" />
-              ENVIAR SATOSHIS via QR
+              Apoiar com Lightning
             </button>
           </div>
         </motion.div>
