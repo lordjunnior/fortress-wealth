@@ -1,181 +1,124 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import {
-  ArrowLeft, Download, Network, Users,
-  ShieldAlert, Lock, RefreshCw, EyeOff, ArrowRight, ServerOff, Shield
-} from 'lucide-react';
+import { ArrowLeft, Download, Repeat, Landmark, ShieldAlert } from 'lucide-react';
 
-const fadeUp = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-};
-
-const EconomiaParalela: React.FC = () => {
-  const handleDownload = () => {
-    alert("Iniciando download do Guia Operacional P2P...");
-  };
+export default function EconomiaParalela() {
+  React.useEffect(() => { window.scrollTo(0, 0); }, []);
 
   return (
-    <article className="min-h-screen bg-background pt-28 pb-12 px-4 animate-fade-in font-sans">
-
-      {/* Navegação */}
-      <div className="max-w-5xl mx-auto mb-12">
-        <Link to="/educacao" className="text-muted-foreground hover:text-sky-400 flex items-center gap-2 text-xs uppercase tracking-widest transition-colors w-fit group">
-          <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" /> Voltar ao Arsenal
+    <div className="min-h-screen bg-[#070A12] text-white font-sans selection:bg-red-600 pb-32">
+      <div className="relative z-10 max-w-5xl mx-auto px-6 pt-28">
+        
+        <Link to="/arsenal" className="inline-flex items-center gap-2 text-slate-600 hover:text-white mb-16 text-[10px] font-black uppercase tracking-[0.4em]">
+          <ArrowLeft size={14} /> Voltar à Central
         </Link>
-      </div>
 
-      {/* Hero Section */}
-      <motion.header {...fadeUp} transition={{ duration: 0.6 }} className="max-w-5xl mx-auto mb-20 border-b border-border/50 pb-12">
-        <div className="inline-block px-3 py-1 mb-6 border border-sky-500/20 rounded bg-sky-500/5">
-          <span className="text-sky-400 text-[10px] font-bold uppercase tracking-[0.2em]">Operações Off-Grid</span>
-        </div>
-        <h1 className="text-4xl md:text-6xl font-serif font-bold text-foreground mb-6 leading-tight">
-          Economia <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-300 via-sky-500 to-sky-700">Paralela</span>
-        </h1>
-        <h2 className="text-xl text-muted-foreground font-light max-w-3xl leading-relaxed mb-10">
-          O sistema fiduciário é uma ferramenta de extração, não um destino. <strong className="text-foreground font-medium">Aprenda a entrar e sair dele sem deixar rastros permanentes</strong>, operando fora dos radares de vigilância bancária.
-        </h2>
-
-        <button
-          onClick={handleDownload}
-          className="inline-flex items-center gap-3 px-8 py-4 bg-sky-600 hover:bg-sky-500 text-white font-bold rounded-xl transition-all transform hover:-translate-y-1 shadow-[0_0_25px_rgba(37,99,235,0.3)] uppercase tracking-wide text-sm"
-        >
-          <Download className="w-5 h-5" /> Baixar Guia Operacional
-        </button>
-      </motion.header>
-
-      {/* O Trio da Blindagem */}
-      <motion.section {...fadeUp} transition={{ duration: 0.6, delay: 0.1 }} className="max-w-5xl mx-auto mb-24">
-        <div className="text-center mb-16">
-          <h3 className="text-3xl md:text-4xl font-serif text-foreground mb-4">O Trio da Blindagem</h3>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            Soberania não se constrói apenas comprando Bitcoin. Se constrói cortando as pontes que ligam o seu patrimônio à sua identidade civil.
+        <header className="mb-24">
+          <span className="text-red-600 font-black uppercase tracking-[0.5em] text-xs mb-4 block">Soberania P2P</span>
+          <h1 className="text-6xl md:text-8xl font-black tracking-tighter uppercase mb-6 leading-tight">
+            Economia<br/><span className="text-red-600 italic underline decoration-white/10">Paralela</span>
+          </h1>
+          <p className="text-2xl font-bold text-slate-300 leading-tight max-w-3xl">
+            O sistema fiduciário é uma ferramenta, não um destino. Aprenda a entrar e sair dele sem deixar rastros permanentes e sem pedir permissão.
           </p>
-        </div>
+        </header>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {[
-            {
-              icon: ServerOff,
-              color: 'text-sky-500',
-              hoverBorder: 'hover:border-sky-500/30',
-              glow: 'group-hover:bg-sky-500/10',
-              title: '1. Aquisição sem KYC',
-              desc: 'Comprar em corretora tradicional (Exchange) é se registrar voluntariamente em um banco de dados de confisco. Utilize plataformas peer-to-peer (P2P) como BISQ e RoboSats para acumular satoshis anonimamente.',
-            },
-            {
-              icon: RefreshCw,
-              color: 'text-chart-green',
-              hoverBorder: 'hover:border-chart-green/30',
-              glow: 'group-hover:bg-chart-green/10',
-              title: '2. Economia Circular',
-              desc: 'A verdadeira saída da Matrix não é converter BTC de volta para Reais. É usar Bitcoin como unidade de conta direta. Ofereça seu trabalho por satoshis. Compre produtos de outros soberanos. Ignore o banco.',
-            },
-            {
-              icon: ShieldAlert,
-              color: 'text-destructive',
-              hoverBorder: 'hover:border-destructive/30',
-              glow: 'group-hover:bg-destructive/10',
-              title: '3. OpSec (Privacidade)',
-              desc: 'Privacidade não é crime, é legítima defesa. Compartimente sua vida digital. Use e-mails alias descartáveis (ex: SimpleLogin), navegue via rede Tor e mantenha o bico fechado sobre o seu patrimônio (Silêncio Operacional).',
-            },
-          ].map((pillar) => {
-            const Icon = pillar.icon;
-            return (
-              <div key={pillar.title} className={`bg-card border border-border rounded-2xl p-8 ${pillar.hoverBorder} transition-colors group relative overflow-hidden`}>
-                <div className={`absolute top-0 right-0 w-48 h-48 bg-transparent blur-[80px] rounded-full pointer-events-none ${pillar.glow}`} />
-                <div className="relative z-10">
-                  <div className={`p-4 bg-background border border-border rounded-xl ${pillar.color} w-fit mb-6`}>
-                    <Icon className="w-6 h-6" />
+        {/* SEÇÃO 01: O MOTOR BISQ */}
+        <section className="mb-32">
+          <div className="bg-[#0B0F19] border border-white/5 p-8 md:p-12 rounded-3xl relative overflow-hidden group">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+              <div>
+                <h3 className="text-3xl font-black uppercase mb-6 tracking-tighter italic">BISQ: A Saída de Emergência</h3>
+                <p className="text-slate-400 font-medium leading-relaxed mb-6">
+                  BISQ é um software open-source, não um site. Ele conecta compradores e vendedores via Tor. Não há CEO, não há conta bancária central, não há KYC.
+                </p>
+                <div className="space-y-4 mb-8">
+                  <div className="flex gap-4">
+                    <div className="h-6 w-6 rounded-full bg-red-600 flex items-center justify-center text-[10px] font-black italic shrink-0">!</div>
+                    <p className="text-sm text-slate-300"><strong className="text-white uppercase">Fiat (BRL):</strong> O dinheiro viaja entre contas bancárias (PIX/TED). O estado vê a transferência, mas não o motivo.</p>
                   </div>
-                  <h4 className="text-xl font-bold text-foreground mb-3">{pillar.title}</h4>
-                  <p className="text-muted-foreground text-sm leading-relaxed">{pillar.desc}</p>
+                  <div className="flex gap-4">
+                    <div className="h-6 w-6 rounded-full bg-red-600 flex items-center justify-center text-[10px] font-black italic shrink-0">!</div>
+                    <p className="text-sm text-slate-300"><strong className="text-white uppercase">Bitcoin (BTC):</strong> Travado em Multisig 2-de-2. A matemática garante a entrega, não a confiança.</p>
+                  </div>
                 </div>
+                <button className="bg-white text-black font-black px-10 py-5 rounded-none text-xs uppercase tracking-widest hover:bg-red-600 hover:text-white transition-all flex items-center gap-3 animate-pulse">
+                  <Download size={18} /> Baixar Guia BISQ
+                </button>
               </div>
-            );
-          })}
-        </div>
-      </motion.section>
-
-      {/* Mecânica BISQ */}
-      <motion.section {...fadeUp} transition={{ duration: 0.6, delay: 0.2 }} className="max-w-5xl mx-auto mb-24 bg-gradient-to-br from-card to-background border border-sky-500/20 rounded-3xl p-8 md:p-12 relative overflow-hidden shadow-2xl">
-        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-sky-500 to-transparent opacity-50" />
-
-        <div className="flex items-center gap-4 mb-8">
-          <div className="p-3 bg-sky-500/10 rounded-lg border border-sky-500/20">
-            <Network className="w-6 h-6 text-sky-400" />
+              <div className="bg-[#070A12] border border-white/5 p-8 rounded-xl">
+                 <div className="text-[10px] font-black text-slate-600 uppercase mb-8 tracking-widest text-center">Protocolo de Segurança BISQ</div>
+                 <div className="flex flex-col items-center gap-4">
+                    <div className="w-full h-12 border border-dashed border-slate-700 flex items-center justify-center text-[10px] uppercase font-black text-slate-500 italic">Usuário A (Comprador)</div>
+                    <div className="h-8 w-px bg-red-600"></div>
+                    <div className="w-20 h-20 rounded-full border-2 border-red-600 flex items-center justify-center text-red-600 font-black italic text-xs text-center px-2">Multisig 2-de-2</div>
+                    <div className="h-8 w-px bg-red-600"></div>
+                    <div className="w-full h-12 border border-dashed border-slate-700 flex items-center justify-center text-[10px] uppercase font-black text-slate-500 italic">Usuário B (Vendedor)</div>
+                 </div>
+              </div>
+            </div>
           </div>
-          <h3 className="text-3xl font-serif text-foreground">A Máquina de Liquidez: BISQ</h3>
-        </div>
+        </section>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6">
-            <p className="text-muted-foreground leading-relaxed text-lg">
-              O BISQ não é um site onde você faz login. É um software de código aberto rodando no seu computador, conectado diretamente à rede Tor. <strong className="text-foreground">Não há CEO, não há conta bancária central para o governo bloquear e não há exigência de documentos.</strong>
-            </p>
-            <div className="bg-background/50 border border-border p-6 rounded-xl">
-              <h4 className="text-foreground font-bold mb-4 uppercase tracking-widest text-xs flex items-center gap-2">
-                <Lock className="w-4 h-4 text-sky-500" /> Como o risco é eliminado?
-              </h4>
-              <p className="text-muted-foreground text-sm">
-                Quando você aceita uma oferta, o Bitcoin do vendedor não vai para o BISQ. Ele vai para um contrato inteligente na Blockchain (<strong className="text-foreground">Multisig 2-de-2</strong>). O BTC só é liberado para a sua carteira quando o vendedor confirma que o seu PIX ou TED caiu direto na conta bancária dele.
+        {/* SEÇÃO 02: ECONOMIA CIRCULAR */}
+        <section className="mb-32">
+          <h2 className="text-3xl font-black uppercase mb-12 tracking-tighter">Trocas Voluntárias e Circularidade</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="p-10 bg-zinc-900 border border-white/5 hover:border-red-600/30 transition-all">
+              <Repeat className="text-red-600 mb-6" size={32} />
+              <h4 className="text-xl font-black uppercase mb-4 tracking-tight italic">O Fim do Intermediário</h4>
+              <p className="text-slate-500 text-sm leading-relaxed">
+                A melhor forma de obter BTC é oferecendo bens e serviços por ele. Isso cria uma economia circular que ignora completamente o sistema bancário. Se você é designer, programador ou marceneiro: <strong className="text-white">cobre em Sats.</strong>
+              </p>
+            </div>
+            <div className="p-10 bg-zinc-900 border border-white/5 hover:border-red-600/30 transition-all">
+              <Landmark className="text-zinc-600 mb-6" size={32} />
+              <h4 className="text-xl font-black uppercase mb-4 tracking-tight italic text-zinc-500 underline decoration-red-600/50">Vigilância Passiva</h4>
+              <p className="text-zinc-600 text-sm leading-relaxed">
+                Entenda que toda transação bancária é vigiada e armazenada para sempre. O PIX não é de graça; o preço é a sua privacidade absoluta.
               </p>
             </div>
           </div>
+        </section>
 
-          <div className="space-y-4">
-            {[
-              { icon: ServerOff, title: 'Descentralização Real', desc: 'Se um servidor cair, nada acontece. A rede é sustentada pelos próprios usuários (nodes).', accent: false },
-              { icon: EyeOff, title: 'Sem Rastro de Compra', desc: 'O seu banco acha que você fez um PIX para um conhecido. Ele não sabe que foi uma compra de BTC.', accent: true },
-              { icon: Shield, title: 'Custódia Imediata', desc: 'Ao final da operação, os satoshis vão direto para a sua Hardware Wallet. Nunca ficam parados na plataforma.', accent: false },
-            ].map((item) => {
-              const Icon = item.icon;
-              return (
-                <div key={item.title} className="p-4 rounded-xl border border-border bg-card flex items-start gap-4">
-                  <div className={`p-2 rounded mt-1 ${item.accent ? 'bg-sky-500/10 border border-sky-500/20 text-sky-500' : 'bg-secondary text-muted-foreground'}`}>
-                    <Icon className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <h5 className="text-foreground font-bold text-sm">{item.title}</h5>
-                    <p className="text-muted-foreground text-xs mt-1">{item.desc}</p>
-                  </div>
-                </div>
-              );
-            })}
+        {/* SEÇÃO 03: MATRIZ DE OPSEC */}
+        <section className="mb-32">
+          <div className="flex items-center gap-4 mb-12">
+            <ShieldAlert className="text-red-600" size={24} />
+            <h2 className="text-2xl font-black uppercase tracking-tight italic text-red-600 underline decoration-white/20">Protocolos de Silêncio e Compartimentação</h2>
           </div>
-        </div>
-      </motion.section>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="p-8 border border-white/5 bg-[#0B0F19] group">
+              <h5 className="font-black uppercase text-xs text-red-600 mb-4 tracking-widest italic">01. Silêncio</h5>
+              <p className="text-sm text-slate-400 font-bold leading-relaxed italic">Não fale sobre suas posses. No mundo real, o maior risco de ataque não é o hacker, é o sequestrador.</p>
+            </div>
+            <div className="p-8 border border-white/5 bg-[#0B0F19] group">
+              <h5 className="font-black uppercase text-xs text-red-600 mb-4 tracking-widest italic">02. Identidade</h5>
+              <p className="text-sm text-slate-400 font-bold leading-relaxed italic">Use e-mails específicos e dedicados para suas operações. Compartimentação é a chave para não ser rastreado.</p>
+            </div>
+            <div className="p-8 border border-white/5 bg-[#0B0F19] group">
+              <h5 className="font-black uppercase text-xs text-red-600 mb-4 tracking-widest italic">03. OpSec Física</h5>
+              <p className="text-sm text-slate-400 font-bold leading-relaxed italic">Nunca instale aplicativos de carteiras "quentes" em aparelhos que você carrega na rua vinculados ao seu rosto ou digital.</p>
+            </div>
+          </div>
+        </section>
 
-      {/* Footer Soberano */}
-      <footer className="max-w-5xl mx-auto text-center pt-12 border-t border-border/50 space-y-6 mt-12">
-        <p className="text-2xl font-serif text-foreground/80">Not your keys, not your money.</p>
-        <div className="text-muted-foreground text-sm space-y-1">
-          <p>Quem não assume a custódia aceita a dependência.</p>
-          <p>Autocustódia exige responsabilidade.</p>
-        </div>
-        <div className="w-12 h-[1px] bg-border mx-auto my-6" />
-        <p className="text-gold/80 text-sm font-medium">
-          Dependência financeira nunca foi acidente. Sempre foi projeto.
-        </p>
-        <p className="text-[10px] text-muted-foreground/50 uppercase tracking-widest pt-4">
-          Lord Junnior © 2026
-        </p>
-        <div className="flex items-center justify-center gap-6 pt-8 pb-8">
-          <Link to="#" className="text-xs text-muted-foreground/50 hover:text-gold uppercase tracking-wider transition-colors">Termos</Link>
-          <span className="text-border">·</span>
-          <Link to="#" className="text-xs text-muted-foreground/50 hover:text-gold uppercase tracking-wider transition-colors">Privacidade</Link>
-          <span className="text-border">·</span>
-          <Link to="#" className="text-xs text-muted-foreground/50 hover:text-gold uppercase tracking-wider transition-colors flex items-center gap-1">
-            <Lock className="w-3 h-3" /> PGP
-          </Link>
-        </div>
-      </footer>
-
-    </article>
+        {/* RODAPÉ DE BLINDAGEM FINAL */}
+        <footer className="pt-20 border-t border-white/5 text-center">
+          <div className="space-y-6">
+            <p className="text-slate-600 font-black text-xs uppercase tracking-[0.8em] mb-12 italic">Not your keys, not your money.</p>
+            <div className="space-y-4">
+              <p className="text-3xl md:text-5xl font-black uppercase tracking-tighter italic">Quem não assume a custódia aceita a dependência.</p>
+              <p className="text-red-600 font-black uppercase text-xl md:text-2xl tracking-tighter">Autocustódia exige responsabilidade.</p>
+            </div>
+          </div>
+          <div className="mt-20">
+            <p className="text-slate-600 font-bold uppercase text-[10px] tracking-widest mb-4">Lembrem-se: Dependência financeira nunca foi acidente.</p>
+            <p className="text-white font-black uppercase text-5xl md:text-7xl tracking-tighter leading-none italic">Sempre foi projeto.</p>
+            <p className="text-slate-900 text-[10px] font-black mt-20 uppercase tracking-[0.5em]">Lord Junnior © 2026</p>
+          </div>
+        </footer>
+      </div>
+    </div>
   );
-};
-
-export default EconomiaParalela;
+}
