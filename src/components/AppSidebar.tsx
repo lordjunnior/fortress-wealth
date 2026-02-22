@@ -12,7 +12,7 @@ interface MenuItem {
 const menuItems: MenuItem[] = [
   { icon: LayoutGrid, label: "Manifesto", targetId: "manifesto" },
   { icon: BookOpen, label: "Educação", route: "/educacao" },
-  { icon: Headphones, label: "Audioteca", targetId: "audioteca" },
+  { icon: Headphones, label: "Audioteca", route: "/audiobooks" },
   { icon: Wrench, label: "Ferramentas", route: "/ferramentas" },
   { icon: QrCode, label: "PIX Crypto", route: "/pix-cripto" },
 ];
