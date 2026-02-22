@@ -97,6 +97,30 @@ const GeradorEntropy: React.FC = () => {
         </div>
       </div>
 
+      {/* Security announcement */}
+      <div className="mb-10 rounded-2xl border border-destructive/40 bg-destructive/5 p-6 md:p-8 relative overflow-hidden">
+        <div className="absolute inset-0 bg-destructive/5 animate-pulse pointer-events-none" />
+        <div className="relative z-10">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="p-2 bg-destructive/20 rounded-lg">
+              <AlertTriangle className="w-5 h-5 text-destructive" />
+            </div>
+            <h3 className="text-lg font-bold text-destructive uppercase tracking-wider">⚠️ Aviso Crítico de Segurança</h3>
+          </div>
+          <p className="text-foreground text-sm leading-relaxed mb-4">
+            Criar uma seed phrase de 24 palavras com <strong>aleatoriedade real</strong> exige que o processo não dependa de computadores, que podem ter algoritmos previsíveis. O padrão utilizado pela maioria das carteiras (BIP39) utiliza uma lista de <strong>2048 palavras</strong> específicas.
+          </p>
+          <p className="text-muted-foreground text-sm leading-relaxed mb-5">
+            Aqui está um método seguro para gerar suas 24 palavras offline usando <strong>dados ou moedas</strong>.
+          </p>
+          <div className="bg-destructive/10 border border-destructive/30 rounded-xl p-4">
+            <p className="text-destructive text-xs font-bold leading-relaxed">
+              Nunca gere sua seed em um site online, nem tire foto, nem armazene no computador/celular. Escreva as palavras em papel ou grave em metal.
+            </p>
+          </div>
+        </div>
+      </div>
+
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
 
         <div className="flex flex-col gap-6">
