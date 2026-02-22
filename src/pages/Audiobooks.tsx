@@ -4,6 +4,10 @@ import {
   ArrowLeft, Play, Pause, Clock, 
   Headphones, Lock, Volume2, FastForward, Rewind, BarChart2
 } from 'lucide-react';
+import coverPaiRico from '@/assets/cover-pai-rico.jpg';
+import coverPadraoBitcoin from '@/assets/cover-padrao-bitcoin.jpg';
+import coverEticaLiberdade from '@/assets/cover-etica-liberdade.jpg';
+import coverAnatomiaEstado from '@/assets/cover-anatomia-estado.jpg';
 
 interface AudiobooksProps {
   onPlay?: (track: any) => void;
@@ -17,7 +21,8 @@ const AUDIOBOOKS_DB = [
     duration: '16:31:00',
     category: 'Educação Financeira',
     coverGradient: 'bg-gradient-to-br from-emerald-900 via-emerald-600 to-black',
-    accent: 'text-emerald-500'
+    accent: 'text-emerald-500',
+    coverImage: coverPaiRico
   },
   {
     id: 'padrao-bitcoin',
@@ -26,7 +31,8 @@ const AUDIOBOOKS_DB = [
     duration: '10:45:00',
     category: 'Soberania Monetária',
     coverGradient: 'bg-gradient-to-br from-orange-900 via-orange-600 to-black',
-    accent: 'text-orange-500'
+    accent: 'text-orange-500',
+    coverImage: coverPadraoBitcoin
   },
   {
     id: 'etica-liberdade',
@@ -35,7 +41,8 @@ const AUDIOBOOKS_DB = [
     duration: '14:20:00',
     category: 'Fundamentos',
     coverGradient: 'bg-gradient-to-br from-blue-900 via-blue-600 to-black',
-    accent: 'text-blue-500'
+    accent: 'text-blue-500',
+    coverImage: coverEticaLiberdade
   },
   {
     id: 'anatomia-estado',
@@ -44,7 +51,8 @@ const AUDIOBOOKS_DB = [
     duration: '02:15:00',
     category: 'Fundamentos',
     coverGradient: 'bg-gradient-to-br from-red-900 via-red-600 to-black',
-    accent: 'text-red-500'
+    accent: 'text-red-500',
+    coverImage: coverAnatomiaEstado
   }
 ];
 
@@ -97,8 +105,8 @@ const Audiobooks: React.FC<AudiobooksProps> = ({ onPlay }) => {
                 </div>
                 
                 <div className="w-full aspect-square rounded-3xl mb-8 relative overflow-hidden shadow-2xl border border-white/5 group">
-                   <div className={`absolute inset-0 ${activeTrack.coverGradient} opacity-80 transition-all duration-700`}></div>
-                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                    <img src={activeTrack.coverImage} alt={activeTrack.title} className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
                    <button 
                      onClick={togglePlayState}
                      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 bg-black/40 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center text-white hover:scale-110 hover:bg-gold-500 hover:text-black hover:border-gold-500 transition-all duration-300 shadow-[0_0_30px_rgba(0,0,0,0.5)] group-hover:shadow-[0_0_40px_rgba(234,179,8,0.3)]"
@@ -108,7 +116,7 @@ const Audiobooks: React.FC<AudiobooksProps> = ({ onPlay }) => {
                 </div>
 
                 <div>
-                   <h1 className="text-4xl font-serif font-bold text-white mb-2 leading-tight tracking-tight">
+                   <h1 className="text-4xl font-sans font-black text-white mb-2 leading-tight tracking-tight">
                      {activeTrack.title}
                    </h1>
                    <p className="text-xl text-slate-400 font-light mb-6">
@@ -137,7 +145,7 @@ const Audiobooks: React.FC<AudiobooksProps> = ({ onPlay }) => {
           {/* LADO DIREITO: Tracklist */}
           <div className="lg:col-span-7 pt-4 lg:pt-14">
              <div className="flex items-center justify-between mb-8 border-b border-white/5 pb-4">
-                <h2 className="text-2xl font-serif text-white">Acervo Sonoro</h2>
+                <h2 className="text-2xl font-sans font-extrabold text-white tracking-tight">Acervo Sonoro</h2>
                 <span className="text-xs text-slate-500 font-mono">{AUDIOBOOKS_DB.length} Obras</span>
              </div>
 
@@ -165,7 +173,9 @@ const Audiobooks: React.FC<AudiobooksProps> = ({ onPlay }) => {
                            )}
                         </div>
 
-                        <div className={`w-12 h-12 rounded-lg shrink-0 ${book.coverGradient} shadow-md`}></div>
+                         <div className="w-12 h-12 rounded-lg shrink-0 overflow-hidden shadow-md">
+                            <img src={book.coverImage} alt={book.title} className="w-full h-full object-cover" />
+                         </div>
 
                         <div className="flex-1 min-w-0">
                            <h3 className={`text-base font-bold truncate transition-colors ${isActive ? 'text-gold-500' : 'text-white group-hover:text-gold-400'}`}>
