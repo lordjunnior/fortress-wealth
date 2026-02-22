@@ -26,7 +26,7 @@ const BitcoinVsImovel: React.FC = () => {
       <div className="max-w-4xl mx-auto px-4 py-12">
         {/* Back button */}
         <button
-          onClick={() => navigate('/')}
+          onClick={() => navigate(-1)}
           className="flex items-center gap-2 text-muted-foreground hover:text-foreground mb-8 transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
