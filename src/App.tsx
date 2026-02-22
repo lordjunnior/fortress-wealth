@@ -16,6 +16,7 @@ import EntendaBitcoin from "./pages/EntendaBitcoin";
 import Autocustodia from "./pages/Autocustodia";
 import EconomiaParalela from "./pages/EconomiaParalela";
 import Infraestrutura from "./pages/Infraestrutura";
+import LightningPage from "./pages/Lightning";
 import Gateway from "./pages/Gateway";
 import PixCripto from "./pages/PixCripto";
 import NotFound from "./pages/NotFound";
@@ -43,6 +44,7 @@ const App = () => (
           <Route path="/autocustodia" element={<Autocustodia />} />
           <Route path="/economia-paralela" element={<EconomiaParalela />} />
           <Route path="/infraestrutura" element={<Infraestrutura />} />
+          <Route path="/lightning" element={<LightningPage />} />
           <Route path="/pix-cripto" element={<PixCripto />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
