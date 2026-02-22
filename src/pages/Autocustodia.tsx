@@ -1,288 +1,117 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import {
-  ArrowLeft, Shield, Lock, Flame, Eye,
-  Layers, Shuffle, Globe, Key, AlertTriangle, CheckCircle2,
-  XCircle, Hammer, ArrowRight, BookOpen
-} from 'lucide-react';
+import { ArrowLeft, Shield, Flame, Droplets, Lock, EyeOff, Network, Layers } from 'lucide-react';
 
-const fadeUp = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-};
+export default function Autocustodia() {
+  React.useEffect(() => { window.scrollTo(0, 0); }, []);
 
-const Autocustodia: React.FC = () => {
   return (
-    <article className="min-h-screen bg-background pt-28 pb-12 px-4 animate-fade-in font-sans">
-
-      {/* Navegação */}
-      <div className="max-w-5xl mx-auto mb-12">
-        <Link to="/educacao" className="text-muted-foreground hover:text-gold flex items-center gap-2 text-xs uppercase tracking-widest transition-colors w-fit group">
-          <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" /> Voltar ao Arsenal
+    <div className="min-h-screen bg-[#070A12] text-white font-sans selection:bg-red-600 pb-32">
+      <div className="relative z-10 max-w-5xl mx-auto px-6 pt-28">
+        
+        <Link to="/arsenal" className="inline-flex items-center gap-2 text-slate-600 hover:text-white mb-16 text-[10px] font-black uppercase tracking-[0.4em]">
+          <ArrowLeft size={14} /> Voltar à Central
         </Link>
-      </div>
 
-      {/* Hero Section */}
-      <motion.header {...fadeUp} transition={{ duration: 0.6 }} className="max-w-5xl mx-auto mb-20 border-b border-border/50 pb-12">
-        <div className="inline-block px-3 py-1 mb-6 border border-gold/20 rounded bg-gold/5">
-          <span className="text-gold text-[10px] font-bold uppercase tracking-[0.2em]">Arsenal Técnico</span>
-        </div>
-        <h1 className="text-4xl md:text-6xl font-serif font-bold text-foreground mb-6 leading-tight">
-          Arquitetura de <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-foreground via-muted-foreground to-muted-foreground/50">Autocustódia</span>
-        </h1>
-        <h2 className="text-xl text-muted-foreground font-light max-w-3xl leading-relaxed mb-10">
-          Não basta ter uma seed phrase anotada no papel. Autocustódia real envolve a <strong className="text-foreground font-medium">camada física</strong> (sobrevivência a desastres), criptografia de comunicação e estruturas avançadas de assinatura.
-        </h2>
-
-        <Link to="/educacao" className="inline-flex items-center gap-3 px-8 py-4 bg-secondary border border-border hover:border-gold hover:bg-gold hover:text-background rounded-xl text-foreground text-sm font-bold uppercase tracking-wide transition-all group shadow-lg">
-          <BookOpen className="w-5 h-5" /> Acessar Manuais Detalhados
-        </Link>
-      </motion.header>
-
-      {/* Camada Física */}
-      <motion.section {...fadeUp} transition={{ duration: 0.6, delay: 0.1 }} className="max-w-5xl mx-auto mb-24">
-        <div className="flex flex-col md:flex-row items-baseline justify-between mb-10 border-l-2 border-gold pl-6">
-          <div>
-            <h3 className="text-3xl font-serif text-foreground mb-2">Camada Física</h3>
-            <p className="text-muted-foreground text-sm uppercase tracking-widest font-bold">O Problema do Mundo Real</p>
-          </div>
-          <div className="mt-4 md:mt-0 text-muted-foreground text-sm max-w-xs text-right italic">
-            "O que acontece quando o desastre bate na porta?"
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-          {/* Papel - Negativo */}
-          <div className="p-8 md:p-10 rounded-2xl bg-card border border-destructive/20 hover:border-destructive/40 transition-colors group relative overflow-hidden shadow-lg">
-            <div className="absolute top-0 right-0 w-48 h-48 bg-destructive/5 blur-[80px] rounded-full pointer-events-none" />
-            <div className="relative z-10">
-              <div className="flex justify-between items-start mb-8">
-                <div className="p-4 bg-destructive/10 rounded-xl text-destructive border border-destructive/20"><AlertTriangle className="w-8 h-8" /></div>
-                <span className="text-destructive font-bold text-xs uppercase tracking-widest border border-destructive/20 px-3 py-1.5 rounded bg-destructive/5">Frágil</span>
-              </div>
-              <h4 className="text-3xl font-bold text-foreground mb-4">Papel</h4>
-              <p className="text-muted-foreground text-base mb-8 leading-relaxed">
-                Suscetível a umidade, fogo, insetos e desgaste natural. É uma aposta contra o tempo.
-              </p>
-              <div className="inline-flex items-center gap-2 text-destructive font-bold text-lg bg-destructive/10 px-4 py-2 rounded-lg border border-destructive/20">
-                <XCircle className="w-5 h-5" /> ILEGÍVEL
-              </div>
-            </div>
-          </div>
-
-          {/* Metal - Positivo */}
-          <div className="p-8 md:p-10 rounded-2xl bg-gradient-to-br from-card to-background border border-chart-green/30 hover:border-chart-green/50 transition-colors group relative overflow-hidden shadow-2xl">
-            <div className="absolute top-0 right-0 w-48 h-48 bg-chart-green/5 blur-[80px] rounded-full pointer-events-none" />
-            <div className="relative z-10">
-              <div className="flex justify-between items-start mb-8">
-                <div className="p-4 bg-chart-green/10 rounded-xl text-chart-green border border-chart-green/20"><Shield className="w-8 h-8" /></div>
-                <span className="text-chart-green font-bold text-xs uppercase tracking-widest border border-chart-green/20 px-3 py-1.5 rounded bg-chart-green/5">Robusto</span>
-              </div>
-              <h4 className="text-3xl font-bold text-foreground mb-4">Metal</h4>
-              <p className="text-muted-foreground text-base mb-8 leading-relaxed">
-                Aço inoxidável ou titânio. Resiste a 1100°C, corrosão e inundações. A única forma de vencer a entropia.
-              </p>
-              <div className="inline-flex items-center gap-2 text-chart-green font-bold text-lg bg-chart-green/10 px-4 py-2 rounded-lg border border-chart-green/20">
-                <CheckCircle2 className="w-5 h-5" /> LEGÍVEL
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="bg-card border border-border p-6 rounded-xl text-center">
-          <p className="text-muted-foreground text-lg">
-            "No mundo real, o problema não é hacker. <strong className="text-foreground">É fogo, água e tempo.</strong>"
+        <header className="mb-24">
+          <h1 className="text-5xl md:text-7xl font-black tracking-tighter uppercase mb-6 leading-tight">
+            Arquitetura de<br/><span className="text-red-600 italic">Autocustódia</span>
+          </h1>
+          <p className="text-xl text-slate-400 font-medium max-w-3xl leading-relaxed">
+            Não basta ter uma seed phrase anotada no papel. Autocustódia real envolve a <span className="text-white border-b border-red-600">camada física</span> (sobrevivência a desastres), criptografia de comunicação e estruturas avançadas de assinatura.
           </p>
-        </div>
-      </motion.section>
+        </header>
 
-      {/* Estrutura & Mentalidade */}
-      <motion.section {...fadeUp} transition={{ duration: 0.6, delay: 0.2 }} className="max-w-5xl mx-auto mb-24">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+        {/* CAMADA FÍSICA: O PROBLEMA DO MUNDO REAL */}
+        <section className="mb-32">
+          <div className="flex items-center gap-4 mb-12">
+            <Layers className="text-red-600" size={24} />
+            <h2 className="text-2xl font-black uppercase tracking-tight">Camada Física: O Problema do Mundo Real</h2>
+          </div>
 
-          {/* Estrutura de Risco */}
-          <div>
-            <h3 className="text-2xl font-serif text-foreground mb-10 border-b border-border pb-4">Estrutura de Risco</h3>
-            <div className="space-y-6 relative ml-4">
-              <div className="absolute left-[23px] top-6 bottom-6 w-[2px] bg-gradient-to-b from-border via-gold/50 to-border" />
-
-              <div className="relative flex items-center gap-8">
-                <div className="w-12 h-12 rounded-full bg-card border border-border flex items-center justify-center z-10">
-                  <Lock className="w-5 h-5 text-muted-foreground" />
-                </div>
-                <div className="bg-card border border-border p-4 rounded-xl flex-1">
-                  <span className="text-[10px] text-muted-foreground uppercase tracking-widest block mb-1 font-bold">Mundo Digital</span>
-                  <p className="text-foreground font-medium">Sua Seed (12/24 Palavras)</p>
-                </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+            {/* Frágil: Papel */}
+            <div className="bg-[#0B0F19]/50 border border-white/5 p-8 rounded-2xl relative overflow-hidden group">
+              <div className="flex justify-between items-start mb-8">
+                <span className="bg-zinc-800 text-[10px] font-black px-3 py-1 uppercase tracking-widest text-zinc-500">Frágil</span>
+                <span className="text-zinc-700 font-black text-4xl italic opacity-20">ILEGÍVEL</span>
               </div>
-
-              <div className="relative flex items-center gap-8">
-                <div className="w-12 h-12 rounded-full bg-background border border-gold flex items-center justify-center z-10 shadow-[0_0_20px_hsl(var(--gold)/0.3)]">
-                  <Layers className="w-5 h-5 text-gold" />
-                </div>
-                <div className="bg-gold/5 border border-gold/30 p-4 rounded-xl flex-1">
-                  <span className="text-[10px] text-gold uppercase tracking-widest block mb-1 font-bold">Camada Física (O Elo)</span>
-                  <p className="text-foreground font-bold">Papel <span className="text-muted-foreground mx-2 font-normal">|</span> <span className="text-gold">Metal</span></p>
-                </div>
+              <h3 className="text-3xl font-black uppercase mb-4 tracking-tighter">Papel</h3>
+              <p className="text-slate-500 text-sm mb-6">Suscetível a umidade, fogo, insetos e desgaste natural. É uma aposta contra o tempo.</p>
+              <div className="flex gap-4 text-zinc-600">
+                <Flame size={18} /> <Droplets size={18} />
               </div>
+            </div>
 
-              <div className="relative flex items-center gap-8">
-                <div className="w-12 h-12 rounded-full bg-card border border-border flex items-center justify-center z-10">
-                  <Flame className="w-5 h-5 text-muted-foreground" />
-                </div>
-                <div className="bg-card border border-border p-4 rounded-xl flex-1">
-                  <span className="text-[10px] text-muted-foreground uppercase tracking-widest block mb-1 font-bold">Mundo Real</span>
-                  <p className="text-muted-foreground text-sm">Se a camada física falha, o mundo real destrói o digital.</p>
-                </div>
+            {/* Robusto: Metal */}
+            <div className="bg-gradient-to-br from-[#161B22] to-[#0B0F19] border border-red-600/30 p-8 rounded-2xl relative overflow-hidden group shadow-[0_0_30px_rgba(220,38,38,0.05)]">
+              <div className="flex justify-between items-start mb-8">
+                <span className="bg-red-600 text-[10px] font-black px-3 py-1 uppercase tracking-widest text-white">Robusto</span>
+                <span className="text-red-600 font-black text-4xl italic opacity-20">LEGÍVEL</span>
+              </div>
+              <h3 className="text-3xl font-black uppercase mb-4 tracking-tighter">Metal</h3>
+              <p className="text-slate-300 text-sm mb-6">Aço inoxidável ou titânio. Resiste a 1100°C, corrosão e inundações. A única forma de vencer a entropia.</p>
+              <div className="flex gap-4 text-red-600">
+                <Flame size={18} /> <Droplets size={18} /> <Shield size={18} />
               </div>
             </div>
           </div>
 
-          {/* Mentalidade */}
-          <div>
-            <h3 className="text-2xl font-serif text-foreground mb-10 border-b border-border pb-4">Mentalidade</h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div className="p-8 rounded-2xl bg-card border border-destructive/10 opacity-80">
-                <span className="text-xs text-destructive font-bold uppercase tracking-widest block mb-6">Suposição (Erro)</span>
-                <ul className="space-y-4 text-sm text-muted-foreground mb-8">
-                  <li className="flex items-center gap-3"><div className="w-1.5 h-1.5 bg-destructive rounded-full" />Seed em Papel</li>
-                  <li className="flex items-center gap-3"><div className="w-1.5 h-1.5 bg-destructive rounded-full" />Nunca Testada</li>
-                  <li className="flex items-center gap-3"><div className="w-1.5 h-1.5 bg-destructive rounded-full" />Confiança Emocional</li>
-                </ul>
-                <p className="text-sm text-destructive/80 font-mono border-t border-border pt-4">"Eu acho que funciona"</p>
-              </div>
+          <blockquote className="text-center text-xl italic text-slate-500 mb-20">
+            "No mundo real, o problema não é hacker. É fogo, água e tempo."
+          </blockquote>
 
-              <div className="p-8 rounded-2xl bg-gradient-to-br from-card to-background border border-chart-green/30 shadow-lg">
-                <span className="text-xs text-chart-green font-bold uppercase tracking-widest block mb-6">Certeza (Fato)</span>
-                <ul className="space-y-4 text-sm text-foreground mb-8">
-                  <li className="flex items-center gap-3"><div className="w-2 h-2 bg-chart-green rounded-full shadow-[0_0_8px_hsl(var(--chart-green))]" />Seed em Metal</li>
-                  <li className="flex items-center gap-3"><div className="w-2 h-2 bg-chart-green rounded-full shadow-[0_0_8px_hsl(var(--chart-green))]" />Recuperação Testada</li>
-                  <li className="flex items-center gap-3"><div className="w-2 h-2 bg-chart-green rounded-full shadow-[0_0_8px_hsl(var(--chart-green))]" />Confiança Verificada</li>
-                </ul>
-                <p className="text-sm text-chart-green font-mono font-bold border-t border-chart-green/20 pt-4">"Eu SEI que funciona"</p>
-              </div>
+          {/* ESTRUTURA DE RISCO */}
+          <div className="max-w-md mx-auto space-y-4 text-center mb-32">
+            <div className="p-4 bg-zinc-900 border border-white/5 text-[10px] font-black uppercase tracking-widest text-slate-500">Mundo Digital (Sua Seed)</div>
+            <div className="h-8 w-px bg-red-600 mx-auto"></div>
+            <div className="p-6 bg-red-600 text-white font-black uppercase tracking-tighter text-xl italic">Camada Física (O Elo)</div>
+            <div className="h-8 w-px bg-red-600 mx-auto"></div>
+            <div className="p-4 bg-zinc-900 border border-white/5 text-[10px] font-black uppercase tracking-widest text-slate-500">Mundo Real (Patrimônio)</div>
+            <p className="text-xs text-red-600 font-bold mt-4 uppercase tracking-widest">Se a camada física falha, o mundo real destrói o digital.</p>
+          </div>
+        </section>
+
+        {/* PROTOCOLOS DIGITAIS */}
+        <section className="mb-32">
+          <h2 className="text-3xl font-black uppercase mb-12 tracking-tighter border-b border-white/5 pb-4">Protocolos Digitais</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-8 bg-[#0B0F19] border border-white/5 hover:border-white/20 transition-all">
+              <Lock className="text-red-600 mb-4" size={24} />
+              <h4 className="text-lg font-black uppercase mb-2">PGP Encryption</h4>
+              <p className="text-sm text-slate-500 leading-relaxed italic">Criado em 1991, é a base da comunicação soberana. Garante que apenas o destinatário leia a mensagem.</p>
             </div>
-            <div className="mt-8 text-center bg-gold/5 border border-gold/20 p-6 rounded-xl">
-              <p className="text-foreground font-serif text-xl">
-                Autocustódia não é sobre acreditar.<br /><span className="text-gold font-bold">É sobre ter certeza.</span>
-              </p>
+            <div className="p-8 bg-[#0B0F19] border border-white/5 hover:border-white/20 transition-all">
+              <Network className="text-red-600 mb-4" size={24} />
+              <h4 className="text-lg font-black uppercase mb-2">VPN & TOR</h4>
+              <p className="text-sm text-slate-500 leading-relaxed italic">Mascare seu tráfego. ISP não precisa saber que você acessa serviços de Bitcoin.</p>
+            </div>
+            <div className="p-8 bg-[#0B0F19] border border-white/5 hover:border-white/20 transition-all">
+              <Shield className="text-red-600 mb-4" size={24} />
+              <h4 className="text-lg font-black uppercase mb-2">Multisig (Electrum)</h4>
+              <p className="text-sm text-slate-500 leading-relaxed italic">Elimine o ponto único de falha. Exija múltiplas chaves em locais físicos distintos.</p>
+            </div>
+            <div className="p-8 bg-[#0B0F19] border border-white/5 hover:border-white/20 transition-all">
+              <EyeOff className="text-red-600 mb-4" size={24} />
+              <h4 className="text-lg font-black uppercase mb-2">Wasabi & Coinjoin</h4>
+              <p className="text-sm text-slate-500 leading-relaxed italic">Quebre o rastro. Embaralhe UTXOs para proteger sua privacidade transacional.</p>
             </div>
           </div>
-        </div>
-      </motion.section>
+        </section>
 
-      {/* Checklist */}
-      <motion.section {...fadeUp} transition={{ duration: 0.6, delay: 0.3 }} className="max-w-5xl mx-auto mb-24 p-8 md:p-12 rounded-3xl bg-card border border-border relative overflow-hidden shadow-2xl">
-        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-gold to-transparent opacity-50" />
-
-        <h3 className="text-3xl font-serif text-foreground mb-12 text-center">Checklist de Escolha</h3>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-          <div className="space-y-4 group">
-            <div className="w-14 h-14 rounded-xl bg-background border border-border flex items-center justify-center mb-4 group-hover:border-gold transition-colors">
-              <Eye className="w-6 h-6 text-muted-foreground group-hover:text-gold transition-colors" />
-            </div>
-            <h4 className="text-foreground font-bold text-lg">Clareza Visual</h4>
-            <p className="text-sm text-muted-foreground leading-relaxed">Você consegue ler as letras sob estresse extremo ou no escuro?</p>
+        {/* RODAPÉ DE BLINDAGEM */}
+        <footer className="pt-20 border-t border-white/5 text-center">
+          <div className="space-y-4 mb-20">
+            <p className="text-4xl md:text-6xl font-black uppercase tracking-tighter">Autocustódia não é sobre acreditar.</p>
+            <p className="text-red-600 font-black uppercase text-3xl md:text-5xl tracking-tighter italic">É sobre ter certeza.</p>
           </div>
-
-          <div className="space-y-4 group">
-            <div className="w-14 h-14 rounded-xl bg-background border border-border flex items-center justify-center mb-4 group-hover:border-gold transition-colors">
-              <Hammer className="w-6 h-6 text-muted-foreground group-hover:text-gold transition-colors" />
-            </div>
-            <h4 className="text-foreground font-bold text-lg">Montagem</h4>
-            <p className="text-sm text-muted-foreground leading-relaxed">Você consegue montar as palavras sem errar a ordem e sem se machucar?</p>
+          <div className="space-y-2">
+            <p className="text-slate-600 font-black text-[10px] uppercase tracking-[0.8em]">Not your keys, not your money.</p>
+            <p className="text-white font-black uppercase text-4xl tracking-tighter">Sempre foi projeto.</p>
+            <p className="text-slate-800 text-[10px] font-black mt-16 uppercase tracking-widest">Lord Junnior © 2026</p>
           </div>
-
-          <div className="space-y-4 group">
-            <div className="w-14 h-14 rounded-xl bg-background border border-border flex items-center justify-center mb-4 group-hover:border-gold transition-colors">
-              <Flame className="w-6 h-6 text-muted-foreground group-hover:text-gold transition-colors" />
-            </div>
-            <h4 className="text-foreground font-bold text-lg">Resistência</h4>
-            <p className="text-sm text-muted-foreground leading-relaxed">O material aguenta 1100°C (incêndio) e corrosão por água salgada?</p>
-          </div>
-
-          <div className="space-y-4 group">
-            <div className="w-14 h-14 rounded-xl bg-background border border-border flex items-center justify-center mb-4 group-hover:border-gold transition-colors">
-              <Key className="w-6 h-6 text-muted-foreground group-hover:text-gold transition-colors" />
-            </div>
-            <h4 className="text-foreground font-bold text-lg">Discrição</h4>
-            <p className="text-sm text-muted-foreground leading-relaxed">Se encontrada por terceiros, parece valiosa ou passa despercebida?</p>
-          </div>
-        </div>
-
-        <div className="mt-16 flex justify-center">
-          <button className="px-10 py-4 bg-gold text-background rounded-xl font-bold uppercase tracking-widest text-sm hover:bg-gold/90 transition-all shadow-[0_0_20px_hsl(var(--gold)/0.3)] hover:-translate-y-1">
-            Ver Opção Recomendada
-          </button>
-        </div>
-      </motion.section>
-
-      {/* Protocolos Digitais */}
-      <motion.section {...fadeUp} transition={{ duration: 0.6, delay: 0.4 }} className="max-w-5xl mx-auto mb-24">
-        <div className="flex flex-col md:flex-row items-end justify-between mb-12 gap-6">
-          <div>
-            <h3 className="text-3xl font-serif text-foreground mb-2">Protocolos Digitais</h3>
-            <p className="text-muted-foreground text-sm">A blindagem no ciberespaço.</p>
-          </div>
-          <span className="inline-flex items-center gap-2 text-gold text-sm font-bold uppercase tracking-wider bg-card px-6 py-3 rounded-lg border border-gold/30 group cursor-default">
-            O que não te contaram sobre autocustódia <ArrowRight className="w-4 h-4" />
-          </span>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {[
-            { icon: Lock, title: 'PGP Encryption', layer: 'Camada Digital', desc: 'Criado em 1991, o PGP é a base da comunicação soberana. Garante que apenas o destinatário com a chave privada leia a mensagem.' },
-            { icon: Globe, title: 'VPN & TOR', layer: 'Camada de Rede', desc: 'Seu ISP sabe que você acessa serviços de Bitcoin. Use o TOR para mascarar seu tráfego e uma VPN paga (sem logs) como camada extra.' },
-            { icon: Layers, title: 'Multisig (Electrum)', layer: 'Camada de Assinatura', desc: 'Single-sig tem ponto único de falha. Multisig (ex: 2-de-3) exige que chaves distintas em locais físicos distintos assinem a transação.' },
-            { icon: Shuffle, title: 'Wasabi & Coinjoin', layer: 'Camada de Privacidade', desc: 'O Bitcoin é transparente. Coinjoin embaralha UTXOs de múltiplos usuários, quebrando o rastro (heurística).' },
-          ].map((protocol) => {
-            const Icon = protocol.icon;
-            return (
-              <div key={protocol.title} className="group p-8 rounded-2xl bg-card border border-border hover:border-muted-foreground/30 transition-all">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="p-3 bg-background border border-border rounded-xl"><Icon className="w-6 h-6 text-muted-foreground" /></div>
-                  <h4 className="text-xl font-bold text-foreground">{protocol.title}</h4>
-                </div>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  <span className="text-gold font-bold text-xs uppercase tracking-widest block mb-2">{protocol.layer}</span>
-                  {protocol.desc}
-                </p>
-              </div>
-            );
-          })}
-        </div>
-      </motion.section>
-
-      {/* Footer Soberano */}
-      <footer className="max-w-5xl mx-auto text-center pt-12 border-t border-border/50 space-y-6 mt-12">
-        <p className="text-2xl font-serif text-foreground/80">Not your keys, not your money.</p>
-        <div className="text-muted-foreground text-sm space-y-1">
-          <p>Quem não assume a custódia aceita a dependência.</p>
-          <p>Autocustódia exige responsabilidade.</p>
-        </div>
-        <div className="w-12 h-[1px] bg-border mx-auto my-6" />
-        <p className="text-gold/80 text-sm font-medium">
-          Dependência financeira nunca foi acidente. Sempre foi projeto.
-        </p>
-        <p className="text-[10px] text-muted-foreground/50 uppercase tracking-widest pt-4">
-          Lord Junnior © 2026
-        </p>
-        <div className="flex items-center justify-center gap-6 pt-8 pb-8">
-          <Link to="#" className="text-xs text-muted-foreground/50 hover:text-gold uppercase tracking-wider transition-colors">Termos</Link>
-          <span className="text-border">·</span>
-          <Link to="#" className="text-xs text-muted-foreground/50 hover:text-gold uppercase tracking-wider transition-colors">Privacidade</Link>
-          <span className="text-border">·</span>
-          <Link to="#" className="text-xs text-muted-foreground/50 hover:text-gold uppercase tracking-wider transition-colors flex items-center gap-1">
-            <Lock className="w-3 h-3" /> PGP
-          </Link>
-        </div>
-      </footer>
-
-    </article>
+        </footer>
+      </div>
+    </div>
   );
-};
-
-export default Autocustodia;
+}
