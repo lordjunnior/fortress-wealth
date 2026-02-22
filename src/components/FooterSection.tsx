@@ -3,6 +3,7 @@ import { useRef, useState } from "react";
 import { Copy, Check, Zap, Smartphone, Shield, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import qrCodeImage from "@/assets/qrcode-lightning.jpeg";
+import SatCounter from "@/components/SatCounter";
 
 const LIGHTNING_ADDRESS = "securecorn53@walletofsatoshi.com";
 
@@ -81,9 +82,7 @@ const FooterSection = () => {
               <p className="text-xs text-chart-green mb-2 animate-pulse">Copiado!</p>
             )}
 
-            <p className="font-mono text-xs text-gold-dim tracking-wider mt-2">
-              753 sats injetados na rede
-            </p>
+            <SatCounter />
           </motion.div>
 
           {/* 3. O QUE É LIGHTNING + CARTEIRAS */}
