@@ -13,7 +13,7 @@ const Gateway = () => {
   const navigate = useNavigate();
   const [pixKey, setPixKey] = useState("");
   const [valueBRL, setValueBRL] = useState<number>(0);
-  const [btcPriceUSD, setBtcPriceUSD] = useState<number | null>(null);
+  const [btcPriceBRL, setBtcPriceBRL] = useState<number | null>(null);
   const [stage, setStage] = useState<Stage>("input");
   const [copied, setCopied] = useState(false);
 
@@ -23,21 +23,28 @@ const Gateway = () => {
   useEffect(() => {
     const fetchPrice = async () => {
       try {
-        const res = await fetch("https://mempool.space/api/v1/prices");
-        if (res.ok) {
-          const data = await res.json();
-          setBtcPriceUSD(data.USD);
+        const [mempoolRes, fxRes] = await Promise.all([
+          fetch("https://mempool.space/api/v1/prices"),
+          fetch("https://open.er-api.com/v6/latest/USD"),
+        ]);
+        if (mempoolRes.ok && fxRes.ok) {
+          const mempoolData = await mempoolRes.json();
+          const fxData = await fxRes.json();
+          const usdBrl = fxData.rates?.BRL ?? 5.1;
+          setBtcPriceBRL(mempoolData.USD * usdBrl);
         }
       } catch {
-        setBtcPriceUSD(97000);
+        setBtcPriceBRL(540000);
       }
     };
     fetchPrice();
+    const interval = setInterval(fetchPrice, 30000);
+    return () => clearInterval(interval);
   }, []);
 
-  // BRL to Sats: 1 BTC = 100M sats, USD price from API, assume BRL = USD * 5.1
-  const brlToBtcRate = btcPriceUSD ? btcPriceUSD * 5.1 : 540000;
-  const satsAmount = valueBRL > 0 ? Math.round((valueBRL / brlToBtcRate) * 100_000_000) : 0;
+  const satsAmount = valueBRL > 0 && btcPriceBRL
+    ? Math.round((valueBRL / btcPriceBRL) * 100_000_000)
+    : 0;
 
   const handleConfirm = () => {
     if (!pixKey || valueBRL <= 0) return;
@@ -107,6 +114,9 @@ const Gateway = () => {
                         <p className="text-2xl font-bold text-foreground">
                           {SALDO_SATS.toLocaleString("pt-BR")}{" "}
                           <span className="text-sm text-gold">sats</span>
+                        </p>
+                        <p className="text-[9px] text-muted-foreground font-mono mt-1">
+                          BTC/BRL {btcPriceBRL ? `R$ ${btcPriceBRL.toLocaleString("pt-BR", { maximumFractionDigits: 0 })}` : "---"}
                         </p>
                       </div>
 
@@ -201,7 +211,7 @@ const Gateway = () => {
                             className="py-10 flex flex-col items-center gap-4"
                           >
                             <Loader2 className="w-10 h-10 text-gold animate-spin" />
-                            <p className="font-mono text-sm text-gold animate-pulse">Processando na Rede...</p>
+                            <p className="font-mono text-sm text-gold animate-pulse">Gerando Invoice...</p>
                             <div className="w-full bg-secondary rounded-full h-1.5 overflow-hidden">
                               <motion.div
                                 initial={{ width: "0%" }}
