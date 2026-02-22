@@ -62,10 +62,10 @@ const TaxaDeFuga: React.FC = () => {
             <Globe className="text-gold animate-pulse" size={56} />
           </div>
           <h1 className="text-5xl md:text-7xl font-black tracking-tighter uppercase italic font-sans">
-            PROTOCOLO ÊXODO<span className="text-gold animate-bounce">_</span>
+            TAXA DE FUGA
           </h1>
           <p className="text-gold text-[10px] md:text-xs tracking-[0.5em] font-black uppercase opacity-80">
-            SISTEMA DE DESESTATIZAÇÃO PATRIMONIAL V4.0.1
+            CALCULADORA DE CUSTO DE SAÍDA DO BRASIL. PLANEJE SUA LIBERDADE GEOGRÁFICA.
           </p>
         </header>
 
