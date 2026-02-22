@@ -7,27 +7,48 @@ import cardBitcoin from "@/assets/card-bitcoin.jpg";
 import cardFilosofia from "@/assets/card-filosofia.jpg";
 import cardEstrategias from "@/assets/card-estrategias.jpg";
 
-const timelineEvents = [
+const timelineSteps = [
   {
-    date: "15/Mar/1990",
-    label: "Seu dinheiro no banco.",
+    phase: "FASE 01",
+    date: "15 de Março, 1990",
+    time: "23:59",
+    headline: "Você dorme tranquilo.",
+    subtext: "Seu saldo aparece na tela. Sua família está segura. O banco prometeu cuidar do seu dinheiro.",
+    detail: "R$ 100.000 na conta corrente. Uma vida inteira de trabalho convertida em números na tela de um computador que você não controla.",
     icon: Vault,
-    color: "text-muted-foreground",
-    borderColor: "border-border",
+    accent: "border-border",
+    accentBg: "bg-muted-foreground/10",
+    accentText: "text-muted-foreground",
+    tag: "ANTES",
+    tagColor: "bg-muted-foreground/20 text-muted-foreground",
   },
   {
-    date: "16/Mar/1990",
-    label: "O Confisco. Bloqueio de 80% das contas.",
+    phase: "FASE 02",
+    date: "16 de Março, 1990",
+    time: "06:00",
+    headline: "Você acorda sem nada.",
+    subtext: "80% do seu patrimônio foi bloqueado por um decreto assinado enquanto você dormia. Sem aviso. Sem escolha. Sem recurso.",
+    detail: "O governo confiscou R$ 80.000 da sua conta. Você ficou com R$ 20.000 para sobreviver. Milhões de brasileiros perderam tudo no mesmo dia.",
     icon: Lock,
-    color: "text-chart-red",
-    borderColor: "border-destructive",
+    accent: "border-destructive",
+    accentBg: "bg-destructive/10",
+    accentText: "text-chart-red",
+    tag: "O CONFISCO",
+    tagColor: "bg-destructive/20 text-chart-red",
   },
   {
-    date: "Hoje",
-    label: "O mecanismo legal para repetir isso ainda existe.",
+    phase: "FASE 03",
+    date: "Agora",
+    time: new Date().toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" }),
+    headline: "A lei que permitiu isso nunca foi revogada.",
+    subtext: "O mesmo mecanismo legal está ativo. Seu saldo bancário continua sendo uma promessa — não uma posse.",
+    detail: "Art. 62 da Constituição Federal permite medidas provisórias com força de lei imediata. O precedente existe. A ferramenta jurídica também.",
     icon: AlertTriangle,
-    color: "text-gold",
-    borderColor: "border-gold-dim",
+    accent: "border-gold-dim",
+    accentBg: "bg-gold/10",
+    accentText: "text-gold",
+    tag: "ALERTA ATIVO",
+    tagColor: "bg-gold/20 text-gold",
   },
 ];
 
@@ -89,39 +110,102 @@ const ConfiscoTimeline = () => {
           </p>
         </motion.div>
 
-        {/* Timeline visualization */}
+        {/* Timeline — Immersive Infographic */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.2 }}
-          className="card-wealth p-6 md:p-10 mb-12"
+          className="mb-16"
         >
-          <p className="pre-title mb-6">INFOGRÁFICO · LINHA DO TEMPO</p>
+          {/* Header */}
+          <div className="flex items-center justify-between mb-2">
+            <p className="pre-title">RECONSTITUIÇÃO DOCUMENTADA</p>
+            <span className="font-mono text-[10px] tracking-widest text-chart-red animate-pulse">
+              ● REC
+            </span>
+          </div>
+          <p className="text-sm text-muted-foreground mb-8 max-w-xl">
+            O que aconteceu em <span className="text-foreground font-medium">menos de 8 horas</span> com o patrimônio de 
+            milhões de famílias brasileiras — e por que pode acontecer de novo com o seu.
+          </p>
 
+          {/* Vertical timeline */}
           <div className="relative">
-            <div className="hidden md:block absolute top-1/2 left-0 right-0 h-px bg-border -translate-y-1/2" />
+            {/* Vertical line */}
+            <div className="absolute left-[23px] md:left-[27px] top-0 bottom-0 w-px bg-gradient-to-b from-border via-destructive/40 to-gold/60" />
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-4">
-              {timelineEvents.map((event, i) => {
-                const Icon = event.icon;
+            <div className="space-y-0">
+              {timelineSteps.map((step, i) => {
+                const Icon = step.icon;
+                const isLast = i === timelineSteps.length - 1;
                 return (
                   <motion.div
                     key={i}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.5, delay: 0.3 + i * 0.2 }}
-                    className={`relative flex flex-col items-center text-center p-6 rounded-lg border ${event.borderColor} bg-background`}
+                    initial={{ opacity: 0, x: -30 }}
+                    animate={isInView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ duration: 0.6, delay: 0.3 + i * 0.25 }}
+                    className="relative pl-16 md:pl-20 pb-10 last:pb-0"
                   >
-                    <div className={`w-12 h-12 rounded-full border-2 ${event.borderColor} flex items-center justify-center mb-4`}>
-                      <Icon className={`w-5 h-5 ${event.color}`} />
+                    {/* Node dot */}
+                    <div className={`absolute left-[11px] md:left-[15px] top-1 w-[25px] h-[25px] md:w-[25px] md:h-[25px] rounded-full border-2 ${step.accent} ${step.accentBg} flex items-center justify-center z-10`}>
+                      <Icon className={`w-3 h-3 ${step.accentText}`} />
                     </div>
-                    <p className="font-mono text-xs text-muted-foreground mb-2">{event.date}</p>
-                    <p className={`text-sm font-medium ${event.color}`}>{event.label}</p>
+
+                    {/* Card */}
+                    <div className={`rounded-lg border ${step.accent} bg-background overflow-hidden transition-all duration-500 hover:border-opacity-60 group`}>
+                      {/* Top bar */}
+                      <div className="flex items-center justify-between px-5 py-3 border-b border-border/50 bg-card/50">
+                        <div className="flex items-center gap-3">
+                          <span className={`font-mono text-[9px] tracking-[0.2em] px-2 py-0.5 rounded ${step.tagColor}`}>
+                            {step.tag}
+                          </span>
+                          <span className="font-mono text-[11px] text-muted-foreground">
+                            {step.phase}
+                          </span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <span className="font-mono text-[11px] text-muted-foreground">{step.date}</span>
+                          <span className={`font-mono text-[11px] font-semibold ${step.accentText}`}>{step.time}</span>
+                        </div>
+                      </div>
+
+                      {/* Content */}
+                      <div className="px-5 py-5 md:px-6 md:py-6">
+                        <h3 className={`text-lg md:text-xl font-bold tracking-tight mb-2 ${step.accentText}`}>
+                          {step.headline}
+                        </h3>
+                        <p className="text-sm md:text-base text-muted-foreground leading-relaxed mb-4">
+                          {step.subtext}
+                        </p>
+                        <div className="rounded-md bg-card/80 border border-border/50 px-4 py-3">
+                          <p className="text-xs text-muted-foreground/80 leading-relaxed font-mono">
+                            {step.detail}
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Pulse bar for last item */}
+                      {isLast && (
+                        <div className="h-[2px] bg-gradient-to-r from-gold/0 via-gold/60 to-gold/0 animate-pulse" />
+                      )}
+                    </div>
                   </motion.div>
                 );
               })}
             </div>
           </div>
+
+          {/* Closing provocation */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.8, delay: 1.2 }}
+            className="mt-8 pl-16 md:pl-20"
+          >
+            <p className="text-sm text-muted-foreground italic">
+              "Quanto do seu patrimônio está a uma assinatura de distância de desaparecer?"
+            </p>
+          </motion.div>
         </motion.div>
 
         {/* Context: 1990 + Bullet Points */}
