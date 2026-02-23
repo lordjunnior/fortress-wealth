@@ -1,6 +1,6 @@
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState } from "react";
-import { Copy, Check, Zap, Smartphone, Shield, ArrowRight } from "lucide-react";
+import { Copy, Check, Zap, Smartphone, Shield, ArrowRight, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import qrCodeImage from "@/assets/qrcode-lightning.jpeg";
 import SatCounter from "@/components/SatCounter";
@@ -24,12 +24,20 @@ const FooterSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [copied, setCopied] = useState(false);
+  const [copiedModal, setCopiedModal] = useState(false);
   const [selectedLevel, setSelectedLevel] = useState<number | null>(null);
+  const [showQrModal, setShowQrModal] = useState(false);
 
   const handleCopy = () => {
     navigator.clipboard.writeText(LIGHTNING_ADDRESS);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
+  };
+
+  const handleCopyModal = () => {
+    navigator.clipboard.writeText(LIGHTNING_ADDRESS);
+    setCopiedModal(true);
+    setTimeout(() => setCopiedModal(false), 2000);
   };
 
   const fadeUp = (delay = 0) => ({
@@ -145,7 +153,7 @@ const FooterSection = () => {
                 <button
                   key={i}
                   onClick={() => setSelectedLevel(i === selectedLevel ? null : i)}
-                  className={`p-4 rounded-lg border text-sm font-medium transition-all duration-300 flex flex-col items-center gap-1 ${
+                  className={`p-4 rounded-lg border text-sm font-medium transition-all duration-300 flex flex-col items-center gap-1 cursor-pointer ${
                     selectedLevel === i
                       ? "border-gold bg-gold/10 text-gold glow-gold"
                       : "border-border bg-card hover:border-gold-dim text-muted-foreground hover:text-foreground"
@@ -163,13 +171,13 @@ const FooterSection = () => {
 
           {/* 6. BOTÕES DE AÇÃO */}
           <motion.div {...fadeUp(0.5)} className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-            <a
-              href={`lightning:${LIGHTNING_ADDRESS}`}
-              className="px-8 py-3.5 rounded-lg gradient-gold text-primary-foreground font-semibold text-sm glow-gold hover:glow-gold-strong transition-all duration-300 flex items-center gap-2"
+            <button
+              onClick={() => setShowQrModal(true)}
+              className="px-8 py-3.5 rounded-lg gradient-gold text-primary-foreground font-semibold text-sm glow-gold hover:glow-gold-strong transition-all duration-300 flex items-center gap-2 cursor-pointer"
             >
               APOIAR AGORA
               <Zap className="w-4 h-4" />
-            </a>
+            </button>
             <Link
               to="/lightning"
               className="px-8 py-3.5 rounded-lg border border-border text-muted-foreground font-medium text-sm hover:border-gold-dim hover:text-foreground transition-all duration-300 flex items-center gap-2"
@@ -200,6 +208,81 @@ const FooterSection = () => {
           </div>
         </div>
       </div>
+
+      {/* QR CODE MODAL */}
+      <AnimatePresence>
+        {showQrModal && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4"
+            onClick={() => setShowQrModal(false)}
+          >
+            {/* Backdrop */}
+            <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" />
+
+            {/* Modal */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              transition={{ duration: 0.3 }}
+              className="relative bg-card border border-border rounded-xl p-8 max-w-sm w-full text-center shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close button */}
+              <button
+                onClick={() => setShowQrModal(false)}
+                className="absolute top-4 right-4 text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+              >
+                <X className="w-5 h-5" />
+              </button>
+
+              <div className="flex items-center justify-center gap-2 mb-4">
+                <Zap className="w-5 h-5 text-gold" />
+                <h3 className="font-semibold text-lg tracking-tight">Apoiar via Lightning</h3>
+              </div>
+
+              {selectedLevel !== null && (
+                <p className="text-sm text-gold font-mono mb-4">
+                  {fundingLevels[selectedLevel].sats} Sats — {fundingLevels[selectedLevel].label}
+                </p>
+              )}
+
+              <div className="bg-background rounded-lg p-4 mb-4 inline-block">
+                <img
+                  src={qrCodeImage}
+                  alt="QR Code Lightning"
+                  className="w-56 h-56 rounded-lg block mx-auto"
+                />
+              </div>
+
+              <p className="text-xs text-muted-foreground mb-3">
+                Escaneie com sua carteira Lightning ou copie o endereço abaixo:
+              </p>
+
+              <div
+                className="flex items-center justify-center gap-2 cursor-pointer group bg-secondary/50 rounded-lg px-3 py-2"
+                onClick={handleCopyModal}
+              >
+                <code className="font-mono text-xs text-muted-foreground group-hover:text-foreground transition-colors break-all">
+                  {LIGHTNING_ADDRESS}
+                </code>
+                {copiedModal ? (
+                  <Check className="w-4 h-4 text-chart-green flex-shrink-0" />
+                ) : (
+                  <Copy className="w-4 h-4 text-muted-foreground group-hover:text-gold flex-shrink-0 transition-colors" />
+                )}
+              </div>
+              {copiedModal && (
+                <p className="text-xs text-chart-green mt-2 animate-pulse">Endereço copiado!</p>
+              )}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </footer>
   );
 };
