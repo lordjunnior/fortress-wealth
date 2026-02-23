@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700;1,800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -83,6 +83,15 @@
 }
 
 @layer utilities {
+  /* ─── Typography ─── */
+  .font-editorial {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+
+  .font-display {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
   .text-gold {
     color: hsl(var(--gold));
   }
@@ -91,6 +100,18 @@
     color: hsl(var(--ice-white));
   }
 
+  .text-chart-red {
+    color: hsl(var(--chart-red));
+  }
+
+  .text-gradient-gold {
+    background: linear-gradient(135deg, hsl(var(--gold)), hsl(var(--amber)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ─── Backgrounds ─── */
   .bg-midnight {
     background-color: hsl(var(--midnight));
   }
@@ -99,28 +120,8 @@
     background-color: hsl(var(--midnight-light));
   }
 
-  .border-gold {
-    border-color: hsl(var(--gold));
-  }
-
-  .border-gold-dim {
-    border-color: hsl(var(--gold-dim));
-  }
-
   .bg-gold {
     background-color: hsl(var(--gold));
-  }
-
-  .text-chart-red {
-    color: hsl(var(--chart-red));
-  }
-
-  .glow-gold {
-    box-shadow: 0 0 20px hsl(var(--gold) / 0.15), 0 0 60px hsl(var(--gold) / 0.05);
-  }
-
-  .glow-gold-strong {
-    box-shadow: 0 0 30px hsl(var(--gold) / 0.25), 0 0 80px hsl(var(--gold) / 0.1);
   }
 
   .gradient-gold {
@@ -131,22 +132,85 @@
     background: linear-gradient(180deg, hsl(222 47% 5%), hsl(222 47% 3%));
   }
 
-  .text-gradient-gold {
-    background: linear-gradient(135deg, hsl(var(--gold)), hsl(var(--amber)));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  /* ─── Borders ─── */
+  .border-gold {
+    border-color: hsl(var(--gold));
   }
 
+  .border-gold-dim {
+    border-color: hsl(var(--gold-dim));
+  }
+
+  /* ─── Glows ─── */
+  .glow-gold {
+    box-shadow: 0 0 20px hsl(var(--gold) / 0.15), 0 0 60px hsl(var(--gold) / 0.05);
+  }
+
+  .glow-gold-strong {
+    box-shadow: 0 0 30px hsl(var(--gold) / 0.25), 0 0 80px hsl(var(--gold) / 0.1);
+  }
+
+  /* ─── Card System ─── */
   .card-wealth {
-    @apply bg-card border border-border rounded-lg p-6 transition-all duration-300;
+    @apply rounded-lg p-6 transition-all duration-500;
+    background: hsl(var(--card) / 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid hsl(var(--border) / 0.6);
+    box-shadow: 0 1px 3px hsl(222 47% 3% / 0.2);
   }
 
   .card-wealth:hover {
-    border-color: hsl(var(--gold-dim));
-    box-shadow: 0 0 30px hsl(var(--gold) / 0.08);
+    border-color: hsl(var(--gold-dim) / 0.5);
+    box-shadow:
+      0 8px 32px hsl(222 47% 3% / 0.4),
+      0 0 0 1px hsl(var(--gold) / 0.06);
+    transform: translateY(-2px);
   }
 
+  /* ─── Button System ─── */
+  .btn-primary {
+    @apply px-8 py-3.5 rounded-lg font-semibold tracking-wide text-sm transition-all duration-500;
+    background: linear-gradient(135deg, hsl(var(--gold)), hsl(var(--amber)));
+    color: hsl(var(--primary-foreground));
+    box-shadow:
+      0 8px 24px hsl(var(--gold) / 0.25),
+      inset 0 1px 0 hsl(0 0% 100% / 0.15);
+    border: 1px solid hsl(var(--gold) / 0.3);
+  }
+
+  .btn-primary:hover {
+    box-shadow:
+      0 12px 32px hsl(var(--gold) / 0.35),
+      inset 0 1px 0 hsl(0 0% 100% / 0.2);
+    transform: translateY(-1px) scale(1.02);
+  }
+
+  .btn-primary:active {
+    transform: translateY(0) scale(0.98);
+    box-shadow:
+      0 4px 16px hsl(var(--gold) / 0.2),
+      inset 0 1px 0 hsl(0 0% 100% / 0.1);
+  }
+
+  .btn-secondary {
+    @apply px-8 py-3.5 rounded-lg font-medium tracking-wide text-sm transition-all duration-500;
+    background: transparent;
+    color: hsl(var(--foreground));
+    border: 1px solid hsl(220 20% 20%);
+  }
+
+  .btn-secondary:hover {
+    background: hsl(var(--secondary) / 0.5);
+    border-color: hsl(var(--gold-dim) / 0.4);
+    transform: translateY(-1px);
+  }
+
+  .btn-secondary:active {
+    transform: translateY(0) scale(0.98);
+  }
+
+  /* ─── Layout ─── */
   .section-padding {
     @apply py-20 md:py-28 px-4 md:px-8;
     max-width: 1920px;
