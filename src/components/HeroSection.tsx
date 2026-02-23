@@ -29,10 +29,7 @@ const HeroSection = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center section-padding overflow-hidden bg-background">
       
-      {/* Grade Tática de Fundo */}
-      <div className="absolute inset-0 pointer-events-none z-0 opacity-[0.03]">
-        <div className="w-full h-full" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)', backgroundSize: '60px 60px' }}></div>
-      </div>
+      {/* Fundo transparente — usa NoiseBackground + Dust Particles do Index */}
 
       <div className="relative z-10 max-w-5xl mx-auto flex flex-col items-center text-center mt-12">
         
