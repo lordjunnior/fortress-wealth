@@ -65,9 +65,12 @@ export default function ProtocoloInicial() {
 
         <header className="mb-24">
           <span className="text-red-600 font-black uppercase tracking-[0.5em] text-xs mb-6 block">Para Leigos Absolutos</span>
-          <h1 className="text-6xl md:text-8xl font-black tracking-tighter leading-[0.85] mb-8 uppercase">
-            Entenda o Bitcoin<br/><span className="protocolo-shimmer italic">ainda hoje</span>
+          <h1 className="text-6xl md:text-8xl font-black tracking-tighter leading-[0.85] mb-4 uppercase">
+            Entenda o Bitcoin
           </h1>
+          <p className="text-6xl md:text-8xl font-black tracking-tighter leading-none mb-8 uppercase protocolo-shimmer italic pb-2">
+            ainda hoje
+          </p>
           <style>{`
             .protocolo-shimmer {
               background: linear-gradient(90deg, #dc2626 0%, #ff6b6b 40%, #ffffff 50%, #ff6b6b 60%, #dc2626 100%);
