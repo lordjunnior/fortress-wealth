@@ -57,7 +57,7 @@ const AppSidebar = () => {
   };
 
   return (
-    <aside className="hidden lg:flex fixed left-0 top-0 bottom-0 w-[260px] z-50 flex-col border-r border-border/50 bg-[#070A12]/95 backdrop-blur-xl">
+    <aside className="hidden lg:flex fixed left-0 top-0 bottom-0 w-[260px] z-50 flex-col border-r border-border/50 bg-[#070A12]/95 backdrop-blur-xl pt-[38px]">
       {/* Profile Photo - Square, full width */}
       <div className="w-full aspect-square overflow-hidden">
         <img
@@ -138,7 +138,7 @@ const AppSidebar = () => {
       {/* Footer seal */}
       <div className="px-5 py-3 border-t border-border/50">
         <p className="font-mono text-[9px] text-muted-foreground/50 tracking-widest text-center">
-          NOT YOUR KEYS · NOT YOUR MONEY
+          AUTOCUSTÓDIA É LIBERDADE
         </p>
       </div>
     </aside>
