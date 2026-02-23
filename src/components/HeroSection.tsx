@@ -52,16 +52,19 @@ const HeroSection = () => {
           </div>
         </motion.div>
 
-        {/* O Conflito Ideológico (Tensão Tipográfica) */}
-        <motion.div custom={1} variants={fadeUp} initial="hidden" animate="visible" className="mb-8">
-          <h1 className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.85] flex flex-col items-center">
-            {/* O Problema: O Velho Mundo (Serif) */}
-            <span className="font-editorial italic font-medium text-muted-foreground tracking-normal mb-2 md:mb-0">
-              Seu dinheiro está <span className="text-destructive">derretendo.</span>
+        {/* O Título Brutalista Corrigido */}
+        <motion.div custom={1} variants={fadeUp} initial="hidden" animate="visible" className="mb-10 w-full">
+          <h1 className="flex flex-col items-center justify-center w-full font-sans uppercase">
+            {/* O Problema */}
+            <span className="font-black text-6xl md:text-8xl lg:text-9xl tracking-tighter text-foreground leading-[0.85] mb-2 md:mb-0">
+              SEU DINHEIRO ESTÁ
             </span>
-            {/* A Solução: A Verdade Bruta (Grotesk/Sans) */}
-            <span className="text-foreground uppercase drop-shadow-[0_0_30px_rgba(255,255,255,0.05)]">
-              A culpa não é do <span className="text-gold drop-shadow-[0_0_40px_rgba(247,147,26,0.2)]">acaso.</span>
+            <span className="font-black text-6xl md:text-8xl lg:text-[110px] tracking-tighter text-destructive leading-[0.85] drop-shadow-[0_0_30px_rgba(220,38,38,0.4)] mb-2 md:mb-0">
+              DERRETENDO.
+            </span>
+            {/* A Solução */}
+            <span className="font-bold text-3xl md:text-5xl lg:text-6xl tracking-tight text-muted-foreground leading-[0.9] mt-4">
+              A CULPA NÃO É DO <span className="text-gold font-black drop-shadow-[0_0_30px_rgba(247,147,26,0.3)]">ACASO.</span>
             </span>
           </h1>
         </motion.div>
