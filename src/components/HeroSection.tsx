@@ -56,11 +56,13 @@ const HeroSection = () => {
         <motion.div custom={1} variants={fadeUp} initial="hidden" animate="visible" className="mb-10 w-full">
           <h1 className="flex flex-col items-center justify-center w-full font-sans uppercase">
             {/* O Problema */}
-            <span className="font-black text-6xl md:text-8xl lg:text-9xl tracking-tighter text-foreground leading-[0.85] mb-2 md:mb-0">
+            <span className="font-black text-6xl md:text-8xl lg:text-9xl tracking-tighter text-foreground leading-[0.85] mb-2 md:mb-0 relative overflow-hidden">
               SEU DINHEIRO ESTÁ
+              <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent animate-shimmer" />
             </span>
-            <span className="font-black text-6xl md:text-8xl lg:text-[110px] tracking-tighter text-destructive leading-[0.85] drop-shadow-[0_0_30px_rgba(220,38,38,0.4)] mb-2 md:mb-0">
+            <span className="font-black text-6xl md:text-8xl lg:text-[110px] tracking-tighter text-destructive leading-[0.85] drop-shadow-[0_0_30px_rgba(220,38,38,0.4)] mb-2 md:mb-0 relative overflow-hidden">
               DERRETENDO.
+              <span className="absolute inset-0 bg-gradient-to-r from-transparent via-destructive/20 to-transparent animate-shimmer [animation-delay:0.5s]" />
             </span>
             {/* A Solução */}
             <span className="font-bold text-3xl md:text-5xl lg:text-6xl tracking-tight text-muted-foreground leading-[0.9] mt-4">
