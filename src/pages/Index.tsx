@@ -21,7 +21,7 @@ const Index = () => {
       <NoiseBackground />
 
       {/* Dust Particles Atmosphere */}
-      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-60">
+      <div className="fixed inset-0 lg:left-[260px] pointer-events-none z-0 overflow-hidden opacity-60">
         <div className="dust-layer-home"></div>
         <div className="dust-layer-home dust-layer-home-2"></div>
         <div className="dust-layer-home dust-layer-home-3"></div>
