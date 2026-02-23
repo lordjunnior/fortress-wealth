@@ -58,7 +58,24 @@ const EntendaBitcoin: React.FC = () => {
           <h1 className="text-4xl md:text-6xl font-bold text-foreground leading-tight mb-2">
             Entenda o Bitcoin
           </h1>
-          <p className="text-3xl md:text-5xl font-bold text-gold mb-8">— ainda hoje</p>
+          <p className="text-3xl md:text-5xl font-bold mb-8">
+            <span className="text-gold">— </span>
+            <span className="hero-shimmer">AINDA HOJE</span>
+          </p>
+          <style>{`
+            .hero-shimmer {
+              background: linear-gradient(90deg, #F7931A 0%, #FFBE5C 40%, #ffffff 50%, #FFBE5C 60%, #F7931A 100%);
+              background-size: 250% 100%;
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+              background-clip: text;
+              animation: heroShimmer 3s linear infinite;
+            }
+            @keyframes heroShimmer {
+              0% { background-position: 200% center; }
+              100% { background-position: -200% center; }
+            }
+          `}</style>
           <p className="text-muted-foreground text-lg leading-relaxed max-w-2xl mb-6">
             Você não precisa entender de economia, programação ou gráficos.
           </p>
