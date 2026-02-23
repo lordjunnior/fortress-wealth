@@ -14,7 +14,7 @@ import SupplyShock from './SupplyShock';
 
 const VerdadeSalarial = () => (
   <div className="p-8 text-center text-foreground pt-32">
-    <div className="inline-flex items-center gap-2 bg-purple-500/10 text-purple-400 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest mb-6">
+    <div className="inline-flex items-center gap-2 bg-gold/10 text-gold px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest mb-6">
       <Clock className="w-4 h-4" />
       Em Desenvolvimento
     </div>
@@ -30,9 +30,9 @@ const TOOLS_LIST = [
     badge: 'Decifre a Mídia',
     desc: 'Um dicionário satírico que traduz termos jornalísticos e estatais — "Justiça Social", "Regulação" — para a realidade nua e crua.',
     cta: 'Traduzir Mentiras',
-    color: 'from-red-500/20 to-red-500/0',
-    borderColor: 'group-hover:border-red-500/50',
-    textColor: 'text-red-400',
+    color: 'from-gold/10 to-gold/0',
+    borderColor: 'group-hover:border-gold/50',
+    textColor: 'text-destructive',
     icon: BookA,
     component: Novilingua
   },
@@ -42,9 +42,9 @@ const TOOLS_LIST = [
     badge: 'O Preço da Liberdade',
     desc: 'Calcule quanto custa sair do alcance estatal. Passaporte, vistos e custos de realocação para refúgios soberanos ao redor do mundo.',
     cta: 'Calcular Saída',
-    color: 'from-sky-500/20 to-sky-500/0',
-    borderColor: 'group-hover:border-sky-500/50',
-    textColor: 'text-sky-400',
+    color: 'from-gold/10 to-gold/0',
+    borderColor: 'group-hover:border-gold/50',
+    textColor: 'text-gold',
     icon: Plane,
     component: TaxaDeFuga
   },
@@ -54,8 +54,8 @@ const TOOLS_LIST = [
     badge: 'Cálculo de Valorização',
     desc: 'Simulador de valorização histórica. Compare dinheiro escasso versus setor imobiliário inflado com dados reais e atualizados.',
     cta: 'Abrir Calculadora',
-    color: 'from-amber-500/20 to-amber-500/0',
-    borderColor: 'group-hover:border-amber-500/50',
+    color: 'from-gold/10 to-gold/0',
+    borderColor: 'group-hover:border-gold/50',
     textColor: 'text-gold',
     icon: Calculator,
     component: BitcoinVsImovel
@@ -66,9 +66,9 @@ const TOOLS_LIST = [
     badge: 'Crie sua Seed Offline',
     desc: 'Ferramenta de segurança máxima que usa o caos dos seus movimentos do mouse para gerar chaves privadas completamente offline.',
     cta: 'Gerar Seed',
-    color: 'from-emerald-500/20 to-emerald-500/0',
-    borderColor: 'group-hover:border-emerald-500/50',
-    textColor: 'text-emerald-400',
+    color: 'from-gold/10 to-gold/0',
+    borderColor: 'group-hover:border-gold/50',
+    textColor: 'text-gold',
     icon: ShieldCheck,
     component: GeradorEntropy
   },
@@ -78,9 +78,9 @@ const TOOLS_LIST = [
     badge: 'A Porta Está Fechando',
     desc: 'Visualize o choque de oferta do Bitcoin em tempo real. Moedas perdidas, ETFs absorvendo e menos de 9% disponível. A matemática não mente.',
     cta: 'Ver os Números',
-    color: 'from-orange-500/20 to-orange-500/0',
-    borderColor: 'group-hover:border-orange-500/50',
-    textColor: 'text-orange-400',
+    color: 'from-gold/10 to-gold/0',
+    borderColor: 'group-hover:border-gold/50',
+    textColor: 'text-gold',
     icon: Hourglass,
     component: SupplyShock
   },
@@ -90,9 +90,9 @@ const TOOLS_LIST = [
     badge: 'O Custo do Estado',
     desc: 'Descubra o custo real do trabalho formal. Quanto o Estado extrai do seu esforço antes que o dinheiro chegue na sua mão.',
     cta: 'Calcular Roubo',
-    color: 'from-purple-500/20 to-purple-500/0',
-    borderColor: 'group-hover:border-purple-500/50',
-    textColor: 'text-purple-400',
+    color: 'from-gold/10 to-gold/0',
+    borderColor: 'group-hover:border-gold/50',
+    textColor: 'text-gold',
     icon: Clock,
     component: VerdadeSalarial
   },
@@ -102,8 +102,8 @@ const TOOLS_LIST = [
     badge: 'Em Breve',
     desc: 'Novas ferramentas para P2P e gestão de UTXO chegando em breve. Desenvolvimento ativo e contínuo.',
     cta: 'Aguarde',
-    color: 'from-slate-500/20 to-slate-500/0',
-    borderColor: 'group-hover:border-slate-500/30',
+    color: 'from-muted/10 to-muted/0',
+    borderColor: 'group-hover:border-border',
     textColor: 'text-muted-foreground',
     icon: Terminal,
     component: null
