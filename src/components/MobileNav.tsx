@@ -4,7 +4,7 @@ import { Menu, X, LayoutGrid, BookOpen, Headphones, Wrench, QrCode, Zap, Library
 
 const menuItems = [
   { icon: LayoutGrid, label: "Manifesto", targetId: "manifesto" },
-  { icon: BookOpen, label: "Educação", route: "/educacao" },
+  { icon: BookOpen, label: "Educação", targetId: "educacao" },
   { icon: Headphones, label: "Audioteca", route: "/audiobooks" },
   { icon: Library, label: "E-books", route: "/ebooks" },
   { icon: Wrench, label: "Ferramentas", route: "/ferramentas" },

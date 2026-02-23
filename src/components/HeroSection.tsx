@@ -1,23 +1,19 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, ArrowRight, ShieldAlert, Terminal } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { ChevronDown } from "lucide-react";
+import { ease } from "@/lib/motion";
 
-// A Coreografia de Elite
-const easeApple = [0.22, 1, 0.36, 1] as const;
-
-const fadeUp = {
+const lineVariants = {
   hidden: { opacity: 0, y: 30 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.8, delay: 0.1 + i * 0.15, ease: easeApple },
+    transition: { duration: 0.6, delay: 0.2 + i * 0.15, ease: [0.22, 1, 0.36, 1] as const },
   }),
 };
 
 const HeroSection = () => {
   const [seedOffset, setSeedOffset] = useState(0);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -26,126 +22,161 @@ const HeroSection = () => {
     return () => clearInterval(interval);
   }, []);
 
+  const scrollTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center section-padding overflow-hidden bg-background">
-      
-      {/* Fundo transparente — usa NoiseBackground + Dust Particles do Index */}
+    <section className="relative min-h-screen flex items-center justify-center section-padding overflow-hidden">
+      {/* Shimmer keyframes */}
+      <style>{`
+        @keyframes shimmer {
+          0%   { background-position: 200% center; }
+          100% { background-position: -200% center; }
+        }
+        .hero-shimmer {
+          background: linear-gradient(
+            90deg,
+            hsl(var(--gold)) 0%,
+            hsl(40 80% 70%) 40%,
+            hsl(0 0% 100%) 50%,
+            hsl(40 80% 70%) 60%,
+            hsl(var(--gold)) 100%
+          );
+          background-size: 250% 100%;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          animation: shimmer 3s linear infinite;
+        }
+      `}</style>
 
-      <div className="relative z-10 max-w-5xl mx-auto flex flex-col items-center text-center mt-12">
-        
-        {/* Eyebrow / Tag do Sistema */}
-        <motion.div
-          custom={0}
-          variants={fadeUp}
-          initial="hidden"
-          animate="visible"
-          className="flex items-center gap-3 mb-8"
+      <div className="relative z-10 max-w-5xl mx-auto text-center">
+        {/* Pre-title */}
+        <motion.p
+          initial={{ opacity: 0, letterSpacing: "0.5em" }}
+          animate={{ opacity: 1, letterSpacing: "0.3em" }}
+          transition={{ duration: 1.2, ease: ease.sovereign }}
+          className="font-mono text-[10px] md:text-xs uppercase text-muted-foreground mb-10 tracking-[0.3em]"
         >
-          <div className="flex items-center gap-2 border border-border bg-secondary/50 px-4 py-1.5 rounded-sm">
-            <Terminal className="w-3.5 h-3.5 text-muted-foreground" />
-            <span className="font-mono text-[10px] uppercase tracking-[0.5em] text-muted-foreground font-bold">
-              Centro de Comando da Soberania
-            </span>
-          </div>
-        </motion.div>
+          CENTRO DE COMANDO DA SOBERANIA
+        </motion.p>
 
-        {/* O Título Brutalista Corrigido */}
-        <motion.div custom={1} variants={fadeUp} initial="hidden" animate="visible" className="mb-10 w-full">
-          <h1 className="flex flex-col items-center justify-center w-full font-sans uppercase">
-            {/* O Problema */}
-            <span className="font-black text-6xl md:text-8xl lg:text-9xl tracking-tighter text-foreground leading-[0.85] mb-2 md:mb-0 relative overflow-hidden">
-              SEU DINHEIRO ESTÁ
-              <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent animate-shimmer" />
-            </span>
-            <span className="font-black text-6xl md:text-8xl lg:text-[110px] tracking-tighter text-destructive leading-[0.85] drop-shadow-[0_0_30px_rgba(220,38,38,0.4)] mb-2 md:mb-0 relative overflow-hidden">
-              DERRETENDO.
-              <span className="absolute inset-0 bg-gradient-to-r from-transparent via-destructive/20 to-transparent animate-shimmer [animation-delay:0.5s]" />
-            </span>
-            {/* A Solução */}
-            <span className="font-bold text-3xl md:text-5xl lg:text-6xl tracking-tight text-muted-foreground leading-[0.9] mt-4">
-              A CULPA NÃO É DO <span className="text-gold font-black drop-shadow-[0_0_30px_rgba(247,147,26,0.3)]">ACASO.</span>
-            </span>
-          </h1>
-        </motion.div>
-
-        {/* Sub-copy Militar */}
-        <motion.div custom={2} variants={fadeUp} initial="hidden" animate="visible">
-          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl leading-relaxed mb-12 font-medium">
-            Alfabetização monetária, ferramentas de autocustódia e estratégias de saída. A infraestrutura técnica e intelectual para quem decidiu parar de financiar o próprio roubo.
-          </p>
-        </motion.div>
-
-        {/* Botões Brutalistas */}
-        <motion.div
-          custom={3}
-          variants={fadeUp}
-          initial="hidden"
-          animate="visible"
-          className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto mb-20"
-        >
-          <button 
-            onClick={() => navigate('/protocolo-inicial')}
-            className="w-full sm:w-auto btn-primary group"
+        {/* Hero Headline — Bebas Neue */}
+        <div className="leading-[0.95] mb-10" style={{ fontFamily: "'Bebas Neue', sans-serif", letterSpacing: "0.03em" }}>
+          <motion.span
+            custom={0}
+            variants={lineVariants}
+            initial="hidden"
+            animate="visible"
+            className="block text-[clamp(3.5rem,10vw,9rem)] text-ice-white"
           >
+            SEU DINHEIRO ESTÁ
+          </motion.span>
+          <motion.span
+            custom={1}
+            variants={lineVariants}
+            initial="hidden"
+            animate="visible"
+            className="block text-[clamp(3.5rem,10vw,9rem)] text-chart-red"
+            style={{ textShadow: "0 0 30px hsl(0 72% 51% / 0.7), 0 0 60px hsl(0 72% 51% / 0.3)" }}
+          >
+            DERRETENDO.
+          </motion.span>
+          <motion.span
+            custom={2}
+            variants={lineVariants}
+            initial="hidden"
+            animate="visible"
+            className="block text-[clamp(3.5rem,10vw,9rem)] text-ice-white"
+          >
+            A CULPA NÃO É DO
+          </motion.span>
+          <motion.span
+            custom={3}
+            variants={lineVariants}
+            initial="hidden"
+            animate="visible"
+            className="block text-[clamp(3.5rem,10vw,9rem)] hero-shimmer"
+          >
+            ACASO.
+          </motion.span>
+        </div>
+
+        {/* Divider line */}
+        <motion.div
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ duration: 0.8, delay: 1.0, ease: ease.smooth }}
+          className="w-16 h-[1.5px] mx-auto mb-8 origin-left"
+          style={{ background: "hsl(var(--gold) / 0.6)" }}
+        />
+
+        {/* Subtitle */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 1.1, ease: ease.sovereign }}
+          className="font-display text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed font-normal"
+        >
+          Alfabetização monetária, ferramentas de autocustódia e estratégias de saída.
+          A infraestrutura técnica e intelectual para quem decidiu parar de financiar
+          o próprio roubo.
+        </motion.p>
+
+        {/* Action Buttons */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 1.3, ease: ease.sovereign }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
+        >
+          <button onClick={() => scrollTo("manifesto")} className="btn-primary">
             Comece por aqui
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </button>
-          
-          <div className="flex gap-4 w-full sm:w-auto">
-            <button 
-              onClick={() => navigate('/ferramentas')}
-              className="w-full sm:w-auto btn-secondary"
-            >
-              Usar Aplicativos
-            </button>
-            <button 
-              onClick={() => navigate('/educacao')}
-              className="w-full sm:w-auto btn-secondary"
-            >
-              Explorar Leituras
-            </button>
-          </div>
+          <button onClick={() => scrollTo("ferramentas")} className="btn-secondary">
+            Usar aplicativos
+          </button>
+          <button onClick={() => scrollTo("educacao")} className="btn-secondary">
+            Explorar leituras
+          </button>
         </motion.div>
 
-        {/* Prova Social Tecnológica */}
+        {/* Social Proof */}
         <motion.div
-          custom={4}
-          variants={fadeUp}
-          initial="hidden"
-          animate="visible"
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8 border-t border-border/50 min-w-[300px]"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 1.6 }}
+          className="flex items-center justify-center gap-3"
         >
-          <div className="flex -space-x-3">
+          <div className="flex -space-x-2">
             <AnimatePresence mode="wait">
               {[0, 1, 2, 3, 4].map((i) => (
                 <motion.img
                   key={`${i}-${seedOffset}`}
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 0.8 }}
                   exit={{ opacity: 0 }}
-                  transition={{ duration: 0.5, delay: i * 0.1, ease: easeApple }}
+                  transition={{ duration: 0.6, delay: i * 0.08 }}
                   src={`https://i.pravatar.cc/100?u=${i + seedOffset}`}
-                  alt="Soberano"
-                  className="w-10 h-10 rounded-sm border-2 border-background object-cover grayscale opacity-60 hover:opacity-100 hover:grayscale-0 transition-all"
+                  alt=""
+                  className="w-8 h-8 rounded-full border-2 border-background object-cover grayscale"
                 />
               ))}
             </AnimatePresence>
           </div>
-          <div className="flex items-center gap-2 text-xs font-mono tracking-widest text-muted-foreground uppercase">
-            <ShieldAlert className="w-4 h-4 text-gold" />
-            <span>Junte-se a <strong className="text-foreground">2.400+</strong> soberanos operando.</span>
-          </div>
+          <p className="text-sm text-muted-foreground">
+            Junte-se a <span className="text-foreground font-semibold">2.400+</span> soberanos que já baixaram.
+          </p>
         </motion.div>
       </div>
 
-      {/* Indicador de Scroll Dinâmico */}
       <motion.div
         initial={{ opacity: 0 }}
-        animate={{ opacity: 0.3 }}
+        animate={{ opacity: 0.6 }}
         transition={{ delay: 2, duration: 1 }}
-        className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        className="absolute bottom-12 left-1/2 -translate-x-1/2"
       >
-        <span className="text-[9px] font-mono uppercase tracking-[0.3em] text-muted-foreground">Desça para o Manifesto</span>
         <ChevronDown className="w-5 h-5 text-muted-foreground animate-bounce" />
       </motion.div>
     </section>
