@@ -1,7 +1,7 @@
-import { motion } from "framer-motion";
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceLine } from "recharts";
-import { useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceLine } from "recharts";
+import { fadeUp, stagger, staggerChild, viewportOnce, ease } from "@/lib/motion";
 
 const purchasingPowerData = [
   { year: "1994", value: 100 },
@@ -34,55 +34,60 @@ const CustomTooltip = ({ active, payload, label }: any) => {
 
 const ManifestoSection = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, viewportOnce);
 
   return (
     <section className="section-padding" ref={ref}>
       <div className="max-w-5xl mx-auto">
         {/* Manifesto Text */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
+          variants={fadeUp}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
           className="max-w-3xl mb-14"
         >
           <p className="pre-title">MANIFESTO</p>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6">
+          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight mb-6">
             Por que este site <span className="text-gradient-gold">existe</span>?
           </h2>
-          <div className="space-y-4 text-muted-foreground leading-relaxed text-base md:text-lg">
-            <p>
+          <motion.div
+            variants={stagger(0.12)}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+            className="space-y-4 text-muted-foreground leading-relaxed text-base md:text-lg"
+          >
+            <motion.p variants={staggerChild}>
               O sistema monetário é uma fraude. A educação formal é propaganda. A mídia
               tradicional é manipulação sistemática da realidade. Isso não é teoria da
               conspiração — é matemática, história e economia documentada.
-            </p>
-            <p>
+            </motion.p>
+            <motion.p variants={staggerChild}>
               Bancos centrais criam dinheiro do nada e transferem riqueza de quem trabalha
               para quem controla a emissão. Universidades produzem conformidade intelectual,
               não pensamento crítico.
-            </p>
-            <p className="text-foreground font-medium">
+            </motion.p>
+            <motion.p variants={staggerChild} className="text-foreground font-medium">
               Este arsenal existe para compartilhar conhecimento sistematicamente escondido
               por responsabilidade com quem ainda consegue pensar.
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
         </motion.div>
 
         {/* Chart */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.4, ease: ease.sovereign }}
           className="card-wealth p-4 md:p-8"
         >
           <div className="flex items-center justify-between mb-6">
             <div>
               <p className="pre-title mb-1">VISUALIZAÇÃO DE DADOS</p>
-              <h3 className="text-lg md:text-xl font-semibold tracking-tight">
+              <h3 className="font-display text-lg md:text-xl font-semibold tracking-tight">
                 DESTRUIÇÃO DO PODER DE COMPRA <span className="text-muted-foreground">(BRL/USD vs. TEMPO)</span>
               </h3>
             </div>
-            <span className="text-chart-red font-mono text-sm font-semibold">▼ -92%</span>
+            <span className="text-chart-red font-mono text-sm font-semibold">-92%</span>
           </div>
 
           <div className="h-[300px] md:h-[380px]">

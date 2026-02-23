@@ -3,6 +3,7 @@ import { useRef } from "react";
 import { BookOpen, Shield, Compass, BarChart3, Bitcoin } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { AreaChart, Area, ResponsiveContainer } from "recharts";
+import { fadeUp, stagger, staggerChild, viewportOnce, ease } from "@/lib/motion";
 
 const miniChartData = [
   { v: 100 }, { v: 95 }, { v: 88 }, { v: 80 }, { v: 70 },
@@ -52,20 +53,20 @@ const tools = [
 
 const ToolsSection = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, viewportOnce);
   const navigate = useNavigate();
 
   return (
     <section className="section-padding bg-card/30" ref={ref}>
       <div className="max-w-6xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
+          variants={fadeUp}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
           className="mb-14"
         >
           <p className="pre-title">PAINEL OPERACIONAL</p>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-3">
+          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight mb-3">
             Ferramentas de <span className="text-gradient-gold">Operação</span>
           </h2>
           <p className="text-muted-foreground text-lg">
@@ -73,16 +74,20 @@ const ToolsSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+        <motion.div
+          variants={stagger(0.1)}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6"
+        >
           {tools.map((tool, i) => {
             const Icon = tool.icon;
             return (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.1 + i * 0.1 }}
-                className="card-wealth flex flex-col relative overflow-hidden">
+                variants={staggerChild}
+                className="card-wealth flex flex-col relative overflow-hidden group"
+              >
                 {/* Background mini chart */}
                 <div className="absolute inset-0 opacity-[0.06] pointer-events-none">
                   <ResponsiveContainer width="100%" height="100%">
@@ -100,7 +105,7 @@ const ToolsSection = () => {
                   </span>
                 </div>
 
-                <h3 className="text-lg font-semibold tracking-tight mb-3">{tool.title}</h3>
+                <h3 className="font-display text-lg font-semibold tracking-tight mb-3">{tool.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed flex-1 mb-6">
                   {tool.description}
                 </p>
@@ -124,14 +129,14 @@ const ToolsSection = () => {
 
                 <button
                   onClick={() => tool.route && navigate(tool.route)}
-                  className="w-full py-3 rounded-lg border border-gold-dim text-gold font-medium text-sm hover:bg-gold/5 transition-all duration-300"
+                  className="btn-secondary w-full py-3 px-4 text-gold border-gold-dim hover:bg-gold/5"
                 >
                   {tool.button}
                 </button>
               </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,8 +1,9 @@
 import { motion, useInView } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { ArrowRight, Download, BookOpen, FileText } from "lucide-react";
 import FormationSection from "@/components/FormationSection";
+import { fadeUp, stagger, staggerChild, viewportOnce, ease } from "@/lib/motion";
 
 import bookSeisLicoes from "@/assets/book-seis-licoes.jpg";
 import bookDemocracia from "@/assets/book-democracia.jpg";
@@ -64,20 +65,20 @@ const books = [
 
 const KnowledgeSection = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, viewportOnce);
   const navigate = useNavigate();
 
   return (
     <section className="section-padding" ref={ref}>
       <div className="max-w-5xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
+          variants={fadeUp}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
           className="mb-14"
         >
           <p className="pre-title">ARSENAL DE CONHECIMENTO</p>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-3">
+          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight mb-3">
             A Base <span className="text-gradient-gold">Intelectual</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl">
@@ -90,13 +91,16 @@ const KnowledgeSection = () => {
         <FormationSection />
 
         {/* Learning trails */}
-        <div className="space-y-3 mb-16">
+        <motion.div
+          variants={stagger(0.06)}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          className="space-y-3 mb-16"
+        >
           {trails.map((trail, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, x: -20 }}
-              animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.4, delay: 0.1 + i * 0.08 }}
+              variants={staggerChild}
               className="card-wealth flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 group cursor-pointer"
               onClick={() => navigate(trail.route)}
             >
@@ -104,36 +108,40 @@ const KnowledgeSection = () => {
                 {trail.level.toUpperCase()}
               </span>
               <div className="flex-1 min-w-0">
-                <h4 className="font-semibold text-sm mb-1">{trail.title}</h4>
+                <h4 className="font-display font-semibold text-sm mb-1">{trail.title}</h4>
                 <p className="text-xs text-muted-foreground">{trail.desc}</p>
               </div>
-              <button className="flex items-center gap-2 text-gold text-sm font-medium whitespace-nowrap group-hover:gap-3 transition-all duration-300">
+              <button className="flex items-center gap-2 text-gold text-sm font-medium whitespace-nowrap group-hover:gap-3 transition-all duration-500">
                 {trail.btn}
                 <ArrowRight className="w-4 h-4" />
               </button>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* PDF Library */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, delay: 0.5 }}
+          variants={fadeUp}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
         >
           <div className="flex items-center gap-3 mb-6">
             <BookOpen className="w-5 h-5 text-gold" />
-            <h3 className="text-xl font-semibold">Biblioteca em PDF</h3>
+            <h3 className="font-display text-xl font-semibold">Biblioteca em PDF</h3>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+          <motion.div
+            variants={stagger(0.08)}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6"
+          >
             {books.map((book, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 40, scale: 0.95 }}
-                animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
-                transition={{ duration: 0.5, delay: 0.6 + i * 0.1 }}
-                whileHover={{ y: -8, scale: 1.03 }}
+                variants={staggerChild}
+                whileHover={{ y: -6 }}
+                transition={{ duration: 0.5, ease: ease.sovereign }}
                 className="group cursor-pointer"
               >
                 <div className="card-wealth p-0 overflow-hidden flex flex-col h-full">
@@ -142,10 +150,10 @@ const KnowledgeSection = () => {
                     <img
                       src={book.cover}
                       alt={book.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                     {/* Overlay on hover */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400 flex items-end justify-center pb-6">
+                    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end justify-center pb-6">
                       <span className="flex items-center gap-2 text-gold font-semibold text-sm">
                         <Download className="w-4 h-4" />
                         Baixar PDF
@@ -159,7 +167,7 @@ const KnowledgeSection = () => {
 
                   {/* Info */}
                   <div className="p-4 flex-1 flex flex-col">
-                    <h4 className="text-sm font-bold mb-1 group-hover:text-gold transition-colors leading-tight">
+                    <h4 className="text-sm font-bold mb-1 group-hover:text-gold transition-colors duration-500 leading-tight">
                       {book.title}
                     </h4>
                     <p className="text-xs text-muted-foreground mb-2">{book.author}</p>
@@ -171,13 +179,13 @@ const KnowledgeSection = () => {
                         <FileText className="w-3 h-3" />
                         {book.pages}
                       </span>
-                      <ArrowRight className="w-3.5 h-3.5 text-muted-foreground group-hover:text-gold group-hover:translate-x-1 transition-all duration-300" />
+                      <ArrowRight className="w-3.5 h-3.5 text-muted-foreground group-hover:text-gold group-hover:translate-x-1 transition-all duration-500" />
                     </div>
                   </div>
                 </div>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>
