@@ -66,8 +66,22 @@ export default function ProtocoloInicial() {
         <header className="mb-24">
           <span className="text-red-600 font-black uppercase tracking-[0.5em] text-xs mb-6 block">Para Leigos Absolutos</span>
           <h1 className="text-6xl md:text-8xl font-black tracking-tighter leading-[0.85] mb-8 uppercase">
-            Entenda o Bitcoin<br/><span className="text-red-600 italic underline decoration-white/10">ainda hoje</span>
+            Entenda o Bitcoin<br/><span className="protocolo-shimmer italic">ainda hoje</span>
           </h1>
+          <style>{`
+            .protocolo-shimmer {
+              background: linear-gradient(90deg, #dc2626 0%, #ff6b6b 40%, #ffffff 50%, #ff6b6b 60%, #dc2626 100%);
+              background-size: 250% 100%;
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+              background-clip: text;
+              animation: protocShimmer 3s linear infinite;
+            }
+            @keyframes protocShimmer {
+              0% { background-position: 200% center; }
+              100% { background-position: -200% center; }
+            }
+          `}</style>
           <p className="text-2xl md:text-3xl font-black text-slate-300 leading-tight max-w-2xl tracking-tight">
             Você não precisa entender de economia, programação ou gráficos.
           </p>
