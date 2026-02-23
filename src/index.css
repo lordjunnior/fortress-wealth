@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700;1,800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700;1,800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,36 +6,41 @@
 
 @layer base {
   :root {
-    --background: 222 47% 5%;
-    --foreground: 210 40% 96%;
+    /* Fundo Absoluto e Textos */
+    --background: 222 47% 4%;
+    --foreground: 210 40% 98%;
 
-    --card: 222 40% 8%;
-    --card-foreground: 210 40% 96%;
+    /* Superfícies */
+    --card: 222 47% 6%;
+    --card-foreground: 210 40% 98%;
 
     --popover: 222 40% 8%;
     --popover-foreground: 210 40% 96%;
 
-    --primary: 40 92% 56%;
-    --primary-foreground: 222 47% 5%;
+    /* Cores de Guerra (Ouro Bitcoin e Vermelho Alerta) */
+    --primary: 40 92% 56%; 
+    --primary-foreground: 0 0% 0%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
 
-    --secondary: 220 20% 14%;
+    --secondary: 220 20% 10%;
     --secondary-foreground: 210 30% 80%;
 
-    --muted: 220 20% 12%;
+    --muted: 220 20% 8%;
     --muted-foreground: 215 15% 55%;
 
     --accent: 40 92% 56%;
     --accent-foreground: 222 47% 5%;
 
-    --destructive: 0 72% 51%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 220 20% 16%;
-    --input: 220 20% 16%;
+    --border: 220 20% 12%;
+    --input: 220 20% 12%;
     --ring: 40 92% 56%;
 
-    --radius: 0.5rem;
+    /* Brutalismo: Bordas zeradas ou mínimas */
+    --radius: 0.125rem; 
 
+    /* Sidebar */
     --sidebar-background: 222 40% 6%;
     --sidebar-foreground: 210 30% 80%;
     --sidebar-primary: 40 92% 56%;
@@ -45,21 +50,21 @@
     --sidebar-border: 220 20% 16%;
     --sidebar-ring: 40 92% 56%;
 
-    /* Custom tokens */
+    /* Cores Customizadas Extras */
     --gold: 40 92% 56%;
-    --gold-dim: 40 60% 40%;
+    --gold-dim: 40 92% 56% / 0.2;
     --amber: 35 95% 50%;
     --ice-white: 210 40% 98%;
-    --midnight: 222 47% 5%;
-    --midnight-light: 222 40% 8%;
+    --midnight: 222 47% 4%;
+    --midnight-light: 222 47% 6%;
     --chart-red: 0 72% 51%;
     --chart-green: 142 71% 45%;
     --mono: 'JetBrains Mono', monospace;
   }
 
   .dark {
-    --background: 222 47% 5%;
-    --foreground: 210 40% 96%;
+    --background: 222 47% 4%;
+    --foreground: 210 40% 98%;
   }
 }
 
@@ -67,14 +72,14 @@
   * {
     @apply border-border;
   }
-
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    @apply bg-background text-foreground antialiased selection:bg-primary selection:text-black;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
-
+  
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Inter', system-ui, sans-serif;
+    @apply font-sans tracking-tight;
   }
 
   .font-mono {
@@ -83,6 +88,11 @@
 }
 
 @layer utilities {
+  /* Curva de Animação Apple Global */
+  .ease-apple {
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
   /* ─── Typography ─── */
   .font-editorial {
     font-family: 'Playfair Display', Georgia, serif;
@@ -104,13 +114,11 @@
     color: hsl(var(--chart-red));
   }
 
+  /* Gradientes de Texto */
   .text-gradient-gold {
-    background: linear-gradient(135deg, hsl(var(--gold)), hsl(var(--amber)));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[hsl(40,92%,56%)] to-[hsl(35,95%,40%)];
   }
-
+  
   /* ─── Backgrounds ─── */
   .bg-midnight {
     background-color: hsl(var(--midnight));
@@ -129,7 +137,7 @@
   }
 
   .gradient-dark {
-    background: linear-gradient(180deg, hsl(222 47% 5%), hsl(222 47% 3%));
+    background: linear-gradient(180deg, hsl(222 47% 4%), hsl(222 47% 2%));
   }
 
   /* ─── Borders ─── */
@@ -143,82 +151,78 @@
 
   /* ─── Glows ─── */
   .glow-gold {
-    box-shadow: 0 0 20px hsl(var(--gold) / 0.15), 0 0 60px hsl(var(--gold) / 0.05);
+    box-shadow: 0 0 20px hsl(var(--gold) / 0.2);
   }
 
   .glow-gold-strong {
-    box-shadow: 0 0 30px hsl(var(--gold) / 0.25), 0 0 80px hsl(var(--gold) / 0.1);
+    box-shadow: 0 0 40px hsl(var(--gold) / 0.4);
   }
 
-  /* ─── Card System ─── */
-  .card-wealth {
-    @apply rounded-lg p-6 transition-all duration-500;
-    background: hsl(var(--card) / 0.6);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid hsl(var(--border) / 0.6);
-    box-shadow: 0 1px 3px hsl(222 47% 3% / 0.2);
-  }
-
-  .card-wealth:hover {
-    border-color: hsl(var(--gold-dim) / 0.5);
-    box-shadow:
-      0 8px 32px hsl(222 47% 3% / 0.4),
-      0 0 0 1px hsl(var(--gold) / 0.06);
-    transform: translateY(-2px);
-  }
-
-  /* ─── Button System ─── */
-  .btn-primary {
-    @apply px-8 py-3.5 rounded-lg font-semibold tracking-wide text-sm transition-all duration-500;
-    background: linear-gradient(135deg, hsl(var(--gold)), hsl(var(--amber)));
-    color: hsl(var(--primary-foreground));
-    box-shadow:
-      0 8px 24px hsl(var(--gold) / 0.25),
-      inset 0 1px 0 hsl(0 0% 100% / 0.15);
-    border: 1px solid hsl(var(--gold) / 0.3);
-  }
-
-  .btn-primary:hover {
-    box-shadow:
-      0 12px 32px hsl(var(--gold) / 0.35),
-      inset 0 1px 0 hsl(0 0% 100% / 0.2);
-    transform: translateY(-1px) scale(1.02);
-  }
-
-  .btn-primary:active {
-    transform: translateY(0) scale(0.98);
-    box-shadow:
-      0 4px 16px hsl(var(--gold) / 0.2),
-      inset 0 1px 0 hsl(0 0% 100% / 0.1);
-  }
-
-  .btn-secondary {
-    @apply px-8 py-3.5 rounded-lg font-medium tracking-wide text-sm transition-all duration-500;
-    background: transparent;
-    color: hsl(var(--foreground));
-    border: 1px solid hsl(220 20% 20%);
-  }
-
-  .btn-secondary:hover {
-    background: hsl(var(--secondary) / 0.5);
-    border-color: hsl(var(--gold-dim) / 0.4);
-    transform: translateY(-1px);
-  }
-
-  .btn-secondary:active {
-    transform: translateY(0) scale(0.98);
-  }
-
-  /* ─── Layout ─── */
+  /* Padding padrão do site */
   .section-padding {
-    @apply py-20 md:py-28 px-4 md:px-8;
-    max-width: 1920px;
-    margin-left: auto;
-    margin-right: auto;
+    @apply px-4 md:px-8 lg:px-12 py-16 md:py-24;
   }
 
   .pre-title {
     @apply font-mono text-xs tracking-[0.3em] uppercase text-muted-foreground mb-4;
+  }
+}
+
+@layer components {
+  /* ─── O Novo Botão de Ação (Brutalista e Massivo) ─── */
+  .btn-primary {
+    @apply px-10 py-5 rounded-sm font-black tracking-widest uppercase text-sm ease-apple transition-all duration-500 flex items-center justify-center gap-3;
+    background: linear-gradient(135deg, hsl(var(--gold)), hsl(40, 92%, 45%));
+    color: #000000;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.3), 0 10px 30px -10px rgba(247,147,26,0.4);
+    border: 1px solid rgba(247,147,26,0.8);
+  }
+
+  .btn-primary:hover {
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.4), 0 20px 40px -10px rgba(247,147,26,0.6);
+    transform: translateY(-2px) scale(1.01);
+  }
+
+  .btn-primary:active {
+    transform: translateY(1px) scale(0.99);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.1), 0 5px 15px -5px rgba(247,147,26,0.4);
+  }
+
+  /* Botão Secundário */
+  .btn-secondary {
+    @apply px-8 py-4 rounded-sm font-bold tracking-widest uppercase text-xs ease-apple transition-all duration-500 bg-transparent text-white;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .btn-secondary:hover {
+    @apply bg-white/5 border-white/30 text-gold;
+  }
+
+  /* ─── Os Novos Cards de Sistema ─── */
+  .card-wealth, .card-elite {
+    @apply bg-[#0A0A0A]/80 backdrop-blur-md p-8 md:p-10 relative overflow-hidden ease-apple transition-all duration-500 rounded-sm;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05), 0 10px 40px -20px rgba(0,0,0,0.8);
+  }
+
+  .card-wealth:hover, .card-elite:hover {
+    transform: translateY(-4px);
+    box-shadow: inset 0 0 0 1px rgba(247,147,26,0.2), 0 20px 40px -20px rgba(247,147,26,0.15);
+  }
+
+  .card-wealth::before, .card-elite::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+
+  .card-wealth:hover::before, .card-elite:hover::before {
+    opacity: 1;
+    background: linear-gradient(90deg, transparent, rgba(247,147,26,0.5), transparent);
   }
 }
