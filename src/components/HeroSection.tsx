@@ -1,7 +1,16 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
-import { wordReveal, wordChild, lineReveal, ease } from "@/lib/motion";
+import { ease } from "@/lib/motion";
+
+const lineVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, delay: 0.2 + i * 0.15, ease: [0.22, 1, 0.36, 1] as const },
+  }),
+};
 
 const HeroSection = () => {
   const [seedOffset, setSeedOffset] = useState(0);
@@ -17,11 +26,31 @@ const HeroSection = () => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const line1Words = ["Seu", "dinheiro", "está"];
-  const line2Words = ["A", "culpa", "não", "é", "do"];
-
   return (
     <section className="relative min-h-screen flex items-center justify-center section-padding overflow-hidden">
+      {/* Shimmer keyframes */}
+      <style>{`
+        @keyframes shimmer {
+          0%   { background-position: 200% center; }
+          100% { background-position: -200% center; }
+        }
+        .hero-shimmer {
+          background: linear-gradient(
+            90deg,
+            hsl(var(--gold)) 0%,
+            hsl(40 80% 70%) 40%,
+            hsl(0 0% 100%) 50%,
+            hsl(40 80% 70%) 60%,
+            hsl(var(--gold)) 100%
+          );
+          background-size: 250% 100%;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          animation: shimmer 3s linear infinite;
+        }
+      `}</style>
+
       <div className="relative z-10 max-w-5xl mx-auto text-center">
         {/* Pre-title */}
         <motion.p
@@ -33,63 +62,61 @@ const HeroSection = () => {
           CENTRO DE COMANDO DA SOBERANIA
         </motion.p>
 
-        {/* Line 1 — Editorial serif */}
-        <motion.h1
-          variants={wordReveal}
-          initial="hidden"
-          animate="visible"
-          className="font-editorial text-5xl md:text-7xl lg:text-[5.5rem] font-black tracking-tight leading-[0.95] mb-1"
-        >
-          {line1Words.map((word, i) => (
-            <motion.span key={i} variants={wordChild} className="inline-block mr-[0.22em]">
-              {word}
-            </motion.span>
-          ))}
+        {/* Hero Headline — Bebas Neue */}
+        <div className="leading-[0.95] mb-10" style={{ fontFamily: "'Bebas Neue', sans-serif", letterSpacing: "0.03em" }}>
           <motion.span
-            variants={wordChild}
-            className="inline-block text-chart-red italic"
-            style={{ textShadow: "0 0 60px hsl(0 72% 51% / 0.25)" }}
+            custom={0}
+            variants={lineVariants}
+            initial="hidden"
+            animate="visible"
+            className="block text-[clamp(3.5rem,10vw,9rem)] text-ice-white"
           >
-            derretendo
+            SEU DINHEIRO ESTÁ
           </motion.span>
-          <motion.span variants={wordChild} className="inline-block text-chart-red">.</motion.span>
-        </motion.h1>
-
-        {/* Line 2 — Editorial serif */}
-        <motion.h1
-          variants={wordReveal}
-          initial="hidden"
-          animate="visible"
-          className="font-editorial text-5xl md:text-7xl lg:text-[5.5rem] font-black tracking-tight leading-[0.95] mb-10"
-        >
-          {line2Words.map((word, i) => (
-            <motion.span key={i} variants={wordChild} className="inline-block mr-[0.22em]">
-              {word}
-            </motion.span>
-          ))}
           <motion.span
-            variants={wordChild}
-            className="inline-block text-gradient-gold italic"
+            custom={1}
+            variants={lineVariants}
+            initial="hidden"
+            animate="visible"
+            className="block text-[clamp(3.5rem,10vw,9rem)] text-chart-red"
+            style={{ textShadow: "0 0 30px hsl(0 72% 51% / 0.7), 0 0 60px hsl(0 72% 51% / 0.3)" }}
           >
-            acaso
+            DERRETENDO.
           </motion.span>
-          <motion.span variants={wordChild} className="inline-block text-gradient-gold">.</motion.span>
-        </motion.h1>
+          <motion.span
+            custom={2}
+            variants={lineVariants}
+            initial="hidden"
+            animate="visible"
+            className="block text-[clamp(3.5rem,10vw,9rem)] text-ice-white"
+          >
+            A CULPA NÃO É DO
+          </motion.span>
+          <motion.span
+            custom={3}
+            variants={lineVariants}
+            initial="hidden"
+            animate="visible"
+            className="block text-[clamp(3.5rem,10vw,9rem)] hero-shimmer"
+          >
+            ACASO.
+          </motion.span>
+        </div>
 
         {/* Divider line */}
         <motion.div
-          variants={lineReveal(0.9)}
-          initial="hidden"
-          animate="visible"
-          className="w-16 h-[1.5px] mx-auto mb-8"
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ duration: 0.8, delay: 1.0, ease: ease.smooth }}
+          className="w-16 h-[1.5px] mx-auto mb-8 origin-left"
           style={{ background: "hsl(var(--gold) / 0.6)" }}
         />
 
-        {/* Subtitle — sans-serif technical */}
+        {/* Subtitle */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 1.0, ease: ease.sovereign }}
+          transition={{ duration: 0.6, delay: 1.1, ease: ease.sovereign }}
           className="font-display text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed font-normal"
         >
           Alfabetização monetária, ferramentas de autocustódia e estratégias de saída.
@@ -101,7 +128,7 @@ const HeroSection = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 1.2, ease: ease.sovereign }}
+          transition={{ duration: 0.6, delay: 1.3, ease: ease.sovereign }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
         >
           <button onClick={() => scrollTo("manifesto")} className="btn-primary">
@@ -119,7 +146,7 @@ const HeroSection = () => {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 1.5 }}
+          transition={{ duration: 0.8, delay: 1.6 }}
           className="flex items-center justify-center gap-3"
         >
           <div className="flex -space-x-2">
