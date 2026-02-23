@@ -35,7 +35,7 @@ const NetworkTicker = () => {
     { label: "SELIC", value: "14,25%", status: "down" as const, statusText: "roubo anual" },
     { label: "INFLAÇÃO IPCA", value: "5,06%", status: "down" as const, statusText: "seu dinheiro encolhe" },
     { label: "PRÓXIMO HALVING", value: "2028", status: "up" as const, statusText: "programado" },
-    { manifesto: true, value: "NOT YOUR KEYS, NOT YOUR MONEY" },
+    { manifesto: true, value: "AUTOCUSTÓDIA É LIBERDADE" },
   ];
 
   const renderItem = (item: typeof items[0], key: number) => (
