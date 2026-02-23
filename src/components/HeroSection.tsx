@@ -55,7 +55,8 @@ const HeroSection = () => {
           variants={wordReveal}
           initial="hidden"
           animate="visible"
-          className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.95] mb-2"
+          className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-[0.95] mb-2"
+          style={{ fontFamily: "'Space Grotesk', sans-serif" }}
         >
           {line1Words.map((word, i) => (
             <motion.span key={i} variants={wordChild} className="inline-block mr-[0.25em]">
@@ -77,8 +78,8 @@ const HeroSection = () => {
           variants={wordReveal}
           initial="hidden"
           animate="visible"
-          className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.95] mb-8"
-          style={{ transitionDelay: "0.4s" }}
+          className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-[0.95] mb-8"
+          style={{ fontFamily: "'Space Grotesk', sans-serif", transitionDelay: "0.4s" }}
         >
           {line2Words.map((word, i) => (
             <motion.span key={i} variants={wordChild} className="inline-block mr-[0.25em]">
