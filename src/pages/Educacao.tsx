@@ -108,10 +108,10 @@ const Educacao: React.FC = () => {
               <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-gold/10 to-transparent blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none rounded-full transform translate-x-1/2 -translate-y-1/2" />
               <div className="relative z-10">
                 <div className="flex items-center gap-3 mb-4">
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-gold bg-gold/10 px-3 py-1.5 rounded-full border border-gold/20">
+                  <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-gold bg-gold/10 px-3 py-1.5 rounded-full border border-gold/20">
                     Essencial
                   </span>
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-chart-green bg-chart-green/10 px-3 py-1.5 rounded-full border border-chart-green/20">
+                  <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-chart-green bg-chart-green/10 px-3 py-1.5 rounded-full border border-chart-green/20">
                     Fácil e Rápido
                   </span>
                 </div>
@@ -119,7 +119,7 @@ const Educacao: React.FC = () => {
                 <p className="text-muted-foreground text-sm leading-relaxed max-w-2xl mb-4">
                   Antes de operar as ferramentas abaixo, leia <strong className="text-foreground">"Entenda o Bitcoin — ainda hoje"</strong>. É um guia para leigos absolutos, sem termos técnicos. Entenda o "porquê" antes do "como".
                 </p>
-                <span className="inline-flex items-center gap-2 text-gold font-bold text-sm uppercase tracking-wider group-hover:gap-4 transition-all">
+                <span className="inline-flex items-center gap-2 text-gold font-mono font-bold text-[10px] uppercase tracking-widest group-hover:gap-4 transition-all">
                   Acessar <ArrowRight className="w-4 h-4" />
                 </span>
               </div>
@@ -148,7 +148,7 @@ const Educacao: React.FC = () => {
                   <h3 className="text-xl font-bold text-foreground mb-2 tracking-tight">{card.title}</h3>
                   <p className="text-muted-foreground text-sm mb-4">{card.desc}</p>
                   {card.route && (
-                    <span className={`inline-flex items-center gap-2 ${card.color} font-bold text-sm uppercase tracking-wider group-hover:gap-4 transition-all`}>
+                    <span className={`inline-flex items-center gap-2 ${card.color} font-mono font-bold text-[10px] uppercase tracking-widest group-hover:gap-4 transition-all`}>
                       Acessar <ArrowRight className="w-4 h-4" />
                     </span>
                   )}

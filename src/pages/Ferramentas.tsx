@@ -14,7 +14,7 @@ import SupplyShock from './SupplyShock';
 
 const VerdadeSalarial = () => (
   <div className="p-8 text-center text-foreground pt-32">
-    <div className="inline-flex items-center gap-2 bg-gold/10 text-gold px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest mb-6">
+    <div className="inline-flex items-center gap-2 bg-gold/10 text-gold px-4 py-2 rounded-full font-mono text-[10px] font-bold uppercase tracking-widest mb-6">
       <Clock className="w-4 h-4" />
       Em Desenvolvimento
     </div>
@@ -210,7 +210,7 @@ const Ferramentas: React.FC = () => {
                     <div className={`p-4 rounded-xl bg-secondary border border-border ${tool.textColor} shadow-inner`}>
                       <Icon className={`w-7 h-7 ${isDev && 'animate-pulse'}`} />
                     </div>
-                    <span className={`text-[10px] font-bold uppercase tracking-widest ${tool.textColor} bg-secondary px-3 py-1.5 rounded-full border border-border`}>
+                    <span className={`font-mono text-[10px] font-bold uppercase tracking-widest ${tool.textColor} bg-secondary px-3 py-1.5 rounded-full border border-border`}>
                       {tool.badge}
                     </span>
                   </div>
@@ -223,7 +223,7 @@ const Ferramentas: React.FC = () => {
                     {tool.desc}
                   </p>
 
-                  <div className={`mt-auto inline-flex items-center gap-2 ${tool.textColor} font-bold text-sm uppercase tracking-wider ${!isDev && 'group-hover:gap-4'} transition-all`}>
+                  <div className={`mt-auto inline-flex items-center gap-2 ${tool.textColor} font-mono font-bold text-[10px] uppercase tracking-widest ${!isDev && 'group-hover:gap-4'} transition-all`}>
                     {tool.cta} {!isDev && <ArrowRight className="w-4 h-4" />}
                   </div>
                 </div>
