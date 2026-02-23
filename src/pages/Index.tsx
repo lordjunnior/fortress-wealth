@@ -9,6 +9,7 @@ import ToolsSection from "@/components/ToolsSection";
 import KnowledgeSection from "@/components/KnowledgeSection";
 import AudiotecaSection from "@/components/AudiotecaSection";
 import FaqSection from "@/components/FaqSection";
+import WhyBitcoinSection from "@/components/WhyBitcoinSection";
 import FooterSection from "@/components/FooterSection";
 import QuoteCarousel from "@/components/QuoteCarousel";
 import NetworkTicker from "@/components/NetworkTicker";
@@ -94,6 +95,8 @@ const Index = () => {
         <div id="faq">
           <FaqSection />
         </div>
+
+        <WhyBitcoinSection />
 
         <div id="apoio">
           <FooterSection />
