@@ -11,7 +11,7 @@ interface MenuItem {
 }
 
 const menuItems: MenuItem[] = [
-  { icon: LayoutGrid, label: "Manifesto", targetId: "manifesto" },
+  { icon: LayoutGrid, label: "Manifesto", route: "/" },
   { icon: BookOpen, label: "Educação", route: "/educacao" },
   { icon: Headphones, label: "Audioteca", route: "/audiobooks" },
   { icon: Library, label: "E-books", route: "/ebooks" },

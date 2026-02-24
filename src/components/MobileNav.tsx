@@ -3,8 +3,8 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { Menu, X, LayoutGrid, BookOpen, Headphones, Wrench, QrCode, Zap, Library } from "lucide-react";
 
 const menuItems = [
-  { icon: LayoutGrid, label: "Manifesto", targetId: "manifesto" },
-  { icon: BookOpen, label: "Educação", targetId: "educacao" },
+  { icon: LayoutGrid, label: "Manifesto", route: "/" },
+  { icon: BookOpen, label: "Educação", route: "/educacao" },
   { icon: Headphones, label: "Audioteca", route: "/audiobooks" },
   { icon: Library, label: "E-books", route: "/ebooks" },
   { icon: Wrench, label: "Ferramentas", route: "/ferramentas" },
@@ -16,10 +16,10 @@ const MobileNav = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const handleNav = (item: typeof menuItems[0]) => {
+  const handleNav = (item: { route?: string; targetId?: string }) => {
     setOpen(false);
-    if ((item as any).route) {
-      navigate((item as any).route);
+    if (item.route) {
+      navigate(item.route);
     } else if (item.targetId) {
       if (location.pathname !== "/") {
         navigate("/");
@@ -27,9 +27,7 @@ const MobileNav = () => {
           document.getElementById(item.targetId!)?.scrollIntoView({ behavior: "smooth" });
         }, 300);
       } else {
-        setTimeout(() => {
-          document.getElementById(item.targetId!)?.scrollIntoView({ behavior: "smooth" });
-        }, 100);
+        document.getElementById(item.targetId!)?.scrollIntoView({ behavior: "smooth" });
       }
     }
   };
@@ -57,7 +55,7 @@ const MobileNav = () => {
           ))}
           <div className="pt-1 border-t border-border mt-1">
             <button
-              onClick={() => handleNav({ icon: Zap, label: "Apoio", targetId: "apoio" })}
+              onClick={() => handleNav({ targetId: "apoio" })}
               className="w-full flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg border border-gold-dim/50 text-gold text-sm font-semibold"
             >
               <Zap className="w-4 h-4" />
