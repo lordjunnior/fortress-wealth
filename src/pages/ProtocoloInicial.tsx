@@ -311,35 +311,54 @@ export default function ProtocoloInicial() {
 
           {/* === ESTÁGIO 03: A MECÂNICA DA LIBERDADE === */}
           <section id="estagio-03" className="mb-28 scroll-mt-24">
-            <div className="flex items-center gap-3 text-red-600 mb-10">
+            <div className="flex items-center gap-3 text-red-600 mb-4">
               <Key size={20} />
               <h2 className="text-xl font-black uppercase tracking-[0.15em] font-mono">Estágio 03: A Mecânica da Liberdade</h2>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-              <div className="p-8 bg-[#0B0F19]/60 border border-white/5 rounded-sm">
-                <h4 className="text-white font-black uppercase mb-3 tracking-tighter italic text-sm">Inputs</h4>
-                <p className="text-xs text-slate-500 leading-relaxed uppercase font-mono">O endereço de onde o Bitcoin sai. Prova de que você recebeu valor anteriormente.</p>
-              </div>
-              <div className="p-8 bg-[#0B0F19]/60 border border-white/5 rounded-sm">
-                <h4 className="text-white font-black uppercase mb-3 tracking-tighter italic text-sm">Outputs</h4>
-                <p className="text-xs text-slate-500 leading-relaxed uppercase font-mono">O endereço de destino. A chave pública que controlará o valor.</p>
-              </div>
-              <div className="p-8 bg-[#0B0F19]/60 border border-white/5 rounded-sm">
-                <h4 className="text-white font-black uppercase mb-3 tracking-tighter italic text-sm">Taxas</h4>
-                <p className="text-xs text-slate-500 leading-relaxed uppercase font-mono">Incentivo para mineradores. Maior taxa = confirmação mais rápida.</p>
+            <p className="text-slate-500 text-sm mb-10 max-w-2xl">Entenda como o Bitcoin se move: de onde sai, para onde vai, e por que suas chaves são a única coisa que importa.</p>
+
+            {/* Fluxo visual: Input → Output → Taxa */}
+            <div className="relative mb-8">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
+                {[
+                  { step: '01', title: 'Inputs', desc: 'O endereço de onde o Bitcoin sai. Prova de que você recebeu valor anteriormente.', color: 'cyan', Icon: ArrowRight },
+                  { step: '02', title: 'Outputs', desc: 'O endereço de destino. A chave pública que controlará o valor.', color: 'emerald', Icon: Send },
+                  { step: '03', title: 'Taxas', desc: 'Incentivo para mineradores. Maior taxa = confirmação mais rápida.', color: 'amber', Icon: Zap },
+                ].map((item, i) => (
+                  <div key={i} className="relative group">
+                    {i < 2 && <div className="hidden md:block absolute top-1/2 -right-[1px] w-[2px] h-8 -translate-y-1/2 z-10" style={{ background: 'linear-gradient(180deg, transparent, rgba(255,255,255,0.1), transparent)' }} />}
+                    <div className={`p-8 border border-white/5 ${i === 0 ? 'rounded-t-sm md:rounded-l-sm md:rounded-tr-none' : i === 2 ? 'rounded-b-sm md:rounded-r-sm md:rounded-bl-none' : ''} transition-all duration-300 hover:border-white/10`}
+                      style={{ background: `linear-gradient(135deg, rgba(${item.color === 'cyan' ? '6,182,212' : item.color === 'emerald' ? '16,185,129' : '245,158,11'},0.06) 0%, rgba(11,15,25,0.8) 100%)` }}>
+                      <div className="flex items-center gap-3 mb-4">
+                        <span className="text-[10px] font-mono font-black tracking-widest" style={{ color: item.color === 'cyan' ? '#22d3ee' : item.color === 'emerald' ? '#34d399' : '#fbbf24' }}>{item.step}</span>
+                        <div className="h-[1px] flex-1" style={{ background: `linear-gradient(90deg, rgba(${item.color === 'cyan' ? '6,182,212' : item.color === 'emerald' ? '16,185,129' : '245,158,11'},0.3), transparent)` }} />
+                        <item.Icon size={14} style={{ color: item.color === 'cyan' ? '#22d3ee' : item.color === 'emerald' ? '#34d399' : '#fbbf24' }} />
+                      </div>
+                      <h4 className="text-white font-black uppercase mb-3 tracking-tighter italic text-lg">{item.title}</h4>
+                      <p className="text-xs text-slate-400 leading-relaxed">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
-            {/* Chaves */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="bg-[#0B0F19]/60 border border-white/5 rounded-sm p-10 space-y-4">
-                <h4 className="text-white font-black uppercase text-sm tracking-wider font-mono italic">Chave Privada</h4>
-                <p className="text-slate-400 leading-relaxed">Prova a propriedade e assina transações. É o seu segredo mestre. Se você perde a chave e o backup (seed), perde o acesso para sempre.</p>
-                <div className="flex items-center gap-2 text-[9px] font-black uppercase text-red-600 font-mono"><ShieldAlert size={12}/> Not your keys, not your money</div>
+
+            {/* Chaves — layout assimétrico */}
+            <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+              <div className="md:col-span-3 rounded-sm p-10 space-y-4 relative overflow-hidden" style={{ background: 'linear-gradient(160deg, rgba(6,182,212,0.05) 0%, rgba(11,15,25,0.9) 40%)', border: '1px solid rgba(6,182,212,0.12)' }}>
+                <div className="absolute -top-10 -right-10 w-40 h-40 rounded-full opacity-[0.04]" style={{ background: 'radial-gradient(circle, #22d3ee, transparent 70%)' }} />
+                <div className="flex items-center gap-2 mb-2">
+                  <Lock size={14} className="text-cyan-400" />
+                  <p className="text-[9px] text-cyan-400/60 uppercase font-black tracking-[0.3em] font-mono">Segredo Mestre</p>
+                </div>
+                <h4 className="text-white font-black uppercase text-lg tracking-wider font-mono italic">Chave Privada</h4>
+                <p className="text-slate-300 leading-relaxed text-sm">Prova a propriedade e assina transações. Se você perde a chave e o backup (seed), perde o acesso <strong className="text-red-400">para sempre</strong>.</p>
+                <div className="flex items-center gap-2 text-[9px] font-black uppercase text-red-500 font-mono mt-2 px-3 py-2 rounded bg-red-500/5 border border-red-500/10 w-fit"><ShieldAlert size={12}/> Not your keys, not your money</div>
               </div>
-              <div className="border-2 border-red-600/15 bg-red-950/10 rounded-sm p-10 space-y-4">
-                <p className="text-red-600 font-black uppercase tracking-widest text-[9px] italic font-mono">Aviso Operacional:</p>
-                <p className="text-white font-black text-lg leading-tight uppercase italic">
-                  "Bitcoin wallets não guardam bitcoins. Elas guardam as CHAVES que dão acesso às suas moedas gravadas na blockchain."
+              <div className="md:col-span-2 border-2 border-red-600/20 rounded-sm p-10 flex flex-col justify-center relative overflow-hidden" style={{ background: 'linear-gradient(135deg, rgba(220,38,38,0.08) 0%, rgba(11,15,25,0.95) 100%)' }}>
+                <div className="absolute top-0 left-0 w-full h-[2px]" style={{ background: 'linear-gradient(90deg, transparent, rgba(220,38,38,0.5), transparent)' }} />
+                <p className="text-red-500/60 font-black uppercase tracking-widest text-[9px] italic font-mono mb-4">⚠ Aviso Operacional</p>
+                <p className="text-white font-black text-base leading-snug uppercase italic">
+                  "Wallets não guardam bitcoins. Elas guardam as <span className="text-red-400">CHAVES</span> que dão acesso às suas moedas na blockchain."
                 </p>
               </div>
             </div>
@@ -347,52 +366,58 @@ export default function ProtocoloInicial() {
 
           {/* === ESTÁGIO 04: A FORTALEZA === */}
           <section id="estagio-04" className="mb-28 scroll-mt-24">
-            <div className="flex items-center gap-3 text-red-600 mb-10">
+            <div className="flex items-center gap-3 text-red-600 mb-4">
               <ShieldCheck size={20} />
               <h2 className="text-xl font-black uppercase tracking-[0.15em] font-mono">Estágio 04: A Fortaleza</h2>
             </div>
-            <div className="bg-[#0B0F19]/60 border border-white/5 rounded-sm p-10 md:p-14 space-y-6 text-slate-400 leading-relaxed mb-6">
-              <p>A blockchain nunca foi hackeada. O risco não está no código, mas no <strong className="text-white">fator humano</strong>. A rede é imune a ataques de 51% devido ao custo proibitivo de energia.</p>
-              <p>Sua soberania depende de um único segredo: suas <strong className="text-white">Chaves Privadas</strong>. Se você possui as chaves, você é o dono do banco. Se não, você é apenas um cliente à mercê de terceiros.</p>
+
+            {/* Intro com borda lateral */}
+            <div className="border-l-2 border-amber-500/40 pl-8 mb-10 py-2">
+              <p className="text-slate-300 leading-relaxed">A blockchain nunca foi hackeada. O risco não está no código, mas no <strong className="text-white">fator humano</strong>. Sua soberania depende de um único segredo: suas <strong className="text-amber-400">Chaves Privadas</strong>.</p>
+              <p className="text-slate-500 text-sm mt-3">Se você possui as chaves, você é o banco. Se não, você é um cliente à mercê de terceiros.</p>
             </div>
-            {/* Muralha Técnica */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <h3 className="text-slate-600 font-black uppercase tracking-[0.3em] text-[9px] mb-4 border-b border-white/5 pb-3 font-mono">Fundamentos e Defesa</h3>
-                <div className="space-y-3">
-                  <div className="p-7 bg-[#0B0F19]/60 border border-white/5 rounded-sm flex gap-5 items-start group hover:border-amber-500/20 transition-all">
-                    <div className="w-10 h-10 rounded-full bg-amber-500/10 border border-amber-500/15 flex items-center justify-center shrink-0"><Database className="text-amber-500" size={16} /></div>
-                    <div>
-                      <h4 className="text-amber-400 font-black uppercase text-xs mb-1 tracking-wider font-mono">Armazenamento</h4>
-                      <p className="text-slate-500 text-[10px] leading-relaxed font-medium">Deixe de ser um cliente e torne-se um soberano. Chaves privadas são a sua arma.</p>
+
+            {/* 4 pilares em grid compacto */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
+              {[
+                { Icon: Database, label: 'Armazenamento', value: 'Cold Storage', desc: 'Hardware wallets offline', color: '#fbbf24' },
+                { Icon: Scale, label: 'Impostos', value: 'Conheça', desc: 'Proteja sua privacidade', color: '#fbbf24' },
+                { Icon: Pickaxe, label: 'Mineração', value: 'Energia Real', desc: 'Lastro na física', color: '#34d399' },
+                { Icon: HelpCircle, label: 'Pseudônimo', value: 'Não Anônimo', desc: 'DB mais resiliente', color: '#34d399' },
+              ].map((item, i) => (
+                <div key={i} className="group relative rounded-sm p-6 text-center transition-all duration-300 hover:-translate-y-1" style={{ background: 'rgba(11,15,25,0.6)', border: `1px solid ${item.color}15` }}>
+                  <div className="absolute inset-0 rounded-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ background: `radial-gradient(circle at 50% 0%, ${item.color}08, transparent 70%)` }} />
+                  <div className="relative z-10">
+                    <div className="w-10 h-10 rounded-full mx-auto mb-3 flex items-center justify-center" style={{ background: `${item.color}10`, border: `1px solid ${item.color}20` }}>
+                      <item.Icon size={16} style={{ color: item.color }} />
                     </div>
-                  </div>
-                  <div className="p-7 bg-[#0B0F19]/60 border border-white/5 rounded-sm flex gap-5 items-start group hover:border-amber-500/20 transition-all">
-                    <div className="w-10 h-10 rounded-full bg-amber-500/10 border border-amber-500/15 flex items-center justify-center shrink-0"><Scale className="text-amber-500" size={16} /></div>
-                    <div>
-                      <h4 className="text-amber-400 font-black uppercase text-xs mb-1 tracking-wider font-mono">Impostos</h4>
-                      <p className="text-slate-500 text-[10px] leading-relaxed font-medium">Conheça o pedágio do sistema, mas proteja sua privacidade técnica.</p>
-                    </div>
+                    <p className="text-[8px] font-black uppercase tracking-[0.2em] font-mono mb-1" style={{ color: `${item.color}90` }}>{item.label}</p>
+                    <p className="text-white font-black text-sm uppercase italic">{item.value}</p>
+                    <p className="text-slate-600 text-[10px] mt-1 font-medium">{item.desc}</p>
                   </div>
                 </div>
+              ))}
+            </div>
+
+            {/* Stat bar */}
+            <div className="rounded-sm p-6 flex flex-wrap items-center justify-between gap-4" style={{ background: 'linear-gradient(90deg, rgba(16,185,129,0.05), rgba(245,158,11,0.05))', border: '1px solid rgba(255,255,255,0.04)' }}>
+              <div className="flex items-center gap-3">
+                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                <span className="text-[10px] font-mono font-black uppercase tracking-wider text-slate-500">Rede ativa desde</span>
+                <span className="text-white font-black font-mono">2009</span>
               </div>
-              <div>
-                <h3 className="text-slate-600 font-black uppercase tracking-[0.3em] text-[9px] mb-4 border-b border-white/5 pb-3 font-mono">Infraestrutura e Ataque</h3>
-                <div className="space-y-3">
-                  <div className="p-7 bg-[#0B0F19]/60 border border-white/5 rounded-sm flex gap-5 items-start group hover:border-green-500/20 transition-all">
-                    <div className="w-10 h-10 rounded-full bg-green-500/10 border border-green-500/15 flex items-center justify-center shrink-0"><Pickaxe className="text-green-500" size={16} /></div>
-                    <div>
-                      <h4 className="text-green-400 font-black uppercase text-xs mb-1 tracking-wider font-mono">Mineração</h4>
-                      <p className="text-slate-500 text-[10px] leading-relaxed font-medium">A segurança do Bitcoin é lastreada em energia e nas leis da física, não em promessas de políticos.</p>
-                    </div>
-                  </div>
-                  <div className="p-7 bg-[#0B0F19]/60 border border-white/5 rounded-sm flex gap-5 items-start group hover:border-green-500/20 transition-all">
-                    <div className="w-10 h-10 rounded-full bg-green-500/10 border border-green-500/15 flex items-center justify-center shrink-0"><HelpCircle className="text-green-500" size={16} /></div>
-                    <div>
-                      <h4 className="text-green-400 font-black uppercase text-xs mb-1 tracking-wider font-mono">Mitos</h4>
-                      <p className="text-slate-500 text-[10px] leading-relaxed font-medium">O Bitcoin não é anônimo, é pseudônimo. Ele é o banco de dados mais resiliente da história humana.</p>
-                    </div>
-                  </div>
+              <div className="flex items-center gap-6">
+                <div className="text-center">
+                  <p className="text-[8px] text-slate-600 font-mono uppercase tracking-wider">Uptime</p>
+                  <p className="text-green-400 font-black text-sm font-mono">99.98%</p>
+                </div>
+                <div className="text-center">
+                  <p className="text-[8px] text-slate-600 font-mono uppercase tracking-wider">Hacks</p>
+                  <p className="text-amber-400 font-black text-sm font-mono">0</p>
+                </div>
+                <div className="text-center">
+                  <p className="text-[8px] text-slate-600 font-mono uppercase tracking-wider">Nós</p>
+                  <p className="text-white font-black text-sm font-mono">~60.000</p>
                 </div>
               </div>
             </div>
