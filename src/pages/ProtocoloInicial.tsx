@@ -108,6 +108,7 @@ export default function ProtocoloInicial() {
                 { to: '/blindagem-golpes', label: 'Blindagem vs Golpes', icon: '⚠' },
                 { to: '/21-milhoes', label: 'Hard Cap: 21M', icon: '₿' },
                 { to: '/supply-shock', label: 'Supply Shock', icon: '📉' },
+                { to: '/volatilidade', label: 'Volatilidade', icon: '📊' },
               ].map((mod) => (
                 <Link
                   key={mod.to}
