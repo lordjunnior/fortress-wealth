@@ -126,9 +126,9 @@ export default function BlindagemGolpes() {
                 <span className="text-red-600 font-black uppercase tracking-[0.4em] text-[9px] font-mono alert-blink">Alerta Tático</span>
               </div>
 
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.85] uppercase mb-8">
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.95] uppercase mb-8 overflow-visible">
                 O Elo Fraco<br />
-                <span className="title-shimmer italic">É Você</span>
+                <span className="title-shimmer italic inline-block pt-1">É Você</span>
               </h1>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-10">
