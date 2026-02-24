@@ -30,6 +30,7 @@ import HardCap21 from "./pages/HardCap21";
 import BitcoinSeguro from "./pages/BitcoinSeguro";
 import ChavesPage from "./pages/ChavesPage";
 import TransacoesBitcoin from "./pages/TransacoesBitcoin";
+import NocoesBitcoin from "./pages/NocoesBitcoin";
 
 const queryClient = new QueryClient();
 
@@ -66,6 +67,7 @@ const App = () => (
           <Route path="/bitcoin-seguro" element={<BitcoinSeguro />} />
           <Route path="/chaves" element={<ChavesPage />} />
           <Route path="/transacoes" element={<TransacoesBitcoin />} />
+          <Route path="/nocoes-bitcoin" element={<NocoesBitcoin />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
