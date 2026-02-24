@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import { ease } from "@/lib/motion";
 
 const lineVariants = {
@@ -22,9 +23,7 @@ const HeroSection = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const scrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-  };
+  const navigate = useNavigate();
 
   return (
     <section className="relative min-h-screen flex items-center justify-center section-padding overflow-hidden">
@@ -131,13 +130,13 @@ const HeroSection = () => {
           transition={{ duration: 0.6, delay: 1.3, ease: ease.sovereign }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
         >
-          <button onClick={() => scrollTo("manifesto")} className="btn-primary">
+          <button onClick={() => navigate("/protocolo-inicial")} className="btn-primary">
             Comece por aqui
           </button>
-          <button onClick={() => scrollTo("ferramentas")} className="btn-secondary">
+          <button onClick={() => navigate("/ferramentas")} className="btn-secondary">
             Usar aplicativos
           </button>
-          <button onClick={() => scrollTo("educacao")} className="btn-secondary">
+          <button onClick={() => navigate("/educacao")} className="btn-secondary">
             Explorar leituras
           </button>
         </motion.div>
