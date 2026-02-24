@@ -93,6 +93,26 @@ export default function ProtocoloInicial() {
                 {item.label}
               </button>
             ))}
+
+            {/* Módulos de Aprofundamento */}
+            <div className="pt-3 mt-3 border-t border-white/5">
+              <span className="text-[7px] font-black uppercase tracking-[0.3em] text-slate-700 font-mono px-3 block mb-2">Aprofundamento</span>
+              {[
+                { to: '/bitcoin-seguro', label: 'Bitcoin é Seguro?', icon: '🛡' },
+                { to: '/chaves', label: 'Chaves Púb. & Priv.', icon: '🔑' },
+                { to: '/blindagem-golpes', label: 'Blindagem vs Golpes', icon: '⚠' },
+                { to: '/21-milhoes', label: 'Hard Cap: 21M', icon: '₿' },
+              ].map((mod) => (
+                <Link
+                  key={mod.to}
+                  to={mod.to}
+                  className="w-full flex items-center gap-2 px-3 py-2.5 rounded-sm text-[10px] font-bold uppercase tracking-wider transition-all duration-300 font-mono text-slate-500 hover:text-amber-400 hover:bg-amber-500/[0.05] border-l-2 border-transparent hover:border-amber-500/40"
+                >
+                  <span className="text-xs">{mod.icon}</span>
+                  {mod.label}
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </nav>
@@ -351,6 +371,34 @@ export default function ProtocoloInicial() {
                   <p className="text-white font-black text-lg md:text-xl italic mt-4">No Bitcoin, você é o responsável final.</p>
                 </div>
               </div>
+            </div>
+          </section>
+
+          {/* === MÓDULOS DE APROFUNDAMENTO === */}
+          <section className="mb-28">
+            <h3 className="text-slate-600 font-black uppercase tracking-[0.4em] text-[9px] mb-6 font-mono">Módulos de Aprofundamento</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {[
+                { to: '/bitcoin-seguro', title: 'Bitcoin é Seguro?', desc: 'A blockchain nunca foi hackeada. Mas você pode ser o elo fraco. Entenda os riscos reais.', color: 'green', icon: '🛡' },
+                { to: '/chaves', title: 'Chaves Públicas & Privadas', desc: 'Criptografia de chave pública: como funciona a propriedade real no Bitcoin.', color: 'orange', icon: '🔑' },
+                { to: '/blindagem-golpes', title: 'Blindagem contra Golpes', desc: 'Engenharia social, phishing, malware. Aprenda a identificar e neutralizar cada vetor.', color: 'red', icon: '⚠' },
+                { to: '/21-milhoes', title: 'Hard Cap: 21 Milhões', desc: 'A escassez absoluta que nenhum governo pode alterar. A lei matemática suprema.', color: 'amber', icon: '₿' },
+              ].map((mod) => (
+                <Link
+                  key={mod.to}
+                  to={mod.to}
+                  className={`group bg-[#0B0F19]/60 border border-white/5 rounded-sm p-8 hover:border-${mod.color}-500/30 transition-all hover:-translate-y-1`}
+                >
+                  <div className="flex items-center gap-3 mb-3">
+                    <span className="text-2xl">{mod.icon}</span>
+                    <h4 className="text-white font-black uppercase text-sm tracking-tighter italic group-hover:text-amber-400 transition-colors">{mod.title}</h4>
+                  </div>
+                  <p className="text-xs text-slate-500 leading-relaxed font-medium">{mod.desc}</p>
+                  <div className="flex items-center gap-2 mt-4 text-[9px] font-black uppercase tracking-widest text-slate-700 group-hover:text-amber-500 transition-colors font-mono">
+                    Acessar Módulo <ArrowRight size={12} />
+                  </div>
+                </Link>
+              ))}
             </div>
           </section>
 
