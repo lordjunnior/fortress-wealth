@@ -104,6 +104,7 @@ export default function ProtocoloInicial() {
                 { to: '/chaves', label: 'Chaves Púb. & Priv.', icon: '🔑' },
                 { to: '/transacoes', label: 'Transações Bitcoin', icon: '📡' },
                 { to: '/mineracao', label: 'Mineração Bitcoin', icon: '⛏' },
+                { to: '/futuro-bitcoin', label: 'Futuro do Bitcoin', icon: '⏳' },
                 { to: '/blindagem-golpes', label: 'Blindagem vs Golpes', icon: '⚠' },
                 { to: '/21-milhoes', label: 'Hard Cap: 21M', icon: '₿' },
               ].map((mod) => (
@@ -389,6 +390,7 @@ export default function ProtocoloInicial() {
                 { to: '/chaves', title: 'Chaves Públicas & Privadas', desc: 'Criptografia de chave pública: como funciona a propriedade real no Bitcoin.', color: 'orange', icon: '🔑' },
                 { to: '/transacoes', title: 'Transações Bitcoin', desc: 'Inputs, outputs, taxas e mempool. A mecânica completa de como valor é transferido.', color: 'cyan', icon: '📡' },
                 { to: '/mineracao', title: 'Mineração Bitcoin', desc: 'Hardware, energia, pools e estratégia Bull vs Bear. A soberania energética convertida em liberdade.', color: 'amber', icon: '⛏' },
+                { to: '/futuro-bitcoin', title: 'O Futuro do Bitcoin', desc: 'O ano de 2140, fortaleza da mineração, deflação, Lightning Network. O sistema mais honesto da história.', color: 'blue', icon: '⏳' },
                 { to: '/blindagem-golpes', title: 'Blindagem contra Golpes', desc: 'Engenharia social, phishing, malware. Aprenda a identificar e neutralizar cada vetor.', color: 'red', icon: '⚠' },
                 { to: '/21-milhoes', title: 'Hard Cap: 21 Milhões', desc: 'A escassez absoluta que nenhum governo pode alterar. A lei matemática suprema.', color: 'amber', icon: '₿' },
               ].map((mod) => (

@@ -33,6 +33,7 @@ import TransacoesBitcoin from "./pages/TransacoesBitcoin";
 import NocoesBitcoin from "./pages/NocoesBitcoin";
 import OQueEBitcoin from "./pages/OQueEBitcoin";
 import MineracaoBitcoin from "./pages/MineracaoBitcoin";
+import FuturoBitcoin from "./pages/FuturoBitcoin";
 
 const queryClient = new QueryClient();
 
@@ -72,6 +73,7 @@ const App = () => (
           <Route path="/nocoes-bitcoin" element={<NocoesBitcoin />} />
           <Route path="/o-que-e-bitcoin" element={<OQueEBitcoin />} />
           <Route path="/mineracao" element={<MineracaoBitcoin />} />
+          <Route path="/futuro-bitcoin" element={<FuturoBitcoin />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
