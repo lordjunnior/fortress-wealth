@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Download, ShieldCheck, ArrowRight, Zap, Lock, Globe, Coins, ShieldAlert, AlertTriangle, Key, Pickaxe, Scale, Database, HelpCircle } from 'lucide-react';
+import { ArrowLeft, Download, ShieldCheck, ArrowRight, Zap, Lock, Globe, Coins, ShieldAlert, AlertTriangle, Key, Pickaxe, Scale, Database, HelpCircle, BookOpen, Shield, Send, Hourglass, Activity, TrendingUp } from 'lucide-react';
 
 const NAV_ITEMS = [
   { id: 'estagio-01', label: 'Estágio 01: O Fim da Ilusão' },
@@ -96,27 +96,54 @@ export default function ProtocoloInicial() {
 
             {/* Módulos de Aprofundamento */}
             <div className="pt-3 mt-3 border-t border-white/5">
-              <span className="text-[7px] font-black uppercase tracking-[0.3em] text-slate-700 font-mono px-3 block mb-2">Aprofundamento</span>
+              {/* FUNDAMENTOS */}
+              <span className="text-[7px] font-black uppercase tracking-[0.3em] text-slate-700 font-mono px-3 block mb-2">Fundamentos</span>
               {[
-                { to: '/o-que-e-bitcoin', label: 'O que é Bitcoin?', icon: '₿' },
-                { to: '/nocoes-bitcoin', label: 'Noções Básicas', icon: '📖' },
-                { to: '/bitcoin-seguro', label: 'Bitcoin é Seguro?', icon: '🛡' },
-                { to: '/chaves', label: 'Chaves Púb. & Priv.', icon: '🔑' },
-                { to: '/transacoes', label: 'Transações Bitcoin', icon: '📡' },
-                { to: '/mineracao', label: 'Mineração Bitcoin', icon: '⛏' },
-                { to: '/futuro-bitcoin', label: 'Futuro do Bitcoin', icon: '⏳' },
-                { to: '/blindagem-golpes', label: 'Blindagem vs Golpes', icon: '⚠' },
-                { to: '/21-milhoes', label: 'Hard Cap: 21M', icon: '₿' },
-                { to: '/supply-shock', label: 'Supply Shock', icon: '📉' },
-                { to: '/volatilidade', label: 'Volatilidade', icon: '📊' },
-                { to: '/lastro', label: 'O Mito do Lastro', icon: '⚖' },
+                { to: '/o-que-e-bitcoin', label: 'O que é Bitcoin?', Icon: Coins },
+                { to: '/nocoes-bitcoin', label: 'Noções Básicas', Icon: BookOpen },
+                { to: '/bitcoin-seguro', label: 'Bitcoin é Seguro?', Icon: Shield },
               ].map((mod) => (
-                <Link
-                  key={mod.to}
-                  to={mod.to}
-                  className="w-full flex items-center gap-2 px-3 py-2.5 rounded-sm text-[10px] font-bold uppercase tracking-wider transition-all duration-300 font-mono text-slate-500 hover:text-amber-400 hover:bg-amber-500/[0.05] border-l-2 border-transparent hover:border-amber-500/40"
-                >
-                  <span className="text-xs">{mod.icon}</span>
+                <Link key={mod.to} to={mod.to} className="w-full flex items-center gap-2 px-3 py-2.5 rounded-sm text-[10px] font-bold uppercase tracking-wider transition-all duration-300 font-mono text-slate-500 hover:text-amber-400 hover:bg-amber-500/[0.05] border-l-2 border-transparent hover:border-amber-500/40">
+                  <mod.Icon size={12} />
+                  {mod.label}
+                </Link>
+              ))}
+
+              {/* MECÂNICA */}
+              <span className="text-[7px] font-black uppercase tracking-[0.3em] text-slate-700 font-mono px-3 block mb-2 mt-3">Mecânica</span>
+              {[
+                { to: '/chaves', label: 'Chaves Púb. & Priv.', Icon: Key },
+                { to: '/transacoes', label: 'Transações Bitcoin', Icon: Send },
+                { to: '/mineracao', label: 'Mineração Bitcoin', Icon: Pickaxe },
+              ].map((mod) => (
+                <Link key={mod.to} to={mod.to} className="w-full flex items-center gap-2 px-3 py-2.5 rounded-sm text-[10px] font-bold uppercase tracking-wider transition-all duration-300 font-mono text-slate-500 hover:text-amber-400 hover:bg-amber-500/[0.05] border-l-2 border-transparent hover:border-amber-500/40">
+                  <mod.Icon size={12} />
+                  {mod.label}
+                </Link>
+              ))}
+
+              {/* ECONOMIA */}
+              <span className="text-[7px] font-black uppercase tracking-[0.3em] text-slate-700 font-mono px-3 block mb-2 mt-3">Economia</span>
+              {[
+                { to: '/21-milhoes', label: 'Hard Cap: 21M', Icon: Lock },
+                { to: '/lastro', label: 'O Mito do Lastro', Icon: Scale },
+                { to: '/supply-shock', label: 'Supply Shock', Icon: TrendingUp },
+                { to: '/volatilidade', label: 'Volatilidade', Icon: Activity },
+              ].map((mod) => (
+                <Link key={mod.to} to={mod.to} className="w-full flex items-center gap-2 px-3 py-2.5 rounded-sm text-[10px] font-bold uppercase tracking-wider transition-all duration-300 font-mono text-slate-500 hover:text-amber-400 hover:bg-amber-500/[0.05] border-l-2 border-transparent hover:border-amber-500/40">
+                  <mod.Icon size={12} />
+                  {mod.label}
+                </Link>
+              ))}
+
+              {/* DEFESA */}
+              <span className="text-[7px] font-black uppercase tracking-[0.3em] text-slate-700 font-mono px-3 block mb-2 mt-3">Defesa</span>
+              {[
+                { to: '/blindagem-golpes', label: 'Blindagem vs Golpes', Icon: AlertTriangle },
+                { to: '/futuro-bitcoin', label: 'Futuro do Bitcoin', Icon: Hourglass },
+              ].map((mod) => (
+                <Link key={mod.to} to={mod.to} className="w-full flex items-center gap-2 px-3 py-2.5 rounded-sm text-[10px] font-bold uppercase tracking-wider transition-all duration-300 font-mono text-slate-500 hover:text-red-400 hover:bg-red-500/[0.05] border-l-2 border-transparent hover:border-red-500/40">
+                  <mod.Icon size={12} />
                   {mod.label}
                 </Link>
               ))}
