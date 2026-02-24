@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { Menu, X, LayoutGrid, BookOpen, Headphones, Wrench, QrCode, Zap, Library } from "lucide-react";
 
 const menuItems = [
-  { icon: LayoutGrid, label: "Manifesto", route: "/" },
+  { icon: LayoutGrid, label: "Manifesto", targetId: "manifesto" },
   { icon: BookOpen, label: "Educação", route: "/educacao" },
   { icon: Headphones, label: "Audioteca", route: "/audiobooks" },
   { icon: Library, label: "E-books", route: "/ebooks" },
