@@ -39,13 +39,16 @@ export default function ProtocoloInicial() {
     <div className="min-h-screen bg-[#070A12] text-white font-sans selection:bg-red-600 overflow-x-hidden">
       {/* Particles */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-30">
-        <div className="proto-dust"></div><div className="proto-dust proto-dust-2"></div>
+        <div className="dust-layer-home"></div>
+        <div className="dust-layer-home dust-layer-home-2"></div>
+        <div className="dust-layer-home dust-layer-home-3"></div>
       </div>
 
       <style>{`
-        @keyframes protoDrift { 0%{transform:translateY(0) translateX(0)} 50%{transform:translateY(-500px) translateX(40px)} 100%{transform:translateY(-1000px) translateX(0)} }
-        .proto-dust { position:absolute;width:100%;height:200%;background-image:radial-gradient(1.5px 1.5px at 15% 15%,rgba(220,38,38,0.3) 100%,transparent),radial-gradient(1px 1px at 55% 45%,rgba(245,158,11,0.2) 100%,transparent);background-size:200px 200px;animation:protoDrift 55s linear infinite }
-        .proto-dust-2 { background-size:300px 300px;animation:protoDrift 80s linear infinite reverse;opacity:0.5 }
+        @keyframes driftHome { from{transform:translateY(0) translateX(0)} to{transform:translateY(-1000px) translateX(100px)} }
+        .dust-layer-home { position:absolute;width:100%;height:200%;background-image:radial-gradient(1px 1px at 10% 10%,rgba(255,255,255,0.4) 100%,transparent),radial-gradient(1.5px 1.5px at 20% 30%,rgba(255,255,255,0.5) 100%,transparent),radial-gradient(2px 2px at 40% 70%,rgba(16,185,129,0.3) 100%,transparent),radial-gradient(1px 1px at 60% 20%,rgba(255,255,255,0.4) 100%,transparent),radial-gradient(1.5px 1.5px at 80% 80%,rgba(255,255,255,0.3) 100%,transparent);background-size:200px 200px;animation:driftHome 50s linear infinite }
+        .dust-layer-home-2 { background-size:300px 300px;animation:driftHome 70s linear infinite;opacity:0.7 }
+        .dust-layer-home-3 { background-size:400px 400px;animation:driftHome 100s linear infinite;opacity:0.4 }
         .proto-shimmer { background:linear-gradient(90deg,#dc2626 0%,#ff6b6b 40%,#fff 50%,#ff6b6b 60%,#dc2626 100%);background-size:250% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:pShim 3s linear infinite }
         @keyframes pShim { 0%{background-position:200% center} 100%{background-position:-200% center} }
         @keyframes borderGlow { 0%,100%{border-color:rgba(220,38,38,0.2);box-shadow:0 0 15px rgba(220,38,38,0.03)} 50%{border-color:rgba(220,38,38,0.7);box-shadow:0 0 30px rgba(220,38,38,0.1)} }
