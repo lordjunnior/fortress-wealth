@@ -250,20 +250,49 @@ export default function ProtocoloInicial() {
                 <p>Ele é valioso porque é o único bem no universo que possui escassez matemática e portabilidade absoluta. É o "Ouro Digital" que você pode carregar na sua mente.</p>
               </div>
               {/* A Lei dos 21 Milhões */}
-              <div className="bg-[#0B0F19]/60 border border-white/5 rounded-sm p-10 space-y-5 relative overflow-hidden">
-                <h3 className="text-white font-black uppercase text-sm tracking-wider font-mono italic">A Lei dos 21 Milhões</h3>
-                <p className="text-slate-400 leading-relaxed">O Hard Cap que nenhum governo pode alterar. Protegido por dezenas de milhares de nós e pelo custo energético da mineração. Aumentar esse limite seria um suicídio econômico para os mineradores.</p>
-                <div className="flex gap-8 mt-4">
-                  <div><p className="text-[8px] text-slate-600 uppercase font-black tracking-widest font-mono">Limite</p><p className="text-2xl font-black italic">21M</p></div>
-                  <div><p className="text-[8px] text-slate-600 uppercase font-black tracking-widest font-mono">Último</p><p className="text-2xl font-black italic">2140</p></div>
+              <div className="rounded-sm p-10 space-y-5 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, rgba(245,158,11,0.08) 0%, rgba(120,53,15,0.06) 100%)', border: '1px solid rgba(245,158,11,0.2)' }}>
+                <div className="absolute top-0 right-0 w-40 h-40 rounded-full opacity-10" style={{ background: 'radial-gradient(circle, rgba(245,158,11,0.6), transparent 70%)' }} />
+                <p className="text-[9px] text-amber-500/70 uppercase font-black tracking-[0.3em] font-mono">Escassez Absoluta</p>
+                <h3 className="text-white font-black uppercase text-xl tracking-wider font-mono italic" style={{ textShadow: '0 0 20px rgba(245,158,11,0.3)' }}>A Lei dos 21 Milhões</h3>
+                <p className="text-slate-300 leading-relaxed text-sm">O <strong className="text-amber-400">Hard Cap</strong> que nenhum governo pode alterar. Protegido por dezenas de milhares de nós e pelo custo energético da mineração. Aumentar esse limite seria um <strong className="text-red-400">suicídio econômico</strong> para os mineradores.</p>
+                <div className="flex gap-10 mt-4">
+                  <div>
+                    <p className="text-[8px] text-amber-500/60 uppercase font-black tracking-widest font-mono mb-1">Limite Total</p>
+                    <p className="text-3xl font-black italic text-amber-400" style={{ textShadow: '0 0 15px rgba(245,158,11,0.4)' }}>21M</p>
+                  </div>
+                  <div>
+                    <p className="text-[8px] text-amber-500/60 uppercase font-black tracking-widest font-mono mb-1">Último BTC</p>
+                    <p className="text-3xl font-black italic text-white">2140</p>
+                  </div>
+                  <div>
+                    <p className="text-[8px] text-amber-500/60 uppercase font-black tracking-widest font-mono mb-1">Já Minerados</p>
+                    <p className="text-3xl font-black italic text-green-400">93%</p>
+                  </div>
                 </div>
                 {/* Mini Halving Chart */}
-                <div className="h-32 flex items-end justify-between gap-2 border-b border-l border-white/10 mt-6 p-2">
-                  {[100, 50, 25, 12, 6, 3].map((h, i) => (
-                    <div key={i} className="flex-1 flex flex-col justify-end group">
-                      <div style={{ height: `${h}%`, animation: `barScale 1.5s ease-out ${i * 0.15}s both`, transformOrigin: 'bottom' }} className="bg-red-600/30 border-t border-red-500 group-hover:bg-red-600/60 transition-colors" />
-                    </div>
-                  ))}
+                <div className="mt-6">
+                  <p className="text-[8px] text-amber-500/50 uppercase font-black tracking-[0.2em] font-mono mb-3">Recompensa por Bloco (BTC) — Halvings</p>
+                  <div className="h-36 flex items-end justify-between gap-3 border-b border-l border-amber-500/20 p-2">
+                    {[
+                      { h: 100, label: '50', year: '2009' },
+                      { h: 50, label: '25', year: '2012' },
+                      { h: 25, label: '12.5', year: '2016' },
+                      { h: 12, label: '6.25', year: '2020' },
+                      { h: 6, label: '3.125', year: '2024' },
+                      { h: 3, label: '1.56', year: '2028' },
+                    ].map((bar, i) => (
+                      <div key={i} className="flex-1 flex flex-col items-center gap-1 group">
+                        <span className="text-[9px] font-mono font-bold text-amber-400 opacity-0 group-hover:opacity-100 transition-opacity">{bar.label}</span>
+                        <div className="w-full flex justify-center">
+                          <div
+                            style={{ height: `${bar.h}%`, animation: `barScale 1.5s ease-out ${i * 0.15}s both`, transformOrigin: 'bottom', maxHeight: '120px' }}
+                            className="w-full rounded-t-sm bg-gradient-to-t from-amber-600/40 to-amber-400/20 border-t-2 border-amber-500 group-hover:from-amber-600/70 group-hover:to-amber-400/40 transition-colors"
+                          />
+                        </div>
+                        <span className="text-[8px] font-mono text-slate-500 group-hover:text-amber-400 transition-colors">{bar.year}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
