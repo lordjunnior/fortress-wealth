@@ -25,6 +25,7 @@ import SilencioQueda from "./pages/SilencioQueda";
 import ProtocoloInicial from "./pages/ProtocoloInicial";
 import Arsenal from "./pages/Arsenal";
 import NotFound from "./pages/NotFound";
+import BlindagemGolpes from "./pages/BlindagemGolpes";
 
 const queryClient = new QueryClient();
 
@@ -56,6 +57,7 @@ const App = () => (
           <Route path="/silencio-queda" element={<SilencioQueda />} />
           <Route path="/protocolo-inicial" element={<ProtocoloInicial />} />
           <Route path="/arsenal" element={<Arsenal />} />
+          <Route path="/blindagem-golpes" element={<BlindagemGolpes />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
