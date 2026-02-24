@@ -35,6 +35,7 @@ import OQueEBitcoin from "./pages/OQueEBitcoin";
 import MineracaoBitcoin from "./pages/MineracaoBitcoin";
 import FuturoBitcoin from "./pages/FuturoBitcoin";
 import SupplyShock from "./pages/SupplyShock";
+import VolatilidadeBitcoin from "./pages/VolatilidadeBitcoin";
 
 const queryClient = new QueryClient();
 
@@ -76,6 +77,7 @@ const App = () => (
           <Route path="/mineracao" element={<MineracaoBitcoin />} />
           <Route path="/futuro-bitcoin" element={<FuturoBitcoin />} />
           <Route path="/supply-shock" element={<SupplyShock />} />
+          <Route path="/volatilidade" element={<VolatilidadeBitcoin />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
