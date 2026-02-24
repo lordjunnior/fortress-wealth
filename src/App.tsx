@@ -26,6 +26,7 @@ import ProtocoloInicial from "./pages/ProtocoloInicial";
 import Arsenal from "./pages/Arsenal";
 import NotFound from "./pages/NotFound";
 import BlindagemGolpes from "./pages/BlindagemGolpes";
+import HardCap21 from "./pages/HardCap21";
 
 const queryClient = new QueryClient();
 
@@ -58,6 +59,7 @@ const App = () => (
           <Route path="/protocolo-inicial" element={<ProtocoloInicial />} />
           <Route path="/arsenal" element={<Arsenal />} />
           <Route path="/blindagem-golpes" element={<BlindagemGolpes />} />
+          <Route path="/21-milhoes" element={<HardCap21 />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
