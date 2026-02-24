@@ -1,37 +1,29 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Download, ShieldCheck, ArrowRight, Zap, Lock, Globe, Coins, ShieldAlert, Cpu, History, AlertTriangle, TrendingDown, Eye, Database, Pickaxe, HelpCircle, Scale, Key } from 'lucide-react';
+import { ArrowLeft, Download, ShieldCheck, ArrowRight, Zap, Lock, Globe, Coins, ShieldAlert, AlertTriangle, Key, Pickaxe, Scale, Database, HelpCircle } from 'lucide-react';
 
 const NAV_ITEMS = [
-  { id: 'genese', label: '01. Gênese: O que é Dinheiro?' },
-  { id: 'antidoto', label: '02. O Antídoto: O que é Bitcoin?' },
-  { id: 'escassez', label: '03. Matemática da Escassez' },
-  { id: 'chaves', label: '04. Soberania das Chaves' },
-  { id: 'mineracao', label: '05. A Prova de Trabalho' },
-  { id: 'mitos', label: '06. Neutralização de Mitos' },
-  { id: 'blindagem', label: 'Blindagem Mental' },
+  { id: 'estagio-01', label: 'Estágio 01: O Fim da Ilusão' },
+  { id: 'estagio-02', label: 'Estágio 02: A Escassez Absoluta' },
+  { id: 'estagio-03', label: 'Estágio 03: A Mecânica da Liberdade' },
+  { id: 'estagio-04', label: 'Estágio 04: A Fortaleza' },
+  { id: 'estagio-05', label: 'Estágio 05: Blindagem Mental' },
 ];
 
 export default function ProtocoloInicial() {
-  const [activeSection, setActiveSection] = useState('genese');
+  const [activeSection, setActiveSection] = useState('estagio-01');
   const [scrollProgress, setScrollProgress] = useState(0);
-  const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
   useEffect(() => {
     const handleScroll = () => {
       const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = totalHeight > 0 ? (window.scrollY / totalHeight) * 100 : 0;
-      setScrollProgress(Math.min(progress, 100));
+      setScrollProgress(totalHeight > 0 ? Math.min((window.scrollY / totalHeight) * 100, 100) : 0);
 
-      const sections = NAV_ITEMS.map(item => ({
-        id: item.id,
-        el: document.getElementById(item.id),
-      }));
+      const sections = NAV_ITEMS.map(item => ({ id: item.id, el: document.getElementById(item.id) }));
       for (let i = sections.length - 1; i >= 0; i--) {
-        const el = sections[i].el;
-        if (el && el.getBoundingClientRect().top <= 200) {
+        if (sections[i].el && sections[i].el!.getBoundingClientRect().top <= 200) {
           setActiveSection(sections[i].id);
           break;
         }
@@ -41,111 +33,61 @@ export default function ProtocoloInicial() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToSection = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  };
+  const scrollTo = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
   return (
     <div className="min-h-screen bg-[#070A12] text-white font-sans selection:bg-red-600 overflow-x-hidden">
-      {/* Particle System */}
-      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-35">
-        <div className="alert-layer"></div>
-        <div className="alert-layer alert-layer-2"></div>
-        <div className="alert-layer alert-layer-3"></div>
-      </div>
-      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-        <div className="alert-pulse"></div>
+      {/* Particles */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-30">
+        <div className="proto-dust"></div><div className="proto-dust proto-dust-2"></div>
       </div>
 
       <style>{`
-        @keyframes driftAlert {
-          0% { transform: translateY(0) translateX(0); }
-          50% { transform: translateY(-500px) translateX(60px); }
-          100% { transform: translateY(-1000px) translateX(0px); }
-        }
-        @keyframes alertPulse {
-          0%, 100% { opacity: 0; transform: scale(0.8); }
-          50% { opacity: 0.04; transform: scale(1.2); }
-        }
-        .alert-layer {
-          position: absolute; width: 100%; height: 200%;
-          background-image: radial-gradient(2px 2px at 15% 15%, rgba(220,38,38,0.35) 100%, transparent);
-          background-size: 200px 200px; animation: driftAlert 50s linear infinite;
-        }
-        .alert-layer-2 { background-size: 280px 280px; animation: driftAlert 70s linear infinite reverse; opacity: 0.6; }
-        .alert-layer-3 { background-size: 360px 360px; animation: driftAlert 100s linear infinite; opacity: 0.3; }
-        .alert-pulse {
-          position: absolute; top: 30%; left: 50%; width: 400px; height: 400px;
-          margin: -200px 0 0 -200px; border-radius: 50%; border: 1px solid rgba(220,38,38,0.1);
-          animation: alertPulse 5s ease-in-out infinite;
-        }
-        .protocolo-shimmer {
-          background: linear-gradient(90deg, #dc2626 0%, #ff6b6b 40%, #ffffff 50%, #ff6b6b 60%, #dc2626 100%);
-          background-size: 250% 100%; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-          animation: protocShimmer 3s linear infinite;
-        }
-        @keyframes protocShimmer { 0% { background-position: 200% center; } 100% { background-position: -200% center; } }
-        @keyframes borderPulse {
-          0%, 100% { border-color: rgba(220,38,38,0.3); box-shadow: 0 0 20px rgba(220,38,38,0.05); }
-          50% { border-color: rgba(220,38,38,0.8); box-shadow: 0 0 40px rgba(220,38,38,0.15); }
-        }
-        .border-pulse { animation: borderPulse 3s ease-in-out infinite; }
-        @keyframes glowIcon {
-          0%, 100% { filter: drop-shadow(0 0 4px rgba(245,158,11,0.3)); }
-          50% { filter: drop-shadow(0 0 12px rgba(245,158,11,0.7)); }
-        }
-        .icon-glow:hover { animation: glowIcon 2s ease-in-out infinite; }
-        .glass-nav {
-          background: rgba(11, 15, 25, 0.75);
-          backdrop-filter: blur(16px);
-          -webkit-backdrop-filter: blur(16px);
-          border: 1px solid rgba(255,255,255,0.08);
-          box-shadow: 0 0 30px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(255,255,255,0.03);
-        }
-        .glass-nav:hover {
-          border-color: rgba(220,38,38,0.2);
-          box-shadow: 0 0 40px rgba(220,38,38,0.05), inset 0 0 0 1px rgba(255,255,255,0.05);
-        }
+        @keyframes protoDrift { 0%{transform:translateY(0) translateX(0)} 50%{transform:translateY(-500px) translateX(40px)} 100%{transform:translateY(-1000px) translateX(0)} }
+        .proto-dust { position:absolute;width:100%;height:200%;background-image:radial-gradient(1.5px 1.5px at 15% 15%,rgba(220,38,38,0.3) 100%,transparent),radial-gradient(1px 1px at 55% 45%,rgba(245,158,11,0.2) 100%,transparent);background-size:200px 200px;animation:protoDrift 55s linear infinite }
+        .proto-dust-2 { background-size:300px 300px;animation:protoDrift 80s linear infinite reverse;opacity:0.5 }
+        .proto-shimmer { background:linear-gradient(90deg,#dc2626 0%,#ff6b6b 40%,#fff 50%,#ff6b6b 60%,#dc2626 100%);background-size:250% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:pShim 3s linear infinite }
+        @keyframes pShim { 0%{background-position:200% center} 100%{background-position:-200% center} }
+        @keyframes borderGlow { 0%,100%{border-color:rgba(220,38,38,0.2);box-shadow:0 0 15px rgba(220,38,38,0.03)} 50%{border-color:rgba(220,38,38,0.7);box-shadow:0 0 30px rgba(220,38,38,0.1)} }
+        .border-glow-pulse { animation:borderGlow 3s ease-in-out infinite }
+        @keyframes barScale { from{transform:scaleY(0)} to{transform:scaleY(1)} }
+        .glass-sidebar { background:rgba(11,15,25,0.8);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.06);box-shadow:0 0 40px rgba(0,0,0,0.6) }
+        @keyframes goldGlow { 0%,100%{box-shadow:0 0 0 rgba(245,158,11,0)} 50%{box-shadow:0 0 12px rgba(245,158,11,0.15)} }
+        .nav-active { background:rgba(245,158,11,0.08);border-left:2px solid rgba(245,158,11,0.8);color:#f5f5f5;box-shadow:0 0 15px rgba(245,158,11,0.05);animation:goldGlow 3s ease-in-out infinite }
       `}</style>
 
-      {/* BÚSSOLA LATERAL — Navegação Tática */}
-      <nav className="hidden lg:flex fixed left-0 top-0 h-screen w-[280px] z-50 flex-col">
-        <div className="glass-nav m-4 rounded-2xl flex-1 flex flex-col overflow-hidden transition-all duration-500">
-          {/* Header */}
-          <div className="p-6 border-b border-white/5">
-            <div className="flex items-center gap-3 mb-4">
-              <ShieldAlert className="text-red-600" size={20} />
-              <span className="text-red-600 font-black uppercase text-xs tracking-[0.3em]">Protocolo Inicial</span>
+      {/* === BÚSSOLA DO SOBERANO (Desktop) === */}
+      <nav className="hidden lg:flex fixed left-0 top-0 h-screen w-[270px] z-50 flex-col">
+        <div className="glass-sidebar m-3 rounded-sm flex-1 flex flex-col overflow-hidden transition-all duration-500">
+          <div className="p-5 border-b border-white/5">
+            <div className="flex items-center gap-2 mb-3">
+              <ShieldAlert className="text-red-600" size={16} />
+              <span className="text-red-600 font-black uppercase text-[9px] tracking-[0.3em] font-mono">Protocolo Inicial</span>
             </div>
-            <Link to="/" className="inline-flex items-center gap-2 text-slate-600 hover:text-white text-[9px] font-black uppercase tracking-[0.3em] transition-all">
-              <ArrowLeft size={12} /> Retornar ao Início
+            <Link to="/" className="inline-flex items-center gap-2 text-slate-600 hover:text-white text-[8px] font-black uppercase tracking-[0.25em] transition-all font-mono">
+              <ArrowLeft size={10} /> Retornar
             </Link>
           </div>
 
-          {/* Progress Bar */}
-          <div className="px-6 pt-4 pb-2">
-            <div className="flex justify-between items-center mb-2">
-              <span className="text-[8px] font-black uppercase tracking-[0.3em] text-slate-600">Progresso</span>
-              <span className="text-[8px] font-black text-red-600">{Math.round(scrollProgress)}%</span>
+          {/* Energy Bar */}
+          <div className="px-5 pt-3 pb-1">
+            <div className="flex justify-between items-center mb-1">
+              <span className="text-[7px] font-black uppercase tracking-[0.3em] text-slate-600 font-mono">Leitura</span>
+              <span className="text-[7px] font-black text-amber-500 font-mono">{Math.round(scrollProgress)}%</span>
             </div>
-            <div className="w-full h-1 bg-white/5 rounded-full overflow-hidden">
-              <div
-                className="h-full bg-gradient-to-r from-red-600 to-orange-500 rounded-full transition-all duration-300 ease-out"
-                style={{ width: `${scrollProgress}%` }}
-              />
+            <div className="w-full h-[3px] bg-white/5 rounded-full overflow-hidden">
+              <div className="h-full rounded-full transition-all duration-300 ease-out" style={{ width: `${scrollProgress}%`, background: 'linear-gradient(90deg, #dc2626, #f59e0b)' }} />
             </div>
           </div>
 
-          {/* Navigation Items */}
-          <div className="flex-1 overflow-y-auto px-4 py-4 space-y-1">
+          {/* Nav Items */}
+          <div className="flex-1 overflow-y-auto px-3 py-4 space-y-[2px]">
             {NAV_ITEMS.map((item) => (
               <button
                 key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className={`w-full text-left px-4 py-3 rounded-lg text-xs font-bold uppercase tracking-wide transition-all duration-300 relative group ${
-                  activeSection === item.id
-                    ? 'text-white bg-red-600/10 border-l-2 border-red-600'
-                    : 'text-slate-500 hover:text-slate-300 hover:bg-white/[0.03] border-l-2 border-transparent'
+                onClick={() => scrollTo(item.id)}
+                className={`w-full text-left px-3 py-3 rounded-sm text-[10px] font-bold uppercase tracking-wider transition-all duration-300 font-mono border-l-2 ${
+                  activeSection === item.id ? 'nav-active' : 'text-slate-600 hover:text-slate-300 hover:bg-white/[0.02] border-transparent'
                 }`}
               >
                 {item.label}
@@ -155,328 +97,280 @@ export default function ProtocoloInicial() {
         </div>
       </nav>
 
-      {/* MOBILE NAV */}
-      <div className="lg:hidden fixed top-0 left-0 right-0 z-50 glass-nav border-b border-white/5 px-4 py-3">
+      {/* === MOBILE NAV === */}
+      <div className="lg:hidden fixed top-0 left-0 right-0 z-50 glass-sidebar border-b border-white/5 px-4 py-3">
         <div className="flex items-center justify-between">
-          <Link to="/" className="inline-flex items-center gap-2 text-slate-500 hover:text-white text-[9px] font-black uppercase tracking-[0.2em]">
-            <ArrowLeft size={12} /> Início
+          <Link to="/" className="inline-flex items-center gap-1 text-slate-500 hover:text-white text-[8px] font-black uppercase tracking-[0.2em] font-mono">
+            <ArrowLeft size={10} /> Início
           </Link>
-          <div className="flex items-center gap-2">
-            <ShieldAlert className="text-red-600" size={14} />
-            <span className="text-red-600 font-black uppercase text-[9px] tracking-[0.2em]">Protocolo Inicial</span>
+          <div className="flex items-center gap-1">
+            <ShieldAlert className="text-red-600" size={12} />
+            <span className="text-red-600 font-black uppercase text-[8px] tracking-[0.2em] font-mono">Protocolo</span>
           </div>
-          <span className="text-[9px] font-black text-slate-500">{Math.round(scrollProgress)}%</span>
+          <span className="text-[8px] font-black text-amber-500 font-mono">{Math.round(scrollProgress)}%</span>
         </div>
         <div className="w-full h-[2px] bg-white/5 rounded-full overflow-hidden mt-2">
-          <div className="h-full bg-gradient-to-r from-red-600 to-orange-500 rounded-full transition-all duration-300" style={{ width: `${scrollProgress}%` }} />
+          <div className="h-full rounded-full transition-all duration-300" style={{ width: `${scrollProgress}%`, background: 'linear-gradient(90deg, #dc2626, #f59e0b)' }} />
         </div>
       </div>
 
-      {/* MAIN CONTENT */}
-      <div ref={contentRef} className="relative z-10 lg:ml-[280px] pb-32">
-        <div className="max-w-5xl mx-auto px-6 pt-24 lg:pt-28">
+      {/* === MAIN CONTENT === */}
+      <div className="relative z-10 lg:ml-[270px] pb-32">
+        <div className="max-w-5xl mx-auto px-6 pt-20 lg:pt-24">
 
-          {/* === BLOCO DE IMPACTO: A FRAUDE vs. VERDADE === */}
-          <header className="mb-32 relative overflow-hidden rounded-2xl p-10 md:p-16" style={{ background: 'linear-gradient(135deg, rgba(11,15,25,0.9) 0%, rgba(30,10,5,0.7) 100%)' }}>
-            {/* Parallax BG - notas derretendo (blur) */}
-            <div className="absolute inset-0 opacity-20 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 70% 30%, rgba(245,158,11,0.3) 0%, transparent 50%), radial-gradient(circle at 20% 80%, rgba(220,38,38,0.2) 0%, transparent 50%)' }} />
-            {/* Bitcoin symbol - solid foreground */}
-            <div className="absolute top-6 right-6 md:top-10 md:right-10 text-orange-500/10 font-black text-[200px] md:text-[300px] leading-none select-none pointer-events-none" style={{ fontFamily: 'Arial, sans-serif' }}>₿</div>
-
+          {/* BLOCO DE IMPACTO */}
+          <header className="mb-28 relative overflow-hidden rounded-sm p-10 md:p-16" style={{ background: 'linear-gradient(135deg, rgba(11,15,25,0.95) 0%, rgba(30,10,5,0.6) 100%)' }}>
+            <div className="absolute inset-0 opacity-15 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 70% 30%, rgba(245,158,11,0.4) 0%, transparent 50%), radial-gradient(circle at 20% 80%, rgba(220,38,38,0.2) 0%, transparent 50%)' }} />
+            <div className="absolute top-4 right-4 md:top-8 md:right-8 text-amber-500/[0.07] font-black text-[180px] md:text-[280px] leading-none select-none pointer-events-none" style={{ fontFamily: 'Arial' }}>₿</div>
             <div className="relative z-10">
-              <span className="text-red-600 font-black uppercase tracking-[0.5em] text-[10px] mb-6 block">Para Leigos Absolutos</span>
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.85] mb-2 uppercase text-white">
-                A Fraude Fiduciária
+              <span className="text-red-600 font-black uppercase tracking-[0.5em] text-[9px] mb-6 block font-mono">A Fraude Fiduciária vs. A Verdade Digital</span>
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.85] uppercase text-white mb-8">
+                A Fraude Fiduciária<br />
+                <span className="text-slate-700 italic lowercase text-3xl md:text-4xl">vs.</span>{' '}
+                <span className="proto-shimmer italic">A Verdade Digital</span>
               </h1>
-              <p className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.85] mb-8 uppercase">
-                <span className="text-slate-600 italic lowercase text-4xl md:text-5xl">vs.</span>{' '}
-                <span className="protocolo-shimmer italic">A Verdade Digital</span>
-              </p>
-              <p className="text-slate-400 text-lg md:text-xl leading-relaxed max-w-2xl font-medium mt-8">
+              <p className="text-slate-400 text-base md:text-lg leading-relaxed max-w-2xl font-medium">
                 O dinheiro que você conhece é uma dívida que nunca será paga. O Bitcoin é o único ativo no universo com escassez matemática absoluta. Enquanto o Estado imprime inflação, a matemática grava liberdade.
               </p>
             </div>
           </header>
 
-          {/* === GRID DE PROPRIEDADES: 3 CARDS === */}
-          <section className="mb-32">
-            <h3 className="text-slate-600 font-black uppercase tracking-[0.4em] text-[10px] mb-8">Conceito</h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {/* Card 1: Conceito */}
-              <div className="relative overflow-hidden rounded-xl p-8 group transition-all duration-500 hover:-translate-y-1" style={{ background: 'linear-gradient(135deg, rgba(245,158,11,0.15) 0%, rgba(180,83,9,0.08) 100%)', border: '1px solid rgba(245,158,11,0.2)' }}>
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700" style={{ background: 'linear-gradient(90deg, transparent, rgba(245,158,11,0.05), transparent)', backgroundSize: '200% 100%', animation: 'protocShimmer 3s linear infinite' }} />
-                <h4 className="text-orange-400 font-black uppercase text-lg mb-4 tracking-tighter italic relative z-10">Conceito</h4>
-                <p className="text-slate-300 text-sm leading-relaxed font-medium relative z-10">
-                  O que é Bitcoin? Não é moeda digital para especular. É a descoberta da escassez absoluta. Ponto a Ponto. Sem permissão.
-                </p>
+          {/* GRID DE PROPRIEDADES — 3 Cards */}
+          <section className="mb-28">
+            <h3 className="text-slate-600 font-black uppercase tracking-[0.4em] text-[9px] mb-6 font-mono">Conceito</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+              <div className="rounded-sm p-8 group transition-all hover:-translate-y-1" style={{ background: 'linear-gradient(135deg, rgba(245,158,11,0.12) 0%, rgba(180,83,9,0.06) 100%)', border: '1px solid rgba(245,158,11,0.2)' }}>
+                <h4 className="text-orange-400 font-black uppercase text-sm mb-3 tracking-tighter italic">Conceito</h4>
+                <p className="text-slate-400 text-xs leading-relaxed font-medium">O que é Bitcoin? Não é moeda digital para especular. É a descoberta da escassez absoluta. Ponto a Ponto. Sem permissão.</p>
               </div>
-              {/* Card 2: Valor */}
-              <div className="relative overflow-hidden rounded-xl p-8 group transition-all duration-500 hover:-translate-y-1" style={{ background: 'linear-gradient(135deg, rgba(34,197,94,0.1) 0%, rgba(22,101,52,0.08) 100%)', border: '1px solid rgba(34,197,94,0.15)' }}>
-                <h4 className="text-green-400 font-black uppercase text-lg mb-4 tracking-tighter italic">Valor</h4>
-                <p className="text-slate-300 text-sm leading-relaxed font-medium">
-                  Por que é Valioso? Não é opinião. É imutabilidade. 21 Milhões. O primeiro dinheiro na história que não tem um dono para destruí-lo.
-                </p>
+              <div className="rounded-sm p-8 group transition-all hover:-translate-y-1" style={{ background: 'linear-gradient(135deg, rgba(34,197,94,0.08) 0%, rgba(22,101,52,0.05) 100%)', border: '1px solid rgba(34,197,94,0.12)' }}>
+                <h4 className="text-green-400 font-black uppercase text-sm mb-3 tracking-tighter italic">Valor</h4>
+                <p className="text-slate-400 text-xs leading-relaxed font-medium">Por que é Valioso? Não é opinião. É imutabilidade. 21 Milhões. O primeiro dinheiro sem dono para destruí-lo.</p>
               </div>
-              {/* Card 3: Ação */}
-              <div className="relative overflow-hidden rounded-xl p-8 group transition-all duration-500 hover:-translate-y-1" style={{ background: 'linear-gradient(135deg, rgba(180,83,9,0.12) 0%, rgba(120,53,15,0.08) 100%)', border: '1px solid rgba(180,83,9,0.2)' }}>
-                <h4 className="text-amber-500 font-black uppercase text-lg mb-4 tracking-tighter italic">Como Comprar?</h4>
-                <p className="text-slate-300 text-sm leading-relaxed font-medium">
-                  Troque papel podre por propriedade real. Mas entenda: se as chaves não são suas, o Bitcoin também não é.
-                </p>
+              <div className="rounded-sm p-8 group transition-all hover:-translate-y-1" style={{ background: 'linear-gradient(135deg, rgba(180,83,9,0.1) 0%, rgba(120,53,15,0.06) 100%)', border: '1px solid rgba(180,83,9,0.18)' }}>
+                <h4 className="text-amber-500 font-black uppercase text-sm mb-3 tracking-tighter italic">Como Comprar?</h4>
+                <p className="text-slate-400 text-xs leading-relaxed font-medium">Troque papel podre por propriedade real. Mas entenda: se as chaves não são suas, o Bitcoin também não é.</p>
               </div>
             </div>
           </section>
 
-          {/* === 01. GÊNESE: O QUE É DINHEIRO? === */}
-          <section id="genese" className="mb-32 scroll-mt-24 space-y-12">
-            <div className="flex items-center gap-4 text-red-600">
-              <Coins size={24} />
-              <h2 className="text-2xl font-black uppercase tracking-[0.2em]">01. Gênese: O que é Dinheiro?</h2>
+          {/* === ESTÁGIO 01: O FIM DA ILUSÃO === */}
+          <section id="estagio-01" className="mb-28 scroll-mt-24">
+            <div className="flex items-center gap-3 text-red-600 mb-10">
+              <Coins size={20} />
+              <h2 className="text-xl font-black uppercase tracking-[0.15em] font-mono">Estágio 01: O Fim da Ilusão</h2>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-slate-400 text-lg leading-relaxed">
-              <div className="space-y-6">
-                <p>
-                  Dinheiro é uma tecnologia de transporte de tempo e esforço através do espaço e do tempo. No sistema atual, governos imprimem moeda sem custo, diluindo o valor do seu trabalho. Isso é inflação: um roubo invisível e constante.
-                </p>
-                <p>
-                  O Bitcoin surge como o antídoto: uma moeda digital descentralizada que oferece transações rápidas e seguras com um suprimento fixo. É a primeira vez na história que a humanidade descobriu a escassez absoluta.
-                </p>
-              </div>
-              <div className="bg-slate-900/40 p-8 border border-white/5 rounded-2xl">
-                <h4 className="text-white font-black uppercase mb-4 italic text-sm tracking-widest">Leis da Moeda Forte:</h4>
-                <ul className="space-y-4 text-sm font-bold uppercase tracking-tight">
-                  <li className="flex gap-3 text-red-500 font-black"><Zap size={16}/> Escassez: Ouro é finito. Impressora é infinita.</li>
-                  <li className="flex gap-3 text-slate-200"><Lock size={16}/> Imutabilidade: Ninguém altera o código.</li>
-                  <li className="flex gap-3 text-slate-200"><Globe size={16}/> Soberania: Sem bancos, sem permissão.</li>
+            <div className="bg-[#0B0F19]/60 border border-white/5 rounded-sm p-10 md:p-14 space-y-6 text-slate-400 text-base leading-relaxed">
+              <p>
+                O Bitcoin não é apenas um "ativo digital". É a primeira vez na história que a humanidade descobriu a <strong className="text-white">escassez absoluta</strong>. Enquanto governos imprimem papel para roubar seu tempo, o Bitcoin garante que seu esforço será preservado em 21 milhões de unidades imutáveis.
+              </p>
+              <p>
+                É dinheiro ponto a ponto (P2P): sem bancos, sem censura, sem permissão.
+              </p>
+              <div className="bg-slate-900/40 p-8 border border-white/5 rounded-sm mt-8">
+                <h4 className="text-white font-black uppercase mb-4 italic text-xs tracking-widest font-mono">Leis da Moeda Forte:</h4>
+                <ul className="space-y-3 text-sm font-bold uppercase tracking-tight">
+                  <li className="flex gap-3 text-red-500"><Zap size={16}/> Escassez: Ouro é finito. Impressora é infinita.</li>
+                  <li className="flex gap-3 text-slate-300"><Lock size={16}/> Imutabilidade: Ninguém altera o código.</li>
+                  <li className="flex gap-3 text-slate-300"><Globe size={16}/> Soberania: Sem bancos, sem permissão.</li>
                 </ul>
               </div>
             </div>
           </section>
 
-          {/* === 02. O ANTÍDOTO === */}
-          <section id="antidoto" className="mb-32 scroll-mt-24 space-y-10">
-            <div className="flex items-center gap-4 text-red-600">
-              <Zap size={24} />
-              <h2 className="text-2xl font-black uppercase tracking-[0.2em]">02. O Antídoto: O que é Bitcoin?</h2>
+          {/* === ESTÁGIO 02: A ESCASSEZ ABSOLUTA === */}
+          <section id="estagio-02" className="mb-28 scroll-mt-24">
+            <div className="flex items-center gap-3 text-red-600 mb-10">
+              <Lock size={20} />
+              <h2 className="text-xl font-black uppercase tracking-[0.15em] font-mono">Estágio 02: A Escassez Absoluta</h2>
             </div>
-            <p className="text-slate-400 text-xl leading-relaxed max-w-3xl font-medium">
-              Uma transação é uma transferência de valor em Bitcoin na blockchain. Diferente do PIX ou cartões, elas são irreversíveis uma vez adicionadas à rede.
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6">
-              <div className="p-8 bg-[#0B0F19] border border-white/5 rounded-xl">
-                <h4 className="text-white font-black uppercase mb-3 tracking-tighter italic">Inputs</h4>
-                <p className="text-xs text-slate-500 leading-relaxed uppercase">O endereço de onde o Bitcoin está saindo. É a prova de que você recebeu esse valor anteriormente.</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* O Mito do Lastro */}
+              <div className="bg-[#0B0F19]/60 border border-white/5 rounded-sm p-10 space-y-5 text-slate-400 leading-relaxed">
+                <h3 className="text-white font-black uppercase text-sm tracking-wider font-mono italic">O Mito do Lastro</h3>
+                <p>O sistema fiduciário (Real/Dólar) é lastreado em promessas de políticos insolventes. O Bitcoin é lastreado na <strong className="text-white">Matemática, na Criptografia e na Termodinâmica</strong>.</p>
+                <p>Ele é valioso porque é o único bem no universo que possui escassez matemática e portabilidade absoluta. É o "Ouro Digital" que você pode carregar na sua mente.</p>
               </div>
-              <div className="p-8 bg-[#0B0F19] border border-white/5 rounded-xl">
-                <h4 className="text-white font-black uppercase mb-3 tracking-tighter italic">Outputs</h4>
-                <p className="text-xs text-slate-500 leading-relaxed uppercase">O endereço de destino. É a chave pública que passará a ter o controle sobre esse valor.</p>
-              </div>
-              <div className="p-8 bg-[#0B0F19] border border-white/5 rounded-xl">
-                <h4 className="text-white font-black uppercase mb-3 tracking-tighter italic">Taxas</h4>
-                <p className="text-xs text-slate-500 leading-relaxed uppercase">O incentivo para mineradores. Quanto maior a taxa, mais rápido sua transação é confirmada no bloco.</p>
-              </div>
-            </div>
-          </section>
-
-          {/* === 03. MATEMÁTICA DA ESCASSEZ === */}
-          <section id="escassez" className="mb-32 scroll-mt-24 bg-[#0B0F19] border border-white/5 rounded-3xl p-10 md:p-16 relative overflow-hidden">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-              <div className="space-y-8">
-                <h2 className="text-4xl font-black uppercase tracking-tighter italic">O Limite de <span className="text-red-600">21 Milhões</span></h2>
-                <p className="text-slate-400 text-lg leading-relaxed font-medium">
-                  O suprimento de Bitcoin é fixo. Diferente do dinheiro fiduciário, ninguém pode alterar este limite sem o consenso da rede. Este limite é garantido pela política monetária cravada no código.
-                </p>
-                <div className="flex gap-10">
-                  <div><p className="text-[10px] text-slate-500 uppercase font-black tracking-widest mb-1">Última Unidade</p><p className="text-3xl font-black italic text-white">Ano 2140</p></div>
-                  <div><p className="text-[10px] text-slate-500 uppercase font-black tracking-widest mb-1">Mecanismo</p><p className="text-3xl font-black italic text-white">Halving</p></div>
+              {/* A Lei dos 21 Milhões */}
+              <div className="bg-[#0B0F19]/60 border border-white/5 rounded-sm p-10 space-y-5 relative overflow-hidden">
+                <h3 className="text-white font-black uppercase text-sm tracking-wider font-mono italic">A Lei dos 21 Milhões</h3>
+                <p className="text-slate-400 leading-relaxed">O Hard Cap que nenhum governo pode alterar. Protegido por dezenas de milhares de nós e pelo custo energético da mineração. Aumentar esse limite seria um suicídio econômico para os mineradores.</p>
+                <div className="flex gap-8 mt-4">
+                  <div><p className="text-[8px] text-slate-600 uppercase font-black tracking-widest font-mono">Limite</p><p className="text-2xl font-black italic">21M</p></div>
+                  <div><p className="text-[8px] text-slate-600 uppercase font-black tracking-widest font-mono">Último</p><p className="text-2xl font-black italic">2140</p></div>
+                </div>
+                {/* Mini Halving Chart */}
+                <div className="h-32 flex items-end justify-between gap-2 border-b border-l border-white/10 mt-6 p-2">
+                  {[100, 50, 25, 12, 6, 3].map((h, i) => (
+                    <div key={i} className="flex-1 flex flex-col justify-end group">
+                      <div style={{ height: `${h}%`, animation: `barScale 1.5s ease-out ${i * 0.15}s both`, transformOrigin: 'bottom' }} className="bg-red-600/30 border-t border-red-500 group-hover:bg-red-600/60 transition-colors" />
+                    </div>
+                  ))}
                 </div>
               </div>
-              <div className="h-64 flex items-end justify-between gap-3 border-b border-l border-white/10 p-4 relative">
-                <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-red-600/5 to-transparent pointer-events-none"></div>
-                {[100, 50, 25, 12, 6, 3].map((h, i) => (
-                  <div key={i} className="flex-1 flex flex-col justify-end group">
-                    <div style={{ height: `${h}%`, animation: `barGrow 1.5s ease-out ${i * 0.2}s both` }} className="bg-red-600/30 border-t-2 border-red-500 group-hover:bg-red-600 transition-all origin-bottom" />
-                    <span className="text-[8px] text-center mt-2 text-slate-600 font-black">Bloco {i+1}</span>
-                  </div>
-                ))}
+            </div>
+            {/* Anatomia do Satoshi */}
+            <div className="mt-6 bg-[#0B0F19]/60 border border-white/5 rounded-sm p-10 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+              <div>
+                <h3 className="text-white font-black uppercase text-sm tracking-wider font-mono italic mb-4">A Anatomia do Satoshi</h3>
+                <p className="text-slate-400 leading-relaxed">Pare de olhar para a unidade inteira. Um Bitcoin é divisível em <strong className="text-white">100 milhões de Satoshis</strong>. Você não precisa de milhares de dólares para ser livre; comece a "empilhar sats" hoje.</p>
+              </div>
+              <div className="text-center">
+                <div className="text-5xl md:text-6xl font-black text-white italic">100.000.000</div>
+                <p className="text-red-600 font-black uppercase tracking-[0.4em] text-[9px] mt-2 font-mono">Satoshis por Bitcoin</p>
               </div>
             </div>
-            <style>{`@keyframes barGrow { from { transform: scaleY(0); } to { transform: scaleY(1); } }`}</style>
           </section>
 
-          {/* === 04. SOBERANIA DAS CHAVES === */}
-          <section id="chaves" className="mb-32 scroll-mt-24">
-            <div className="flex items-center gap-4 text-red-600 mb-12">
-              <Key size={24} />
-              <h2 className="text-2xl font-black uppercase tracking-[0.2em]">04. Soberania das Chaves</h2>
+          {/* === ESTÁGIO 03: A MECÂNICA DA LIBERDADE === */}
+          <section id="estagio-03" className="mb-28 scroll-mt-24">
+            <div className="flex items-center gap-3 text-red-600 mb-10">
+              <Key size={20} />
+              <h2 className="text-xl font-black uppercase tracking-[0.15em] font-mono">Estágio 03: A Mecânica da Liberdade</h2>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-              <div className="space-y-6 text-slate-400 text-lg leading-relaxed">
-                <p>
-                  O Bitcoin usa criptografia de chave pública para provar ownership. Você tem um par de chaves: a <strong className="text-white">Pública</strong> (seu endereço para receber) e a <strong className="text-white">Privada</strong> (seu segredo para gastar).
-                </p>
-                <p>
-                  A chave privada gera a assinatura digital necessária para autorizar transações. Se alguém tiver sua chave privada, tem seus bitcoins. Se você perder sua chave privada e não tiver o backup (seed), seus fundos estão perdidos para sempre.
-                </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+              <div className="p-8 bg-[#0B0F19]/60 border border-white/5 rounded-sm">
+                <h4 className="text-white font-black uppercase mb-3 tracking-tighter italic text-sm">Inputs</h4>
+                <p className="text-xs text-slate-500 leading-relaxed uppercase font-mono">O endereço de onde o Bitcoin sai. Prova de que você recebeu valor anteriormente.</p>
               </div>
-              <div className="border-2 border-red-600/20 bg-red-950/10 p-10 rounded-sm space-y-6">
-                <p className="text-red-600 font-black uppercase tracking-widest text-xs italic">Aviso Operacional:</p>
-                <p className="text-white font-black text-xl leading-tight uppercase italic">
+              <div className="p-8 bg-[#0B0F19]/60 border border-white/5 rounded-sm">
+                <h4 className="text-white font-black uppercase mb-3 tracking-tighter italic text-sm">Outputs</h4>
+                <p className="text-xs text-slate-500 leading-relaxed uppercase font-mono">O endereço de destino. A chave pública que controlará o valor.</p>
+              </div>
+              <div className="p-8 bg-[#0B0F19]/60 border border-white/5 rounded-sm">
+                <h4 className="text-white font-black uppercase mb-3 tracking-tighter italic text-sm">Taxas</h4>
+                <p className="text-xs text-slate-500 leading-relaxed uppercase font-mono">Incentivo para mineradores. Maior taxa = confirmação mais rápida.</p>
+              </div>
+            </div>
+            {/* Chaves */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="bg-[#0B0F19]/60 border border-white/5 rounded-sm p-10 space-y-4">
+                <h4 className="text-white font-black uppercase text-sm tracking-wider font-mono italic">Chave Privada</h4>
+                <p className="text-slate-400 leading-relaxed">Prova a propriedade e assina transações. É o seu segredo mestre. Se você perde a chave e o backup (seed), perde o acesso para sempre.</p>
+                <div className="flex items-center gap-2 text-[9px] font-black uppercase text-red-600 font-mono"><ShieldAlert size={12}/> Not your keys, not your money</div>
+              </div>
+              <div className="border-2 border-red-600/15 bg-red-950/10 rounded-sm p-10 space-y-4">
+                <p className="text-red-600 font-black uppercase tracking-widest text-[9px] italic font-mono">Aviso Operacional:</p>
+                <p className="text-white font-black text-lg leading-tight uppercase italic">
                   "Bitcoin wallets não guardam bitcoins. Elas guardam as CHAVES que dão acesso às suas moedas gravadas na blockchain."
                 </p>
               </div>
             </div>
           </section>
 
-          {/* === 05. A PROVA DE TRABALHO === */}
-          <section id="mineracao" className="mb-32 scroll-mt-24 space-y-12">
-            <div className="flex items-center gap-4 text-red-600">
-              <ShieldCheck size={24} />
-              <h2 className="text-2xl font-black uppercase tracking-[0.2em]">05. A Prova de Trabalho</h2>
+          {/* === ESTÁGIO 04: A FORTALEZA === */}
+          <section id="estagio-04" className="mb-28 scroll-mt-24">
+            <div className="flex items-center gap-3 text-red-600 mb-10">
+              <ShieldCheck size={20} />
+              <h2 className="text-xl font-black uppercase tracking-[0.15em] font-mono">Estágio 04: A Fortaleza</h2>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-slate-400 text-lg leading-relaxed font-medium">
-              <div className="space-y-6">
-                <p>
-                  A blockchain do Bitcoin nunca foi hackeada. O sistema é economicamente e tecnicamente imune à corrupção devido à sua natureza distribuída.
-                </p>
-                <p>
-                  Para corromper a rede, seria necessário um <strong className="text-white">Ataque de 51%</strong>: controlar mais poder computacional do que todos os outros mineradores juntos. O custo é proibitivo e economicamente suicida.
-                </p>
-              </div>
-              <div className="space-y-6">
-                <p>
-                  O verdadeiro risco não está no código, mas no usuário. A maioria dos "hacks" são erros humanos: perda de chaves ou ataques de engenharia social.
-                </p>
-                <div className="p-6 bg-red-900/10 border border-red-900/30 rounded-xl flex items-start gap-4">
-                  <AlertTriangle className="text-red-600 shrink-0" size={24} />
-                  <p className="text-sm font-bold uppercase tracking-tight text-white leading-relaxed">
-                    "Nenhum sistema digital é 100% perfeito, mas o Bitcoin é o sistema monetário mais seguro já inventado pela humanidade."
-                  </p>
-                </div>
-              </div>
+            <div className="bg-[#0B0F19]/60 border border-white/5 rounded-sm p-10 md:p-14 space-y-6 text-slate-400 leading-relaxed mb-6">
+              <p>A blockchain nunca foi hackeada. O risco não está no código, mas no <strong className="text-white">fator humano</strong>. A rede é imune a ataques de 51% devido ao custo proibitivo de energia.</p>
+              <p>Sua soberania depende de um único segredo: suas <strong className="text-white">Chaves Privadas</strong>. Se você possui as chaves, você é o dono do banco. Se não, você é apenas um cliente à mercê de terceiros.</p>
             </div>
-          </section>
-
-          {/* === A MURALHA TÉCNICA === */}
-          <section className="mb-32">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {/* Esquerda: Fundamentos e Defesa */}
-              <div>
-                <h3 className="text-slate-500 font-black uppercase tracking-[0.3em] text-[10px] mb-8 border-b border-white/5 pb-4">Fundamentos e Defesa</h3>
-                <div className="space-y-4">
-                  <div className="p-8 bg-[#0B0F19] border border-white/5 rounded-xl flex gap-6 items-start group hover:border-orange-500/30 transition-all">
-                    <div className="w-12 h-12 rounded-full bg-orange-500/10 border border-orange-500/20 flex items-center justify-center shrink-0 icon-glow">
-                      <Database className="text-orange-500" size={20} />
-                    </div>
-                    <div>
-                      <h4 className="text-orange-400 font-black uppercase text-sm mb-2 tracking-wider">Armazenamento</h4>
-                      <p className="text-slate-400 text-xs leading-relaxed font-medium">Deixe de ser um cliente e torne-se um soberano. Chaves privadas são a sua arma.</p>
-                    </div>
-                  </div>
-                  <div className="p-8 bg-[#0B0F19] border border-white/5 rounded-xl flex gap-6 items-start group hover:border-orange-500/30 transition-all">
-                    <div className="w-12 h-12 rounded-full bg-orange-500/10 border border-orange-500/20 flex items-center justify-center shrink-0 icon-glow">
-                      <Scale className="text-orange-500" size={20} />
-                    </div>
-                    <div>
-                      <h4 className="text-orange-400 font-black uppercase text-sm mb-2 tracking-wider">Impostos</h4>
-                      <p className="text-slate-400 text-xs leading-relaxed font-medium">Conheça o pedágio do sistema, mas proteja sua privacidade técnica.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              {/* Direita: Infraestrutura e Ataque */}
-              <div>
-                <h3 className="text-slate-500 font-black uppercase tracking-[0.3em] text-[10px] mb-8 border-b border-white/5 pb-4">Infraestrutura e Ataque</h3>
-                <div className="space-y-4">
-                  <div className="p-8 bg-[#0B0F19] border border-white/5 rounded-xl flex gap-6 items-start group hover:border-green-500/30 transition-all">
-                    <div className="w-12 h-12 rounded-full bg-green-500/10 border border-green-500/20 flex items-center justify-center shrink-0 icon-glow">
-                      <Pickaxe className="text-green-500" size={20} />
-                    </div>
-                    <div>
-                      <h4 className="text-green-400 font-black uppercase text-sm mb-2 tracking-wider">Mineração</h4>
-                      <p className="text-slate-400 text-xs leading-relaxed font-medium">A segurança do Bitcoin é lastreada em energia e nas leis da física, não em promessas de políticos.</p>
-                    </div>
-                  </div>
-                  <div className="p-8 bg-[#0B0F19] border border-white/5 rounded-xl flex gap-6 items-start group hover:border-green-500/30 transition-all">
-                    <div className="w-12 h-12 rounded-full bg-green-500/10 border border-green-500/20 flex items-center justify-center shrink-0 icon-glow">
-                      <HelpCircle className="text-green-500" size={20} />
-                    </div>
-                    <div>
-                      <h4 className="text-green-400 font-black uppercase text-sm mb-2 tracking-wider">Mitos</h4>
-                      <p className="text-slate-400 text-xs leading-relaxed font-medium">O Bitcoin não é anônimo, é pseudônimo. Ele não é inseguro, ele é o banco de dados mais resiliente da história humana.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          {/* === 06. NEUTRALIZAÇÃO DE MITOS === */}
-          <section id="mitos" className="mb-32 scroll-mt-24">
-            <h3 className="text-xl font-black uppercase mb-12 tracking-[0.3em] text-slate-500 border-b border-white/5 pb-4 italic">Neutralizando o Sistema</h3>
+            {/* Muralha Técnica */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {[
-                { m: "Bitcoin é anônimo", v: "Errado. Ele é pseudônimo e o sistema financeiro mais transparente e auditável do mundo." },
-                { m: "Não tem valor intrínseco", v: "Seu valor vem da utilidade como banco de dados imutável e sua escassez matematicamente provada." },
-                { m: "Bitcoin é difícil de usar", v: "É o único dinheiro onde você é 100% dono. A soberania exige apenas um passo inicial." },
-                { m: "Vai ser banido", v: "Impossível banir um código que vive em satélites, rádios e na mente de milhões." }
-              ].map((item, i) => (
-                <div key={i} className="p-8 bg-[#0B0F19] border border-white/5 group hover:border-red-600 transition-all rounded-xl">
-                  <div className="flex justify-between items-start mb-4">
-                    <span className="text-[10px] font-black text-red-600 uppercase tracking-widest italic">Mito {i+1}</span>
-                    <AlertTriangle size={14} className="text-slate-800 group-hover:text-red-600 transition-colors" />
+              <div>
+                <h3 className="text-slate-600 font-black uppercase tracking-[0.3em] text-[9px] mb-4 border-b border-white/5 pb-3 font-mono">Fundamentos e Defesa</h3>
+                <div className="space-y-3">
+                  <div className="p-7 bg-[#0B0F19]/60 border border-white/5 rounded-sm flex gap-5 items-start group hover:border-amber-500/20 transition-all">
+                    <div className="w-10 h-10 rounded-full bg-amber-500/10 border border-amber-500/15 flex items-center justify-center shrink-0"><Database className="text-amber-500" size={16} /></div>
+                    <div>
+                      <h4 className="text-amber-400 font-black uppercase text-xs mb-1 tracking-wider font-mono">Armazenamento</h4>
+                      <p className="text-slate-500 text-[10px] leading-relaxed font-medium">Deixe de ser um cliente e torne-se um soberano. Chaves privadas são a sua arma.</p>
+                    </div>
                   </div>
-                  <p className="text-xl font-black uppercase line-through text-slate-700 group-hover:text-red-900 transition-colors mb-4">{item.m}</p>
-                  <p className="text-white font-bold leading-tight opacity-0 group-hover:opacity-100 transition-all translate-y-2 group-hover:translate-y-0 italic">→ {item.v}</p>
+                  <div className="p-7 bg-[#0B0F19]/60 border border-white/5 rounded-sm flex gap-5 items-start group hover:border-amber-500/20 transition-all">
+                    <div className="w-10 h-10 rounded-full bg-amber-500/10 border border-amber-500/15 flex items-center justify-center shrink-0"><Scale className="text-amber-500" size={16} /></div>
+                    <div>
+                      <h4 className="text-amber-400 font-black uppercase text-xs mb-1 tracking-wider font-mono">Impostos</h4>
+                      <p className="text-slate-500 text-[10px] leading-relaxed font-medium">Conheça o pedágio do sistema, mas proteja sua privacidade técnica.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <h3 className="text-slate-600 font-black uppercase tracking-[0.3em] text-[9px] mb-4 border-b border-white/5 pb-3 font-mono">Infraestrutura e Ataque</h3>
+                <div className="space-y-3">
+                  <div className="p-7 bg-[#0B0F19]/60 border border-white/5 rounded-sm flex gap-5 items-start group hover:border-green-500/20 transition-all">
+                    <div className="w-10 h-10 rounded-full bg-green-500/10 border border-green-500/15 flex items-center justify-center shrink-0"><Pickaxe className="text-green-500" size={16} /></div>
+                    <div>
+                      <h4 className="text-green-400 font-black uppercase text-xs mb-1 tracking-wider font-mono">Mineração</h4>
+                      <p className="text-slate-500 text-[10px] leading-relaxed font-medium">A segurança do Bitcoin é lastreada em energia e nas leis da física, não em promessas de políticos.</p>
+                    </div>
+                  </div>
+                  <div className="p-7 bg-[#0B0F19]/60 border border-white/5 rounded-sm flex gap-5 items-start group hover:border-green-500/20 transition-all">
+                    <div className="w-10 h-10 rounded-full bg-green-500/10 border border-green-500/15 flex items-center justify-center shrink-0"><HelpCircle className="text-green-500" size={16} /></div>
+                    <div>
+                      <h4 className="text-green-400 font-black uppercase text-xs mb-1 tracking-wider font-mono">Mitos</h4>
+                      <p className="text-slate-500 text-[10px] leading-relaxed font-medium">O Bitcoin não é anônimo, é pseudônimo. Ele é o banco de dados mais resiliente da história humana.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* === ESTÁGIO 05: BLINDAGEM MENTAL === */}
+          <section id="estagio-05" className="mb-28 scroll-mt-24">
+            <div className="flex items-center gap-3 text-red-600 mb-10">
+              <AlertTriangle size={20} />
+              <h2 className="text-xl font-black uppercase tracking-[0.15em] font-mono">Estágio 05: Blindagem Mental</h2>
+            </div>
+            {/* Mitos com Shimmer */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-8">
+              {[
+                { m: "Bitcoin é anônimo", v: "Pseudônimo e o sistema financeiro mais transparente e auditável do mundo." },
+                { m: "Não tem valor intrínseco", v: "Escassez matemática + portabilidade absoluta = valor real." },
+                { m: "Bitcoin é difícil de usar", v: "É o único dinheiro onde você é 100% dono." },
+                { m: "Vai ser banido", v: "Impossível banir um código que vive em satélites, rádios e mentes." }
+              ].map((item, i) => (
+                <div key={i} className="p-7 bg-[#0B0F19]/60 border border-white/5 group hover:border-red-600/40 transition-all rounded-sm">
+                  <div className="flex justify-between items-start mb-3">
+                    <span className="text-[8px] font-black text-red-600 uppercase tracking-widest italic font-mono">Mito {i+1}</span>
+                    <AlertTriangle size={12} className="text-slate-800 group-hover:text-red-600 transition-colors" />
+                  </div>
+                  <p className="text-lg font-black uppercase line-through text-slate-700 group-hover:text-red-900 transition-colors mb-3">{item.m}</p>
+                  <p className="text-white text-sm font-bold leading-tight opacity-0 group-hover:opacity-100 transition-all translate-y-2 group-hover:translate-y-0 italic">→ {item.v}</p>
                 </div>
               ))}
             </div>
-          </section>
 
-          {/* === BLINDAGEM CONTRA GOLPES — Terminal Style === */}
-          <section id="blindagem" className="mb-40 scroll-mt-24 border-2 border-red-600 bg-[#0a0a0a] p-10 md:p-14 relative overflow-hidden rounded-sm border-pulse">
-            <ShieldAlert className="absolute top-0 right-0 text-red-600/5 -mr-16 -mt-16" size={320} />
-            <div className="relative z-10">
-              <h3 className="text-xl md:text-2xl font-black uppercase tracking-tighter mb-2 flex items-center gap-4">
-                <AlertTriangle className="text-red-600 animate-pulse" size={28} />
-                <span className="text-slate-400">Blindagem contra Golpes:</span>
-                <span className="text-red-600 italic">O Código do Soberano</span>
-              </h3>
-              <div className="mt-8 font-mono text-base md:text-lg leading-relaxed space-y-4">
-                <p className="text-red-500 font-bold">
-                  Ninguém legítimo pedirá sua Seed Phrase.
-                </p>
-                <p className="text-red-400">
-                  Se prometerem lucro, é golpe. Se pedirem urgência, é roubo.
-                </p>
-                <p className="text-white font-black text-xl md:text-2xl italic mt-6">
-                  No Bitcoin, você é o responsável final.
-                </p>
+            {/* Blindagem contra Golpes — Terminal */}
+            <div className="border-2 border-red-600 bg-[#0a0a0a] p-10 md:p-12 relative overflow-hidden rounded-sm border-glow-pulse">
+              <ShieldAlert className="absolute top-0 right-0 text-red-600/5 -mr-14 -mt-14" size={280} />
+              <div className="relative z-10">
+                <h3 className="text-sm md:text-base font-black uppercase tracking-wider mb-1 flex items-center gap-3 font-mono">
+                  <AlertTriangle className="text-red-600 animate-pulse" size={20} />
+                  <span className="text-slate-500">Blindagem contra Golpes:</span>
+                  <span className="text-red-600 italic">O Código do Soberano</span>
+                </h3>
+                <div className="mt-6 font-mono text-sm md:text-base leading-relaxed space-y-3">
+                  <p className="text-red-500 font-bold">Ninguém legítimo pedirá sua Seed Phrase.</p>
+                  <p className="text-red-400">Se prometerem lucro, é golpe. Se pedirem urgência, é roubo.</p>
+                  <p className="text-white font-black text-lg md:text-xl italic mt-4">No Bitcoin, você é o responsável final.</p>
+                </div>
               </div>
             </div>
           </section>
 
-          {/* === CARD: POR QUE ESTE MATERIAL EXISTE === */}
-          <div className="bg-[#0B0F19] rounded-3xl border border-white/5 overflow-hidden mb-32 group">
+          {/* === CARD PDF === */}
+          <div className="bg-[#0B0F19] rounded-sm border border-white/5 overflow-hidden mb-28 group">
             <div className="grid grid-cols-1 md:grid-cols-2">
-              <div className="p-10 md:p-16 flex flex-col justify-center text-white">
-                <h3 className="text-3xl font-black uppercase mb-8 tracking-tighter italic">Por que este material existe</h3>
-                <div className="space-y-4 mb-10">
-                  <p className="text-2xl font-black text-white leading-none uppercase">A queda não é do mercado. <span className="text-red-600 italic">É da consciência.</span></p>
-                  <p className="text-slate-400 font-medium">
-                    A maioria só começa a perguntar como o dinheiro funciona quando percebe que já não tem controle sobre ele. Bitcoin não surge como solução mágica. Surge como explicação tardia.
-                  </p>
-                </div>
-                <button className="bg-white text-black font-black py-6 px-10 rounded-none text-xs uppercase tracking-[0.3em] transition-all hover:bg-red-600 hover:text-white flex items-center justify-center gap-3 animate-[pulse_2s_infinite] shadow-[0_0_30px_rgba(255,255,255,0.05)]">
-                  <Download size={18} /> Baixar PDF Gratuito
+              <div className="p-10 md:p-14 flex flex-col justify-center">
+                <h3 className="text-2xl font-black uppercase mb-6 tracking-tighter italic">Por que este material existe</h3>
+                <p className="text-xl font-black text-white leading-none uppercase mb-2">A queda não é do mercado. <span className="text-red-600 italic">É da consciência.</span></p>
+                <p className="text-slate-400 font-medium mb-8 text-sm">Bitcoin não surge como solução mágica. Surge como explicação tardia.</p>
+                <button className="bg-white text-black font-black py-5 px-8 rounded-none text-[10px] uppercase tracking-[0.3em] hover:bg-red-600 hover:text-white transition-all flex items-center justify-center gap-3 animate-[pulse_2s_infinite]">
+                  <Download size={16} /> Baixar PDF Gratuito
                 </button>
               </div>
-              <div className="bg-[#0E131F] p-12 flex items-center justify-center border-l border-white/5">
-                <div className="w-full max-w-[280px] aspect-[2/3] bg-gradient-to-br from-red-700 via-red-900 to-black rounded-sm shadow-2xl relative p-8 flex flex-col justify-between border border-white/10 group-hover:scale-[1.02] transition-transform duration-700">
-                  <ShieldCheck className="text-white/20" size={40} />
+              <div className="bg-[#0E131F] p-10 flex items-center justify-center border-l border-white/5">
+                <div className="w-full max-w-[240px] aspect-[2/3] bg-gradient-to-br from-red-700 via-red-900 to-black rounded-sm shadow-2xl relative p-6 flex flex-col justify-between border border-white/10 group-hover:scale-[1.02] transition-transform duration-700">
+                  <ShieldCheck className="text-white/20" size={32} />
                   <div>
-                    <h4 className="text-3xl font-black leading-none uppercase tracking-tighter italic mb-2 text-white">Protocolos de Soberania</h4>
-                    <p className="text-[10px] font-black uppercase tracking-widest opacity-40 text-white">Lord Junnior</p>
+                    <h4 className="text-2xl font-black leading-none uppercase tracking-tighter italic mb-1 text-white">Protocolos de Soberania</h4>
+                    <p className="text-[8px] font-black uppercase tracking-widest opacity-40 text-white">Lord Junnior</p>
                   </div>
                 </div>
               </div>
@@ -484,27 +378,25 @@ export default function ProtocoloInicial() {
           </div>
 
           {/* PRÓXIMO NÍVEL */}
-          <div className="border-2 border-white p-12 flex flex-col md:flex-row items-center justify-between gap-8 mb-40">
+          <div className="border-2 border-white p-10 flex flex-col md:flex-row items-center justify-between gap-6 mb-32 rounded-sm">
             <div className="text-center md:text-left">
-              <h3 className="font-black uppercase tracking-[0.4em] text-sm text-white mb-2">Próximo Nível</h3>
-              <p className="text-slate-400 font-bold uppercase text-sm">Depois de ler, você não será mais leigo. Estará pronto para a prática.</p>
+              <h3 className="font-black uppercase tracking-[0.4em] text-xs text-white mb-1 font-mono">Próximo Nível</h3>
+              <p className="text-slate-400 font-bold uppercase text-xs">Estará pronto para a prática.</p>
             </div>
-            <Link to="/arsenal" className="bg-white text-black px-12 py-5 font-black uppercase text-xs tracking-widest hover:bg-red-600 hover:text-white transition-all flex items-center gap-3">
-              Ir para o Arsenal Técnico <ArrowRight size={18} />
+            <Link to="/arsenal" className="bg-white text-black px-10 py-4 font-black uppercase text-[10px] tracking-widest hover:bg-red-600 hover:text-white transition-all flex items-center gap-3 rounded-sm">
+              Arsenal Técnico <ArrowRight size={16} />
             </Link>
           </div>
 
           {/* FOOTER */}
-          <footer className="pt-20 border-t border-white/5">
-            <div className="text-center space-y-12">
-              <p className="text-slate-700 font-black uppercase tracking-[1em] text-[10px]">Not your keys, not your money.</p>
-              <div className="space-y-4">
-                <p className="text-3xl md:text-5xl font-black uppercase tracking-tighter leading-none text-white italic">Sempre foi projeto.</p>
-                <p className="text-red-600 font-black uppercase text-xl md:text-2xl tracking-tighter italic">Autocustódia exige responsabilidade.</p>
+          <footer className="pt-16 border-t border-white/5">
+            <div className="text-center space-y-10">
+              <p className="text-slate-700 font-black uppercase tracking-[1em] text-[9px] font-mono">Not your keys, not your money.</p>
+              <div className="space-y-3">
+                <p className="text-2xl md:text-4xl font-black uppercase tracking-tighter leading-none text-white italic">Sempre foi projeto.</p>
+                <p className="text-red-600 font-black uppercase text-lg md:text-xl tracking-tighter italic">Autocustódia exige responsabilidade.</p>
               </div>
-              <div className="pt-20 pb-10">
-                <p className="text-slate-800 text-[10px] font-black tracking-[0.5em] uppercase">Lord Junnior © 2026</p>
-              </div>
+              <p className="text-slate-800 text-[9px] font-black tracking-[0.5em] uppercase pt-16 font-mono">Lord Junnior © 2026</p>
             </div>
           </footer>
         </div>
