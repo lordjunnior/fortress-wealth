@@ -27,6 +27,7 @@ import Arsenal from "./pages/Arsenal";
 import NotFound from "./pages/NotFound";
 import BlindagemGolpes from "./pages/BlindagemGolpes";
 import HardCap21 from "./pages/HardCap21";
+import BitcoinSeguro from "./pages/BitcoinSeguro";
 
 const queryClient = new QueryClient();
 
@@ -60,6 +61,7 @@ const App = () => (
           <Route path="/arsenal" element={<Arsenal />} />
           <Route path="/blindagem-golpes" element={<BlindagemGolpes />} />
           <Route path="/21-milhoes" element={<HardCap21 />} />
+          <Route path="/bitcoin-seguro" element={<BitcoinSeguro />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
