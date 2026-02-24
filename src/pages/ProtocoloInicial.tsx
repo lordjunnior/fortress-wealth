@@ -98,6 +98,7 @@ export default function ProtocoloInicial() {
             <div className="pt-3 mt-3 border-t border-white/5">
               <span className="text-[7px] font-black uppercase tracking-[0.3em] text-slate-700 font-mono px-3 block mb-2">Aprofundamento</span>
               {[
+                { to: '/nocoes-bitcoin', label: 'Noções Básicas', icon: '📖' },
                 { to: '/bitcoin-seguro', label: 'Bitcoin é Seguro?', icon: '🛡' },
                 { to: '/chaves', label: 'Chaves Púb. & Priv.', icon: '🔑' },
                 { to: '/transacoes', label: 'Transações Bitcoin', icon: '📡' },
@@ -380,6 +381,7 @@ export default function ProtocoloInicial() {
             <h3 className="text-slate-600 font-black uppercase tracking-[0.4em] text-[9px] mb-6 font-mono">Módulos de Aprofundamento</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {[
+                { to: '/nocoes-bitcoin', title: 'Noções Básicas sobre Bitcoin', desc: 'Aprenda o básico: o que é, como comprar, como funciona. 14 tópicos essenciais para iniciantes.', color: 'amber', icon: '📖' },
                 { to: '/bitcoin-seguro', title: 'Bitcoin é Seguro?', desc: 'A blockchain nunca foi hackeada. Mas você pode ser o elo fraco. Entenda os riscos reais.', color: 'green', icon: '🛡' },
                 { to: '/chaves', title: 'Chaves Públicas & Privadas', desc: 'Criptografia de chave pública: como funciona a propriedade real no Bitcoin.', color: 'orange', icon: '🔑' },
                 { to: '/transacoes', title: 'Transações Bitcoin', desc: 'Inputs, outputs, taxas e mempool. A mecânica completa de como valor é transferido.', color: 'cyan', icon: '📡' },
