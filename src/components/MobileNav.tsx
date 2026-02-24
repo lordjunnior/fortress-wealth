@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { Menu, X, LayoutGrid, BookOpen, Headphones, Wrench, QrCode, Zap, Library } from "lucide-react";
+import { Menu, X, LayoutGrid, BookOpen, Headphones, Wrench, QrCode, Zap, Library, ShieldAlert } from "lucide-react";
 
 const menuItems = [
+  { icon: ShieldAlert, label: "Protocolo Inicial", route: "/protocolo-inicial", alert: true },
   { icon: LayoutGrid, label: "Manifesto", targetId: "manifesto" },
   { icon: BookOpen, label: "Educação", route: "/educacao" },
   { icon: Headphones, label: "Audioteca", route: "/audiobooks" },
@@ -33,7 +34,7 @@ const MobileNav = () => {
   };
 
   return (
-    <div className="lg:hidden fixed top-4 left-4 z-50">
+    <div className="lg:hidden fixed top-[46px] left-4 z-50">
       <button
         onClick={() => setOpen(!open)}
         className="w-10 h-10 rounded-lg bg-card/90 backdrop-blur-md border border-border flex items-center justify-center text-foreground"
