@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, BookOpen, Download, ShieldCheck } from 'lucide-react';
+import { ArrowLeft, BookOpen, Download, ShieldCheck, Lock, Globe } from 'lucide-react';
 
 import coverWhitepaper from '@/assets/cover-whitepaper-btc.jpg';
 import coverRedpill from '@/assets/cover-redpill-btc.jpg';
@@ -13,6 +13,7 @@ import coverDeusFalhou from '@/assets/cover-deus-falhou.jpg';
 import coverEconomiaIndividuo from '@/assets/cover-economia-individuo.jpg';
 import coverEconomiaHistoria from '@/assets/cover-economia-historia.jpg';
 import coverPaiRico from '@/assets/cover-pai-rico-pobre.jpg';
+import coverSilencioQueda from '@/assets/cover-silencio-queda.jpg';
 
 const EBOOKS_DATA = [
   {
@@ -38,6 +39,36 @@ const EBOOKS_DATA = [
       { title: "Pai Rico, Pai Pobre", author: "Robert Kiyosaki", file: "Pai_Rico_Pai_Pobre_Edicao_Atualizada_25anos_ExcertoSITE.pdf", color: "from-green-800 to-emerald-950", cover: coverPaiRico }
     ]
   }
+];
+
+const VITRINE_EBOOKS = [
+  {
+    title: "O SILÊNCIO DA QUEDA",
+    description: "Descubra o que é o Bitcoin, por que ele é valioso e como a matemática garante a sua liberdade contra a inflação estatal. Um guia fundamental para entender o Bitcoin como refúgio em um mundo desnorteado.",
+    cover: coverSilencioQueda,
+    tags: ["E-book", "Gratuito"],
+    available: true,
+    btnText: "Resgatar E-book",
+    route: "/silencio-queda",
+  },
+  {
+    title: "Autocustódia de Elite",
+    description: "Aprenda a ser seu próprio banco. Geração de chaves, cold storage e blindagem contra ataques de engenharia social.",
+    cover: null,
+    icon: Lock,
+    tags: ["E-book", "Em Breve"],
+    available: false,
+    btnText: "Indisponível",
+  },
+  {
+    title: "O Mercado Paralelo",
+    description: "Como comprar e vender de forma privada, fugindo da vigilância corporativa e estatal usando as ferramentas corretas.",
+    cover: null,
+    icon: Globe,
+    tags: ["E-book", "Em Breve"],
+    available: false,
+    btnText: "Indisponível",
+  },
 ];
 
 const Ebooks: React.FC = () => {
@@ -73,6 +104,94 @@ const Ebooks: React.FC = () => {
           </div>
         </header>
 
+        {/* VITRINE TÁTICA DE E-BOOKS (ESTILO MOCKUP 3D) */}
+        <div className="mb-40">
+          <header className="mb-12">
+            <h3 className="text-3xl md:text-5xl font-black uppercase tracking-tighter italic">
+              Arsenal de <span className="text-red-600">Protocolos</span>
+            </h3>
+            <p className="text-slate-400 font-medium mt-4">
+              Aprofunde seu conhecimento com materiais densos sobre soberania digital e fuga do sistema fiduciário.
+            </p>
+          </header>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {VITRINE_EBOOKS.map((ebook, idx) => {
+              const IconComp = ebook.icon;
+              return (
+                <div
+                  key={idx}
+                  className={`bg-[#0B0F19] border border-white/5 rounded-2xl p-4 flex flex-col group hover:border-red-600/40 transition-all duration-500 shadow-xl ${!ebook.available ? 'opacity-80 hover:opacity-100' : ''}`}
+                >
+                  {/* Container do Mockup 3D */}
+                  <div className="bg-gradient-to-br from-[#121826] to-[#070A12] rounded-xl aspect-[4/3] mb-6 flex items-center justify-center relative overflow-hidden">
+                    <div className={`absolute inset-0 ${ebook.available ? 'bg-[radial-gradient(circle_at_top_left,rgba(220,38,38,0.1)_0%,transparent_60%)]' : 'bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.05)_0%,transparent_60%)]'}`}></div>
+                    
+                    {ebook.cover ? (
+                      <div className="w-[140px] h-[200px] shadow-[15px_15px_30px_rgba(0,0,0,0.8)] rounded-sm group-hover:scale-105 transition-all duration-500 relative z-10 overflow-hidden"
+                        style={{ transform: 'perspective(800px) rotateY(12deg) rotateX(2deg)', transition: 'transform 0.5s ease, scale 0.5s ease' }}
+                        onMouseEnter={(e) => { e.currentTarget.style.transform = 'perspective(800px) rotateY(0deg) rotateX(0deg) scale(1.05)'; }}
+                        onMouseLeave={(e) => { e.currentTarget.style.transform = 'perspective(800px) rotateY(12deg) rotateX(2deg)'; }}
+                      >
+                        <img src={ebook.cover} alt={`Capa ${ebook.title}`} className="w-full h-full object-cover" />
+                      </div>
+                    ) : (
+                      <div
+                        className="w-[140px] h-[200px] bg-gradient-to-br from-slate-700 to-black shadow-[15px_15px_30px_rgba(0,0,0,0.8),inset_2px_0_5px_rgba(255,255,255,0.2)] rounded-sm group-hover:scale-105 transition-all duration-500 relative z-10 flex flex-col p-4"
+                        style={{ transform: 'perspective(800px) rotateY(12deg) rotateX(2deg)', transition: 'transform 0.5s ease, scale 0.5s ease' }}
+                        onMouseEnter={(e) => { e.currentTarget.style.transform = 'perspective(800px) rotateY(0deg) rotateX(0deg) scale(1.05)'; }}
+                        onMouseLeave={(e) => { e.currentTarget.style.transform = 'perspective(800px) rotateY(12deg) rotateX(2deg)'; }}
+                      >
+                        {IconComp && <IconComp size={20} className="text-white/40 mb-auto" />}
+                        <p className="text-white font-black uppercase text-[10px] leading-tight italic">{ebook.title}</p>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Tags Táticas */}
+                  <div className="flex gap-2 mb-4 px-2">
+                    {ebook.tags.map((tag, tIdx) => (
+                      <span
+                        key={tIdx}
+                        className={`text-[9px] font-black uppercase tracking-widest px-3 py-1 rounded-full ${
+                          tag === "Em Breve"
+                            ? "bg-red-600/20 border border-red-600/30 text-red-500"
+                            : "bg-white/5 border border-white/10 text-slate-400"
+                        }`}
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Textos */}
+                  <div className="px-2 flex-1 flex flex-col">
+                    <h4 className="text-xl font-black uppercase tracking-tight text-white mb-2 italic">
+                      {ebook.title}
+                    </h4>
+                    <p className="text-xs text-slate-500 leading-relaxed font-medium mb-6">
+                      {ebook.description}
+                    </p>
+
+                    {ebook.available ? (
+                      <Link
+                        to={ebook.route || "#"}
+                        className="mt-auto w-full py-4 border border-white/10 text-white font-black uppercase text-[10px] tracking-[0.2em] rounded-xl hover:bg-white hover:text-black transition-colors text-center block"
+                      >
+                        {ebook.btnText}
+                      </Link>
+                    ) : (
+                      <button className="mt-auto w-full py-4 border border-white/10 text-slate-500 font-black uppercase text-[10px] tracking-[0.2em] rounded-xl cursor-not-allowed">
+                        {ebook.btnText}
+                      </button>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
         {/* Categories */}
         {EBOOKS_DATA.map((section, idx) => (
           <div key={idx} className="mb-24">
@@ -85,16 +204,12 @@ const Ebooks: React.FC = () => {
               {section.books.map((book, bIdx) => (
                 <div key={bIdx} className="group cursor-pointer">
                   <div className="aspect-[2/3] rounded-xl shadow-2xl transition-all duration-500 group-hover:scale-[1.03] group-hover:shadow-red-900/20 relative overflow-hidden border border-white/10">
-                    {/* Cover image */}
                     <img src={book.cover} alt={book.title} className="absolute inset-0 w-full h-full object-cover" />
-                    {/* Gradient overlay for text readability */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-                    {/* Default info */}
                     <div className="absolute inset-0 p-5 flex flex-col justify-end group-hover:opacity-0 transition-opacity duration-300">
                       <span className="text-[10px] font-black uppercase tracking-widest text-white/70 block mb-1">{book.author}</span>
                       <h3 className="text-lg font-black leading-tight tracking-tighter drop-shadow-md">{book.title}</h3>
                     </div>
-                    {/* Hover overlay */}
                     <div className="absolute inset-0 bg-black/85 opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col items-center justify-center gap-4 backdrop-blur-sm">
                       <h3 className="text-base font-black tracking-tight text-center px-4">{book.title}</h3>
                       <p className="text-[10px] text-slate-400 font-bold">{book.author}</p>
