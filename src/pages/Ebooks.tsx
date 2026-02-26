@@ -14,6 +14,8 @@ import coverEconomiaIndividuo from '@/assets/cover-economia-individuo.jpg';
 import coverEconomiaHistoria from '@/assets/cover-economia-historia.jpg';
 import coverPaiRico from '@/assets/cover-pai-rico-pobre.jpg';
 import coverSilencioQueda from '@/assets/cover-silencio-queda.jpg';
+import coverAutocustodia from '@/assets/autocustodiadeelite.jpg';
+import coverMercadoParalelo from '@/assets/omercado-paralelo.jpg';
 
 const EBOOKS_DATA = [
   {
@@ -54,8 +56,7 @@ const VITRINE_EBOOKS = [
   {
     title: "Autocustódia de Elite",
     description: "Aprenda a ser seu próprio banco. Geração de chaves, cold storage e blindagem contra ataques de engenharia social.",
-    cover: null,
-    icon: Lock,
+    cover: coverAutocustodia,
     tags: ["E-book", "Em Breve"],
     available: false,
     btnText: "Indisponível",
@@ -63,8 +64,7 @@ const VITRINE_EBOOKS = [
   {
     title: "O Mercado Paralelo",
     description: "Como comprar e vender de forma privada, fugindo da vigilância corporativa e estatal usando as ferramentas corretas.",
-    cover: null,
-    icon: Globe,
+    cover: coverMercadoParalelo,
     tags: ["E-book", "Em Breve"],
     available: false,
     btnText: "Indisponível",
@@ -116,9 +116,7 @@ const Ebooks: React.FC = () => {
           </header>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {VITRINE_EBOOKS.map((ebook, idx) => {
-              const IconComp = ebook.icon;
-              return (
+            {VITRINE_EBOOKS.map((ebook, idx) => (
                 <div
                   key={idx}
                   className={`bg-[#0B0F19] border border-white/5 rounded-2xl p-4 flex flex-col group hover:border-red-600/40 transition-all duration-500 shadow-xl ${!ebook.available ? 'opacity-80 hover:opacity-100' : ''}`}
@@ -142,8 +140,7 @@ const Ebooks: React.FC = () => {
                         onMouseEnter={(e) => { e.currentTarget.style.transform = 'perspective(800px) rotateY(0deg) rotateX(0deg) scale(1.05)'; }}
                         onMouseLeave={(e) => { e.currentTarget.style.transform = 'perspective(800px) rotateY(12deg) rotateX(2deg)'; }}
                       >
-                        {IconComp && <IconComp size={20} className="text-white/40 mb-auto" />}
-                        <p className="text-white font-black uppercase text-[10px] leading-tight italic">{ebook.title}</p>
+                        <p className="text-white font-black uppercase text-[10px] leading-tight italic mt-auto">{ebook.title}</p>
                       </div>
                     )}
                   </div>
@@ -187,8 +184,8 @@ const Ebooks: React.FC = () => {
                     )}
                   </div>
                 </div>
-              );
-            })}
+              )
+            )}
           </div>
         </div>
 
