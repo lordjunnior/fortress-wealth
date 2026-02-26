@@ -102,15 +102,12 @@ const SilencioQueda: React.FC = () => {
                 </blockquote>
 
                 {/* Botão Pulsante */}
-                 <div className="relative inline-block w-full sm:w-fit mt-auto">
-                   <div className="absolute -inset-2 bg-amber-500/40 rounded-2xl blur-lg opacity-60 animate-pulse pointer-events-none"></div>
-                   <button
-                     onClick={handleDownload}
-                     className="relative z-10 w-full sm:w-auto bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-400 hover:to-yellow-400 text-black font-black py-5 px-14 rounded-xl transition-all transform hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(245,158,11,0.4)] flex items-center justify-center gap-3 uppercase tracking-wider text-sm shadow-xl border border-amber-400/50"
-                   >
-                     <Download className="w-5 h-5" /> Baixar PDF Gratuito
-                   </button>
-                 </div>
+                 <button
+                   onClick={handleDownload}
+                   className="relative w-full sm:w-auto bg-white text-black font-black py-5 px-14 rounded-xl transition-all transform hover:-translate-y-1 hover:bg-red-600 hover:text-white flex items-center justify-center gap-3 uppercase tracking-[0.2em] text-sm shadow-[0_0_30px_rgba(255,255,255,0.15)]"
+                 >
+                   <Download className="w-5 h-5" /> Baixar PDF Gratuito
+                 </button>
              </div>
           </div>
 
