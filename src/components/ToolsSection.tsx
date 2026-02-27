@@ -57,7 +57,7 @@ const ToolsSection = () => {
   const navigate = useNavigate();
 
   return (
-    <section className="section-padding bg-card/30" ref={ref}>
+    <section className="section-padding" ref={ref}>
       <div className="max-w-6xl mx-auto">
         <motion.div
           variants={fadeUp}
