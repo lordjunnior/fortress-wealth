@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
   ArrowLeft, ArrowRight, Calculator, Plane,
-  BookA, ShieldCheck, Clock, Terminal, Hourglass
+  BookA, ShieldCheck, Clock, Terminal, Hourglass, Search
 } from 'lucide-react';
+import verificabrCover from '@/assets/verificabr-cover.png';
 
 import BitcoinVsImovel from './BitcoinVsImovel';
 import TaxaDeFuga from './TaxaDeFuga';
@@ -85,6 +86,19 @@ const TOOLS_LIST = [
     component: SupplyShock
   },
   {
+    id: 'verificabr',
+    title: 'VerificaBR',
+    badge: 'Em Teste',
+    desc: 'Cruza dados públicos para mapear risco financeiro de políticos. A partir do CPF de agentes públicos, organiza transferências federais, contratos e vínculos empresariais.',
+    cta: 'Em Breve',
+    color: 'from-blue-500/20 to-blue-500/0',
+    borderColor: 'group-hover:border-blue-500/50',
+    textColor: 'text-blue-400',
+    icon: Search,
+    component: null,
+    cover: verificabrCover
+  },
+  {
     id: 'verdade-salarial',
     title: 'Amigo CLT — Salário Líquido',
     badge: 'O Custo do Estado',
@@ -115,7 +129,7 @@ const Ferramentas: React.FC = () => {
   const activeTool = TOOLS_LIST.find(t => t.id === activeToolId);
 
   // Render active tool inline
-  if (activeTool && activeTool.id !== 'dev') {
+  if (activeTool && activeTool.id !== 'dev' && activeTool.id !== 'verificabr') {
     const Component = activeTool.component;
     if (Component) {
       return (
@@ -190,7 +204,8 @@ const Ferramentas: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {TOOLS_LIST.map((tool, i) => {
             const Icon = tool.icon;
-            const isDev = tool.id === 'dev';
+            const isInactive = tool.id === 'dev' || tool.id === 'verificabr';
+            const hasCover = 'cover' in tool && (tool as any).cover;
 
             return (
               <motion.div
@@ -198,17 +213,23 @@ const Ferramentas: React.FC = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.05 + i * 0.08 }}
-                onClick={() => !isDev && setActiveToolId(tool.id)}
-                className={`group relative bg-card rounded-2xl p-8 overflow-hidden border transition-all duration-500 ${isDev ? 'border-dashed border-border cursor-default opacity-80' : `border-border cursor-pointer hover:-translate-y-1 ${tool.borderColor} shadow-lg hover:shadow-2xl`}`}
+                onClick={() => !isInactive && setActiveToolId(tool.id)}
+                className={`group relative bg-card rounded-2xl overflow-hidden border transition-all duration-500 ${isInactive ? 'border-dashed border-border cursor-default opacity-90' : `border-border cursor-pointer hover:-translate-y-1 ${tool.borderColor} shadow-lg hover:shadow-2xl`}`}
               >
-                {!isDev && (
+                {hasCover && (
+                  <div className="w-full h-40 overflow-hidden">
+                    <img src={(tool as any).cover} alt={tool.title} className="w-full h-full object-cover" />
+                  </div>
+                )}
+                <div className="p-8">
+                {!isInactive && (
                   <div className={`absolute top-0 right-0 w-64 h-64 bg-gradient-to-br ${tool.color} blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none rounded-full transform translate-x-1/2 -translate-y-1/2`} />
                 )}
 
                 <div className="relative z-10 flex flex-col h-full">
                   <div className="flex justify-between items-start mb-6">
                     <div className={`p-4 rounded-xl bg-secondary border border-border ${tool.textColor} shadow-inner`}>
-                      <Icon className={`w-7 h-7 ${isDev && 'animate-pulse'}`} />
+                      <Icon className={`w-7 h-7 ${isInactive && 'animate-pulse'}`} />
                     </div>
                     <span className={`text-[10px] font-bold uppercase tracking-widest ${tool.textColor} bg-secondary px-3 py-1.5 rounded-full border border-border`}>
                       {tool.badge}
@@ -223,9 +244,10 @@ const Ferramentas: React.FC = () => {
                     {tool.desc}
                   </p>
 
-                  <div className={`mt-auto inline-flex items-center gap-2 ${tool.textColor} font-bold text-sm uppercase tracking-wider ${!isDev && 'group-hover:gap-4'} transition-all`}>
-                    {tool.cta} {!isDev && <ArrowRight className="w-4 h-4" />}
+                  <div className={`mt-auto inline-flex items-center gap-2 ${tool.textColor} font-bold text-sm uppercase tracking-wider ${!isInactive && 'group-hover:gap-4'} transition-all`}>
+                    {tool.cta} {!isInactive && <ArrowRight className="w-4 h-4" />}
                   </div>
+                </div>
                 </div>
               </motion.div>
             );
