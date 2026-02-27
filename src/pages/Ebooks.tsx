@@ -6,7 +6,7 @@ import coverWhitepaper from '@/assets/cover-whitepaper-btc.jpg';
 import coverRedpill from '@/assets/cover-redpill-btc.jpg';
 import coverProgramadores from '@/assets/cover-btc-programadores.jpg';
 import coverMoedaDigital from '@/assets/cover-moeda-digital.jpg';
-import coverIniciantes from '@/assets/cover-btc-iniciantes.jpg';
+
 import coverSeisLicoes from '@/assets/cover-seis-licoes.jpg';
 import coverFimBc from '@/assets/cover-fim-banco-central.jpg';
 import coverDeusFalhou from '@/assets/cover-deus-falhou.jpg';
@@ -19,26 +19,49 @@ import coverMercadoParalelo from '@/assets/omercado-paralelo.jpg';
 
 const EBOOKS_DATA = [
   {
-    category: "Engenharia da Liberdade",
+    category: "Engenharia Bitcoin",
     description: "Protocolos técnicos e a matemática da soberania digital.",
     books: [
       { title: "White Paper", author: "Satoshi Nakamoto", pdf: "/pdfs/bitcoin-whitepaper.pdf", color: "from-orange-600 to-yellow-600", cover: coverWhitepaper },
       { title: "Bitcoin Red Pill", author: "Renato Amoedo", pdf: "/pdfs/bitcoin-redpill.pdf", color: "from-red-700 to-black", cover: coverRedpill },
       { title: "Bitcoin p/ Programadores", author: "Marco Agner", pdf: "/pdfs/bitcoin-programadores.pdf", color: "from-blue-700 to-slate-900", cover: coverProgramadores },
       { title: "Moeda na Era Digital", author: "Fernando Ulrich", pdf: "/pdfs/bitcoin-moeda-digital.pdf", color: "from-amber-500 to-orange-800", cover: coverMoedaDigital },
-      { title: "Bitcoin para Iniciantes", author: "Ney Carvalho", pdf: "/pdfs/bitcoin-iniciantes.pdf", color: "from-emerald-600 to-teal-900", cover: coverIniciantes }
+      { title: "O Valor do Bitcoin", author: "Diversos", pdf: "/pdfs/O_valor_do_Bitcoin.pdf", color: "from-emerald-600 to-teal-900" },
+      { title: "Mastering Bitcoin", author: "Andreas Antonopoulos", pdf: "/pdfs/Mastering Bitcoin.pdf", color: "from-indigo-700 to-slate-900" },
+      { title: "O Padrão Bitcoin", author: "Saifedean Ammous", pdf: "/pdfs/o_padrao_bitcoin_ediao_brasileira_a_alternativa_descentralizada.pdf", color: "from-yellow-600 to-amber-900" },
+      { title: "A Internet do Dinheiro", author: "Andreas Antonopoulos", pdf: "/pdfs/a internet do dinheiro 2020 andreas antonopoulos.pdf", color: "from-cyan-600 to-blue-900" },
+      { title: "Graças a Deus pelo Bitcoin", author: "Derek Waltchack", pdf: "/pdfs/Graças a Deus pelo Bitcoin - Derek Waltchack.pdf", color: "from-amber-700 to-yellow-950" },
     ]
   },
   {
-    category: "Fundamentos Soberanos",
-    description: "A base moral, econômica e histórica para a independência individual.",
+    category: "Economia Austríaca",
+    description: "A base teórica da liberdade econômica e do livre mercado.",
     books: [
       { title: "As Seis Lições", author: "Ludwig von Mises", pdf: "/pdfs/seis-licoes.pdf", color: "from-purple-800 to-indigo-950", cover: coverSeisLicoes },
       { title: "Fim do Banco Central", author: "Murray Rothbard", pdf: "/pdfs/fim-banco-central.pdf", color: "from-slate-800 to-black", cover: coverFimBc },
-      { title: "Deus que Falhou", author: "Hans-Hermann Hoppe", pdf: "/pdfs/democracia-deus-falhou.pdf", color: "from-zinc-900 to-black", cover: coverDeusFalhou },
       { title: "Economia do Indivíduo", author: "Rodrigo Constantino", pdf: "/pdfs/economia-individuo.pdf", color: "from-blue-900 to-black", cover: coverEconomiaIndividuo },
       { title: "Economia e História", author: "Hans-Hermann Hoppe", pdf: "/pdfs/economia-historia.pdf", color: "from-red-900 to-slate-900", cover: coverEconomiaHistoria },
-      { title: "Pai Rico, Pai Pobre", author: "Robert Kiyosaki", pdf: "/pdfs/pai-rico-pai-pobre.pdf", color: "from-green-800 to-emerald-950", cover: coverPaiRico }
+      { title: "Microeconomia", author: "Diversos", pdf: "/pdfs/microeconomia-compress.pdf", color: "from-teal-800 to-slate-900" },
+      { title: "Mises e a Escola Austríaca", author: "Ludwig von Mises", pdf: "/pdfs/Mises-e-a-Escola-Austriaca-–-uma-visao-pessoal.pdf", color: "from-violet-800 to-indigo-950" },
+      { title: "Cálculo Econômico Socialista", author: "Diversos", pdf: "/pdfs/Historia-do-Debate-do-Calculo-Economico-Socialista-xdcspd.pdf", color: "from-rose-900 to-black" },
+      { title: "Moeda, Crédito e Ciclos", author: "Jesús Huerta de Soto", pdf: "/pdfs/Moeda-Credito-Bancario-e-Ciclos-Economicos.pdf", color: "from-zinc-700 to-black" },
+    ]
+  },
+  {
+    category: "Filosofia & Estado",
+    description: "A crítica moral e filosófica ao poder estatal.",
+    books: [
+      { title: "Deus que Falhou", author: "Hans-Hermann Hoppe", pdf: "/pdfs/democracia-deus-falhou.pdf", color: "from-zinc-900 to-black", cover: coverDeusFalhou },
+      { title: "Estado? Não, Obrigado!", author: "Marcelo Werlang", pdf: "/pdfs/Estado-Nao-Obrigado-n45ol7.pdf", color: "from-red-800 to-zinc-900" },
+      { title: "Educação Livre e Obrigatória", author: "Murray Rothbard", pdf: "/pdfs/Educacao-Livre-e-Obrigatoria-sypcgb.pdf", color: "from-sky-800 to-slate-900" },
+    ]
+  },
+  {
+    category: "Inteligência Financeira",
+    description: "Estratégias práticas para prosperar fora do sistema.",
+    books: [
+      { title: "Pai Rico, Pai Pobre", author: "Robert Kiyosaki", pdf: "/pdfs/pai-rico-pai-pobre.pdf", color: "from-green-800 to-emerald-950", cover: coverPaiRico },
+      { title: "Economia 3.0", author: "Diversos", pdf: "/pdfs/Economia-3.0-Do-escambo-ate-as-financas-descentralizadas-iznesy.pdf", color: "from-orange-700 to-red-950" },
     ]
   }
 ];
@@ -103,7 +126,7 @@ const Ebooks: React.FC = () => {
           </p>
           <div className="flex items-center gap-3 mt-4">
             <ShieldCheck size={16} className="text-emerald-500" />
-            <span className="text-[10px] font-black uppercase tracking-widest text-slate-500">11 Títulos Verificados • Acervo Real</span>
+            <span className="text-[10px] font-black uppercase tracking-widest text-slate-500">22 Títulos Verificados • Acervo Real</span>
           </div>
         </header>
 
@@ -204,7 +227,15 @@ const Ebooks: React.FC = () => {
               {section.books.map((book, bIdx) => (
                 <div key={bIdx} className="group cursor-pointer">
                   <div className="aspect-[2/3] rounded-xl shadow-2xl transition-all duration-500 group-hover:scale-[1.03] group-hover:shadow-red-900/20 relative overflow-hidden border border-white/10">
-                    <img src={book.cover} alt={book.title} className="absolute inset-0 w-full h-full object-cover" />
+                    {book.cover ? (
+                      <img src={book.cover} alt={book.title} className="absolute inset-0 w-full h-full object-cover" />
+                    ) : (
+                      <div className={`absolute inset-0 bg-gradient-to-br ${book.color} flex flex-col items-center justify-center p-5 text-center`}>
+                        <BookOpen size={28} className="text-white/40 mb-3" />
+                        <h3 className="text-sm font-black leading-tight tracking-tight text-white/90">{book.title}</h3>
+                        <p className="text-[9px] text-white/50 mt-2 font-bold uppercase tracking-widest">{book.author}</p>
+                      </div>
+                    )}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                     <div className="absolute inset-0 p-5 flex flex-col justify-end group-hover:opacity-0 transition-opacity duration-300">
                       <span className="text-[10px] font-black uppercase tracking-widest text-white/70 block mb-1">{book.author}</span>
