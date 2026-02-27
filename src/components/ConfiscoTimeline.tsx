@@ -84,7 +84,7 @@ const ConfiscoTimeline = () => {
   };
 
   return (
-    <section className="section-padding bg-card/50" ref={ref}>
+    <section className="section-padding" ref={ref}>
       <div className="max-w-5xl mx-auto">
         {/* Transition text */}
         <motion.div

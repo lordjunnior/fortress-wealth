@@ -57,6 +57,8 @@ export default {
         "ice-white": "hsl(var(--ice-white))",
         midnight: "hsl(var(--midnight))",
         "midnight-light": "hsl(var(--midnight-light))",
+        "surface-elevated": "hsl(var(--surface-elevated))",
+        "section-alt": "hsl(var(--section-alt))",
         "chart-red": "hsl(var(--chart-red))",
         "chart-green": "hsl(var(--chart-green))",
         sidebar: {

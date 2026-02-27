@@ -63,42 +63,46 @@ const Index = () => {
       <div className="relative z-10 lg:ml-[260px] pb-10">
         <HeroSection />
 
-        <div id="manifesto">
+        <div id="manifesto" className="section-divider">
           <ManifestoSection />
         </div>
 
-        <ConfiscoTimeline />
+        <div className="section-alt section-divider">
+          <ConfiscoTimeline />
+        </div>
 
         {/* Quote Carousel */}
-        <div className="section-padding py-12 md:py-16">
+        <div className="section-divider section-padding py-12 md:py-16">
           <div className="max-w-3xl mx-auto">
             <QuoteCarousel />
           </div>
         </div>
 
-        <div id="pix-crypto">
+        <div id="pix-crypto" className="section-alt section-divider">
           <PixBitcoinSection />
         </div>
 
-        <div id="ferramentas">
+        <div id="ferramentas" className="section-divider">
           <ToolsSection />
         </div>
 
-        <div id="educacao">
+        <div id="educacao" className="section-alt section-divider">
           <KnowledgeSection />
         </div>
 
-        <div id="audioteca">
+        <div id="audioteca" className="section-divider">
           <AudiotecaSection />
         </div>
 
-        <div id="faq">
+        <div id="faq" className="section-alt section-divider">
           <FaqSection />
         </div>
 
-        <WhyBitcoinSection />
+        <div className="section-divider">
+          <WhyBitcoinSection />
+        </div>
 
-        <div id="apoio">
+        <div id="apoio" className="section-alt section-divider">
           <FooterSection />
         </div>
       </div>

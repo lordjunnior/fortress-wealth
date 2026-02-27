@@ -57,6 +57,8 @@
     --ice-white: 210 40% 98%;
     --midnight: 222 47% 4%;
     --midnight-light: 222 47% 6%;
+    --surface-elevated: 222 40% 9%;
+    --section-alt: 222 42% 7%;
     --chart-red: 0 72% 51%;
     --chart-green: 142 71% 45%;
     --mono: 'JetBrains Mono', monospace;
@@ -161,6 +163,17 @@
   /* Padding padrão do site */
   .section-padding {
     @apply px-4 md:px-8 lg:px-12 py-16 md:py-24;
+  }
+
+  /* Seção alternada com fundo elevado para contraste mobile */
+  .section-alt {
+    background-color: hsl(var(--section-alt));
+  }
+
+  /* Divisor sutil entre seções */
+  .section-divider {
+    @apply border-t;
+    border-color: hsl(var(--gold) / 0.08);
   }
 
   .pre-title {
