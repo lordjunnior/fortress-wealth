@@ -22,23 +22,23 @@ const EBOOKS_DATA = [
     category: "Engenharia da Liberdade",
     description: "Protocolos técnicos e a matemática da soberania digital.",
     books: [
-      { title: "White Paper", author: "Satoshi Nakamoto", file: "White Paper - S.Nakamoto.pdf", color: "from-orange-600 to-yellow-600", cover: coverWhitepaper },
-      { title: "Bitcoin Red Pill", author: "Renato Amoedo", file: "Livro Bitcoin Red Pill - 3a Edicao.pdf", color: "from-red-700 to-black", cover: coverRedpill },
-      { title: "Bitcoin p/ Programadores", author: "Marco Agner", file: "bitcoin-para-programadores.pdf", color: "from-blue-700 to-slate-900", cover: coverProgramadores },
-      { title: "Moeda na Era Digital", author: "Fernando Ulrich", file: "Bitcoin a Moeda Na Era Digital - Fernando Ulrich (2).pdf", color: "from-amber-500 to-orange-800", cover: coverMoedaDigital },
-      { title: "Bitcoin para Iniciantes", author: "Ney Carvalho", file: "Bitcoin_para_iniciantes.pdf", color: "from-emerald-600 to-teal-900", cover: coverIniciantes }
+      { title: "White Paper", author: "Satoshi Nakamoto", pdf: "/pdfs/bitcoin-whitepaper.pdf", color: "from-orange-600 to-yellow-600", cover: coverWhitepaper },
+      { title: "Bitcoin Red Pill", author: "Renato Amoedo", pdf: "/pdfs/bitcoin-redpill.pdf", color: "from-red-700 to-black", cover: coverRedpill },
+      { title: "Bitcoin p/ Programadores", author: "Marco Agner", pdf: "/pdfs/bitcoin-programadores.pdf", color: "from-blue-700 to-slate-900", cover: coverProgramadores },
+      { title: "Moeda na Era Digital", author: "Fernando Ulrich", pdf: "/pdfs/bitcoin-moeda-digital.pdf", color: "from-amber-500 to-orange-800", cover: coverMoedaDigital },
+      { title: "Bitcoin para Iniciantes", author: "Ney Carvalho", pdf: "/pdfs/bitcoin-iniciantes.pdf", color: "from-emerald-600 to-teal-900", cover: coverIniciantes }
     ]
   },
   {
     category: "Fundamentos Soberanos",
     description: "A base moral, econômica e histórica para a independência individual.",
     books: [
-      { title: "As Seis Lições", author: "Ludwig von Mises", file: "As Seis Licoes - Ludwig Von Mises.pdf", color: "from-purple-800 to-indigo-950", cover: coverSeisLicoes },
-      { title: "Fim do Banco Central", author: "Murray Rothbard", file: "Pelo-fim-do-Banco-Central.pdf", color: "from-slate-800 to-black", cover: coverFimBc },
-      { title: "Deus que Falhou", author: "Hans-Hermann Hoppe", file: "Democracia -o-deus-que-falhou.pdf", color: "from-zinc-900 to-black", cover: coverDeusFalhou },
-      { title: "Economia do Indivíduo", author: "Rodrigo Constantino", file: "Economia-do-Individuo-O-Legado-da-Escola-Austriaca.pdf", color: "from-blue-900 to-black", cover: coverEconomiaIndividuo },
-      { title: "Economia e História", author: "Hans-Hermann Hoppe", file: "Economia-Sociedade-Historia.pdf", color: "from-red-900 to-slate-900", cover: coverEconomiaHistoria },
-      { title: "Pai Rico, Pai Pobre", author: "Robert Kiyosaki", file: "Pai_Rico_Pai_Pobre_Edicao_Atualizada_25anos_ExcertoSITE.pdf", color: "from-green-800 to-emerald-950", cover: coverPaiRico }
+      { title: "As Seis Lições", author: "Ludwig von Mises", pdf: "/pdfs/seis-licoes.pdf", color: "from-purple-800 to-indigo-950", cover: coverSeisLicoes },
+      { title: "Fim do Banco Central", author: "Murray Rothbard", pdf: "/pdfs/fim-banco-central.pdf", color: "from-slate-800 to-black", cover: coverFimBc },
+      { title: "Deus que Falhou", author: "Hans-Hermann Hoppe", pdf: "/pdfs/democracia-deus-falhou.pdf", color: "from-zinc-900 to-black", cover: coverDeusFalhou },
+      { title: "Economia do Indivíduo", author: "Rodrigo Constantino", pdf: "/pdfs/economia-individuo.pdf", color: "from-blue-900 to-black", cover: coverEconomiaIndividuo },
+      { title: "Economia e História", author: "Hans-Hermann Hoppe", pdf: "/pdfs/economia-historia.pdf", color: "from-red-900 to-slate-900", cover: coverEconomiaHistoria },
+      { title: "Pai Rico, Pai Pobre", author: "Robert Kiyosaki", pdf: "/pdfs/pai-rico-pai-pobre.pdf", color: "from-green-800 to-emerald-950", cover: coverPaiRico }
     ]
   }
 ];
@@ -72,9 +72,12 @@ const VITRINE_EBOOKS = [
 ];
 
 const Ebooks: React.FC = () => {
-  const handleDownload = (e: React.MouseEvent, title: string) => {
+  const handleDownload = (e: React.MouseEvent, pdf: string) => {
     e.stopPropagation();
-    alert(`Iniciando download: ${title}`);
+    const link = document.createElement('a');
+    link.href = pdf;
+    link.download = '';
+    link.click();
   };
 
   return (
@@ -211,7 +214,7 @@ const Ebooks: React.FC = () => {
                       <h3 className="text-base font-black tracking-tight text-center px-4">{book.title}</h3>
                       <p className="text-[10px] text-slate-400 font-bold">{book.author}</p>
                       <button
-                        onClick={(e) => handleDownload(e, book.title)}
+                        onClick={(e) => handleDownload(e, book.pdf)}
                         className="flex items-center gap-2 bg-white text-black font-black px-6 py-3 rounded text-[10px] uppercase tracking-widest hover:bg-red-600 hover:text-white transition-colors"
                       >
                         <Download size={14} /> Acessar PDF
