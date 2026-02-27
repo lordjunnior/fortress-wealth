@@ -28,6 +28,7 @@ const books = [
     desc: "A cartilha definitiva da Escola Austríaca: inflação, intervencionismo e o colapso inevitável do estado planejador.",
     pages: "106 págs",
     tag: "ECONOMIA",
+    pdf: "/pdfs/seis-licoes.pdf",
   },
   {
     title: "Democracia: O Deus que Falhou",
@@ -36,6 +37,7 @@ const books = [
     desc: "Por que a democracia destrói a civilização mais rápido que qualquer monarquia. Análise radical e sem filtros.",
     pages: "322 págs",
     tag: "FILOSOFIA POLÍTICA",
+    pdf: "/pdfs/democracia-deus-falhou.pdf",
   },
   {
     title: "Pelo Fim do Banco Central",
@@ -44,6 +46,7 @@ const books = [
     desc: "Rothbard disseca o sistema bancário de reservas fracionárias e demonstra como o Fed rouba seu poder de compra.",
     pages: "198 págs",
     tag: "SISTEMA MONETÁRIO",
+    pdf: "/pdfs/fim-banco-central.pdf",
   },
   {
     title: "Bitcoin White Paper",
@@ -52,6 +55,7 @@ const books = [
     desc: "O documento que iniciou a revolução: um sistema de dinheiro eletrônico peer-to-peer sem terceiros de confiança.",
     pages: "9 págs",
     tag: "CRIPTOGRAFIA",
+    pdf: "/pdfs/bitcoin-whitepaper.pdf",
   },
   {
     title: "Bitcoin Red Pill",
@@ -60,6 +64,7 @@ const books = [
     desc: "O despertar sobre dinheiro, liberdade e soberania individual através do Bitcoin. A pílula vermelha brasileira.",
     pages: "284 págs",
     tag: "BITCOIN",
+    pdf: "/pdfs/bitcoin-redpill.pdf",
   },
 ];
 
@@ -137,12 +142,16 @@ const KnowledgeSection = () => {
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6"
           >
             {books.map((book, i) => (
-              <motion.div
+              <motion.a
                 key={i}
                 variants={staggerChild}
                 whileHover={{ y: -6 }}
                 transition={{ duration: 0.5, ease: ease.sovereign }}
                 className="group cursor-pointer"
+                href={book.pdf}
+                download
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <div className="card-wealth p-0 overflow-hidden flex flex-col h-full">
                   {/* Cover Image */}
@@ -183,7 +192,7 @@ const KnowledgeSection = () => {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </motion.a>
             ))}
           </motion.div>
         </motion.div>
