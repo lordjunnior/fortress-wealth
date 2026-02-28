@@ -52,6 +52,7 @@ import FitoterapiaAplicada from "./pages/FitoterapiaAplicada";
 import ControleVetores from "./pages/ControleVetores";
 import Kit72h from "./pages/Kit72h";
 import PurificacaoAgua from "./pages/PurificacaoAgua";
+import ProtocolosApagao from "./pages/ProtocolosApagao";
 
 const queryClient = new QueryClient();
 
@@ -109,6 +110,7 @@ const App = () => (
           <Route path="/projeto-autonomo/controle-vetores" element={<ControleVetores />} />
           <Route path="/projeto-autonomo/kit-72h" element={<Kit72h />} />
           <Route path="/projeto-autonomo/purificacao-agua" element={<PurificacaoAgua />} />
+          <Route path="/projeto-autonomo/protocolos-apagao" element={<ProtocolosApagao />} />
           <Route path="/projeto-autonomo/:slug" element={<ModuloAutonomo />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
