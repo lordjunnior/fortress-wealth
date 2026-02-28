@@ -16,6 +16,8 @@ import coverPaiRico from '@/assets/cover-pai-rico-pobre.jpg';
 import coverSilencioQueda from '@/assets/cover-silencio-queda.jpg';
 import coverAutocustodia from '@/assets/autocustodiadeelite.jpg';
 import coverMercadoParalelo from '@/assets/omercado-paralelo.jpg';
+import coverValorBitcoin from '@/assets/cover-valor-bitcoin.jpg';
+import coverGracasDeus from '@/assets/cover-gracas-deus-bitcoin.jpg';
 
 const EBOOKS_DATA = [
   {
@@ -26,11 +28,11 @@ const EBOOKS_DATA = [
       { title: "Bitcoin Red Pill", author: "Renato Amoedo", pdf: "/pdfs/bitcoin-redpill.pdf", color: "from-red-700 to-black", cover: coverRedpill },
       { title: "Bitcoin p/ Programadores", author: "Marco Agner", pdf: "/pdfs/bitcoin-programadores.pdf", color: "from-blue-700 to-slate-900", cover: coverProgramadores },
       { title: "Moeda na Era Digital", author: "Fernando Ulrich", pdf: "/pdfs/bitcoin-moeda-digital.pdf", color: "from-amber-500 to-orange-800", cover: coverMoedaDigital },
-      { title: "O Valor do Bitcoin", author: "Diversos", pdf: "/pdfs/O_valor_do_Bitcoin.pdf", color: "from-emerald-600 to-teal-900" },
+      { title: "O Valor do Bitcoin", author: "Diversos", pdf: "/pdfs/O_valor_do_Bitcoin.pdf", color: "from-emerald-600 to-teal-900", cover: coverValorBitcoin },
       { title: "Mastering Bitcoin", author: "Andreas Antonopoulos", pdf: "/pdfs/Mastering Bitcoin.pdf", color: "from-indigo-700 to-slate-900" },
       { title: "O Padrão Bitcoin", author: "Saifedean Ammous", pdf: "/pdfs/o_padrao_bitcoin_ediao_brasileira_a_alternativa_descentralizada.pdf", color: "from-yellow-600 to-amber-900" },
       { title: "A Internet do Dinheiro", author: "Andreas Antonopoulos", pdf: "/pdfs/a internet do dinheiro 2020 andreas antonopoulos.pdf", color: "from-cyan-600 to-blue-900" },
-      { title: "Graças a Deus pelo Bitcoin", author: "Derek Waltchack", pdf: "/pdfs/Graças a Deus pelo Bitcoin - Derek Waltchack.pdf", color: "from-amber-700 to-yellow-950" },
+      { title: "Graças a Deus pelo Bitcoin", author: "Derek Waltchack", pdf: "/pdfs/Graças a Deus pelo Bitcoin - Derek Waltchack.pdf", color: "from-amber-700 to-yellow-950", cover: coverGracasDeus },
     ]
   },
   {
