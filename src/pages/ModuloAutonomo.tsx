@@ -66,9 +66,9 @@ const MODULES: Record<string, ModuleData> = {
     title: 'Comunicação sem Internet',
     phase: '01', phaseLabel: 'Base 72',
     icon: Siren,
-    description: 'Protocolos de comunicação familiar e comunitária quando infraestrutura digital está indisponível. Rádio, sinais visuais e pontos de encontro.',
-    scope: ['Frequências de rádio AM/FM de emergência', 'Sinais visuais padronizados', 'Protocolo de ponto de encontro familiar', 'Comunicação por rádio amador básico'],
-    progress: 25, version: '1.0', release: 'Q3 2026',
+    description: 'Coordenação, informação e organização familiar quando redes móveis e internet estão indisponíveis. 8 blocos com rádio, sinais visuais e contingência física.',
+    scope: ['Rádio AM/FM e frequências de emergência', 'Protocolo de ponto de encontro familiar', 'Sinalização visual e código doméstico', 'Rádio amador (VHF/UHF) opcional', 'Organização de informações e gestão de energia', 'Contingência sem tecnologia e segurança da informação'],
+    progress: 100, version: '1.0', release: 'Publicado',
     color: { bg: 'bg-rose-50', border: 'border-rose-200', text: 'text-rose-600', accent: 'text-rose-500', bar: 'bg-rose-500', iconBg: 'bg-rose-100' },
   },
   'navegacao-primaria': {
@@ -207,6 +207,9 @@ export default function ModuloAutonomo() {
   }
   if (slug === 'abrigo-emergencia') {
     return <Navigate to="/projeto-autonomo/abrigo-emergencia" replace />;
+  }
+  if (slug === 'comunicacao-offline') {
+    return <Navigate to="/projeto-autonomo/comunicacao-offline" replace />;
   }
   if (slug === 'producao-pequenos-espacos') {
     return <Navigate to="/projeto-autonomo/producao-pequenos-espacos" replace />;
