@@ -95,9 +95,9 @@ const MODULES: Record<string, ModuleData> = {
     title: 'Primeiros Socorros',
     phase: '02', phaseLabel: 'Autonomia Biológica',
     icon: Cross,
-    description: 'Contenção de sangramento, imobilização, tratamento de queimaduras. Protocolos validados para ambientes com recursos limitados.',
+    description: 'Módulo publicado. Contenção de sangramento, imobilização, queimaduras e kit funcional.',
     scope: ['Protocolo ABCDE de avaliação', 'Técnicas de hemostasia', 'Imobilização com materiais improvisados', 'Kit mínimo de primeiros socorros'],
-    progress: 50, version: '1.0', release: 'Q2 2026',
+    progress: 100, version: '1.0', release: 'Publicado',
     color: { bg: 'bg-emerald-50', border: 'border-emerald-200', text: 'text-emerald-600', accent: 'text-emerald-500', bar: 'bg-emerald-500', iconBg: 'bg-emerald-100' },
   },
   'sinais-vitais': {
@@ -207,6 +207,9 @@ export default function ModuloAutonomo() {
   }
   if (slug === 'horta-urbana') {
     return <Navigate to="/projeto-autonomo/horta-urbana" replace />;
+  }
+  if (slug === 'primeiros-socorros') {
+    return <Navigate to="/projeto-autonomo/primeiros-socorros" replace />;
   }
   
   const mod = slug ? MODULES[slug] : null;

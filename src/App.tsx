@@ -45,6 +45,7 @@ import ProteinaSustentavel from "./pages/ProteinaSustentavel";
 import SoloFertilidade from "./pages/SoloFertilidade";
 import HortaUrbana from "./pages/HortaUrbana";
 import AutonomiaBiologica from "./pages/AutonomiaBiologica";
+import PrimeirosSocorros from "./pages/PrimeirosSocorros";
 
 const queryClient = new QueryClient();
 
@@ -95,6 +96,7 @@ const App = () => (
           <Route path="/projeto-autonomo/solo-fertilidade" element={<SoloFertilidade />} />
           <Route path="/projeto-autonomo/horta-urbana" element={<HortaUrbana />} />
           <Route path="/projeto-autonomo/autonomia-biologica" element={<AutonomiaBiologica />} />
+          <Route path="/projeto-autonomo/primeiros-socorros" element={<PrimeirosSocorros />} />
           <Route path="/projeto-autonomo/:slug" element={<ModuloAutonomo />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
