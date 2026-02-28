@@ -104,9 +104,9 @@ const MODULES: Record<string, ModuleData> = {
     title: 'Avaliação Básica de Sinais',
     phase: '02', phaseLabel: 'Autonomia Biológica',
     icon: Thermometer,
-    description: 'Interpretar febre, desidratação e sinais vitais com recursos mínimos. Referências numéricas e critérios de decisão.',
+    description: 'Módulo publicado. 6 pilares de avaliação funcional com faixas numéricas e critérios de decisão.',
     scope: ['Faixas normais de temperatura e pulso', 'Sinais de desidratação por grau', 'Quando buscar atendimento profissional', 'Registro simplificado de evolução'],
-    progress: 35, version: '1.0', release: 'Q2 2026',
+    progress: 100, version: '1.0', release: 'Publicado',
     color: { bg: 'bg-emerald-50', border: 'border-emerald-200', text: 'text-emerald-600', accent: 'text-emerald-500', bar: 'bg-emerald-500', iconBg: 'bg-emerald-100' },
   },
   'saude-preventiva': {
@@ -210,6 +210,9 @@ export default function ModuloAutonomo() {
   }
   if (slug === 'primeiros-socorros') {
     return <Navigate to="/projeto-autonomo/primeiros-socorros" replace />;
+  }
+  if (slug === 'sinais-vitais') {
+    return <Navigate to="/projeto-autonomo/avaliacao-sinais" replace />;
   }
   
   const mod = slug ? MODULES[slug] : null;
