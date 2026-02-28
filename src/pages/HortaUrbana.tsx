@@ -200,18 +200,36 @@ export default function HortaUrbana() {
             Sem luz suficiente, não existe produção consistente. Observe sua varanda durante um dia inteiro e marque os horários de incidência direta.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-6">
-            {[
-              { title: 'Sol Pleno', hours: '6–8h diretas', color: 'bg-yellow-100 border-yellow-200 text-yellow-800', desc: 'Tomate, pimentão, frutíferas' },
-              { title: 'Meia-Sombra', hours: '3–5h diretas', color: 'bg-amber-50 border-amber-200 text-amber-800', desc: 'Alface, rúcula, cebolinha' },
-              { title: 'Luz Indireta', hours: 'Claridade o dia todo', color: 'bg-stone-50 border-stone-200 text-stone-700', desc: 'Hortelã, salsinha, agrião' },
-            ].map((z, i) => (
-              <div key={i} className={`${z.color} border rounded-xl p-4`}>
-                <p className="font-bold text-sm">{z.title}</p>
-                <p className="text-xs opacity-70 mt-1">{z.hours}</p>
-                <p className="text-xs mt-2 opacity-80">{z.desc}</p>
-              </div>
-            ))}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            {/* Sol Pleno */}
+            <div className="relative overflow-hidden rounded-2xl border-2 border-yellow-400/60 p-5"
+              style={{ background: 'linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)' }}>
+              <div className="absolute top-3 right-3 w-10 h-10 rounded-full bg-yellow-500/30 blur-lg" />
+              <Sun size={24} className="text-yellow-700 mb-2" />
+              <p className="font-black text-base text-yellow-900">Sol Pleno</p>
+              <p className="text-yellow-800 text-sm font-semibold mt-1">6–8h diretas</p>
+              <p className="text-yellow-900/70 text-xs mt-2 leading-relaxed">Tomate, pimentão, frutíferas</p>
+            </div>
+
+            {/* Meia-Sombra */}
+            <div className="relative overflow-hidden rounded-2xl border-2 border-amber-500/50 p-5"
+              style={{ background: 'linear-gradient(135deg, #fef3c7 0%, #fed7aa 50%, #fb923c 100%)' }}>
+              <div className="absolute top-3 right-3 w-10 h-10 rounded-full bg-amber-500/30 blur-lg" />
+              <Sun size={24} className="text-amber-800 mb-2" />
+              <p className="font-black text-base text-amber-900">Meia-Sombra</p>
+              <p className="text-amber-800 text-sm font-semibold mt-1">3–5h diretas</p>
+              <p className="text-amber-900/70 text-xs mt-2 leading-relaxed">Alface, rúcula, cebolinha</p>
+            </div>
+
+            {/* Luz Indireta */}
+            <div className="relative overflow-hidden rounded-2xl border-2 border-stone-400/50 p-5"
+              style={{ background: 'linear-gradient(135deg, #e7e5e4 0%, #d6d3d1 50%, #a8a29e 100%)' }}>
+              <div className="absolute top-3 right-3 w-10 h-10 rounded-full bg-stone-400/30 blur-lg" />
+              <Sun size={24} className="text-stone-700 mb-2" />
+              <p className="font-black text-base text-stone-800">Luz Indireta</p>
+              <p className="text-stone-700 text-sm font-semibold mt-1">Claridade o dia todo</p>
+              <p className="text-stone-700/70 text-xs mt-2 leading-relaxed">Hortelã, salsinha, agrião</p>
+            </div>
           </div>
 
           <InfoCard color="amber" icon={Wind} title="Vento e Proteção">
@@ -434,32 +452,42 @@ export default function HortaUrbana() {
         {/* ══ BLOCO 08 — MICROCLIMAS ══ */}
         <SectionDivider label="Bloco 08 · Microclimas" />
 
-        <InfoCard color="amber" icon={Thermometer} title="Microclimas Urbanos">
-          <p className="text-stone-500 text-sm mb-4">Cidades criam ilhas de calor. Use isso estrategicamente.</p>
+        <motion.div
+          initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-60px' }} variants={fadeUp} custom={0}
+          className="rounded-3xl overflow-hidden border-2 border-amber-400/40 p-6 md:p-10"
+          style={{ background: 'linear-gradient(145deg, #451a03 0%, #78350f 40%, #92400e 70%, #b45309 100%)' }}
+        >
+          <div className="flex items-center gap-3 mb-6">
+            <div className="p-2.5 bg-amber-400/20 rounded-xl">
+              <Thermometer className="text-amber-300" size={22} />
+            </div>
+            <h3 className="text-xl md:text-2xl font-bold tracking-tight text-amber-100">Microclimas Urbanos</h3>
+          </div>
+          <p className="text-amber-200/70 text-sm mb-6">Cidades criam ilhas de calor. Use isso estrategicamente.</p>
 
-          <div className="space-y-3 mb-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6">
             {[
-              { local: 'Parede branca', efeito: 'Reflete luz — bom para plantas de meia-sombra' },
-              { local: 'Piso escuro', efeito: 'Aquece — acelera amadurecimento' },
-              { local: 'Telhado', efeito: 'Acumula calor — ideal para espécies tropicais' },
-              { local: 'Varanda fechada', efeito: 'Retém umidade — bom para folhosas' },
+              { local: 'Parede branca', efeito: 'Reflete luz — bom para plantas de meia-sombra', icon: '◻' },
+              { local: 'Piso escuro', efeito: 'Aquece — acelera amadurecimento', icon: '◼' },
+              { local: 'Telhado', efeito: 'Acumula calor — ideal para espécies tropicais', icon: '△' },
+              { local: 'Varanda fechada', efeito: 'Retém umidade — bom para folhosas', icon: '▣' },
             ].map((m, i) => (
-              <div key={i} className="flex items-start gap-3 text-sm">
-                <ChevronRight size={14} className="text-amber-500 mt-1 shrink-0" />
-                <span className="text-stone-600"><strong className="text-stone-800">{m.local}:</strong> {m.efeito}</span>
+              <div key={i} className="bg-amber-900/40 border border-amber-600/30 rounded-xl p-4 hover:bg-amber-900/60 transition-colors">
+                <p className="text-amber-200 font-bold text-sm mb-1">{m.local}</p>
+                <p className="text-amber-300/60 text-xs leading-relaxed">{m.efeito}</p>
               </div>
             ))}
           </div>
 
-          <div className="bg-amber-50/80 border border-amber-100 rounded-xl p-4 space-y-2">
-            <p className="text-amber-800 text-sm">
-              <strong>Exemplo:</strong> Tomate próximo à parede quente → amadurece melhor.
+          <div className="bg-amber-400/10 border border-amber-500/20 rounded-xl p-5 space-y-2">
+            <p className="text-amber-200 text-sm">
+              <strong className="text-amber-100">Exemplo:</strong> Tomate próximo à parede quente → amadurece melhor.
             </p>
-            <p className="text-amber-800 text-sm">
-              <strong>Exemplo:</strong> Alface em área protegida → menos estresse térmico.
+            <p className="text-amber-200 text-sm">
+              <strong className="text-amber-100">Exemplo:</strong> Alface em área protegida → menos estresse térmico.
             </p>
           </div>
-        </InfoCard>
+        </motion.div>
 
         {/* ══ BLOCO 09 — ERROS CRÍTICOS ══ */}
         <SectionDivider label="Bloco 09 · O Que Evitar" />
