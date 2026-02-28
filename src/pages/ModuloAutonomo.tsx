@@ -131,9 +131,9 @@ const MODULES: Record<string, ModuleData> = {
     title: 'Controle de Vetores',
     phase: '02', phaseLabel: 'Autonomia Biológica',
     icon: Bug,
-    description: 'Repelentes naturais, manejo de água parada e proteção contra vetores com métodos de baixo impacto ambiental.',
-    scope: ['Repelentes naturais eficazes', 'Eliminação de criadouros', 'Proteção física de ambientes', 'Plantas repelentes para cultivo'],
-    progress: 15, version: '1.0', release: 'Q3 2026',
+    description: 'Estratégia sanitária de baixo impacto ambiental. Repelentes naturais, eliminação de criadouros, barreiras físicas e plantas repelentes.',
+    scope: ['Repelentes naturais com receita técnica', 'Protocolo semanal de eliminação de criadouros', 'Barreiras físicas (telas e mosquiteiros)', 'Plantas repelentes e controle de roedores'],
+    progress: 100, version: '1.0', release: 'Publicado',
     color: { bg: 'bg-emerald-50', border: 'border-emerald-200', text: 'text-emerald-600', accent: 'text-emerald-500', bar: 'bg-emerald-500', iconBg: 'bg-emerald-100' },
   },
 
@@ -219,6 +219,9 @@ export default function ModuloAutonomo() {
   }
   if (slug === 'fitoterapia-aplicada') {
     return <Navigate to="/projeto-autonomo/fitoterapia-aplicada" replace />;
+  }
+  if (slug === 'controle-vetores') {
+    return <Navigate to="/projeto-autonomo/controle-vetores" replace />;
   }
   
   const mod = slug ? MODULES[slug] : null;
