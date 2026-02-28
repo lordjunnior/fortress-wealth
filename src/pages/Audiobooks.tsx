@@ -24,7 +24,7 @@ const AUDIOBOOKS_DB = [
     coverGradient: 'bg-gradient-to-br from-emerald-900 via-emerald-600 to-black',
     accent: 'text-emerald-500',
     coverImage: coverPaiRico,
-    audioUrl: 'https://docs.google.com/uc?export=open&id=1X8Rg4AhpaJnE3AuMmQRid50bscmlF7Jp'
+    audioUrl: 'https://oytebhfcdnhpelaycvjd.supabase.co/storage/v1/object/public/audiobooks/pai-rico-pai-pobre.mp3'
   },
   {
     id: 'padrao-bitcoin',
