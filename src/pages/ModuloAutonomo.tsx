@@ -113,9 +113,9 @@ const MODULES: Record<string, ModuleData> = {
     title: 'Saúde Preventiva',
     phase: '02', phaseLabel: 'Autonomia Biológica',
     icon: Sun,
-    description: 'Exposição solar, qualidade do sono, movimento e alimentação consciente como pilares da base preventiva de saúde.',
+    description: 'Módulo publicado. Estratégias anti-inflamatórias avançadas e protocolo integrado.',
     scope: ['Protocolo de exposição solar segura', 'Higiene do sono em ambientes adversos', 'Exercícios sem equipamento', 'Princípios de alimentação anti-inflamatória'],
-    progress: 30, version: '1.0', release: 'Q3 2026',
+    progress: 100, version: '1.0', release: 'Publicado',
     color: { bg: 'bg-emerald-50', border: 'border-emerald-200', text: 'text-emerald-600', accent: 'text-emerald-500', bar: 'bg-emerald-500', iconBg: 'bg-emerald-100' },
   },
   'fitoterapia-aplicada': {
@@ -213,6 +213,9 @@ export default function ModuloAutonomo() {
   }
   if (slug === 'sinais-vitais') {
     return <Navigate to="/projeto-autonomo/avaliacao-sinais" replace />;
+  }
+  if (slug === 'saude-preventiva') {
+    return <Navigate to="/projeto-autonomo/saude-preventiva" replace />;
   }
   
   const mod = slug ? MODULES[slug] : null;
