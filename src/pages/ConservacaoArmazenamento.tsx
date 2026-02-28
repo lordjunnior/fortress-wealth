@@ -3,6 +3,12 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, Package, Flame, Droplets, Wheat, Snowflake, Wind, Egg, Leaf, ShieldCheck, Clock, ChevronDown, ChevronUp, AlertTriangle, Beaker, Warehouse, Thermometer, Tag, Box, BookOpen } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+import imgHeroEstoque from '@/assets/conserva-hero-estoque.jpg';
+import imgAlimentosEssenciais from '@/assets/conserva-alimentos-essenciais.jpg';
+import imgMetodosPreservacao from '@/assets/conserva-metodos-preservacao.jpg';
+import imgAlimentosDuradouros from '@/assets/conserva-alimentos-duradouros.jpg';
+import imgArsenalAuxiliar from '@/assets/conserva-arsenal-auxiliar.jpg';
+
 /* ─── SEO: meta keywords target ───
    conservação de alimentos, armazenamento de alimentos, estoque de sobrevivência,
    alimentos de longa duração, métodos de conservação, desidratação de alimentos,
@@ -528,7 +534,7 @@ export default function ConservacaoArmazenamento() {
         </Link>
 
         {/* ═══ HERO ═══ */}
-        <motion.header initial="hidden" animate="visible" variants={fadeUp} custom={0} className="mb-20">
+        <motion.header initial="hidden" animate="visible" variants={fadeUp} custom={0} className="mb-12">
           <div className="flex items-center gap-3 mb-4">
             <span className="text-amber-600 text-[10px] font-bold tracking-[0.5em] uppercase opacity-70">Fase 03 · Soberania Alimentar</span>
           </div>
@@ -545,6 +551,21 @@ export default function ConservacaoArmazenamento() {
             Uma preparação adequada transforma vulnerabilidade em autonomia.
           </p>
         </motion.header>
+
+        {/* Hero Image */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.2, ease: APPLE_EASE }}
+          className="relative rounded-3xl overflow-hidden mb-20 border border-stone-300/30"
+        >
+          <img src={imgHeroEstoque} alt="Estoque organizado de alimentos em jarras herméticas" className="w-full h-64 md:h-96 object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-t from-stone-900/60 via-transparent to-transparent" />
+          <div className="absolute bottom-6 left-6 right-6">
+            <p className="text-white/90 text-sm md:text-base font-semibold">Estoque estratégico: organização, hermeticidade e rotatividade.</p>
+            <p className="text-white/50 text-xs mt-1">Recipientes de vidro com grãos, leguminosas, mel e especiarias.</p>
+          </div>
+        </motion.div>
 
         {/* ═══ FRAMEWORK VISUAL ═══ */}
         <motion.div
@@ -578,6 +599,18 @@ export default function ConservacaoArmazenamento() {
         </motion.div>
 
         {/* ═══ SEÇÃO 1: 10 ALIMENTOS ═══ */}
+        {/* Section Image: Alimentos Essenciais */}
+        <motion.div
+          initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}
+          className="relative rounded-3xl overflow-hidden mb-10 border border-amber-200/30"
+        >
+          <img src={imgAlimentosEssenciais} alt="Os 10 alimentos essenciais para estoque estratégico" className="w-full h-48 md:h-72 object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-t from-stone-900/50 via-transparent to-transparent" />
+          <div className="absolute bottom-5 left-6 right-6">
+            <p className="text-white/90 text-sm font-semibold">Arroz, feijão, mel, sal, aveia, nozes — densidade nutricional máxima.</p>
+          </div>
+        </motion.div>
+
         <motion.section className="mb-28" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}>
           <div className="mb-10">
             <span className="text-amber-600 text-[10px] font-bold tracking-[0.4em] uppercase">Bloco 01 — Estoque Estratégico</span>
@@ -610,6 +643,18 @@ export default function ConservacaoArmazenamento() {
         </motion.section>
 
         {/* ═══ SEÇÃO 2: 20 MÉTODOS ═══ */}
+        {/* Section Image: Métodos de Conservação */}
+        <motion.div
+          initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}
+          className="relative rounded-3xl overflow-hidden mb-10 border border-emerald-200/30"
+        >
+          <img src={imgMetodosPreservacao} alt="Métodos de conservação: enlatamento, desidratação, fermentação e defumação" className="w-full h-48 md:h-72 object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-t from-stone-900/50 via-transparent to-transparent" />
+          <div className="absolute bottom-5 left-6 right-6">
+            <p className="text-white/90 text-sm font-semibold">Conservas, desidratação, defumação e fermentação — técnicas milenares validadas.</p>
+          </div>
+        </motion.div>
+
         <motion.section className="mb-28" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}>
           <div className="mb-10">
             <span className="text-emerald-600 text-[10px] font-bold tracking-[0.4em] uppercase">Bloco 02 — Arsenal de Técnicas</span>
@@ -647,6 +692,18 @@ export default function ConservacaoArmazenamento() {
         </motion.section>
 
         {/* ═══ SEÇÃO 3: ALIMENTOS NATURALMENTE DURADOUROS ═══ */}
+        {/* Section Image: Alimentos Naturalmente Duradouros */}
+        <motion.div
+          initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}
+          className="relative rounded-3xl overflow-hidden mb-10 border border-emerald-200/30"
+        >
+          <img src={imgAlimentosDuradouros} alt="Alimentos naturalmente duradouros: grãos, leguminosas, especiarias e raízes" className="w-full h-48 md:h-72 object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-t from-stone-900/50 via-transparent to-transparent" />
+          <div className="absolute bottom-5 left-6 right-6">
+            <p className="text-white/90 text-sm font-semibold">Grãos integrais, leguminosas, especiarias — longevidade natural sem intervenção.</p>
+          </div>
+        </motion.div>
+
         <motion.section className="mb-28" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}>
           <div className="mb-10">
             <span className="text-stone-500 text-[10px] font-bold tracking-[0.4em] uppercase">Bloco 03 — Longevidade Natural</span>
@@ -724,6 +781,18 @@ export default function ConservacaoArmazenamento() {
         </motion.section>
 
         {/* ═══ SEÇÃO 4: ARSENAL AUXILIAR ═══ */}
+        {/* Section Image: Arsenal Auxiliar */}
+        <motion.div
+          initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}
+          className="relative rounded-3xl overflow-hidden mb-10 border border-amber-200/30"
+        >
+          <img src={imgArsenalAuxiliar} alt="Arsenal auxiliar: seladora a vácuo, baldes herméticos, absorvedores de oxigênio" className="w-full h-48 md:h-72 object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-t from-stone-900/50 via-transparent to-transparent" />
+          <div className="absolute bottom-5 left-6 right-6">
+            <p className="text-white/90 text-sm font-semibold">Equipamentos e insumos que multiplicam a eficiência do armazenamento.</p>
+          </div>
+        </motion.div>
+
         <motion.section className="mb-28" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}>
           <div className="mb-10">
             <span className="text-stone-500 text-[10px] font-bold tracking-[0.4em] uppercase">Bloco 04 — Infraestrutura de Apoio</span>
