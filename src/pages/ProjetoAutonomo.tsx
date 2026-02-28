@@ -182,8 +182,8 @@ export default function ProjetoAutonomo() {
             </div>
             <div>
               <p className="text-emerald-600 text-[10px] font-bold uppercase tracking-[0.5em] mb-3">Engenharia de Resiliencia Pessoal</p>
-              <h1 className="text-4xl md:text-7xl font-black tracking-tight leading-[0.95] text-stone-800">
-                Projeto<br /><span className="text-emerald-700">Autonomo</span>
+              <h1 className="text-5xl md:text-8xl font-black tracking-tighter uppercase leading-[0.9] text-stone-800" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+                PROJETO<br /><span className="text-emerald-700">AUTONOMO</span>
               </h1>
             </div>
           </div>
