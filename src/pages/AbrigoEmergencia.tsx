@@ -411,32 +411,32 @@ export default function AbrigoEmergencia() {
             <h2 className="text-xl md:text-2xl font-bold text-stone-800">Sinais de Alerta Fisiológico</h2>
           </div>
           <div className="grid md:grid-cols-3 gap-4">
-            <div className="bg-amber-50 border border-amber-200/60 rounded-2xl p-5">
-              <h3 className="text-sm font-bold text-amber-700 mb-3">Hipotermia Leve</h3>
-              <ul className="space-y-1.5">
+            <div className="bg-amber-100 border-2 border-amber-300 rounded-2xl p-5">
+              <h3 className="text-base font-bold text-amber-800 mb-3">Hipotermia Leve</h3>
+              <ul className="space-y-2">
                 {['Tremores', 'Extremidades frias'].map(s => (
-                  <li key={s} className="text-stone-600 text-sm flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-amber-400" /> {s}
+                  <li key={s} className="text-stone-800 text-sm font-medium flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-amber-500" /> {s}
                   </li>
                 ))}
               </ul>
             </div>
-            <div className="bg-orange-50 border border-orange-200/60 rounded-2xl p-5">
-              <h3 className="text-sm font-bold text-orange-700 mb-3">Moderada</h3>
-              <ul className="space-y-1.5">
+            <div className="bg-orange-100 border-2 border-orange-300 rounded-2xl p-5">
+              <h3 className="text-base font-bold text-orange-800 mb-3">Moderada</h3>
+              <ul className="space-y-2">
                 {['Confusão', 'Fala lenta'].map(s => (
-                  <li key={s} className="text-stone-600 text-sm flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-orange-400" /> {s}
+                  <li key={s} className="text-stone-800 text-sm font-medium flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-orange-500" /> {s}
                   </li>
                 ))}
               </ul>
             </div>
-            <div className="bg-red-50 border border-red-200/60 rounded-2xl p-5">
-              <h3 className="text-sm font-bold text-red-700 mb-3">Grave</h3>
-              <ul className="space-y-1.5">
+            <div className="bg-red-100 border-2 border-red-300 rounded-2xl p-5">
+              <h3 className="text-base font-bold text-red-800 mb-3">Grave</h3>
+              <ul className="space-y-2">
                 {['Sonolência', 'Pulso fraco'].map(s => (
-                  <li key={s} className="text-stone-600 text-sm flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-red-400" /> {s}
+                  <li key={s} className="text-stone-800 text-sm font-medium flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-red-500" /> {s}
                   </li>
                 ))}
               </ul>
