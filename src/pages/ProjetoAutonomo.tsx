@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, Shield, Clock, Leaf, Wheat, AlertTriangle, Heart, Sprout, Package, Flame, Droplets, Wind, Sun, Tent, Siren, Cross, Egg, TreePine, Layers, Thermometer, Bug, Shovel } from 'lucide-react';
 import { motion } from 'framer-motion';
 
+import imgSoberaniaAlimentar from '@/assets/fase03-soberania-alimentar.jpg';
+
 /* ─── SEO: meta keywords target ───
    projeto autônomo, base 72 horas, autonomia biológica, soberania alimentar,
    sobrevivência urbana, horta urbana, plantas medicinais, primeiros socorros,
@@ -355,7 +357,13 @@ export default function ProjetoAutonomo() {
           id="fase-03" className="mb-28 scroll-mt-32"
           initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={fadeUp} custom={0}
         >
-          <div className="bg-amber-50/50 border border-amber-200/50 p-10 md:p-14 rounded-3xl backdrop-blur-sm relative overflow-hidden">
+          <div className="bg-amber-50/50 border border-amber-200/50 rounded-3xl backdrop-blur-sm relative overflow-hidden">
+            {/* Background image with fade */}
+            <div className="absolute inset-0 z-0">
+              <img src={imgSoberaniaAlimentar} alt="" className="w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-b from-amber-50/95 via-amber-50/85 to-amber-50/95" />
+            </div>
+            <div className="p-10 md:p-14 relative">
             <Wheat className="absolute top-8 right-8 text-amber-200/20" size={160} />
             <div className="relative z-10">
               <span className="text-amber-600 text-[10px] font-bold tracking-[0.4em] uppercase opacity-70">Fase 03</span>
@@ -410,6 +418,7 @@ export default function ProjetoAutonomo() {
                   Cada etapa reduz uma camada de dependencia.
                 </p>
               </div>
+            </div>
             </div>
           </div>
         </motion.section>
