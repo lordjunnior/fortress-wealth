@@ -75,9 +75,9 @@ const MODULES: Record<string, ModuleData> = {
     title: 'Navegação Primária',
     phase: '01', phaseLabel: 'Base 72',
     icon: Wind,
-    description: 'Orientação sem dependência digital. Bússola, referências solares, leitura de terreno e técnicas de navegação terrestre.',
-    scope: ['Uso de bússola analógica', 'Orientação por posição solar', 'Leitura de relevo e vegetação', 'Marcação de trilhas e rotas de fuga'],
-    progress: 15, version: '1.0', release: 'Q3 2026',
+    description: 'Orientação por bússola, sol, terreno e referências naturais. 8 blocos técnicos para deslocamento seguro sem dependência digital.',
+    scope: ['Orientação solar e método do bastão', 'Uso correto da bússola analógica', 'Leitura de terreno e referências urbanas', 'Planejamento de deslocamento e ritmo seguro', 'Marcação de caminho e navegação noturna', 'Sinais de desorientação e protocolo de parada'],
+    progress: 100, version: '1.0', release: 'Publicado',
     color: { bg: 'bg-rose-50', border: 'border-rose-200', text: 'text-rose-600', accent: 'text-rose-500', bar: 'bg-rose-500', iconBg: 'bg-rose-100' },
   },
 
@@ -210,6 +210,9 @@ export default function ModuloAutonomo() {
   }
   if (slug === 'comunicacao-offline') {
     return <Navigate to="/projeto-autonomo/comunicacao-offline" replace />;
+  }
+  if (slug === 'navegacao-primaria') {
+    return <Navigate to="/projeto-autonomo/navegacao-primaria" replace />;
   }
   if (slug === 'producao-pequenos-espacos') {
     return <Navigate to="/projeto-autonomo/producao-pequenos-espacos" replace />;
