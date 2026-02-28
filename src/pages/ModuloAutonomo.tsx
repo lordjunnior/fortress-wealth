@@ -142,9 +142,9 @@ const MODULES: Record<string, ModuleData> = {
     title: 'Horta Urbana',
     phase: '03', phaseLabel: 'Soberania Alimentar',
     icon: Sprout,
-    description: 'Varandas, janelas e telhados. Espaço mínimo, colheita consistente. Guia prático de cultivo em ambientes urbanos reduzidos.',
+    description: 'Módulo publicado. Guia completo de cultivo urbano com 9 blocos técnicos.',
     scope: ['Vasos autoirrigáveis DIY', 'Cultivo vertical em espaços mínimos', 'Calendário de plantio por região', 'Espécies ideais para iniciantes'],
-    progress: 60, version: '1.0', release: 'Q2 2026',
+    progress: 100, version: '1.0', release: 'Publicado',
     color: { bg: 'bg-amber-50', border: 'border-amber-200', text: 'text-amber-700', accent: 'text-amber-600', bar: 'bg-amber-500', iconBg: 'bg-amber-100' },
   },
   'producao-pequenos-espacos': {
@@ -204,6 +204,9 @@ export default function ModuloAutonomo() {
   }
   if (slug === 'solo-fertilidade') {
     return <Navigate to="/projeto-autonomo/solo-fertilidade" replace />;
+  }
+  if (slug === 'horta-urbana') {
+    return <Navigate to="/projeto-autonomo/horta-urbana" replace />;
   }
   
   const mod = slug ? MODULES[slug] : null;
