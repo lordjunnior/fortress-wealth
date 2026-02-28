@@ -180,7 +180,7 @@ const MODULES: Record<string, ModuleData> = {
     icon: Shovel,
     description: 'Compostagem, bokashi, húmus de minhoca. Terra viva gera alimento vivo. Fundamentos de fertilidade para produção contínua.',
     scope: ['Composteira doméstica passo a passo', 'Produção de bokashi', 'Minhocário e húmus líquido', 'Análise caseira de pH do solo'],
-    progress: 30, version: '1.0', release: 'Q2 2026',
+    progress: 100, version: '1.0', release: 'Publicado',
     color: { bg: 'bg-amber-50', border: 'border-amber-200', text: 'text-amber-700', accent: 'text-amber-600', bar: 'bg-amber-500', iconBg: 'bg-amber-100' },
   },
 };
@@ -201,6 +201,9 @@ export default function ModuloAutonomo() {
   }
   if (slug === 'proteina-sustentavel') {
     return <Navigate to="/projeto-autonomo/proteina-sustentavel" replace />;
+  }
+  if (slug === 'solo-fertilidade') {
+    return <Navigate to="/projeto-autonomo/solo-fertilidade" replace />;
   }
   
   const mod = slug ? MODULES[slug] : null;
