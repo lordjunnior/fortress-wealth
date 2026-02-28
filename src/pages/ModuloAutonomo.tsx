@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, Navigate } from 'react-router-dom';
 import { ArrowLeft, Clock, Package, Flame, Droplets, Tent, Siren, Wind, Leaf, Cross, Thermometer, Sun, Sprout, Bug, Layers, Egg, Shovel } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -160,9 +160,9 @@ const MODULES: Record<string, ModuleData> = {
     title: 'Conservação e Armazenamento',
     phase: '03', phaseLabel: 'Soberania Alimentar',
     icon: Flame,
-    description: 'Defumação, salga, fermentação, desidratação. Técnicas milenares validadas para preservação de alimentos sem refrigeração.',
-    scope: ['Técnicas de desidratação solar', 'Fermentação lactobacilar caseira', 'Salga e defumação artesanal', 'Compotas e conservas em vinagre'],
-    progress: 25, version: '1.0', release: 'Q3 2026',
+    description: 'Módulo publicado. 10 alimentos essenciais + 18 métodos de conservação validados.',
+    scope: ['10 alimentos essenciais de estoque estratégico', '18 métodos de conservação documentados', 'Protocolos de armazenamento por alimento', 'Notas de segurança e alertas técnicos'],
+    progress: 100, version: '1.0', release: 'Publicado',
     color: { bg: 'bg-amber-50', border: 'border-amber-200', text: 'text-amber-700', accent: 'text-amber-600', bar: 'bg-amber-500', iconBg: 'bg-amber-100' },
   },
   'proteina-sustentavel': {
@@ -187,6 +187,12 @@ const MODULES: Record<string, ModuleData> = {
 
 export default function ModuloAutonomo() {
   const { slug } = useParams<{ slug: string }>();
+  
+  // Redirect to dedicated pages for published modules
+  if (slug === 'conservacao-armazenamento') {
+    return <Navigate to="/projeto-autonomo/conservacao-armazenamento" replace />;
+  }
+  
   const mod = slug ? MODULES[slug] : null;
 
   if (!mod) {
