@@ -23,22 +23,22 @@ const fadeUp = {
 
 /* ─── PHASE 1: BASE 72 ─── */
 const BASE72_ITEMS = [
-  { icon: Package, label: 'Kit Tático 72h', desc: 'Água, alimento, documentos, rádio e medicamentos para autonomia mínima de 3 dias.' },
-  { icon: Flame, label: 'Protocolos de Apagão', desc: 'Iluminação, cozimento e aquecimento alternativos quando a rede elétrica está indisponível.' },
-  { icon: Droplets, label: 'Purificação de Água', desc: 'Fervura, cloração, filtros improvisados. Três métodos validados por defesa civil.' },
-  { icon: Tent, label: 'Abrigo de Emergência', desc: 'Proteção térmica e estrutural com materiais acessíveis em diferentes cenários.' },
-  { icon: Siren, label: 'Comunicação sem Internet', desc: 'Rádio AM/FM, sinais visuais e protocolos de ponto de encontro familiar.' },
-  { icon: Wind, label: 'Navegação Primária', desc: 'Bússola, referências solares e leitura de terreno. Orientação sem dependência digital.' },
+  { icon: Package, label: 'Kit Tático 72h', desc: 'Água, alimento, documentos, rádio e medicamentos para autonomia mínima de 3 dias.', slug: 'kit-72h' },
+  { icon: Flame, label: 'Protocolos de Apagão', desc: 'Iluminação, cozimento e aquecimento alternativos quando a rede elétrica está indisponível.', slug: 'protocolos-apagao' },
+  { icon: Droplets, label: 'Purificação de Água', desc: 'Fervura, cloração, filtros improvisados. Três métodos validados por defesa civil.', slug: 'purificacao-agua' },
+  { icon: Tent, label: 'Abrigo de Emergência', desc: 'Proteção térmica e estrutural com materiais acessíveis em diferentes cenários.', slug: 'abrigo-emergencia' },
+  { icon: Siren, label: 'Comunicação sem Internet', desc: 'Rádio AM/FM, sinais visuais e protocolos de ponto de encontro familiar.', slug: 'comunicacao-offline' },
+  { icon: Wind, label: 'Navegação Primária', desc: 'Bússola, referências solares e leitura de terreno. Orientação sem dependência digital.', slug: 'navegacao-primaria' },
 ];
 
 /* ─── PHASE 2: AUTONOMIA BIOLÓGICA ─── */
 const BIO_ITEMS = [
-  { icon: Leaf, label: 'Suporte Fitoterápico', desc: 'Camomila, boldo, arnica, babosa. Uso tradicional como complemento ao cuidado de saúde.' },
-  { icon: Cross, label: 'Primeiros Socorros', desc: 'Contenção de sangramento, imobilização, tratamento de queimaduras em ambiente remoto.' },
-  { icon: Thermometer, label: 'Avaliação Básica de Sinais', desc: 'Interpretar febre, desidratação e sinais vitais com recursos mínimos.' },
-  { icon: Sun, label: 'Saúde Preventiva', desc: 'Exposição solar, qualidade do sono, movimento e alimentação consciente como base preventiva.' },
-  { icon: Sprout, label: 'Fitoterapia Aplicada', desc: 'Tinturas, cataplasmas e infusões com dosagem referenciada. Complemento, não substituição.' },
-  { icon: Bug, label: 'Controle de Vetores', desc: 'Repelentes naturais, manejo de água parada e proteção com métodos de baixo impacto.' },
+  { icon: Leaf, label: 'Suporte Fitoterápico', desc: 'Camomila, boldo, arnica, babosa. Uso tradicional como complemento ao cuidado de saúde.', slug: 'suporte-fitoterapico' },
+  { icon: Cross, label: 'Primeiros Socorros', desc: 'Contenção de sangramento, imobilização, tratamento de queimaduras em ambiente remoto.', slug: 'primeiros-socorros' },
+  { icon: Thermometer, label: 'Avaliação Básica de Sinais', desc: 'Interpretar febre, desidratação e sinais vitais com recursos mínimos.', slug: 'sinais-vitais' },
+  { icon: Sun, label: 'Saúde Preventiva', desc: 'Exposição solar, qualidade do sono, movimento e alimentação consciente como base preventiva.', slug: 'saude-preventiva' },
+  { icon: Sprout, label: 'Fitoterapia Aplicada', desc: 'Tinturas, cataplasmas e infusões com dosagem referenciada. Complemento, não substituição.', slug: 'fitoterapia-aplicada' },
+  { icon: Bug, label: 'Controle de Vetores', desc: 'Repelentes naturais, manejo de água parada e proteção com métodos de baixo impacto.', slug: 'controle-vetores' },
 ];
 
 /* ─── PHASE 3: SOBERANIA ALIMENTAR — SUBCAMADAS ─── */
@@ -48,30 +48,35 @@ const ALIMENTAR_LAYERS = [
     title: 'Horta Urbana',
     desc: 'Varandas, janelas e telhados. Espaço mínimo, colheita consistente.',
     details: 'Vasos autoirrigáveis, cultivo vertical, hidroponia caseira e aproveitamento de recipientes reciclados.',
+    slug: 'horta-urbana',
   },
   {
     icon: Layers,
     title: 'Produção em Pequenos Espaços',
     desc: 'Planejamento correto transforma 4m² em fonte de alimento.',
     details: 'Consórcio de culturas, rotação de canteiros e aproveitamento de microclimas urbanos.',
+    slug: 'producao-pequenos-espacos',
   },
   {
     icon: Flame,
     title: 'Conservação e Armazenamento',
     desc: 'Defumação, salga, fermentação, desidratação. Técnicas milenares validadas.',
     details: 'Compotas, conservas em vinagre, secagem solar e fermentação lactobacilar.',
+    slug: 'conservacao-armazenamento',
   },
   {
     icon: Egg,
     title: 'Proteína Sustentável',
     desc: 'Galinhas, codornas, peixes e sistemas compactos de produção animal.',
     details: 'Aquaponia, galinheiro móvel e criação de tilápia em espaços reduzidos.',
+    slug: 'proteina-sustentavel',
   },
   {
     icon: Shovel,
     title: 'Solo e Fertilidade',
     desc: 'Compostagem, bokashi, húmus de minhoca. Terra viva gera alimento vivo.',
     details: 'Análise caseira de pH, cobertura morta, adubação verde e rotação de nutrientes.',
+    slug: 'solo-fertilidade',
   },
 ];
 
@@ -264,17 +269,21 @@ export default function ProjetoAutonomo() {
                   <motion.div
                     key={item.label}
                     initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i * 0.5}
-                    className="bg-white/50 border border-rose-100/60 p-6 rounded-xl hover:bg-white/80 hover:shadow-md hover:border-rose-200 hover:scale-[1.02] transition-all duration-300"
                   >
-                    <div className="flex items-start gap-4">
-                      <div className="p-2.5 bg-rose-100/60 rounded-xl shrink-0">
-                        <item.icon className="text-rose-500" size={18} />
+                    <Link
+                      to={`/projeto-autonomo/${item.slug}`}
+                      className="block bg-white/50 border border-rose-100/60 p-6 rounded-xl hover:bg-white/80 hover:shadow-md hover:border-rose-200 hover:scale-[1.02] transition-all duration-300 cursor-pointer"
+                    >
+                      <div className="flex items-start gap-4">
+                        <div className="p-2.5 bg-rose-100/60 rounded-xl shrink-0">
+                          <item.icon className="text-rose-500" size={18} />
+                        </div>
+                        <div>
+                          <h4 className="text-sm font-semibold mb-1.5 text-stone-700">{item.label}</h4>
+                          <p className="text-stone-400 text-xs leading-relaxed">{item.desc}</p>
+                        </div>
                       </div>
-                      <div>
-                        <h4 className="text-sm font-semibold mb-1.5 text-stone-700">{item.label}</h4>
-                        <p className="text-stone-400 text-xs leading-relaxed">{item.desc}</p>
-                      </div>
-                    </div>
+                    </Link>
                   </motion.div>
                 ))}
               </div>
@@ -313,17 +322,21 @@ export default function ProjetoAutonomo() {
                   <motion.div
                     key={item.label}
                     initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i * 0.5}
-                    className="bg-white/50 border border-emerald-100/60 p-6 rounded-xl hover:bg-white/80 hover:shadow-md hover:border-emerald-200 hover:scale-[1.02] transition-all duration-300"
                   >
-                    <div className="flex items-start gap-4">
-                      <div className="p-2.5 bg-emerald-100/60 rounded-xl shrink-0">
-                        <item.icon className="text-emerald-500" size={18} />
+                    <Link
+                      to={`/projeto-autonomo/${item.slug}`}
+                      className="block bg-white/50 border border-emerald-100/60 p-6 rounded-xl hover:bg-white/80 hover:shadow-md hover:border-emerald-200 hover:scale-[1.02] transition-all duration-300 cursor-pointer"
+                    >
+                      <div className="flex items-start gap-4">
+                        <div className="p-2.5 bg-emerald-100/60 rounded-xl shrink-0">
+                          <item.icon className="text-emerald-500" size={18} />
+                        </div>
+                        <div>
+                          <h4 className="text-sm font-semibold mb-1.5 text-stone-700">{item.label}</h4>
+                          <p className="text-stone-400 text-xs leading-relaxed">{item.desc}</p>
+                        </div>
                       </div>
-                      <div>
-                        <h4 className="text-sm font-semibold mb-1.5 text-stone-700">{item.label}</h4>
-                        <p className="text-stone-400 text-xs leading-relaxed">{item.desc}</p>
-                      </div>
-                    </div>
+                    </Link>
                   </motion.div>
                 ))}
               </div>
@@ -366,23 +379,27 @@ export default function ProjetoAutonomo() {
                   <motion.div
                     key={layer.title}
                     initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i * 0.3}
-                    className="bg-white/50 border border-amber-100/60 rounded-xl hover:bg-white/80 hover:shadow-md hover:border-amber-200 hover:scale-[1.01] transition-all duration-300 overflow-hidden"
                   >
-                    <div className="flex flex-col md:flex-row">
-                      <div className="flex items-center gap-4 p-6 md:w-80 shrink-0 bg-amber-50/50 border-b md:border-b-0 md:border-r border-amber-100/40">
-                        <span className="text-amber-300/50 text-2xl font-bold">0{i + 1}</span>
-                        <div className="p-2 bg-amber-100/50 rounded-xl">
-                          <layer.icon className="text-amber-600 shrink-0" size={20} />
+                    <Link
+                      to={`/projeto-autonomo/${layer.slug}`}
+                      className="block bg-white/50 border border-amber-100/60 rounded-xl hover:bg-white/80 hover:shadow-md hover:border-amber-200 hover:scale-[1.01] transition-all duration-300 overflow-hidden cursor-pointer"
+                    >
+                      <div className="flex flex-col md:flex-row">
+                        <div className="flex items-center gap-4 p-6 md:w-80 shrink-0 bg-amber-50/50 border-b md:border-b-0 md:border-r border-amber-100/40">
+                          <span className="text-amber-300/50 text-2xl font-bold">0{i + 1}</span>
+                          <div className="p-2 bg-amber-100/50 rounded-xl">
+                            <layer.icon className="text-amber-600 shrink-0" size={20} />
+                          </div>
+                          <div>
+                            <h4 className="text-sm font-semibold text-stone-700">{layer.title}</h4>
+                            <p className="text-amber-500/60 text-[10px] font-medium mt-0.5">{layer.desc}</p>
+                          </div>
                         </div>
-                        <div>
-                          <h4 className="text-sm font-semibold text-stone-700">{layer.title}</h4>
-                          <p className="text-amber-500/60 text-[10px] font-medium mt-0.5">{layer.desc}</p>
+                        <div className="p-6 flex items-center">
+                          <p className="text-stone-400 text-sm leading-relaxed">{layer.details}</p>
                         </div>
                       </div>
-                      <div className="p-6 flex items-center">
-                        <p className="text-stone-400 text-sm leading-relaxed">{layer.details}</p>
-                      </div>
-                    </div>
+                    </Link>
                   </motion.div>
                 ))}
               </div>
