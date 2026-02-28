@@ -48,6 +48,7 @@ import AutonomiaBiologica from "./pages/AutonomiaBiologica";
 import PrimeirosSocorros from "./pages/PrimeirosSocorros";
 import AvaliacaoSinais from "./pages/AvaliacaoSinais";
 import SaudePreventiva from "./pages/SaudePreventiva";
+import FitoterapiaAplicada from "./pages/FitoterapiaAplicada";
 
 const queryClient = new QueryClient();
 
@@ -101,6 +102,7 @@ const App = () => (
           <Route path="/projeto-autonomo/primeiros-socorros" element={<PrimeirosSocorros />} />
           <Route path="/projeto-autonomo/avaliacao-sinais" element={<AvaliacaoSinais />} />
           <Route path="/projeto-autonomo/saude-preventiva" element={<SaudePreventiva />} />
+          <Route path="/projeto-autonomo/fitoterapia-aplicada" element={<FitoterapiaAplicada />} />
           <Route path="/projeto-autonomo/:slug" element={<ModuloAutonomo />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
