@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Leaf, Shield, Heart, AlertTriangle, Flame, Droplets, Sun, Thermometer, CheckCircle2, XCircle, FlaskConical, BookOpen, Clock, Package } from 'lucide-react';
+import { ArrowLeft, Leaf, Shield, Heart, AlertTriangle, Flame, Droplets, Sun, Thermometer, CheckCircle2, XCircle, FlaskConical, BookOpen, Clock, Package, Brain, Pill, Activity } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { fadeUp, stagger, staggerChild, viewportOnce } from '@/lib/motion';
 
@@ -8,177 +8,182 @@ import imgMetodosPreparo from '@/assets/bio-metodos-preparo.jpg';
 import img12Plantas from '@/assets/bio-12-plantas.jpg';
 import imgArmazenamento from '@/assets/bio-armazenamento.jpg';
 
-/* ─── SEO: meta keywords target ───
-   autonomia biológica, fitoterapia responsável, plantas medicinais, camomila,
-   boldo, arnica, babosa, gengibre, hortelã, erva-doce, alecrim, calêndula,
-   capim-limão, guaco, tanchagem, suporte fitoterápico, trio da blindagem
-─────────────────────────────────── */
-
 const PLANTAS = [
   {
     nome: 'Camomila',
     cientifico: 'Matricaria chamomilla',
-    usos: ['Ansiedade leve', 'Tensão', 'Desconforto digestivo leve', 'Cólicas'],
-    parte: 'Flores secas',
-    preparo: 'Infusão 1 colher de sopa para 200ml',
-    dose: '1–3 xícaras ao dia',
-    contra: 'Alergia a plantas da família Asteraceae',
-    interacao: 'Pode potencializar sedativos',
-    cor: 'from-yellow-500/20 to-yellow-600/10',
-    border: 'border-yellow-500/30',
-    accent: 'text-yellow-400',
+    melhora: ['Ansiedade leve', 'Insônia leve', 'Cólicas', 'Irritação gastrointestinal', 'Inflamação leve'],
+    ativos: ['Apigenina (ação ansiolítica leve)', 'Bisabolol (anti-inflamatório)', 'Camazuleno (calmante)'],
+    mecanismo: 'Atua em receptores GABA no sistema nervoso central, promovendo relaxamento leve. Reduz inflamação via modulação de citocinas inflamatórias.',
+    dose: 'Infusão: 1 colher de sopa flores secas / 200 ml — 1–3 xícaras ao dia. Tintura: 20–40 gotas, até 3x/dia.',
+    continuo: 'Até 14 dias sem orientação.',
+    contra: 'Alergia a Asteraceae. Uso concomitante com sedativos.',
+    interacao: 'Pode potencializar benzodiazepínicos e antidepressivos sedativos.',
+    cor: 'from-yellow-500/20 to-yellow-600/10', border: 'border-yellow-500/30', accent: 'text-yellow-400',
   },
   {
     nome: 'Boldo',
     cientifico: 'Peumus boldus',
-    usos: ['Má digestão', 'Sensação de estufamento', 'Apoio hepático leve'],
-    parte: 'Folhas',
-    preparo: 'Infusão leve (não ferver)',
-    dose: '1 xícara após refeição pesada',
-    contra: 'Gestantes. Uso prolongado não recomendado.',
-    interacao: null,
-    cor: 'from-green-500/20 to-green-600/10',
-    border: 'border-green-500/30',
-    accent: 'text-green-400',
+    melhora: ['Má digestão', 'Sensação de peso hepático', 'Náusea leve', 'Distensão abdominal'],
+    ativos: ['Boldina (ação colerética)'],
+    mecanismo: 'Estimula produção de bile. Melhora digestão de gorduras.',
+    dose: 'Infusão leve: 1 colher de chá / 200 ml — máximo 1 xícara ao dia.',
+    continuo: 'Máximo 5 dias consecutivos.',
+    contra: 'Gravidez. Obstrução biliar. Doença hepática grave.',
+    interacao: 'Pode interferir com medicamentos hepatotóxicos e anticoagulantes.',
+    cor: 'from-green-500/20 to-green-600/10', border: 'border-green-500/30', accent: 'text-green-400',
   },
   {
     nome: 'Arnica',
     cientifico: 'Uso externo',
-    usos: ['Contusões', 'Hematomas', 'Dor muscular'],
-    parte: 'Pomada ou compressa',
-    preparo: 'Uso tópico apenas',
-    dose: 'Aplicar na região afetada',
-    contra: 'Feridas abertas. NUNCA ingerir.',
+    melhora: ['Hematomas', 'Dor muscular', 'Contusões', 'Inflamação local'],
+    ativos: ['Helenalina (anti-inflamatória)'],
+    mecanismo: 'Reduz resposta inflamatória local e melhora circulação na área aplicada.',
+    dose: 'Pomada 2–3x/dia na região afetada.',
+    continuo: null,
+    contra: 'NUNCA ingerir. Não usar em feridas abertas.',
     interacao: null,
-    cor: 'from-orange-500/20 to-orange-600/10',
-    border: 'border-orange-500/30',
-    accent: 'text-orange-400',
+    cor: 'from-orange-500/20 to-orange-600/10', border: 'border-orange-500/30', accent: 'text-orange-400',
   },
   {
     nome: 'Babosa',
     cientifico: 'Aloe vera',
-    usos: ['Queimaduras leves', 'Irritações', 'Hidratação cutânea'],
-    parte: 'Gel interno da folha',
-    preparo: 'Uso tópico direto',
-    dose: 'Aplicar na pele',
-    contra: 'Uso interno somente sob orientação. Pode ter efeito laxativo.',
+    melhora: ['Queimaduras leves', 'Irritação cutânea', 'Hidratação da pele', 'Prisão de ventre (uso interno controlado)'],
+    ativos: ['Aloína (laxativa)', 'Polissacarídeos cicatrizantes'],
+    mecanismo: 'Ação cicatrizante e hidratante tópica. Efeito laxativo por via oral.',
+    dose: 'Tópico: aplicar gel fresco 2–3x/dia.',
+    continuo: null,
+    contra: 'Gravidez. Doença intestinal inflamatória. Uso interno não recomendado sem orientação.',
     interacao: null,
-    cor: 'from-emerald-500/20 to-emerald-600/10',
-    border: 'border-emerald-500/30',
-    accent: 'text-emerald-400',
+    cor: 'from-emerald-500/20 to-emerald-600/10', border: 'border-emerald-500/30', accent: 'text-emerald-400',
   },
   {
     nome: 'Hortelã',
     cientifico: 'Mentha sp.',
-    usos: ['Náusea leve', 'Desconforto digestivo', 'Refrescante respiratório leve'],
-    parte: 'Folhas frescas',
-    preparo: 'Infusão 1 colher de sopa folhas frescas',
-    dose: '1–2 xícaras ao dia',
-    contra: null,
+    melhora: ['Náusea', 'Gases', 'Tensão digestiva', 'Halitose'],
+    ativos: ['Mentol (antiespasmódico)'],
+    mecanismo: 'Ação antiespasmódica no trato gastrointestinal.',
+    dose: '1 colher sopa folhas frescas / 200 ml.',
+    continuo: null,
+    contra: 'Evitar excesso em refluxo severo.',
     interacao: null,
-    cor: 'from-teal-500/20 to-teal-600/10',
-    border: 'border-teal-500/30',
-    accent: 'text-teal-400',
+    cor: 'from-teal-500/20 to-teal-600/10', border: 'border-teal-500/30', accent: 'text-teal-400',
   },
   {
     nome: 'Gengibre',
     cientifico: 'Zingiber officinale',
-    usos: ['Náusea', 'Resfriado leve', 'Apoio imunológico'],
-    parte: 'Rizoma',
-    preparo: 'Decocção leve',
-    dose: '1–2 xícaras ao dia',
-    contra: 'Excesso pode irritar estômago',
+    melhora: ['Náusea', 'Resfriado leve', 'Dor leve', 'Inflamação leve'],
+    ativos: ['Gingerol (anti-inflamatório)'],
+    mecanismo: 'Ação anti-inflamatória e antiemética.',
+    dose: '1–2 g raiz fresca em decocção leve.',
+    continuo: null,
+    contra: 'Evitar com anticoagulante.',
     interacao: null,
-    cor: 'from-amber-500/20 to-amber-600/10',
-    border: 'border-amber-500/30',
-    accent: 'text-amber-400',
+    cor: 'from-amber-500/20 to-amber-600/10', border: 'border-amber-500/30', accent: 'text-amber-400',
   },
   {
     nome: 'Erva-doce',
     cientifico: 'Pimpinella anisum',
-    usos: ['Gases', 'Cólicas leves'],
-    parte: 'Sementes',
-    preparo: 'Infusão sementes amassadas',
-    dose: '1–2 xícaras ao dia',
+    melhora: ['Cólicas', 'Gases', 'Desconforto intestinal'],
+    ativos: ['Anetol (carminativo)'],
+    mecanismo: 'Relaxa musculatura lisa do trato digestivo.',
+    dose: '1 colher chá sementes esmagadas / 200 ml.',
+    continuo: null,
     contra: null,
     interacao: null,
-    cor: 'from-lime-500/20 to-lime-600/10',
-    border: 'border-lime-500/30',
-    accent: 'text-lime-400',
+    cor: 'from-lime-500/20 to-lime-600/10', border: 'border-lime-500/30', accent: 'text-lime-400',
   },
   {
     nome: 'Alecrim',
     cientifico: 'Rosmarinus officinalis',
-    usos: ['Fadiga leve', 'Circulação'],
-    parte: 'Folhas',
-    preparo: 'Infusão leve',
-    dose: '1–2 xícaras ao dia',
-    contra: 'Evitar em hipertensos descompensados',
+    melhora: ['Fadiga leve', 'Circulação', 'Concentração'],
+    ativos: ['Ácido rosmarínico', 'Carnosol'],
+    mecanismo: 'Estimulante circulatório e antioxidante.',
+    dose: 'Infusão leve — 1–2 xícaras ao dia.',
+    continuo: null,
+    contra: 'Evitar em hipertensão descontrolada.',
     interacao: null,
-    cor: 'from-sky-500/20 to-sky-600/10',
-    border: 'border-sky-500/30',
-    accent: 'text-sky-400',
+    cor: 'from-sky-500/20 to-sky-600/10', border: 'border-sky-500/30', accent: 'text-sky-400',
   },
   {
     nome: 'Calêndula',
     cientifico: 'Calendula officinalis',
-    usos: ['Inflamações cutâneas leves', 'Irritação'],
-    parte: 'Flores',
-    preparo: 'Uso tópico — infusão ou pomada',
-    dose: 'Aplicar na região afetada',
+    melhora: ['Inflamação cutânea', 'Assaduras', 'Pequenas irritações'],
+    ativos: ['Flavonoides', 'Triterpenoides'],
+    mecanismo: 'Anti-inflamatória e cicatrizante tópica.',
+    dose: 'Uso tópico — infusão ou pomada.',
+    continuo: null,
     contra: null,
     interacao: null,
-    cor: 'from-orange-400/20 to-yellow-500/10',
-    border: 'border-orange-400/30',
-    accent: 'text-orange-300',
+    cor: 'from-orange-400/20 to-yellow-500/10', border: 'border-orange-400/30', accent: 'text-orange-300',
   },
   {
     nome: 'Capim-limão',
     cientifico: 'Cymbopogon citratus',
-    usos: ['Relaxamento', 'Sono leve'],
-    parte: 'Folhas',
-    preparo: 'Infusão',
-    dose: '1–2 xícaras ao dia',
+    melhora: ['Ansiedade leve', 'Insônia leve', 'Tensão muscular'],
+    ativos: ['Citral (sedativo leve)'],
+    mecanismo: 'Ação calmante sobre o sistema nervoso.',
+    dose: 'Infusão — 1–2 xícaras ao dia.',
+    continuo: null,
     contra: null,
     interacao: null,
-    cor: 'from-yellow-400/20 to-green-500/10',
-    border: 'border-yellow-400/30',
-    accent: 'text-yellow-300',
+    cor: 'from-yellow-400/20 to-green-500/10', border: 'border-yellow-400/30', accent: 'text-yellow-300',
   },
   {
     nome: 'Guaco',
     cientifico: 'Mikania glomerata',
-    usos: ['Tosse leve'],
-    parte: 'Folhas',
-    preparo: 'Infusão ou xarope',
-    dose: '1–2 xícaras ao dia',
-    contra: 'Evitar uso prolongado',
+    melhora: ['Tosse leve', 'Secreção leve'],
+    ativos: ['Cumarina (broncodilatador)'],
+    mecanismo: 'Relaxa musculatura brônquica e facilita expectoração.',
+    dose: 'Infusão ou xarope — 1–2 xícaras ao dia.',
+    continuo: null,
+    contra: 'Evitar uso prolongado.',
     interacao: null,
-    cor: 'from-green-400/20 to-emerald-500/10',
-    border: 'border-green-400/30',
-    accent: 'text-green-300',
+    cor: 'from-green-400/20 to-emerald-500/10', border: 'border-green-400/30', accent: 'text-green-300',
   },
   {
     nome: 'Tanchagem',
     cientifico: 'Plantago major',
-    usos: ['Gargarejo para irritação leve', 'Compressas'],
-    parte: 'Folhas',
-    preparo: 'Infusão para gargarejo ou compressa',
-    dose: '2–3 vezes ao dia',
+    melhora: ['Irritação de garganta', 'Inflamação leve', 'Pequenas lesões cutâneas'],
+    ativos: ['Aucubina (anti-inflamatória)', 'Mucilagens'],
+    mecanismo: 'Forma película protetora sobre mucosas inflamadas.',
+    dose: 'Gargarejo ou compressa — 2–3 vezes ao dia.',
+    continuo: null,
     contra: null,
     interacao: null,
-    cor: 'from-emerald-400/20 to-teal-500/10',
-    border: 'border-emerald-400/30',
-    accent: 'text-emerald-300',
+    cor: 'from-emerald-400/20 to-teal-500/10', border: 'border-emerald-400/30', accent: 'text-emerald-300',
   },
 ];
 
 const METODOS_PREPARO = [
-  { titulo: 'Infusão', desc: 'Para folhas e flores', detalhe: 'Água quente sobre a planta. Descansar 5–10 minutos.', icon: Droplets },
-  { titulo: 'Decocção', desc: 'Para raízes e cascas', detalhe: 'Ferver 5–15 minutos.', icon: Flame },
-  { titulo: 'Maceração', desc: 'Extração a frio', detalhe: 'Planta em água fria por 8–12 horas.', icon: Clock },
-  { titulo: 'Tintura', desc: 'Extração alcoólica', detalhe: 'Uso mais técnico. Conservação prolongada.', icon: FlaskConical },
-  { titulo: 'Pomada / Cataplasma', desc: 'Uso tópico', detalhe: 'Aplicação direta sobre a pele.', icon: Package },
+  {
+    titulo: 'Infusão',
+    indicacao: 'Folhas e flores — compostos voláteis e delicados',
+    passos: ['200 ml de água a 90–95°C', '1 colher de sopa da planta seca', 'Abafar por 5–10 minutos', 'Coar imediatamente'],
+    resultado: 'Preserva flavonoides e óleos essenciais.',
+    icon: Droplets,
+  },
+  {
+    titulo: 'Decocção',
+    indicacao: 'Raízes, cascas, sementes duras — estruturas fibrosas',
+    passos: ['200 ml de água', 'Adicionar planta', 'Ferver 5–15 minutos', 'Descansar 5 minutos', 'Coar'],
+    resultado: 'Extrai taninos e alcaloides resistentes.',
+    icon: Flame,
+  },
+  {
+    titulo: 'Tintura',
+    indicacao: 'Extração concentrada — maior durabilidade',
+    passos: ['Planta seca', 'Álcool de cereais 70%', 'Proporção 1:5', 'Macerar 15–30 dias', 'Agitar diariamente', 'Filtrar'],
+    resultado: 'Maior durabilidade e concentração.',
+    icon: FlaskConical,
+  },
+  {
+    titulo: 'Uso Tópico',
+    indicacao: 'Pomada / gel / cataplasma',
+    passos: ['Inflamação local', 'Hematoma', 'Irritação', 'Feridas superficiais'],
+    resultado: 'Aplicação direta sobre a pele.',
+    icon: Package,
+  },
 ];
 
 const AutonomiaBiologica = () => {
@@ -202,137 +207,50 @@ const AutonomiaBiologica = () => {
             Fase 02 · Autonomia Biológica
           </motion.span>
           <motion.h1 variants={staggerChild} className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[0.95] mb-6">
-            Fortalecer o corpo é fortalecer<br />
-            <span className="text-green-400">a base da resiliência</span>
+            Suporte<br />
+            <span className="text-green-400">Fitoterápico</span>
           </motion.h1>
-          <motion.div variants={staggerChild} className="max-w-3xl space-y-4 text-muted-foreground text-lg leading-relaxed">
-            <p>
-              Autonomia biológica não significa substituir o sistema de saúde.
-              <span className="text-foreground font-semibold"> Significa reduzir vulnerabilidade.</span>
-            </p>
-            <p>Significa entender:</p>
-            <ul className="space-y-1 pl-4">
-              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-green-500 shrink-0" /> Como o corpo reage</li>
-              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-green-500 shrink-0" /> Como prevenir</li>
-              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-green-500 shrink-0" /> Como apoiar processos naturais</li>
-              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-red-500 shrink-0" /> Quando NÃO usar algo</li>
-              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-amber-500 shrink-0" /> Quando buscar atendimento profissional</li>
-            </ul>
-          </motion.div>
-        </motion.section>
+          <motion.p variants={staggerChild} className="text-muted-foreground text-lg max-w-3xl leading-relaxed mb-6">
+            Base tradicional documentada como complemento ao cuidado de saúde
+          </motion.p>
 
-        {/* ─── CONHECIMENTO TRADICIONAL ─── */}
-        <motion.section initial="hidden" whileInView="visible" viewport={viewportOnce} variants={stagger(0.08)} className="mb-20">
-          <motion.div variants={staggerChild} className="bg-gradient-to-br from-green-950/40 to-emerald-950/20 border border-green-800/30 p-8 md:p-12 rounded-sm">
-            <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-              Conhecimento tradicional não é superstição.<br />
-              <span className="text-foreground font-semibold">É prática acumulada por séculos.</span>
+          <motion.div variants={staggerChild} className="max-w-3xl space-y-4 text-muted-foreground leading-relaxed">
+            <p>
+              Fitoterapia é o uso terapêutico de plantas com base em compostos bioativos naturais.
             </p>
-            <p className="text-muted-foreground mb-4">Quando usado com responsabilidade, ele:</p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-              {[
-                'Complementa o cuidado convencional',
-                'Reduz carga inflamatória leve',
-                'Apoia sistema digestivo',
-                'Favorece equilíbrio nervoso',
-                'Amplia capacidade de resposta em cenários adversos',
-              ].map((item) => (
-                <div key={item} className="flex items-start gap-2 text-sm">
-                  <CheckCircle2 size={16} className="text-green-500 shrink-0 mt-0.5" />
-                  <span className="text-foreground/80">{item}</span>
+            <p className="text-foreground/80 font-medium">Ela atua principalmente em:</p>
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+              {['Sistema nervoso', 'Sistema digestivo', 'Sistema respiratório', 'Sistema inflamatório', 'Sistema cutâneo', 'Sistema hepático'].map((s) => (
+                <div key={s} className="flex items-center gap-2 text-sm">
+                  <Activity size={14} className="text-green-500 shrink-0" />
+                  <span className="text-foreground/80">{s}</span>
                 </div>
               ))}
             </div>
           </motion.div>
-        </motion.section>
 
-        {/* ─── TRIO DA BLINDAGEM ─── */}
-        <motion.section initial="hidden" whileInView="visible" viewport={viewportOnce} variants={stagger(0.1)} className="mb-24">
-          <motion.div variants={staggerChild} className="mb-8">
-            <span className="text-[10px] font-mono tracking-[0.3em] uppercase text-red-500/70 block mb-2">🔺 Aplicado à Autonomia Biológica</span>
-            <h2 className="text-3xl md:text-4xl font-black tracking-tight">O Trio da Blindagem</h2>
-          </motion.div>
-
-          <div className="grid md:grid-cols-3 gap-4">
-            {[
-              {
-                num: '01',
-                titulo: 'Base Metabólica',
-                desc: 'Sono, alimentação simples, hidratação adequada.',
-                nota: 'Sem isso, nenhuma planta resolve.',
-                icon: Sun,
-                gradient: 'from-amber-500/15 to-amber-600/5',
-                border: 'border-amber-500/30',
-                accent: 'text-amber-400',
-              },
-              {
-                num: '02',
-                titulo: 'Base Imunológica',
-                desc: 'Redução de inflamação crônica leve, microbiota equilibrada, suporte antioxidante.',
-                nota: null,
-                icon: Shield,
-                gradient: 'from-green-500/15 to-green-600/5',
-                border: 'border-green-500/30',
-                accent: 'text-green-400',
-              },
-              {
-                num: '03',
-                titulo: 'Base de Resposta Aguda',
-                desc: 'Saber o que usar em: desconforto digestivo, tensão nervosa, pequenas inflamações, irritações cutâneas.',
-                nota: 'Fitoterapia atua principalmente nos níveis 2 e 3.',
-                icon: Heart,
-                gradient: 'from-red-500/15 to-red-600/5',
-                border: 'border-red-500/30',
-                accent: 'text-red-400',
-              },
-            ].map((pilar) => (
-              <motion.div key={pilar.num} variants={staggerChild} className={`bg-gradient-to-br ${pilar.gradient} border ${pilar.border} p-8 rounded-sm relative overflow-hidden group hover:-translate-y-1 transition-transform duration-500`}>
-                <span className={`text-6xl font-black ${pilar.accent} opacity-10 absolute top-4 right-4`}>{pilar.num}</span>
-                <pilar.icon className={`${pilar.accent} mb-4`} size={28} />
-                <h3 className="text-xl font-bold mb-3 text-foreground">{pilar.titulo}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{pilar.desc}</p>
-                {pilar.nota && <p className="text-xs mt-4 font-mono text-foreground/60 border-t border-white/5 pt-3">{pilar.nota}</p>}
-              </motion.div>
-            ))}
-          </div>
-        </motion.section>
-
-        {/* ─── SUPORTE FITOTERÁPICO INTRO ─── */}
-        <motion.section initial="hidden" whileInView="visible" viewport={viewportOnce} variants={fadeUp} className="mb-20">
-          <div className="border-l-2 border-green-500/50 pl-6 md:pl-10">
-            <h2 className="text-3xl md:text-4xl font-black tracking-tight mb-4">Suporte Fitoterápico</h2>
-            <p className="text-muted-foreground text-lg">
-              Uso tradicional documentado como complemento ao cuidado de saúde.
+          <motion.div variants={staggerChild} className="mt-8 bg-red-500/10 border border-red-500/20 p-5 rounded-sm max-w-3xl">
+            <p className="text-sm text-foreground/80 leading-relaxed">
+              <span className="text-red-400 font-bold">Não substitui tratamento médico.</span> Complementa quando usada corretamente.
             </p>
-            <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4">
-              {['Como usar', 'Quanto usar', 'Quando NÃO usar', 'Como preparar', 'Como conservar'].map((item) => (
-                <span key={item} className="text-xs font-mono tracking-wide text-green-400/80 bg-green-500/10 px-3 py-2 rounded-sm text-center">{item}</span>
+            <p className="text-sm text-muted-foreground mt-3">O erro comum é usar sem entender:</p>
+            <div className="grid grid-cols-2 gap-2 mt-2">
+              {['Parte correta da planta', 'Dose adequada', 'Duração segura', 'Interações'].map((item) => (
+                <div key={item} className="flex items-center gap-2 text-xs">
+                  <AlertTriangle size={12} className="text-amber-400 shrink-0" />
+                  <span className="text-foreground/70">{item}</span>
+                </div>
               ))}
             </div>
-          </div>
+            <p className="text-green-400 text-sm font-semibold mt-3">Aqui você aprende tudo isso.</p>
+          </motion.div>
         </motion.section>
 
-        {/* ─── BLOCO 01 — FUNDAMENTOS ─── */}
+        {/* ─── BLOCO 01 — MÉTODOS TÉCNICOS DE PREPARO ─── */}
         <motion.section initial="hidden" whileInView="visible" viewport={viewportOnce} variants={stagger(0.08)} className="mb-24">
           <motion.div variants={staggerChild} className="mb-10">
             <span className="pre-title">Bloco 01</span>
-            <h2 className="text-3xl md:text-4xl font-black tracking-tight mb-4">Fundamentos da Fitoterapia Responsável</h2>
-            <p className="text-muted-foreground max-w-2xl">
-              Fitoterapia não é "chá aleatório". Envolve:
-            </p>
-            <ul className="mt-4 space-y-2 text-sm text-foreground/80">
-              {['Parte correta da planta', 'Forma correta de extração', 'Dose adequada', 'Tempo adequado', 'Observação de contraindicações'].map((item) => (
-                <li key={item} className="flex items-center gap-2">
-                  <BookOpen size={14} className="text-green-500 shrink-0" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-
-          {/* Métodos de Preparo */}
-          <motion.div variants={staggerChild} className="mb-8">
-            <h3 className="text-2xl font-bold mb-6 text-foreground">Métodos de Preparo</h3>
+            <h2 className="text-3xl md:text-4xl font-black tracking-tight mb-2">Métodos Técnicos de Preparo</h2>
           </motion.div>
 
           {/* Imagem Métodos */}
@@ -340,17 +258,27 @@ const AutonomiaBiologica = () => {
             <img src={imgMetodosPreparo} alt="Métodos de preparo fitoterápico" className="w-full h-64 md:h-80 object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
             <div className="absolute bottom-4 left-4 right-4">
-              <span className="text-xs font-mono tracking-widest uppercase text-green-400/70">Infusão · Decocção · Maceração · Tintura · Cataplasma</span>
+              <span className="text-xs font-mono tracking-widest uppercase text-green-400/70">Infusão · Decocção · Tintura · Uso Tópico</span>
             </div>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid md:grid-cols-2 gap-4">
             {METODOS_PREPARO.map((m) => (
               <motion.div key={m.titulo} variants={staggerChild} className="bg-gradient-to-br from-green-950/30 to-background border border-green-800/20 p-6 rounded-sm group hover:border-green-600/40 transition-colors duration-500">
-                <m.icon size={20} className="text-green-500 mb-3" />
-                <h4 className="font-bold text-foreground mb-1">{m.titulo}</h4>
-                <p className="text-xs text-green-400/70 font-mono mb-3">{m.desc}</p>
-                <p className="text-sm text-muted-foreground">{m.detalhe}</p>
+                <div className="flex items-center gap-3 mb-3">
+                  <m.icon size={20} className="text-green-500" />
+                  <h4 className="font-bold text-foreground text-lg">{m.titulo}</h4>
+                </div>
+                <p className="text-xs text-green-400/70 font-mono mb-4">{m.indicacao}</p>
+                <div className="space-y-1.5 mb-4">
+                  {m.passos.map((p, i) => (
+                    <div key={i} className="flex items-center gap-2 text-sm text-foreground/80">
+                      <span className="text-[10px] font-mono text-muted-foreground w-4">{i + 1}.</span>
+                      {p}
+                    </div>
+                  ))}
+                </div>
+                <p className="text-xs text-muted-foreground italic border-t border-white/5 pt-3">{m.resultado}</p>
               </motion.div>
             ))}
           </div>
@@ -360,8 +288,7 @@ const AutonomiaBiologica = () => {
         <motion.section initial="hidden" whileInView="visible" viewport={viewportOnce} variants={stagger(0.05)} className="mb-24">
           <motion.div variants={staggerChild} className="mb-6">
             <span className="pre-title">Bloco 02</span>
-            <h2 className="text-3xl md:text-4xl font-black tracking-tight mb-2">Fichas Técnicas das 12 Plantas Essenciais</h2>
-            <p className="text-muted-foreground">Todas abaixo possuem uso tradicional documentado.</p>
+            <h2 className="text-3xl md:text-4xl font-black tracking-tight mb-2">Fichas Técnicas Completas das 12 Plantas</h2>
           </motion.div>
 
           {/* Imagem 12 Plantas */}
@@ -370,7 +297,7 @@ const AutonomiaBiologica = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-4">
+          <div className="grid md:grid-cols-2 gap-5">
             {PLANTAS.map((p, i) => (
               <motion.div key={p.nome} variants={staggerChild} className={`bg-gradient-to-br ${p.cor} border ${p.border} p-6 rounded-sm relative overflow-hidden group hover:scale-[1.01] transition-transform duration-500`}>
                 <div className="flex items-start justify-between mb-3">
@@ -383,31 +310,46 @@ const AutonomiaBiologica = () => {
                 </div>
 
                 <div className="space-y-3 text-sm">
+                  {/* O que melhora */}
                   <div>
-                    <span className="text-[10px] font-mono uppercase tracking-wider text-muted-foreground">Uso tradicional</span>
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-muted-foreground flex items-center gap-1.5">
+                      <Heart size={10} className="text-green-500" /> O que melhora no corpo
+                    </span>
                     <div className="flex flex-wrap gap-1.5 mt-1">
-                      {p.usos.map((u) => (
+                      {p.melhora.map((u) => (
                         <span key={u} className="text-xs bg-white/5 px-2 py-0.5 rounded-sm text-foreground/80">{u}</span>
                       ))}
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-3 text-xs">
-                    <div>
-                      <span className="text-muted-foreground block">Parte usada</span>
-                      <span className="text-foreground/80">{p.parte}</span>
-                    </div>
-                    <div>
-                      <span className="text-muted-foreground block">Dose</span>
-                      <span className="text-foreground/80">{p.dose}</span>
+                  {/* Princípios ativos */}
+                  <div>
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-muted-foreground flex items-center gap-1.5">
+                      <Pill size={10} className="text-blue-400" /> Princípios ativos
+                    </span>
+                    <div className="flex flex-wrap gap-1.5 mt-1">
+                      {p.ativos.map((a) => (
+                        <span key={a} className="text-xs bg-blue-500/10 border border-blue-500/15 px-2 py-0.5 rounded-sm text-blue-300/90">{a}</span>
+                      ))}
                     </div>
                   </div>
 
-                  <div className="text-xs">
-                    <span className="text-muted-foreground block">Preparo</span>
-                    <span className="text-foreground/80">{p.preparo}</span>
+                  {/* Mecanismo de ação */}
+                  <div>
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-muted-foreground flex items-center gap-1.5">
+                      <Brain size={10} className="text-purple-400" /> Mecanismo de ação
+                    </span>
+                    <p className="text-xs text-foreground/70 mt-1 leading-relaxed">{p.mecanismo}</p>
                   </div>
 
+                  {/* Dosagem */}
+                  <div className="bg-white/5 p-3 rounded-sm">
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-muted-foreground">Dosagem segura</span>
+                    <p className="text-xs text-foreground/80 mt-1">{p.dose}</p>
+                    {p.continuo && <p className="text-[10px] text-muted-foreground mt-1">Uso contínuo: {p.continuo}</p>}
+                  </div>
+
+                  {/* Contraindicações */}
                   {p.contra && (
                     <div className="flex items-start gap-1.5 text-xs bg-red-500/10 border border-red-500/20 p-2 rounded-sm">
                       <AlertTriangle size={12} className="text-red-400 shrink-0 mt-0.5" />
@@ -415,6 +357,7 @@ const AutonomiaBiologica = () => {
                     </div>
                   )}
 
+                  {/* Interações */}
                   {p.interacao && (
                     <div className="flex items-start gap-1.5 text-xs bg-amber-500/10 border border-amber-500/20 p-2 rounded-sm">
                       <AlertTriangle size={12} className="text-amber-400 shrink-0 mt-0.5" />
@@ -427,48 +370,53 @@ const AutonomiaBiologica = () => {
           </div>
         </motion.section>
 
-        {/* ─── BLOCO 03 — DOSAGENS ─── */}
+        {/* ─── BLOCO 03 — DOSAGENS SEGURAS ─── */}
         <motion.section initial="hidden" whileInView="visible" viewport={viewportOnce} variants={stagger(0.08)} className="mb-24">
           <motion.div variants={staggerChild}>
             <span className="pre-title">Bloco 03</span>
-            <h2 className="text-3xl md:text-4xl font-black tracking-tight mb-6">Dosagens Referenciadas</h2>
+            <h2 className="text-3xl md:text-4xl font-black tracking-tight mb-6">Dosagens Seguras Organizadas</h2>
           </motion.div>
 
           <motion.div variants={staggerChild} className="bg-gradient-to-br from-green-950/30 to-background border border-green-800/20 p-8 md:p-10 rounded-sm">
-            <h3 className="text-lg font-bold mb-6 text-foreground">Regra prática segura:</h3>
-            <div className="grid md:grid-cols-3 gap-6">
+            <h3 className="text-lg font-bold mb-6 text-foreground">Regra geral segura:</h3>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               <div className="border-l-2 border-green-500/50 pl-4">
-                <span className="text-green-400 font-bold text-sm">Adultos</span>
-                <p className="text-muted-foreground text-sm mt-1">1 colher de sopa planta seca para 200ml.</p>
+                <span className="text-green-400 font-bold text-sm">Planta seca</span>
+                <p className="text-muted-foreground text-sm mt-1">1 colher de sopa / 200 ml</p>
               </div>
               <div className="border-l-2 border-amber-500/50 pl-4">
                 <span className="text-amber-400 font-bold text-sm">Crianças</span>
-                <p className="text-muted-foreground text-sm mt-1">Metade da dose adulta.</p>
+                <p className="text-muted-foreground text-sm mt-1">50% da dose adulta</p>
+              </div>
+              <div className="border-l-2 border-sky-500/50 pl-4">
+                <span className="text-sky-400 font-bold text-sm">Idosos</span>
+                <p className="text-muted-foreground text-sm mt-1">Iniciar com 50% e observar resposta</p>
               </div>
               <div className="border-l-2 border-red-500/50 pl-4">
                 <span className="text-red-400 font-bold text-sm">Uso contínuo</span>
-                <p className="text-muted-foreground text-sm mt-1">Máximo 7–14 dias sem orientação profissional.</p>
+                <p className="text-muted-foreground text-sm mt-1">7–14 dias máximo sem orientação</p>
               </div>
             </div>
           </motion.div>
         </motion.section>
 
-        {/* ─── BLOCO 04 — INTERAÇÕES ─── */}
+        {/* ─── BLOCO 04 — INTERAÇÕES MEDICAMENTOSAS ─── */}
         <motion.section initial="hidden" whileInView="visible" viewport={viewportOnce} variants={stagger(0.08)} className="mb-24">
           <motion.div variants={staggerChild}>
             <span className="pre-title">Bloco 04</span>
-            <h2 className="text-3xl md:text-4xl font-black tracking-tight mb-6">Interações Importantes</h2>
+            <h2 className="text-3xl md:text-4xl font-black tracking-tight mb-6">Interações Medicamentosas Organizadas</h2>
           </motion.div>
 
           <motion.div variants={staggerChild} className="bg-gradient-to-br from-red-950/30 to-background border border-red-800/30 p-8 md:p-10 rounded-sm">
-            <p className="text-muted-foreground mb-6">Evitar uso sem orientação se a pessoa:</p>
+            <p className="text-muted-foreground mb-6">⚠️ Atenção especial se a pessoa usa:</p>
             <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-3">
               {[
-                'Usa anticoagulante',
-                'Usa antidepressivo',
-                'Está grávida',
-                'Tem doença hepática',
-                'Tem doença renal',
+                'Anticoagulantes',
+                'Antidepressivos',
+                'Anti-hipertensivos',
+                'Hipoglicemiantes',
+                'Sedativos',
+                'Medicamentos hepáticos',
               ].map((item) => (
                 <div key={item} className="flex items-center gap-2 text-sm bg-red-500/10 border border-red-500/15 p-3 rounded-sm">
                   <XCircle size={14} className="text-red-400 shrink-0" />
@@ -477,7 +425,7 @@ const AutonomiaBiologica = () => {
               ))}
             </div>
             <p className="mt-6 text-sm font-mono text-foreground/60 border-t border-white/5 pt-4">
-              Fitoterapia é complemento, não substituto.
+              Sempre iniciar com dose mínima.
             </p>
           </motion.div>
         </motion.section>
@@ -486,7 +434,7 @@ const AutonomiaBiologica = () => {
         <motion.section initial="hidden" whileInView="visible" viewport={viewportOnce} variants={stagger(0.08)} className="mb-24">
           <motion.div variants={staggerChild}>
             <span className="pre-title">Bloco 05</span>
-            <h2 className="text-3xl md:text-4xl font-black tracking-tight mb-6">Conservação Correta</h2>
+            <h2 className="text-3xl md:text-4xl font-black tracking-tight mb-6">Conservação</h2>
           </motion.div>
 
           {/* Imagem Armazenamento */}
@@ -496,12 +444,12 @@ const AutonomiaBiologica = () => {
           </motion.div>
 
           <motion.div variants={staggerChild} className="bg-gradient-to-br from-amber-950/30 to-background border border-amber-800/20 p-8 md:p-10 rounded-sm">
-            <h3 className="text-lg font-bold mb-6 text-foreground">Armazenar:</h3>
+            <h3 className="text-lg font-bold mb-6 text-foreground">Plantas secas:</h3>
             <div className="grid sm:grid-cols-3 gap-4 mb-8">
               {[
-                { label: 'Em pote de vidro escuro', icon: Package },
+                { label: 'Pote de vidro escuro', icon: Package },
                 { label: 'Ambiente seco', icon: Thermometer },
-                { label: 'Longe de luz direta', icon: Sun },
+                { label: 'Sem luz direta', icon: Sun },
               ].map((item) => (
                 <div key={item.label} className="flex items-center gap-3 bg-amber-500/10 border border-amber-500/15 p-4 rounded-sm">
                   <item.icon size={18} className="text-amber-400 shrink-0" />
@@ -511,60 +459,12 @@ const AutonomiaBiologica = () => {
             </div>
             <div className="grid sm:grid-cols-2 gap-4">
               <div className="border-l-2 border-amber-500/50 pl-4">
-                <span className="text-amber-400 font-bold text-sm">Validade média</span>
-                <p className="text-muted-foreground text-sm mt-1">6–12 meses para planta seca.</p>
+                <span className="text-amber-400 font-bold text-sm">Validade</span>
+                <p className="text-muted-foreground text-sm mt-1">6–12 meses</p>
               </div>
               <div className="border-l-2 border-green-500/50 pl-4">
                 <span className="text-green-400 font-bold text-sm">Tinturas</span>
-                <p className="text-muted-foreground text-sm mt-1">Até 2 anos.</p>
-              </div>
-            </div>
-          </motion.div>
-        </motion.section>
-
-        {/* ─── BLOCO FINAL — INTEGRAÇÃO ─── */}
-        <motion.section initial="hidden" whileInView="visible" viewport={viewportOnce} variants={stagger(0.08)} className="mb-20">
-          <motion.div variants={staggerChild}>
-            <span className="pre-title">Integração Estratégica</span>
-            <h2 className="text-3xl md:text-4xl font-black tracking-tight mb-6">Integração com o Trio da Blindagem</h2>
-          </motion.div>
-
-          <motion.div variants={staggerChild} className="bg-gradient-to-br from-green-950/40 to-emerald-950/20 border border-green-800/30 p-8 md:p-12 rounded-sm">
-            <p className="text-lg text-muted-foreground mb-6">
-              Fitoterapia não funciona isoladamente.<br />
-              <span className="text-foreground font-semibold">Ela potencializa quando:</span>
-            </p>
-            <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-3 mb-8">
-              {[
-                'Sono é adequado',
-                'Alimentação é simples',
-                'Intestino está equilibrado',
-                'Exposição solar moderada',
-                'Estresse está sob controle',
-              ].map((item) => (
-                <div key={item} className="flex items-center gap-2 text-sm">
-                  <CheckCircle2 size={16} className="text-green-500 shrink-0" />
-                  <span className="text-foreground/80">{item}</span>
-                </div>
-              ))}
-            </div>
-
-            <div className="border-t border-green-500/20 pt-6">
-              <p className="text-foreground font-bold text-lg mb-4">Autonomia biológica é construção. Não é improviso.</p>
-              <p className="text-muted-foreground text-sm mb-4">Agora você tem:</p>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
-                {[
-                  'Fundamentos técnicos',
-                  '12 fichas essenciais',
-                  'Dosagens',
-                  'Contraindicações',
-                  'Interações',
-                  'Métodos de preparo',
-                  'Conservação',
-                  'Integração estratégica',
-                ].map((item) => (
-                  <span key={item} className="text-xs font-mono text-green-400/80 bg-green-500/10 px-3 py-2 rounded-sm text-center">{item}</span>
-                ))}
+                <p className="text-muted-foreground text-sm mt-1">Até 2 anos</p>
               </div>
             </div>
           </motion.div>
