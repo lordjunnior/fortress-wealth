@@ -86,9 +86,9 @@ const MODULES: Record<string, ModuleData> = {
     title: 'Suporte Fitoterápico',
     phase: '02', phaseLabel: 'Autonomia Biológica',
     icon: Leaf,
-    description: 'Camomila, boldo, arnica, babosa. Uso tradicional documentado como complemento ao cuidado de saúde. Referências de dosagem e contraindicações.',
-    scope: ['Fichas técnicas de 12 plantas essenciais', 'Dosagens referenciadas por fontes confiáveis', 'Contraindicações e interações', 'Métodos de preparo e conservação'],
-    progress: 40, version: '1.0', release: 'Q2 2026',
+    description: 'Biblioteca técnica de 12 plantas essenciais. Dosagens conservadoras, contraindicações, interações medicamentosas e métodos de preparo.',
+    scope: ['Fichas técnicas de 12 plantas essenciais', 'Dosagens conservadoras referenciadas', 'Contraindicações e interações medicamentosas', 'Métodos de preparo e conservação'],
+    progress: 100, version: '1.0', release: 'Publicado',
     color: { bg: 'bg-emerald-50', border: 'border-emerald-200', text: 'text-emerald-600', accent: 'text-emerald-500', bar: 'bg-emerald-500', iconBg: 'bg-emerald-100' },
   },
   'primeiros-socorros': {
