@@ -48,9 +48,9 @@ const MODULES: Record<string, ModuleData> = {
     title: 'Purificação de Água',
     phase: '01', phaseLabel: 'Base 72',
     icon: Droplets,
-    description: 'Três métodos validados por defesa civil para tornar água potável em situações de emergência. Fervura, cloração e filtros improvisados com materiais domésticos.',
-    scope: ['Protocolo de fervura e tempos mínimos', 'Dosagem de hipoclorito por volume', 'Construção de filtro com areia e carvão', 'Indicadores visuais de potabilidade'],
-    progress: 55, version: '1.0', release: 'Q2 2026',
+    description: 'Fervura, cloração e filtração improvisada. Métodos validados em protocolos de defesa civil para ambientes com recursos limitados.',
+    scope: ['Protocolo de fervura por altitude', 'Dosagem de hipoclorito por volume', 'Filtro improvisado em camadas', 'Coleta segura e armazenamento', 'Protocolo rápido de decisão', 'Sinais de contaminação'],
+    progress: 100, version: '1.0', release: 'Publicado',
     color: { bg: 'bg-rose-50', border: 'border-rose-200', text: 'text-rose-600', accent: 'text-rose-500', bar: 'bg-rose-500', iconBg: 'bg-rose-100' },
   },
   'abrigo-emergencia': {
@@ -198,6 +198,9 @@ export default function ModuloAutonomo() {
   }
   if (slug === 'kit-72h') {
     return <Navigate to="/projeto-autonomo/kit-72h" replace />;
+  }
+  if (slug === 'purificacao-agua') {
+    return <Navigate to="/projeto-autonomo/purificacao-agua" replace />;
   }
   if (slug === 'producao-pequenos-espacos') {
     return <Navigate to="/projeto-autonomo/producao-pequenos-espacos" replace />;
