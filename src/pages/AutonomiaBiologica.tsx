@@ -211,25 +211,37 @@ const AutonomiaBiologica = () => {
             <span className="text-green-400">Fitoterápico</span>
           </motion.h1>
           <motion.p variants={staggerChild} className="text-muted-foreground text-lg max-w-3xl leading-relaxed mb-6">
-            Base tradicional documentada como complemento ao cuidado de saúde
+            Biblioteca técnica de plantas medicinais — uso individual, dosagem segura e limites claros
           </motion.p>
 
           <motion.div variants={staggerChild} className="max-w-3xl space-y-4 text-muted-foreground leading-relaxed">
             <p>
-              Fitoterapia é o uso terapêutico de plantas com base em compostos bioativos naturais.
+              Este módulo é uma <span className="text-foreground/90 font-semibold">base preventiva de uso cotidiano</span>. Cada planta é documentada individualmente com dosagem conservadora, contraindicações claras e limites seguros de uso contínuo.
             </p>
-            <p className="text-foreground/80 font-medium">Ela atua principalmente em:</p>
+            <p className="text-foreground/80 font-medium">Foco deste módulo:</p>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-              {['Sistema nervoso', 'Sistema digestivo', 'Sistema respiratório', 'Sistema inflamatório', 'Sistema cutâneo', 'Sistema hepático'].map((s) => (
+              {['Sintomas leves', 'Apoio imunológico', 'Equilíbrio digestivo', 'Sono e ansiedade leve', 'Pequenos desconfortos', 'Segurança primeiro'].map((s) => (
                 <div key={s} className="flex items-center gap-2 text-sm">
                   <Activity size={14} className="text-green-500 shrink-0" />
                   <span className="text-foreground/80">{s}</span>
                 </div>
               ))}
             </div>
+            <p className="text-muted-foreground text-sm mt-2">
+              Aqui você aprende <strong className="text-foreground/80">o que usar</strong>, <strong className="text-foreground/80">quando usar</strong>, <strong className="text-foreground/80">quando NÃO usar</strong> e <strong className="text-foreground/80">quando encaminhar para atendimento médico</strong>.
+            </p>
           </motion.div>
 
-          <motion.div variants={staggerChild} className="mt-8 bg-red-500/10 border border-red-500/20 p-5 rounded-sm max-w-3xl">
+          <motion.div variants={staggerChild} className="mt-6 bg-green-500/10 border border-green-500/20 p-5 rounded-sm max-w-3xl">
+            <p className="text-sm text-foreground/80 leading-relaxed">
+              <span className="text-green-400 font-bold">Uso domiciliar seguro.</span> Dosagens conservadoras, aplicação simples, manutenção da saúde.
+            </p>
+            <p className="text-xs text-muted-foreground mt-2">
+              Para protocolos combinados e estratégias terapêuticas por sistema corporal, veja o módulo <Link to="/projeto-autonomo/fitoterapia-aplicada" className="text-green-400 hover:underline font-semibold">Fitoterapia Aplicada →</Link>
+            </p>
+          </motion.div>
+
+          <motion.div variants={staggerChild} className="mt-4 bg-red-500/10 border border-red-500/20 p-5 rounded-sm max-w-3xl">
             <p className="text-sm text-foreground/80 leading-relaxed">
               <span className="text-red-400 font-bold">Não substitui tratamento médico.</span> Complementa quando usada corretamente.
             </p>
@@ -242,7 +254,34 @@ const AutonomiaBiologica = () => {
                 </div>
               ))}
             </div>
-            <p className="text-green-400 text-sm font-semibold mt-3">Aqui você aprende tudo isso.</p>
+          </motion.div>
+
+          {/* ─── QUANDO BUSCAR ATENDIMENTO MÉDICO ─── */}
+          <motion.div variants={staggerChild} className="mt-6 max-w-3xl">
+            <div className="bg-gradient-to-br from-red-950/30 to-background border border-red-800/20 p-6 rounded-sm">
+              <div className="flex items-center gap-2 mb-4">
+                <Shield size={18} className="text-red-400" />
+                <h3 className="text-sm font-bold text-foreground uppercase tracking-wider">Quando NÃO usar fitoterapia sozinha</h3>
+              </div>
+              <div className="grid sm:grid-cols-2 gap-2">
+                {[
+                  'Febre persistente > 38,5°C',
+                  'Sintomas que pioram após 48h',
+                  'Dor intensa ou localizada',
+                  'Confusão mental ou prostração',
+                  'Sangramento inesperado',
+                  'Gestante ou lactante sem orientação',
+                  'Criança < 2 anos sem orientação',
+                  'Uso concomitante de medicação contínua',
+                ].map((item) => (
+                  <div key={item} className="flex items-center gap-2 text-xs bg-red-500/10 border border-red-500/15 p-2.5 rounded-sm">
+                    <XCircle size={12} className="text-red-400 shrink-0" />
+                    <span className="text-foreground/80">{item}</span>
+                  </div>
+                ))}
+              </div>
+              <p className="text-xs text-muted-foreground mt-4 italic">Em qualquer dessas situações, busque atendimento médico profissional.</p>
+            </div>
           </motion.div>
         </motion.section>
 

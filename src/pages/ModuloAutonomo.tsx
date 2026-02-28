@@ -122,9 +122,9 @@ const MODULES: Record<string, ModuleData> = {
     title: 'Fitoterapia Aplicada',
     phase: '02', phaseLabel: 'Autonomia Biológica',
     icon: Sprout,
-    description: 'Tinturas, cataplasmas e infusões com dosagem referenciada. Uso como complemento, não substituição de tratamento convencional.',
-    scope: ['Preparação de tinturas hidroalcoólicas', 'Cataplasmas para uso tópico', 'Infusões terapêuticas documentadas', 'Armazenamento e validade'],
-    progress: 20, version: '1.0', release: 'Q3 2026',
+    description: 'Protocolos terapêuticos combinados por sistema corporal. Sinergia entre plantas, ciclos de uso, ajuste por idade e critérios de interrupção.',
+    scope: ['Protocolos por sistema corporal', 'Combinações estratégicas de plantas', 'Ciclos de uso e ajuste por idade', 'Critérios de interrupção e encaminhamento'],
+    progress: 100, version: '1.0', release: 'Publicado',
     color: { bg: 'bg-emerald-50', border: 'border-emerald-200', text: 'text-emerald-600', accent: 'text-emerald-500', bar: 'bg-emerald-500', iconBg: 'bg-emerald-100' },
   },
   'controle-vetores': {
@@ -216,6 +216,9 @@ export default function ModuloAutonomo() {
   }
   if (slug === 'saude-preventiva') {
     return <Navigate to="/projeto-autonomo/saude-preventiva" replace />;
+  }
+  if (slug === 'fitoterapia-aplicada') {
+    return <Navigate to="/projeto-autonomo/fitoterapia-aplicada" replace />;
   }
   
   const mod = slug ? MODULES[slug] : null;
