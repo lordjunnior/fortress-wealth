@@ -199,6 +199,9 @@ export default function ModuloAutonomo() {
   if (slug === 'producao-pequenos-espacos') {
     return <Navigate to="/projeto-autonomo/producao-pequenos-espacos" replace />;
   }
+  if (slug === 'proteina-sustentavel') {
+    return <Navigate to="/projeto-autonomo/proteina-sustentavel" replace />;
+  }
   
   const mod = slug ? MODULES[slug] : null;
 
