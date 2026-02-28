@@ -118,6 +118,23 @@ export default function Arsenal() {
           </div>
         </div>
 
+        {/* PROJETO AUTÔNOMO - MÓDULO DE RESILIÊNCIA */}
+        <Link to="/projeto-autonomo" className="block mt-16 group">
+          <div className="bg-gradient-to-r from-orange-950/30 to-amber-950/20 border-2 border-orange-600/40 p-12 md:p-16 relative overflow-hidden hover:border-orange-500 transition-all duration-500">
+            <ShieldCheck className="absolute top-0 right-0 text-orange-600/5 -mr-8 -mt-8 group-hover:scale-110 transition-transform" size={250} />
+            <div className="relative z-10">
+              <p className="text-orange-500 text-[10px] font-black uppercase tracking-[0.4em] mb-4">Módulo de Resiliência</p>
+              <h3 className="text-4xl md:text-6xl font-black tracking-tighter uppercase italic mb-6 leading-none">PROJETO <span className="text-orange-500">AUTÔNOMO</span></h3>
+              <p className="text-slate-400 text-sm font-bold uppercase tracking-wider leading-relaxed max-w-2xl mb-8">
+                Base 72 · Autonomia Biológica · Soberania Alimentar — Preparação real para quando o sistema falhar.
+              </p>
+              <div className="inline-flex items-center gap-4 bg-orange-600 text-black px-10 py-5 font-black text-xs uppercase tracking-[0.3em] group-hover:bg-white transition-all">
+                ACESSAR PROTOCOLO <ArrowRight size={20} />
+              </div>
+            </div>
+          </div>
+        </Link>
+
         {/* RODAPÉ DE BLINDAGEM (MANTIDO) */}
         <div className="mt-32 pt-16 border-t border-white/5 text-right">
             <p className="text-white font-black uppercase text-xl tracking-tighter italic opacity-40">Not your keys, not your money.</p>

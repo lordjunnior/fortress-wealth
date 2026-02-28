@@ -1,4 +1,4 @@
-import { Instagram, Youtube, Twitter, Github, LayoutGrid, BookOpen, Headphones, Wrench, QrCode, Zap, Library, ShieldAlert } from "lucide-react";
+import { Instagram, Youtube, Twitter, Github, LayoutGrid, BookOpen, Headphones, Wrench, QrCode, Zap, Library, ShieldAlert, Shield } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useNavigate, useLocation } from "react-router-dom";
 import profilePhoto from "@/assets/profile-photo.jpg";
@@ -17,6 +17,7 @@ const menuItems: MenuItem[] = [
   { icon: Library, label: "E-books", route: "/ebooks" },
   { icon: Wrench, label: "Ferramentas", route: "/ferramentas" },
   { icon: QrCode, label: "PIX Crypto", route: "/pix-cripto" },
+  { icon: Shield, label: "Projeto Autônomo", route: "/projeto-autonomo" },
 ];
 
 const socialLinks = [

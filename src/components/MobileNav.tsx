@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { Menu, X, LayoutGrid, BookOpen, Headphones, Wrench, QrCode, Zap, Library, ShieldAlert } from "lucide-react";
+import { Menu, X, LayoutGrid, BookOpen, Headphones, Wrench, QrCode, Zap, Library, ShieldAlert, Shield } from "lucide-react";
 
 const menuItems = [
   { icon: ShieldAlert, label: "Protocolo Inicial", route: "/protocolo-inicial", alert: true },
@@ -10,6 +10,7 @@ const menuItems = [
   { icon: Library, label: "E-books", route: "/ebooks" },
   { icon: Wrench, label: "Ferramentas", route: "/ferramentas" },
   { icon: QrCode, label: "PIX Crypto", route: "/pix-cripto" },
+  { icon: Shield, label: "Projeto Autônomo", route: "/projeto-autonomo" },
 ];
 
 const MobileNav = () => {
