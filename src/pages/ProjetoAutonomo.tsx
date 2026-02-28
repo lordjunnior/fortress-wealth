@@ -357,20 +357,26 @@ export default function ProjetoAutonomo() {
           id="fase-03" className="mb-28 scroll-mt-32"
           initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={fadeUp} custom={0}
         >
-          <div className="bg-amber-50/50 border border-amber-200/50 rounded-3xl backdrop-blur-sm relative overflow-hidden">
-            {/* Background image with fade */}
-            <div className="absolute inset-0 z-0">
-              <img src={imgSoberaniaAlimentar} alt="" className="w-full h-full object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-b from-amber-50/95 via-amber-50/85 to-amber-50/95" />
+          <div className="border border-amber-200/50 rounded-3xl backdrop-blur-sm relative overflow-hidden">
+            {/* Hero image band — top portion only with fade */}
+            <div className="relative w-full h-64 md:h-80 overflow-hidden">
+              <img src={imgSoberaniaAlimentar} alt="Soberania Alimentar" className="w-full h-full object-cover object-center" />
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-amber-50/100" />
+              <div className="absolute inset-0 bg-gradient-to-t from-transparent to-black/20" />
+              {/* Title overlay on image */}
+              <div className="absolute bottom-6 left-8 md:left-14 z-10">
+                <span className="text-amber-300 text-[10px] font-bold tracking-[0.4em] uppercase drop-shadow-lg">Fase 03</span>
+                <h2 className="text-4xl md:text-6xl font-bold tracking-tight leading-[0.95] mt-1 text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.5)]">
+                  Soberania<br /><span className="text-amber-300">Alimentar</span>
+                </h2>
+              </div>
+              <Wheat className="absolute top-6 right-6 text-white/10" size={120} />
             </div>
-            <div className="p-10 md:p-14 relative">
-            <Wheat className="absolute top-8 right-8 text-amber-200/20" size={160} />
+
+            {/* Content area — clean background */}
+            <div className="bg-amber-50/80 p-10 md:p-14 relative">
             <div className="relative z-10">
-              <span className="text-amber-600 text-[10px] font-bold tracking-[0.4em] uppercase opacity-70">Fase 03</span>
-              <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4 leading-tight mt-2 text-stone-800">
-                Soberania<br /><span className="text-amber-700">Alimentar</span>
-              </h2>
-              <p className="text-stone-500 text-sm md:text-base leading-relaxed max-w-2xl mb-4">
+              <p className="text-stone-600 text-sm md:text-base leading-relaxed max-w-2xl mb-4">
                 Dependencia total da cadeia industrial aumenta vulnerabilidade.
                 Produzir parte do proprio alimento reduz exposicao e aumenta qualidade nutricional.
               </p>
@@ -417,9 +423,9 @@ export default function ProjetoAutonomo() {
                   Comece com um vaso. Depois um canteiro. Depois um sistema.
                   Cada etapa reduz uma camada de dependencia.
                 </p>
-              </div>
             </div>
             </div>
+          </div>
           </div>
         </motion.section>
 
