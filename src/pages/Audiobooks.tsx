@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   ArrowLeft, Play, Pause, Clock, 
@@ -23,7 +23,8 @@ const AUDIOBOOKS_DB = [
     category: 'Educação Financeira',
     coverGradient: 'bg-gradient-to-br from-emerald-900 via-emerald-600 to-black',
     accent: 'text-emerald-500',
-    coverImage: coverPaiRico
+    coverImage: coverPaiRico,
+    audioUrl: 'https://docs.google.com/uc?export=open&id=1X8Rg4AhpaJnE3AuMmQRid50bscmlF7Jp'
   },
   {
     id: 'padrao-bitcoin',
@@ -77,29 +78,82 @@ const VisualEqualizer = ({ active }: { active: boolean }) => (
 );
 
 const Audiobooks: React.FC<AudiobooksProps> = ({ onPlay }) => {
-  const [activeTrack, setActiveTrack] = useState(AUDIOBOOKS_DB[1]);
+  const [activeTrack, setActiveTrack] = useState(AUDIOBOOKS_DB[0]);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
+  const audioRef = useRef<HTMLAudioElement>(null);
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    const onTime = () => setCurrentTime(audio.currentTime);
+    const onDur = () => setDuration(audio.duration);
+    const onEnded = () => setIsPlaying(false);
+    audio.addEventListener('timeupdate', onTime);
+    audio.addEventListener('loadedmetadata', onDur);
+    audio.addEventListener('ended', onEnded);
+    return () => {
+      audio.removeEventListener('timeupdate', onTime);
+      audio.removeEventListener('loadedmetadata', onDur);
+      audio.removeEventListener('ended', onEnded);
+    };
+  }, [activeTrack]);
 
   const handleTrackClick = (book: any) => {
     setActiveTrack(book);
-    setIsPlaying(true);
+    setCurrentTime(0);
+    if (book.audioUrl) {
+      setTimeout(() => {
+        audioRef.current?.play();
+        setIsPlaying(true);
+      }, 100);
+    } else {
+      setIsPlaying(false);
+    }
     if (onPlay) {
-      onPlay({
-        id: book.id,
-        title: book.title,
-        author: book.author,
-        url: '#' 
-      });
+      onPlay({ id: book.id, title: book.title, author: book.author, url: book.audioUrl || '#' });
     }
   };
 
   const togglePlayState = () => {
+    const audio = audioRef.current;
+    if (!audio || !activeTrack.audioUrl) return;
+    if (isPlaying) {
+      audio.pause();
+    } else {
+      audio.play();
+    }
     setIsPlaying(!isPlaying);
   };
 
+  const seekAudio = (e: React.MouseEvent<HTMLDivElement>) => {
+    const audio = audioRef.current;
+    if (!audio || !duration) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const pct = (e.clientX - rect.left) / rect.width;
+    audio.currentTime = pct * duration;
+  };
+
+  const skipTime = (seconds: number) => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    audio.currentTime = Math.max(0, Math.min(audio.currentTime + seconds, duration));
+  };
+
+  const formatTime = (s: number) => {
+    const h = Math.floor(s / 3600);
+    const m = Math.floor((s % 3600) / 60);
+    const sec = Math.floor(s % 60);
+    return h > 0 ? `${h}:${m.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}` : `${m}:${sec.toString().padStart(2, '0')}`;
+  };
+
+  const progress = duration > 0 ? (currentTime / duration) * 100 : 0;
+
   return (
     <div className="min-h-screen bg-[#070A12] font-sans selection:bg-gold-500 selection:text-black pb-24 relative overflow-hidden">
-
+      {/* Hidden audio element */}
+      <audio ref={audioRef} src={activeTrack.audioUrl || ''} preload="metadata" />
        {/* Sound Wave Particles Background */}
        <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-50">
          <div className="sound-wave-layer"></div>
@@ -196,13 +250,26 @@ const Audiobooks: React.FC<AudiobooksProps> = ({ onPlay }) => {
                      {activeTrack.author}
                    </p>
                    
+                   {/* Progress bar */}
+                   <div className="mb-4">
+                     <div className="w-full h-1.5 bg-white/10 rounded-full cursor-pointer group/bar" onClick={seekAudio}>
+                       <div className="h-full bg-gold-500 rounded-full relative transition-all" style={{ width: `${progress}%` }}>
+                         <div className="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-3 bg-white rounded-full opacity-0 group-hover/bar:opacity-100 transition-opacity" />
+                       </div>
+                     </div>
+                     <div className="flex justify-between mt-1.5 text-[10px] font-mono text-slate-500">
+                       <span>{formatTime(currentTime)}</span>
+                       <span>{duration > 0 ? formatTime(duration) : activeTrack.duration}</span>
+                     </div>
+                   </div>
+
                    <div className="flex items-center justify-between p-4 bg-[#0B0F19] border border-white/5 rounded-2xl">
                       <div className="flex items-center gap-4">
-                         <button className="text-slate-500 hover:text-white transition-colors"><Rewind className="w-5 h-5" /></button>
-                         <button onClick={togglePlayState} className="w-10 h-10 bg-white text-black rounded-full flex items-center justify-center hover:bg-gold-500 transition-colors">
+                         <button onClick={() => skipTime(-30)} className="text-slate-500 hover:text-white transition-colors" title="-30s"><Rewind className="w-5 h-5" /></button>
+                         <button onClick={togglePlayState} className={`w-10 h-10 rounded-full flex items-center justify-center transition-colors ${activeTrack.audioUrl ? 'bg-white text-black hover:bg-gold-500' : 'bg-white/20 text-slate-500 cursor-not-allowed'}`}>
                            {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 translate-x-0.5" />}
                          </button>
-                         <button className="text-slate-500 hover:text-white transition-colors"><FastForward className="w-5 h-5" /></button>
+                         <button onClick={() => skipTime(30)} className="text-slate-500 hover:text-white transition-colors" title="+30s"><FastForward className="w-5 h-5" /></button>
                       </div>
                       <div className="flex items-center gap-2">
                         <Volume2 className="w-4 h-4 text-slate-500" />
@@ -211,6 +278,9 @@ const Audiobooks: React.FC<AudiobooksProps> = ({ onPlay }) => {
                         </div>
                       </div>
                    </div>
+                   {!activeTrack.audioUrl && (
+                     <p className="text-[10px] text-slate-600 uppercase tracking-widest mt-3 text-center">Em breve disponível</p>
+                   )}
                 </div>
              </div>
           </div>
