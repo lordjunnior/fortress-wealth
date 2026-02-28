@@ -1,9 +1,35 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+
+// Dados fiscais brasileiros 2024/2025 (fonte: Tesouro Nacional / Impostômetro)
+const ARRECADACAO_ANUAL = 2.65e12; // ~R$ 2,65 trilhões/ano
+const DIVIDA_PUBLICA_BASE = 8.5e12; // ~R$ 8,5 trilhões (base jan 2025)
+const DIVIDA_CRESCIMENTO_ANUAL = 0.08; // ~8% ao ano
+const SEGUNDOS_ANO = 365.25 * 24 * 3600;
+const IMPOSTO_POR_SEGUNDO = ARRECADACAO_ANUAL / SEGUNDOS_ANO; // ~R$ 84.000/s
+const DIVIDA_POR_SEGUNDO = (DIVIDA_PUBLICA_BASE * DIVIDA_CRESCIMENTO_ANUAL) / SEGUNDOS_ANO;
+
+const getSecondsIntoYear = () => {
+  const now = new Date();
+  const startOfYear = new Date(now.getFullYear(), 0, 1);
+  return (now.getTime() - startOfYear.getTime()) / 1000;
+};
+
+const formatBRL = (n: number) => {
+  if (n >= 1e12) return `R$ ${(n / 1e12).toFixed(3).replace(".", ",")} tri`;
+  if (n >= 1e9) return `R$ ${(n / 1e9).toFixed(2).replace(".", ",")} bi`;
+  if (n >= 1e6) return `R$ ${(n / 1e6).toFixed(1).replace(".", ",")} mi`;
+  return `R$ ${n.toLocaleString("pt-BR", { maximumFractionDigits: 0 })}`;
+};
 
 const NetworkTicker = () => {
   const [block, setBlock] = useState<number | null>(null);
   const [priceUsd, setPriceUsd] = useState<number | null>(null);
+  const [arrecadacaoHoje, setArrecadacaoHoje] = useState("");
+  const [dividaPublica, setDividaPublica] = useState("");
+  const [impostoSeg, setImpostoSeg] = useState("");
+  const fiscalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
+  // Bitcoin data
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -23,10 +49,26 @@ const NetworkTicker = () => {
         // keep null on error
       }
     };
-
     fetchData();
     const interval = setInterval(fetchData, 60000);
     return () => clearInterval(interval);
+  }, []);
+
+  // Fiscal clock — lightweight 1s tick
+  useEffect(() => {
+    const tick = () => {
+      const secsYear = getSecondsIntoYear();
+      const now = new Date();
+      const startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      const secsDay = (now.getTime() - startOfDay.getTime()) / 1000;
+
+      setArrecadacaoHoje(formatBRL(secsDay * IMPOSTO_POR_SEGUNDO));
+      setDividaPublica(formatBRL(DIVIDA_PUBLICA_BASE + secsYear * DIVIDA_POR_SEGUNDO));
+      setImpostoSeg(formatBRL(Math.round(IMPOSTO_POR_SEGUNDO)));
+    };
+    tick();
+    fiscalRef.current = setInterval(tick, 1000);
+    return () => { if (fiscalRef.current) clearInterval(fiscalRef.current); };
   }, []);
 
   const items = [
@@ -34,6 +76,9 @@ const NetworkTicker = () => {
     { label: "BLOCO", value: block !== null ? block.toLocaleString("pt-BR") : "---" },
     { label: "SELIC", value: "14,25%", status: "down" as const, statusText: "roubo anual" },
     { label: "INFLAÇÃO IPCA", value: "5,06%", status: "down" as const, statusText: "seu dinheiro encolhe" },
+    { fiscal: true, label: "🏛️ ARRECADAÇÃO HOJE", value: arrecadacaoHoje || "---", status: "down" as const, statusText: "e subindo" },
+    { fiscal: true, label: "💸 IMPOSTO/SEG", value: impostoSeg || "---", status: "down" as const, statusText: "por segundo" },
+    { fiscal: true, label: "📈 DÍVIDA PÚBLICA", value: dividaPublica || "---", status: "down" as const, statusText: "crescendo" },
     { label: "PRÓXIMO HALVING", value: "2028", status: "up" as const, statusText: "programado" },
     { manifesto: true, value: "AUTOCUSTÓDIA É LIBERDADE" },
   ];
@@ -80,7 +125,7 @@ const NetworkTicker = () => {
           display: flex;
           align-items: center;
           white-space: nowrap;
-          animation: ticker-scroll 35s linear infinite;
+          animation: ticker-scroll 55s linear infinite;
         }
         .ticker-track:hover {
           animation-play-state: paused;
