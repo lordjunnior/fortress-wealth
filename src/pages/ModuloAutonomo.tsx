@@ -30,9 +30,9 @@ const MODULES: Record<string, ModuleData> = {
     title: 'Kit Tático 72h',
     phase: '01', phaseLabel: 'Base 72',
     icon: Package,
-    description: 'Montagem completa do kit de autonomia mínima para os primeiros três dias após uma interrupção grave. Inclui checklist validado, priorização por peso e volume, e adaptações para diferentes perfis familiares.',
-    scope: ['Checklist completo de itens essenciais', 'Protocolo de montagem por prioridade', 'Variações por clima e região', 'Lista de fornecedores acessíveis'],
-    progress: 45, version: '1.0', release: 'Q2 2026',
+    description: 'Água, alimento, documentos, rádio e medicamentos para autonomia mínima de 3 dias. Sistema portátil de autonomia com 5 pilares críticos.',
+    scope: ['Hidratação estratégica (9–12L por pessoa)', 'Alimento de alta densidade calórica', 'Documentação impermeável e backup digital', 'Rádio AM/FM para informação em apagão', 'Continuidade terapêutica medicamentosa'],
+    progress: 100, version: '1.0', release: 'Publicado',
     color: { bg: 'bg-rose-50', border: 'border-rose-200', text: 'text-rose-600', accent: 'text-rose-500', bar: 'bg-rose-500', iconBg: 'bg-rose-100' },
   },
   'protocolos-apagao': {
@@ -195,6 +195,9 @@ export default function ModuloAutonomo() {
   // Redirect to dedicated pages for published modules
   if (slug === 'conservacao-armazenamento') {
     return <Navigate to="/projeto-autonomo/conservacao-armazenamento" replace />;
+  }
+  if (slug === 'kit-72h') {
+    return <Navigate to="/projeto-autonomo/kit-72h" replace />;
   }
   if (slug === 'producao-pequenos-espacos') {
     return <Navigate to="/projeto-autonomo/producao-pequenos-espacos" replace />;
