@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link, useParams, Navigate } from 'react-router-dom';
 import { ArrowLeft, Clock, Package, Flame, Droplets, Tent, Siren, Wind, Leaf, Cross, Thermometer, Sun, Sprout, Bug, Layers, Egg, Shovel } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -187,6 +187,10 @@ const MODULES: Record<string, ModuleData> = {
 
 export default function ModuloAutonomo() {
   const { slug } = useParams<{ slug: string }>();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [slug]);
   
   // Redirect to dedicated pages for published modules
   if (slug === 'conservacao-armazenamento') {
@@ -210,20 +214,27 @@ export default function ModuloAutonomo() {
 
   const Icon = mod.icon;
 
+  const phaseGradient = mod.phase === '01'
+    ? 'linear-gradient(180deg, #f9f1f1 0%, #fdf6f0 30%, #f5f0ea 60%, #ede8e0 100%)'
+    : mod.phase === '02'
+    ? 'linear-gradient(180deg, #f0f7f0 0%, #f4f8f0 30%, #f0f3ea 60%, #ede8e0 100%)'
+    : 'linear-gradient(180deg, #faf6ef 0%, #f8f4ea 30%, #f2ede4 60%, #ede8e0 100%)';
+
   return (
-    <div className="min-h-screen bg-stone-50 selection:bg-emerald-200">
-      <div className="max-w-3xl mx-auto px-6 pt-20 pb-32">
+    <div className="min-h-screen selection:bg-emerald-200" style={{ background: phaseGradient }}>
+      <div className="max-w-3xl mx-auto px-5 md:px-6 pt-20 pb-32">
 
         {/* Back */}
         <Link
           to="/projeto-autonomo"
-          className="inline-flex items-center gap-2 text-stone-400 hover:text-stone-700 text-xs font-semibold uppercase tracking-[0.2em] transition-colors mb-16"
+          className="inline-flex items-center gap-2 text-stone-400 hover:text-stone-700 text-xs font-semibold uppercase tracking-[0.2em] transition-colors mb-12"
         >
           <ArrowLeft size={14} /> Projeto Autônomo
         </Link>
 
-        {/* Phase tag */}
-        <motion.div
+        {/* ══ BLOCO 1: IDENTIDADE DO MÓDULO ══ */}
+        <motion.section
+          className={`${mod.color.bg} border ${mod.color.border} rounded-2xl p-6 md:p-10 mb-3`}
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: APPLE_EASE }}
@@ -231,31 +242,32 @@ export default function ModuloAutonomo() {
           <span className={`text-[10px] font-bold tracking-[0.5em] uppercase ${mod.color.accent} opacity-70`}>
             Fase {mod.phase} · {mod.phaseLabel}
           </span>
-        </motion.div>
 
-        {/* Title */}
-        <motion.div
-          className="mt-4 mb-10 flex items-start gap-5"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: APPLE_EASE, delay: 0.1 }}
-        >
-          <div className={`p-4 ${mod.color.iconBg} rounded-2xl shrink-0 mt-1`}>
-            <Icon className={mod.color.text} size={28} />
+          <div className="mt-4 flex items-start gap-4 md:gap-5">
+            <div className={`p-3 md:p-4 ${mod.color.iconBg} rounded-2xl shrink-0 mt-1`}>
+              <Icon className={mod.color.text} size={24} />
+            </div>
+            <div>
+              <h1 className="text-2xl md:text-5xl font-bold tracking-tight text-stone-800 leading-tight">
+                {mod.title}
+              </h1>
+              <p className="text-stone-500 text-sm md:text-base leading-relaxed mt-3 max-w-xl">
+                {mod.description}
+              </p>
+            </div>
           </div>
-          <div>
-            <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-stone-800 leading-tight">
-              {mod.title}
-            </h1>
-            <p className="text-stone-500 text-sm md:text-base leading-relaxed mt-3 max-w-xl">
-              {mod.description}
-            </p>
-          </div>
-        </motion.div>
+        </motion.section>
 
-        {/* Status Card */}
-        <motion.div
-          className={`${mod.color.bg} border ${mod.color.border} rounded-2xl p-8 md:p-10 mb-10`}
+        {/* ── Divisor visual PNL ── */}
+        <div className="flex items-center gap-3 my-1 px-2">
+          <div className={`flex-1 h-px ${mod.color.bar} opacity-20`} />
+          <span className="text-stone-400 text-[9px] font-bold tracking-[0.4em] uppercase">Status</span>
+          <div className={`flex-1 h-px ${mod.color.bar} opacity-20`} />
+        </div>
+
+        {/* ══ BLOCO 2: STATUS E PROGRESSO ══ */}
+        <motion.section
+          className="bg-white/80 backdrop-blur-sm border border-stone-200/60 rounded-2xl p-6 md:p-10 mb-3"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: APPLE_EASE, delay: 0.2 }}
@@ -273,7 +285,7 @@ export default function ModuloAutonomo() {
               <span className="text-stone-500 text-xs font-semibold">Progresso</span>
               <span className={`text-xs font-bold ${mod.color.text}`}>{mod.progress}%</span>
             </div>
-            <div className="w-full h-2 bg-white/60 rounded-full overflow-hidden">
+            <div className="w-full h-2.5 bg-stone-100 rounded-full overflow-hidden">
               <motion.div
                 className={`h-full ${mod.color.bar} rounded-full`}
                 initial={{ width: 0 }}
@@ -284,25 +296,32 @@ export default function ModuloAutonomo() {
           </div>
 
           {/* Metadata Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            <div>
-              <p className="text-stone-400 text-[10px] font-semibold uppercase tracking-wider mb-1">Status</p>
+          <div className="grid grid-cols-3 gap-4">
+            <div className="bg-stone-50 rounded-xl p-3">
+              <p className="text-stone-400 text-[9px] font-semibold uppercase tracking-wider mb-1">Status</p>
               <p className="text-stone-700 text-sm font-semibold">Em estruturação</p>
             </div>
-            <div>
-              <p className="text-stone-400 text-[10px] font-semibold uppercase tracking-wider mb-1">Versão Planejada</p>
+            <div className="bg-stone-50 rounded-xl p-3">
+              <p className="text-stone-400 text-[9px] font-semibold uppercase tracking-wider mb-1">Versão</p>
               <p className="text-stone-700 text-sm font-semibold">{mod.version}</p>
             </div>
-            <div>
-              <p className="text-stone-400 text-[10px] font-semibold uppercase tracking-wider mb-1">Publicação Prevista</p>
+            <div className={`${mod.color.bg} rounded-xl p-3`}>
+              <p className="text-stone-400 text-[9px] font-semibold uppercase tracking-wider mb-1">Publicação</p>
               <p className={`text-sm font-semibold ${mod.color.text}`}>{mod.release}</p>
             </div>
           </div>
-        </motion.div>
+        </motion.section>
 
-        {/* Scope */}
-        <motion.div
-          className="bg-white border border-stone-200 rounded-2xl p-8 md:p-10"
+        {/* ── Divisor visual PNL ── */}
+        <div className="flex items-center gap-3 my-1 px-2">
+          <div className={`flex-1 h-px ${mod.color.bar} opacity-20`} />
+          <span className="text-stone-400 text-[9px] font-bold tracking-[0.4em] uppercase">Escopo</span>
+          <div className={`flex-1 h-px ${mod.color.bar} opacity-20`} />
+        </div>
+
+        {/* ══ BLOCO 3: ESCOPO DO MÓDULO ══ */}
+        <motion.section
+          className={`${mod.color.bg} border ${mod.color.border} rounded-2xl p-6 md:p-10`}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: APPLE_EASE, delay: 0.3 }}
@@ -314,17 +333,17 @@ export default function ModuloAutonomo() {
             {mod.scope.map((item, i) => (
               <motion.li
                 key={i}
-                className="flex items-start gap-3"
+                className="flex items-start gap-3 bg-white/60 rounded-xl px-4 py-3"
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.4, ease: APPLE_EASE, delay: 0.5 + i * 0.08 }}
               >
-                <div className={`w-1.5 h-1.5 rounded-full ${mod.color.bar} mt-1.5 shrink-0`} />
+                <div className={`w-2 h-2 rounded-full ${mod.color.bar} mt-1.5 shrink-0`} />
                 <span className="text-stone-600 text-sm leading-relaxed">{item}</span>
               </motion.li>
             ))}
           </ul>
-        </motion.div>
+        </motion.section>
 
         {/* Footer note */}
         <motion.div

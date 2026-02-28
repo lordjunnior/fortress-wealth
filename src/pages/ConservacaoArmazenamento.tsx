@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, Package, Flame, Droplets, Wheat, Snowflake, Wind, Egg, Leaf, ShieldCheck, Clock, ChevronDown, ChevronUp, AlertTriangle, Beaker, Warehouse, Thermometer, Tag, Box, BookOpen } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -503,6 +503,10 @@ function MetodoCard({ item, index }: { item: Metodo; index: number }) {
    ═══════════════════════════════════════════ */
 
 export default function ConservacaoArmazenamento() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div
       className="min-h-screen text-stone-900 font-sans selection:bg-amber-300/50 pb-32 relative overflow-hidden"
