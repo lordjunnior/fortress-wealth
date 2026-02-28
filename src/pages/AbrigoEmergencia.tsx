@@ -1,12 +1,16 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Tent, Thermometer, Wind, Droplets, AlertTriangle, Shield, Home, TreePine, Layers, Heart } from 'lucide-react';
+import { ArrowLeft, Tent, Thermometer, Wind, Droplets, AlertTriangle, Shield, Home, TreePine, Layers, Heart, Brain, Sun, Trash2, Lightbulb, ShieldAlert } from 'lucide-react';
 import { motion } from 'framer-motion';
 
+import imgSoloIsolamento from '@/assets/abrigo-solo-isolamento.jpg';
+import imgReforcoJanela from '@/assets/abrigo-reforco-janela.jpg';
 import imgQuartoNucleo from '@/assets/abrigo-quarto-nucleo.jpg';
-import imgAquecedorVela from '@/assets/abrigo-aquecedor-vela.jpg';
+import imgBanheiroImprovisado from '@/assets/abrigo-banheiro-improvisado.jpg';
+import imgResfriamentoPassivo from '@/assets/abrigo-resfriamento-passivo.jpg';
 import imgAFrame from '@/assets/abrigo-a-frame.jpg';
 import imgOrganizacao from '@/assets/abrigo-organizacao.jpg';
+import imgAquecedorVela from '@/assets/abrigo-aquecedor-vela.jpg';
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 const fade = (delay = 0) => ({
@@ -15,6 +19,27 @@ const fade = (delay = 0) => ({
   viewport: { once: true, margin: '-40px' },
   transition: { duration: 0.6, ease: APPLE_EASE, delay },
 });
+
+const Section = ({ num, title, children }: { num: number; title: string; children: React.ReactNode }) => (
+  <motion.section className="mb-14" {...fade()}>
+    <div className="flex items-center gap-3 mb-6">
+      <div className="w-8 h-8 rounded-full bg-rose-500 text-white flex items-center justify-center text-sm font-bold">{num}</div>
+      <h2 className="text-xl md:text-2xl font-bold text-stone-800">{title}</h2>
+    </div>
+    {children}
+  </motion.section>
+);
+
+const Check = ({ items }: { items: string[] }) => (
+  <div className="space-y-2">
+    {items.map(s => (
+      <div key={s} className="flex items-start gap-2">
+        <span className="text-rose-500 text-sm mt-0.5">✔</span>
+        <span className="text-stone-600 text-sm">{s}</span>
+      </div>
+    ))}
+  </div>
+);
 
 export default function AbrigoEmergencia() {
   useEffect(() => { window.scrollTo(0, 0); }, []);
@@ -40,136 +65,147 @@ export default function AbrigoEmergencia() {
             <div>
               <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-stone-800 leading-tight">Abrigo de Emergência</h1>
               <p className="text-stone-500 text-sm md:text-base leading-relaxed mt-3 max-w-2xl">
-                Proteção térmica e estrutural com materiais acessíveis em diferentes cenários. Sem abrigo adequado, o corpo perde calor <strong className="text-stone-700">25x mais rápido</strong> com vento e até <strong className="text-stone-700">5x mais rápido</strong> com umidade.
+                Proteção térmica, estrutural, psicológica e sanitária em cenários de interrupção prolongada.
               </p>
             </div>
           </div>
-          <div className="bg-rose-50 border border-rose-200/60 rounded-2xl p-5 md:p-6">
-            <p className="text-stone-600 text-sm leading-relaxed mb-3">
-              Hipotermia não é fenômeno de montanha. <strong className="text-stone-800">Pode acontecer dentro de casa após apagão prolongado.</strong>
-            </p>
-            <p className="text-stone-500 text-xs leading-relaxed">
-              Este módulo ensina técnicas práticas, aplicáveis imediatamente, usando recursos comuns. O abrigo deve cumprir quatro funções:
-            </p>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-4">
+
+          <div className="bg-rose-50 border border-rose-200/60 rounded-2xl p-5 md:p-6 mb-4">
+            <p className="text-stone-700 text-sm font-semibold mb-3">Abrigo não é apenas "ter um teto". É:</p>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
               {[
-                { icon: Thermometer, label: 'Isolamento térmico' },
-                { icon: Wind, label: 'Proteção contra vento' },
-                { icon: Droplets, label: 'Proteção contra umidade' },
+                { icon: Thermometer, label: 'Controle térmico' },
+                { icon: Wind, label: 'Proteção contra intempéries' },
+                { icon: Layers, label: 'Organização logística' },
                 { icon: Shield, label: 'Segurança estrutural' },
+                { icon: Droplets, label: 'Higiene básica' },
+                { icon: Brain, label: 'Estabilidade emocional' },
               ].map(({ icon: Icon, label }) => (
                 <div key={label} className="bg-white/70 rounded-xl p-3 text-center">
-                  <Icon size={18} className="text-rose-500 mx-auto mb-1.5" />
+                  <Icon size={16} className="text-rose-500 mx-auto mb-1.5" />
                   <span className="text-[11px] font-semibold text-stone-600">{label}</span>
+                </div>
+              ))}
+            </div>
+            <p className="text-stone-500 text-xs mt-4 font-semibold">Se o abrigo falha, todo o restante do protocolo falha.</p>
+          </div>
+
+          {/* Fundamento Fisiológico */}
+          <div className="bg-white/80 border border-stone-200/60 rounded-2xl p-5 md:p-6">
+            <h3 className="text-sm font-bold text-rose-600 uppercase tracking-wider mb-3">📌 Fundamento Fisiológico</h3>
+            <p className="text-stone-600 text-sm leading-relaxed mb-3">O corpo humano entra em declínio quando:</p>
+            <div className="grid grid-cols-2 gap-2 mb-4">
+              {['Temperatura corporal < 35°C', 'Exposição contínua à umidade', 'Privação de sono', 'Estresse térmico prolongado'].map(item => (
+                <div key={item} className="bg-red-50/60 rounded-lg p-2.5">
+                  <span className="text-xs text-stone-600">• {item}</span>
+                </div>
+              ))}
+            </div>
+            <p className="text-stone-600 text-sm mb-2 font-semibold">Abrigo bem feito reduz:</p>
+            <Check items={['Perda calórica', 'Estresse metabólico', 'Gasto energético', 'Risco infeccioso']} />
+          </div>
+
+          {/* 6 Camadas */}
+          <div className="mt-4 bg-stone-800 text-white rounded-2xl p-5 md:p-6">
+            <h3 className="text-sm font-bold uppercase tracking-wider mb-4 text-rose-400">🔹 Camadas do Abrigo Eficiente</h3>
+            <p className="text-stone-300 text-sm mb-4">Todo abrigo precisa funcionar em 6 camadas:</p>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
+              {['1. Solo', '2. Estrutura', '3. Isolamento térmico', '4. Vedação', '5. Organização interna', '6. Segurança estrutural'].map(item => (
+                <div key={item} className="bg-white/10 rounded-lg p-2.5 text-center">
+                  <span className="text-xs font-semibold text-stone-200">{item}</span>
                 </div>
               ))}
             </div>
           </div>
         </motion.section>
 
-        {/* ══ 1 — ISOLAMENTO TÉRMICO DOMÉSTICO ══ */}
-        <motion.section className="mb-14" {...fade()}>
-          <div className="flex items-center gap-3 mb-6">
-            <div className="w-8 h-8 rounded-full bg-rose-500 text-white flex items-center justify-center text-sm font-bold">1</div>
-            <h2 className="text-xl md:text-2xl font-bold text-stone-800">Isolamento Térmico Doméstico</h2>
-          </div>
-
-          <p className="text-stone-600 text-sm leading-relaxed mb-4">O corpo humano perde calor por quatro vias:</p>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
-            {[
-              { title: 'Condução', desc: 'Contato com superfícies frias' },
-              { title: 'Convecção', desc: 'Vento' },
-              { title: 'Radiação', desc: 'Perda térmica natural' },
-              { title: 'Evaporação', desc: 'Suor e umidade' },
-            ].map(item => (
-              <div key={item.title} className="bg-white/80 border border-stone-200/60 rounded-xl p-3">
-                <span className="text-xs font-bold text-rose-600 block mb-1">{item.title}</span>
-                <span className="text-[11px] text-stone-500">{item.desc}</span>
-              </div>
-            ))}
-          </div>
-
-          {/* Técnica 1 — Quarto Núcleo */}
+        {/* ══ 1 — CAMADA DO SOLO ══ */}
+        <Section num={1} title="Camada do Solo — Base Térmica">
+          <p className="text-stone-600 text-sm leading-relaxed mb-4">
+            O solo é o <strong className="text-stone-800">maior dissipador de calor</strong>. Dormir direto no chão pode reduzir temperatura corporal rapidamente.
+          </p>
           <div className="bg-white/80 border border-stone-200/60 rounded-2xl overflow-hidden mb-4">
-            <img src={imgQuartoNucleo} alt="Quarto Núcleo preparado para emergência" className="w-full h-48 md:h-64 object-cover" />
+            <img src={imgSoloIsolamento} alt="Isolamento do solo com papelão e cobertores" className="w-full h-48 md:h-64 object-cover" />
+            <div className="p-5 md:p-6">
+              <h3 className="text-base font-bold text-stone-800 mb-3">Técnicas Domésticas Aplicáveis</h3>
+              <Check items={['3 camadas de papelão', 'Tapetes + cobertor inferior', 'Paletes reaproveitados', 'Estrado improvisado com madeira']} />
+              <div className="mt-4 bg-amber-50 border border-amber-200/60 rounded-xl p-3">
+                <p className="text-amber-700 text-xs font-semibold">Espessura mínima recomendada: 5 cm de material isolante.</p>
+              </div>
+            </div>
+          </div>
+        </Section>
+
+        {/* ══ 2 — ESTRUTURA ══ */}
+        <Section num={2} title="Estrutura — Resistência ao Vento e Impacto">
+          <p className="text-stone-600 text-sm leading-relaxed mb-4">
+            Mesmo dentro de casa, <strong className="text-stone-800">janelas são pontos frágeis</strong>.
+          </p>
+          <div className="bg-white/80 border border-stone-200/60 rounded-2xl overflow-hidden mb-4">
+            <img src={imgReforcoJanela} alt="Janela reforçada com compensado e fita adesiva" className="w-full h-48 md:h-64 object-cover" />
+            <div className="p-5 md:p-6">
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <h3 className="text-sm font-bold text-rose-600 mb-2">Reforço Doméstico</h3>
+                  <Check items={['Madeira ou compensado para janelas', 'Fita adesiva em "X" no vidro (reduz estilhaçamento)', 'Retirar objetos soltos próximos a janelas']} />
+                </div>
+                <div>
+                  <h3 className="text-sm font-bold text-rose-600 mb-2">Abrigo Externo</h3>
+                  <Check items={['Estrutura triangular (mais estável)', 'Fixação com estacas profundas', 'Evitar áreas baixas (risco de enchente)']} />
+                </div>
+              </div>
+            </div>
+          </div>
+        </Section>
+
+        {/* ══ 3 — ISOLAMENTO TÉRMICO ══ */}
+        <Section num={3} title="Isolamento Térmico — Controle do Microclima">
+          <p className="text-stone-600 text-sm leading-relaxed mb-4">
+            Objetivo: <strong className="text-stone-800">manter ar quente interno e impedir troca com ar frio externo</strong>.
+          </p>
+
+          <div className="bg-white/80 border border-stone-200/60 rounded-2xl overflow-hidden mb-4">
+            <img src={imgQuartoNucleo} alt="Ambiente compacto isolado" className="w-full h-48 md:h-64 object-cover" />
             <div className="p-5 md:p-6">
               <div className="flex items-center gap-2 mb-3">
                 <Home size={16} className="text-rose-500" />
-                <h3 className="text-lg font-bold text-stone-800">Técnica 1 — "Quarto Núcleo"</h3>
+                <h3 className="text-lg font-bold text-stone-800">Técnica do "Ambiente Compacto"</h3>
               </div>
               <p className="text-stone-600 text-sm leading-relaxed mb-4">
-                Em caso de frio intenso, escolha o <strong className="text-stone-800">menor cômodo da casa</strong>. Quanto menor o volume de ar, mais fácil manter temperatura.
+                Escolher o <strong className="text-stone-800">menor cômodo disponível</strong>. Reduzir volume de ar aumenta retenção térmica.
               </p>
-              <div className="space-y-2">
-                {[
-                  'Fechar todas as portas internas',
-                  'Isolar frestas com toalhas',
-                  'Cobrir janelas com papelão + manta',
-                  'Usar tapetes ou papelão no chão',
-                  'Concentrar todos no mesmo ambiente',
-                ].map(step => (
-                  <div key={step} className="flex items-start gap-2">
-                    <span className="text-rose-500 text-sm mt-0.5">✔</span>
-                    <span className="text-stone-600 text-sm">{step}</span>
+              <h4 className="text-xs font-bold text-rose-600 mb-2">Vedação Completa</h4>
+              <div className="grid grid-cols-2 gap-2 mb-4">
+                {['Toalhas nas frestas', 'Plástico grosso em janelas', 'Cortinas pesadas', 'Vedação inferior de portas'].map(item => (
+                  <div key={item} className="bg-stone-50 rounded-lg p-2.5 flex items-center gap-2">
+                    <Wind size={12} className="text-rose-400 shrink-0" />
+                    <span className="text-xs text-stone-600">{item}</span>
                   </div>
                 ))}
               </div>
             </div>
           </div>
 
-          {/* Técnica 2 — Isolamento do Solo */}
-          <div className="bg-amber-50/60 border border-amber-200/60 rounded-2xl p-5 md:p-6">
-            <h3 className="text-base font-bold text-stone-800 mb-3">Técnica 2 — Isolamento do Solo</h3>
-            <p className="text-stone-600 text-sm leading-relaxed mb-3">
-              <strong className="text-stone-800">Nunca dormir diretamente no chão frio.</strong> O chão drena calor corporal continuamente.
-            </p>
-            <div className="grid grid-cols-2 gap-2">
-              {['Papelão em camadas', 'Tapetes empilhados', 'Colchões infláveis', 'Madeira reaproveitada'].map(item => (
-                <div key={item} className="bg-white/70 rounded-lg p-2.5 text-center">
-                  <span className="text-xs font-semibold text-stone-600">{item}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </motion.section>
-
-        {/* ══ 2 — AQUECIMENTO SEGURO SEM ENERGIA ══ */}
-        <motion.section className="mb-14" {...fade()}>
-          <div className="flex items-center gap-3 mb-6">
-            <div className="w-8 h-8 rounded-full bg-rose-500 text-white flex items-center justify-center text-sm font-bold">2</div>
-            <h2 className="text-xl md:text-2xl font-bold text-stone-800">Aquecimento Seguro sem Energia</h2>
-          </div>
-
-          {/* Alerta CO */}
-          <div className="bg-red-50 border border-red-200 rounded-2xl p-5 mb-6">
-            <div className="flex items-center gap-2 mb-2">
-              <AlertTriangle size={16} className="text-red-500" />
-              <span className="text-sm font-bold text-red-700">Nunca usar churrasqueira ou fogão a carvão dentro de casa</span>
-            </div>
-            <p className="text-red-600 text-xs leading-relaxed">Risco de monóxido de carbono é real. Monóxido é invisível e letal.</p>
-          </div>
-
-          {/* Aquecimento passivo */}
-          <div className="bg-white/80 border border-stone-200/60 rounded-2xl p-5 md:p-6 mb-4">
-            <h3 className="text-base font-bold text-stone-800 mb-3">Método Seguro — Aquecimento Passivo</h3>
-            <div className="space-y-2">
+          {/* Camadas corporais */}
+          <div className="bg-rose-50/60 border border-rose-200/60 rounded-2xl p-5 md:p-6">
+            <h3 className="text-base font-bold text-stone-800 mb-3">Estratégia de Camadas Corporais</h3>
+            <p className="text-stone-600 text-sm mb-3"><strong className="text-stone-800">Nunca usar apenas uma peça grossa.</strong></p>
+            <div className="grid grid-cols-3 gap-3">
               {[
-                'Camadas de roupa (não uma peça grossa)',
-                'Cobertores múltiplos',
-                'Gorro (perda de calor pela cabeça é significativa)',
-                'Água morna em garrafa PET envolta em pano',
-              ].map(step => (
-                <div key={step} className="flex items-start gap-2">
-                  <span className="text-rose-500 text-sm mt-0.5">✔</span>
-                  <span className="text-stone-600 text-sm">{step}</span>
+                { num: '1', label: 'Absorve suor' },
+                { num: '2', label: 'Retém calor' },
+                { num: '3', label: 'Bloqueia vento' },
+              ].map(item => (
+                <div key={item.num} className="bg-white/70 rounded-xl p-3 text-center">
+                  <span className="text-lg font-bold text-rose-500 block">{item.num}</span>
+                  <span className="text-[11px] font-semibold text-stone-600">{item.label}</span>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Aquecedor de vela */}
-          <div className="bg-white/80 border border-stone-200/60 rounded-2xl overflow-hidden">
+          {/* Aquecedor de vela (mantido do original) */}
+          <div className="bg-white/80 border border-stone-200/60 rounded-2xl overflow-hidden mt-4">
             <img src={imgAquecedorVela} alt="Aquecedor artesanal de vela com vasos de cerâmica" className="w-full h-48 md:h-64 object-cover" />
             <div className="p-5 md:p-6">
               <h3 className="text-base font-bold text-stone-800 mb-3">Técnica Manual — Aquecedor de Vela Controlado</h3>
@@ -196,77 +232,234 @@ export default function AbrigoEmergencia() {
               </div>
             </div>
           </div>
-        </motion.section>
 
-        {/* ══ 3 — PROTEÇÃO CONTRA VENTO ══ */}
-        <motion.section className="mb-14" {...fade()}>
-          <div className="flex items-center gap-3 mb-6">
-            <div className="w-8 h-8 rounded-full bg-rose-500 text-white flex items-center justify-center text-sm font-bold">3</div>
-            <h2 className="text-xl md:text-2xl font-bold text-stone-800">Proteção Contra Vento</h2>
+          {/* Alerta CO */}
+          <div className="bg-red-50 border border-red-200 rounded-2xl p-5 mt-4">
+            <div className="flex items-center gap-2 mb-2">
+              <AlertTriangle size={16} className="text-red-500" />
+              <span className="text-sm font-bold text-red-700">Nunca usar carvão ou churrasqueira dentro de casa</span>
+            </div>
+            <p className="text-red-600 text-xs leading-relaxed">Monóxido de carbono é invisível e letal. Risco real em ambientes fechados.</p>
           </div>
-          <p className="text-stone-600 text-sm leading-relaxed mb-4">
-            <strong className="text-stone-800">Vento remove calor mais rápido que frio estático.</strong>
-          </p>
-          <div className="bg-white/80 border border-stone-200/60 rounded-2xl p-5 md:p-6">
-            <h3 className="text-base font-bold text-stone-800 mb-3">Técnica Manual de Vedação</h3>
-            <div className="grid grid-cols-2 gap-3">
-              {[
-                'Fita adesiva larga',
-                'Espuma expansiva (se disponível)',
-                'Toalhas enroladas na base da porta',
-                'Plástico grosso fixado em janelas',
-              ].map(item => (
-                <div key={item} className="bg-stone-50 rounded-xl p-3 flex items-center gap-2">
-                  <Wind size={14} className="text-rose-400 shrink-0" />
+        </Section>
+
+        {/* ══ 4 — VENTILAÇÃO CONTROLADA ══ */}
+        <Section num={4} title="Ventilação Controlada">
+          <div className="bg-amber-50 border border-amber-200/60 rounded-2xl p-5 md:p-6">
+            <p className="text-stone-700 text-sm font-semibold mb-3">Erro comum: fechar tudo completamente.</p>
+            <p className="text-stone-600 text-sm leading-relaxed mb-3">Sem ventilação mínima:</p>
+            <div className="grid grid-cols-3 gap-2 mb-4">
+              {['Umidade aumenta', 'Mofo surge', 'CO₂ se acumula'].map(item => (
+                <div key={item} className="bg-white/70 rounded-lg p-2.5 text-center">
                   <span className="text-xs font-semibold text-stone-600">{item}</span>
                 </div>
               ))}
             </div>
+            <div className="bg-white/80 rounded-xl p-4">
+              <p className="text-stone-800 text-sm font-bold">Regra prática:</p>
+              <p className="text-rose-600 text-sm font-semibold mt-1">Ventilar 5 a 10 minutos, 2x ao dia.</p>
+            </div>
           </div>
-        </motion.section>
+        </Section>
 
-        {/* ══ 4 — CONTROLE DE UMIDADE ══ */}
-        <motion.section className="mb-14" {...fade()}>
-          <div className="flex items-center gap-3 mb-6">
-            <div className="w-8 h-8 rounded-full bg-rose-500 text-white flex items-center justify-center text-sm font-bold">4</div>
-            <h2 className="text-xl md:text-2xl font-bold text-stone-800">Controle de Umidade</h2>
-          </div>
+        {/* ══ 5 — HIGIENE E CONTROLE SANITÁRIO ══ */}
+        <Section num={5} title="Higiene e Controle Sanitário">
           <p className="text-stone-600 text-sm leading-relaxed mb-4">
-            Umidade aumenta risco de <strong className="text-stone-800">hipotermia e infecção respiratória</strong>.
+            <strong className="text-stone-800">Abrigo mal higienizado gera surtos internos.</strong>
+          </p>
+          <div className="bg-white/80 border border-stone-200/60 rounded-2xl p-5 md:p-6 mb-4">
+            <h3 className="text-base font-bold text-stone-800 mb-3">Organizar</h3>
+            <Check items={['Área para descarte de resíduos', 'Recipiente fechado para lixo', 'Água separada para higiene']} />
+          </div>
+
+          <div className="bg-white/80 border border-stone-200/60 rounded-2xl overflow-hidden">
+            <img src={imgBanheiroImprovisado} alt="Banheiro improvisado com balde e serragem" className="w-full h-48 md:h-64 object-cover" />
+            <div className="p-5 md:p-6">
+              <div className="flex items-center gap-2 mb-3">
+                <Trash2 size={16} className="text-rose-500" />
+                <h3 className="text-lg font-bold text-stone-800">Banheiro Improvisado</h3>
+              </div>
+              <div className="grid md:grid-cols-2 gap-4">
+                <div>
+                  <span className="text-xs font-bold text-rose-600 block mb-2">Materiais</span>
+                  <ul className="space-y-1">
+                    {['Balde', 'Saco resistente', 'Serragem ou areia'].map(m => (
+                      <li key={m} className="text-stone-600 text-sm flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-rose-400" /> {m}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <p className="text-stone-600 text-sm leading-relaxed">
+                    <strong className="text-stone-800">Cobrir resíduos após cada uso</strong> reduz odor e contaminação.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Section>
+
+        {/* ══ 6 — SEGURANÇA INTERNA ══ */}
+        <Section num={6} title="Segurança Interna">
+          <p className="text-stone-600 text-sm leading-relaxed mb-4">
+            Durante crises, risco de quedas aumenta e iluminação precária causa acidentes.
           </p>
           <div className="bg-white/80 border border-stone-200/60 rounded-2xl p-5 md:p-6">
-            <h3 className="text-base font-bold text-stone-800 mb-3">Estratégias Simples</h3>
+            <Check items={['Lanternas fixas em pontos estratégicos', 'Caminhos livres', 'Objetos cortantes organizados']} />
+          </div>
+        </Section>
+
+        {/* ══ 7 — PROTEÇÃO CONTRA CALOR ══ */}
+        <Section num={7} title="Proteção Contra Calor Excessivo">
+          <p className="text-stone-600 text-sm leading-relaxed mb-4">
+            Abrigo também protege contra <strong className="text-stone-800">superaquecimento</strong>.
+          </p>
+          <div className="bg-white/80 border border-stone-200/60 rounded-2xl p-5 md:p-6 mb-4">
+            <h3 className="text-base font-bold text-stone-800 mb-3">Em Ondas de Calor</h3>
+            <Check items={['Ventilação cruzada', 'Cobrir janelas externas', 'Uso de panos úmidos para resfriamento evaporativo']} />
+          </div>
+
+          <div className="bg-white/80 border border-stone-200/60 rounded-2xl overflow-hidden">
+            <img src={imgResfriamentoPassivo} alt="Resfriamento passivo com pano úmido na janela" className="w-full h-48 md:h-64 object-cover" />
+            <div className="p-5 md:p-6">
+              <div className="flex items-center gap-2 mb-3">
+                <Sun size={16} className="text-rose-500" />
+                <h3 className="text-lg font-bold text-stone-800">Técnica de Resfriamento Passivo</h3>
+              </div>
+              <p className="text-stone-600 text-sm leading-relaxed">
+                Pendurar pano úmido em janela com corrente de ar. <strong className="text-stone-800">Evaporação reduz temperatura local.</strong>
+              </p>
+            </div>
+          </div>
+        </Section>
+
+        {/* ══ 8 — ORGANIZAÇÃO LOGÍSTICA ══ */}
+        <Section num={8} title="Organização Logística Interna">
+          <p className="text-stone-600 text-sm leading-relaxed mb-4">
+            <strong className="text-stone-800">Caos aumenta estresse.</strong> Rotina reduz ansiedade.
+          </p>
+          <div className="bg-white/80 border border-stone-200/60 rounded-2xl overflow-hidden">
+            <img src={imgOrganizacao} alt="Abrigo organizado com áreas definidas" className="w-full h-48 md:h-64 object-cover" />
+            <div className="p-5 md:p-6">
+              <div className="grid grid-cols-2 gap-3">
+                {[
+                  { icon: Layers, label: 'Dormir' },
+                  { icon: Shield, label: 'Armazenar' },
+                  { icon: Lightbulb, label: 'Iluminar' },
+                  { icon: Thermometer, label: 'Preparar alimentos' },
+                ].map(({ icon: Icon, label }) => (
+                  <div key={label} className="bg-rose-50/60 rounded-xl p-3 flex items-center gap-2">
+                    <Icon size={14} className="text-rose-500 shrink-0" />
+                    <span className="text-xs font-semibold text-stone-600">{label}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </Section>
+
+        {/* ══ 9 — PSICOLOGIA DO ABRIGO ══ */}
+        <Section num={9} title="Psicologia do Abrigo">
+          <div className="bg-white/80 border border-stone-200/60 rounded-2xl p-5 md:p-6">
+            <div className="flex items-center gap-2 mb-4">
+              <Brain size={16} className="text-rose-500" />
+              <h3 className="text-base font-bold text-stone-800">Ambiente organizado:</h3>
+            </div>
+            <Check items={['Reduz cortisol', 'Aumenta sensação de controle', 'Mantém clareza mental']} />
+            <div className="mt-4 pt-4 border-t border-stone-200/60">
+              <h4 className="text-sm font-bold text-stone-800 mb-2">Pequenos hábitos que fazem diferença:</h4>
+              <div className="grid grid-cols-3 gap-2">
+                {['Horário fixo para dormir', 'Manter higiene básica', 'Organização visual'].map(item => (
+                  <div key={item} className="bg-rose-50/60 rounded-lg p-2.5 text-center">
+                    <span className="text-[11px] font-semibold text-stone-600">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </Section>
+
+        {/* ══ 10 — ERROS GRAVES ══ */}
+        <motion.section className="mb-14" {...fade()}>
+          <div className="flex items-center gap-3 mb-6">
+            <ShieldAlert size={20} className="text-red-500" />
+            <h2 className="text-xl md:text-2xl font-bold text-stone-800">Erros Graves a Evitar</h2>
+          </div>
+          <div className="bg-red-50 border border-red-200/60 rounded-2xl p-5 md:p-6">
             <div className="space-y-2">
               {[
-                'Ventilar ambiente brevemente 2x ao dia',
-                'Manter roupas secas',
-                'Não cozinhar dentro do quarto núcleo',
-                'Elevar colchões do chão',
-              ].map(step => (
-                <div key={step} className="flex items-start gap-2">
-                  <span className="text-rose-500 text-sm mt-0.5">✔</span>
-                  <span className="text-stone-600 text-sm">{step}</span>
+                'Usar carvão dentro de casa',
+                'Dormir com roupa molhada',
+                'Não isolar chão',
+                'Improvisar aquecimento sem ventilação',
+                'Deixar objetos soltos',
+              ].map(err => (
+                <div key={err} className="flex items-start gap-2">
+                  <span className="text-red-500 text-sm mt-0.5">❌</span>
+                  <span className="text-stone-700 text-sm font-medium">{err}</span>
                 </div>
               ))}
             </div>
           </div>
         </motion.section>
 
-        {/* ══ 5 — ABRIGO IMPROVISADO FORA DE CASA ══ */}
+        {/* ══ SINAIS DE ALERTA ══ */}
         <motion.section className="mb-14" {...fade()}>
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-8 h-8 rounded-full bg-rose-500 text-white flex items-center justify-center text-sm font-bold">5</div>
+            <AlertTriangle size={20} className="text-red-500" />
+            <h2 className="text-xl md:text-2xl font-bold text-stone-800">Sinais de Alerta Fisiológico</h2>
+          </div>
+          <div className="grid md:grid-cols-3 gap-4">
+            <div className="bg-amber-50 border border-amber-200/60 rounded-2xl p-5">
+              <h3 className="text-sm font-bold text-amber-700 mb-3">Hipotermia Leve</h3>
+              <ul className="space-y-1.5">
+                {['Tremores', 'Extremidades frias'].map(s => (
+                  <li key={s} className="text-stone-600 text-sm flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-amber-400" /> {s}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="bg-orange-50 border border-orange-200/60 rounded-2xl p-5">
+              <h3 className="text-sm font-bold text-orange-700 mb-3">Moderada</h3>
+              <ul className="space-y-1.5">
+                {['Confusão', 'Fala lenta'].map(s => (
+                  <li key={s} className="text-stone-600 text-sm flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-orange-400" /> {s}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="bg-red-50 border border-red-200/60 rounded-2xl p-5">
+              <h3 className="text-sm font-bold text-red-700 mb-3">Grave</h3>
+              <ul className="space-y-1.5">
+                {['Sonolência', 'Pulso fraco'].map(s => (
+                  <li key={s} className="text-stone-600 text-sm flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-red-400" /> {s}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <div className="mt-4 bg-red-50 border border-red-200 rounded-xl p-4">
+            <p className="text-red-700 text-sm font-semibold flex items-start gap-2">
+              <Heart size={16} className="shrink-0 mt-0.5" />
+              Aquecimento deve ser gradual. Nunca água muito quente direta na pele fria.
+            </p>
+          </div>
+        </motion.section>
+
+        {/* ══ ABRIGO EXTERNO (A-FRAME) ══ */}
+        <motion.section className="mb-14" {...fade()}>
+          <div className="flex items-center gap-3 mb-6">
+            <TreePine size={20} className="text-rose-500" />
             <h2 className="text-xl md:text-2xl font-bold text-stone-800">Abrigo Improvisado Fora de Casa</h2>
           </div>
-
-          {/* A-Frame */}
           <div className="bg-white/80 border border-stone-200/60 rounded-2xl overflow-hidden mb-4">
             <img src={imgAFrame} alt="Abrigo A-Frame com lona" className="w-full h-48 md:h-64 object-cover" />
             <div className="p-5 md:p-6">
-              <div className="flex items-center gap-2 mb-3">
-                <TreePine size={16} className="text-rose-500" />
-                <h3 className="text-lg font-bold text-stone-800">Técnica 1 — Abrigo com Lona (A-Frame)</h3>
-              </div>
+              <h3 className="text-lg font-bold text-stone-800 mb-3">Técnica A-Frame com Lona</h3>
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
                   <span className="text-xs font-bold text-rose-600 block mb-2">Materiais</span>
@@ -281,12 +474,7 @@ export default function AbrigoEmergencia() {
                 <div>
                   <span className="text-xs font-bold text-rose-600 block mb-2">Montagem</span>
                   <ol className="space-y-1">
-                    {[
-                      'Amarrar corda entre duas árvores',
-                      'Estender lona formando triângulo',
-                      'Fixar laterais ao solo',
-                      'Isolar chão com folhas secas + plástico',
-                    ].map((s, i) => (
+                    {['Amarrar corda entre duas árvores', 'Estender lona formando triângulo', 'Fixar laterais ao solo', 'Isolar chão com folhas secas + plástico'].map((s, i) => (
                       <li key={i} className="text-stone-600 text-sm flex items-start gap-2">
                         <span className="text-rose-500 font-bold text-xs mt-0.5">{i + 1}.</span> {s}
                       </li>
@@ -296,10 +484,8 @@ export default function AbrigoEmergencia() {
               </div>
             </div>
           </div>
-
-          {/* Material Urbano */}
           <div className="bg-stone-100/80 border border-stone-200/60 rounded-2xl p-5 md:p-6">
-            <h3 className="text-base font-bold text-stone-800 mb-3">Técnica 2 — Abrigo com Material Urbano</h3>
+            <h3 className="text-base font-bold text-stone-800 mb-3">Material Urbano</h3>
             <p className="text-stone-600 text-sm leading-relaxed mb-3">
               <strong className="text-stone-800">Criar barreira contra vento é prioridade maior que estética.</strong>
             </p>
@@ -313,85 +499,22 @@ export default function AbrigoEmergencia() {
           </div>
         </motion.section>
 
-        {/* ══ 6 — ORGANIZAÇÃO INTERNA ══ */}
-        <motion.section className="mb-14" {...fade()}>
-          <div className="flex items-center gap-3 mb-6">
-            <div className="w-8 h-8 rounded-full bg-rose-500 text-white flex items-center justify-center text-sm font-bold">6</div>
-            <h2 className="text-xl md:text-2xl font-bold text-stone-800">Organização Interna do Abrigo</h2>
-          </div>
-
-          <div className="bg-white/80 border border-stone-200/60 rounded-2xl overflow-hidden">
-            <img src={imgOrganizacao} alt="Abrigo organizado com áreas definidas" className="w-full h-48 md:h-64 object-cover" />
-            <div className="p-5 md:p-6">
-              <p className="text-stone-600 text-sm leading-relaxed mb-4">
-                <strong className="text-stone-800">Evitar caos.</strong> Ordem reduz estresse e aumenta eficiência.
-              </p>
-              <div className="grid grid-cols-2 gap-3">
-                {[
-                  { icon: Layers, label: 'Área de dormir' },
-                  { icon: Shield, label: 'Área de armazenamento' },
-                  { icon: Thermometer, label: 'Área de iluminação' },
-                  { icon: Droplets, label: 'Área de higiene' },
-                ].map(({ icon: Icon, label }) => (
-                  <div key={label} className="bg-rose-50/60 rounded-xl p-3 flex items-center gap-2">
-                    <Icon size={14} className="text-rose-500 shrink-0" />
-                    <span className="text-xs font-semibold text-stone-600">{label}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </motion.section>
-
-        {/* ══ RISCOS REAIS ══ */}
-        <motion.section className="mb-14" {...fade()}>
-          <div className="flex items-center gap-3 mb-6">
-            <AlertTriangle size={20} className="text-red-500" />
-            <h2 className="text-xl md:text-2xl font-bold text-stone-800">Riscos Reais</h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-4">
-            <div className="bg-amber-50 border border-amber-200/60 rounded-2xl p-5">
-              <h3 className="text-sm font-bold text-amber-700 mb-3">Hipotermia Leve</h3>
-              <ul className="space-y-1.5">
-                {['Tremores', 'Confusão', 'Fala lenta'].map(s => (
-                  <li key={s} className="text-stone-600 text-sm flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-amber-400" /> {s}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="bg-red-50 border border-red-200/60 rounded-2xl p-5">
-              <h3 className="text-sm font-bold text-red-700 mb-3">Hipotermia Grave</h3>
-              <ul className="space-y-1.5">
-                {['Sonolência', 'Perda de coordenação', 'Diminuição de pulso'].map(s => (
-                  <li key={s} className="text-stone-600 text-sm flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-red-400" /> {s}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          <div className="mt-4 bg-red-50 border border-red-200 rounded-xl p-4">
-            <p className="text-red-700 text-sm font-semibold flex items-start gap-2">
-              <Heart size={16} className="shrink-0 mt-0.5" />
-              Em caso grave → aquecimento gradual, nunca água muito quente direta.
-            </p>
-          </div>
-        </motion.section>
-
         {/* ══ PRINCÍPIO CENTRAL ══ */}
         <motion.section className="mb-8" {...fade()}>
           <div className="bg-stone-800 text-white rounded-2xl p-6 md:p-8 text-center">
             <Tent size={28} className="mx-auto mb-4 text-rose-400" />
-            <h2 className="text-xl md:text-2xl font-bold mb-3">Princípio Operacional</h2>
+            <h2 className="text-xl md:text-2xl font-bold mb-3">Princípio Central</h2>
             <p className="text-stone-300 text-sm leading-relaxed max-w-lg mx-auto mb-4">
-              Abrigo não é luxo. É controle térmico. É proteção energética. É preservação fisiológica.
+              Abrigo eficiente é engenharia térmica aplicada com recursos simples. É controle do ambiente. É preservação metabólica. É gestão inteligente da energia corporal.
             </p>
-            <p className="text-rose-400 text-sm font-bold">
-              Nos primeiros três dias, ele define resistência física e mental.
-            </p>
+            <p className="text-rose-400 text-sm font-bold mb-2">Nos primeiros 3 dias, ele mantém:</p>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-2 max-w-md mx-auto">
+              {['Temperatura', 'Lucidez', 'Resistência física', 'Capacidade de decisão'].map(item => (
+                <div key={item} className="bg-white/10 rounded-lg p-2">
+                  <span className="text-xs font-semibold text-stone-200">{item}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </motion.section>
 
