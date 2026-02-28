@@ -35,11 +35,11 @@ const BASE72_ITEMS = [
 
 /* ─── PHASE 2: AUTONOMIA BIOLÓGICA ─── */
 const BIO_ITEMS = [
-  { icon: Leaf, label: 'Suporte Fitoterápico', desc: 'Camomila, boldo, arnica, babosa. Uso tradicional como complemento ao cuidado de saúde.', slug: 'suporte-fitoterapico' },
+  { icon: Leaf, label: 'Suporte Fitoterápico', desc: 'Camomila, boldo, arnica, babosa. Uso tradicional como complemento ao cuidado de saúde.', slug: 'autonomia-biologica' },
   { icon: Cross, label: 'Primeiros Socorros', desc: 'Contenção de sangramento, imobilização, tratamento de queimaduras em ambiente remoto.', slug: 'primeiros-socorros' },
   { icon: Thermometer, label: 'Avaliação Básica de Sinais', desc: 'Interpretar febre, desidratação e sinais vitais com recursos mínimos.', slug: 'sinais-vitais' },
   { icon: Sun, label: 'Saúde Preventiva', desc: 'Exposição solar, qualidade do sono, movimento e alimentação consciente como base preventiva.', slug: 'saude-preventiva' },
-  { icon: Sprout, label: 'Fitoterapia Aplicada', desc: 'Tinturas, cataplasmas e infusões com dosagem referenciada. Complemento, não substituição.', slug: 'fitoterapia-aplicada' },
+  { icon: Sprout, label: 'Fitoterapia Aplicada', desc: 'Tinturas, cataplasmas e infusões com dosagem referenciada. Complemento, não substituição.', slug: 'autonomia-biologica' },
   { icon: Bug, label: 'Controle de Vetores', desc: 'Repelentes naturais, manejo de água parada e proteção com métodos de baixo impacto.', slug: 'controle-vetores' },
 ];
 
