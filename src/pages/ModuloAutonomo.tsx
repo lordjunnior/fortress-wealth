@@ -39,9 +39,9 @@ const MODULES: Record<string, ModuleData> = {
     title: 'Protocolos de Apagão',
     phase: '01', phaseLabel: 'Base 72',
     icon: Flame,
-    description: 'Procedimentos técnicos para manter iluminação, cozimento e aquecimento quando a rede elétrica está indisponível. Alternativas testadas com materiais acessíveis.',
-    scope: ['Fontes alternativas de iluminação', 'Métodos de cozimento sem eletricidade', 'Aquecimento seguro em ambientes fechados', 'Gestão de combustível reserva'],
-    progress: 30, version: '1.0', release: 'Q2 2026',
+    description: 'Iluminação, cozimento e aquecimento alternativos quando a rede elétrica está indisponível. Protocolo de ação progressivo por tempo de apagão.',
+    scope: ['Iluminação estratégica em 3 níveis', 'Cocção segura sem eletricidade', 'Conservação de alimentos sem geladeira', 'Controle térmico passivo', 'Energia de emergência', 'Protocolo de ação progressivo'],
+    progress: 100, version: '1.0', release: 'Publicado',
     color: { bg: 'bg-rose-50', border: 'border-rose-200', text: 'text-rose-600', accent: 'text-rose-500', bar: 'bg-rose-500', iconBg: 'bg-rose-100' },
   },
   'purificacao-agua': {
@@ -201,6 +201,9 @@ export default function ModuloAutonomo() {
   }
   if (slug === 'purificacao-agua') {
     return <Navigate to="/projeto-autonomo/purificacao-agua" replace />;
+  }
+  if (slug === 'protocolos-apagao') {
+    return <Navigate to="/projeto-autonomo/protocolos-apagao" replace />;
   }
   if (slug === 'producao-pequenos-espacos') {
     return <Navigate to="/projeto-autonomo/producao-pequenos-espacos" replace />;
