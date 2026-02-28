@@ -57,9 +57,9 @@ const MODULES: Record<string, ModuleData> = {
     title: 'Abrigo de Emergência',
     phase: '01', phaseLabel: 'Base 72',
     icon: Tent,
-    description: 'Proteção térmica e estrutural com materiais acessíveis. Técnicas de improviso para diferentes cenários climáticos e geográficos.',
-    scope: ['Abrigos temporários com lonas e cordas', 'Isolamento térmico improvisado', 'Proteção contra chuva e vento', 'Critérios de escolha de local'],
-    progress: 20, version: '1.0', release: 'Q3 2026',
+    description: 'Proteção térmica e estrutural com materiais acessíveis. Isolamento doméstico, aquecimento seguro, vedação contra vento e abrigos improvisados.',
+    scope: ['Técnica "Quarto Núcleo" para frio intenso', 'Aquecedor artesanal de vela controlado', 'Vedação contra vento e controle de umidade', 'Abrigo A-Frame com lona', 'Abrigo com material urbano', 'Organização interna e sinais de hipotermia'],
+    progress: 100, version: '1.0', release: 'Publicado',
     color: { bg: 'bg-rose-50', border: 'border-rose-200', text: 'text-rose-600', accent: 'text-rose-500', bar: 'bg-rose-500', iconBg: 'bg-rose-100' },
   },
   'comunicacao-offline': {
@@ -204,6 +204,9 @@ export default function ModuloAutonomo() {
   }
   if (slug === 'protocolos-apagao') {
     return <Navigate to="/projeto-autonomo/protocolos-apagao" replace />;
+  }
+  if (slug === 'abrigo-emergencia') {
+    return <Navigate to="/projeto-autonomo/abrigo-emergencia" replace />;
   }
   if (slug === 'producao-pequenos-espacos') {
     return <Navigate to="/projeto-autonomo/producao-pequenos-espacos" replace />;
