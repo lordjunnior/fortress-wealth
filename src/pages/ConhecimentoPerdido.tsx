@@ -1,17 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Leaf, Shield, Heart, Brain, Flame, Wind, Sun, BookOpen, Eye, Sprout, Activity, XCircle, CheckCircle2, Users, PenTool, FlaskConical, Package, TreePine, AlertTriangle, Compass, ChevronRight, Sparkles } from 'lucide-react';
+import { Leaf, Shield, Heart, Brain, Flame, Wind, BookOpen, TreePine, Compass, ChevronRight, FlaskConical, Users, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 import imgHero from '@/assets/cp-hero-conhecimento.jpg';
-import imgSistemas from '@/assets/cp-sistemas-corpo.jpg';
-import imgPlantas from '@/assets/cp-plantas-pratica.jpg';
-
-import { DIGESTIVO, RESPIRATORIO, NERVOSO, IMUNE, MUSCULAR } from '@/components/conhecimento-perdido/PlantData';
-import { SistemaSection } from '@/components/conhecimento-perdido/SistemaSection';
-import { CriteriosUso } from '@/components/conhecimento-perdido/CriteriosUso';
-import { MatrizComparativa } from '@/components/conhecimento-perdido/MatrizComparativa';
-import { EducacaoBotanica } from '@/components/conhecimento-perdido/EducacaoBotanica';
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -23,39 +15,89 @@ const fadeUp = {
   }),
 };
 
-const sidebarItems = [
-  { id: 'intro', label: 'Introdução' },
-  { id: 'criterios', label: 'Critérios de Uso' },
-  { id: 'parte-01', label: '01 · O que nos foi esquecido' },
-  { id: 'parte-02', label: '02 · Base natural do corpo' },
-  { id: 'parte-03', label: '03 · Plantas na prática' },
-  { id: 'matriz', label: 'Matriz Comparativa' },
-  { id: 'parte-04', label: '04 · Manual Aplicado' },
-  { id: 'parte-05', label: '05 · Educação Familiar' },
-  { id: 'integracao', label: 'Integração' },
+const BLOCOS = [
+  {
+    num: '01',
+    title: 'Contexto Histórico',
+    desc: 'Mapeamento documentado da transição entre práticas tradicionais e institucionalização médica moderna. Linha temporal, agentes envolvidos e impactos sistêmicos.',
+    icon: BookOpen,
+    color: 'emerald',
+    link: '/conhecimento-perdido/contexto-historico',
+  },
+  {
+    num: '02',
+    title: 'Base Fisiológica',
+    desc: 'Organização técnica por sistemas corporais, mecanismos bioquímicos e resposta adaptativa do organismo.',
+    icon: Brain,
+    color: 'cyan',
+    link: '/conhecimento-perdido/base-fisiologica',
+  },
+  {
+    num: '03',
+    title: 'Segurança e Limites',
+    desc: 'Critérios de uso responsável, contraindicações, interações medicamentosas e parâmetros claros de suspensão.',
+    icon: Shield,
+    color: 'amber',
+    link: '/conhecimento-perdido/seguranca-e-limites',
+  },
+  {
+    num: '04',
+    title: 'Aplicação Prática',
+    desc: 'Protocolos domésticos estruturados, preparo correto, conservação e uso racional.',
+    icon: FlaskConical,
+    color: 'green',
+    link: '/conhecimento-perdido/aplicacao-pratica',
+  },
+  {
+    num: '05',
+    title: 'Continuidade Familiar',
+    desc: 'Educação botânica aplicada, identificação segura e construção progressiva de autonomia biológica.',
+    icon: Users,
+    color: 'purple',
+    link: '/conhecimento-perdido/continuidade-familiar',
+  },
 ];
+
+const colorMap: Record<string, { card: string; iconBg: string; icon: string; btn: string; glow: string }> = {
+  emerald: {
+    card: 'bg-emerald-950/30 border-emerald-700/25 hover:border-emerald-500/50 hover:shadow-[0_0_50px_-12px_rgba(16,185,129,0.25)] hover:bg-emerald-950/45',
+    iconBg: 'bg-emerald-500/15 border border-emerald-500/25',
+    icon: 'text-emerald-400',
+    btn: 'bg-emerald-500/15 text-emerald-400 border-emerald-500/25 hover:bg-emerald-500/25',
+    glow: 'bg-emerald-400',
+  },
+  cyan: {
+    card: 'bg-cyan-950/30 border-cyan-700/25 hover:border-cyan-500/50 hover:shadow-[0_0_50px_-12px_rgba(6,182,212,0.25)] hover:bg-cyan-950/45',
+    iconBg: 'bg-cyan-500/15 border border-cyan-500/25',
+    icon: 'text-cyan-400',
+    btn: 'bg-cyan-500/15 text-cyan-400 border-cyan-500/25 hover:bg-cyan-500/25',
+    glow: 'bg-cyan-400',
+  },
+  amber: {
+    card: 'bg-amber-950/30 border-amber-700/25 hover:border-amber-500/50 hover:shadow-[0_0_50px_-12px_rgba(245,158,11,0.25)] hover:bg-amber-950/45',
+    iconBg: 'bg-amber-500/15 border border-amber-500/25',
+    icon: 'text-amber-400',
+    btn: 'bg-amber-500/15 text-amber-400 border-amber-500/25 hover:bg-amber-500/25',
+    glow: 'bg-amber-400',
+  },
+  green: {
+    card: 'bg-green-950/30 border-green-700/25 hover:border-green-500/50 hover:shadow-[0_0_50px_-12px_rgba(34,197,94,0.25)] hover:bg-green-950/45',
+    iconBg: 'bg-green-500/15 border border-green-500/25',
+    icon: 'text-green-400',
+    btn: 'bg-green-500/15 text-green-400 border-green-500/25 hover:bg-green-500/25',
+    glow: 'bg-green-400',
+  },
+  purple: {
+    card: 'bg-purple-950/30 border-purple-700/25 hover:border-purple-500/50 hover:shadow-[0_0_50px_-12px_rgba(168,85,247,0.25)] hover:bg-purple-950/45',
+    iconBg: 'bg-purple-500/15 border border-purple-500/25',
+    icon: 'text-purple-400',
+    btn: 'bg-purple-500/15 text-purple-400 border-purple-500/25 hover:bg-purple-500/25',
+    glow: 'bg-purple-400',
+  },
+};
 
 export default function ConhecimentoPerdido() {
   useEffect(() => { window.scrollTo(0, 0); }, []);
-
-  const [activeSection, setActiveSection] = useState('intro');
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries.filter(e => e.isIntersecting);
-        if (visible.length > 0) {
-          setActiveSection(visible[0].target.id);
-        }
-      },
-      { rootMargin: '-20% 0px -60% 0px', threshold: 0 }
-    );
-    sidebarItems.forEach(item => {
-      const el = document.getElementById(item.id);
-      if (el) observer.observe(el);
-    });
-    return () => observer.disconnect();
-  }, []);
 
   return (
     <div className="min-h-screen text-stone-100 font-sans selection:bg-emerald-300/50 relative overflow-hidden"
@@ -78,28 +120,7 @@ export default function ConhecimentoPerdido() {
       <Leaf className="fixed top-[15%] right-[6%] text-emerald-900/8 pointer-events-none z-0" size={140} />
       <TreePine className="fixed bottom-[18%] left-[3%] text-emerald-900/6 pointer-events-none z-0" size={160} />
 
-      {/* ─── FIXED SIDEBAR INDEX (desktop only) ─── */}
-      <nav className="hidden xl:flex fixed left-6 top-1/2 -translate-y-1/2 z-50 flex-col gap-1.5">
-        {sidebarItems.map(item => (
-          <a
-            key={item.id}
-            href={`#${item.id}`}
-            onClick={(e) => {
-              e.preventDefault();
-              document.getElementById(item.id)?.scrollIntoView({ behavior: 'smooth' });
-            }}
-            className={`text-[9px] font-bold tracking-[0.15em] uppercase px-3 py-1.5 rounded-full border transition-all duration-300 max-w-[180px] truncate ${
-              activeSection === item.id
-                ? 'bg-emerald-500/15 border-emerald-500/30 text-emerald-400'
-                : 'bg-white/3 border-white/5 text-stone-600 hover:text-stone-400 hover:border-white/10'
-            }`}
-          >
-            {item.label}
-          </a>
-        ))}
-      </nav>
-
-      <div className="relative z-10 max-w-5xl mx-auto px-6 md:px-10 pt-24 pb-32">
+      <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-10 pt-24 pb-32">
 
         {/* ─── BREADCRUMB ─── */}
         <nav className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] mb-16 flex-wrap">
@@ -113,7 +134,7 @@ export default function ConhecimentoPerdido() {
         {/* ═══════════════════════════════════════════════════
             HERO — CONHECIMENTO PERDIDO
         ═══════════════════════════════════════════════════ */}
-        <motion.header id="intro" initial="hidden" animate="visible" variants={fadeUp} custom={0} className="mb-10">
+        <motion.header initial="hidden" animate="visible" variants={fadeUp} custom={0} className="mb-20">
           <div className="relative w-full h-72 md:h-96 rounded-2xl overflow-hidden mb-10">
             <img src={imgHero} alt="Conhecimento Perdido" className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#0a0d08] via-[#0a0d08]/40 to-transparent" />
@@ -126,8 +147,7 @@ export default function ConhecimentoPerdido() {
             </div>
           </div>
 
-          {/* ─── POSICIONAMENTO FORTE ─── */}
-          <div className="max-w-3xl space-y-5 mb-10">
+          <div className="max-w-3xl space-y-5">
             <p className="text-stone-300 text-lg md:text-xl leading-relaxed font-light">
               Este não é um guia genérico de "chás que fazem bem". É o <span className="text-emerald-400 font-semibold">núcleo biológico</span> do Projeto Autônomo — a base que sustenta toda decisão de saúde quando sistemas formais não estão disponíveis, são insuficientes ou simplesmente falharam.
             </p>
@@ -140,8 +160,12 @@ export default function ConhecimentoPerdido() {
               </p>
             </div>
           </div>
+        </motion.header>
 
-          {/* ─── MAPA VISUAL DOS SISTEMAS ─── */}
+        {/* ═══════════════════════════════════════════════════
+            MAPA DE SISTEMAS FISIOLÓGICOS
+        ═══════════════════════════════════════════════════ */}
+        <motion.section initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="mb-28">
           <div className="bg-gradient-to-br from-[#0f1a0f]/80 to-[#111f11]/60 border border-emerald-700/30 rounded-2xl p-6 md:p-10 shadow-[0_0_60px_-15px_rgba(16,185,129,0.12)]">
             <div className="flex items-center gap-3 mb-6">
               <div className="p-2.5 rounded-xl bg-emerald-500/15 border border-emerald-500/25">
@@ -185,94 +209,54 @@ export default function ConhecimentoPerdido() {
               })}
             </div>
           </div>
-
-          <p className="text-stone-400 text-xs font-bold uppercase tracking-[0.4em] mt-10">
-            Fundamentos naturais aplicados à saúde, alimentação e resiliência
-          </p>
-        </motion.header>
+        </motion.section>
 
         {/* ═══════════════════════════════════════════════════
-            CRITÉRIOS DE USO RESPONSÁVEL (TOPO)
+            GRID DE 5 BLOCOS — ECOSSISTEMA MODULAR
         ═══════════════════════════════════════════════════ */}
-        <div id="criterios">
-          <CriteriosUso />
-        </div>
-
-        {/* ═══════════════════════════════════════════════════
-            PARTE 1 — O QUE NOS FOI ESQUECIDO
-        ═══════════════════════════════════════════════════ */}
-        <motion.section id="parte-01" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="mb-28">
-          <div className="flex items-center gap-3 mb-6">
-            <span className="text-emerald-500/50 text-[10px] font-bold tracking-[0.5em] uppercase font-mono">Parte 01</span>
+        <motion.section initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="mb-28">
+          <div className="flex items-center gap-3 mb-4">
+            <span className="text-emerald-500/50 text-[10px] font-bold tracking-[0.5em] uppercase font-mono">Ecossistema</span>
             <div className="flex-1 h-px bg-emerald-800/30" />
           </div>
-          <h2 className="text-3xl md:text-5xl font-extrabold tracking-wide text-stone-200 mb-8 leading-tight uppercase"
+          <h2 className="text-3xl md:text-5xl font-extrabold tracking-wide text-stone-200 mb-4 leading-tight uppercase"
             style={{ fontFamily: "'Space Grotesk', sans-serif", letterSpacing: '0.06em' }}>
-            O QUE NOS FOI <span className="text-emerald-400">ESQUECIDO</span>
+            BLOCOS DE <span className="text-emerald-400">PROFUNDIDADE</span>
           </h2>
+          <p className="text-stone-500 text-sm md:text-base max-w-2xl leading-relaxed mb-12">
+            Cada bloco é uma rota independente com conteúdo próprio, SEO próprio e possibilidade de expansão ilimitada.
+            Navegue pelo que precisa. Aprofunde no que importa.
+          </p>
 
-          <div className="max-w-3xl space-y-6">
-            <motion.p variants={fadeUp} custom={1} initial="hidden" whileInView="visible" viewport={{ once: true }}
-              className="text-stone-300 text-lg md:text-xl leading-relaxed font-light">
-              Durante gerações, famílias plantavam, colhiam e criavam seus próprios recursos de subsistência. Não por ideologia — por necessidade. Cada quintal era uma farmácia. Cada avó era uma enciclopédia viva.
-            </motion.p>
-
-            <motion.p variants={fadeUp} custom={2} initial="hidden" whileInView="visible" viewport={{ once: true }}
-              className="text-stone-400 text-base md:text-lg leading-relaxed">
-              Com o tempo, a vida urbana substituiu a prática rural. O conhecimento que era transmitido pela observação da terra deixou de ser ensinado. O que era rotina virou exceção. O que era óbvio virou "alternativo".
-            </motion.p>
-
-            <motion.div variants={fadeUp} custom={3} initial="hidden" whileInView="visible" viewport={{ once: true }}
-              className="border-l-2 border-emerald-500/40 pl-6 py-3">
-              <p className="text-emerald-300/90 text-lg md:text-xl font-medium leading-relaxed italic" style={{ fontFamily: "'Playfair Display', serif" }}>
-                "Não nos tiraram esse conhecimento. Nos desconectamos dele. Lentamente. Geração após geração, o que era natural virou discutível."
-              </p>
-            </motion.div>
-
-            <motion.p variants={fadeUp} custom={4} initial="hidden" whileInView="visible" viewport={{ once: true }}
-              className="text-stone-400 text-base md:text-lg leading-relaxed">
-              Hoje, a maioria das pessoas não reconhece uma folha de <span className="text-emerald-400 font-semibold">hortelã</span>. Não sabe diferenciar <span className="text-emerald-400 font-semibold">poejo</span> de capim. Não entende o que é <span className="text-emerald-400 font-semibold">inflamação crônica</span>. Não associa <span className="text-emerald-400 font-semibold">sono ruim</span> com imunidade baixa.
-            </motion.p>
-
-            <motion.p variants={fadeUp} custom={5} initial="hidden" whileInView="visible" viewport={{ once: true }}
-              className="text-stone-400 text-base leading-relaxed">
-              Isso não é culpa de ninguém. É resultado da <span className="text-stone-200 font-semibold">desconexão prática com a base biológica</span>. Este módulo reconecta essa base.
-            </motion.p>
-          </div>
-
-          {/* ─── Os 3 pilares técnicos ─── */}
-          <div className="grid md:grid-cols-3 gap-5 mt-14">
-            {[
-              {
-                icon: BookOpen, title: 'Base Histórica',
-                desc: 'Farmacopeias europeias, medicina tradicional asiática, sistemas agrícolas familiares. A farmacologia moderna nasceu da extração de compostos vegetais. Ácido acetilsalicílico veio do salgueiro. Digitálicos vieram da dedaleira. A planta veio antes do laboratório.',
-                color: 'emerald',
-              },
-              {
-                icon: Brain, title: 'Base Fisiológica',
-                desc: 'Flavonoides reduzem estresse oxidativo. Compostos amargos estimulam o fígado. Fibras modulam microbiota intestinal. Óleos essenciais possuem ação antimicrobiana. Nada aqui é crença — é bioquímica aplicada.',
-                color: 'cyan',
-              },
-              {
-                icon: Shield, title: 'Base de Segurança',
-                desc: 'Nenhuma planta é inofensiva por ser natural. Faixa segura de uso, contraindicações, interações medicamentosas, duração recomendada e sinais de suspensão. Sem isso, não há responsabilidade. E sem responsabilidade, não há autoridade.',
-                color: 'amber',
-              },
-            ].map((p, i) => {
-              const colorStyles: Record<string, { card: string; iconBg: string; icon: string }> = {
-                emerald: { card: 'bg-emerald-950/30 border-emerald-700/25 hover:border-emerald-500/40 hover:shadow-[0_0_40px_-10px_rgba(16,185,129,0.2)] hover:bg-emerald-950/40', iconBg: 'bg-emerald-500/15 border border-emerald-500/25', icon: 'text-emerald-400' },
-                cyan: { card: 'bg-cyan-950/30 border-cyan-700/25 hover:border-cyan-500/40 hover:shadow-[0_0_40px_-10px_rgba(6,182,212,0.2)] hover:bg-cyan-950/40', iconBg: 'bg-cyan-500/15 border border-cyan-500/25', icon: 'text-cyan-400' },
-                amber: { card: 'bg-amber-950/30 border-amber-700/25 hover:border-amber-500/40 hover:shadow-[0_0_40px_-10px_rgba(245,158,11,0.2)] hover:bg-amber-950/40', iconBg: 'bg-amber-500/15 border border-amber-500/25', icon: 'text-amber-400' },
-              };
-              const cs = colorStyles[p.color];
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {BLOCOS.map((bloco, i) => {
+              const cm = colorMap[bloco.color];
               return (
-                <motion.div key={p.title} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i}
-                  className={`border rounded-xl p-6 md:p-8 transition-all duration-500 cursor-default group ${cs.card}`}>
-                  <div className={`p-2.5 rounded-xl w-fit mb-5 ${cs.iconBg}`}>
-                    <p.icon className={`${cs.icon} group-hover:scale-110 transition-transform duration-300`} size={20} />
-                  </div>
-                  <h4 className="text-base font-bold text-stone-200 mb-3">{p.title}</h4>
-                  <p className="text-stone-400 text-xs leading-relaxed">{p.desc}</p>
+                <motion.div key={bloco.num} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i}>
+                  <Link to={bloco.link}
+                    className={`block border rounded-2xl p-7 md:p-8 transition-all duration-500 group h-full ${cm.card}`}
+                  >
+                    <div className="flex items-center justify-between mb-5">
+                      <div className={`p-3 rounded-xl ${cm.iconBg}`}>
+                        <bloco.icon className={`${cm.icon} group-hover:scale-110 transition-transform duration-300`} size={20} />
+                      </div>
+                      <div className="flex items-center gap-1.5">
+                        <div className={`w-1.5 h-1.5 rounded-full ${cm.glow} opacity-50 animate-pulse`} />
+                        <span className={`${cm.icon} text-[9px] font-bold tracking-[0.4em] uppercase opacity-60`}>Bloco {bloco.num}</span>
+                      </div>
+                    </div>
+
+                    <h3 className="text-lg font-bold text-stone-200 mb-3 group-hover:text-white transition-colors">
+                      {bloco.title}
+                    </h3>
+                    <p className="text-stone-500 text-sm leading-relaxed mb-6 group-hover:text-stone-400 transition-colors">
+                      {bloco.desc}
+                    </p>
+
+                    <div className={`inline-flex items-center gap-2 border rounded-lg px-4 py-2.5 text-xs font-bold uppercase tracking-wider transition-all duration-300 ${cm.btn}`}>
+                      Acessar <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform duration-300" />
+                    </div>
+                  </Link>
                 </motion.div>
               );
             })}
@@ -280,166 +264,10 @@ export default function ConhecimentoPerdido() {
         </motion.section>
 
         {/* ═══════════════════════════════════════════════════
-            PARTE 2 — A BASE NATURAL DO CORPO
-        ═══════════════════════════════════════════════════ */}
-        <motion.section id="parte-02" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="mb-28">
-          <div className="flex items-center gap-3 mb-6">
-            <span className="text-emerald-500/50 text-[10px] font-bold tracking-[0.5em] uppercase font-mono">Parte 02</span>
-            <div className="flex-1 h-px bg-emerald-800/30" />
-          </div>
-          <h2 className="text-3xl md:text-5xl font-extrabold tracking-wide text-stone-200 mb-4 leading-tight uppercase"
-            style={{ fontFamily: "'Space Grotesk', sans-serif", letterSpacing: '0.06em' }}>
-            A BASE NATURAL <span className="text-emerald-400">DO CORPO</span>
-          </h2>
-          <p className="text-stone-500 text-sm md:text-base max-w-2xl leading-relaxed mb-8">
-            Organização por sistemas fisiológicos. Cada sistema recebe suas plantas específicas, com mecanismo de ação documentado.
-          </p>
-
-          <div className="relative w-full h-56 md:h-72 rounded-xl overflow-hidden mb-14">
-            <img src={imgSistemas} alt="Os 5 sistemas fisiológicos" className="w-full h-full object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0a0d08] via-[#0a0d08]/30 to-transparent" />
-            <div className="absolute bottom-4 left-5 right-5">
-              <div className="flex flex-wrap gap-2">
-                {['Digestivo', 'Respiratório', 'Nervoso', 'Imune', 'Muscular'].map(s => (
-                  <span key={s} className="text-[10px] font-bold tracking-widest uppercase bg-emerald-500/15 text-emerald-300 px-3 py-1.5 rounded-full border border-emerald-500/20">
-                    {s}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Aviso clínico */}
-          <div className="bg-red-950/30 border border-red-800/25 rounded-xl p-6 md:p-8 mb-14">
-            <div className="flex items-center gap-2 mb-4">
-              <Shield size={18} className="text-red-400" />
-              <h3 className="text-sm font-bold text-red-300 uppercase tracking-wider">Quando NÃO usar fitoterapia sozinha</h3>
-            </div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-2">
-              {[
-                'Febre persistente > 38,5°C', 'Sintomas que pioram após 48h',
-                'Dor intensa ou localizada', 'Confusão mental ou prostração',
-                'Sangramento inesperado', 'Gestante ou lactante sem orientação',
-                'Criança < 2 anos', 'Uso de medicação contínua',
-              ].map(item => (
-                <div key={item} className="flex items-center gap-2 text-xs bg-red-500/10 border border-red-500/15 p-2.5 rounded-lg">
-                  <XCircle size={12} className="text-red-400 shrink-0" />
-                  <span className="text-stone-300">{item}</span>
-                </div>
-              ))}
-            </div>
-            <p className="text-xs text-stone-500 mt-4 italic">Em qualquer dessas situações, busque atendimento médico profissional.</p>
-          </div>
-        </motion.section>
-
-        {/* ═══════════════════════════════════════════════════
-            PARTE 3 — PLANTAS MEDICINAIS NA PRÁTICA
-        ═══════════════════════════════════════════════════ */}
-        <motion.section id="parte-03" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="mb-28">
-          <div className="flex items-center gap-3 mb-6">
-            <span className="text-emerald-500/50 text-[10px] font-bold tracking-[0.5em] uppercase font-mono">Parte 03</span>
-            <div className="flex-1 h-px bg-emerald-800/30" />
-          </div>
-          <h2 className="text-3xl md:text-5xl font-extrabold tracking-wide text-stone-200 mb-4 leading-tight uppercase"
-            style={{ fontFamily: "'Space Grotesk', sans-serif", letterSpacing: '0.06em' }}>
-            PLANTAS MEDICINAIS <span className="text-emerald-400">NA PRÁTICA</span>
-          </h2>
-          <p className="text-stone-500 text-sm md:text-base max-w-2xl leading-relaxed mb-4">
-            Fichas técnicas completas com compostos ativos, sinergias documentadas, diferença entre uso fresco e seco, 
-            impacto térmico, risco de uso crônico e quando a planta NÃO é primeira opção.
-          </p>
-
-          <div className="relative w-full h-56 md:h-72 rounded-xl overflow-hidden mb-14">
-            <img src={imgPlantas} alt="Plantas medicinais na prática" className="w-full h-full object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0a0d08] via-[#0a0d08]/30 to-transparent" />
-          </div>
-
-          {/* ─── FICHAS POR SISTEMA ─── */}
-          <SistemaSection titulo="DIGESTIVO" subtitulo="Bile, motilidade intestinal e proteção da mucosa gástrica." icon={Flame} plantas={DIGESTIVO} accentColor="green" index={1} />
-          <SistemaSection titulo="RESPIRATÓRIO" subtitulo="Broncodilatação, fluidificação de muco e ação antimicrobiana leve." icon={Wind} plantas={RESPIRATORIO} accentColor="cyan" index={2} />
-          <SistemaSection titulo="NERVOSO" subtitulo="Modulação GABA, relaxamento e qualidade do sono." icon={Brain} plantas={NERVOSO} accentColor="purple" index={3} />
-          <SistemaSection titulo="IMUNE" subtitulo="Modulação da resposta imune, ação antimicrobiana e anti-inflamatória." icon={Shield} plantas={IMUNE} accentColor="amber" index={4} />
-          <SistemaSection titulo="MUSCULAR & INFLAMATÓRIO" subtitulo="Circulação local, cicatrização e redução da inflamação tópica." icon={Heart} plantas={MUSCULAR} accentColor="orange" index={5} />
-        </motion.section>
-
-        {/* ═══════════════════════════════════════════════════
-            MATRIZ COMPARATIVA DAS 12 PLANTAS
-        ═══════════════════════════════════════════════════ */}
-        <div id="matriz">
-          <MatrizComparativa />
-        </div>
-
-        {/* ═══════════════════════════════════════════════════
-            PARTE 4 — MANUAL APLICADO
-        ═══════════════════════════════════════════════════ */}
-        <motion.section id="parte-04" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="mb-28">
-          <div className="flex items-center gap-3 mb-6">
-            <span className="text-emerald-500/50 text-[10px] font-bold tracking-[0.5em] uppercase font-mono">Parte 04</span>
-            <div className="flex-1 h-px bg-emerald-800/30" />
-          </div>
-          <h2 className="text-3xl md:text-5xl font-extrabold tracking-wide text-stone-200 mb-8 leading-tight uppercase"
-            style={{ fontFamily: "'Space Grotesk', sans-serif", letterSpacing: '0.06em' }}>
-            MANUAL <span className="text-emerald-400">APLICADO</span>
-          </h2>
-
-          <div className="bg-emerald-950/40 border border-emerald-800/25 rounded-2xl p-8 md:p-12">
-            <p className="text-stone-300 text-base md:text-lg leading-relaxed mb-8">
-              Cada planta documentada neste módulo segue um <span className="text-emerald-400 font-semibold">padrão técnico fixo</span> que mantém a autoridade do protocolo. A diferença entre informação e formação é a estrutura.
-            </p>
-
-            <div className="grid md:grid-cols-2 gap-4 mb-10">
-              {[
-                { label: 'Informação', example: '"Camomila acalma."', type: 'bad' as const },
-                { label: 'Formação', example: 'Princípio ativo: apigenina · Mecanismo: modulação GABA · Sinergias: +capim-limão · Térmico: neutro · Risco crônico: absorção de ferro · Dose: 1-2g flor seca/xícara', type: 'good' as const },
-              ].map(item => (
-                <div key={item.label} className={`p-6 rounded-xl border ${item.type === 'bad' ? 'bg-red-950/20 border-red-800/20' : 'bg-emerald-950/30 border-emerald-700/25'}`}>
-                  <div className="flex items-center gap-2 mb-3">
-                    {item.type === 'bad' ? <XCircle size={16} className="text-red-400" /> : <CheckCircle2 size={16} className="text-emerald-400" />}
-                    <span className={`text-sm font-bold ${item.type === 'bad' ? 'text-red-300' : 'text-emerald-300'}`}>{item.label}</span>
-                  </div>
-                  <p className={`text-xs leading-relaxed ${item.type === 'bad' ? 'text-stone-500 italic' : 'text-stone-300 font-mono'}`}>{item.example}</p>
-                </div>
-              ))}
-            </div>
-
-            <h4 className="text-sm font-bold text-stone-300 uppercase tracking-wider mb-5">Padrão fixo de cada ficha técnica</h4>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-              {[
-                { icon: Leaf, label: 'Nome e espécie' },
-                { icon: Activity, label: 'O que melhora' },
-                { icon: Brain, label: 'Como age' },
-                { icon: FlaskConical, label: 'Compostos ativos' },
-                { icon: FlaskConical, label: 'Como preparar' },
-                { icon: Shield, label: 'Faixa segura' },
-                { icon: XCircle, label: 'Contraindicações' },
-                { icon: AlertTriangle, label: 'Interações' },
-                { icon: Eye, label: 'Sinais de suspensão' },
-                { icon: Package, label: 'Parte utilizada' },
-                { icon: Sun, label: 'Impacto térmico' },
-                { icon: Activity, label: 'Sinergias' },
-              ].map(f => (
-                <div key={f.label} className="flex items-center gap-2 bg-white/5 border border-white/10 rounded-lg px-3 py-2.5">
-                  <f.icon size={13} className="text-emerald-500 shrink-0" />
-                  <span className="text-xs text-stone-300">{f.label}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </motion.section>
-
-        {/* ═══════════════════════════════════════════════════
-            PARTE 5 — EDUCAÇÃO BOTÂNICA FAMILIAR (EXPANDIDA)
-        ═══════════════════════════════════════════════════ */}
-        <div id="parte-05">
-          <EducacaoBotanica />
-        </div>
-
-        {/* ═══════════════════════════════════════════════════
-            BLOCO ESTRATÉGICO — LIVRO EM EDIÇÃO
+            PUBLICAÇÃO EM PRODUÇÃO
         ═══════════════════════════════════════════════════ */}
         <motion.section initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="mb-28">
           <div className="relative rounded-2xl overflow-hidden border border-emerald-700/20">
-            {/* Background pattern */}
             <div className="absolute inset-0 bg-gradient-to-br from-[#0f1a0f] via-[#111f11] to-[#0a150a]" />
             <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(255,255,255,0.15) 1px, transparent 0)', backgroundSize: '24px 24px' }} />
             
@@ -494,9 +322,9 @@ export default function ConhecimentoPerdido() {
         </motion.section>
 
         {/* ═══════════════════════════════════════════════════
-            INTEGRAÇÃO — ENCERRAMENTO
+            INTEGRAÇÃO — LINKS BIDIRECIONAIS
         ═══════════════════════════════════════════════════ */}
-        <motion.section id="integracao" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="mb-20">
+        <motion.section initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="mb-20">
           <div className="bg-gradient-to-br from-emerald-950/50 to-[#0a0d08]/80 border border-emerald-800/20 rounded-2xl p-8 md:p-14">
             <div className="flex items-center gap-3 mb-8">
               <Shield className="text-emerald-400" size={20} />
@@ -508,69 +336,43 @@ export default function ConhecimentoPerdido() {
                 Este bloco se conecta com todos os módulos do Projeto Autônomo. <span className="text-emerald-400 font-semibold">Sem corpo saudável, não há autonomia real.</span>
               </p>
 
-              {/* ─── Conexão direta com Saúde Preventiva ─── */}
-              <div className="bg-emerald-500/8 border border-emerald-500/15 rounded-xl p-5 mb-4">
-                <div className="flex items-center gap-2 mb-3">
-                  <Heart size={16} className="text-emerald-400" />
-                  <p className="text-sm font-bold text-emerald-300">Conexão direta: Saúde Preventiva</p>
+              {/* ─── Link bidirecional: Sabedoria Ancestral ─── */}
+              <Link to="/projeto-autonomo/sabedoria-ancestral"
+                className="flex items-center justify-between bg-emerald-500/8 border border-emerald-500/20 rounded-xl p-5 hover:bg-emerald-500/15 hover:border-emerald-400/30 transition-all duration-300 group"
+              >
+                <div className="flex items-center gap-4">
+                  <div className="p-2.5 bg-emerald-500/15 rounded-xl">
+                    <Leaf size={18} className="text-emerald-400" />
+                  </div>
+                  <div>
+                    <p className="text-emerald-300 text-sm font-bold">Sabedoria Ancestral</p>
+                    <p className="text-stone-500 text-xs mt-0.5">Hub de saúde natural, soberania alimentar e módulos práticos</p>
+                  </div>
                 </div>
-                <p className="text-stone-400 text-xs leading-relaxed mb-3">
-                  Este módulo complementa diretamente o módulo de <span className="text-emerald-300 font-semibold">Saúde Preventiva</span>. 
-                  Lá você encontra protocolos de rotina para manter o corpo funcionando antes de precisar de qualquer planta. 
-                  Aqui, você age quando o corpo sinaliza que algo saiu do equilíbrio. Um sem o outro é incompleto.
-                </p>
-                <Link to="/projeto-autonomo/saude-preventiva" className="inline-flex items-center gap-1.5 text-emerald-400 text-xs font-bold hover:text-emerald-300 transition-colors">
-                  Acessar Saúde Preventiva <ChevronRight size={12} />
+                <ChevronRight className="text-emerald-500/40 group-hover:text-emerald-400 group-hover:translate-x-1 transition-all" size={18} />
+              </Link>
+
+              {/* ─── Conexão direta com Saúde Preventiva ─── */}
+              <Link to="/projeto-autonomo/saude-preventiva"
+                className="flex items-center justify-between bg-emerald-500/8 border border-emerald-500/15 rounded-xl p-5 hover:bg-emerald-500/15 hover:border-emerald-400/30 transition-all duration-300 group"
+              >
+                <div className="flex items-center gap-4">
+                  <div className="p-2.5 bg-emerald-500/15 rounded-xl">
+                    <Heart size={18} className="text-emerald-400" />
+                  </div>
+                  <div>
+                    <p className="text-emerald-300 text-sm font-bold">Saúde Preventiva</p>
+                    <p className="text-stone-500 text-xs mt-0.5">Protocolos de rotina para manter o corpo funcionando antes de precisar de qualquer planta</p>
+                  </div>
+                </div>
+                <ChevronRight className="text-emerald-500/40 group-hover:text-emerald-400 group-hover:translate-x-1 transition-all" size={18} />
+              </Link>
+
+              <div className="mt-4">
+                <Link to="/projeto-autonomo" className="btn-secondary text-center inline-block">
+                  ← Projeto Autônomo
                 </Link>
               </div>
-
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                {[
-                  { label: 'Fitoterapia Aplicada', link: '/projeto-autonomo/fitoterapia-aplicada' },
-                  { label: 'Primeiros Socorros', link: '/projeto-autonomo/primeiros-socorros' },
-                  { label: 'Avaliação de Sinais', link: '/projeto-autonomo/avaliacao-sinais' },
-                  { label: 'Controle de Vetores', link: '/projeto-autonomo/controle-vetores' },
-                  { label: 'Horta Urbana', link: '/projeto-autonomo/horta-urbana' },
-                  { label: 'Solo e Fertilidade', link: '/projeto-autonomo/solo-fertilidade' },
-                ].map(m => (
-                  <Link key={m.label} to={m.link}
-                    className="flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/15 rounded-lg px-3 py-2.5 hover:bg-emerald-500/20 hover:border-emerald-400/30 transition-all duration-300 group">
-                    <CheckCircle2 size={13} className="text-emerald-500 shrink-0" />
-                    <span className="text-xs text-stone-300 group-hover:text-emerald-300 transition-colors">{m.label}</span>
-                  </Link>
-                ))}
-              </div>
-
-              <div className="border-t border-emerald-800/20 pt-6 mt-6">
-                <p className="text-stone-400 text-sm leading-relaxed">
-                  Corpo forte → Resposta melhor. Inflamação controlada → Recuperação mais rápida. Alimentação limpa → Sistema imune funcional.
-                </p>
-                <p className="text-emerald-400 font-semibold text-sm mt-3" style={{ fontFamily: "'Playfair Display', serif" }}>
-                  Autonomia não começa no estoque. Começa no corpo.
-                </p>
-              </div>
-            </div>
-
-            {/* ─── Link bidirecional: Sabedoria Ancestral ─── */}
-            <Link to="/projeto-autonomo/sabedoria-ancestral"
-              className="mt-8 flex items-center justify-between bg-emerald-500/8 border border-emerald-500/20 rounded-xl p-5 hover:bg-emerald-500/15 hover:border-emerald-400/30 transition-all duration-300 group"
-            >
-              <div className="flex items-center gap-4">
-                <div className="p-2.5 bg-emerald-500/15 rounded-xl">
-                  <Leaf size={18} className="text-emerald-400" />
-                </div>
-                <div>
-                  <p className="text-emerald-300 text-sm font-bold">Sabedoria Ancestral</p>
-                  <p className="text-stone-500 text-xs mt-0.5">Hub de saúde natural, soberania alimentar e módulos práticos</p>
-                </div>
-              </div>
-              <ChevronRight className="text-emerald-500/40 group-hover:text-emerald-400 group-hover:translate-x-1 transition-all" size={18} />
-            </Link>
-
-            <div className="mt-4 flex flex-col sm:flex-row gap-4">
-              <Link to="/projeto-autonomo" className="btn-secondary text-center">
-                ← Projeto Autônomo
-              </Link>
             </div>
           </div>
         </motion.section>
