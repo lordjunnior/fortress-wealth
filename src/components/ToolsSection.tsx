@@ -42,12 +42,13 @@ const tools = [
     route: "/taxa-de-fuga",
   },
   {
-    title: "SUPPLY SHOCK",
+    title: "RELÓGIO DO JUÍZO FINAL",
     icon: BarChart3,
-    description: "Visualização matemática do choque de oferta. Menos de 7% de todo o Bitcoin restante no mundo está disponível para mineração. A porta está fechando.",
-    button: "Acessar Painel de Dados",
-    tag: "93%+ MINERADOS",
+    description: "Countdown ao vivo até o próximo halving. Dados reais da blockchain, supply minerado, blocos restantes — a escassez absoluta do Bitcoin em tempo real. A porta está fechando.",
+    button: "Iniciar Contagem Regressiva",
+    tag: "AO VIVO",
     progress: 93.4,
+    route: "/supply-shock",
   },
 ];
 
