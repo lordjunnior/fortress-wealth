@@ -3,8 +3,16 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft, ShieldCheck, TrendingUp, Zap, Lock, Globe, Scale, AlertTriangle, Landmark, Building2, Gem, BarChart3 } from 'lucide-react';
 import SatCounter from '@/components/SatCounter';
 import NetworkTicker from '@/components/NetworkTicker';
+import { TerminalHeader } from '@/components/supply-shock/TerminalHeader';
+import { CountdownTimer } from '@/components/supply-shock/CountdownTimer';
+import { StatsGrid } from '@/components/supply-shock/StatsGrid';
+import { SupplyBar } from '@/components/supply-shock/SupplyBar';
+import { fetchBitcoinStats } from '@/components/supply-shock/bitcoinService';
+import { BitcoinStats } from '@/components/supply-shock/types';
+import { STRINGS } from '@/components/supply-shock/constants';
 
 const NAV_ITEMS = [
+  { id: 'dados-vivos', label: 'Dados ao Vivo' },
   { id: 'escala', label: 'A Escala da Soberania' },
   { id: 'ilusao', label: 'A Ilusão do Market Cap' },
   { id: 'ouro-digital', label: 'Ouro Digital vs. BC' },
@@ -39,10 +47,29 @@ const INSTITUTIONS = [
 ];
 
 export default function SupplyShock() {
-  const [activeSection, setActiveSection] = useState('escala');
+  const [activeSection, setActiveSection] = useState('dados-vivos');
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [btcStats, setBtcStats] = useState<BitcoinStats | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => { window.scrollTo(0, 0); }, []);
+
+  // Fetch live Bitcoin stats
+  useEffect(() => {
+    const loadStats = async () => {
+      try {
+        const stats = await fetchBitcoinStats();
+        setBtcStats(stats);
+      } catch (err) {
+        console.error('Failed to fetch BTC stats:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadStats();
+    const interval = setInterval(loadStats, 60000);
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -164,6 +191,36 @@ export default function SupplyShock() {
             </div>
           </header>
 
+          {/* === BLOCO 0: DADOS AO VIVO === */}
+          <section id="dados-vivos" className="mb-28 scroll-mt-24">
+            <div className="flex flex-col items-center">
+              <TerminalHeader />
+
+              {loading ? (
+                <div className="text-slate-500 font-mono text-sm animate-pulse my-12">
+                  Conectando à rede Bitcoin...
+                </div>
+              ) : btcStats ? (
+                <>
+                  <StatsGrid stats={btcStats} />
+                  <SupplyBar
+                    circulatingSupply={btcStats.circulatingSupply}
+                    percentageMined={btcStats.percentageMined}
+                  />
+                  <CountdownTimer targetDate={btcStats.estimatedHalvingDate} />
+                </>
+              ) : (
+                <div className="text-red-500 font-mono text-sm my-12">
+                  Falha ao conectar à rede. Recarregue a página.
+                </div>
+              )}
+
+              <p className="text-slate-600 text-xs font-mono mt-8 tracking-widest">
+                {STRINGS.FOOTER}
+              </p>
+            </div>
+          </section>
+
           {/* === BLOCO 1: A ESCALA DA SOBERANIA === */}
           <section id="escala" className="mb-28 scroll-mt-24">
             <div className="flex items-center gap-3 text-amber-500 mb-10">
@@ -190,10 +247,10 @@ export default function SupplyShock() {
                       boxShadow: b.label === 'Bitcoin' ? '0 0 30px rgba(249,115,22,0.4)' : 'none',
                     }}
                   >
-                    <span className={`font-black text-[${b.size > 100 ? '11' : '8'}px] uppercase tracking-wider ${b.label === 'Bitcoin' ? 'text-orange-400' : 'text-white/60'}`} style={{ fontSize: b.size > 100 ? '11px' : '8px' }}>
+                    <span className={`font-black uppercase tracking-wider ${b.label === 'Bitcoin' ? 'text-orange-400' : 'text-white/60'}`} style={{ fontSize: b.size > 100 ? '11px' : '8px' }}>
                       {b.label}
                     </span>
-                    <span className={`font-mono font-bold ${b.label === 'Bitcoin' ? 'text-orange-300 text-[9px]' : 'text-white/40 text-[9px]'}`}>
+                    <span className={`font-mono font-bold text-[9px] ${b.label === 'Bitcoin' ? 'text-orange-300' : 'text-white/40'}`}>
                       {b.value}
                     </span>
                   </div>
