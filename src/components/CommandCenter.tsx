@@ -46,7 +46,7 @@ const CommandCenter = () => {
   const [impostoSeg, setImpostoSeg] = useState("---");
   const [impostoPessoa, setImpostoPessoa] = useState("---");
   const [flash, setFlash] = useState<FlashState>({ fiscal: null, divida: null });
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
 
   const rafRef = useRef<number | null>(null);
   const lastFrameRef = useRef(0);
