@@ -303,35 +303,37 @@ export default function ConhecimentoPerdido() {
             PUBLICAÇÃO EM PRODUÇÃO
         ═══════════════════════════════════════════════════ */}
         <motion.section initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="mb-28">
-          <div className="relative rounded-2xl overflow-hidden border border-amber-700/20">
-            <div className="absolute inset-0 bg-gradient-to-br from-stone-900/80 via-stone-950/80 to-stone-900/60" />
-            <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(255,255,255,0.15) 1px, transparent 0)', backgroundSize: '24px 24px' }} />
+          <div className="relative rounded-2xl overflow-hidden border-2 border-amber-500/40">
+            {/* Hot gradient background */}
+            <div className="absolute inset-0 bg-gradient-to-br from-amber-950/90 via-[#1a1206] to-stone-950/90" />
+            <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(255,200,50,0.3) 1px, transparent 0)', backgroundSize: '20px 20px' }} />
+            {/* Top accent line */}
+            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-amber-400 to-transparent" />
             
-            <div className="relative p-8 md:p-12">
-              <div className="flex items-center justify-between mb-8">
-                <div className="flex items-center gap-3">
-                  <div className="w-1 h-10 rounded-full bg-gradient-to-b from-amber-400 to-amber-600" />
-                  <div>
-                    <span className="text-amber-500/60 text-[9px] font-bold tracking-[0.5em] uppercase">Publicação independente</span>
-                    <p className="text-stone-200 text-lg font-bold mt-0.5">Material em produção</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-2 bg-amber-500/10 border border-amber-500/20 px-3 py-1.5 rounded-full">
-                  <div className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
-                  <span className="text-amber-400 text-[9px] font-bold tracking-widest uppercase">Em progresso</span>
-                </div>
+            <div className="relative p-10 md:p-16">
+              {/* Badge */}
+              <div className="flex items-center gap-2 bg-amber-400/15 border border-amber-400/30 px-4 py-2 rounded-full w-fit mb-8">
+                <div className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
+                <span className="text-amber-300 text-[10px] font-black tracking-[0.3em] uppercase">Publicação em construção</span>
               </div>
 
-              <p className="text-stone-400 text-sm md:text-base leading-relaxed max-w-2xl mb-4">
-                O que existe hoje neste módulo é o núcleo inicial. A publicação final vai além — cobrindo dezenas de plantas organizadas por bioma, 
-                centenas de fichas técnicas com profundidade farmacológica, protocolos sazonais regionalizados, 
-                guias completos de formação familiar e exercícios práticos de campo.
+              {/* Hero title */}
+              <h2 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter uppercase leading-[0.9] mb-4"
+                style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+                <span className="text-stone-200">ISSO AQUI VAI</span><br />
+                <span className="text-amber-400" style={{ textShadow: '0 0 40px rgba(245,158,11,0.4), 0 0 80px rgba(245,158,11,0.15)' }}>
+                  VIRAR LIVRO.
+                </span>
+              </h2>
+
+              <p className="text-stone-300 text-lg md:text-xl leading-relaxed max-w-2xl mb-3 font-light">
+                O que você vê agora é o <span className="text-amber-400 font-bold">esqueleto</span>. A versão final é uma publicação independente com profundidade farmacológica real — dezenas de plantas por bioma, protocolos sazonais, fichas técnicas que nenhum app entrega.
               </p>
-              <p className="text-stone-500 text-xs leading-relaxed max-w-2xl mb-8">
-                Um material denso, técnico e independente — construído para funcionar mesmo sem internet, sem app e sem plataforma.
+              <p className="text-stone-500 text-sm leading-relaxed max-w-2xl mb-10">
+                Denso. Técnico. Offline. Construído para funcionar quando tudo mais falhar.
               </p>
 
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-8">
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-10">
                 {[
                   { label: 'Fichas técnicas expandidas', value: 'Catálogo completo por bioma' },
                   { label: 'Protocolos sazonais', value: 'Regionalização por clima' },
@@ -340,17 +342,17 @@ export default function ConhecimentoPerdido() {
                   { label: 'Farmacologia aplicada', value: 'Mecanismos, vias e compostos' },
                   { label: 'Guia de cultivo medicinal', value: 'Da semente à colheita correta' },
                 ].map(item => (
-                  <div key={item.label} className="bg-amber-500/5 border border-amber-500/15 rounded-lg p-3.5 hover:bg-amber-500/10 transition-colors">
-                    <p className="text-stone-200 text-xs font-semibold">{item.label}</p>
-                    <p className="text-stone-500 text-[10px] mt-1">{item.value}</p>
+                  <div key={item.label} className="bg-amber-400/8 border border-amber-500/25 rounded-xl p-4 hover:bg-amber-400/15 hover:border-amber-400/40 transition-all duration-300">
+                    <p className="text-amber-200 text-sm font-bold">{item.label}</p>
+                    <p className="text-stone-500 text-xs mt-1.5 leading-relaxed">{item.value}</p>
                   </div>
                 ))}
               </div>
 
-              <div className="flex items-center gap-3 pt-6 border-t border-stone-800/40">
-                <Leaf size={14} className="text-amber-500/50" />
-                <p className="text-stone-600 text-xs leading-relaxed">
-                  O título e formato final serão divulgados quando o material estiver pronto para publicação.
+              <div className="flex items-center gap-3 pt-8 border-t border-amber-800/25">
+                <Leaf size={16} className="text-amber-400/60" />
+                <p className="text-stone-400 text-sm leading-relaxed font-medium">
+                  O título e formato final serão divulgados quando o material estiver pronto. <span className="text-amber-400">Isso não é promessa — é construção.</span>
                 </p>
               </div>
             </div>
