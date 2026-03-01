@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import imgSoberaniaAlimentar from '@/assets/fase03-soberania-alimentar.jpg';
 import imgBase72 from '@/assets/fase01-base72.jpg';
 import imgAutonomiaBiologica from '@/assets/fase02-autonomia-biologica.jpg';
+import imgConhecimentoPerdido from '@/assets/cp-hero-conhecimento.jpg';
 
 /* ─── SEO: meta keywords target ───
    projeto autônomo, base 72 horas, autonomia biológica, soberania alimentar,
@@ -233,30 +234,37 @@ export default function ProjetoAutonomo() {
           className="mb-28"
         >
           <Link to="/projeto-autonomo/conhecimento-perdido"
-            className="block bg-gradient-to-br from-emerald-900/40 to-stone-900/60 border-2 border-emerald-600/30 rounded-3xl p-8 md:p-12 hover:border-emerald-500/50 hover:shadow-2xl hover:shadow-emerald-900/20 hover:scale-[1.01] transition-all duration-500 group relative overflow-hidden"
+            className="block border-2 border-emerald-200/50 rounded-3xl overflow-hidden hover:border-emerald-400/60 hover:shadow-2xl hover:shadow-emerald-900/20 hover:scale-[1.005] transition-all duration-500 group relative"
           >
-            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500 via-emerald-400 to-emerald-600 opacity-80" />
-            <div className="flex flex-col md:flex-row items-start gap-6 md:gap-10">
-              <div className="p-5 bg-emerald-600/15 border border-emerald-500/25 rounded-2xl shrink-0 group-hover:bg-emerald-600/25 transition-colors">
-                <BookOpen className="text-emerald-400" size={32} />
+            {/* Hero image band — same pattern as phases */}
+            <div className="relative w-full h-64 md:h-80 overflow-hidden">
+              <img src={imgConhecimentoPerdido} alt="Conhecimento Perdido" className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" />
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-emerald-50/100" />
+              <div className="absolute inset-0 bg-gradient-to-t from-transparent to-black/20" />
+              <div className="absolute bottom-6 left-8 md:left-14 z-10">
+                <span className="text-emerald-300 text-[10px] font-bold tracking-[0.5em] uppercase drop-shadow-lg">Ecossistema Completo</span>
+                <h2 className="text-4xl md:text-6xl font-bold tracking-tight leading-[0.95] mt-1 text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.5)]" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+                  Conhecimento<br /><span className="text-emerald-300">Perdido</span>
+                </h2>
               </div>
-              <div className="flex-1">
-                <span className="text-emerald-500/60 text-[10px] font-bold tracking-[0.5em] uppercase">Ecossistema Completo</span>
-                <h3 className="text-3xl md:text-4xl font-black text-stone-100 mt-2 mb-3 tracking-tight" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
-                  CONHECIMENTO PERDIDO
-                </h3>
-                <p className="text-stone-400 text-sm md:text-base leading-relaxed max-w-2xl mb-4">
-                  Fundamentos naturais aplicados à saúde, alimentação e resiliência. 12 plantas organizadas por sistema corporal com fichas técnicas completas, dosagens seguras, contraindicações, educação botânica familiar e integração com todo o Protocolo Autônomo.
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {['5 Sistemas Corporais', '12 Plantas Documentadas', 'Fichas Técnicas', 'Educação Familiar'].map(tag => (
-                    <span key={tag} className="text-[10px] font-bold tracking-wider uppercase bg-emerald-500/10 text-emerald-400 px-3 py-1.5 rounded-full border border-emerald-500/20">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
+              <BookOpen className="absolute top-6 right-6 text-white/10" size={120} />
+            </div>
+
+            {/* Content area */}
+            <div className="bg-emerald-50/80 p-8 md:p-12 relative">
+              <p className="text-stone-500 text-sm md:text-base leading-relaxed max-w-2xl mb-4">
+                Fundamentos naturais aplicados à saúde, alimentação e resiliência. 12 plantas organizadas por sistema corporal com fichas técnicas completas, dosagens seguras, contraindicações, educação botânica familiar e integração com todo o Protocolo Autônomo.
+              </p>
+              <div className="flex flex-wrap gap-2 mb-4">
+                {['5 Sistemas Corporais', '12 Plantas Documentadas', 'Fichas Técnicas', 'Educação Familiar'].map(tag => (
+                  <span key={tag} className="text-[10px] font-bold tracking-wider uppercase bg-emerald-100/80 text-emerald-700 px-3 py-1.5 rounded-full border border-emerald-200/60">
+                    {tag}
+                  </span>
+                ))}
               </div>
-              <ArrowRight className="text-emerald-600/30 group-hover:text-emerald-400 group-hover:translate-x-2 transition-all duration-500 shrink-0 mt-2" size={28} />
+              <div className="flex items-center gap-2 text-emerald-600 text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all duration-300">
+                Explorar Ecossistema <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+              </div>
             </div>
           </Link>
         </motion.div>
