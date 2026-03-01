@@ -13,12 +13,14 @@ import WhyBitcoinSection from "@/components/WhyBitcoinSection";
 import FooterSection from "@/components/FooterSection";
 import QuoteCarousel from "@/components/QuoteCarousel";
 import NetworkTicker from "@/components/NetworkTicker";
+import CommandCenter from "@/components/CommandCenter";
 import SovereignTermModal from "@/components/SovereignTermModal";
 
 const Index = () => {
   return (
-    <div className="min-h-screen text-foreground pt-[38px]">
+    <div className="min-h-screen text-foreground pt-[64px]">
       <NetworkTicker />
+      <CommandCenter />
       <SovereignTermModal />
       <NoiseBackground />
 
