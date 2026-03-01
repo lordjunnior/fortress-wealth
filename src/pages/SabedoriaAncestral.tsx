@@ -102,42 +102,71 @@ export default function SabedoriaAncestral() {
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
   return (
-    <div className="min-h-screen text-stone-900 font-sans selection:bg-emerald-300/50 relative overflow-hidden"
-      style={{ background: 'linear-gradient(180deg, #1a1f16 0%, #1e2518 8%, #222d1c 20%, #263220 35%, #2a3724 50%, #263220 70%, #222d1c 85%, #1a1f16 100%)' }}
+    <div className="min-h-screen font-sans selection:bg-amber-300/30 relative overflow-hidden"
+      style={{ background: 'linear-gradient(180deg, #0d0b08 0%, #151210 8%, #1a1510 20%, #1e1912 35%, #211c14 50%, #1e1912 70%, #151210 85%, #0d0b08 100%)' }}
     >
-      {/* ─── Atmospheric background ─── */}
-      <div className="fixed inset-0 pointer-events-none z-0">
+      {/* ─── Spore/Seed Particles ─── */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-70">
         <style>{`
-          @keyframes ancestralGlow {
-            0%, 100% { opacity: 0.15; transform: scale(1); }
-            50% { opacity: 0.25; transform: scale(1.05); }
+          @keyframes sporeDrift {
+            from { transform: translateY(0) translateX(0) rotate(0deg); }
+            to { transform: translateY(-1200px) translateX(80px) rotate(180deg); }
           }
-          @keyframes leafDrift {
-            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.04; }
-            50% { transform: translateY(-20px) rotate(3deg); opacity: 0.08; }
+          @keyframes sporeDrift2 {
+            from { transform: translateY(0) translateX(0) rotate(0deg); }
+            to { transform: translateY(-1000px) translateX(-60px) rotate(-120deg); }
+          }
+          @keyframes sporeDrift3 {
+            from { transform: translateY(0) translateX(0); }
+            to { transform: translateY(-800px) translateX(40px); }
+          }
+          .spore-layer {
+            position: absolute; width: 100%; height: 250%;
+            background-image:
+              radial-gradient(1.5px 1.5px at 8% 15%, rgba(180,140,60,0.5) 100%, transparent),
+              radial-gradient(1px 1px at 22% 45%, rgba(160,120,50,0.4) 100%, transparent),
+              radial-gradient(2px 2px at 35% 70%, rgba(120,90,40,0.3) 100%, transparent),
+              radial-gradient(1px 1px at 55% 25%, rgba(200,160,70,0.35) 100%, transparent),
+              radial-gradient(1.5px 1.5px at 68% 60%, rgba(140,110,50,0.4) 100%, transparent),
+              radial-gradient(1px 1px at 82% 80%, rgba(100,80,35,0.3) 100%, transparent),
+              radial-gradient(2px 2px at 45% 40%, rgba(80,120,50,0.25) 100%, transparent),
+              radial-gradient(1px 1px at 90% 15%, rgba(160,140,60,0.35) 100%, transparent);
+            background-size: 220px 220px;
+            animation: sporeDrift 55s linear infinite;
+          }
+          .spore-layer-2 {
+            background-size: 320px 320px;
+            animation: sporeDrift2 75s linear infinite;
+            opacity: 0.6;
+          }
+          .spore-layer-3 {
+            background-size: 180px 180px;
+            animation: sporeDrift3 95s linear infinite;
+            opacity: 0.35;
           }
         `}</style>
-        <div className="absolute top-[10%] left-[5%] w-[600px] h-[600px] rounded-full"
-          style={{ background: 'radial-gradient(circle, rgba(34,120,60,0.2) 0%, transparent 70%)', animation: 'ancestralGlow 18s ease-in-out infinite' }} />
-        <div className="absolute bottom-[15%] right-[10%] w-[500px] h-[500px] rounded-full"
-          style={{ background: 'radial-gradient(circle, rgba(180,140,60,0.12) 0%, transparent 70%)', animation: 'ancestralGlow 22s ease-in-out 4s infinite' }} />
+        <div className="spore-layer"></div>
+        <div className="spore-layer spore-layer-2"></div>
+        <div className="spore-layer spore-layer-3"></div>
       </div>
 
-      {/* Floating icons */}
-      <Leaf className="fixed top-[20%] right-[8%] text-emerald-800/10 pointer-events-none z-0" size={120}
-        style={{ animation: 'leafDrift 16s ease-in-out infinite' }} />
-      <TreePine className="fixed bottom-[20%] left-[5%] text-emerald-900/8 pointer-events-none z-0" size={140}
-        style={{ animation: 'leafDrift 20s ease-in-out 3s infinite' }} />
+      {/* ─── Atmospheric radials ─── */}
+      <div className="fixed inset-0 pointer-events-none z-0">
+        <div className="absolute top-[10%] left-[5%] w-[600px] h-[600px] rounded-full"
+          style={{ background: 'radial-gradient(circle, rgba(120,90,30,0.12) 0%, transparent 70%)' }} />
+        <div className="absolute bottom-[15%] right-[10%] w-[500px] h-[500px] rounded-full"
+          style={{ background: 'radial-gradient(circle, rgba(80,110,40,0.08) 0%, transparent 70%)' }} />
+      </div>
 
       <div className="relative z-10 max-w-5xl mx-auto px-6 md:px-10 pt-24 pb-32">
 
         {/* ─── BREADCRUMB ─── */}
         <nav className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] mb-16 flex-wrap">
-          <Link to="/" className="text-stone-500 hover:text-emerald-400 transition-colors">Início</Link>
+          <Link to="/" className="text-stone-500 hover:text-amber-400 transition-colors">Início</Link>
           <span className="text-stone-700">/</span>
-          <Link to="/projeto-autonomo" className="text-stone-500 hover:text-emerald-400 transition-colors">Projeto Autônomo</Link>
+          <Link to="/projeto-autonomo" className="text-stone-500 hover:text-amber-400 transition-colors">Projeto Autônomo</Link>
           <span className="text-stone-700">/</span>
-          <span className="text-emerald-400">Sabedoria Ancestral</span>
+          <span className="text-amber-400">Sabedoria Ancestral</span>
         </nav>
 
         {/* ═══════════════════════════════════════════════════
@@ -145,14 +174,14 @@ export default function SabedoriaAncestral() {
         ═══════════════════════════════════════════════════ */}
         <motion.header initial="hidden" animate="visible" variants={fadeUp} custom={0} className="mb-24">
           <div className="flex items-start gap-5 mb-8">
-            <div className="p-4 bg-emerald-600/15 border border-emerald-500/20 rounded-2xl mt-1">
-              <Leaf className="text-emerald-400" size={28} />
+            <div className="p-4 bg-amber-700/15 border border-amber-600/20 rounded-2xl mt-1">
+              <Leaf className="text-amber-400" size={28} />
             </div>
             <div>
-              <p className="text-emerald-500/70 text-[10px] font-bold uppercase tracking-[0.5em] mb-3">Projeto Autônomo · Sabedoria Ancestral</p>
+              <p className="text-amber-500/70 text-[10px] font-bold uppercase tracking-[0.5em] mb-3">Projeto Autônomo · Sabedoria Ancestral</p>
               <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter uppercase leading-[0.9]" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
                 <span className="text-stone-200">O QUE A</span><br />
-                <span className="text-emerald-400">TERRA ENSINA</span>
+                <span className="text-amber-400">TERRA ENSINA</span>
               </h1>
             </div>
           </div>
@@ -171,12 +200,12 @@ export default function SabedoriaAncestral() {
 
             <motion.p initial="hidden" animate="visible" variants={fadeUp} custom={3}
               className="text-stone-400 text-base md:text-lg leading-relaxed">
-              Hoje, se você mostrar um pé de <span className="text-emerald-400 font-semibold">poejo</span> para uma criança, ela não sabe o que é. Se colocar uma folha de <span className="text-emerald-400 font-semibold">hortelã</span> na mão de um adolescente, ele não reconhece. Uma simples <span className="text-emerald-400 font-semibold">folha de couve</span> — o alimento mais acessível e nutritivo que existe — virou algo "estranho".
+              Hoje, se você mostrar um pé de <span className="text-amber-400 font-semibold">poejo</span> para uma criança, ela não sabe o que é. Se colocar uma folha de <span className="text-amber-400 font-semibold">hortelã</span> na mão de um adolescente, ele não reconhece. Uma simples <span className="text-amber-400 font-semibold">folha de couve</span> — o alimento mais acessível e nutritivo que existe — virou algo "estranho".
             </motion.p>
 
             <motion.div initial="hidden" animate="visible" variants={fadeUp} custom={4}
-              className="border-l-2 border-emerald-500/40 pl-6 py-2">
-              <p className="text-emerald-300/90 text-lg md:text-xl font-medium leading-relaxed italic">
+              className="border-l-2 border-amber-500/40 pl-6 py-2">
+              <p className="text-amber-200/80 text-lg md:text-xl font-medium leading-relaxed italic">
                 "Não é que esse conhecimento foi proibido. Ele foi substituído. Lentamente. Geração após geração, o que era natural virou 'alternativo'. O que era óbvio virou 'discutível'."
               </p>
             </motion.div>
@@ -188,7 +217,7 @@ export default function SabedoriaAncestral() {
 
             <motion.p initial="hidden" animate="visible" variants={fadeUp} custom={6}
               className="text-stone-300 text-lg md:text-xl font-medium leading-relaxed">
-              Este espaço existe para preservar esse conhecimento. Não como nostalgia — como <span className="text-emerald-400 font-bold">ferramenta de soberania</span>.
+              Este espaço existe para preservar esse conhecimento. Não como nostalgia — como <span className="text-amber-400 font-bold">ferramenta de soberania</span>.
             </motion.p>
           </div>
         </motion.header>
@@ -197,10 +226,10 @@ export default function SabedoriaAncestral() {
             O QUE VOCÊ VAI ENCONTRAR AQUI
         ═══════════════════════════════════════════════════ */}
         <motion.section initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="mb-28">
-          <div className="bg-emerald-950/40 border border-emerald-800/25 rounded-2xl p-8 md:p-12 backdrop-blur-sm">
+          <div className="bg-stone-900/50 border border-amber-800/20 rounded-2xl p-8 md:p-12 backdrop-blur-sm">
             <div className="flex items-center gap-3 mb-6">
-              <Shield className="text-emerald-400" size={20} />
-              <h2 className="text-sm font-bold text-emerald-400 uppercase tracking-[0.3em]">O que está sendo construído aqui</h2>
+              <Shield className="text-amber-400" size={20} />
+              <h2 className="text-sm font-bold text-amber-400 uppercase tracking-[0.3em]">O que está sendo construído aqui</h2>
             </div>
             <div className="grid md:grid-cols-3 gap-6 text-sm">
               <div className="space-y-2">
@@ -237,10 +266,10 @@ export default function SabedoriaAncestral() {
             {MODULOS_SAUDE.map((mod, i) => (
               <motion.div key={mod.title} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i * 0.5}>
                 <Link to={mod.link}
-                  className="block bg-emerald-950/30 border border-emerald-800/20 rounded-xl p-6 hover:bg-emerald-950/50 hover:border-emerald-600/30 transition-all duration-300 group"
+                  className="block bg-stone-900/40 border border-emerald-800/15 rounded-xl p-6 hover:bg-stone-900/60 hover:border-emerald-600/30 transition-all duration-300 group"
                 >
                   <div className="flex items-start gap-4">
-                    <div className="p-2.5 bg-emerald-800/30 rounded-xl shrink-0 group-hover:bg-emerald-700/30 transition-colors">
+                    <div className="p-2.5 bg-emerald-900/30 rounded-xl shrink-0 group-hover:bg-emerald-800/30 transition-colors">
                       <mod.icon className="text-emerald-500" size={18} />
                     </div>
                     <div className="flex-1">
@@ -252,7 +281,7 @@ export default function SabedoriaAncestral() {
                       </div>
                       <p className="text-stone-500 text-xs leading-relaxed">{mod.desc}</p>
                     </div>
-                    <ArrowRight className="text-emerald-600/30 group-hover:text-emerald-400 group-hover:translate-x-1 transition-all duration-300 shrink-0 mt-1" size={16} />
+                    <ArrowRight className="text-stone-700 group-hover:text-emerald-400 group-hover:translate-x-1 transition-all duration-300 shrink-0 mt-1" size={16} />
                   </div>
                 </Link>
               </motion.div>
@@ -278,10 +307,10 @@ export default function SabedoriaAncestral() {
             {MODULOS_ALIMENTACAO.map((mod, i) => (
               <motion.div key={mod.title} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i * 0.5}>
                 <Link to={mod.link}
-                  className="block bg-amber-950/20 border border-amber-800/20 rounded-xl p-6 hover:bg-amber-950/35 hover:border-amber-600/30 transition-all duration-300 group"
+                  className="block bg-stone-900/40 border border-amber-800/15 rounded-xl p-6 hover:bg-stone-900/60 hover:border-amber-600/30 transition-all duration-300 group"
                 >
                   <div className="flex items-start gap-4">
-                    <div className="p-2.5 bg-amber-800/25 rounded-xl shrink-0 group-hover:bg-amber-700/30 transition-colors">
+                    <div className="p-2.5 bg-amber-900/25 rounded-xl shrink-0 group-hover:bg-amber-800/30 transition-colors">
                       <mod.icon className="text-amber-500" size={18} />
                     </div>
                     <div className="flex-1">
@@ -293,7 +322,7 @@ export default function SabedoriaAncestral() {
                       </div>
                       <p className="text-stone-500 text-xs leading-relaxed">{mod.desc}</p>
                     </div>
-                    <ArrowRight className="text-amber-600/30 group-hover:text-amber-400 group-hover:translate-x-1 transition-all duration-300 shrink-0 mt-1" size={16} />
+                    <ArrowRight className="text-stone-700 group-hover:text-amber-400 group-hover:translate-x-1 transition-all duration-300 shrink-0 mt-1" size={16} />
                   </div>
                 </Link>
               </motion.div>
@@ -305,10 +334,10 @@ export default function SabedoriaAncestral() {
             BLOCO MANIFESTO — ENCERRAMENTO
         ═══════════════════════════════════════════════════ */}
         <motion.section initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="mb-20">
-          <div className="bg-gradient-to-br from-emerald-950/50 to-stone-950/50 border border-emerald-800/20 rounded-2xl p-8 md:p-14">
+          <div className="bg-gradient-to-br from-stone-900/60 to-stone-950/60 border border-amber-800/15 rounded-2xl p-8 md:p-14">
             <div className="flex items-center gap-3 mb-8">
-              <BookOpen className="text-emerald-400" size={20} />
-              <span className="text-emerald-400/70 text-[10px] font-bold uppercase tracking-[0.4em]">Por que isso importa</span>
+              <BookOpen className="text-amber-400" size={20} />
+              <span className="text-amber-400/70 text-[10px] font-bold uppercase tracking-[0.4em]">Por que isso importa</span>
             </div>
 
             <div className="max-w-3xl space-y-6">
@@ -319,17 +348,17 @@ export default function SabedoriaAncestral() {
                 Dependente de quem vende o remédio. De quem embala o alimento. De quem interpreta os sintomas. De quem define o que é "saudável". Não é teoria. É o que aconteceu.
               </p>
               <p className="text-stone-400 text-base leading-relaxed">
-                Aqui não se trata de rejeitar a medicina moderna ou viver isolado. Se trata de <span className="text-emerald-400 font-semibold">não depender exclusivamente de um sistema que pode falhar</span>. De ter autonomia para cuidar do básico. De reconhecer que o conhecimento que sustentou famílias por séculos não é "ultrapassado" — é <span className="text-stone-200 font-bold">fundamento</span>.
+                Aqui não se trata de rejeitar a medicina moderna ou viver isolado. Se trata de <span className="text-amber-400 font-semibold">não depender exclusivamente de um sistema que pode falhar</span>. De ter autonomia para cuidar do básico. De reconhecer que o conhecimento que sustentou famílias por séculos não é "ultrapassado" — é <span className="text-stone-200 font-bold">fundamento</span>.
               </p>
 
-              <div className="border-l-2 border-emerald-500/30 pl-6 py-3 mt-8">
-                <p className="text-emerald-300/80 text-base italic leading-relaxed">
+              <div className="border-l-2 border-amber-500/30 pl-6 py-3 mt-8">
+                <p className="text-amber-200/70 text-base italic leading-relaxed">
                   "Meu avô dizia: quem conhece a terra, nunca passa fome. Quem conhece as plantas, raramente fica doente. E quem conhece os dois, tem o que nenhum governo pode tirar."
                 </p>
               </div>
             </div>
 
-            <div className="mt-10 pt-8 border-t border-emerald-800/20">
+            <div className="mt-10 pt-8 border-t border-stone-800/40">
               <p className="text-stone-500 text-xs leading-relaxed max-w-2xl">
                 Este projeto é uma tentativa de documentar e preservar o que foi passado de geração em geração. O conteúdo é técnico, referenciado e organizado para consulta prática — não para substituir tratamento médico, mas para devolver a autonomia que sempre foi sua.
               </p>
@@ -340,14 +369,14 @@ export default function SabedoriaAncestral() {
         {/* ─── CTA CONHECIMENTO PERDIDO ─── */}
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="mb-16">
           <Link to="/projeto-autonomo/conhecimento-perdido"
-            className="block bg-emerald-950/40 border border-emerald-600/25 rounded-2xl p-8 md:p-10 hover:border-emerald-500/40 hover:bg-emerald-950/60 transition-all duration-500 group"
+            className="block bg-stone-900/50 border border-amber-600/20 rounded-2xl p-8 md:p-10 hover:border-amber-500/35 hover:bg-stone-900/70 transition-all duration-500 group"
           >
             <div className="flex items-start gap-5">
-              <div className="p-3 bg-emerald-600/15 border border-emerald-500/20 rounded-xl shrink-0 group-hover:bg-emerald-600/25 transition-colors">
-                <BookOpen className="text-emerald-400" size={22} />
+              <div className="p-3 bg-amber-700/15 border border-amber-600/20 rounded-xl shrink-0 group-hover:bg-amber-700/25 transition-colors">
+                <BookOpen className="text-amber-400" size={22} />
               </div>
               <div className="flex-1">
-                <span className="text-emerald-500/60 text-[10px] font-bold tracking-[0.5em] uppercase">Módulo Especial</span>
+                <span className="text-amber-500/60 text-[10px] font-bold tracking-[0.5em] uppercase">Módulo Especial</span>
                 <h3 className="text-xl md:text-2xl font-extrabold text-stone-200 mt-1 mb-2 uppercase tracking-wide" style={{ fontFamily: "'Space Grotesk', sans-serif", letterSpacing: '0.06em' }}>
                   CONHECIMENTO PERDIDO
                 </h3>
@@ -355,7 +384,7 @@ export default function SabedoriaAncestral() {
                   Fundamentos naturais aplicados à saúde, alimentação e resiliência. 12 plantas organizadas por sistema corporal com fichas técnicas completas, dosagens, contraindicações e educação botânica familiar.
                 </p>
               </div>
-              <ArrowRight className="text-emerald-600/30 group-hover:text-emerald-400 group-hover:translate-x-1 transition-all duration-300 shrink-0 mt-3" size={20} />
+              <ArrowRight className="text-stone-700 group-hover:text-amber-400 group-hover:translate-x-1 transition-all duration-300 shrink-0 mt-3" size={20} />
             </div>
           </Link>
         </motion.div>
@@ -363,7 +392,7 @@ export default function SabedoriaAncestral() {
         {/* ─── CTA FINAL ─── */}
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="text-center">
           <Link to="/projeto-autonomo"
-            className="inline-flex items-center gap-2 text-emerald-500/70 hover:text-emerald-400 text-xs font-bold uppercase tracking-[0.2em] transition-colors"
+            className="inline-flex items-center gap-2 text-amber-500/70 hover:text-amber-400 text-xs font-bold uppercase tracking-[0.2em] transition-colors"
           >
             <ArrowLeft size={14} /> Voltar ao Projeto Autônomo
           </Link>
