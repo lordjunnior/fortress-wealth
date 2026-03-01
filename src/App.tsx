@@ -35,6 +35,7 @@ import OQueEBitcoin from "./pages/OQueEBitcoin";
 import MineracaoBitcoin from "./pages/MineracaoBitcoin";
 import FuturoBitcoin from "./pages/FuturoBitcoin";
 import SupplyShock from "./pages/SupplyShock";
+import HalvingBitcoin from "./pages/HalvingBitcoin";
 import VolatilidadeBitcoin from "./pages/VolatilidadeBitcoin";
 import LastroBitcoin from "./pages/LastroBitcoin";
 import ProjetoAutonomo from "./pages/ProjetoAutonomo";
@@ -103,6 +104,7 @@ const App = () => (
           <Route path="/mineracao" element={<MineracaoBitcoin />} />
           <Route path="/futuro-bitcoin" element={<FuturoBitcoin />} />
           <Route path="/supply-shock" element={<SupplyShock />} />
+          <Route path="/halving-bitcoin" element={<HalvingBitcoin />} />
           <Route path="/volatilidade" element={<VolatilidadeBitcoin />} />
           <Route path="/lastro" element={<LastroBitcoin />} />
           <Route path="/projeto-autonomo" element={<ProjetoAutonomo />} />
