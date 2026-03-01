@@ -47,7 +47,7 @@ const FIXED_ANNUAL: Record<string, number> = {
 
 const BitcoinInsightsSection: React.FC = () => {
   // --- BLOCK 1: Comparison ---
-  const [selectedPeriod, setSelectedPeriod] = useState(1); // default 5 ANOS
+  const [selectedPeriod, setSelectedPeriod] = useState(1);
   const [comparisonValues, setComparisonValues] = useState<Record<string, number | null>>({});
   const [chartData, setChartData] = useState<Record<string, number | null>[]>([]);
   const [loadingComparison, setLoadingComparison] = useState(true);
@@ -70,7 +70,6 @@ const BitcoinInsightsSection: React.FC = () => {
       const finalValues: Record<string, number | null> = {};
       const allPrices: Record<string, [number, number][]> = {};
 
-      // Fetch crypto price histories
       const cryptoEntries = Object.entries(COINGECKO_IDS);
       await Promise.allSettled(
         cryptoEntries.map(async ([symbol, id]) => {
@@ -94,14 +93,13 @@ const BitcoinInsightsSection: React.FC = () => {
         })
       );
 
-      // CDI & IPCA final values
       const years = period.days / 365;
       for (const [key, annualRate] of Object.entries(FIXED_ANNUAL)) {
         finalValues[key] = 1000 * Math.pow(1 + annualRate / 100, years);
       }
       setComparisonValues(finalValues);
 
-      // Build chart data - sample ~60 points max for performance
+      // Build chart data
       const btcPrices = allPrices['BTC'];
       if (btcPrices && btcPrices.length > 0) {
         const step = Math.max(1, Math.floor(btcPrices.length / 60));
@@ -111,10 +109,8 @@ const BitcoinInsightsSection: React.FC = () => {
           const timestamp = btcPrices[i][0];
           const date = new Date(timestamp);
           const label = `${String(date.getMonth() + 1).padStart(2, '0')}/${String(date.getFullYear()).slice(-2)}`;
-
           const point: Record<string, number | null> = { date: label as any };
 
-          // For each crypto, calculate % change from start
           for (const [symbol, prices] of Object.entries(allPrices)) {
             if (prices[i] && prices[0]) {
               point[symbol] = ((prices[i][1] - prices[0][1]) / prices[0][1]) * 100;
@@ -123,7 +119,6 @@ const BitcoinInsightsSection: React.FC = () => {
             }
           }
 
-          // CDI & IPCA as compound lines
           const daysSinceStart = (timestamp - btcPrices[0][0]) / (1000 * 60 * 60 * 24);
           const yrs = daysSinceStart / 365;
           point['CDI'] = (Math.pow(1 + 0.115, yrs) - 1) * 100;
@@ -214,14 +209,14 @@ const BitcoinInsightsSection: React.FC = () => {
     return val.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', minimumFractionDigits: 2 });
   };
 
-  const getColor = (val: number | null) => {
+  const getRoiColor = (val: number | null) => {
     if (val === null) return 'text-muted-foreground';
-    return val >= 0 ? 'text-green-400' : 'text-red-400';
+    return val >= 0 ? 'text-green-500' : 'text-red-500';
   };
 
-  const getBorder = (val: number | null) => {
-    if (val === null) return 'border-border';
-    return val >= 0 ? 'border-green-500/20' : 'border-red-500/20';
+  const getRoiBorderColor = (val: number | null) => {
+    if (val === null) return 'border-l-border';
+    return val >= 0 ? 'border-l-green-500' : 'border-l-red-500';
   };
 
   const units = [
@@ -235,12 +230,6 @@ const BitcoinInsightsSection: React.FC = () => {
     ? halvingDate.toLocaleDateString('pt-BR', { day: 'numeric', month: 'long', year: 'numeric' })
     : '—';
 
-  // Asset rows for comparison - 2 columns, pairs
-  const assetPairs: [Asset, Asset | undefined][] = [];
-  for (let i = 0; i < ASSETS.length; i += 2) {
-    assetPairs.push([ASSETS[i], ASSETS[i + 1]]);
-  }
-
   return (
     <div className="section-padding">
       <div className="max-w-5xl mx-auto space-y-6">
@@ -249,7 +238,6 @@ const BitcoinInsightsSection: React.FC = () => {
             BLOCO 1: COMPARAÇÃO DE BTC COM AS PRINCIPAIS MOEDAS
             ═══════════════════════════════════════════════════════ */}
         <div className="card-wealth overflow-hidden">
-          {/* Header bar */}
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center gap-3">
               <div className="w-8 h-8 rounded-sm bg-primary/10 border border-primary/20 flex items-center justify-center">
@@ -282,7 +270,6 @@ const BitcoinInsightsSection: React.FC = () => {
             </div>
           ) : (
             <>
-              {/* Chart */}
               {chartData.length > 0 && (
                 <div className="w-full h-[280px] md:h-[360px] mb-6">
                   <ResponsiveContainer width="100%" height="100%">
@@ -311,9 +298,7 @@ const BitcoinInsightsSection: React.FC = () => {
                         labelStyle={{ color: 'hsl(210 40% 98%)' }}
                         formatter={(value: number) => [`${value.toFixed(2)}%`]}
                       />
-                      <Legend
-                        wrapperStyle={{ fontSize: 10, fontFamily: 'JetBrains Mono, monospace' }}
-                      />
+                      <Legend wrapperStyle={{ fontSize: 10, fontFamily: 'JetBrains Mono, monospace' }} />
                       {ASSETS.map((asset) => (
                         <Line
                           key={asset}
@@ -330,7 +315,6 @@ const BitcoinInsightsSection: React.FC = () => {
                 </div>
               )}
 
-              {/* Text */}
               <p className="text-center text-sm font-mono text-muted-foreground mb-6">
                 Se você tivesse investido <strong className="text-foreground">R$ 1.000,00</strong> há{' '}
                 <button
@@ -342,7 +326,6 @@ const BitcoinInsightsSection: React.FC = () => {
                 , hoje você teria:
               </p>
 
-              {/* Asset rows - 2 columns */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                 {ASSETS.map((asset) => {
                   const val = comparisonValues[asset] ?? null;
@@ -373,6 +356,7 @@ const BitcoinInsightsSection: React.FC = () => {
             BLOCO 2: RETORNO DO INVESTIMENTO EM BITCOIN
             ═══════════════════════════════════════════════ */}
         <div className="card-wealth">
+          {/* Header bar matching image: icon + title */}
           <div className="flex items-center gap-3 mb-8">
             <div className="w-8 h-8 rounded-sm bg-primary/10 border border-primary/20 flex items-center justify-center">
               <TrendingUp className="text-primary w-4 h-4" />
@@ -391,9 +375,9 @@ const BitcoinInsightsSection: React.FC = () => {
               {roiData.map((item) => (
                 <div
                   key={item.label}
-                  className={`border ${getBorder(item.value)} bg-background rounded-sm p-4 md:p-5 text-center transition-all hover:scale-[1.02]`}
+                  className={`border border-border ${getRoiBorderColor(item.value)} border-l-4 bg-background rounded-sm p-4 md:p-5 text-center transition-all hover:scale-[1.02]`}
                 >
-                  <span className={`text-xl md:text-2xl font-black font-mono block ${getColor(item.value)}`}>
+                  <span className={`text-lg md:text-xl font-black font-mono block ${getRoiColor(item.value)}`}>
                     {item.value !== null ? `${item.value > 0 ? '+' : ''}${item.value.toFixed(2)}%` : '—'}
                   </span>
                   <span className="text-[10px] text-muted-foreground uppercase tracking-widest font-mono mt-1 block">
@@ -413,14 +397,14 @@ const BitcoinInsightsSection: React.FC = () => {
             <p className="text-muted-foreground text-xs uppercase tracking-[0.3em] font-mono font-black mb-2">
               Contagem regressiva para o
             </p>
-            <h3 className="text-2xl md:text-4xl font-black uppercase tracking-tight">
+            <h3 className="text-3xl md:text-5xl font-black uppercase tracking-tight">
               Halving do Bitcoin
             </h3>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 max-w-3xl mx-auto">
             {units.map((u) => (
-              <div key={u.label} className="border border-primary/20 bg-background rounded-sm p-6 md:p-8">
+              <div key={u.label} className="border border-primary/20 bg-card rounded-sm p-6 md:p-8">
                 <span className="text-5xl md:text-7xl font-black text-primary tabular-nums font-mono block">
                   {u.value.toString().padStart(2, '0')}
                 </span>
@@ -434,18 +418,16 @@ const BitcoinInsightsSection: React.FC = () => {
           <p className="text-muted-foreground text-sm font-mono">
             Data estimada: <strong className="text-foreground">{formattedDate}</strong>
           </p>
-        </div>
 
-        {/* Saiba mais link */}
-        <Link
-          to="/supply-shock"
-          className="card-wealth flex items-center justify-center gap-3 py-6 group cursor-pointer hover:border-primary/30 transition-all"
-        >
-          <span className="text-muted-foreground group-hover:text-foreground text-sm font-medium transition-colors">
-            Saiba mais
-          </span>
-          <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
-        </Link>
+          {/* Saiba mais - links to /halving-bitcoin */}
+          <Link
+            to="/halving-bitcoin"
+            className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground text-sm font-medium transition-colors group"
+          >
+            <span>Saiba mais</span>
+            <ArrowRight className="w-4 h-4 group-hover:text-primary transition-colors" />
+          </Link>
+        </div>
 
       </div>
     </div>
