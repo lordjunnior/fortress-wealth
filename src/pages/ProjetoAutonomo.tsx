@@ -343,7 +343,25 @@ export default function ProjetoAutonomo() {
                 ))}
               </div>
 
-              <div className="mt-10 p-6 bg-emerald-100/30 border border-emerald-200/30 rounded-xl">
+              {/* ─── CTA Hub Sabedoria Ancestral ─── */}
+              <Link to="/projeto-autonomo/sabedoria-ancestral"
+                className="mt-10 block bg-gradient-to-r from-emerald-100/50 to-emerald-50/60 border border-emerald-300/50 rounded-xl p-6 hover:border-emerald-400 hover:shadow-lg hover:scale-[1.01] transition-all duration-300 group"
+              >
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-4">
+                    <div className="p-3 bg-emerald-200/50 rounded-xl">
+                      <Leaf className="text-emerald-600" size={20} />
+                    </div>
+                    <div>
+                      <p className="text-emerald-700 text-sm font-bold">Sabedoria Ancestral</p>
+                      <p className="text-stone-500 text-xs mt-0.5">Hub completo: plantas medicinais, saúde natural e soberania alimentar</p>
+                    </div>
+                  </div>
+                  <ArrowRight className="text-emerald-400 group-hover:translate-x-1 transition-transform" size={18} />
+                </div>
+              </Link>
+
+              <div className="mt-4 p-6 bg-emerald-100/30 border border-emerald-200/30 rounded-xl">
                 <p className="text-emerald-600/80 text-sm font-medium">
                   Conhecer plantas medicinais, primeiros socorros e habitos preventivos amplia autonomia sem substituir acompanhamento profissional.
                 </p>
