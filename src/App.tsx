@@ -58,7 +58,11 @@ import AbrigoEmergencia from "./pages/AbrigoEmergencia";
 import ComunicacaoOffline from "./pages/ComunicacaoOffline";
 import NavegacaoPrimaria from "./pages/NavegacaoPrimaria";
 import ConhecimentoPerdido from "./pages/ConhecimentoPerdido";
-
+import CpContextoHistorico from "./pages/cp/ContextoHistorico";
+import CpBaseFisiologica from "./pages/cp/BaseFisiologica";
+import CpSegurancaLimites from "./pages/cp/SegurancaLimites";
+import CpAplicacaoPratica from "./pages/cp/AplicacaoPratica";
+import CpContinuidadeFamiliar from "./pages/cp/ContinuidadeFamiliar";
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -121,6 +125,11 @@ const App = () => (
           <Route path="/projeto-autonomo/comunicacao-offline" element={<ComunicacaoOffline />} />
           <Route path="/projeto-autonomo/navegacao-primaria" element={<NavegacaoPrimaria />} />
           <Route path="/projeto-autonomo/conhecimento-perdido" element={<ConhecimentoPerdido />} />
+          <Route path="/conhecimento-perdido/contexto-historico" element={<CpContextoHistorico />} />
+          <Route path="/conhecimento-perdido/base-fisiologica" element={<CpBaseFisiologica />} />
+          <Route path="/conhecimento-perdido/seguranca-e-limites" element={<CpSegurancaLimites />} />
+          <Route path="/conhecimento-perdido/aplicacao-pratica" element={<CpAplicacaoPratica />} />
+          <Route path="/conhecimento-perdido/continuidade-familiar" element={<CpContinuidadeFamiliar />} />
           <Route path="/projeto-autonomo/:slug" element={<ModuloAutonomo />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
