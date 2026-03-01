@@ -333,6 +333,29 @@ export default function SabedoriaAncestral() {
           </div>
         </motion.section>
 
+        {/* ─── CTA CONHECIMENTO PERDIDO ─── */}
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="mb-16">
+          <Link to="/projeto-autonomo/conhecimento-perdido"
+            className="block bg-emerald-950/40 border border-emerald-600/25 rounded-2xl p-8 md:p-10 hover:border-emerald-500/40 hover:bg-emerald-950/60 transition-all duration-500 group"
+          >
+            <div className="flex items-start gap-5">
+              <div className="p-3 bg-emerald-600/15 border border-emerald-500/20 rounded-xl shrink-0 group-hover:bg-emerald-600/25 transition-colors">
+                <BookOpen className="text-emerald-400" size={22} />
+              </div>
+              <div className="flex-1">
+                <span className="text-emerald-500/60 text-[10px] font-bold tracking-[0.5em] uppercase">Módulo Especial</span>
+                <h3 className="text-xl md:text-2xl font-black text-stone-200 mt-1 mb-2" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+                  CONHECIMENTO PERDIDO
+                </h3>
+                <p className="text-stone-500 text-sm leading-relaxed">
+                  Fundamentos naturais aplicados à saúde, alimentação e resiliência. 12 plantas organizadas por sistema corporal com fichas técnicas completas, dosagens, contraindicações e educação botânica familiar.
+                </p>
+              </div>
+              <ArrowRight className="text-emerald-600/30 group-hover:text-emerald-400 group-hover:translate-x-1 transition-all duration-300 shrink-0 mt-3" size={20} />
+            </div>
+          </Link>
+        </motion.div>
+
         {/* ─── CTA FINAL ─── */}
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="text-center">
           <Link to="/projeto-autonomo"
