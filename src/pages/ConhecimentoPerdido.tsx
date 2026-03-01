@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Leaf, Shield, Heart, Brain, Flame, Wind, Sun, BookOpen, Eye, Sprout, Activity, XCircle, CheckCircle2, Users, PenTool, FlaskConical, Package, TreePine, AlertTriangle } from 'lucide-react';
+import { ArrowLeft, Leaf, Shield, Heart, Brain, Flame, Wind, Sun, BookOpen, Eye, Sprout, Activity, XCircle, CheckCircle2, Users, PenTool, FlaskConical, Package, TreePine, AlertTriangle, Compass, ChevronRight, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 import imgHero from '@/assets/cp-hero-conhecimento.jpg';
@@ -23,8 +23,39 @@ const fadeUp = {
   }),
 };
 
+const sidebarItems = [
+  { id: 'intro', label: 'Introdução' },
+  { id: 'criterios', label: 'Critérios de Uso' },
+  { id: 'parte-01', label: '01 · O que nos foi esquecido' },
+  { id: 'parte-02', label: '02 · Base natural do corpo' },
+  { id: 'parte-03', label: '03 · Plantas na prática' },
+  { id: 'matriz', label: 'Matriz Comparativa' },
+  { id: 'parte-04', label: '04 · Manual Aplicado' },
+  { id: 'parte-05', label: '05 · Educação Familiar' },
+  { id: 'integracao', label: 'Integração' },
+];
+
 export default function ConhecimentoPerdido() {
   useEffect(() => { window.scrollTo(0, 0); }, []);
+
+  const [activeSection, setActiveSection] = useState('intro');
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries.filter(e => e.isIntersecting);
+        if (visible.length > 0) {
+          setActiveSection(visible[0].target.id);
+        }
+      },
+      { rootMargin: '-20% 0px -60% 0px', threshold: 0 }
+    );
+    sidebarItems.forEach(item => {
+      const el = document.getElementById(item.id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <div className="min-h-screen text-stone-100 font-sans selection:bg-emerald-300/50 relative overflow-hidden"
@@ -47,6 +78,27 @@ export default function ConhecimentoPerdido() {
       <Leaf className="fixed top-[15%] right-[6%] text-emerald-900/8 pointer-events-none z-0" size={140} />
       <TreePine className="fixed bottom-[18%] left-[3%] text-emerald-900/6 pointer-events-none z-0" size={160} />
 
+      {/* ─── FIXED SIDEBAR INDEX (desktop only) ─── */}
+      <nav className="hidden xl:flex fixed left-6 top-1/2 -translate-y-1/2 z-50 flex-col gap-1.5">
+        {sidebarItems.map(item => (
+          <a
+            key={item.id}
+            href={`#${item.id}`}
+            onClick={(e) => {
+              e.preventDefault();
+              document.getElementById(item.id)?.scrollIntoView({ behavior: 'smooth' });
+            }}
+            className={`text-[9px] font-bold tracking-[0.15em] uppercase px-3 py-1.5 rounded-full border transition-all duration-300 max-w-[180px] truncate ${
+              activeSection === item.id
+                ? 'bg-emerald-500/15 border-emerald-500/30 text-emerald-400'
+                : 'bg-white/3 border-white/5 text-stone-600 hover:text-stone-400 hover:border-white/10'
+            }`}
+          >
+            {item.label}
+          </a>
+        ))}
+      </nav>
+
       <div className="relative z-10 max-w-5xl mx-auto px-6 md:px-10 pt-24 pb-32">
 
         {/* ─── NAV ─── */}
@@ -57,19 +109,78 @@ export default function ConhecimentoPerdido() {
         {/* ═══════════════════════════════════════════════════
             HERO — CONHECIMENTO PERDIDO
         ═══════════════════════════════════════════════════ */}
-        <motion.header initial="hidden" animate="visible" variants={fadeUp} custom={0} className="mb-8">
+        <motion.header id="intro" initial="hidden" animate="visible" variants={fadeUp} custom={0} className="mb-10">
           <div className="relative w-full h-72 md:h-96 rounded-2xl overflow-hidden mb-10">
             <img src={imgHero} alt="Conhecimento Perdido" className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#0a0d08] via-[#0a0d08]/40 to-transparent" />
             <div className="absolute bottom-6 left-6 md:left-10">
-              <span className="text-emerald-400/60 text-[10px] font-bold tracking-[0.5em] uppercase">Fase 04 · Conhecimento Perdido</span>
+              <span className="text-emerald-400/60 text-[10px] font-bold tracking-[0.5em] uppercase">Fase 04 · Núcleo Biológico</span>
               <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter uppercase leading-[0.9] mt-2 text-white drop-shadow-[0_4px_20px_rgba(0,0,0,0.8)]"
                 style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
                 CONHECIMENTO<br /><span className="text-emerald-400">PERDIDO</span>
               </h1>
             </div>
           </div>
-          <p className="text-stone-400 text-xs font-bold uppercase tracking-[0.4em] mb-4">
+
+          {/* ─── POSICIONAMENTO FORTE ─── */}
+          <div className="max-w-3xl space-y-5 mb-10">
+            <p className="text-stone-300 text-lg md:text-xl leading-relaxed font-light">
+              Este não é um guia genérico de "chás que fazem bem". É o <span className="text-emerald-400 font-semibold">núcleo biológico</span> do Projeto Autônomo — a base que sustenta toda decisão de saúde quando sistemas formais não estão disponíveis, são insuficientes ou simplesmente falharam.
+            </p>
+            <p className="text-stone-400 text-base leading-relaxed">
+              Aqui, cada planta é tratada como ferramenta técnica: com compostos bioativos identificados, mecanismo de ação documentado, dosagem segura, contraindicações reais e limites de uso. Nada de misticismo. Nada de promessa vaga. Bioquímica aplicada com responsabilidade.
+            </p>
+            <div className="border-l-2 border-emerald-500/40 pl-6 py-2">
+              <p className="text-emerald-300/80 text-base font-medium italic" style={{ fontFamily: "'Playfair Display', serif" }}>
+                "A diferença entre quem sabe e quem acha que sabe é a profundidade do que documenta — e a honestidade do que admite não saber."
+              </p>
+            </div>
+          </div>
+
+          {/* ─── MAPA VISUAL DOS SISTEMAS ─── */}
+          <div className="bg-[#0f1a0f]/60 border border-emerald-800/20 rounded-2xl p-6 md:p-10">
+            <div className="flex items-center gap-3 mb-6">
+              <Compass className="text-emerald-400" size={18} />
+              <h3 className="text-sm font-bold text-emerald-400 uppercase tracking-[0.3em]">Mapa de Sistemas Fisiológicos</h3>
+            </div>
+            <p className="text-stone-500 text-xs mb-6 max-w-2xl">
+              5 sistemas do corpo. 12 plantas documentadas. Cada uma atua em vias bioquímicas específicas — não em "energia" ou "equilíbrio".
+            </p>
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
+              {[
+                { icon: Flame, label: 'Digestivo', plantas: 'Boldo · Hortelã · Espinheira-santa', color: 'green' },
+                { icon: Wind, label: 'Respiratório', plantas: 'Guaco · Eucalipto · Capim-limão', color: 'cyan' },
+                { icon: Brain, label: 'Nervoso', plantas: 'Camomila · Mulungu', color: 'purple' },
+                { icon: Shield, label: 'Imune', plantas: 'Alho · Gengibre', color: 'amber' },
+                { icon: Heart, label: 'Muscular', plantas: 'Arnica · Babosa', color: 'orange' },
+              ].map((s, i) => {
+                const colorMap: Record<string, string> = {
+                  green: 'bg-green-500/10 border-green-500/20 text-green-400',
+                  cyan: 'bg-cyan-500/10 border-cyan-500/20 text-cyan-400',
+                  purple: 'bg-purple-500/10 border-purple-500/20 text-purple-400',
+                  amber: 'bg-amber-500/10 border-amber-500/20 text-amber-400',
+                  orange: 'bg-orange-500/10 border-orange-500/20 text-orange-400',
+                };
+                const iconColor: Record<string, string> = {
+                  green: 'text-green-400',
+                  cyan: 'text-cyan-400',
+                  purple: 'text-purple-400',
+                  amber: 'text-amber-400',
+                  orange: 'text-orange-400',
+                };
+                return (
+                  <motion.div key={s.label} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i}
+                    className={`rounded-xl p-4 border ${colorMap[s.color]} transition-all duration-300`}>
+                    <s.icon className={iconColor[s.color]} size={18} />
+                    <p className="text-stone-200 text-xs font-bold mt-2 mb-1">{s.label}</p>
+                    <p className="text-stone-500 text-[10px] leading-relaxed">{s.plantas}</p>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
+
+          <p className="text-stone-400 text-xs font-bold uppercase tracking-[0.4em] mt-10">
             Fundamentos naturais aplicados à saúde, alimentação e resiliência
           </p>
         </motion.header>
@@ -77,12 +188,14 @@ export default function ConhecimentoPerdido() {
         {/* ═══════════════════════════════════════════════════
             CRITÉRIOS DE USO RESPONSÁVEL (TOPO)
         ═══════════════════════════════════════════════════ */}
-        <CriteriosUso />
+        <div id="criterios">
+          <CriteriosUso />
+        </div>
 
         {/* ═══════════════════════════════════════════════════
             PARTE 1 — O QUE NOS FOI ESQUECIDO
         ═══════════════════════════════════════════════════ */}
-        <motion.section initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="mb-28">
+        <motion.section id="parte-01" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="mb-28">
           <div className="flex items-center gap-3 mb-6">
             <span className="text-emerald-500/50 text-[10px] font-bold tracking-[0.5em] uppercase font-mono">Parte 01</span>
             <div className="flex-1 h-px bg-emerald-800/30" />
@@ -152,7 +265,7 @@ export default function ConhecimentoPerdido() {
         {/* ═══════════════════════════════════════════════════
             PARTE 2 — A BASE NATURAL DO CORPO
         ═══════════════════════════════════════════════════ */}
-        <motion.section initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="mb-28">
+        <motion.section id="parte-02" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="mb-28">
           <div className="flex items-center gap-3 mb-6">
             <span className="text-emerald-500/50 text-[10px] font-bold tracking-[0.5em] uppercase font-mono">Parte 02</span>
             <div className="flex-1 h-px bg-emerald-800/30" />
@@ -205,7 +318,7 @@ export default function ConhecimentoPerdido() {
         {/* ═══════════════════════════════════════════════════
             PARTE 3 — PLANTAS MEDICINAIS NA PRÁTICA
         ═══════════════════════════════════════════════════ */}
-        <motion.section initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="mb-28">
+        <motion.section id="parte-03" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="mb-28">
           <div className="flex items-center gap-3 mb-6">
             <span className="text-emerald-500/50 text-[10px] font-bold tracking-[0.5em] uppercase font-mono">Parte 03</span>
             <div className="flex-1 h-px bg-emerald-800/30" />
@@ -235,12 +348,14 @@ export default function ConhecimentoPerdido() {
         {/* ═══════════════════════════════════════════════════
             MATRIZ COMPARATIVA DAS 12 PLANTAS
         ═══════════════════════════════════════════════════ */}
-        <MatrizComparativa />
+        <div id="matriz">
+          <MatrizComparativa />
+        </div>
 
         {/* ═══════════════════════════════════════════════════
             PARTE 4 — MANUAL APLICADO
         ═══════════════════════════════════════════════════ */}
-        <motion.section initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="mb-28">
+        <motion.section id="parte-04" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="mb-28">
           <div className="flex items-center gap-3 mb-6">
             <span className="text-emerald-500/50 text-[10px] font-bold tracking-[0.5em] uppercase font-mono">Parte 04</span>
             <div className="flex-1 h-px bg-emerald-800/30" />
@@ -298,12 +413,55 @@ export default function ConhecimentoPerdido() {
         {/* ═══════════════════════════════════════════════════
             PARTE 5 — EDUCAÇÃO BOTÂNICA FAMILIAR (EXPANDIDA)
         ═══════════════════════════════════════════════════ */}
-        <EducacaoBotanica />
+        <div id="parte-05">
+          <EducacaoBotanica />
+        </div>
+
+        {/* ═══════════════════════════════════════════════════
+            BLOCO ESTRATÉGICO — LIVRO EM EDIÇÃO
+        ═══════════════════════════════════════════════════ */}
+        <motion.section initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="mb-28">
+          <div className="bg-gradient-to-br from-amber-950/30 to-[#0f1a0f]/60 border border-amber-800/20 rounded-2xl p-8 md:p-12 relative overflow-hidden">
+            <div className="absolute top-4 right-4">
+              <span className="text-[8px] font-bold tracking-[0.4em] uppercase bg-amber-500/15 text-amber-400 px-3 py-1 rounded-full border border-amber-500/20">
+                Em desenvolvimento
+              </span>
+            </div>
+            <div className="flex items-center gap-3 mb-6">
+              <Sparkles className="text-amber-400" size={20} />
+              <h3 className="text-sm font-bold text-amber-400 uppercase tracking-[0.3em]">Livro em Edição</h3>
+            </div>
+            <h4 className="text-2xl md:text-3xl font-black tracking-tight text-stone-200 mb-4" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+              AUTOCUSTÓDIA <span className="text-amber-400">BIOLÓGICA</span>
+            </h4>
+            <p className="text-stone-400 text-sm md:text-base leading-relaxed max-w-2xl mb-6">
+              Todo o conteúdo deste módulo está sendo estruturado como publicação técnica independente. 
+              Fichas expandidas, protocolos sazonais, matriz de decisão por sintoma, e guia prático de formação familiar 
+              — compilados em formato que funciona mesmo sem internet.
+            </p>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+              {[
+                { label: '12 fichas técnicas', value: 'Padrão 9 seções' },
+                { label: 'Matriz comparativa', value: 'Visão sistêmica' },
+                { label: '9 exercícios práticos', value: 'Formação familiar' },
+                { label: 'Protocolos sazonais', value: 'Em desenvolvimento' },
+              ].map(item => (
+                <div key={item.label} className="bg-white/5 border border-white/10 rounded-lg p-3">
+                  <p className="text-stone-300 text-xs font-semibold">{item.label}</p>
+                  <p className="text-stone-500 text-[10px] mt-0.5">{item.value}</p>
+                </div>
+              ))}
+            </div>
+            <p className="text-stone-600 text-xs italic">
+              Acompanhe o desenvolvimento. Quando estiver pronto, você será o primeiro a saber.
+            </p>
+          </div>
+        </motion.section>
 
         {/* ═══════════════════════════════════════════════════
             INTEGRAÇÃO — ENCERRAMENTO
         ═══════════════════════════════════════════════════ */}
-        <motion.section initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="mb-20">
+        <motion.section id="integracao" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="mb-20">
           <div className="bg-gradient-to-br from-emerald-950/50 to-[#0a0d08]/80 border border-emerald-800/20 rounded-2xl p-8 md:p-14">
             <div className="flex items-center gap-3 mb-8">
               <Shield className="text-emerald-400" size={20} />
@@ -314,14 +472,31 @@ export default function ConhecimentoPerdido() {
               <p className="text-stone-300 text-base md:text-lg leading-relaxed">
                 Este bloco se conecta com todos os módulos do Projeto Autônomo. <span className="text-emerald-400 font-semibold">Sem corpo saudável, não há autonomia real.</span>
               </p>
+
+              {/* ─── Conexão direta com Saúde Preventiva ─── */}
+              <div className="bg-emerald-500/8 border border-emerald-500/15 rounded-xl p-5 mb-4">
+                <div className="flex items-center gap-2 mb-3">
+                  <Heart size={16} className="text-emerald-400" />
+                  <p className="text-sm font-bold text-emerald-300">Conexão direta: Saúde Preventiva</p>
+                </div>
+                <p className="text-stone-400 text-xs leading-relaxed mb-3">
+                  Este módulo complementa diretamente o módulo de <span className="text-emerald-300 font-semibold">Saúde Preventiva</span>. 
+                  Lá você encontra protocolos de rotina para manter o corpo funcionando antes de precisar de qualquer planta. 
+                  Aqui, você age quando o corpo sinaliza que algo saiu do equilíbrio. Um sem o outro é incompleto.
+                </p>
+                <Link to="/projeto-autonomo/saude-preventiva" className="inline-flex items-center gap-1.5 text-emerald-400 text-xs font-bold hover:text-emerald-300 transition-colors">
+                  Acessar Saúde Preventiva <ChevronRight size={12} />
+                </Link>
+              </div>
+
               <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                 {[
-                  { label: 'Saúde Preventiva', link: '/projeto-autonomo/saude-preventiva' },
                   { label: 'Fitoterapia Aplicada', link: '/projeto-autonomo/fitoterapia-aplicada' },
                   { label: 'Primeiros Socorros', link: '/projeto-autonomo/primeiros-socorros' },
                   { label: 'Avaliação de Sinais', link: '/projeto-autonomo/avaliacao-sinais' },
                   { label: 'Controle de Vetores', link: '/projeto-autonomo/controle-vetores' },
                   { label: 'Horta Urbana', link: '/projeto-autonomo/horta-urbana' },
+                  { label: 'Solo e Fertilidade', link: '/projeto-autonomo/solo-fertilidade' },
                 ].map(m => (
                   <Link key={m.label} to={m.link}
                     className="flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/15 rounded-lg px-3 py-2.5 hover:bg-emerald-500/20 hover:border-emerald-400/30 transition-all duration-300 group">

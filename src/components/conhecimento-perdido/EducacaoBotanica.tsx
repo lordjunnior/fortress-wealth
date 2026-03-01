@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Eye, Heart, Sprout, PenTool, Calendar, BookOpen, Map, Apple, Wind } from 'lucide-react';
+import { Eye, Heart, Sprout, PenTool, Calendar, BookOpen, Map, Apple, Wind, Layers, GitBranch, FlaskConical, ClipboardList } from 'lucide-react';
 import imgFamilia from '@/assets/cp-educacao-familiar.jpg';
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
@@ -56,6 +56,26 @@ const exerciciosAvancados = [
     icon: Wind, title: 'Treino Olfativo',
     desc: 'Vendas nos olhos. Apresentar 5 folhas aromáticas (hortelã, alecrim, capim-limão, manjericão, erva-cidreira). Identificar pelo aroma. Em 3 sessões, a criança reconhece sem hesitar. O olfato é a memória mais antiga do cérebro.',
     destaque: 'Memória olfativa',
+  },
+  {
+    icon: Layers, title: 'Identificação por Sombra da Folha',
+    desc: 'Colocar folhas diferentes sobre papel branco sob luz direta e traçar o contorno da sombra. A criança associa forma e proporção sem olhar diretamente para a planta. Depois, tenta nomear apenas pelo contorno. Treina percepção geométrica e cria referência visual abstrata que funciona mesmo sem cor ou textura.',
+    destaque: 'Percepção visual avançada',
+  },
+  {
+    icon: GitBranch, title: 'Reconhecimento por Nervura',
+    desc: 'Cada folha tem um padrão de nervuras único: paralelas (gramíneas como capim-limão), reticuladas (boldo, camomila), palmadas (mamona). Ensinar a observar esse "mapa interno" da folha usando lupa ou contra-luz é uma habilidade que funciona mesmo sem flor, sem aroma e sem contexto. Nervura não mente.',
+    destaque: 'Diagnóstico botânico preciso',
+  },
+  {
+    icon: FlaskConical, title: 'Teste Comparativo entre Plantas Parecidas',
+    desc: 'Exercício avançado: apresentar pares de plantas visualmente semelhantes (boldo-do-chile vs boldo-brasileiro, camomila vs falsa-camomila, capim-limão vs citronela). A família deve identificar diferenças por toque, aroma, formato de folha e uso. Este exercício previne erros que podem ser perigosos em cenário real.',
+    destaque: 'Prevenção de erros críticos',
+  },
+  {
+    icon: ClipboardList, title: 'Diário de Resposta Corporal',
+    desc: 'Registro estruturado: data, sintoma inicial, planta utilizada, dose, horário, resposta em 1h, resposta em 24h, efeitos colaterais. Repetir por 4 semanas. Esse diário vira um banco de dados pessoal que revela padrões individuais — porque cada corpo responde diferente. É a base da automedicação responsável.',
+    destaque: 'Autoconhecimento farmacológico',
   },
 ];
 
