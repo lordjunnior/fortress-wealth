@@ -40,7 +40,7 @@ export function SistemaSection({ titulo, subtitulo, icon: Icon, plantas, accentC
       </div>
       <p className="text-stone-500 text-sm mb-8 ml-16">{subtitulo}</p>
 
-      <div className="grid md:grid-cols-2 gap-5">
+      <div className="space-y-8">
         {plantas.map(p => <FichaPlanta key={p.nome} planta={p} />)}
       </div>
     </motion.div>
