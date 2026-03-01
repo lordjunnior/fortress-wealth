@@ -316,8 +316,8 @@ export default function ConhecimentoPerdido() {
       <div className="relative z-10 max-w-5xl mx-auto px-6 md:px-10 pt-24 pb-32">
 
         {/* ─── NAV ─── */}
-        <Link to="/projeto-autonomo/sabedoria-ancestral" className="inline-flex items-center gap-2 text-stone-600 hover:text-emerald-400 mb-16 text-[10px] font-bold uppercase tracking-[0.3em] transition-all duration-300">
-          <ArrowLeft size={14} /> Sabedoria Ancestral
+        <Link to="/projeto-autonomo" className="inline-flex items-center gap-2 text-stone-600 hover:text-emerald-400 mb-16 text-[10px] font-bold uppercase tracking-[0.3em] transition-all duration-300">
+          <ArrowLeft size={14} /> Projeto Autônomo
         </Link>
 
         {/* ═══════════════════════════════════════════════════
