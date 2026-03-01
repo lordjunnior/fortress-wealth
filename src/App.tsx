@@ -57,6 +57,7 @@ import ProtocolosApagao from "./pages/ProtocolosApagao";
 import AbrigoEmergencia from "./pages/AbrigoEmergencia";
 import ComunicacaoOffline from "./pages/ComunicacaoOffline";
 import NavegacaoPrimaria from "./pages/NavegacaoPrimaria";
+import ConhecimentoPerdido from "./pages/ConhecimentoPerdido";
 
 const queryClient = new QueryClient();
 
@@ -119,6 +120,7 @@ const App = () => (
           <Route path="/projeto-autonomo/abrigo-emergencia" element={<AbrigoEmergencia />} />
           <Route path="/projeto-autonomo/comunicacao-offline" element={<ComunicacaoOffline />} />
           <Route path="/projeto-autonomo/navegacao-primaria" element={<NavegacaoPrimaria />} />
+          <Route path="/projeto-autonomo/conhecimento-perdido" element={<ConhecimentoPerdido />} />
           <Route path="/projeto-autonomo/:slug" element={<ModuloAutonomo />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
