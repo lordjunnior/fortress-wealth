@@ -119,13 +119,13 @@ export default function SupplyShock() {
       <nav className="hidden lg:flex fixed left-0 top-0 h-screen w-[270px] z-50 flex-col">
         <div className="glass-sidebar m-3 mt-[50px] rounded-sm flex-1 flex flex-col overflow-hidden">
           <div className="p-5 border-b border-white/5">
-            <div className="flex items-center gap-2 mb-3">
-              <Scale className="text-amber-500" size={16} />
-              <span className="text-amber-500 font-black uppercase text-[9px] tracking-[0.3em] font-mono">Supply Shock</span>
-            </div>
-            <Link to="/protocolo-inicial" className="inline-flex items-center gap-2 text-slate-600 hover:text-white text-[8px] font-black uppercase tracking-[0.25em] transition-all font-mono">
-              <ArrowLeft size={10} /> Protocolo
+            <Link to="/" className="inline-flex items-center gap-2 text-slate-600 hover:text-white text-[8px] font-black uppercase tracking-[0.25em] transition-all font-mono mb-3">
+              <ArrowLeft size={10} /> Voltar ao Início
             </Link>
+            <div className="flex items-center gap-2">
+              <Scale className="text-amber-500" size={16} />
+              <span className="text-amber-500 font-black uppercase text-[9px] tracking-[0.3em] font-mono">Relógio do Juízo Final</span>
+            </div>
           </div>
 
           <div className="px-5 pt-3 pb-1">
@@ -157,12 +157,12 @@ export default function SupplyShock() {
       {/* === MOBILE NAV === */}
       <div className="lg:hidden fixed top-[38px] left-0 right-0 z-50 glass-sidebar border-b border-white/5 px-4 py-3">
         <div className="flex items-center justify-between">
-          <Link to="/protocolo-inicial" className="inline-flex items-center gap-1 text-slate-500 hover:text-white text-[8px] font-black uppercase tracking-[0.2em] font-mono">
-            <ArrowLeft size={10} /> Protocolo
+          <Link to="/" className="inline-flex items-center gap-1 text-slate-500 hover:text-white text-[8px] font-black uppercase tracking-[0.2em] font-mono">
+            <ArrowLeft size={10} /> Início
           </Link>
           <div className="flex items-center gap-1">
             <Scale className="text-amber-500" size={12} />
-            <span className="text-amber-500 font-black uppercase text-[8px] tracking-[0.2em] font-mono">Supply Shock</span>
+            <span className="text-amber-500 font-black uppercase text-[8px] tracking-[0.2em] font-mono">Juízo Final</span>
           </div>
           <span className="text-[8px] font-black text-amber-500 font-mono">{Math.round(scrollProgress)}%</span>
         </div>
