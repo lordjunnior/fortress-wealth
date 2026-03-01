@@ -37,7 +37,6 @@ const BASE72_ITEMS = [
 
 /* ─── PHASE 2: AUTONOMIA BIOLÓGICA ─── */
 const BIO_ITEMS = [
-  { icon: BookOpen, label: 'Conhecimento Perdido', desc: 'Fundamentos naturais aplicados à saúde. 12 plantas por sistema corporal com fichas técnicas, dosagens e educação botânica familiar.', slug: 'conhecimento-perdido' },
   { icon: Leaf, label: 'Suporte Fitoterápico', desc: 'Biblioteca técnica de 12 plantas essenciais. Dosagens conservadoras, contraindicações e métodos de preparo.', slug: 'autonomia-biologica' },
   { icon: Cross, label: 'Primeiros Socorros', desc: 'Contenção de sangramento, imobilização, tratamento de queimaduras em ambiente remoto.', slug: 'primeiros-socorros' },
   { icon: Thermometer, label: 'Avaliação Básica de Sinais', desc: 'Interpretar febre, desidratação e sinais vitais com recursos mínimos.', slug: 'sinais-vitais' },
@@ -227,6 +226,40 @@ export default function ProjetoAutonomo() {
             </motion.a>
           ))}
         </div>
+
+        {/* ═══════════════ CONHECIMENTO PERDIDO — CARD AVULSO ═══════════════ */}
+        <motion.div
+          initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}
+          className="mb-28"
+        >
+          <Link to="/projeto-autonomo/conhecimento-perdido"
+            className="block bg-gradient-to-br from-emerald-900/40 to-stone-900/60 border-2 border-emerald-600/30 rounded-3xl p-8 md:p-12 hover:border-emerald-500/50 hover:shadow-2xl hover:shadow-emerald-900/20 hover:scale-[1.01] transition-all duration-500 group relative overflow-hidden"
+          >
+            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500 via-emerald-400 to-emerald-600 opacity-80" />
+            <div className="flex flex-col md:flex-row items-start gap-6 md:gap-10">
+              <div className="p-5 bg-emerald-600/15 border border-emerald-500/25 rounded-2xl shrink-0 group-hover:bg-emerald-600/25 transition-colors">
+                <BookOpen className="text-emerald-400" size={32} />
+              </div>
+              <div className="flex-1">
+                <span className="text-emerald-500/60 text-[10px] font-bold tracking-[0.5em] uppercase">Ecossistema Completo</span>
+                <h3 className="text-3xl md:text-4xl font-black text-stone-100 mt-2 mb-3 tracking-tight" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+                  CONHECIMENTO PERDIDO
+                </h3>
+                <p className="text-stone-400 text-sm md:text-base leading-relaxed max-w-2xl mb-4">
+                  Fundamentos naturais aplicados à saúde, alimentação e resiliência. 12 plantas organizadas por sistema corporal com fichas técnicas completas, dosagens seguras, contraindicações, educação botânica familiar e integração com todo o Protocolo Autônomo.
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {['5 Sistemas Corporais', '12 Plantas Documentadas', 'Fichas Técnicas', 'Educação Familiar'].map(tag => (
+                    <span key={tag} className="text-[10px] font-bold tracking-wider uppercase bg-emerald-500/10 text-emerald-400 px-3 py-1.5 rounded-full border border-emerald-500/20">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <ArrowRight className="text-emerald-600/30 group-hover:text-emerald-400 group-hover:translate-x-2 transition-all duration-500 shrink-0 mt-2" size={28} />
+            </div>
+          </Link>
+        </motion.div>
 
         {/* ═══════════════ NOTA CONTEXTUAL ═══════════════ */}
         <motion.div
