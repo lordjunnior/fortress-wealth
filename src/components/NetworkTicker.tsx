@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef } from "react";
 
 // ===== CONFIGURAÇÃO FISCAL (LOA 2025 / Receita Federal) =====
 const ARRECADACAO_ANUAL = 3e12; // R$ 3 trilhões (estimativa LOA 2025)
@@ -39,80 +39,46 @@ const NetworkTicker = () => {
   const [impostoSeg, setImpostoSeg] = useState("---");
   const [impostoPessoa, setImpostoPessoa] = useState("---");
   
-  // Mutable accumulators to avoid state on every 200ms tick
-  const acumRef = useRef({ hoje: 0, ano: 0, divida: 0 });
-  const fiscalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const rafRef = useRef<number | null>(null);
+  const lastFrameRef = useRef(0);
   const isVisibleRef = useRef(true);
-
-  // Bitcoin data
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const [priceRes, blockRes] = await Promise.all([
-          fetch("https://mempool.space/api/v1/prices"),
-          fetch("https://mempool.space/api/blocks/tip/height"),
-        ]);
-        if (priceRes.ok) {
-          const priceData = await priceRes.json();
-          setPriceUsd(priceData.USD);
-        }
-        if (blockRes.ok) {
-          const blockData = await blockRes.text();
-          setBlock(parseInt(blockData, 10));
-        }
-      } catch {
-        // keep null on error
-      }
-    };
-    fetchData();
-    const interval = setInterval(fetchData, 60000);
-    return () => clearInterval(interval);
-  }, []);
 
   // Pause when tab is inactive
   useEffect(() => {
     const handleVisibility = () => {
       isVisibleRef.current = !document.hidden;
-      if (!document.hidden) {
-        // Recalibrate on return
-        acumRef.current.hoje = getSecondsFromDayStart() * IMPOSTO_POR_SEGUNDO;
-        acumRef.current.ano = getSecondsFromYearStart() * IMPOSTO_POR_SEGUNDO;
-        acumRef.current.divida = DIVIDA_PUBLICA_BASE + getSecondsFromYearStart() * DIVIDA_POR_SEGUNDO;
-      }
+      if (!document.hidden) lastFrameRef.current = 0; // force immediate update on return
     };
     document.addEventListener("visibilitychange", handleVisibility);
     return () => document.removeEventListener("visibilitychange", handleVisibility);
   }, []);
 
-  // Fiscal clock — smooth 200ms tick
-  const updateDisplay = useCallback(() => {
-    const ref = acumRef.current;
-    setArrecadacaoHoje(formatBRL(ref.hoje));
-    setArrecadacaoAno(formatBRL(ref.ano));
-    setDividaPublica(formatBRL(ref.divida));
-    setImpostoSeg(formatBRL(Math.round(IMPOSTO_POR_SEGUNDO)));
-    setImpostoPessoa(formatBRL(Math.round(ref.ano / POPULACAO)));
-  }, []);
-
+  // Fiscal clock — timestamp-based, zero drift, rAF-driven
   useEffect(() => {
-    // Initialize from real time
-    acumRef.current.hoje = getSecondsFromDayStart() * IMPOSTO_POR_SEGUNDO;
-    acumRef.current.ano = getSecondsFromYearStart() * IMPOSTO_POR_SEGUNDO;
-    acumRef.current.divida = DIVIDA_PUBLICA_BASE + getSecondsFromYearStart() * DIVIDA_POR_SEGUNDO;
-    updateDisplay();
+    const tick = (now: number) => {
+      rafRef.current = requestAnimationFrame(tick);
+      if (!isVisibleRef.current) return;
+      // Throttle DOM updates to ~200ms
+      if (now - lastFrameRef.current < TICK_MS) return;
+      lastFrameRef.current = now;
 
-    fiscalRef.current = setInterval(() => {
-      if (!isVisibleRef.current) return; // skip when tab hidden
-      const inc = IMPOSTO_POR_SEGUNDO * INCREMENT_FACTOR;
-      const dInc = DIVIDA_POR_SEGUNDO * INCREMENT_FACTOR;
-      acumRef.current.hoje += inc;
-      acumRef.current.ano += inc;
-      acumRef.current.divida += dInc;
-      updateDisplay();
-    }, TICK_MS);
+      // Always recalculate from real timestamp — no accumulated drift
+      const secsDay = getSecondsFromDayStart();
+      const secsYear = getSecondsFromYearStart();
+      const hoje = secsDay * IMPOSTO_POR_SEGUNDO;
+      const ano = secsYear * IMPOSTO_POR_SEGUNDO;
+      const divida = DIVIDA_PUBLICA_BASE + secsYear * DIVIDA_POR_SEGUNDO;
 
-    return () => { if (fiscalRef.current) clearInterval(fiscalRef.current); };
-  }, [updateDisplay]);
+      setArrecadacaoHoje(formatBRL(hoje));
+      setArrecadacaoAno(formatBRL(ano));
+      setDividaPublica(formatBRL(divida));
+      setImpostoSeg(formatBRL(Math.round(IMPOSTO_POR_SEGUNDO)));
+      setImpostoPessoa(formatBRL(Math.round(ano / POPULACAO)));
+    };
+
+    rafRef.current = requestAnimationFrame(tick);
+    return () => { if (rafRef.current) cancelAnimationFrame(rafRef.current); };
+  }, []);
 
   const items = [
     { dot: true, label: "BTC/USD", value: priceUsd !== null ? `$${priceUsd.toLocaleString("en-US")}` : "---", status: "up" as const, statusText: "LIVE" },
