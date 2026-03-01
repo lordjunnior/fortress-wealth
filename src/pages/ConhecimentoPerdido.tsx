@@ -458,18 +458,23 @@ export default function ConhecimentoPerdido() {
                 </div>
               </div>
 
-              <p className="text-stone-400 text-sm md:text-base leading-relaxed max-w-2xl mb-8">
-                Todo o conteúdo deste módulo está sendo compilado em formato de publicação técnica independente —
-                fichas expandidas, protocolos sazonais, matriz de decisão por sintoma e guia de formação familiar.
-                Um material que funciona mesmo sem internet.
+              <p className="text-stone-400 text-sm md:text-base leading-relaxed max-w-2xl mb-4">
+                O que existe hoje neste módulo é o núcleo inicial. A publicação final vai além — cobrindo dezenas de plantas organizadas por bioma, 
+                centenas de fichas técnicas com profundidade farmacológica, protocolos sazonais regionalizados, 
+                guias completos de formação familiar e exercícios práticos de campo.
+              </p>
+              <p className="text-stone-500 text-xs leading-relaxed max-w-2xl mb-8">
+                Um material denso, técnico e independente — construído para funcionar mesmo sem internet, sem app e sem plataforma.
               </p>
 
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-8">
                 {[
-                  { label: '12 fichas técnicas', value: 'Padrão 9 seções' },
-                  { label: 'Matriz comparativa', value: 'Visão sistêmica' },
-                  { label: '9 exercícios práticos', value: 'Formação familiar' },
-                  { label: 'Protocolos sazonais', value: 'Em desenvolvimento' },
+                  { label: 'Fichas técnicas expandidas', value: 'Catálogo completo por bioma' },
+                  { label: 'Protocolos sazonais', value: 'Regionalização por clima' },
+                  { label: 'Matriz de decisão clínica', value: 'Sintoma → planta → preparo' },
+                  { label: 'Formação familiar completa', value: 'Exercícios de campo e identificação' },
+                  { label: 'Farmacologia aplicada', value: 'Mecanismos, vias e compostos' },
+                  { label: 'Guia de cultivo medicinal', value: 'Da semente à colheita correta' },
                 ].map(item => (
                   <div key={item.label} className="bg-emerald-500/5 border border-emerald-500/15 rounded-lg p-3.5 hover:bg-emerald-500/10 transition-colors">
                     <p className="text-stone-200 text-xs font-semibold">{item.label}</p>
