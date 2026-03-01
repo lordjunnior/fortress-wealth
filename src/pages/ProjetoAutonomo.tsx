@@ -176,8 +176,8 @@ export default function ProjetoAutonomo() {
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-10 pt-28">
 
-        <Link to="/arsenal" className="inline-flex items-center gap-2 text-stone-400 hover:text-stone-700 mb-20 text-[10px] font-bold uppercase tracking-[0.3em] transition-all duration-300">
-          <ArrowLeft size={14} /> Voltar ao Arsenal
+        <Link to="/" className="inline-flex items-center gap-2 text-stone-400 hover:text-stone-700 mb-20 text-[10px] font-bold uppercase tracking-[0.3em] transition-all duration-300">
+          <ArrowLeft size={14} /> Voltar ao Início
         </Link>
 
         {/* ═══════════════ HEADER ═══════════════ */}
