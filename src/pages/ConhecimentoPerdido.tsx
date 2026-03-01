@@ -60,38 +60,38 @@ const BLOCOS = [
 
 const colorMap: Record<string, { card: string; iconBg: string; icon: string; btn: string; glow: string }> = {
   emerald: {
-    card: 'bg-emerald-950/30 border-emerald-700/25 hover:border-emerald-500/50 hover:shadow-[0_0_50px_-12px_rgba(16,185,129,0.25)] hover:bg-emerald-950/45',
-    iconBg: 'bg-emerald-500/15 border border-emerald-500/25',
+    card: 'bg-stone-900/60 border-emerald-600/30 hover:border-emerald-400/60 hover:shadow-[0_0_50px_-12px_rgba(16,185,129,0.3)] hover:bg-stone-800/60',
+    iconBg: 'bg-emerald-500/20 border border-emerald-500/30',
     icon: 'text-emerald-400',
-    btn: 'bg-emerald-500/15 text-emerald-400 border-emerald-500/25 hover:bg-emerald-500/25',
+    btn: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30 hover:bg-emerald-500/30',
     glow: 'bg-emerald-400',
   },
   cyan: {
-    card: 'bg-cyan-950/30 border-cyan-700/25 hover:border-cyan-500/50 hover:shadow-[0_0_50px_-12px_rgba(6,182,212,0.25)] hover:bg-cyan-950/45',
-    iconBg: 'bg-cyan-500/15 border border-cyan-500/25',
+    card: 'bg-stone-900/60 border-cyan-600/30 hover:border-cyan-400/60 hover:shadow-[0_0_50px_-12px_rgba(6,182,212,0.3)] hover:bg-stone-800/60',
+    iconBg: 'bg-cyan-500/20 border border-cyan-500/30',
     icon: 'text-cyan-400',
-    btn: 'bg-cyan-500/15 text-cyan-400 border-cyan-500/25 hover:bg-cyan-500/25',
+    btn: 'bg-cyan-500/20 text-cyan-400 border-cyan-500/30 hover:bg-cyan-500/30',
     glow: 'bg-cyan-400',
   },
   amber: {
-    card: 'bg-amber-950/30 border-amber-700/25 hover:border-amber-500/50 hover:shadow-[0_0_50px_-12px_rgba(245,158,11,0.25)] hover:bg-amber-950/45',
-    iconBg: 'bg-amber-500/15 border border-amber-500/25',
+    card: 'bg-stone-900/60 border-amber-600/30 hover:border-amber-400/60 hover:shadow-[0_0_50px_-12px_rgba(245,158,11,0.3)] hover:bg-stone-800/60',
+    iconBg: 'bg-amber-500/20 border border-amber-500/30',
     icon: 'text-amber-400',
-    btn: 'bg-amber-500/15 text-amber-400 border-amber-500/25 hover:bg-amber-500/25',
+    btn: 'bg-amber-500/20 text-amber-400 border-amber-500/30 hover:bg-amber-500/30',
     glow: 'bg-amber-400',
   },
   green: {
-    card: 'bg-green-950/30 border-green-700/25 hover:border-green-500/50 hover:shadow-[0_0_50px_-12px_rgba(34,197,94,0.25)] hover:bg-green-950/45',
-    iconBg: 'bg-green-500/15 border border-green-500/25',
+    card: 'bg-stone-900/60 border-green-600/30 hover:border-green-400/60 hover:shadow-[0_0_50px_-12px_rgba(34,197,94,0.3)] hover:bg-stone-800/60',
+    iconBg: 'bg-green-500/20 border border-green-500/30',
     icon: 'text-green-400',
-    btn: 'bg-green-500/15 text-green-400 border-green-500/25 hover:bg-green-500/25',
+    btn: 'bg-green-500/20 text-green-400 border-green-500/30 hover:bg-green-500/30',
     glow: 'bg-green-400',
   },
   purple: {
-    card: 'bg-purple-950/30 border-purple-700/25 hover:border-purple-500/50 hover:shadow-[0_0_50px_-12px_rgba(168,85,247,0.25)] hover:bg-purple-950/45',
-    iconBg: 'bg-purple-500/15 border border-purple-500/25',
+    card: 'bg-stone-900/60 border-purple-600/30 hover:border-purple-400/60 hover:shadow-[0_0_50px_-12px_rgba(168,85,247,0.3)] hover:bg-stone-800/60',
+    iconBg: 'bg-purple-500/20 border border-purple-500/30',
     icon: 'text-purple-400',
-    btn: 'bg-purple-500/15 text-purple-400 border-purple-500/25 hover:bg-purple-500/25',
+    btn: 'bg-purple-500/20 text-purple-400 border-purple-500/30 hover:bg-purple-500/30',
     glow: 'bg-purple-400',
   },
 };
@@ -224,11 +224,11 @@ export default function ConhecimentoPerdido() {
                 { icon: Heart, label: 'Muscular', plantas: 'Arnica · Babosa', color: 'orange' },
               ].map((s, i) => {
                 const styles: Record<string, { card: string; icon: string; glow: string }> = {
-                  green: { card: 'bg-green-500/10 border-green-500/25 hover:border-green-400/50 hover:bg-green-500/15 hover:shadow-[0_0_30px_-8px_rgba(34,197,94,0.25)]', icon: 'text-green-400', glow: 'bg-green-400' },
-                  cyan: { card: 'bg-cyan-500/10 border-cyan-500/25 hover:border-cyan-400/50 hover:bg-cyan-500/15 hover:shadow-[0_0_30px_-8px_rgba(6,182,212,0.25)]', icon: 'text-cyan-400', glow: 'bg-cyan-400' },
-                  purple: { card: 'bg-purple-500/10 border-purple-500/25 hover:border-purple-400/50 hover:bg-purple-500/15 hover:shadow-[0_0_30px_-8px_rgba(168,85,247,0.25)]', icon: 'text-purple-400', glow: 'bg-purple-400' },
-                  amber: { card: 'bg-amber-500/10 border-amber-500/25 hover:border-amber-400/50 hover:bg-amber-500/15 hover:shadow-[0_0_30px_-8px_rgba(245,158,11,0.25)]', icon: 'text-amber-400', glow: 'bg-amber-400' },
-                  orange: { card: 'bg-orange-500/10 border-orange-500/25 hover:border-orange-400/50 hover:bg-orange-500/15 hover:shadow-[0_0_30px_-8px_rgba(249,115,22,0.25)]', icon: 'text-orange-400', glow: 'bg-orange-400' },
+                  green: { card: 'bg-stone-900/70 border-green-500/30 hover:border-green-400/60 hover:bg-stone-800/70 hover:shadow-[0_0_30px_-8px_rgba(34,197,94,0.3)]', icon: 'text-green-400', glow: 'bg-green-400' },
+                  cyan: { card: 'bg-stone-900/70 border-cyan-500/30 hover:border-cyan-400/60 hover:bg-stone-800/70 hover:shadow-[0_0_30px_-8px_rgba(6,182,212,0.3)]', icon: 'text-cyan-400', glow: 'bg-cyan-400' },
+                  purple: { card: 'bg-stone-900/70 border-purple-500/30 hover:border-purple-400/60 hover:bg-stone-800/70 hover:shadow-[0_0_30px_-8px_rgba(168,85,247,0.3)]', icon: 'text-purple-400', glow: 'bg-purple-400' },
+                  amber: { card: 'bg-stone-900/70 border-amber-500/30 hover:border-amber-400/60 hover:bg-stone-800/70 hover:shadow-[0_0_30px_-8px_rgba(245,158,11,0.3)]', icon: 'text-amber-400', glow: 'bg-amber-400' },
+                  orange: { card: 'bg-stone-900/70 border-orange-500/30 hover:border-orange-400/60 hover:bg-stone-800/70 hover:shadow-[0_0_30px_-8px_rgba(249,115,22,0.3)]', icon: 'text-orange-400', glow: 'bg-orange-400' },
                 };
                 const st = styles[s.color];
                 return (
