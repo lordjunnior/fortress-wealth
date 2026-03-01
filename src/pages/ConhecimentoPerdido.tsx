@@ -101,10 +101,14 @@ export default function ConhecimentoPerdido() {
 
       <div className="relative z-10 max-w-5xl mx-auto px-6 md:px-10 pt-24 pb-32">
 
-        {/* ─── NAV ─── */}
-        <Link to="/projeto-autonomo" className="inline-flex items-center gap-2 text-stone-600 hover:text-emerald-400 mb-16 text-[10px] font-bold uppercase tracking-[0.3em] transition-all duration-300">
-          <ArrowLeft size={14} /> Projeto Autônomo
-        </Link>
+        {/* ─── BREADCRUMB ─── */}
+        <nav className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] mb-16 flex-wrap">
+          <Link to="/" className="text-stone-600 hover:text-emerald-400 transition-colors">Início</Link>
+          <span className="text-stone-700">/</span>
+          <Link to="/projeto-autonomo" className="text-stone-600 hover:text-emerald-400 transition-colors">Projeto Autônomo</Link>
+          <span className="text-stone-700">/</span>
+          <span className="text-emerald-400">Conhecimento Perdido</span>
+        </nav>
 
         {/* ═══════════════════════════════════════════════════
             HERO — CONHECIMENTO PERDIDO
@@ -434,41 +438,53 @@ export default function ConhecimentoPerdido() {
             BLOCO ESTRATÉGICO — LIVRO EM EDIÇÃO
         ═══════════════════════════════════════════════════ */}
         <motion.section initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="mb-28">
-          <div className="bg-gradient-to-br from-amber-950/30 to-[#0f1a0f]/60 border border-amber-800/20 rounded-2xl p-8 md:p-12 relative overflow-hidden">
-            <div className="absolute top-4 right-4">
-              <span className="text-[8px] font-bold tracking-[0.4em] uppercase bg-amber-500/15 text-amber-400 px-3 py-1 rounded-full border border-amber-500/20">
-                Em desenvolvimento
-              </span>
-            </div>
-            <div className="flex items-center gap-3 mb-6">
-              <Sparkles className="text-amber-400" size={20} />
-              <h3 className="text-sm font-bold text-amber-400 uppercase tracking-[0.3em]">Livro em Edição</h3>
-            </div>
-            <h4 className="text-2xl md:text-3xl font-extrabold tracking-wide text-stone-200 mb-4 uppercase"
-              style={{ fontFamily: "'Space Grotesk', sans-serif", letterSpacing: '0.06em' }}>
-              AUTOCUSTÓDIA <span className="text-amber-400">BIOLÓGICA</span>
-            </h4>
-            <p className="text-stone-400 text-sm md:text-base leading-relaxed max-w-2xl mb-6">
-              Todo o conteúdo deste módulo está sendo estruturado como publicação técnica independente. 
-              Fichas expandidas, protocolos sazonais, matriz de decisão por sintoma, e guia prático de formação familiar 
-              — compilados em formato que funciona mesmo sem internet.
-            </p>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
-              {[
-                { label: '12 fichas técnicas', value: 'Padrão 9 seções' },
-                { label: 'Matriz comparativa', value: 'Visão sistêmica' },
-                { label: '9 exercícios práticos', value: 'Formação familiar' },
-                { label: 'Protocolos sazonais', value: 'Em desenvolvimento' },
-              ].map(item => (
-                <div key={item.label} className="bg-white/5 border border-white/10 rounded-lg p-3">
-                  <p className="text-stone-300 text-xs font-semibold">{item.label}</p>
-                  <p className="text-stone-500 text-[10px] mt-0.5">{item.value}</p>
+          <div className="relative rounded-2xl overflow-hidden border border-emerald-700/20">
+            {/* Background pattern */}
+            <div className="absolute inset-0 bg-gradient-to-br from-[#0f1a0f] via-[#111f11] to-[#0a150a]" />
+            <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(255,255,255,0.15) 1px, transparent 0)', backgroundSize: '24px 24px' }} />
+            
+            <div className="relative p-8 md:p-12">
+              <div className="flex items-center justify-between mb-8">
+                <div className="flex items-center gap-3">
+                  <div className="w-1 h-10 rounded-full bg-gradient-to-b from-emerald-400 to-emerald-600" />
+                  <div>
+                    <span className="text-emerald-500/60 text-[9px] font-bold tracking-[0.5em] uppercase">Publicação independente</span>
+                    <p className="text-stone-200 text-lg font-bold mt-0.5">Material em produção</p>
+                  </div>
                 </div>
-              ))}
+                <div className="flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1.5 rounded-full">
+                  <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  <span className="text-emerald-400 text-[9px] font-bold tracking-widest uppercase">Em progresso</span>
+                </div>
+              </div>
+
+              <p className="text-stone-400 text-sm md:text-base leading-relaxed max-w-2xl mb-8">
+                Todo o conteúdo deste módulo está sendo compilado em formato de publicação técnica independente —
+                fichas expandidas, protocolos sazonais, matriz de decisão por sintoma e guia de formação familiar.
+                Um material que funciona mesmo sem internet.
+              </p>
+
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
+                {[
+                  { label: '12 fichas técnicas', value: 'Padrão 9 seções' },
+                  { label: 'Matriz comparativa', value: 'Visão sistêmica' },
+                  { label: '9 exercícios práticos', value: 'Formação familiar' },
+                  { label: 'Protocolos sazonais', value: 'Em desenvolvimento' },
+                ].map(item => (
+                  <div key={item.label} className="bg-emerald-500/5 border border-emerald-500/15 rounded-lg p-3.5 hover:bg-emerald-500/10 transition-colors">
+                    <p className="text-stone-200 text-xs font-semibold">{item.label}</p>
+                    <p className="text-stone-500 text-[10px] mt-1">{item.value}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex items-center gap-3 pt-6 border-t border-emerald-800/20">
+                <Leaf size={14} className="text-emerald-500/50" />
+                <p className="text-stone-600 text-xs leading-relaxed">
+                  O título e formato final serão divulgados quando o material estiver pronto para publicação.
+                </p>
+              </div>
             </div>
-            <p className="text-stone-600 text-xs italic">
-              Acompanhe o desenvolvimento. Quando estiver pronto, você será o primeiro a saber.
-            </p>
           </div>
         </motion.section>
 
@@ -530,12 +546,25 @@ export default function ConhecimentoPerdido() {
               </div>
             </div>
 
-            <div className="mt-10 flex flex-col sm:flex-row gap-4">
-              <Link to="/projeto-autonomo/sabedoria-ancestral" className="btn-secondary text-center">
-                ← Voltar à Sabedoria Ancestral
-              </Link>
+            {/* ─── Link bidirecional: Sabedoria Ancestral ─── */}
+            <Link to="/projeto-autonomo/sabedoria-ancestral"
+              className="mt-8 flex items-center justify-between bg-emerald-500/8 border border-emerald-500/20 rounded-xl p-5 hover:bg-emerald-500/15 hover:border-emerald-400/30 transition-all duration-300 group"
+            >
+              <div className="flex items-center gap-4">
+                <div className="p-2.5 bg-emerald-500/15 rounded-xl">
+                  <Leaf size={18} className="text-emerald-400" />
+                </div>
+                <div>
+                  <p className="text-emerald-300 text-sm font-bold">Sabedoria Ancestral</p>
+                  <p className="text-stone-500 text-xs mt-0.5">Hub de saúde natural, soberania alimentar e módulos práticos</p>
+                </div>
+              </div>
+              <ChevronRight className="text-emerald-500/40 group-hover:text-emerald-400 group-hover:translate-x-1 transition-all" size={18} />
+            </Link>
+
+            <div className="mt-4 flex flex-col sm:flex-row gap-4">
               <Link to="/projeto-autonomo" className="btn-secondary text-center">
-                Projeto Autônomo
+                ← Projeto Autônomo
               </Link>
             </div>
           </div>

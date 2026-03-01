@@ -209,24 +209,40 @@ export default function ProjetoAutonomo() {
         {/* ═══════════════ PROGRESSION MAP ═══════════════ */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-28">
           {[
-            { num: '01', title: 'Base 72', sub: 'Protege o corpo', colorText: 'text-rose-600', colorBg: 'bg-rose-50/70', colorBorder: 'border-rose-200/60', colorHover: 'hover:border-rose-300 hover:shadow-rose-100/40', desc: 'Autonomia mínima nas primeiras 72 horas. Abrigo, água, comunicação e deslocamento.' },
-            { num: '02', title: 'Autonomia Biológica', sub: 'Fortalece o corpo', colorText: 'text-emerald-600', colorBg: 'bg-emerald-50/70', colorBorder: 'border-emerald-200/60', colorHover: 'hover:border-emerald-300 hover:shadow-emerald-100/40', desc: 'Saúde preventiva, primeiros socorros e fitoterapia como primeira linha de defesa.' },
-            { num: '03', title: 'Soberania Alimentar', sub: 'Alimenta o corpo', colorText: 'text-amber-600', colorBg: 'bg-amber-50/70', colorBorder: 'border-amber-200/60', colorHover: 'hover:border-amber-300 hover:shadow-amber-100/40', desc: 'Produção própria de alimento. Horta, solo, conservação e proteína sustentável.' },
-            { num: '04', title: 'Conhecimento Perdido', sub: 'Ensina a entender o corpo', colorText: 'text-teal-600', colorBg: 'bg-teal-50/70', colorBorder: 'border-teal-200/60', colorHover: 'hover:border-teal-300 hover:shadow-teal-100/40', desc: 'Formação bioquímica e botânica. 12 plantas, 5 sistemas, 9 seções técnicas por ficha.' },
-          ].map((phase, i) => (
-            <motion.a
-              key={phase.num}
-              href={`#fase-${phase.num}`}
-              initial="hidden" animate="visible" variants={fadeUp} custom={i + 1}
-              className={`${phase.colorBg} ${phase.colorBorder} ${phase.colorHover} border p-8 md:p-10 rounded-2xl backdrop-blur-sm transition-all duration-300 group cursor-pointer hover:shadow-lg hover:scale-[1.02]`}
-            >
-              <span className={`${phase.colorText} text-[10px] font-bold tracking-[0.4em] uppercase opacity-70`}>Fase {phase.num}</span>
-              <h3 className="text-xl font-bold tracking-tight mt-3 mb-1 text-stone-800">{phase.title}</h3>
-              <p className={`${phase.colorText} text-xs font-semibold uppercase tracking-widest mb-4`}>{phase.sub}</p>
-              <p className="text-stone-500 text-sm leading-relaxed">{phase.desc}</p>
-              <ArrowRight className={`${phase.colorText} mt-5 opacity-0 group-hover:opacity-60 transition-all duration-300 group-hover:translate-x-1`} size={16} />
-            </motion.a>
-          ))}
+            { num: '01', title: 'Base 72', sub: 'Protege o corpo', colorText: 'text-rose-600', colorBg: 'bg-rose-50/70', colorBorder: 'border-rose-200/60', colorHover: 'hover:border-rose-300 hover:shadow-rose-100/40', desc: 'Autonomia mínima nas primeiras 72 horas. Abrigo, água, comunicação e deslocamento.', sectionId: 'fase-01' },
+            { num: '02', title: 'Autonomia Biológica', sub: 'Fortalece o corpo', colorText: 'text-emerald-600', colorBg: 'bg-emerald-50/70', colorBorder: 'border-emerald-200/60', colorHover: 'hover:border-emerald-300 hover:shadow-emerald-100/40', desc: 'Saúde preventiva, primeiros socorros e fitoterapia como primeira linha de defesa.', link: '/projeto-autonomo/sabedoria-ancestral' },
+            { num: '03', title: 'Soberania Alimentar', sub: 'Alimenta o corpo', colorText: 'text-amber-600', colorBg: 'bg-amber-50/70', colorBorder: 'border-amber-200/60', colorHover: 'hover:border-amber-300 hover:shadow-amber-100/40', desc: 'Produção própria de alimento. Horta, solo, conservação e proteína sustentável.', sectionId: 'fase-03' },
+            { num: '04', title: 'Conhecimento Perdido', sub: 'Ensina a entender o corpo', colorText: 'text-teal-600', colorBg: 'bg-teal-50/70', colorBorder: 'border-teal-200/60', colorHover: 'hover:border-teal-300 hover:shadow-teal-100/40', desc: 'Formação bioquímica e botânica. 12 plantas, 5 sistemas, 9 seções técnicas por ficha.', link: '/projeto-autonomo/conhecimento-perdido' },
+          ].map((phase, i) => {
+            const content = (
+              <>
+                <span className={`${phase.colorText} text-[10px] font-bold tracking-[0.4em] uppercase opacity-70`}>Fase {phase.num}</span>
+                <h3 className="text-xl font-bold tracking-tight mt-3 mb-1 text-stone-800">{phase.title}</h3>
+                <p className={`${phase.colorText} text-xs font-semibold uppercase tracking-widest mb-4`}>{phase.sub}</p>
+                <p className="text-stone-500 text-sm leading-relaxed">{phase.desc}</p>
+                <ArrowRight className={`${phase.colorText} mt-5 opacity-0 group-hover:opacity-60 transition-all duration-300 group-hover:translate-x-1`} size={16} />
+              </>
+            );
+            const cls = `${phase.colorBg} ${phase.colorBorder} ${phase.colorHover} border p-8 md:p-10 rounded-2xl backdrop-blur-sm transition-all duration-300 group cursor-pointer hover:shadow-lg hover:scale-[1.02] block`;
+
+            if ('link' in phase && phase.link) {
+              return (
+                <motion.div key={phase.num} initial="hidden" animate="visible" variants={fadeUp} custom={i + 1}>
+                  <Link to={phase.link} className={cls}>{content}</Link>
+                </motion.div>
+              );
+            }
+            return (
+              <motion.div
+                key={phase.num}
+                initial="hidden" animate="visible" variants={fadeUp} custom={i + 1}
+                onClick={() => document.getElementById(phase.sectionId!)?.scrollIntoView({ behavior: 'smooth' })}
+                className={cls}
+              >
+                {content}
+              </motion.div>
+            );
+          })}
         </div>
 
         {/* ─── Expansão contínua ─── */}
