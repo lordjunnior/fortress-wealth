@@ -12,6 +12,7 @@ import FaqSection from "@/components/FaqSection";
 import WhyBitcoinSection from "@/components/WhyBitcoinSection";
 import FooterSection from "@/components/FooterSection";
 import QuoteCarousel from "@/components/QuoteCarousel";
+import BitcoinInsightsSection from "@/components/BitcoinInsightsSection";
 import NetworkTicker from "@/components/NetworkTicker";
 import CommandCenter from "@/components/CommandCenter";
 import SovereignTermModal from "@/components/SovereignTermModal";
@@ -102,6 +103,10 @@ const Index = () => {
 
         <div className="section-divider">
           <WhyBitcoinSection />
+        </div>
+
+        <div className="section-alt section-divider">
+          <BitcoinInsightsSection />
         </div>
 
         <div id="apoio" className="section-alt section-divider">

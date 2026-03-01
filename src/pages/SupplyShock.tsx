@@ -10,8 +10,6 @@ import { SupplyBar } from '@/components/supply-shock/SupplyBar';
 import { fetchBitcoinStats } from '@/components/supply-shock/bitcoinService';
 import { BitcoinStats } from '@/components/supply-shock/types';
 import { STRINGS } from '@/components/supply-shock/constants';
-import { HalvingCard } from '@/components/supply-shock/HalvingCard';
-import { RoiCard } from '@/components/supply-shock/RoiCard';
 
 const NAV_ITEMS = [
   { id: 'dados-vivos', label: 'Dados ao Vivo' },
@@ -475,11 +473,6 @@ export default function SupplyShock() {
             </div>
           </section>
 
-          {/* === BLOCOS FINAIS === */}
-          <section className="mb-16 space-y-6">
-            {btcStats && <HalvingCard estimatedDate={btcStats.estimatedHalvingDate} />}
-            <RoiCard />
-          </section>
 
         </div>
       </div>
