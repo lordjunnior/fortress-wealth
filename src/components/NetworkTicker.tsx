@@ -32,6 +32,8 @@ const formatBRL = (n: number) => {
 const NetworkTicker = () => {
   const [block, setBlock] = useState<number | null>(null);
   const [priceUsd, setPriceUsd] = useState<number | null>(null);
+  const [priceBrl, setPriceBrl] = useState<number | null>(null);
+
   const [arrecadacaoHoje, setArrecadacaoHoje] = useState("---");
   const [arrecadacaoAno, setArrecadacaoAno] = useState("---");
   const [dividaPublica, setDividaPublica] = useState("---");
@@ -53,6 +55,12 @@ const NetworkTicker = () => {
         if (priceRes.ok) {
           const priceData = await priceRes.json();
           setPriceUsd(priceData.USD);
+          if (priceData.BRL) {
+            setPriceBrl(priceData.BRL);
+          } else if (priceData.USD) {
+            // fallback: USD * ~5.5
+            setPriceBrl(Math.round(priceData.USD * 5.5));
+          }
         }
         if (blockRes.ok) {
           const blockData = await blockRes.text();
@@ -103,6 +111,7 @@ const NetworkTicker = () => {
   // Bloomberg-style items with semantic coloring
   const items = [
     { label: "BTC/USD", value: priceUsd !== null ? `$${priceUsd.toLocaleString("en-US")}` : "---", color: "green" as const, live: true },
+    { label: "BTC/BRL", value: priceBrl !== null ? `R$ ${priceBrl.toLocaleString("pt-BR")}` : "---", color: "green" as const },
     { label: "BLOCO", value: block !== null ? block.toLocaleString("pt-BR") : "---", color: "neutral" as const },
     { label: "SELIC", value: "14,25%", color: "red" as const, arrow: "up" as const },
     { label: "IPCA", value: "5,06%", color: "red" as const, arrow: "up" as const },
@@ -125,8 +134,18 @@ const NetworkTicker = () => {
   const renderItem = (item: typeof items[0], key: number) => (
     <div
       key={key}
-      className="inline-flex items-center gap-1.5 px-5 font-mono text-[11px] tracking-wide"
-      style={{ borderRight: "1px solid rgba(255,255,255,0.06)" }}
+      className="inline-flex items-center gap-1.5 px-5 py-1 font-mono text-[11px] tracking-wide transition-all duration-200 cursor-default"
+      style={{
+        borderRight: "1px solid rgba(255,255,255,0.06)",
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.background = `${colorMap[item.color]}11`;
+        e.currentTarget.style.boxShadow = `inset 0 -2px 0 ${colorMap[item.color]}88`;
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.background = "transparent";
+        e.currentTarget.style.boxShadow = "none";
+      }}
     >
       {/* Live pulse dot */}
       {item.live && (
