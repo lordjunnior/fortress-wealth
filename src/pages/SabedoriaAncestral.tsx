@@ -131,10 +131,14 @@ export default function SabedoriaAncestral() {
 
       <div className="relative z-10 max-w-5xl mx-auto px-6 md:px-10 pt-24 pb-32">
 
-        {/* ─── NAV ─── */}
-        <Link to="/projeto-autonomo" className="inline-flex items-center gap-2 text-stone-500 hover:text-emerald-400 mb-16 text-[10px] font-bold uppercase tracking-[0.3em] transition-all duration-300">
-          <ArrowLeft size={14} /> Projeto Autônomo
-        </Link>
+        {/* ─── BREADCRUMB ─── */}
+        <nav className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] mb-16 flex-wrap">
+          <Link to="/" className="text-stone-500 hover:text-emerald-400 transition-colors">Início</Link>
+          <span className="text-stone-700">/</span>
+          <Link to="/projeto-autonomo" className="text-stone-500 hover:text-emerald-400 transition-colors">Projeto Autônomo</Link>
+          <span className="text-stone-700">/</span>
+          <span className="text-emerald-400">Sabedoria Ancestral</span>
+        </nav>
 
         {/* ═══════════════════════════════════════════════════
             HERO — NARRATIVA DO GUARDIÃO
@@ -344,7 +348,7 @@ export default function SabedoriaAncestral() {
               </div>
               <div className="flex-1">
                 <span className="text-emerald-500/60 text-[10px] font-bold tracking-[0.5em] uppercase">Módulo Especial</span>
-                <h3 className="text-xl md:text-2xl font-black text-stone-200 mt-1 mb-2" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+                <h3 className="text-xl md:text-2xl font-extrabold text-stone-200 mt-1 mb-2 uppercase tracking-wide" style={{ fontFamily: "'Space Grotesk', sans-serif", letterSpacing: '0.06em' }}>
                   CONHECIMENTO PERDIDO
                 </h3>
                 <p className="text-stone-500 text-sm leading-relaxed">
