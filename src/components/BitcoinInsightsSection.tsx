@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { TrendingUp, Timer, ArrowLeftRight } from 'lucide-react';
+import React, { useEffect, useState, useMemo } from 'react';
+import { TrendingUp, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { LineChart, Line, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { fetchBitcoinStats } from '@/components/supply-shock/bitcoinService';
 import { TimeRemaining } from '@/components/supply-shock/types';
 
@@ -12,6 +14,7 @@ const ROI_PERIODS = [
 ];
 
 const ASSETS = ['BTC', 'ETH', 'BNB', 'DOGE', 'XRP', 'CDI', 'IPCA'] as const;
+type Asset = typeof ASSETS[number];
 
 const COINGECKO_IDS: Record<string, string> = {
   BTC: 'bitcoin',
@@ -21,13 +24,22 @@ const COINGECKO_IDS: Record<string, string> = {
   XRP: 'ripple',
 };
 
+const ASSET_COLORS: Record<Asset, string> = {
+  BTC: '#f7931a',
+  ETH: '#627eea',
+  BNB: '#f3ba2f',
+  DOGE: '#c2a633',
+  XRP: '#00aae4',
+  CDI: '#8884d8',
+  IPCA: '#d4a017',
+};
+
 const PERIOD_OPTIONS = [
-  { label: '1 Ano', days: 365 },
-  { label: '5 Anos', days: 1825 },
-  { label: '10 Anos', days: 3650 },
+  { label: '1 ANO', days: 365 },
+  { label: '5 ANOS', days: 1825 },
+  { label: '10 ANOS', days: 3650 },
 ];
 
-// Approximate fixed annual returns for CDI and IPCA
 const FIXED_ANNUAL: Record<string, number> = {
   CDI: 11.5,
   IPCA: 5.0,
@@ -35,8 +47,9 @@ const FIXED_ANNUAL: Record<string, number> = {
 
 const BitcoinInsightsSection: React.FC = () => {
   // --- BLOCK 1: Comparison ---
-  const [selectedPeriod, setSelectedPeriod] = useState(1);
-  const [comparisonData, setComparisonData] = useState<Record<string, number | null>>({});
+  const [selectedPeriod, setSelectedPeriod] = useState(1); // default 5 ANOS
+  const [comparisonValues, setComparisonValues] = useState<Record<string, number | null>>({});
+  const [chartData, setChartData] = useState<Record<string, number | null>[]>([]);
   const [loadingComparison, setLoadingComparison] = useState(true);
 
   // --- BLOCK 2: ROI ---
@@ -49,45 +62,78 @@ const BitcoinInsightsSection: React.FC = () => {
   const [timeLeft, setTimeLeft] = useState<TimeRemaining>({ days: 0, hours: 0, minutes: 0, seconds: 0 });
   const [halvingDate, setHalvingDate] = useState<Date | null>(null);
 
-  // Fetch comparison data
+  // Fetch comparison data with chart
   useEffect(() => {
     const fetchComparison = async () => {
       setLoadingComparison(true);
       const period = PERIOD_OPTIONS[selectedPeriod];
-      const results: Record<string, number | null> = {};
+      const finalValues: Record<string, number | null> = {};
+      const allPrices: Record<string, [number, number][]> = {};
 
-      // Fetch crypto assets
-      const cryptoIds = Object.entries(COINGECKO_IDS);
+      // Fetch crypto price histories
+      const cryptoEntries = Object.entries(COINGECKO_IDS);
       await Promise.allSettled(
-        cryptoIds.map(async ([symbol, id]) => {
+        cryptoEntries.map(async ([symbol, id]) => {
           try {
             const res = await fetch(
               `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=brl&days=${period.days}&interval=daily`
             );
             const data = await res.json();
             if (data.prices && data.prices.length > 0) {
+              allPrices[symbol] = data.prices;
               const oldPrice = data.prices[0][1];
               const newPrice = data.prices[data.prices.length - 1][1];
               const returnPct = ((newPrice - oldPrice) / oldPrice) * 100;
-              const finalValue = 1000 * (1 + returnPct / 100);
-              results[symbol] = finalValue;
+              finalValues[symbol] = 1000 * (1 + returnPct / 100);
             } else {
-              results[symbol] = null;
+              finalValues[symbol] = null;
             }
           } catch {
-            results[symbol] = null;
+            finalValues[symbol] = null;
           }
         })
       );
 
-      // Calculate CDI and IPCA compound returns
+      // CDI & IPCA final values
       const years = period.days / 365;
       for (const [key, annualRate] of Object.entries(FIXED_ANNUAL)) {
-        const finalValue = 1000 * Math.pow(1 + annualRate / 100, years);
-        results[key] = finalValue;
+        finalValues[key] = 1000 * Math.pow(1 + annualRate / 100, years);
+      }
+      setComparisonValues(finalValues);
+
+      // Build chart data - sample ~60 points max for performance
+      const btcPrices = allPrices['BTC'];
+      if (btcPrices && btcPrices.length > 0) {
+        const step = Math.max(1, Math.floor(btcPrices.length / 60));
+        const points: Record<string, number | null>[] = [];
+
+        for (let i = 0; i < btcPrices.length; i += step) {
+          const timestamp = btcPrices[i][0];
+          const date = new Date(timestamp);
+          const label = `${String(date.getMonth() + 1).padStart(2, '0')}/${String(date.getFullYear()).slice(-2)}`;
+
+          const point: Record<string, number | null> = { date: label as any };
+
+          // For each crypto, calculate % change from start
+          for (const [symbol, prices] of Object.entries(allPrices)) {
+            if (prices[i] && prices[0]) {
+              point[symbol] = ((prices[i][1] - prices[0][1]) / prices[0][1]) * 100;
+            } else {
+              point[symbol] = null;
+            }
+          }
+
+          // CDI & IPCA as compound lines
+          const daysSinceStart = (timestamp - btcPrices[0][0]) / (1000 * 60 * 60 * 24);
+          const yrs = daysSinceStart / 365;
+          point['CDI'] = (Math.pow(1 + 0.115, yrs) - 1) * 100;
+          point['IPCA'] = (Math.pow(1 + 0.05, yrs) - 1) * 100;
+
+          points.push(point);
+        }
+        setChartData(points);
       }
 
-      setComparisonData(results);
       setLoadingComparison(false);
     };
     fetchComparison();
@@ -163,6 +209,11 @@ const BitcoinInsightsSection: React.FC = () => {
     return () => clearInterval(timer);
   }, [halvingDate]);
 
+  const formatBRL = (val: number | null) => {
+    if (val === null) return '—';
+    return val.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', minimumFractionDigits: 2 });
+  };
+
   const getColor = (val: number | null) => {
     if (val === null) return 'text-muted-foreground';
     return val >= 0 ? 'text-green-400' : 'text-red-400';
@@ -171,21 +222,6 @@ const BitcoinInsightsSection: React.FC = () => {
   const getBorder = (val: number | null) => {
     if (val === null) return 'border-border';
     return val >= 0 ? 'border-green-500/20' : 'border-red-500/20';
-  };
-
-  const formatBRL = (val: number | null) => {
-    if (val === null) return '—';
-    return val.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', minimumFractionDigits: 2 });
-  };
-
-  const getComparisonColor = (val: number | null) => {
-    if (val === null) return 'text-muted-foreground';
-    return val >= 1000 ? 'text-green-400' : 'text-red-400';
-  };
-
-  const getComparisonBorder = (val: number | null) => {
-    if (val === null) return 'border-border';
-    return val >= 1000 ? 'border-green-500/20' : 'border-red-500/20';
   };
 
   const units = [
@@ -199,70 +235,143 @@ const BitcoinInsightsSection: React.FC = () => {
     ? halvingDate.toLocaleDateString('pt-BR', { day: 'numeric', month: 'long', year: 'numeric' })
     : '—';
 
+  // Asset rows for comparison - 2 columns, pairs
+  const assetPairs: [Asset, Asset | undefined][] = [];
+  for (let i = 0; i < ASSETS.length; i += 2) {
+    assetPairs.push([ASSETS[i], ASSETS[i + 1]]);
+  }
+
   return (
     <div className="section-padding">
       <div className="max-w-5xl mx-auto space-y-6">
 
-        {/* BLOCO 1: Comparação BTC vs Moedas */}
-        <div className="card-wealth">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-8 h-8 rounded-sm bg-primary/10 border border-primary/20 flex items-center justify-center">
-              <ArrowLeftRight className="text-primary w-4 h-4" />
+        {/* ═══════════════════════════════════════════════════════
+            BLOCO 1: COMPARAÇÃO DE BTC COM AS PRINCIPAIS MOEDAS
+            ═══════════════════════════════════════════════════════ */}
+        <div className="card-wealth overflow-hidden">
+          {/* Header bar */}
+          <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 rounded-sm bg-primary/10 border border-primary/20 flex items-center justify-center">
+                <TrendingUp className="text-primary w-4 h-4" />
+              </div>
+              <h3 className="text-xs md:text-sm font-black uppercase tracking-[0.15em] font-mono">
+                Comparação de BTC com as Principais Moedas
+              </h3>
             </div>
-            <h3 className="text-sm font-black uppercase tracking-[0.15em] font-mono">
-              Comparação do BTC com as Principais Moedas
-            </h3>
+            <div className="flex items-center gap-1">
+              {PERIOD_OPTIONS.map((p, i) => (
+                <button
+                  key={p.label}
+                  onClick={() => setSelectedPeriod(i)}
+                  className={`px-2 md:px-3 py-1 text-[10px] md:text-xs font-mono font-bold uppercase tracking-wider transition-all border-b-2 ${
+                    selectedPeriod === i
+                      ? 'border-primary text-primary'
+                      : 'border-transparent text-muted-foreground hover:text-foreground'
+                  }`}
+                >
+                  {p.label}
+                </button>
+              ))}
+            </div>
           </div>
-
-          {/* Period selector */}
-          <div className="flex items-center gap-2 mb-4">
-            {PERIOD_OPTIONS.map((p, i) => (
-              <button
-                key={p.label}
-                onClick={() => setSelectedPeriod(i)}
-                className={`px-3 py-1.5 rounded-sm text-xs font-mono font-bold uppercase tracking-wider transition-all border ${
-                  selectedPeriod === i
-                    ? 'bg-primary/20 border-primary/40 text-primary'
-                    : 'bg-background border-border text-muted-foreground hover:border-primary/20'
-                }`}
-              >
-                {p.label}
-              </button>
-            ))}
-          </div>
-
-          <p className="text-muted-foreground text-xs font-mono mb-6">
-            Se você tivesse investido <strong className="text-foreground">R$ 1.000,00</strong> há{' '}
-            <strong className="text-foreground">{PERIOD_OPTIONS[selectedPeriod].label.toLowerCase()}</strong>, você teria:
-          </p>
 
           {loadingComparison ? (
-            <div className="text-muted-foreground font-mono text-sm animate-pulse text-center py-8">
+            <div className="text-muted-foreground font-mono text-sm animate-pulse text-center py-16">
               Carregando dados de mercado...
             </div>
           ) : (
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-3">
-              {ASSETS.map((asset) => {
-                const val = comparisonData[asset] ?? null;
-                return (
-                  <div
-                    key={asset}
-                    className={`border ${getComparisonBorder(val)} bg-background rounded-sm p-4 text-center transition-all hover:scale-[1.02]`}
-                  >
-                    <span className="text-[10px] text-muted-foreground uppercase tracking-widest font-mono block mb-2">
-                      {asset}
-                    </span>
-                    <span className={`text-sm md:text-base font-black font-mono block ${getComparisonColor(val)}`}>
-                      {formatBRL(val)}
-                    </span>
-                  </div>
-                );
-              })}
-            </div>
+            <>
+              {/* Chart */}
+              {chartData.length > 0 && (
+                <div className="w-full h-[280px] md:h-[360px] mb-6">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <LineChart data={chartData} margin={{ top: 5, right: 10, left: 0, bottom: 5 }}>
+                      <XAxis
+                        dataKey="date"
+                        tick={{ fontSize: 10, fill: 'hsl(215 15% 55%)' }}
+                        tickLine={false}
+                        axisLine={{ stroke: 'hsl(220 20% 12%)' }}
+                        interval="preserveStartEnd"
+                      />
+                      <YAxis
+                        tick={{ fontSize: 10, fill: 'hsl(215 15% 55%)' }}
+                        tickLine={false}
+                        axisLine={{ stroke: 'hsl(220 20% 12%)' }}
+                        tickFormatter={(v) => `${v.toFixed(0)}%`}
+                      />
+                      <Tooltip
+                        contentStyle={{
+                          backgroundColor: 'hsl(222 47% 6%)',
+                          border: '1px solid hsl(220 20% 16%)',
+                          borderRadius: '2px',
+                          fontSize: 11,
+                          fontFamily: 'JetBrains Mono, monospace',
+                        }}
+                        labelStyle={{ color: 'hsl(210 40% 98%)' }}
+                        formatter={(value: number) => [`${value.toFixed(2)}%`]}
+                      />
+                      <Legend
+                        wrapperStyle={{ fontSize: 10, fontFamily: 'JetBrains Mono, monospace' }}
+                      />
+                      {ASSETS.map((asset) => (
+                        <Line
+                          key={asset}
+                          type="monotone"
+                          dataKey={asset}
+                          stroke={ASSET_COLORS[asset]}
+                          dot={false}
+                          strokeWidth={asset === 'BTC' ? 2.5 : 1.5}
+                          connectNulls
+                        />
+                      ))}
+                    </LineChart>
+                  </ResponsiveContainer>
+                </div>
+              )}
+
+              {/* Text */}
+              <p className="text-center text-sm font-mono text-muted-foreground mb-6">
+                Se você tivesse investido <strong className="text-foreground">R$ 1.000,00</strong> há{' '}
+                <button
+                  className="text-primary underline underline-offset-2 font-bold"
+                  onClick={() => setSelectedPeriod((selectedPeriod + 1) % PERIOD_OPTIONS.length)}
+                >
+                  {PERIOD_OPTIONS[selectedPeriod].label.toLowerCase()}
+                </button>
+                , hoje você teria:
+              </p>
+
+              {/* Asset rows - 2 columns */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                {ASSETS.map((asset) => {
+                  const val = comparisonValues[asset] ?? null;
+                  return (
+                    <div
+                      key={asset}
+                      className="flex items-center gap-3 border border-border rounded-sm p-3 bg-background"
+                    >
+                      <span
+                        className="text-[10px] font-black font-mono px-2.5 py-1 rounded-sm text-background min-w-[48px] text-center"
+                        style={{ backgroundColor: ASSET_COLORS[asset] }}
+                      >
+                        {asset}
+                      </span>
+                      <span className="text-xs md:text-sm font-mono text-muted-foreground">
+                        R$ 1.000,00 em {asset} você teria{' '}
+                        <strong className="text-foreground">{formatBRL(val)}</strong>
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
+            </>
           )}
         </div>
 
-        {/* BLOCO 2: ROI do Bitcoin */}
+        {/* ═══════════════════════════════════════════════
+            BLOCO 2: RETORNO DO INVESTIMENTO EM BITCOIN
+            ═══════════════════════════════════════════════ */}
         <div className="card-wealth">
           <div className="flex items-center gap-3 mb-8">
             <div className="w-8 h-8 rounded-sm bg-primary/10 border border-primary/20 flex items-center justify-center">
@@ -296,7 +405,9 @@ const BitcoinInsightsSection: React.FC = () => {
           )}
         </div>
 
-        {/* BLOCO 3: Halving Countdown */}
+        {/* ═══════════════════════════════════════════════
+            BLOCO 3: CONTAGEM REGRESSIVA - HALVING
+            ═══════════════════════════════════════════════ */}
         <div className="card-wealth text-center space-y-8">
           <div>
             <p className="text-muted-foreground text-xs uppercase tracking-[0.3em] font-mono font-black mb-2">
@@ -324,6 +435,17 @@ const BitcoinInsightsSection: React.FC = () => {
             Data estimada: <strong className="text-foreground">{formattedDate}</strong>
           </p>
         </div>
+
+        {/* Saiba mais link */}
+        <Link
+          to="/supply-shock"
+          className="card-wealth flex items-center justify-center gap-3 py-6 group cursor-pointer hover:border-primary/30 transition-all"
+        >
+          <span className="text-muted-foreground group-hover:text-foreground text-sm font-medium transition-colors">
+            Saiba mais
+          </span>
+          <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+        </Link>
 
       </div>
     </div>
