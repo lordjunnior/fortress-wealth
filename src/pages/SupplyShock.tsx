@@ -182,8 +182,8 @@ export default function SupplyShock() {
             <div className="relative z-10">
               <span className="text-amber-500 font-black uppercase tracking-[0.5em] text-[9px] mb-6 block font-mono">Oferta Fixa vs. Demanda Infinita</span>
               <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.85] uppercase text-white mb-8">
-                Supply<br />
-                <span className="ss-shimmer-gold italic">Shock</span>
+                Contagem<br />
+                <span className="ss-shimmer-gold italic">Regressiva</span>
               </h1>
               <p className="text-slate-400 text-base md:text-lg leading-relaxed max-w-2xl font-medium">
                 Você não está comprando um ativo "caro". Você está comprando uma tecnologia que começou a absorver o valor de um sistema financeiro de <strong className="text-white">US$ 1.000.000.000.000.000</strong> que está apodrecendo.
