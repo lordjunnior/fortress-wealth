@@ -207,67 +207,35 @@ export default function ProjetoAutonomo() {
         </motion.header>
 
         {/* ═══════════════ PROGRESSION MAP ═══════════════ */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-28">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-28">
           {[
-            { num: '01', title: 'Base 72', sub: 'Sobreviver', colorText: 'text-rose-600', colorBg: 'bg-rose-50/70', colorBorder: 'border-rose-200/60', colorHover: 'hover:border-rose-300 hover:shadow-rose-100/40', desc: 'Autonomia mínima nas primeiras 72 horas de qualquer interrupcao.' },
-            { num: '02', title: 'Autonomia Biologica', sub: 'Fortalecer', colorText: 'text-emerald-600', colorBg: 'bg-emerald-50/70', colorBorder: 'border-emerald-200/60', colorHover: 'hover:border-emerald-300 hover:shadow-emerald-100/40', desc: 'Fortalecer o corpo como primeira linha de protecao. Complemento ao sistema de saude.' },
-            { num: '03', title: 'Soberania Alimentar', sub: 'Produzir', colorText: 'text-amber-600', colorBg: 'bg-amber-50/70', colorBorder: 'border-amber-200/60', colorHover: 'hover:border-amber-300 hover:shadow-amber-100/40', desc: 'Capacidade real de produzir parte do proprio sustento.' },
-          ].map((phase, i) => (
-            <motion.a
-              key={phase.num}
-              href={`#fase-${phase.num}`}
-              initial="hidden" animate="visible" variants={fadeUp} custom={i + 1}
-              className={`${phase.colorBg} ${phase.colorBorder} ${phase.colorHover} border p-8 md:p-10 rounded-2xl backdrop-blur-sm transition-all duration-300 group cursor-pointer hover:shadow-lg hover:scale-[1.02]`}
-            >
-              <span className={`${phase.colorText} text-[10px] font-bold tracking-[0.4em] uppercase opacity-70`}>Fase {phase.num}</span>
-              <h3 className="text-xl font-bold tracking-tight mt-3 mb-1 text-stone-800">{phase.title}</h3>
-              <p className={`${phase.colorText} text-xs font-semibold uppercase tracking-widest mb-4`}>{phase.sub}</p>
-              <p className="text-stone-500 text-sm leading-relaxed">{phase.desc}</p>
-              <ArrowRight className={`${phase.colorText} mt-5 opacity-0 group-hover:opacity-60 transition-all duration-300 group-hover:translate-x-1`} size={16} />
-            </motion.a>
-          ))}
+            { num: '01', title: 'Base 72', sub: 'Sobreviver', colorText: 'text-rose-600', colorBg: 'bg-rose-50/70', colorBorder: 'border-rose-200/60', colorHover: 'hover:border-rose-300 hover:shadow-rose-100/40', desc: 'Autonomia mínima nas primeiras 72 horas de qualquer interrupcao.', href: '#fase-01' },
+            { num: '02', title: 'Autonomia Biologica', sub: 'Fortalecer', colorText: 'text-emerald-600', colorBg: 'bg-emerald-50/70', colorBorder: 'border-emerald-200/60', colorHover: 'hover:border-emerald-300 hover:shadow-emerald-100/40', desc: 'Fortalecer o corpo como primeira linha de protecao. Complemento ao sistema de saude.', href: '#fase-02' },
+            { num: '03', title: 'Soberania Alimentar', sub: 'Produzir', colorText: 'text-amber-600', colorBg: 'bg-amber-50/70', colorBorder: 'border-amber-200/60', colorHover: 'hover:border-amber-300 hover:shadow-amber-100/40', desc: 'Capacidade real de produzir parte do proprio sustento.', href: '#fase-03' },
+            { num: '04', title: 'Conhecimento Perdido', sub: 'Ecossistema', colorText: 'text-teal-600', colorBg: 'bg-teal-50/70', colorBorder: 'border-teal-200/60', colorHover: 'hover:border-teal-300 hover:shadow-teal-100/40', desc: 'Fundamentos naturais aplicados à saúde. 12 plantas por sistema corporal.', href: '/projeto-autonomo/conhecimento-perdido', isRoute: true },
+          ].map((phase, i) => {
+            const content = (
+              <>
+                <span className={`${phase.colorText} text-[10px] font-bold tracking-[0.4em] uppercase opacity-70`}>{phase.isRoute ? 'Ecossistema' : `Fase ${phase.num}`}</span>
+                <h3 className="text-xl font-bold tracking-tight mt-3 mb-1 text-stone-800">{phase.title}</h3>
+                <p className={`${phase.colorText} text-xs font-semibold uppercase tracking-widest mb-4`}>{phase.sub}</p>
+                <p className="text-stone-500 text-sm leading-relaxed">{phase.desc}</p>
+                <ArrowRight className={`${phase.colorText} mt-5 opacity-0 group-hover:opacity-60 transition-all duration-300 group-hover:translate-x-1`} size={16} />
+              </>
+            );
+            const cls = `${phase.colorBg} ${phase.colorBorder} ${phase.colorHover} border p-8 md:p-10 rounded-2xl backdrop-blur-sm transition-all duration-300 group cursor-pointer hover:shadow-lg hover:scale-[1.02]`;
+
+            return phase.isRoute ? (
+              <motion.div key={phase.num} initial="hidden" animate="visible" variants={fadeUp} custom={i + 1}>
+                <Link to={phase.href} className={`block ${cls}`}>{content}</Link>
+              </motion.div>
+            ) : (
+              <motion.a key={phase.num} href={phase.href} initial="hidden" animate="visible" variants={fadeUp} custom={i + 1} className={cls}>
+                {content}
+              </motion.a>
+            );
+          })}
         </div>
-
-        {/* ═══════════════ CONHECIMENTO PERDIDO — CARD AVULSO ═══════════════ */}
-        <motion.div
-          initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}
-          className="mb-28"
-        >
-          <Link to="/projeto-autonomo/conhecimento-perdido"
-            className="block border-2 border-emerald-200/50 rounded-3xl overflow-hidden hover:border-emerald-400/60 hover:shadow-2xl hover:shadow-emerald-900/20 hover:scale-[1.005] transition-all duration-500 group relative"
-          >
-            {/* Hero image band — same pattern as phases */}
-            <div className="relative w-full h-64 md:h-80 overflow-hidden">
-              <img src={imgConhecimentoPerdido} alt="Conhecimento Perdido" className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" />
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-emerald-50/100" />
-              <div className="absolute inset-0 bg-gradient-to-t from-transparent to-black/20" />
-              <div className="absolute bottom-6 left-8 md:left-14 z-10">
-                <span className="text-emerald-300 text-[10px] font-bold tracking-[0.5em] uppercase drop-shadow-lg">Ecossistema Completo</span>
-                <h2 className="text-4xl md:text-6xl font-bold tracking-tight leading-[0.95] mt-1 text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.5)]" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
-                  Conhecimento<br /><span className="text-emerald-300">Perdido</span>
-                </h2>
-              </div>
-              <BookOpen className="absolute top-6 right-6 text-white/10" size={120} />
-            </div>
-
-            {/* Content area */}
-            <div className="bg-emerald-50/80 p-8 md:p-12 relative">
-              <p className="text-stone-500 text-sm md:text-base leading-relaxed max-w-2xl mb-4">
-                Fundamentos naturais aplicados à saúde, alimentação e resiliência. 12 plantas organizadas por sistema corporal com fichas técnicas completas, dosagens seguras, contraindicações, educação botânica familiar e integração com todo o Protocolo Autônomo.
-              </p>
-              <div className="flex flex-wrap gap-2 mb-4">
-                {['5 Sistemas Corporais', '12 Plantas Documentadas', 'Fichas Técnicas', 'Educação Familiar'].map(tag => (
-                  <span key={tag} className="text-[10px] font-bold tracking-wider uppercase bg-emerald-100/80 text-emerald-700 px-3 py-1.5 rounded-full border border-emerald-200/60">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-              <div className="flex items-center gap-2 text-emerald-600 text-xs font-bold uppercase tracking-widest group-hover:gap-3 transition-all duration-300">
-                Explorar Ecossistema <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-              </div>
-            </div>
-          </Link>
-        </motion.div>
 
         {/* ═══════════════ NOTA CONTEXTUAL ═══════════════ */}
         <motion.div
