@@ -18,7 +18,7 @@ import SovereignTermModal from "@/components/SovereignTermModal";
 
 const Index = () => {
   return (
-    <div className="min-h-screen text-foreground pt-[64px]">
+    <div className="min-h-screen text-foreground pt-[62px]">
       <NetworkTicker />
       <CommandCenter />
       <SovereignTermModal />
