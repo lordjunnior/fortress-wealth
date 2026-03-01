@@ -10,7 +10,6 @@ import { SupplyBar } from '@/components/supply-shock/SupplyBar';
 import { fetchBitcoinStats } from '@/components/supply-shock/bitcoinService';
 import { BitcoinStats } from '@/components/supply-shock/types';
 import { STRINGS } from '@/components/supply-shock/constants';
-import { SecaoHalving } from '@/components/supply-shock/SecaoHalving';
 
 const NAV_ITEMS = [
   { id: 'dados-vivos', label: 'Dados ao Vivo' },
@@ -18,7 +17,6 @@ const NAV_ITEMS = [
   { id: 'ilusao', label: 'A Ilusão do Market Cap' },
   { id: 'ouro-digital', label: 'Ouro Digital vs. BC' },
   { id: 'vetor', label: 'Oferta Fixa vs. Demanda' },
-  { id: 'secao-halving', label: 'Halving — Contagem' },
   { id: 'conclusao', label: 'Conclusão Tática' },
 ];
 
@@ -435,16 +433,8 @@ export default function SupplyShock() {
             </div>
           </section>
 
-        </div>
-      </div>
-
-      {/* === SEÇÃO HALVING — FULL WIDTH === */}
-      <SecaoHalving stats={btcStats} />
-
-      {/* === CONCLUSÃO TÁTICA === */}
-      <div className="relative z-10 lg:ml-[270px] pb-32">
-        <div className="max-w-5xl mx-auto px-6">
-          <section id="conclusao" className="mb-16 scroll-mt-24 pt-28">
+          {/* === CONCLUSÃO TÁTICA === */}
+          <section id="conclusao" className="mb-16 scroll-mt-24">
             <div className="flex items-center gap-3 text-amber-500 mb-10">
               <ShieldCheck size={20} />
               <h2 className="text-xl font-black uppercase tracking-[0.15em] font-mono">Conclusão Tática</h2>
