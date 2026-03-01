@@ -51,8 +51,8 @@ export function CriteriosUso() {
           </div>
           <div>
             <span className="text-stone-600 text-[10px] font-bold tracking-[0.5em] uppercase">Leia antes de tudo</span>
-            <h2 className="text-2xl md:text-3xl font-black tracking-tighter text-stone-200"
-              style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+            <h2 className="text-2xl md:text-3xl font-extrabold tracking-wide text-stone-200 uppercase"
+              style={{ fontFamily: "'Space Grotesk', sans-serif", letterSpacing: '0.08em' }}>
               CRITÉRIOS DE USO <span className="text-stone-400">RESPONSÁVEL</span>
             </h2>
           </div>
