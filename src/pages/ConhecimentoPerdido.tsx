@@ -115,8 +115,8 @@ export default function ConhecimentoPerdido() {
             <div className="absolute inset-0 bg-gradient-to-t from-[#0a0d08] via-[#0a0d08]/40 to-transparent" />
             <div className="absolute bottom-6 left-6 md:left-10">
               <span className="text-emerald-400/60 text-[10px] font-bold tracking-[0.5em] uppercase">Fase 04 · Núcleo Biológico</span>
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter uppercase leading-[0.9] mt-2 text-white drop-shadow-[0_4px_20px_rgba(0,0,0,0.8)]"
-                style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-wide uppercase leading-[0.95] mt-2 text-white drop-shadow-[0_4px_20px_rgba(0,0,0,0.8)]"
+                style={{ fontFamily: "'Space Grotesk', sans-serif", letterSpacing: '0.06em' }}>
                 CONHECIMENTO<br /><span className="text-emerald-400">PERDIDO</span>
               </h1>
             </div>
@@ -138,15 +138,20 @@ export default function ConhecimentoPerdido() {
           </div>
 
           {/* ─── MAPA VISUAL DOS SISTEMAS ─── */}
-          <div className="bg-[#0f1a0f]/60 border border-emerald-800/20 rounded-2xl p-6 md:p-10">
+          <div className="bg-gradient-to-br from-[#0f1a0f]/80 to-[#111f11]/60 border border-emerald-700/30 rounded-2xl p-6 md:p-10 shadow-[0_0_60px_-15px_rgba(16,185,129,0.12)]">
             <div className="flex items-center gap-3 mb-6">
-              <Compass className="text-emerald-400" size={18} />
-              <h3 className="text-sm font-bold text-emerald-400 uppercase tracking-[0.3em]">Mapa de Sistemas Fisiológicos</h3>
+              <div className="p-2.5 rounded-xl bg-emerald-500/15 border border-emerald-500/25">
+                <Compass className="text-emerald-400" size={18} />
+              </div>
+              <h3 className="text-base font-extrabold text-emerald-300 uppercase tracking-wide"
+                style={{ fontFamily: "'Space Grotesk', sans-serif", letterSpacing: '0.08em' }}>
+                Mapa de Sistemas Fisiológicos
+              </h3>
             </div>
-            <p className="text-stone-500 text-xs mb-6 max-w-2xl">
+            <p className="text-stone-400 text-sm mb-8 max-w-2xl leading-relaxed">
               5 sistemas do corpo. 12 plantas documentadas. Cada uma atua em vias bioquímicas específicas — não em "energia" ou "equilíbrio".
             </p>
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
               {[
                 { icon: Flame, label: 'Digestivo', plantas: 'Boldo · Hortelã · Espinheira-santa', color: 'green' },
                 { icon: Wind, label: 'Respiratório', plantas: 'Guaco · Eucalipto · Capim-limão', color: 'cyan' },
@@ -154,26 +159,23 @@ export default function ConhecimentoPerdido() {
                 { icon: Shield, label: 'Imune', plantas: 'Alho · Gengibre', color: 'amber' },
                 { icon: Heart, label: 'Muscular', plantas: 'Arnica · Babosa', color: 'orange' },
               ].map((s, i) => {
-                const colorMap: Record<string, string> = {
-                  green: 'bg-green-500/10 border-green-500/20 text-green-400',
-                  cyan: 'bg-cyan-500/10 border-cyan-500/20 text-cyan-400',
-                  purple: 'bg-purple-500/10 border-purple-500/20 text-purple-400',
-                  amber: 'bg-amber-500/10 border-amber-500/20 text-amber-400',
-                  orange: 'bg-orange-500/10 border-orange-500/20 text-orange-400',
+                const styles: Record<string, { card: string; icon: string; glow: string }> = {
+                  green: { card: 'bg-green-500/10 border-green-500/25 hover:border-green-400/50 hover:bg-green-500/15 hover:shadow-[0_0_30px_-8px_rgba(34,197,94,0.25)]', icon: 'text-green-400', glow: 'bg-green-400' },
+                  cyan: { card: 'bg-cyan-500/10 border-cyan-500/25 hover:border-cyan-400/50 hover:bg-cyan-500/15 hover:shadow-[0_0_30px_-8px_rgba(6,182,212,0.25)]', icon: 'text-cyan-400', glow: 'bg-cyan-400' },
+                  purple: { card: 'bg-purple-500/10 border-purple-500/25 hover:border-purple-400/50 hover:bg-purple-500/15 hover:shadow-[0_0_30px_-8px_rgba(168,85,247,0.25)]', icon: 'text-purple-400', glow: 'bg-purple-400' },
+                  amber: { card: 'bg-amber-500/10 border-amber-500/25 hover:border-amber-400/50 hover:bg-amber-500/15 hover:shadow-[0_0_30px_-8px_rgba(245,158,11,0.25)]', icon: 'text-amber-400', glow: 'bg-amber-400' },
+                  orange: { card: 'bg-orange-500/10 border-orange-500/25 hover:border-orange-400/50 hover:bg-orange-500/15 hover:shadow-[0_0_30px_-8px_rgba(249,115,22,0.25)]', icon: 'text-orange-400', glow: 'bg-orange-400' },
                 };
-                const iconColor: Record<string, string> = {
-                  green: 'text-green-400',
-                  cyan: 'text-cyan-400',
-                  purple: 'text-purple-400',
-                  amber: 'text-amber-400',
-                  orange: 'text-orange-400',
-                };
+                const st = styles[s.color];
                 return (
                   <motion.div key={s.label} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i}
-                    className={`rounded-xl p-4 border ${colorMap[s.color]} transition-all duration-300`}>
-                    <s.icon className={iconColor[s.color]} size={18} />
-                    <p className="text-stone-200 text-xs font-bold mt-2 mb-1">{s.label}</p>
-                    <p className="text-stone-500 text-[10px] leading-relaxed">{s.plantas}</p>
+                    className={`rounded-xl p-5 border transition-all duration-500 cursor-default group ${st.card}`}>
+                    <div className="flex items-center gap-2 mb-3">
+                      <s.icon className={`${st.icon} group-hover:scale-110 transition-transform duration-300`} size={20} />
+                      <div className={`w-1.5 h-1.5 rounded-full ${st.glow} opacity-60 animate-pulse`} />
+                    </div>
+                    <p className="text-stone-200 text-sm font-bold mb-1.5">{s.label}</p>
+                    <p className="text-stone-500 text-[11px] leading-relaxed">{s.plantas}</p>
                   </motion.div>
                 );
               })}
@@ -200,8 +202,8 @@ export default function ConhecimentoPerdido() {
             <span className="text-emerald-500/50 text-[10px] font-bold tracking-[0.5em] uppercase font-mono">Parte 01</span>
             <div className="flex-1 h-px bg-emerald-800/30" />
           </div>
-          <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-stone-200 mb-8 leading-tight"
-            style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+          <h2 className="text-3xl md:text-5xl font-extrabold tracking-wide text-stone-200 mb-8 leading-tight uppercase"
+            style={{ fontFamily: "'Space Grotesk', sans-serif", letterSpacing: '0.06em' }}>
             O QUE NOS FOI <span className="text-emerald-400">ESQUECIDO</span>
           </h2>
 
@@ -240,25 +242,36 @@ export default function ConhecimentoPerdido() {
               {
                 icon: BookOpen, title: 'Base Histórica',
                 desc: 'Farmacopeias europeias, medicina tradicional asiática, sistemas agrícolas familiares. A farmacologia moderna nasceu da extração de compostos vegetais. Ácido acetilsalicílico veio do salgueiro. Digitálicos vieram da dedaleira. A planta veio antes do laboratório.',
+                color: 'emerald',
               },
               {
                 icon: Brain, title: 'Base Fisiológica',
                 desc: 'Flavonoides reduzem estresse oxidativo. Compostos amargos estimulam o fígado. Fibras modulam microbiota intestinal. Óleos essenciais possuem ação antimicrobiana. Nada aqui é crença — é bioquímica aplicada.',
+                color: 'cyan',
               },
               {
                 icon: Shield, title: 'Base de Segurança',
                 desc: 'Nenhuma planta é inofensiva por ser natural. Faixa segura de uso, contraindicações, interações medicamentosas, duração recomendada e sinais de suspensão. Sem isso, não há responsabilidade. E sem responsabilidade, não há autoridade.',
+                color: 'amber',
               },
-            ].map((p, i) => (
-              <motion.div key={p.title} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i}
-                className="bg-emerald-950/30 border border-emerald-800/20 rounded-xl p-6 md:p-8 hover:border-emerald-600/30 transition-all duration-500">
-                <div className="p-2.5 bg-emerald-800/20 rounded-xl w-fit mb-4">
-                  <p.icon className="text-emerald-500" size={20} />
-                </div>
-                <h4 className="text-base font-bold text-stone-200 mb-3">{p.title}</h4>
-                <p className="text-stone-500 text-xs leading-relaxed">{p.desc}</p>
-              </motion.div>
-            ))}
+            ].map((p, i) => {
+              const colorStyles: Record<string, { card: string; iconBg: string; icon: string }> = {
+                emerald: { card: 'bg-emerald-950/30 border-emerald-700/25 hover:border-emerald-500/40 hover:shadow-[0_0_40px_-10px_rgba(16,185,129,0.2)] hover:bg-emerald-950/40', iconBg: 'bg-emerald-500/15 border border-emerald-500/25', icon: 'text-emerald-400' },
+                cyan: { card: 'bg-cyan-950/30 border-cyan-700/25 hover:border-cyan-500/40 hover:shadow-[0_0_40px_-10px_rgba(6,182,212,0.2)] hover:bg-cyan-950/40', iconBg: 'bg-cyan-500/15 border border-cyan-500/25', icon: 'text-cyan-400' },
+                amber: { card: 'bg-amber-950/30 border-amber-700/25 hover:border-amber-500/40 hover:shadow-[0_0_40px_-10px_rgba(245,158,11,0.2)] hover:bg-amber-950/40', iconBg: 'bg-amber-500/15 border border-amber-500/25', icon: 'text-amber-400' },
+              };
+              const cs = colorStyles[p.color];
+              return (
+                <motion.div key={p.title} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i}
+                  className={`border rounded-xl p-6 md:p-8 transition-all duration-500 cursor-default group ${cs.card}`}>
+                  <div className={`p-2.5 rounded-xl w-fit mb-5 ${cs.iconBg}`}>
+                    <p.icon className={`${cs.icon} group-hover:scale-110 transition-transform duration-300`} size={20} />
+                  </div>
+                  <h4 className="text-base font-bold text-stone-200 mb-3">{p.title}</h4>
+                  <p className="text-stone-400 text-xs leading-relaxed">{p.desc}</p>
+                </motion.div>
+              );
+            })}
           </div>
         </motion.section>
 
@@ -270,8 +283,8 @@ export default function ConhecimentoPerdido() {
             <span className="text-emerald-500/50 text-[10px] font-bold tracking-[0.5em] uppercase font-mono">Parte 02</span>
             <div className="flex-1 h-px bg-emerald-800/30" />
           </div>
-          <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-stone-200 mb-4 leading-tight"
-            style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+          <h2 className="text-3xl md:text-5xl font-extrabold tracking-wide text-stone-200 mb-4 leading-tight uppercase"
+            style={{ fontFamily: "'Space Grotesk', sans-serif", letterSpacing: '0.06em' }}>
             A BASE NATURAL <span className="text-emerald-400">DO CORPO</span>
           </h2>
           <p className="text-stone-500 text-sm md:text-base max-w-2xl leading-relaxed mb-8">
@@ -323,8 +336,8 @@ export default function ConhecimentoPerdido() {
             <span className="text-emerald-500/50 text-[10px] font-bold tracking-[0.5em] uppercase font-mono">Parte 03</span>
             <div className="flex-1 h-px bg-emerald-800/30" />
           </div>
-          <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-stone-200 mb-4 leading-tight"
-            style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+          <h2 className="text-3xl md:text-5xl font-extrabold tracking-wide text-stone-200 mb-4 leading-tight uppercase"
+            style={{ fontFamily: "'Space Grotesk', sans-serif", letterSpacing: '0.06em' }}>
             PLANTAS MEDICINAIS <span className="text-emerald-400">NA PRÁTICA</span>
           </h2>
           <p className="text-stone-500 text-sm md:text-base max-w-2xl leading-relaxed mb-4">
@@ -360,8 +373,8 @@ export default function ConhecimentoPerdido() {
             <span className="text-emerald-500/50 text-[10px] font-bold tracking-[0.5em] uppercase font-mono">Parte 04</span>
             <div className="flex-1 h-px bg-emerald-800/30" />
           </div>
-          <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-stone-200 mb-8 leading-tight"
-            style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+          <h2 className="text-3xl md:text-5xl font-extrabold tracking-wide text-stone-200 mb-8 leading-tight uppercase"
+            style={{ fontFamily: "'Space Grotesk', sans-serif", letterSpacing: '0.06em' }}>
             MANUAL <span className="text-emerald-400">APLICADO</span>
           </h2>
 
@@ -431,7 +444,8 @@ export default function ConhecimentoPerdido() {
               <Sparkles className="text-amber-400" size={20} />
               <h3 className="text-sm font-bold text-amber-400 uppercase tracking-[0.3em]">Livro em Edição</h3>
             </div>
-            <h4 className="text-2xl md:text-3xl font-black tracking-tight text-stone-200 mb-4" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+            <h4 className="text-2xl md:text-3xl font-extrabold tracking-wide text-stone-200 mb-4 uppercase"
+              style={{ fontFamily: "'Space Grotesk', sans-serif", letterSpacing: '0.06em' }}>
               AUTOCUSTÓDIA <span className="text-amber-400">BIOLÓGICA</span>
             </h4>
             <p className="text-stone-400 text-sm md:text-base leading-relaxed max-w-2xl mb-6">

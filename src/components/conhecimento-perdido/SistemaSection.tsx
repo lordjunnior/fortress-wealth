@@ -33,7 +33,7 @@ export function SistemaSection({ titulo, subtitulo, icon: Icon, plantas, accentC
         </div>
         <div>
           <span className="text-stone-600 text-[10px] font-bold tracking-[0.5em] uppercase">Sistema {String(index).padStart(2, '0')}</span>
-          <h3 className="text-2xl md:text-3xl font-black tracking-tight text-stone-200" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+          <h3 className="text-2xl md:text-3xl font-extrabold tracking-wide text-stone-200 uppercase" style={{ fontFamily: "'Space Grotesk', sans-serif", letterSpacing: '0.06em' }}>
             {titulo}
           </h3>
         </div>
