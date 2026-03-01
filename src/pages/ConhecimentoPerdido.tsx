@@ -100,35 +100,71 @@ export default function ConhecimentoPerdido() {
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
   return (
-    <div className="min-h-screen text-stone-100 font-sans selection:bg-emerald-300/50 relative overflow-hidden"
-      style={{ background: 'linear-gradient(180deg, #0a0d08 0%, #0f1a0f 8%, #111f11 20%, #142214 40%, #111f11 70%, #0f1a0f 90%, #0a0d08 100%)' }}
+    <div className="min-h-screen text-stone-100 font-sans selection:bg-amber-300/30 relative overflow-hidden"
+      style={{ background: 'linear-gradient(180deg, #0d0b08 0%, #151210 8%, #1a1510 20%, #1e1912 35%, #211c14 50%, #1e1912 70%, #151210 85%, #0d0b08 100%)' }}
     >
-      {/* ─── Atmospheric glow ─── */}
-      <div className="fixed inset-0 pointer-events-none z-0">
+      {/* ─── Spore/Seed Particles ─── */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-70">
         <style>{`
-          @keyframes cpGlow {
-            0%, 100% { opacity: 0.12; transform: scale(1); }
-            50% { opacity: 0.2; transform: scale(1.06); }
+          @keyframes sporeDriftCP {
+            from { transform: translateY(0) translateX(0) rotate(0deg); }
+            to { transform: translateY(-1200px) translateX(80px) rotate(180deg); }
+          }
+          @keyframes sporeDriftCP2 {
+            from { transform: translateY(0) translateX(0) rotate(0deg); }
+            to { transform: translateY(-1000px) translateX(-60px) rotate(-120deg); }
+          }
+          @keyframes sporeDriftCP3 {
+            from { transform: translateY(0) translateX(0); }
+            to { transform: translateY(-800px) translateX(40px); }
+          }
+          .spore-cp {
+            position: absolute; width: 100%; height: 250%;
+            background-image:
+              radial-gradient(1.5px 1.5px at 8% 15%, rgba(180,140,60,0.5) 100%, transparent),
+              radial-gradient(1px 1px at 22% 45%, rgba(160,120,50,0.4) 100%, transparent),
+              radial-gradient(2px 2px at 35% 70%, rgba(120,90,40,0.3) 100%, transparent),
+              radial-gradient(1px 1px at 55% 25%, rgba(200,160,70,0.35) 100%, transparent),
+              radial-gradient(1.5px 1.5px at 68% 60%, rgba(140,110,50,0.4) 100%, transparent),
+              radial-gradient(1px 1px at 82% 80%, rgba(100,80,35,0.3) 100%, transparent),
+              radial-gradient(2px 2px at 45% 40%, rgba(80,120,50,0.25) 100%, transparent),
+              radial-gradient(1px 1px at 90% 15%, rgba(160,140,60,0.35) 100%, transparent);
+            background-size: 220px 220px;
+            animation: sporeDriftCP 55s linear infinite;
+          }
+          .spore-cp-2 {
+            background-size: 320px 320px;
+            animation: sporeDriftCP2 75s linear infinite;
+            opacity: 0.6;
+          }
+          .spore-cp-3 {
+            background-size: 180px 180px;
+            animation: sporeDriftCP3 95s linear infinite;
+            opacity: 0.35;
           }
         `}</style>
-        <div className="absolute top-[5%] left-[10%] w-[700px] h-[700px] rounded-full"
-          style={{ background: 'radial-gradient(circle, rgba(34,100,50,0.18) 0%, transparent 70%)', animation: 'cpGlow 20s ease-in-out infinite' }} />
-        <div className="absolute bottom-[10%] right-[5%] w-[500px] h-[500px] rounded-full"
-          style={{ background: 'radial-gradient(circle, rgba(160,120,40,0.10) 0%, transparent 70%)', animation: 'cpGlow 26s ease-in-out 5s infinite' }} />
+        <div className="spore-cp"></div>
+        <div className="spore-cp spore-cp-2"></div>
+        <div className="spore-cp spore-cp-3"></div>
       </div>
 
-      <Leaf className="fixed top-[15%] right-[6%] text-emerald-900/8 pointer-events-none z-0" size={140} />
-      <TreePine className="fixed bottom-[18%] left-[3%] text-emerald-900/6 pointer-events-none z-0" size={160} />
+      {/* ─── Atmospheric radials ─── */}
+      <div className="fixed inset-0 pointer-events-none z-0">
+        <div className="absolute top-[5%] left-[10%] w-[700px] h-[700px] rounded-full"
+          style={{ background: 'radial-gradient(circle, rgba(120,90,30,0.12) 0%, transparent 70%)' }} />
+        <div className="absolute bottom-[10%] right-[5%] w-[500px] h-[500px] rounded-full"
+          style={{ background: 'radial-gradient(circle, rgba(80,110,40,0.08) 0%, transparent 70%)' }} />
+      </div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-10 pt-24 pb-32">
 
         {/* ─── BREADCRUMB ─── */}
         <nav className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] mb-16 flex-wrap">
-          <Link to="/" className="text-stone-600 hover:text-emerald-400 transition-colors">Início</Link>
+          <Link to="/" className="text-stone-600 hover:text-amber-400 transition-colors">Início</Link>
           <span className="text-stone-700">/</span>
-          <Link to="/projeto-autonomo" className="text-stone-600 hover:text-emerald-400 transition-colors">Projeto Autônomo</Link>
+          <Link to="/projeto-autonomo" className="text-stone-600 hover:text-amber-400 transition-colors">Projeto Autônomo</Link>
           <span className="text-stone-700">/</span>
-          <span className="text-emerald-400">Conhecimento Perdido</span>
+          <span className="text-amber-400">Conhecimento Perdido</span>
         </nav>
 
         {/* ═══════════════════════════════════════════════════
@@ -137,25 +173,25 @@ export default function ConhecimentoPerdido() {
         <motion.header initial="hidden" animate="visible" variants={fadeUp} custom={0} className="mb-20">
           <div className="relative w-full h-72 md:h-96 rounded-2xl overflow-hidden mb-10">
             <img src={imgHero} alt="Conhecimento Perdido" className="w-full h-full object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0a0d08] via-[#0a0d08]/40 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0d0b08] via-[#0d0b08]/40 to-transparent" />
             <div className="absolute bottom-6 left-6 md:left-10">
-              <span className="text-emerald-400/60 text-[10px] font-bold tracking-[0.5em] uppercase">Fase 04 · Núcleo Biológico</span>
+              <span className="text-amber-400/60 text-[10px] font-bold tracking-[0.5em] uppercase">Fase 04 · Núcleo Biológico</span>
               <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-wide uppercase leading-[0.95] mt-2 text-white drop-shadow-[0_4px_20px_rgba(0,0,0,0.8)]"
                 style={{ fontFamily: "'Space Grotesk', sans-serif", letterSpacing: '0.06em' }}>
-                CONHECIMENTO<br /><span className="text-emerald-400">PERDIDO</span>
+                CONHECIMENTO<br /><span className="text-amber-400">PERDIDO</span>
               </h1>
             </div>
           </div>
 
           <div className="max-w-3xl space-y-5">
             <p className="text-stone-300 text-lg md:text-xl leading-relaxed font-light">
-              Este não é um guia genérico de "chás que fazem bem". É o <span className="text-emerald-400 font-semibold">núcleo biológico</span> do Projeto Autônomo — a base que sustenta toda decisão de saúde quando sistemas formais não estão disponíveis, são insuficientes ou simplesmente falharam.
+              Este não é um guia genérico de "chás que fazem bem". É o <span className="text-amber-400 font-semibold">núcleo biológico</span> do Projeto Autônomo — a base que sustenta toda decisão de saúde quando sistemas formais não estão disponíveis, são insuficientes ou simplesmente falharam.
             </p>
             <p className="text-stone-400 text-base leading-relaxed">
               Aqui, cada planta é tratada como ferramenta técnica: com compostos bioativos identificados, mecanismo de ação documentado, dosagem segura, contraindicações reais e limites de uso. Nada de misticismo. Nada de promessa vaga. Bioquímica aplicada com responsabilidade.
             </p>
-            <div className="border-l-2 border-emerald-500/40 pl-6 py-2">
-              <p className="text-emerald-300/80 text-base font-medium italic" style={{ fontFamily: "'Playfair Display', serif" }}>
+            <div className="border-l-2 border-amber-500/40 pl-6 py-2">
+              <p className="text-amber-200/80 text-base font-medium italic" style={{ fontFamily: "'Playfair Display', serif" }}>
                 "A diferença entre quem sabe e quem acha que sabe é a profundidade do que documenta — e a honestidade do que admite não saber."
               </p>
             </div>
@@ -166,12 +202,12 @@ export default function ConhecimentoPerdido() {
             MAPA DE SISTEMAS FISIOLÓGICOS
         ═══════════════════════════════════════════════════ */}
         <motion.section initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="mb-28">
-          <div className="bg-gradient-to-br from-[#0f1a0f]/80 to-[#111f11]/60 border border-emerald-700/30 rounded-2xl p-6 md:p-10 shadow-[0_0_60px_-15px_rgba(16,185,129,0.12)]">
+          <div className="bg-gradient-to-br from-stone-900/60 to-stone-950/60 border border-amber-700/25 rounded-2xl p-6 md:p-10">
             <div className="flex items-center gap-3 mb-6">
-              <div className="p-2.5 rounded-xl bg-emerald-500/15 border border-emerald-500/25">
-                <Compass className="text-emerald-400" size={18} />
+              <div className="p-2.5 rounded-xl bg-amber-500/15 border border-amber-500/25">
+                <Compass className="text-amber-400" size={18} />
               </div>
-              <h3 className="text-base font-extrabold text-emerald-300 uppercase tracking-wide"
+              <h3 className="text-base font-extrabold text-amber-300 uppercase tracking-wide"
                 style={{ fontFamily: "'Space Grotesk', sans-serif", letterSpacing: '0.08em' }}>
                 Mapa de Sistemas Fisiológicos
               </h3>
@@ -216,12 +252,12 @@ export default function ConhecimentoPerdido() {
         ═══════════════════════════════════════════════════ */}
         <motion.section initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="mb-28">
           <div className="flex items-center gap-3 mb-4">
-            <span className="text-emerald-500/50 text-[10px] font-bold tracking-[0.5em] uppercase font-mono">Ecossistema</span>
-            <div className="flex-1 h-px bg-emerald-800/30" />
+            <span className="text-amber-500/50 text-[10px] font-bold tracking-[0.5em] uppercase font-mono">Ecossistema</span>
+            <div className="flex-1 h-px bg-amber-800/30" />
           </div>
           <h2 className="text-3xl md:text-5xl font-extrabold tracking-wide text-stone-200 mb-4 leading-tight uppercase"
             style={{ fontFamily: "'Space Grotesk', sans-serif", letterSpacing: '0.06em' }}>
-            BLOCOS DE <span className="text-emerald-400">PROFUNDIDADE</span>
+            BLOCOS DE <span className="text-amber-400">PROFUNDIDADE</span>
           </h2>
           <p className="text-stone-500 text-sm md:text-base max-w-2xl leading-relaxed mb-12">
             Cada bloco é uma rota independente com conteúdo próprio, SEO próprio e possibilidade de expansão ilimitada.
@@ -267,22 +303,22 @@ export default function ConhecimentoPerdido() {
             PUBLICAÇÃO EM PRODUÇÃO
         ═══════════════════════════════════════════════════ */}
         <motion.section initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="mb-28">
-          <div className="relative rounded-2xl overflow-hidden border border-emerald-700/20">
-            <div className="absolute inset-0 bg-gradient-to-br from-[#0f1a0f] via-[#111f11] to-[#0a150a]" />
+          <div className="relative rounded-2xl overflow-hidden border border-amber-700/20">
+            <div className="absolute inset-0 bg-gradient-to-br from-stone-900/80 via-stone-950/80 to-stone-900/60" />
             <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(255,255,255,0.15) 1px, transparent 0)', backgroundSize: '24px 24px' }} />
             
             <div className="relative p-8 md:p-12">
               <div className="flex items-center justify-between mb-8">
                 <div className="flex items-center gap-3">
-                  <div className="w-1 h-10 rounded-full bg-gradient-to-b from-emerald-400 to-emerald-600" />
+                  <div className="w-1 h-10 rounded-full bg-gradient-to-b from-amber-400 to-amber-600" />
                   <div>
-                    <span className="text-emerald-500/60 text-[9px] font-bold tracking-[0.5em] uppercase">Publicação independente</span>
+                    <span className="text-amber-500/60 text-[9px] font-bold tracking-[0.5em] uppercase">Publicação independente</span>
                     <p className="text-stone-200 text-lg font-bold mt-0.5">Material em produção</p>
                   </div>
                 </div>
-                <div className="flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1.5 rounded-full">
-                  <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                  <span className="text-emerald-400 text-[9px] font-bold tracking-widest uppercase">Em progresso</span>
+                <div className="flex items-center gap-2 bg-amber-500/10 border border-amber-500/20 px-3 py-1.5 rounded-full">
+                  <div className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
+                  <span className="text-amber-400 text-[9px] font-bold tracking-widest uppercase">Em progresso</span>
                 </div>
               </div>
 
@@ -304,15 +340,15 @@ export default function ConhecimentoPerdido() {
                   { label: 'Farmacologia aplicada', value: 'Mecanismos, vias e compostos' },
                   { label: 'Guia de cultivo medicinal', value: 'Da semente à colheita correta' },
                 ].map(item => (
-                  <div key={item.label} className="bg-emerald-500/5 border border-emerald-500/15 rounded-lg p-3.5 hover:bg-emerald-500/10 transition-colors">
+                  <div key={item.label} className="bg-amber-500/5 border border-amber-500/15 rounded-lg p-3.5 hover:bg-amber-500/10 transition-colors">
                     <p className="text-stone-200 text-xs font-semibold">{item.label}</p>
                     <p className="text-stone-500 text-[10px] mt-1">{item.value}</p>
                   </div>
                 ))}
               </div>
 
-              <div className="flex items-center gap-3 pt-6 border-t border-emerald-800/20">
-                <Leaf size={14} className="text-emerald-500/50" />
+              <div className="flex items-center gap-3 pt-6 border-t border-stone-800/40">
+                <Leaf size={14} className="text-amber-500/50" />
                 <p className="text-stone-600 text-xs leading-relaxed">
                   O título e formato final serão divulgados quando o material estiver pronto para publicação.
                 </p>
@@ -325,47 +361,47 @@ export default function ConhecimentoPerdido() {
             INTEGRAÇÃO — LINKS BIDIRECIONAIS
         ═══════════════════════════════════════════════════ */}
         <motion.section initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="mb-20">
-          <div className="bg-gradient-to-br from-emerald-950/50 to-[#0a0d08]/80 border border-emerald-800/20 rounded-2xl p-8 md:p-14">
+          <div className="bg-gradient-to-br from-stone-900/60 to-stone-950/60 border border-amber-800/15 rounded-2xl p-8 md:p-14">
             <div className="flex items-center gap-3 mb-8">
-              <Shield className="text-emerald-400" size={20} />
-              <h2 className="text-sm font-bold text-emerald-400 uppercase tracking-[0.3em]">Núcleo biológico do protocolo</h2>
+              <Shield className="text-amber-400" size={20} />
+              <h2 className="text-sm font-bold text-amber-400 uppercase tracking-[0.3em]">Núcleo biológico do protocolo</h2>
             </div>
 
             <div className="max-w-3xl space-y-5">
               <p className="text-stone-300 text-base md:text-lg leading-relaxed">
-                Este bloco se conecta com todos os módulos do Projeto Autônomo. <span className="text-emerald-400 font-semibold">Sem corpo saudável, não há autonomia real.</span>
+                Este bloco se conecta com todos os módulos do Projeto Autônomo. <span className="text-amber-400 font-semibold">Sem corpo saudável, não há autonomia real.</span>
               </p>
 
               {/* ─── Link bidirecional: Sabedoria Ancestral ─── */}
               <Link to="/projeto-autonomo/sabedoria-ancestral"
-                className="flex items-center justify-between bg-emerald-500/8 border border-emerald-500/20 rounded-xl p-5 hover:bg-emerald-500/15 hover:border-emerald-400/30 transition-all duration-300 group"
+                className="flex items-center justify-between bg-amber-500/8 border border-amber-500/20 rounded-xl p-5 hover:bg-amber-500/15 hover:border-amber-400/30 transition-all duration-300 group"
               >
                 <div className="flex items-center gap-4">
-                  <div className="p-2.5 bg-emerald-500/15 rounded-xl">
-                    <Leaf size={18} className="text-emerald-400" />
+                  <div className="p-2.5 bg-amber-500/15 rounded-xl">
+                    <Leaf size={18} className="text-amber-400" />
                   </div>
                   <div>
-                    <p className="text-emerald-300 text-sm font-bold">Sabedoria Ancestral</p>
+                    <p className="text-amber-300 text-sm font-bold">Sabedoria Ancestral</p>
                     <p className="text-stone-500 text-xs mt-0.5">Hub de saúde natural, soberania alimentar e módulos práticos</p>
                   </div>
                 </div>
-                <ChevronRight className="text-emerald-500/40 group-hover:text-emerald-400 group-hover:translate-x-1 transition-all" size={18} />
+                <ChevronRight className="text-amber-500/40 group-hover:text-amber-400 group-hover:translate-x-1 transition-all" size={18} />
               </Link>
 
               {/* ─── Conexão direta com Saúde Preventiva ─── */}
               <Link to="/projeto-autonomo/saude-preventiva"
-                className="flex items-center justify-between bg-emerald-500/8 border border-emerald-500/15 rounded-xl p-5 hover:bg-emerald-500/15 hover:border-emerald-400/30 transition-all duration-300 group"
+                className="flex items-center justify-between bg-amber-500/8 border border-amber-500/15 rounded-xl p-5 hover:bg-amber-500/15 hover:border-amber-400/30 transition-all duration-300 group"
               >
                 <div className="flex items-center gap-4">
-                  <div className="p-2.5 bg-emerald-500/15 rounded-xl">
-                    <Heart size={18} className="text-emerald-400" />
+                  <div className="p-2.5 bg-amber-500/15 rounded-xl">
+                    <Heart size={18} className="text-amber-400" />
                   </div>
                   <div>
-                    <p className="text-emerald-300 text-sm font-bold">Saúde Preventiva</p>
+                    <p className="text-amber-300 text-sm font-bold">Saúde Preventiva</p>
                     <p className="text-stone-500 text-xs mt-0.5">Protocolos de rotina para manter o corpo funcionando antes de precisar de qualquer planta</p>
                   </div>
                 </div>
-                <ChevronRight className="text-emerald-500/40 group-hover:text-emerald-400 group-hover:translate-x-1 transition-all" size={18} />
+                <ChevronRight className="text-amber-500/40 group-hover:text-amber-400 group-hover:translate-x-1 transition-all" size={18} />
               </Link>
 
               <div className="mt-4">
