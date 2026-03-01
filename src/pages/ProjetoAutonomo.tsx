@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, ArrowRight, Shield, Clock, Leaf, Wheat, AlertTriangle, Heart, Sprout, Package, Flame, Droplets, Wind, Sun, Tent, Siren, Cross, Egg, TreePine, Layers, Thermometer, Bug, Shovel } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Shield, Clock, Leaf, Wheat, AlertTriangle, Heart, Sprout, Package, Flame, Droplets, Wind, Sun, Tent, Siren, Cross, Egg, TreePine, Layers, Thermometer, Bug, Shovel, BookOpen } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 import imgSoberaniaAlimentar from '@/assets/fase03-soberania-alimentar.jpg';
@@ -37,6 +37,7 @@ const BASE72_ITEMS = [
 
 /* ─── PHASE 2: AUTONOMIA BIOLÓGICA ─── */
 const BIO_ITEMS = [
+  { icon: BookOpen, label: 'Conhecimento Perdido', desc: 'Fundamentos naturais aplicados à saúde. 12 plantas por sistema corporal com fichas técnicas, dosagens e educação botânica familiar.', slug: 'conhecimento-perdido' },
   { icon: Leaf, label: 'Suporte Fitoterápico', desc: 'Biblioteca técnica de 12 plantas essenciais. Dosagens conservadoras, contraindicações e métodos de preparo.', slug: 'autonomia-biologica' },
   { icon: Cross, label: 'Primeiros Socorros', desc: 'Contenção de sangramento, imobilização, tratamento de queimaduras em ambiente remoto.', slug: 'primeiros-socorros' },
   { icon: Thermometer, label: 'Avaliação Básica de Sinais', desc: 'Interpretar febre, desidratação e sinais vitais com recursos mínimos.', slug: 'sinais-vitais' },
