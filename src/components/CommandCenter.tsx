@@ -32,10 +32,10 @@ const formatBRL = (n: number) => {
 const formatFullBRL = (n: number) =>
   `R$ ${Math.floor(n).toLocaleString("pt-BR")}`;
 
-interface FlashState {
-  fiscal: "up" | "down" | null;
-  divida: "up" | "down" | null;
-}
+const formatTime = () => {
+  const now = new Date();
+  return now.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit", second: "2-digit" });
+};
 
 const CommandCenter = () => {
   const [block, setBlock] = useState<number | null>(null);
@@ -45,14 +45,12 @@ const CommandCenter = () => {
   const [dividaPublica, setDividaPublica] = useState("---");
   const [impostoSeg, setImpostoSeg] = useState("---");
   const [impostoPessoa, setImpostoPessoa] = useState("---");
-  const [flash, setFlash] = useState<FlashState>({ fiscal: null, divida: null });
-  const [isOpen, setIsOpen] = useState(true);
+  const [timestamp, setTimestamp] = useState(formatTime());
+  const [isOpen, setIsOpen] = useState(false);
 
   const rafRef = useRef<number | null>(null);
   const lastFrameRef = useRef(0);
   const isVisibleRef = useRef(true);
-  const prevFiscalRef = useRef(0);
-  const prevDividaRef = useRef(0);
 
   // Bitcoin data
   useEffect(() => {
@@ -87,7 +85,7 @@ const CommandCenter = () => {
     return () => document.removeEventListener("visibilitychange", handler);
   }, []);
 
-  // Fiscal clock
+  // Fiscal clock — rAF driven, no flash spam
   useEffect(() => {
     const tick = (now: number) => {
       rafRef.current = requestAnimationFrame(tick);
@@ -101,24 +99,12 @@ const CommandCenter = () => {
       const ano = secsYear * IMPOSTO_POR_SEGUNDO;
       const divida = DIVIDA_PUBLICA_BASE + secsYear * DIVIDA_POR_SEGUNDO;
 
-      // Flash detection
-      if (prevFiscalRef.current > 0) {
-        if (hoje > prevFiscalRef.current) setFlash(f => ({ ...f, fiscal: "up" }));
-      }
-      if (prevDividaRef.current > 0) {
-        if (divida > prevDividaRef.current) setFlash(f => ({ ...f, divida: "up" }));
-      }
-      prevFiscalRef.current = hoje;
-      prevDividaRef.current = divida;
-
-      // Clear flash after 300ms
-      setTimeout(() => setFlash({ fiscal: null, divida: null }), 300);
-
       setFiscalHoje(formatFullBRL(hoje));
       setFiscalAno(formatBRL(ano));
       setDividaPublica(formatFullBRL(divida));
       setImpostoSeg(formatBRL(Math.round(IMPOSTO_POR_SEGUNDO)));
       setImpostoPessoa(formatBRL(Math.round(ano / POPULACAO)));
+      setTimestamp(formatTime());
     };
 
     rafRef.current = requestAnimationFrame(tick);
@@ -128,156 +114,167 @@ const CommandCenter = () => {
   return (
     <>
       <style>{`
-        @keyframes cmd-pulse {
+        .cmd-panel-content {
+          transition: max-height 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                      opacity 0.25s ease-in-out;
+        }
+        .cmd-divida-pulse {
+          animation: cmd-divida-slow 4s ease-in-out infinite;
+        }
+        @keyframes cmd-divida-slow {
           0%, 100% { opacity: 1; }
-          50% { opacity: 0.7; }
+          50% { opacity: 0.75; }
         }
-        @keyframes cmd-glow {
-          0%, 100% { text-shadow: 0 0 4px currentColor; }
-          50% { text-shadow: 0 0 12px currentColor; }
-        }
-        .cmd-flash-up {
-          animation: cmd-flash-green 0.3s ease-out;
-        }
-        .cmd-flash-down {
-          animation: cmd-flash-red 0.3s ease-out;
-        }
-        @keyframes cmd-flash-green {
-          0% { background-color: rgba(0,255,136,0.15); }
-          100% { background-color: transparent; }
-        }
-        @keyframes cmd-flash-red {
-          0% { background-color: rgba(255,59,59,0.15); }
-          100% { background-color: transparent; }
-        }
-        .cmd-divida {
-          animation: cmd-pulse 3s ease-in-out infinite;
-        }
-        .cmd-fiscal-glow {
-          animation: cmd-glow 4s ease-in-out infinite;
-        }
-        .cmd-panel {
-          transition: max-height 0.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
+        .cmd-fiscal-subtle {
+          text-shadow: 0 0 6px rgba(255, 59, 59, 0.2);
         }
       `}</style>
 
-      {/* Toggle button — sits right below the ticker */}
+      {/* Toggle bar — NOT overlapping content, part of document flow via pt offset */}
       <div
         className="fixed left-0 right-0 z-[9998] lg:left-[260px]"
         style={{ top: "36px" }}
       >
+        {/* Toggle button */}
         <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="w-full h-[28px] flex items-center justify-center gap-2 font-mono text-[10px] tracking-[0.2em] uppercase transition-all duration-300"
+          onClick={() => setIsOpen(prev => !prev)}
+          className="w-full h-[26px] flex items-center justify-center gap-2 font-mono text-[9px] tracking-[0.2em] uppercase select-none"
           style={{
-            background: isOpen ? "#0b0f14" : "rgba(11,15,20,0.85)",
-            borderBottom: "1px solid rgba(255,255,255,0.06)",
-            color: "rgba(255,255,255,0.4)",
+            background: "#060a0f",
+            borderBottom: "1px solid rgba(255,255,255,0.05)",
+            color: "rgba(255,255,255,0.3)",
+            transition: "color 0.25s ease-in-out",
           }}
         >
           <span
-            className="inline-block transition-transform duration-300"
-            style={{ transform: isOpen ? "rotate(180deg)" : "rotate(0deg)" }}
+            className="inline-block"
+            style={{
+              transition: "transform 0.25s ease-in-out",
+              transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
+              fontSize: "8px",
+            }}
           >
             ▼
           </span>
-          <span>CENTRO DE COMANDO</span>
+          <span>{isOpen ? "FECHAR CENTRO DE COMANDO" : "CENTRO DE COMANDO"}</span>
           <span
-            className="w-[6px] h-[6px] rounded-full"
-            style={{ background: "#00ff88", animation: "cmd-pulse 2s ease-in-out infinite" }}
+            className="w-[5px] h-[5px] rounded-full flex-shrink-0"
+            style={{ background: "#00ff88" }}
           />
         </button>
 
-        {/* Panel */}
+        {/* Expandable panel */}
         <div
-          className="cmd-panel overflow-hidden"
+          className="cmd-panel-content overflow-hidden"
           style={{
-            maxHeight: isOpen ? "400px" : "0px",
+            maxHeight: isOpen ? "500px" : "0px",
             opacity: isOpen ? 1 : 0,
-            background: "#0b0f14",
-            borderBottom: isOpen ? "1px solid rgba(255,255,255,0.06)" : "none",
+            background: "#080c12",
           }}
         >
           <div className="px-4 md:px-6 py-4 max-w-5xl mx-auto">
-            {/* Header */}
+            {/* Header with LIVE + timestamp */}
             <div
-              className="flex items-center gap-2 pb-3 mb-3 font-mono text-[10px] tracking-[0.25em] uppercase"
-              style={{
-                borderBottom: "1px solid rgba(255,255,255,0.06)",
-                color: "rgba(255,255,255,0.3)",
-              }}
+              className="flex items-center justify-between pb-3 mb-3 font-mono"
+              style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}
             >
+              <div
+                className="flex items-center gap-2 text-[9px] tracking-[0.25em] uppercase"
+                style={{ color: "rgba(255,255,255,0.3)" }}
+              >
+                <span
+                  className="w-[5px] h-[5px] rounded-full flex-shrink-0"
+                  style={{ background: "#00ff88" }}
+                />
+                <span style={{ color: "#00ff88", fontWeight: 600 }}>LIVE</span>
+                <span>·</span>
+                <span>SINCRONIZADO</span>
+                <span>·</span>
+                <span>UTC-3</span>
+              </div>
               <span
-                className="w-[5px] h-[5px] rounded-full flex-shrink-0"
-                style={{ background: "#00ff88", animation: "cmd-pulse 2s ease-in-out infinite" }}
-              />
-              BASE MACROECONÔMICA — TEMPO REAL
+                className="font-mono text-[10px] tracking-wider"
+                style={{ color: "rgba(255,255,255,0.25)" }}
+              >
+                {timestamp}
+              </span>
             </div>
 
-            {/* Grid principal */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
-              {/* Coluna esquerda — Fiscal */}
-              <div style={{ borderRight: "1px solid rgba(255,255,255,0.04)" }} className="md:pr-5">
-                <Row
+            {/* Two-column grid: Fiscal (dominant) | Mercado */}
+            <div className="grid grid-cols-1 md:grid-cols-5 gap-0">
+              {/* Fiscal — 3 cols, visually dominant */}
+              <div
+                className="md:col-span-3 md:pr-5"
+                style={{ borderRight: "1px solid rgba(255,255,255,0.04)" }}
+              >
+                <div
+                  className="font-mono text-[8px] tracking-[0.3em] uppercase mb-2"
+                  style={{ color: "rgba(255,255,255,0.2)" }}
+                >
+                  CARGA FISCAL · BRASIL
+                </div>
+
+                <FiscalRow
                   label="FISCAL HOJE"
                   value={fiscalHoje}
-                  color="#ff3b3b"
                   arrow="up"
-                  flash={flash.fiscal}
-                  glow
+                  dominant
                 />
-                <Row
+                <FiscalRow
                   label="FISCAL ANO"
                   value={fiscalAno}
-                  color="#ff3b3b"
                   arrow="up"
+                  dominant
                 />
-                <Row
+                <FiscalRow
                   label="IMP/SEG"
                   value={impostoSeg}
-                  color="#ff3b3b"
                 />
-                <Row
+                <FiscalRow
                   label="PER CAPITA"
                   value={impostoPessoa}
-                  color="#ff3b3b"
                 />
-                <Row
+                <FiscalRow
                   label="DÍVIDA PÚB"
                   value={dividaPublica}
-                  color="#ff3b3b"
                   arrow="up"
-                  flash={flash.divida}
                   pulse
                 />
               </div>
 
-              {/* Coluna direita — Mercado */}
-              <div className="md:pl-5 mt-2 md:mt-0">
-                <Row
+              {/* Mercado — 2 cols */}
+              <div className="md:col-span-2 md:pl-5 mt-3 md:mt-0">
+                <div
+                  className="font-mono text-[8px] tracking-[0.3em] uppercase mb-2"
+                  style={{ color: "rgba(255,255,255,0.2)" }}
+                >
+                  MERCADO · REDE
+                </div>
+
+                <MarketRow
                   label="BTC/USD"
                   value={priceUsd !== null ? `$${priceUsd.toLocaleString("en-US")}` : "---"}
                   color="#00ff88"
                   live
                 />
-                <Row
+                <MarketRow
                   label="BLOCO"
                   value={block !== null ? block.toLocaleString("pt-BR") : "---"}
                   color="#4da6ff"
                 />
-                <Row
+                <MarketRow
                   label="SELIC"
                   value="14,25%"
                   color="#ff3b3b"
                   arrow="up"
                 />
-                <Row
+                <MarketRow
                   label="IPCA"
                   value="5,06%"
                   color="#ff3b3b"
                   arrow="up"
                 />
-                <Row
+                <MarketRow
                   label="HALVING"
                   value="2028"
                   color="#00ff88"
@@ -287,10 +284,10 @@ const CommandCenter = () => {
 
             {/* Footer */}
             <div
-              className="mt-3 pt-2 flex items-center justify-between font-mono text-[9px] tracking-[0.15em] uppercase"
+              className="mt-3 pt-2 flex items-center justify-between font-mono text-[8px] tracking-[0.15em] uppercase"
               style={{
                 borderTop: "1px solid rgba(255,255,255,0.04)",
-                color: "rgba(255,255,255,0.2)",
+                color: "rgba(255,255,255,0.15)",
               }}
             >
               <span>PROJEÇÃO LOA 2025 · TESOURO NACIONAL</span>
@@ -303,49 +300,83 @@ const CommandCenter = () => {
   );
 };
 
-/* ─── Row component ─── */
-interface RowProps {
+/* ─── Fiscal Row — dominant styling, subtle glow ─── */
+interface FiscalRowProps {
+  label: string;
+  value: string;
+  arrow?: "up" | "down";
+  dominant?: boolean;
+  pulse?: boolean;
+}
+
+const FiscalRow = ({ label, value, arrow, dominant, pulse }: FiscalRowProps) => (
+  <div
+    className="flex items-center justify-between py-[6px] font-mono"
+    style={{ borderBottom: "1px solid rgba(255,255,255,0.03)" }}
+  >
+    <span
+      className="text-[10px] tracking-[0.15em] uppercase font-medium"
+      style={{ color: "rgba(255,255,255,0.3)" }}
+    >
+      {label}
+    </span>
+    <div className="flex items-center gap-1.5">
+      <span
+        className={`font-bold tracking-wide ${dominant ? "cmd-fiscal-subtle" : ""} ${pulse ? "cmd-divida-pulse" : ""}`}
+        style={{
+          color: "#ff3b3b",
+          fontSize: dominant ? "14px" : "12px",
+        }}
+      >
+        {value}
+      </span>
+      {arrow === "up" && (
+        <span style={{ color: "#ff3b3b", fontSize: "8px", fontWeight: 700, opacity: 0.7 }}>▲</span>
+      )}
+    </div>
+  </div>
+);
+
+/* ─── Market Row — flash on BTC only (via live dot) ─── */
+interface MarketRowProps {
   label: string;
   value: string;
   color: string;
   arrow?: "up" | "down";
-  flash?: "up" | "down" | null;
-  pulse?: boolean;
-  glow?: boolean;
   live?: boolean;
 }
 
-const Row = ({ label, value, color, arrow, flash, pulse, glow, live }: RowProps) => (
+const MarketRow = ({ label, value, color, arrow, live }: MarketRowProps) => (
   <div
-    className={`flex items-center justify-between py-[7px] font-mono ${flash === "up" ? "cmd-flash-up" : flash === "down" ? "cmd-flash-down" : ""}`}
-    style={{ borderBottom: "1px solid rgba(255,255,255,0.04)" }}
+    className="flex items-center justify-between py-[6px] font-mono"
+    style={{ borderBottom: "1px solid rgba(255,255,255,0.03)" }}
   >
     <div className="flex items-center gap-2">
       {live && (
         <span
-          className="w-[5px] h-[5px] rounded-full flex-shrink-0 animate-pulse"
+          className="w-[4px] h-[4px] rounded-full flex-shrink-0 animate-pulse"
           style={{ background: "#00ff88" }}
         />
       )}
       <span
         className="text-[10px] tracking-[0.15em] uppercase font-medium"
-        style={{ color: "rgba(255,255,255,0.35)" }}
+        style={{ color: "rgba(255,255,255,0.3)" }}
       >
         {label}
       </span>
     </div>
     <div className="flex items-center gap-1.5">
       <span
-        className={`text-[13px] font-bold tracking-wide ${pulse ? "cmd-divida" : ""} ${glow ? "cmd-fiscal-glow" : ""}`}
+        className="text-[12px] font-bold tracking-wide"
         style={{ color }}
       >
         {value}
       </span>
       {arrow === "up" && (
-        <span style={{ color: "#ff3b3b", fontSize: "9px", fontWeight: 700 }}>▲</span>
+        <span style={{ color: "#ff3b3b", fontSize: "8px", fontWeight: 700, opacity: 0.7 }}>▲</span>
       )}
       {arrow === "down" && (
-        <span style={{ color: "#00ff88", fontSize: "9px", fontWeight: 700 }}>▼</span>
+        <span style={{ color: "#00ff88", fontSize: "8px", fontWeight: 700, opacity: 0.7 }}>▼</span>
       )}
     </div>
   </div>
