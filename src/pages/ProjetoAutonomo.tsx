@@ -4,6 +4,8 @@ import { ArrowLeft, ArrowRight, Shield, Clock, Leaf, Wheat, AlertTriangle, Heart
 import { motion } from 'framer-motion';
 
 import imgSoberaniaAlimentar from '@/assets/fase03-soberania-alimentar.jpg';
+import imgBase72 from '@/assets/fase01-base72.jpg';
+import imgAutonomiaBiologica from '@/assets/fase02-autonomia-biologica.jpg';
 
 /* ─── SEO: meta keywords target ───
    projeto autônomo, base 72 horas, autonomia biológica, soberania alimentar,
@@ -250,13 +252,23 @@ export default function ProjetoAutonomo() {
           id="fase-01" className="mb-28 scroll-mt-32"
           initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={fadeUp} custom={0}
         >
-          <div className="bg-rose-50/50 border border-rose-200/50 p-10 md:p-14 rounded-3xl backdrop-blur-sm relative overflow-hidden">
-            <Clock className="absolute top-8 right-8 text-rose-200/20" size={160} />
+          <div className="border border-rose-200/50 rounded-3xl backdrop-blur-sm relative overflow-hidden">
+            {/* Hero image band */}
+            <div className="relative w-full h-64 md:h-80 overflow-hidden">
+              <img src={imgBase72} alt="Kit Tático 72h" className="w-full h-full object-cover object-center" />
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-rose-50/100" />
+              <div className="absolute inset-0 bg-gradient-to-t from-transparent to-black/20" />
+              <div className="absolute bottom-6 left-8 md:left-14 z-10">
+                <span className="text-rose-300 text-[10px] font-bold tracking-[0.4em] uppercase drop-shadow-lg">Fase 01</span>
+                <h2 className="text-4xl md:text-6xl font-bold tracking-tight leading-[0.95] mt-1 text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.5)]">
+                  Base <span className="text-rose-300">72</span>
+                </h2>
+              </div>
+              <Clock className="absolute top-6 right-6 text-white/10" size={120} />
+            </div>
+
+            <div className="bg-rose-50/80 p-10 md:p-14 relative">
             <div className="relative z-10">
-              <span className="text-rose-500 text-[10px] font-bold tracking-[0.4em] uppercase opacity-70">Fase 01</span>
-              <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4 leading-tight mt-2 text-stone-800">
-                Base <span className="text-rose-600">72</span>
-              </h2>
               <p className="text-stone-500 text-sm md:text-base leading-relaxed max-w-2xl mb-4">
                 A referencia vem da regra das 72 horas usada em protocolos de defesa civil.
                 Apos uma interrupcao grave, os primeiros tres dias exigem autonomia minima.
@@ -296,6 +308,7 @@ export default function ProjetoAutonomo() {
                 </p>
               </div>
             </div>
+            </div>
           </div>
         </motion.section>
 
@@ -304,13 +317,23 @@ export default function ProjetoAutonomo() {
           id="fase-02" className="mb-28 scroll-mt-32"
           initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={fadeUp} custom={0}
         >
-          <div className="bg-emerald-50/50 border border-emerald-200/50 p-10 md:p-14 rounded-3xl backdrop-blur-sm relative overflow-hidden">
-            <Heart className="absolute top-8 right-8 text-emerald-200/20" size={160} />
+          <div className="border border-emerald-200/50 rounded-3xl backdrop-blur-sm relative overflow-hidden">
+            {/* Hero image band */}
+            <div className="relative w-full h-64 md:h-80 overflow-hidden">
+              <img src={imgAutonomiaBiologica} alt="Autonomia Biológica" className="w-full h-full object-cover object-center" />
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-emerald-50/100" />
+              <div className="absolute inset-0 bg-gradient-to-t from-transparent to-black/20" />
+              <div className="absolute bottom-6 left-8 md:left-14 z-10">
+                <span className="text-emerald-300 text-[10px] font-bold tracking-[0.4em] uppercase drop-shadow-lg">Fase 02</span>
+                <h2 className="text-4xl md:text-6xl font-bold tracking-tight leading-[0.95] mt-1 text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.5)]">
+                  Autonomia<br /><span className="text-emerald-300">Biologica</span>
+                </h2>
+              </div>
+              <Heart className="absolute top-6 right-6 text-white/10" size={120} />
+            </div>
+
+            <div className="bg-emerald-50/80 p-10 md:p-14 relative">
             <div className="relative z-10">
-              <span className="text-emerald-500 text-[10px] font-bold tracking-[0.4em] uppercase opacity-70">Fase 02</span>
-              <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4 leading-tight mt-2 text-stone-800">
-                Autonomia<br /><span className="text-emerald-600">Biologica</span>
-              </h2>
               <p className="text-stone-500 text-sm md:text-base leading-relaxed max-w-2xl mb-4">
                 Fortalecer o corpo e a base da resiliencia. Conhecimento tradicional de cuidado
                 complementa o sistema de saude e amplia a capacidade de resposta em cenarios adversos.
@@ -366,6 +389,7 @@ export default function ProjetoAutonomo() {
                   Conhecer plantas medicinais, primeiros socorros e habitos preventivos amplia autonomia sem substituir acompanhamento profissional.
                 </p>
               </div>
+            </div>
             </div>
           </div>
         </motion.section>
