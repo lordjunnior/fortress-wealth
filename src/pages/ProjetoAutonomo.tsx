@@ -202,17 +202,17 @@ export default function ProjetoAutonomo() {
             E <span className="text-emerald-700 font-semibold">reducao inteligente de dependencia</span> dentro dele.
           </p>
           <p className="text-stone-400 text-sm mt-3 max-w-2xl leading-relaxed">
-            Tres fases. Uma progressao logica. Gestao de risco pessoal com base em protocolos reais.
+            Quatro fases. Uma progressão lógica. Gestão de risco pessoal com base em protocolos reais.
           </p>
         </motion.header>
 
         {/* ═══════════════ PROGRESSION MAP ═══════════════ */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-28">
           {[
-            { num: '01', title: 'Base 72', sub: 'Sobreviver', colorText: 'text-rose-600', colorBg: 'bg-rose-50/70', colorBorder: 'border-rose-200/60', colorHover: 'hover:border-rose-300 hover:shadow-rose-100/40', desc: 'Autonomia mínima nas primeiras 72 horas de qualquer interrupcao.' },
-            { num: '02', title: 'Autonomia Biologica', sub: 'Fortalecer', colorText: 'text-emerald-600', colorBg: 'bg-emerald-50/70', colorBorder: 'border-emerald-200/60', colorHover: 'hover:border-emerald-300 hover:shadow-emerald-100/40', desc: 'Fortalecer o corpo como primeira linha de protecao.' },
-            { num: '03', title: 'Soberania Alimentar', sub: 'Produzir', colorText: 'text-amber-600', colorBg: 'bg-amber-50/70', colorBorder: 'border-amber-200/60', colorHover: 'hover:border-amber-300 hover:shadow-amber-100/40', desc: 'Capacidade real de produzir parte do proprio sustento.' },
-            { num: '04', title: 'Conhecimento Perdido', sub: 'Resgatar', colorText: 'text-teal-600', colorBg: 'bg-teal-50/70', colorBorder: 'border-teal-200/60', colorHover: 'hover:border-teal-300 hover:shadow-teal-100/40', desc: 'Fundamentos naturais aplicados à saúde. 12 plantas por sistema corporal.' },
+            { num: '01', title: 'Base 72', sub: 'Protege o corpo', colorText: 'text-rose-600', colorBg: 'bg-rose-50/70', colorBorder: 'border-rose-200/60', colorHover: 'hover:border-rose-300 hover:shadow-rose-100/40', desc: 'Autonomia mínima nas primeiras 72 horas. Abrigo, água, comunicação e deslocamento.' },
+            { num: '02', title: 'Autonomia Biológica', sub: 'Fortalece o corpo', colorText: 'text-emerald-600', colorBg: 'bg-emerald-50/70', colorBorder: 'border-emerald-200/60', colorHover: 'hover:border-emerald-300 hover:shadow-emerald-100/40', desc: 'Saúde preventiva, primeiros socorros e fitoterapia como primeira linha de defesa.' },
+            { num: '03', title: 'Soberania Alimentar', sub: 'Alimenta o corpo', colorText: 'text-amber-600', colorBg: 'bg-amber-50/70', colorBorder: 'border-amber-200/60', colorHover: 'hover:border-amber-300 hover:shadow-amber-100/40', desc: 'Produção própria de alimento. Horta, solo, conservação e proteína sustentável.' },
+            { num: '04', title: 'Conhecimento Perdido', sub: 'Ensina a entender o corpo', colorText: 'text-teal-600', colorBg: 'bg-teal-50/70', colorBorder: 'border-teal-200/60', colorHover: 'hover:border-teal-300 hover:shadow-teal-100/40', desc: 'Formação bioquímica e botânica. 12 plantas, 5 sistemas, 9 seções técnicas por ficha.' },
           ].map((phase, i) => (
             <motion.a
               key={phase.num}
@@ -228,6 +228,17 @@ export default function ProjetoAutonomo() {
             </motion.a>
           ))}
         </div>
+
+        {/* ─── Expansão contínua ─── */}
+        <motion.div
+          initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}
+          className="flex justify-center mb-28 -mt-20"
+        >
+          <div className="inline-flex items-center gap-2 bg-stone-200/40 border border-stone-300/30 px-5 py-2.5 rounded-full backdrop-blur-sm">
+            <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+            <span className="text-stone-500 text-[10px] font-bold uppercase tracking-[0.4em]">Conteúdo em expansão contínua</span>
+          </div>
+        </motion.div>
 
         {/* ═══════════════ NOTA CONTEXTUAL ═══════════════ */}
         <motion.div
