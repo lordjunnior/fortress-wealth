@@ -4,6 +4,7 @@ import { Leaf, Shield, Heart, Brain, Flame, Wind, BookOpen, TreePine, Compass, C
 import { motion } from 'framer-motion';
 
 import imgHero from '@/assets/cp-hero-conhecimento.jpg';
+import LinhaDoTempoOculta from '@/components/LinhaDoTempoOculta';
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -416,10 +417,12 @@ export default function ConhecimentoPerdido() {
         </motion.section>
 
         {/* ─── Disclaimer ─── */}
-        <div className="text-center">
+        <div className="text-center flex items-center justify-center gap-3">
           <p className="text-stone-600 text-[10px] font-mono tracking-widest uppercase">
             Conteúdo educativo · Não substitui orientação médica profissional
           </p>
+          <span className="text-stone-800">·</span>
+          <LinhaDoTempoOculta />
         </div>
       </div>
     </div>

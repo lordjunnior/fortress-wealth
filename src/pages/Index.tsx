@@ -16,6 +16,7 @@ import BitcoinInsightsSection from "@/components/BitcoinInsightsSection";
 import NetworkTicker from "@/components/NetworkTicker";
 import CommandCenter from "@/components/CommandCenter";
 import SovereignTermModal from "@/components/SovereignTermModal";
+import NivelZero from "@/components/NivelZero";
 
 const Index = () => {
   return (
@@ -23,6 +24,7 @@ const Index = () => {
       <NetworkTicker />
       <CommandCenter />
       <SovereignTermModal />
+      <NivelZero />
       <NoiseBackground />
 
       {/* Dust Particles Atmosphere */}
