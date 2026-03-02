@@ -18,6 +18,11 @@ import coverAutocustodia from '@/assets/autocustodiadeelite.jpg';
 import coverMercadoParalelo from '@/assets/omercado-paralelo.jpg';
 import coverValorBitcoin from '@/assets/cover-valor-bitcoin.jpg';
 import coverGracasDeus from '@/assets/cover-gracas-deus-bitcoin.jpg';
+import coverEconomia3 from '@/assets/cover-economia-3.jpg';
+import coverEducacaoLivre from '@/assets/cover-educacao-livre.jpg';
+import coverEstadoNao from '@/assets/cover-estado-nao.jpg';
+import coverCiclos from '@/assets/cover-ciclos.jpg';
+import coverMisesEscola from '@/assets/cover-mises-escola.jpg';
 
 const EBOOKS_DATA = [
   {
@@ -44,9 +49,9 @@ const EBOOKS_DATA = [
       { title: "Economia do Indivíduo", author: "Rodrigo Constantino", pdf: "/pdfs/economia-individuo.pdf", color: "from-blue-900 to-black", cover: coverEconomiaIndividuo },
       { title: "Economia e História", author: "Hans-Hermann Hoppe", pdf: "/pdfs/economia-historia.pdf", color: "from-red-900 to-slate-900", cover: coverEconomiaHistoria },
       { title: "Microeconomia", author: "Diversos", pdf: "/pdfs/microeconomia-compress.pdf", color: "from-teal-800 to-slate-900" },
-      { title: "Mises e a Escola Austríaca", author: "Ludwig von Mises", pdf: "/pdfs/Mises-e-a-Escola-Austriaca-–-uma-visao-pessoal.pdf", color: "from-violet-800 to-indigo-950" },
+      { title: "Mises e a Escola Austríaca", author: "Ludwig von Mises", pdf: "/pdfs/Mises-e-a-Escola-Austriaca-–-uma-visao-pessoal.pdf", color: "from-violet-800 to-indigo-950", cover: coverMisesEscola },
       
-      { title: "Moeda, Crédito e Ciclos", author: "Jesús Huerta de Soto", pdf: "/pdfs/Moeda-Credito-Bancario-e-Ciclos-Economicos.pdf", color: "from-zinc-700 to-black" },
+      { title: "Moeda, Crédito e Ciclos", author: "Jesús Huerta de Soto", pdf: "/pdfs/Moeda-Credito-Bancario-e-Ciclos-Economicos.pdf", color: "from-zinc-700 to-black", cover: coverCiclos },
     ]
   },
   {
@@ -54,8 +59,8 @@ const EBOOKS_DATA = [
     description: "A crítica moral e filosófica ao poder estatal.",
     books: [
       { title: "Deus que Falhou", author: "Hans-Hermann Hoppe", pdf: "/pdfs/democracia-deus-falhou.pdf", color: "from-zinc-900 to-black", cover: coverDeusFalhou },
-      { title: "Estado? Não, Obrigado!", author: "Marcelo Werlang", pdf: "/pdfs/Estado-Nao-Obrigado-n45ol7.pdf", color: "from-red-800 to-zinc-900" },
-      { title: "Educação Livre e Obrigatória", author: "Murray Rothbard", pdf: "/pdfs/Educacao-Livre-e-Obrigatoria-sypcgb.pdf", color: "from-sky-800 to-slate-900" },
+      { title: "Estado? Não, Obrigado!", author: "Marcelo Werlang", pdf: "/pdfs/Estado-Nao-Obrigado-n45ol7.pdf", color: "from-red-800 to-zinc-900", cover: coverEstadoNao },
+      { title: "Educação Livre e Obrigatória", author: "Murray Rothbard", pdf: "/pdfs/Educacao-Livre-e-Obrigatoria-sypcgb.pdf", color: "from-sky-800 to-slate-900", cover: coverEducacaoLivre },
     ]
   },
   {
@@ -63,7 +68,7 @@ const EBOOKS_DATA = [
     description: "Estratégias práticas para prosperar fora do sistema.",
     books: [
       { title: "Pai Rico, Pai Pobre", author: "Robert Kiyosaki", pdf: "/pdfs/pai-rico-pai-pobre.pdf", color: "from-green-800 to-emerald-950", cover: coverPaiRico },
-      { title: "Economia 3.0", author: "Diversos", pdf: "/pdfs/Economia-3.0-Do-escambo-ate-as-financas-descentralizadas-iznesy.pdf", color: "from-orange-700 to-red-950" },
+      { title: "Economia 3.0", author: "Diversos", pdf: "/pdfs/Economia-3.0-Do-escambo-ate-as-financas-descentralizadas-iznesy.pdf", color: "from-orange-700 to-red-950", cover: coverEconomia3 },
     ]
   }
 ];
