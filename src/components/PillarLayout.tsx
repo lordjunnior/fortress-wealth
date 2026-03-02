@@ -7,6 +7,7 @@ import AppSidebar from "@/components/AppSidebar";
 import MobileNav from "@/components/MobileNav";
 import NetworkTicker from "@/components/NetworkTicker";
 import type { Pillar } from "@/lib/pillars";
+import SimboloOculto from '@/components/SimboloOculto';
 
 const resourceIcons = {
   ebook: BookOpen,
@@ -233,7 +234,7 @@ const PillarLayout = ({ pillar }: { pillar: Pillar }) => {
               className="mt-16 text-center"
             >
               <p className="font-mono text-[10px] tracking-[0.3em] text-muted-foreground/50 mb-4">
-                SISTEMA OPERACIONAL DE SOBERANIA
+                SISTEMA OPERACIONAL DE SOBERANIA <SimboloOculto id="escudo" className="ml-1.5 align-middle" />
               </p>
               <div className="h-px w-32 mx-auto bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
             </motion.div>

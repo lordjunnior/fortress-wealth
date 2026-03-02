@@ -64,6 +64,7 @@ import CpBaseFisiologica from "./pages/cp/BaseFisiologica";
 import CpSegurancaLimites from "./pages/cp/SegurancaLimites";
 import CpAplicacaoPratica from "./pages/cp/AplicacaoPratica";
 import CpContinuidadeFamiliar from "./pages/cp/ContinuidadeFamiliar";
+import CodigoAutonomiaModal from "./components/CodigoAutonomiaModal";
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -72,6 +73,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <CodigoAutonomiaModal />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/bitcoin-vs-imovel" element={<BitcoinVsImovel />} />

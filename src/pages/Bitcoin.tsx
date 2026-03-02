@@ -12,6 +12,7 @@ import AppSidebar from "@/components/AppSidebar";
 import MobileNav from "@/components/MobileNav";
 import NetworkTicker from "@/components/NetworkTicker";
 import cardBitcoin from "@/assets/card-bitcoin.jpg";
+import SimboloOculto from '@/components/SimboloOculto';
 
 // Hardware wallets data
 const wallets = [
@@ -190,10 +191,11 @@ const Bitcoin = () => {
                 </p>
                 <Key className="w-5 h-5 text-gold" />
               </div>
-              <p className="text-sm text-muted-foreground mt-4 max-w-xl mx-auto">
-                Se as suas moedas estão em uma corretora, você não possui Bitcoin. Você possui uma promessa de pagamento que pode ser bloqueada a qualquer momento.
-              </p>
-            </motion.div>
+               <p className="text-sm text-muted-foreground mt-4 max-w-xl mx-auto">
+                 Se as suas moedas estão em uma corretora, você não possui Bitcoin. Você possui uma promessa de pagamento que pode ser bloqueada a qualquer momento.
+                 <SimboloOculto id="semente" className="ml-1.5 align-middle" />
+               </p>
+             </motion.div>
 
             {/* Hardware Wallets Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
