@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Menu, X, LayoutGrid, BookOpen, Headphones, Wrench, QrCode, Zap, Library, ShieldAlert, Shield } from "lucide-react";
+import { useReadingProgress } from "@/hooks/useReadingProgress";
 
 const menuItems = [
   { icon: ShieldAlert, label: "Protocolo Inicial", route: "/protocolo-inicial", alert: true },
@@ -17,6 +18,7 @@ const MobileNav = () => {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+  const { level, label, percent } = useReadingProgress();
 
   const handleNav = (item: { route?: string; targetId?: string }) => {
     setOpen(false);
@@ -56,6 +58,17 @@ const MobileNav = () => {
             </button>
           ))}
           <div className="pt-1 border-t border-border mt-1">
+            {/* Reading level */}
+            <div className="px-3 py-2">
+              <div className="flex items-center justify-between mb-1">
+                <span className="font-mono text-[8px] tracking-wider text-muted-foreground">NÍVEL {level}</span>
+                <span className="font-mono text-[8px] text-gold">{percent}%</span>
+              </div>
+              <p className="text-[9px] text-foreground font-medium mb-1.5">{label}</p>
+              <div className="h-[2px] bg-secondary rounded-full overflow-hidden">
+                <div className="h-full gradient-gold rounded-full transition-all duration-700" style={{ width: `${percent}%` }} />
+              </div>
+            </div>
             <button
               onClick={() => handleNav({ targetId: "apoio" })}
               className="w-full flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg border border-gold-dim/50 text-gold text-sm font-semibold"

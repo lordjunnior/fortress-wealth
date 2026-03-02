@@ -8,6 +8,8 @@ import imgBase72 from '@/assets/fase01-base72.jpg';
 import imgAutonomiaBiologica from '@/assets/fase02-autonomia-biologica.jpg';
 import imgConhecimentoPerdido from '@/assets/cp-hero-conhecimento.jpg';
 import SimboloOculto from '@/components/SimboloOculto';
+import RiskBlock from '@/components/RiskBlock';
+import VersionBadge from '@/components/VersionBadge';
 
 /* ─── SEO: meta keywords target ───
    projeto autônomo, base 72 horas, autonomia biológica, soberania alimentar,
@@ -196,6 +198,7 @@ export default function ProjetoAutonomo() {
               <h1 className="text-5xl md:text-8xl font-black tracking-tighter uppercase leading-[0.9] text-stone-800" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
                 PROJETO<br /><span className="text-emerald-700">AUTONOMO</span>
               </h1>
+              <VersionBadge version="v1.4" date="Mar 2026" className="mt-4" />
             </div>
           </div>
           <p className="text-stone-500 text-base md:text-lg max-w-3xl leading-relaxed">
@@ -338,6 +341,19 @@ export default function ProjetoAutonomo() {
                   A preparacao antecipa a necessidade. Ter um kit basico reduz a dependencia de resposta externa nas primeiras horas.
                 </p>
               </div>
+
+              {/* Risk block — Phase 01 */}
+              <div className="mt-8">
+                <RiskBlock
+                  theme="light"
+                  title="Sem esta base, o que acontece?"
+                  consequences={[
+                    "Dependência total de resgate externo nas primeiras 72 horas — tempo em que sistemas públicos estão sobrecarregados.",
+                    "Sem água potável ou abrigo, a capacidade de decisão se degrada em poucas horas.",
+                    "Comunicação zero com familiares em cenário de apagão ou desastre natural.",
+                  ]}
+                />
+              </div>
             </div>
             </div>
           </div>
@@ -420,6 +436,19 @@ export default function ProjetoAutonomo() {
                   Conhecer plantas medicinais, primeiros socorros e habitos preventivos amplia autonomia sem substituir acompanhamento profissional.
                 </p>
               </div>
+
+              {/* Risk block — Phase 02 */}
+              <div className="mt-8">
+                <RiskBlock
+                  theme="light"
+                  title="Sem esta base, o que acontece?"
+                  consequences={[
+                    "Incapacidade de prestar cuidados básicos em situação de emergência antes da chegada de ajuda profissional.",
+                    "Desconhecimento de sinais vitais e sintomas impede a tomada de decisão correta sob pressão.",
+                    "Dependência absoluta de farmácia e pronto-socorro para qualquer desconforto — sem alternativa complementar.",
+                  ]}
+                />
+              </div>
             </div>
             </div>
           </div>
@@ -496,7 +525,20 @@ export default function ProjetoAutonomo() {
                   Comece com um vaso. Depois um canteiro. Depois um sistema.
                   Cada etapa reduz uma camada de dependencia.
                 </p>
-            </div>
+              </div>
+
+              {/* Risk block — Phase 03 */}
+              <div className="mt-8">
+                <RiskBlock
+                  theme="light"
+                  title="Sem esta base, o que acontece?"
+                  consequences={[
+                    "100% do alimento vem da cadeia industrial — qualquer ruptura de abastecimento afeta diretamente a mesa.",
+                    "Sem conhecimento de cultivo, conservação ou solo, não há margem de manobra em cenários de escassez.",
+                    "Custo alimentar cresce sem alternativa de produção própria, mesmo em espaços reduzidos.",
+                  ]}
+                />
+              </div>
             </div>
           </div>
           </div>
