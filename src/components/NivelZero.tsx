@@ -87,11 +87,18 @@ export default function NivelZero() {
     };
   }, [dismissed, tryTrigger]);
 
-  const handleDismiss = () => {
+  const handleDismiss = useCallback(() => {
     setShow(false);
     setDismissed(true);
     localStorage.setItem(STORAGE_KEY, 'dismissed');
-  };
+  }, []);
+
+  // Auto-dismiss after 6 seconds
+  useEffect(() => {
+    if (!show) return;
+    const timer = setTimeout(handleDismiss, 6000);
+    return () => clearTimeout(timer);
+  }, [show, handleDismiss]);
 
   return (
     <AnimatePresence>
