@@ -7,6 +7,7 @@ import imgSoberaniaAlimentar from '@/assets/fase03-soberania-alimentar.jpg';
 import imgBase72 from '@/assets/fase01-base72.jpg';
 import imgAutonomiaBiologica from '@/assets/fase02-autonomia-biologica.jpg';
 import imgConhecimentoPerdido from '@/assets/cp-hero-conhecimento.jpg';
+import SimboloOculto from '@/components/SimboloOculto';
 
 /* ─── SEO: meta keywords target ───
    projeto autônomo, base 72 horas, autonomia biológica, soberania alimentar,
@@ -203,6 +204,7 @@ export default function ProjetoAutonomo() {
           </p>
           <p className="text-stone-400 text-sm mt-3 max-w-2xl leading-relaxed">
             Quatro fases. Uma progressão lógica. Gestão de risco pessoal com base em protocolos reais.
+            <SimboloOculto id="folha" className="ml-2 align-middle" />
           </p>
         </motion.header>
 

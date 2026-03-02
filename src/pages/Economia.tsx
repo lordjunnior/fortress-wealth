@@ -8,6 +8,7 @@ import AppSidebar from "@/components/AppSidebar";
 import MobileNav from "@/components/MobileNav";
 import NetworkTicker from "@/components/NetworkTicker";
 import cardEconomia from "@/assets/card-economia.jpg";
+import SimboloOculto from '@/components/SimboloOculto';
 
 // Dados de desvalorização do Real (poder de compra de R$100 ao longo dos anos)
 const devaluationData = [
@@ -183,10 +184,11 @@ const Economia = () => {
 
               <div className="flex items-center gap-2 mt-4 p-3 rounded-lg bg-destructive/5 border border-destructive/10">
                 <AlertTriangle className="w-4 h-4 text-destructive flex-shrink-0" />
-                <p className="text-xs text-muted-foreground">
-                  <span className="text-destructive font-bold">R$ 100 em 1994 compram hoje o equivalente a R$ 11.</span>{" "}
-                  O Banco Central destruiu 89% do seu poder de compra em 30 anos.
-                </p>
+                 <p className="text-xs text-muted-foreground">
+                   <span className="text-destructive font-bold">R$ 100 em 1994 compram hoje o equivalente a R$ 11.</span>{" "}
+                   O Banco Central destruiu 89% do seu poder de compra em 30 anos.
+                   <SimboloOculto id="chama" className="ml-1.5 align-middle" />
+                 </p>
               </div>
             </motion.div>
           </div>

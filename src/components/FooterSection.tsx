@@ -4,6 +4,7 @@ import { Copy, Check, Zap, Smartphone, Shield, ArrowRight, X } from "lucide-reac
 import { Link } from "react-router-dom";
 import qrCodeImage from "@/assets/qrcode-lightning.jpeg";
 import SatCounter from "@/components/SatCounter";
+import SimboloOculto from '@/components/SimboloOculto';
 
 const LIGHTNING_ADDRESS = "securecorn53@walletofsatoshi.com";
 
@@ -202,8 +203,8 @@ const FooterSection = () => {
             NOT YOUR KEYS. NOT YOUR MONEY.
           </p>
           <div className="pt-4 border-t border-border/50">
-            <p className="font-mono text-xs text-muted-foreground tracking-wider">
-              &copy; LORD JUNNIOR &middot; 2026
+           <p className="font-mono text-xs text-muted-foreground tracking-wider">
+              &copy; LORD JUNNIOR &middot; 2026 <SimboloOculto id="raiz" className="ml-1.5 align-middle" />
             </p>
           </div>
         </div>
