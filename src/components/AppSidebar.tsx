@@ -2,6 +2,7 @@ import { Instagram, Youtube, Twitter, Github, LayoutGrid, BookOpen, Headphones, 
 import { Link } from "react-router-dom";
 import { useNavigate, useLocation } from "react-router-dom";
 import profilePhoto from "@/assets/profile-photo.jpg";
+import ReadingLevelIndicator from "@/components/ReadingLevelIndicator";
 
 interface MenuItem {
   icon: typeof LayoutGrid;
@@ -85,6 +86,9 @@ const AppSidebar = () => {
           ))}
         </div>
       </div>
+
+      {/* Reading Level */}
+      <ReadingLevelIndicator />
 
       {/* Alert Text */}
       <div className="px-5 py-4 border-b border-border/50">

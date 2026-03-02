@@ -17,6 +17,8 @@ import NetworkTicker from "@/components/NetworkTicker";
 import CommandCenter from "@/components/CommandCenter";
 import SovereignTermModal from "@/components/SovereignTermModal";
 import NivelZero from "@/components/NivelZero";
+import StrategicSignature from "@/components/StrategicSignature";
+import RiskBlock from "@/components/RiskBlock";
 
 const Index = () => {
   return (
@@ -105,6 +107,28 @@ const Index = () => {
 
         <div className="section-divider">
           <WhyBitcoinSection />
+        </div>
+
+        {/* Strategic Signature — Manifesto Permanente */}
+        <div className="section-alt section-divider">
+          <StrategicSignature />
+        </div>
+
+        {/* Risk Layer — Consequence awareness */}
+        <div className="section-divider section-padding">
+          <div className="max-w-5xl mx-auto">
+            <RiskBlock
+              title="Sem esta base, o que acontece?"
+              showImage
+              consequences={[
+                "Dependência total de intermediários financeiros que podem bloquear seu acesso a qualquer momento.",
+                "Patrimônio exposto à desvalorização monetária contínua sem nenhuma camada de proteção.",
+                "Incapacidade de operar fora do sistema convencional em cenários de restrição ou colapso.",
+                "Conhecimento fragmentado que não se converte em ação prática nem em transmissão familiar.",
+                "Vulnerabilidade alimentar, energética e informacional em eventos de ruptura sistêmica.",
+              ]}
+            />
+          </div>
         </div>
 
         <div className="section-alt section-divider">
