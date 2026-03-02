@@ -19,7 +19,7 @@ import coverMercadoParalelo from '@/assets/omercado-paralelo.jpg';
 import coverValorBitcoin from '@/assets/cover-valor-bitcoin.jpg';
 import coverGracasDeus from '@/assets/cover-gracas-deus-bitcoin.jpg';
 import coverEconomia3 from '@/assets/cover-economia-3.jpg';
-import coverEducacaoLivre from '@/assets/cover-educacao-livre.jpg';
+// cover-educacao-livre.jpg não existe ainda
 import coverEstadoNao from '@/assets/cover-estado-nao.jpg';
 import coverCiclos from '@/assets/cover-ciclos.jpg';
 import coverMisesEscola from '@/assets/cover-mises-escola.jpg';
@@ -60,7 +60,7 @@ const EBOOKS_DATA = [
     books: [
       { title: "Deus que Falhou", author: "Hans-Hermann Hoppe", pdf: "/pdfs/democracia-deus-falhou.pdf", color: "from-zinc-900 to-black", cover: coverDeusFalhou },
       { title: "Estado? Não, Obrigado!", author: "Marcelo Werlang", pdf: "/pdfs/Estado-Nao-Obrigado-n45ol7.pdf", color: "from-red-800 to-zinc-900", cover: coverEstadoNao },
-      { title: "Educação Livre e Obrigatória", author: "Murray Rothbard", pdf: "/pdfs/Educacao-Livre-e-Obrigatoria-sypcgb.pdf", color: "from-sky-800 to-slate-900", cover: coverEducacaoLivre },
+      { title: "Educação Livre e Obrigatória", author: "Murray Rothbard", pdf: "/pdfs/Educacao-Livre-e-Obrigatoria-sypcgb.pdf", color: "from-sky-800 to-slate-900" },
     ]
   },
   {
