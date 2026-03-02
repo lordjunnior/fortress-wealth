@@ -45,7 +45,7 @@ const EBOOKS_DATA = [
       { title: "Economia e História", author: "Hans-Hermann Hoppe", pdf: "/pdfs/economia-historia.pdf", color: "from-red-900 to-slate-900", cover: coverEconomiaHistoria },
       { title: "Microeconomia", author: "Diversos", pdf: "/pdfs/microeconomia-compress.pdf", color: "from-teal-800 to-slate-900" },
       { title: "Mises e a Escola Austríaca", author: "Ludwig von Mises", pdf: "/pdfs/Mises-e-a-Escola-Austriaca-–-uma-visao-pessoal.pdf", color: "from-violet-800 to-indigo-950" },
-      { title: "Cálculo Econômico Socialista", author: "Diversos", pdf: "/pdfs/Historia-do-Debate-do-Calculo-Economico-Socialista-xdcspd.pdf", color: "from-rose-900 to-black" },
+      
       { title: "Moeda, Crédito e Ciclos", author: "Jesús Huerta de Soto", pdf: "/pdfs/Moeda-Credito-Bancario-e-Ciclos-Economicos.pdf", color: "from-zinc-700 to-black" },
     ]
   },
