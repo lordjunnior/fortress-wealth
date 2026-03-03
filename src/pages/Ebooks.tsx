@@ -23,6 +23,10 @@ import coverEconomia3 from '@/assets/cover-economia-3.jpg';
 import coverEstadoNao from '@/assets/cover-estado-nao.jpg';
 import coverCiclos from '@/assets/cover-ciclos.jpg';
 import coverMisesEscola from '@/assets/cover-mises-escola.jpg';
+import coverMasteringBtc from '@/assets/cover-mastering-bitcoin.jpg';
+import coverInternetDinheiro from '@/assets/cover-internet-dinheiro.jpg';
+import coverPadraoBtc from '@/assets/cover-padrao-bitcoin.jpg';
+import coverMicroeconomia from '@/assets/cover-microeconomia.jpg';
 
 const EBOOKS_DATA = [
   {
@@ -34,9 +38,9 @@ const EBOOKS_DATA = [
       { title: "Bitcoin p/ Programadores", author: "Marco Agner", pdf: "/pdfs/bitcoin-programadores.pdf", color: "from-blue-700 to-slate-900", cover: coverProgramadores },
       { title: "Moeda na Era Digital", author: "Fernando Ulrich", pdf: "/pdfs/bitcoin-moeda-digital.pdf", color: "from-amber-500 to-orange-800", cover: coverMoedaDigital },
       { title: "O Valor do Bitcoin", author: "Diversos", pdf: "/pdfs/O_valor_do_Bitcoin.pdf", color: "from-emerald-600 to-teal-900", cover: coverValorBitcoin },
-      { title: "Mastering Bitcoin", author: "Andreas Antonopoulos", pdf: "/pdfs/Mastering Bitcoin.pdf", color: "from-indigo-700 to-slate-900" },
-      { title: "O Padrão Bitcoin", author: "Saifedean Ammous", pdf: "/pdfs/o_padrao_bitcoin_ediao_brasileira_a_alternativa_descentralizada.pdf", color: "from-yellow-600 to-amber-900" },
-      { title: "A Internet do Dinheiro", author: "Andreas Antonopoulos", pdf: "/pdfs/a internet do dinheiro 2020 andreas antonopoulos.pdf", color: "from-cyan-600 to-blue-900" },
+      { title: "Mastering Bitcoin", author: "Andreas Antonopoulos", pdf: "/pdfs/Mastering Bitcoin.pdf", color: "from-indigo-700 to-slate-900", cover: coverMasteringBtc },
+      { title: "O Padrão Bitcoin", author: "Saifedean Ammous", pdf: "/pdfs/o_padrao_bitcoin_ediao_brasileira_a_alternativa_descentralizada.pdf", color: "from-yellow-600 to-amber-900", cover: coverPadraoBtc },
+      { title: "A Internet do Dinheiro", author: "Andreas Antonopoulos", pdf: "/pdfs/a internet do dinheiro 2020 andreas antonopoulos.pdf", color: "from-cyan-600 to-blue-900", cover: coverInternetDinheiro },
       { title: "Graças a Deus pelo Bitcoin", author: "Derek Waltchack", pdf: "/pdfs/Graças a Deus pelo Bitcoin - Derek Waltchack.pdf", color: "from-amber-700 to-yellow-950", cover: coverGracasDeus },
     ]
   },
@@ -48,7 +52,7 @@ const EBOOKS_DATA = [
       { title: "Fim do Banco Central", author: "Murray Rothbard", pdf: "/pdfs/fim-banco-central.pdf", color: "from-slate-800 to-black", cover: coverFimBc },
       { title: "Economia do Indivíduo", author: "Rodrigo Constantino", pdf: "/pdfs/economia-individuo.pdf", color: "from-blue-900 to-black", cover: coverEconomiaIndividuo },
       { title: "Economia e História", author: "Hans-Hermann Hoppe", pdf: "/pdfs/economia-historia.pdf", color: "from-red-900 to-slate-900", cover: coverEconomiaHistoria },
-      { title: "Microeconomia", author: "Diversos", pdf: "/pdfs/microeconomia-compress.pdf", color: "from-teal-800 to-slate-900" },
+      { title: "Microeconomia", author: "Diversos", pdf: "/pdfs/microeconomia-compress.pdf", color: "from-teal-800 to-slate-900", cover: coverMicroeconomia },
       { title: "Mises e a Escola Austríaca", author: "Ludwig von Mises", pdf: "/pdfs/Mises-e-a-Escola-Austriaca-–-uma-visao-pessoal.pdf", color: "from-violet-800 to-indigo-950", cover: coverMisesEscola },
       
       { title: "Moeda, Crédito e Ciclos", author: "Jesús Huerta de Soto", pdf: "/pdfs/Moeda-Credito-Bancario-e-Ciclos-Economicos.pdf", color: "from-zinc-700 to-black", cover: coverCiclos },
