@@ -506,13 +506,13 @@ export default function ProtocoloInicial() {
               <div className="p-10 md:p-14 flex flex-col justify-center">
                 <h3 className="text-2xl font-black uppercase mb-6 tracking-tighter italic">Por que este site existe?</h3>
                 <p className="text-slate-300 font-medium mb-4 text-sm leading-relaxed">
-                  O sistema monetário é uma fraude. A educação formal é propaganda. A mídia tradicional é manipulação sistemática da realidade. Isso não é teoria da conspiração — é <strong className="text-white">matemática, história e economia documentada</strong>.
+                  O sistema monetário é uma fraude. A educação formal é propaganda. A mídia tradicional é manipulação sistemática da realidade. Isso não é teoria da conspiração, é <strong className="text-white uppercase">MATEMÁTICA, HISTÓRIA E ECONOMIA DOCUMENTADA</strong>.
                 </p>
                 <p className="text-slate-400 font-medium mb-4 text-sm leading-relaxed">
                   Bancos centrais criam dinheiro do nada e transferem riqueza de quem trabalha para quem controla a emissão. Universidades produzem conformidade intelectual, não pensamento crítico.
                 </p>
                 <p className="text-slate-400 font-medium mb-6 text-sm leading-relaxed">
-                  Este arsenal existe para compartilhar conhecimento que deveria ser óbvio, mas é sistematicamente escondido. Não por dinheiro. Não por fama. <strong className="text-white">Por responsabilidade com quem ainda consegue pensar.</strong>
+                  Este arsenal existe para compartilhar conhecimento que deveria ser óbvio, mas é sistematicamente escondido. Não por dinheiro. Não por fama. <strong className="text-white uppercase">POR RESPONSABILIDADE COM QUEM AINDA CONSEGUE PENSAR.</strong>
                 </p>
 
                 {/* O Que Você Encontra Aqui */}
