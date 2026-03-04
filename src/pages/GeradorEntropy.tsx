@@ -52,7 +52,7 @@ const GeradorEntropy: React.FC = () => {
 
     if (progress < 100) {
       setProgress(prev => {
-        const next = Math.min(prev + 0.15, 100);
+        const next = Math.min(prev + 0.5, 100);
         if (next >= 100 && prev < 100) {
           generateSeed();
           return 100;

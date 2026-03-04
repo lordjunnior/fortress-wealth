@@ -63,7 +63,7 @@ const TOOLS_LIST = [
   },
   {
     id: 'entropy',
-    title: 'Gerador de Entropia Real',
+    title: 'Gere sua Seed',
     badge: 'Crie sua Seed Offline',
     desc: 'Ferramenta de segurança máxima que usa o caos dos seus movimentos do mouse para gerar chaves privadas completamente offline.',
     cta: 'Gerar Seed',
@@ -75,7 +75,7 @@ const TOOLS_LIST = [
   },
   {
     id: 'supply-shock',
-    title: 'Supply Shock',
+    title: 'O Último Bloco',
     badge: 'A Porta Está Fechando',
     desc: 'Visualize o choque de oferta do Bitcoin em tempo real. Moedas perdidas, ETFs absorvendo e menos de 9% disponível. A matemática não mente.',
     cta: 'Ver os Números',

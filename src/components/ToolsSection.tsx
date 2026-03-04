@@ -27,7 +27,7 @@ const tools = [
     tag: "OFFLINE",
   },
   {
-    title: "GERADOR DE SEED BIP39",
+    title: "GERE SUA SEED",
     icon: Shield,
     description: "Não confie em geradores automáticos. Crie suas 12 ou 24 palavras de segurança com aleatoriedade real usando o caos dos seus movimentos de mouse. 100% offline e executado localmente.",
     button: "Gerar Fortaleza (Offline)",
