@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, ArrowRight, Shield, Clock, Leaf, Wheat, AlertTriangle, Heart, Sprout, Package, Flame, Droplets, Wind, Sun, Tent, Siren, Cross, Egg, TreePine, Layers, Thermometer, Bug, Shovel, BookOpen, ChevronDown } from 'lucide-react';
-import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
+import { ArrowLeft, ArrowRight, Shield, Clock, Leaf, Wheat, AlertTriangle, Heart, Sprout, Package, Flame, Droplets, Wind, Sun, Tent, Siren, Cross, Egg, TreePine, Layers, Thermometer, Bug, Shovel, BookOpen, ChevronDown, Activity, Brain, Zap, Pill, Wind as WindIcon } from 'lucide-react';
+import { motion, useScroll, useTransform, useMotionValue, useSpring, AnimatePresence } from 'framer-motion';
 
 import imgSoberaniaAlimentar from '@/assets/fase03-soberania-alimentar.jpg';
 import imgBase72 from '@/assets/fase01-base72.jpg';
@@ -123,6 +123,52 @@ const PLANTAS_SOBERANAS = [
     cta: "ATIVAR REGENERAÇÃO"
   }
 ];
+
+const SISTEMAS_DATA: Record<string, { plantas: string[]; foco: string; pnl: string; icon: React.ElementType; color: string }> = {
+  digestivo: {
+    plantas: ["Espinheira Santa", "Carqueja", "Gengibre"],
+    foco: "Neutralização de acidez e otimização enzimática.",
+    pnl: "O primeiro passo da soberania é não ser refém da má digestão industrial.",
+    icon: Flame,
+    color: "emerald",
+  },
+  respiratorio: {
+    plantas: ["Poejo", "Sálvia"],
+    foco: "Desobstrução e fortalecimento do parênquima pulmonar.",
+    pnl: "Respirar sem ajuda química é o nível básico de autonomia física.",
+    icon: Wind,
+    color: "sky",
+  },
+  nervoso: {
+    plantas: ["Capim-Limão", "Sálvia"],
+    foco: "Estabilização de neurotransmissores e modulação de cortisol.",
+    pnl: "Mente fria em cenários de crise: o controle vem da natureza, não da farmácia.",
+    icon: Brain,
+    color: "violet",
+  },
+  imuno: {
+    plantas: ["Equinácea", "Alho", "Babosa"],
+    foco: "Ativação de macrófagos e barreira antiviral.",
+    pnl: "Sua imunidade é seu exército particular. Treine-o para não depender de terceiros.",
+    icon: Shield,
+    color: "amber",
+  },
+  glandular: {
+    plantas: ["Dente-de-Leão", "Guaçatonga"],
+    foco: "Depuração hepática e equilíbrio endócrino.",
+    pnl: "Limpar o filtro do corpo para garantir que o sistema opere em carga máxima.",
+    icon: Activity,
+    color: "rose",
+  },
+};
+
+const SISTEMA_LABELS: Record<string, string> = {
+  digestivo: "Digestivo",
+  respiratorio: "Respiratório",
+  nervoso: "Nervoso",
+  imuno: "Imunológico",
+  glandular: "Glandular",
+};
 
 /* ─── Mouse Parallax Hook ─── */
 function useMouseParallax(strength = 15) {
@@ -344,6 +390,7 @@ export default function ProjetoAutonomo() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll();
   const { springX, springY } = useMouseParallax(12);
+  const [activeSistema, setActiveSistema] = useState<string | null>(null);
 
   // Parallax values for floating elements
   const floatY1 = useTransform(scrollYProgress, [0, 1], [0, -200]);
@@ -703,6 +750,102 @@ export default function ProjetoAutonomo() {
                     </motion.div>
                   ))}
                 </div>
+
+                {/* ═══ MAPA DE SISTEMAS FISIOLÓGICOS — Interativo ═══ */}
+                <motion.div
+                  initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={1}
+                  className="mt-14 mb-10"
+                >
+                  <p className="text-emerald-700 text-[10px] font-bold uppercase tracking-[0.5em] mb-2">Mapa Fisiológico</p>
+                  <h3 className="text-xl md:text-2xl font-bold text-stone-800 tracking-tight mb-2">
+                    A base que sustenta cada decisão de <span className="text-emerald-600">saúde</span>
+                  </h3>
+                  <p className="text-stone-500 text-sm mb-8 max-w-xl">Clique em um sistema para revelar as plantas associadas, o foco terapêutico e a estratégia de autonomia.</p>
+
+                  {/* System Icons Row */}
+                  <div className="flex flex-wrap gap-3 mb-6">
+                    {Object.entries(SISTEMAS_DATA).map(([key, sys]) => {
+                      const isActive = activeSistema === key;
+                      const Icon = sys.icon;
+                      return (
+                        <motion.button
+                          key={key}
+                          onClick={() => setActiveSistema(isActive ? null : key)}
+                          whileHover={{ scale: 1.08, y: -2 }}
+                          whileTap={{ scale: 0.95 }}
+                          className={`flex items-center gap-2.5 px-5 py-3 rounded-xl border text-sm font-semibold transition-all duration-500 cursor-pointer ${
+                            isActive
+                              ? 'bg-emerald-600 text-white border-emerald-500 shadow-lg shadow-emerald-300/30'
+                              : 'bg-white/60 text-stone-600 border-stone-200/60 hover:bg-emerald-50 hover:border-emerald-300 hover:text-emerald-700'
+                          }`}
+                        >
+                          <Icon size={16} className={isActive ? 'text-white' : 'text-emerald-500'} />
+                          {SISTEMA_LABELS[key]}
+                        </motion.button>
+                      );
+                    })}
+                  </div>
+
+                  {/* Reveal Panel */}
+                  <AnimatePresence mode="wait">
+                    {activeSistema && SISTEMAS_DATA[activeSistema] && (
+                      <motion.div
+                        key={activeSistema}
+                        initial={{ opacity: 0, y: 20, height: 0, filter: 'blur(8px)' }}
+                        animate={{ opacity: 1, y: 0, height: 'auto', filter: 'blur(0px)' }}
+                        exit={{ opacity: 0, y: -10, height: 0, filter: 'blur(6px)' }}
+                        transition={{ duration: 0.5, ease: APPLE_EASE }}
+                        className="overflow-hidden"
+                      >
+                        <div className="bg-white/70 border border-emerald-200/50 rounded-2xl p-8 md:p-10 backdrop-blur-sm shadow-xl shadow-emerald-100/20">
+                          <div className="flex items-start gap-4 mb-6">
+                            <div className="p-3 bg-emerald-100/60 rounded-xl">
+                              {React.createElement(SISTEMAS_DATA[activeSistema].icon, { className: 'text-emerald-600', size: 22 })}
+                            </div>
+                            <div>
+                              <h4 className="text-lg font-bold text-stone-800 tracking-tight">
+                                Sistema {SISTEMA_LABELS[activeSistema]}
+                              </h4>
+                              <p className="text-stone-500 text-sm">{SISTEMAS_DATA[activeSistema].foco}</p>
+                            </div>
+                          </div>
+
+                          {/* PNL Quote */}
+                          <div className="border-l-2 border-emerald-400/40 pl-5 mb-8 py-2 bg-emerald-50/30 rounded-r-lg">
+                            <p className="text-stone-700 text-sm md:text-base font-medium italic leading-relaxed">
+                              "{SISTEMAS_DATA[activeSistema].pnl}"
+                            </p>
+                          </div>
+
+                          {/* Plantas */}
+                          <p className="text-emerald-600 text-[10px] font-bold uppercase tracking-[0.4em] mb-3">Plantas Associadas</p>
+                          <div className="flex flex-wrap gap-2 mb-6">
+                            {SISTEMAS_DATA[activeSistema].plantas.map((planta) => (
+                              <motion.span
+                                key={planta}
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{ duration: 0.3 }}
+                                className="inline-flex items-center gap-1.5 px-4 py-2 bg-emerald-100/50 border border-emerald-200/50 rounded-full text-sm font-semibold text-emerald-700 hover:bg-emerald-200/60 hover:scale-105 transition-all duration-300 cursor-default"
+                              >
+                                <Leaf size={12} /> {planta}
+                              </motion.span>
+                            ))}
+                          </div>
+
+                          {/* CTA */}
+                          <Link
+                            to="/projeto-autonomo/autonomia-biologica"
+                            className="inline-flex items-center gap-2 bg-emerald-600 text-white px-6 py-3 text-sm font-bold tracking-wide rounded-xl hover:bg-emerald-700 hover:shadow-lg hover:shadow-emerald-200/30 hover:scale-[1.02] transition-all duration-500 group"
+                          >
+                            <Zap size={15} className="group-hover:rotate-12 transition-transform duration-500" />
+                            ACESSAR PROTOCOLO COMPLETO
+                          </Link>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
 
                 {/* CTA Hub Sabedoria Ancestral */}
                 <Link to="/projeto-autonomo/sabedoria-ancestral"
