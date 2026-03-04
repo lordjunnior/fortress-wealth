@@ -522,7 +522,7 @@ export default function ProtocoloInicial() {
                     <div className="flex items-center gap-2 text-sm"><span className="text-lg">📚</span><span className="text-slate-300 font-bold text-xs">Economia que Faz Sentido</span></div>
                     <div className="flex items-center gap-2 text-sm"><span className="text-lg">₿</span><span className="text-slate-300 font-bold text-xs">Bitcoin sem Enrolação</span></div>
                     <div className="flex items-center gap-2 text-sm"><span className="text-lg">⚖️</span><span className="text-slate-300 font-bold text-xs">Filosofia da Liberdade</span></div>
-                    <div className="flex items-center gap-2 text-sm"><span className="text-lg">✝️</span><span className="text-slate-300 font-bold text-xs">Fé e Liberdade</span></div>
+                    <div className="flex items-center gap-2 text-sm"><span className="text-lg">🔐</span><span className="text-slate-300 font-bold text-xs">Estratégias de Saída</span></div>
                   </div>
                 </div>
 
