@@ -80,14 +80,28 @@ const ManifestoSection = () => {
           transition={{ duration: 0.6, delay: 0.4, ease: ease.sovereign }}
           className="card-wealth p-4 md:p-8"
         >
-          <div className="flex items-center justify-between mb-6">
-            <div>
-              <p className="pre-title mb-1">VISUALIZAÇÃO DE DADOS</p>
-              <h3 className="font-display text-lg md:text-xl font-semibold tracking-tight">
-                DESTRUIÇÃO DO PODER DE COMPRA <span className="text-muted-foreground">(BRL/USD vs. TEMPO)</span>
-              </h3>
+          <div className="mb-6">
+            <div className="flex items-center justify-between mb-4">
+              <div>
+                <p className="pre-title mb-1">VISUALIZAÇÃO DE DADOS</p>
+                <h3 className="font-display text-lg md:text-xl font-semibold tracking-tight">
+                  DESTRUIÇÃO DO PODER DE COMPRA <span className="text-muted-foreground">(BRL/USD vs. TEMPO)</span>
+                </h3>
+              </div>
+              <span className="text-chart-red font-mono text-sm font-semibold">-92%</span>
             </div>
-            <span className="text-chart-red font-mono text-sm font-semibold">-92%</span>
+
+            {/* Frase-anzol — PNL */}
+            <div className="relative border-l-2 border-chart-red/40 pl-4 py-2 bg-chart-red/[0.03] rounded-r-sm">
+              <p className="text-sm md:text-base text-foreground/80 leading-relaxed">
+                <span className="text-chart-red font-bold">R$ 100 em 1994</span> comprava o que hoje custa{' '}
+                <span className="text-chart-red font-bold">R$ 1.250</span>.
+                Seu salário subiu na mesma proporção?
+              </p>
+              <p className="text-xs text-muted-foreground mt-1 font-mono">
+                O gráfico abaixo mostra o que o Estado fez com cada real no seu bolso.
+              </p>
+            </div>
           </div>
 
           <div className="h-[300px] md:h-[380px]">
