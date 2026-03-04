@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Download, ShieldCheck, ArrowRight, Zap, Lock, Globe, Coins, ShieldAlert, AlertTriangle, Key, Pickaxe, Scale, Database, HelpCircle, BookOpen, Shield, Send, Hourglass, Activity, TrendingUp } from 'lucide-react';
+import coverSilencioQueda from '@/assets/cover-silencio-queda.jpg';
 
 const NAV_ITEMS = [
   { id: 'estagio-01', label: 'Estágio 01: O Fim da Ilusão' },
@@ -503,20 +504,38 @@ export default function ProtocoloInicial() {
           <div className="bg-[#0B0F19] rounded-sm border border-white/5 overflow-hidden mb-28 group">
             <div className="grid grid-cols-1 md:grid-cols-2">
               <div className="p-10 md:p-14 flex flex-col justify-center">
-                <h3 className="text-2xl font-black uppercase mb-6 tracking-tighter italic">Por que este material existe</h3>
-                <p className="text-xl font-black text-white leading-none uppercase mb-2">A queda não é do mercado. <span className="text-red-600 italic">É da consciência.</span></p>
-                <p className="text-slate-400 font-medium mb-8 text-sm">Bitcoin não surge como solução mágica. Surge como explicação tardia.</p>
-                <button className="bg-white text-black font-black py-5 px-8 rounded-none text-[10px] uppercase tracking-[0.3em] hover:bg-red-600 hover:text-white transition-all flex items-center justify-center gap-3 animate-[pulse_2s_infinite]">
+                <h3 className="text-2xl font-black uppercase mb-6 tracking-tighter italic">Por que este site existe?</h3>
+                <p className="text-slate-300 font-medium mb-4 text-sm leading-relaxed">
+                  O sistema monetário é uma fraude. A educação formal é propaganda. A mídia tradicional é manipulação sistemática da realidade. Isso não é teoria da conspiração — é <strong className="text-white">matemática, história e economia documentada</strong>.
+                </p>
+                <p className="text-slate-400 font-medium mb-4 text-sm leading-relaxed">
+                  Bancos centrais criam dinheiro do nada e transferem riqueza de quem trabalha para quem controla a emissão. Universidades produzem conformidade intelectual, não pensamento crítico.
+                </p>
+                <p className="text-slate-400 font-medium mb-6 text-sm leading-relaxed">
+                  Este arsenal existe para compartilhar conhecimento que deveria ser óbvio, mas é sistematicamente escondido. Não por dinheiro. Não por fama. <strong className="text-white">Por responsabilidade com quem ainda consegue pensar.</strong>
+                </p>
+
+                {/* O Que Você Encontra Aqui */}
+                <div className="mb-8">
+                  <h4 className="text-white font-black uppercase text-xs tracking-widest mb-4 font-mono">O Que Você Encontra Aqui</h4>
+                  <div className="grid grid-cols-2 gap-3">
+                    <div className="flex items-center gap-2 text-sm"><span className="text-lg">📚</span><span className="text-slate-300 font-bold text-xs">Economia que Faz Sentido</span></div>
+                    <div className="flex items-center gap-2 text-sm"><span className="text-lg">₿</span><span className="text-slate-300 font-bold text-xs">Bitcoin sem Enrolação</span></div>
+                    <div className="flex items-center gap-2 text-sm"><span className="text-lg">⚖️</span><span className="text-slate-300 font-bold text-xs">Filosofia da Liberdade</span></div>
+                    <div className="flex items-center gap-2 text-sm"><span className="text-lg">✝️</span><span className="text-slate-300 font-bold text-xs">Fé e Liberdade</span></div>
+                  </div>
+                </div>
+
+                <Link
+                  to="/silencio-queda"
+                  className="bg-red-600 text-white font-black py-5 px-8 rounded-sm text-[10px] uppercase tracking-[0.3em] hover:bg-white hover:text-black transition-all flex items-center justify-center gap-3 shadow-[0_0_30px_rgba(220,38,38,0.3)] hover:shadow-[0_0_40px_rgba(220,38,38,0.5)] border-glow-pulse"
+                >
                   <Download size={16} /> Baixar PDF Gratuito
-                </button>
+                </Link>
               </div>
               <div className="bg-[#0E131F] p-10 flex items-center justify-center border-l border-white/5">
-                <div className="w-full max-w-[240px] aspect-[2/3] bg-gradient-to-br from-red-700 via-red-900 to-black rounded-sm shadow-2xl relative p-6 flex flex-col justify-between border border-white/10 group-hover:scale-[1.02] transition-transform duration-700">
-                  <ShieldCheck className="text-white/20" size={32} />
-                  <div>
-                    <h4 className="text-2xl font-black leading-none uppercase tracking-tighter italic mb-1 text-white">Protocolos de Soberania</h4>
-                    <p className="text-[8px] font-black uppercase tracking-widest opacity-40 text-white">Lord Junnior</p>
-                  </div>
+                <div className="w-full max-w-[240px] aspect-[2/3] rounded-sm shadow-2xl relative overflow-hidden border border-white/10 group-hover:scale-[1.03] transition-transform duration-700">
+                  <img src={coverSilencioQueda} alt="O Silêncio da Queda" className="w-full h-full object-cover" />
                 </div>
               </div>
             </div>
