@@ -14,8 +14,9 @@ export const COLORS = {
 };
 
 export const STRINGS = {
-  TITLE: "SUPPLY SHOCK",
+  TITLE: "O ÚLTIMO BLOCO",
   SUBTITLE: "O RELÓGIO DO JUÍZO FINAL",
-  FOOTER: "Tick Tock. Next Block. - Lord Junnior",
-  WARNING: "RESTAM APENAS {remaining}% PARA O MUNDO INTEIRO BRIGAR",
+  FOOTER: "Pensar ainda é permitido · conteúdo em atualização contínua · desenvolvido por Lord Junnior",
+  WARNING: "RESTAM APENAS {remaining} PARA O MUNDO INTEIRO BRIGAR",
+  SCARCITY: "Existem 56 milhões de milionários no mundo. Existem menos de 2 milhões de Bitcoins à venda. Faça as contas. Não haverá o suficiente nem para 10% deles. E você ainda está esperando o \"momento certo\"?",
 };
