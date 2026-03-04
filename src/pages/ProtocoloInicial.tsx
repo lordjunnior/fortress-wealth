@@ -131,7 +131,7 @@ export default function ProtocoloInicial() {
               {[
                 { to: '/21-milhoes', label: 'Hard Cap: 21M', Icon: Lock },
                 { to: '/lastro', label: 'O Mito do Lastro', Icon: Scale },
-                { to: '/supply-shock', label: 'Supply Shock', Icon: TrendingUp },
+                { to: '/supply-shock', label: 'O Último Bloco', Icon: TrendingUp },
                 { to: '/volatilidade', label: 'Volatilidade', Icon: Activity },
               ].map((mod) => (
                 <Link key={mod.to} to={mod.to} className="w-full flex items-center gap-2 px-3 py-2.5 rounded-sm text-[10px] font-bold uppercase tracking-wider transition-all duration-300 font-mono text-slate-500 hover:text-amber-400 hover:bg-amber-500/[0.05] border-l-2 border-transparent hover:border-amber-500/40">
