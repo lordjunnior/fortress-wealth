@@ -2,8 +2,31 @@ import React, { useEffect, useState } from 'react';
 import { TrendingUp, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { LineChart, Line, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { fetchBitcoinStats } from '@/components/supply-shock/bitcoinService';
-import { TimeRemaining } from '@/components/supply-shock/types';
+interface TimeRemaining {
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+}
+
+const BTC_HALVING_INTERVAL = 210000;
+const BTC_BLOCK_TIME_MINUTES = 10;
+const BTC_MAX_SUPPLY = 21000000;
+const BTC_INITIAL_SUBSIDY = 50;
+
+async function fetchHalvingDate(): Promise<Date> {
+  try {
+    const res = await fetch('https://mempool.space/api/blocks/tip/height');
+    const blockHeight = await res.json();
+    const currentEra = Math.floor(blockHeight / BTC_HALVING_INTERVAL);
+    const nextHalvingBlock = (currentEra + 1) * BTC_HALVING_INTERVAL;
+    const blocksRemaining = nextHalvingBlock - blockHeight;
+    const minutesRemaining = blocksRemaining * BTC_BLOCK_TIME_MINUTES;
+    return new Date(Date.now() + minutesRemaining * 60 * 1000);
+  } catch {
+    return new Date('2028-03-26T00:00:00Z');
+  }
+}
 
 /* ──────── CONSTANTS ──────── */
 
@@ -260,8 +283,8 @@ const BitcoinInsightsSection: React.FC = () => {
 
   // ═══ Halving ═══
   useEffect(() => {
-    fetchBitcoinStats()
-      .then(stats => setHalvingDate(stats.estimatedHalvingDate))
+    fetchHalvingDate()
+      .then(date => setHalvingDate(date))
       .catch(() => setHalvingDate(new Date('2028-03-26T00:00:00Z')));
   }, []);
 
