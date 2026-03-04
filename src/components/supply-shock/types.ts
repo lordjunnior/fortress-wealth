@@ -1,10 +1,6 @@
+// Placeholder — aguardando dados corretos
 export interface BitcoinStats {
-  blockHeight: number;
-  nextHalvingBlock: number;
-  blocksToHalving: number;
-  circulatingSupply: number;
-  percentageMined: number;
-  estimatedHalvingDate: Date;
+  [key: string]: any;
 }
 
 export interface TimeRemaining {
