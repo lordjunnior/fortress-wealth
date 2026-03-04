@@ -35,21 +35,21 @@ const NobelSection = ({
   delay?: number;
 }) => {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-80px" });
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
     <motion.div
       ref={ref}
       id={id}
       className={className}
-      initial={{ opacity: 0, y: 60, filter: "blur(6px)" }}
+      initial={{ opacity: 0, y: 50, filter: "blur(8px)" }}
       animate={
         isInView
           ? { opacity: 1, y: 0, filter: "blur(0px)" }
-          : { opacity: 0, y: 60, filter: "blur(6px)" }
+          : { opacity: 0, y: 50, filter: "blur(8px)" }
       }
       transition={{
-        duration: 0.8,
+        duration: 0.9,
         delay,
         ease: [0.22, 1, 0.36, 1],
       }}
@@ -60,21 +60,37 @@ const NobelSection = ({
 };
 
 const Index = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: containerRef });
+  const { scrollYProgress } = useScroll();
 
-  // Subtle parallax for the dust layer
+  // Parallax: background moves slower than content
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
   const dustY = useTransform(scrollYProgress, [0, 1], [0, -300]);
 
   return (
-    <div ref={containerRef} className="min-h-screen text-foreground pt-[62px]">
+    <div className="min-h-screen text-foreground pt-[62px] overflow-x-hidden">
       <NetworkTicker />
       <CommandCenter />
       <SovereignTermModal />
       <NivelZero />
       <NoiseBackground />
 
-      {/* Dust Particles Atmosphere — now with scroll parallax */}
+      {/* ── CINEMATIC BACKGROUND WITH PARALLAX ── */}
+      <motion.div
+        style={{ y: backgroundY }}
+        className="fixed inset-0 z-0 pointer-events-none"
+      >
+        {/* Radial glow — top right orange bleed */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_hsl(var(--gold)/0.12),_transparent_60%)]" />
+        {/* Radial glow — bottom left deep red */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_hsl(var(--chart-red)/0.06),_transparent_60%)]" />
+        {/* Grain texture overlay */}
+        <div className="absolute inset-0 opacity-[0.025]" style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.5'/%3E%3C/svg%3E")`,
+          backgroundSize: "128px 128px"
+        }} />
+      </motion.div>
+
+      {/* Dust Particles Atmosphere — with scroll parallax */}
       <motion.div
         style={{ y: dustY }}
         className="fixed inset-0 lg:left-[260px] pointer-events-none z-0 overflow-hidden opacity-60"
@@ -126,7 +142,6 @@ const Index = () => {
           <ConfiscoTimeline />
         </NobelSection>
 
-        {/* Quote Carousel */}
         <NobelSection className="section-divider section-padding py-12 md:py-16" delay={0.05}>
           <div className="max-w-3xl mx-auto">
             <QuoteCarousel />
@@ -157,12 +172,10 @@ const Index = () => {
           <WhyBitcoinSection />
         </NobelSection>
 
-        {/* Strategic Signature — Manifesto Permanente */}
         <NobelSection className="section-alt section-divider" delay={0.1}>
           <StrategicSignature />
         </NobelSection>
 
-        {/* Risk Layer — Consequence awareness */}
         <NobelSection className="section-divider section-padding" delay={0.15}>
           <div className="max-w-5xl mx-auto">
             <RiskBlock
