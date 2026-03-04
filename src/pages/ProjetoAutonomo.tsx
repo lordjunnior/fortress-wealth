@@ -67,6 +67,63 @@ const ALIMENTAR_LAYERS = [
   { icon: Shovel, title: 'Solo e Fertilidade', desc: 'Compostagem, bokashi, húmus de minhoca. Terra viva gera alimento vivo.', details: 'Análise caseira de pH, cobertura morta, adubação verde e rotação de nutrientes.', slug: 'solo-fertilidade' },
 ];
 
+const PLANTAS_SOBERANAS = [
+  {
+    nome: "Espinheira Santa",
+    sistema: "Digestivo",
+    pnl: "A barreira natural contra a dieta industrial inflamatória.",
+    uso: "Chá (infusão) das folhas secas.",
+    dosagem: "1 colher de sobremesa para 200ml de água. Até 3x ao dia.",
+    alerta: "Evitar durante a lactação (pode reduzir a produção de leite).",
+    cta: "DOMINAR PROTOCOLO DIGESTIVO"
+  },
+  {
+    nome: "Guaçatonga",
+    sistema: "Tegumentar/Gástrico",
+    pnl: "O curativo universal que a indústria farmacêutica ignorou.",
+    uso: "Tintura ou compressa das folhas.",
+    dosagem: "20 gotas em água ou aplicação direta em lesões.",
+    alerta: "Não utilizar em feridas abertas profundas sem assepsia prévia.",
+    cta: "ACESSAR GUIA DE CICATRIZAÇÃO"
+  },
+  {
+    nome: "Arnica (Nacional)",
+    sistema: "Osteomuscular",
+    pnl: "Sua primeira linha de defesa contra traumas e impactos físicos.",
+    uso: "Uso externo: tintura ou óleo infundido.",
+    dosagem: "Aplicar sobre o local da contusão 2 a 3 vezes ao dia.",
+    alerta: "Uso estritamente externo. Tóxica se ingerida.",
+    cta: "REGENERAR TECIDOS"
+  },
+  {
+    nome: "Poejo",
+    sistema: "Respiratório",
+    pnl: "Liberdade para respirar sem depender de xaropes sintéticos.",
+    uso: "Infusão das partes aéreas.",
+    dosagem: "1 colher de chá por xícara. Máximo 2 xícaras/dia.",
+    alerta: "Contraindicado para gestantes (potencial abortivo).",
+    cta: "LIMPAR VIAS AÉREAS"
+  },
+  {
+    nome: "Capim-Limão",
+    sistema: "Nervoso",
+    pnl: "O controle da ansiedade sem as amarras dos ansiolíticos de massa.",
+    uso: "Infusão das folhas frescas ou secas.",
+    dosagem: "Consumo livre até 1 litro por dia para efeito calmante.",
+    alerta: "Pode potencializar o efeito de sedativos industriais.",
+    cta: "ESTABILIZAR O SISTEMA"
+  },
+  {
+    nome: "Babosa (Aloe Vera)",
+    sistema: "Multisistêmico",
+    pnl: "A usina de regeneração celular que você planta no quintal.",
+    uso: "Gel interno da folha (uso externo ou interno processado).",
+    dosagem: "Uso tópico abundante ou 20ml do gel processado (sem aloína).",
+    alerta: "A casca contém aloína (laxante irritante); deve ser removida.",
+    cta: "ATIVAR REGENERAÇÃO"
+  }
+];
+
 /* ─── Mouse Parallax Hook ─── */
 function useMouseParallax(strength = 15) {
   const mouseX = useMotionValue(0);
