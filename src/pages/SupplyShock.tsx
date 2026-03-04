@@ -73,6 +73,18 @@ export default function SupplyShock() {
               percentageMined={stats.percentageMined}
             />
             <StatsGrid stats={stats} />
+
+            {/* Frase de Escassez — PNL */}
+            <div className="w-full max-w-3xl px-6 mt-16 mb-8 text-center relative z-10">
+              <div className="border border-gray-800 bg-gray-900/30 rounded-sm p-8 md:p-12">
+                <p className="text-gray-300 text-base md:text-lg leading-relaxed font-mono">
+                  <span className="block text-white font-bold mb-2">Existem 56 milhões de milionários no mundo.</span>
+                  <span className="block text-[#F7931A] font-bold mb-4">Existem menos de 2 milhões de Bitcoins à venda.</span>
+                  <span className="block text-gray-400 mb-4">Faça as contas. Não haverá o suficiente nem para 10% deles.</span>
+                  <span className="block text-[#EF4444] font-black text-lg md:text-xl mt-4">E você ainda está esperando o "momento certo"?</span>
+                </p>
+              </div>
+            </div>
           </>
         ) : null}
 
