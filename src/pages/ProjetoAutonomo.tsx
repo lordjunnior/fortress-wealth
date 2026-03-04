@@ -9,6 +9,7 @@ import imgAutonomiaBiologica from '@/assets/fase02-autonomia-biologica.jpg';
 import imgConhecimentoPerdido from '@/assets/cp-hero-conhecimento.jpg';
 import SimboloOculto from '@/components/SimboloOculto';
 import RiskBlock from '@/components/RiskBlock';
+import { PainelTaticoFisiologico } from '@/components/PainelTaticoFisiologico';
 import VersionBadge from '@/components/VersionBadge';
 
 /* ─── SEO: meta keywords target ───
@@ -786,66 +787,15 @@ export default function ProjetoAutonomo() {
                     })}
                   </div>
 
-                  {/* Reveal Panel */}
-                  <AnimatePresence mode="wait">
-                    {activeSistema && SISTEMAS_DATA[activeSistema] && (
-                      <motion.div
-                        key={activeSistema}
-                        initial={{ opacity: 0, y: 20, height: 0, filter: 'blur(8px)' }}
-                        animate={{ opacity: 1, y: 0, height: 'auto', filter: 'blur(0px)' }}
-                        exit={{ opacity: 0, y: -10, height: 0, filter: 'blur(6px)' }}
-                        transition={{ duration: 0.5, ease: APPLE_EASE }}
-                        className="overflow-hidden"
-                      >
-                        <div className="bg-white/70 border border-emerald-200/50 rounded-2xl p-8 md:p-10 backdrop-blur-sm shadow-xl shadow-emerald-100/20">
-                          <div className="flex items-start gap-4 mb-6">
-                            <div className="p-3 bg-emerald-100/60 rounded-xl">
-                              {React.createElement(SISTEMAS_DATA[activeSistema].icon, { className: 'text-emerald-600', size: 22 })}
-                            </div>
-                            <div>
-                              <h4 className="text-lg font-bold text-stone-800 tracking-tight">
-                                Sistema {SISTEMA_LABELS[activeSistema]}
-                              </h4>
-                              <p className="text-stone-500 text-sm">{SISTEMAS_DATA[activeSistema].foco}</p>
-                            </div>
-                          </div>
-
-                          {/* PNL Quote */}
-                          <div className="border-l-2 border-emerald-400/40 pl-5 mb-8 py-2 bg-emerald-50/30 rounded-r-lg">
-                            <p className="text-stone-700 text-sm md:text-base font-medium italic leading-relaxed">
-                              "{SISTEMAS_DATA[activeSistema].pnl}"
-                            </p>
-                          </div>
-
-                          {/* Plantas */}
-                          <p className="text-emerald-600 text-[10px] font-bold uppercase tracking-[0.4em] mb-3">Plantas Associadas</p>
-                          <div className="flex flex-wrap gap-2 mb-6">
-                            {SISTEMAS_DATA[activeSistema].plantas.map((planta) => (
-                              <motion.span
-                                key={planta}
-                                initial={{ opacity: 0, scale: 0.8 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                transition={{ duration: 0.3 }}
-                                className="inline-flex items-center gap-1.5 px-4 py-2 bg-emerald-100/50 border border-emerald-200/50 rounded-full text-sm font-semibold text-emerald-700 hover:bg-emerald-200/60 hover:scale-105 transition-all duration-300 cursor-default"
-                              >
-                                <Leaf size={12} /> {planta}
-                              </motion.span>
-                            ))}
-                          </div>
-
-                          {/* CTA */}
-                          <Link
-                            to="/projeto-autonomo/autonomia-biologica"
-                            className="inline-flex items-center gap-2 bg-emerald-600 text-white px-6 py-3 text-sm font-bold tracking-wide rounded-xl hover:bg-emerald-700 hover:shadow-lg hover:shadow-emerald-200/30 hover:scale-[1.02] transition-all duration-500 group"
-                          >
-                            <Zap size={15} className="group-hover:rotate-12 transition-transform duration-500" />
-                            ACESSAR PROTOCOLO COMPLETO
-                          </Link>
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
                 </motion.div>
+
+                {/* Drawer Tático — renderizado via portal-style no final */}
+                <PainelTaticoFisiologico
+                  isOpen={!!activeSistema}
+                  onClose={() => setActiveSistema(null)}
+                  nome={activeSistema ? (SISTEMA_LABELS[activeSistema] || activeSistema) : ""}
+                  sistema={activeSistema ? SISTEMAS_DATA[activeSistema] : null}
+                />
 
                 {/* CTA Hub Sabedoria Ancestral */}
                 <Link to="/projeto-autonomo/sabedoria-ancestral"
