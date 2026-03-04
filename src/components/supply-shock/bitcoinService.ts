@@ -1,5 +1,5 @@
-import { API_URL, BTC_CONSTANTS } from '../constants';
-import { BitcoinStats } from '../types';
+import { API_URL, BTC_CONSTANTS } from './constants';
+import { BitcoinStats } from './types';
 
 /**
  * Calculates the total circulating supply based on block height.
