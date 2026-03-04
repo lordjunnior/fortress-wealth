@@ -1,3 +1,5 @@
+import { useRef } from "react";
+import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import NoiseBackground from "@/components/NoiseBackground";
 import AppSidebar from "@/components/AppSidebar";
 import MobileNav from "@/components/MobileNav";
@@ -20,21 +22,67 @@ import NivelZero from "@/components/NivelZero";
 import StrategicSignature from "@/components/StrategicSignature";
 import RiskBlock from "@/components/RiskBlock";
 
-const Index = () => {
+/* ── Nobel Section Wrapper — Cinematic reveal on scroll ── */
+const NobelSection = ({
+  children,
+  className = "",
+  id,
+  delay = 0,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  id?: string;
+  delay?: number;
+}) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-80px" });
+
   return (
-    <div className="min-h-screen text-foreground pt-[62px]">
+    <motion.div
+      ref={ref}
+      id={id}
+      className={className}
+      initial={{ opacity: 0, y: 60, filter: "blur(6px)" }}
+      animate={
+        isInView
+          ? { opacity: 1, y: 0, filter: "blur(0px)" }
+          : { opacity: 0, y: 60, filter: "blur(6px)" }
+      }
+      transition={{
+        duration: 0.8,
+        delay,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+    >
+      {children}
+    </motion.div>
+  );
+};
+
+const Index = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: containerRef });
+
+  // Subtle parallax for the dust layer
+  const dustY = useTransform(scrollYProgress, [0, 1], [0, -300]);
+
+  return (
+    <div ref={containerRef} className="min-h-screen text-foreground pt-[62px]">
       <NetworkTicker />
       <CommandCenter />
       <SovereignTermModal />
       <NivelZero />
       <NoiseBackground />
 
-      {/* Dust Particles Atmosphere */}
-      <div className="fixed inset-0 lg:left-[260px] pointer-events-none z-0 overflow-hidden opacity-60">
+      {/* Dust Particles Atmosphere — now with scroll parallax */}
+      <motion.div
+        style={{ y: dustY }}
+        className="fixed inset-0 lg:left-[260px] pointer-events-none z-0 overflow-hidden opacity-60"
+      >
         <div className="dust-layer-home"></div>
         <div className="dust-layer-home dust-layer-home-2"></div>
         <div className="dust-layer-home dust-layer-home-3"></div>
-      </div>
+      </motion.div>
 
       <style>{`
         @keyframes driftHome {
@@ -70,52 +118,52 @@ const Index = () => {
       <div className="relative z-10 lg:ml-[260px] pb-10">
         <HeroSection />
 
-        <div id="manifesto" className="section-divider">
+        <NobelSection id="manifesto" className="section-divider">
           <ManifestoSection />
-        </div>
+        </NobelSection>
 
-        <div className="section-alt section-divider">
+        <NobelSection className="section-alt section-divider" delay={0.1}>
           <ConfiscoTimeline />
-        </div>
+        </NobelSection>
 
         {/* Quote Carousel */}
-        <div className="section-divider section-padding py-12 md:py-16">
+        <NobelSection className="section-divider section-padding py-12 md:py-16" delay={0.05}>
           <div className="max-w-3xl mx-auto">
             <QuoteCarousel />
           </div>
-        </div>
+        </NobelSection>
 
-        <div id="pix-crypto" className="section-alt section-divider">
+        <NobelSection id="pix-crypto" className="section-alt section-divider" delay={0.1}>
           <PixBitcoinSection />
-        </div>
+        </NobelSection>
 
-        <div id="ferramentas" className="section-divider">
+        <NobelSection id="ferramentas" className="section-divider" delay={0.1}>
           <ToolsSection />
-        </div>
+        </NobelSection>
 
-        <div id="educacao" className="section-alt section-divider">
+        <NobelSection id="educacao" className="section-alt section-divider" delay={0.1}>
           <KnowledgeSection />
-        </div>
+        </NobelSection>
 
-        <div id="audioteca" className="section-divider">
+        <NobelSection id="audioteca" className="section-divider" delay={0.1}>
           <AudiotecaSection />
-        </div>
+        </NobelSection>
 
-        <div id="faq" className="section-alt section-divider">
+        <NobelSection id="faq" className="section-alt section-divider" delay={0.1}>
           <FaqSection />
-        </div>
+        </NobelSection>
 
-        <div className="section-divider">
+        <NobelSection className="section-divider" delay={0.1}>
           <WhyBitcoinSection />
-        </div>
+        </NobelSection>
 
         {/* Strategic Signature — Manifesto Permanente */}
-        <div className="section-alt section-divider">
+        <NobelSection className="section-alt section-divider" delay={0.1}>
           <StrategicSignature />
-        </div>
+        </NobelSection>
 
         {/* Risk Layer — Consequence awareness */}
-        <div className="section-divider section-padding">
+        <NobelSection className="section-divider section-padding" delay={0.15}>
           <div className="max-w-5xl mx-auto">
             <RiskBlock
               title="Sem esta base, o que acontece?"
@@ -129,17 +177,16 @@ const Index = () => {
               ]}
             />
           </div>
-        </div>
+        </NobelSection>
 
-        <div className="section-alt section-divider">
+        <NobelSection className="section-alt section-divider" delay={0.1}>
           <BitcoinInsightsSection />
-        </div>
+        </NobelSection>
 
-        <div id="apoio" className="section-alt section-divider">
+        <NobelSection id="apoio" className="section-alt section-divider" delay={0.1}>
           <FooterSection />
-        </div>
+        </NobelSection>
       </div>
-
     </div>
   );
 };

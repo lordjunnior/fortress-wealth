@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700;1,800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700;1,800&family=Unbounded:wght@400;700;900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -102,6 +102,20 @@
 
   .font-display {
     font-family: 'Space Grotesk', sans-serif;
+  }
+
+  .font-unbounded {
+    font-family: 'Unbounded', sans-serif;
+  }
+
+  /* Nobel Grayscale-to-Color Hover */
+  .nobel-card {
+    filter: grayscale(100%) contrast(1.1);
+    transition: filter 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .nobel-card:hover {
+    filter: grayscale(0%) contrast(1);
+    transform: scale(1.03);
   }
 
   .text-gold {
