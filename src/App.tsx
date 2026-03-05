@@ -46,6 +46,7 @@ import ProteinaSustentavel from "./pages/ProteinaSustentavel";
 import SoloFertilidade from "./pages/SoloFertilidade";
 import HortaUrbana from "./pages/HortaUrbana";
 import AutonomiaBiologica from "./pages/AutonomiaBiologica";
+import PlantaDetalhe from "./pages/PlantaDetalhe";
 import PrimeirosSocorros from "./pages/PrimeirosSocorros";
 import AvaliacaoSinais from "./pages/AvaliacaoSinais";
 import SaudePreventiva from "./pages/SaudePreventiva";
@@ -116,6 +117,7 @@ const App = () => (
           <Route path="/projeto-autonomo/solo-fertilidade" element={<SoloFertilidade />} />
           <Route path="/projeto-autonomo/horta-urbana" element={<HortaUrbana />} />
           <Route path="/projeto-autonomo/autonomia-biologica" element={<AutonomiaBiologica />} />
+          <Route path="/projeto-autonomo/planta/:slug" element={<PlantaDetalhe />} />
           <Route path="/projeto-autonomo/primeiros-socorros" element={<PrimeirosSocorros />} />
           <Route path="/projeto-autonomo/avaliacao-sinais" element={<AvaliacaoSinais />} />
           <Route path="/projeto-autonomo/saude-preventiva" element={<SaudePreventiva />} />
