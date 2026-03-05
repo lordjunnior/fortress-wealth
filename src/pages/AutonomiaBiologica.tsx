@@ -33,6 +33,7 @@ const PLANTAS = [
     contra: 'Alergia a Asteraceae. Uso concomitante com sedativos.',
     interacao: 'Pode potencializar benzodiazepínicos e antidepressivos sedativos.',
     cor: 'from-yellow-500/20 to-yellow-600/10', border: 'border-yellow-500/30', accent: 'text-yellow-400',
+    imagem: imgCamomila,
   },
   {
     nome: 'Boldo',
@@ -45,6 +46,7 @@ const PLANTAS = [
     contra: 'Gravidez. Obstrução biliar. Doença hepática grave.',
     interacao: 'Pode interferir com medicamentos hepatotóxicos e anticoagulantes.',
     cor: 'from-green-500/20 to-green-600/10', border: 'border-green-500/30', accent: 'text-green-400',
+    imagem: imgBoldo,
   },
   {
     nome: 'Arnica',
@@ -57,6 +59,7 @@ const PLANTAS = [
     contra: 'NUNCA ingerir. Não usar em feridas abertas.',
     interacao: null,
     cor: 'from-orange-500/20 to-orange-600/10', border: 'border-orange-500/30', accent: 'text-orange-400',
+    imagem: imgArnica,
   },
   {
     nome: 'Babosa',
@@ -69,6 +72,7 @@ const PLANTAS = [
     contra: 'Gravidez. Doença intestinal inflamatória. Uso interno não recomendado sem orientação.',
     interacao: null,
     cor: 'from-emerald-500/20 to-emerald-600/10', border: 'border-emerald-500/30', accent: 'text-emerald-400',
+    imagem: imgBabosa,
   },
   {
     nome: 'Hortelã',
@@ -81,6 +85,7 @@ const PLANTAS = [
     contra: 'Evitar excesso em refluxo severo.',
     interacao: null,
     cor: 'from-teal-500/20 to-teal-600/10', border: 'border-teal-500/30', accent: 'text-teal-400',
+    imagem: imgHortela,
   },
   {
     nome: 'Gengibre',
@@ -93,6 +98,7 @@ const PLANTAS = [
     contra: 'Evitar com anticoagulante.',
     interacao: null,
     cor: 'from-amber-500/20 to-amber-600/10', border: 'border-amber-500/30', accent: 'text-amber-400',
+    imagem: imgGengibre,
   },
   {
     nome: 'Erva-doce',
@@ -105,6 +111,7 @@ const PLANTAS = [
     contra: null,
     interacao: null,
     cor: 'from-lime-500/20 to-lime-600/10', border: 'border-lime-500/30', accent: 'text-lime-400',
+    imagem: imgErvaDoce,
   },
   {
     nome: 'Alecrim',
@@ -117,6 +124,7 @@ const PLANTAS = [
     contra: 'Evitar em hipertensão descontrolada.',
     interacao: null,
     cor: 'from-sky-500/20 to-sky-600/10', border: 'border-sky-500/30', accent: 'text-sky-400',
+    imagem: imgAlecrim,
   },
   {
     nome: 'Calêndula',
@@ -129,6 +137,7 @@ const PLANTAS = [
     contra: null,
     interacao: null,
     cor: 'from-orange-400/20 to-yellow-500/10', border: 'border-orange-400/30', accent: 'text-orange-300',
+    imagem: imgCalendula,
   },
   {
     nome: 'Capim-limão',
@@ -141,6 +150,7 @@ const PLANTAS = [
     contra: null,
     interacao: null,
     cor: 'from-yellow-400/20 to-green-500/10', border: 'border-yellow-400/30', accent: 'text-yellow-300',
+    imagem: imgCapimLimao,
   },
   {
     nome: 'Guaco',
@@ -153,6 +163,7 @@ const PLANTAS = [
     contra: 'Evitar uso prolongado.',
     interacao: null,
     cor: 'from-green-400/20 to-emerald-500/10', border: 'border-green-400/30', accent: 'text-green-300',
+    imagem: imgGuaco,
   },
   {
     nome: 'Tanchagem',
@@ -165,6 +176,7 @@ const PLANTAS = [
     contra: null,
     interacao: null,
     cor: 'from-emerald-400/20 to-teal-500/10', border: 'border-emerald-400/30', accent: 'text-emerald-300',
+    imagem: imgTanchagem,
   },
 ];
 
