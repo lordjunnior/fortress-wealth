@@ -919,22 +919,23 @@ export default function ProjetoAutonomo() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
                   {[
-                    { icon: Leaf, label: '5 Sistemas Corporais', desc: 'Digestivo, respiratório, nervoso, imunológico e circulatório mapeados.' },
-                    { icon: BookOpen, label: '12 Plantas Documentadas', desc: 'Fichas técnicas com dosagens, contraindicações e métodos de preparo.' },
-                    { icon: Heart, label: 'Educação Familiar', desc: 'Conteúdo adaptado para ensinar crianças sobre botânica e saúde natural.' },
-                    { icon: Shield, label: 'Integração Completa', desc: 'Conectado a todo o Protocolo Autônomo como base de conhecimento.' },
+                    { icon: Leaf, label: '5 Sistemas Corporais', desc: 'Digestivo, respiratório, nervoso, imunológico e circulatório mapeados.', link: '/conhecimento-perdido/base-fisiologica' },
+                    { icon: BookOpen, label: '12 Plantas Documentadas', desc: 'Fichas técnicas com dosagens, contraindicações e métodos de preparo.', link: '/conhecimento-perdido/aplicacao-pratica' },
+                    { icon: Heart, label: 'Educação Familiar', desc: 'Conteúdo adaptado para ensinar crianças sobre botânica e saúde natural.', link: '/conhecimento-perdido/continuidade-familiar' },
+                    { icon: Shield, label: 'Integração Completa', desc: 'Conectado a todo o Protocolo Autônomo como base de conhecimento.', link: '/projeto-autonomo/conhecimento-perdido' },
                   ].map((item, idx) => (
-                    <motion.div
-                      key={item.label}
-                      initial="hidden" whileInView="visible" viewport={{ once: true }} variants={scaleIn} custom={idx}
-                      className="bg-white/50 border border-teal-100/60 p-6 rounded-xl hover:bg-white/70 hover:shadow-md hover:border-teal-200 hover:scale-[1.03] hover:-translate-y-1 transition-all duration-500 group"
-                    >
-                      <div className="p-2.5 bg-teal-100/60 rounded-xl w-fit mb-3 group-hover:rotate-6 group-hover:scale-110 transition-all duration-500">
-                        <item.icon className="text-teal-500" size={18} />
-                      </div>
-                      <h4 className="text-sm font-bold mb-1.5 text-stone-800 tracking-tight">{item.label}</h4>
-                      <p className="text-stone-500 text-xs leading-relaxed">{item.desc}</p>
-                    </motion.div>
+                    <Link to={item.link} key={item.label}>
+                      <motion.div
+                        initial="hidden" whileInView="visible" viewport={{ once: true }} variants={scaleIn} custom={idx}
+                        className="bg-white/50 border border-teal-100/60 p-6 rounded-xl hover:bg-white/70 hover:shadow-md hover:border-teal-200 hover:scale-[1.03] hover:-translate-y-1 transition-all duration-500 group cursor-pointer h-full"
+                      >
+                        <div className="p-2.5 bg-teal-100/60 rounded-xl w-fit mb-3 group-hover:rotate-6 group-hover:scale-110 transition-all duration-500">
+                          <item.icon className="text-teal-500" size={18} />
+                        </div>
+                        <h4 className="text-sm font-bold mb-1.5 text-stone-800 tracking-tight">{item.label}</h4>
+                        <p className="text-stone-500 text-xs leading-relaxed">{item.desc}</p>
+                      </motion.div>
+                    </Link>
                   ))}
                 </div>
 
