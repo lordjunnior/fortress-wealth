@@ -363,15 +363,19 @@ const AutonomiaBiologica = () => {
 
           <div className="grid md:grid-cols-2 gap-5">
             {PLANTAS.map((p, i) => (
-              <motion.div key={p.nome} variants={staggerChild} className={`bg-gradient-to-br ${p.cor} border ${p.border} p-6 rounded-sm relative overflow-hidden group hover:scale-[1.01] transition-transform duration-500`}>
-                <div className="flex items-start justify-between mb-3">
-                  <div>
-                    <span className="text-xs font-mono text-muted-foreground">{String(i + 1).padStart(2, '0')}.</span>
+              <motion.div key={p.nome} variants={staggerChild} className={`bg-gradient-to-br ${p.cor} border ${p.border} rounded-sm relative overflow-hidden group hover:scale-[1.01] transition-transform duration-500`}>
+                {/* Imagem da planta */}
+                <div className="relative w-full h-48 overflow-hidden">
+                  <img src={p.imagem} alt={`${p.nome} — ${p.cientifico}`} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                  <div className="absolute bottom-3 left-4 right-4">
+                    <span className="text-xs font-mono text-white/50">{String(i + 1).padStart(2, '0')}.</span>
                     <h4 className={`text-xl font-bold ${p.accent}`}>{p.nome}</h4>
-                    <span className="text-[11px] italic text-muted-foreground">{p.cientifico}</span>
+                    <span className="text-[11px] italic text-white/60">{p.cientifico}</span>
                   </div>
-                  <Leaf size={20} className={`${p.accent} opacity-30`} />
                 </div>
+
+                <div className="p-6">
 
                 <div className="space-y-3 text-sm">
                   {/* O que melhora */}
