@@ -37,6 +37,8 @@ const PillarLayout = ({ pillar }: { pillar: Pillar }) => {
         const el = document.getElementById(location.hash.slice(1));
         el?.scrollIntoView({ behavior: "smooth", block: "center" });
       }, 600);
+    } else {
+      window.scrollTo(0, 0);
     }
   }, [location.hash]);
 

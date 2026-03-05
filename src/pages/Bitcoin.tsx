@@ -117,6 +117,8 @@ const Bitcoin = () => {
         const el = document.getElementById(location.hash.slice(1));
         el?.scrollIntoView({ behavior: "smooth", block: "start" });
       }, 600);
+    } else {
+      window.scrollTo(0, 0);
     }
   }, [location.hash]);
 
