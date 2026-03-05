@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowLeft, Download, Play, Calculator, TrendingDown, Clock, Banknote, AlertTriangle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -31,6 +31,10 @@ const Economia = () => {
   const navigate = useNavigate();
   const [hourlyRate, setHourlyRate] = useState<number>(0);
   const [showResult, setShowResult] = useState(false);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const result = useMemo(() => {
     if (hourlyRate <= 0) return null;
