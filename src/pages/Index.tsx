@@ -83,6 +83,7 @@ const NobelSection = ({
 const Index = () => {
   const { scrollYProgress } = useScroll();
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const mainRef = useRef<HTMLDivElement>(null);
 
   // Mouse parallax for background layers
   useEffect(() => {
@@ -93,6 +94,25 @@ const Index = () => {
     };
     window.addEventListener("mousemove", handleMouse);
     return () => window.removeEventListener("mousemove", handleMouse);
+  }, []);
+
+  // GSAP: Smooth parallax for background images on scroll
+  useEffect(() => {
+    const bgImages = document.querySelectorAll('[data-gsap-bg]');
+    bgImages.forEach((img, i) => {
+      gsap.to(img, {
+        yPercent: (i + 1) * 15,
+        ease: "none",
+        scrollTrigger: {
+          trigger: document.body,
+          start: "top top",
+          end: "bottom bottom",
+          scrub: 1.5,
+        },
+      });
+    });
+
+    return () => ScrollTrigger.getAll().forEach(t => t.kill());
   }, []);
 
   // Parallax transforms for each image layer (different speeds = depth)
