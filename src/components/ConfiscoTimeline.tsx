@@ -263,7 +263,7 @@ const ConfiscoTimeline = () => {
             técnico. Se o sistema bancário é o campo minado, o Bitcoin é a rota de extração.
           </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-10">
             {connectorCards.map((card, i) => {
               const Icon = card.icon;
               return (
@@ -272,24 +272,30 @@ const ConfiscoTimeline = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.4, delay: 0.7 + i * 0.1 }}
-                    whileHover={{ y: -6, transition: { duration: 0.3 } }}
-                    className="group relative rounded-lg border border-border bg-background cursor-pointer overflow-hidden transition-colors duration-300 hover:border-gold/30 aspect-[3/4]"
+                    whileHover={{ y: -8, transition: { duration: 0.35, ease: [0.22, 1, 0.36, 1] } }}
+                    className="group relative rounded-xl border border-border/60 bg-background cursor-pointer overflow-hidden transition-all duration-500 hover:border-gold/50 hover:shadow-[0_8px_40px_-12px_hsl(var(--gold)/0.3)] aspect-[3/4]"
                   >
-                    {/* Background image with fade */}
+                    {/* Background image — full bleed with cinematic hover */}
                     <img
                       src={card.image}
                       alt=""
-                      className="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-opacity duration-700 scale-105 group-hover:scale-110"
+                      className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-90 transition-all duration-700 ease-out scale-[1.02] group-hover:scale-[1.12] group-hover:brightness-110"
                     />
-                    {/* Dark overlay gradient */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-background/30" />
+                    {/* Cinematic gradient overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent group-hover:via-background/40 transition-all duration-700" />
+                    {/* Gold shimmer line on hover */}
+                    <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-gold/0 to-transparent group-hover:via-gold/80 transition-all duration-700" />
                     {/* Content */}
                     <div className="relative z-10 h-full flex flex-col justify-end p-6">
-                      <div className="w-10 h-10 rounded-md border border-border/50 bg-card/80 backdrop-blur-sm flex items-center justify-center mb-4 group-hover:border-gold/30 transition-colors duration-300">
-                        <Icon className="w-5 h-5 text-muted-foreground group-hover:text-gold transition-colors duration-300" />
+                      <div className="w-11 h-11 rounded-lg border border-border/40 bg-card/60 backdrop-blur-md flex items-center justify-center mb-4 group-hover:border-gold/40 group-hover:bg-gold/10 transition-all duration-500">
+                        <Icon className="w-5 h-5 text-muted-foreground group-hover:text-gold transition-colors duration-500" />
                       </div>
-                      <h4 className="text-sm font-semibold mb-1.5 group-hover:text-gold transition-colors duration-300">{card.title}</h4>
-                      <p className="text-xs text-muted-foreground leading-relaxed">{card.desc}</p>
+                      <h4 className="text-base font-bold mb-1.5 group-hover:text-gold transition-colors duration-500 tracking-tight">{card.title}</h4>
+                      <p className="text-xs text-muted-foreground leading-relaxed mb-4">{card.desc}</p>
+                      {/* CTA */}
+                      <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold tracking-widest uppercase text-gold/0 group-hover:text-gold transition-all duration-500 translate-y-2 group-hover:translate-y-0">
+                        Explorar Módulo →
+                      </span>
                     </div>
                   </motion.div>
                 </Link>
