@@ -402,6 +402,17 @@ export default function ProjetoAutonomo() {
   const floatY3 = useTransform(scrollYProgress, [0, 1], [0, -150]);
   const progressWidth = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
 
+  // Living background — 3 image layers with parallax + blur
+  const bgDeepY = useTransform(scrollYProgress, [0, 1], ['0%', '25%']);
+  const bgMidY = useTransform(scrollYProgress, [0, 1], ['0%', '40%']);
+  const bgHeroY = useTransform(scrollYProgress, [0, 1], ['0%', '60%']);
+  const bgFilterDeep = useTransform(scrollYProgress, [0, 0.15, 0.4], ['blur(0px)', 'blur(0px)', 'blur(10px)']);
+  const bgFilterMid = useTransform(scrollYProgress, [0, 0.1, 0.3], ['blur(0px)', 'blur(0px)', 'blur(14px)']);
+  const bgFilterHero = useTransform(scrollYProgress, [0, 0.08, 0.25], ['blur(0px)', 'blur(0px)', 'blur(18px)']);
+  const bgOpDeep = useTransform(scrollYProgress, [0, 0.5], [0.35, 0.1]);
+  const bgOpMid = useTransform(scrollYProgress, [0, 0.4], [0.25, 0.05]);
+  const bgOpHero = useTransform(scrollYProgress, [0, 0.3], [0.4, 0.08]);
+
   // Scroll to top on mount
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
