@@ -179,15 +179,17 @@
     @apply px-4 md:px-8 lg:px-12 py-16 md:py-24;
   }
 
-  /* Seção alternada com fundo elevado para contraste mobile */
+  /* Seção alternada — glassmorphism para harmonizar com fundo vivo */
   .section-alt {
-    background-color: hsl(var(--section-alt));
+    background-color: hsl(var(--section-alt) / 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
   }
 
   /* Divisor sutil entre seções */
   .section-divider {
     @apply border-t;
-    border-color: hsl(var(--gold) / 0.08);
+    border-color: hsl(var(--gold) / 0.06);
   }
 
   .pre-title {
