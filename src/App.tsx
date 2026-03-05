@@ -46,6 +46,7 @@ import ProteinaSustentavel from "./pages/ProteinaSustentavel";
 import SoloFertilidade from "./pages/SoloFertilidade";
 import HortaUrbana from "./pages/HortaUrbana";
 import AutonomiaBiologica from "./pages/AutonomiaBiologica";
+import PlantaDetalhe from "./pages/PlantaDetalhe";
 import PrimeirosSocorros from "./pages/PrimeirosSocorros";
 import AvaliacaoSinais from "./pages/AvaliacaoSinais";
 import SaudePreventiva from "./pages/SaudePreventiva";
