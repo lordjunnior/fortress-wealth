@@ -84,9 +84,9 @@ const Index = () => {
   const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "70%"]);
 
   // Progressive blur on scroll — images blur as you descend
-  const blurDeep = useTransform(scrollYProgress, [0, 0.15, 0.4], [0, 0, 12]);
-  const blurMid = useTransform(scrollYProgress, [0, 0.1, 0.3], [0, 0, 16]);
-  const blurHero = useTransform(scrollYProgress, [0, 0.08, 0.25], [0, 0, 20]);
+  const filterDeep = useTransform(scrollYProgress, [0, 0.15, 0.4], ["blur(0px)", "blur(0px)", "blur(12px)"]);
+  const filterMid = useTransform(scrollYProgress, [0, 0.1, 0.3], ["blur(0px)", "blur(0px)", "blur(16px)"]);
+  const filterHero = useTransform(scrollYProgress, [0, 0.08, 0.25], ["blur(0px)", "blur(0px)", "blur(20px)"]);
 
   // Opacity fade for layers
   const opacityDeep = useTransform(scrollYProgress, [0, 0.5], [0.5, 0.15]);
