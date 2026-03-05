@@ -229,13 +229,17 @@
 
   /* ─── Os Novos Cards de Sistema ─── */
   .card-wealth, .card-elite {
-    @apply bg-[#0A0A0A]/80 backdrop-blur-md p-8 md:p-10 relative overflow-hidden ease-apple transition-all duration-500 rounded-sm;
-    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05), 0 10px 40px -20px rgba(0,0,0,0.8);
+    @apply p-8 md:p-10 relative overflow-hidden ease-apple transition-all duration-500 rounded-sm;
+    background: hsl(var(--midnight) / 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: inset 0 0 0 1px hsl(var(--gold) / 0.08), 0 10px 40px -20px rgba(0,0,0,0.8);
   }
 
   .card-wealth:hover, .card-elite:hover {
     transform: translateY(-4px);
-    box-shadow: inset 0 0 0 1px rgba(247,147,26,0.2), 0 20px 40px -20px rgba(247,147,26,0.15);
+    background: hsl(var(--midnight) / 0.85);
+    box-shadow: inset 0 0 0 1px hsl(var(--gold) / 0.2), 0 20px 40px -20px hsl(var(--gold) / 0.15);
   }
 
   .card-wealth::before, .card-elite::before {
@@ -245,13 +249,13 @@
     left: 0;
     width: 100%;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    background: linear-gradient(90deg, transparent, hsl(var(--gold) / 0.1), transparent);
     opacity: 0;
     transition: opacity 0.5s ease;
   }
 
   .card-wealth:hover::before, .card-elite:hover::before {
     opacity: 1;
-    background: linear-gradient(90deg, transparent, rgba(247,147,26,0.5), transparent);
+    background: linear-gradient(90deg, transparent, hsl(var(--gold) / 0.5), transparent);
   }
 }
