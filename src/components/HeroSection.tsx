@@ -221,27 +221,35 @@ const HeroSection = () => {
           o próprio roubo.
         </motion.p>
 
-        {/* ─── CAMADA 4: CTAs + Proof ─── */}
+        {/* ─── CAMADA 4: Scroll Indicator ─── */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 2.2, ease: ease.sovereign }}
-          className="flex flex-col sm:flex-row items-start gap-4 mb-14"
+          className="flex flex-col items-start gap-3 mb-14"
         >
-          <button
-            onClick={() => navigate("/protocolo-inicial")}
-            className="btn-primary group"
+          <motion.button
+            onClick={() => {
+              const nextSection = document.querySelector('section, [id]');
+              const heroEl = document.getElementById('hero-section');
+              const target = heroEl?.nextElementSibling;
+              if (target) target.scrollIntoView({ behavior: 'smooth' });
+              else window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            }}
+            className="flex items-center gap-3 text-stone-500 hover:text-stone-300 transition-colors group cursor-pointer"
           >
-            <Zap className="w-4 h-4 transition-transform group-hover:rotate-12" />
-            Comece por aqui
-          </button>
-          <button onClick={() => navigate("/ferramentas")} className="btn-secondary group">
-            <Shield className="w-4 h-4 opacity-50 group-hover:opacity-100 transition-opacity" />
-            Usar aplicativos
-          </button>
-          <button onClick={() => navigate("/educacao")} className="btn-secondary">
-            Explorar leituras
-          </button>
+            <motion.div
+              animate={{ y: [0, 8, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              className="flex flex-col items-center"
+            >
+              <div className="w-[1px] h-8 bg-gradient-to-b from-transparent via-stone-600 to-stone-400" />
+              <ChevronDown size={16} className="text-stone-400 group-hover:text-amber-400 transition-colors -mt-1" />
+            </motion.div>
+            <span className="text-[10px] font-bold tracking-[0.3em] uppercase opacity-60 group-hover:opacity-100 transition-opacity">
+              Desça para entender
+            </span>
+          </motion.button>
         </motion.div>
 
         {/* Social proof — left aligned */}
