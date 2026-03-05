@@ -8,6 +8,19 @@ import imgMetodosPreparo from '@/assets/bio-metodos-preparo.jpg';
 import img12Plantas from '@/assets/bio-12-plantas.jpg';
 import imgArmazenamento from '@/assets/bio-armazenamento.jpg';
 
+import imgCamomila from '@/assets/planta-camomila.jpg';
+import imgBoldo from '@/assets/planta-boldo.jpg';
+import imgArnica from '@/assets/planta-arnica.jpg';
+import imgBabosa from '@/assets/planta-babosa.jpg';
+import imgHortela from '@/assets/planta-hortela.jpg';
+import imgGengibre from '@/assets/planta-gengibre.jpg';
+import imgErvaDoce from '@/assets/planta-erva-doce.jpg';
+import imgAlecrim from '@/assets/planta-alecrim.jpg';
+import imgCalendula from '@/assets/planta-calendula.jpg';
+import imgCapimLimao from '@/assets/planta-capim-limao.jpg';
+import imgGuaco from '@/assets/planta-guaco.jpg';
+import imgTanchagem from '@/assets/planta-tanchagem.jpg';
+
 const PLANTAS = [
   {
     nome: 'Camomila',
@@ -20,6 +33,7 @@ const PLANTAS = [
     contra: 'Alergia a Asteraceae. Uso concomitante com sedativos.',
     interacao: 'Pode potencializar benzodiazepínicos e antidepressivos sedativos.',
     cor: 'from-yellow-500/20 to-yellow-600/10', border: 'border-yellow-500/30', accent: 'text-yellow-400',
+    imagem: imgCamomila,
   },
   {
     nome: 'Boldo',
@@ -32,6 +46,7 @@ const PLANTAS = [
     contra: 'Gravidez. Obstrução biliar. Doença hepática grave.',
     interacao: 'Pode interferir com medicamentos hepatotóxicos e anticoagulantes.',
     cor: 'from-green-500/20 to-green-600/10', border: 'border-green-500/30', accent: 'text-green-400',
+    imagem: imgBoldo,
   },
   {
     nome: 'Arnica',
@@ -44,6 +59,7 @@ const PLANTAS = [
     contra: 'NUNCA ingerir. Não usar em feridas abertas.',
     interacao: null,
     cor: 'from-orange-500/20 to-orange-600/10', border: 'border-orange-500/30', accent: 'text-orange-400',
+    imagem: imgArnica,
   },
   {
     nome: 'Babosa',
@@ -56,6 +72,7 @@ const PLANTAS = [
     contra: 'Gravidez. Doença intestinal inflamatória. Uso interno não recomendado sem orientação.',
     interacao: null,
     cor: 'from-emerald-500/20 to-emerald-600/10', border: 'border-emerald-500/30', accent: 'text-emerald-400',
+    imagem: imgBabosa,
   },
   {
     nome: 'Hortelã',
@@ -68,6 +85,7 @@ const PLANTAS = [
     contra: 'Evitar excesso em refluxo severo.',
     interacao: null,
     cor: 'from-teal-500/20 to-teal-600/10', border: 'border-teal-500/30', accent: 'text-teal-400',
+    imagem: imgHortela,
   },
   {
     nome: 'Gengibre',
@@ -80,6 +98,7 @@ const PLANTAS = [
     contra: 'Evitar com anticoagulante.',
     interacao: null,
     cor: 'from-amber-500/20 to-amber-600/10', border: 'border-amber-500/30', accent: 'text-amber-400',
+    imagem: imgGengibre,
   },
   {
     nome: 'Erva-doce',
@@ -92,6 +111,7 @@ const PLANTAS = [
     contra: null,
     interacao: null,
     cor: 'from-lime-500/20 to-lime-600/10', border: 'border-lime-500/30', accent: 'text-lime-400',
+    imagem: imgErvaDoce,
   },
   {
     nome: 'Alecrim',
@@ -104,6 +124,7 @@ const PLANTAS = [
     contra: 'Evitar em hipertensão descontrolada.',
     interacao: null,
     cor: 'from-sky-500/20 to-sky-600/10', border: 'border-sky-500/30', accent: 'text-sky-400',
+    imagem: imgAlecrim,
   },
   {
     nome: 'Calêndula',
@@ -116,6 +137,7 @@ const PLANTAS = [
     contra: null,
     interacao: null,
     cor: 'from-orange-400/20 to-yellow-500/10', border: 'border-orange-400/30', accent: 'text-orange-300',
+    imagem: imgCalendula,
   },
   {
     nome: 'Capim-limão',
@@ -128,6 +150,7 @@ const PLANTAS = [
     contra: null,
     interacao: null,
     cor: 'from-yellow-400/20 to-green-500/10', border: 'border-yellow-400/30', accent: 'text-yellow-300',
+    imagem: imgCapimLimao,
   },
   {
     nome: 'Guaco',
@@ -140,6 +163,7 @@ const PLANTAS = [
     contra: 'Evitar uso prolongado.',
     interacao: null,
     cor: 'from-green-400/20 to-emerald-500/10', border: 'border-green-400/30', accent: 'text-green-300',
+    imagem: imgGuaco,
   },
   {
     nome: 'Tanchagem',
@@ -152,6 +176,7 @@ const PLANTAS = [
     contra: null,
     interacao: null,
     cor: 'from-emerald-400/20 to-teal-500/10', border: 'border-emerald-400/30', accent: 'text-emerald-300',
+    imagem: imgTanchagem,
   },
 ];
 
@@ -338,15 +363,19 @@ const AutonomiaBiologica = () => {
 
           <div className="grid md:grid-cols-2 gap-5">
             {PLANTAS.map((p, i) => (
-              <motion.div key={p.nome} variants={staggerChild} className={`bg-gradient-to-br ${p.cor} border ${p.border} p-6 rounded-sm relative overflow-hidden group hover:scale-[1.01] transition-transform duration-500`}>
-                <div className="flex items-start justify-between mb-3">
-                  <div>
-                    <span className="text-xs font-mono text-muted-foreground">{String(i + 1).padStart(2, '0')}.</span>
+              <motion.div key={p.nome} variants={staggerChild} className={`bg-gradient-to-br ${p.cor} border ${p.border} rounded-sm relative overflow-hidden group hover:scale-[1.01] transition-transform duration-500`}>
+                {/* Imagem da planta */}
+                <div className="relative w-full h-48 overflow-hidden">
+                  <img src={p.imagem} alt={`${p.nome} — ${p.cientifico}`} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                  <div className="absolute bottom-3 left-4 right-4">
+                    <span className="text-xs font-mono text-white/50">{String(i + 1).padStart(2, '0')}.</span>
                     <h4 className={`text-xl font-bold ${p.accent}`}>{p.nome}</h4>
-                    <span className="text-[11px] italic text-muted-foreground">{p.cientifico}</span>
+                    <span className="text-[11px] italic text-white/60">{p.cientifico}</span>
                   </div>
-                  <Leaf size={20} className={`${p.accent} opacity-30`} />
                 </div>
+
+                <div className="p-6">
 
                 <div className="space-y-3 text-sm">
                   {/* O que melhora */}
@@ -403,6 +432,7 @@ const AutonomiaBiologica = () => {
                       <span className="text-amber-300/90">{p.interacao}</span>
                     </div>
                   )}
+                </div>
                 </div>
               </motion.div>
             ))}
