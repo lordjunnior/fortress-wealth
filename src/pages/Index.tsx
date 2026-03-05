@@ -112,20 +112,6 @@ const Index = () => {
     return () => ScrollTrigger.getAll().forEach(t => t.kill());
   }, []);
 
-  // Parallax transforms for each image layer (different speeds = depth)
-  const deepY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  const midY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
-  const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "70%"]);
-
-  // Progressive blur on scroll — images blur as you descend
-  const filterDeep = useTransform(scrollYProgress, [0, 0.15, 0.4], ["blur(0px)", "blur(0px)", "blur(12px)"]);
-  const filterMid = useTransform(scrollYProgress, [0, 0.1, 0.3], ["blur(0px)", "blur(0px)", "blur(16px)"]);
-  const filterHero = useTransform(scrollYProgress, [0, 0.08, 0.25], ["blur(0px)", "blur(0px)", "blur(20px)"]);
-
-  // Opacity fade for layers
-  const opacityDeep = useTransform(scrollYProgress, [0, 0.5], [0.5, 0.15]);
-  const opacityMid = useTransform(scrollYProgress, [0, 0.4], [0.35, 0.08]);
-  const opacityHero = useTransform(scrollYProgress, [0, 0.3], [0.6, 0.1]);
 
   // Dust parallax
   const dustY = useTransform(scrollYProgress, [0, 1], [0, -300]);
