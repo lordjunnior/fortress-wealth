@@ -65,9 +65,35 @@ const NobelSection = ({
 
 const Index = () => {
   const { scrollYProgress } = useScroll();
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
-  // Parallax: background moves slower than content
-  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+  // Mouse parallax for background layers
+  useEffect(() => {
+    const handleMouse = (e: MouseEvent) => {
+      const x = (e.clientX / window.innerWidth - 0.5) * 2;
+      const y = (e.clientY / window.innerHeight - 0.5) * 2;
+      setMousePos({ x, y });
+    };
+    window.addEventListener("mousemove", handleMouse);
+    return () => window.removeEventListener("mousemove", handleMouse);
+  }, []);
+
+  // Parallax transforms for each image layer (different speeds = depth)
+  const deepY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const midY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+  const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "70%"]);
+
+  // Progressive blur on scroll — images blur as you descend
+  const blurDeep = useTransform(scrollYProgress, [0, 0.15, 0.4], [0, 0, 12]);
+  const blurMid = useTransform(scrollYProgress, [0, 0.1, 0.3], [0, 0, 16]);
+  const blurHero = useTransform(scrollYProgress, [0, 0.08, 0.25], [0, 0, 20]);
+
+  // Opacity fade for layers
+  const opacityDeep = useTransform(scrollYProgress, [0, 0.5], [0.5, 0.15]);
+  const opacityMid = useTransform(scrollYProgress, [0, 0.4], [0.35, 0.08]);
+  const opacityHero = useTransform(scrollYProgress, [0, 0.3], [0.6, 0.1]);
+
+  // Dust parallax
   const dustY = useTransform(scrollYProgress, [0, 1], [0, -300]);
 
   return (
