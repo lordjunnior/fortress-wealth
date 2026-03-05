@@ -399,16 +399,6 @@ export default function ProjetoAutonomo() {
   const floatY3 = useTransform(scrollYProgress, [0, 1], [0, -150]);
   const progressWidth = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
 
-  // Living background — 3 image layers with parallax + blur
-  const bgDeepY = useTransform(scrollYProgress, [0, 1], ['0%', '25%']);
-  const bgMidY = useTransform(scrollYProgress, [0, 1], ['0%', '40%']);
-  const bgHeroY = useTransform(scrollYProgress, [0, 1], ['0%', '60%']);
-  const bgFilterDeep = useTransform(scrollYProgress, [0, 0.15, 0.4], ['blur(0px)', 'blur(0px)', 'blur(10px)']);
-  const bgFilterMid = useTransform(scrollYProgress, [0, 0.1, 0.3], ['blur(0px)', 'blur(0px)', 'blur(14px)']);
-  const bgFilterHero = useTransform(scrollYProgress, [0, 0.08, 0.25], ['blur(0px)', 'blur(0px)', 'blur(18px)']);
-  const bgOpDeep = useTransform(scrollYProgress, [0, 0.5], [0.35, 0.1]);
-  const bgOpMid = useTransform(scrollYProgress, [0, 0.4], [0.25, 0.05]);
-  const bgOpHero = useTransform(scrollYProgress, [0, 0.3], [0.4, 0.08]);
 
   // Scroll to top on mount
   useEffect(() => { window.scrollTo(0, 0); }, []);
@@ -425,35 +415,6 @@ export default function ProjetoAutonomo() {
         className="fixed top-0 left-0 right-0 h-[3px] z-50 origin-left"
         style={{ width: progressWidth, background: 'linear-gradient(90deg, #059669, #10b981, #d97706)' }}
       />
-
-      {/* ── LIVING BACKGROUND — 3 Image Layers with Parallax + Blur ── */}
-      <motion.div style={{ y: bgDeepY }} className="fixed inset-0 z-0 pointer-events-none">
-        <motion.img src={bgAutonomoDeep} alt="" className="absolute inset-0 w-full h-full object-cover"
-          style={{
-            opacity: bgOpDeep, filter: bgFilterDeep,
-            transform: `translate(${(springX.get() || 0) * -0.5}px, ${(springY.get() || 0) * -0.3}px) scale(1.15)`,
-            transition: 'transform 1.2s cubic-bezier(0.22,1,0.36,1)',
-          }}
-        />
-      </motion.div>
-      <motion.div style={{ y: bgMidY }} className="fixed inset-0 z-0 pointer-events-none">
-        <motion.img src={bgAutonomoMid} alt="" className="absolute inset-0 w-full h-full object-cover"
-          style={{
-            opacity: bgOpMid, filter: bgFilterMid,
-            transform: `translate(${(springX.get() || 0) * 0.6}px, ${(springY.get() || 0) * 0.4}px) scale(1.1)`,
-            transition: 'transform 1s cubic-bezier(0.22,1,0.36,1)',
-          }}
-        />
-      </motion.div>
-      <motion.div style={{ y: bgHeroY }} className="fixed inset-0 z-0 pointer-events-none">
-        <motion.img src={bgAutonomoHero} alt="" className="absolute inset-0 w-full h-full object-cover"
-          style={{
-            opacity: bgOpHero, filter: bgFilterHero,
-            transform: `translate(${(springX.get() || 0) * -0.8}px, ${(springY.get() || 0) * -0.5}px) scale(1.2)`,
-            transition: 'transform 0.8s cubic-bezier(0.22,1,0.36,1)',
-          }}
-        />
-      </motion.div>
 
       {/* ── GRADIENT ORBS — Mouse-reactive + Scroll parallax ── */}
       <div className="fixed inset-0 pointer-events-none z-0">
