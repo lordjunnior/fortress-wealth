@@ -8,6 +8,19 @@ import imgMetodosPreparo from '@/assets/bio-metodos-preparo.jpg';
 import img12Plantas from '@/assets/bio-12-plantas.jpg';
 import imgArmazenamento from '@/assets/bio-armazenamento.jpg';
 
+import imgCamomila from '@/assets/planta-camomila.jpg';
+import imgBoldo from '@/assets/planta-boldo.jpg';
+import imgArnica from '@/assets/planta-arnica.jpg';
+import imgBabosa from '@/assets/planta-babosa.jpg';
+import imgHortela from '@/assets/planta-hortela.jpg';
+import imgGengibre from '@/assets/planta-gengibre.jpg';
+import imgErvaDoce from '@/assets/planta-erva-doce.jpg';
+import imgAlecrim from '@/assets/planta-alecrim.jpg';
+import imgCalendula from '@/assets/planta-calendula.jpg';
+import imgCapimLimao from '@/assets/planta-capim-limao.jpg';
+import imgGuaco from '@/assets/planta-guaco.jpg';
+import imgTanchagem from '@/assets/planta-tanchagem.jpg';
+
 const PLANTAS = [
   {
     nome: 'Camomila',
