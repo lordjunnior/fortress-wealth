@@ -117,6 +117,7 @@ const App = () => (
           <Route path="/projeto-autonomo/solo-fertilidade" element={<SoloFertilidade />} />
           <Route path="/projeto-autonomo/horta-urbana" element={<HortaUrbana />} />
           <Route path="/projeto-autonomo/autonomia-biologica" element={<AutonomiaBiologica />} />
+          <Route path="/projeto-autonomo/planta/:slug" element={<PlantaDetalhe />} />
           <Route path="/projeto-autonomo/primeiros-socorros" element={<PrimeirosSocorros />} />
           <Route path="/projeto-autonomo/avaliacao-sinais" element={<AvaliacaoSinais />} />
           <Route path="/projeto-autonomo/saude-preventiva" element={<SaudePreventiva />} />
