@@ -34,6 +34,7 @@ const HeroSection = () => {
 
   return (
     <section
+      id="hero-section"
       ref={sectionRef}
       className="relative min-h-[110vh] flex items-center overflow-hidden"
     >
