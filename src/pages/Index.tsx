@@ -1,5 +1,5 @@
-import { useRef, useState, useEffect } from "react";
-import { motion, useScroll, useTransform, useInView } from "framer-motion";
+import { useRef, useEffect } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import NoiseBackground from "@/components/NoiseBackground";
@@ -24,9 +24,6 @@ import NivelZero from "@/components/NivelZero";
 import StrategicSignature from "@/components/StrategicSignature";
 import RiskBlock from "@/components/RiskBlock";
 
-import bgHeroAtmosphere from "@/assets/bg-hero-atmosphere.jpg";
-import bgMidLayer from "@/assets/bg-mid-layer.jpg";
-import bgDeepLayer from "@/assets/bg-deep-layer.jpg";
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
@@ -82,53 +79,12 @@ const NobelSection = ({
 
 const Index = () => {
   const { scrollYProgress } = useScroll();
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const mainRef = useRef<HTMLDivElement>(null);
 
-  // Mouse parallax for background layers
+  // GSAP: ScrollTrigger cleanup
   useEffect(() => {
-    const handleMouse = (e: MouseEvent) => {
-      const x = (e.clientX / window.innerWidth - 0.5) * 2;
-      const y = (e.clientY / window.innerHeight - 0.5) * 2;
-      setMousePos({ x, y });
-    };
-    window.addEventListener("mousemove", handleMouse);
-    return () => window.removeEventListener("mousemove", handleMouse);
-  }, []);
-
-  // GSAP: Smooth parallax for background images on scroll
-  useEffect(() => {
-    const bgImages = document.querySelectorAll('[data-gsap-bg]');
-    bgImages.forEach((img, i) => {
-      gsap.to(img, {
-        yPercent: (i + 1) * 15,
-        ease: "none",
-        scrollTrigger: {
-          trigger: document.body,
-          start: "top top",
-          end: "bottom bottom",
-          scrub: 1.5,
-        },
-      });
-    });
-
     return () => ScrollTrigger.getAll().forEach(t => t.kill());
   }, []);
 
-  // Parallax transforms for each image layer (different speeds = depth)
-  const deepY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  const midY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
-  const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "70%"]);
-
-  // Progressive blur on scroll — images blur as you descend
-  const filterDeep = useTransform(scrollYProgress, [0, 0.15, 0.4], ["blur(0px)", "blur(0px)", "blur(12px)"]);
-  const filterMid = useTransform(scrollYProgress, [0, 0.1, 0.3], ["blur(0px)", "blur(0px)", "blur(16px)"]);
-  const filterHero = useTransform(scrollYProgress, [0, 0.08, 0.25], ["blur(0px)", "blur(0px)", "blur(20px)"]);
-
-  // Opacity fade for layers
-  const opacityDeep = useTransform(scrollYProgress, [0, 0.5], [0.5, 0.15]);
-  const opacityMid = useTransform(scrollYProgress, [0, 0.4], [0.35, 0.08]);
-  const opacityHero = useTransform(scrollYProgress, [0, 0.3], [0.6, 0.1]);
 
   // Dust parallax
   const dustY = useTransform(scrollYProgress, [0, 1], [0, -300]);
@@ -141,72 +97,12 @@ const Index = () => {
       <NivelZero />
       <NoiseBackground />
 
-      {/* ── LIVING BACKGROUND — 3 IMAGE LAYERS WITH PARALLAX + BLUR ── */}
-      
-      {/* Layer 1: Deep — dystopian cityscape (slowest parallax) */}
-      <motion.div
-        style={{ y: deepY }}
-        className="fixed inset-0 z-0 pointer-events-none"
-      >
-        <motion.img
-          src={bgDeepLayer}
-          alt=""
-          className="absolute inset-0 w-full h-full object-cover"
-          style={{
-            opacity: opacityDeep,
-            filter: filterDeep,
-            transform: `translate(${mousePos.x * -8}px, ${mousePos.y * -5}px) scale(1.15)`,
-            transition: "transform 1.2s cubic-bezier(0.22,1,0.36,1)",
-          }}
-        />
-      </motion.div>
-
-      {/* Layer 2: Mid — melting coins (medium parallax) */}
-      <motion.div
-        style={{ y: midY }}
-        className="fixed inset-0 z-0 pointer-events-none"
-      >
-        <motion.img
-          src={bgMidLayer}
-          alt=""
-          className="absolute inset-0 w-full h-full object-cover"
-          style={{
-            opacity: opacityMid,
-            filter: filterMid,
-            transform: `translate(${mousePos.x * 12}px, ${mousePos.y * 8}px) scale(1.1)`,
-            transition: "transform 1s cubic-bezier(0.22,1,0.36,1)",
-          }}
-        />
-      </motion.div>
-
-      {/* Layer 3: Hero atmosphere — particles and light (fastest parallax) */}
-      <motion.div
-        style={{ y: heroY }}
-        className="fixed inset-0 z-0 pointer-events-none"
-      >
-        <motion.img
-          src={bgHeroAtmosphere}
-          alt=""
-          className="absolute inset-0 w-full h-full object-cover"
-          style={{
-            opacity: opacityHero,
-            filter: filterHero,
-            transform: `translate(${mousePos.x * -18}px, ${mousePos.y * -12}px) scale(1.2)`,
-            transition: "transform 0.8s cubic-bezier(0.22,1,0.36,1)",
-          }}
-        />
-      </motion.div>
-
-      {/* Vignette + color glows on top of images */}
+      {/* ── CINEMATIC BACKGROUND — Radial glows + grain ── */}
       <div className="fixed inset-0 z-0 pointer-events-none">
-        {/* Vignette for content readability */}
-        <div className="absolute inset-0" style={{
-          background: 'radial-gradient(ellipse at center, transparent 30%, hsl(222 47% 4% / 0.7) 100%)'
-        }} />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_hsl(var(--gold)/0.08),_transparent_60%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_hsl(var(--chart-red)/0.05),_transparent_60%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_hsl(var(--gold)/0.1),_transparent_60%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_hsl(var(--chart-red)/0.06),_transparent_60%)]" />
         {/* Grain texture overlay */}
-        <div className="absolute inset-0 opacity-[0.02]" style={{
+        <div className="absolute inset-0 opacity-[0.025]" style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.5'/%3E%3C/svg%3E")`,
           backgroundSize: "128px 128px"
         }} />
