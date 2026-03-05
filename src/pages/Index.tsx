@@ -108,10 +108,7 @@ const Index = () => {
       
       {/* Layer 1: Deep — dystopian cityscape (slowest parallax) */}
       <motion.div
-        style={{
-          y: deepY,
-          filter: blurDeep.get() > 0 ? undefined : undefined,
-        }}
+        style={{ y: deepY }}
         className="fixed inset-0 z-0 pointer-events-none"
       >
         <motion.img
@@ -120,7 +117,7 @@ const Index = () => {
           className="absolute inset-0 w-full h-full object-cover"
           style={{
             opacity: opacityDeep,
-            filter: useTransform(blurDeep, (v) => `blur(${v}px)`),
+            filter: filterDeep,
             transform: `translate(${mousePos.x * -8}px, ${mousePos.y * -5}px) scale(1.15)`,
             transition: "transform 1.2s cubic-bezier(0.22,1,0.36,1)",
           }}
@@ -138,7 +135,7 @@ const Index = () => {
           className="absolute inset-0 w-full h-full object-cover"
           style={{
             opacity: opacityMid,
-            filter: useTransform(blurMid, (v) => `blur(${v}px)`),
+            filter: filterMid,
             transform: `translate(${mousePos.x * 12}px, ${mousePos.y * 8}px) scale(1.1)`,
             transition: "transform 1s cubic-bezier(0.22,1,0.36,1)",
           }}
@@ -156,7 +153,7 @@ const Index = () => {
           className="absolute inset-0 w-full h-full object-cover"
           style={{
             opacity: opacityHero,
-            filter: useTransform(blurHero, (v) => `blur(${v}px)`),
+            filter: filterHero,
             transform: `translate(${mousePos.x * -18}px, ${mousePos.y * -12}px) scale(1.2)`,
             transition: "transform 0.8s cubic-bezier(0.22,1,0.36,1)",
           }}
