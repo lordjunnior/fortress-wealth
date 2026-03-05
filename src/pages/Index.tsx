@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import NoiseBackground from "@/components/NoiseBackground";
 import AppSidebar from "@/components/AppSidebar";
@@ -21,6 +21,10 @@ import SovereignTermModal from "@/components/SovereignTermModal";
 import NivelZero from "@/components/NivelZero";
 import StrategicSignature from "@/components/StrategicSignature";
 import RiskBlock from "@/components/RiskBlock";
+
+import bgHeroAtmosphere from "@/assets/bg-hero-atmosphere.jpg";
+import bgMidLayer from "@/assets/bg-mid-layer.jpg";
+import bgDeepLayer from "@/assets/bg-deep-layer.jpg";
 
 /* ── Nobel Section Wrapper — Cinematic reveal on scroll ── */
 const NobelSection = ({
