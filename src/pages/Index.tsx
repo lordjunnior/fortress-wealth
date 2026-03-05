@@ -124,72 +124,12 @@ const Index = () => {
       <NivelZero />
       <NoiseBackground />
 
-      {/* ── LIVING BACKGROUND — 3 IMAGE LAYERS WITH PARALLAX + BLUR ── */}
-      
-      {/* Layer 1: Deep — dystopian cityscape (slowest parallax) */}
-      <motion.div
-        style={{ y: deepY }}
-        className="fixed inset-0 z-0 pointer-events-none"
-      >
-        <motion.img
-          src={bgDeepLayer}
-          alt=""
-          className="absolute inset-0 w-full h-full object-cover"
-          style={{
-            opacity: opacityDeep,
-            filter: filterDeep,
-            transform: `translate(${mousePos.x * -8}px, ${mousePos.y * -5}px) scale(1.15)`,
-            transition: "transform 1.2s cubic-bezier(0.22,1,0.36,1)",
-          }}
-        />
-      </motion.div>
-
-      {/* Layer 2: Mid — melting coins (medium parallax) */}
-      <motion.div
-        style={{ y: midY }}
-        className="fixed inset-0 z-0 pointer-events-none"
-      >
-        <motion.img
-          src={bgMidLayer}
-          alt=""
-          className="absolute inset-0 w-full h-full object-cover"
-          style={{
-            opacity: opacityMid,
-            filter: filterMid,
-            transform: `translate(${mousePos.x * 12}px, ${mousePos.y * 8}px) scale(1.1)`,
-            transition: "transform 1s cubic-bezier(0.22,1,0.36,1)",
-          }}
-        />
-      </motion.div>
-
-      {/* Layer 3: Hero atmosphere — particles and light (fastest parallax) */}
-      <motion.div
-        style={{ y: heroY }}
-        className="fixed inset-0 z-0 pointer-events-none"
-      >
-        <motion.img
-          src={bgHeroAtmosphere}
-          alt=""
-          className="absolute inset-0 w-full h-full object-cover"
-          style={{
-            opacity: opacityHero,
-            filter: filterHero,
-            transform: `translate(${mousePos.x * -18}px, ${mousePos.y * -12}px) scale(1.2)`,
-            transition: "transform 0.8s cubic-bezier(0.22,1,0.36,1)",
-          }}
-        />
-      </motion.div>
-
-      {/* Vignette + color glows on top of images */}
+      {/* ── CINEMATIC BACKGROUND — Radial glows + grain ── */}
       <div className="fixed inset-0 z-0 pointer-events-none">
-        {/* Vignette for content readability */}
-        <div className="absolute inset-0" style={{
-          background: 'radial-gradient(ellipse at center, transparent 30%, hsl(222 47% 4% / 0.7) 100%)'
-        }} />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_hsl(var(--gold)/0.08),_transparent_60%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_hsl(var(--chart-red)/0.05),_transparent_60%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_hsl(var(--gold)/0.1),_transparent_60%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_hsl(var(--chart-red)/0.06),_transparent_60%)]" />
         {/* Grain texture overlay */}
-        <div className="absolute inset-0 opacity-[0.02]" style={{
+        <div className="absolute inset-0 opacity-[0.025]" style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.5'/%3E%3C/svg%3E")`,
           backgroundSize: "128px 128px"
         }} />
