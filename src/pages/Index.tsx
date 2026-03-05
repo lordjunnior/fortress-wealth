@@ -28,7 +28,10 @@ import bgHeroAtmosphere from "@/assets/bg-hero-atmosphere.jpg";
 import bgMidLayer from "@/assets/bg-mid-layer.jpg";
 import bgDeepLayer from "@/assets/bg-deep-layer.jpg";
 
-/* ── Nobel Section Wrapper — Cinematic reveal on scroll ── */
+// Register GSAP plugins
+gsap.registerPlugin(ScrollTrigger);
+
+/* ── Nobel Section Wrapper — GSAP ScrollTrigger + Framer Motion hybrid ── */
 const NobelSection = ({
   children,
   className = "",
@@ -41,27 +44,39 @@ const NobelSection = ({
   delay?: number;
 }) => {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  useEffect(() => {
+    if (!ref.current) return;
+
+    gsap.fromTo(
+      ref.current,
+      { opacity: 0, y: 60, filter: "blur(10px)" },
+      {
+        opacity: 1,
+        y: 0,
+        filter: "blur(0px)",
+        duration: 1.2,
+        delay,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: ref.current,
+          start: "top 85%",
+          toggleActions: "play none none none",
+        },
+      }
+    );
+
+    return () => {
+      ScrollTrigger.getAll().forEach((t) => {
+        if (t.trigger === ref.current) t.kill();
+      });
+    };
+  }, [delay]);
 
   return (
-    <motion.div
-      ref={ref}
-      id={id}
-      className={className}
-      initial={{ opacity: 0, y: 50, filter: "blur(8px)" }}
-      animate={
-        isInView
-          ? { opacity: 1, y: 0, filter: "blur(0px)" }
-          : { opacity: 0, y: 50, filter: "blur(8px)" }
-      }
-      transition={{
-        duration: 0.9,
-        delay,
-        ease: [0.22, 1, 0.36, 1],
-      }}
-    >
+    <div ref={ref} id={id} className={className} style={{ opacity: 0 }}>
       {children}
-    </motion.div>
+    </div>
   );
 };
 
