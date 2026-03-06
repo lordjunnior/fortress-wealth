@@ -231,15 +231,11 @@ const Ferramentas: React.FC = () => {
           {TOOLS_LIST.map((tool, i) => {
             const Icon = tool.icon;
             const isInactive = tool.id === 'dev';
-            const hasExternalUrl = 'externalUrl' in tool && (tool as any).externalUrl;
             const hasCover = 'cover' in tool && (tool as any).cover;
+            const hasIframe = 'iframeUrl' in tool && (tool as any).iframeUrl;
 
             const handleClick = () => {
               if (isInactive) return;
-              if (hasExternalUrl) {
-                window.open((tool as any).externalUrl, '_blank', 'noopener,noreferrer');
-                return;
-              }
               if (tool.id !== 'verificabr') setActiveToolId(tool.id);
             };
 
