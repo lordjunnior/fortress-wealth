@@ -844,6 +844,8 @@ export default function ProjetoAutonomo() {
               { icon: Heart, label: 'Educação Familiar', desc: 'Conteúdo adaptado para ensinar crianças sobre botânica e saúde natural.', longDesc: 'Atividades práticas de identificação botânica, jogos de reconhecimento de plantas e protocolos seguros de preparo supervisionado.', link: '/conhecimento-perdido/continuidade-familiar' },
               { icon: Shield, label: 'Integração Completa', desc: 'Conectado a todo o Protocolo Autônomo como base de conhecimento.', longDesc: 'Hub central com navegação entre todos os blocos: contexto histórico, base fisiológica, segurança, aplicação prática e continuidade familiar.', link: '/projeto-autonomo/conhecimento-perdido' },
             ];
+            const Icon0 = cpItems[0].icon;
+            const Icon1 = cpItems[1].icon;
             return (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
                 {/* Featured — large card spanning 2 rows */}
@@ -856,7 +858,7 @@ export default function ProjetoAutonomo() {
                     />
                     <div className="relative z-10 flex flex-col h-full">
                       <div className="p-3.5 rounded-xl bg-teal-500/10 border border-teal-500/15 w-fit mb-5 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
-                        <cpItems[0].icon size={24} className="text-teal-400" />
+                        <Icon0 size={24} className="text-teal-400" />
                       </div>
                       <h4 className="text-xl md:text-2xl font-bold text-stone-200 tracking-tight mb-3 group-hover:text-white transition-colors">
                         {cpItems[0].label}
@@ -883,7 +885,7 @@ export default function ProjetoAutonomo() {
                     />
                     <div className="relative z-10 flex flex-col h-full">
                       <div className="p-3 rounded-xl bg-teal-500/10 border border-teal-500/15 w-fit mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
-                        <cpItems[1].icon size={20} className="text-teal-400" />
+                        <Icon1 size={20} className="text-teal-400" />
                       </div>
                       <h4 className="text-base font-bold text-stone-200 tracking-tight mb-2 group-hover:text-white transition-colors">{cpItems[1].label}</h4>
                       <p className="text-stone-500 text-xs leading-relaxed flex-1 group-hover:text-stone-400 transition-colors">{cpItems[1].longDesc}</p>
