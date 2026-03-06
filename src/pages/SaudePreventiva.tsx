@@ -1,56 +1,120 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, AlertTriangle, Sun, Moon, Activity, Salad, Brain, Flame, Droplets, CheckCircle2, Heart, Shield, Dna, Wind } from 'lucide-react';
-import { motion } from 'framer-motion';
-import { fadeUp, stagger, staggerChild, viewportOnce } from '@/lib/motion';
+import { ArrowLeft, AlertTriangle, Sun, Moon, Activity, Salad, Brain, Flame, Droplets, CheckCircle2, Heart, Shield, Dna, Wind, ChevronRight } from 'lucide-react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import ScrollToTop from '@/components/ScrollToTop';
 
 import imgMicrobiota from '@/assets/saude-microbiota.jpg';
 import imgCortisol from '@/assets/saude-cortisol.jpg';
 
+gsap.registerPlugin(ScrollTrigger);
+
+const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
+const fadeUp = {
+  hidden: { opacity: 0, y: 32, filter: 'blur(8px)' },
+  visible: (i: number) => ({
+    opacity: 1, y: 0, filter: 'blur(0px)',
+    transition: { duration: 0.8, ease: APPLE_EASE, delay: i * 0.12 },
+  }),
+};
+
 const SaudePreventiva = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll();
+  const progressWidth = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+
+    const ctx = gsap.context(() => {
+      gsap.utils.toArray<HTMLElement>('.gsap-reveal').forEach((el) => {
+        gsap.fromTo(el,
+          { y: 60, opacity: 0, filter: 'blur(8px)' },
+          {
+            y: 0, opacity: 1, filter: 'blur(0px)', duration: 1.2,
+            ease: 'power3.out',
+            scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' },
+          }
+        );
+      });
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      {/* ─── HEADER ─── */}
-      <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
-        <div className="max-w-6xl mx-auto px-4 md:px-8 py-4 flex items-center justify-between">
-          <Link to="/projeto-autonomo" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors text-sm font-mono">
-            <ArrowLeft size={16} />
-            <span>Projeto Autônomo</span>
-          </Link>
-          <span className="text-[10px] font-mono tracking-[0.3em] uppercase text-green-500/70">Fase 02</span>
-        </div>
-      </header>
+    <div ref={containerRef} className="min-h-screen text-stone-100 font-sans selection:bg-emerald-300/50 relative overflow-hidden"
+      style={{ background: 'linear-gradient(180deg, #0a0d08 0%, #0f1a0f 8%, #111f11 20%, #142214 40%, #111f11 70%, #0f1a0f 90%, #0a0d08 100%)' }}
+    >
+      {/* ─── READING PROGRESS ─── */}
+      <motion.div className="fixed top-0 left-0 right-0 h-[2px] z-50 origin-left bg-emerald-500" style={{ width: progressWidth }} />
 
-      <main className="max-w-6xl mx-auto px-4 md:px-8 py-12 md:py-20">
+      {/* ─── ATMOSPHERIC ─── */}
+      <div className="fixed inset-0 pointer-events-none z-0">
+        <div className="absolute top-[10%] right-[10%] w-[600px] h-[600px] rounded-full"
+          style={{ background: 'radial-gradient(circle, rgba(16,185,129,0.08) 0%, transparent 70%)' }} />
+        <div className="absolute bottom-[25%] left-[5%] w-[500px] h-[500px] rounded-full"
+          style={{ background: 'radial-gradient(circle, rgba(16,185,129,0.05) 0%, transparent 70%)' }} />
+        <div className="absolute inset-0 opacity-[0.03]"
+          style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'n\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.85\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23n)\' opacity=\'0.5\'/%3E%3C/svg%3E")' }} />
+        {[...Array(10)].map((_, i) => (
+          <div key={i} className="absolute w-1 h-1 rounded-full bg-emerald-400/20"
+            style={{
+              left: `${10 + Math.random() * 80}%`, top: `${10 + Math.random() * 80}%`,
+              animation: `float ${8 + Math.random() * 12}s ease-in-out infinite ${Math.random() * 5}s`,
+            }} />
+        ))}
+      </div>
+
+      <div className="relative z-10 max-w-5xl mx-auto px-6 md:px-10 pt-24 pb-32">
+
+        {/* ─── BREADCRUMB ─── */}
+        <nav className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] mb-16 flex-wrap" aria-label="Breadcrumb">
+          <Link to="/" className="text-stone-600 hover:text-emerald-400 transition-colors">Início</Link>
+          <span className="text-stone-700">/</span>
+          <Link to="/projeto-autonomo" className="text-stone-600 hover:text-emerald-400 transition-colors">Projeto Autônomo</Link>
+          <span className="text-stone-700">/</span>
+          <span className="text-emerald-400">Saúde Preventiva</span>
+        </nav>
+
         {/* ─── HERO ─── */}
-        <motion.section initial="hidden" animate="visible" variants={stagger(0.1)} className="mb-20">
-          <motion.span variants={staggerChild} className="text-green-500 text-[10px] font-bold tracking-[0.4em] uppercase opacity-70 block mb-4">
-            Fase 02 · Autonomia Biológica
-          </motion.span>
-          <motion.h1 variants={staggerChild} className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[0.95] mb-6">
-            Saúde<br />
-            <span className="text-emerald-400">Preventiva</span>
-          </motion.h1>
-          <motion.p variants={staggerChild} className="text-muted-foreground text-lg max-w-3xl leading-relaxed mb-6">
+        <motion.header initial="hidden" animate="visible" variants={fadeUp} custom={0} className="mb-28">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="p-3.5 rounded-2xl bg-emerald-500/15 border border-emerald-500/25 backdrop-blur-sm">
+              <Heart className="text-emerald-400" size={24} />
+            </div>
+            <span className="text-emerald-500/60 text-[10px] font-bold tracking-[0.5em] uppercase">Fase 02 · Autonomia Biológica</span>
+          </div>
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-wide uppercase leading-[0.9] text-white mb-8"
+            style={{ fontFamily: "'Space Grotesk', sans-serif", letterSpacing: '0.06em' }}>
+            SAÚDE<br />
+            <span className="text-emerald-400" style={{ textShadow: '0 0 60px rgba(16,185,129,0.3)' }}>PREVENTIVA</span>
+          </h1>
+          <p className="text-stone-300 text-lg md:text-xl leading-relaxed max-w-3xl font-light">
             Base Biológica e Estratégias Anti-Inflamatórias Avançadas
-          </motion.p>
+          </p>
+          <div className="mt-8 h-px w-32 bg-gradient-to-r from-emerald-500/60 to-transparent" />
 
-          <motion.div variants={staggerChild} className="max-w-3xl space-y-4 text-muted-foreground leading-relaxed">
-            <p className="text-sm">Saúde preventiva é a manutenção da <span className="text-foreground/80 font-medium">homeostase.</span></p>
+          {/* Hero context */}
+          <motion.div initial="hidden" animate="visible" variants={fadeUp} custom={1} className="mt-10 max-w-3xl space-y-4 text-stone-300 leading-relaxed">
+            <p className="text-sm">Saúde preventiva é a manutenção da <span className="text-stone-100 font-medium">homeostase.</span></p>
             <p className="text-sm">Homeostase é a capacidade do corpo de manter equilíbrio interno mesmo sob estresse.</p>
-            <p className="text-sm text-foreground/80 font-medium">Quando esse equilíbrio falha, surge:</p>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+            <p className="text-sm text-stone-100 font-medium">Quando esse equilíbrio falha, surge:</p>
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mt-2">
               {['Inflamação crônica', 'Resistência à insulina', 'Disfunção hormonal', 'Fadiga persistente', 'Vulnerabilidade imunológica'].map((s) => (
-                <div key={s} className="flex items-center gap-2 text-sm">
-                  <AlertTriangle size={12} className="text-red-400 shrink-0" />
-                  <span className="text-foreground/80">{s}</span>
+                <div key={s} className="flex items-center gap-2 text-xs bg-red-950/30 border border-red-800/15 rounded-xl px-3 py-2">
+                  <AlertTriangle size={11} className="text-red-400 shrink-0" />
+                  <span className="text-stone-300">{s}</span>
                 </div>
               ))}
             </div>
           </motion.div>
 
-          <motion.div variants={staggerChild} className="mt-8 max-w-3xl">
-            <p className="text-foreground/80 font-bold text-sm mb-4">Este módulo integra:</p>
+          {/* Module integration */}
+          <motion.div initial="hidden" animate="visible" variants={fadeUp} custom={2} className="mt-10 max-w-3xl">
+            <p className="text-stone-200 font-bold text-sm mb-4">Este módulo integra:</p>
             <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-3">
               {[
                 { label: 'Exposição solar', icon: Sun, color: 'text-amber-400' },
@@ -58,376 +122,414 @@ const SaudePreventiva = () => {
                 { label: 'Movimento', icon: Activity, color: 'text-green-400' },
                 { label: 'Alimentação', icon: Salad, color: 'text-emerald-400' },
                 { label: 'Estratégias anti-inflamatórias', icon: Dna, color: 'text-purple-400' },
-              ].map((p) => (
-                <div key={p.label} className="flex items-center gap-2 text-sm bg-white/5 border border-white/10 p-3 rounded-sm">
-                  <p.icon size={16} className={`${p.color} shrink-0`} />
-                  <span className="text-foreground/80">{p.label}</span>
-                </div>
-              ))}
+              ].map((p) => {
+                const Icon = p.icon;
+                return (
+                  <div key={p.label} className="group flex items-center gap-3 bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 hover:bg-emerald-500/10 hover:border-emerald-500/20 transition-all duration-300">
+                    <Icon size={16} className={`${p.color} shrink-0`} />
+                    <span className="text-sm text-stone-300">{p.label}</span>
+                  </div>
+                );
+              })}
             </div>
           </motion.div>
-        </motion.section>
+        </motion.header>
 
-        {/* ═══════════════════════════════════════════════ */}
-        {/* INFLAMAÇÃO CRÔNICA                              */}
-        {/* ═══════════════════════════════════════════════ */}
-        <motion.section initial="hidden" whileInView="visible" viewport={viewportOnce} variants={stagger(0.08)} className="mb-24">
-          <motion.div variants={staggerChild} className="mb-6">
-            <span className="pre-title">Base</span>
-            <h2 className="text-3xl md:text-4xl font-black tracking-tight mb-2">Entendendo a Inflamação Crônica</h2>
-          </motion.div>
+        {/* ═══ INFLAMAÇÃO CRÔNICA ═══ */}
+        <div className="gsap-reveal mb-28">
+          <div className="relative rounded-3xl overflow-hidden">
+            <div className="absolute inset-0 bg-red-950/20 border border-red-800/15 rounded-3xl" />
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-red-500/40 to-transparent" />
+            <div className="relative p-8 md:p-14">
+              <span className="text-red-500/50 text-[10px] font-bold tracking-[0.5em] uppercase">Base</span>
+              <h2 className="text-2xl md:text-3xl font-extrabold text-white mb-8 tracking-tight" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                Entendendo a Inflamação Crônica
+              </h2>
 
-          <motion.div variants={staggerChild} className="bg-gradient-to-br from-red-950/30 to-background border border-red-800/20 p-6 md:p-8 rounded-sm mb-4">
-            <div className="flex items-start gap-4 mb-6">
-              <div>
-                <p className="text-sm text-foreground/80 mb-2">Inflamação aguda é <span className="text-green-400 font-bold">protetora.</span></p>
-                <p className="text-sm text-foreground/80">Inflamação crônica é <span className="text-red-400 font-bold">destrutiva.</span></p>
-                <p className="text-sm text-muted-foreground mt-3">Ela ocorre quando o sistema imune permanece ativado de forma leve e constante.</p>
+              <div className="mb-8">
+                <p className="text-sm text-stone-300 mb-2">Inflamação aguda é <span className="text-green-400 font-bold">protetora.</span></p>
+                <p className="text-sm text-stone-300">Inflamação crônica é <span className="text-red-400 font-bold">destrutiva.</span></p>
+                <p className="text-sm text-stone-400 mt-3">Ela ocorre quando o sistema imune permanece ativado de forma leve e constante.</p>
               </div>
-            </div>
 
-            <h4 className="text-xs font-mono uppercase tracking-wider text-muted-foreground mb-3">Marcadores envolvidos:</h4>
-            <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-2 mb-6">
-              {['IL-6', 'TNF-alpha', 'PCR ultrasensível', 'Cortisol elevado'].map((m) => (
-                <div key={m} className="bg-red-500/10 border border-red-500/15 p-3 rounded-sm text-center">
-                  <span className="text-sm font-semibold text-red-400">{m}</span>
-                </div>
-              ))}
-            </div>
-
-            <h4 className="text-xs font-mono uppercase tracking-wider text-muted-foreground mb-3">Consequências:</h4>
-            <div className="grid sm:grid-cols-2 gap-2">
-              {['Danos vasculares', 'Rigidez arterial', 'Disfunção metabólica', 'Alteração do humor', 'Fadiga'].map((c) => (
-                <div key={c} className="flex items-center gap-2 text-sm text-foreground/80">
-                  <Flame size={12} className="text-red-400 shrink-0" />
-                  {c}
-                </div>
-              ))}
-            </div>
-
-            <p className="text-xs text-muted-foreground mt-6 border-t border-white/5 pt-3 italic">
-              O objetivo preventivo é reduzir inflamação basal sem bloquear o sistema imune.
-            </p>
-          </motion.div>
-        </motion.section>
-
-        {/* ═══════════════════════════════════════════════ */}
-        {/* EXPOSIÇÃO SOLAR                                 */}
-        {/* ═══════════════════════════════════════════════ */}
-        <motion.section initial="hidden" whileInView="visible" viewport={viewportOnce} variants={stagger(0.08)} className="mb-24">
-          <motion.div variants={staggerChild} className="mb-6">
-            <span className="pre-title">Pilar 01</span>
-            <h2 className="text-3xl md:text-4xl font-black tracking-tight mb-2">Exposição Solar e Modulação Imune</h2>
-          </motion.div>
-
-          <motion.div variants={staggerChild} className="bg-gradient-to-br from-amber-950/30 to-background border border-amber-800/20 p-6 md:p-8 rounded-sm">
-            <p className="text-sm text-foreground/80 mb-4">A vitamina D atua como <span className="text-amber-400 font-semibold">reguladora imunológica.</span></p>
-
-            <h4 className="text-xs font-mono uppercase tracking-wider text-muted-foreground mb-3">Ela:</h4>
-            <div className="space-y-1.5 mb-6">
-              {['Reduz citocinas inflamatórias', 'Melhora resposta antiviral', 'Regula expressão genética'].map((item) => (
-                <div key={item} className="flex items-center gap-2 text-sm text-foreground/80">
-                  <Sun size={12} className="text-amber-400 shrink-0" />
-                  {item}
-                </div>
-              ))}
-            </div>
-
-            <h4 className="text-xs font-mono uppercase tracking-wider text-muted-foreground mb-3">Baixos níveis estão associados a:</h4>
-            <div className="grid sm:grid-cols-2 gap-2">
-              {['Infecções recorrentes', 'Depressão', 'Osteopenia', 'Fadiga crônica'].map((item) => (
-                <div key={item} className="flex items-center gap-2 text-sm bg-amber-500/10 border border-amber-500/15 p-3 rounded-sm">
-                  <AlertTriangle size={12} className="text-amber-400 shrink-0" />
-                  <span className="text-foreground/80">{item}</span>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-        </motion.section>
-
-        {/* ═══════════════════════════════════════════════ */}
-        {/* SONO                                            */}
-        {/* ═══════════════════════════════════════════════ */}
-        <motion.section initial="hidden" whileInView="visible" viewport={viewportOnce} variants={stagger(0.08)} className="mb-24">
-          <motion.div variants={staggerChild} className="mb-6">
-            <span className="pre-title">Pilar 02</span>
-            <h2 className="text-3xl md:text-4xl font-black tracking-tight mb-2">Sono e Reparo Inflamatório</h2>
-          </motion.div>
-
-          <motion.div variants={staggerChild} className="bg-gradient-to-br from-indigo-950/30 to-background border border-indigo-800/20 p-6 md:p-8 rounded-sm">
-            <div className="grid md:grid-cols-2 gap-6">
-              <div>
-                <h4 className="text-xs font-mono uppercase tracking-wider text-muted-foreground mb-3">Privação de sono aumenta:</h4>
-                <div className="space-y-2">
-                  {['IL-6', 'PCR', 'Cortisol'].map((item) => (
-                    <div key={item} className="flex items-center gap-2 text-sm bg-red-500/10 border border-red-500/15 p-3 rounded-sm">
-                      <AlertTriangle size={12} className="text-red-400 shrink-0" />
-                      <span className="text-foreground/80">{item}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div>
-                <h4 className="text-xs font-mono uppercase tracking-wider text-muted-foreground mb-3">Durante sono profundo ocorre:</h4>
-                <div className="space-y-2">
-                  {['Liberação de hormônio do crescimento', 'Reparação celular', 'Regulação do eixo HPA'].map((item) => (
-                    <div key={item} className="flex items-center gap-2 text-sm bg-indigo-500/10 border border-indigo-500/15 p-3 rounded-sm">
-                      <Moon size={12} className="text-indigo-400 shrink-0" />
-                      <span className="text-foreground/80">{item}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-            <div className="mt-6 bg-amber-500/10 border border-amber-500/20 p-3 rounded-sm">
-              <p className="text-xs text-foreground/80 font-semibold">Sem sono adequado, <span className="text-amber-400">nenhuma estratégia anti-inflamatória se sustenta.</span></p>
-            </div>
-          </motion.div>
-        </motion.section>
-
-        {/* ═══════════════════════════════════════════════ */}
-        {/* MOVIMENTO                                       */}
-        {/* ═══════════════════════════════════════════════ */}
-        <motion.section initial="hidden" whileInView="visible" viewport={viewportOnce} variants={stagger(0.08)} className="mb-24">
-          <motion.div variants={staggerChild} className="mb-6">
-            <span className="pre-title">Pilar 03</span>
-            <h2 className="text-3xl md:text-4xl font-black tracking-tight mb-2">Movimento como Anti-Inflamatório Natural</h2>
-          </motion.div>
-
-          <motion.div variants={staggerChild} className="bg-gradient-to-br from-green-950/30 to-background border border-green-800/20 p-6 md:p-8 rounded-sm">
-            <h4 className="text-xs font-mono uppercase tracking-wider text-muted-foreground mb-3">Exercício moderado:</h4>
-            <div className="grid sm:grid-cols-2 gap-2 mb-6">
-              {['Reduz TNF-alpha', 'Melhora sensibilidade à insulina', 'Aumenta mitocôndrias', 'Diminui gordura visceral'].map((item) => (
-                <div key={item} className="flex items-center gap-2 text-sm bg-green-500/10 border border-green-500/15 p-3 rounded-sm">
-                  <Activity size={12} className="text-green-400 shrink-0" />
-                  <span className="text-foreground/80">{item}</span>
-                </div>
-              ))}
-            </div>
-            <div className="bg-amber-500/10 border border-amber-500/20 p-3 rounded-sm">
-              <p className="text-xs text-foreground/80">Exercício excessivo sem recuperação pode <span className="text-amber-400 font-semibold">aumentar inflamação.</span> Equilíbrio é essencial.</p>
-            </div>
-          </motion.div>
-        </motion.section>
-
-        {/* ═══════════════════════════════════════════════ */}
-        {/* ALIMENTAÇÃO ANTI-INFLAMATÓRIA                   */}
-        {/* ═══════════════════════════════════════════════ */}
-        <motion.section initial="hidden" whileInView="visible" viewport={viewportOnce} variants={stagger(0.08)} className="mb-24">
-          <motion.div variants={staggerChild} className="mb-6">
-            <span className="pre-title">Pilar 04</span>
-            <h2 className="text-3xl md:text-4xl font-black tracking-tight mb-2">Alimentação Anti-Inflamatória</h2>
-            <p className="text-muted-foreground text-sm">Camada Avançada</p>
-          </motion.div>
-
-          {/* Controle Glicêmico */}
-          <motion.div variants={staggerChild} className="bg-gradient-to-br from-amber-950/20 to-background border border-amber-800/15 p-6 md:p-8 rounded-sm mb-4">
-            <h3 className="text-lg font-bold text-foreground mb-2">1. Controle de Pico Glicêmico</h3>
-            <p className="text-sm text-muted-foreground mb-4">Picos de glicose aumentam estresse oxidativo.</p>
-            <h4 className="text-xs font-mono uppercase tracking-wider text-muted-foreground mb-3">Estratégias:</h4>
-            <div className="space-y-2 mb-4">
-              {[
-                'Consumir proteína antes do carboidrato',
-                'Incluir fibras solúveis',
-                'Evitar carboidrato isolado',
-                'Caminhar 10 minutos após refeição',
-              ].map((step, i) => (
-                <div key={i} className="flex items-start gap-3 text-sm text-foreground/80">
-                  <span className="text-[10px] font-mono text-amber-400 w-4 shrink-0 mt-0.5">{i + 1}.</span>
-                  {step}
-                </div>
-              ))}
-            </div>
-            <p className="text-xs text-emerald-400 font-semibold">Impacto: Reduz resistência à insulina.</p>
-          </motion.div>
-
-          {/* Microbiota */}
-          <motion.div variants={staggerChild} className="mb-4">
-            <div className="rounded-sm overflow-hidden relative mb-4">
-              <img src={imgMicrobiota} alt="Microbiota saudável vs disbiose" className="w-full h-64 md:h-80 object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
-              <div className="absolute bottom-4 left-4 right-4">
-                <span className="text-xs font-mono tracking-widest uppercase text-emerald-400/70">Equilíbrio · Disbiose · Microbiota</span>
-              </div>
-            </div>
-            <div className="bg-gradient-to-br from-emerald-950/30 to-background border border-emerald-800/20 p-6 md:p-8 rounded-sm">
-              <h3 className="text-lg font-bold text-foreground mb-2">2. Microbiota Intestinal</h3>
-              <p className="text-sm text-foreground/80 mb-4">70% do sistema imune está ligado ao intestino.</p>
-
-              <h4 className="text-xs font-mono uppercase tracking-wider text-muted-foreground mb-3">Disbiose gera:</h4>
-              <div className="grid sm:grid-cols-3 gap-2 mb-6">
-                {['Inflamação sistêmica', 'Distensão abdominal', 'Alteração de humor'].map((item) => (
-                  <div key={item} className="flex items-center gap-2 text-sm bg-red-500/10 border border-red-500/15 p-3 rounded-sm">
-                    <AlertTriangle size={12} className="text-red-400 shrink-0" />
-                    <span className="text-foreground/80">{item}</span>
+              <h4 className="text-[10px] font-bold tracking-[0.3em] uppercase text-stone-500 mb-4">Marcadores envolvidos</h4>
+              <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-3 mb-8">
+                {['IL-6', 'TNF-alpha', 'PCR ultrasensível', 'Cortisol elevado'].map((m) => (
+                  <div key={m} className="bg-red-500/10 border border-red-500/15 rounded-xl p-4 text-center hover:bg-red-500/15 transition-colors">
+                    <span className="text-sm font-bold text-red-400 font-mono">{m}</span>
                   </div>
                 ))}
               </div>
 
-              <h4 className="text-xs font-mono uppercase tracking-wider text-muted-foreground mb-3">Estratégias:</h4>
-              <div className="grid sm:grid-cols-2 gap-2">
-                {['Fermentados naturais', 'Fibras prebióticas', 'Variedade vegetal', 'Redução de ultraprocessados'].map((item) => (
-                  <div key={item} className="flex items-center gap-2 text-sm bg-emerald-500/10 border border-emerald-500/15 p-3 rounded-sm">
-                    <CheckCircle2 size={12} className="text-emerald-400 shrink-0" />
-                    <span className="text-foreground/80">{item}</span>
+              <h4 className="text-[10px] font-bold tracking-[0.3em] uppercase text-stone-500 mb-4">Consequências</h4>
+              <div className="grid sm:grid-cols-2 gap-3">
+                {['Danos vasculares', 'Rigidez arterial', 'Disfunção metabólica', 'Alteração do humor', 'Fadiga'].map((c) => (
+                  <div key={c} className="flex items-center gap-3 text-sm text-stone-300">
+                    <Flame size={13} className="text-red-400 shrink-0" />
+                    {c}
                   </div>
                 ))}
               </div>
-            </div>
-          </motion.div>
 
-          {/* Micronutrientes */}
-          <motion.div variants={staggerChild} className="bg-gradient-to-br from-purple-950/20 to-background border border-purple-800/15 p-6 md:p-8 rounded-sm">
-            <h3 className="text-lg font-bold text-foreground mb-4">3. Micronutrientes Anti-Inflamatórios</h3>
-            <div className="space-y-3">
-              {[
-                { nome: 'Magnésio', funcao: 'Relaxamento muscular e redução de estresse', color: 'text-blue-400' },
-                { nome: 'Zinco', funcao: 'Função imunológica', color: 'text-sky-400' },
-                { nome: 'Ômega 3', funcao: 'Redução de citocinas inflamatórias', color: 'text-cyan-400' },
-                { nome: 'Vitamina C', funcao: 'Antioxidante celular', color: 'text-orange-400' },
-                { nome: 'Curcumina', funcao: 'Modulação inflamatória', color: 'text-amber-400' },
-              ].map((n) => (
-                <div key={n.nome} className="flex items-center gap-3 bg-white/5 border border-white/10 p-4 rounded-sm">
-                  <span className={`text-sm font-bold ${n.color} min-w-[100px]`}>{n.nome}</span>
-                  <span className="text-xs text-muted-foreground">→</span>
-                  <span className="text-sm text-foreground/80">{n.funcao}</span>
-                </div>
-              ))}
-            </div>
-            <p className="text-xs text-muted-foreground mt-4 border-t border-white/5 pt-3 italic">
-              Sempre dentro de faixa segura. Evitar megadoses sem orientação.
-            </p>
-          </motion.div>
-        </motion.section>
-
-        {/* ═══════════════════════════════════════════════ */}
-        {/* CONTROLE DE ESTRESSE                            */}
-        {/* ═══════════════════════════════════════════════ */}
-        <motion.section initial="hidden" whileInView="visible" viewport={viewportOnce} variants={stagger(0.08)} className="mb-24">
-          <motion.div variants={staggerChild} className="mb-6">
-            <span className="pre-title">Pilar 05</span>
-            <h2 className="text-3xl md:text-4xl font-black tracking-tight mb-2">Controle de Estresse e Cortisol</h2>
-          </motion.div>
-
-          <motion.div variants={staggerChild} className="mb-4 rounded-sm overflow-hidden relative">
-            <img src={imgCortisol} alt="Regulação do cortisol" className="w-full h-64 md:h-80 object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
-          </motion.div>
-
-          <motion.div variants={staggerChild} className="bg-gradient-to-br from-red-950/20 to-background border border-red-800/15 p-6 md:p-8 rounded-sm mb-4">
-            <p className="text-sm text-foreground/80 mb-4">Estresse crônico mantém cortisol elevado.</p>
-            <h4 className="text-xs font-mono uppercase tracking-wider text-muted-foreground mb-3">Cortisol alto por tempo prolongado causa:</h4>
-            <div className="grid sm:grid-cols-2 gap-2">
-              {['Resistência à insulina', 'Perda muscular', 'Aumento de gordura abdominal', 'Supressão imune'].map((item) => (
-                <div key={item} className="flex items-center gap-2 text-sm bg-red-500/10 border border-red-500/15 p-3 rounded-sm">
-                  <AlertTriangle size={12} className="text-red-400 shrink-0" />
-                  <span className="text-foreground/80">{item}</span>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-
-          <motion.div variants={staggerChild} className="bg-gradient-to-br from-green-950/20 to-background border border-green-800/15 p-6 md:p-8 rounded-sm">
-            <h4 className="text-xs font-mono uppercase tracking-wider text-muted-foreground mb-3">Estratégias práticas:</h4>
-            <div className="grid sm:grid-cols-2 gap-2">
-              {[
-                { label: 'Respiração nasal lenta (4-6 ciclos/minuto)', icon: Wind },
-                { label: 'Caminhada ao ar livre', icon: Activity },
-                { label: 'Exposição solar matinal', icon: Sun },
-                { label: 'Sono regular', icon: Moon },
-              ].map((item) => (
-                <div key={item.label} className="flex items-center gap-2 text-sm bg-green-500/10 border border-green-500/15 p-3 rounded-sm">
-                  <item.icon size={14} className="text-green-400 shrink-0" />
-                  <span className="text-foreground/80">{item.label}</span>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-        </motion.section>
-
-        {/* ═══════════════════════════════════════════════ */}
-        {/* PROTOCOLO INTEGRADO                             */}
-        {/* ═══════════════════════════════════════════════ */}
-        <motion.section initial="hidden" whileInView="visible" viewport={viewportOnce} variants={stagger(0.08)} className="mb-24">
-          <motion.div variants={staggerChild} className="mb-6">
-            <span className="pre-title">Protocolo</span>
-            <h2 className="text-3xl md:text-4xl font-black tracking-tight mb-2">Protocolo Integrado Anti-Inflamatório</h2>
-          </motion.div>
-
-          <motion.div variants={staggerChild} className="bg-gradient-to-br from-emerald-950/30 to-background border border-emerald-800/20 p-6 md:p-8 rounded-sm mb-4">
-            <h3 className="text-lg font-bold text-foreground mb-4">Base diária:</h3>
-            <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-3">
-              {[
-                { label: '15–30 min de sol', icon: Sun, color: 'text-amber-400', bg: 'bg-amber-500/10', border: 'border-amber-500/15' },
-                { label: '20–30 min de movimento', icon: Activity, color: 'text-green-400', bg: 'bg-green-500/10', border: 'border-green-500/15' },
-                { label: 'Fibras e proteína adequada', icon: Salad, color: 'text-emerald-400', bg: 'bg-emerald-500/10', border: 'border-emerald-500/15' },
-                { label: '7–9h de sono', icon: Moon, color: 'text-indigo-400', bg: 'bg-indigo-500/10', border: 'border-indigo-500/15' },
-                { label: 'Hidratação consistente', icon: Droplets, color: 'text-blue-400', bg: 'bg-blue-500/10', border: 'border-blue-500/15' },
-                { label: 'Regulação emocional', icon: Brain, color: 'text-purple-400', bg: 'bg-purple-500/10', border: 'border-purple-500/15' },
-              ].map((item) => (
-                <div key={item.label} className={`flex items-center gap-3 ${item.bg} border ${item.border} p-4 rounded-sm`}>
-                  <item.icon size={18} className={`${item.color} shrink-0`} />
-                  <span className="text-sm text-foreground/80">{item.label}</span>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Sinais de Redução */}
-          <motion.div variants={staggerChild} className="bg-gradient-to-br from-green-950/20 to-background border border-green-800/15 p-6 md:p-8 rounded-sm">
-            <h3 className="text-lg font-bold text-foreground mb-4">Sinais de Redução de Inflamação</h3>
-            <div className="grid sm:grid-cols-2 gap-2">
-              {['Energia estável', 'Sono profundo', 'Menos dores articulares', 'Melhor digestão', 'Humor mais estável'].map((s) => (
-                <div key={s} className="flex items-center gap-2 text-sm bg-green-500/10 border border-green-500/15 p-3 rounded-sm">
-                  <CheckCircle2 size={14} className="text-green-400 shrink-0" />
-                  <span className="text-foreground/80">{s}</span>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-        </motion.section>
-
-        {/* ─── CONCLUSÃO ─── */}
-        <motion.div initial="hidden" whileInView="visible" viewport={viewportOnce} variants={fadeUp} className="bg-emerald-500/10 border border-emerald-500/20 p-6 rounded-sm mb-6">
-          <p className="text-sm text-foreground/80 leading-relaxed mb-2">
-            Saúde preventiva não é ausência de doença. É a capacidade de <span className="text-emerald-400 font-semibold">adaptação fisiológica.</span>
-          </p>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-3">
-            {['Inflamação controlada', 'Metabolismo eficiente', 'Hormônios regulados', 'Sistema imune equilibrado'].map((item) => (
-              <div key={item} className="text-xs text-center bg-white/5 border border-white/10 p-2 rounded-sm text-foreground/70">{item}</div>
-            ))}
-          </div>
-          <p className="text-sm text-foreground/80 mt-4">
-            Quando os pilares básicos são aplicados e as estratégias avançadas são integradas, o corpo retorna ao estado de <span className="text-green-400 font-bold">autorregulação.</span>
-          </p>
-          <p className="text-xs text-muted-foreground mt-2 italic">Isso é base biológica real.</p>
-        </motion.div>
-
-        {/* ─── DISCLAIMER ─── */}
-        <motion.div initial="hidden" whileInView="visible" viewport={viewportOnce} variants={fadeUp} className="bg-amber-950/20 border border-amber-800/30 p-6 rounded-sm mb-12">
-          <div className="flex items-start gap-3">
-            <AlertTriangle size={20} className="text-amber-400 shrink-0 mt-0.5" />
-            <div>
-              <p className="text-sm font-bold text-amber-300 mb-1">Aviso Legal</p>
-              <p className="text-xs text-muted-foreground leading-relaxed">
-                Este conteúdo é de caráter educativo e informativo. Não substitui avaliação médica profissional, diagnóstico ou tratamento. Consulte sempre um profissional de saúde antes de modificar sua rotina, especialmente se possui condições pré-existentes.
+              <p className="text-xs text-stone-500 mt-8 border-t border-white/5 pt-4 italic">
+                O objetivo preventivo é reduzir inflamação basal sem bloquear o sistema imune.
               </p>
             </div>
           </div>
-        </motion.div>
+        </div>
+
+        {/* ═══ EXPOSIÇÃO SOLAR ═══ */}
+        <div className="gsap-reveal mb-28">
+          <div className="relative rounded-3xl overflow-hidden">
+            <div className="absolute inset-0 bg-amber-950/20 border border-amber-800/15 rounded-3xl" />
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-amber-500/40 to-transparent" />
+            <div className="relative p-8 md:p-14">
+              <span className="text-amber-500/50 text-[10px] font-bold tracking-[0.5em] uppercase">Pilar 01</span>
+              <h2 className="text-2xl md:text-3xl font-extrabold text-white mb-8 tracking-tight" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                Exposição Solar e Modulação Imune
+              </h2>
+
+              <p className="text-sm text-stone-300 mb-6">A vitamina D atua como <span className="text-amber-400 font-semibold">reguladora imunológica.</span></p>
+
+              <h4 className="text-[10px] font-bold tracking-[0.3em] uppercase text-stone-500 mb-4">Ela:</h4>
+              <div className="space-y-2 mb-8">
+                {['Reduz citocinas inflamatórias', 'Melhora resposta antiviral', 'Regula expressão genética'].map((item) => (
+                  <div key={item} className="flex items-center gap-3 text-sm text-stone-300">
+                    <Sun size={13} className="text-amber-400 shrink-0" />
+                    {item}
+                  </div>
+                ))}
+              </div>
+
+              <h4 className="text-[10px] font-bold tracking-[0.3em] uppercase text-stone-500 mb-4">Baixos níveis estão associados a:</h4>
+              <div className="grid sm:grid-cols-2 gap-3">
+                {['Infecções recorrentes', 'Depressão', 'Osteopenia', 'Fadiga crônica'].map((item) => (
+                  <div key={item} className="flex items-center gap-3 text-sm bg-amber-500/10 border border-amber-500/15 rounded-xl p-4 hover:bg-amber-500/15 transition-colors">
+                    <AlertTriangle size={13} className="text-amber-400 shrink-0" />
+                    <span className="text-stone-300">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ═══ SONO ═══ */}
+        <div className="gsap-reveal mb-28">
+          <div className="relative rounded-3xl overflow-hidden">
+            <div className="absolute inset-0 bg-indigo-950/20 border border-indigo-800/15 rounded-3xl" />
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-500/40 to-transparent" />
+            <div className="relative p-8 md:p-14">
+              <span className="text-indigo-500/50 text-[10px] font-bold tracking-[0.5em] uppercase">Pilar 02</span>
+              <h2 className="text-2xl md:text-3xl font-extrabold text-white mb-8 tracking-tight" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                Sono e Reparo Inflamatório
+              </h2>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <h4 className="text-[10px] font-bold tracking-[0.3em] uppercase text-stone-500 mb-4">Privação de sono aumenta:</h4>
+                  <div className="space-y-3">
+                    {['IL-6', 'PCR', 'Cortisol'].map((item) => (
+                      <div key={item} className="flex items-center gap-3 text-sm bg-red-500/10 border border-red-500/15 rounded-xl p-4">
+                        <AlertTriangle size={13} className="text-red-400 shrink-0" />
+                        <span className="text-stone-300">{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <h4 className="text-[10px] font-bold tracking-[0.3em] uppercase text-stone-500 mb-4">Durante sono profundo ocorre:</h4>
+                  <div className="space-y-3">
+                    {['Liberação de hormônio do crescimento', 'Reparação celular', 'Regulação do eixo HPA'].map((item) => (
+                      <div key={item} className="flex items-center gap-3 text-sm bg-indigo-500/10 border border-indigo-500/15 rounded-xl p-4">
+                        <Moon size={13} className="text-indigo-400 shrink-0" />
+                        <span className="text-stone-300">{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-8 bg-amber-500/10 border border-amber-500/15 rounded-xl p-5">
+                <p className="text-sm text-stone-300 font-semibold">Sem sono adequado, <span className="text-amber-400">nenhuma estratégia anti-inflamatória se sustenta.</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ═══ MOVIMENTO ═══ */}
+        <div className="gsap-reveal mb-28">
+          <div className="relative rounded-3xl overflow-hidden">
+            <div className="absolute inset-0 bg-green-950/20 border border-green-800/15 rounded-3xl" />
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-green-500/40 to-transparent" />
+            <div className="relative p-8 md:p-14">
+              <span className="text-green-500/50 text-[10px] font-bold tracking-[0.5em] uppercase">Pilar 03</span>
+              <h2 className="text-2xl md:text-3xl font-extrabold text-white mb-8 tracking-tight" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                Movimento como Anti-Inflamatório Natural
+              </h2>
+
+              <h4 className="text-[10px] font-bold tracking-[0.3em] uppercase text-stone-500 mb-4">Exercício moderado:</h4>
+              <div className="grid sm:grid-cols-2 gap-3 mb-8">
+                {['Reduz TNF-alpha', 'Melhora sensibilidade à insulina', 'Aumenta mitocôndrias', 'Diminui gordura visceral'].map((item) => (
+                  <div key={item} className="flex items-center gap-3 text-sm bg-green-500/10 border border-green-500/15 rounded-xl p-4 hover:bg-green-500/15 transition-colors">
+                    <Activity size={13} className="text-green-400 shrink-0" />
+                    <span className="text-stone-300">{item}</span>
+                  </div>
+                ))}
+              </div>
+              <div className="bg-amber-500/10 border border-amber-500/15 rounded-xl p-5">
+                <p className="text-sm text-stone-300">Exercício excessivo sem recuperação pode <span className="text-amber-400 font-semibold">aumentar inflamação.</span> Equilíbrio é essencial.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ═══ ALIMENTAÇÃO ═══ */}
+        <div className="gsap-reveal mb-28">
+          <div className="relative rounded-3xl overflow-hidden">
+            <div className="absolute inset-0 bg-amber-950/15 border border-amber-800/10 rounded-3xl" />
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-amber-500/30 to-transparent" />
+            <div className="relative p-8 md:p-14">
+              <span className="text-amber-500/50 text-[10px] font-bold tracking-[0.5em] uppercase">Pilar 04</span>
+              <h2 className="text-2xl md:text-3xl font-extrabold text-white mb-2 tracking-tight" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                Alimentação Anti-Inflamatória
+              </h2>
+              <p className="text-stone-500 text-sm mb-10">Camada Avançada</p>
+
+              {/* Sub 1: Controle Glicêmico */}
+              <div className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-7 mb-5">
+                <h3 className="text-lg font-bold text-white mb-3" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>1. Controle de Pico Glicêmico</h3>
+                <p className="text-sm text-stone-400 mb-5">Picos de glicose aumentam estresse oxidativo.</p>
+                <h4 className="text-[10px] font-bold tracking-[0.3em] uppercase text-stone-500 mb-4">Estratégias:</h4>
+                <div className="space-y-2 mb-5">
+                  {[
+                    'Consumir proteína antes do carboidrato',
+                    'Incluir fibras solúveis',
+                    'Evitar carboidrato isolado',
+                    'Caminhar 10 minutos após refeição',
+                  ].map((step, i) => (
+                    <div key={i} className="flex items-start gap-3 text-sm text-stone-300">
+                      <span className="text-[10px] font-mono text-amber-400 w-5 shrink-0 mt-0.5">{String(i + 1).padStart(2, '0')}</span>
+                      {step}
+                    </div>
+                  ))}
+                </div>
+                <p className="text-xs text-emerald-400 font-semibold">Impacto: Reduz resistência à insulina.</p>
+              </div>
+
+              {/* Sub 2: Microbiota */}
+              <div className="rounded-2xl overflow-hidden relative mb-5">
+                <img src={imgMicrobiota} alt="Microbiota saudável vs disbiose" className="w-full h-64 md:h-80 object-cover" loading="lazy" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0d08] via-[#0a0d08]/40 to-transparent" />
+                <div className="absolute bottom-4 left-6 right-6">
+                  <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-emerald-400/70">Equilíbrio · Disbiose · Microbiota</span>
+                </div>
+              </div>
+              <div className="bg-emerald-950/25 border border-emerald-700/15 rounded-2xl p-7 mb-5">
+                <h3 className="text-lg font-bold text-white mb-3" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>2. Microbiota Intestinal</h3>
+                <p className="text-sm text-stone-300 mb-5">70% do sistema imune está ligado ao intestino.</p>
+
+                <h4 className="text-[10px] font-bold tracking-[0.3em] uppercase text-stone-500 mb-4">Disbiose gera:</h4>
+                <div className="grid sm:grid-cols-3 gap-3 mb-6">
+                  {['Inflamação sistêmica', 'Distensão abdominal', 'Alteração de humor'].map((item) => (
+                    <div key={item} className="flex items-center gap-2 text-sm bg-red-500/10 border border-red-500/15 rounded-xl p-3">
+                      <AlertTriangle size={12} className="text-red-400 shrink-0" />
+                      <span className="text-stone-300">{item}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <h4 className="text-[10px] font-bold tracking-[0.3em] uppercase text-stone-500 mb-4">Estratégias:</h4>
+                <div className="grid sm:grid-cols-2 gap-3">
+                  {['Fermentados naturais', 'Fibras prebióticas', 'Variedade vegetal', 'Redução de ultraprocessados'].map((item) => (
+                    <div key={item} className="flex items-center gap-2 text-sm bg-emerald-500/10 border border-emerald-500/15 rounded-xl p-3 hover:bg-emerald-500/15 transition-colors">
+                      <CheckCircle2 size={12} className="text-emerald-400 shrink-0" />
+                      <span className="text-stone-300">{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Sub 3: Micronutrientes */}
+              <div className="bg-purple-950/20 border border-purple-800/15 rounded-2xl p-7">
+                <h3 className="text-lg font-bold text-white mb-5" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>3. Micronutrientes Anti-Inflamatórios</h3>
+                <div className="space-y-3">
+                  {[
+                    { nome: 'Magnésio', funcao: 'Relaxamento muscular e redução de estresse', color: 'text-blue-400' },
+                    { nome: 'Zinco', funcao: 'Função imunológica', color: 'text-sky-400' },
+                    { nome: 'Ômega 3', funcao: 'Redução de citocinas inflamatórias', color: 'text-cyan-400' },
+                    { nome: 'Vitamina C', funcao: 'Antioxidante celular', color: 'text-orange-400' },
+                    { nome: 'Curcumina', funcao: 'Modulação inflamatória', color: 'text-amber-400' },
+                  ].map((n) => (
+                    <div key={n.nome} className="flex items-center gap-4 bg-white/[0.04] border border-white/[0.08] rounded-xl p-4 hover:bg-white/[0.06] transition-colors">
+                      <span className={`text-sm font-bold ${n.color} min-w-[100px] font-mono`}>{n.nome}</span>
+                      <span className="text-stone-600">→</span>
+                      <span className="text-sm text-stone-300">{n.funcao}</span>
+                    </div>
+                  ))}
+                </div>
+                <p className="text-xs text-stone-500 mt-5 border-t border-white/5 pt-4 italic">
+                  Sempre dentro de faixa segura. Evitar megadoses sem orientação.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ═══ CONTROLE DE ESTRESSE ═══ */}
+        <div className="gsap-reveal mb-28">
+          <div className="rounded-2xl overflow-hidden relative mb-5">
+            <img src={imgCortisol} alt="Regulação do cortisol" className="w-full h-64 md:h-80 object-cover" loading="lazy" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0a0d08] via-[#0a0d08]/40 to-transparent" />
+          </div>
+
+          <div className="relative rounded-3xl overflow-hidden">
+            <div className="absolute inset-0 bg-red-950/15 border border-red-800/10 rounded-3xl" />
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-red-500/30 to-transparent" />
+            <div className="relative p-8 md:p-14">
+              <span className="text-red-500/50 text-[10px] font-bold tracking-[0.5em] uppercase">Pilar 05</span>
+              <h2 className="text-2xl md:text-3xl font-extrabold text-white mb-8 tracking-tight" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                Controle de Estresse e Cortisol
+              </h2>
+
+              <p className="text-sm text-stone-300 mb-5">Estresse crônico mantém cortisol elevado.</p>
+
+              <h4 className="text-[10px] font-bold tracking-[0.3em] uppercase text-stone-500 mb-4">Cortisol alto por tempo prolongado causa:</h4>
+              <div className="grid sm:grid-cols-2 gap-3 mb-8">
+                {['Resistência à insulina', 'Perda muscular', 'Aumento de gordura abdominal', 'Supressão imune'].map((item) => (
+                  <div key={item} className="flex items-center gap-3 text-sm bg-red-500/10 border border-red-500/15 rounded-xl p-4">
+                    <AlertTriangle size={13} className="text-red-400 shrink-0" />
+                    <span className="text-stone-300">{item}</span>
+                  </div>
+                ))}
+              </div>
+
+              <h4 className="text-[10px] font-bold tracking-[0.3em] uppercase text-stone-500 mb-4">Estratégias práticas:</h4>
+              <div className="grid sm:grid-cols-2 gap-3">
+                {[
+                  { label: 'Respiração nasal lenta (4-6 ciclos/minuto)', icon: Wind },
+                  { label: 'Caminhada ao ar livre', icon: Activity },
+                  { label: 'Exposição solar matinal', icon: Sun },
+                  { label: 'Sono regular', icon: Moon },
+                ].map((item) => {
+                  const Icon = item.icon;
+                  return (
+                    <div key={item.label} className="flex items-center gap-3 text-sm bg-green-500/10 border border-green-500/15 rounded-xl p-4 hover:bg-green-500/15 transition-colors">
+                      <Icon size={14} className="text-green-400 shrink-0" />
+                      <span className="text-stone-300">{item.label}</span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ═══ PROTOCOLO INTEGRADO ═══ */}
+        <div className="gsap-reveal mb-28">
+          <div className="relative rounded-3xl overflow-hidden">
+            <div className="absolute inset-0 bg-emerald-950/25 border border-emerald-700/15 rounded-3xl" />
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-emerald-500/40 to-transparent" />
+            <div className="relative p-8 md:p-14">
+              <span className="text-emerald-500/50 text-[10px] font-bold tracking-[0.5em] uppercase">Protocolo</span>
+              <h2 className="text-2xl md:text-3xl font-extrabold text-white mb-8 tracking-tight" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                Protocolo Integrado Anti-Inflamatório
+              </h2>
+
+              <h3 className="text-sm font-bold text-stone-300 mb-5">Base diária:</h3>
+              <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-3 mb-10">
+                {[
+                  { label: '15-30 min de sol', icon: Sun, color: 'text-amber-400', bg: 'bg-amber-500/10', border: 'border-amber-500/15' },
+                  { label: '20-30 min de movimento', icon: Activity, color: 'text-green-400', bg: 'bg-green-500/10', border: 'border-green-500/15' },
+                  { label: 'Fibras e proteína adequada', icon: Salad, color: 'text-emerald-400', bg: 'bg-emerald-500/10', border: 'border-emerald-500/15' },
+                  { label: '7-9h de sono', icon: Moon, color: 'text-indigo-400', bg: 'bg-indigo-500/10', border: 'border-indigo-500/15' },
+                  { label: 'Hidratação consistente', icon: Droplets, color: 'text-blue-400', bg: 'bg-blue-500/10', border: 'border-blue-500/15' },
+                  { label: 'Regulação emocional', icon: Brain, color: 'text-purple-400', bg: 'bg-purple-500/10', border: 'border-purple-500/15' },
+                ].map((item) => {
+                  const Icon = item.icon;
+                  return (
+                    <div key={item.label} className={`flex items-center gap-3 ${item.bg} border ${item.border} rounded-xl p-4 hover:scale-[1.02] transition-transform duration-300`}>
+                      <Icon size={18} className={`${item.color} shrink-0`} />
+                      <span className="text-sm text-stone-300">{item.label}</span>
+                    </div>
+                  );
+                })}
+              </div>
+
+              <h3 className="text-sm font-bold text-stone-300 mb-5">Sinais de Redução de Inflamação</h3>
+              <div className="grid sm:grid-cols-2 gap-3">
+                {['Energia estável', 'Sono profundo', 'Menos dores articulares', 'Melhor digestão', 'Humor mais estável'].map((s) => (
+                  <div key={s} className="flex items-center gap-3 text-sm bg-green-500/10 border border-green-500/15 rounded-xl p-4">
+                    <CheckCircle2 size={14} className="text-green-400 shrink-0" />
+                    <span className="text-stone-300">{s}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ─── CONCLUSÃO ─── */}
+        <div className="gsap-reveal mb-8">
+          <div className="relative rounded-3xl overflow-hidden">
+            <div className="absolute inset-0 bg-emerald-950/30 border border-emerald-500/15 rounded-3xl" />
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent" />
+            <div className="relative p-8 md:p-12">
+              <p className="text-sm text-stone-300 leading-relaxed mb-3">
+                Saúde preventiva não é ausência de doença. É a capacidade de <span className="text-emerald-400 font-semibold">adaptação fisiológica.</span>
+              </p>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-4">
+                {['Inflamação controlada', 'Metabolismo eficiente', 'Hormônios regulados', 'Sistema imune equilibrado'].map((item) => (
+                  <div key={item} className="text-xs text-center bg-white/[0.04] border border-white/[0.08] rounded-xl p-3 text-stone-400">{item}</div>
+                ))}
+              </div>
+              <p className="text-sm text-stone-300 mt-5">
+                Quando os pilares básicos são aplicados e as estratégias avançadas são integradas, o corpo retorna ao estado de <span className="text-green-400 font-bold">autorregulação.</span>
+              </p>
+              <p className="text-xs text-stone-500 mt-3 italic">Isso é base biológica real.</p>
+            </div>
+          </div>
+        </div>
+
+        {/* ─── DISCLAIMER ─── */}
+        <div className="gsap-reveal mb-12">
+          <div className="bg-amber-950/20 border border-amber-800/20 rounded-2xl p-6">
+            <div className="flex items-start gap-3">
+              <AlertTriangle size={20} className="text-amber-400 shrink-0 mt-0.5" />
+              <div>
+                <p className="text-sm font-bold text-amber-300 mb-1">Aviso Legal</p>
+                <p className="text-xs text-stone-400 leading-relaxed">
+                  Este conteúdo é de caráter educativo e informativo. Não substitui avaliação médica profissional, diagnóstico ou tratamento. Consulte sempre um profissional de saúde antes de modificar sua rotina, especialmente se possui condições pré-existentes.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
 
         {/* ─── NAV FOOTER ─── */}
-        <div className="flex items-center justify-between pt-8 border-t border-border">
-          <Link to="/projeto-autonomo" className="text-muted-foreground hover:text-foreground transition-colors text-sm font-mono flex items-center gap-2">
-            <ArrowLeft size={14} />
+        <div className="gsap-reveal flex flex-col sm:flex-row gap-4">
+          <Link to="/projeto-autonomo"
+            className="flex-1 group flex items-center justify-center gap-2 bg-white/[0.03] border border-white/[0.08] rounded-2xl px-6 py-5 text-stone-400 text-sm font-bold hover:bg-emerald-500/10 hover:border-emerald-500/20 hover:text-emerald-400 transition-all duration-300">
+            <ChevronRight size={16} className="rotate-180 group-hover:-translate-x-1 transition-transform" />
             Projeto Autônomo
           </Link>
-          <Link to="/projeto-autonomo/avaliacao-sinais" className="text-muted-foreground hover:text-foreground transition-colors text-sm font-mono flex items-center gap-2">
+          <Link to="/projeto-autonomo/avaliacao-sinais"
+            className="flex-1 group flex items-center justify-center gap-2 bg-emerald-500/10 border border-emerald-500/20 rounded-2xl px-6 py-5 text-emerald-400 text-sm font-bold hover:bg-emerald-500/15 hover:border-emerald-400/30 transition-all duration-300">
             Avaliação de Sinais
-            <ArrowLeft size={14} className="rotate-180" />
+            <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
-      </main>
+      </div>
+
+      <ScrollToTop />
+
+      <style>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0px) translateX(0px); opacity: 0.2; }
+          33% { transform: translateY(-20px) translateX(10px); opacity: 0.4; }
+          66% { transform: translateY(-10px) translateX(-8px); opacity: 0.15; }
+        }
+      `}</style>
     </div>
   );
 };
