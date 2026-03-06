@@ -115,13 +115,13 @@ const TOOLS_LIST = [
     title: 'HoraJusta',
     badge: 'Controle de Ponto',
     desc: 'Controle de ponto inteligente que registra jornada, calcula horas extras automaticamente e gera relatórios com verificação antifraude para comprovar presença no trabalho.',
-    cta: 'Acessar App',
+    cta: 'Abrir App',
     color: 'from-cyan-500/20 to-cyan-500/0',
     borderColor: 'group-hover:border-cyan-500/50',
     textColor: 'text-cyan-400',
     icon: Timer,
     component: null,
-    externalUrl: 'https://minhahorajusta.vercel.app'
+    iframeUrl: 'https://minhahorajusta.vercel.app'
   },
   {
     id: 'dev',
@@ -144,7 +144,9 @@ const Ferramentas: React.FC = () => {
   // Render active tool inline
   if (activeTool && activeTool.id !== 'dev' && activeTool.id !== 'verificabr') {
     const Component = activeTool.component;
-    if (Component) {
+    const iframeUrl = 'iframeUrl' in activeTool ? (activeTool as any).iframeUrl : null;
+
+    if (Component || iframeUrl) {
       return (
         <div className="relative min-h-screen bg-background">
           <div className="fixed top-0 left-0 w-full z-50 p-6 bg-gradient-to-b from-background via-background/90 to-transparent pointer-events-none">
@@ -157,9 +159,20 @@ const Ferramentas: React.FC = () => {
               <ArrowLeft className="w-4 h-4" /> Voltar aos Aplicativos
             </motion.button>
           </div>
-          <div className="pt-24 pb-12">
-            <Component />
-          </div>
+          {iframeUrl ? (
+            <div className="pt-20 w-full" style={{ height: 'calc(100vh - 80px)' }}>
+              <iframe
+                src={iframeUrl}
+                title={activeTool.title}
+                className="w-full h-full border-0 rounded-b-xl"
+                allow="clipboard-read; clipboard-write"
+              />
+            </div>
+          ) : (
+            <div className="pt-24 pb-12">
+              <Component />
+            </div>
+          )}
         </div>
       );
     }
@@ -218,15 +231,11 @@ const Ferramentas: React.FC = () => {
           {TOOLS_LIST.map((tool, i) => {
             const Icon = tool.icon;
             const isInactive = tool.id === 'dev';
-            const hasExternalUrl = 'externalUrl' in tool && (tool as any).externalUrl;
             const hasCover = 'cover' in tool && (tool as any).cover;
+            const hasIframe = 'iframeUrl' in tool && (tool as any).iframeUrl;
 
             const handleClick = () => {
               if (isInactive) return;
-              if (hasExternalUrl) {
-                window.open((tool as any).externalUrl, '_blank', 'noopener,noreferrer');
-                return;
-              }
               if (tool.id !== 'verificabr') setActiveToolId(tool.id);
             };
 
@@ -268,7 +277,7 @@ const Ferramentas: React.FC = () => {
                   </p>
 
                   <div className={`mt-auto inline-flex items-center gap-2 ${tool.textColor} font-bold text-sm uppercase tracking-wider ${!isInactive && 'group-hover:gap-4'} transition-all`}>
-                    {tool.cta} {!isInactive && (hasExternalUrl ? <ExternalLink className="w-4 h-4" /> : <ArrowRight className="w-4 h-4" />)}
+                    {tool.cta} {!isInactive && <ArrowRight className="w-4 h-4" />}
                   </div>
                 </div>
                 </div>
