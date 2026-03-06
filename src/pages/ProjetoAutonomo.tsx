@@ -515,55 +515,82 @@ export default function ProjetoAutonomo() {
             </div>
           </motion.div>
 
-          {/* 2-column magazine: Featured module left + grid right */}
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 mb-12">
-            {/* Featured — large card */}
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="lg:col-span-2">
-              <Link to="/projeto-autonomo/autonomia-biologica"
-                className="group block h-full relative overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.05] hover:border-emerald-500/20 transition-all duration-500 hover:-translate-y-1 p-8 md:p-10"
+          {/* BENTO GRID — Asymmetric layout: 1 tall featured + 2 medium + 3 compact */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
+            {/* Featured — tall card spanning 2 rows */}
+            {BIO_ITEMS.slice(0, 1).map((item) => (
+              <motion.div key={item.label} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}
+                className="lg:row-span-2"
               >
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
-                  style={{ background: 'radial-gradient(ellipse at bottom left, rgba(16,185,129,0.08), transparent 60%)' }}
-                />
-                <div className="relative z-10 flex flex-col h-full">
-                  <div className="p-3.5 rounded-xl bg-emerald-500/10 border border-emerald-500/15 w-fit mb-5 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
-                    <Leaf size={24} className="text-emerald-400" />
-                  </div>
-                  <h4 className="text-xl md:text-2xl font-bold text-stone-200 tracking-tight mb-3 group-hover:text-white transition-colors">
-                    Suporte Fitoterápico
-                  </h4>
-                  <p className="text-stone-500 text-sm leading-relaxed flex-1 group-hover:text-stone-400 transition-colors">
-                    Biblioteca técnica de 12 plantas essenciais. Dosagens conservadoras, contraindicações e métodos de preparo.
-                  </p>
-                  <div className="flex items-center gap-2 mt-6 text-emerald-400/50 group-hover:text-emerald-400/80 transition-colors">
-                    <span className="text-[10px] font-bold uppercase tracking-wider">Explorar catálogo</span>
-                    <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
-                  </div>
-                </div>
-                <div className="absolute top-0 left-0 w-full h-[2px] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-700 bg-gradient-to-r from-emerald-500 to-transparent" />
-              </Link>
-            </motion.div>
-
-            {/* Grid of remaining modules */}
-            <div className="lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {BIO_ITEMS.slice(1).map((item, i) => (
-                <motion.div key={item.label} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={(i + 1) * 0.15}>
-                  <Link to={`/projeto-autonomo/${item.slug}`}
-                    className="group block h-full relative overflow-hidden rounded-xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.05] hover:border-emerald-500/15 transition-all duration-500 hover:-translate-y-1 p-5"
-                  >
-                    <div className="flex items-start gap-3">
-                      <div className="p-2 rounded-lg bg-emerald-500/8 border border-emerald-500/10 shrink-0 group-hover:scale-110 transition-transform duration-500">
-                        <item.icon size={16} className="text-emerald-400/70" />
-                      </div>
-                      <div>
-                        <h4 className="text-sm font-bold text-stone-300 mb-1 group-hover:text-white transition-colors">{item.label}</h4>
-                        <p className="text-stone-600 text-xs leading-relaxed group-hover:text-stone-500 transition-colors">{item.desc}</p>
-                      </div>
+                <Link to={`/projeto-autonomo/${item.slug}`}
+                  className="group block h-full relative overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.05] hover:border-emerald-500/20 transition-all duration-500 hover:-translate-y-1 p-8 md:p-10"
+                >
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+                    style={{ background: 'radial-gradient(ellipse at bottom left, rgba(16,185,129,0.08), transparent 60%)' }}
+                  />
+                  <div className="relative z-10 flex flex-col h-full">
+                    <div className="p-3.5 rounded-xl bg-emerald-500/10 border border-emerald-500/15 w-fit mb-5 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
+                      <item.icon size={24} className="text-emerald-400" />
                     </div>
-                  </Link>
-                </motion.div>
-              ))}
-            </div>
+                    <h4 className="text-xl md:text-2xl font-bold text-stone-200 tracking-tight mb-3 group-hover:text-white transition-colors">
+                      {item.label}
+                    </h4>
+                    <p className="text-stone-500 text-sm leading-relaxed flex-1 group-hover:text-stone-400 transition-colors">
+                      {item.desc}
+                    </p>
+                    <div className="flex items-center gap-2 mt-6 text-emerald-400/50 group-hover:text-emerald-400/80 transition-colors">
+                      <span className="text-[10px] font-bold uppercase tracking-wider">Explorar catálogo</span>
+                      <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </div>
+                  <div className="absolute top-0 left-0 w-full h-[2px] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-700 bg-gradient-to-r from-emerald-500 to-transparent" />
+                </Link>
+              </motion.div>
+            ))}
+
+            {/* Medium cards — second tier */}
+            {BIO_ITEMS.slice(1, 3).map((item, i) => (
+              <motion.div key={item.label} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={(i + 1) * 0.3}>
+                <Link to={`/projeto-autonomo/${item.slug}`}
+                  className="group block h-full relative overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.05] hover:border-emerald-500/20 transition-all duration-500 hover:-translate-y-1 p-6 md:p-8"
+                >
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+                    style={{ background: 'radial-gradient(ellipse at top right, rgba(16,185,129,0.06), transparent 60%)' }}
+                  />
+                  <div className="relative z-10 flex flex-col h-full">
+                    <div className="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/15 w-fit mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
+                      <item.icon size={20} className="text-emerald-400" />
+                    </div>
+                    <h4 className="text-base font-bold text-stone-200 tracking-tight mb-2 group-hover:text-white transition-colors">{item.label}</h4>
+                    <p className="text-stone-500 text-xs leading-relaxed flex-1 group-hover:text-stone-400 transition-colors">{item.desc}</p>
+                    <div className="flex items-center gap-2 mt-4 text-emerald-400/50 group-hover:text-emerald-400/80 transition-colors">
+                      <span className="text-[10px] font-bold uppercase tracking-wider">Acessar módulo</span>
+                      <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </div>
+                  <div className="absolute top-0 left-0 w-full h-[2px] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-700 bg-gradient-to-r from-emerald-500 to-transparent" />
+                </Link>
+              </motion.div>
+            ))}
+
+            {/* Compact cards — bottom row */}
+            {BIO_ITEMS.slice(3).map((item, i) => (
+              <motion.div key={item.label} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={(i + 3) * 0.2}>
+                <Link to={`/projeto-autonomo/${item.slug}`}
+                  className="group block h-full relative overflow-hidden rounded-xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.05] hover:border-emerald-500/15 transition-all duration-500 hover:-translate-y-1 p-5"
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="p-2 rounded-lg bg-emerald-500/8 border border-emerald-500/10 shrink-0 group-hover:scale-110 transition-transform duration-500">
+                      <item.icon size={16} className="text-emerald-400/70" />
+                    </div>
+                    <div>
+                      <h4 className="text-sm font-bold text-stone-300 mb-1 group-hover:text-white transition-colors">{item.label}</h4>
+                      <p className="text-stone-600 text-xs leading-relaxed group-hover:text-stone-500 transition-colors">{item.desc}</p>
+                    </div>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
           </div>
 
           {/* PHYSIOLOGICAL MAP — Interactive */}
