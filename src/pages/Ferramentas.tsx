@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
   ArrowLeft, ArrowRight, Calculator, Plane,
@@ -138,14 +138,21 @@ const TOOLS_LIST = [
 ];
 
 const Ferramentas: React.FC = () => {
-  const [activeToolId, setActiveToolId] = useState<string | null>(null);
+  const { toolId } = useParams<{ toolId?: string }>();
+  const navigate = useNavigate();
   const [iframeLoaded, setIframeLoaded] = useState(false);
+
+  const activeToolId = toolId || null;
   const activeTool = TOOLS_LIST.find(t => t.id === activeToolId);
 
   const handleSetActive = useCallback((id: string | null) => {
     setIframeLoaded(false);
-    setActiveToolId(id);
-  }, []);
+    if (id) {
+      navigate(`/ferramentas/${id}`);
+    } else {
+      navigate('/ferramentas');
+    }
+  }, [navigate]);
 
   // Render active tool inline
   if (activeTool && activeTool.id !== 'dev' && activeTool.id !== 'verificabr') {
