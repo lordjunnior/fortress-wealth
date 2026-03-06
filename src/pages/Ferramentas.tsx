@@ -277,7 +277,7 @@ const Ferramentas: React.FC = () => {
                   </p>
 
                   <div className={`mt-auto inline-flex items-center gap-2 ${tool.textColor} font-bold text-sm uppercase tracking-wider ${!isInactive && 'group-hover:gap-4'} transition-all`}>
-                    {tool.cta} {!isInactive && (hasExternalUrl ? <ExternalLink className="w-4 h-4" /> : <ArrowRight className="w-4 h-4" />)}
+                    {tool.cta} {!isInactive && <ArrowRight className="w-4 h-4" />}
                   </div>
                 </div>
                 </div>
