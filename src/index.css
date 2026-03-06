@@ -174,22 +174,45 @@
     box-shadow: 0 0 40px hsl(var(--gold) / 0.4);
   }
 
-  /* Padding padrão do site */
+  /* Padding padrão do site — mobile-first com mais respiro */
   .section-padding {
-    @apply px-4 md:px-8 lg:px-12 py-16 md:py-24;
+    @apply px-5 py-20 md:px-8 md:py-24 lg:px-12 lg:py-28;
   }
 
-  /* Seção alternada — glassmorphism para harmonizar com fundo vivo */
+  /* Seção alternada — glassmorphism com contraste visual claro no mobile */
   .section-alt {
-    background-color: hsl(var(--section-alt) / 0.6);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background-color: hsl(var(--section-alt) / 0.8);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
   }
 
-  /* Divisor sutil entre seções */
+  /* Divisor visível entre seções — mobile precisa de separação clara */
   .section-divider {
     @apply border-t;
-    border-color: hsl(var(--gold) / 0.06);
+    border-color: hsl(var(--gold) / 0.12);
+    position: relative;
+  }
+
+  .section-divider::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 10%;
+    width: 80%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, hsl(var(--gold) / 0.25), transparent);
+  }
+
+  @media (max-width: 767px) {
+    .section-divider {
+      @apply mt-2 mb-2;
+      border-color: hsl(var(--gold) / 0.18);
+    }
+
+    .section-divider::before {
+      height: 2px;
+      background: linear-gradient(90deg, transparent, hsl(var(--gold) / 0.35), transparent);
+    }
   }
 
   .pre-title {
