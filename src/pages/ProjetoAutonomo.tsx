@@ -171,6 +171,14 @@ const SISTEMA_LABELS: Record<string, string> = {
   glandular: "Glandular",
 };
 
+/* ─── Phase Color Map ─── */
+const PHASE_COLORS = {
+  '01': { accent: '#f43f5e', glow: 'rgba(244,63,94,0.15)', border: 'rgba(244,63,94,0.25)', text: 'text-rose-400', bg: 'bg-rose-500/10', borderClass: 'border-rose-500/20', hoverBorder: 'hover:border-rose-400/40' },
+  '02': { accent: '#10b981', glow: 'rgba(16,185,129,0.15)', border: 'rgba(16,185,129,0.25)', text: 'text-emerald-400', bg: 'bg-emerald-500/10', borderClass: 'border-emerald-500/20', hoverBorder: 'hover:border-emerald-400/40' },
+  '03': { accent: '#f59e0b', glow: 'rgba(245,158,11,0.15)', border: 'rgba(245,158,11,0.25)', text: 'text-amber-400', bg: 'bg-amber-500/10', borderClass: 'border-amber-500/20', hoverBorder: 'hover:border-amber-400/40' },
+  '04': { accent: '#14b8a6', glow: 'rgba(20,184,166,0.15)', border: 'rgba(20,184,166,0.25)', text: 'text-teal-400', bg: 'bg-teal-500/10', borderClass: 'border-teal-500/20', hoverBorder: 'hover:border-teal-400/40' },
+};
+
 /* ─── Mouse Parallax Hook ─── */
 function useMouseParallax(strength = 15) {
   const mouseX = useMotionValue(0);
@@ -193,34 +201,30 @@ function useMouseParallax(strength = 15) {
   return { springX, springY };
 }
 
-/* ─── Parallax Image Hero for each Phase ─── */
-function PhaseHero({ img, alt, phaseNum, title, highlight, colorClass, iconEl }: {
+/* ─── Cinematic Phase Hero ─── */
+function PhaseHero({ img, alt, phaseNum, title, highlight, accentColor, iconEl }: {
   img: string; alt: string; phaseNum: string; title: string; highlight: string;
-  colorClass: string; iconEl: React.ReactNode;
+  accentColor: string; iconEl: React.ReactNode;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] });
-  const imgY = useTransform(scrollYProgress, [0, 1], ['-15%', '15%']);
+  const imgY = useTransform(scrollYProgress, [0, 1], ['-12%', '12%']);
   const imgScale = useTransform(scrollYProgress, [0, 0.5, 1], [1.15, 1, 1.05]);
-  const overlayOpacity = useTransform(scrollYProgress, [0, 0.5], [0.1, 0.4]);
 
   return (
-    <div ref={ref} className="relative w-full h-72 md:h-96 overflow-hidden">
+    <div ref={ref} className="relative w-full h-64 md:h-[420px] overflow-hidden">
       <motion.img
         src={img} alt={alt}
         className="absolute inset-0 w-full h-full object-cover will-change-transform"
-        style={{ y: imgY, scale: imgScale, filter: 'contrast(1.1) saturate(1.15)' }}
+        style={{ y: imgY, scale: imgScale }}
       />
-      <motion.div
-        className="absolute inset-0 bg-black"
-        style={{ opacity: overlayOpacity }}
-      />
-      <div className={`absolute inset-0 bg-gradient-to-b from-transparent via-transparent ${colorClass}`} />
-      <div className="absolute inset-0 bg-gradient-to-t from-transparent to-black/30" />
+      {/* Dark cinematic overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-[#0a0f0a]" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-transparent" />
       
-      {/* Scanline overlay */}
-      <div className="absolute inset-0 pointer-events-none opacity-[0.03]"
-        style={{ backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.3) 2px, rgba(0,0,0,0.3) 4px)', backgroundSize: '100% 4px' }}
+      {/* Accent glow */}
+      <div className="absolute bottom-0 left-0 right-0 h-32"
+        style={{ background: `linear-gradient(to top, ${accentColor}10, transparent)` }}
       />
 
       <motion.div
@@ -230,110 +234,89 @@ function PhaseHero({ img, alt, phaseNum, title, highlight, colorClass, iconEl }:
         viewport={{ once: true }}
         transition={{ duration: 0.8, ease: APPLE_EASE, delay: 0.2 }}
       >
-        <span className={`text-[10px] font-bold tracking-[0.5em] uppercase drop-shadow-lg opacity-80`}
-          style={{ color: 'rgba(255,255,255,0.7)' }}
-        >Fase {phaseNum}</span>
-        <h2 className="text-4xl md:text-7xl font-black tracking-tighter leading-[0.9] mt-2 text-white drop-shadow-[0_4px_20px_rgba(0,0,0,0.7)]"
-          style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+        <div className="flex items-center gap-3 mb-3">
+          <div className="w-8 h-[2px] rounded-full" style={{ background: accentColor }} />
+          <span className="text-[10px] font-bold tracking-[0.5em] uppercase" style={{ color: accentColor }}>
+            Fase {phaseNum}
+          </span>
+        </div>
+        <h2 className="text-4xl md:text-7xl font-black tracking-tight leading-[0.9] text-white"
+          style={{ fontFamily: "'Space Grotesk', sans-serif" }}
         >
-          {title}<br /><span className="opacity-80">{highlight}</span>
+          {title}<br /><span style={{ color: accentColor }}>{highlight}</span>
         </h2>
       </motion.div>
       
-      <div className="absolute top-6 right-6 opacity-[0.08]">{iconEl}</div>
+      <div className="absolute top-6 right-6 opacity-[0.06]">{iconEl}</div>
     </div>
   );
 }
 
-/* ─── Module Card with advanced hover ─── */
-function ModuleCard({ item, colorBg, colorBorder, colorIcon, colorHoverBorder, basePath }: {
+/* ─── Dark Module Card ─── */
+function ModuleCard({ item, accentColor, basePath }: {
   item: { icon: any; label: string; desc: string; slug: string };
-  colorBg: string; colorBorder: string; colorIcon: string; colorHoverBorder: string; basePath: string;
+  accentColor: string; basePath: string;
 }) {
-  const [hovered, setHovered] = useState(false);
-
   return (
     <Link
       to={`${basePath}/${item.slug}`}
-      className={`block relative overflow-hidden rounded-xl transition-all duration-500 cursor-pointer group ${colorBorder} border`}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      style={{
-        transform: hovered ? 'translateY(-4px) scale(1.02)' : 'translateY(0) scale(1)',
-        boxShadow: hovered ? '0 20px 40px -15px rgba(0,0,0,0.15)' : '0 2px 8px -4px rgba(0,0,0,0.05)',
-      }}
+      className="group block relative overflow-hidden rounded-xl border border-white/[0.06] bg-white/[0.03] backdrop-blur-sm hover:bg-white/[0.06] hover:border-white/[0.12] transition-all duration-500 hover:-translate-y-1"
     >
-      {/* Shimmer line on hover */}
-      <div className="absolute top-0 left-0 w-full h-[2px] overflow-hidden">
-        <motion.div
-          className={`h-full ${colorHoverBorder}`}
-          style={{ background: 'linear-gradient(90deg, transparent, currentColor, transparent)' }}
-          animate={{ x: hovered ? ['-100%', '200%'] : '-100%' }}
-          transition={{ duration: 1.2, ease: 'linear', repeat: hovered ? Infinity : 0 }}
-        />
-      </div>
-
-      <div className={`${colorBg} p-6 backdrop-blur-sm`}>
+      <div className="p-5 md:p-6">
         <div className="flex items-start gap-4">
-          <div className={`p-2.5 rounded-xl shrink-0 transition-all duration-300 ${hovered ? 'scale-110 rotate-3' : ''}`}
-            style={{ background: hovered ? 'rgba(0,0,0,0.06)' : 'rgba(0,0,0,0.03)' }}
+          <div className="p-2.5 rounded-xl shrink-0 border border-white/[0.06] group-hover:scale-110 group-hover:rotate-3 transition-all duration-500"
+            style={{ background: `${accentColor}15` }}
           >
-            <item.icon className={colorIcon} size={18} />
+            <item.icon size={18} style={{ color: accentColor }} />
           </div>
-          <div>
-            <h4 className="text-sm font-bold mb-1.5 text-stone-800 tracking-tight">{item.label}</h4>
-            <p className="text-stone-500 text-xs leading-relaxed">{item.desc}</p>
+          <div className="flex-1 min-w-0">
+            <h4 className="text-sm font-bold mb-1.5 text-stone-200 tracking-tight group-hover:text-white transition-colors">{item.label}</h4>
+            <p className="text-stone-500 text-xs leading-relaxed group-hover:text-stone-400 transition-colors">{item.desc}</p>
           </div>
         </div>
-        <ArrowRight 
-          className={`absolute bottom-4 right-4 transition-all duration-500 ${colorIcon}`}
-          size={14}
-          style={{ opacity: hovered ? 0.6 : 0, transform: hovered ? 'translateX(0)' : 'translateX(-8px)' }}
-        />
+        <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-60 transition-all duration-500 translate-x-[-8px] group-hover:translate-x-0">
+          <ArrowRight size={14} style={{ color: accentColor }} />
+        </div>
       </div>
+      {/* Top accent line on hover */}
+      <div className="absolute top-0 left-0 w-full h-[2px] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-700"
+        style={{ background: `linear-gradient(90deg, ${accentColor}, transparent)` }}
+      />
     </Link>
   );
 }
 
-/* ─── Layer Card (Soberania Alimentar) ─── */
-function LayerCard({ layer, index }: { layer: typeof ALIMENTAR_LAYERS[0]; index: number }) {
-  const [hovered, setHovered] = useState(false);
-
+/* ─── Layer Card (Soberania Alimentar) — Dark ─── */
+function LayerCard({ layer, index, accentColor }: { layer: typeof ALIMENTAR_LAYERS[0]; index: number; accentColor: string }) {
   return (
     <Link
       to={`/projeto-autonomo/${layer.slug}`}
-      className="block border border-amber-200/50 rounded-xl overflow-hidden transition-all duration-500 group"
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      style={{
-        transform: hovered ? 'translateY(-3px)' : 'translateY(0)',
-        boxShadow: hovered ? '0 16px 40px -12px rgba(180,130,40,0.15)' : 'none',
-      }}
+      className="group block border border-white/[0.06] rounded-xl overflow-hidden bg-white/[0.02] hover:bg-white/[0.05] hover:border-white/[0.12] transition-all duration-500 hover:-translate-y-1"
     >
       <div className="flex flex-col md:flex-row">
-        <div className={`flex items-center gap-4 p-6 md:w-80 shrink-0 border-b md:border-b-0 md:border-r border-amber-100/40 transition-colors duration-500 ${hovered ? 'bg-amber-100/60' : 'bg-amber-50/50'}`}>
-          <span className="text-amber-300/50 text-2xl font-black tabular-nums" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>0{index + 1}</span>
-          <motion.div
-            className="p-2 bg-amber-100/50 rounded-xl"
-            animate={{ rotate: hovered ? 6 : 0, scale: hovered ? 1.1 : 1 }}
-            transition={{ duration: 0.4, ease: APPLE_EASE }}
+        <div className="flex items-center gap-4 p-5 md:p-6 md:w-72 shrink-0 border-b md:border-b-0 md:border-r border-white/[0.06]">
+          <span className="text-2xl font-black tabular-nums opacity-20 text-stone-500" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+            0{index + 1}
+          </span>
+          <div className="p-2 rounded-xl border border-white/[0.06] group-hover:rotate-6 group-hover:scale-110 transition-all duration-500"
+            style={{ background: `${accentColor}12` }}
           >
-            <layer.icon className="text-amber-600 shrink-0" size={20} />
-          </motion.div>
+            <layer.icon size={20} style={{ color: accentColor }} />
+          </div>
           <div>
-            <h4 className="text-sm font-bold text-stone-800 tracking-tight">{layer.title}</h4>
-            <p className="text-amber-600/60 text-[10px] font-medium mt-0.5">{layer.desc}</p>
+            <h4 className="text-sm font-bold text-stone-200 tracking-tight">{layer.title}</h4>
+            <p className="text-[10px] font-medium mt-0.5 opacity-60" style={{ color: accentColor }}>{layer.desc}</p>
           </div>
         </div>
-        <div className={`p-6 flex items-center transition-colors duration-500 ${hovered ? 'bg-white/70' : 'bg-white/40'}`}>
-          <p className="text-stone-500 text-sm leading-relaxed">{layer.details}</p>
+        <div className="p-5 md:p-6 flex items-center">
+          <p className="text-stone-500 text-sm leading-relaxed group-hover:text-stone-400 transition-colors">{layer.details}</p>
         </div>
       </div>
     </Link>
   );
 }
 
-/* ─── Seed Progression ─── */
+/* ─── Seed Progression — Dark ─── */
 function SeedProgression() {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
@@ -350,7 +333,7 @@ function SeedProgression() {
   const steps = ['1 vaso', '1 canteiro', '1 sistema'];
 
   return (
-    <div ref={ref} className="flex items-center justify-center gap-3 md:gap-6 py-8">
+    <div ref={ref} className="flex items-center justify-center gap-3 md:gap-6 py-10">
       {steps.map((step, i) => (
         <React.Fragment key={step}>
           <motion.div
@@ -359,14 +342,14 @@ function SeedProgression() {
             transition={{ duration: 0.5, ease: APPLE_EASE, delay: i * 0.4 }}
             className="flex flex-col items-center gap-2"
           >
-            <div className={`w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110
-              ${i === 0 ? 'bg-emerald-200/60 border-2 border-emerald-400/40' :
-                i === 1 ? 'bg-emerald-300/60 border-2 border-emerald-500/40' :
-                'bg-emerald-500/30 border-2 border-emerald-600/50'}`}
+            <div className={`w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center border transition-all duration-300 hover:scale-110
+              ${i === 0 ? 'bg-amber-500/10 border-amber-500/20' :
+                i === 1 ? 'bg-amber-500/15 border-amber-500/25' :
+                'bg-amber-500/20 border-amber-500/30'}`}
             >
-              <Sprout className="text-emerald-700" size={i === 2 ? 28 : i === 1 ? 24 : 20} />
+              <Sprout className="text-amber-400" size={i === 2 ? 28 : i === 1 ? 24 : 20} />
             </div>
-            <span className="text-stone-600 text-xs md:text-sm font-bold">{step}</span>
+            <span className="text-stone-500 text-xs md:text-sm font-bold">{step}</span>
           </motion.div>
           {i < steps.length - 1 && (
             <motion.div
@@ -375,11 +358,20 @@ function SeedProgression() {
               transition={{ duration: 0.4, ease: APPLE_EASE, delay: i * 0.4 + 0.25 }}
               className="flex items-center mb-6"
             >
-              <ArrowRight className="text-emerald-500/50" size={20} />
+              <ArrowRight className="text-amber-500/40" size={20} />
             </motion.div>
           )}
         </React.Fragment>
       ))}
+    </div>
+  );
+}
+
+/* ─── Section Divider ─── */
+function SectionDivider() {
+  return (
+    <div className="relative my-4 md:my-8">
+      <div className="h-px w-full bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
     </div>
   );
 }
@@ -393,78 +385,64 @@ export default function ProjetoAutonomo() {
   const { springX, springY } = useMouseParallax(12);
   const [activeSistema, setActiveSistema] = useState<string | null>(null);
 
-  // Parallax values for floating elements
   const floatY1 = useTransform(scrollYProgress, [0, 1], [0, -200]);
   const floatY2 = useTransform(scrollYProgress, [0, 1], [0, -350]);
   const floatY3 = useTransform(scrollYProgress, [0, 1], [0, -150]);
   const progressWidth = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
 
-
-  // Scroll to top on mount
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
   return (
     <div
       ref={containerRef}
-      className="min-h-screen text-stone-900 font-sans selection:bg-emerald-300/50 pb-32 relative overflow-hidden"
-      style={{ background: 'linear-gradient(180deg, #ebe5d8 0%, #ddd5c3 12%, #d2dcc4 30%, #c4d4ae 50%, #b8c9a0 70%, #cdd5bd 90%, #e0dace 100%)' }}
+      className="min-h-screen text-stone-100 font-sans selection:bg-emerald-400/30 pb-32 relative overflow-hidden"
+      style={{ background: 'linear-gradient(180deg, #050808 0%, #0a110a 8%, #0d150d 20%, #0f1a0f 40%, #0d150d 70%, #0a110a 90%, #050808 100%)' }}
     >
 
       {/* ── SCROLL PROGRESS BAR ── */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-[3px] z-50 origin-left"
-        style={{ width: progressWidth, background: 'linear-gradient(90deg, #059669, #10b981, #d97706)' }}
+        className="fixed top-0 left-0 right-0 h-[2px] z-50 origin-left"
+        style={{ width: progressWidth, background: 'linear-gradient(90deg, #10b981, #059669, #f59e0b)' }}
       />
 
-      {/* ── GRADIENT ORBS — Mouse-reactive + Scroll parallax ── */}
+      {/* ── AMBIENT BACKGROUND ── */}
       <div className="fixed inset-0 pointer-events-none z-0">
         <style>{`
-          @keyframes gradientShift {
-            0%, 100% { opacity: 0.25; transform: translate(0, 0); }
-            50% { opacity: 0.35; transform: translate(-20px, 10px); }
-          }
           @keyframes sporeDrift {
             0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0; }
-            10% { opacity: 0.6; }
-            90% { opacity: 0.4; }
+            10% { opacity: 0.5; }
+            90% { opacity: 0.3; }
             100% { transform: translateY(-800px) translateX(80px) rotate(360deg); opacity: 0; }
-          }
-          @keyframes pulseRing {
-            0%, 100% { transform: scale(1); opacity: 0.15; }
-            50% { transform: scale(1.05); opacity: 0.25; }
           }
         `}</style>
 
-        {/* Mouse-reactive gradient orbs */}
+        {/* Gradient orbs with mouse parallax */}
         <motion.div
-          className="absolute top-[-5%] right-[-5%] w-[700px] h-[700px] rounded-full"
+          className="absolute top-[-5%] right-[-10%] w-[700px] h-[700px] rounded-full"
           style={{
-            background: 'radial-gradient(circle, rgba(255,225,140,0.3) 0%, transparent 65%)',
-            animation: 'gradientShift 20s ease-in-out infinite',
+            background: 'radial-gradient(circle, rgba(16,185,129,0.08) 0%, transparent 65%)',
             x: springX, y: springY,
           }}
         />
         <motion.div
-          className="absolute bottom-[10%] left-[5%] w-[500px] h-[500px] rounded-full"
+          className="absolute bottom-[10%] left-[-5%] w-[600px] h-[600px] rounded-full"
           style={{
-            background: 'radial-gradient(circle, rgba(160,200,110,0.25) 0%, transparent 65%)',
-            animation: 'gradientShift 25s ease-in-out 3s infinite',
+            background: 'radial-gradient(circle, rgba(245,158,11,0.06) 0%, transparent 65%)',
             x: useTransform(springX, v => -v * 0.6),
             y: useTransform(springY, v => -v * 0.6),
           }}
         />
         <motion.div
-          className="absolute top-[45%] right-[15%] w-[350px] h-[350px] rounded-full"
+          className="absolute top-[50%] left-[50%] w-[400px] h-[400px] rounded-full"
           style={{
-            background: 'radial-gradient(circle, rgba(139,115,85,0.15) 0%, transparent 65%)',
-            animation: 'gradientShift 22s ease-in-out 6s infinite',
-            x: useTransform(springX, v => v * 0.4),
-            y: useTransform(springY, v => v * 0.4),
+            background: 'radial-gradient(circle, rgba(244,63,94,0.05) 0%, transparent 65%)',
+            x: useTransform(springX, v => v * 0.3),
+            y: useTransform(springY, v => v * 0.3),
           }}
         />
 
-        {/* Subtle grain */}
-        <div className="absolute inset-0 opacity-[0.02]"
+        {/* Grain */}
+        <div className="absolute inset-0 opacity-[0.015]"
           style={{
             backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
             backgroundSize: '128px 128px',
@@ -472,23 +450,23 @@ export default function ProjetoAutonomo() {
         />
       </div>
 
-      {/* ── FLOATING ORGANIC ICONS with Scroll Parallax ── */}
+      {/* ── FLOATING ICONS with Scroll Parallax ── */}
       <motion.div style={{ y: floatY1 }} className="fixed top-[18%] left-[6%] pointer-events-none z-0">
-        <Leaf className="text-emerald-700/[0.06]" size={100} />
+        <Leaf className="text-emerald-500/[0.04]" size={100} />
       </motion.div>
       <motion.div style={{ y: floatY2 }} className="fixed bottom-[12%] right-[4%] pointer-events-none z-0">
-        <TreePine className="text-emerald-800/[0.05]" size={130} />
+        <TreePine className="text-emerald-500/[0.03]" size={130} />
       </motion.div>
       <motion.div style={{ y: floatY3 }} className="fixed top-[60%] left-[80%] pointer-events-none z-0">
-        <Wheat className="text-amber-700/[0.06]" size={90} />
+        <Wheat className="text-amber-500/[0.04]" size={90} />
       </motion.div>
 
       {/* ── SPORE PARTICLES ── */}
-      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-40">
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-30">
         {Array.from({ length: 12 }).map((_, i) => (
           <div
             key={i}
-            className="absolute rounded-full bg-emerald-600/30"
+            className="absolute rounded-full bg-emerald-400/30"
             style={{
               width: `${2 + Math.random() * 3}px`,
               height: `${2 + Math.random() * 3}px`,
@@ -501,44 +479,47 @@ export default function ProjetoAutonomo() {
       </div>
 
       {/* ═══════════════ MAIN CONTENT ═══════════════ */}
-      <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-10 pt-28">
+      <div className="relative z-10 max-w-6xl mx-auto px-5 md:px-10 pt-24 md:pt-28">
 
-        <Link to="/" className="inline-flex items-center gap-2 text-stone-400 hover:text-stone-700 mb-20 text-[10px] font-bold uppercase tracking-[0.3em] transition-all duration-500 hover:tracking-[0.4em] group">
-          <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform duration-300" /> Voltar ao Início
-        </Link>
+        {/* Breadcrumb */}
+        <nav className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] mb-16 md:mb-20">
+          <Link to="/" className="text-stone-600 hover:text-emerald-400 transition-colors">Início</Link>
+          <span className="text-stone-700">/</span>
+          <span className="text-emerald-400">Projeto Autônomo</span>
+        </nav>
 
         {/* ═══════════════ HERO HEADER ═══════════════ */}
         <motion.header
           initial="hidden" animate="visible" variants={scaleIn} custom={0}
-          className="mb-28"
+          className="mb-24 md:mb-32"
         >
           <div className="flex items-start gap-5 mb-10">
             <motion.div
-              className="p-4 bg-emerald-600/10 border border-emerald-500/20 rounded-2xl mt-1"
-              whileHover={{ scale: 1.1, rotate: 5, borderColor: 'rgba(5,150,105,0.4)' }}
+              className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-2xl mt-1"
+              whileHover={{ scale: 1.1, rotate: 5, borderColor: 'rgba(16,185,129,0.4)' }}
               transition={{ duration: 0.4, ease: APPLE_EASE }}
             >
-              <Shield className="text-emerald-700" size={28} />
+              <Shield className="text-emerald-400" size={28} />
             </motion.div>
             <div>
               <motion.p
-                className="text-emerald-600 text-[10px] font-bold uppercase tracking-[0.5em] mb-3"
+                className="text-emerald-500/70 text-[10px] font-bold uppercase tracking-[0.5em] mb-3"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
               >
                 Engenharia de Resiliência Pessoal
               </motion.p>
-              <h1 className="text-5xl md:text-8xl font-black tracking-tighter uppercase leading-[0.9] text-stone-800" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+              <h1 className="text-5xl md:text-8xl font-black tracking-tight uppercase leading-[0.9]" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                 <motion.span
-                  className="inline-block"
+                  className="inline-block text-white"
                   initial={{ opacity: 0, y: 40, filter: 'blur(10px)' }}
                   animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
                   transition={{ duration: 0.8, ease: APPLE_EASE, delay: 0.1 }}
                 >PROJETO</motion.span>
                 <br />
                 <motion.span
-                  className="inline-block text-emerald-700"
+                  className="inline-block text-emerald-400"
                   initial={{ opacity: 0, y: 40, filter: 'blur(10px)' }}
                   animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
                   transition={{ duration: 0.8, ease: APPLE_EASE, delay: 0.3 }}
@@ -548,20 +529,20 @@ export default function ProjetoAutonomo() {
             </div>
           </div>
 
-          {/* PNL Hook — Cognitive Dissonance */}
+          {/* PNL Hook */}
           <motion.div
-            className="relative pl-6 border-l-2 border-emerald-500/30 max-w-3xl"
+            className="relative pl-6 border-l-2 border-emerald-500/20 max-w-3xl"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.5 }}
           >
-            <p className="text-stone-600 text-base md:text-lg leading-relaxed">
-              Você terceiriza sua <span className="text-emerald-700 font-bold">comida</span> para uma indústria que lucra com a sua doença.
-              Terceiriza sua <span className="text-emerald-700 font-bold">saúde</span> para um sistema que lucra com a sua dependência.
-              E terceiriza sua <span className="text-emerald-700 font-bold">segurança</span> para um Estado que lucra com o seu medo.
+            <p className="text-stone-400 text-base md:text-lg leading-relaxed">
+              Você terceiriza sua <span className="text-emerald-400 font-bold">comida</span> para uma indústria que lucra com a sua doença.
+              Terceiriza sua <span className="text-emerald-400 font-bold">saúde</span> para um sistema que lucra com a sua dependência.
+              E terceiriza sua <span className="text-emerald-400 font-bold">segurança</span> para um Estado que lucra com o seu medo.
             </p>
-            <p className="text-stone-500 text-sm mt-4 leading-relaxed">
-              Quatro fases. Uma progressão lógica. A construção metódica da sua <span className="font-semibold text-stone-700">independência real</span>.
+            <p className="text-stone-600 text-sm mt-4 leading-relaxed">
+              Quatro fases. Uma progressão lógica. A construção metódica da sua <span className="font-semibold text-stone-300">independência real</span>.
               <SimboloOculto id="folha" className="ml-2 align-middle" />
             </p>
           </motion.div>
@@ -576,7 +557,7 @@ export default function ProjetoAutonomo() {
             <motion.div
               animate={{ y: [0, 8, 0] }}
               transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-              className="flex flex-col items-center gap-2 text-stone-400"
+              className="flex flex-col items-center gap-2 text-stone-600"
             >
               <span className="text-[9px] uppercase tracking-[0.4em] font-bold">Explorar</span>
               <ChevronDown size={16} />
@@ -584,71 +565,80 @@ export default function ProjetoAutonomo() {
           </motion.div>
         </motion.header>
 
-        {/* ═══════════════ PROGRESSION MAP ═══════════════ */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-28">
-          {[
-            { num: '01', title: 'Base 72', sub: 'Protege o corpo', colorText: 'text-rose-600', colorBg: 'bg-rose-50/70', colorBorder: 'border-rose-200/60', colorHover: 'hover:border-rose-300 hover:shadow-rose-100/40', desc: 'Autonomia mínima nas primeiras 72 horas. Abrigo, água, comunicação e deslocamento.', sectionId: 'fase-01' },
-            { num: '02', title: 'Autonomia Biológica', sub: 'Fortalece o corpo', colorText: 'text-emerald-600', colorBg: 'bg-emerald-50/70', colorBorder: 'border-emerald-200/60', colorHover: 'hover:border-emerald-300 hover:shadow-emerald-100/40', desc: 'Saúde preventiva, primeiros socorros e fitoterapia como primeira linha de defesa.', sectionId: 'fase-02' },
-            { num: '03', title: 'Soberania Alimentar', sub: 'Alimenta o corpo', colorText: 'text-amber-600', colorBg: 'bg-amber-50/70', colorBorder: 'border-amber-200/60', colorHover: 'hover:border-amber-300 hover:shadow-amber-100/40', desc: 'Produção própria de alimento. Horta, solo, conservação e proteína sustentável.', sectionId: 'fase-03' },
-            { num: '04', title: 'Conhecimento Perdido', sub: 'Ensina a entender o corpo', colorText: 'text-teal-600', colorBg: 'bg-teal-50/70', colorBorder: 'border-teal-200/60', colorHover: 'hover:border-teal-300 hover:shadow-teal-100/40', desc: 'Formação bioquímica e botânica. 12 plantas, 5 sistemas, 9 seções técnicas por ficha.', link: '/projeto-autonomo/conhecimento-perdido' },
-          ].map((phase, i) => {
-            const content = (
-              <>
-                <span className={`${phase.colorText} text-[10px] font-bold tracking-[0.4em] uppercase opacity-70`}>Fase {phase.num}</span>
-                <h3 className="text-xl font-bold tracking-tight mt-3 mb-1 text-stone-800">{phase.title}</h3>
-                <p className={`${phase.colorText} text-xs font-semibold uppercase tracking-widest mb-4`}>{phase.sub}</p>
-                <p className="text-stone-500 text-sm leading-relaxed">{phase.desc}</p>
-                <ArrowRight className={`${phase.colorText} mt-5 opacity-0 group-hover:opacity-60 transition-all duration-500 group-hover:translate-x-2`} size={16} />
-              </>
-            );
-            const cls = `${phase.colorBg} ${phase.colorBorder} ${phase.colorHover} border p-8 md:p-10 rounded-2xl backdrop-blur-sm transition-all duration-500 group cursor-pointer hover:shadow-xl hover:scale-[1.03] hover:-translate-y-1 block`;
-
-            if ('link' in phase && phase.link) {
-              return (
-                <motion.div key={phase.num} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={scaleIn} custom={i}>
-                  <Link to={phase.link} className={cls}>{content}</Link>
+        {/* ═══════════════ PHASE NAVIGATION MAP ═══════════════ */}
+        <motion.section
+          initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}
+          className="mb-24 md:mb-32"
+        >
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              { num: '01', title: 'Base 72', sub: 'Protege o corpo', color: PHASE_COLORS['01'], desc: 'Autonomia mínima nas primeiras 72 horas. Abrigo, água, comunicação e deslocamento.', sectionId: 'fase-01', icon: Clock },
+              { num: '02', title: 'Autonomia Biológica', sub: 'Fortalece o corpo', color: PHASE_COLORS['02'], desc: 'Saúde preventiva, primeiros socorros e fitoterapia como primeira linha de defesa.', sectionId: 'fase-02', icon: Heart },
+              { num: '03', title: 'Soberania Alimentar', sub: 'Alimenta o corpo', color: PHASE_COLORS['03'], desc: 'Produção própria de alimento. Horta, solo, conservação e proteína sustentável.', sectionId: 'fase-03', icon: Wheat },
+              { num: '04', title: 'Conhecimento Perdido', sub: 'Ensina a entender o corpo', color: PHASE_COLORS['04'], desc: 'Formação bioquímica e botânica. 12 plantas, 5 sistemas, 9 seções técnicas por ficha.', link: '/projeto-autonomo/conhecimento-perdido', icon: BookOpen },
+            ].map((phase, i) => {
+              const inner = (
+                <motion.div
+                  initial="hidden" whileInView="visible" viewport={{ once: true }} variants={scaleIn} custom={i}
+                  className={`relative overflow-hidden rounded-2xl border bg-white/[0.02] backdrop-blur-sm p-6 md:p-8 cursor-pointer group transition-all duration-500 hover:scale-[1.03] hover:-translate-y-1 h-full`}
+                  style={{ borderColor: phase.color.border }}
+                  onClick={!('link' in phase) ? () => document.getElementById(phase.sectionId!)?.scrollIntoView({ behavior: 'smooth' }) : undefined}
+                >
+                  {/* Glow on hover */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-2xl"
+                    style={{ background: `radial-gradient(ellipse at center, ${phase.color.glow}, transparent 70%)` }}
+                  />
+                  <div className="relative z-10">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="p-2 rounded-lg" style={{ background: `${phase.color.accent}15`, border: `1px solid ${phase.color.accent}25` }}>
+                        <phase.icon size={16} style={{ color: phase.color.accent }} />
+                      </div>
+                      <span className="text-[10px] font-bold tracking-[0.4em] uppercase opacity-60" style={{ color: phase.color.accent }}>
+                        Fase {phase.num}
+                      </span>
+                    </div>
+                    <h3 className="text-lg md:text-xl font-bold tracking-tight mb-1 text-stone-200 group-hover:text-white transition-colors">{phase.title}</h3>
+                    <p className="text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: phase.color.accent + '99' }}>{phase.sub}</p>
+                    <p className="text-stone-500 text-sm leading-relaxed group-hover:text-stone-400 transition-colors">{phase.desc}</p>
+                    <ArrowRight style={{ color: phase.color.accent }} className="mt-5 opacity-0 group-hover:opacity-60 transition-all duration-500 group-hover:translate-x-2" size={16} />
+                  </div>
                 </motion.div>
               );
-            }
-            return (
-              <motion.div
-                key={phase.num}
-                initial="hidden" whileInView="visible" viewport={{ once: true }} variants={scaleIn} custom={i}
-                onClick={() => document.getElementById(phase.sectionId!)?.scrollIntoView({ behavior: 'smooth' })}
-                className={cls}
-              >
-                {content}
-              </motion.div>
-            );
-          })}
-        </div>
 
-        {/* ─── Expansão contínua ─── */}
-        <motion.div
-          initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}
-          className="flex justify-center mb-28 -mt-20"
-        >
-          <div className="inline-flex items-center gap-2 bg-stone-200/40 border border-stone-300/30 px-5 py-2.5 rounded-full backdrop-blur-sm">
-            <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="text-stone-500 text-[10px] font-bold uppercase tracking-[0.4em]">Conteúdo em expansão contínua</span>
+              if ('link' in phase && phase.link) {
+                return <Link to={phase.link} key={phase.num} className="block">{inner}</Link>;
+              }
+              return <div key={phase.num}>{inner}</div>;
+            })}
           </div>
-        </motion.div>
+
+          {/* Expansão contínua */}
+          <motion.div
+            initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}
+            className="flex justify-center mt-10"
+          >
+            <div className="inline-flex items-center gap-2 bg-white/[0.03] border border-white/[0.06] px-5 py-2.5 rounded-full backdrop-blur-sm">
+              <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              <span className="text-stone-600 text-[10px] font-bold uppercase tracking-[0.4em]">Conteúdo em expansão contínua</span>
+            </div>
+          </motion.div>
+        </motion.section>
 
         {/* ═══════════════ NOTA CONTEXTUAL ═══════════════ */}
         <motion.div
           initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}
-          className="bg-stone-100/60 border border-stone-300/40 p-8 md:p-10 mb-28 rounded-2xl backdrop-blur-sm"
+          className="bg-white/[0.03] border border-white/[0.06] p-8 md:p-10 mb-24 md:mb-32 rounded-2xl backdrop-blur-sm"
         >
           <div className="flex flex-col md:flex-row gap-6 md:items-start">
-            <div className="shrink-0 p-3 bg-stone-200/60 rounded-xl">
-              <AlertTriangle className="text-stone-500" size={18} />
+            <div className="shrink-0 p-3 bg-amber-500/10 border border-amber-500/15 rounded-xl">
+              <AlertTriangle className="text-amber-400" size={18} />
             </div>
             <div>
-              <p className="text-stone-600 text-[10px] font-bold uppercase tracking-[0.4em] mb-4">Gestão de risco — Base técnica</p>
+              <p className="text-amber-400/80 text-[10px] font-bold uppercase tracking-[0.4em] mb-4">Gestão de risco — Base técnica</p>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm leading-relaxed text-stone-500">
-                <p><span className="text-stone-700 font-semibold">Quem produz parte do que consome</span> reduz exposição a rupturas de abastecimento.</p>
-                <p><span className="text-stone-700 font-semibold">Quem entende a cadeia alimentar</span> interpreta melhor preço, escassez e qualidade.</p>
-                <p><span className="text-stone-700 font-semibold">Quem domina técnicas básicas de cultivo</span> amplia sua margem de segurança.</p>
+                <p><span className="text-stone-300 font-semibold">Quem produz parte do que consome</span> reduz exposição a rupturas de abastecimento.</p>
+                <p><span className="text-stone-300 font-semibold">Quem entende a cadeia alimentar</span> interpreta melhor preço, escassez e qualidade.</p>
+                <p><span className="text-stone-300 font-semibold">Quem domina técnicas básicas de cultivo</span> amplia sua margem de segurança.</p>
               </div>
             </div>
           </div>
@@ -656,323 +646,298 @@ export default function ProjetoAutonomo() {
 
         {/* ═══════════════ FASE 01 — BASE 72 ═══════════════ */}
         <motion.section
-          id="fase-01" className="mb-28 scroll-mt-32"
+          id="fase-01" className="mb-24 md:mb-32 scroll-mt-32"
           initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }} variants={fadeUp} custom={0}
         >
-          <div className="border border-rose-200/50 rounded-3xl backdrop-blur-sm relative overflow-hidden">
+          <div className="rounded-3xl border border-white/[0.06] overflow-hidden" style={{ background: 'linear-gradient(180deg, transparent, rgba(244,63,94,0.03))' }}>
             <PhaseHero
               img={imgBase72} alt="Kit Tático 72h"
               phaseNum="01" title="BASE" highlight="72"
-              colorClass="to-rose-50/100"
+              accentColor="#f43f5e"
               iconEl={<Clock className="text-white" size={120} />}
             />
 
-            <div className="bg-rose-50/80 p-10 md:p-14 relative">
-              <div className="relative z-10">
-                <p className="text-stone-500 text-sm md:text-base leading-relaxed max-w-2xl mb-4">
-                  A referência vem da regra das 72 horas usada em protocolos de defesa civil.
-                  Após uma interrupção grave, os primeiros três dias exigem autonomia mínima.
-                  Essa preparação é baseada em <span className="font-semibold text-stone-700">dados históricos de resposta a desastres</span>.
-                </p>
-                <p className="text-stone-400 text-xs font-semibold uppercase tracking-wider mb-12">
-                  Preparação mínima. Autonomia imediata. Protocolo objetivo.
-                </p>
+            <div className="p-8 md:p-14">
+              <p className="text-stone-400 text-sm md:text-base leading-relaxed max-w-2xl mb-4">
+                A referência vem da regra das 72 horas usada em protocolos de defesa civil.
+                Após uma interrupção grave, os primeiros três dias exigem autonomia mínima.
+                Essa preparação é baseada em <span className="font-semibold text-stone-200">dados históricos de resposta a desastres</span>.
+              </p>
+              <p className="text-stone-600 text-xs font-semibold uppercase tracking-wider mb-12">
+                Preparação mínima. Autonomia imediata. Protocolo objetivo.
+              </p>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {BASE72_ITEMS.map((item, i) => (
-                    <motion.div key={item.label} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i * 0.4}>
-                      <ModuleCard
-                        item={item}
-                        colorBg="bg-white/50"
-                        colorBorder="border-rose-100/60"
-                        colorIcon="text-rose-500"
-                        colorHoverBorder="text-rose-400"
-                        basePath="/projeto-autonomo"
-                      />
-                    </motion.div>
-                  ))}
-                </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {BASE72_ITEMS.map((item, i) => (
+                  <motion.div key={item.label} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i * 0.4}>
+                    <ModuleCard item={item} accentColor="#f43f5e" basePath="/projeto-autonomo" />
+                  </motion.div>
+                ))}
+              </div>
 
-                <div className="mt-10 p-6 bg-rose-100/30 border border-rose-200/30 rounded-xl">
-                  <p className="text-rose-600/80 text-sm font-medium">
-                    A preparação antecipa a necessidade. Ter um kit básico reduz a dependência de resposta externa nas primeiras horas.
-                  </p>
-                </div>
-
-                <div className="mt-8">
-                  <RiskBlock
-                    theme="light"
-                    title="Sem esta base, o que acontece?"
-                    consequences={[
-                      "Dependência total de resgate externo nas primeiras 72 horas — tempo em que sistemas públicos estão sobrecarregados.",
-                      "Sem água potável ou abrigo, a capacidade de decisão se degrada em poucas horas.",
-                      "Comunicação zero com familiares em cenário de apagão ou desastre natural.",
-                    ]}
-                  />
-                </div>
+              <div className="mt-10">
+                <RiskBlock
+                  theme="dark"
+                  title="Sem esta base, o que acontece?"
+                  consequences={[
+                    "Dependência total de resgate externo nas primeiras 72 horas — tempo em que sistemas públicos estão sobrecarregados.",
+                    "Sem água potável ou abrigo, a capacidade de decisão se degrada em poucas horas.",
+                    "Comunicação zero com familiares em cenário de apagão ou desastre natural.",
+                  ]}
+                />
               </div>
             </div>
           </div>
         </motion.section>
+
+        <SectionDivider />
 
         {/* ═══════════════ FASE 02 — AUTONOMIA BIOLÓGICA ═══════════════ */}
         <motion.section
-          id="fase-02" className="mb-28 scroll-mt-32"
+          id="fase-02" className="mb-24 md:mb-32 scroll-mt-32"
           initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }} variants={fadeUp} custom={0}
         >
-          <div className="border border-emerald-200/50 rounded-3xl backdrop-blur-sm relative overflow-hidden">
+          <div className="rounded-3xl border border-white/[0.06] overflow-hidden" style={{ background: 'linear-gradient(180deg, transparent, rgba(16,185,129,0.03))' }}>
             <PhaseHero
               img={imgAutonomiaBiologica} alt="Autonomia Biológica"
               phaseNum="02" title="AUTONOMIA" highlight="BIOLÓGICA"
-              colorClass="to-emerald-50/100"
+              accentColor="#10b981"
               iconEl={<Heart className="text-white" size={120} />}
             />
 
-            <div className="bg-emerald-50/80 p-10 md:p-14 relative">
-              <div className="relative z-10">
-                <p className="text-stone-500 text-sm md:text-base leading-relaxed max-w-2xl mb-4">
-                  Fortalecer o corpo é a base da resiliência. Conhecimento tradicional de cuidado
-                  complementa o sistema de saúde e amplia a capacidade de resposta em cenários adversos.
-                </p>
-                <p className="text-stone-400 text-xs font-semibold uppercase tracking-wider mb-12">
-                  Base preventiva. Suporte tradicional. Complemento ao cuidado convencional.
-                </p>
+            <div className="p-8 md:p-14">
+              <p className="text-stone-400 text-sm md:text-base leading-relaxed max-w-2xl mb-4">
+                Fortalecer o corpo é a base da resiliência. Conhecimento tradicional de cuidado
+                complementa o sistema de saúde e amplia a capacidade de resposta em cenários adversos.
+              </p>
+              <p className="text-stone-600 text-xs font-semibold uppercase tracking-wider mb-12">
+                Base preventiva. Suporte tradicional. Complemento ao cuidado convencional.
+              </p>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {BIO_ITEMS.map((item, i) => (
-                    <motion.div key={item.label} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i * 0.4}>
-                      <ModuleCard
-                        item={item}
-                        colorBg="bg-white/50"
-                        colorBorder="border-emerald-100/60"
-                        colorIcon="text-emerald-500"
-                        colorHoverBorder="text-emerald-400"
-                        basePath="/projeto-autonomo"
-                      />
-                    </motion.div>
-                  ))}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {BIO_ITEMS.map((item, i) => (
+                  <motion.div key={item.label} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i * 0.4}>
+                    <ModuleCard item={item} accentColor="#10b981" basePath="/projeto-autonomo" />
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* ═══ MAPA DE SISTEMAS FISIOLÓGICOS ═══ */}
+              <motion.div
+                initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={1}
+                className="mt-16 mb-10"
+              >
+                <p className="text-emerald-500/60 text-[10px] font-bold uppercase tracking-[0.5em] mb-2">Mapa Fisiológico</p>
+                <h3 className="text-xl md:text-2xl font-bold text-stone-200 tracking-tight mb-2">
+                  A base que sustenta cada decisão de <span className="text-emerald-400">saúde</span>
+                </h3>
+                <p className="text-stone-500 text-sm mb-8 max-w-xl">Clique em um sistema para revelar as plantas associadas, o foco terapêutico e a estratégia de autonomia.</p>
+
+                <div className="flex flex-wrap gap-3 mb-6">
+                  {Object.entries(SISTEMAS_DATA).map(([key, sys]) => {
+                    const isActive = activeSistema === key;
+                    const Icon = sys.icon;
+                    return (
+                      <motion.button
+                        key={key}
+                        onClick={() => setActiveSistema(isActive ? null : key)}
+                        whileHover={{ scale: 1.08, y: -2 }}
+                        whileTap={{ scale: 0.95 }}
+                        className={`flex items-center gap-2.5 px-5 py-3 rounded-xl border text-sm font-semibold transition-all duration-500 cursor-pointer ${
+                          isActive
+                            ? 'bg-emerald-500 text-white border-emerald-400 shadow-lg shadow-emerald-500/20'
+                            : 'bg-white/[0.04] text-stone-400 border-white/[0.08] hover:bg-emerald-500/10 hover:border-emerald-500/30 hover:text-emerald-300'
+                        }`}
+                      >
+                        <Icon size={16} className={isActive ? 'text-white' : 'text-emerald-500/70'} />
+                        {SISTEMA_LABELS[key]}
+                      </motion.button>
+                    );
+                  })}
                 </div>
+              </motion.div>
 
-                {/* ═══ MAPA DE SISTEMAS FISIOLÓGICOS — Interativo ═══ */}
-                <motion.div
-                  initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={1}
-                  className="mt-14 mb-10"
-                >
-                  <p className="text-emerald-700 text-[10px] font-bold uppercase tracking-[0.5em] mb-2">Mapa Fisiológico</p>
-                  <h3 className="text-xl md:text-2xl font-bold text-stone-800 tracking-tight mb-2">
-                    A base que sustenta cada decisão de <span className="text-emerald-600">saúde</span>
-                  </h3>
-                  <p className="text-stone-500 text-sm mb-8 max-w-xl">Clique em um sistema para revelar as plantas associadas, o foco terapêutico e a estratégia de autonomia.</p>
+              <PainelTaticoFisiologico
+                isOpen={!!activeSistema}
+                onClose={() => setActiveSistema(null)}
+                nome={activeSistema ? (SISTEMA_LABELS[activeSistema] || activeSistema) : ""}
+                sistema={activeSistema ? SISTEMAS_DATA[activeSistema] : null}
+              />
 
-                  {/* System Icons Row */}
-                  <div className="flex flex-wrap gap-3 mb-6">
-                    {Object.entries(SISTEMAS_DATA).map(([key, sys]) => {
-                      const isActive = activeSistema === key;
-                      const Icon = sys.icon;
-                      return (
-                        <motion.button
-                          key={key}
-                          onClick={() => setActiveSistema(isActive ? null : key)}
-                          whileHover={{ scale: 1.08, y: -2 }}
-                          whileTap={{ scale: 0.95 }}
-                          className={`flex items-center gap-2.5 px-5 py-3 rounded-xl border text-sm font-semibold transition-all duration-500 cursor-pointer ${
-                            isActive
-                              ? 'bg-emerald-600 text-white border-emerald-500 shadow-lg shadow-emerald-300/30'
-                              : 'bg-white/60 text-stone-600 border-stone-200/60 hover:bg-emerald-50 hover:border-emerald-300 hover:text-emerald-700'
-                          }`}
-                        >
-                          <Icon size={16} className={isActive ? 'text-white' : 'text-emerald-500'} />
-                          {SISTEMA_LABELS[key]}
-                        </motion.button>
-                      );
-                    })}
-                  </div>
-
-                </motion.div>
-
-                {/* Drawer Tático — renderizado via portal-style no final */}
-                <PainelTaticoFisiologico
-                  isOpen={!!activeSistema}
-                  onClose={() => setActiveSistema(null)}
-                  nome={activeSistema ? (SISTEMA_LABELS[activeSistema] || activeSistema) : ""}
-                  sistema={activeSistema ? SISTEMAS_DATA[activeSistema] : null}
-                />
-
-                {/* CTA Hub Sabedoria Ancestral */}
-                <Link to="/projeto-autonomo/sabedoria-ancestral"
-                  className="mt-10 block bg-gradient-to-r from-emerald-100/50 to-emerald-50/60 border border-emerald-300/50 rounded-xl p-6 hover:border-emerald-400 hover:shadow-xl hover:shadow-emerald-200/20 hover:scale-[1.01] transition-all duration-500 group"
-                >
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-4">
-                      <div className="p-3 bg-emerald-200/50 rounded-xl group-hover:rotate-6 transition-transform duration-500">
-                        <Leaf className="text-emerald-600" size={20} />
-                      </div>
-                      <div>
-                        <p className="text-emerald-700 text-sm font-bold">Sabedoria Ancestral</p>
-                        <p className="text-stone-500 text-xs mt-0.5">Hub completo: plantas medicinais, saúde natural e soberania alimentar</p>
-                      </div>
+              {/* CTA Hub Sabedoria Ancestral */}
+              <Link to="/projeto-autonomo/sabedoria-ancestral"
+                className="mt-10 block bg-emerald-500/[0.06] border border-emerald-500/15 rounded-xl p-6 hover:border-emerald-400/30 hover:bg-emerald-500/[0.1] transition-all duration-500 group"
+              >
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-4">
+                    <div className="p-3 bg-emerald-500/15 rounded-xl group-hover:rotate-6 transition-transform duration-500">
+                      <Leaf className="text-emerald-400" size={20} />
                     </div>
-                    <ArrowRight className="text-emerald-400 group-hover:translate-x-2 transition-transform duration-500" size={18} />
+                    <div>
+                      <p className="text-emerald-300 text-sm font-bold">Sabedoria Ancestral</p>
+                      <p className="text-stone-500 text-xs mt-0.5">Hub completo: plantas medicinais, saúde natural e soberania alimentar</p>
+                    </div>
                   </div>
-                </Link>
-
-                <div className="mt-4 p-6 bg-emerald-100/30 border border-emerald-200/30 rounded-xl">
-                  <p className="text-emerald-600/80 text-sm font-medium">
-                    Conhecer plantas medicinais, primeiros socorros e hábitos preventivos amplia autonomia sem substituir acompanhamento profissional.
-                  </p>
+                  <ArrowRight className="text-emerald-500/40 group-hover:translate-x-2 group-hover:text-emerald-400 transition-all duration-500" size={18} />
                 </div>
+              </Link>
 
-                <div className="mt-8">
-                  <RiskBlock
-                    theme="light"
-                    title="Sem esta base, o que acontece?"
-                    consequences={[
-                      "Incapacidade de prestar cuidados básicos em situação de emergência antes da chegada de ajuda profissional.",
-                      "Desconhecimento de sinais vitais e sintomas impede a tomada de decisão correta sob pressão.",
-                      "Dependência absoluta de farmácia e pronto-socorro para qualquer desconforto — sem alternativa complementar.",
-                    ]}
-                  />
-                </div>
+              <div className="mt-4 p-6 bg-emerald-500/[0.04] border border-emerald-500/10 rounded-xl">
+                <p className="text-emerald-400/60 text-sm font-medium">
+                  Conhecer plantas medicinais, primeiros socorros e hábitos preventivos amplia autonomia sem substituir acompanhamento profissional.
+                </p>
+              </div>
+
+              <div className="mt-10">
+                <RiskBlock
+                  theme="dark"
+                  title="Sem esta base, o que acontece?"
+                  consequences={[
+                    "Incapacidade de prestar cuidados básicos em situação de emergência antes da chegada de ajuda profissional.",
+                    "Desconhecimento de sinais vitais e sintomas impede a tomada de decisão correta sob pressão.",
+                    "Dependência absoluta de farmácia e pronto-socorro para qualquer desconforto — sem alternativa complementar.",
+                  ]}
+                />
               </div>
             </div>
           </div>
         </motion.section>
+
+        <SectionDivider />
 
         {/* ═══════════════ FASE 03 — SOBERANIA ALIMENTAR ═══════════════ */}
         <motion.section
-          id="fase-03" className="mb-28 scroll-mt-32"
+          id="fase-03" className="mb-24 md:mb-32 scroll-mt-32"
           initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }} variants={fadeUp} custom={0}
         >
-          <div className="border border-amber-200/50 rounded-3xl backdrop-blur-sm relative overflow-hidden">
+          <div className="rounded-3xl border border-white/[0.06] overflow-hidden" style={{ background: 'linear-gradient(180deg, transparent, rgba(245,158,11,0.03))' }}>
             <PhaseHero
               img={imgSoberaniaAlimentar} alt="Soberania Alimentar"
               phaseNum="03" title="SOBERANIA" highlight="ALIMENTAR"
-              colorClass="to-amber-50/100"
+              accentColor="#f59e0b"
               iconEl={<Wheat className="text-white" size={120} />}
             />
 
-            <div className="bg-amber-50/80 p-10 md:p-14 relative">
-              <div className="relative z-10">
-                <p className="text-stone-600 text-sm md:text-base leading-relaxed max-w-2xl mb-4">
-                  Dependência total da cadeia industrial aumenta vulnerabilidade.
-                  Produzir parte do próprio alimento reduz exposição e aumenta qualidade nutricional.
+            <div className="p-8 md:p-14">
+              <p className="text-stone-400 text-sm md:text-base leading-relaxed max-w-2xl mb-4">
+                Dependência total da cadeia industrial aumenta vulnerabilidade.
+                Produzir parte do próprio alimento reduz exposição e aumenta qualidade nutricional.
+              </p>
+              <p className="text-stone-600 text-xs font-semibold uppercase tracking-wider mb-12">
+                De narrativa reativa para arquitetura produtiva.
+              </p>
+
+              <SeedProgression />
+
+              <div className="space-y-4 mb-10">
+                {ALIMENTAR_LAYERS.map((layer, i) => (
+                  <motion.div key={layer.title} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i * 0.3}>
+                    <LayerCard layer={layer} index={i} accentColor="#f59e0b" />
+                  </motion.div>
+                ))}
+              </div>
+
+              <div className="mt-10 p-6 bg-amber-500/[0.04] border border-amber-500/10 rounded-xl">
+                <p className="text-amber-400/60 text-sm font-medium">
+                  Comece com um vaso. Depois um canteiro. Depois um sistema.
+                  Cada etapa reduz uma camada de dependência.
                 </p>
-                <p className="text-stone-400 text-xs font-semibold uppercase tracking-wider mb-12">
-                  De narrativa reativa para arquitetura produtiva.
-                </p>
+              </div>
 
-                <SeedProgression />
-
-                <div className="space-y-4 mb-10">
-                  {ALIMENTAR_LAYERS.map((layer, i) => (
-                    <motion.div key={layer.title} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i * 0.3}>
-                      <LayerCard layer={layer} index={i} />
-                    </motion.div>
-                  ))}
-                </div>
-
-                <div className="mt-10 p-6 bg-amber-100/30 border border-amber-200/30 rounded-xl">
-                  <p className="text-amber-700/80 text-sm font-medium">
-                    Comece com um vaso. Depois um canteiro. Depois um sistema.
-                    Cada etapa reduz uma camada de dependência.
-                  </p>
-                </div>
-
-                <div className="mt-8">
-                  <RiskBlock
-                    theme="light"
-                    title="Sem esta base, o que acontece?"
-                    consequences={[
-                      "100% do alimento vem da cadeia industrial — qualquer ruptura de abastecimento afeta diretamente a mesa.",
-                      "Sem conhecimento de cultivo, conservação ou solo, não há margem de manobra em cenários de escassez.",
-                      "Custo alimentar cresce sem alternativa de produção própria, mesmo em espaços reduzidos.",
-                    ]}
-                  />
-                </div>
+              <div className="mt-10">
+                <RiskBlock
+                  theme="dark"
+                  title="Sem esta base, o que acontece?"
+                  consequences={[
+                    "100% do alimento vem da cadeia industrial — qualquer ruptura de abastecimento afeta diretamente a mesa.",
+                    "Sem conhecimento de cultivo, conservação ou solo, não há margem de manobra em cenários de escassez.",
+                    "Custo alimentar cresce sem alternativa de produção própria, mesmo em espaços reduzidos.",
+                  ]}
+                />
               </div>
             </div>
           </div>
         </motion.section>
 
+        <SectionDivider />
+
         {/* ═══════════════ FASE 04 — CONHECIMENTO PERDIDO ═══════════════ */}
         <motion.section
-          id="fase-04" className="mb-28 scroll-mt-32"
+          id="fase-04" className="mb-24 md:mb-32 scroll-mt-32"
           initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }} variants={fadeUp} custom={0}
         >
-          <div className="border border-teal-200/50 rounded-3xl backdrop-blur-sm relative overflow-hidden">
+          <div className="rounded-3xl border border-white/[0.06] overflow-hidden" style={{ background: 'linear-gradient(180deg, transparent, rgba(20,184,166,0.03))' }}>
             <PhaseHero
               img={imgConhecimentoPerdido} alt="Conhecimento Perdido"
               phaseNum="04" title="CONHECIMENTO" highlight="PERDIDO"
-              colorClass="to-teal-50/100"
+              accentColor="#14b8a6"
               iconEl={<BookOpen className="text-white" size={120} />}
             />
 
-            <div className="bg-teal-50/80 p-10 md:p-14 relative">
-              <div className="relative z-10">
-                <p className="text-stone-500 text-sm md:text-base leading-relaxed max-w-2xl mb-4">
-                  Fundamentos naturais aplicados à saúde, alimentação e resiliência.
-                  Um ecossistema completo com 12 plantas organizadas por sistema corporal,
-                  fichas técnicas detalhadas, dosagens seguras, contraindicações e educação botânica familiar.
+            <div className="p-8 md:p-14">
+              <p className="text-stone-400 text-sm md:text-base leading-relaxed max-w-2xl mb-4">
+                Fundamentos naturais aplicados à saúde, alimentação e resiliência.
+                Um ecossistema completo com 12 plantas organizadas por sistema corporal,
+                fichas técnicas detalhadas, dosagens seguras, contraindicações e educação botânica familiar.
+              </p>
+              <p className="text-stone-600 text-xs font-semibold uppercase tracking-wider mb-12">
+                Resgate de sabedoria ancestral. Aplicação prática e documentada.
+              </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
+                {[
+                  { icon: Leaf, label: '5 Sistemas Corporais', desc: 'Digestivo, respiratório, nervoso, imunológico e circulatório mapeados.', link: '/conhecimento-perdido/base-fisiologica' },
+                  { icon: BookOpen, label: '12 Plantas Documentadas', desc: 'Fichas técnicas com dosagens, contraindicações e métodos de preparo.', link: '/conhecimento-perdido/aplicacao-pratica' },
+                  { icon: Heart, label: 'Educação Familiar', desc: 'Conteúdo adaptado para ensinar crianças sobre botânica e saúde natural.', link: '/conhecimento-perdido/continuidade-familiar' },
+                  { icon: Shield, label: 'Integração Completa', desc: 'Conectado a todo o Protocolo Autônomo como base de conhecimento.', link: '/projeto-autonomo/conhecimento-perdido' },
+                ].map((item, idx) => (
+                  <Link to={item.link} key={item.label}>
+                    <motion.div
+                      initial="hidden" whileInView="visible" viewport={{ once: true }} variants={scaleIn} custom={idx}
+                      className="bg-white/[0.03] border border-white/[0.06] p-6 rounded-xl hover:bg-white/[0.06] hover:border-teal-500/20 hover:scale-[1.03] hover:-translate-y-1 transition-all duration-500 group cursor-pointer h-full"
+                    >
+                      <div className="p-2.5 bg-teal-500/10 border border-teal-500/15 rounded-xl w-fit mb-3 group-hover:rotate-6 group-hover:scale-110 transition-all duration-500">
+                        <item.icon className="text-teal-400" size={18} />
+                      </div>
+                      <h4 className="text-sm font-bold mb-1.5 text-stone-200 tracking-tight group-hover:text-white transition-colors">{item.label}</h4>
+                      <p className="text-stone-500 text-xs leading-relaxed group-hover:text-stone-400 transition-colors">{item.desc}</p>
+                    </motion.div>
+                  </Link>
+                ))}
+              </div>
+
+              <Link
+                to="/projeto-autonomo/conhecimento-perdido"
+                className="inline-flex items-center gap-3 bg-teal-500 text-white px-8 py-4 font-semibold text-sm tracking-wide rounded-xl hover:bg-teal-400 hover:shadow-xl hover:shadow-teal-500/20 hover:scale-[1.02] transition-all duration-500 group"
+              >
+                <BookOpen size={18} className="group-hover:rotate-12 transition-transform duration-500" /> Explorar Ecossistema Completo
+              </Link>
+
+              <div className="mt-10 p-6 bg-teal-500/[0.04] border border-teal-500/10 rounded-xl">
+                <p className="text-teal-400/60 text-sm font-medium">
+                  O conhecimento que sustentou civilizações inteiras está sendo esquecido em uma geração.
+                  Este módulo documenta e preserva o que não pode se perder.
                 </p>
-                <p className="text-stone-400 text-xs font-semibold uppercase tracking-wider mb-12">
-                  Resgate de sabedoria ancestral. Aplicação prática e documentada.
-                </p>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
-                  {[
-                    { icon: Leaf, label: '5 Sistemas Corporais', desc: 'Digestivo, respiratório, nervoso, imunológico e circulatório mapeados.', link: '/conhecimento-perdido/base-fisiologica' },
-                    { icon: BookOpen, label: '12 Plantas Documentadas', desc: 'Fichas técnicas com dosagens, contraindicações e métodos de preparo.', link: '/conhecimento-perdido/aplicacao-pratica' },
-                    { icon: Heart, label: 'Educação Familiar', desc: 'Conteúdo adaptado para ensinar crianças sobre botânica e saúde natural.', link: '/conhecimento-perdido/continuidade-familiar' },
-                    { icon: Shield, label: 'Integração Completa', desc: 'Conectado a todo o Protocolo Autônomo como base de conhecimento.', link: '/projeto-autonomo/conhecimento-perdido' },
-                  ].map((item, idx) => (
-                    <Link to={item.link} key={item.label}>
-                      <motion.div
-                        initial="hidden" whileInView="visible" viewport={{ once: true }} variants={scaleIn} custom={idx}
-                        className="bg-white/50 border border-teal-100/60 p-6 rounded-xl hover:bg-white/70 hover:shadow-md hover:border-teal-200 hover:scale-[1.03] hover:-translate-y-1 transition-all duration-500 group cursor-pointer h-full"
-                      >
-                        <div className="p-2.5 bg-teal-100/60 rounded-xl w-fit mb-3 group-hover:rotate-6 group-hover:scale-110 transition-all duration-500">
-                          <item.icon className="text-teal-500" size={18} />
-                        </div>
-                        <h4 className="text-sm font-bold mb-1.5 text-stone-800 tracking-tight">{item.label}</h4>
-                        <p className="text-stone-500 text-xs leading-relaxed">{item.desc}</p>
-                      </motion.div>
-                    </Link>
-                  ))}
-                </div>
-
-                <Link
-                  to="/projeto-autonomo/conhecimento-perdido"
-                  className="inline-flex items-center gap-3 bg-teal-600 text-white px-8 py-4 font-semibold text-sm tracking-wide rounded-xl hover:bg-teal-700 hover:shadow-xl hover:shadow-teal-200/30 hover:scale-[1.02] transition-all duration-500 group"
-                >
-                  <BookOpen size={18} className="group-hover:rotate-12 transition-transform duration-500" /> Explorar Ecossistema Completo
-                </Link>
-
-                <div className="mt-10 p-6 bg-teal-100/30 border border-teal-200/30 rounded-xl">
-                  <p className="text-teal-700/80 text-sm font-medium">
-                    O conhecimento que sustentou civilizações inteiras está sendo esquecido em uma geração.
-                    Este módulo documenta e preserva o que não pode se perder.
-                  </p>
-                </div>
               </div>
             </div>
           </div>
         </motion.section>
 
         {/* ═══════════════ STATUS PANEL ═══════════════ */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-24">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 mb-24">
           {[
-            { phase: 'Base 72', color: 'border-rose-200 text-rose-600', bg: 'bg-rose-50/50' },
-            { phase: 'Autonomia Biológica', color: 'border-emerald-200 text-emerald-600', bg: 'bg-emerald-50/50' },
-            { phase: 'Soberania Alimentar', color: 'border-amber-200 text-amber-600', bg: 'bg-amber-50/50' },
-            { phase: 'Conhecimento Perdido', color: 'border-teal-200 text-teal-600', bg: 'bg-teal-50/50' },
+            { phase: 'Base 72', accent: '#f43f5e' },
+            { phase: 'Autonomia Biológica', accent: '#10b981' },
+            { phase: 'Soberania Alimentar', accent: '#f59e0b' },
+            { phase: 'Conhecimento Perdido', accent: '#14b8a6' },
           ].map((s, idx) => (
             <motion.div
               key={s.phase}
               initial="hidden" whileInView="visible" viewport={{ once: true }} variants={scaleIn} custom={idx}
-              className={`border ${s.color} ${s.bg} p-6 text-center rounded-xl backdrop-blur-sm hover:scale-[1.03] transition-all duration-500`}
+              className="border border-white/[0.06] bg-white/[0.02] p-4 md:p-6 text-center rounded-xl backdrop-blur-sm hover:bg-white/[0.04] hover:scale-[1.03] transition-all duration-500"
             >
-              <p className="text-xs font-semibold uppercase tracking-[0.3em] mb-1">{s.phase}</p>
-              <p className="text-stone-400 text-[10px] font-medium">Em construção — guias e materiais em breve</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] mb-1" style={{ color: s.accent }}>{s.phase}</p>
+              <p className="text-stone-600 text-[10px] font-medium">Em expansão contínua</p>
             </motion.div>
           ))}
         </div>
@@ -982,16 +947,16 @@ export default function ProjetoAutonomo() {
           initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}
           className="text-center mb-24"
         >
-          <p className="text-stone-400 text-xs font-medium uppercase tracking-[0.4em] mb-8">Redução inteligente de dependência</p>
-          <h3 className="text-2xl md:text-4xl font-bold tracking-tight leading-snug mb-3 text-stone-700">
+          <p className="text-stone-600 text-xs font-medium uppercase tracking-[0.4em] mb-8">Redução inteligente de dependência</p>
+          <h3 className="text-2xl md:text-4xl font-bold tracking-tight leading-snug mb-3 text-stone-300">
             Autonomia não é fuga do sistema.
           </h3>
-          <p className="text-xl md:text-3xl font-bold tracking-tight text-emerald-600 mb-12">
+          <p className="text-xl md:text-3xl font-bold tracking-tight text-emerald-400 mb-12">
             É gestão de risco pessoal.
           </p>
           <Link
             to="/arsenal"
-            className="inline-flex items-center gap-3 bg-emerald-600 text-white px-10 py-5 font-bold text-sm tracking-wide rounded-xl hover:bg-emerald-700 hover:shadow-2xl hover:shadow-emerald-300/30 hover:scale-[1.03] hover:-translate-y-1 transition-all duration-500 group"
+            className="inline-flex items-center gap-3 bg-emerald-500 text-white px-10 py-5 font-bold text-sm tracking-wide rounded-xl hover:bg-emerald-400 hover:shadow-2xl hover:shadow-emerald-500/20 hover:scale-[1.03] hover:-translate-y-1 transition-all duration-500 group"
           >
             <Shield size={18} className="group-hover:rotate-12 transition-transform duration-500" /> Voltar ao centro de operações
           </Link>
@@ -999,13 +964,13 @@ export default function ProjetoAutonomo() {
 
         {/* FOOTER SEAL */}
         <motion.div
-          className="pt-16 border-t border-stone-300/30 text-right"
+          className="pt-16 border-t border-white/[0.06] text-right"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 0.3 }}
         >
-          <p className="text-stone-400 font-medium text-base tracking-tight opacity-40 italic">Quem planta, não implora.</p>
+          <p className="text-stone-700 font-medium text-base tracking-tight italic">Quem planta, não implora.</p>
         </motion.div>
       </div>
     </div>
