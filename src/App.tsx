@@ -76,6 +76,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <CodigoAutonomiaModal />
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/bitcoin-vs-imovel" element={<BitcoinVsImovel />} />
