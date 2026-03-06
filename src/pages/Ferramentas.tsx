@@ -160,13 +160,38 @@ const Ferramentas: React.FC = () => {
             </motion.button>
           </div>
           {iframeUrl ? (
-            <div className="pt-20 w-full" style={{ height: 'calc(100vh - 80px)' }}>
-              <iframe
-                src={iframeUrl}
-                title={activeTool.title}
-                className="w-full h-full border-0 rounded-b-xl"
-                allow="clipboard-read; clipboard-write"
-              />
+            <div className="pt-20 w-full flex flex-col">
+              <div className="px-6 py-4 border-b border-border/50 bg-card/50 backdrop-blur-sm">
+                <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Ferramenta gratuita</p>
+                <h2 className="text-xl font-bold text-foreground mt-1">{activeTool.title}</h2>
+                <p className="text-sm text-muted-foreground mt-1">{activeTool.desc}</p>
+              </div>
+              <div style={{ height: 'calc(100vh - 200px)' }}>
+                <iframe
+                  src={iframeUrl}
+                  title={activeTool.title}
+                  className="w-full h-full border-0"
+                  allow="clipboard-read; clipboard-write"
+                />
+              </div>
+              <div className="px-6 py-5 border-t border-border/50 bg-card/50 backdrop-blur-sm flex items-center justify-between">
+                <div>
+                  <p className="text-sm font-bold text-foreground">Gostou da ferramenta?</p>
+                  <p className="text-xs text-muted-foreground">Compartilhe com um amigo.</p>
+                </div>
+                <button
+                  onClick={() => {
+                    if (navigator.share) {
+                      navigator.share({ title: activeTool.title, url: iframeUrl });
+                    } else {
+                      navigator.clipboard.writeText(iframeUrl);
+                    }
+                  }}
+                  className="px-4 py-2 rounded-lg border border-border text-sm font-semibold text-foreground hover:border-gold hover:text-gold transition-all"
+                >
+                  Compartilhar
+                </button>
+              </div>
             </div>
           ) : (
             <div className="pt-24 pb-12">
