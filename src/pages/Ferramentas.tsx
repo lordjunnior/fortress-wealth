@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
   ArrowLeft, ArrowRight, Calculator, Plane,
-  BookA, ShieldCheck, Clock, Terminal, Hourglass, Search
+  BookA, ShieldCheck, Clock, Terminal, Hourglass, Search, Timer, ExternalLink
 } from 'lucide-react';
 import verificabrCover from '@/assets/verificabr-cover.png';
 
@@ -111,6 +111,19 @@ const TOOLS_LIST = [
     component: VerdadeSalarial
   },
   {
+    id: 'horajusta',
+    title: 'HoraJusta',
+    badge: 'Controle de Ponto',
+    desc: 'Controle de ponto inteligente que registra jornada, calcula horas extras automaticamente e gera relatórios com verificação antifraude para comprovar presença no trabalho.',
+    cta: 'Acessar App',
+    color: 'from-cyan-500/20 to-cyan-500/0',
+    borderColor: 'group-hover:border-cyan-500/50',
+    textColor: 'text-cyan-400',
+    icon: Timer,
+    component: null,
+    externalUrl: 'https://minhahorajusta.vercel.app'
+  },
+  {
     id: 'dev',
     title: 'Em Desenvolvimento',
     badge: 'Em Breve',
@@ -204,8 +217,18 @@ const Ferramentas: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {TOOLS_LIST.map((tool, i) => {
             const Icon = tool.icon;
-            const isInactive = tool.id === 'dev' || tool.id === 'verificabr';
+            const isInactive = tool.id === 'dev';
+            const hasExternalUrl = 'externalUrl' in tool && (tool as any).externalUrl;
             const hasCover = 'cover' in tool && (tool as any).cover;
+
+            const handleClick = () => {
+              if (isInactive) return;
+              if (hasExternalUrl) {
+                window.open((tool as any).externalUrl, '_blank', 'noopener,noreferrer');
+                return;
+              }
+              if (tool.id !== 'verificabr') setActiveToolId(tool.id);
+            };
 
             return (
               <motion.div
@@ -213,7 +236,7 @@ const Ferramentas: React.FC = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.05 + i * 0.08 }}
-                onClick={() => !isInactive && setActiveToolId(tool.id)}
+                onClick={handleClick}
                 className={`group relative bg-card rounded-2xl overflow-hidden border transition-all duration-500 ${isInactive ? 'border-dashed border-border cursor-default opacity-90' : `border-border cursor-pointer hover:-translate-y-1 ${tool.borderColor} shadow-lg hover:shadow-2xl`}`}
               >
                 {hasCover && (
@@ -245,7 +268,7 @@ const Ferramentas: React.FC = () => {
                   </p>
 
                   <div className={`mt-auto inline-flex items-center gap-2 ${tool.textColor} font-bold text-sm uppercase tracking-wider ${!isInactive && 'group-hover:gap-4'} transition-all`}>
-                    {tool.cta} {!isInactive && <ArrowRight className="w-4 h-4" />}
+                    {tool.cta} {!isInactive && (hasExternalUrl ? <ExternalLink className="w-4 h-4" /> : <ArrowRight className="w-4 h-4" />)}
                   </div>
                 </div>
                 </div>
