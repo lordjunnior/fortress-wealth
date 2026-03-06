@@ -515,55 +515,82 @@ export default function ProjetoAutonomo() {
             </div>
           </motion.div>
 
-          {/* 2-column magazine: Featured module left + grid right */}
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 mb-12">
-            {/* Featured — large card */}
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="lg:col-span-2">
-              <Link to="/projeto-autonomo/autonomia-biologica"
-                className="group block h-full relative overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.05] hover:border-emerald-500/20 transition-all duration-500 hover:-translate-y-1 p-8 md:p-10"
+          {/* BENTO GRID — Asymmetric layout: 1 tall featured + 2 medium + 3 compact */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
+            {/* Featured — tall card spanning 2 rows */}
+            {BIO_ITEMS.slice(0, 1).map((item) => (
+              <motion.div key={item.label} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}
+                className="lg:row-span-2"
               >
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
-                  style={{ background: 'radial-gradient(ellipse at bottom left, rgba(16,185,129,0.08), transparent 60%)' }}
-                />
-                <div className="relative z-10 flex flex-col h-full">
-                  <div className="p-3.5 rounded-xl bg-emerald-500/10 border border-emerald-500/15 w-fit mb-5 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
-                    <Leaf size={24} className="text-emerald-400" />
-                  </div>
-                  <h4 className="text-xl md:text-2xl font-bold text-stone-200 tracking-tight mb-3 group-hover:text-white transition-colors">
-                    Suporte Fitoterápico
-                  </h4>
-                  <p className="text-stone-500 text-sm leading-relaxed flex-1 group-hover:text-stone-400 transition-colors">
-                    Biblioteca técnica de 12 plantas essenciais. Dosagens conservadoras, contraindicações e métodos de preparo.
-                  </p>
-                  <div className="flex items-center gap-2 mt-6 text-emerald-400/50 group-hover:text-emerald-400/80 transition-colors">
-                    <span className="text-[10px] font-bold uppercase tracking-wider">Explorar catálogo</span>
-                    <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
-                  </div>
-                </div>
-                <div className="absolute top-0 left-0 w-full h-[2px] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-700 bg-gradient-to-r from-emerald-500 to-transparent" />
-              </Link>
-            </motion.div>
-
-            {/* Grid of remaining modules */}
-            <div className="lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {BIO_ITEMS.slice(1).map((item, i) => (
-                <motion.div key={item.label} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={(i + 1) * 0.15}>
-                  <Link to={`/projeto-autonomo/${item.slug}`}
-                    className="group block h-full relative overflow-hidden rounded-xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.05] hover:border-emerald-500/15 transition-all duration-500 hover:-translate-y-1 p-5"
-                  >
-                    <div className="flex items-start gap-3">
-                      <div className="p-2 rounded-lg bg-emerald-500/8 border border-emerald-500/10 shrink-0 group-hover:scale-110 transition-transform duration-500">
-                        <item.icon size={16} className="text-emerald-400/70" />
-                      </div>
-                      <div>
-                        <h4 className="text-sm font-bold text-stone-300 mb-1 group-hover:text-white transition-colors">{item.label}</h4>
-                        <p className="text-stone-600 text-xs leading-relaxed group-hover:text-stone-500 transition-colors">{item.desc}</p>
-                      </div>
+                <Link to={`/projeto-autonomo/${item.slug}`}
+                  className="group block h-full relative overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.05] hover:border-emerald-500/20 transition-all duration-500 hover:-translate-y-1 p-8 md:p-10"
+                >
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+                    style={{ background: 'radial-gradient(ellipse at bottom left, rgba(16,185,129,0.08), transparent 60%)' }}
+                  />
+                  <div className="relative z-10 flex flex-col h-full">
+                    <div className="p-3.5 rounded-xl bg-emerald-500/10 border border-emerald-500/15 w-fit mb-5 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
+                      <item.icon size={24} className="text-emerald-400" />
                     </div>
-                  </Link>
-                </motion.div>
-              ))}
-            </div>
+                    <h4 className="text-xl md:text-2xl font-bold text-stone-200 tracking-tight mb-3 group-hover:text-white transition-colors">
+                      {item.label}
+                    </h4>
+                    <p className="text-stone-500 text-sm leading-relaxed flex-1 group-hover:text-stone-400 transition-colors">
+                      {item.desc}
+                    </p>
+                    <div className="flex items-center gap-2 mt-6 text-emerald-400/50 group-hover:text-emerald-400/80 transition-colors">
+                      <span className="text-[10px] font-bold uppercase tracking-wider">Explorar catálogo</span>
+                      <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </div>
+                  <div className="absolute top-0 left-0 w-full h-[2px] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-700 bg-gradient-to-r from-emerald-500 to-transparent" />
+                </Link>
+              </motion.div>
+            ))}
+
+            {/* Medium cards — second tier */}
+            {BIO_ITEMS.slice(1, 3).map((item, i) => (
+              <motion.div key={item.label} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={(i + 1) * 0.3}>
+                <Link to={`/projeto-autonomo/${item.slug}`}
+                  className="group block h-full relative overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.05] hover:border-emerald-500/20 transition-all duration-500 hover:-translate-y-1 p-6 md:p-8"
+                >
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+                    style={{ background: 'radial-gradient(ellipse at top right, rgba(16,185,129,0.06), transparent 60%)' }}
+                  />
+                  <div className="relative z-10 flex flex-col h-full">
+                    <div className="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/15 w-fit mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
+                      <item.icon size={20} className="text-emerald-400" />
+                    </div>
+                    <h4 className="text-base font-bold text-stone-200 tracking-tight mb-2 group-hover:text-white transition-colors">{item.label}</h4>
+                    <p className="text-stone-500 text-xs leading-relaxed flex-1 group-hover:text-stone-400 transition-colors">{item.desc}</p>
+                    <div className="flex items-center gap-2 mt-4 text-emerald-400/50 group-hover:text-emerald-400/80 transition-colors">
+                      <span className="text-[10px] font-bold uppercase tracking-wider">Acessar módulo</span>
+                      <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </div>
+                  <div className="absolute top-0 left-0 w-full h-[2px] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-700 bg-gradient-to-r from-emerald-500 to-transparent" />
+                </Link>
+              </motion.div>
+            ))}
+
+            {/* Compact cards — bottom row */}
+            {BIO_ITEMS.slice(3).map((item, i) => (
+              <motion.div key={item.label} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={(i + 3) * 0.2}>
+                <Link to={`/projeto-autonomo/${item.slug}`}
+                  className="group block h-full relative overflow-hidden rounded-xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.05] hover:border-emerald-500/15 transition-all duration-500 hover:-translate-y-1 p-5"
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="p-2 rounded-lg bg-emerald-500/8 border border-emerald-500/10 shrink-0 group-hover:scale-110 transition-transform duration-500">
+                      <item.icon size={16} className="text-emerald-400/70" />
+                    </div>
+                    <div>
+                      <h4 className="text-sm font-bold text-stone-300 mb-1 group-hover:text-white transition-colors">{item.label}</h4>
+                      <p className="text-stone-600 text-xs leading-relaxed group-hover:text-stone-500 transition-colors">{item.desc}</p>
+                    </div>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
           </div>
 
           {/* PHYSIOLOGICAL MAP — Interactive */}
@@ -699,35 +726,60 @@ export default function ProjetoAutonomo() {
             ))}
           </motion.div>
 
-          {/* PIPELINE LAYOUT — Left timeline + stacked cards (was: horizontal list cards) */}
-          <div className="relative mb-12">
-            {/* Vertical line */}
-            <div className="absolute left-5 md:left-8 top-0 bottom-0 w-px bg-gradient-to-b from-amber-500/30 via-amber-500/15 to-transparent" />
-
-            {ALIMENTAR_LAYERS.map((layer, i) => (
-              <motion.div key={layer.title} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i * 0.2}
-                className="relative pl-14 md:pl-20 mb-6 last:mb-0"
+          {/* BENTO GRID — 2 large featured + 3 compact */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
+            {/* Featured cards — first 2 get large treatment */}
+            {ALIMENTAR_LAYERS.slice(0, 2).map((layer, i) => (
+              <motion.div key={layer.title} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i * 0.3}
+                className={i === 0 ? 'lg:row-span-2' : ''}
               >
-                {/* Node */}
-                <div className="absolute left-3 md:left-6 top-6 w-4 h-4 rounded-full border-2 border-amber-500/40 bg-amber-500/10" />
-
                 <Link to={`/projeto-autonomo/${layer.slug}`}
-                  className="group block rounded-xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.05] hover:border-amber-500/15 transition-all duration-500 hover:-translate-y-1 p-6 md:p-8"
+                  className={`group block h-full relative overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.05] hover:border-amber-500/20 transition-all duration-500 hover:-translate-y-1 ${i === 0 ? 'p-8 md:p-10' : 'p-6 md:p-8'}`}
                 >
-                  <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-6">
-                    <div className="flex items-center gap-4 md:w-72 shrink-0">
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+                    style={{ background: `radial-gradient(ellipse at ${i === 0 ? 'bottom right' : 'top left'}, rgba(245,158,11,0.08), transparent 60%)` }}
+                  />
+                  <div className="relative z-10 flex flex-col h-full">
+                    <div className="flex items-center gap-3 mb-4">
                       <span className="text-2xl font-black text-stone-700 tabular-nums" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>0{i + 1}</span>
-                      <div className="p-2.5 rounded-xl bg-amber-500/10 border border-amber-500/15 group-hover:rotate-6 group-hover:scale-110 transition-all duration-500">
-                        <layer.icon size={20} className="text-amber-400" />
-                      </div>
-                      <div>
-                        <h4 className="text-sm font-bold text-stone-200 tracking-tight group-hover:text-white transition-colors">{layer.title}</h4>
-                        <p className="text-amber-400/50 text-[10px] font-medium mt-0.5">{layer.desc}</p>
+                      <div className="p-3 rounded-xl bg-amber-500/10 border border-amber-500/15 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
+                        <layer.icon size={i === 0 ? 24 : 20} className="text-amber-400" />
                       </div>
                     </div>
-                    <div className="hidden md:block w-px h-8 bg-white/[0.06]" />
-                    <p className="text-stone-500 text-sm leading-relaxed group-hover:text-stone-400 transition-colors flex-1">{layer.details}</p>
-                    <ArrowRight size={16} className="text-amber-400/30 group-hover:text-amber-400/60 group-hover:translate-x-1 transition-all duration-500 shrink-0" />
+                    <h4 className={`${i === 0 ? 'text-xl md:text-2xl' : 'text-base'} font-bold text-stone-200 tracking-tight mb-2 group-hover:text-white transition-colors`}>
+                      {layer.title}
+                    </h4>
+                    <p className="text-amber-400/50 text-[10px] font-semibold uppercase tracking-wider mb-3">{layer.desc}</p>
+                    <p className={`text-stone-500 ${i === 0 ? 'text-sm' : 'text-xs'} leading-relaxed group-hover:text-stone-400 transition-colors flex-1`}>
+                      {layer.details}
+                    </p>
+                    <div className="flex items-center gap-2 mt-4 text-amber-400/50 group-hover:text-amber-400/80 transition-colors">
+                      <span className="text-[10px] font-bold uppercase tracking-wider">Acessar módulo</span>
+                      <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </div>
+                  <div className="absolute top-0 left-0 w-full h-[2px] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-700 bg-gradient-to-r from-amber-500 to-transparent" />
+                </Link>
+              </motion.div>
+            ))}
+
+            {/* Compact cards — remaining 3 */}
+            {ALIMENTAR_LAYERS.slice(2).map((layer, i) => (
+              <motion.div key={layer.title} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={(i + 2) * 0.2}>
+                <Link to={`/projeto-autonomo/${layer.slug}`}
+                  className="group block h-full relative overflow-hidden rounded-xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.05] hover:border-amber-500/15 transition-all duration-500 hover:-translate-y-1 p-5"
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="flex items-center gap-2 shrink-0">
+                      <span className="text-lg font-black text-stone-700 tabular-nums" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>0{i + 3}</span>
+                      <div className="p-2 rounded-lg bg-amber-500/8 border border-amber-500/10 group-hover:scale-110 transition-transform duration-500">
+                        <layer.icon size={16} className="text-amber-400/70" />
+                      </div>
+                    </div>
+                    <div>
+                      <h4 className="text-sm font-bold text-stone-300 mb-1 group-hover:text-white transition-colors">{layer.title}</h4>
+                      <p className="text-stone-600 text-xs leading-relaxed group-hover:text-stone-500 transition-colors">{layer.details}</p>
+                    </div>
                   </div>
                 </Link>
               </motion.div>
@@ -784,32 +836,89 @@ export default function ProjetoAutonomo() {
             </div>
           </motion.div>
 
-          {/* Showcase — 1 large + 3 small in a cross pattern */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
-            {[
-              { icon: Leaf, label: '5 Sistemas Corporais', desc: 'Digestivo, respiratório, nervoso, imunológico e circulatório mapeados.', link: '/conhecimento-perdido/base-fisiologica', accent: '#14b8a6' },
-              { icon: BookOpen, label: '12 Plantas Documentadas', desc: 'Fichas técnicas com dosagens, contraindicações e métodos de preparo.', link: '/conhecimento-perdido/aplicacao-pratica', accent: '#14b8a6' },
-              { icon: Heart, label: 'Educação Familiar', desc: 'Conteúdo adaptado para ensinar crianças sobre botânica e saúde natural.', link: '/conhecimento-perdido/continuidade-familiar', accent: '#14b8a6' },
-              { icon: Shield, label: 'Integração Completa', desc: 'Conectado a todo o Protocolo Autônomo como base de conhecimento.', link: '/projeto-autonomo/conhecimento-perdido', accent: '#14b8a6' },
-            ].map((item, idx) => (
-              <motion.div key={item.label} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={scaleIn} custom={idx * 0.15}>
-                <Link to={item.link}
-                  className="group block h-full relative overflow-hidden rounded-xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.05] hover:border-teal-500/20 hover:-translate-y-1 transition-all duration-500 p-6"
-                >
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
-                    style={{ background: 'radial-gradient(ellipse at top right, rgba(20,184,166,0.06), transparent 60%)' }}
-                  />
-                  <div className="relative z-10">
-                    <div className="p-2.5 bg-teal-500/10 border border-teal-500/15 rounded-xl w-fit mb-4 group-hover:rotate-6 group-hover:scale-110 transition-all duration-500">
-                      <item.icon className="text-teal-400" size={18} />
+          {/* BENTO GRID — 1 large featured spanning + 3 compact */}
+          {(() => {
+            const cpItems = [
+              { icon: Leaf, label: '5 Sistemas Corporais', desc: 'Digestivo, respiratório, nervoso, imunológico e circulatório mapeados.', longDesc: 'Cada sistema é documentado com suas plantas associadas, foco terapêutico e estratégia de autonomia. O mapa fisiológico conecta todos os pontos.', link: '/conhecimento-perdido/base-fisiologica' },
+              { icon: BookOpen, label: '12 Plantas Documentadas', desc: 'Fichas técnicas com dosagens, contraindicações e métodos de preparo.', longDesc: 'Cada ficha possui 9 seções técnicas: identificação, princípios ativos, dosagens, contraindicações, interações, métodos de preparo, conservação, referências e aplicação prática.', link: '/conhecimento-perdido/aplicacao-pratica' },
+              { icon: Heart, label: 'Educação Familiar', desc: 'Conteúdo adaptado para ensinar crianças sobre botânica e saúde natural.', longDesc: 'Atividades práticas de identificação botânica, jogos de reconhecimento de plantas e protocolos seguros de preparo supervisionado.', link: '/conhecimento-perdido/continuidade-familiar' },
+              { icon: Shield, label: 'Integração Completa', desc: 'Conectado a todo o Protocolo Autônomo como base de conhecimento.', longDesc: 'Hub central com navegação entre todos os blocos: contexto histórico, base fisiológica, segurança, aplicação prática e continuidade familiar.', link: '/projeto-autonomo/conhecimento-perdido' },
+            ];
+            const Icon0 = cpItems[0].icon;
+            const Icon1 = cpItems[1].icon;
+            return (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
+                {/* Featured — large card spanning 2 rows */}
+                <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="lg:row-span-2">
+                  <Link to={cpItems[0].link}
+                    className="group block h-full relative overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.05] hover:border-teal-500/20 transition-all duration-500 hover:-translate-y-1 p-8 md:p-10"
+                  >
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+                      style={{ background: 'radial-gradient(ellipse at bottom left, rgba(20,184,166,0.08), transparent 60%)' }}
+                    />
+                    <div className="relative z-10 flex flex-col h-full">
+                      <div className="p-3.5 rounded-xl bg-teal-500/10 border border-teal-500/15 w-fit mb-5 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
+                        <Icon0 size={24} className="text-teal-400" />
+                      </div>
+                      <h4 className="text-xl md:text-2xl font-bold text-stone-200 tracking-tight mb-3 group-hover:text-white transition-colors">
+                        {cpItems[0].label}
+                      </h4>
+                      <p className="text-stone-500 text-sm leading-relaxed flex-1 group-hover:text-stone-400 transition-colors">
+                        {cpItems[0].longDesc}
+                      </p>
+                      <div className="flex items-center gap-2 mt-6 text-teal-400/50 group-hover:text-teal-400/80 transition-colors">
+                        <span className="text-[10px] font-bold uppercase tracking-wider">Explorar sistemas</span>
+                        <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
+                      </div>
                     </div>
-                    <h4 className="text-sm font-bold mb-2 text-stone-200 tracking-tight group-hover:text-white transition-colors">{item.label}</h4>
-                    <p className="text-stone-600 text-xs leading-relaxed group-hover:text-stone-500 transition-colors">{item.desc}</p>
-                  </div>
-                </Link>
-              </motion.div>
-            ))}
-          </div>
+                    <div className="absolute top-0 left-0 w-full h-[2px] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-700 bg-gradient-to-r from-teal-500 to-transparent" />
+                  </Link>
+                </motion.div>
+
+                {/* Medium card */}
+                <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0.3}>
+                  <Link to={cpItems[1].link}
+                    className="group block h-full relative overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.05] hover:border-teal-500/20 transition-all duration-500 hover:-translate-y-1 p-6 md:p-8"
+                  >
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+                      style={{ background: 'radial-gradient(ellipse at top right, rgba(20,184,166,0.06), transparent 60%)' }}
+                    />
+                    <div className="relative z-10 flex flex-col h-full">
+                      <div className="p-3 rounded-xl bg-teal-500/10 border border-teal-500/15 w-fit mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
+                        <Icon1 size={20} className="text-teal-400" />
+                      </div>
+                      <h4 className="text-base font-bold text-stone-200 tracking-tight mb-2 group-hover:text-white transition-colors">{cpItems[1].label}</h4>
+                      <p className="text-stone-500 text-xs leading-relaxed flex-1 group-hover:text-stone-400 transition-colors">{cpItems[1].longDesc}</p>
+                      <div className="flex items-center gap-2 mt-4 text-teal-400/50 group-hover:text-teal-400/80 transition-colors">
+                        <span className="text-[10px] font-bold uppercase tracking-wider">Ver fichas</span>
+                        <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
+                      </div>
+                    </div>
+                    <div className="absolute top-0 left-0 w-full h-[2px] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-700 bg-gradient-to-r from-teal-500 to-transparent" />
+                  </Link>
+                </motion.div>
+
+                {/* Compact cards — bottom */}
+                {cpItems.slice(2).map((item, i) => (
+                  <motion.div key={item.label} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={(i + 2) * 0.2}>
+                    <Link to={item.link}
+                      className="group block h-full relative overflow-hidden rounded-xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.05] hover:border-teal-500/15 transition-all duration-500 hover:-translate-y-1 p-5"
+                    >
+                      <div className="flex items-start gap-4">
+                        <div className="p-2 rounded-lg bg-teal-500/8 border border-teal-500/10 shrink-0 group-hover:scale-110 transition-transform duration-500">
+                          <item.icon size={16} className="text-teal-400/70" />
+                        </div>
+                        <div>
+                          <h4 className="text-sm font-bold text-stone-300 mb-1 group-hover:text-white transition-colors">{item.label}</h4>
+                          <p className="text-stone-600 text-xs leading-relaxed group-hover:text-stone-500 transition-colors">{item.desc}</p>
+                        </div>
+                      </div>
+                    </Link>
+                  </motion.div>
+                ))}
+              </div>
+            );
+          })()}
 
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="flex flex-col sm:flex-row gap-4 mb-10">
             <Link to="/projeto-autonomo/conhecimento-perdido"
