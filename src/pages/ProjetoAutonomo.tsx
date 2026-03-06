@@ -726,35 +726,60 @@ export default function ProjetoAutonomo() {
             ))}
           </motion.div>
 
-          {/* PIPELINE LAYOUT — Left timeline + stacked cards (was: horizontal list cards) */}
-          <div className="relative mb-12">
-            {/* Vertical line */}
-            <div className="absolute left-5 md:left-8 top-0 bottom-0 w-px bg-gradient-to-b from-amber-500/30 via-amber-500/15 to-transparent" />
-
-            {ALIMENTAR_LAYERS.map((layer, i) => (
-              <motion.div key={layer.title} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i * 0.2}
-                className="relative pl-14 md:pl-20 mb-6 last:mb-0"
+          {/* BENTO GRID — 2 large featured + 3 compact */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
+            {/* Featured cards — first 2 get large treatment */}
+            {ALIMENTAR_LAYERS.slice(0, 2).map((layer, i) => (
+              <motion.div key={layer.title} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i * 0.3}
+                className={i === 0 ? 'lg:row-span-2' : ''}
               >
-                {/* Node */}
-                <div className="absolute left-3 md:left-6 top-6 w-4 h-4 rounded-full border-2 border-amber-500/40 bg-amber-500/10" />
-
                 <Link to={`/projeto-autonomo/${layer.slug}`}
-                  className="group block rounded-xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.05] hover:border-amber-500/15 transition-all duration-500 hover:-translate-y-1 p-6 md:p-8"
+                  className={`group block h-full relative overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.05] hover:border-amber-500/20 transition-all duration-500 hover:-translate-y-1 ${i === 0 ? 'p-8 md:p-10' : 'p-6 md:p-8'}`}
                 >
-                  <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-6">
-                    <div className="flex items-center gap-4 md:w-72 shrink-0">
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+                    style={{ background: `radial-gradient(ellipse at ${i === 0 ? 'bottom right' : 'top left'}, rgba(245,158,11,0.08), transparent 60%)` }}
+                  />
+                  <div className="relative z-10 flex flex-col h-full">
+                    <div className="flex items-center gap-3 mb-4">
                       <span className="text-2xl font-black text-stone-700 tabular-nums" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>0{i + 1}</span>
-                      <div className="p-2.5 rounded-xl bg-amber-500/10 border border-amber-500/15 group-hover:rotate-6 group-hover:scale-110 transition-all duration-500">
-                        <layer.icon size={20} className="text-amber-400" />
-                      </div>
-                      <div>
-                        <h4 className="text-sm font-bold text-stone-200 tracking-tight group-hover:text-white transition-colors">{layer.title}</h4>
-                        <p className="text-amber-400/50 text-[10px] font-medium mt-0.5">{layer.desc}</p>
+                      <div className="p-3 rounded-xl bg-amber-500/10 border border-amber-500/15 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
+                        <layer.icon size={i === 0 ? 24 : 20} className="text-amber-400" />
                       </div>
                     </div>
-                    <div className="hidden md:block w-px h-8 bg-white/[0.06]" />
-                    <p className="text-stone-500 text-sm leading-relaxed group-hover:text-stone-400 transition-colors flex-1">{layer.details}</p>
-                    <ArrowRight size={16} className="text-amber-400/30 group-hover:text-amber-400/60 group-hover:translate-x-1 transition-all duration-500 shrink-0" />
+                    <h4 className={`${i === 0 ? 'text-xl md:text-2xl' : 'text-base'} font-bold text-stone-200 tracking-tight mb-2 group-hover:text-white transition-colors`}>
+                      {layer.title}
+                    </h4>
+                    <p className="text-amber-400/50 text-[10px] font-semibold uppercase tracking-wider mb-3">{layer.desc}</p>
+                    <p className={`text-stone-500 ${i === 0 ? 'text-sm' : 'text-xs'} leading-relaxed group-hover:text-stone-400 transition-colors flex-1`}>
+                      {layer.details}
+                    </p>
+                    <div className="flex items-center gap-2 mt-4 text-amber-400/50 group-hover:text-amber-400/80 transition-colors">
+                      <span className="text-[10px] font-bold uppercase tracking-wider">Acessar módulo</span>
+                      <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </div>
+                  <div className="absolute top-0 left-0 w-full h-[2px] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-700 bg-gradient-to-r from-amber-500 to-transparent" />
+                </Link>
+              </motion.div>
+            ))}
+
+            {/* Compact cards — remaining 3 */}
+            {ALIMENTAR_LAYERS.slice(2).map((layer, i) => (
+              <motion.div key={layer.title} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={(i + 2) * 0.2}>
+                <Link to={`/projeto-autonomo/${layer.slug}`}
+                  className="group block h-full relative overflow-hidden rounded-xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.05] hover:border-amber-500/15 transition-all duration-500 hover:-translate-y-1 p-5"
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="flex items-center gap-2 shrink-0">
+                      <span className="text-lg font-black text-stone-700 tabular-nums" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>0{i + 3}</span>
+                      <div className="p-2 rounded-lg bg-amber-500/8 border border-amber-500/10 group-hover:scale-110 transition-transform duration-500">
+                        <layer.icon size={16} className="text-amber-400/70" />
+                      </div>
+                    </div>
+                    <div>
+                      <h4 className="text-sm font-bold text-stone-300 mb-1 group-hover:text-white transition-colors">{layer.title}</h4>
+                      <p className="text-stone-600 text-xs leading-relaxed group-hover:text-stone-500 transition-colors">{layer.details}</p>
+                    </div>
                   </div>
                 </Link>
               </motion.div>
