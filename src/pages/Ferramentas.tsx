@@ -115,13 +115,13 @@ const TOOLS_LIST = [
     title: 'HoraJusta',
     badge: 'Controle de Ponto',
     desc: 'Controle de ponto inteligente que registra jornada, calcula horas extras automaticamente e gera relatórios com verificação antifraude para comprovar presença no trabalho.',
-    cta: 'Acessar App',
+    cta: 'Abrir App',
     color: 'from-cyan-500/20 to-cyan-500/0',
     borderColor: 'group-hover:border-cyan-500/50',
     textColor: 'text-cyan-400',
     icon: Timer,
     component: null,
-    externalUrl: 'https://minhahorajusta.vercel.app'
+    iframeUrl: 'https://minhahorajusta.vercel.app'
   },
   {
     id: 'dev',
