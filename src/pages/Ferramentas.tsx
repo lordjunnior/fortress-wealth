@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
@@ -139,7 +139,13 @@ const TOOLS_LIST = [
 
 const Ferramentas: React.FC = () => {
   const [activeToolId, setActiveToolId] = useState<string | null>(null);
+  const [iframeLoaded, setIframeLoaded] = useState(false);
   const activeTool = TOOLS_LIST.find(t => t.id === activeToolId);
+
+  const handleSetActive = useCallback((id: string | null) => {
+    setIframeLoaded(false);
+    setActiveToolId(id);
+  }, []);
 
   // Render active tool inline
   if (activeTool && activeTool.id !== 'dev' && activeTool.id !== 'verificabr') {
@@ -153,7 +159,7 @@ const Ferramentas: React.FC = () => {
             <motion.button
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              onClick={() => setActiveToolId(null)}
+              onClick={() => handleSetActive(null)}
               className="pointer-events-auto inline-flex items-center gap-2 px-6 py-3 bg-card border border-border hover:border-gold hover:text-gold rounded-lg text-muted-foreground text-xs font-bold uppercase tracking-widest transition-all shadow-2xl"
             >
               <ArrowLeft className="w-4 h-4" /> Voltar aos Aplicativos
@@ -166,12 +172,24 @@ const Ferramentas: React.FC = () => {
                 <h2 className="text-xl font-bold text-foreground mt-1">{activeTool.title}</h2>
                 <p className="text-sm text-muted-foreground mt-1">{activeTool.desc}</p>
               </div>
-              <div style={{ height: 'calc(100vh - 200px)' }}>
+              <div className="relative" style={{ height: 'calc(100vh - 200px)' }}>
+                {!iframeLoaded && (
+                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-background z-10">
+                    <div className="w-8 h-8 border-2 border-border border-t-gold rounded-full animate-spin" />
+                    <p className="text-sm text-muted-foreground font-mono tracking-wider">Carregando ferramenta...</p>
+                    <div className="w-full max-w-md px-8 space-y-3 mt-4">
+                      <div className="h-3 bg-secondary rounded-full animate-pulse" />
+                      <div className="h-3 bg-secondary rounded-full animate-pulse w-4/5" />
+                      <div className="h-3 bg-secondary rounded-full animate-pulse w-3/5" />
+                    </div>
+                  </div>
+                )}
                 <iframe
                   src={iframeUrl}
                   title={activeTool.title}
                   className="w-full h-full border-0"
                   allow="clipboard-read; clipboard-write"
+                  onLoad={() => setIframeLoaded(true)}
                 />
               </div>
               <div className="px-6 py-5 border-t border-border/50 bg-card/50 backdrop-blur-sm flex items-center justify-between">
