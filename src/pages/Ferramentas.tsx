@@ -144,7 +144,9 @@ const Ferramentas: React.FC = () => {
   // Render active tool inline
   if (activeTool && activeTool.id !== 'dev' && activeTool.id !== 'verificabr') {
     const Component = activeTool.component;
-    if (Component) {
+    const iframeUrl = 'iframeUrl' in activeTool ? (activeTool as any).iframeUrl : null;
+
+    if (Component || iframeUrl) {
       return (
         <div className="relative min-h-screen bg-background">
           <div className="fixed top-0 left-0 w-full z-50 p-6 bg-gradient-to-b from-background via-background/90 to-transparent pointer-events-none">
@@ -157,9 +159,20 @@ const Ferramentas: React.FC = () => {
               <ArrowLeft className="w-4 h-4" /> Voltar aos Aplicativos
             </motion.button>
           </div>
-          <div className="pt-24 pb-12">
-            <Component />
-          </div>
+          {iframeUrl ? (
+            <div className="pt-20 w-full" style={{ height: 'calc(100vh - 80px)' }}>
+              <iframe
+                src={iframeUrl}
+                title={activeTool.title}
+                className="w-full h-full border-0 rounded-b-xl"
+                allow="clipboard-read; clipboard-write"
+              />
+            </div>
+          ) : (
+            <div className="pt-24 pb-12">
+              <Component />
+            </div>
+          )}
         </div>
       );
     }
