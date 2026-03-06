@@ -87,6 +87,7 @@ const App = () => (
           <Route path="/saida" element={<Saida />} />
           <Route path="/saida/gateway" element={<Gateway />} />
           <Route path="/ferramentas" element={<Ferramentas />} />
+          <Route path="/ferramentas/:toolId" element={<Ferramentas />} />
           <Route path="/educacao" element={<Educacao />} />
           <Route path="/entenda-bitcoin" element={<EntendaBitcoin />} />
           <Route path="/autocustodia" element={<Autocustodia />} />
