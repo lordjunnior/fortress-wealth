@@ -279,7 +279,7 @@ const Ferramentas: React.FC = () => {
 
             const handleClick = () => {
               if (isInactive) return;
-              if (tool.id !== 'verificabr') setActiveToolId(tool.id);
+              if (tool.id !== 'verificabr') handleSetActive(tool.id);
             };
 
             return (
