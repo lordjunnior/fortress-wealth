@@ -66,6 +66,7 @@ import CpSegurancaLimites from "./pages/cp/SegurancaLimites";
 import CpAplicacaoPratica from "./pages/cp/AplicacaoPratica";
 import CpContinuidadeFamiliar from "./pages/cp/ContinuidadeFamiliar";
 import CodigoAutonomiaModal from "./components/CodigoAutonomiaModal";
+import ScrollToTop from "./components/ScrollToTop";
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -75,6 +76,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <CodigoAutonomiaModal />
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/bitcoin-vs-imovel" element={<BitcoinVsImovel />} />
