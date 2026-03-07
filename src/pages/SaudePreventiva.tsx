@@ -97,28 +97,27 @@ const SaudePreventiva = () => {
           </div>
         </motion.div>
 
-          {/* Module integration */}
-          <motion.div initial="hidden" animate="visible" variants={fadeUp} custom={2} className="mt-10 max-w-3xl">
-            <p className="text-stone-200 font-bold text-sm mb-4">Este módulo integra:</p>
-            <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-3">
-              {[
-                { label: 'Exposição solar', icon: Sun, color: 'text-amber-400' },
-                { label: 'Sono', icon: Moon, color: 'text-indigo-400' },
-                { label: 'Movimento', icon: Activity, color: 'text-green-400' },
-                { label: 'Alimentação', icon: Salad, color: 'text-emerald-400' },
-                { label: 'Estratégias anti-inflamatórias', icon: Dna, color: 'text-purple-400' },
-              ].map((p) => {
-                const Icon = p.icon;
-                return (
-                  <div key={p.label} className="group flex items-center gap-3 bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 hover:bg-emerald-500/10 hover:border-emerald-500/20 transition-all duration-300">
-                    <Icon size={16} className={`${p.color} shrink-0`} />
-                    <span className="text-sm text-stone-300">{p.label}</span>
-                  </div>
-                );
-              })}
-            </div>
-          </motion.div>
-        </div>
+        {/* Module integration */}
+        <motion.div initial="hidden" animate="visible" variants={fadeUp} custom={2} className="mt-10 mb-28 max-w-3xl">
+          <p className="text-stone-200 font-bold text-sm mb-4">Este módulo integra:</p>
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-3">
+            {[
+              { label: 'Exposição solar', icon: Sun, color: 'text-amber-400' },
+              { label: 'Sono', icon: Moon, color: 'text-indigo-400' },
+              { label: 'Movimento', icon: Activity, color: 'text-green-400' },
+              { label: 'Alimentação', icon: Salad, color: 'text-emerald-400' },
+              { label: 'Estratégias anti-inflamatórias', icon: Dna, color: 'text-purple-400' },
+            ].map((p) => {
+              const Icon = p.icon;
+              return (
+                <div key={p.label} className="group flex items-center gap-3 bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 hover:bg-emerald-500/10 hover:border-emerald-500/20 transition-all duration-300">
+                  <Icon size={16} className={`${p.color} shrink-0`} />
+                  <span className="text-sm text-stone-300">{p.label}</span>
+                </div>
+              );
+            })}
+          </div>
+        </motion.div>
 
         {/* ═══ INFLAMAÇÃO CRÔNICA ═══ */}
         <div className="gsap-reveal mb-28">
