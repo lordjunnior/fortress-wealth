@@ -176,6 +176,26 @@ export default function ProibicaoDinheiro() {
       <div className="relative z-10 lg:ml-[270px] pb-32">
         <div className="max-w-5xl mx-auto px-6 pt-20 lg:pt-24">
 
+          {/* ══════ BREADCRUMBS ══════ */}
+          <nav aria-label="Breadcrumb" className="mb-8">
+            <ol className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] font-mono" itemScope itemType="https://schema.org/BreadcrumbList">
+              <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
+                <Link to="/" className="text-slate-600 hover:text-white transition-colors" itemProp="item"><span itemProp="name">Home</span></Link>
+                <meta itemProp="position" content="1" />
+              </li>
+              <ChevronRight className="text-slate-800" size={10} />
+              <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
+                <Link to="/alertas" className="text-slate-600 hover:text-white transition-colors" itemProp="item"><span itemProp="name">Alertas</span></Link>
+                <meta itemProp="position" content="2" />
+              </li>
+              <ChevronRight className="text-slate-800" size={10} />
+              <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
+                <span className="text-red-500" itemProp="name">Fim do Dinheiro Vivo</span>
+                <meta itemProp="position" content="3" />
+              </li>
+            </ol>
+          </nav>
+
           {/* ══════ HERO ══════ */}
           <header id="hero" className="mb-28 scroll-mt-24 relative overflow-hidden rounded-sm p-10 md:p-16 bg-[#0a0a0a] border border-white/5">
             <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'n\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23n)\'/%3E%3C/svg%3E")', backgroundSize: '128px 128px' }} />
@@ -666,6 +686,27 @@ export default function ProibicaoDinheiro() {
             </div>
           </section>
 
+          {/* ══════ LEIA TAMBÉM ══════ */}
+          <section className="mb-28 scroll-mt-24">
+            <div className="flex items-center gap-3 text-slate-500 mb-8">
+              <BookOpen size={16} />
+              <h2 className="text-sm font-black uppercase tracking-[0.15em] font-mono">Leia Também</h2>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {[
+                { to: '/alertas', titulo: 'Central de Alertas', desc: 'Todos os alertas de soberania', tag: 'HUB' },
+                { to: '/economia-paralela', titulo: 'Economia Paralela', desc: 'Como operar fora do sistema bancário', tag: 'ESTRATÉGIA' },
+                { to: '/entenda-bitcoin', titulo: 'Entenda o Bitcoin', desc: 'Do zero à soberania financeira completa', tag: 'FUNDAMENTO' },
+              ].map((link, i) => (
+                <Link key={i} to={link.to} className="bg-[#0a0a0a] border border-white/5 rounded-sm p-6 hover:border-red-600/20 hover:bg-red-600/[0.02] transition-all group">
+                  <span className="text-[8px] font-black uppercase tracking-[0.3em] text-slate-600 font-mono">{link.tag}</span>
+                  <h3 className="text-white font-black uppercase text-sm tracking-tight mt-2 mb-1 group-hover:text-red-500 transition-colors">{link.titulo}</h3>
+                  <p className="text-slate-500 text-xs font-medium leading-relaxed">{link.desc}</p>
+                </Link>
+              ))}
+            </div>
+          </section>
+
           {/* ══════ SEO RICH TEXT ══════ */}
           <section className="mb-20 max-w-3xl">
             <div className="space-y-4 text-slate-500 text-xs leading-relaxed">
@@ -673,7 +714,7 @@ export default function ProibicaoDinheiro() {
                 <strong className="text-slate-400">Sobre este conteúdo:</strong> Esta página aborda o impacto do PL 3.951/2019 na privacidade financeira dos brasileiros, as restrições ao dinheiro vivo já implementadas na Europa e as ferramentas legítimas disponíveis para proteger sua soberania financeira. O conteúdo não constitui aconselhamento financeiro ou jurídico. Todas as ferramentas mencionadas são legais e de uso público.
               </p>
               <p>
-                <strong className="text-slate-400">Temas abordados:</strong> limite de dinheiro vivo no Brasil, PL 3951/2019, governo proibir dinheiro em espécie, como comprar Bitcoin sem KYC, privacidade financeira, comprar Bitcoin P2P, teoria das bandeiras, cédula paraguaia, exchanges descentralizadas, autocustódia Bitcoin, cartões cripto sem KYC, contas internacionais, diversificação jurisdicional.
+                <strong className="text-slate-400">Temas abordados:</strong> limite de dinheiro vivo no Brasil, PL 3951/2019, governo proibir dinheiro em espécie, como comprar Bitcoin sem KYC, privacidade financeira, comprar Bitcoin P2P, teoria das bandeiras, cédula paraguaia, exchanges descentralizadas, autocustódia Bitcoin, cartões cripto sem KYC, contas internacionais, diversificação jurisdicional, limite pagamento em dinheiro, quanto dinheiro posso carregar em espécie.
               </p>
             </div>
           </section>
