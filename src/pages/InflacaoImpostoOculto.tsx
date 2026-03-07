@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { ArrowLeft, ChevronRight, ChevronDown, HelpCircle, Clock, ArrowDown, AlertTriangle, TrendingDown, Percent, DollarSign, ShoppingCart, Landmark, BarChart3, Wallet, Scale, Flame, BookOpen, Zap, Globe, ShieldAlert } from 'lucide-react';
+import { ArrowLeft, ChevronRight, ChevronDown, HelpCircle, Clock, ArrowDown, AlertTriangle, TrendingDown, Percent, DollarSign, ShoppingCart, Landmark, BarChart3, Wallet, Scale, Flame, BookOpen, Zap, Globe, ShieldAlert, Calculator } from 'lucide-react';
 import { NAV_ITEMS, MECANISMO, CANTILLON_NIVEIS, NUMEROS_REAIS, MENTIRAS, FERRAMENTAS, TIMELINE_ITEMS, FAQ_ITEMS } from '@/lib/inflacaoData';
 
 const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": FAQ_ITEMS.map(item => ({ "@type": "Question", "name": item.pergunta, "acceptedAnswer": { "@type": "Answer", "text": item.resposta } })) };
-const articleSchema = { "@context": "https://schema.org", "@type": "Article", "headline": "Inflação: O Imposto Oculto — Como a Inflação Rouba Seu Dinheiro", "description": "Entenda como a inflação funciona, por que ela é um imposto invisível e como proteger seu patrimônio.", "author": { "@type": "Person", "name": "Lord Junnior" }, "publisher": { "@type": "Organization", "name": "Lord Junnior", "url": "https://lordjunnior.com.br" }, "datePublished": "2026-03-07", "url": "https://lordjunnior.com.br/inflacao-imposto-oculto", "keywords": "inflação, inflação como funciona, inflação rouba dinheiro, o que causa inflação, Efeito Cantillon, imposto inflacionário, proteger dinheiro da inflação, Bitcoin inflação" };
+const articleSchema = { "@context": "https://schema.org", "@type": "Article", "headline": "Inflação: O Imposto Oculto. Como a Inflação Rouba Seu Dinheiro", "description": "Entenda como a inflação funciona, por que ela é um imposto invisível e como proteger seu patrimônio.", "author": { "@type": "Person", "name": "Lord Junnior" }, "publisher": { "@type": "Organization", "name": "Lord Junnior", "url": "https://lordjunnior.com.br" }, "datePublished": "2026-03-07", "url": "https://lordjunnior.com.br/inflacao-imposto-oculto", "keywords": "inflação, inflação como funciona, inflação rouba dinheiro, o que causa inflação, Efeito Cantillon, imposto inflacionário, proteger dinheiro da inflação, Bitcoin inflação" };
 
 export default function InflacaoImpostoOculto() {
   const [activeSection, setActiveSection] = useState('hero');
   const [scrollProgress, setScrollProgress] = useState(0);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [calcValor, setCalcValor] = useState(1000);
+  const [calcAno, setCalcAno] = useState(1994);
 
   useEffect(() => { window.scrollTo(0, 0); }, []);
   useEffect(() => {
@@ -26,13 +28,27 @@ export default function InflacaoImpostoOculto() {
 
   const scrollTo = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
+  // Inflation calculator: approximate cumulative IPCA
+  const inflacaoAcumulada: Record<number, number> = {
+    1994: 0.85, 1995: 0.83, 1996: 0.82, 1997: 0.81, 1998: 0.80,
+    1999: 0.79, 2000: 0.77, 2001: 0.74, 2002: 0.70, 2003: 0.65,
+    2004: 0.62, 2005: 0.59, 2006: 0.57, 2007: 0.55, 2008: 0.52,
+    2009: 0.50, 2010: 0.47, 2011: 0.44, 2012: 0.41, 2013: 0.38,
+    2014: 0.35, 2015: 0.30, 2016: 0.25, 2017: 0.23, 2018: 0.21,
+    2019: 0.18, 2020: 0.15, 2021: 0.10, 2022: 0.06, 2023: 0.04,
+    2024: 0.02, 2025: 0.01,
+  };
+  const perda = inflacaoAcumulada[calcAno] ?? 0.85;
+  const valorHoje = calcValor * (1 - perda);
+  const perdaReais = calcValor - valorHoje;
+
   return (
     <div className="min-h-screen bg-[#070A12] text-white font-sans selection:bg-red-600 overflow-x-hidden">
       <Helmet>
-        <title>Inflação: O Imposto Oculto — Como Seu Dinheiro Está Derretendo | Lord Junnior</title>
+        <title>Inflação: O Imposto Oculto. Como Seu Dinheiro Está Derretendo | Lord Junnior</title>
         <meta name="description" content="Entenda como a inflação funciona, por que ela é um imposto invisível que rouba seu poder de compra todos os dias e como proteger seu patrimônio com Bitcoin e diversificação." />
         <link rel="canonical" href="https://lordjunnior.com.br/inflacao-imposto-oculto" />
-        <meta property="og:title" content="Inflação: O Imposto Oculto — Como Seu Dinheiro Está Derretendo" />
+        <meta property="og:title" content="Inflação: O Imposto Oculto. Como Seu Dinheiro Está Derretendo" />
         <meta property="og:url" content="https://lordjunnior.com.br/inflacao-imposto-oculto" />
         <meta property="og:type" content="article" />
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
@@ -102,7 +118,7 @@ export default function InflacaoImpostoOculto() {
             <div className="relative z-10">
               <div className="flex items-center gap-3 mb-8"><TrendingDown className="text-red-500" size={16} /><span className="text-red-500 font-black uppercase tracking-[0.4em] text-[9px] font-mono">Educação Monetária</span></div>
               <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.95] uppercase mb-8">Inflação:<br /><span className="title-shimmer-red italic inline-block pt-1">O Imposto Oculto</span></h1>
-              <p className="text-lg md:text-xl text-slate-400 leading-relaxed max-w-3xl mb-4 font-medium">A inflação não é um fenômeno natural. É uma <strong className="text-white">política deliberada</strong> dos bancos centrais que funciona como um <strong className="text-red-500">imposto invisível</strong> — roubando silenciosamente o poder de compra do seu dinheiro, todos os dias, sem que você perceba.</p>
+              <p className="text-lg md:text-xl text-slate-400 leading-relaxed max-w-3xl mb-4 font-medium">A inflação não é um fenômeno natural. É uma <strong className="text-white">política deliberada</strong> dos bancos centrais que funciona como um <strong className="text-red-500">imposto invisível</strong>, roubando silenciosamente o poder de compra do seu dinheiro, todos os dias, sem que você perceba.</p>
               <p className="text-base text-slate-500 leading-relaxed max-w-3xl mb-10 font-medium">Entenda o que causa a inflação, como ela funciona, por que a inflação rouba seu dinheiro e como proteger seu patrimônio contra a <strong className="text-white">desvalorização monetária</strong> que governos do mundo inteiro promovem.</p>
               <button onClick={() => scrollTo('o-que-e')} className="inline-flex items-center gap-2 text-slate-500 hover:text-white text-xs font-bold uppercase tracking-wider transition-colors mb-10 group"><ArrowDown size={14} className="text-red-500 group-hover:translate-y-1 transition-transform" /> Entenda o que está acontecendo</button>
               <div className="flex flex-col sm:flex-row gap-4">
@@ -113,13 +129,51 @@ export default function InflacaoImpostoOculto() {
 
           {/* O QUE É */}
           <section id="o-que-e" className="mb-28 scroll-mt-24">
-            <div className="flex items-center gap-3 text-red-500 mb-10"><Percent size={20} /><h2 className="text-xl font-black uppercase tracking-[0.15em] font-mono">O Que É Inflação — De Verdade</h2></div>
+            <div className="flex items-center gap-3 text-red-500 mb-10"><Percent size={20} /><h2 className="text-xl font-black uppercase tracking-[0.15em] font-mono">O Que É Inflação, De Verdade</h2></div>
             <div className="bg-[#0a0a0a] border border-white/5 rounded-sm p-8 md:p-12">
               <div className="space-y-5 text-slate-400 leading-relaxed">
-                <p className="font-medium text-base">A definição oficial diz que inflação é o <strong className="text-white">"aumento generalizado dos preços"</strong>. Isso é tecnicamente correto — mas profundamente enganoso. É como dizer que a febre é "o aumento da temperatura do corpo" sem mencionar a infecção que a causou.</p>
-                <p className="font-medium text-base">A inflação real — a causa, não o sintoma — é a <strong className="text-red-500">expansão da oferta monetária</strong>. Quando o banco central cria dinheiro novo, cada real que já existe perde um pouco de valor. Mais dinheiro perseguindo a mesma quantidade de bens = preços mais altos. É matemática básica.</p>
-                <p className="font-medium text-base">O economista Milton Friedman resumiu: <em className="text-white">"A inflação é sempre e em todo lugar um fenômeno monetário."</em> Não é causada por empresários "gananciosos", não é causada por secas ou guerras — essas coisas causam aumento de preços específicos, não aumento generalizado. A inflação é causada por uma coisa e apenas uma coisa: <strong className="text-white">impressão de dinheiro</strong>.</p>
+                <p className="font-medium text-base">A definição oficial diz que inflação é o <strong className="text-white">"aumento generalizado dos preços"</strong>. Isso é tecnicamente correto, mas profundamente enganoso. É como dizer que a febre é "o aumento da temperatura do corpo" sem mencionar a infecção que a causou.</p>
+                <p className="font-medium text-base">A inflação real, a causa e não o sintoma, é a <strong className="text-red-500">expansão da oferta monetária</strong>. Quando o banco central cria dinheiro novo, cada real que já existe perde um pouco de valor. Mais dinheiro perseguindo a mesma quantidade de bens = preços mais altos. É matemática básica.</p>
+                <p className="font-medium text-base">O economista Milton Friedman resumiu: <em className="text-white">"A inflação é sempre e em todo lugar um fenômeno monetário."</em> Não é causada por empresários "gananciosos", não é causada por secas ou guerras. Essas coisas causam aumento de preços específicos, não aumento generalizado. A inflação é causada por uma coisa e apenas uma coisa: <strong className="text-white">impressão de dinheiro</strong>.</p>
               </div>
+            </div>
+          </section>
+
+          {/* CALCULADORA */}
+          <section id="calculadora" className="mb-28 scroll-mt-24">
+            <div className="flex items-center gap-3 text-red-500 mb-10"><Calculator size={20} /><h2 className="text-xl font-black uppercase tracking-[0.15em] font-mono">Calculadora da Inflação</h2></div>
+            <div className="bg-[#0a0a0a] border border-red-500/20 rounded-sm p-8 md:p-12">
+              <p className="text-slate-400 text-sm leading-relaxed font-medium mb-8">Descubra quanto do seu dinheiro a inflação já devorou. Insira um valor e o ano para ver o poder de compra real hoje.</p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div>
+                  <label className="text-[9px] font-black uppercase tracking-[0.3em] text-slate-500 font-mono block mb-2">Valor em Reais (R$)</label>
+                  <input type="number" value={calcValor} onChange={(e) => setCalcValor(Number(e.target.value) || 0)} className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white font-black text-lg font-mono focus:border-red-500/50 focus:outline-none transition-colors" />
+                </div>
+                <div>
+                  <label className="text-[9px] font-black uppercase tracking-[0.3em] text-slate-500 font-mono block mb-2">Ano de Referência</label>
+                  <select value={calcAno} onChange={(e) => setCalcAno(Number(e.target.value))} className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white font-black text-lg font-mono focus:border-red-500/50 focus:outline-none transition-colors appearance-none">
+                    {Object.keys(inflacaoAcumulada).map(ano => (
+                      <option key={ano} value={ano} className="bg-[#0a0a0a]">{ano}</option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="bg-red-950/20 border border-red-500/20 rounded-sm p-6 text-center">
+                  <span className="text-[9px] font-black uppercase tracking-[0.3em] text-red-500/60 font-mono">Valor Original ({calcAno})</span>
+                  <p className="text-2xl font-black text-white font-mono mt-2">R$ {calcValor.toLocaleString('pt-BR')}</p>
+                </div>
+                <div className="bg-red-950/30 border border-red-500/30 rounded-sm p-6 text-center">
+                  <span className="text-[9px] font-black uppercase tracking-[0.3em] text-red-500/60 font-mono">Poder de Compra Hoje</span>
+                  <p className="text-2xl font-black text-red-500 font-mono mt-2">R$ {valorHoje.toLocaleString('pt-BR', { maximumFractionDigits: 2 })}</p>
+                </div>
+                <div className="bg-red-950/40 border border-red-500/40 rounded-sm p-6 text-center">
+                  <span className="text-[9px] font-black uppercase tracking-[0.3em] text-red-500/60 font-mono">A Inflação Devorou</span>
+                  <p className="text-2xl font-black text-red-400 font-mono mt-2">R$ {perdaReais.toLocaleString('pt-BR', { maximumFractionDigits: 2 })}</p>
+                  <p className="text-[10px] font-black text-red-500/80 font-mono mt-1">{(perda * 100).toFixed(0)}% de perda</p>
+                </div>
+              </div>
+              <p className="text-slate-600 text-[10px] font-medium mt-4 text-center">Valores aproximados baseados no IPCA acumulado. A inflação real (alimentos, moradia, energia) costuma ser maior que o índice oficial.</p>
             </div>
           </section>
 
@@ -141,8 +195,8 @@ export default function InflacaoImpostoOculto() {
 
           {/* EFEITO CANTILLON */}
           <section id="efeito-cantillon" className="mb-28 scroll-mt-24">
-            <div className="flex items-center gap-3 text-red-500 mb-10"><Scale size={20} /><h2 className="text-xl font-black uppercase tracking-[0.15em] font-mono">Efeito Cantillon — Quem Ganha e Quem Perde</h2></div>
-            <p className="text-slate-400 text-base leading-relaxed font-medium mb-10 max-w-3xl">O dinheiro novo não aparece igualmente para todos. Ele segue uma <strong className="text-white">hierarquia de acesso</strong> — e você está no final da fila:</p>
+            <div className="flex items-center gap-3 text-red-500 mb-10"><Scale size={20} /><h2 className="text-xl font-black uppercase tracking-[0.15em] font-mono">Efeito Cantillon: Quem Ganha e Quem Perde</h2></div>
+            <p className="text-slate-400 text-base leading-relaxed font-medium mb-10 max-w-3xl">O dinheiro novo não aparece igualmente para todos. Ele segue uma <strong className="text-white">hierarquia de acesso</strong>, e você está no final da fila:</p>
             <div className="bg-[#0a0a0a] border border-white/5 rounded-sm overflow-hidden">
               {CANTILLON_NIVEIS.map((n, i) => (
                 <div key={i} className={`grid grid-cols-[60px_1fr_1fr_1fr] group hover:bg-red-500/[0.03] transition-colors ${i < CANTILLON_NIVEIS.length - 1 ? 'border-b border-white/5' : ''}`}>
@@ -155,7 +209,7 @@ export default function InflacaoImpostoOculto() {
             </div>
             <div className="bg-red-950/10 border border-red-500/20 rounded-sm p-6 mt-6">
               <p className="text-red-500 text-[10px] font-black uppercase font-mono tracking-wider mb-2">A Verdade Brutal</p>
-              <p className="text-white font-black text-base leading-tight uppercase italic">A inflação é a maior máquina de transferência de riqueza da história — dos pobres para os ricos, dos poupadores para os impressores, dos últimos para os primeiros.</p>
+              <p className="text-white font-black text-base leading-tight uppercase italic">A inflação é a maior máquina de transferência de riqueza da história: dos pobres para os ricos, dos poupadores para os impressores, dos últimos para os primeiros.</p>
             </div>
           </section>
 
@@ -249,7 +303,7 @@ export default function InflacaoImpostoOculto() {
                 <p className="font-medium text-base">Agora você entende o que <strong className="text-white">99% da população não entende</strong>: a inflação não é um acidente, não é uma força da natureza e não é culpa dos empresários. É uma política deliberada que transfere riqueza de quem trabalha para quem imprime.</p>
                 <p className="font-medium text-base">O próximo passo é <strong className="text-red-500">agir</strong>. Converter conhecimento em proteção. O Bitcoin, a diversificação e a educação financeira real são as armas que você tem.</p>
               </div>
-              <Link to="/bitcoin-vs-fiat" className="cta-gold flex items-center justify-center gap-3 px-10 py-5 rounded-sm font-black uppercase text-sm tracking-[0.2em] text-center mb-8 w-full md:w-auto md:inline-flex">⚡ Bitcoin vs Fiat — A Comparação</Link>
+              <Link to="/bitcoin-vs-fiat" className="cta-gold flex items-center justify-center gap-3 px-10 py-5 rounded-sm font-black uppercase text-sm tracking-[0.2em] text-center mb-8 w-full md:w-auto md:inline-flex">⚡ Bitcoin vs Fiat: A Comparação</Link>
               <p className="text-slate-600 text-[9px] font-black uppercase tracking-[0.3em] font-mono mb-4">Continue Aprendendo</p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                 {[
@@ -274,7 +328,7 @@ export default function InflacaoImpostoOculto() {
               {[
                 { to: '/historia-do-dinheiro', titulo: 'História do Dinheiro', desc: 'Como o dinheiro foi criado e corrompido', tag: 'EDUCAÇÃO' },
                 { to: '/bitcoin-vs-fiat', titulo: 'Bitcoin vs Fiat', desc: 'A comparação direta e definitiva', tag: 'COMPARAÇÃO' },
-                { to: '/alertas/cbdc-brasil', titulo: 'DREX — CBDC Brasil', desc: 'A moeda digital programável do governo', tag: 'ALERTA' },
+                { to: '/alertas/cbdc-brasil', titulo: 'DREX: CBDC Brasil', desc: 'A moeda digital programável do governo', tag: 'ALERTA' },
               ].map((link, i) => (
                 <Link key={i} to={link.to} className="bg-[#0a0a0a] border border-white/5 rounded-sm p-6 hover:border-red-500/20 hover:bg-red-500/[0.02] transition-all group">
                   <span className="text-[8px] font-black uppercase tracking-[0.3em] text-slate-600 font-mono">{link.tag}</span>
