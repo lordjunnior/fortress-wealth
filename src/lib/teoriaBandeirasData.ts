@@ -40,15 +40,15 @@ export const BANDEIRAS = [
     subtitulo: 'Onde Você Paga Impostos',
     descricao: 'Seu domicílio fiscal determina qual governo tributa sua renda mundial. Alguns países oferecem regimes tributários territoriais (você só paga impostos sobre renda gerada localmente), como Panamá, Paraguai e Costa Rica. Mudar o domicílio fiscal pode ser a decisão financeira mais impactante da sua vida.',
     exemplos: ['Paraguai (tributação territorial, 10% máx.)', 'Panamá (tributação territorial)', 'Emirados Árabes (0% imposto de renda)', 'Portugal (programa NHR para novos residentes)'],
-    destaque: 'Você não precisa morar onde paga impostos — e vice-versa.',
+    destaque: 'Você não precisa morar onde paga impostos, e vice-versa.',
   },
   {
     numero: 4,
     icon: Globe,
     titulo: 'Negócios / Empresas',
     subtitulo: 'Onde Você Opera',
-    descricao: 'Incorporar empresas em jurisdições com baixa carga tributária, proteção de ativos e simplicidade regulatória é uma estratégia legítima usada por multinacionais — e também acessível a indivíduos e pequenos empresários. Wyoming (EUA), Estônia e Cingapura são exemplos clássicos.',
-    exemplos: ['LLC Wyoming (EUA) — sem imposto estadual', 'e-Residency Estônia — gestão 100% digital', 'Cingapura — hub comercial da Ásia', 'Free zones dos Emirados — operação sem impostos'],
+    descricao: 'Incorporar empresas em jurisdições com baixa carga tributária, proteção de ativos e simplicidade regulatória é uma estratégia legítima usada por multinacionais, e também acessível a indivíduos e pequenos empresários. Wyoming (EUA), Estônia e Cingapura são exemplos clássicos.',
+    exemplos: ['LLC Wyoming (EUA), sem imposto estadual', 'e-Residency Estônia, gestão 100% digital', 'Cingapura, hub comercial da Ásia', 'Free zones dos Emirados, operação sem impostos'],
     destaque: 'A sede da sua empresa não precisa ser onde você mora.',
   },
   {
@@ -56,8 +56,8 @@ export const BANDEIRAS = [
     icon: Shield,
     titulo: 'Ativos / Patrimônio',
     subtitulo: 'Onde Você Guarda Valor',
-    descricao: 'Diversificar onde seus ativos estão armazenados é a camada final de proteção. Bitcoin com autocustódia, ouro em cofres internacionais, imóveis em jurisdições estáveis e investimentos em corretoras globais — cada ativo em um lugar diferente reduz o risco de confisco centralizado.',
-    exemplos: ['Bitcoin (autocustódia — qualquer lugar)', 'Ouro físico (Suíça, Cingapura)', 'Imóveis (Paraguai, Uruguai, Portugal)', 'Investimentos (Interactive Brokers, Schwab International)'],
+    descricao: 'Diversificar onde seus ativos estão armazenados é a camada final de proteção. Bitcoin com autocustódia, ouro em cofres internacionais, imóveis em jurisdições estáveis e investimentos em corretoras globais, cada ativo em um lugar diferente reduz o risco de confisco centralizado.',
+    exemplos: ['Bitcoin (autocustódia, qualquer lugar)', 'Ouro físico (Suíça, Cingapura)', 'Imóveis (Paraguai, Uruguai, Portugal)', 'Investimentos (Interactive Brokers, Schwab International)'],
     destaque: 'A melhor proteção patrimonial é a dispersão geográfica.',
   },
 ];
@@ -88,7 +88,7 @@ export const CASO_BRASIL = [
   'Carga tributária de ~34% do PIB com serviços públicos de qualidade questionável',
   'Decisões judiciais que bloqueiam contas e patrimônio sem aviso prévio',
   'PL 3.951 abrindo precedente para limitar dinheiro em espécie',
-  'DREX em desenvolvimento — dinheiro programável controlado pelo Banco Central',
+  'DREX em desenvolvimento, dinheiro programável controlado pelo Banco Central',
   'Impostos sobre herança em processo de aumento (reforma tributária)',
   'Controles cambiais que podem ser ativados a qualquer momento',
 ];
@@ -98,7 +98,7 @@ export const PRIMEIROS_PASSOS = [
   {
     passo: 1,
     titulo: 'Bitcoin com Autocustódia',
-    descricao: 'Comece armazenando valor em Bitcoin com suas próprias chaves privadas. Isso é a Bandeira Zero — patrimônio que nenhum governo pode confiscar, em nenhuma jurisdição.',
+    descricao: 'Comece armazenando valor em Bitcoin com suas próprias chaves privadas. Isso é a Bandeira Zero, patrimônio que nenhum governo pode confiscar, em nenhuma jurisdição.',
     dificuldade: 'Fácil',
     custo: 'Baixo',
   },
@@ -112,7 +112,7 @@ export const PRIMEIROS_PASSOS = [
   {
     passo: 3,
     titulo: 'Residência Secundária',
-    descricao: 'Obtenha residência em um segundo país. O Paraguai oferece um dos processos mais rápidos e acessíveis para brasileiros — em questão de semanas.',
+    descricao: 'Obtenha residência em um segundo país. O Paraguai oferece um dos processos mais rápidos e acessíveis para brasileiros, em questão de semanas.',
     dificuldade: 'Médio',
     custo: 'Moderado',
   },
@@ -138,7 +138,7 @@ export const FERRAMENTAS = [
     icon: Shield,
     titulo: 'Bitcoin + Autocustódia',
     subtitulo: 'Bandeira Zero',
-    descricao: 'O Bitcoin é a Bandeira Zero porque transcende jurisdições. Com 12 palavras memorizadas, você pode cruzar qualquer fronteira carregando todo o seu patrimônio — sem declarar, sem permissão, sem risco de confisco. É a base de qualquer estratégia de diversificação.',
+    descricao: 'O Bitcoin é a Bandeira Zero porque transcende jurisdições. Com 12 palavras memorizadas, você pode cruzar qualquer fronteira carregando todo o seu patrimônio, sem declarar, sem permissão, sem risco de confisco. É a base de qualquer estratégia de diversificação.',
     destaque: 'A bandeira que nenhum governo pode baixar.',
   },
   {
@@ -159,7 +159,7 @@ export const FERRAMENTAS = [
     icon: Globe,
     titulo: 'Corretoras Internacionais',
     subtitulo: 'Investimentos Globais',
-    descricao: 'Interactive Brokers, Charles Schwab International e outras corretoras permitem que brasileiros invistam em mercados globais — ações, ETFs, bonds — com proteção SIPC e diversificação monetária real.',
+    descricao: 'Interactive Brokers, Charles Schwab International e outras corretoras permitem que brasileiros invistam em mercados globais (ações, ETFs, bonds) com proteção SIPC e diversificação monetária real.',
     destaque: 'Seu patrimônio não precisa estar preso ao Brasil.',
   },
 ];
@@ -176,7 +176,7 @@ export const FAQ_ITEMS = [
   },
   {
     pergunta: 'Preciso sair do Brasil para aplicar a teoria?',
-    resposta: 'Não necessariamente. Muitas "bandeiras" podem ser implementadas sem sair do Brasil: Bitcoin com autocustódia, conta bancária internacional (pode ser aberta remotamente em alguns países), e empresa offshore. A mudança física é o passo final — não o primeiro.',
+    resposta: 'Não necessariamente. Muitas "bandeiras" podem ser implementadas sem sair do Brasil: Bitcoin com autocustódia, conta bancária internacional (pode ser aberta remotamente em alguns países), e empresa offshore. A mudança física é o passo final, não o primeiro.',
   },
   {
     pergunta: 'Quanto custa aplicar a Teoria das Bandeiras?',
@@ -192,10 +192,10 @@ export const FAQ_ITEMS = [
   },
   {
     pergunta: 'Teoria das Bandeiras funciona para quem ganha pouco?',
-    resposta: 'Sim. A Bandeira Zero (Bitcoin com autocustódia) funciona para qualquer orçamento. A diversificação não exige ser rico — exige ser estratégico. Comece com Bitcoin, depois uma conta Wise (gratuita), e progressivamente adicione bandeiras conforme sua capacidade financeira cresce.',
+    resposta: 'Sim. A Bandeira Zero (Bitcoin com autocustódia) funciona para qualquer orçamento. A diversificação não exige ser rico, exige ser estratégico. Comece com Bitcoin, depois uma conta Wise (gratuita), e progressivamente adicione bandeiras conforme sua capacidade financeira cresce.',
   },
   {
     pergunta: 'Qual a relação entre Teoria das Bandeiras e Bitcoin?',
-    resposta: 'O Bitcoin é a tecnologia que tornou a Teoria das Bandeiras acessível a qualquer pessoa. Antes, diversificação internacional era coisa de milionários. Com Bitcoin, qualquer pessoa pode ter patrimônio fora do alcance governamental. Bitcoin é a "Bandeira Zero" — a base sobre a qual todas as outras bandeiras se constroem.',
+    resposta: 'O Bitcoin é a tecnologia que tornou a Teoria das Bandeiras acessível a qualquer pessoa. Antes, diversificação internacional era coisa de milionários. Com Bitcoin, qualquer pessoa pode ter patrimônio fora do alcance governamental. Bitcoin é a "Bandeira Zero", a base sobre a qual todas as outras bandeiras se constroem.',
   },
 ];
