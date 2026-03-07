@@ -263,17 +263,17 @@ export default function ProibicaoDinheiro() {
                 {/* SUBSTITUIR o VIDEO_ID pelo ID real do YouTube */}
                 <iframe
                   className="absolute inset-0 w-full h-full"
-                  src="https://www.youtube.com/embed/VIDEO_ID_AQUI"
-                  title="Governo PROÍBE dinheiro vivo — Conheça as ALTERNATIVAS"
+                  src="https://www.youtube.com/embed/V2HZvWVj-F0"
+                  title="Senador Oriovisto Guimarães sobre limite de dinheiro vivo — TV Senado"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                   loading="lazy"
                 />
               </div>
               <div className="p-6 border-t border-white/5">
-                <h3 className="text-white font-black uppercase text-sm tracking-tight mb-2">Governo PROÍBE dinheiro vivo — Conheça as ALTERNATIVAS</h3>
+                <h3 className="text-white font-black uppercase text-sm tracking-tight mb-2">Senador Oriovisto Guimarães — Limite ao Dinheiro Vivo no Brasil</h3>
                 <p className="text-slate-500 text-xs font-medium leading-relaxed">
-                  Neste vídeo, Lord Junnior analisa o PL 3.951/2019, explica a agenda global de eliminação do dinheiro físico e apresenta ferramentas práticas para proteger sua privacidade financeira — direto da Patagônia, Argentina.
+                  Entrevista oficial da <strong className="text-slate-400">TV Senado</strong> (1,82 mi de inscritos) com o senador Oriovisto Guimarães (PSDB-PR), abordando o PL 3.951/2019 e as implicações de limitar transações em dinheiro em espécie no Brasil.
                 </p>
               </div>
             </div>
