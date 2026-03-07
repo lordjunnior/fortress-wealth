@@ -2,18 +2,13 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Layers, Sprout, Leaf, Sun, Droplets, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
+import CinematicHero from '@/components/CinematicHero';
+import ScrollToTop from '@/components/ScrollToTop';
 
 import imgLayout from '@/assets/producao-layout-canteiros.jpg';
 import imgConsorcio from '@/assets/producao-consorcio-culturas.jpg';
 import imgRotacao from '@/assets/producao-rotacao-sazonal.jpg';
 import imgMicroclimas from '@/assets/producao-microclimas.jpg';
-
-/* ─── SEO: meta keywords target ───
-   produção em pequenos espaços, horta 4m², canteiros organizados, consórcio de culturas,
-   rotação sazonal de plantio, microclimas urbanos, agricultura urbana, horta urbana,
-   produção de alimentos em casa, soberania alimentar, autossuficiência alimentar brasil,
-   cultivo em pequenos espaços, milho feijão abóbora, planejamento de horta
-─────────────────────────────────── */
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -115,67 +110,32 @@ export default function ProducaoPequenosEspacos() {
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
   return (
-    <div
-      className="min-h-screen text-stone-900 font-sans selection:bg-amber-300/50 pb-32 relative overflow-hidden"
-      style={{ background: 'linear-gradient(180deg, #faf6ef 0%, #f5efe3 20%, #ede5d4 40%, #e4ddc8 60%, #ddd5c0 80%, #d8cfb8 100%)' }}
-    >
-      {/* Organic background */}
-      <div className="fixed inset-0 pointer-events-none z-0">
-        <style>{`
-          @keyframes breatheProducao {
-            0%, 100% { transform: translateY(0) scale(1); opacity: 0.06; }
-            50% { transform: translateY(-12px) scale(1.02); opacity: 0.1; }
-          }
-        `}</style>
-        <div className="absolute top-[-5%] right-[-5%] w-[600px] h-[600px] rounded-full"
-          style={{ background: 'radial-gradient(circle, rgba(200,170,80,0.2) 0%, transparent 65%)', animation: 'breatheProducao 20s ease-in-out infinite' }} />
-        <div className="absolute bottom-[10%] left-[5%] w-[400px] h-[400px] rounded-full"
-          style={{ background: 'radial-gradient(circle, rgba(120,160,60,0.15) 0%, transparent 65%)', animation: 'breatheProducao 25s ease-in-out 5s infinite' }} />
-      </div>
+    <div className="min-h-screen text-stone-100 font-sans selection:bg-amber-300/50 pb-32 relative overflow-hidden" style={{ background: '#050808' }}>
+      <CinematicHero
+        image="/heroes/producao-pequenos-espacos.webp"
+        phase="Fase 03 · Soberania Alimentar"
+        title="Produção em Pequenos Espaços"
+        subtitle="4m² podem virar uma fonte real de alimento. Quatro metros quadrados parecem pouco. Mas pense assim: é o tamanho de uma vaga de estacionamento pequena."
+        icon={Layers}
+        accentColor="amber"
+        backLink="/projeto-autonomo"
+        backLabel="Projeto Autônomo"
+      />
 
-      {/* Floating icons */}
-      <Leaf className="fixed top-[20%] left-[5%] text-amber-700 pointer-events-none z-0" size={70}
-        style={{ opacity: 0.06, animation: 'breatheProducao 16s ease-in-out infinite' }} />
-      <Sprout className="fixed bottom-[15%] right-[6%] text-emerald-700 pointer-events-none z-0" size={80}
-        style={{ opacity: 0.05, animation: 'breatheProducao 22s ease-in-out 3s infinite' }} />
+      <div className="relative z-10 max-w-4xl mx-auto px-5 md:px-8 pt-12">
 
-      <div className="relative z-10 max-w-4xl mx-auto px-5 md:px-8 pt-20">
-
-        {/* Back */}
-        <Link to="/projeto-autonomo" className="inline-flex items-center gap-2 text-stone-400 hover:text-stone-700 mb-16 text-[10px] font-bold uppercase tracking-[0.3em] transition-all duration-300">
-          <ArrowLeft size={14} /> Projeto Autônomo
-        </Link>
-
-        {/* ═══ HEADER ═══ */}
-        <motion.header initial="hidden" animate="visible" variants={fadeUp} custom={0} className="mb-20">
-          <div className="flex items-start gap-5 mb-8">
-            <div className="p-4 bg-amber-500/10 border border-amber-400/20 rounded-2xl mt-1">
-              <Layers className="text-amber-700" size={28} />
-            </div>
-            <div>
-              <p className="text-amber-600 text-[10px] font-bold uppercase tracking-[0.5em] mb-3">
-                Fase 03 · Soberania Alimentar
-              </p>
-              <h1 className="text-4xl md:text-7xl font-black tracking-tighter uppercase leading-[0.9] text-stone-800" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
-                PRODUÇÃO EM<br /><span className="text-amber-700">PEQUENOS ESPAÇOS</span>
-              </h1>
-            </div>
-          </div>
-
-          <div className="bg-amber-50/60 border border-amber-200/50 rounded-2xl p-8 md:p-10">
-            <p className="text-2xl md:text-3xl font-bold text-stone-800 tracking-tight mb-4">
-              4m² podem virar uma fonte real de alimento
-            </p>
-            <p className="text-stone-500 text-base md:text-lg leading-relaxed max-w-2xl">
-              Quatro metros quadrados parecem pouco. Mas pense assim: é o tamanho de uma vaga de estacionamento pequena.
-              <span className="text-amber-700 font-semibold"> Se cabe um carro, também cabe comida.</span>
-            </p>
-            <p className="text-stone-400 text-sm mt-4 leading-relaxed max-w-xl">
+        {/* Intro */}
+        <motion.div initial="hidden" animate="visible" variants={fadeUp} custom={0} className="mb-20">
+          <div className="bg-amber-500/[0.08] border border-amber-500/[0.15] rounded-2xl p-8 md:p-10">
+            <p className="text-stone-400 text-base md:text-lg leading-relaxed max-w-2xl">
               Produzir em pouco espaço não depende de tamanho. Depende de organização.
+              <span className="text-amber-400 font-semibold"> Se cabe um carro, também cabe comida.</span>
+            </p>
+            <p className="text-stone-500 text-sm mt-4 leading-relaxed max-w-xl">
               Quando o espaço é planejado, ele funciona como uma pequena fábrica natural.
             </p>
           </div>
-        </motion.header>
+        </motion.div>
 
         {/* ═══ MÓDULOS ═══ */}
         {SECTIONS.map((section, idx) => (
@@ -191,22 +151,17 @@ export default function ProducaoPequenosEspacos() {
             {/* Divider */}
             <div className="flex items-center gap-3 mb-6 px-2">
               <div className="flex-1 h-px bg-amber-500 opacity-20" />
-              <span className="text-stone-400 text-[9px] font-bold tracking-[0.4em] uppercase">
+              <span className="text-stone-500 text-[9px] font-bold tracking-[0.4em] uppercase">
                 Módulo {section.num}
               </span>
               <div className="flex-1 h-px bg-amber-500 opacity-20" />
             </div>
 
-            <div className="bg-white/60 backdrop-blur-sm border border-stone-200/50 rounded-3xl overflow-hidden hover:shadow-lg hover:scale-[1.005] transition-all duration-500">
+            <div className="bg-white/[0.03] border border-white/[0.06] rounded-3xl overflow-hidden hover:border-white/[0.1] transition-all duration-500">
               {/* Image */}
               <div className="relative h-56 md:h-72 overflow-hidden">
-                <img
-                  src={section.image}
-                  alt={section.title}
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-stone-900/60 via-transparent to-transparent" />
+                <img src={section.image} alt={section.title} className="w-full h-full object-cover" loading="lazy" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#050808] via-transparent to-transparent" />
                 <div className="absolute bottom-4 left-5 md:left-8">
                   <div className="flex items-center gap-3">
                     <div className="p-2 bg-amber-500/20 backdrop-blur-sm rounded-xl border border-amber-300/30">
@@ -227,13 +182,13 @@ export default function ProducaoPequenosEspacos() {
               {/* Content */}
               <div className="p-6 md:p-10">
                 {/* Analogy — PNL anchor */}
-                <div className="bg-amber-50/70 border border-amber-200/40 rounded-2xl p-5 md:p-6 mb-6">
-                  <p className="text-stone-600 text-sm md:text-base leading-relaxed italic">
+                <div className="bg-amber-500/[0.08] border border-amber-500/[0.15] rounded-2xl p-5 md:p-6 mb-6">
+                  <p className="text-stone-400 text-sm md:text-base leading-relaxed italic">
                     "{section.analogy}"
                   </p>
                 </div>
 
-                <p className="text-stone-500 text-sm md:text-base leading-relaxed mb-6">
+                <p className="text-stone-400 text-sm md:text-base leading-relaxed mb-6">
                   {section.body}
                 </p>
 
@@ -246,17 +201,17 @@ export default function ProducaoPequenosEspacos() {
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.4, ease: APPLE_EASE, delay: 0.3 + i * 0.08 }}
-                      className="flex items-start gap-3 bg-stone-50/80 rounded-xl px-4 py-3"
+                      className="flex items-start gap-3 bg-white/[0.04] border border-white/[0.06] rounded-xl px-4 py-3"
                     >
                       <div className="w-2 h-2 rounded-full bg-amber-500 mt-1.5 shrink-0" />
-                      <span className="text-stone-600 text-sm leading-relaxed">{point}</span>
+                      <span className="text-stone-400 text-sm leading-relaxed">{point}</span>
                     </motion.li>
                   ))}
                 </ul>
 
                 {/* Insight */}
                 <div className="border-l-3 border-amber-500/50 pl-5">
-                  <p className="text-amber-700 text-sm font-semibold leading-relaxed">
+                  <p className="text-amber-400 text-sm font-semibold leading-relaxed">
                     {section.insight}
                   </p>
                 </div>
@@ -267,21 +222,17 @@ export default function ProducaoPequenosEspacos() {
 
         {/* ═══ VISÃO FINAL ═══ */}
         <motion.section
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeUp}
-          custom={0}
+          initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}
           className="mb-16"
         >
           <div className="flex items-center gap-3 mb-6 px-2">
             <div className="flex-1 h-px bg-amber-500 opacity-20" />
-            <span className="text-stone-400 text-[9px] font-bold tracking-[0.4em] uppercase">Visão Final</span>
+            <span className="text-stone-500 text-[9px] font-bold tracking-[0.4em] uppercase">Visão Final</span>
             <div className="flex-1 h-px bg-amber-500 opacity-20" />
           </div>
 
-          <div className="bg-amber-50/70 border border-amber-200/50 rounded-3xl p-8 md:p-12">
-            <h3 className="text-2xl md:text-3xl font-bold text-stone-800 tracking-tight mb-6">
+          <div className="bg-amber-500/[0.08] border border-amber-500/[0.15] rounded-3xl p-8 md:p-12">
+            <h3 className="text-2xl md:text-3xl font-bold text-stone-100 tracking-tight mb-6">
               4m² organizados produzem:
             </h3>
 
@@ -293,18 +244,18 @@ export default function ProducaoPequenosEspacos() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: 0.2 + i * 0.1 }}
-                  className="bg-white/70 border border-amber-200/40 rounded-xl p-4 text-center hover:scale-[1.02] hover:shadow-md transition-all duration-300"
+                  className="bg-white/[0.04] border border-white/[0.08] rounded-xl p-4 text-center hover:scale-[1.02] hover:border-amber-500/20 transition-all duration-300"
                 >
-                  <Sprout className="text-amber-600 mx-auto mb-2" size={20} />
-                  <p className="text-stone-700 text-sm font-semibold">{item}</p>
+                  <Sprout className="text-amber-400 mx-auto mb-2" size={20} />
+                  <p className="text-stone-300 text-sm font-semibold">{item}</p>
                 </motion.div>
               ))}
             </div>
 
-            <div className="space-y-3 text-stone-500 text-sm leading-relaxed">
-              <p>Espaço pequeno <span className="text-amber-700 font-semibold">não é limitação</span>.</p>
+            <div className="space-y-3 text-stone-400 text-sm leading-relaxed">
+              <p>Espaço pequeno <span className="text-amber-400 font-semibold">não é limitação</span>.</p>
               <p>Falta de planejamento é.</p>
-              <p className="text-stone-600 font-medium pt-2">
+              <p className="text-stone-300 font-medium pt-2">
                 Quando o espaço é entendido como sistema, ele começa a trabalhar a favor de quem cultiva.
               </p>
             </div>
@@ -313,50 +264,44 @@ export default function ProducaoPequenosEspacos() {
 
         {/* ═══ NAVIGATION ═══ */}
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
+          initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
           className="flex flex-col sm:flex-row gap-4 justify-between"
         >
           <Link
             to="/projeto-autonomo/horta-urbana"
-            className="flex items-center gap-3 bg-white/50 border border-stone-200/50 rounded-2xl px-6 py-4 hover:bg-white/80 hover:shadow-md transition-all duration-300 group"
+            className="flex items-center gap-3 bg-white/[0.04] border border-white/[0.08] rounded-2xl px-6 py-4 hover:bg-white/[0.08] transition-all duration-300 group"
           >
-            <ArrowLeft size={16} className="text-stone-400 group-hover:text-amber-600 transition-colors" />
+            <ArrowLeft size={16} className="text-stone-500 group-hover:text-amber-400 transition-colors" />
             <div>
-              <span className="text-stone-400 text-[9px] font-bold uppercase tracking-wider">Anterior</span>
-              <p className="text-stone-700 text-sm font-semibold">Horta Urbana</p>
+              <span className="text-stone-500 text-[9px] font-bold uppercase tracking-wider">Anterior</span>
+              <p className="text-stone-300 text-sm font-semibold">Horta Urbana</p>
             </div>
           </Link>
 
           <Link
             to="/projeto-autonomo/conservacao-armazenamento"
-            className="flex items-center gap-3 bg-white/50 border border-stone-200/50 rounded-2xl px-6 py-4 hover:bg-white/80 hover:shadow-md transition-all duration-300 group justify-end"
+            className="flex items-center gap-3 bg-white/[0.04] border border-white/[0.08] rounded-2xl px-6 py-4 hover:bg-white/[0.08] transition-all duration-300 group justify-end"
           >
             <div className="text-right">
-              <span className="text-stone-400 text-[9px] font-bold uppercase tracking-wider">Próximo</span>
-              <p className="text-stone-700 text-sm font-semibold">Conservação e Armazenamento</p>
+              <span className="text-stone-500 text-[9px] font-bold uppercase tracking-wider">Próximo</span>
+              <p className="text-stone-300 text-sm font-semibold">Conservação e Armazenamento</p>
             </div>
-            <ArrowRight size={16} className="text-stone-400 group-hover:text-amber-600 transition-colors" />
+            <ArrowRight size={16} className="text-stone-500 group-hover:text-amber-400 transition-colors" />
           </Link>
         </motion.div>
 
-        {/* Footer note */}
-        <motion.div
-          className="mt-12 text-center"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-        >
-          <p className="text-stone-400 text-xs leading-relaxed max-w-md mx-auto">
+        {/* Footer */}
+        <motion.div className="mt-12 text-center" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.5 }}>
+          <p className="text-stone-600 text-xs leading-relaxed max-w-md mx-auto">
             Este módulo faz parte da Fase 03 — Soberania Alimentar do Projeto Autônomo.
             Conteúdo baseado em técnicas validadas de agricultura urbana e permacultura.
           </p>
         </motion.div>
 
       </div>
+
+      <ScrollToTop />
     </div>
   );
 }

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, Package, Flame, Droplets, Wheat, Snowflake, Wind, Egg, Leaf, ShieldCheck, Clock, ChevronDown, ChevronUp, AlertTriangle, Beaker, Warehouse, Thermometer, Tag, Box, BookOpen } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import CinematicHero from '@/components/CinematicHero';
+import ScrollToTop from '@/components/ScrollToTop';
 
 import imgHeroEstoque from '@/assets/conserva-hero-estoque.jpg';
 import imgAlimentosEssenciais from '@/assets/conserva-alimentos-essenciais.jpg';
@@ -368,30 +370,30 @@ function AlimentoCard({ item, index }: { item: Alimento; index: number }) {
   return (
     <motion.div
       initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={index}
-      className="bg-white/60 border border-stone-200/60 rounded-2xl overflow-hidden backdrop-blur-sm hover:shadow-lg transition-shadow duration-300"
+      className="bg-white/[0.03] border border-white/[0.06] rounded-2xl overflow-hidden backdrop-blur-sm hover:border-white/[0.1] transition-shadow duration-300"
     >
       <button
         onClick={() => setOpen(!open)}
         className="w-full text-left p-6 md:p-8 flex items-start gap-4 group cursor-pointer"
       >
-        <div className="p-3 bg-amber-100/60 rounded-xl shrink-0 mt-0.5">
-          <Icon className="text-amber-700" size={20} />
+        <div className="p-3 bg-amber-500/[0.12] rounded-xl shrink-0 mt-0.5">
+          <Icon className="text-amber-400" size={20} />
         </div>
         <div className="flex-1 min-w-0">
           <div className="flex items-center justify-between gap-2">
             <div>
-              <h3 className="text-lg font-bold text-stone-800 group-hover:text-amber-800 transition-colors">{item.name}</h3>
-              <p className="text-amber-700 text-xs font-semibold uppercase tracking-wider mt-0.5">{item.tagline}</p>
+              <h3 className="text-lg font-bold text-stone-200 group-hover:text-amber-400 transition-colors">{item.name}</h3>
+              <p className="text-amber-500 text-xs font-semibold uppercase tracking-wider mt-0.5">{item.tagline}</p>
             </div>
             <div className="shrink-0">
-              {open ? <ChevronUp className="text-stone-400" size={18} /> : <ChevronDown className="text-stone-400" size={18} />}
+              {open ? <ChevronUp className="text-stone-500" size={18} /> : <ChevronDown className="text-stone-500" size={18} />}
             </div>
           </div>
           <div className="flex flex-wrap gap-3 mt-3">
-            <span className="text-[10px] font-bold uppercase tracking-wider bg-amber-50 text-amber-700 px-2.5 py-1 rounded-full border border-amber-200/50">
+            <span className="text-[10px] font-bold uppercase tracking-wider bg-amber-500/[0.12] text-amber-400 px-2.5 py-1 rounded-full border border-amber-500/20">
               {item.durability}
             </span>
-            <span className="text-[10px] font-bold uppercase tracking-wider bg-stone-100 text-stone-600 px-2.5 py-1 rounded-full border border-stone-200/50">
+            <span className="text-[10px] font-bold uppercase tracking-wider bg-white/[0.04] text-stone-400 px-2.5 py-1 rounded-full border border-white/[0.08]">
               {item.calories}
             </span>
           </div>
@@ -407,11 +409,11 @@ function AlimentoCard({ item, index }: { item: Alimento; index: number }) {
             transition={{ duration: 0.3, ease: APPLE_EASE }}
             className="overflow-hidden"
           >
-            <div className="px-6 md:px-8 pb-8 border-t border-stone-100 pt-6">
-              <p className="text-stone-600 text-sm leading-relaxed mb-4">{item.body}</p>
+            <div className="px-6 md:px-8 pb-8 border-t border-white/[0.06] pt-6">
+              <p className="text-stone-400 text-sm leading-relaxed mb-4">{item.body}</p>
               
-              <div className="bg-amber-50/50 border border-amber-100 rounded-xl p-4 mb-4">
-                <p className="text-amber-800 text-sm font-medium leading-relaxed">
+              <div className="bg-amber-500/[0.08] border border-amber-500/[0.15] rounded-xl p-4 mb-4">
+                <p className="text-amber-400 text-sm font-medium leading-relaxed">
                   <span className="font-bold">↳ </span>{item.keyFact}
                 </p>
               </div>
@@ -421,7 +423,7 @@ function AlimentoCard({ item, index }: { item: Alimento; index: number }) {
                   <p className="text-stone-500 text-[10px] font-bold uppercase tracking-wider mb-2">Variedades</p>
                   <div className="flex flex-wrap gap-2">
                     {item.varieties.map(v => (
-                      <span key={v} className="text-xs text-stone-600 bg-stone-50 border border-stone-200/50 px-3 py-1.5 rounded-lg">{v}</span>
+                      <span key={v} className="text-xs text-stone-400 bg-white/[0.04] border border-white/[0.08] px-3 py-1.5 rounded-lg">{v}</span>
                     ))}
                   </div>
                 </div>
@@ -451,23 +453,23 @@ function MetodoCard({ item, index }: { item: Metodo; index: number }) {
   return (
     <motion.div
       initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={index}
-      className="bg-white/60 border border-emerald-100/60 rounded-2xl overflow-hidden backdrop-blur-sm hover:shadow-lg transition-shadow duration-300"
+      className="bg-white/[0.03] border border-emerald-500/[0.1] rounded-2xl overflow-hidden backdrop-blur-sm hover:border-emerald-500/20 transition-shadow duration-300"
     >
       <button
         onClick={() => setOpen(!open)}
         className="w-full text-left p-5 md:p-6 flex items-start gap-4 group cursor-pointer"
       >
-        <div className="p-2.5 bg-emerald-100/60 rounded-xl shrink-0 mt-0.5">
-          <Icon className="text-emerald-700" size={18} />
+        <div className="p-2.5 bg-emerald-500/[0.12] rounded-xl shrink-0 mt-0.5">
+          <Icon className="text-emerald-400" size={18} />
         </div>
         <div className="flex-1 min-w-0">
           <div className="flex items-center justify-between gap-2">
-            <h3 className="text-base font-bold text-stone-800 group-hover:text-emerald-800 transition-colors">{item.name}</h3>
+            <h3 className="text-base font-bold text-stone-200 group-hover:text-emerald-400 transition-colors">{item.name}</h3>
             <div className="shrink-0">
-              {open ? <ChevronUp className="text-stone-400" size={16} /> : <ChevronDown className="text-stone-400" size={16} />}
+              {open ? <ChevronUp className="text-stone-500" size={16} /> : <ChevronDown className="text-stone-500" size={16} />}
             </div>
           </div>
-          <p className="text-emerald-600/80 text-[10px] font-bold uppercase tracking-wider mt-0.5">{item.principle}</p>
+          <p className="text-emerald-500/80 text-[10px] font-bold uppercase tracking-wider mt-0.5">{item.principle}</p>
           <p className="text-stone-500 text-xs leading-relaxed mt-2">{item.summary}</p>
         </div>
       </button>
@@ -481,19 +483,19 @@ function MetodoCard({ item, index }: { item: Metodo; index: number }) {
             transition={{ duration: 0.3, ease: APPLE_EASE }}
             className="overflow-hidden"
           >
-            <div className="px-5 md:px-6 pb-6 border-t border-stone-100 pt-4">
+            <div className="px-5 md:px-6 pb-6 border-t border-white/[0.06] pt-4">
               <ul className="space-y-1.5 mb-3">
                 {item.details.map((d, i) => (
                   <li key={i} className="flex items-start gap-2">
                     <div className="w-1 h-1 rounded-full bg-emerald-500 mt-2 shrink-0" />
-                    <span className="text-stone-600 text-xs leading-relaxed">{d}</span>
+                    <span className="text-stone-400 text-xs leading-relaxed">{d}</span>
                   </li>
                 ))}
               </ul>
               {item.safetyNote && (
-                <div className="bg-rose-50/60 border border-rose-200/50 rounded-xl p-3 flex items-start gap-2">
-                  <AlertTriangle className="text-rose-500 shrink-0 mt-0.5" size={14} />
-                  <p className="text-rose-700 text-xs font-medium leading-relaxed">{item.safetyNote}</p>
+                <div className="bg-rose-500/[0.08] border border-rose-500/[0.15] rounded-xl p-3 flex items-start gap-2">
+                  <AlertTriangle className="text-rose-400 shrink-0 mt-0.5" size={14} />
+                  <p className="text-rose-300 text-xs font-medium leading-relaxed">{item.safetyNote}</p>
                 </div>
               )}
             </div>
@@ -514,84 +516,45 @@ export default function ConservacaoArmazenamento() {
   }, []);
 
   return (
-    <div
-      className="min-h-screen text-stone-900 font-sans selection:bg-amber-300/50 pb-32 relative overflow-hidden"
-      style={{ background: 'linear-gradient(180deg, #ebe5d8 0%, #ddd5c3 12%, #d2dcc4 30%, #c4d4ae 50%, #b8c9a0 70%, #cdd5bd 90%, #e0dace 100%)' }}
-    >
-      {/* Ambient blobs */}
-      <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="absolute top-[-5%] right-[-5%] w-[600px] h-[600px] rounded-full"
-          style={{ background: 'radial-gradient(circle, rgba(255,200,80,0.2) 0%, transparent 65%)' }} />
-        <div className="absolute bottom-[10%] left-[5%] w-[500px] h-[500px] rounded-full"
-          style={{ background: 'radial-gradient(circle, rgba(160,200,110,0.2) 0%, transparent 65%)' }} />
-      </div>
+    <div className="min-h-screen text-stone-100 font-sans selection:bg-amber-300/50 pb-32 relative overflow-hidden" style={{ background: '#050808' }}>
+      <CinematicHero
+        image="/heroes/conservacao-armazenamento.webp"
+        phase="Fase 03 · Soberania Alimentar"
+        title="Conservação & Armazenamento"
+        subtitle="Quem controla a conservação dos seus alimentos não depende da cadeia de frio industrial. Este módulo reúne os 10 alimentos essenciais, 20 métodos validados de preservação e o arsenal auxiliar completo."
+        icon={Package}
+        accentColor="amber"
+        backLink="/projeto-autonomo"
+        backLabel="Projeto Autônomo"
+      />
 
-      <div className="relative z-10 max-w-5xl mx-auto px-6 md:px-10 pt-24">
-        
-        {/* Nav */}
-        <Link to="/projeto-autonomo" className="inline-flex items-center gap-2 text-stone-400 hover:text-stone-700 text-[10px] font-bold uppercase tracking-[0.3em] transition-all duration-300 mb-16">
-          <ArrowLeft size={14} /> Projeto Autônomo
-        </Link>
-
-        {/* ═══ HERO ═══ */}
-        <motion.header initial="hidden" animate="visible" variants={fadeUp} custom={0} className="mb-12">
-          <div className="flex items-center gap-3 mb-4">
-            <span className="text-amber-600 text-[10px] font-bold tracking-[0.5em] uppercase opacity-70">Fase 03 · Soberania Alimentar</span>
-          </div>
-          <h1 className="text-4xl md:text-7xl font-black tracking-tighter uppercase leading-[0.9] text-stone-800 mb-6" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
-            CONSERVAÇÃO &<br /><span className="text-amber-700">ARMAZENAMENTO</span>
-          </h1>
-          <p className="text-stone-500 text-base md:text-lg max-w-3xl leading-relaxed mb-4">
-            Quem controla a conservação dos seus alimentos <span className="text-stone-800 font-semibold">não depende da cadeia de frio industrial</span>. 
-            Este módulo reúne os 10 alimentos essenciais para estoque de longa duração, 20 métodos validados de preservação, 
-            alimentos naturalmente duradouros e o arsenal auxiliar completo — de técnicas milenares a protocolos modernos.
-          </p>
-          <p className="text-stone-400 text-sm max-w-2xl leading-relaxed">
-            Desastres naturais, instabilidades econômicas ou interrupções na cadeia de suprimentos podem tornar o acesso a alimentos frescos temporariamente impossível. 
-            Uma preparação adequada transforma vulnerabilidade em autonomia.
-          </p>
-        </motion.header>
-
-        {/* Hero Image */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.2, ease: APPLE_EASE }}
-          className="relative rounded-3xl overflow-hidden mb-20 border border-stone-300/30"
-        >
-          <img src={imgHeroEstoque} alt="Estoque organizado de alimentos em jarras herméticas" className="w-full h-64 md:h-96 object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-t from-stone-900/60 via-transparent to-transparent" />
-          <div className="absolute bottom-6 left-6 right-6">
-            <p className="text-white/90 text-sm md:text-base font-semibold">Estoque estratégico: organização, hermeticidade e rotatividade.</p>
-            <p className="text-white/50 text-xs mt-1">Recipientes de vidro com grãos, leguminosas, mel e especiarias.</p>
-          </div>
-        </motion.div>
+      <div className="relative z-10 max-w-5xl mx-auto px-6 md:px-10 pt-12">
 
         {/* ═══ FRAMEWORK VISUAL ═══ */}
         <motion.div
           initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}
-          className="bg-stone-100/60 border border-stone-300/40 p-8 md:p-10 rounded-2xl backdrop-blur-sm mb-20"
+          className="bg-white/[0.03] border border-white/[0.06] p-8 md:p-10 rounded-2xl mb-20"
         >
-          <p className="text-stone-600 text-[10px] font-bold uppercase tracking-[0.4em] mb-6">Critérios de seleção do estoque</p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-stone-500">
+          <p className="text-stone-500 text-[10px] font-bold uppercase tracking-[0.4em] mb-6">Critérios de seleção do estoque</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-stone-400">
             <div className="flex items-start gap-3">
-              <Clock className="text-amber-600 shrink-0 mt-0.5" size={16} />
+              <Clock className="text-amber-400 shrink-0 mt-0.5" size={16} />
               <div>
-                <p className="text-stone-700 font-semibold mb-1">Durabilidade extrema</p>
+                <p className="text-stone-200 font-semibold mb-1">Durabilidade extrema</p>
                 <p className="text-xs leading-relaxed">Armazenamento prolongado sem deterioração — muitos ultrapassam 5 anos.</p>
               </div>
             </div>
             <div className="flex items-start gap-3">
-              <Flame className="text-amber-600 shrink-0 mt-0.5" size={16} />
+              <Flame className="text-amber-400 shrink-0 mt-0.5" size={16} />
               <div>
-                <p className="text-stone-700 font-semibold mb-1">Densidade calórica</p>
+                <p className="text-stone-200 font-semibold mb-1">Densidade calórica</p>
                 <p className="text-xs leading-relaxed">Alto teor calórico e nutricional. Energia sustentável em situações de escassez.</p>
               </div>
             </div>
             <div className="flex items-start gap-3">
-              <ShieldCheck className="text-amber-600 shrink-0 mt-0.5" size={16} />
+              <ShieldCheck className="text-amber-400 shrink-0 mt-0.5" size={16} />
               <div>
-                <p className="text-stone-700 font-semibold mb-1">Independência elétrica</p>
+                <p className="text-stone-200 font-semibold mb-1">Independência elétrica</p>
                 <p className="text-xs leading-relaxed">Sem necessidade de refrigeração. Funciona em condições de falta de energia.</p>
               </div>
             </div>
@@ -599,27 +562,14 @@ export default function ConservacaoArmazenamento() {
         </motion.div>
 
         {/* ═══ SEÇÃO 1: 10 ALIMENTOS ═══ */}
-        {/* Section Image: Alimentos Essenciais */}
-        <motion.div
-          initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}
-          className="relative rounded-3xl overflow-hidden mb-10 border border-amber-200/30"
-        >
-          <img src={imgAlimentosEssenciais} alt="Os 10 alimentos essenciais para estoque estratégico" className="w-full h-48 md:h-72 object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-t from-stone-900/50 via-transparent to-transparent" />
-          <div className="absolute bottom-5 left-6 right-6">
-            <p className="text-white/90 text-sm font-semibold">Arroz, feijão, mel, sal, aveia, nozes — densidade nutricional máxima.</p>
-          </div>
-        </motion.div>
-
         <motion.section className="mb-28" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}>
           <div className="mb-10">
-            <span className="text-amber-600 text-[10px] font-bold tracking-[0.4em] uppercase">Bloco 01 — Estoque Estratégico</span>
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight mt-2 text-stone-800">
-              Os 10 Alimentos <span className="text-amber-700">Essenciais</span>
+            <span className="text-amber-500 text-[10px] font-bold tracking-[0.4em] uppercase">Bloco 01 — Estoque Estratégico</span>
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight mt-2 text-stone-100">
+              Os 10 Alimentos <span className="text-amber-400">Essenciais</span>
             </h2>
-            <p className="text-stone-500 text-sm leading-relaxed mt-3 max-w-2xl">
-              Selecionados por durabilidade, valor nutricional, versatilidade e custo acessível. 
-              Um estoque bem planejado combina carboidratos, proteínas, gorduras saudáveis e micronutrientes essenciais.
+            <p className="text-stone-400 text-sm leading-relaxed mt-3 max-w-2xl">
+              Selecionados por durabilidade, valor nutricional, versatilidade e custo acessível.
             </p>
           </div>
 
@@ -629,45 +579,29 @@ export default function ConservacaoArmazenamento() {
             ))}
           </div>
 
-          {/* CTA intermediário */}
           <motion.div
             initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}
-            className="mt-10 bg-amber-50/60 border border-amber-200/50 p-8 rounded-2xl text-center"
+            className="mt-10 bg-amber-500/[0.08] border border-amber-500/[0.15] p-8 rounded-2xl text-center"
           >
-            <p className="text-amber-800 text-sm font-semibold mb-2">O ambiente ideal é fresco, seco e escuro.</p>
+            <p className="text-amber-400 text-sm font-semibold mb-2">O ambiente ideal é fresco, seco e escuro.</p>
             <p className="text-stone-500 text-xs max-w-lg mx-auto leading-relaxed">
-              Temperatura e umidade elevadas são os principais inimigos. Recipientes herméticos, absorvedores de oxigênio e 
-              rotulagem adequada prolongam significativamente a vida útil. Adote a estratégia "primeiro a entrar, primeiro a sair".
+              Temperatura e umidade elevadas são os principais inimigos. Recipientes herméticos, absorvedores de oxigênio e
+              rotulagem adequada prolongam significativamente a vida útil.
             </p>
           </motion.div>
         </motion.section>
 
-        {/* ═══ SEÇÃO 2: 20 MÉTODOS ═══ */}
-        {/* Section Image: Métodos de Conservação */}
-        <motion.div
-          initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}
-          className="relative rounded-3xl overflow-hidden mb-10 border border-emerald-200/30"
-        >
-          <img src={imgMetodosPreservacao} alt="Métodos de conservação: enlatamento, desidratação, fermentação e defumação" className="w-full h-48 md:h-72 object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-t from-stone-900/50 via-transparent to-transparent" />
-          <div className="absolute bottom-5 left-6 right-6">
-            <p className="text-white/90 text-sm font-semibold">Conservas, desidratação, defumação e fermentação — técnicas milenares validadas.</p>
-          </div>
-        </motion.div>
-
         <motion.section className="mb-28" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}>
           <div className="mb-10">
-            <span className="text-emerald-600 text-[10px] font-bold tracking-[0.4em] uppercase">Bloco 02 — Arsenal de Técnicas</span>
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight mt-2 text-stone-800">
-              20 Métodos de <span className="text-emerald-700">Conservação</span>
+            <span className="text-emerald-500 text-[10px] font-bold tracking-[0.4em] uppercase">Bloco 02 — Arsenal de Técnicas</span>
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight mt-2 text-stone-100">
+              20 Métodos de <span className="text-emerald-400">Conservação</span>
             </h2>
-            <p className="text-stone-500 text-sm leading-relaxed mt-3 max-w-2xl">
-              De técnicas milenares a tecnologias industriais. A combinação de diferentes métodos frequentemente proporciona resultados superiores 
-              — como embutidos que envolvem salga, fermentação e defumação em um único processo.
+            <p className="text-stone-400 text-sm leading-relaxed mt-3 max-w-2xl">
+              De técnicas milenares a tecnologias industriais. A combinação de diferentes métodos frequentemente proporciona resultados superiores.
             </p>
           </div>
 
-          {/* Classificação visual */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mb-8">
             {[
               { label: 'Redução de umidade', methods: 'Desidratação, Liofilização, Salga' },
@@ -677,8 +611,8 @@ export default function ConservacaoArmazenamento() {
               { label: 'Atmosfera', methods: 'Vácuo, Atmosfera Modificada, Silos' },
               { label: 'Especializados', methods: 'Irradiação, Cura, Defumação, Defumação Líquida' },
             ].map(cat => (
-              <div key={cat.label} className="bg-emerald-50/50 border border-emerald-100/50 rounded-xl p-4">
-                <p className="text-emerald-700 text-[10px] font-bold uppercase tracking-wider mb-1">{cat.label}</p>
+              <div key={cat.label} className="bg-emerald-500/[0.06] border border-emerald-500/[0.1] rounded-xl p-4">
+                <p className="text-emerald-400 text-[10px] font-bold uppercase tracking-wider mb-1">{cat.label}</p>
                 <p className="text-stone-500 text-xs">{cat.methods}</p>
               </div>
             ))}
@@ -691,81 +625,41 @@ export default function ConservacaoArmazenamento() {
           </div>
         </motion.section>
 
-        {/* ═══ SEÇÃO 3: ALIMENTOS NATURALMENTE DURADOUROS ═══ */}
-        {/* Section Image: Alimentos Naturalmente Duradouros */}
-        <motion.div
-          initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}
-          className="relative rounded-3xl overflow-hidden mb-10 border border-emerald-200/30"
-        >
-          <img src={imgAlimentosDuradouros} alt="Alimentos naturalmente duradouros: grãos, leguminosas, especiarias e raízes" className="w-full h-48 md:h-72 object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-t from-stone-900/50 via-transparent to-transparent" />
-          <div className="absolute bottom-5 left-6 right-6">
-            <p className="text-white/90 text-sm font-semibold">Grãos integrais, leguminosas, especiarias — longevidade natural sem intervenção.</p>
-          </div>
-        </motion.div>
-
+        {/* ═══ SEÇÃO 3: NATURALMENTE DURADOUROS ═══ */}
         <motion.section className="mb-28" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}>
           <div className="mb-10">
             <span className="text-stone-500 text-[10px] font-bold tracking-[0.4em] uppercase">Bloco 03 — Longevidade Natural</span>
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight mt-2 text-stone-800">
-              Alimentos <span className="text-emerald-700">Naturalmente Duradouros</span>
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight mt-2 text-stone-100">
+              Alimentos <span className="text-emerald-400">Naturalmente Duradouros</span>
             </h2>
-            <p className="text-stone-500 text-sm leading-relaxed mt-3 max-w-2xl">
-              A natureza desenvolveu alimentos com extraordinária capacidade de conservação intrínseca — sem intervenção tecnológica. 
-              Baixa atividade de água, compostos antimicrobianos naturais, cascas protetoras e sistemas enzimáticos especializados.
+            <p className="text-stone-400 text-sm leading-relaxed mt-3 max-w-2xl">
+              A natureza desenvolveu alimentos com extraordinária capacidade de conservação intrínseca — sem intervenção tecnológica.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {[
-              {
-                icon: Droplets, name: 'Vinagre', tagline: 'O Conservante Multifuncional',
-                body: 'pH entre 2,4 e 3,4. Autoprotetor por acidez extrema. Vinagres não filtrados com "mãe do vinagre" podem ser perpetuados indefinidamente — recurso renovável permanente.',
-                details: ['Pickling, marinadas, condimentos estabilizados, acidificação corretiva', 'Intensifica extração de minerais de ossos em caldos', 'Potencializa biodisponibilidade de cálcio em vegetais fermentados', 'Produção caseira simples a partir de qualquer substrato alcoólico'],
-              },
-              {
-                icon: Wheat, name: 'Grãos Integrais', tagline: 'Cápsulas Biológicas de Nutrição',
-                body: 'Gérmen + endosperma + farelo = sistema biologicamente estável em dormência metabólica. Trigo: 15–30 anos. Milho requer nixtamalização para máxima biodisponibilidade.',
-                details: ['Trigo, aveia, centeio, cevada, milho, quinoa, amaranto', 'Umidade abaixo de 10% (ideal 7–8%)', 'Capacidade germinativa preservada = produção de brotos e cultivo futuro', 'Capital biológico renovável, não apenas reserva estática'],
-              },
-              {
-                icon: Egg, name: 'Leguminosas Secas', tagline: 'Proteína Vegetal de Longa Duração',
-                body: '20–25% proteína, ricas em lisina (deficiente em cereais). Complementaridade com grãos cria nutrição completa. Armazenamento de 2–10 anos.',
-                details: ['Feijões, grão-de-bico, lentilhas, ervilha seca, soja, fava, guandu', '"Casca dura" com tempo — resolver com remolho em bicarbonato ou panela de pressão', 'Baixo teor lipídico minimiza rancificação', 'Congelamento prévio por 72h elimina ovos de insetos'],
-              },
-              {
-                icon: Package, name: 'Alimentos Enlatados', tagline: 'Praticidade e Décadas de Estabilidade',
-                body: 'Esterilização comercial cria ambiente interno estéril e anaeróbico. Datas impressas indicam qualidade ótima, não segurança. Evidências de preservação por +100 anos.',
-                details: ['Alta acidez: 3–5 anos. Baixa acidez: 2–5 anos oficialmente, décadas na prática', 'Proteínas inalteradas, minerais preservados, licopeno com biodisponibilidade aumentada', 'Vidros permitem reutilização; latas resistem impactos para kits de evacuação', 'Sistema FIFO para rotatividade eficiente'],
-              },
-              {
-                icon: Leaf, name: 'Raízes e Tubérculos Curados', tagline: 'Reserva Natural de 3–12 Meses',
-                body: 'Inhames, batatas, mandioca, beterrabas. Cura adequada antes do armazenamento é etapa crucial. Manter viabilidade reprodutiva para ciclos futuros.',
-                details: ['Proteção contra oscilações de temperatura', 'Ventilação controlada para produtos que respiram durante armazenamento', 'Potencial reprodutivo preservado — garantia de produção futura', 'Estabilidade térmica natural é mais importante que refrigeração'],
-              },
-              {
-                icon: Leaf, name: 'Especiarias e Ervas Secas', tagline: 'Óleos Essenciais Conservantes',
-                body: 'Ricas em óleos essenciais com propriedades conservantes intrínsecas. Melhoram palatabilidade e segurança microbiológica simultaneamente.',
-                details: ['Recurso renovável quando cultivadas', 'Valor de troca em cenários de escassez', 'Propriedades medicinais complementares', 'Armazenar em recipientes herméticos ao abrigo da luz'],
-              },
+              { icon: Droplets, name: 'Vinagre', tagline: 'O Conservante Multifuncional', body: 'pH entre 2,4 e 3,4. Autoprotetor por acidez extrema.', details: ['Pickling, marinadas, condimentos estabilizados', 'Intensifica extração de minerais de ossos em caldos', 'Potencializa biodisponibilidade de cálcio', 'Produção caseira simples'] },
+              { icon: Wheat, name: 'Grãos Integrais', tagline: 'Cápsulas Biológicas de Nutrição', body: 'Trigo: 15–30 anos. Milho requer nixtamalização.', details: ['Trigo, aveia, centeio, cevada, milho, quinoa', 'Umidade abaixo de 10%', 'Capacidade germinativa preservada', 'Capital biológico renovável'] },
+              { icon: Egg, name: 'Leguminosas Secas', tagline: 'Proteína Vegetal de Longa Duração', body: '20–25% proteína. Armazenamento de 2–10 anos.', details: ['Feijões, grão-de-bico, lentilhas, ervilha seca', 'Complementaridade com grãos = nutrição completa', 'Baixo teor lipídico minimiza rancificação', 'Congelamento prévio elimina ovos de insetos'] },
+              { icon: Package, name: 'Alimentos Enlatados', tagline: 'Praticidade e Décadas de Estabilidade', body: 'Esterilização comercial cria ambiente estéril.', details: ['Alta acidez: 3–5 anos oficialmente, décadas na prática', 'Proteínas inalteradas, minerais preservados', 'Vidros permitem reutilização', 'Sistema FIFO para rotatividade'] },
+              { icon: Leaf, name: 'Raízes e Tubérculos Curados', tagline: 'Reserva Natural de 3–12 Meses', body: 'Inhames, batatas, mandioca, beterrabas.', details: ['Proteção contra oscilações de temperatura', 'Ventilação controlada', 'Potencial reprodutivo preservado', 'Estabilidade térmica natural'] },
+              { icon: Leaf, name: 'Especiarias e Ervas Secas', tagline: 'Óleos Essenciais Conservantes', body: 'Ricas em óleos essenciais com propriedades conservantes.', details: ['Recurso renovável quando cultivadas', 'Valor de troca em cenários de escassez', 'Propriedades medicinais complementares', 'Recipientes herméticos ao abrigo da luz'] },
             ].map((item, i) => {
               const Icon = item.icon;
               return (
-                <motion.div
-                  key={item.name}
-                  initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i}
-                  className="bg-white/60 border border-stone-200/60 rounded-2xl p-6 md:p-8 backdrop-blur-sm"
-                >
+                <motion.div key={item.name} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i}
+                  className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-6 md:p-8">
                   <div className="flex items-start gap-4 mb-4">
-                    <div className="p-2.5 bg-emerald-100/60 rounded-xl shrink-0">
-                      <Icon className="text-emerald-700" size={18} />
+                    <div className="p-2.5 bg-emerald-500/[0.12] rounded-xl shrink-0">
+                      <Icon className="text-emerald-400" size={18} />
                     </div>
                     <div>
-                      <h3 className="text-base font-bold text-stone-800">{item.name}</h3>
-                      <p className="text-emerald-600/80 text-[10px] font-bold uppercase tracking-wider">{item.tagline}</p>
+                      <h3 className="text-base font-bold text-stone-200">{item.name}</h3>
+                      <p className="text-emerald-500/80 text-[10px] font-bold uppercase tracking-wider">{item.tagline}</p>
                     </div>
                   </div>
-                  <p className="text-stone-600 text-sm leading-relaxed mb-3">{item.body}</p>
+                  <p className="text-stone-400 text-sm leading-relaxed mb-3">{item.body}</p>
                   <ul className="space-y-1.5">
                     {item.details.map((d, j) => (
                       <li key={j} className="flex items-start gap-2">
