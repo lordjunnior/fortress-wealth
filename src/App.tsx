@@ -123,6 +123,7 @@ const App = () => (
           <Route path="/teoria-das-bandeiras" element={<TeoriaDasBandeiras />} />
           <Route path="/indice-do-despertar" element={<IndiceDoDesespertar />} />
           <Route path="/confisco-1990" element={<Confisco1990 />} />
+          <Route path="/neobankless" element={<Neobankless />} />
           <Route path="/21-milhoes" element={<HardCap21 />} />
           <Route path="/bitcoin-seguro" element={<BitcoinSeguro />} />
           <Route path="/chaves" element={<ChavesPage />} />
