@@ -1,7 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, Leaf, Sprout, Heart, Sun, Cross, Thermometer, Bug, Shield, Wheat, TreePine, BookOpen, Flame, Layers, Egg, Shovel, ChevronDown, Eye, Zap } from 'lucide-react';
-import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import CinematicHero from '@/components/CinematicHero';
+import ScrollToTop from '@/components/ScrollToTop';
 
 /* ─── GSAP ─── */
 import gsap from 'gsap';
@@ -118,28 +120,11 @@ const PILARES = [
 ══════════════════════════════════════════════════════════════ */
 export default function SabedoriaAncestral() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const heroRef = useRef<HTMLDivElement>(null);
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-  const smoothX = useSpring(mouseX, { stiffness: 30, damping: 20 });
-  const smoothY = useSpring(mouseY, { stiffness: 30, damping: 20 });
 
   const { scrollYProgress } = useScroll();
   const progressWidth = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
 
   useEffect(() => { window.scrollTo(0, 0); }, []);
-
-  /* ── Mouse parallax ── */
-  useEffect(() => {
-    const isMobile = window.innerWidth < 768;
-    if (isMobile) return;
-    const handler = (e: MouseEvent) => {
-      mouseX.set((e.clientX / window.innerWidth - 0.5) * 40);
-      mouseY.set((e.clientY / window.innerHeight - 0.5) * 40);
-    };
-    window.addEventListener('mousemove', handler);
-    return () => window.removeEventListener('mousemove', handler);
-  }, [mouseX, mouseY]);
 
   /* ── GSAP ScrollTrigger reveals ── */
   useEffect(() => {
@@ -169,14 +154,27 @@ export default function SabedoriaAncestral() {
 
   return (
     <div ref={containerRef} className="min-h-screen font-sans selection:bg-amber-300/30 relative overflow-hidden"
-      style={{ background: 'linear-gradient(180deg, #0d0b08 0%, #151210 8%, #1a1510 20%, #1e1912 35%, #211c14 50%, #1e1912 70%, #151210 85%, #0d0b08 100%)' }}
+      style={{ background: '#050808' }}
     >
+      <ScrollToTop />
+
+      <CinematicHero
+        image="/heroes/sabedoria-ancestral.webp"
+        phase="Projeto Autônomo · Sabedoria Ancestral"
+        title="O Que a Terra Ensina"
+        subtitle="Conhecimento que alimentou famílias por séculos. Preservado aqui como ferramenta de soberania."
+        icon={Leaf}
+        accentColor="amber"
+        backLink="/projeto-autonomo"
+        backLabel="Projeto Autônomo"
+      />
+
       {/* ─── Schema.org / SEO Microdados ─── */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
         "@context": "https://schema.org",
         "@type": "CollectionPage",
         "name": "Sabedoria Ancestral — Projeto Autônomo",
-        "description": "Hub de conhecimento ancestral sobre plantas medicinais, saúde natural e soberania alimentar. Fichas técnicas completas com dosagens, contraindicações e protocolos validados.",
+        "description": "Hub de conhecimento ancestral sobre plantas medicinais, saúde natural e soberania alimentar.",
         "url": "https://verificabr.com/projeto-autonomo/sabedoria-ancestral",
         "mainEntity": {
           "@type": "ItemList",
@@ -220,77 +218,7 @@ export default function SabedoriaAncestral() {
         <div className="spore-layer spore-layer-3" />
       </div>
 
-      {/* ─── Atmospheric radials with mouse parallax ─── */}
-      <motion.div className="fixed inset-0 pointer-events-none z-0" aria-hidden="true"
-        style={{ x: smoothX, y: smoothY }}>
-        <div className="absolute top-[10%] left-[5%] w-[600px] h-[600px] rounded-full"
-          style={{ background: 'radial-gradient(circle, rgba(120,90,30,0.14) 0%, transparent 70%)' }} />
-        <div className="absolute bottom-[15%] right-[10%] w-[500px] h-[500px] rounded-full"
-          style={{ background: 'radial-gradient(circle, rgba(80,110,40,0.10) 0%, transparent 70%)' }} />
-        <div className="absolute top-[50%] left-[40%] w-[400px] h-[400px] rounded-full"
-          style={{ background: 'radial-gradient(circle, rgba(180,140,50,0.06) 0%, transparent 70%)' }} />
-      </motion.div>
-
       <div className="relative z-10">
-
-        {/* ══════════════════════════════════════════════════════════
-            HERO — FULL-WIDTH CINEMATIC
-        ══════════════════════════════════════════════════════════ */}
-        <div ref={heroRef} className="relative min-h-[100vh] flex flex-col justify-center px-6 md:px-16 lg:px-24 overflow-hidden">
-
-          {/* Grain overlay */}
-          <div className="absolute inset-0 z-0 opacity-[0.03]" aria-hidden="true"
-            style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\'/%3E%3C/svg%3E")', backgroundRepeat: 'repeat' }} />
-
-          {/* Bottom fade */}
-          <div className="absolute bottom-0 left-0 right-0 h-48 z-[1]"
-            style={{ background: 'linear-gradient(to top, #0d0b08, transparent)' }} />
-
-          {/* Breadcrumb */}
-          <nav className="absolute top-8 left-6 md:left-16 lg:left-24 z-10 flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] flex-wrap"
-            aria-label="Navegação">
-            <Link to="/" className="text-stone-500 hover:text-amber-400 transition-colors focus:outline-none focus:ring-1 focus:ring-amber-500/50 rounded px-1">Início</Link>
-            <span className="text-stone-700" aria-hidden="true">/</span>
-            <Link to="/projeto-autonomo" className="text-stone-500 hover:text-amber-400 transition-colors focus:outline-none focus:ring-1 focus:ring-amber-500/50 rounded px-1">Projeto Autônomo</Link>
-            <span className="text-stone-700" aria-hidden="true">/</span>
-            <span className="text-amber-400" aria-current="page">Sabedoria Ancestral</span>
-          </nav>
-
-          {/* Hero Content */}
-          <motion.div className="relative z-10 max-w-6xl"
-            initial={{ opacity: 0, y: 50, filter: 'blur(12px)' }}
-            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-            transition={{ duration: 1.2, ease: APPLE_EASE }}>
-
-            <div className="flex items-center gap-4 mb-8">
-              <div className="p-4 bg-amber-700/15 border border-amber-600/20 rounded-2xl"
-                style={{ backdropFilter: 'blur(12px)' }}>
-                <Leaf className="text-amber-400" size={32} aria-hidden="true" />
-              </div>
-              <p className="text-amber-500/70 text-[10px] font-bold uppercase tracking-[0.5em]">Projeto Autônomo · Sabedoria Ancestral</p>
-            </div>
-
-            <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-[10rem] font-black tracking-tighter uppercase leading-[0.85]"
-              style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
-              <span className="text-stone-200 block">O QUE A</span>
-              <span className="block" style={{
-                background: 'linear-gradient(135deg, hsl(40 92% 56%), hsl(35 95% 50%), hsl(30 80% 45%))',
-                WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent'
-              }}>TERRA ENSINA</span>
-            </h1>
-
-            <p className="text-stone-400 text-lg md:text-xl mt-8 max-w-2xl leading-relaxed font-light">
-              Conhecimento que alimentou famílias por séculos. Preservado aqui como <span className="text-amber-400 font-semibold">ferramenta de soberania</span>.
-            </p>
-
-            {/* Scroll indicator */}
-            <motion.div className="mt-16 flex flex-col items-start gap-2"
-              animate={{ y: [0, 8, 0] }} transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}>
-              <span className="text-stone-600 text-[9px] uppercase tracking-[0.3em] font-bold">Explorar</span>
-              <ChevronDown className="text-amber-500/50" size={18} />
-            </motion.div>
-          </motion.div>
-        </div>
 
         {/* ══════════════════════════════════════════════════════════
             NARRATIVA — Full-width immersive text
