@@ -678,7 +678,7 @@ export default function ConservacaoArmazenamento() {
         {/* Section Image: Arsenal Auxiliar */}
         <motion.div
           initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}
-          className="relative rounded-3xl overflow-hidden mb-10 border border-amber-200/30"
+          className="relative rounded-3xl overflow-hidden mb-10 border border-white/[0.06]"
         >
           <img src={imgArsenalAuxiliar} alt="Arsenal auxiliar: seladora a vácuo, baldes herméticos, absorvedores de oxigênio" className="w-full h-48 md:h-72 object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-stone-900/50 via-transparent to-transparent" />
