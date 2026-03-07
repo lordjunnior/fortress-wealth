@@ -112,6 +112,8 @@ const App = () => (
           <Route path="/alertas" element={<AlertasHub />} />
           <Route path="/alertas/cbdc-brasil" element={<CbdcBrasil />} />
           <Route path="/alertas/fim-do-dinheiro-vivo" element={<ProibicaoDinheiro />} />
+          <Route path="/historia-do-dinheiro" element={<HistoriaDoDinheiro />} />
+          <Route path="/inflacao-imposto-oculto" element={<InflacaoImpostoOculto />} />
           <Route path="/21-milhoes" element={<HardCap21 />} />
           <Route path="/bitcoin-seguro" element={<BitcoinSeguro />} />
           <Route path="/chaves" element={<ChavesPage />} />
