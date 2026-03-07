@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import Index from "./pages/Index";
 import BitcoinVsImovel from "./pages/BitcoinVsImovel";
@@ -71,6 +71,8 @@ import NavegacaoPrimaria from "./pages/NavegacaoPrimaria";
 import ConhecimentoPerdido from "./pages/ConhecimentoPerdido";
 import Confisco1990 from "./pages/Confisco1990";
 import Neobankless from "./pages/Neobankless";
+import SoberaniaFinanceira from "./pages/SoberaniaFinanceira";
+import IndiceSoberaniaFinanceira from "./pages/IndiceSoberaniaFinanceira";
 import CpContextoHistorico from "./pages/cp/ContextoHistorico";
 import CpBaseFisiologica from "./pages/cp/BaseFisiologica";
 import CpSegurancaLimites from "./pages/cp/SegurancaLimites";
@@ -123,7 +125,10 @@ const App = () => (
           <Route path="/teoria-das-bandeiras" element={<TeoriaDasBandeiras />} />
           <Route path="/indice-do-despertar" element={<IndiceDoDesespertar />} />
           <Route path="/confisco-1990" element={<Confisco1990 />} />
-          <Route path="/neobankless" element={<Neobankless />} />
+          <Route path="/soberania-financeira" element={<SoberaniaFinanceira />} />
+          <Route path="/soberania-financeira/contas-internacionais/neobankless" element={<Neobankless />} />
+          <Route path="/neobankless" element={<Navigate to="/soberania-financeira/contas-internacionais/neobankless" replace />} />
+          <Route path="/indice-de-soberania-financeira" element={<IndiceSoberaniaFinanceira />} />
           <Route path="/21-milhoes" element={<HardCap21 />} />
           <Route path="/bitcoin-seguro" element={<BitcoinSeguro />} />
           <Route path="/chaves" element={<ChavesPage />} />
