@@ -70,6 +70,7 @@ import ComunicacaoOffline from "./pages/ComunicacaoOffline";
 import NavegacaoPrimaria from "./pages/NavegacaoPrimaria";
 import ConhecimentoPerdido from "./pages/ConhecimentoPerdido";
 import Confisco1990 from "./pages/Confisco1990";
+import Neobankless from "./pages/Neobankless";
 import CpContextoHistorico from "./pages/cp/ContextoHistorico";
 import CpBaseFisiologica from "./pages/cp/BaseFisiologica";
 import CpSegurancaLimites from "./pages/cp/SegurancaLimites";
