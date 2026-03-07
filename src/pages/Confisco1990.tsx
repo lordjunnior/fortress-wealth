@@ -485,8 +485,57 @@ const Confisco1990 = () => {
             </div>
           </motion.div>
 
+          {/* FAQ Section */}
+          <ConfiscoFaq />
+
+          {/* Internal Linking */}
+          <motion.nav
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="space-y-4"
+            aria-label="Conteúdo relacionado"
+          >
+            <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-muted-foreground/60">
+              CONTINUE A JORNADA
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {[
+                { to: "/autocustodia", label: "Autocustódia Bitcoin", desc: "Proteja seu patrimônio" },
+                { to: "/historia-do-dinheiro", label: "História do Dinheiro", desc: "De onde viemos" },
+                { to: "/inflacao-imposto-oculto", label: "Inflação: Imposto Oculto", desc: "Como roubam seu poder de compra" },
+                { to: "/cbdc-brasil", label: "CBDC Brasil: Drex", desc: "O próximo capítulo do controle" },
+                { to: "/fim-do-dinheiro-vivo", label: "Fim do Dinheiro Físico", desc: "A proibição em andamento" },
+                { to: "/o-que-e-bitcoin", label: "O que é Bitcoin?", desc: "A alternativa descentralizada" },
+              ].map((link) => (
+                <Link
+                  key={link.to}
+                  to={link.to}
+                  className="group border border-border/30 rounded-xl p-4 bg-card/20 hover:border-primary/30 hover:bg-card/40 transition-all duration-300"
+                >
+                  <p className="text-sm font-semibold text-foreground/90 group-hover:text-primary transition-colors">
+                    {link.label}
+                  </p>
+                  <p className="text-xs text-muted-foreground mt-1">{link.desc}</p>
+                </Link>
+              ))}
+            </div>
+          </motion.nav>
+
+          {/* Breadcrumb (semantic, visible) */}
+          <nav aria-label="Breadcrumb" className="pt-8">
+            <ol className="flex items-center gap-2 text-xs text-muted-foreground/50 font-mono">
+              <li><Link to="/" className="hover:text-foreground transition-colors">Início</Link></li>
+              <li>/</li>
+              <li><Link to="/alertas" className="hover:text-foreground transition-colors">Alertas</Link></li>
+              <li>/</li>
+              <li className="text-muted-foreground">Confisco 1990</li>
+            </ol>
+          </nav>
+
           {/* Footer */}
-          <footer className="pt-16 border-t border-border/20 text-center space-y-6">
+          <footer className="pt-8 border-t border-border/20 text-center space-y-6">
             <p className="text-muted-foreground font-mono text-xs tracking-widest uppercase">
               Quem não conhece a história está condenado a repeti-la.
             </p>
