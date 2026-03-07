@@ -30,7 +30,7 @@ const CATEGORIES = [
     description: 'Contas bancárias e fintechs com conversão multi-moeda, cartões internacionais e transferências cross-border. Para quem precisa operar legalmente fora do sistema bancário nacional.',
     items: [
       { name: 'Neobankless', status: 'review', link: '/soberania-financeira/contas-internacionais/neobankless' },
-      { name: 'Bank of Georgia', status: 'em breve', link: null },
+      { name: 'Bank of Georgia', status: 'review', link: '/soberania-financeira/contas-internacionais/bank-of-georgia' },
       { name: 'Wise', status: 'em breve', link: null },
       { name: 'Payoneer', status: 'em breve', link: null },
     ],
