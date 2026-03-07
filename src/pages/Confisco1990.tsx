@@ -497,7 +497,7 @@ const Confisco1990 = () => {
             className="space-y-4"
             aria-label="Conteúdo relacionado"
           >
-            <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-muted-foreground/60">
+            <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-primary/70">
               CONTINUE A JORNADA
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -512,9 +512,9 @@ const Confisco1990 = () => {
                 <Link
                   key={link.to}
                   to={link.to}
-                  className="group border border-border/30 rounded-xl p-4 bg-card/20 hover:border-primary/30 hover:bg-card/40 transition-all duration-300"
+                  className="group border border-border rounded-xl p-4 bg-card hover:border-primary/40 hover:bg-card/80 transition-all duration-300"
                 >
-                  <p className="text-sm font-semibold text-foreground/90 group-hover:text-primary transition-colors">
+                  <p className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">
                     {link.label}
                   </p>
                   <p className="text-xs text-muted-foreground mt-1">{link.desc}</p>
