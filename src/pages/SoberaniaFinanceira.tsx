@@ -53,11 +53,11 @@ const CATEGORIES = [
     description: '10 contas offshore cripto que NÃO reportam — abertura remota, jurisdições favoráveis e análise de risco.',
     image: offshoreImg,
     items: [
-      { name: 'Top 10 contas offshore cripto', status: 'em breve', link: null },
+      { name: 'Top 10 contas offshore cripto', status: 'review', link: '/soberania-financeira/contas-offshore/top-10' },
       { name: 'Guia de abertura remota', status: 'em breve', link: null },
     ],
     privacyLevel: 'Alto',
-    reviewCount: 0,
+    reviewCount: 1,
   },
   {
     id: 'exchanges-sem-kyc',
