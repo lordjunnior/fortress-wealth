@@ -23,7 +23,7 @@ import SovereignTermModal from "@/components/SovereignTermModal";
 import NivelZero from "@/components/NivelZero";
 import StrategicSignature from "@/components/StrategicSignature";
 import RiskBlock from "@/components/RiskBlock";
-
+import AlertBanner from "@/components/AlertBanner";
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
@@ -151,6 +151,10 @@ const Index = () => {
       {/* Main content with sidebar offset on desktop */}
       <div className="relative z-10 lg:ml-[260px] pb-10">
         <HeroSection />
+
+        <NobelSection className="section-divider" delay={0.05}>
+          <AlertBanner />
+        </NobelSection>
 
         <NobelSection id="manifesto" className="section-divider">
           <ManifestoSection />

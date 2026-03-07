@@ -64,7 +64,7 @@ export default function ProibicaoDinheiro() {
       <Helmet>
         <title>Governo Limita Dinheiro Vivo no Brasil — PL 3951 | Lord Junnior</title>
         <meta name="description" content="O PL 3.951/2019 abre caminho para limitar o uso de dinheiro em espécie no Brasil. Entenda o projeto, veja os limites na Europa e descubra ferramentas legais para proteger sua privacidade financeira." />
-        <link rel="canonical" href="https://lordjunnior.com.br/proibicao-dinheiro" />
+        <link rel="canonical" href="https://lordjunnior.com.br/alertas/fim-do-dinheiro-vivo" />
         <meta property="og:title" content="Governo Limita Dinheiro Vivo no Brasil — PL 3951" />
         <meta property="og:description" content="Entenda o PL 3.951 e como proteger sua privacidade financeira com Bitcoin P2P, teoria das bandeiras e autocustódia." />
         <meta property="og:url" content="https://lordjunnior.com.br/proibicao-dinheiro" />
