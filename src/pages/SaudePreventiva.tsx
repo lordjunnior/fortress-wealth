@@ -46,8 +46,19 @@ const SaudePreventiva = () => {
 
   return (
     <div ref={containerRef} className="min-h-screen text-stone-100 font-sans selection:bg-emerald-300/50 relative overflow-hidden"
-      style={{ background: 'linear-gradient(180deg, #0a0d08 0%, #0f1a0f 8%, #111f11 20%, #142214 40%, #111f11 70%, #0f1a0f 90%, #0a0d08 100%)' }}
+      style={{ background: 'linear-gradient(180deg, #050808 0%, #0a0d08 8%, #0f1a0f 20%, #142214 40%, #111f11 70%, #0f1a0f 90%, #0a0d08 100%)' }}
     >
+      <CinematicHero
+        image="/heroes/saude-preventiva.webp"
+        phase="Fase 02 · Autonomia Biológica"
+        title="Saúde Preventiva"
+        subtitle="Base Biológica e Estratégias Anti-Inflamatórias Avançadas"
+        icon={Heart}
+        accentColor="emerald"
+        backLink="/projeto-autonomo"
+        backLabel="Projeto Autônomo"
+      />
+
       {/* ─── READING PROGRESS ─── */}
       <motion.div className="fixed top-0 left-0 right-0 h-[2px] z-50 origin-left bg-emerald-500" style={{ width: progressWidth }} />
 
@@ -68,49 +79,22 @@ const SaudePreventiva = () => {
         ))}
       </div>
 
-      <div className="relative z-10 max-w-5xl mx-auto px-6 md:px-10 pt-24 pb-32">
+      <div className="relative z-10 max-w-5xl mx-auto px-6 md:px-10 pt-12 pb-32">
 
-        {/* ─── BREADCRUMB ─── */}
-        <nav className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] mb-16 flex-wrap" aria-label="Breadcrumb">
-          <Link to="/" className="text-stone-600 hover:text-emerald-400 transition-colors">Início</Link>
-          <span className="text-stone-700">/</span>
-          <Link to="/projeto-autonomo" className="text-stone-600 hover:text-emerald-400 transition-colors">Projeto Autônomo</Link>
-          <span className="text-stone-700">/</span>
-          <span className="text-emerald-400">Saúde Preventiva</span>
-        </nav>
-
-        {/* ─── HERO ─── */}
-        <motion.header initial="hidden" animate="visible" variants={fadeUp} custom={0} className="mb-28">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="p-3.5 rounded-2xl bg-emerald-500/15 border border-emerald-500/25 backdrop-blur-sm">
-              <Heart className="text-emerald-400" size={24} />
-            </div>
-            <span className="text-emerald-500/60 text-[10px] font-bold tracking-[0.5em] uppercase">Fase 02 · Autonomia Biológica</span>
+        {/* Hero context */}
+        <motion.div initial="hidden" animate="visible" variants={fadeUp} custom={1} className="mb-28 max-w-3xl space-y-4 text-stone-300 leading-relaxed">
+          <p className="text-sm">Saúde preventiva é a manutenção da <span className="text-stone-100 font-medium">homeostase.</span></p>
+          <p className="text-sm">Homeostase é a capacidade do corpo de manter equilíbrio interno mesmo sob estresse.</p>
+          <p className="text-sm text-stone-100 font-medium">Quando esse equilíbrio falha, surge:</p>
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mt-2">
+            {['Inflamação crônica', 'Resistência à insulina', 'Disfunção hormonal', 'Fadiga persistente', 'Vulnerabilidade imunológica'].map((s) => (
+              <div key={s} className="flex items-center gap-2 text-xs bg-red-950/30 border border-red-800/15 rounded-xl px-3 py-2">
+                <AlertTriangle size={11} className="text-red-400 shrink-0" />
+                <span className="text-stone-300">{s}</span>
+              </div>
+            ))}
           </div>
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-wide uppercase leading-[0.9] text-white mb-8"
-            style={{ fontFamily: "'Space Grotesk', sans-serif", letterSpacing: '0.06em' }}>
-            SAÚDE<br />
-            <span className="text-emerald-400" style={{ textShadow: '0 0 60px rgba(16,185,129,0.3)' }}>PREVENTIVA</span>
-          </h1>
-          <p className="text-stone-300 text-lg md:text-xl leading-relaxed max-w-3xl font-light">
-            Base Biológica e Estratégias Anti-Inflamatórias Avançadas
-          </p>
-          <div className="mt-8 h-px w-32 bg-gradient-to-r from-emerald-500/60 to-transparent" />
-
-          {/* Hero context */}
-          <motion.div initial="hidden" animate="visible" variants={fadeUp} custom={1} className="mt-10 max-w-3xl space-y-4 text-stone-300 leading-relaxed">
-            <p className="text-sm">Saúde preventiva é a manutenção da <span className="text-stone-100 font-medium">homeostase.</span></p>
-            <p className="text-sm">Homeostase é a capacidade do corpo de manter equilíbrio interno mesmo sob estresse.</p>
-            <p className="text-sm text-stone-100 font-medium">Quando esse equilíbrio falha, surge:</p>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mt-2">
-              {['Inflamação crônica', 'Resistência à insulina', 'Disfunção hormonal', 'Fadiga persistente', 'Vulnerabilidade imunológica'].map((s) => (
-                <div key={s} className="flex items-center gap-2 text-xs bg-red-950/30 border border-red-800/15 rounded-xl px-3 py-2">
-                  <AlertTriangle size={11} className="text-red-400 shrink-0" />
-                  <span className="text-stone-300">{s}</span>
-                </div>
-              ))}
-            </div>
-          </motion.div>
+        </motion.div>
 
           {/* Module integration */}
           <motion.div initial="hidden" animate="visible" variants={fadeUp} custom={2} className="mt-10 max-w-3xl">

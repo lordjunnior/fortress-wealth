@@ -1,67 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Bug, Shield, Droplets, Leaf, Home, AlertTriangle, CheckCircle2, XCircle, Sprout, FlaskConical, Clock, Rat, Trash2, Wind } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { fadeUp, stagger, staggerChild, viewportOnce } from '@/lib/motion';
+import CinematicHero from '@/components/CinematicHero';
+import ScrollToTop from '@/components/ScrollToTop';
 
 import imgRepelentes from '@/assets/vetores-repelentes.jpg';
 import imgCiclo from '@/assets/vetores-ciclo-mosquito.jpg';
 import imgBarreiras from '@/assets/vetores-barreiras.jpg';
 import imgJardim from '@/assets/vetores-jardim-repelente.jpg';
 
-/* ═══════════════════════════════════════════════════════════════
-   DADOS — ÓLEOS ESSENCIAIS
-   ═══════════════════════════════════════════════════════════════ */
-
 const OLEOS = [
-  {
-    nome: 'Citronela',
-    mecanismo: 'Mascara odores corporais (CO₂, ácido lático) que atraem mosquitos.',
-    duracao: '1–2 horas',
-    uso: 'Corporal e ambiental',
-    cor: 'text-yellow-400', bg: 'bg-yellow-500/10 border-yellow-500/15',
-  },
-  {
-    nome: 'Eucalipto-limão (PMD)',
-    mecanismo: 'Derivado natural com eficácia próxima ao DEET. Interfere nos quimiorreceptores do inseto.',
-    duracao: 'Até 4 horas',
-    uso: 'Corporal (principal)',
-    cor: 'text-green-400', bg: 'bg-green-500/10 border-green-500/15',
-  },
-  {
-    nome: 'Lavanda',
-    mecanismo: 'Repelência leve a moderada. Ação calmante complementar.',
-    duracao: '1–2 horas',
-    uso: 'Ambiental e corporal',
-    cor: 'text-purple-400', bg: 'bg-purple-500/10 border-purple-500/15',
-  },
-  {
-    nome: 'Cravo-da-índia',
-    mecanismo: 'Eugenol interfere diretamente na detecção olfativa do inseto.',
-    duracao: '2–3 horas',
-    uso: 'Ambiental',
-    cor: 'text-orange-400', bg: 'bg-orange-500/10 border-orange-500/15',
-  },
+  { nome: 'Citronela', mecanismo: 'Mascara odores corporais (CO₂, ácido lático) que atraem mosquitos.', duracao: '1–2 horas', uso: 'Corporal e ambiental', cor: 'text-yellow-400', bg: 'bg-yellow-500/10 border-yellow-500/15' },
+  { nome: 'Eucalipto-limão (PMD)', mecanismo: 'Derivado natural com eficácia próxima ao DEET. Interfere nos quimiorreceptores do inseto.', duracao: 'Até 4 horas', uso: 'Corporal (principal)', cor: 'text-green-400', bg: 'bg-green-500/10 border-green-500/15' },
+  { nome: 'Lavanda', mecanismo: 'Repelência leve a moderada. Ação calmante complementar.', duracao: '1–2 horas', uso: 'Ambiental e corporal', cor: 'text-purple-400', bg: 'bg-purple-500/10 border-purple-500/15' },
+  { nome: 'Cravo-da-índia', mecanismo: 'Eugenol interfere diretamente na detecção olfativa do inseto.', duracao: '2–3 horas', uso: 'Ambiental', cor: 'text-orange-400', bg: 'bg-orange-500/10 border-orange-500/15' },
 ];
 
-/* ═══════════════════════════════════════════════════════════════
-   DADOS — CRIADOUROS
-   ═══════════════════════════════════════════════════════════════ */
-
-const CRIADOUROS = [
-  'Pratos de plantas',
-  'Calhas entupidas',
-  'Pneus expostos',
-  'Garrafas abertas',
-  'Caixa d\'água destampada',
-  'Ralos externos',
-  'Vasos sanitários pouco usados',
-  'Latas e recipientes no quintal',
-];
-
-/* ═══════════════════════════════════════════════════════════════
-   DADOS — PLANTAS REPELENTES
-   ═══════════════════════════════════════════════════════════════ */
+const CRIADOUROS = ['Pratos de plantas', 'Calhas entupidas', 'Pneus expostos', 'Garrafas abertas', 'Caixa d\'água destampada', 'Ralos externos', 'Vasos sanitários pouco usados', 'Latas e recipientes no quintal'];
 
 const PLANTAS_REPELENTES = [
   { nome: 'Citronela', desc: 'Alta concentração aromática. Ideal para áreas externas.', eficacia: 'Alta' },
@@ -71,10 +28,6 @@ const PLANTAS_REPELENTES = [
   { nome: 'Lavanda', desc: 'Funciona como complemento. Aroma agradável.', eficacia: 'Leve' },
 ];
 
-/* ═══════════════════════════════════════════════════════════════
-   DADOS — VETORES E DOENÇAS
-   ═══════════════════════════════════════════════════════════════ */
-
 const VETORES = [
   { vetor: 'Mosquitos (Aedes)', doencas: 'Dengue, Zika, Chikungunya, Febre Amarela', icon: Bug },
   { vetor: 'Moscas', doencas: 'Contaminação alimentar, diarreia', icon: Bug },
@@ -83,76 +36,52 @@ const VETORES = [
   { vetor: 'Carrapatos', doencas: 'Febre maculosa', icon: Bug },
 ];
 
-/* ═══════════════════════════════════════════════════════════════
-   COMPONENTE PRINCIPAL
-   ═══════════════════════════════════════════════════════════════ */
-
 const ControleVetores = () => {
+  useEffect(() => { window.scrollTo(0, 0); }, []);
+
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      {/* ─── HEADER ─── */}
-      <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
-        <div className="max-w-6xl mx-auto px-4 md:px-8 py-4 flex items-center justify-between">
-          <Link to="/projeto-autonomo" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors text-sm font-mono">
-            <ArrowLeft size={16} />
-            <span>Projeto Autônomo</span>
-          </Link>
-          <span className="text-[10px] font-mono tracking-[0.3em] uppercase text-green-500/70">Fase 02</span>
-        </div>
-      </header>
+    <div className="min-h-screen text-stone-100" style={{ background: 'linear-gradient(180deg, #050808 0%, #0a0d0a 8%, #0d120d 20%, #0a0d0a 60%, #050808 100%)' }}>
+      <CinematicHero
+        image="/heroes/controle-vetores.webp"
+        phase="Fase 02 · Autonomia Biológica"
+        title="Controle de Vetores"
+        subtitle="Estratégia sanitária de baixo impacto ambiental — redução de exposição, interrupção de ciclo reprodutivo e barreiras físicas"
+        icon={Bug}
+        accentColor="emerald"
+        backLink="/projeto-autonomo"
+        backLabel="Projeto Autônomo"
+      />
 
       <main className="max-w-6xl mx-auto px-4 md:px-8 py-12 md:py-20">
-        {/* ═══ HERO ═══ */}
         <motion.section initial="hidden" animate="visible" variants={stagger(0.1)} className="mb-20">
-          <motion.span variants={staggerChild} className="text-green-500 text-[10px] font-bold tracking-[0.4em] uppercase opacity-70 block mb-4">
-            Fase 02 · Autonomia Biológica
-          </motion.span>
-          <motion.h1 variants={staggerChild} className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[0.95] mb-6">
-            Controle de<br />
-            <span className="text-green-400">Vetores</span>
-          </motion.h1>
-          <motion.p variants={staggerChild} className="text-muted-foreground text-lg max-w-3xl leading-relaxed mb-8">
-            Estratégia sanitária de baixo impacto ambiental — redução de exposição, interrupção de ciclo reprodutivo e barreiras físicas
-          </motion.p>
-
-          {/* Objetivos */}
           <motion.div variants={staggerChild} className="max-w-3xl">
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-              {[
-                'Reduzir exposição',
-                'Interromper ciclo reprodutivo',
-                'Diminuir atração ambiental',
-                'Criar barreira física',
-                'Repelência natural eficaz',
-                'Prevenção contínua',
-              ].map((obj) => (
+              {['Reduzir exposição', 'Interromper ciclo reprodutivo', 'Diminuir atração ambiental', 'Criar barreira física', 'Repelência natural eficaz', 'Prevenção contínua'].map((obj) => (
                 <div key={obj} className="flex items-center gap-2 text-sm">
                   <CheckCircle2 size={14} className="text-green-500 shrink-0" />
-                  <span className="text-foreground/80">{obj}</span>
+                  <span className="text-stone-300">{obj}</span>
                 </div>
               ))}
             </div>
           </motion.div>
 
-          {/* Vetores e doenças */}
           <motion.div variants={staggerChild} className="mt-8 max-w-3xl">
-            <p className="text-xs font-mono text-muted-foreground uppercase tracking-wider mb-3">Vetores e doenças associadas</p>
+            <p className="text-xs font-mono text-stone-500 uppercase tracking-wider mb-3">Vetores e doenças associadas</p>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-2">
               {VETORES.map((v) => (
-                <div key={v.vetor} className="flex items-start gap-2 bg-red-500/10 border border-red-500/15 p-3 rounded-sm">
+                <div key={v.vetor} className="flex items-start gap-2 bg-red-500/10 border border-red-500/15 p-3 rounded-xl">
                   <v.icon size={14} className="text-red-400 shrink-0 mt-0.5" />
                   <div>
-                    <span className="text-xs font-semibold text-foreground/90">{v.vetor}</span>
-                    <p className="text-[10px] text-muted-foreground">{v.doencas}</p>
+                    <span className="text-xs font-semibold text-stone-200">{v.vetor}</span>
+                    <p className="text-[10px] text-stone-500">{v.doencas}</p>
                   </div>
                 </div>
               ))}
             </div>
           </motion.div>
 
-          {/* Quatro camadas */}
-          <motion.div variants={staggerChild} className="mt-8 max-w-3xl bg-gradient-to-br from-green-950/30 to-background border border-green-800/20 p-6 rounded-sm">
-            <p className="text-sm font-bold text-foreground mb-4">Controle eficiente combina quatro camadas:</p>
+          <motion.div variants={staggerChild} className="mt-8 max-w-3xl bg-gradient-to-br from-green-950/30 to-transparent border border-green-800/20 p-6 rounded-xl">
+            <p className="text-sm font-bold text-stone-200 mb-4">Controle eficiente combina quatro camadas:</p>
             <div className="grid sm:grid-cols-2 gap-3">
               {[
                 { n: '01', label: 'Repelência', desc: 'Natural e estratégica' },
@@ -160,20 +89,18 @@ const ControleVetores = () => {
                 { n: '03', label: 'Barreiras físicas', desc: 'Telas, mosquiteiros, organização' },
                 { n: '04', label: 'Ambiente desfavorável', desc: 'Plantas repelentes e higiene' },
               ].map((c) => (
-                <div key={c.n} className="flex items-center gap-3 bg-white/5 p-3 rounded-sm">
+                <div key={c.n} className="flex items-center gap-3 bg-white/[0.04] p-3 rounded-xl">
                   <span className="text-green-500 font-mono text-xs font-bold">{c.n}</span>
                   <div>
-                    <span className="text-sm font-semibold text-foreground/90">{c.label}</span>
-                    <p className="text-[10px] text-muted-foreground">{c.desc}</p>
+                    <span className="text-sm font-semibold text-stone-200">{c.label}</span>
+                    <p className="text-[10px] text-stone-500">{c.desc}</p>
                   </div>
                 </div>
               ))}
             </div>
-            <p className="text-xs text-muted-foreground mt-4 italic">Nenhuma medida isolada é suficiente.</p>
+            <p className="text-xs text-stone-500 mt-4 italic">Nenhuma medida isolada é suficiente.</p>
           </motion.div>
         </motion.section>
-
-        {/* ═══ BLOCO 01 — REPELENTES NATURAIS ═══ */}
         <motion.section initial="hidden" whileInView="visible" viewport={viewportOnce} variants={stagger(0.08)} className="mb-24">
           <motion.div variants={staggerChild} className="mb-8">
             <span className="pre-title">Camada 01</span>
@@ -552,13 +479,14 @@ const ControleVetores = () => {
         </motion.div>
 
         {/* ─── NAV FOOTER ─── */}
-        <div className="flex items-center justify-between pt-8 border-t border-border">
-          <Link to="/projeto-autonomo" className="text-muted-foreground hover:text-foreground transition-colors text-sm font-mono flex items-center gap-2">
+        <div className="flex items-center justify-between pt-8 border-t border-white/[0.06]">
+          <Link to="/projeto-autonomo" className="text-stone-500 hover:text-emerald-400 transition-colors text-sm font-mono flex items-center gap-2">
             <ArrowLeft size={14} />
             Projeto Autônomo
           </Link>
         </div>
       </main>
+      <ScrollToTop />
     </div>
   );
 };
