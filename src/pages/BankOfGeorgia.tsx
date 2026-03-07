@@ -356,7 +356,7 @@ export default function BankOfGeorgia() {
               </h2>
               <p className="text-stone-400 text-base leading-relaxed max-w-xl mb-8">
                 Aprenda o passo a passo completo para abrir sua conta no Bank of Georgia sem sair de casa.
-                Tutorial exclusivo com todos os detalhes. Torne-se membro por um valor de uma pizza.
+                Tutorial exclusivo com todos os detalhes. Disponível para membros do canal.
               </p>
               <div className="flex flex-wrap gap-4">
                 <a href={MEMBERSHIP_LINK} target="_blank" rel="noopener noreferrer"
