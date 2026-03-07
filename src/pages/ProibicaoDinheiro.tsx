@@ -722,7 +722,7 @@ export default function ProibicaoDinheiro() {
           {/* FOOTER */}
           <footer className="pt-16 border-t border-white/5">
             <div className="text-center space-y-10">
-              <p className="text-slate-700 font-black uppercase tracking-[1em] text-[9px] font-mono">Privacidade financeira é um direito, não um crime.</p>
+              <p className="text-muted-foreground font-black uppercase tracking-[1em] text-[9px] font-mono">Privacidade financeira é um direito, não um crime.</p>
               <p className="text-2xl md:text-4xl font-black uppercase tracking-tighter leading-none text-white italic">Sempre foi projeto.</p>
               <p className="text-slate-800 text-[9px] font-black tracking-[0.5em] uppercase pt-12 font-mono">Lord Junnior © 2026</p>
             </div>
