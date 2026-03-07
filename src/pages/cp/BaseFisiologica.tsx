@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Brain, Flame, Wind, Shield, Heart, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
+import CinematicHero from '@/components/CinematicHero';
+import ScrollToTop from '@/components/ScrollToTop';
 
 import imgSistemas from '@/assets/cp-sistemas-corpo.jpg';
 import imgPlantas from '@/assets/cp-plantas-pratica.jpg';
@@ -24,43 +26,21 @@ export default function BaseFisiologica() {
 
   return (
     <div className="min-h-screen text-stone-100 font-sans selection:bg-emerald-300/50 relative overflow-hidden"
-      style={{ background: 'linear-gradient(180deg, #0a0d08 0%, #0f1a0f 8%, #111f11 20%, #142214 40%, #111f11 70%, #0f1a0f 90%, #0a0d08 100%)' }}
+      style={{ background: '#050808' }}
     >
-      <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="absolute top-[8%] right-[10%] w-[600px] h-[600px] rounded-full"
-          style={{ background: 'radial-gradient(circle, rgba(6,182,212,0.12) 0%, transparent 70%)' }} />
-      </div>
+      <ScrollToTop />
+      <CinematicHero
+        image="/heroes/cp-base-fisiologica.webp"
+        phase="Bloco 02 · Conhecimento Perdido"
+        title="Base Fisiológica"
+        subtitle="Organização técnica por sistemas corporais, mecanismos bioquímicos e resposta adaptativa do organismo. Flavonoides, alcaloides, terpenos e compostos fenólicos aplicados."
+        icon={Brain}
+        accentColor="blue"
+        backLink="/projeto-autonomo/conhecimento-perdido"
+        backLabel="Conhecimento Perdido"
+      />
 
-      <div className="relative z-10 max-w-5xl mx-auto px-6 md:px-10 pt-24 pb-32">
-
-        {/* ─── BREADCRUMB ─── */}
-        <nav className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] mb-16 flex-wrap">
-          <Link to="/" className="text-stone-600 hover:text-emerald-400 transition-colors">Início</Link>
-          <span className="text-stone-700">/</span>
-          <Link to="/projeto-autonomo" className="text-stone-600 hover:text-emerald-400 transition-colors">Projeto Autônomo</Link>
-          <span className="text-stone-700">/</span>
-          <Link to="/projeto-autonomo/conhecimento-perdido" className="text-stone-600 hover:text-emerald-400 transition-colors">Conhecimento Perdido</Link>
-          <span className="text-stone-700">/</span>
-          <span className="text-cyan-400">Base Fisiológica</span>
-        </nav>
-
-        {/* ─── HERO ─── */}
-        <motion.header initial="hidden" animate="visible" variants={fadeUp} custom={0} className="mb-20">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="p-3 rounded-xl bg-cyan-500/15 border border-cyan-500/25">
-              <Brain className="text-cyan-400" size={22} />
-            </div>
-            <span className="text-cyan-500/60 text-[10px] font-bold tracking-[0.5em] uppercase">Bloco 02 · Conhecimento Perdido</span>
-          </div>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-wide uppercase leading-[0.95] text-white mb-6"
-            style={{ fontFamily: "'Space Grotesk', sans-serif", letterSpacing: '0.06em' }}>
-            BASE <span className="text-cyan-400">FISIOLÓGICA</span>
-          </h1>
-          <p className="text-stone-300 text-lg md:text-xl leading-relaxed max-w-3xl font-light">
-            Organização técnica por sistemas corporais, mecanismos bioquímicos e resposta adaptativa do organismo. 
-            Flavonoides, alcaloides, terpenos e compostos fenólicos aplicados — não em teoria, mas em fichas técnicas completas.
-          </p>
-        </motion.header>
+      <div className="relative z-10 max-w-5xl mx-auto px-6 md:px-10 pt-12 pb-32">
 
         {/* ─── MAPA DOS SISTEMAS ─── */}
         <motion.section initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="mb-28">
