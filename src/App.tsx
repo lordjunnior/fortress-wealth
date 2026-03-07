@@ -32,6 +32,9 @@ import AlertasHub from "./pages/AlertasHub";
 import CbdcBrasil from "./pages/CbdcBrasil";
 import HistoriaDoDinheiro from "./pages/HistoriaDoDinheiro";
 import InflacaoImpostoOculto from "./pages/InflacaoImpostoOculto";
+import BitcoinVsFiat from "./pages/BitcoinVsFiat";
+import TeoriaDasBandeiras from "./pages/TeoriaDasBandeiras";
+import IndiceDoDesespertar from "./pages/IndiceDoDesespertar";
 import HardCap21 from "./pages/HardCap21";
 import BitcoinSeguro from "./pages/BitcoinSeguro";
 import ChavesPage from "./pages/ChavesPage";
@@ -114,6 +117,9 @@ const App = () => (
           <Route path="/alertas/fim-do-dinheiro-vivo" element={<ProibicaoDinheiro />} />
           <Route path="/historia-do-dinheiro" element={<HistoriaDoDinheiro />} />
           <Route path="/inflacao-imposto-oculto" element={<InflacaoImpostoOculto />} />
+          <Route path="/bitcoin-vs-fiat" element={<BitcoinVsFiat />} />
+          <Route path="/teoria-das-bandeiras" element={<TeoriaDasBandeiras />} />
+          <Route path="/indice-do-despertar" element={<IndiceDoDesespertar />} />
           <Route path="/21-milhoes" element={<HardCap21 />} />
           <Route path="/bitcoin-seguro" element={<BitcoinSeguro />} />
           <Route path="/chaves" element={<ChavesPage />} />
