@@ -41,10 +41,10 @@ const StrategicSignature = () => {
             </div>
             <div>
               <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight mb-2">
-                Assinatura <span className="text-gradient-gold">Estratégica</span>
+                Princípio <span className="text-gradient-gold">Fundador</span>
               </h2>
               <p className="font-mono text-[9px] tracking-[0.3em] text-muted-foreground uppercase">
-                Manifesto técnico permanente
+                O eixo moral deste projeto
               </p>
             </div>
           </motion.div>
