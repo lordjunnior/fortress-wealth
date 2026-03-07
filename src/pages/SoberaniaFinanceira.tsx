@@ -54,7 +54,7 @@ const CATEGORIES = [
     image: offshoreImg,
     items: [
       { name: 'Top 10 contas offshore cripto', status: 'review', link: '/soberania-financeira/contas-offshore/top-10' },
-      { name: 'Guia de abertura remota', status: 'em breve', link: null },
+      { name: 'Guia de abertura remota', status: 'review', link: '/soberania-financeira/contas-offshore/abertura-remota' },
     ],
     privacyLevel: 'Alto',
     reviewCount: 1,
