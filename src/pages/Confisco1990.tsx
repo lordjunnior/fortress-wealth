@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { ArrowLeft, Calendar, AlertTriangle, Vault, Lock, Users, Scale, TrendingDown, BookOpen, ShieldAlert, DollarSign, Clock, UserX } from "lucide-react";
+import ConfiscoFaq from "@/components/confisco/ConfiscoFaq";
+import { confiscoArticleSchema, confiscoFaqSchema, confiscoBreadcrumbSchema } from "@/lib/confiscoData";
 import presidenteImg from "@/assets/presidente-confisco-1990.jpg";
 import hiperinflacaoImg from "@/assets/confisco-hiperinflacao-1989.jpg";
 import decretoImg from "@/assets/confisco-decreto-noite.jpg";
