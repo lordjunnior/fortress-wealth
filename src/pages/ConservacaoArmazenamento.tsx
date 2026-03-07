@@ -690,10 +690,10 @@ export default function ConservacaoArmazenamento() {
         <motion.section className="mb-28" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}>
           <div className="mb-10">
             <span className="text-stone-500 text-[10px] font-bold tracking-[0.4em] uppercase">Bloco 04 — Infraestrutura de Apoio</span>
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight mt-2 text-stone-800">
-              Arsenal <span className="text-amber-700">Auxiliar</span>
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight mt-2 text-stone-100">
+              Arsenal <span className="text-amber-400">Auxiliar</span>
             </h2>
-            <p className="text-stone-500 text-sm leading-relaxed mt-3 max-w-2xl">
+            <p className="text-stone-400 text-sm leading-relaxed mt-3 max-w-2xl">
               Equipamentos, insumos e acessórios que multiplicam a eficiência do sistema. 
               A seleção deve priorizar durabilidade, independência energética e multicontinuidade.
             </p>
@@ -703,15 +703,15 @@ export default function ConservacaoArmazenamento() {
             {/* Recipientes */}
             <motion.div
               initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}
-              className="bg-white/60 border border-amber-100/60 rounded-2xl p-6 md:p-8 backdrop-blur-sm"
+              className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-6 md:p-8 backdrop-blur-sm"
             >
               <div className="flex items-center gap-3 mb-4">
-                <div className="p-2.5 bg-amber-100/60 rounded-xl">
-                  <Box className="text-amber-700" size={18} />
+                <div className="p-2.5 bg-amber-500/[0.12] rounded-xl">
+                  <Box className="text-amber-400" size={18} />
                 </div>
-                <h3 className="text-base font-bold text-stone-800">Recipientes Herméticos</h3>
+                <h3 className="text-base font-bold text-stone-200">Recipientes Herméticos</h3>
               </div>
-              <p className="text-stone-600 text-xs leading-relaxed mb-3">
+              <p className="text-stone-400 text-xs leading-relaxed mb-3">
                 Primeira linha de defesa. Barreiras contra umidade, oxigênio, luz e pragas.
               </p>
               <ul className="space-y-1.5">
@@ -733,15 +733,15 @@ export default function ConservacaoArmazenamento() {
             {/* Absorvedores */}
             <motion.div
               initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={1}
-              className="bg-white/60 border border-amber-100/60 rounded-2xl p-6 md:p-8 backdrop-blur-sm"
+              className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-6 md:p-8 backdrop-blur-sm"
             >
               <div className="flex items-center gap-3 mb-4">
-                <div className="p-2.5 bg-amber-100/60 rounded-xl">
-                  <ShieldCheck className="text-amber-700" size={18} />
+                <div className="p-2.5 bg-amber-500/[0.12] rounded-xl">
+                  <ShieldCheck className="text-amber-400" size={18} />
                 </div>
-                <h3 className="text-base font-bold text-stone-800">Absorvedores de Oxigênio</h3>
+                <h3 className="text-base font-bold text-stone-200">Absorvedores de Oxigênio</h3>
               </div>
-              <p className="text-stone-600 text-xs leading-relaxed mb-3">
+              <p className="text-stone-400 text-xs leading-relaxed mb-3">
                 Ferro pulverizado + umidade = O₂ sequestrado abaixo de 0,01%. Multiplica vida útil por 3–5x.
               </p>
               <ul className="space-y-1.5">
@@ -763,15 +763,15 @@ export default function ConservacaoArmazenamento() {
             {/* Rótulos */}
             <motion.div
               initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={2}
-              className="bg-white/60 border border-amber-100/60 rounded-2xl p-6 md:p-8 backdrop-blur-sm"
+              className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-6 md:p-8 backdrop-blur-sm"
             >
               <div className="flex items-center gap-3 mb-4">
-                <div className="p-2.5 bg-amber-100/60 rounded-xl">
-                  <Tag className="text-amber-700" size={18} />
+                <div className="p-2.5 bg-amber-500/[0.12] rounded-xl">
+                  <Tag className="text-amber-400" size={18} />
                 </div>
-                <h3 className="text-base font-bold text-stone-800">Rótulos e Organização</h3>
+                <h3 className="text-base font-bold text-stone-200">Rótulos e Organização</h3>
               </div>
-              <p className="text-stone-600 text-xs leading-relaxed mb-3">
+              <p className="text-stone-400 text-xs leading-relaxed mb-3">
                 Sistemas de informação completos. Impacta diretamente segurança alimentar e minimização de desperdício.
               </p>
               <ul className="space-y-1.5">
@@ -794,14 +794,14 @@ export default function ConservacaoArmazenamento() {
           {/* Equipamentos essenciais */}
           <motion.div
             initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}
-            className="mt-6 bg-stone-100/60 border border-stone-300/40 p-8 rounded-2xl"
+            className="mt-6 bg-white/[0.03] border border-white/[0.06] p-8 rounded-2xl"
           >
-            <p className="text-stone-600 text-[10px] font-bold uppercase tracking-[0.4em] mb-4">Equipamentos complementares</p>
+            <p className="text-stone-500 text-[10px] font-bold uppercase tracking-[0.4em] mb-4">Equipamentos complementares</p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-xs text-stone-500">
-              <div><span className="text-stone-700 font-semibold block mb-1">Processamento</span>Desidratadores, panelas de pressão, seladores a vácuo, moinhos manuais</div>
-              <div><span className="text-stone-700 font-semibold block mb-1">Monitoramento</span>Termômetros de precisão, medidores de pH, higrômetros, refratômetros</div>
-              <div><span className="text-stone-700 font-semibold block mb-1">Insumos</span>Sílica gel, terra diatomácea, indicadores de umidade, sal de cura</div>
-              <div><span className="text-stone-700 font-semibold block mb-1">Segurança</span>Luvas térmicas, óculos, aventais, kit primeiros socorros para cozinha</div>
+              <div><span className="text-stone-300 font-semibold block mb-1">Processamento</span>Desidratadores, panelas de pressão, seladores a vácuo, moinhos manuais</div>
+              <div><span className="text-stone-300 font-semibold block mb-1">Monitoramento</span>Termômetros de precisão, medidores de pH, higrômetros, refratômetros</div>
+              <div><span className="text-stone-300 font-semibold block mb-1">Insumos</span>Sílica gel, terra diatomácea, indicadores de umidade, sal de cura</div>
+              <div><span className="text-stone-300 font-semibold block mb-1">Segurança</span>Luvas térmicas, óculos, aventais, kit primeiros socorros para cozinha</div>
             </div>
           </motion.div>
         </motion.section>

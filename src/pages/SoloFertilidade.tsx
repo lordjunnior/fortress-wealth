@@ -23,14 +23,14 @@ const fadeUp = {
 };
 
 /* ═══════════════════════════════════════════════
-   CARD COMPONENTS
+   CARD COMPONENTS (DARK THEME)
    ═══════════════════════════════════════════════ */
 
 function SectionDivider({ label }: { label: string }) {
   return (
     <div className="flex items-center gap-3 my-10 px-2">
       <div className="flex-1 h-px bg-amber-600 opacity-20" />
-      <span className="text-stone-400 text-[9px] font-bold tracking-[0.4em] uppercase">{label}</span>
+      <span className="text-stone-500 text-[9px] font-bold tracking-[0.4em] uppercase">{label}</span>
       <div className="flex-1 h-px bg-amber-600 opacity-20" />
     </div>
   );
@@ -40,11 +40,11 @@ function ImageCard({ src, alt, children }: { src: string; alt: string; children:
   return (
     <motion.div
       initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-60px' }} variants={fadeUp} custom={0}
-      className="bg-white/60 backdrop-blur-sm border border-stone-200/50 rounded-3xl overflow-hidden hover:shadow-lg hover:scale-[1.003] transition-all duration-500"
+      className="bg-white/[0.03] backdrop-blur-sm border border-white/[0.06] rounded-3xl overflow-hidden hover:border-white/[0.1] transition-all duration-500"
     >
       <div className="relative h-56 md:h-72 overflow-hidden">
         <img src={src} alt={alt} className="w-full h-full object-cover" loading="lazy" />
-        <div className="absolute inset-0 bg-gradient-to-t from-stone-900/50 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#050808]/80 via-transparent to-transparent" />
       </div>
       <div className="p-6 md:p-10">{children}</div>
     </motion.div>
@@ -53,11 +53,11 @@ function ImageCard({ src, alt, children }: { src: string; alt: string; children:
 
 function InfoCard({ color, icon: Icon, title, children }: { color: string; icon: typeof Shovel; title: string; children: React.ReactNode }) {
   const colorMap: Record<string, { bg: string; border: string; text: string; dot: string; iconBg: string }> = {
-    brown: { bg: 'bg-amber-50/70', border: 'border-amber-200/50', text: 'text-amber-800', dot: 'bg-amber-600', iconBg: 'bg-amber-100' },
-    green: { bg: 'bg-emerald-50/70', border: 'border-emerald-200/50', text: 'text-emerald-800', dot: 'bg-emerald-600', iconBg: 'bg-emerald-100' },
-    yellow: { bg: 'bg-yellow-50/70', border: 'border-yellow-200/50', text: 'text-yellow-800', dot: 'bg-yellow-600', iconBg: 'bg-yellow-100' },
-    blue: { bg: 'bg-sky-50/70', border: 'border-sky-200/50', text: 'text-sky-800', dot: 'bg-sky-600', iconBg: 'bg-sky-100' },
-    red: { bg: 'bg-red-50/70', border: 'border-red-200/50', text: 'text-red-800', dot: 'bg-red-600', iconBg: 'bg-red-100' },
+    brown: { bg: 'bg-amber-500/[0.06]', border: 'border-amber-500/[0.12]', text: 'text-amber-400', dot: 'bg-amber-500', iconBg: 'bg-amber-500/[0.12]' },
+    green: { bg: 'bg-emerald-500/[0.06]', border: 'border-emerald-500/[0.12]', text: 'text-emerald-400', dot: 'bg-emerald-500', iconBg: 'bg-emerald-500/[0.12]' },
+    yellow: { bg: 'bg-yellow-500/[0.06]', border: 'border-yellow-500/[0.12]', text: 'text-yellow-400', dot: 'bg-yellow-500', iconBg: 'bg-yellow-500/[0.12]' },
+    blue: { bg: 'bg-sky-500/[0.06]', border: 'border-sky-500/[0.12]', text: 'text-sky-400', dot: 'bg-sky-500', iconBg: 'bg-sky-500/[0.12]' },
+    red: { bg: 'bg-red-500/[0.06]', border: 'border-red-500/[0.12]', text: 'text-red-400', dot: 'bg-red-500', iconBg: 'bg-red-500/[0.12]' },
   };
   const c = colorMap[color] || colorMap.brown;
 
@@ -83,9 +83,9 @@ function BulletList({ items, color = 'bg-amber-500' }: { items: string[]; color?
       {items.map((item, i) => (
         <motion.li key={i} initial={{ opacity: 0, x: -10 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
           transition={{ duration: 0.4, ease: EASE, delay: 0.15 + i * 0.05 }}
-          className="flex items-start gap-3 bg-white/60 rounded-xl px-4 py-3">
+          className="flex items-start gap-3 bg-white/[0.03] rounded-xl px-4 py-3">
           <div className={`w-2 h-2 rounded-full ${color} mt-1.5 shrink-0`} />
-          <span className="text-stone-600 text-sm leading-relaxed">{item}</span>
+          <span className="text-stone-400 text-sm leading-relaxed">{item}</span>
         </motion.li>
       ))}
     </ul>
@@ -98,11 +98,11 @@ function StepList({ steps, color = 'bg-amber-500' }: { steps: string[]; color?: 
       {steps.map((step, i) => (
         <motion.li key={i} initial={{ opacity: 0, x: -8 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
           transition={{ duration: 0.35, ease: EASE, delay: 0.1 + i * 0.04 }}
-          className="flex items-start gap-3 bg-white/60 rounded-xl px-4 py-3">
+          className="flex items-start gap-3 bg-white/[0.03] rounded-xl px-4 py-3">
           <span className={`w-6 h-6 flex items-center justify-center rounded-full text-white text-[10px] font-bold ${color} shrink-0 mt-0.5`}>
             {i + 1}
           </span>
-          <span className="text-stone-600 text-sm leading-relaxed">{step}</span>
+          <span className="text-stone-400 text-sm leading-relaxed">{step}</span>
         </motion.li>
       ))}
     </ol>
@@ -117,59 +117,33 @@ export default function SoloFertilidade() {
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
   return (
-    <div
-      className="min-h-screen text-stone-900 font-sans selection:bg-amber-300/50 pb-32 relative overflow-hidden"
-      style={{ background: 'linear-gradient(180deg, #f5f0e6 0%, #ede5d4 20%, #e4dbc6 40%, #ddd3b8 60%, #d8cdb0 80%, #d2c7a8 100%)' }}
-    >
-      {/* Organic BG */}
-      <div className="fixed inset-0 pointer-events-none z-0">
-        <style>{`
-          @keyframes breatheSolo { 0%,100%{transform:translateY(0) scale(1);opacity:.06} 50%{transform:translateY(-12px) scale(1.02);opacity:.1} }
-        `}</style>
-        <div className="absolute top-[-5%] right-[-8%] w-[600px] h-[600px] rounded-full"
-          style={{ background: 'radial-gradient(circle, rgba(120,100,40,0.2) 0%, transparent 65%)', animation: 'breatheSolo 20s ease-in-out infinite' }} />
-        <div className="absolute bottom-[10%] left-[3%] w-[400px] h-[400px] rounded-full"
-          style={{ background: 'radial-gradient(circle, rgba(80,120,50,0.15) 0%, transparent 65%)', animation: 'breatheSolo 25s ease-in-out 5s infinite' }} />
-      </div>
+    <div className="min-h-screen text-stone-100 font-sans selection:bg-amber-300/50 pb-32 relative overflow-hidden" style={{ background: '#050808' }}>
+      <ScrollToTop />
 
-      <Shovel className="fixed top-[18%] left-[4%] text-amber-800 pointer-events-none z-0" size={70} style={{ opacity: 0.05, animation: 'breatheSolo 18s ease-in-out infinite' }} />
-      <Leaf className="fixed bottom-[12%] right-[5%] text-emerald-700 pointer-events-none z-0" size={80} style={{ opacity: 0.04, animation: 'breatheSolo 22s ease-in-out 3s infinite' }} />
+      <CinematicHero
+        image="/heroes/solo-fertilidade.webp"
+        phase="Fase 03 · Soberania Alimentar"
+        title="Solo e Fertilidade"
+        subtitle="Solo fértil não é apenas 'terra escura'. Solo fértil é um ecossistema — microrganismos, fungos benéficos, matéria orgânica em decomposição, minerais disponíveis e umidade equilibrada."
+        icon={Shovel}
+        accentColor="amber"
+        backLink="/projeto-autonomo"
+        backLabel="Projeto Autônomo"
+      />
 
-      <div className="relative z-10 max-w-4xl mx-auto px-5 md:px-8 pt-20">
+      <div className="relative z-10 max-w-4xl mx-auto px-5 md:px-8 pt-12">
 
-        {/* Back */}
-        <Link to="/projeto-autonomo" className="inline-flex items-center gap-2 text-stone-400 hover:text-stone-700 mb-16 text-[10px] font-bold uppercase tracking-[0.3em] transition-all duration-300">
-          <ArrowLeft size={14} /> Projeto Autônomo
-        </Link>
-
-        {/* ═══ HEADER ═══ */}
-        <motion.header initial="hidden" animate="visible" variants={fadeUp} custom={0} className="mb-20">
-          <div className="flex items-start gap-5 mb-8">
-            <div className="p-4 bg-amber-600/10 border border-amber-500/20 rounded-2xl mt-1">
-              <Shovel className="text-amber-800" size={28} />
-            </div>
-            <div>
-              <p className="text-amber-700 text-[10px] font-bold uppercase tracking-[0.5em] mb-3">
-                Fase 03 · Soberania Alimentar
-              </p>
-              <h1 className="text-4xl md:text-7xl font-black tracking-tighter uppercase leading-[0.9] text-stone-800" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
-                SOLO E<br /><span className="text-amber-700">FERTILIDADE</span>
-              </h1>
-            </div>
-          </div>
-
-          <div className="bg-amber-50/60 border border-amber-200/50 rounded-2xl p-8 md:p-10">
-            <p className="text-2xl md:text-3xl font-bold text-stone-800 tracking-tight mb-4">
+        {/* ═══ INTRO ═══ */}
+        <motion.div initial="hidden" animate="visible" variants={fadeUp} custom={0} className="mb-20">
+          <div className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-8 md:p-10">
+            <p className="text-xl md:text-2xl font-bold text-stone-200 tracking-tight mb-4">
               Terra viva gera alimento vivo
             </p>
-            <p className="text-stone-500 text-base md:text-lg leading-relaxed max-w-2xl">
-              Solo fértil não é apenas "terra escura". Solo fértil é um <span className="text-amber-700 font-semibold">ecossistema</span> — microrganismos, fungos benéficos, matéria orgânica em decomposição, minerais disponíveis e umidade equilibrada.
-            </p>
-            <p className="text-stone-400 text-sm mt-4 leading-relaxed max-w-xl">
-              Plantas não se alimentam de adubo diretamente. Elas se alimentam do que os microrganismos transformam. Fertilidade não é sobre jogar nutrientes — é sobre manter vida ativa no solo.
+            <p className="text-stone-400 text-base md:text-lg leading-relaxed max-w-2xl">
+              Plantas não se alimentam de adubo diretamente. Elas se alimentam do que os microrganismos transformam. Fertilidade não é sobre jogar nutrientes — é sobre manter <span className="text-amber-400 font-semibold">vida ativa no solo</span>.
             </p>
           </div>
-        </motion.header>
+        </motion.div>
 
         {/* ═══════════════════════════════════════
              CARD 01 — TIPOS DE SOLO
@@ -178,10 +152,10 @@ export default function SoloFertilidade() {
 
         <div className="space-y-6 mb-6">
           <ImageCard src={imgTiposTerra} alt="Tipos de solo: arenoso, argiloso e franco">
-            <h2 className="text-xl md:text-2xl font-bold text-stone-800 tracking-tight mb-2">
+            <h2 className="text-xl md:text-2xl font-bold text-stone-200 tracking-tight mb-2">
               🟫 Tipos de Solo e Como Identificar
             </h2>
-            <p className="text-stone-400 text-sm mb-6">Identificar o tipo de solo é o primeiro passo antes de qualquer cultivo.</p>
+            <p className="text-stone-500 text-sm mb-6">Identificar o tipo de solo é o primeiro passo antes de qualquer cultivo.</p>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
               {[
@@ -190,7 +164,7 @@ export default function SoloFertilidade() {
                   traits: ['Grãos visíveis, não forma torrão', 'Drena água rapidamente', 'Pobre em nutrientes'],
                   test: 'Pegue terra úmida e aperte. Se desfazer facilmente, é arenoso.',
                   fix: 'Adicionar composto orgânico + húmus + cobertura morta',
-                  color: 'bg-yellow-100 border-yellow-200',
+                  color: 'bg-yellow-500/[0.08] border-yellow-500/[0.15]',
                   dot: 'bg-yellow-500',
                 },
                 {
@@ -198,37 +172,37 @@ export default function SoloFertilidade() {
                   traits: ['Textura fina e pegajosa', 'Retém muita água', 'Pode compactar'],
                   test: 'Ao apertar, mantém forma e não se desfaz facilmente.',
                   fix: 'Adicionar areia grossa + matéria orgânica + evitar pisoteio',
-                  color: 'bg-stone-100 border-stone-200',
-                  dot: 'bg-stone-500',
+                  color: 'bg-stone-500/[0.08] border-stone-500/[0.15]',
+                  dot: 'bg-stone-400',
                 },
                 {
                   name: 'Solo Franco (Ideal)',
                   traits: ['Mistura equilibrada', 'Boa drenagem + umidade', 'Alta fertilidade natural'],
                   test: 'Forma torrão leve que se desfaz com toque suave.',
                   fix: 'Manutenção com matéria orgânica contínua',
-                  color: 'bg-amber-100 border-amber-200',
-                  dot: 'bg-amber-600',
+                  color: 'bg-amber-500/[0.08] border-amber-500/[0.15]',
+                  dot: 'bg-amber-500',
                 },
               ].map((soil, idx) => (
                 <motion.div key={idx} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }} transition={{ duration: 0.5, ease: EASE, delay: 0.1 + idx * 0.1 }}
-                  className={`${soil.color} border rounded-2xl p-5 hover:shadow-md transition-all duration-300`}>
-                  <h4 className="text-sm font-bold text-stone-800 mb-3">{soil.name}</h4>
+                  className={`${soil.color} border rounded-2xl p-5 hover:border-white/[0.15] transition-all duration-300`}>
+                  <h4 className="text-sm font-bold text-stone-200 mb-3">{soil.name}</h4>
                   <ul className="space-y-1.5 mb-3">
                     {soil.traits.map((t, i) => (
-                      <li key={i} className="flex items-start gap-2 text-stone-600 text-xs leading-relaxed">
+                      <li key={i} className="flex items-start gap-2 text-stone-400 text-xs leading-relaxed">
                         <div className={`w-1.5 h-1.5 rounded-full ${soil.dot} mt-1.5 shrink-0`} />
                         {t}
                       </li>
                     ))}
                   </ul>
-                  <div className="bg-white/60 rounded-lg p-3 mb-2">
-                    <p className="text-[10px] font-bold text-stone-400 uppercase tracking-wider mb-1">Teste Caseiro</p>
-                    <p className="text-stone-600 text-xs italic">{soil.test}</p>
+                  <div className="bg-white/[0.03] rounded-lg p-3 mb-2">
+                    <p className="text-[10px] font-bold text-stone-500 uppercase tracking-wider mb-1">Teste Caseiro</p>
+                    <p className="text-stone-400 text-xs italic">{soil.test}</p>
                   </div>
-                  <div className="bg-emerald-50/60 rounded-lg p-3">
-                    <p className="text-[10px] font-bold text-emerald-600 uppercase tracking-wider mb-1">Correção</p>
-                    <p className="text-stone-600 text-xs">{soil.fix}</p>
+                  <div className="bg-emerald-500/[0.06] rounded-lg p-3">
+                    <p className="text-[10px] font-bold text-emerald-400 uppercase tracking-wider mb-1">Correção</p>
+                    <p className="text-stone-400 text-xs">{soil.fix}</p>
                   </div>
                 </motion.div>
               ))}
@@ -239,13 +213,13 @@ export default function SoloFertilidade() {
         {/* ═══ CARD 02 — pH DO SOLO ═══ */}
         <div className="space-y-6 mb-6">
           <ImageCard src={imgPhTeste} alt="Teste caseiro de pH do solo">
-            <h2 className="text-xl md:text-2xl font-bold text-stone-800 tracking-tight mb-2">
+            <h2 className="text-xl md:text-2xl font-bold text-stone-200 tracking-tight mb-2">
               🟢 O que é pH do Solo e Por Que Importa
             </h2>
-            <p className="text-stone-400 text-sm mb-6">A maioria das hortaliças cresce melhor entre pH 6,0 e 7,0 — faixa onde nutrientes ficam quimicamente disponíveis.</p>
+            <p className="text-stone-500 text-sm mb-6">A maioria das hortaliças cresce melhor entre pH 6,0 e 7,0 — faixa onde nutrientes ficam quimicamente disponíveis.</p>
 
-            <div className="bg-emerald-50/70 border border-emerald-200/40 rounded-2xl p-5 mb-6">
-              <p className="text-xs font-bold text-emerald-700 uppercase tracking-wider mb-3">Escala de pH</p>
+            <div className="bg-emerald-500/[0.08] border border-emerald-500/[0.12] rounded-2xl p-5 mb-6">
+              <p className="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-3">Escala de pH</p>
               <div className="flex items-center gap-2 mb-2">
                 <div className="flex-1 h-3 rounded-full" style={{ background: 'linear-gradient(90deg, #ef4444 0%, #f59e0b 25%, #22c55e 50%, #3b82f6 75%, #8b5cf6 100%)' }} />
               </div>
@@ -257,34 +231,34 @@ export default function SoloFertilidade() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-              <div className="bg-amber-50/60 border border-amber-200/30 rounded-xl p-5">
-                <p className="text-xs font-bold text-amber-700 uppercase tracking-wider mb-3">Método Caseiro — Vinagre + Bicarbonato</p>
+              <div className="bg-amber-500/[0.06] border border-amber-500/[0.12] rounded-xl p-5">
+                <p className="text-xs font-bold text-amber-400 uppercase tracking-wider mb-3">Método Caseiro — Vinagre + Bicarbonato</p>
                 <div className="space-y-3">
-                  <div className="bg-white/60 rounded-lg p-3">
-                    <p className="text-stone-700 text-xs font-semibold mb-1">Teste Alcalinidade</p>
+                  <div className="bg-white/[0.03] rounded-lg p-3">
+                    <p className="text-stone-300 text-xs font-semibold mb-1">Teste Alcalinidade</p>
                     <p className="text-stone-500 text-xs">Solo seco + vinagre → se borbulhar = alcalino</p>
                   </div>
-                  <div className="bg-white/60 rounded-lg p-3">
-                    <p className="text-stone-700 text-xs font-semibold mb-1">Teste Acidez</p>
+                  <div className="bg-white/[0.03] rounded-lg p-3">
+                    <p className="text-stone-300 text-xs font-semibold mb-1">Teste Acidez</p>
                     <p className="text-stone-500 text-xs">Solo + água destilada + bicarbonato → se borbulhar = ácido</p>
                   </div>
-                  <p className="text-stone-400 text-[10px] italic">Não substitui teste de laboratório, mas indica tendência.</p>
+                  <p className="text-stone-600 text-[10px] italic">Não substitui teste de laboratório, mas indica tendência.</p>
                 </div>
               </div>
-              <div className="bg-sky-50/60 border border-sky-200/30 rounded-xl p-5">
-                <p className="text-xs font-bold text-sky-700 uppercase tracking-wider mb-3">Método Mais Preciso</p>
-                <p className="text-stone-600 text-sm mb-3">Kit medidor de pH de solo — barato e reutilizável.</p>
+              <div className="bg-sky-500/[0.06] border border-sky-500/[0.12] rounded-xl p-5">
+                <p className="text-xs font-bold text-sky-400 uppercase tracking-wider mb-3">Método Mais Preciso</p>
+                <p className="text-stone-400 text-sm mb-3">Kit medidor de pH de solo — barato e reutilizável.</p>
                 <StepList steps={['Umedecer o solo', 'Inserir medidor na terra', 'Aguardar estabilização da leitura']} color="bg-sky-500" />
               </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="bg-red-50/50 border border-red-200/30 rounded-xl p-4">
-                <p className="text-xs font-bold text-red-600 uppercase tracking-wider mb-2">Solo Ácido — Correção</p>
+              <div className="bg-red-500/[0.06] border border-red-500/[0.12] rounded-xl p-4">
+                <p className="text-xs font-bold text-red-400 uppercase tracking-wider mb-2">Solo Ácido — Correção</p>
                 <BulletList items={['Aplicar calcário dolomítico', 'Cinzas de madeira em pequenas quantidades']} color="bg-red-400" />
               </div>
-              <div className="bg-violet-50/50 border border-violet-200/30 rounded-xl p-4">
-                <p className="text-xs font-bold text-violet-600 uppercase tracking-wider mb-2">Solo Alcalino — Correção</p>
+              <div className="bg-violet-500/[0.06] border border-violet-500/[0.12] rounded-xl p-4">
+                <p className="text-xs font-bold text-violet-400 uppercase tracking-wider mb-2">Solo Alcalino — Correção</p>
                 <BulletList items={['Aplicar matéria orgânica', 'Compostagem constante', 'Evitar excesso de calcário']} color="bg-violet-400" />
               </div>
             </div>
@@ -294,78 +268,78 @@ export default function SoloFertilidade() {
         {/* ═══ CARD 03 — FERTILIZANTES ═══ */}
         <div className="space-y-6 mb-6">
           <ImageCard src={imgFertilizantes} alt="Comparação fertilizantes orgânicos vs sintéticos">
-            <h2 className="text-xl md:text-2xl font-bold text-stone-800 tracking-tight mb-2">
+            <h2 className="text-xl md:text-2xl font-bold text-stone-200 tracking-tight mb-2">
               🟡 Tipos de Fertilizantes — Qual Usar e Qual Evitar
             </h2>
-            <p className="text-stone-400 text-sm mb-6">Se o fertilizante melhora a vida do solo, ele é aliado. Se apenas força crescimento rápido, é solução temporária.</p>
+            <p className="text-stone-500 text-sm mb-6">Se o fertilizante melhora a vida do solo, ele é aliado. Se apenas força crescimento rápido, é solução temporária.</p>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
               <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }} transition={{ duration: 0.5, ease: EASE }}
-                className="bg-emerald-50/70 border border-emerald-200/40 rounded-2xl p-5">
+                className="bg-emerald-500/[0.08] border border-emerald-500/[0.12] rounded-2xl p-5">
                 <div className="flex items-center gap-2 mb-3">
-                  <CheckCircle2 size={16} className="text-emerald-600" />
-                  <h4 className="text-sm font-bold text-emerald-800">Orgânicos</h4>
+                  <CheckCircle2 size={16} className="text-emerald-400" />
+                  <h4 className="text-sm font-bold text-emerald-300">Orgânicos</h4>
                 </div>
                 <p className="text-stone-500 text-xs mb-3">Compostagem, húmus, bokashi, esterco curtido</p>
                 <ul className="space-y-1.5">
                   {['Melhoram estrutura do solo', 'Alimentam microbiologia', 'Liberam nutrientes gradualmente'].map((item, i) => (
-                    <li key={i} className="flex items-start gap-2 text-stone-600 text-xs">
+                    <li key={i} className="flex items-start gap-2 text-stone-400 text-xs">
                       <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-1.5 shrink-0" />
                       {item}
                     </li>
                   ))}
                 </ul>
-                <div className="mt-3 bg-emerald-100/60 rounded-lg p-2 text-center">
-                  <span className="text-emerald-700 text-[10px] font-bold uppercase tracking-wider">✓ Ideal para produção contínua</span>
+                <div className="mt-3 bg-emerald-500/[0.1] rounded-lg p-2 text-center">
+                  <span className="text-emerald-400 text-[10px] font-bold uppercase tracking-wider">✓ Ideal para produção contínua</span>
                 </div>
               </motion.div>
 
               <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }} transition={{ duration: 0.5, ease: EASE, delay: 0.1 }}
-                className="bg-amber-50/70 border border-amber-200/40 rounded-2xl p-5">
+                className="bg-amber-500/[0.08] border border-amber-500/[0.12] rounded-2xl p-5">
                 <div className="flex items-center gap-2 mb-3">
-                  <CircleDot size={16} className="text-amber-600" />
-                  <h4 className="text-sm font-bold text-amber-800">Minerais Naturais</h4>
+                  <CircleDot size={16} className="text-amber-400" />
+                  <h4 className="text-sm font-bold text-amber-300">Minerais Naturais</h4>
                 </div>
                 <p className="text-stone-500 text-xs mb-3">Farinha de osso, fosfato natural, pó de rocha</p>
                 <ul className="space-y-1.5">
                   {['Fornecem minerais específicos', 'Devem ser usados com equilíbrio', 'Complementam fertilização orgânica'].map((item, i) => (
-                    <li key={i} className="flex items-start gap-2 text-stone-600 text-xs">
+                    <li key={i} className="flex items-start gap-2 text-stone-400 text-xs">
                       <div className="w-1.5 h-1.5 rounded-full bg-amber-500 mt-1.5 shrink-0" />
                       {item}
                     </li>
                   ))}
                 </ul>
-                <div className="mt-3 bg-amber-100/60 rounded-lg p-2 text-center">
-                  <span className="text-amber-700 text-[10px] font-bold uppercase tracking-wider">⚖ Usar com equilíbrio</span>
+                <div className="mt-3 bg-amber-500/[0.1] rounded-lg p-2 text-center">
+                  <span className="text-amber-400 text-[10px] font-bold uppercase tracking-wider">⚖ Usar com equilíbrio</span>
                 </div>
               </motion.div>
 
               <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }} transition={{ duration: 0.5, ease: EASE, delay: 0.2 }}
-                className="bg-red-50/70 border border-red-200/40 rounded-2xl p-5">
+                className="bg-red-500/[0.08] border border-red-500/[0.12] rounded-2xl p-5">
                 <div className="flex items-center gap-2 mb-3">
-                  <XCircle size={16} className="text-red-500" />
-                  <h4 className="text-sm font-bold text-red-800">Sintéticos (NPK)</h4>
+                  <XCircle size={16} className="text-red-400" />
+                  <h4 className="text-sm font-bold text-red-300">Sintéticos (NPK)</h4>
                 </div>
                 <p className="text-stone-500 text-xs mb-3">NPK industrial solúvel — efeito rápido</p>
                 <ul className="space-y-1.5">
                   {['Não alimentam o solo', 'Podem causar salinização', 'Reduzem microbiologia ao longo do tempo'].map((item, i) => (
-                    <li key={i} className="flex items-start gap-2 text-stone-600 text-xs">
+                    <li key={i} className="flex items-start gap-2 text-stone-400 text-xs">
                       <div className="w-1.5 h-1.5 rounded-full bg-red-400 mt-1.5 shrink-0" />
                       {item}
                     </li>
                   ))}
                 </ul>
-                <div className="mt-3 bg-red-100/60 rounded-lg p-2 text-center">
-                  <span className="text-red-600 text-[10px] font-bold uppercase tracking-wider">✕ Evitar uso contínuo</span>
+                <div className="mt-3 bg-red-500/[0.1] rounded-lg p-2 text-center">
+                  <span className="text-red-400 text-[10px] font-bold uppercase tracking-wider">✕ Evitar uso contínuo</span>
                 </div>
               </motion.div>
             </div>
 
             <div className="border-l-3 border-amber-500/50 pl-5">
-              <p className="text-amber-700 text-sm font-semibold leading-relaxed">
+              <p className="text-amber-400 text-sm font-semibold leading-relaxed">
                 Regra de Ouro: Se o fertilizante melhora a vida do solo, ele é aliado. Se apenas força crescimento rápido, é solução temporária.
               </p>
             </div>
@@ -375,18 +349,18 @@ export default function SoloFertilidade() {
         {/* ═══ CARD 04 — MELHOR TERRA ═══ */}
         <div className="space-y-6 mb-6">
           <ImageCard src={imgSubstrato} alt="Mistura ideal de substrato">
-            <h2 className="text-xl md:text-2xl font-bold text-stone-800 tracking-tight mb-2">
+            <h2 className="text-xl md:text-2xl font-bold text-stone-200 tracking-tight mb-2">
               🔵 Como Escolher a Melhor Terra para Plantar
             </h2>
-            <p className="text-stone-400 text-sm mb-6">Nunca use apenas "terra preta de jardim" sem saber a origem.</p>
+            <p className="text-stone-500 text-sm mb-6">Nunca use apenas "terra preta de jardim" sem saber a origem.</p>
 
-            <div className="bg-sky-50/60 border border-sky-200/30 rounded-2xl p-5 mb-6">
-              <p className="text-xs font-bold text-sky-700 uppercase tracking-wider mb-3">Procure</p>
+            <div className="bg-sky-500/[0.06] border border-sky-500/[0.12] rounded-2xl p-5 mb-6">
+              <p className="text-xs font-bold text-sky-400 uppercase tracking-wider mb-3">Procure</p>
               <BulletList items={['Textura solta', 'Cheiro de terra úmida', 'Presença de matéria orgânica', 'Ausência de entulho ou resíduos']} color="bg-sky-500" />
             </div>
 
-            <div className="bg-amber-50/60 border border-amber-200/30 rounded-2xl p-5 mb-6">
-              <p className="text-xs font-bold text-amber-700 uppercase tracking-wider mb-3">Mistura Ideal para Vasos</p>
+            <div className="bg-amber-500/[0.06] border border-amber-500/[0.12] rounded-2xl p-5 mb-6">
+              <p className="text-xs font-bold text-amber-400 uppercase tracking-wider mb-3">Mistura Ideal para Vasos</p>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                 {[
                   { pct: '40%', label: 'Terra vegetal' },
@@ -396,24 +370,24 @@ export default function SoloFertilidade() {
                 ].map((item, i) => (
                   <motion.div key={i} initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }} transition={{ duration: 0.4, delay: 0.1 + i * 0.08 }}
-                    className="bg-white/70 border border-amber-200/40 rounded-xl p-4 text-center hover:scale-105 transition-transform duration-300">
-                    <p className="text-2xl font-black text-amber-700">{item.pct}</p>
-                    <p className="text-stone-600 text-xs font-medium mt-1">{item.label}</p>
+                    className="bg-white/[0.04] border border-amber-500/[0.15] rounded-xl p-4 text-center hover:scale-105 transition-transform duration-300">
+                    <p className="text-2xl font-black text-amber-400">{item.pct}</p>
+                    <p className="text-stone-400 text-xs font-medium mt-1">{item.label}</p>
                   </motion.div>
                 ))}
               </div>
             </div>
 
-            <div className="flex items-center gap-3 bg-emerald-50/60 border border-emerald-200/30 rounded-xl p-4">
-              <CheckCircle2 size={18} className="text-emerald-600 shrink-0" />
-              <p className="text-stone-600 text-sm">Resultado: Boa drenagem + nutrientes disponíveis + microbiologia ativa</p>
+            <div className="flex items-center gap-3 bg-emerald-500/[0.06] border border-emerald-500/[0.12] rounded-xl p-4">
+              <CheckCircle2 size={18} className="text-emerald-400 shrink-0" />
+              <p className="text-stone-400 text-sm">Resultado: Boa drenagem + nutrientes disponíveis + microbiologia ativa</p>
             </div>
           </ImageCard>
         </div>
 
         {/* ═══ CARD 05 — ERROS ═══ */}
         <InfoCard color="red" icon={AlertTriangle} title="🔴 Erros que Destroem a Fertilidade">
-          <div className="bg-red-50/50 border border-red-200/30 rounded-xl p-4 mb-4">
+          <div className="bg-red-500/[0.06] border border-red-500/[0.1] rounded-xl p-4 mb-4">
             <ul className="space-y-2">
               {[
                 'Excesso de água — encharcamento asfixia raízes',
@@ -425,15 +399,15 @@ export default function SoloFertilidade() {
               ].map((item, i) => (
                 <motion.li key={i} initial={{ opacity: 0, x: -8 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
                   transition={{ duration: 0.35, delay: 0.1 + i * 0.05 }}
-                  className="flex items-start gap-3 bg-white/50 rounded-lg px-3 py-2">
+                  className="flex items-start gap-3 bg-white/[0.03] rounded-lg px-3 py-2">
                   <XCircle size={14} className="text-red-400 mt-0.5 shrink-0" />
-                  <span className="text-stone-600 text-sm">{item}</span>
+                  <span className="text-stone-400 text-sm">{item}</span>
                 </motion.li>
               ))}
             </ul>
           </div>
           <div className="border-l-3 border-red-400/50 pl-5">
-            <p className="text-red-700 text-sm font-semibold">Solo é sistema vivo. Sem manutenção, ele perde equilíbrio.</p>
+            <p className="text-red-400 text-sm font-semibold">Solo é sistema vivo. Sem manutenção, ele perde equilíbrio.</p>
           </div>
         </InfoCard>
 
@@ -446,15 +420,15 @@ export default function SoloFertilidade() {
         <div className="space-y-6 mb-8">
           <ImageCard src={imgComposteira} alt="Composteira doméstica">
             <div className="flex items-center gap-3 mb-4">
-              <div className="p-2 bg-amber-100 rounded-xl"><Leaf className="text-amber-700" size={18} /></div>
+              <div className="p-2 bg-amber-500/[0.12] rounded-xl"><Leaf className="text-amber-400" size={18} /></div>
               <div>
-                <span className="text-amber-600 text-[9px] font-bold tracking-[0.4em] uppercase block">Módulo 01</span>
-                <h2 className="text-xl md:text-2xl font-bold text-stone-800 tracking-tight">Composteira Doméstica</h2>
+                <span className="text-amber-500/80 text-[9px] font-bold tracking-[0.4em] uppercase block">Módulo 01</span>
+                <h2 className="text-xl md:text-2xl font-bold text-stone-200 tracking-tight">Composteira Doméstica</h2>
               </div>
             </div>
 
-            <div className="bg-amber-50/70 border border-amber-200/40 rounded-2xl p-5 mb-6">
-              <p className="text-stone-600 text-sm leading-relaxed italic">
+            <div className="bg-amber-500/[0.06] border border-amber-500/[0.12] rounded-2xl p-5 mb-6">
+              <p className="text-stone-400 text-sm leading-relaxed italic">
                 "Compostagem é a transformação de resíduos orgânicos em adubo estável, escuro e rico em nutrientes. Tudo que já foi vivo pode voltar ao solo."
               </p>
             </div>
@@ -463,17 +437,17 @@ export default function SoloFertilidade() {
               <ChevronRight size={12} className="text-amber-500" /> Equilíbrio Carbono × Nitrogênio
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-              <div className="bg-emerald-50/60 border border-emerald-200/30 rounded-xl p-4">
-                <p className="text-xs font-bold text-emerald-700 uppercase tracking-wider mb-2">🟢 Verdes (Nitrogênio)</p>
+              <div className="bg-emerald-500/[0.06] border border-emerald-500/[0.12] rounded-xl p-4">
+                <p className="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-2">🟢 Verdes (Nitrogênio)</p>
                 <BulletList items={['Restos de frutas e legumes', 'Borra de café', 'Cascas frescas', 'Esterco']} color="bg-emerald-500" />
               </div>
-              <div className="bg-amber-50/60 border border-amber-200/30 rounded-xl p-4">
-                <p className="text-xs font-bold text-amber-700 uppercase tracking-wider mb-2">🟤 Marrons (Carbono)</p>
+              <div className="bg-amber-500/[0.06] border border-amber-500/[0.12] rounded-xl p-4">
+                <p className="text-xs font-bold text-amber-400 uppercase tracking-wider mb-2">🟤 Marrons (Carbono)</p>
                 <BulletList items={['Folhas secas', 'Papel não colorido', 'Serragem sem tratamento', 'Papelão picado']} color="bg-amber-600" />
               </div>
             </div>
-            <div className="bg-stone-50 rounded-xl p-4 mb-6 text-center">
-              <p className="text-stone-700 text-sm font-semibold">Proporção ideal: <span className="text-amber-700">2 marrom : 1 verde</span></p>
+            <div className="bg-white/[0.03] rounded-xl p-4 mb-6 text-center">
+              <p className="text-stone-300 text-sm font-semibold">Proporção ideal: <span className="text-amber-400">2 marrom : 1 verde</span></p>
             </div>
 
             <h3 className="text-xs font-bold text-stone-500 uppercase tracking-wider mb-3 flex items-center gap-2">
@@ -499,12 +473,12 @@ export default function SoloFertilidade() {
             ]} />
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
-              <div className="bg-emerald-50/50 border border-emerald-200/30 rounded-xl p-4">
-                <p className="text-xs font-bold text-emerald-600 uppercase tracking-wider mb-2">✓ Saudável</p>
+              <div className="bg-emerald-500/[0.06] border border-emerald-500/[0.12] rounded-xl p-4">
+                <p className="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-2">✓ Saudável</p>
                 <BulletList items={['Cheiro de terra úmida', 'Temperatura morna', 'Insetos decompositores']} color="bg-emerald-500" />
               </div>
-              <div className="bg-red-50/50 border border-red-200/30 rounded-xl p-4">
-                <p className="text-xs font-bold text-red-500 uppercase tracking-wider mb-2">✕ Problema</p>
+              <div className="bg-red-500/[0.06] border border-red-500/[0.12] rounded-xl p-4">
+                <p className="text-xs font-bold text-red-400 uppercase tracking-wider mb-2">✕ Problema</p>
                 <BulletList items={['Cheiro forte → excesso de verde', 'Falta de oxigênio', 'Correção: material seco + revolver']} color="bg-red-400" />
               </div>
             </div>
@@ -515,15 +489,15 @@ export default function SoloFertilidade() {
         <div className="space-y-6 mb-8">
           <ImageCard src={imgBokashi} alt="Preparo de bokashi">
             <div className="flex items-center gap-3 mb-4">
-              <div className="p-2 bg-emerald-100 rounded-xl"><FlaskConical className="text-emerald-700" size={18} /></div>
+              <div className="p-2 bg-emerald-500/[0.12] rounded-xl"><FlaskConical className="text-emerald-400" size={18} /></div>
               <div>
-                <span className="text-emerald-600 text-[9px] font-bold tracking-[0.4em] uppercase block">Módulo 02</span>
-                <h2 className="text-xl md:text-2xl font-bold text-stone-800 tracking-tight">Produção de Bokashi</h2>
+                <span className="text-emerald-500/80 text-[9px] font-bold tracking-[0.4em] uppercase block">Módulo 02</span>
+                <h2 className="text-xl md:text-2xl font-bold text-stone-200 tracking-tight">Produção de Bokashi</h2>
               </div>
             </div>
 
-            <div className="bg-emerald-50/70 border border-emerald-200/40 rounded-2xl p-5 mb-6">
-              <p className="text-stone-600 text-sm leading-relaxed italic">
+            <div className="bg-emerald-500/[0.06] border border-emerald-500/[0.12] rounded-2xl p-5 mb-6">
+              <p className="text-stone-400 text-sm leading-relaxed italic">
                 "Bokashi é um concentrado biológico que acelera a vida do solo. Diferente da compostagem aeróbica, ele utiliza fermentação controlada."
               </p>
             </div>
@@ -545,8 +519,8 @@ export default function SoloFertilidade() {
               'Odor deve ser levemente adocicado (se cheirar podre = contaminação)',
             ]} color="bg-emerald-500" />
 
-            <div className="bg-amber-50/60 border border-amber-200/30 rounded-xl p-4 mt-6">
-              <p className="text-xs font-bold text-amber-700 uppercase tracking-wider mb-2">Uso</p>
+            <div className="bg-amber-500/[0.06] border border-amber-500/[0.12] rounded-xl p-4 mt-6">
+              <p className="text-xs font-bold text-amber-400 uppercase tracking-wider mb-2">Uso</p>
               <BulletList items={['100g por metro quadrado incorporado ao solo', 'Nunca aplicar diretamente nas raízes sem misturar à terra']} color="bg-amber-500" />
             </div>
           </ImageCard>
@@ -556,15 +530,15 @@ export default function SoloFertilidade() {
         <div className="space-y-6 mb-8">
           <ImageCard src={imgMinhocario} alt="Minhocário doméstico">
             <div className="flex items-center gap-3 mb-4">
-              <div className="p-2 bg-amber-100 rounded-xl"><Bug className="text-amber-700" size={18} /></div>
+              <div className="p-2 bg-amber-500/[0.12] rounded-xl"><Bug className="text-amber-400" size={18} /></div>
               <div>
-                <span className="text-amber-600 text-[9px] font-bold tracking-[0.4em] uppercase block">Módulo 03</span>
-                <h2 className="text-xl md:text-2xl font-bold text-stone-800 tracking-tight">Minhocário e Húmus Líquido</h2>
+                <span className="text-amber-500/80 text-[9px] font-bold tracking-[0.4em] uppercase block">Módulo 03</span>
+                <h2 className="text-xl md:text-2xl font-bold text-stone-200 tracking-tight">Minhocário e Húmus Líquido</h2>
               </div>
             </div>
 
-            <div className="bg-amber-50/70 border border-amber-200/40 rounded-2xl p-5 mb-6">
-              <p className="text-stone-600 text-sm leading-relaxed italic">
+            <div className="bg-amber-500/[0.06] border border-amber-500/[0.12] rounded-2xl p-5 mb-6">
+              <p className="text-stone-400 text-sm leading-relaxed italic">
                 "Minhocas transformam resíduos em húmus — um dos melhores adubos naturais. Sistema de fertilidade contínua."
               </p>
             </div>
@@ -580,9 +554,9 @@ export default function SoloFertilidade() {
               ].map((box, i) => (
                 <motion.div key={i} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }} transition={{ duration: 0.4, delay: 0.1 + i * 0.08 }}
-                  className="bg-stone-50/80 border border-stone-200/40 rounded-xl p-4 text-center">
-                  <p className="text-amber-700 text-xs font-bold uppercase tracking-wider mb-1">{box.label}</p>
-                  <p className="text-stone-600 text-xs">{box.desc}</p>
+                  className="bg-white/[0.03] border border-white/[0.06] rounded-xl p-4 text-center">
+                  <p className="text-amber-400 text-xs font-bold uppercase tracking-wider mb-1">{box.label}</p>
+                  <p className="text-stone-400 text-xs">{box.desc}</p>
                 </motion.div>
               ))}
             </div>
@@ -600,13 +574,13 @@ export default function SoloFertilidade() {
             ]} />
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
-              <div className="bg-red-50/50 border border-red-200/30 rounded-xl p-4">
-                <p className="text-xs font-bold text-red-500 uppercase tracking-wider mb-2">Evitar</p>
+              <div className="bg-red-500/[0.06] border border-red-500/[0.12] rounded-xl p-4">
+                <p className="text-xs font-bold text-red-400 uppercase tracking-wider mb-2">Evitar</p>
                 <BulletList items={['Cítricos em excesso', 'Sal, carne e óleo']} color="bg-red-400" />
               </div>
-              <div className="bg-emerald-50/60 border border-emerald-200/30 rounded-xl p-4">
-                <p className="text-xs font-bold text-emerald-600 uppercase tracking-wider mb-2">Húmus Líquido — Diluição</p>
-                <p className="text-stone-600 text-sm mb-2">1 parte líquido : 10 partes água</p>
+              <div className="bg-emerald-500/[0.06] border border-emerald-500/[0.12] rounded-xl p-4">
+                <p className="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-2">Húmus Líquido — Diluição</p>
+                <p className="text-stone-300 text-sm mb-2">1 parte líquido : 10 partes água</p>
                 <p className="text-stone-500 text-xs">Aplicar na base das plantas a cada 15 dias.</p>
               </div>
             </div>
@@ -616,23 +590,23 @@ export default function SoloFertilidade() {
         {/* ── 04 pH APROFUNDADO ── */}
         <div className="space-y-6 mb-8">
           <InfoCard color="green" icon={Droplets} title="Análise Caseira de pH — Guia Completo">
-            <div className="bg-white/60 rounded-2xl p-5 mb-4">
-              <p className="text-stone-600 text-sm leading-relaxed">
-                pH define a disponibilidade de nutrientes no solo. Se o pH estiver errado, a planta pode ter deficiência <span className="font-semibold">mesmo com adubo presente</span> — folhas amareladas, crescimento reduzido.
+            <div className="bg-white/[0.03] rounded-2xl p-5 mb-4">
+              <p className="text-stone-400 text-sm leading-relaxed">
+                pH define a disponibilidade de nutrientes no solo. Se o pH estiver errado, a planta pode ter deficiência <span className="font-semibold text-stone-300">mesmo com adubo presente</span> — folhas amareladas, crescimento reduzido.
               </p>
             </div>
 
-            <div className="bg-emerald-50/60 border border-emerald-200/30 rounded-xl p-5 mb-4">
-              <p className="text-xs font-bold text-emerald-700 uppercase tracking-wider mb-2">Nutrientes Dependentes de pH</p>
+            <div className="bg-emerald-500/[0.06] border border-emerald-500/[0.12] rounded-xl p-5 mb-4">
+              <p className="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-2">Nutrientes Dependentes de pH</p>
               <div className="flex flex-wrap gap-2">
                 {['Nitrogênio', 'Fósforo', 'Potássio', 'Cálcio', 'Magnésio'].map((n) => (
-                  <span key={n} className="bg-white/70 border border-emerald-200/40 rounded-lg px-3 py-1.5 text-xs font-semibold text-emerald-700">{n}</span>
+                  <span key={n} className="bg-white/[0.04] border border-emerald-500/[0.15] rounded-lg px-3 py-1.5 text-xs font-semibold text-emerald-400">{n}</span>
                 ))}
               </div>
             </div>
 
             <div className="border-l-3 border-emerald-500/50 pl-5">
-              <p className="text-emerald-700 text-sm font-semibold">Todos ficam mais disponíveis entre pH 6,0 e 7,0 — a faixa ideal para hortaliças.</p>
+              <p className="text-emerald-400 text-sm font-semibold">Todos ficam mais disponíveis entre pH 6,0 e 7,0 — a faixa ideal para hortaliças.</p>
             </div>
           </InfoCard>
         </div>
@@ -644,8 +618,8 @@ export default function SoloFertilidade() {
           initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}
           className="mb-10"
         >
-          <div className="bg-amber-50/70 border border-amber-200/50 rounded-3xl p-8 md:p-12">
-            <h3 className="text-2xl md:text-3xl font-bold text-stone-800 tracking-tight mb-4">
+          <div className="bg-white/[0.03] border border-white/[0.06] rounded-3xl p-8 md:p-12">
+            <h3 className="text-2xl md:text-3xl font-bold text-stone-200 tracking-tight mb-4">
               Fertilidade Contínua Exige:
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 mb-8">
@@ -658,15 +632,15 @@ export default function SoloFertilidade() {
               ].map((item, i) => (
                 <motion.div key={i} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: 0.1 + i * 0.08 }}
-                  className="bg-white/70 border border-amber-200/40 rounded-xl p-4 text-center hover:scale-[1.02] hover:shadow-md transition-all duration-300">
-                  <CheckCircle2 className="text-amber-600 mx-auto mb-2" size={20} />
-                  <p className="text-stone-700 text-xs sm:text-sm font-semibold">{item}</p>
+                  className="bg-white/[0.04] border border-amber-500/[0.15] rounded-xl p-4 text-center hover:scale-[1.02] transition-all duration-300">
+                  <CheckCircle2 className="text-amber-400 mx-auto mb-2" size={20} />
+                  <p className="text-stone-300 text-xs sm:text-sm font-semibold">{item}</p>
                 </motion.div>
               ))}
             </div>
             <div className="space-y-2 text-stone-500 text-sm leading-relaxed">
               <p>Solo saudável produz alimento saudável.</p>
-              <p className="text-amber-700 font-semibold text-base">E alimento saudável sustenta corpo saudável.</p>
+              <p className="text-amber-400 font-semibold text-base">E alimento saudável sustenta corpo saudável.</p>
             </div>
           </div>
         </motion.section>
@@ -678,26 +652,26 @@ export default function SoloFertilidade() {
           className="flex flex-col sm:flex-row gap-4 justify-between"
         >
           <Link to="/projeto-autonomo/proteina-sustentavel"
-            className="flex items-center gap-3 bg-white/50 border border-stone-200/50 rounded-2xl px-6 py-4 hover:bg-white/80 hover:shadow-md transition-all duration-300 group">
-            <ArrowLeft size={16} className="text-stone-400 group-hover:text-amber-600 transition-colors" />
+            className="flex items-center gap-3 bg-white/[0.03] border border-white/[0.06] rounded-2xl px-6 py-4 hover:bg-white/[0.06] hover:border-white/[0.1] transition-all duration-300 group">
+            <ArrowLeft size={16} className="text-stone-500 group-hover:text-amber-400 transition-colors" />
             <div>
-              <span className="text-stone-400 text-[9px] font-bold uppercase tracking-wider">Anterior</span>
-              <p className="text-stone-700 text-sm font-semibold">Proteína Sustentável</p>
+              <span className="text-stone-600 text-[9px] font-bold uppercase tracking-wider">Anterior</span>
+              <p className="text-stone-300 text-sm font-semibold">Proteína Sustentável</p>
             </div>
           </Link>
           <Link to="/projeto-autonomo"
-            className="flex items-center gap-3 bg-white/50 border border-stone-200/50 rounded-2xl px-6 py-4 hover:bg-white/80 hover:shadow-md transition-all duration-300 group justify-end">
+            className="flex items-center gap-3 bg-white/[0.03] border border-white/[0.06] rounded-2xl px-6 py-4 hover:bg-white/[0.06] hover:border-white/[0.1] transition-all duration-300 group justify-end">
             <div className="text-right">
-              <span className="text-stone-400 text-[9px] font-bold uppercase tracking-wider">Voltar</span>
-              <p className="text-stone-700 text-sm font-semibold">Projeto Autônomo</p>
+              <span className="text-stone-600 text-[9px] font-bold uppercase tracking-wider">Voltar</span>
+              <p className="text-stone-300 text-sm font-semibold">Projeto Autônomo</p>
             </div>
-            <ArrowRight size={16} className="text-stone-400 group-hover:text-amber-600 transition-colors" />
+            <ArrowRight size={16} className="text-stone-500 group-hover:text-amber-400 transition-colors" />
           </Link>
         </motion.div>
 
         {/* Footer */}
         <motion.div className="mt-12 text-center" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.5 }}>
-          <p className="text-stone-400 text-xs leading-relaxed max-w-md mx-auto">
+          <p className="text-stone-600 text-xs leading-relaxed max-w-md mx-auto">
             Este módulo faz parte da Fase 03 — Soberania Alimentar do Projeto Autônomo.
             Conteúdo baseado em técnicas validadas de fertilidade orgânica e manejo sustentável de solo.
           </p>
