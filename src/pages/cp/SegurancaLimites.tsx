@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Shield, XCircle, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
+import CinematicHero from '@/components/CinematicHero';
+import ScrollToTop from '@/components/ScrollToTop';
 
 import { CriteriosUso } from '@/components/conhecimento-perdido/CriteriosUso';
 
@@ -19,43 +21,21 @@ export default function SegurancaLimites() {
 
   return (
     <div className="min-h-screen text-stone-100 font-sans selection:bg-amber-300/50 relative overflow-hidden"
-      style={{ background: 'linear-gradient(180deg, #0a0d08 0%, #0f1a0f 8%, #111f11 20%, #142214 40%, #111f11 70%, #0f1a0f 90%, #0a0d08 100%)' }}
+      style={{ background: '#050808' }}
     >
-      <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="absolute bottom-[10%] left-[8%] w-[500px] h-[500px] rounded-full"
-          style={{ background: 'radial-gradient(circle, rgba(245,158,11,0.1) 0%, transparent 70%)' }} />
-      </div>
+      <ScrollToTop />
+      <CinematicHero
+        image="/heroes/cp-seguranca-limites.webp"
+        phase="Bloco 03 · Conhecimento Perdido"
+        title="Segurança e Limites"
+        subtitle="Critérios de uso responsável, contraindicações documentadas, interações medicamentosas conhecidas e parâmetros claros de suspensão. Sem essa base, não existe credibilidade."
+        icon={Shield}
+        accentColor="amber"
+        backLink="/projeto-autonomo/conhecimento-perdido"
+        backLabel="Conhecimento Perdido"
+      />
 
-      <div className="relative z-10 max-w-5xl mx-auto px-6 md:px-10 pt-24 pb-32">
-
-        {/* ─── BREADCRUMB ─── */}
-        <nav className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] mb-16 flex-wrap">
-          <Link to="/" className="text-stone-600 hover:text-emerald-400 transition-colors">Início</Link>
-          <span className="text-stone-700">/</span>
-          <Link to="/projeto-autonomo" className="text-stone-600 hover:text-emerald-400 transition-colors">Projeto Autônomo</Link>
-          <span className="text-stone-700">/</span>
-          <Link to="/projeto-autonomo/conhecimento-perdido" className="text-stone-600 hover:text-emerald-400 transition-colors">Conhecimento Perdido</Link>
-          <span className="text-stone-700">/</span>
-          <span className="text-amber-400">Segurança e Limites</span>
-        </nav>
-
-        {/* ─── HERO ─── */}
-        <motion.header initial="hidden" animate="visible" variants={fadeUp} custom={0} className="mb-20">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="p-3 rounded-xl bg-amber-500/15 border border-amber-500/25">
-              <Shield className="text-amber-400" size={22} />
-            </div>
-            <span className="text-amber-500/60 text-[10px] font-bold tracking-[0.5em] uppercase">Bloco 03 · Conhecimento Perdido</span>
-          </div>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-wide uppercase leading-[0.95] text-white mb-6"
-            style={{ fontFamily: "'Space Grotesk', sans-serif", letterSpacing: '0.06em' }}>
-            SEGURANÇA E <span className="text-amber-400">LIMITES</span>
-          </h1>
-          <p className="text-stone-300 text-lg md:text-xl leading-relaxed max-w-3xl font-light">
-            Critérios de uso responsável, contraindicações documentadas, interações medicamentosas conhecidas 
-            e parâmetros claros de suspensão. Sem essa base, não existe credibilidade — e sem credibilidade, não existe autoridade.
-          </p>
-        </motion.header>
+      <div className="relative z-10 max-w-5xl mx-auto px-6 md:px-10 pt-12 pb-32">
 
         {/* ─── CRITÉRIOS DE USO RESPONSÁVEL ─── */}
         <CriteriosUso />
