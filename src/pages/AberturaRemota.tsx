@@ -672,7 +672,7 @@ const AberturaRemota = () => {
 
                         <p className="text-stone-400 text-sm md:text-base leading-relaxed mb-8 max-w-lg">
                           O processo assessorado inclui <strong className="text-stone-200">cédula paraguaia + abertura de contas + suporte 1-a-1</strong> do início ao fim.
-                          <strong className="text-amber-400/80"> Valor: o preço de uma pizza.</strong>
+                          <strong className="text-amber-400/80"> Exclusivo para membros do canal.</strong>
                         </p>
 
                         <div className="space-y-3 mb-10">

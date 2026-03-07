@@ -284,7 +284,7 @@ const FAQ = [
   { q: 'A Receita Federal consegue rastrear essas contas?', a: 'Se você abrir com documento brasileiro, sim — o CRS (Common Reporting Standard) permite troca automática de informações entre 100+ países. Com documentação de jurisdição não-CRS, a probabilidade de rastreamento cai drasticamente.' },
   { q: 'Qual a diferença entre fintech e banco nesta lista?', a: 'Fintechs (RedotPay, OffRamp, Etherfy, etc.) são mais ágeis, baratas e fáceis de abrir. Bancos (Chapo Bank, Dukascopy) oferecem mais solidez institucional, multi-moeda e gerentes dedicados — mas custam mais e exigem mais documentação.' },
   { q: 'Posso usar essas contas do Brasil?', a: 'A maioria sim, com exceção da UglyCash que exige geolocalização em Argentina/Paraguai. As demais podem ser abertas e operadas remotamente de qualquer lugar do mundo.' },
-  { q: 'Qual é o custo para se tornar membro e acessar a assessoria?', a: 'O valor para se tornar membro do canal é equivalente ao preço de uma pizza (aproximadamente R$ 50). Com a adesão, você tem acesso ao processo assessorado e acelerado de abertura de conta com cédula paraguaia.' },
+  { q: 'Como acessar a assessoria de abertura?', a: 'A assessoria completa — incluindo obtenção da cédula paraguaia e abertura de contas — está disponível exclusivamente para membros do canal. O processo é assessorado do início ao fim com suporte 1-a-1.' },
 ];
 
 const schemaLD = { '@context': 'https://schema.org', '@type': 'Article', headline: '10 Contas Offshore Cripto que NÃO Reportam — Abertura Remota', description: 'Ranking técnico de 10 fintechs e bancos cripto internacionais em paraísos fiscais que não reportam transações.', url: 'https://autonomiadoindividuo.com/soberania-financeira/contas-offshore/top-10' };
@@ -635,7 +635,7 @@ const ContasOffshore = () => {
                         <p className="text-stone-400 text-sm md:text-base leading-relaxed mb-8 max-w-lg">
                           O processo assessorado de obtenção da <strong className="text-stone-200">cédula paraguaia</strong> e abertura
                           de conta com privacidade está disponível exclusivamente para membros.
-                          <strong className="text-amber-400/80"> Valor: o preço de uma pizza.</strong>
+                          <strong className="text-amber-400/80"> Assessoria completa 1-a-1.</strong>
                         </p>
 
                         {/* Benefits */}
