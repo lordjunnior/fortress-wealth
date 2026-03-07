@@ -242,24 +242,72 @@ const Confisco1990 = () => {
 
         {/* Transition Block */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="border border-border/30 rounded-xl bg-card/50 p-8 md:p-12 text-center space-y-6"
+          initial={{ opacity: 0, scale: 0.95, filter: "blur(10px)" }}
+          whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="relative overflow-hidden rounded-2xl p-10 md:p-16 text-center"
         >
-          <p className="font-mono text-[10px] tracking-[0.5em] uppercase text-muted-foreground">
-            1990: NÃO EXISTIA ALTERNATIVA
-          </p>
-          <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tight leading-tight">
-            Hoje existe.
-          </h3>
-          <p className="text-muted-foreground max-w-xl mx-auto leading-relaxed text-lg">
-            Pela primeira vez na história, existe uma tecnologia que permite guardar patrimônio sem depender de bancos, governos ou decretos.
-          </p>
-          <p className="text-foreground font-bold text-xl">
-            Essa tecnologia se chama Bitcoin.
-          </p>
+          {/* Background layers */}
+          <div className="absolute inset-0 bg-gradient-to-b from-destructive/15 via-destructive/5 to-background border border-destructive/20 rounded-2xl" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,hsl(var(--destructive)/0.1)_0%,transparent_70%)]" />
+          
+          {/* Animated pulse ring */}
+          <motion.div
+            className="absolute inset-0 rounded-2xl border-2 border-destructive/20"
+            animate={{ opacity: [0.2, 0.5, 0.2] }}
+            transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
+          />
+
+          <div className="relative z-10 space-y-8">
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="font-mono text-sm md:text-base tracking-[0.4em] uppercase text-destructive font-bold"
+            >
+              1990: NÃO EXISTIA ALTERNATIVA
+            </motion.p>
+            
+            <motion.h3
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+              className="text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight leading-none text-foreground"
+            >
+              Hoje existe.
+            </motion.h3>
+            
+            <motion.div
+              initial={{ width: 0 }}
+              whileInView={{ width: "120px" }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.7 }}
+              className="h-0.5 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto"
+            />
+            
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.8 }}
+              className="text-muted-foreground max-w-xl mx-auto leading-relaxed text-lg"
+            >
+              Pela primeira vez na história, existe uma tecnologia que permite guardar patrimônio sem depender de bancos, governos ou decretos.
+            </motion.p>
+            
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 1 }}
+              className="text-gold font-black text-2xl md:text-3xl tracking-tight"
+            >
+              Essa tecnologia se chama Bitcoin.
+            </motion.p>
+          </div>
         </motion.div>
 
         {/* Final CTA */}
