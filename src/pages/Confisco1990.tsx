@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { ArrowLeft, Calendar, AlertTriangle, Vault, Lock, Users, Scale, TrendingDown, BookOpen, ShieldAlert, DollarSign, Clock, UserX } from "lucide-react";
+import ConfiscoFaq from "@/components/confisco/ConfiscoFaq";
+import { confiscoArticleSchema, confiscoFaqSchema, confiscoBreadcrumbSchema } from "@/lib/confiscoData";
 import presidenteImg from "@/assets/presidente-confisco-1990.jpg";
 import hiperinflacaoImg from "@/assets/confisco-hiperinflacao-1989.jpg";
 import decretoImg from "@/assets/confisco-decreto-noite.jpg";
@@ -139,6 +141,14 @@ const Confisco1990 = () => {
         <title>Confisco de 1990: A História Real do Plano Collor</title>
         <meta name="description" content="Em 16 de março de 1990, o governo brasileiro confiscou 80% do dinheiro da população com o Plano Collor. O confisco da poupança bloqueou US$ 80 bilhões. Esta é a história completa." />
         <meta name="keywords" content="plano collor confisco, confisco poupança 1990, plano collor dinheiro bloqueado, confisco da poupança brasil, história plano collor, confisco collor" />
+        <link rel="canonical" href="https://lordjunnior.com/confisco-1990" />
+        <meta property="og:title" content="Confisco de 1990: A História Real do Plano Collor" />
+        <meta property="og:description" content="80% do dinheiro da população bloqueado por decreto. A história que o sistema educacional brasileiro nunca vai ensinar." />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://lordjunnior.com/confisco-1990" />
+        <script type="application/ld+json">{JSON.stringify(confiscoArticleSchema)}</script>
+        <script type="application/ld+json">{JSON.stringify(confiscoFaqSchema)}</script>
+        <script type="application/ld+json">{JSON.stringify(confiscoBreadcrumbSchema)}</script>
       </Helmet>
 
       {/* ── Global Background Layers ── */}
@@ -475,8 +485,57 @@ const Confisco1990 = () => {
             </div>
           </motion.div>
 
+          {/* FAQ Section */}
+          <ConfiscoFaq />
+
+          {/* Internal Linking */}
+          <motion.nav
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="space-y-4"
+            aria-label="Conteúdo relacionado"
+          >
+            <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-muted-foreground/60">
+              CONTINUE A JORNADA
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {[
+                { to: "/autocustodia", label: "Autocustódia Bitcoin", desc: "Proteja seu patrimônio" },
+                { to: "/historia-do-dinheiro", label: "História do Dinheiro", desc: "De onde viemos" },
+                { to: "/inflacao-imposto-oculto", label: "Inflação: Imposto Oculto", desc: "Como roubam seu poder de compra" },
+                { to: "/cbdc-brasil", label: "CBDC Brasil: Drex", desc: "O próximo capítulo do controle" },
+                { to: "/fim-do-dinheiro-vivo", label: "Fim do Dinheiro Físico", desc: "A proibição em andamento" },
+                { to: "/o-que-e-bitcoin", label: "O que é Bitcoin?", desc: "A alternativa descentralizada" },
+              ].map((link) => (
+                <Link
+                  key={link.to}
+                  to={link.to}
+                  className="group border border-border/30 rounded-xl p-4 bg-card/20 hover:border-primary/30 hover:bg-card/40 transition-all duration-300"
+                >
+                  <p className="text-sm font-semibold text-foreground/90 group-hover:text-primary transition-colors">
+                    {link.label}
+                  </p>
+                  <p className="text-xs text-muted-foreground mt-1">{link.desc}</p>
+                </Link>
+              ))}
+            </div>
+          </motion.nav>
+
+          {/* Breadcrumb (semantic, visible) */}
+          <nav aria-label="Breadcrumb" className="pt-8">
+            <ol className="flex items-center gap-2 text-xs text-muted-foreground/50 font-mono">
+              <li><Link to="/" className="hover:text-foreground transition-colors">Início</Link></li>
+              <li>/</li>
+              <li><Link to="/alertas" className="hover:text-foreground transition-colors">Alertas</Link></li>
+              <li>/</li>
+              <li className="text-muted-foreground">Confisco 1990</li>
+            </ol>
+          </nav>
+
           {/* Footer */}
-          <footer className="pt-16 border-t border-border/20 text-center space-y-6">
+          <footer className="pt-8 border-t border-border/20 text-center space-y-6">
             <p className="text-muted-foreground font-mono text-xs tracking-widest uppercase">
               Quem não conhece a história está condenado a repeti-la.
             </p>
