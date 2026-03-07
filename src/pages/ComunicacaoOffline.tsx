@@ -21,7 +21,7 @@ const Section = ({ num, title, children }: { num: number; title: string; childre
   <motion.section className="mb-14" {...fade()}>
     <div className="flex items-center gap-3 mb-6">
       <div className="w-8 h-8 rounded-full bg-rose-500 text-white flex items-center justify-center text-sm font-bold">{num}</div>
-      <h2 className="text-xl md:text-2xl font-bold text-stone-800">{title}</h2>
+      <h2 className="text-xl md:text-2xl font-bold text-stone-200">{title}</h2>
     </div>
     {children}
   </motion.section>
@@ -32,7 +32,7 @@ const Check = ({ items }: { items: string[] }) => (
     {items.map(s => (
       <div key={s} className="flex items-start gap-2">
         <span className="text-rose-500 text-sm mt-0.5">✔</span>
-        <span className="text-stone-600 text-sm">{s}</span>
+        <span className="text-stone-400 text-sm">{s}</span>
       </div>
     ))}
   </div>
@@ -54,31 +54,31 @@ export default function ComunicacaoOffline() {
 
       <div className="max-w-4xl mx-auto px-5 md:px-8 pt-12 pb-32">
 
-          <div className="bg-rose-50 border border-rose-200/60 rounded-2xl p-5 md:p-6 mb-4">
-            <p className="text-stone-700 text-sm font-semibold mb-3">Comunicação em crise não é conversa. É sobrevivência estratégica.</p>
-            <p className="text-stone-600 text-sm mb-3">Sem comunicação:</p>
+          <div className="bg-rose-500/[0.08] border border-rose-500/[0.15] rounded-2xl p-5 md:p-6 mb-4">
+            <p className="text-stone-300 text-sm font-semibold mb-3">Comunicação em crise não é conversa. É sobrevivência estratégica.</p>
+            <p className="text-stone-400 text-sm mb-3">Sem comunicação:</p>
             <div className="grid grid-cols-2 gap-2">
               {['Não há coordenação', 'Não há reencontro', 'Não há decisão informada', 'Não há prevenção de risco'].map(item => (
-                <div key={item} className="bg-white/70 rounded-xl p-3 text-center">
-                  <span className="text-[11px] font-semibold text-stone-600">{item}</span>
+                <div key={item} className="bg-white/[0.04] rounded-xl p-3 text-center">
+                  <span className="text-[11px] font-semibold text-stone-400">{item}</span>
                 </div>
               ))}
             </div>
           </div>
 
           {/* Fundamento Operacional */}
-          <div className="bg-white/80 border border-stone-200/60 rounded-2xl p-5 md:p-6 mb-4">
-            <h3 className="text-sm font-bold text-rose-600 uppercase tracking-wider mb-3">📌 Fundamento Operacional</h3>
-            <p className="text-stone-600 text-sm leading-relaxed mb-3">Após desastres históricos:</p>
+          <div className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-5 md:p-6 mb-4">
+            <h3 className="text-sm font-bold text-rose-400 uppercase tracking-wider mb-3">📌 Fundamento Operacional</h3>
+            <p className="text-stone-400 text-sm leading-relaxed mb-3">Após desastres históricos:</p>
             <div className="grid grid-cols-2 gap-2 mb-4">
               {['Redes móveis saturam nas primeiras 2 horas', 'Energia elétrica falha', 'Dados móveis tornam-se instáveis', 'Informações falsas se espalham rapidamente'].map(item => (
-                <div key={item} className="bg-red-50/60 rounded-lg p-2.5">
-                  <span className="text-xs text-stone-600">• {item}</span>
+                <div key={item} className="bg-red-500/[0.06] rounded-lg p-2.5">
+                  <span className="text-xs text-stone-400">• {item}</span>
                 </div>
               ))}
             </div>
-            <div className="bg-rose-50 border border-rose-200/60 rounded-xl p-3">
-              <p className="text-stone-800 text-sm font-bold">O sistema precisa ser independente de internet e rede celular.</p>
+            <div className="bg-rose-500/[0.08] border border-rose-500/[0.15] rounded-xl p-3">
+              <p className="text-stone-200 text-sm font-bold">O sistema precisa ser independente de internet e rede celular.</p>
             </div>
           </div>
 
@@ -102,65 +102,65 @@ export default function ComunicacaoOffline() {
             </div>
           </div>
 
-        {/* ══ 1 — RÁDIO AM/FM ══ */}
+        {/* 1 — RÁDIO AM/FM */}
         <Section num={1} title="Informação Passiva — Rádio AM/FM">
-          <p className="text-stone-600 text-sm leading-relaxed mb-4">
-            O rádio é o <strong className="text-stone-800">meio mais resiliente</strong>. Funciona com pilha, bateria, manivela ou energia solar portátil.
+          <p className="text-stone-400 text-sm leading-relaxed mb-4">
+            O rádio é o <strong className="text-stone-200">meio mais resiliente</strong>. Funciona com pilha, bateria, manivela ou energia solar portátil.
           </p>
-          <div className="bg-white/80 border border-stone-200/60 rounded-2xl overflow-hidden mb-4">
+          <div className="bg-white/[0.03] border border-white/[0.06] rounded-2xl overflow-hidden mb-4">
             <img src={imgRadio} alt="Rádio AM/FM portátil com bloco de frequências" className="w-full h-48 md:h-64 object-cover" />
             <div className="p-5 md:p-6">
               <div className="flex items-center gap-2 mb-3">
-                <Radio size={16} className="text-rose-500" />
-                <h3 className="text-lg font-bold text-stone-800">Como Escolher Rádio Adequado</h3>
+                <Radio size={16} className="text-rose-400" />
+                <h3 className="text-lg font-bold text-stone-200">Como Escolher Rádio Adequado</h3>
               </div>
               <Check items={['AM/FM', 'Entrada para fone', 'Funcionar sem depender de tomada', 'Antena extensível']} />
-              <div className="mt-4 bg-amber-50 border border-amber-200/60 rounded-xl p-3">
-                <p className="text-amber-700 text-xs font-semibold">Evitar rádios dependentes exclusivamente de energia elétrica.</p>
+              <div className="mt-4 bg-amber-500/[0.08] border border-amber-500/[0.15] rounded-xl p-3">
+                <p className="text-amber-400 text-xs font-semibold">Evitar rádios dependentes exclusivamente de energia elétrica.</p>
               </div>
             </div>
           </div>
 
-          <div className="bg-rose-50/60 border border-rose-200/60 rounded-2xl p-5 md:p-6">
-            <h3 className="text-base font-bold text-stone-800 mb-3">Frequências Importantes</h3>
-            <p className="text-stone-600 text-sm leading-relaxed mb-3">Antes de qualquer crise, identificar:</p>
+          <div className="bg-rose-500/[0.06] border border-rose-500/[0.15] rounded-2xl p-5 md:p-6">
+            <h3 className="text-base font-bold text-stone-200 mb-3">Frequências Importantes</h3>
+            <p className="text-stone-400 text-sm leading-relaxed mb-3">Antes de qualquer crise, identificar:</p>
             <div className="grid grid-cols-3 gap-2 mb-3">
               {['Emissoras locais', 'Frequência da Defesa Civil', 'Rádio pública regional'].map(item => (
-                <div key={item} className="bg-white/70 rounded-lg p-2.5 text-center">
-                  <span className="text-xs font-semibold text-stone-600">{item}</span>
+                <div key={item} className="bg-white/[0.04] rounded-lg p-2.5 text-center">
+                  <span className="text-xs font-semibold text-stone-400">{item}</span>
                 </div>
               ))}
             </div>
-            <div className="bg-white/80 rounded-xl p-3">
-              <p className="text-stone-800 text-sm font-semibold">📝 Anotar em papel e guardar no kit.</p>
+            <div className="bg-white/[0.03] rounded-xl p-3">
+              <p className="text-stone-200 text-sm font-semibold">📝 Anotar em papel e guardar no kit.</p>
             </div>
           </div>
         </Section>
 
-        {/* ══ 2 — COMUNICAÇÃO FAMILIAR ══ */}
+        {/* 2 — COMUNICAÇÃO FAMILIAR */}
         <Section num={2} title="Comunicação Familiar e Ponto de Encontro">
-          <div className="bg-red-50 border border-red-200 rounded-2xl p-5 mb-6">
+          <div className="bg-red-500/[0.08] border border-red-500/[0.15] rounded-2xl p-5 mb-6">
             <div className="flex items-center gap-2 mb-2">
               <AlertTriangle size={16} className="text-red-500" />
-              <span className="text-sm font-bold text-red-700">Erro comum: depender apenas de celular.</span>
+              <span className="text-sm font-bold text-red-400">Erro comum: depender apenas de celular.</span>
             </div>
           </div>
 
-          <div className="bg-white/80 border border-stone-200/60 rounded-2xl overflow-hidden mb-4">
+          <div className="bg-white/[0.03] border border-white/[0.06] rounded-2xl overflow-hidden mb-4">
             <img src={imgMapa} alt="Mapa com pontos de encontro marcados" className="w-full h-48 md:h-64 object-cover" />
             <div className="p-5 md:p-6">
               <div className="flex items-center gap-2 mb-3">
-                <MapPin size={16} className="text-rose-500" />
-                <h3 className="text-lg font-bold text-stone-800">Protocolo Básico Doméstico</h3>
+                <MapPin size={16} className="text-rose-400" />
+                <h3 className="text-lg font-bold text-stone-200">Protocolo Básico Doméstico</h3>
               </div>
               <Check items={['Definir ponto primário', 'Definir ponto secundário', 'Definir horário fixo de reencontro']} />
 
-              <div className="mt-4 bg-stone-50 border border-stone-200/60 rounded-xl p-4">
-                <h4 className="text-xs font-bold text-rose-600 mb-2">Exemplo Prático</h4>
+              <div className="mt-4 bg-white/[0.04] border border-white/[0.06] rounded-xl p-4">
+                <h4 className="text-xs font-bold text-rose-400 mb-2">Exemplo Prático</h4>
                 <div className="space-y-1.5">
-                  <p className="text-stone-600 text-sm"><strong className="text-stone-800">Ponto 1:</strong> Casa de parente próximo</p>
-                  <p className="text-stone-600 text-sm"><strong className="text-stone-800">Ponto 2:</strong> Praça central</p>
-                  <p className="text-stone-600 text-sm"><strong className="text-stone-800">Horário:</strong> 18h independentemente de comunicação</p>
+                  <p className="text-stone-400 text-sm"><strong className="text-stone-200">Ponto 1:</strong> Casa de parente próximo</p>
+                  <p className="text-stone-400 text-sm"><strong className="text-stone-200">Ponto 2:</strong> Praça central</p>
+                  <p className="text-stone-400 text-sm"><strong className="text-stone-200">Horário:</strong> 18h independentemente de comunicação</p>
                 </div>
                 <p className="text-stone-500 text-xs mt-2 italic">Isso elimina decisões improvisadas.</p>
               </div>
@@ -168,41 +168,41 @@ export default function ComunicacaoOffline() {
           </div>
 
           {/* Regra dos 3 Contatos */}
-          <div className="bg-rose-50/60 border border-rose-200/60 rounded-2xl p-5 md:p-6">
+          <div className="bg-rose-500/[0.06] border border-rose-500/[0.15] rounded-2xl p-5 md:p-6">
             <div className="flex items-center gap-2 mb-3">
-              <Users size={16} className="text-rose-500" />
-              <h3 className="text-base font-bold text-stone-800">📌 Regra dos 3 Contatos</h3>
+              <Users size={16} className="text-rose-400" />
+              <h3 className="text-base font-bold text-stone-200">📌 Regra dos 3 Contatos</h3>
             </div>
-            <p className="text-stone-600 text-sm mb-3">Cada membro deve saber:</p>
+            <p className="text-stone-400 text-sm mb-3">Cada membro deve saber:</p>
             <div className="grid grid-cols-3 gap-2">
               {[
                 { num: '1', label: 'Contato local' },
                 { num: '2', label: 'Contato fora da cidade' },
                 { num: '3', label: 'Vizinho confiável' },
               ].map(item => (
-                <div key={item.num} className="bg-white/70 rounded-xl p-3 text-center">
-                  <span className="text-lg font-bold text-rose-500 block">{item.num}</span>
-                  <span className="text-[11px] font-semibold text-stone-600">{item.label}</span>
+                <div key={item.num} className="bg-white/[0.04] rounded-xl p-3 text-center">
+                  <span className="text-lg font-bold text-rose-400 block">{item.num}</span>
+                  <span className="text-[11px] font-semibold text-stone-400">{item.label}</span>
                 </div>
               ))}
             </div>
-            <div className="mt-3 bg-white/80 rounded-xl p-3">
-              <p className="text-stone-600 text-xs">Em crises, às vezes <strong className="text-stone-800">chamadas interurbanas funcionam antes das locais</strong>.</p>
+            <div className="mt-3 bg-white/[0.03] rounded-xl p-3">
+              <p className="text-stone-400 text-xs">Em crises, às vezes <strong className="text-stone-200">chamadas interurbanas funcionam antes das locais</strong>.</p>
             </div>
           </div>
         </Section>
 
-        {/* ══ 3 — SINALIZAÇÃO VISUAL ══ */}
+        {/* 3 — SINALIZAÇÃO VISUAL */}
         <Section num={3} title="Sinalização Visual">
-          <p className="text-stone-600 text-sm leading-relaxed mb-4">
-            Se comunicação falhar completamente, <strong className="text-stone-800">sinalização visual orienta deslocamento</strong>.
+          <p className="text-stone-400 text-sm leading-relaxed mb-4">
+            Se comunicação falhar completamente, <strong className="text-stone-200">sinalização visual orienta deslocamento</strong>.
           </p>
-          <div className="bg-white/80 border border-stone-200/60 rounded-2xl overflow-hidden mb-4">
+          <div className="bg-white/[0.03] border border-white/[0.06] rounded-2xl overflow-hidden mb-4">
             <img src={imgSinal} alt="Lençol branco em janela como sinal visual" className="w-full h-48 md:h-64 object-cover" />
             <div className="p-5 md:p-6">
               <div className="flex items-center gap-2 mb-3">
-                <Eye size={16} className="text-rose-500" />
-                <h3 className="text-lg font-bold text-stone-800">Métodos Simples e Eficazes</h3>
+                <Eye size={16} className="text-rose-400" />
+                <h3 className="text-lg font-bold text-stone-200">Métodos Simples e Eficazes</h3>
               </div>
               <Check items={['Lençol branco em janela = seguro', 'Lençol colorido = necessidade', 'Lanterna piscando à noite']} />
             </div>
@@ -226,24 +226,24 @@ export default function ComunicacaoOffline() {
           </div>
         </Section>
 
-        {/* ══ 4 — RÁDIO AMADOR ══ */}
+        {/* 4 — RÁDIO AMADOR */}
         <Section num={4} title="Comunicação por Rádio Amador (Opcional)">
-          <div className="bg-white/80 border border-stone-200/60 rounded-2xl p-5 md:p-6">
-            <p className="text-stone-600 text-sm leading-relaxed mb-4">
-              Para quem deseja nível avançado: <strong className="text-stone-800">rádio comunicador portátil (VHF/UHF)</strong>.
+          <div className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-5 md:p-6">
+            <p className="text-stone-400 text-sm leading-relaxed mb-4">
+              Para quem deseja nível avançado: <strong className="text-stone-200">rádio comunicador portátil (VHF/UHF)</strong>.
             </p>
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <h4 className="text-xs font-bold text-rose-600 mb-2">Permite</h4>
+                <h4 className="text-xs font-bold text-rose-400 mb-2">Permite</h4>
                 <Check items={['Comunicação direta local', 'Coordenação comunitária', 'Alcance de alguns quilômetros']} />
               </div>
               <div>
-                <h4 className="text-xs font-bold text-rose-600 mb-2">Requer</h4>
+                <h4 className="text-xs font-bold text-rose-400 mb-2">Requer</h4>
                 <div className="space-y-2">
                   {['Conhecimento básico', 'Frequências autorizadas', 'Treino prévio'].map(item => (
                     <div key={item} className="flex items-start gap-2">
                       <span className="text-amber-500 text-sm mt-0.5">⚠</span>
-                      <span className="text-stone-600 text-sm">{item}</span>
+                      <span className="text-stone-400 text-sm">{item}</span>
                     </div>
                   ))}
                 </div>
@@ -252,13 +252,13 @@ export default function ComunicacaoOffline() {
           </div>
         </Section>
 
-        {/* ══ 5 — ORGANIZAÇÃO DE INFORMAÇÕES ══ */}
+        {/* 5 — ORGANIZAÇÃO DE INFORMAÇÕES */}
         <Section num={5} title="Organização de Informações">
-          <div className="bg-amber-50 border border-amber-200/60 rounded-2xl p-5 md:p-6">
-            <p className="text-stone-700 text-sm font-semibold mb-4">
+          <div className="bg-amber-500/[0.08] border border-amber-500/[0.15] rounded-2xl p-5 md:p-6">
+            <p className="text-stone-300 text-sm font-semibold mb-4">
               Durante crise, rumores causam mais dano que a falta de informação.
             </p>
-            <h3 className="text-base font-bold text-stone-800 mb-3">Regra prática — Anotar:</h3>
+            <h3 className="text-base font-bold text-stone-200 mb-3">Regra prática — Anotar:</h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mb-4">
               {[
                 { icon: Clock, label: 'Data' },
@@ -266,80 +266,80 @@ export default function ComunicacaoOffline() {
                 { icon: Users, label: 'Fonte' },
                 { icon: FileText, label: 'Conteúdo' },
               ].map(({ icon: Icon, label }) => (
-                <div key={label} className="bg-white/70 rounded-xl p-3 text-center">
-                  <Icon size={16} className="text-amber-600 mx-auto mb-1.5" />
-                  <span className="text-xs font-semibold text-stone-600">{label}</span>
+                <div key={label} className="bg-white/[0.04] rounded-xl p-3 text-center">
+                  <Icon size={16} className="text-amber-400 mx-auto mb-1.5" />
+                  <span className="text-xs font-semibold text-stone-400">{label}</span>
                 </div>
               ))}
             </div>
-            <div className="bg-red-50 border border-red-200/60 rounded-xl p-3">
-              <p className="text-red-700 text-xs font-semibold">Nunca agir com base em informação única não confirmada.</p>
+            <div className="bg-red-500/[0.08] border border-red-500/[0.15] rounded-xl p-3">
+              <p className="text-red-400 text-xs font-semibold">Nunca agir com base em informação única não confirmada.</p>
             </div>
           </div>
         </Section>
 
-        {/* ══ 6 — GESTÃO DE ENERGIA ══ */}
+        {/* 6 — GESTÃO DE ENERGIA */}
         <Section num={6} title="Gestão de Energia">
-          <p className="text-stone-600 text-sm leading-relaxed mb-4">
-            <strong className="text-stone-800">Comunicação consome energia.</strong>
+          <p className="text-stone-400 text-sm leading-relaxed mb-4">
+            <strong className="text-stone-200">Comunicação consome energia.</strong>
           </p>
-          <div className="bg-white/80 border border-stone-200/60 rounded-2xl p-5 md:p-6">
+          <div className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-5 md:p-6">
             <div className="flex items-center gap-2 mb-3">
-              <Battery size={16} className="text-rose-500" />
-              <h3 className="text-base font-bold text-stone-800">Estratégia</h3>
+              <Battery size={16} className="text-rose-400" />
+              <h3 className="text-base font-bold text-stone-200">Estratégia</h3>
             </div>
             <Check items={['Uso do rádio em horários definidos', 'Lanternas com pilhas reservadas', 'Não manter aparelhos ligados continuamente']} />
           </div>
         </Section>
 
-        {/* ══ 7 — CONTINGÊNCIA SEM TECNOLOGIA ══ */}
+        {/* 7 — CONTINGÊNCIA SEM TECNOLOGIA */}
         <Section num={7} title="Plano de Contingência sem Tecnologia">
-          <p className="text-stone-600 text-sm leading-relaxed mb-4">
-            Se tudo falhar: <strong className="text-stone-800">comunicação física</strong>.
+          <p className="text-stone-400 text-sm leading-relaxed mb-4">
+            Se tudo falhar: <strong className="text-stone-200">comunicação física</strong>.
           </p>
-          <div className="bg-white/80 border border-stone-200/60 rounded-2xl overflow-hidden mb-4">
+          <div className="bg-white/[0.03] border border-white/[0.06] rounded-2xl overflow-hidden mb-4">
             <img src={imgRecado} alt="Recado escrito preso na porta" className="w-full h-48 md:h-64 object-cover" />
             <div className="p-5 md:p-6">
               <div className="grid grid-cols-3 gap-2 mb-4">
                 {['Recados escritos', 'Quadro na entrada da casa', 'Envelope em local combinado'].map(item => (
-                  <div key={item} className="bg-stone-50 rounded-xl p-3 text-center">
-                    <span className="text-xs font-semibold text-stone-600">{item}</span>
+                  <div key={item} className="bg-white/[0.04] rounded-xl p-3 text-center">
+                    <span className="text-xs font-semibold text-stone-400">{item}</span>
                   </div>
                 ))}
               </div>
-              <div className="bg-rose-50 border border-rose-200/60 rounded-xl p-4">
-                <h4 className="text-xs font-bold text-rose-600 mb-1">Exemplo</h4>
-                <p className="text-stone-600 text-sm">Caixa específica onde mensagens são deixadas em local previamente combinado.</p>
+              <div className="bg-rose-500/[0.08] border border-rose-500/[0.15] rounded-xl p-4">
+                <h4 className="text-xs font-bold text-rose-400 mb-1">Exemplo</h4>
+                <p className="text-stone-400 text-sm">Caixa específica onde mensagens são deixadas em local previamente combinado.</p>
               </div>
             </div>
           </div>
         </Section>
 
-        {/* ══ 8 — SEGURANÇA DA INFORMAÇÃO ══ */}
+        {/* 8 — SEGURANÇA DA INFORMAÇÃO */}
         <Section num={8} title="Segurança da Informação">
-          <div className="bg-white/80 border border-stone-200/60 rounded-2xl p-5 md:p-6">
+          <div className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-5 md:p-6">
             <div className="flex items-center gap-2 mb-4">
-              <Lock size={16} className="text-rose-500" />
-              <h3 className="text-base font-bold text-stone-800">Evitar divulgar:</h3>
+              <Lock size={16} className="text-rose-400" />
+              <h3 className="text-base font-bold text-stone-200">Evitar divulgar:</h3>
             </div>
             <div className="grid grid-cols-3 gap-2 mb-4">
               {['Quantidade de recursos', 'Estoque de alimentos', 'Estratégias internas'].map(item => (
-                <div key={item} className="bg-red-50/60 rounded-xl p-3 text-center">
-                  <span className="text-xs font-semibold text-stone-600">{item}</span>
+                <div key={item} className="bg-red-500/[0.06] rounded-xl p-3 text-center">
+                  <span className="text-xs font-semibold text-stone-400">{item}</span>
                 </div>
               ))}
             </div>
-            <p className="text-stone-700 text-sm font-semibold">Comunicação deve ser objetiva e controlada.</p>
+            <p className="text-stone-300 text-sm font-semibold">Comunicação deve ser objetiva e controlada.</p>
           </div>
         </Section>
 
-        {/* ══ ERROS CRÍTICOS ══ */}
+        {/* ERROS CRÍTICOS */}
         <motion.section className="mb-14" {...fade()}>
           <div className="flex items-center gap-3 mb-6">
             <ShieldAlert size={20} className="text-red-500" />
-            <h2 className="text-xl md:text-2xl font-bold text-stone-800">Erros Críticos</h2>
+            <h2 className="text-xl md:text-2xl font-bold text-stone-200">Erros Críticos</h2>
           </div>
-          <div className="bg-red-100 border-2 border-red-300 rounded-2xl p-5 md:p-6">
+          <div className="bg-red-500/[0.1] border border-red-500/[0.2] rounded-2xl p-5 md:p-6">
             <div className="space-y-2">
               {[
                 'Confiar apenas em grupo de mensagens',
@@ -350,14 +350,14 @@ export default function ComunicacaoOffline() {
               ].map(err => (
                 <div key={err} className="flex items-start gap-2">
                   <span className="text-red-500 text-sm mt-0.5">❌</span>
-                  <span className="text-stone-800 text-sm font-medium">{err}</span>
+                  <span className="text-stone-300 text-sm font-medium">{err}</span>
                 </div>
               ))}
             </div>
           </div>
         </motion.section>
 
-        {/* ══ PRINCÍPIO CENTRAL ══ */}
+        {/* PRINCÍPIO CENTRAL */}
         <motion.section className="mb-8" {...fade()}>
           <div className="bg-stone-800 text-white rounded-2xl p-6 md:p-8 text-center">
             <Siren size={28} className="mx-auto mb-4 text-rose-400" />
@@ -378,7 +378,7 @@ export default function ComunicacaoOffline() {
 
         {/* Back bottom */}
         <div className="text-center pt-8">
-          <Link to="/projeto-autonomo" className="inline-flex items-center gap-2 text-stone-400 hover:text-stone-700 text-xs font-semibold uppercase tracking-[0.2em] transition-colors">
+          <Link to="/projeto-autonomo" className="inline-flex items-center gap-2 text-stone-500 hover:text-white text-xs font-semibold uppercase tracking-[0.2em] transition-colors">
             <ArrowLeft size={14} /> Voltar ao Projeto Autônomo
           </Link>
         </div>
