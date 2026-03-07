@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Package, Droplets, UtensilsCrossed, FileText, Radio, Pill, AlertTriangle, CheckCircle2, XCircle, Clock, Layers, Shield, RefreshCw } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { fadeUp, stagger, staggerChild, viewportOnce } from '@/lib/motion';
 import CinematicHero from '@/components/CinematicHero';
 

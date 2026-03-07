@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Flame, Lightbulb, UtensilsCrossed, Thermometer, Battery, AlertTriangle, CheckCircle2, XCircle, Shield, Clock, Zap, Sun, Snowflake } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { fadeUp, stagger, staggerChild, viewportOnce } from '@/lib/motion';
 import CinematicHero from '@/components/CinematicHero';
 
