@@ -144,29 +144,35 @@ const Confisco1990 = () => {
       {/* Impact Stats Block */}
       <section className="max-w-4xl mx-auto px-6 -mt-8 relative z-20">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4"
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className="p-6 md:p-8 rounded-2xl border border-destructive/20 bg-gradient-to-b from-destructive/10 via-destructive/5 to-background/80 backdrop-blur-sm"
         >
-          {impactStats.map((stat, i) => {
-            const Icon = stat.icon;
-            return (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.1 }}
-                className="border border-destructive/20 bg-destructive/5 rounded-xl p-5 text-center space-y-2"
-              >
-                <Icon className="w-6 h-6 text-destructive mx-auto" />
-                <p className="text-xl md:text-2xl font-black text-foreground">{stat.value}</p>
-                <p className="text-xs text-muted-foreground leading-tight">{stat.label}</p>
-              </motion.div>
-            );
-          })}
+          <p className="font-mono text-[10px] tracking-[0.5em] uppercase text-destructive/70 text-center mb-6">
+            O QUE FOI BLOQUEADO
+          </p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {impactStats.map((stat, i) => {
+              const Icon = stat.icon;
+              return (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, scale: 0.8, filter: "blur(8px)" }}
+                  whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.2 + i * 0.12, ease: [0.22, 1, 0.36, 1] }}
+                  className="relative group border border-destructive/15 bg-destructive/5 rounded-xl p-5 text-center space-y-2 hover:border-destructive/40 transition-all duration-500"
+                >
+                  <div className="absolute inset-0 rounded-xl bg-gradient-to-t from-destructive/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <Icon className="w-6 h-6 text-destructive mx-auto relative z-10" />
+                  <p className="text-xl md:text-2xl font-black text-foreground relative z-10">{stat.value}</p>
+                  <p className="text-xs text-muted-foreground leading-tight relative z-10">{stat.label}</p>
+                </motion.div>
+              );
+            })}
+          </div>
         </motion.div>
       </section>
 
