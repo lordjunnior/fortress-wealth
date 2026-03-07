@@ -29,7 +29,7 @@ const fadeUp = {
 /* ── Specs ── */
 const SPECS = [
   { label: 'Tipo', value: 'Banco Real', icon: Landmark },
-  { label: 'Jurisdição', value: 'Geórgia 🇬🇪', icon: Globe },
+  { label: 'Jurisdição', value: 'Geórgia', icon: Globe },
   { label: 'Moedas', value: 'USD · EUR · GBP · GEL', icon: DollarSign },
   { label: 'Cartão', value: 'Visa / MC / Amex', icon: CreditCard },
   { label: 'Plano básico', value: '~10 GEL/mês', icon: Banknote },
@@ -57,10 +57,14 @@ const PROS = [
 const CONS = [
   'Plano premium (Solo) custa entre R$ 120-150/mês — investimento mensal considerável',
   'Investimentos via app recomendados apenas com abertura presencial',
-  'App em inglês/georgiano — sem suporte em português',
-  'Para abertura remota, necessário contratar serviço intermediário',
+  'App em inglês/georgiano — sem suporte em português nativo',
+  'Para abertura remota, necessário contratar serviço intermediário (custo adicional)',
   'Primeiro cartão recebido presencialmente não tem nome impresso',
   'Necessário endereço local (Airbnb ou booking aceitos na abertura presencial)',
+  'Jurisdição da Geórgia pode mudar regulação a qualquer momento',
+  'Não oferece privacidade absoluta — ainda é um banco regulado com KYC',
+  'Transferências SWIFT podem levar 2-5 dias úteis dependendo do destino',
+  'Suporte ao cliente em inglês — pode ser barreira para alguns usuários',
 ];
 
 /* ── Features ── */
@@ -211,7 +215,7 @@ export default function BankOfGeorgia() {
             <motion.p initial="hidden" animate={heroInView ? 'visible' : 'hidden'} variants={fadeUp} custom={2}
               className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl font-['Space_Grotesk']"
             >
-              Um banco tradicional na Geórgia 🇬🇪 — não é fintech. Ideal para quem busca uma conta bancária internacional real,
+              Um banco tradicional na Geórgia — não é fintech. Ideal para quem busca uma conta bancária internacional real,
               com estrutura sólida, crypto friendly e possibilidade de movimentar volumes maiores.
             </motion.p>
 
