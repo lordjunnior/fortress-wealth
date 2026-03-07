@@ -266,6 +266,26 @@ export default function ProibicaoDinheiro() {
               </div>
             </div>
 
+            {/* O que o PL NÃO faz */}
+            <div className="bg-[#0a0a0a] border border-white/5 rounded-sm p-8 md:p-12 mb-8">
+              <h3 className="text-white font-black uppercase text-sm tracking-wider mb-6 font-mono flex items-center gap-2">
+                <CheckCircle className="text-emerald-500" size={14} />
+                O Que o Projeto NÃO Faz
+              </h3>
+              <div className="space-y-3 mb-6">
+                {PL_NAO_FAZ.map((item, i) => (
+                  <div key={i} className="flex items-center gap-3">
+                    <XCircle className="text-emerald-500/60 shrink-0" size={14} />
+                    <p className="text-slate-400 text-sm font-medium">{item}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="bg-red-950/20 border border-red-600/20 rounded-sm p-5">
+                <p className="text-red-500 text-[10px] font-black uppercase font-mono tracking-wider mb-2">Mas o que ele faz é pior:</p>
+                <p className="text-white font-bold text-sm leading-relaxed">{PL_MAS_FAZ}</p>
+              </div>
+            </div>
+
             {/* Escada de restrição */}
             <div className="bg-[#0a0a0a] border border-white/5 rounded-sm p-8 md:p-12">
               <h3 className="text-white font-black uppercase text-sm tracking-wider mb-8 font-mono flex items-center gap-2">
