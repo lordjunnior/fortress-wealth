@@ -73,6 +73,7 @@ import Confisco1990 from "./pages/Confisco1990";
 import Neobankless from "./pages/Neobankless";
 import SoberaniaFinanceira from "./pages/SoberaniaFinanceira";
 import BankOfGeorgia from "./pages/BankOfGeorgia";
+import WisePage from "./pages/Wise";
 import IndiceSoberaniaFinanceira from "./pages/IndiceSoberaniaFinanceira";
 import CpContextoHistorico from "./pages/cp/ContextoHistorico";
 import CpBaseFisiologica from "./pages/cp/BaseFisiologica";
@@ -130,6 +131,7 @@ const App = () => (
           <Route path="/soberania-financeira/contas-internacionais/neobankless" element={<Neobankless />} />
           <Route path="/neobankless" element={<Navigate to="/soberania-financeira/contas-internacionais/neobankless" replace />} />
           <Route path="/soberania-financeira/contas-internacionais/bank-of-georgia" element={<BankOfGeorgia />} />
+          <Route path="/soberania-financeira/contas-internacionais/wise" element={<WisePage />} />
           <Route path="/indice-de-soberania-financeira" element={<IndiceSoberaniaFinanceira />} />
           <Route path="/21-milhoes" element={<HardCap21 />} />
           <Route path="/bitcoin-seguro" element={<BitcoinSeguro />} />
