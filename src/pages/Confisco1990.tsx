@@ -3,12 +3,21 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { ArrowLeft, Calendar, AlertTriangle, Vault, Lock, Users, Scale, TrendingDown, BookOpen, ShieldAlert, DollarSign, Clock, UserX } from "lucide-react";
 import presidenteImg from "@/assets/presidente-confisco-1990.jpg";
+import hiperinflacaoImg from "@/assets/confisco-hiperinflacao-1989.jpg";
+import decretoImg from "@/assets/confisco-decreto-noite.jpg";
+import filasImg from "@/assets/confisco-filas-banco.jpg";
+import consequenciasImg from "@/assets/confisco-consequencias.jpg";
+import dinheiroImg from "@/assets/confisco-dinheiro-perdido.jpg";
+import constituicaoImg from "@/assets/confisco-constituicao.jpg";
+import bitcoinImg from "@/assets/confisco-bitcoin-solucao.jpg";
 
 const chapters = [
   {
     phase: "CAPÍTULO 1",
     title: "O Cenário: Brasil, 1989",
     icon: Calendar,
+    image: hiperinflacaoImg,
+    imageAlt: "Supermercado lotado durante hiperinflação brasileira de 1989",
     content: [
       "O Brasil vivia uma hiperinflação que ultrapassava 80% ao mês. Os preços mudavam várias vezes por dia. Supermercados remarcavam produtos enquanto os clientes ainda estavam nas filas. A moeda perdia valor tão rápido que as pessoas corriam para gastar o salário no mesmo dia em que recebiam.",
       "A população estava desesperada. Qualquer político que prometesse acabar com a inflação teria o voto de milhões. Foi exatamente isso que aconteceu.",
@@ -19,6 +28,8 @@ const chapters = [
     phase: "CAPÍTULO 2",
     title: "A Noite Antes do Confisco",
     icon: Vault,
+    image: decretoImg,
+    imageAlt: "Mesa presidencial com decreto sendo assinado na escuridão",
     content: [
       "Na noite de 15 de março de 1990, enquanto milhões de brasileiros dormiam, a equipe econômica de Collor, liderada pela ministra Zélia Cardoso de Mello, finalizava os detalhes do Plano Collor.",
       "Nenhum cidadão foi avisado. Nenhum jornal antecipou. Nenhum congressista votou. O decreto foi assinado usando o mecanismo de Medida Provisória, que tem força de lei imediata, sem necessidade de aprovação legislativa prévia.",
@@ -29,6 +40,8 @@ const chapters = [
     phase: "CAPÍTULO 3",
     title: "16 de Março, 1990: O Dia em que o Brasil Acordou Sem Nada",
     icon: Lock,
+    image: filasImg,
+    imageAlt: "Filas desesperadas em frente a bancos brasileiros em 1990",
     content: [
       "Na manhã de 16 de março, os brasileiros descobriram que não tinham mais acesso ao próprio dinheiro. Contas correntes, poupanças, aplicações financeiras: tudo acima de NCz$ 50.000 (equivalente a cerca de US$ 1.200 na época) foi bloqueado por 18 meses.",
       "Não importava se o dinheiro era para pagar o aluguel, comprar remédios, pagar funcionários ou alimentar a família. O governo decidiu que aquele dinheiro não era mais seu.",
@@ -40,6 +53,8 @@ const chapters = [
     phase: "CAPÍTULO 4",
     title: "As Consequências Humanas",
     icon: Users,
+    image: consequenciasImg,
+    imageAlt: "Mãos de idoso segurando carteira vazia sobre extrato bancário",
     content: [
       "O confisco não foi apenas um evento econômico. Foi uma tragédia humana.",
       "Pessoas cometeram suicídio ao descobrir que perderam tudo. Idosos morreram sem conseguir pagar tratamentos médicos. Casamentos se desfizeram pela pressão financeira. Crianças foram tiradas de escolas. Famílias inteiras passaram fome.",
@@ -51,6 +66,8 @@ const chapters = [
     phase: "CAPÍTULO 5",
     title: "O Dinheiro Nunca Voltou (Como Prometido)",
     icon: TrendingDown,
+    image: dinheiroImg,
+    imageAlt: "Notas de cruzado se desintegrando em pó sobre mesa de madeira",
     content: [
       "O governo prometeu devolver o dinheiro bloqueado em 18 meses, corrigido monetariamente. Na prática, a devolução foi feita em parcelas, ao longo de anos, com correção abaixo da inflação real.",
       "Quem tinha NCz$ 100.000 bloqueados recebeu de volta o equivalente a uma fração do poder de compra original. O confisco da poupança foi, na prática, uma transferência forçada de riqueza da população para o governo.",
@@ -61,6 +78,8 @@ const chapters = [
     phase: "CAPÍTULO 6",
     title: "O Mecanismo Legal Ainda Existe",
     icon: Scale,
+    image: constituicaoImg,
+    imageAlt: "Constituição brasileira aberta no Artigo 62 com martelo de juiz",
     content: [
       "O artigo 62 da Constituição Federal, que permitiu o confisco via Medida Provisória, nunca foi revogado. Ele continua ativo, exatamente como estava em 1990.",
       "Isso significa que, tecnicamente, o mesmo mecanismo jurídico que permitiu o confisco de 80% da liquidez nacional pode ser usado novamente. A qualquer momento. Por qualquer presidente.",
@@ -71,6 +90,8 @@ const chapters = [
     phase: "CAPÍTULO 7",
     title: "A Lição que Ninguém Ensina",
     icon: BookOpen,
+    image: bitcoinImg,
+    imageAlt: "Bitcoin dourado emergindo da escuridão entre correntes quebradas",
     content: [
       "O confisco de 1990 prova três verdades que o sistema educacional brasileiro nunca vai ensinar:",
       "Primeira: o dinheiro no banco não é seu. É uma promessa de devolução que pode ser quebrada a qualquer momento por quem controla o sistema.",
@@ -86,6 +107,33 @@ const impactStats = [
   { icon: Clock, value: "18 meses", label: "de bloqueio total" },
   { icon: UserX, value: "Milhões", label: "de contas afetadas" },
 ];
+
+const ChapterImage = ({ src, alt, index }: { src: string; alt: string; index: number }) => {
+  const isEven = index % 2 === 0;
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 1.05 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+      className="relative w-full h-48 md:h-56 rounded-xl overflow-hidden my-4"
+    >
+      <img
+        src={src}
+        alt={alt}
+        className="w-full h-full object-cover"
+        loading="lazy"
+      />
+      {/* Fade overlays */}
+      <div className={`absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent`} />
+      <div className={`absolute inset-0 bg-gradient-to-${isEven ? 'r' : 'l'} from-background/80 via-transparent to-background/40`} />
+      {/* Top fade */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-transparent to-transparent" />
+      {/* Subtle vignette */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,hsl(var(--background)/0.6)_100%)]" />
+    </motion.div>
+  );
+};
 
 const Confisco1990 = () => {
   return (
@@ -195,7 +243,7 @@ const Confisco1990 = () => {
               whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="space-y-6 relative"
+              className="space-y-4 relative"
             >
               {/* Glow lateral */}
               <div className="absolute -left-4 top-0 w-1 h-full bg-gradient-to-b from-destructive/30 via-destructive/10 to-transparent rounded-full" />
@@ -221,6 +269,9 @@ const Confisco1990 = () => {
               </div>
 
               <div className="h-px bg-gradient-to-r from-destructive/30 via-border/50 to-transparent" />
+
+              {/* Chapter Image with fade */}
+              <ChapterImage src={chapter.image} alt={chapter.imageAlt} index={i} />
 
               <div className="space-y-5">
                 {chapter.content.map((paragraph, j) => (
@@ -248,11 +299,9 @@ const Confisco1990 = () => {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="relative overflow-hidden rounded-2xl p-10 md:p-16 text-center"
         >
-          {/* Background layers */}
           <div className="absolute inset-0 bg-gradient-to-b from-destructive/15 via-destructive/5 to-background border border-destructive/20 rounded-2xl" />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,hsl(var(--destructive)/0.1)_0%,transparent_70%)]" />
           
-          {/* Animated pulse ring */}
           <motion.div
             className="absolute inset-0 rounded-2xl border-2 border-destructive/20"
             animate={{ opacity: [0.2, 0.5, 0.2] }}
