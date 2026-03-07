@@ -340,11 +340,56 @@ export default function ProibicaoDinheiro() {
               </div>
             </div>
 
+            <div className="bg-[#0a0a0a] border border-white/5 rounded-sm p-6 mb-4">
+              <p className="text-slate-400 text-sm font-medium leading-relaxed italic">
+                "Esse processo raramente acontece de forma abrupta. Ele acontece <strong className="text-white">gradualmente</strong> — um limite de cada vez, uma justificativa de cada vez — até que o dinheiro físico simplesmente deixe de existir como opção."
+              </p>
+            </div>
+
             <div className="bg-red-950/10 border border-red-600/20 rounded-sm p-6">
               <p className="text-red-500 text-[10px] font-black uppercase font-mono tracking-wider mb-2">O Padrão é Claro</p>
               <p className="text-white font-black text-base leading-tight uppercase italic">
                 Todos esses países começaram com limites "altos". Depois baixaram. Depois baixaram de novo. A direção é sempre a mesma: dinheiro físico zero. Controle total. Soberania individual eliminada.
               </p>
+            </div>
+          </section>
+
+          {/* ══════ LINHA DO TEMPO DO CONTROLE FINANCEIRO ══════ */}
+          <section id="timeline" className="mb-28 scroll-mt-24">
+            <div className="flex items-center gap-3 text-red-600 mb-10">
+              <Clock size={20} />
+              <h2 className="text-xl font-black uppercase tracking-[0.15em] font-mono">Linha do Tempo do Controle</h2>
+            </div>
+
+            <p className="text-slate-400 text-base leading-relaxed font-medium mb-10 max-w-3xl">
+              O cerco não começou ontem. Cada passo foi calculado para <strong className="text-white">normalizar o controle</strong> antes de apertar o próximo parafuso:
+            </p>
+
+            <div className="relative">
+              {/* Linha vertical */}
+              <div className="absolute left-[18px] md:left-[22px] top-0 bottom-0 w-[2px] bg-gradient-to-b from-red-600/40 via-red-600/20 to-transparent" />
+
+              <div className="space-y-8">
+                {TIMELINE_ITEMS.map((item, i) => (
+                  <div key={i} className="relative flex gap-6 group">
+                    {/* Dot */}
+                    <div className="relative z-10 shrink-0">
+                      <div className={`w-10 h-10 md:w-11 md:h-11 rounded-full border-2 flex items-center justify-center ${
+                        i === TIMELINE_ITEMS.length - 1
+                          ? 'border-red-600 bg-red-600/20'
+                          : 'border-red-600/30 bg-[#0a0a0a] group-hover:border-red-600/60'
+                      } transition-colors`}>
+                        <span className="text-red-500 font-black text-[10px] font-mono">{item.ano}</span>
+                      </div>
+                    </div>
+                    {/* Content */}
+                    <div className="bg-[#0a0a0a] border border-white/5 rounded-sm p-6 flex-1 group-hover:border-red-600/20 transition-colors">
+                      <h3 className="text-white font-black uppercase text-sm tracking-tight mb-2">{item.evento}</h3>
+                      <p className="text-slate-400 text-xs leading-relaxed font-medium">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </section>
 
