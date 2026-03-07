@@ -31,7 +31,7 @@ const CATEGORIES = [
     items: [
       { name: 'Neobankless', status: 'review', link: '/soberania-financeira/contas-internacionais/neobankless' },
       { name: 'Bank of Georgia', status: 'review', link: '/soberania-financeira/contas-internacionais/bank-of-georgia' },
-      { name: 'Wise', status: 'em breve', link: null },
+      { name: 'Wise', status: 'review', link: '/soberania-financeira/contas-internacionais/wise' },
       { name: 'Payoneer', status: 'em breve', link: null },
     ],
     privacyLevel: 'Médio',
