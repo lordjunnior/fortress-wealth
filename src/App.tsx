@@ -30,6 +30,8 @@ import BlindagemGolpes from "./pages/BlindagemGolpes";
 import ProibicaoDinheiro from "./pages/ProibicaoDinheiro";
 import AlertasHub from "./pages/AlertasHub";
 import CbdcBrasil from "./pages/CbdcBrasil";
+import HistoriaDoDinheiro from "./pages/HistoriaDoDinheiro";
+import InflacaoImpostoOculto from "./pages/InflacaoImpostoOculto";
 import HardCap21 from "./pages/HardCap21";
 import BitcoinSeguro from "./pages/BitcoinSeguro";
 import ChavesPage from "./pages/ChavesPage";
@@ -110,6 +112,8 @@ const App = () => (
           <Route path="/alertas" element={<AlertasHub />} />
           <Route path="/alertas/cbdc-brasil" element={<CbdcBrasil />} />
           <Route path="/alertas/fim-do-dinheiro-vivo" element={<ProibicaoDinheiro />} />
+          <Route path="/historia-do-dinheiro" element={<HistoriaDoDinheiro />} />
+          <Route path="/inflacao-imposto-oculto" element={<InflacaoImpostoOculto />} />
           <Route path="/21-milhoes" element={<HardCap21 />} />
           <Route path="/bitcoin-seguro" element={<BitcoinSeguro />} />
           <Route path="/chaves" element={<ChavesPage />} />
