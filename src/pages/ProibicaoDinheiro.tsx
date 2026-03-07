@@ -1,63 +1,41 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Ban, Globe, ShieldAlert, Eye, Banknote, AlertTriangle, Lock, Landmark, MapPin, Smartphone, CreditCard, FileText, Users, ExternalLink, ChevronRight, Zap, Shield, KeyRound, Scale } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
+import { ArrowLeft, Ban, Globe, ShieldAlert, Eye, Banknote, AlertTriangle, Lock, Users, ChevronRight, ChevronDown, Scale, Play, GraduationCap, Zap, BookOpen, HelpCircle } from 'lucide-react';
+import { NAV_ITEMS, LIMITES_INTERNACIONAIS, FERRAMENTAS, CONSEQUENCIAS, FAQ_ITEMS, ESCADA_RESTRICAO } from '@/lib/proibicaoDinheiroData';
 
-/* ───────────── NAV ───────────── */
-const NAV_ITEMS = [
-  { id: 'hero', label: 'O Fim do Dinheiro Vivo' },
-  { id: 'pl3951', label: 'PL 3951 — O Precedente' },
-  { id: 'agenda-global', label: 'A Agenda Global' },
-  { id: 'consequencias', label: 'O Que Muda Pra Você' },
-  { id: 'contradicao', label: 'A Contradição Fatal' },
-  { id: 'ferramentas', label: 'Arsenal de Privacidade' },
-  { id: 'conclusao', label: 'O Poder Na Sua Mão' },
-];
+/* ───────────── FAQ SCHEMA JSON-LD ───────────── */
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": FAQ_ITEMS.map(item => ({
+    "@type": "Question",
+    "name": item.pergunta,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": item.resposta,
+    }
+  }))
+};
 
-/* ───────────── DADOS ───────────── */
-const LIMITES_INTERNACIONAIS = [
-  { pais: 'França', limite: '€ 1.000', status: 'Em vigor', flag: '🇫🇷' },
-  { pais: 'Espanha', limite: '€ 1.000', status: 'Em vigor', flag: '🇪🇸' },
-  { pais: 'Itália', limite: '€ 5.000', status: 'Em vigor', flag: '🇮🇹' },
-  { pais: 'Grécia', limite: '€ 500', status: 'Em vigor', flag: '🇬🇷' },
-  { pais: 'Portugal', limite: '€ 3.000', status: 'Em vigor', flag: '🇵🇹' },
-  { pais: 'Bélgica', limite: '€ 3.000', status: 'Em vigor', flag: '🇧🇪' },
-];
-
-const FERRAMENTAS = [
-  {
-    icon: MapPin,
-    titulo: 'Teoria das Bandeiras',
-    subtitulo: 'Diversificação Jurisdicional',
-    descricao: 'Sair financeiramente do Brasil não exige sair fisicamente. Documentações como a Cédula Paraguaia ou ID de Palau permitem abrir contas em exchanges internacionais, operar fora do alcance de um único governo e distribuir sua existência financeira entre múltiplas jurisdições.',
-    destaque: 'Quanto mais bandeiras, menor o risco de confisco centralizado.',
-  },
-  {
-    icon: Shield,
-    titulo: 'Bitcoin P2P — Sem Intermediários',
-    subtitulo: 'Exchanges Descentralizadas',
-    descricao: 'Plataformas como Bisq, Spike to Spike e RoboSats permitem comprar e vender Bitcoin diretamente entre indivíduos, sem exigir documentos invasivos (KYC). Você negocia ponto a ponto, como o dinheiro foi projetado para funcionar — antes do estado sequestrar o conceito.',
-    destaque: 'Sem KYC = Sem registro permanente vinculado à sua identidade.',
-  },
-  {
-    icon: CreditCard,
-    titulo: 'Cartões Cripto Sem KYC',
-    subtitulo: 'Gastos Com Privacidade',
-    descricao: 'Existem serviços que oferecem cartões de débito vinculados a criptomoedas sem exigir verificação de identidade. Isso significa que você pode gastar seus satoshis no dia a dia sem criar um rastro financeiro permanente vinculado ao seu CPF ou passaporte.',
-    destaque: 'Comprar com privacidade. Gastar com privacidade. Ciclo completo.',
-  },
-  {
-    icon: Globe,
-    titulo: 'Contas Internacionais',
-    subtitulo: 'Diversificação Bancária Global',
-    descricao: 'Com documentação estrangeira em mãos, você pode abrir contas em mais de 10 jurisdições diferentes. Cada conta é uma camada adicional de proteção contra bloqueios, confiscos e decisões arbitrárias de um único governo sobre o seu patrimônio.',
-    destaque: 'Dinheiro distribuído é dinheiro protegido.',
-  },
-];
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Governo pode limitar dinheiro vivo no Brasil — Como proteger sua privacidade financeira",
+  "description": "Entenda o PL 3.951/2019, os limites ao dinheiro em espécie na Europa e as ferramentas legais para proteger sua soberania financeira com Bitcoin e diversificação jurisdicional.",
+  "author": { "@type": "Person", "name": "Lord Junnior" },
+  "publisher": { "@type": "Organization", "name": "Lord Junnior", "url": "https://lordjunnior.com.br" },
+  "datePublished": "2026-03-07",
+  "dateModified": "2026-03-07",
+  "url": "https://lordjunnior.com.br/proibicao-dinheiro",
+  "keywords": "PL 3951, limite dinheiro vivo Brasil, privacidade financeira, Bitcoin sem KYC, teoria das bandeiras, autocustódia Bitcoin"
+};
 
 /* ───────────── COMPONENTE ───────────── */
 export default function ProibicaoDinheiro() {
   const [activeSection, setActiveSection] = useState('hero');
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
@@ -82,6 +60,19 @@ export default function ProibicaoDinheiro() {
   return (
     <div className="min-h-screen bg-[#070A12] text-white font-sans selection:bg-red-600 overflow-x-hidden">
 
+      {/* ── SEO Meta + Schema ── */}
+      <Helmet>
+        <title>Governo Limita Dinheiro Vivo no Brasil — PL 3951 | Lord Junnior</title>
+        <meta name="description" content="O PL 3.951/2019 abre caminho para limitar o uso de dinheiro em espécie no Brasil. Entenda o projeto, veja os limites na Europa e descubra ferramentas legais para proteger sua privacidade financeira." />
+        <link rel="canonical" href="https://lordjunnior.com.br/proibicao-dinheiro" />
+        <meta property="og:title" content="Governo Limita Dinheiro Vivo no Brasil — PL 3951" />
+        <meta property="og:description" content="Entenda o PL 3.951 e como proteger sua privacidade financeira com Bitcoin P2P, teoria das bandeiras e autocustódia." />
+        <meta property="og:url" content="https://lordjunnior.com.br/proibicao-dinheiro" />
+        <meta property="og:type" content="article" />
+        <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
+        <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>
+      </Helmet>
+
       {/* ── Partículas ── */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-20">
         <div className="surveillance-grid" />
@@ -91,22 +82,10 @@ export default function ProibicaoDinheiro() {
       </div>
 
       <style>{`
-        @keyframes surveillanceDrift { 0%{transform:translateY(0)} 100%{transform:translateY(-1200px)} }
-        .surveillance-grid {
-          position:absolute;width:100%;height:200%;
-          background-image:
-            radial-gradient(1.5px 1.5px at 15% 25%,rgba(220,38,38,0.3) 100%,transparent),
-            radial-gradient(1px 1px at 45% 55%,rgba(255,255,255,0.12) 100%,transparent),
-            radial-gradient(2px 2px at 75% 35%,rgba(220,38,38,0.2) 100%,transparent);
-          background-size:220px 220px;
-          animation:surveillanceDrift 65s linear infinite;
-        }
-        @keyframes scanDown { 0%{top:-5%;opacity:0} 10%{opacity:0.06} 90%{opacity:0.06} 100%{top:105%;opacity:0} }
-        .scan-line {
-          position:absolute;left:0;right:0;height:1px;
-          background:linear-gradient(90deg,transparent,rgba(220,38,38,0.25),transparent);
-          animation:scanDown 9s linear infinite;
-        }
+        @keyframes surveillanceDrift{0%{transform:translateY(0)}100%{transform:translateY(-1200px)}}
+        .surveillance-grid{position:absolute;width:100%;height:200%;background-image:radial-gradient(1.5px 1.5px at 15% 25%,rgba(220,38,38,0.3) 100%,transparent),radial-gradient(1px 1px at 45% 55%,rgba(255,255,255,0.12) 100%,transparent),radial-gradient(2px 2px at 75% 35%,rgba(220,38,38,0.2) 100%,transparent);background-size:220px 220px;animation:surveillanceDrift 65s linear infinite}
+        @keyframes scanDown{0%{top:-5%;opacity:0}10%{opacity:0.06}90%{opacity:0.06}100%{top:105%;opacity:0}}
+        .scan-line{position:absolute;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(220,38,38,0.25),transparent);animation:scanDown 9s linear infinite}
         .title-shimmer{background:linear-gradient(90deg,#dc2626 0%,#ff6b6b 40%,#fff 50%,#ff6b6b 60%,#dc2626 100%);background-size:250% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:tShim 3.5s linear infinite}
         @keyframes tShim{0%{background-position:200% center}100%{background-position:-200% center}}
         @keyframes alertBlink{0%,100%{opacity:1}50%{opacity:0.3}}
@@ -119,6 +98,9 @@ export default function ProibicaoDinheiro() {
         @keyframes borderPulse{0%,100%{border-color:rgba(220,38,38,0.2);box-shadow:0 0 10px rgba(220,38,38,0.02)}50%{border-color:rgba(220,38,38,0.7);box-shadow:0 0 30px rgba(220,38,38,0.1)}}
         .escada-step{position:relative;padding-left:2rem;border-left:2px solid rgba(220,38,38,0.15)}
         .escada-step::before{content:'';position:absolute;left:-6px;top:6px;width:10px;height:10px;border-radius:50%;background:#dc2626;border:2px solid #070A12}
+        @keyframes goldPulse{0%,100%{box-shadow:0 0 20px rgba(212,175,55,0.1)}50%{box-shadow:0 0 40px rgba(212,175,55,0.25)}}
+        .cta-gold{background:linear-gradient(135deg,#d4af37 0%,#f5d060 50%,#d4af37 100%);color:#0a0a0a;animation:goldPulse 3s ease-in-out infinite;transition:all 0.3s ease}
+        .cta-gold:hover{transform:translateY(-2px);box-shadow:0 0 50px rgba(212,175,55,0.3)}
       `}</style>
 
       {/* ═══════════ SIDEBAR ═══════════ */}
@@ -147,7 +129,7 @@ export default function ProibicaoDinheiro() {
               <button
                 key={item.id}
                 onClick={() => scrollTo(item.id)}
-                className={`w-full text-left px-3 py-3 rounded-sm text-[10px] font-bold uppercase tracking-wider transition-all duration-300 font-mono border-l-2 ${
+                className={`w-full text-left px-3 py-2.5 rounded-sm text-[9px] font-bold uppercase tracking-wider transition-all duration-300 font-mono border-l-2 ${
                   activeSection === item.id ? 'nav-active' : 'text-slate-600 hover:text-slate-300 hover:bg-white/[0.02] border-transparent'
                 }`}
               >
@@ -195,9 +177,21 @@ export default function ProibicaoDinheiro() {
                 <span className="title-shimmer italic inline-block pt-1">Limitar Seu Dinheiro</span>
               </h1>
 
-              <p className="text-lg md:text-xl text-slate-400 leading-relaxed max-w-3xl mb-10 font-medium">
-                O Projeto de Lei <strong className="text-white">PL 3.951/2019</strong> abriu caminho para que o governo brasileiro estabeleça <strong className="text-red-500">limites ao uso de dinheiro em espécie</strong>. Hoje começa com transações específicas. Amanhã, pode ser o troco do pão. Aqui você vai entender o que está acontecendo — e o que fazer para <strong className="text-white">manter o poder na sua mão</strong>.
+              <p className="text-lg md:text-xl text-slate-400 leading-relaxed max-w-3xl mb-6 font-medium">
+                O Projeto de Lei <strong className="text-white">PL 3.951/2019</strong> abriu caminho para que o governo brasileiro estabeleça <strong className="text-red-500">limites ao uso de dinheiro em espécie</strong>. Hoje começa com transações específicas. Amanhã, pode ser o troco do pão.
               </p>
+              <p className="text-base text-slate-500 leading-relaxed max-w-3xl mb-10 font-medium">
+                Aqui você vai entender o que está acontecendo, ver como a Europa já avançou nessa agenda, conhecer as ferramentas legais para proteger sua privacidade financeira — e descobrir como <strong className="text-white">manter o poder na sua mão</strong>.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4 mb-10">
+                <button onClick={() => scrollTo('ferramentas')} className="cta-gold px-8 py-4 rounded-sm font-black uppercase text-sm tracking-widest text-center">
+                  🛡️ Ver Como Se Proteger
+                </button>
+                <button onClick={() => scrollTo('video')} className="border border-white/10 bg-white/[0.02] px-8 py-4 rounded-sm font-black uppercase text-sm tracking-widest text-white hover:bg-white/[0.05] transition-all flex items-center justify-center gap-2">
+                  <Play size={14} /> Assistir Vídeo
+                </button>
+              </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="border border-red-600/20 bg-red-950/10 rounded-sm p-6 text-center">
@@ -216,6 +210,34 @@ export default function ProibicaoDinheiro() {
             </div>
           </header>
 
+          {/* ══════ VÍDEO EMBED ══════ */}
+          <section id="video" className="mb-28 scroll-mt-24">
+            <div className="flex items-center gap-3 text-red-600 mb-10">
+              <Play size={20} />
+              <h2 className="text-xl font-black uppercase tracking-[0.15em] font-mono">Assista ao Vídeo Completo</h2>
+            </div>
+
+            <div className="bg-[#0a0a0a] border border-white/5 rounded-sm overflow-hidden">
+              <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+                {/* SUBSTITUIR o VIDEO_ID pelo ID real do YouTube */}
+                <iframe
+                  className="absolute inset-0 w-full h-full"
+                  src="https://www.youtube.com/embed/VIDEO_ID_AQUI"
+                  title="Governo PROÍBE dinheiro vivo — Conheça as ALTERNATIVAS"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  loading="lazy"
+                />
+              </div>
+              <div className="p-6 border-t border-white/5">
+                <h3 className="text-white font-black uppercase text-sm tracking-tight mb-2">Governo PROÍBE dinheiro vivo — Conheça as ALTERNATIVAS</h3>
+                <p className="text-slate-500 text-xs font-medium leading-relaxed">
+                  Neste vídeo, Lord Junnior analisa o PL 3.951/2019, explica a agenda global de eliminação do dinheiro físico e apresenta ferramentas práticas para proteger sua privacidade financeira — direto da Patagônia, Argentina.
+                </p>
+              </div>
+            </div>
+          </section>
+
           {/* ══════ PL 3951 — O PRECEDENTE ══════ */}
           <section id="pl3951" className="mb-28 scroll-mt-24">
             <div className="flex items-center gap-3 text-red-600 mb-10">
@@ -232,6 +254,9 @@ export default function ProibicaoDinheiro() {
                 <p className="font-medium">
                   O projeto ainda <strong className="text-white">não define limites exatos</strong>. E é exatamente aí que mora o perigo. Ele cria o <strong className="text-red-500">mecanismo legal</strong> para que, no futuro, o governo possa definir qualquer limite que desejar: R$ 10.000 hoje, R$ 5.000 amanhã, R$ 1.000 depois. A porta foi aberta. Só falta decidir o tamanho do cadeado.
                 </p>
+                <p className="font-medium">
+                  O <strong className="text-white">Conselho Monetário Nacional</strong> (CMN) — o mesmo órgão que já executou o confisco da poupança em 1990 — ficaria responsável por definir esses limites. A história se repete, e dessa vez a ferramenta é digital.
+                </p>
               </div>
             </div>
 
@@ -242,12 +267,7 @@ export default function ProibicaoDinheiro() {
                 A Escada da Restrição
               </h3>
               <div className="space-y-8">
-                {[
-                  { valor: 'R$ 10.000', desc: 'Primeira tentativa — confisco e ilegalização de transações acima desse valor.' },
-                  { valor: 'R$ 5.000', desc: 'O próximo degrau lógico. Menos barulho político, mesmo impacto no controle.' },
-                  { valor: 'R$ 1.000', desc: 'O objetivo final. Nessa faixa, até compras rotineiras ficam sob vigilância total.' },
-                  { valor: 'R$ 0', desc: 'O endgame. Dinheiro físico completamente abolido. Tudo digital. Tudo rastreado. Tudo tributado.' },
-                ].map((step, i) => (
+                {ESCADA_RESTRICAO.map((step, i) => (
                   <div key={i} className="escada-step pb-2">
                     <span className="text-red-500 font-black text-xl font-mono">{step.valor}</span>
                     <p className="text-slate-400 text-sm font-medium mt-1 leading-relaxed">{step.desc}</p>
@@ -268,7 +288,6 @@ export default function ProibicaoDinheiro() {
               O Brasil não está inventando a roda. Essa agenda já está <strong className="text-white">avançada na Europa</strong>, onde andar com dinheiro vivo acima de certos valores já é considerado crime. Veja o mapa de restrições que o Estado já impôs em outras jurisdições:
             </p>
 
-            {/* Tabela internacional */}
             <div className="bg-[#0a0a0a] border border-white/5 rounded-sm overflow-hidden mb-10">
               <div className="grid grid-cols-[1fr_120px_100px] border-b border-white/10 bg-white/[0.02]">
                 <div className="p-4"><span className="text-[9px] font-black uppercase tracking-[0.3em] text-slate-500 font-mono">País</span></div>
@@ -281,12 +300,8 @@ export default function ProibicaoDinheiro() {
                     <span className="text-lg">{row.flag}</span>
                     <span className="text-white font-bold text-sm">{row.pais}</span>
                   </div>
-                  <div className="p-4">
-                    <span className="text-red-500 font-black text-sm font-mono">{row.limite}</span>
-                  </div>
-                  <div className="p-4">
-                    <span className="text-xs font-bold text-amber-500/80 uppercase tracking-wider">{row.status}</span>
-                  </div>
+                  <div className="p-4"><span className="text-red-500 font-black text-sm font-mono">{row.limite}</span></div>
+                  <div className="p-4"><span className="text-xs font-bold text-amber-500/80 uppercase tracking-wider">{row.status}</span></div>
                 </div>
               ))}
               <div className="grid grid-cols-[1fr_120px_100px] bg-red-950/10 border-t border-red-600/20">
@@ -294,12 +309,8 @@ export default function ProibicaoDinheiro() {
                   <span className="text-lg">🇧🇷</span>
                   <span className="text-white font-black text-sm">Brasil</span>
                 </div>
-                <div className="p-4">
-                  <span className="text-red-500 font-black text-sm font-mono italic">Em definição</span>
-                </div>
-                <div className="p-4">
-                  <span className="text-xs font-bold text-red-500 uppercase tracking-wider alert-blink">Alerta</span>
-                </div>
+                <div className="p-4"><span className="text-red-500 font-black text-sm font-mono italic">Em definição</span></div>
+                <div className="p-4"><span className="text-xs font-bold text-red-500 uppercase tracking-wider alert-blink">Alerta</span></div>
               </div>
             </div>
 
@@ -323,23 +334,7 @@ export default function ProibicaoDinheiro() {
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {[
-                {
-                  icon: Eye,
-                  titulo: 'Monitoramento Total',
-                  descricao: 'Todas as transações podem ser monitoradas em tempo real. Cada café, cada presente, cada doação. O Estado saberá exatamente como, quando e com quem você gasta cada centavo.',
-                },
-                {
-                  icon: Lock,
-                  titulo: 'Bloqueios Instantâneos',
-                  descricao: 'Seu dinheiro pode ser bloqueado, congelado ou confiscado com um clique. Sem aviso. Sem julgamento. Sem recurso imediato. Você depende da "boa vontade" de quem controla o sistema.',
-                },
-                {
-                  icon: Ban,
-                  titulo: 'Privacidade Eliminada',
-                  descricao: 'A privacidade financeira deixa de existir. Não há mais economia informal, não há mais liberdade de transacionar sem prestação de contas. Cada real movimentado é um dado coletado contra você.',
-                },
-              ].map((item, i) => (
+              {CONSEQUENCIAS.map((item, i) => (
                 <div key={i} className="card-threat rounded-sm p-8 relative overflow-hidden">
                   <div className="flex items-center gap-3 mb-6">
                     <div className="w-10 h-10 rounded-full bg-red-600/10 border border-red-600/20 flex items-center justify-center">
@@ -422,6 +417,89 @@ export default function ProibicaoDinheiro() {
             </div>
           </section>
 
+          {/* ══════ AUTORIDADE — UNIVERSIDADE SATOSHI ══════ */}
+          <section id="autoridade" className="mb-28 scroll-mt-24">
+            <div className="relative overflow-hidden rounded-sm border border-[#d4af37]/20 bg-gradient-to-br from-[#0a0a0a] via-[#0d0b05] to-[#0a0a0a]" style={{ animation: 'goldPulse 4s ease-in-out infinite' }}>
+              <div className="absolute inset-0 opacity-[0.02] pointer-events-none" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'n\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23n)\'/%3E%3C/svg%3E")', backgroundSize: '128px 128px' }} />
+              <GraduationCap className="absolute top-0 right-0 text-[#d4af37]/[0.03] -mr-12 -mt-12" size={280} />
+
+              <div className="relative z-10 p-10 md:p-14">
+                <div className="flex items-center gap-2 mb-6">
+                  <Zap className="text-[#d4af37]" size={14} />
+                  <span className="text-[#d4af37] font-black uppercase tracking-[0.4em] text-[9px] font-mono">Formação Avançada</span>
+                </div>
+
+                <h2 className="text-3xl md:text-4xl font-black uppercase tracking-tighter mb-6 leading-tight">
+                  Aprenda a Proteger<br />
+                  <span className="text-[#d4af37] italic">Sua Liberdade Financeira</span>
+                </h2>
+
+                <p className="text-slate-400 text-base leading-relaxed font-medium mb-4 max-w-2xl">
+                  Na <strong className="text-[#d4af37]">Universidade Satoshi</strong> você aprende estratégias avançadas de privacidade financeira, Bitcoin com autocustódia, teoria das bandeiras e internacionalização — com quem já vive fora do sistema e pratica tudo que ensina.
+                </p>
+
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 my-8">
+                  <div className="border border-[#d4af37]/15 bg-[#d4af37]/[0.03] rounded-sm p-4 text-center">
+                    <BookOpen className="text-[#d4af37] mx-auto mb-2" size={20} />
+                    <p className="text-[10px] font-black uppercase tracking-widest text-[#d4af37]/80 font-mono">Bitcoin Avançado</p>
+                  </div>
+                  <div className="border border-[#d4af37]/15 bg-[#d4af37]/[0.03] rounded-sm p-4 text-center">
+                    <Globe className="text-[#d4af37] mx-auto mb-2" size={20} />
+                    <p className="text-[10px] font-black uppercase tracking-widest text-[#d4af37]/80 font-mono">Internacionalização</p>
+                  </div>
+                  <div className="border border-[#d4af37]/15 bg-[#d4af37]/[0.03] rounded-sm p-4 text-center">
+                    <ShieldAlert className="text-[#d4af37] mx-auto mb-2" size={20} />
+                    <p className="text-[10px] font-black uppercase tracking-widest text-[#d4af37]/80 font-mono">Privacidade Total</p>
+                  </div>
+                </div>
+
+                <a
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="cta-gold inline-block px-10 py-5 rounded-sm font-black uppercase text-sm tracking-[0.2em] text-center"
+                >
+                  🎓 Proteger Minha Privacidade Financeira
+                </a>
+                <p className="text-slate-600 text-[10px] font-bold uppercase tracking-wider mt-4 font-mono">
+                  Acesso exclusivo para membros da comunidade
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {/* ══════ FAQ SEO ══════ */}
+          <section id="faq" className="mb-28 scroll-mt-24">
+            <div className="flex items-center gap-3 text-red-600 mb-10">
+              <HelpCircle size={20} />
+              <h2 className="text-xl font-black uppercase tracking-[0.15em] font-mono">Perguntas Frequentes</h2>
+            </div>
+
+            <div className="space-y-2">
+              {FAQ_ITEMS.map((item, i) => (
+                <div key={i} className="bg-[#0a0a0a] border border-white/5 rounded-sm overflow-hidden">
+                  <button
+                    onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                    className="w-full text-left p-6 flex items-center justify-between gap-4 hover:bg-white/[0.02] transition-colors"
+                  >
+                    <h3 className="text-white font-bold text-sm leading-snug pr-4">{item.pergunta}</h3>
+                    <ChevronDown
+                      className={`text-red-500 shrink-0 transition-transform duration-300 ${openFaq === i ? 'rotate-180' : ''}`}
+                      size={16}
+                    />
+                  </button>
+                  <div
+                    className={`overflow-hidden transition-all duration-300 ease-in-out ${openFaq === i ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}
+                  >
+                    <div className="px-6 pb-6 border-t border-white/5 pt-4">
+                      <p className="text-slate-400 text-sm leading-relaxed font-medium">{item.resposta}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+
           {/* ══════ CONCLUSÃO — O PODER NA SUA MÃO ══════ */}
           <section id="conclusao" className="mb-28 scroll-mt-24 border-2 border-red-600 bg-[#0a0a0a] p-10 md:p-14 rounded-sm relative overflow-hidden" style={{ animation: 'borderPulse 3s ease-in-out infinite' }}>
             <ShieldAlert className="absolute top-0 right-0 text-red-600/[0.03] -mr-10 -mt-10" size={240} />
@@ -439,36 +517,24 @@ export default function ProibicaoDinheiro() {
                 </p>
               </div>
 
-              {/* CTA Grid */}
+              {/* Internal Links Grid */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <Link to="/economia-paralela" className="border border-white/10 bg-white/[0.02] rounded-sm p-6 hover:bg-red-600/[0.05] hover:border-red-600/30 transition-all group flex items-center justify-between">
-                  <div>
-                    <h4 className="text-white font-black uppercase text-xs tracking-wider mb-1 font-mono">Economia Paralela</h4>
-                    <p className="text-slate-500 text-[10px] font-bold uppercase tracking-wider">Aprenda a operar fora do sistema</p>
-                  </div>
-                  <ChevronRight className="text-slate-600 group-hover:text-red-500 transition-colors" size={18} />
-                </Link>
-                <Link to="/autocustodia" className="border border-white/10 bg-white/[0.02] rounded-sm p-6 hover:bg-red-600/[0.05] hover:border-red-600/30 transition-all group flex items-center justify-between">
-                  <div>
-                    <h4 className="text-white font-black uppercase text-xs tracking-wider mb-1 font-mono">Autocustódia</h4>
-                    <p className="text-slate-500 text-[10px] font-bold uppercase tracking-wider">Seu Bitcoin, suas chaves</p>
-                  </div>
-                  <ChevronRight className="text-slate-600 group-hover:text-red-500 transition-colors" size={18} />
-                </Link>
-                <Link to="/pix-cripto" className="border border-white/10 bg-white/[0.02] rounded-sm p-6 hover:bg-red-600/[0.05] hover:border-red-600/30 transition-all group flex items-center justify-between">
-                  <div>
-                    <h4 className="text-white font-black uppercase text-xs tracking-wider mb-1 font-mono">PIX → Cripto</h4>
-                    <p className="text-slate-500 text-[10px] font-bold uppercase tracking-wider">Converta sem intermediários</p>
-                  </div>
-                  <ChevronRight className="text-slate-600 group-hover:text-red-500 transition-colors" size={18} />
-                </Link>
-                <Link to="/taxa-de-fuga" className="border border-white/10 bg-white/[0.02] rounded-sm p-6 hover:bg-red-600/[0.05] hover:border-red-600/30 transition-all group flex items-center justify-between">
-                  <div>
-                    <h4 className="text-white font-black uppercase text-xs tracking-wider mb-1 font-mono">Taxa de Fuga</h4>
-                    <p className="text-slate-500 text-[10px] font-bold uppercase tracking-wider">Saia enquanto ainda pode</p>
-                  </div>
-                  <ChevronRight className="text-slate-600 group-hover:text-red-500 transition-colors" size={18} />
-                </Link>
+                {[
+                  { to: '/economia-paralela', titulo: 'Economia Paralela', desc: 'Aprenda a operar fora do sistema' },
+                  { to: '/autocustodia', titulo: 'Autocustódia', desc: 'Seu Bitcoin, suas chaves' },
+                  { to: '/pix-cripto', titulo: 'PIX → Cripto', desc: 'Converta sem intermediários' },
+                  { to: '/taxa-de-fuga', titulo: 'Taxa de Fuga', desc: 'Saia enquanto ainda pode' },
+                  { to: '/blindagem-golpes', titulo: 'Blindagem Anti-Golpes', desc: 'O elo fraco é você — proteja-se' },
+                  { to: '/entenda-bitcoin', titulo: 'Entenda o Bitcoin', desc: 'Do zero à soberania digital' },
+                ].map((link, i) => (
+                  <Link key={i} to={link.to} className="border border-white/10 bg-white/[0.02] rounded-sm p-6 hover:bg-red-600/[0.05] hover:border-red-600/30 transition-all group flex items-center justify-between">
+                    <div>
+                      <h4 className="text-white font-black uppercase text-xs tracking-wider mb-1 font-mono">{link.titulo}</h4>
+                      <p className="text-slate-500 text-[10px] font-bold uppercase tracking-wider">{link.desc}</p>
+                    </div>
+                    <ChevronRight className="text-slate-600 group-hover:text-red-500 transition-colors shrink-0" size={18} />
+                  </Link>
+                ))}
               </div>
             </div>
           </section>
@@ -480,7 +546,7 @@ export default function ProibicaoDinheiro() {
                 <strong className="text-slate-400">Sobre este conteúdo:</strong> Esta página aborda o impacto do PL 3.951/2019 na privacidade financeira dos brasileiros, as restrições ao dinheiro vivo já implementadas na Europa e as ferramentas legítimas disponíveis para proteger sua soberania financeira. O conteúdo não constitui aconselhamento financeiro ou jurídico. Todas as ferramentas mencionadas são legais e de uso público.
               </p>
               <p>
-                <strong className="text-slate-400">Palavras-chave:</strong> PL 3951, limite dinheiro vivo Brasil, governo proibir dinheiro em espécie, como comprar Bitcoin sem KYC, privacidade financeira, limite pagamento dinheiro vivo, comprar Bitcoin P2P, teoria das bandeiras, cédula paraguaia, exchanges descentralizadas, autocustódia Bitcoin.
+                <strong className="text-slate-400">Temas abordados:</strong> limite de dinheiro vivo no Brasil, PL 3951/2019, governo proibir dinheiro em espécie, como comprar Bitcoin sem KYC, privacidade financeira, comprar Bitcoin P2P, teoria das bandeiras, cédula paraguaia, exchanges descentralizadas, autocustódia Bitcoin, cartões cripto sem KYC, contas internacionais, diversificação jurisdicional.
               </p>
             </div>
           </section>
