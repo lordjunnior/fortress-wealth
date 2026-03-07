@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, Package, Flame, Droplets, Wheat, Snowflake, Wind, Egg, Leaf, ShieldCheck, Clock, ChevronDown, ChevronUp, AlertTriangle, Beaker, Warehouse, Thermometer, Tag, Box, BookOpen } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import CinematicHero from '@/components/CinematicHero';
+import ScrollToTop from '@/components/ScrollToTop';
 
 import imgHeroEstoque from '@/assets/conserva-hero-estoque.jpg';
 import imgAlimentosEssenciais from '@/assets/conserva-alimentos-essenciais.jpg';
@@ -368,30 +370,30 @@ function AlimentoCard({ item, index }: { item: Alimento; index: number }) {
   return (
     <motion.div
       initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={index}
-      className="bg-white/60 border border-stone-200/60 rounded-2xl overflow-hidden backdrop-blur-sm hover:shadow-lg transition-shadow duration-300"
+      className="bg-white/[0.03] border border-white/[0.06] rounded-2xl overflow-hidden backdrop-blur-sm hover:border-white/[0.1] transition-shadow duration-300"
     >
       <button
         onClick={() => setOpen(!open)}
         className="w-full text-left p-6 md:p-8 flex items-start gap-4 group cursor-pointer"
       >
-        <div className="p-3 bg-amber-100/60 rounded-xl shrink-0 mt-0.5">
-          <Icon className="text-amber-700" size={20} />
+        <div className="p-3 bg-amber-500/[0.12] rounded-xl shrink-0 mt-0.5">
+          <Icon className="text-amber-400" size={20} />
         </div>
         <div className="flex-1 min-w-0">
           <div className="flex items-center justify-between gap-2">
             <div>
-              <h3 className="text-lg font-bold text-stone-800 group-hover:text-amber-800 transition-colors">{item.name}</h3>
-              <p className="text-amber-700 text-xs font-semibold uppercase tracking-wider mt-0.5">{item.tagline}</p>
+              <h3 className="text-lg font-bold text-stone-200 group-hover:text-amber-400 transition-colors">{item.name}</h3>
+              <p className="text-amber-500 text-xs font-semibold uppercase tracking-wider mt-0.5">{item.tagline}</p>
             </div>
             <div className="shrink-0">
-              {open ? <ChevronUp className="text-stone-400" size={18} /> : <ChevronDown className="text-stone-400" size={18} />}
+              {open ? <ChevronUp className="text-stone-500" size={18} /> : <ChevronDown className="text-stone-500" size={18} />}
             </div>
           </div>
           <div className="flex flex-wrap gap-3 mt-3">
-            <span className="text-[10px] font-bold uppercase tracking-wider bg-amber-50 text-amber-700 px-2.5 py-1 rounded-full border border-amber-200/50">
+            <span className="text-[10px] font-bold uppercase tracking-wider bg-amber-500/[0.12] text-amber-400 px-2.5 py-1 rounded-full border border-amber-500/20">
               {item.durability}
             </span>
-            <span className="text-[10px] font-bold uppercase tracking-wider bg-stone-100 text-stone-600 px-2.5 py-1 rounded-full border border-stone-200/50">
+            <span className="text-[10px] font-bold uppercase tracking-wider bg-white/[0.04] text-stone-400 px-2.5 py-1 rounded-full border border-white/[0.08]">
               {item.calories}
             </span>
           </div>
@@ -407,11 +409,11 @@ function AlimentoCard({ item, index }: { item: Alimento; index: number }) {
             transition={{ duration: 0.3, ease: APPLE_EASE }}
             className="overflow-hidden"
           >
-            <div className="px-6 md:px-8 pb-8 border-t border-stone-100 pt-6">
-              <p className="text-stone-600 text-sm leading-relaxed mb-4">{item.body}</p>
+            <div className="px-6 md:px-8 pb-8 border-t border-white/[0.06] pt-6">
+              <p className="text-stone-400 text-sm leading-relaxed mb-4">{item.body}</p>
               
-              <div className="bg-amber-50/50 border border-amber-100 rounded-xl p-4 mb-4">
-                <p className="text-amber-800 text-sm font-medium leading-relaxed">
+              <div className="bg-amber-500/[0.08] border border-amber-500/[0.15] rounded-xl p-4 mb-4">
+                <p className="text-amber-400 text-sm font-medium leading-relaxed">
                   <span className="font-bold">↳ </span>{item.keyFact}
                 </p>
               </div>
@@ -421,7 +423,7 @@ function AlimentoCard({ item, index }: { item: Alimento; index: number }) {
                   <p className="text-stone-500 text-[10px] font-bold uppercase tracking-wider mb-2">Variedades</p>
                   <div className="flex flex-wrap gap-2">
                     {item.varieties.map(v => (
-                      <span key={v} className="text-xs text-stone-600 bg-stone-50 border border-stone-200/50 px-3 py-1.5 rounded-lg">{v}</span>
+                      <span key={v} className="text-xs text-stone-400 bg-white/[0.04] border border-white/[0.08] px-3 py-1.5 rounded-lg">{v}</span>
                     ))}
                   </div>
                 </div>
