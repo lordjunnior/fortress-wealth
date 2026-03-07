@@ -12,10 +12,24 @@ const ALERTAS = [
     tag: 'LEGISLATIVO',
     status: 'ATIVO',
   },
-  // Futuras páginas SEO:
-  // { slug: 'cbdc-brasil', titulo: 'DREX — A Moeda Digital do Banco Central', ... },
-  // { slug: 'imposto-global', titulo: 'O Imposto Global Sobre Patrimônio', ... },
-  // { slug: 'rastreamento-financeiro', titulo: 'Rastreamento Financeiro Total', ... },
+];
+
+const ALERTAS_PROXIMOS = [
+  {
+    titulo: 'DREX — A Moeda Digital do Banco Central',
+    subtitulo: 'CBDC · Real Digital · Controle Programável',
+    tag: 'MONETÁRIO',
+  },
+  {
+    titulo: 'Imposto Global Sobre Patrimônio',
+    subtitulo: 'OCDE · Tributação Internacional · Confisco Legalizado',
+    tag: 'TRIBUTÁRIO',
+  },
+  {
+    titulo: 'Rastreamento Financeiro Total',
+    subtitulo: 'COAF · Open Banking · Vigilância Patrimonial',
+    tag: 'VIGILÂNCIA',
+  },
 ];
 
 export default function AlertasHub() {
@@ -80,11 +94,22 @@ export default function AlertasHub() {
           ))}
         </div>
 
-        {/* Placeholder futuro */}
-        <div className="mt-12 border border-dashed border-white/10 rounded-sm p-8 text-center">
-          <Zap className="text-slate-700 mx-auto mb-3" size={24} />
-          <p className="text-slate-600 text-xs font-black uppercase tracking-widest font-mono">Novos alertas em breve</p>
-          <p className="text-slate-700 text-[10px] font-bold uppercase tracking-wider mt-1">CBDC · Imposto Global · Rastreamento Financeiro</p>
+        {/* Últimos Alertas — Em Produção */}
+        <div className="mt-16">
+          <div className="flex items-center gap-3 mb-8">
+            <Zap className="text-amber-500" size={16} />
+            <span className="text-amber-500 font-black uppercase tracking-[0.3em] text-[9px] font-mono">Próximos Alertas</span>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {ALERTAS_PROXIMOS.map((alerta, i) => (
+              <div key={i} className="border border-dashed border-white/10 rounded-sm p-6 hover:border-white/20 transition-colors">
+                <span className="text-[8px] font-black uppercase tracking-[0.3em] text-slate-600 font-mono bg-white/[0.03] px-2 py-1 rounded-sm">{alerta.tag}</span>
+                <h3 className="text-white/60 font-black uppercase text-sm tracking-tight mt-3 mb-1">{alerta.titulo}</h3>
+                <p className="text-slate-700 text-[10px] font-bold uppercase tracking-wider font-mono">{alerta.subtitulo}</p>
+                <p className="text-amber-500/50 text-[8px] font-black uppercase tracking-[0.3em] font-mono mt-3" style={{ animation: 'alertBlink 2s ease-in-out infinite' }}>● EM PRODUÇÃO</p>
+              </div>
+            ))}
+          </div>
         </div>
 
         <footer className="pt-20 border-t border-white/5 mt-20">
