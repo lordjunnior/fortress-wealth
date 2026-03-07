@@ -165,8 +165,8 @@ export default function Neobankless() {
           </div>
 
           <div className="relative max-w-5xl mx-auto px-6 pt-28 pb-24">
-            <Link to="/alertas" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground mb-16 text-[10px] font-bold uppercase tracking-[0.4em] font-mono transition-colors">
-              <ArrowLeft size={14} /> Central de Alertas
+            <Link to="/soberania-financeira" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground mb-16 text-[10px] font-bold uppercase tracking-[0.4em] font-mono transition-colors">
+              <ArrowLeft size={14} /> Soberania Financeira
             </Link>
 
             <motion.div initial="hidden" animate={heroInView ? 'visible' : 'hidden'} variants={fadeUp} custom={0}>
