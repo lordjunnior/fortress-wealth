@@ -95,6 +95,14 @@ export const FAQ_ITEMS = [
     pergunta: 'O que é autocustódia de Bitcoin?',
     resposta: 'Autocustódia significa que você controla as chaves privadas do seu Bitcoin — sem intermediários, sem exchanges, sem bancos. Seus bitcoins ficam em uma carteira que só você pode acessar. Isso garante que nenhum governo, banco ou plataforma pode congelar, confiscar ou bloquear seus fundos.',
   },
+  {
+    pergunta: 'Existe limite para dinheiro vivo no Brasil?',
+    resposta: 'Atualmente não existe um limite legal definido para transações em dinheiro vivo no Brasil. No entanto, o PL 3.951/2019, aprovado pela CCJ, cria o mecanismo para que o Conselho Monetário Nacional possa estabelecer esses limites a qualquer momento — sem necessidade de nova aprovação legislativa. Transações acima de R$ 10.000 já devem ser comunicadas ao COAF por instituições financeiras.',
+  },
+  {
+    pergunta: 'Quanto dinheiro posso carregar em espécie?',
+    resposta: 'No Brasil, não há lei que proíba carregar dinheiro em espécie. No entanto, valores acima de R$ 10.000 devem ser declarados ao cruzar fronteiras internacionais. Internamente, instituições financeiras são obrigadas a reportar movimentações suspeitas ao COAF. Com o avanço do PL 3.951, limites para pagamentos em espécie podem ser definidos pelo Conselho Monetário Nacional no futuro.',
+  },
 ];
 
 /* ───────────── NAV ITEMS ───────────── */
