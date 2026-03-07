@@ -103,6 +103,7 @@ export const NAV_ITEMS = [
   { id: 'video', label: 'Assista ao Vídeo' },
   { id: 'pl3951', label: 'PL 3951 — O Precedente' },
   { id: 'agenda-global', label: 'A Agenda Global' },
+  { id: 'timeline', label: 'Linha do Tempo' },
   { id: 'consequencias', label: 'O Que Muda Pra Você' },
   { id: 'contradicao', label: 'A Contradição Fatal' },
   { id: 'ferramentas', label: 'Arsenal de Privacidade' },
@@ -118,3 +119,22 @@ export const ESCADA_RESTRICAO = [
   { valor: 'R$ 1.000', desc: 'O objetivo final. Nessa faixa, até compras rotineiras ficam sob vigilância total.' },
   { valor: 'R$ 0', desc: 'O endgame. Dinheiro físico completamente abolido. Tudo digital. Tudo rastreado. Tudo tributado.' },
 ];
+
+/* ───────────── LINHA DO TEMPO ───────────── */
+export const TIMELINE_ITEMS = [
+  { ano: '2020', evento: 'PIX lançado', desc: 'O governo cria a infraestrutura de pagamentos digitais instantâneos — gratuita, rápida e totalmente rastreável.' },
+  { ano: '2022', evento: 'DREX anunciado', desc: 'O Banco Central anuncia o Real Digital (DREX), moeda programável com controle total sobre cada transação.' },
+  { ano: '2023', evento: 'Discussões sobre CBDC avançam', desc: 'Testes piloto do DREX começam com instituições financeiras. A infraestrutura de controle se consolida.' },
+  { ano: '2025', evento: 'PL 3.951 avança na CCJ', desc: 'O projeto que limita transações em dinheiro vivo é aprovado na Comissão de Constituição e Justiça.' },
+  { ano: '2026+', evento: 'Limites ao dinheiro vivo', desc: 'O precedente está aberto. Limites podem ser definidos a qualquer momento pelo Conselho Monetário Nacional.' },
+];
+
+/* ───────────── O QUE O PL NÃO FAZ ───────────── */
+export const PL_NAO_FAZ = [
+  'Não proíbe o dinheiro vivo imediatamente',
+  'Não define limites específicos neste momento',
+  'Não criminaliza a posse de dinheiro em espécie',
+];
+
+export const PL_MAS_FAZ = 'Cria o mecanismo legal para que o Conselho Monetário Nacional defina limites a qualquer momento — sem necessidade de nova aprovação legislativa.';
+

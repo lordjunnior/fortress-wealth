@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { ArrowLeft, Ban, Globe, ShieldAlert, Eye, Banknote, AlertTriangle, Lock, Users, ChevronRight, ChevronDown, Scale, Play, GraduationCap, Zap, BookOpen, HelpCircle } from 'lucide-react';
-import { NAV_ITEMS, LIMITES_INTERNACIONAIS, FERRAMENTAS, CONSEQUENCIAS, FAQ_ITEMS, ESCADA_RESTRICAO } from '@/lib/proibicaoDinheiroData';
+import { ArrowLeft, Ban, Globe, ShieldAlert, Eye, Banknote, AlertTriangle, Lock, Users, ChevronRight, ChevronDown, Scale, Play, GraduationCap, Zap, BookOpen, HelpCircle, Clock, CheckCircle, XCircle, ArrowDown } from 'lucide-react';
+import { NAV_ITEMS, LIMITES_INTERNACIONAIS, FERRAMENTAS, CONSEQUENCIAS, FAQ_ITEMS, ESCADA_RESTRICAO, TIMELINE_ITEMS, PL_NAO_FAZ, PL_MAS_FAZ } from '@/lib/proibicaoDinheiroData';
 
 /* ───────────── FAQ SCHEMA JSON-LD ───────────── */
 const faqSchema = {
@@ -177,12 +177,18 @@ export default function ProibicaoDinheiro() {
                 <span className="title-shimmer italic inline-block pt-1">Limitar Seu Dinheiro</span>
               </h1>
 
-              <p className="text-lg md:text-xl text-slate-400 leading-relaxed max-w-3xl mb-6 font-medium">
-                O Projeto de Lei <strong className="text-white">PL 3.951/2019</strong> abriu caminho para que o governo brasileiro estabeleça <strong className="text-red-500">limites ao uso de dinheiro em espécie</strong>. Hoje começa com transações específicas. Amanhã, pode ser o troco do pão.
+              <p className="text-lg md:text-xl text-slate-400 leading-relaxed max-w-3xl mb-4 font-medium">
+                O Projeto de Lei <strong className="text-white">PL 3.951/2019</strong> abriu caminho para que o governo brasileiro estabeleça <strong className="text-red-500">limites ao uso de dinheiro em espécie</strong>.
               </p>
               <p className="text-base text-slate-500 leading-relaxed max-w-3xl mb-10 font-medium">
-                Aqui você vai entender o que está acontecendo, ver como a Europa já avançou nessa agenda, conhecer as ferramentas legais para proteger sua privacidade financeira — e descobrir como <strong className="text-white">manter o poder na sua mão</strong>.
+                Entenda o que está acontecendo, veja como a Europa já avançou nessa agenda e descubra ferramentas legais para proteger sua <strong className="text-white">soberania financeira</strong>.
               </p>
+
+              {/* Micro-CTA de retenção */}
+              <button onClick={() => scrollTo('pl3951')} className="inline-flex items-center gap-2 text-slate-500 hover:text-white text-xs font-bold uppercase tracking-wider transition-colors mb-10 group">
+                <ArrowDown size={14} className="text-red-500 group-hover:translate-y-1 transition-transform" />
+                Entenda o que está acontecendo
+              </button>
 
               <div className="flex flex-col sm:flex-row gap-4 mb-10">
                 <button onClick={() => scrollTo('ferramentas')} className="cta-gold px-8 py-4 rounded-sm font-black uppercase text-sm tracking-widest text-center">
@@ -260,6 +266,26 @@ export default function ProibicaoDinheiro() {
               </div>
             </div>
 
+            {/* O que o PL NÃO faz */}
+            <div className="bg-[#0a0a0a] border border-white/5 rounded-sm p-8 md:p-12 mb-8">
+              <h3 className="text-white font-black uppercase text-sm tracking-wider mb-6 font-mono flex items-center gap-2">
+                <CheckCircle className="text-emerald-500" size={14} />
+                O Que o Projeto NÃO Faz
+              </h3>
+              <div className="space-y-3 mb-6">
+                {PL_NAO_FAZ.map((item, i) => (
+                  <div key={i} className="flex items-center gap-3">
+                    <XCircle className="text-emerald-500/60 shrink-0" size={14} />
+                    <p className="text-slate-400 text-sm font-medium">{item}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="bg-red-950/20 border border-red-600/20 rounded-sm p-5">
+                <p className="text-red-500 text-[10px] font-black uppercase font-mono tracking-wider mb-2">Mas o que ele faz é pior:</p>
+                <p className="text-white font-bold text-sm leading-relaxed">{PL_MAS_FAZ}</p>
+              </div>
+            </div>
+
             {/* Escada de restrição */}
             <div className="bg-[#0a0a0a] border border-white/5 rounded-sm p-8 md:p-12">
               <h3 className="text-white font-black uppercase text-sm tracking-wider mb-8 font-mono flex items-center gap-2">
@@ -314,11 +340,56 @@ export default function ProibicaoDinheiro() {
               </div>
             </div>
 
+            <div className="bg-[#0a0a0a] border border-white/5 rounded-sm p-6 mb-4">
+              <p className="text-slate-400 text-sm font-medium leading-relaxed italic">
+                "Esse processo raramente acontece de forma abrupta. Ele acontece <strong className="text-white">gradualmente</strong> — um limite de cada vez, uma justificativa de cada vez — até que o dinheiro físico simplesmente deixe de existir como opção."
+              </p>
+            </div>
+
             <div className="bg-red-950/10 border border-red-600/20 rounded-sm p-6">
               <p className="text-red-500 text-[10px] font-black uppercase font-mono tracking-wider mb-2">O Padrão é Claro</p>
               <p className="text-white font-black text-base leading-tight uppercase italic">
                 Todos esses países começaram com limites "altos". Depois baixaram. Depois baixaram de novo. A direção é sempre a mesma: dinheiro físico zero. Controle total. Soberania individual eliminada.
               </p>
+            </div>
+          </section>
+
+          {/* ══════ LINHA DO TEMPO DO CONTROLE FINANCEIRO ══════ */}
+          <section id="timeline" className="mb-28 scroll-mt-24">
+            <div className="flex items-center gap-3 text-red-600 mb-10">
+              <Clock size={20} />
+              <h2 className="text-xl font-black uppercase tracking-[0.15em] font-mono">Linha do Tempo do Controle</h2>
+            </div>
+
+            <p className="text-slate-400 text-base leading-relaxed font-medium mb-10 max-w-3xl">
+              O cerco não começou ontem. Cada passo foi calculado para <strong className="text-white">normalizar o controle</strong> antes de apertar o próximo parafuso:
+            </p>
+
+            <div className="relative">
+              {/* Linha vertical */}
+              <div className="absolute left-[18px] md:left-[22px] top-0 bottom-0 w-[2px] bg-gradient-to-b from-red-600/40 via-red-600/20 to-transparent" />
+
+              <div className="space-y-8">
+                {TIMELINE_ITEMS.map((item, i) => (
+                  <div key={i} className="relative flex gap-6 group">
+                    {/* Dot */}
+                    <div className="relative z-10 shrink-0">
+                      <div className={`w-10 h-10 md:w-11 md:h-11 rounded-full border-2 flex items-center justify-center ${
+                        i === TIMELINE_ITEMS.length - 1
+                          ? 'border-red-600 bg-red-600/20'
+                          : 'border-red-600/30 bg-[#0a0a0a] group-hover:border-red-600/60'
+                      } transition-colors`}>
+                        <span className="text-red-500 font-black text-[10px] font-mono">{item.ano}</span>
+                      </div>
+                    </div>
+                    {/* Content */}
+                    <div className="bg-[#0a0a0a] border border-white/5 rounded-sm p-6 flex-1 group-hover:border-red-600/20 transition-colors">
+                      <h3 className="text-white font-black uppercase text-sm tracking-tight mb-2">{item.evento}</h3>
+                      <p className="text-slate-400 text-xs leading-relaxed font-medium">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </section>
 
@@ -517,22 +588,28 @@ export default function ProibicaoDinheiro() {
                 </p>
               </div>
 
-              {/* Internal Links Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {/* CTA Principal */}
+              <Link to="/autocustodia" className="cta-gold flex items-center justify-center gap-3 px-10 py-5 rounded-sm font-black uppercase text-sm tracking-[0.2em] text-center mb-8 w-full md:w-auto md:inline-flex">
+                🔐 Aprender Autocustódia e Soberania Financeira
+              </Link>
+
+              {/* CTAs Secundários */}
+              <p className="text-slate-600 text-[9px] font-black uppercase tracking-[0.3em] font-mono mb-4">Continue Aprendendo</p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                 {[
-                  { to: '/economia-paralela', titulo: 'Economia Paralela', desc: 'Aprenda a operar fora do sistema' },
-                  { to: '/autocustodia', titulo: 'Autocustódia', desc: 'Seu Bitcoin, suas chaves' },
-                  { to: '/pix-cripto', titulo: 'PIX → Cripto', desc: 'Converta sem intermediários' },
-                  { to: '/taxa-de-fuga', titulo: 'Taxa de Fuga', desc: 'Saia enquanto ainda pode' },
-                  { to: '/blindagem-golpes', titulo: 'Blindagem Anti-Golpes', desc: 'O elo fraco é você — proteja-se' },
-                  { to: '/entenda-bitcoin', titulo: 'Entenda o Bitcoin', desc: 'Do zero à soberania digital' },
+                  { to: '/economia-paralela', titulo: 'Economia Paralela', desc: 'Operar fora do sistema' },
+                  { to: '/pix-cripto', titulo: 'PIX → Cripto', desc: 'Converter sem intermediários' },
+                  { to: '/taxa-de-fuga', titulo: 'Taxa de Fuga', desc: 'Sair enquanto pode' },
+                  { to: '/blindagem-golpes', titulo: 'Blindagem Anti-Golpes', desc: 'Proteger o elo fraco' },
+                  { to: '/entenda-bitcoin', titulo: 'Entenda o Bitcoin', desc: 'Do zero à soberania' },
+                  { to: '/alertas', titulo: 'Central de Alertas', desc: 'Todos os alertas ativos' },
                 ].map((link, i) => (
-                  <Link key={i} to={link.to} className="border border-white/10 bg-white/[0.02] rounded-sm p-6 hover:bg-red-600/[0.05] hover:border-red-600/30 transition-all group flex items-center justify-between">
+                  <Link key={i} to={link.to} className="border border-white/5 bg-white/[0.01] rounded-sm px-5 py-4 hover:bg-red-600/[0.03] hover:border-white/10 transition-all group flex items-center justify-between">
                     <div>
-                      <h4 className="text-white font-black uppercase text-xs tracking-wider mb-1 font-mono">{link.titulo}</h4>
-                      <p className="text-slate-500 text-[10px] font-bold uppercase tracking-wider">{link.desc}</p>
+                      <span className="text-white/80 font-bold uppercase text-[10px] tracking-wider font-mono">{link.titulo}</span>
+                      <span className="text-slate-600 text-[9px] font-bold uppercase tracking-wider ml-2">{link.desc}</span>
                     </div>
-                    <ChevronRight className="text-slate-600 group-hover:text-red-500 transition-colors shrink-0" size={18} />
+                    <ChevronRight className="text-slate-700 group-hover:text-red-500 transition-colors shrink-0" size={14} />
                   </Link>
                 ))}
               </div>
