@@ -7,6 +7,7 @@ import cardEconomia from "@/assets/card-economia.jpg";
 import cardBitcoin from "@/assets/card-bitcoin.jpg";
 import cardFilosofia from "@/assets/card-filosofia.jpg";
 import cardEstrategias from "@/assets/card-estrategias.jpg";
+import presidenteImg from "@/assets/presidente-confisco-1990.jpg";
 
 const timelineSteps = [
   {
@@ -97,7 +98,7 @@ const ConfiscoTimeline = () => {
           <p className="pre-title">A TRANSIÇÃO: DA TEORIA À CICATRIZ</p>
           <p className="text-muted-foreground leading-relaxed text-base md:text-lg mb-6">
             A fraude que você ignora hoje é o confisco que te destruirá amanhã. Para quem viveu
-            o Brasil de 1990, a "soberania" não era um conceito técnico — era a diferença entre
+            o Brasil de 1990, a "soberania" não era um conceito técnico, era a diferença entre
             ter o que comer e ver o esforço de uma vida inteira evaporar por um decreto assinado
             em Brasília.
           </p>
@@ -127,7 +128,7 @@ const ConfiscoTimeline = () => {
           </div>
           <p className="text-sm text-muted-foreground mb-8 max-w-xl">
             O que aconteceu em <span className="text-foreground font-medium">menos de 8 horas</span> com o patrimônio de 
-            milhões de famílias brasileiras — e por que pode acontecer de novo com o seu.
+            milhões de famílias brasileiras, e por que pode acontecer de novo com o seu.
           </p>
 
           {/* Vertical timeline */}
@@ -206,6 +207,51 @@ const ConfiscoTimeline = () => {
             <p className="text-sm text-muted-foreground italic">
               "Quanto do seu patrimônio está a uma assinatura de distância de desaparecer?"
             </p>
+          </motion.div>
+
+          {/* ══════ PRESIDENTE CTA ══════ */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.7, delay: 1.4 }}
+            className="mt-12"
+          >
+            <Link to="/confisco-1990" className="group block">
+              <div className="relative rounded-xl overflow-hidden border border-destructive/20 hover:border-destructive/50 transition-all duration-500 hover:shadow-[0_8px_40px_-12px_hsl(var(--destructive)/0.3)]">
+                {/* Image */}
+                <div className="relative h-64 md:h-80 overflow-hidden">
+                  <img
+                    src={presidenteImg}
+                    alt="Presidente com a faixa presidencial, 1990"
+                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-background/40 via-transparent to-background/40" />
+                  
+                  {/* REC badge */}
+                  <div className="absolute top-4 right-4 flex items-center gap-2">
+                    <span className="font-mono text-[10px] tracking-widest text-destructive animate-pulse">● 1990</span>
+                  </div>
+                </div>
+
+                {/* Content overlay */}
+                <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+                  <p className="font-mono text-[9px] tracking-[0.4em] uppercase text-destructive/80 mb-2">
+                    A HISTÓRIA QUE O BRASIL QUER ESQUECER
+                  </p>
+                  <h3 className="text-xl md:text-2xl font-black uppercase tracking-tight mb-2 group-hover:text-destructive transition-colors duration-500">
+                    Ele assinou. Você perdeu tudo.
+                  </h3>
+                  <p className="text-sm text-muted-foreground max-w-lg mb-4">
+                    Em 16 de março de 1990, enquanto você dormia, o presidente confiscou 80% do dinheiro da população.
+                    Esta é a história completa.
+                  </p>
+                  <span className="inline-flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-destructive group-hover:gap-3 transition-all duration-500">
+                    Ler a história completa →
+                  </span>
+                </div>
+              </div>
+            </Link>
           </motion.div>
         </motion.div>
 
