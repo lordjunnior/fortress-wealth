@@ -103,7 +103,6 @@ export default function NavegacaoPrimaria() {
               ))}
             </div>
           </div>
-        </motion.section>
 
         {/* ══ 1 — ORIENTAÇÃO SOLAR ══ */}
         <Section num={1} title="Orientação Solar">

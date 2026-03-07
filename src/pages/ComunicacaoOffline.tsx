@@ -101,7 +101,6 @@ export default function ComunicacaoOffline() {
               ))}
             </div>
           </div>
-        </motion.section>
 
         {/* ══ 1 — RÁDIO AM/FM ══ */}
         <Section num={1} title="Informação Passiva — Rádio AM/FM">

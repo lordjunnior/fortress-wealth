@@ -105,7 +105,6 @@ export default function AbrigoEmergencia() {
               ))}
             </div>
           </div>
-        </motion.section>
 
         {/* ══ 1 — CAMADA DO SOLO ══ */}
         <Section num={1} title="Camada do Solo — Base Térmica">
