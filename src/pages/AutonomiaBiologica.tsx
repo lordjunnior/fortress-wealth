@@ -4,6 +4,7 @@ import { ArrowLeft, Leaf, Shield, AlertTriangle, Droplets, Flame, FlaskConical, 
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { PLANTAS } from '@/lib/plantData';
+import CinematicHero from '@/components/CinematicHero';
 
 import imgMetodosPreparo from '@/assets/bio-metodos-preparo.jpg';
 import imgArmazenamento from '@/assets/bio-armazenamento.jpg';
@@ -112,7 +113,18 @@ export default function AutonomiaBiologica() {
 
   return (
     <div ref={containerRef} className="min-h-screen text-stone-100 font-sans selection:bg-emerald-300/30"
-      style={{ background: 'linear-gradient(180deg, #060806 0%, #0a0f0a 6%, #0d150d 15%, #101a10 30%, #0d150d 60%, #0a0f0a 85%, #060806 100%)' }}>
+      style={{ background: 'linear-gradient(180deg, #050808 0%, #060806 6%, #0a0f0a 15%, #0d150d 30%, #0a0f0a 60%, #060806 85%, #050808 100%)' }}>
+
+      <CinematicHero
+        image="/heroes/suporte-fitoterapico.webp"
+        phase="Fase 02 · Autonomia Biológica"
+        title="Suporte Fitoterápico"
+        subtitle="Biblioteca técnica de 12 plantas medicinais documentadas com rigor farmacológico. Cada planta possui sua própria ficha completa."
+        icon={Leaf}
+        accentColor="emerald"
+        backLink="/projeto-autonomo"
+        backLabel="Projeto Autônomo"
+      />
 
       {/* Fixed ambient orbs */}
       <div className="fixed inset-0 pointer-events-none z-0">
@@ -122,35 +134,10 @@ export default function AutonomiaBiologica() {
           style={{ background: 'radial-gradient(circle, rgba(6,182,212,0.04) 0%, transparent 70%)' }} />
       </div>
 
-      {/* ═══ HEADER ═══ */}
-      <header className="sticky top-0 z-50 backdrop-blur-xl border-b border-white/5"
-        style={{ background: 'rgba(6,8,6,0.85)' }}>
-        <div className="max-w-6xl mx-auto px-4 md:px-8 py-3 flex items-center justify-between">
-          <Link to="/projeto-autonomo" className="flex items-center gap-2 text-stone-500 hover:text-emerald-400 transition-colors text-sm">
-            <ArrowLeft size={16} />
-            <span>Projeto Autônomo</span>
-          </Link>
-          <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-emerald-500/60">Fase 02 · Suporte Fitoterápico</span>
-        </div>
-      </header>
-
       <main className="relative z-10 max-w-6xl mx-auto px-4 md:px-8 py-12 md:py-20">
 
-        {/* ═══ HERO ═══ */}
+        {/* Intro context */}
         <section className="mb-24">
-          <span className="text-emerald-500/50 text-[10px] font-bold tracking-[0.5em] uppercase block mb-4">
-            Fase 02 · Autonomia Biológica
-          </span>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-wide uppercase leading-[0.9] text-white mb-6"
-            style={{ fontFamily: "'Space Grotesk', sans-serif", letterSpacing: '0.04em' }}>
-            SUPORTE<br />
-            <span className="text-emerald-400">FITOTERÁPICO</span>
-          </h1>
-          <p className="text-stone-400 text-lg md:text-xl max-w-3xl leading-relaxed font-light mb-8">
-            Biblioteca técnica de 12 plantas medicinais documentadas com rigor farmacológico.
-            Cada planta possui sua própria ficha completa — clique para acessar.
-          </p>
-
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 max-w-2xl mb-8">
             {['Foto da planta', 'Nome científico', 'Para que serve', 'Preparo correto', 'Limite de uso', 'Contraindicações'].map((s) => (
               <div key={s} className="flex items-center gap-2 text-sm">
