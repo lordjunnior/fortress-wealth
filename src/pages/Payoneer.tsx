@@ -1,32 +1,112 @@
-import { useEffect, useRef } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { motion, useInView } from 'framer-motion';
+import { motion, useScroll, useTransform, useInView, useMotionValueEvent, AnimatePresence, useSpring } from 'framer-motion';
 import {
-  ArrowLeft, Shield, ChevronRight, ExternalLink, AlertTriangle,
-  CreditCard, Globe, ArrowRightLeft, Eye, Lock, Check, X,
-  HelpCircle, Building2, Smartphone, TrendingUp, Landmark,
-  Banknote, Star, Zap, DollarSign, Users, Clock, Send, Briefcase,
+  Shield, ChevronRight, AlertTriangle, Lock, Building2,
+  CheckCircle, XCircle, ExternalLink, ChevronDown,
+  CreditCard, Globe, DollarSign, TrendingUp, Send,
+  Check, X, HelpCircle, Briefcase, Clock,
 } from 'lucide-react';
-import {
-  Accordion, AccordionContent, AccordionItem, AccordionTrigger,
-} from '@/components/ui/accordion';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import ScrollToTop from '@/components/ScrollToTop';
 import heroImg from '@/assets/payoneer-hero.jpg';
 import appImg from '@/assets/payoneer-app.jpg';
 
-/* ── Constants ── */
-const AFFILIATE_LINK = '#'; // Placeholder — user can add affiliate link later
+const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
+const staggerContainer = { hidden: {}, visible: { transition: { staggerChildren: 0.12 } } };
+const staggerChild = { hidden: { opacity: 0, y: 25, filter: 'blur(4px)' }, visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.7, ease: EASE } } };
+const AFFILIATE_LINK = '#';
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: (i: number) => ({
-    opacity: 1, y: 0,
-    transition: { duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] as const },
-  }),
+const ChapterKickoff = ({ number, title, image, id, isOdd }: { number: string; title: string; image: string; id: string; isOdd: boolean }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: '-100px' });
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] });
+  const imgY = useTransform(scrollYProgress, [0, 1], [0, -60]);
+  const imgScale = useTransform(scrollYProgress, [0, 0.5, 1], [1.02, 1.05, 1.02]);
+  return (
+    <div ref={ref} id={id} className="relative overflow-hidden" style={{ background: isOdd ? '#050808' : '#070b0b' }}>
+      <div className="relative h-[65vh] min-h-[450px] max-h-[700px] overflow-hidden">
+        <motion.div className="absolute inset-0" style={{ y: imgY, scale: imgScale }}>
+          <img src={image} alt="" className="w-full h-full object-cover" style={{ filter: 'brightness(0.35) saturate(0.75)' }} loading="lazy" />
+        </motion.div>
+        <div className="absolute inset-0" style={{ background: `linear-gradient(180deg, ${isOdd ? 'rgba(5,8,8,0.3)' : 'rgba(7,11,11,0.3)'} 0%, transparent 30%, ${isOdd ? 'rgba(5,8,8,0.7)' : 'rgba(7,11,11,0.7)'} 70%, ${isOdd ? '#050808' : '#070b0b'} 100%)` }} />
+        <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse 120% 100% at 50% 40%, transparent 30%, rgba(5,8,8,0.85) 100%)' }} />
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="relative text-center px-6">
+            <motion.span initial={{ opacity: 0, scale: 0.5, y: 30 }} animate={inView ? { opacity: 0.08, scale: 1, y: 0 } : {}} transition={{ duration: 1.5, ease: EASE }}
+              className="absolute -top-24 md:-top-32 left-1/2 -translate-x-1/2 text-[160px] md:text-[240px] font-black text-white pointer-events-none select-none leading-none"
+              style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{number}</motion.span>
+            <motion.p initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 0.6, y: 0 } : {}} transition={{ duration: 0.6, delay: 0.2, ease: EASE }}
+              className="text-[10px] font-bold tracking-[0.5em] uppercase text-orange-400/70 mb-4 relative z-10">Capítulo {number}</motion.p>
+            <motion.h2 initial={{ opacity: 0, y: 40, filter: 'blur(10px)' }} animate={inView ? { opacity: 1, y: 0, filter: 'blur(0px)' } : {}} transition={{ duration: 0.8, delay: 0.3, ease: EASE }}
+              className="text-3xl md:text-5xl lg:text-6xl font-bold text-white relative z-10 leading-tight" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{title}</motion.h2>
+            <motion.div initial={{ scaleX: 0 }} animate={inView ? { scaleX: 1 } : {}} transition={{ duration: 1, delay: 0.6, ease: EASE }}
+              className="h-px w-40 mx-auto mt-8 bg-gradient-to-r from-transparent via-orange-500/50 to-transparent origin-center relative z-10" />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
 
-/* ── Specs ── */
+const ScrollSection = ({ children, className = '', id, isOdd = true }: { children: React.ReactNode; className?: string; id?: string; isOdd?: boolean }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: '-80px' });
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] });
+  const y = useTransform(scrollYProgress, [0, 1], [20, -20]);
+  return (
+    <motion.div ref={ref} id={id} initial={{ opacity: 0, y: 50, filter: 'blur(8px)' }}
+      animate={inView ? { opacity: 1, y: 0, filter: 'blur(0px)' } : {}}
+      transition={{ duration: 0.9, ease: EASE }} style={{ y, background: isOdd ? '#050808' : '#070b0b' }} className={className}>
+      {children}
+    </motion.div>
+  );
+};
+
+const ReadingProgressBar = () => {
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
+  return <motion.div className="fixed top-0 left-0 right-0 h-[3px] z-[60] origin-left" style={{ scaleX, background: 'linear-gradient(90deg, rgba(249,115,22,0.8), rgba(245,158,11,1), rgba(234,179,8,0.9))' }} />;
+};
+
+const CHAPTERS = [
+  { id: 'ficha-tecnica', label: 'Ficha Técnica', num: '01' },
+  { id: 'funcionalidades', label: 'Funcionalidades', num: '02' },
+  { id: 'comparativo', label: 'Comparativo', num: '03' },
+  { id: 'pros-contras', label: 'Prós e Contras', num: '04' },
+  { id: 'veredicto', label: 'Veredicto', num: '05' },
+  { id: 'faq', label: 'FAQ', num: '06' },
+];
+
+const FloatingToc = () => {
+  const [active, setActive] = useState('');
+  const [show, setShow] = useState(false);
+  const { scrollYProgress } = useScroll();
+  useMotionValueEvent(scrollYProgress, 'change', (v) => { setShow(v > 0.08 && v < 0.95); });
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => { entries.forEach((e) => { if (e.isIntersecting) setActive(e.target.id); }); }, { rootMargin: '-30% 0px -60% 0px' });
+    CHAPTERS.forEach(c => { const el = document.getElementById(c.id); if (el) observer.observe(el); });
+    return () => observer.disconnect();
+  }, []);
+  return (
+    <AnimatePresence>
+      {show && (
+        <motion.nav initial={{ opacity: 0, x: 24 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 24 }}
+          transition={{ duration: 0.5, ease: EASE }} className="fixed right-6 top-1/2 -translate-y-1/2 z-[55] hidden xl:flex flex-col gap-4">
+          {CHAPTERS.map(c => (
+            <a key={c.id} href={`#${c.id}`} className={`group flex items-center gap-3 transition-all duration-400 ${active === c.id ? 'opacity-100' : 'opacity-25 hover:opacity-60'}`}>
+              <span className={`block transition-all duration-400 rounded-full ${active === c.id ? 'w-3 h-3 bg-orange-400 shadow-[0_0_12px_rgba(249,115,22,0.5)]' : 'w-2 h-2 bg-stone-600'}`} />
+              <span className={`text-[9px] font-bold tracking-[0.15em] uppercase transition-colors duration-400 ${active === c.id ? 'text-orange-400' : 'text-stone-600'}`}>{c.num} · {c.label}</span>
+            </a>
+          ))}
+        </motion.nav>
+      )}
+    </AnimatePresence>
+  );
+};
+
+/* ═══ DATA ═══ */
 const SPECS = [
   { label: 'Tipo', value: 'Fintech / PSP', icon: Building2 },
   { label: 'Sede', value: 'Nova York, EUA', icon: Globe },
@@ -35,8 +115,12 @@ const SPECS = [
   { label: 'Foco principal', value: 'Freelancers & B2B', icon: Briefcase },
   { label: 'Fundação', value: '2005 (20+ anos)', icon: Clock },
 ];
-
-/* ── Pros & Cons ── */
+const FEATURES = [
+  { step: '01', title: 'Recebimento Global', desc: 'Receba de Amazon, Fiverr, Upwork, Airbnb e clientes corporativos em USD, EUR, GBP e mais com dados bancários locais.' },
+  { step: '02', title: 'Saque para Banco Brasileiro', desc: 'Converta saldos em moeda estrangeira diretamente para reais e saque para qualquer banco brasileiro.' },
+  { step: '03', title: 'Cartão Mastercard', desc: 'Cartão prepaid para saques em ATMs no mundo inteiro e compras online/presenciais com conversão automática.' },
+  { step: '04', title: 'Pagamentos em Massa', desc: 'Mass Payouts: envie pagamentos para centenas de beneficiários em diferentes países com uma única operação.' },
+];
 const PROS = [
   'Dados bancários locais nos EUA (ACH), Europa (IBAN), UK (Sort Code), Japão e Austrália',
   'Integração nativa com marketplaces: Amazon, Fiverr, Upwork, Airbnb, Google AdSense',
@@ -44,15 +128,11 @@ const PROS = [
   'Regulada nos EUA (FinCEN), Europa (FCA) e em múltiplas jurisdições',
   'Cartão Mastercard prepaid para saques e compras internacionais',
   'Permite receber de clientes corporativos via transferência bancária local',
-  'Conversão de moedas dentro do app com taxas competitivas',
-  'Pagamento em massa (Mass Payouts) para quem paga fornecedores internacionais',
+  'Pagamento em massa (Mass Payouts) para fornecedores internacionais',
   'Saque direto para conta bancária brasileira em reais',
   'App em português com suporte ao cliente em múltiplos idiomas',
-  'Ideal para quem trabalha com e-commerce cross-border e exportação de serviços',
   'Capital de giro disponível para vendedores qualificados (Working Capital)',
-  'Verificação de identidade relativamente rápida (1-3 dias)',
 ];
-
 const CONS = [
   'Exige KYC completo — documentos, selfie e comprovante de atividade profissional',
   'Taxa de câmbio não é mid-market: spread de até 2% sobre a conversão',
@@ -61,549 +141,290 @@ const CONS = [
   'Reporta para autoridades fiscais via CRS (Common Reporting Standard)',
   'Conta pode ser bloqueada por suspeita de atividade irregular',
   'Não é crypto friendly — transferências para exchanges podem ser recusadas',
-  'Foco em B2B/freelancer: menos útil para quem não recebe de empresas internacionais',
-  'Taxas de recebimento podem ser altas dependendo da moeda e do corredor',
-  'Não oferece investimentos ou renda fixa dentro da plataforma',
+  'Foco em B2B/freelancer: menos útil para quem não recebe de empresas',
+  'Não oferece investimentos ou renda fixa',
 ];
-
-/* ── Features ── */
-const FEATURES = [
-  { step: '01', title: 'Recebimento Global', desc: 'Receba pagamentos de marketplaces (Amazon, Fiverr, Upwork, Airbnb) e clientes corporativos em USD, EUR, GBP e mais 4 moedas com dados bancários locais. O dinheiro cai como se você tivesse conta no país do pagador.' },
-  { step: '02', title: 'Saque para Banco Brasileiro', desc: 'Converta seus saldos em moeda estrangeira diretamente para reais e saque para qualquer banco brasileiro. O processo leva 2-5 dias úteis dependendo do valor e da verificação.' },
-  { step: '03', title: 'Cartão Mastercard', desc: 'Cartão prepaid Mastercard para saques em caixas eletrônicos no mundo inteiro e compras online/presenciais. Saldo em USD convertido automaticamente na moeda local do país onde você está.' },
-  { step: '04', title: 'Pagamentos em Massa', desc: 'Para empresas que pagam fornecedores internacionais, a Payoneer oferece Mass Payouts: envie pagamentos para centenas de beneficiários em diferentes países com uma única operação.' },
+const COMPARE = [
+  { criterion: 'Foco', payoneer: 'B2B / Freelancers', wise: 'Pessoal / Freelancers', bank: 'Generalista' },
+  { criterion: 'Câmbio', payoneer: 'Spread ~2%', wise: 'Mid-market (real)', bank: 'Spread 2-5%' },
+  { criterion: 'Dados bancários locais', payoneer: 'EUA, EU, UK, JP, AU', wise: 'EUA, EU, UK + 7', bank: 'Apenas Brasil' },
+  { criterion: 'Integração marketplaces', payoneer: 'Amazon, Fiverr, Upwork', wise: 'Limitada', bank: 'Nenhuma' },
+  { criterion: 'Saque para banco BR', payoneer: 'Sim (taxa ~2%)', wise: 'Sim (taxa ~1.5%)', bank: 'N/A' },
+  { criterion: 'Crypto friendly', payoneer: 'Não', wise: 'Parcialmente', bank: 'Não' },
 ];
-
-/* ── FAQ ── */
 const FAQ_DATA = [
-  {
-    q: 'O que é a Payoneer e para quem ela serve?',
-    a: 'A Payoneer é uma fintech americana fundada em 2005, especializada em pagamentos internacionais para freelancers, exportadores de serviços e vendedores de e-commerce cross-border. Ela fornece dados bancários locais em múltiplos países para que você receba como se tivesse conta local, além de permitir saque direto para bancos brasileiros.',
-  },
-  {
-    q: 'Payoneer é segura? Posso confiar meu dinheiro nela?',
-    a: 'A Payoneer é regulada pelo FinCEN nos EUA, pela FCA no Reino Unido e por autoridades financeiras em diversas jurisdições. Com mais de 20 anos de operação e milhões de usuários ativos, é uma das plataformas mais estabelecidas do mercado de pagamentos internacionais. Entretanto, como toda fintech, pode bloquear contas por suspeita de irregularidade.',
-  },
-  {
-    q: 'Qual a diferença entre Payoneer e Wise?',
-    a: 'A Wise é focada em transferências pessoais com câmbio mid-market real (sem spread). A Payoneer é focada em recebimento de pagamentos corporativos e marketplaces. Se você recebe de Amazon, Fiverr ou clientes B2B, a Payoneer é mais adequada. Se você faz transferências pessoais, a Wise tem melhor câmbio.',
-  },
-  {
-    q: 'A Payoneer reporta para a Receita Federal do Brasil?',
-    a: 'Sim. A Payoneer cumpre o CRS (Common Reporting Standard) e reporta informações financeiras para as autoridades fiscais dos países onde os titulares residem. Se você é residente fiscal no Brasil, seus saldos e movimentações serão reportados automaticamente.',
-  },
-  {
-    q: 'Posso usar a Payoneer para receber da Amazon?',
-    a: 'Sim, e esse é um dos usos mais populares. A Payoneer tem integração direta com Amazon, permitindo que vendedores recebam seus pagamentos em USD, EUR ou GBP sem precisar de conta bancária no país do marketplace. O saldo pode ser sacado para banco brasileiro em reais.',
-  },
-  {
-    q: 'Quanto a Payoneer cobra de taxa?',
-    a: 'As taxas variam por tipo de operação: recebimento de marketplaces geralmente é gratuito, conversão de moeda tem spread de até 2%, saque para banco brasileiro cobra até 2% do valor, e o cartão Mastercard tem taxas de saque em ATM. Não há mensalidade para manter a conta ativa.',
-  },
-  {
-    q: 'Posso usar Payoneer para comprar Bitcoin?',
-    a: 'Não é recomendado. A Payoneer não é crypto friendly e pode recusar transferências para exchanges de criptomoedas. Para operações com Bitcoin, use a Payoneer apenas como ponte de recebimento e saque para banco, e então opere cripto por outras vias.',
-  },
-  {
-    q: 'A Payoneer tem cartão que funciona no Brasil?',
-    a: 'Sim. O cartão Mastercard prepaid da Payoneer funciona em qualquer máquina que aceite Mastercard no Brasil e no mundo. Porém, o saldo é mantido em USD e a conversão para BRL no ponto de venda inclui taxa de câmbio. Para uso no Brasil, pode ser mais vantajoso sacar para conta bancária.',
-  },
-  {
-    q: 'Qual a diferença entre Payoneer e PayPal?',
-    a: 'A Payoneer oferece dados bancários locais em múltiplos países (o PayPal não), tem taxas geralmente menores para recebimentos B2B e permite saque direto para banco brasileiro com câmbio mais competitivo. O PayPal é mais popular para transações P2P e compras online, mas cobra taxas mais altas em operações internacionais.',
-  },
-  {
-    q: 'Payoneer é boa opção para soberania financeira?',
-    a: 'A Payoneer é uma ferramenta tática excelente para quem precisa receber pagamentos internacionais. Porém, não é soberania: exige KYC total, reporta via CRS e pode bloquear contas. Para diversificação internacional é útil, mas para proteção real contra confisco, a resposta é autocustódia de Bitcoin.',
-  },
+  { q: 'O que é a Payoneer e para quem ela serve?', a: 'Fintech americana fundada em 2005, especializada em pagamentos internacionais para freelancers, exportadores de serviços e vendedores de e-commerce cross-border.' },
+  { q: 'Payoneer é segura?', a: 'Regulada pelo FinCEN nos EUA, FCA no UK e em diversas jurisdições. Mais de 20 anos de operação e milhões de usuários ativos.' },
+  { q: 'Qual a diferença entre Payoneer e Wise?', a: 'Wise é focada em transferências pessoais com câmbio mid-market. Payoneer é focada em recebimento de pagamentos corporativos e marketplaces.' },
+  { q: 'A Payoneer reporta para a Receita Federal?', a: 'Sim. Cumpre o CRS e reporta informações financeiras para as autoridades fiscais dos países onde os titulares residem.' },
+  { q: 'Posso usar a Payoneer para receber da Amazon?', a: 'Sim, integração direta. Vendedores recebem em USD, EUR ou GBP sem conta bancária no país do marketplace.' },
+  { q: 'Quanto a Payoneer cobra de taxa?', a: 'Recebimento de marketplaces geralmente é gratuito, conversão tem spread de até 2%, saque para banco ~2%. Sem mensalidade.' },
+  { q: 'Posso usar Payoneer para comprar Bitcoin?', a: 'Não recomendado. Pode recusar transferências para exchanges. Use como ponte de recebimento apenas.' },
+  { q: 'A Payoneer tem cartão que funciona no Brasil?', a: 'Sim. Mastercard prepaid funciona em qualquer máquina que aceite MC. Saldo em USD com conversão para BRL no ponto de venda.' },
+  { q: 'Qual a diferença entre Payoneer e PayPal?', a: 'Payoneer oferece dados bancários locais em múltiplos países, taxas geralmente menores para B2B e saque direto para banco BR com câmbio mais competitivo.' },
+  { q: 'Payoneer é boa para soberania financeira?', a: 'Ferramenta tática excelente para receber pagamentos internacionais. Mas não é soberania: exige KYC, reporta CRS e pode bloquear contas.' },
 ];
-
-/* ── Verdict ── */
 const VERDICT_FOR = [
   'Freelancers que recebem de clientes internacionais ou marketplaces',
   'Vendedores de e-commerce cross-border (Amazon, eBay, Shopify)',
-  'Quem precisa de dados bancários locais nos EUA, Europa ou UK para recebimento',
-  'Empresas que fazem pagamentos em massa para fornecedores internacionais',
+  'Quem precisa de dados bancários locais para recebimento',
+  'Empresas que fazem pagamentos em massa para fornecedores',
   'Quem já usa Upwork, Fiverr, Airbnb ou Google AdSense',
 ];
-
 const VERDICT_AGAINST = [
-  'Quem busca privacidade financeira (Payoneer reporta via CRS)',
-  'Quem quer o melhor câmbio possível (Wise tem câmbio real melhor)',
-  'Quem opera exclusivamente com cripto (Payoneer pode bloquear)',
-  'Quem não recebe pagamentos de empresas internacionais (pouco útil para uso pessoal)',
+  'Quem busca privacidade financeira (reporta via CRS)',
+  'Quem quer o melhor câmbio possível (Wise tem melhor)',
+  'Quem opera exclusivamente com cripto',
+  'Quem não recebe pagamentos de empresas internacionais',
 ];
 
 export default function Payoneer() {
-  useEffect(() => { window.scrollTo(0, 0); }, []);
-
-  const heroRef = useRef(null);
-  const heroInView = useInView(heroRef, { once: true, margin: '-80px' });
-  const specsRef = useRef(null);
-  const specsInView = useInView(specsRef, { once: true, margin: '-60px' });
-  const prosRef = useRef(null);
-  const prosInView = useInView(prosRef, { once: true, margin: '-60px' });
-  const verdictRef = useRef(null);
-  const verdictInView = useInView(verdictRef, { once: true, margin: '-60px' });
-  const faqRef = useRef(null);
-  const faqInView = useInView(faqRef, { once: true, margin: '-60px' });
+  const heroRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
+  const heroY = useTransform(scrollYProgress, [0, 1], [0, 150]);
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
 
   return (
-    <div className="min-h-screen bg-[#050808] text-foreground font-sans overflow-x-hidden">
-      <ScrollToTop />
+    <>
       <Helmet>
         <title>Payoneer: Receba Pagamentos Internacionais — Análise Completa 2026 | Lord Junnior</title>
         <meta name="description" content="Análise completa da Payoneer: receba de Amazon, Fiverr e clientes globais com dados bancários locais em 10+ países. Cartão Mastercard, taxas, prós, contras e veredicto." />
         <link rel="canonical" href="https://lordjunnior.com.br/soberania-financeira/contas-internacionais/payoneer" />
-        <meta property="og:title" content="Payoneer: Receba Pagamentos Internacionais — Análise Completa 2026" />
-        <meta property="og:description" content="Review editorial da Payoneer: dados bancários locais, integração com marketplaces e saque para banco brasileiro. Vale a pena?" />
-        <meta property="og:url" content="https://lordjunnior.com.br/soberania-financeira/contas-internacionais/payoneer" />
-        <meta property="og:image" content="https://lordjunnior.com.br/og-image.png" />
-        <meta property="og:type" content="article" />
-        <script type="application/ld+json">{JSON.stringify({
-          '@context': 'https://schema.org',
-          '@type': 'Article',
-          headline: 'Payoneer: Receba Pagamentos Internacionais — Análise Completa 2026',
-          author: { '@type': 'Person', name: 'Lord Junnior' },
-          publisher: { '@type': 'Organization', name: 'Lord Junnior' },
-          datePublished: '2026-03-07',
-          description: 'Review editorial completo da Payoneer: fintech de pagamentos internacionais para freelancers e e-commerce cross-border.',
-        })}</script>
-        <script type="application/ld+json">{JSON.stringify({
-          '@context': 'https://schema.org',
-          '@type': 'FAQPage',
-          mainEntity: FAQ_DATA.map(f => ({
-            '@type': 'Question', name: f.q,
-            acceptedAnswer: { '@type': 'Answer', text: f.a },
-          })),
-        })}</script>
-        <script type="application/ld+json">{JSON.stringify({
-          '@context': 'https://schema.org',
-          '@type': 'BreadcrumbList',
-          itemListElement: [
-            { '@type': 'ListItem', position: 1, name: 'Início', item: 'https://lordjunnior.com.br/' },
-            { '@type': 'ListItem', position: 2, name: 'Soberania Financeira', item: 'https://lordjunnior.com.br/soberania-financeira' },
-            { '@type': 'ListItem', position: 3, name: 'Payoneer', item: 'https://lordjunnior.com.br/soberania-financeira/contas-internacionais/payoneer' },
-          ],
-        })}</script>
+        <script type="application/ld+json">{JSON.stringify({ '@context': 'https://schema.org', '@type': 'Article', headline: 'Payoneer: Receba Pagamentos Internacionais — Análise Completa 2026', author: { '@type': 'Person', name: 'Lord Junnior' }, datePublished: '2026-03-07' })}</script>
+        <script type="application/ld+json">{JSON.stringify({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: FAQ_DATA.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) })}</script>
+        <script type="application/ld+json">{JSON.stringify({ '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Início', item: 'https://lordjunnior.com.br/' },
+          { '@type': 'ListItem', position: 2, name: 'Soberania Financeira', item: 'https://lordjunnior.com.br/soberania-financeira' },
+          { '@type': 'ListItem', position: 3, name: 'Payoneer', item: 'https://lordjunnior.com.br/soberania-financeira/contas-internacionais/payoneer' },
+        ] })}</script>
       </Helmet>
+      <ScrollToTop />
+      <ReadingProgressBar />
+      <FloatingToc />
 
-      {/* Film Grain */}
-      <div className="fixed inset-0 pointer-events-none z-0 opacity-[0.035]"
-        style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'n\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23n)\'/%3E%3C/svg%3E")', backgroundRepeat: 'repeat' }}
-      />
+      <div className="min-h-screen bg-[#050808] text-stone-200">
+        <div className="fixed inset-0 z-50 pointer-events-none opacity-[0.035]">
+          <svg width="100%" height="100%"><filter id="pay-grain"><feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="4" stitchTiles="stitch" /><feColorMatrix type="saturate" values="0" /></filter><rect width="100%" height="100%" filter="url(#pay-grain)" /></svg>
+        </div>
+        <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+          <div className="absolute -top-[200px] -left-[200px] w-[1200px] h-[300px] opacity-[0.025] rotate-[25deg]" style={{ background: 'linear-gradient(180deg, transparent, rgba(249,115,22,0.6), transparent)' }} />
+          <div className="absolute -bottom-[150px] -right-[150px] w-[900px] h-[200px] opacity-[0.02] -rotate-[30deg]" style={{ background: 'linear-gradient(180deg, transparent, rgba(245,158,11,0.5), transparent)' }} />
+        </div>
 
-      {/* Light Beam */}
-      <div className="fixed inset-0 pointer-events-none z-0"
-        style={{ background: 'linear-gradient(135deg, hsla(20,80%,50%,0.03) 0%, transparent 40%, transparent 60%, hsla(20,80%,50%,0.02) 100%)' }}
-      />
-
-      <div className="relative z-10">
-
-        {/* ══════════════════════════════════════════
-            CHAPTER 01 — HERO / CURIOSIDADE
-        ══════════════════════════════════════════ */}
-        <section ref={heroRef} id="hero" className="relative overflow-hidden min-h-[85vh] flex items-end">
-          <div className="absolute inset-0">
-            <img src={heroImg} alt="" className="w-full h-full object-cover brightness-[0.25] saturate-[0.7]"
-              style={{ transform: 'translate3d(0,0,0)' }} data-parallax="0.08" />
-            <div className="absolute inset-0 bg-gradient-to-b from-[#050808]/40 via-[#050808]/70 to-[#050808]" />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#050808]/80 via-transparent to-[#050808]/60" />
-          </div>
-
-          <div className="relative max-w-5xl mx-auto px-6 pb-24 pt-28 w-full">
-            <Link to="/soberania-financeira" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground mb-16 text-[10px] font-bold uppercase tracking-[0.4em] font-mono transition-colors">
-              <ArrowLeft size={14} /> Soberania Financeira
+        {/* HERO */}
+        <div ref={heroRef} className="relative h-[90vh] min-h-[650px] max-h-[950px] flex items-end overflow-hidden">
+          <motion.div className="absolute inset-0 z-0" style={{ y: heroY }}>
+            <div className="absolute inset-0 scale-110"><img src={heroImg} alt="" className="w-full h-full object-cover" style={{ filter: 'brightness(0.25) saturate(0.7)' }} /></div>
+            <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(5,8,8,0.05) 0%, rgba(5,8,8,0.4) 35%, rgba(5,8,8,0.88) 65%, #050808 100%)' }} />
+            <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse 130% 100% at 50% 15%, transparent 25%, rgba(5,8,8,0.92) 100%)' }} />
+          </motion.div>
+          <motion.div className="relative z-10 w-full px-6 md:px-12 lg:px-20 pb-16 md:pb-24" style={{ opacity: heroOpacity }}>
+            <Link to="/soberania-financeira" className="inline-flex items-center gap-2 text-stone-500 hover:text-white text-xs font-semibold uppercase tracking-[0.2em] transition-colors mb-10">
+              <ChevronRight size={14} className="rotate-180" /> Soberania Financeira
             </Link>
-
-            <motion.div initial="hidden" animate={heroInView ? 'visible' : 'hidden'} variants={fadeUp} custom={0}>
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-sm border border-orange-500/20 bg-orange-500/5 flex items-center justify-center">
-                  <Briefcase className="w-5 h-5 text-orange-500" />
-                </div>
-                <span className="text-orange-400 font-black uppercase tracking-[0.4em] text-[9px] font-mono">Review Editorial</span>
-              </div>
+            <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, ease: EASE }} className="mb-5">
+              <span className="text-[10px] font-bold tracking-[0.5em] uppercase text-orange-400/70">REVIEW EDITORIAL · PAGAMENTOS B2B</span>
             </motion.div>
-
-            <motion.h1 initial="hidden" animate={heroInView ? 'visible' : 'hidden'} variants={fadeUp} custom={1}
-              className="font-['Bebas_Neue'] text-5xl md:text-8xl lg:text-9xl tracking-tight uppercase mb-6 leading-[0.9]"
-            >
-              Payoneer<br />
-              <span className="text-orange-400">Análise Completa</span>
-            </motion.h1>
-
-            <motion.p initial="hidden" animate={heroInView ? 'visible' : 'hidden'} variants={fadeUp} custom={2}
-              className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl font-['Space_Grotesk']"
-            >
-              A plataforma que transformou freelancers brasileiros em profissionais globais.
-              Dados bancários locais nos EUA, Europa e UK para receber de Amazon, Fiverr
-              e qualquer cliente corporativo como se você estivesse no país deles.
-            </motion.p>
-
-            <motion.div initial="hidden" animate={heroInView ? 'visible' : 'hidden'} variants={fadeUp} custom={3}
-              className="mt-8 flex flex-wrap gap-3"
-            >
+            <div className="flex items-start gap-5 mb-6">
+              <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5, delay: 0.2, ease: EASE }}
+                className="p-4 rounded-2xl bg-orange-500/10 border border-orange-500/20 shrink-0 backdrop-blur-sm">
+                <Briefcase className="text-orange-400" size={30} />
+              </motion.div>
+              <div>
+                <motion.h1 initial={{ opacity: 0, y: 30, filter: 'blur(8px)' }} animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                  transition={{ duration: 0.8, delay: 0.15, ease: EASE }}
+                  className="text-3xl md:text-5xl lg:text-7xl font-bold tracking-tight text-white leading-[0.92]"
+                  style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                  Payoneer<br /><span className="text-orange-400">Análise Completa</span>
+                </motion.h1>
+                <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 0.8, y: 0 }} transition={{ duration: 0.6, delay: 0.4, ease: EASE }}
+                  className="text-stone-400 text-sm md:text-base lg:text-lg leading-relaxed mt-5 max-w-2xl">
+                  A plataforma que transformou freelancers brasileiros em profissionais globais.
+                  Dados bancários locais nos EUA, Europa e UK para receber como se você estivesse lá.
+                </motion.p>
+              </div>
+            </div>
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.6, ease: EASE }}
+              className="flex flex-wrap gap-3 mt-8">
               <div className="inline-flex items-center gap-2 border border-orange-500/20 bg-orange-500/5 px-4 py-2 rounded-sm">
-                <Briefcase className="w-4 h-4 text-orange-500" />
-                <span className="text-orange-400 text-xs font-bold uppercase tracking-wider font-mono">
-                  B2B & Freelancers
-                </span>
+                <Briefcase className="w-4 h-4 text-orange-500" /><span className="text-orange-400 text-xs font-bold uppercase tracking-wider font-mono">B2B & Freelancers</span>
               </div>
               <div className="inline-flex items-center gap-2 border border-primary/20 bg-primary/5 px-4 py-2 rounded-sm">
-                <Clock className="w-4 h-4 text-primary" />
-                <span className="text-primary text-xs font-bold uppercase tracking-wider font-mono">
-                  20+ anos de mercado
-                </span>
+                <Clock className="w-4 h-4 text-primary" /><span className="text-primary text-xs font-bold uppercase tracking-wider font-mono">20+ anos de mercado</span>
               </div>
             </motion.div>
-          </div>
-        </section>
-
-        {/* ══════════════════════════════════════════
-            CHAPTER 02 — SPECS GRID
-        ══════════════════════════════════════════ */}
-        <section ref={specsRef} id="ficha-tecnica" className="max-w-5xl mx-auto px-6 py-24">
-          <motion.div initial="hidden" animate={specsInView ? 'visible' : 'hidden'} variants={fadeUp} custom={0} className="mb-12">
-            <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-orange-500/60 mb-2">Capítulo 02</p>
-            <h2 className="font-['Bebas_Neue'] text-4xl md:text-5xl tracking-tight uppercase">
-              Ficha <span className="text-orange-400">Técnica</span>
-            </h2>
-            <div className="h-px bg-gradient-to-r from-orange-500/30 via-border/30 to-transparent mt-6" />
-          </motion.div>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {SPECS.map((spec, i) => {
-              const Icon = spec.icon;
-              return (
-                <motion.div key={i} initial="hidden" animate={specsInView ? 'visible' : 'hidden'} variants={fadeUp} custom={i + 1}
-                  className="border border-border/40 bg-white/[0.02] rounded-sm p-6 hover:border-orange-500/20 hover:bg-white/[0.04] transition-all duration-300"
-                >
-                  <Icon className="w-5 h-5 text-orange-500/60 mb-3" />
-                  <p className="font-['Bebas_Neue'] text-2xl text-foreground mb-1">{spec.value}</p>
-                  <p className="text-[10px] font-mono uppercase tracking-[0.3em] text-muted-foreground">{spec.label}</p>
-                </motion.div>
-              );
-            })}
-          </div>
-        </section>
-
-        {/* ══════════════════════════════════════════
-            CHAPTER 03 — COMO FUNCIONA / BENTO GRID
-        ══════════════════════════════════════════ */}
-        <section id="funcionalidades" className="bg-[#0a0d12]">
-          <div className="max-w-5xl mx-auto px-6 py-24">
-            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-60px' }} transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              className="mb-12"
-            >
-              <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-orange-500/60 mb-2">Capítulo 03</p>
-              <h2 className="font-['Bebas_Neue'] text-4xl md:text-5xl tracking-tight uppercase">
-                O que a Payoneer <span className="text-orange-400">oferece</span>
-              </h2>
-              <div className="h-px bg-gradient-to-r from-orange-500/30 via-border/30 to-transparent mt-6" />
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 0.4 }} transition={{ delay: 1.5 }} className="flex items-center gap-2 mt-10">
+              <motion.div animate={{ y: [0, 6, 0] }} transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}><ChevronDown size={14} className="text-stone-500" /></motion.div>
+              <span className="text-[9px] font-bold tracking-[0.3em] uppercase text-stone-600">Role para explorar</span>
             </motion.div>
+          </motion.div>
+          <div className="absolute bottom-0 left-0 right-0 h-32 z-10 pointer-events-none" style={{ background: 'linear-gradient(to bottom, transparent, #050808)' }} />
+        </div>
 
+        {/* CH01 — FICHA TÉCNICA */}
+        <ChapterKickoff number="01" title="Ficha Técnica" image={appImg} id="ficha-tecnica" isOdd={true} />
+        <ScrollSection className="max-w-5xl mx-auto px-6 py-16 md:py-20" isOdd={true}>
+          <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-60px' }}>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+              {SPECS.map((spec, i) => { const Icon = spec.icon; return (
+                <motion.div key={i} variants={staggerChild} className="border border-white/[0.06] bg-white/[0.02] rounded-2xl p-6 hover:border-orange-500/20 hover:bg-white/[0.04] transition-all duration-500">
+                  <Icon className="w-5 h-5 text-orange-500/60 mb-3" />
+                  <p className="text-2xl font-bold text-white mb-1" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{spec.value}</p>
+                  <p className="text-[10px] font-mono uppercase tracking-[0.3em] text-stone-500">{spec.label}</p>
+                </motion.div>
+              ); })}
+            </div>
+          </motion.div>
+        </ScrollSection>
+
+        {/* CH02 — FUNCIONALIDADES */}
+        <ChapterKickoff number="02" title="O que a Payoneer Oferece" image={heroImg} id="funcionalidades" isOdd={false} />
+        <ScrollSection className="max-w-5xl mx-auto px-6 py-16 md:py-20" isOdd={false}>
+          <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-60px' }}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <motion.div initial={{ opacity: 0, scale: 0.97 }} whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }} transition={{ duration: 0.7 }}
-                className="border border-border/40 bg-white/[0.02] rounded-sm p-6 md:row-span-2 flex items-center justify-center"
-              >
-                <img src={appImg} alt="Interface da Payoneer" className="w-full max-w-xs rounded-sm opacity-90" />
+              <motion.div variants={staggerChild} className="border border-white/[0.06] bg-white/[0.02] rounded-2xl p-6 md:row-span-2 flex items-center justify-center">
+                <img src={appImg} alt="Payoneer App" className="w-full max-w-xs rounded-xl opacity-90" />
               </motion.div>
-
               {FEATURES.map((item, i) => (
-                <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.15 }}
-                  className="border border-border/40 bg-white/[0.02] rounded-sm p-6 hover:border-orange-500/20 transition-colors"
-                >
-                  <span className="text-orange-500/30 font-['Bebas_Neue'] text-4xl">{item.step}</span>
-                  <h3 className="font-['Space_Grotesk'] font-bold text-foreground text-lg mt-2 mb-2">{item.title}</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed font-['Space_Grotesk']">{item.desc}</p>
+                <motion.div key={i} variants={staggerChild} className="border border-white/[0.06] bg-white/[0.02] rounded-2xl p-6 hover:border-orange-500/20 transition-colors duration-500">
+                  <span className="text-orange-500/30 text-4xl font-bold" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{item.step}</span>
+                  <h3 className="font-bold text-white text-lg mt-2 mb-2" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{item.title}</h3>
+                  <p className="text-stone-400 text-sm leading-relaxed">{item.desc}</p>
                 </motion.div>
               ))}
             </div>
-          </div>
-        </section>
-
-        {/* ══════════════════════════════════════════
-            CHAPTER 04 — PAYONEER VS WISE VS BANCOS
-        ══════════════════════════════════════════ */}
-        <section id="comparativo" className="max-w-5xl mx-auto px-6 py-24">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-60px' }} transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="mb-12"
-          >
-            <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-orange-500/60 mb-2">Capítulo 04</p>
-            <h2 className="font-['Bebas_Neue'] text-4xl md:text-5xl tracking-tight uppercase">
-              Payoneer vs <span className="text-orange-400">Wise</span> vs <span className="text-destructive">Bancos</span>
-            </h2>
-            <div className="h-px bg-gradient-to-r from-orange-500/30 via-border/30 to-transparent mt-6" />
           </motion.div>
+        </ScrollSection>
 
-          <div className="overflow-x-auto">
-            <table className="w-full border-collapse">
-              <thead>
-                <tr>
-                  <th className="text-left text-[10px] font-mono uppercase tracking-[0.3em] text-muted-foreground p-4 border-b border-border/30">Critério</th>
-                  <th className="text-left text-[10px] font-mono uppercase tracking-[0.3em] text-orange-400 p-4 border-b border-border/30">Payoneer</th>
-                  <th className="text-left text-[10px] font-mono uppercase tracking-[0.3em] text-emerald-400 p-4 border-b border-border/30">Wise</th>
-                  <th className="text-left text-[10px] font-mono uppercase tracking-[0.3em] text-muted-foreground/60 p-4 border-b border-border/30">Banco BR</th>
-                </tr>
-              </thead>
-              <tbody className="font-['Space_Grotesk'] text-sm">
-                {[
-                  { criterion: 'Foco', payoneer: 'B2B / Freelancers', wise: 'Pessoal / Freelancers', bank: 'Generalista' },
-                  { criterion: 'Câmbio', payoneer: 'Spread ~2%', wise: 'Mid-market (real)', bank: 'Spread 2-5%' },
-                  { criterion: 'Dados bancários locais', payoneer: 'EUA, EU, UK, JP, AU', wise: 'EUA, EU, UK + 7', bank: 'Apenas Brasil' },
-                  { criterion: 'Integração marketplaces', payoneer: 'Amazon, Fiverr, Upwork', wise: 'Limitada', bank: 'Nenhuma' },
-                  { criterion: 'Saque para banco BR', payoneer: 'Sim (taxa ~2%)', wise: 'Sim (taxa ~1.5%)', bank: 'N/A' },
-                  { criterion: 'Crypto friendly', payoneer: 'Não', wise: 'Parcialmente', bank: 'Não' },
-                ].map((row, i) => (
-                  <tr key={i} className="border-b border-border/20 hover:bg-white/[0.02] transition-colors">
-                    <td className="p-4 text-muted-foreground font-medium">{row.criterion}</td>
-                    <td className="p-4 text-foreground">{row.payoneer}</td>
-                    <td className="p-4 text-foreground">{row.wise}</td>
-                    <td className="p-4 text-muted-foreground/60">{row.bank}</td>
+        {/* CH03 — COMPARATIVO */}
+        <ChapterKickoff number="03" title="Payoneer vs Wise vs Bancos" image={heroImg} id="comparativo" isOdd={true} />
+        <ScrollSection className="max-w-5xl mx-auto px-6 py-16 md:py-20" isOdd={true}>
+          <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-60px' }}>
+            <div className="overflow-x-auto">
+              <table className="w-full border-collapse">
+                <thead>
+                  <tr>
+                    <th className="text-left text-[10px] font-mono uppercase tracking-[0.3em] text-stone-500 p-4 border-b border-white/[0.06]">Critério</th>
+                    <th className="text-left text-[10px] font-mono uppercase tracking-[0.3em] text-orange-400 p-4 border-b border-white/[0.06]">Payoneer</th>
+                    <th className="text-left text-[10px] font-mono uppercase tracking-[0.3em] text-emerald-400 p-4 border-b border-white/[0.06]">Wise</th>
+                    <th className="text-left text-[10px] font-mono uppercase tracking-[0.3em] text-stone-600 p-4 border-b border-white/[0.06]">Banco BR</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </section>
+                </thead>
+                <tbody className="text-sm">
+                  {COMPARE.map((row, i) => (
+                    <motion.tr key={i} variants={staggerChild} className="border-b border-white/[0.04] hover:bg-white/[0.02] transition-colors">
+                      <td className="p-4 text-stone-400 font-medium">{row.criterion}</td>
+                      <td className="p-4 text-white">{row.payoneer}</td>
+                      <td className="p-4 text-white">{row.wise}</td>
+                      <td className="p-4 text-stone-500">{row.bank}</td>
+                    </motion.tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </motion.div>
+        </ScrollSection>
 
-        {/* ══════════════════════════════════════════
-            CHAPTER 05 — PRÓS E CONTRAS
-        ══════════════════════════════════════════ */}
-        <section ref={prosRef} id="pros-contras" className="bg-[#0a0d12]">
-          <div className="max-w-5xl mx-auto px-6 py-24">
-            <motion.div initial="hidden" animate={prosInView ? 'visible' : 'hidden'} variants={fadeUp} custom={0} className="mb-12">
-              <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-orange-500/60 mb-2">Capítulo 05</p>
-              <h2 className="font-['Bebas_Neue'] text-4xl md:text-5xl tracking-tight uppercase">
-                Prós e <span className="text-destructive">Contras</span>
-              </h2>
-              <div className="h-px bg-gradient-to-r from-orange-500/30 via-border/30 to-transparent mt-6" />
-            </motion.div>
-
+        {/* CH04 — PRÓS E CONTRAS */}
+        <ChapterKickoff number="04" title="Prós e Contras" image={appImg} id="pros-contras" isOdd={false} />
+        <ScrollSection className="max-w-5xl mx-auto px-6 py-16 md:py-20" isOdd={false}>
+          <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-60px' }}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <motion.div initial="hidden" animate={prosInView ? 'visible' : 'hidden'} variants={fadeUp} custom={1}
-                className="border border-emerald-500/20 bg-emerald-500/[0.03] rounded-sm p-8"
-              >
-                <div className="flex items-center gap-3 mb-6">
-                  <Check className="w-5 h-5 text-emerald-500" />
-                  <h3 className="font-['Bebas_Neue'] text-2xl text-emerald-400 uppercase">Vantagens</h3>
-                </div>
-                <ul className="space-y-4">
-                  {PROS.map((pro, i) => (
-                    <li key={i} className="flex gap-3 text-sm text-muted-foreground font-['Space_Grotesk'] leading-relaxed">
-                      <Check className="w-4 h-4 text-emerald-500/60 shrink-0 mt-0.5" />
-                      {pro}
-                    </li>
-                  ))}
-                </ul>
+              <motion.div variants={staggerChild} className="border border-emerald-500/20 bg-emerald-500/[0.03] rounded-2xl p-8">
+                <div className="flex items-center gap-3 mb-6"><CheckCircle className="w-5 h-5 text-emerald-500" /><h3 className="text-2xl font-bold text-emerald-400 uppercase" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Vantagens</h3></div>
+                <ul className="space-y-4">{PROS.map((pro, i) => (<li key={i} className="flex gap-3 text-sm text-stone-400 leading-relaxed"><span className="text-emerald-500 mt-1 shrink-0">+</span> {pro}</li>))}</ul>
               </motion.div>
-
-              <motion.div initial="hidden" animate={prosInView ? 'visible' : 'hidden'} variants={fadeUp} custom={2}
-                className="border border-destructive/20 bg-destructive/[0.03] rounded-sm p-8"
-              >
-                <div className="flex items-center gap-3 mb-6">
-                  <X className="w-5 h-5 text-destructive" />
-                  <h3 className="font-['Bebas_Neue'] text-2xl text-destructive uppercase">Desvantagens</h3>
-                </div>
-                <ul className="space-y-4">
-                  {CONS.map((con, i) => (
-                    <li key={i} className="flex gap-3 text-sm text-muted-foreground font-['Space_Grotesk'] leading-relaxed">
-                      <X className="w-4 h-4 text-destructive/60 shrink-0 mt-0.5" />
-                      {con}
-                    </li>
-                  ))}
-                </ul>
+              <motion.div variants={staggerChild} className="border border-rose-500/20 bg-rose-500/[0.03] rounded-2xl p-8">
+                <div className="flex items-center gap-3 mb-6"><XCircle className="w-5 h-5 text-rose-500" /><h3 className="text-2xl font-bold text-rose-400 uppercase" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Desvantagens</h3></div>
+                <ul className="space-y-4">{CONS.map((con, i) => (<li key={i} className="flex gap-3 text-sm text-stone-400 leading-relaxed"><span className="text-rose-500 mt-1 shrink-0">!</span> {con}</li>))}</ul>
               </motion.div>
             </div>
-
-            {/* Alert Box */}
-            <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="mt-6 border border-amber-500/30 bg-amber-500/[0.05] rounded-sm p-6 flex gap-4 items-start"
-            >
+            <motion.div variants={staggerChild} className="mt-6 rounded-2xl border border-amber-500/20 bg-amber-500/[0.04] p-6 md:p-8 flex gap-4 items-start">
               <AlertTriangle className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
               <div>
-                <h4 className="font-['Space_Grotesk'] font-bold text-amber-400 text-sm mb-2 uppercase tracking-wider">Aviso sobre Marketplaces</h4>
-                <p className="text-muted-foreground text-sm leading-relaxed font-['Space_Grotesk']">
-                  Se você recebe exclusivamente de marketplaces como Amazon ou Fiverr, a Payoneer é provavelmente
-                  a melhor opção pelo custo-benefício e integração nativa. Para transferências pessoais ou
-                  câmbio puro, a Wise oferece taxa mid-market real (melhor câmbio).
-                  <strong className="text-foreground/80"> Use cada ferramenta para o que ela foi desenhada.</strong>
+                <h4 className="font-bold text-amber-400 text-sm mb-2 uppercase tracking-wider" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Aviso sobre Marketplaces</h4>
+                <p className="text-stone-400 text-sm leading-relaxed">
+                  Se você recebe exclusivamente de marketplaces como Amazon ou Fiverr, a Payoneer é provavelmente a melhor opção.
+                  Para transferências pessoais, a Wise tem melhor câmbio.
+                  <strong className="text-stone-200"> Use cada ferramenta para o que foi desenhada.</strong>
                 </p>
               </div>
             </motion.div>
-          </div>
-        </section>
-
-        {/* ══════════════════════════════════════════
-            CHAPTER 06 — VEREDICTO
-        ══════════════════════════════════════════ */}
-        <section ref={verdictRef} id="veredicto" className="max-w-5xl mx-auto px-6 py-24">
-          <motion.div initial="hidden" animate={verdictInView ? 'visible' : 'hidden'} variants={fadeUp} custom={0} className="mb-12">
-            <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-orange-500/60 mb-2">Capítulo 06</p>
-            <h2 className="font-['Bebas_Neue'] text-4xl md:text-5xl tracking-tight uppercase">
-              Veredicto <span className="text-orange-400">Final</span>
-            </h2>
-            <div className="h-px bg-gradient-to-r from-orange-500/30 via-border/30 to-transparent mt-6" />
           </motion.div>
+        </ScrollSection>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-            <motion.div initial="hidden" animate={verdictInView ? 'visible' : 'hidden'} variants={fadeUp} custom={1}
-              className="border border-orange-500/20 bg-orange-500/[0.03] rounded-sm p-8"
-            >
-              <h3 className="font-['Bebas_Neue'] text-xl text-orange-400 uppercase mb-4">Para quem serve</h3>
-              <ul className="space-y-3">
-                {VERDICT_FOR.map((item, i) => (
-                  <li key={i} className="flex gap-3 text-sm text-muted-foreground font-['Space_Grotesk']">
-                    <ChevronRight className="w-4 h-4 text-orange-500/60 shrink-0 mt-0.5" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-
-            <motion.div initial="hidden" animate={verdictInView ? 'visible' : 'hidden'} variants={fadeUp} custom={2}
-              className="border border-border/40 bg-white/[0.02] rounded-sm p-8"
-            >
-              <h3 className="font-['Bebas_Neue'] text-xl text-muted-foreground uppercase mb-4">Para quem não serve</h3>
-              <ul className="space-y-3">
-                {VERDICT_AGAINST.map((item, i) => (
-                  <li key={i} className="flex gap-3 text-sm text-muted-foreground/60 font-['Space_Grotesk']">
-                    <Lock className="w-4 h-4 text-muted-foreground/30 shrink-0 mt-0.5" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          </div>
-
-          {/* CTA */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.97 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="relative overflow-hidden rounded-sm border border-orange-500/30 bg-gradient-to-br from-orange-500/[0.08] via-white/[0.02] to-transparent p-10 md:p-14"
-          >
-            <div className="absolute top-6 right-6 w-3 h-3">
-              <span className="absolute inset-0 rounded-full bg-orange-500 animate-ping opacity-40" />
-              <span className="relative block w-3 h-3 rounded-full bg-orange-500" />
+        {/* CH05 — VEREDICTO */}
+        <ChapterKickoff number="05" title="Veredicto Final" image={heroImg} id="veredicto" isOdd={true} />
+        <ScrollSection className="max-w-5xl mx-auto px-6 py-16 md:py-20" isOdd={true}>
+          <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-60px' }}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+              <motion.div variants={staggerChild} className="border border-orange-500/20 bg-orange-500/[0.03] rounded-2xl p-8">
+                <h3 className="text-xl font-bold text-orange-400 uppercase mb-4" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Para quem serve</h3>
+                <ul className="space-y-3">{VERDICT_FOR.map((item, i) => (<li key={i} className="flex gap-3 text-sm text-stone-400"><ChevronRight className="w-4 h-4 text-orange-500/60 shrink-0 mt-0.5" />{item}</li>))}</ul>
+              </motion.div>
+              <motion.div variants={staggerChild} className="border border-white/[0.06] bg-white/[0.02] rounded-2xl p-8">
+                <h3 className="text-xl font-bold text-stone-500 uppercase mb-4" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Para quem não serve</h3>
+                <ul className="space-y-3">{VERDICT_AGAINST.map((item, i) => (<li key={i} className="flex gap-3 text-sm text-stone-500"><Lock className="w-4 h-4 text-stone-600 shrink-0 mt-0.5" />{item}</li>))}</ul>
+              </motion.div>
             </div>
-
-            <div className="flex items-center gap-3 mb-4">
-              <Send className="w-5 h-5 text-orange-500" />
-              <span className="font-mono text-[10px] tracking-[0.3em] uppercase text-orange-500/80">Receba pagamentos globais</span>
-            </div>
-
-            <h2 className="font-['Bebas_Neue'] text-3xl md:text-5xl tracking-tight uppercase mb-4 leading-[0.95]">
-              Abra sua conta<br /><span className="text-orange-400">Payoneer</span>
-            </h2>
-
-            <p className="text-muted-foreground text-base leading-relaxed max-w-xl mb-8 font-['Space_Grotesk']">
-              Crie sua conta Payoneer e comece a receber pagamentos de clientes e marketplaces internacionais
-              com dados bancários locais nos EUA, Europa e UK. Abertura 100% online, sem mensalidade.
-            </p>
-
-            <div className="flex flex-wrap gap-4">
-              <a
-                href={AFFILIATE_LINK}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative inline-flex items-center gap-2 bg-orange-600 text-foreground font-bold text-sm uppercase tracking-wider px-8 py-4 rounded-sm overflow-hidden transition-all hover:shadow-[0_0_40px_hsla(20,80%,50%,0.4)]"
-              >
-                <span className="absolute inset-0 bg-white/10 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
-                <span className="relative font-['Space_Grotesk']">Criar conta Payoneer</span>
-                <ExternalLink size={14} className="relative" />
-              </a>
-              <Link
-                to="/soberania-financeira/contas-internacionais/wise"
-                className="inline-flex items-center gap-2 border border-border/50 text-muted-foreground font-bold text-sm uppercase tracking-wider px-8 py-4 rounded-sm hover:border-foreground/30 hover:text-foreground transition-colors font-['Space_Grotesk']"
-              >
-                Comparar com Wise
-              </Link>
-            </div>
-          </motion.div>
-        </section>
-
-        {/* ══════════════════════════════════════════
-            CHAPTER 07 — SOBERANIA CTA
-        ══════════════════════════════════════════ */}
-        <section id="soberania" className="bg-[#0a0d12]">
-          <div className="max-w-5xl mx-auto px-6 py-24">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }} transition={{ duration: 0.6 }}
-              className="border border-border/30 bg-white/[0.02] rounded-sm p-10 md:p-14 text-center"
-            >
-              <Shield className="w-8 h-8 text-primary mx-auto mb-4" />
-              <h2 className="font-['Bebas_Neue'] text-2xl md:text-4xl tracking-tight uppercase mb-4">
-                Fintech não é <span className="text-destructive">soberania</span>
+            {/* CTA */}
+            <motion.div variants={staggerChild} className="relative overflow-hidden rounded-3xl border border-orange-500/30 p-10 md:p-14"
+              style={{ background: 'linear-gradient(135deg, rgba(249,115,22,0.08), rgba(255,255,255,0.02), transparent)' }}>
+              <div className="absolute top-6 right-6 w-3 h-3"><span className="absolute inset-0 rounded-full bg-orange-500 animate-ping opacity-40" /><span className="relative block w-3 h-3 rounded-full bg-orange-500" /></div>
+              <div className="flex items-center gap-3 mb-4"><Send className="w-5 h-5 text-orange-500" /><span className="font-mono text-[10px] tracking-[0.3em] uppercase text-orange-500/80">Receba pagamentos globais</span></div>
+              <h2 className="text-3xl md:text-5xl font-bold tracking-tight uppercase mb-4 leading-[0.95] text-white" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                Abra sua conta<br /><span className="text-orange-400">Payoneer</span>
               </h2>
-              <p className="text-muted-foreground text-base max-w-2xl mx-auto leading-relaxed mb-8 font-['Space_Grotesk']">
-                A Payoneer é uma ferramenta tática poderosa para quem precisa receber pagamentos internacionais,
-                mas nenhuma fintech substitui a autocustódia. A Payoneer reporta via CRS, exige KYC e pode
-                bloquear contas. Para proteção real contra confisco e bloqueio, Bitcoin com custódia própria.
+              <p className="text-stone-400 text-base leading-relaxed max-w-xl mb-8">
+                Crie sua conta e comece a receber de clientes e marketplaces internacionais com dados bancários locais. Abertura 100% online, sem mensalidade.
               </p>
-              <Link to="/bitcoin"
-                className="inline-flex items-center gap-2 bg-white/[0.05] border border-border/40 text-foreground font-bold text-sm uppercase tracking-wider px-7 py-3.5 rounded-sm hover:bg-white/[0.08] hover:border-primary/20 transition-all font-['Space_Grotesk']"
-              >
-                Explorar protocolo Bitcoin <ChevronRight size={14} />
-              </Link>
+              <div className="flex flex-wrap gap-4">
+                <a href={AFFILIATE_LINK} target="_blank" rel="noopener noreferrer"
+                  className="group relative inline-flex items-center gap-2 bg-orange-600 text-white font-bold text-sm uppercase tracking-wider px-8 py-4 rounded-xl overflow-hidden transition-all hover:shadow-[0_0_40px_rgba(249,115,22,0.4)]">
+                  <span className="absolute inset-0 bg-white/10 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+                  <span className="relative">Criar conta Payoneer</span><ExternalLink size={14} className="relative" />
+                </a>
+                <Link to="/soberania-financeira/contas-internacionais/wise" className="inline-flex items-center gap-2 border border-white/[0.08] text-stone-400 font-bold text-sm uppercase tracking-wider px-8 py-4 rounded-xl hover:border-white/20 hover:text-white transition-colors">Comparar com Wise</Link>
+              </div>
             </motion.div>
-          </div>
-        </section>
-
-        {/* ══════════════════════════════════════════
-            CHAPTER 08 — FAQ
-        ══════════════════════════════════════════ */}
-        <section ref={faqRef} id="faq" className="max-w-3xl mx-auto px-6 py-24 pb-32">
-          <motion.div initial="hidden" animate={faqInView ? 'visible' : 'hidden'} variants={fadeUp} custom={0} className="mb-10">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-sm border border-orange-500/20 bg-orange-500/5 flex items-center justify-center">
-                <HelpCircle className="w-5 h-5 text-orange-500" />
-              </div>
-              <div>
-                <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-orange-500/60">Capítulo 08</p>
-                <h2 className="font-['Bebas_Neue'] text-2xl md:text-3xl tracking-tight uppercase">
-                  Dúvidas sobre a Payoneer
-                </h2>
-              </div>
-            </div>
-            <div className="h-px bg-gradient-to-r from-orange-500/30 via-border/50 to-transparent" />
+            <motion.div variants={staggerChild} className="mt-10 border border-white/[0.06] bg-white/[0.02] rounded-2xl p-10 md:p-14 text-center">
+              <Shield className="w-8 h-8 text-primary mx-auto mb-4" />
+              <h2 className="text-2xl md:text-4xl font-bold tracking-tight uppercase mb-4 text-white" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Fintech não é <span className="text-destructive">soberania</span></h2>
+              <p className="text-stone-400 text-base max-w-2xl mx-auto leading-relaxed mb-8">A Payoneer é poderosa para receber pagamentos internacionais, mas reporta via CRS, exige KYC e pode bloquear contas. Para proteção real, Bitcoin com custódia própria.</p>
+              <Link to="/bitcoin" className="inline-flex items-center gap-2 bg-white/[0.05] border border-white/[0.08] text-white font-bold text-sm uppercase tracking-wider px-7 py-3.5 rounded-xl hover:bg-white/[0.08] transition-all">Explorar protocolo Bitcoin <ChevronRight size={14} /></Link>
+            </motion.div>
           </motion.div>
+        </ScrollSection>
 
-          <motion.div initial="hidden" animate={faqInView ? 'visible' : 'hidden'} variants={fadeUp} custom={1}>
-            <Accordion type="single" collapsible className="space-y-3">
-              {FAQ_DATA.map((faq, i) => (
-                <AccordionItem key={i} value={`faq-${i}`}
-                  className="border border-border/30 rounded-sm bg-white/[0.02] px-6 data-[state=open]:border-orange-500/20 transition-colors duration-300"
-                >
-                  <AccordionTrigger className="text-left text-sm md:text-base font-semibold hover:no-underline py-5 text-foreground/90 font-['Space_Grotesk']">
-                    {faq.q}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground text-sm md:text-base leading-relaxed pb-6 font-['Space_Grotesk']">
-                    {faq.a}
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
+        {/* CH06 — FAQ */}
+        <ChapterKickoff number="06" title="Perguntas Frequentes" image={appImg} id="faq" isOdd={false} />
+        <ScrollSection className="max-w-3xl mx-auto px-6 py-16 md:py-20 pb-32" isOdd={false}>
+          <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-60px' }}>
+            <motion.div variants={staggerChild}>
+              <div className="flex items-center gap-3 mb-8">
+                <div className="w-10 h-10 rounded-xl border border-orange-500/20 bg-orange-500/5 flex items-center justify-center"><HelpCircle className="w-5 h-5 text-orange-500" /></div>
+                <div>
+                  <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-orange-500/60">FAQ · SEO otimizado</p>
+                  <h2 className="text-2xl md:text-3xl font-bold tracking-tight uppercase text-white" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Dúvidas sobre a Payoneer</h2>
+                </div>
+              </div>
+              <div className="h-px bg-gradient-to-r from-orange-500/30 via-white/[0.06] to-transparent mb-8" />
+            </motion.div>
+            <motion.div variants={staggerChild}>
+              <Accordion type="single" collapsible className="space-y-3">
+                {FAQ_DATA.map((faq, i) => (
+                  <AccordionItem key={i} value={`faq-${i}`} className="border border-white/[0.06] rounded-xl bg-white/[0.02] px-6 data-[state=open]:border-orange-500/20 transition-colors duration-300">
+                    <AccordionTrigger className="text-left text-sm md:text-base font-semibold hover:no-underline py-5 text-stone-200">{faq.q}</AccordionTrigger>
+                    <AccordionContent className="text-stone-400 text-sm md:text-base leading-relaxed pb-6">{faq.a}</AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </motion.div>
           </motion.div>
-        </section>
+        </ScrollSection>
 
-        {/* Footer */}
-        <footer className="max-w-5xl mx-auto px-6 pb-16">
-          <div className="pt-12 border-t border-border/20 text-center">
-            <p className="text-muted-foreground/30 text-[9px] font-black tracking-[0.5em] uppercase font-mono">
-              Análise independente · Lord Junnior © 2026
-            </p>
-          </div>
-        </footer>
-
+        <footer className="max-w-5xl mx-auto px-6 pb-16"><div className="pt-12 border-t border-white/[0.04] text-center"><p className="text-stone-600 text-[9px] font-black tracking-[0.5em] uppercase font-mono">Análise independente · Lord Junnior © 2026</p></div></footer>
       </div>
-    </div>
+    </>
   );
 }
