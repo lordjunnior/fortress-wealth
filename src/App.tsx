@@ -76,6 +76,7 @@ import BankOfGeorgia from "./pages/BankOfGeorgia";
 import WisePage from "./pages/Wise";
 import PayoneerPage from "./pages/Payoneer";
 import ContasOffshore from "./pages/ContasOffshore";
+import AberturaRemota from "./pages/AberturaRemota";
 import IndiceSoberaniaFinanceira from "./pages/IndiceSoberaniaFinanceira";
 import CpContextoHistorico from "./pages/cp/ContextoHistorico";
 import CpBaseFisiologica from "./pages/cp/BaseFisiologica";
@@ -136,6 +137,7 @@ const App = () => (
           <Route path="/soberania-financeira/contas-internacionais/wise" element={<WisePage />} />
           <Route path="/soberania-financeira/contas-internacionais/payoneer" element={<PayoneerPage />} />
           <Route path="/soberania-financeira/contas-offshore/top-10" element={<ContasOffshore />} />
+          <Route path="/soberania-financeira/contas-offshore/abertura-remota" element={<AberturaRemota />} />
           <Route path="/indice-de-soberania-financeira" element={<IndiceSoberaniaFinanceira />} />
           <Route path="/21-milhoes" element={<HardCap21 />} />
           <Route path="/bitcoin-seguro" element={<BitcoinSeguro />} />
