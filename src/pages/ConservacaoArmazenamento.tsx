@@ -453,23 +453,23 @@ function MetodoCard({ item, index }: { item: Metodo; index: number }) {
   return (
     <motion.div
       initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={index}
-      className="bg-white/60 border border-emerald-100/60 rounded-2xl overflow-hidden backdrop-blur-sm hover:shadow-lg transition-shadow duration-300"
+      className="bg-white/[0.03] border border-emerald-500/[0.1] rounded-2xl overflow-hidden backdrop-blur-sm hover:border-emerald-500/20 transition-shadow duration-300"
     >
       <button
         onClick={() => setOpen(!open)}
         className="w-full text-left p-5 md:p-6 flex items-start gap-4 group cursor-pointer"
       >
-        <div className="p-2.5 bg-emerald-100/60 rounded-xl shrink-0 mt-0.5">
-          <Icon className="text-emerald-700" size={18} />
+        <div className="p-2.5 bg-emerald-500/[0.12] rounded-xl shrink-0 mt-0.5">
+          <Icon className="text-emerald-400" size={18} />
         </div>
         <div className="flex-1 min-w-0">
           <div className="flex items-center justify-between gap-2">
-            <h3 className="text-base font-bold text-stone-800 group-hover:text-emerald-800 transition-colors">{item.name}</h3>
+            <h3 className="text-base font-bold text-stone-200 group-hover:text-emerald-400 transition-colors">{item.name}</h3>
             <div className="shrink-0">
-              {open ? <ChevronUp className="text-stone-400" size={16} /> : <ChevronDown className="text-stone-400" size={16} />}
+              {open ? <ChevronUp className="text-stone-500" size={16} /> : <ChevronDown className="text-stone-500" size={16} />}
             </div>
           </div>
-          <p className="text-emerald-600/80 text-[10px] font-bold uppercase tracking-wider mt-0.5">{item.principle}</p>
+          <p className="text-emerald-500/80 text-[10px] font-bold uppercase tracking-wider mt-0.5">{item.principle}</p>
           <p className="text-stone-500 text-xs leading-relaxed mt-2">{item.summary}</p>
         </div>
       </button>
@@ -483,19 +483,19 @@ function MetodoCard({ item, index }: { item: Metodo; index: number }) {
             transition={{ duration: 0.3, ease: APPLE_EASE }}
             className="overflow-hidden"
           >
-            <div className="px-5 md:px-6 pb-6 border-t border-stone-100 pt-4">
+            <div className="px-5 md:px-6 pb-6 border-t border-white/[0.06] pt-4">
               <ul className="space-y-1.5 mb-3">
                 {item.details.map((d, i) => (
                   <li key={i} className="flex items-start gap-2">
                     <div className="w-1 h-1 rounded-full bg-emerald-500 mt-2 shrink-0" />
-                    <span className="text-stone-600 text-xs leading-relaxed">{d}</span>
+                    <span className="text-stone-400 text-xs leading-relaxed">{d}</span>
                   </li>
                 ))}
               </ul>
               {item.safetyNote && (
-                <div className="bg-rose-50/60 border border-rose-200/50 rounded-xl p-3 flex items-start gap-2">
-                  <AlertTriangle className="text-rose-500 shrink-0 mt-0.5" size={14} />
-                  <p className="text-rose-700 text-xs font-medium leading-relaxed">{item.safetyNote}</p>
+                <div className="bg-rose-500/[0.08] border border-rose-500/[0.15] rounded-xl p-3 flex items-start gap-2">
+                  <AlertTriangle className="text-rose-400 shrink-0 mt-0.5" size={14} />
+                  <p className="text-rose-300 text-xs font-medium leading-relaxed">{item.safetyNote}</p>
                 </div>
               )}
             </div>
@@ -516,58 +516,19 @@ export default function ConservacaoArmazenamento() {
   }, []);
 
   return (
-    <div
-      className="min-h-screen text-stone-900 font-sans selection:bg-amber-300/50 pb-32 relative overflow-hidden"
-      style={{ background: 'linear-gradient(180deg, #ebe5d8 0%, #ddd5c3 12%, #d2dcc4 30%, #c4d4ae 50%, #b8c9a0 70%, #cdd5bd 90%, #e0dace 100%)' }}
-    >
-      {/* Ambient blobs */}
-      <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="absolute top-[-5%] right-[-5%] w-[600px] h-[600px] rounded-full"
-          style={{ background: 'radial-gradient(circle, rgba(255,200,80,0.2) 0%, transparent 65%)' }} />
-        <div className="absolute bottom-[10%] left-[5%] w-[500px] h-[500px] rounded-full"
-          style={{ background: 'radial-gradient(circle, rgba(160,200,110,0.2) 0%, transparent 65%)' }} />
-      </div>
+    <div className="min-h-screen text-stone-100 font-sans selection:bg-amber-300/50 pb-32 relative overflow-hidden" style={{ background: '#050808' }}>
+      <CinematicHero
+        image="/heroes/conservacao-armazenamento.webp"
+        phase="Fase 03 · Soberania Alimentar"
+        title="Conservação & Armazenamento"
+        subtitle="Quem controla a conservação dos seus alimentos não depende da cadeia de frio industrial. Este módulo reúne os 10 alimentos essenciais, 20 métodos validados de preservação e o arsenal auxiliar completo."
+        icon={Package}
+        accentColor="amber"
+        backLink="/projeto-autonomo"
+        backLabel="Projeto Autônomo"
+      />
 
-      <div className="relative z-10 max-w-5xl mx-auto px-6 md:px-10 pt-24">
-        
-        {/* Nav */}
-        <Link to="/projeto-autonomo" className="inline-flex items-center gap-2 text-stone-400 hover:text-stone-700 text-[10px] font-bold uppercase tracking-[0.3em] transition-all duration-300 mb-16">
-          <ArrowLeft size={14} /> Projeto Autônomo
-        </Link>
-
-        {/* ═══ HERO ═══ */}
-        <motion.header initial="hidden" animate="visible" variants={fadeUp} custom={0} className="mb-12">
-          <div className="flex items-center gap-3 mb-4">
-            <span className="text-amber-600 text-[10px] font-bold tracking-[0.5em] uppercase opacity-70">Fase 03 · Soberania Alimentar</span>
-          </div>
-          <h1 className="text-4xl md:text-7xl font-black tracking-tighter uppercase leading-[0.9] text-stone-800 mb-6" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
-            CONSERVAÇÃO &<br /><span className="text-amber-700">ARMAZENAMENTO</span>
-          </h1>
-          <p className="text-stone-500 text-base md:text-lg max-w-3xl leading-relaxed mb-4">
-            Quem controla a conservação dos seus alimentos <span className="text-stone-800 font-semibold">não depende da cadeia de frio industrial</span>. 
-            Este módulo reúne os 10 alimentos essenciais para estoque de longa duração, 20 métodos validados de preservação, 
-            alimentos naturalmente duradouros e o arsenal auxiliar completo — de técnicas milenares a protocolos modernos.
-          </p>
-          <p className="text-stone-400 text-sm max-w-2xl leading-relaxed">
-            Desastres naturais, instabilidades econômicas ou interrupções na cadeia de suprimentos podem tornar o acesso a alimentos frescos temporariamente impossível. 
-            Uma preparação adequada transforma vulnerabilidade em autonomia.
-          </p>
-        </motion.header>
-
-        {/* Hero Image */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.2, ease: APPLE_EASE }}
-          className="relative rounded-3xl overflow-hidden mb-20 border border-stone-300/30"
-        >
-          <img src={imgHeroEstoque} alt="Estoque organizado de alimentos em jarras herméticas" className="w-full h-64 md:h-96 object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-t from-stone-900/60 via-transparent to-transparent" />
-          <div className="absolute bottom-6 left-6 right-6">
-            <p className="text-white/90 text-sm md:text-base font-semibold">Estoque estratégico: organização, hermeticidade e rotatividade.</p>
-            <p className="text-white/50 text-xs mt-1">Recipientes de vidro com grãos, leguminosas, mel e especiarias.</p>
-          </div>
-        </motion.div>
+      <div className="relative z-10 max-w-5xl mx-auto px-6 md:px-10 pt-12">
 
         {/* ═══ FRAMEWORK VISUAL ═══ */}
         <motion.div
