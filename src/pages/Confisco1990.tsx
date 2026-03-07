@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { ArrowLeft, Calendar, AlertTriangle, Vault, Lock, Users, Scale, TrendingDown, BookOpen } from "lucide-react";
+import { ArrowLeft, Calendar, AlertTriangle, Vault, Lock, Users, Scale, TrendingDown, BookOpen, ShieldAlert, DollarSign, Clock, UserX } from "lucide-react";
 import presidenteImg from "@/assets/presidente-confisco-1990.jpg";
 
 const chapters = [
@@ -33,7 +33,7 @@ const chapters = [
       "Na manhã de 16 de março, os brasileiros descobriram que não tinham mais acesso ao próprio dinheiro. Contas correntes, poupanças, aplicações financeiras: tudo acima de NCz$ 50.000 (equivalente a cerca de US$ 1.200 na época) foi bloqueado por 18 meses.",
       "Não importava se o dinheiro era para pagar o aluguel, comprar remédios, pagar funcionários ou alimentar a família. O governo decidiu que aquele dinheiro não era mais seu.",
       "Filas enormes se formaram nos bancos. Pessoas choravam. Idosos que tinham guardado uma vida inteira de economia viram tudo desaparecer de uma hora para outra. Empresários não conseguiam pagar salários. Pequenos negócios fecharam em semanas.",
-      "Estima-se que o governo confiscou o equivalente a US$ 80 bilhões da população, aproximadamente 80% de toda a liquidez do sistema financeiro brasileiro.",
+      "O evento ficou conhecido como o confisco da poupança do Plano Collor. Estima-se que o governo confiscou o equivalente a US$ 80 bilhões da população, aproximadamente 80% de toda a liquidez do sistema financeiro brasileiro.",
     ],
   },
   {
@@ -52,8 +52,8 @@ const chapters = [
     title: "O Dinheiro Nunca Voltou (Como Prometido)",
     icon: TrendingDown,
     content: [
-      "O governo prometeu devolver o dinheiro em 18 meses, corrigido monetariamente. Na prática, a devolução foi feita em parcelas, ao longo de anos, com correção abaixo da inflação real.",
-      "Quem tinha NCz$ 100.000 bloqueados recebeu de volta o equivalente a uma fração do poder de compra original. O confisco foi, na prática, uma transferência forçada de riqueza da população para o governo.",
+      "O governo prometeu devolver o dinheiro bloqueado em 18 meses, corrigido monetariamente. Na prática, a devolução foi feita em parcelas, ao longo de anos, com correção abaixo da inflação real.",
+      "Quem tinha NCz$ 100.000 bloqueados recebeu de volta o equivalente a uma fração do poder de compra original. O confisco da poupança foi, na prática, uma transferência forçada de riqueza da população para o governo.",
       "A inflação, que o plano prometia eliminar, voltou com força meses depois. O Plano Collor fracassou em todos os seus objetivos declarados, mas cumpriu perfeitamente o objetivo real: confiscar a riqueza da população.",
     ],
   },
@@ -80,17 +80,24 @@ const chapters = [
   },
 ];
 
+const impactStats = [
+  { icon: DollarSign, value: "US$ 80 bi", label: "confiscados da população" },
+  { icon: ShieldAlert, value: "80%", label: "da liquidez do sistema bloqueada" },
+  { icon: Clock, value: "18 meses", label: "de bloqueio total" },
+  { icon: UserX, value: "Milhões", label: "de contas afetadas" },
+];
+
 const Confisco1990 = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Helmet>
-        <title>Confisco de 1990: A História Real que o Brasil Quer Esquecer</title>
-        <meta name="description" content="Em 16 de março de 1990, o governo brasileiro confiscou 80% do dinheiro da população enquanto dormia. Esta é a história completa do maior roubo institucional da história do Brasil." />
+        <title>Confisco de 1990: A História Real do Plano Collor</title>
+        <meta name="description" content="Em 16 de março de 1990, o governo brasileiro confiscou 80% do dinheiro da população com o Plano Collor. O confisco da poupança bloqueou US$ 80 bilhões. Esta é a história completa." />
+        <meta name="keywords" content="plano collor confisco, confisco poupança 1990, plano collor dinheiro bloqueado, confisco da poupança brasil, história plano collor, confisco collor" />
       </Helmet>
 
       {/* Hero */}
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
-        {/* Background image */}
         <div className="absolute inset-0">
           <img
             src={presidenteImg}
@@ -125,7 +132,6 @@ const Confisco1990 = () => {
           </motion.div>
         </div>
 
-        {/* Scroll indicator */}
         <motion.div
           className="absolute bottom-8 left-1/2 -translate-x-1/2"
           animate={{ y: [0, 8, 0] }}
@@ -135,9 +141,37 @@ const Confisco1990 = () => {
         </motion.div>
       </section>
 
+      {/* Impact Stats Block */}
+      <section className="max-w-4xl mx-auto px-6 -mt-8 relative z-20">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-4"
+        >
+          {impactStats.map((stat, i) => {
+            const Icon = stat.icon;
+            return (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.1 }}
+                className="border border-destructive/20 bg-destructive/5 rounded-xl p-5 text-center space-y-2"
+              >
+                <Icon className="w-6 h-6 text-destructive mx-auto" />
+                <p className="text-xl md:text-2xl font-black text-foreground">{stat.value}</p>
+                <p className="text-xs text-muted-foreground leading-tight">{stat.label}</p>
+              </motion.div>
+            );
+          })}
+        </motion.div>
+      </section>
+
       {/* Chapters */}
       <div className="max-w-3xl mx-auto px-6 py-16 space-y-20">
-        {/* Back link */}
         <Link
           to="/"
           className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
@@ -157,7 +191,6 @@ const Confisco1990 = () => {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="space-y-6"
             >
-              {/* Chapter header */}
               <div className="flex items-center gap-3 mb-2">
                 <div className="w-10 h-10 rounded-lg border border-border bg-card flex items-center justify-center">
                   <Icon className="w-5 h-5 text-muted-foreground" />
@@ -172,10 +205,8 @@ const Confisco1990 = () => {
                 </div>
               </div>
 
-              {/* Separator */}
               <div className="h-px bg-border/50" />
 
-              {/* Content */}
               <div className="space-y-5">
                 {chapter.content.map((paragraph, j) => (
                   <p
@@ -189,6 +220,28 @@ const Confisco1990 = () => {
             </motion.article>
           );
         })}
+
+        {/* Transition Block */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="border border-border/30 rounded-xl bg-card/50 p-8 md:p-12 text-center space-y-6"
+        >
+          <p className="font-mono text-[10px] tracking-[0.5em] uppercase text-muted-foreground">
+            1990: NÃO EXISTIA ALTERNATIVA
+          </p>
+          <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tight leading-tight">
+            Hoje existe.
+          </h3>
+          <p className="text-muted-foreground max-w-xl mx-auto leading-relaxed text-lg">
+            Pela primeira vez na história, existe uma tecnologia que permite guardar patrimônio sem depender de bancos, governos ou decretos.
+          </p>
+          <p className="text-foreground font-bold text-xl">
+            Essa tecnologia se chama Bitcoin.
+          </p>
+        </motion.div>
 
         {/* Final CTA */}
         <motion.div
@@ -211,13 +264,13 @@ const Confisco1990 = () => {
               to="/autocustodia"
               className="inline-flex items-center justify-center gap-2 bg-gold text-background font-bold px-8 py-3.5 rounded-lg text-sm tracking-wide hover:bg-gold/90 transition-colors"
             >
-              Proteger Meu Patrimônio
+              Descobrir Como Proteger Meu Patrimônio
             </Link>
             <Link
               to="/historia-do-dinheiro"
               className="inline-flex items-center justify-center gap-2 border border-border bg-background font-bold px-8 py-3.5 rounded-lg text-sm tracking-wide hover:bg-card transition-colors"
             >
-              Entender a História
+              Entender a História Completa
             </Link>
           </div>
         </motion.div>
