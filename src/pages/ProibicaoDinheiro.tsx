@@ -28,7 +28,21 @@ const articleSchema = {
   "datePublished": "2026-03-07",
   "dateModified": "2026-03-07",
   "url": "https://lordjunnior.com.br/alertas/fim-do-dinheiro-vivo",
-  "keywords": "PL 3951, limite dinheiro vivo Brasil, privacidade financeira, Bitcoin sem KYC, teoria das bandeiras, autocustódia Bitcoin"
+  "keywords": "PL 3951, limite dinheiro vivo Brasil, limite pagamento em dinheiro, governo proibir dinheiro vivo, dinheiro em espécie limite, privacidade financeira, Bitcoin sem KYC, teoria das bandeiras, autocustódia Bitcoin, como proteger dinheiro do governo"
+};
+
+const howToSchema = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "Como proteger sua privacidade financeira no Brasil",
+  "description": "Passo a passo para proteger sua soberania financeira diante da eliminação progressiva do dinheiro em espécie.",
+  "step": [
+    { "@type": "HowToStep", "name": "Entenda o cenário", "text": "Compreenda o PL 3.951/2019 e como governos globalmente estão limitando o uso de dinheiro em espécie para aumentar o controle financeiro." },
+    { "@type": "HowToStep", "name": "Aprenda sobre Bitcoin P2P", "text": "Utilize plataformas descentralizadas como Bisq, Spike to Spike e RoboSats para comprar Bitcoin sem verificação de identidade (KYC)." },
+    { "@type": "HowToStep", "name": "Pratique autocustódia", "text": "Armazene seus bitcoins em carteiras onde só você controla as chaves privadas, eliminando dependência de exchanges e bancos." },
+    { "@type": "HowToStep", "name": "Diversifique jurisdições", "text": "Aplique a teoria das bandeiras: distribua documentação, contas e patrimônio entre múltiplas jurisdições para reduzir o risco de confisco centralizado." },
+    { "@type": "HowToStep", "name": "Abra contas internacionais", "text": "Com documentação estrangeira, abra contas em diferentes países para criar camadas adicionais de proteção patrimonial." }
+  ]
 };
 
 /* ───────────── COMPONENTE ───────────── */
@@ -71,6 +85,7 @@ export default function ProibicaoDinheiro() {
         <meta property="og:type" content="article" />
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>
+        <script type="application/ld+json">{JSON.stringify(howToSchema)}</script>
       </Helmet>
 
       {/* ── Partículas ── */}
@@ -178,10 +193,10 @@ export default function ProibicaoDinheiro() {
               </h1>
 
               <p className="text-lg md:text-xl text-slate-400 leading-relaxed max-w-3xl mb-4 font-medium">
-                O Projeto de Lei <strong className="text-white">PL 3.951/2019</strong> abriu caminho para que o governo brasileiro estabeleça <strong className="text-red-500">limites ao uso de dinheiro em espécie</strong>.
+                O Projeto de Lei <strong className="text-white">PL 3.951/2019</strong> abriu caminho para que o governo brasileiro estabeleça <strong className="text-red-500">limites ao uso de dinheiro em espécie</strong>. O limite de pagamento em dinheiro pode ser definido a qualquer momento pelo Conselho Monetário Nacional.
               </p>
               <p className="text-base text-slate-500 leading-relaxed max-w-3xl mb-10 font-medium">
-                Entenda o que está acontecendo, veja como a Europa já avançou nessa agenda e descubra ferramentas legais para proteger sua <strong className="text-white">soberania financeira</strong>.
+                Entenda o que o PL 3951 significa, veja como a Europa já proibiu dinheiro vivo acima de certos valores e descubra como proteger dinheiro do governo com ferramentas legais de <strong className="text-white">soberania financeira</strong>.
               </p>
 
               {/* Micro-CTA de retenção */}
@@ -453,6 +468,31 @@ export default function ProibicaoDinheiro() {
             </div>
           </section>
 
+          {/* ══════ O ERRO QUE QUASE TODOS COMETEM ══════ */}
+          <section className="mb-28 scroll-mt-24">
+            <div className="border-2 border-amber-500/20 bg-gradient-to-br from-amber-950/10 to-[#0a0a0a] rounded-sm p-8 md:p-12 relative overflow-hidden">
+              <AlertTriangle className="absolute top-0 right-0 text-amber-500/[0.04] -mr-8 -mt-8" size={200} />
+              <div className="relative z-10">
+                <div className="flex items-center gap-2 mb-6">
+                  <AlertTriangle className="text-amber-500" size={14} />
+                  <span className="text-amber-500 font-black uppercase tracking-[0.4em] text-[9px] font-mono">Atenção</span>
+                </div>
+                <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tighter mb-6 leading-tight">
+                  O Erro Que<br /><span className="text-amber-500 italic">Quase Todos Cometem</span>
+                </h3>
+                <p className="text-slate-400 text-base leading-relaxed font-medium mb-4 max-w-3xl">
+                  A maioria das pessoas acredita que o problema é apenas <strong className="text-white">inflação ou impostos</strong>. Que basta guardar dinheiro, diversificar investimentos ou trocar de banco. Mas essas são consequências — não a causa.
+                </p>
+                <p className="text-slate-400 text-base leading-relaxed font-medium mb-6 max-w-3xl">
+                  O problema real é <strong className="text-red-500">controle sobre o dinheiro</strong>. Quando o Estado decide que você precisa de permissão para gastar, quando cada transação é monitorada, quando seu patrimônio pode ser congelado com um clique — aí inflação e impostos se tornam o menor dos seus problemas.
+                </p>
+                <p className="text-white font-black text-sm uppercase tracking-wider">
+                  As ferramentas abaixo atacam a causa — não os sintomas.
+                </p>
+              </div>
+            </div>
+          </section>
+
           {/* ══════ ARSENAL DE PRIVACIDADE ══════ */}
           <section id="ferramentas" className="mb-28 scroll-mt-24">
             <div className="flex items-center gap-3 text-red-600 mb-10">
@@ -461,7 +501,7 @@ export default function ProibicaoDinheiro() {
             </div>
 
             <p className="text-slate-400 text-base leading-relaxed font-medium mb-4 max-w-3xl">
-              A boa notícia: existem <strong className="text-white">ferramentas legítimas e completamente legais</strong> para aumentar sua soberania financeira. Use-as com sabedoria. O poder dessas ferramentas é proporcional à sua responsabilidade.
+              A boa notícia: existem <strong className="text-white">ferramentas legítimas e completamente legais</strong> para proteger sua soberania financeira contra o limite de dinheiro vivo no Brasil. Cada ferramenta funciona como uma camada de proteção — quanto mais camadas, maior a sua blindagem contra o controle financeiro governamental.
             </p>
             <p className="text-amber-500/80 text-xs font-bold uppercase tracking-wider mb-10 font-mono">
               ⚠ Todas as ferramentas listadas são legais. Utilize-as com responsabilidade e dentro da legislação vigente.
@@ -485,6 +525,16 @@ export default function ProibicaoDinheiro() {
                   </div>
                 </div>
               ))}
+            </div>
+
+            {/* CTA mid-page no Arsenal */}
+            <div className="mt-8 text-center">
+              <Link to="/autocustodia" className="cta-gold inline-flex items-center justify-center gap-3 px-8 py-4 rounded-sm font-black uppercase text-xs tracking-[0.2em]">
+                🔐 Aprender Autocustódia Agora
+              </Link>
+              <p className="text-slate-600 text-[9px] font-bold uppercase tracking-wider mt-3 font-mono">
+                O primeiro passo para proteger seu patrimônio
+              </p>
             </div>
           </section>
 
@@ -530,7 +580,7 @@ export default function ProibicaoDinheiro() {
                   rel="noopener noreferrer"
                   className="cta-gold inline-block px-10 py-5 rounded-sm font-black uppercase text-sm tracking-[0.2em] text-center"
                 >
-                  🎓 Proteger Minha Privacidade Financeira
+                  🎓 Assumir Minha Soberania Financeira
                 </a>
                 <p className="text-slate-600 text-[10px] font-bold uppercase tracking-wider mt-4 font-mono">
                   Acesso exclusivo para membros da comunidade
@@ -590,7 +640,7 @@ export default function ProibicaoDinheiro() {
 
               {/* CTA Principal */}
               <Link to="/autocustodia" className="cta-gold flex items-center justify-center gap-3 px-10 py-5 rounded-sm font-black uppercase text-sm tracking-[0.2em] text-center mb-8 w-full md:w-auto md:inline-flex">
-                🔐 Aprender Autocustódia e Soberania Financeira
+                🔐 Aprender Autocustódia Agora
               </Link>
 
               {/* CTAs Secundários */}
