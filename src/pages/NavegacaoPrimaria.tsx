@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Wind, Sun, Compass, Mountain, Building, Route, MapPinned, Moon, AlertTriangle, ShieldAlert, Brain } from 'lucide-react';
 import { motion } from 'framer-motion';
+import CinematicHero from '@/components/CinematicHero';
 
 import imgSombra from '@/assets/nav-metodo-sombra.jpg';
 import imgBussola from '@/assets/nav-bussola.jpg';
@@ -41,29 +42,17 @@ export default function NavegacaoPrimaria() {
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
   return (
-    <div className="min-h-screen selection:bg-rose-200" style={{ background: 'linear-gradient(180deg, #f9f1f1 0%, #fdf6f0 30%, #f5f0ea 60%, #ede8e0 100%)' }}>
-      <div className="max-w-4xl mx-auto px-5 md:px-8 pt-20 pb-32">
+    <div className="min-h-screen selection:bg-teal-300/30" style={{ background: '#050808' }}>
+      <CinematicHero
+        image="/heroes/navegacao-primaria.webp"
+        phase="Fase 01 · Base 72"
+        title="Navegação Primária"
+        subtitle="Orientação por bússola, sol, terreno e referências naturais. Deslocamento seguro sem dependência digital."
+        icon={Wind}
+        accentColor="emerald"
+      />
 
-        <Link to="/projeto-autonomo" className="inline-flex items-center gap-2 text-stone-400 hover:text-stone-700 text-xs font-semibold uppercase tracking-[0.2em] transition-colors mb-12">
-          <ArrowLeft size={14} /> Projeto Autônomo
-        </Link>
-
-        {/* ══ HERO ══ */}
-        <motion.section className="mb-16" {...fade()}>
-          <div className="flex items-center gap-2 mb-4">
-            <span className="text-[10px] font-bold tracking-[0.5em] uppercase text-rose-500/70">Fase 01 · Base 72</span>
-          </div>
-          <div className="flex items-start gap-4 md:gap-5 mb-6">
-            <div className="p-3 md:p-4 bg-rose-100 rounded-2xl shrink-0 mt-1">
-              <Wind className="text-rose-600" size={28} />
-            </div>
-            <div>
-              <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-stone-800 leading-tight">Navegação Primária</h1>
-              <p className="text-stone-500 text-sm md:text-base leading-relaxed mt-3 max-w-2xl">
-                Orientação por bússola, sol, terreno e referências naturais. Deslocamento seguro sem dependência digital.
-              </p>
-            </div>
-          </div>
+      <div className="max-w-4xl mx-auto px-5 md:px-8 pt-12 pb-32">
 
           <div className="bg-rose-50 border border-rose-200/60 rounded-2xl p-5 md:p-6 mb-4">
             <p className="text-stone-700 text-sm font-semibold mb-3">Perder a orientação em cenário crítico aumenta:</p>
@@ -114,7 +103,6 @@ export default function NavegacaoPrimaria() {
               ))}
             </div>
           </div>
-        </motion.section>
 
         {/* ══ 1 — ORIENTAÇÃO SOLAR ══ */}
         <Section num={1} title="Orientação Solar">

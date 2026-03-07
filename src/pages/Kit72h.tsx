@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft, Package, Droplets, UtensilsCrossed, FileText, Radio, Pill, AlertTriangle, CheckCircle2, XCircle, Clock, Layers, Shield, RefreshCw } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { fadeUp, stagger, staggerChild, viewportOnce } from '@/lib/motion';
+import CinematicHero from '@/components/CinematicHero';
 
 import imgAgua from '@/assets/kit72h-agua.jpg';
 import imgAlimento from '@/assets/kit72h-alimento.jpg';
@@ -136,46 +137,17 @@ export default function Kit72h() {
   React.useEffect(() => { window.scrollTo(0, 0); }, []);
 
   return (
-    <div
-      className="min-h-screen selection:bg-rose-200"
-      style={{ background: 'linear-gradient(180deg, #f9f1f1 0%, #fdf6f0 30%, #f5f0ea 60%, #ede8e0 100%)' }}
-    >
-      <div className="max-w-4xl mx-auto px-5 md:px-8 pt-20 pb-32">
+    <div className="min-h-screen selection:bg-rose-300/30" style={{ background: '#050808' }}>
+      <CinematicHero
+        image="/heroes/kit-72h.webp"
+        phase="Fase 01 · Base 72"
+        title="Kit Tático 72h"
+        subtitle="Água, alimento, documentos, rádio e medicamentos para autonomia mínima de 3 dias. O Kit 72h não é mochila de sobrevivência extrema. Ele é um sistema portátil de autonomia mínima."
+        icon={Package}
+        accentColor="rose"
+      />
 
-        {/* ── Voltar ── */}
-        <Link
-          to="/projeto-autonomo"
-          className="inline-flex items-center gap-2 text-stone-400 hover:text-stone-700 text-xs font-semibold uppercase tracking-[0.2em] transition-colors mb-12"
-        >
-          <ArrowLeft size={14} /> Projeto Autônomo
-        </Link>
-
-        {/* ══════════════════════════════════════════════════════════
-           HERO
-           ══════════════════════════════════════════════════════════ */}
-        <motion.section
-          className="mb-16"
-          initial="hidden" animate="visible" variants={fadeUp}
-        >
-          <span className="text-[10px] font-bold tracking-[0.5em] uppercase text-rose-500 opacity-70">
-            Fase 01 · Base 72
-          </span>
-
-          <div className="mt-4 flex items-start gap-4 md:gap-5">
-            <div className="p-3 md:p-4 bg-rose-100 rounded-2xl shrink-0 mt-1">
-              <Package className="text-rose-600" size={28} />
-            </div>
-            <div>
-              <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-stone-800 leading-tight">
-                Kit Tático 72h
-              </h1>
-              <p className="text-stone-500 text-base md:text-lg leading-relaxed mt-3 max-w-2xl">
-                Água, alimento, documentos, rádio e medicamentos para autonomia mínima de 3 dias.
-                O Kit 72h não é mochila de sobrevivência extrema. Ele é um <strong className="text-stone-700">sistema portátil de autonomia mínima</strong>.
-              </p>
-            </div>
-          </div>
-        </motion.section>
+      <div className="max-w-4xl mx-auto px-5 md:px-8 pt-12 pb-32">
 
         {/* ══════════════════════════════════════════════════════════
            CONTEXTO — POR QUE 72 HORAS
