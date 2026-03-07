@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, AlertTriangle, Thermometer, Heart, Wind, Droplets, Brain, CheckCircle2, XCircle, Clock, ClipboardList, Activity } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { fadeUp, stagger, staggerChild, viewportOnce } from '@/lib/motion';
+import CinematicHero from '@/components/CinematicHero';
+import ScrollToTop from '@/components/ScrollToTop';
 
 import imgTemperatura from '@/assets/sinais-temperatura.jpg';
 import imgPerfusao from '@/assets/sinais-perfusao.jpg';
@@ -11,51 +13,42 @@ import imgAvpu from '@/assets/sinais-avpu.jpg';
 import imgFicha from '@/assets/sinais-ficha.jpg';
 
 const AvaliacaoSinais = () => {
+  useEffect(() => { window.scrollTo(0, 0); }, []);
+
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      {/* ─── HEADER ─── */}
-      <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
-        <div className="max-w-6xl mx-auto px-4 md:px-8 py-4 flex items-center justify-between">
-          <Link to="/projeto-autonomo" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors text-sm font-mono">
-            <ArrowLeft size={16} />
-            <span>Projeto Autônomo</span>
-          </Link>
-          <span className="text-[10px] font-mono tracking-[0.3em] uppercase text-green-500/70">Fase 02</span>
-        </div>
-      </header>
+    <div className="min-h-screen text-stone-100" style={{ background: 'linear-gradient(180deg, #050808 0%, #0a0d0a 8%, #0d120d 20%, #0a0d0a 60%, #050808 100%)' }}>
+      <CinematicHero
+        image="/heroes/avaliacao-sinais.webp"
+        phase="Fase 02 · Autonomia Biológica"
+        title="Avaliação Básica de Sinais"
+        subtitle="Interpretação Clínica Essencial com Recursos Mínimos"
+        icon={Activity}
+        accentColor="blue"
+        backLink="/projeto-autonomo"
+        backLabel="Projeto Autônomo"
+      />
 
       <main className="max-w-6xl mx-auto px-4 md:px-8 py-12 md:py-20">
-        {/* ─── HERO ─── */}
+        {/* ─── INTRO ─── */}
         <motion.section initial="hidden" animate="visible" variants={stagger(0.1)} className="mb-20">
-          <motion.span variants={staggerChild} className="text-green-500 text-[10px] font-bold tracking-[0.4em] uppercase opacity-70 block mb-4">
-            Fase 02 · Autonomia Biológica
-          </motion.span>
-          <motion.h1 variants={staggerChild} className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[0.95] mb-6">
-            Avaliação Básica<br />
-            <span className="text-sky-400">de Sinais</span>
-          </motion.h1>
-          <motion.p variants={staggerChild} className="text-muted-foreground text-lg max-w-3xl leading-relaxed mb-6">
-            Interpretação Clínica Essencial com Recursos Mínimos
-          </motion.p>
-
-          <motion.div variants={staggerChild} className="max-w-3xl space-y-4 text-muted-foreground leading-relaxed">
+          <motion.div variants={staggerChild} className="max-w-3xl space-y-4 text-stone-400 leading-relaxed">
             <p>Este módulo ensina a interpretar sinais fisiológicos primários com precisão prática.</p>
-            <div className="bg-sky-500/10 border border-sky-500/20 p-4 rounded-sm">
-              <p className="text-sm text-foreground/80">
+            <div className="bg-sky-500/10 border border-sky-500/20 p-4 rounded-xl">
+              <p className="text-sm text-stone-300">
                 Avaliação básica de sinais <span className="text-red-400 font-bold">não é diagnóstico médico.</span>
               </p>
               <p className="text-sm text-sky-400 font-semibold mt-1">É triagem funcional.</p>
-              <p className="text-sm text-muted-foreground mt-2">É a capacidade de responder à pergunta: <span className="text-foreground/80 font-medium italic">O corpo está compensando ou está falhando?</span></p>
+              <p className="text-sm text-stone-400 mt-2">É a capacidade de responder à pergunta: <span className="text-stone-300 font-medium italic">O corpo está compensando ou está falhando?</span></p>
             </div>
             <p className="text-sm">
               Quando o organismo está sob estresse (infecção, trauma, desidratação, hipoglicemia, inflamação), ele altera padrões fisiológicos previsíveis.
             </p>
-            <p className="text-sm text-foreground/80 font-medium">Quem sabe ler esses padrões:</p>
+            <p className="text-sm text-stone-300 font-medium">Quem sabe ler esses padrões:</p>
             <div className="grid grid-cols-2 gap-2">
               {['Detecta agravamento precoce', 'Evita negligência perigosa', 'Ganha tempo crítico', 'Toma decisão fundamentada'].map((s) => (
                 <div key={s} className="flex items-center gap-2 text-sm">
                   <CheckCircle2 size={14} className="text-green-500 shrink-0" />
-                  <span className="text-foreground/80">{s}</span>
+                  <span className="text-stone-300">{s}</span>
                 </div>
               ))}
             </div>
@@ -63,7 +56,7 @@ const AvaliacaoSinais = () => {
 
           {/* 6 Pilares */}
           <motion.div variants={staggerChild} className="mt-8 max-w-3xl">
-            <p className="text-foreground/80 font-bold text-sm mb-4 uppercase tracking-wider">Os 6 Pilares da Avaliação Funcional</p>
+            <p className="text-stone-300 font-bold text-sm mb-4 uppercase tracking-wider">Os 6 Pilares da Avaliação Funcional</p>
             <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-3">
               {[
                 { label: 'Temperatura', icon: Thermometer, color: 'text-red-400' },
@@ -73,13 +66,13 @@ const AvaliacaoSinais = () => {
                 { label: 'Estado de hidratação', icon: Droplets, color: 'text-blue-400' },
                 { label: 'Nível de consciência', icon: Brain, color: 'text-amber-400' },
               ].map((p) => (
-                <div key={p.label} className="flex items-center gap-2 text-sm bg-white/5 border border-white/10 p-3 rounded-sm">
+                <div key={p.label} className="flex items-center gap-2 text-sm bg-white/[0.04] border border-white/[0.06] p-3 rounded-xl">
                   <p.icon size={16} className={`${p.color} shrink-0`} />
-                  <span className="text-foreground/80">{p.label}</span>
+                  <span className="text-stone-300">{p.label}</span>
                 </div>
               ))}
             </div>
-            <p className="text-xs text-muted-foreground mt-3">Cada um deles revela algo diferente.</p>
+            <p className="text-xs text-stone-500 mt-3">Cada um deles revela algo diferente.</p>
           </motion.div>
         </motion.section>
 
@@ -88,14 +81,14 @@ const AvaliacaoSinais = () => {
         {/* ═══════════════════════════════════════════════ */}
         <motion.section initial="hidden" whileInView="visible" viewport={viewportOnce} variants={stagger(0.08)} className="mb-24">
           <motion.div variants={staggerChild} className="mb-6">
-            <span className="pre-title">Pilar 01</span>
-            <h2 className="text-3xl md:text-4xl font-black tracking-tight mb-2">Temperatura Corporal</h2>
-            <p className="text-muted-foreground text-sm">Termorregulação</p>
+            <span className="text-stone-600 text-[10px] font-bold tracking-[0.4em] uppercase">Pilar 01</span>
+            <h2 className="text-3xl md:text-4xl font-black tracking-tight mb-2 text-stone-100">Temperatura Corporal</h2>
+            <p className="text-stone-500 text-sm">Termorregulação</p>
           </motion.div>
 
-          <motion.div variants={staggerChild} className="mb-10 rounded-sm overflow-hidden relative">
+          <motion.div variants={staggerChild} className="mb-10 rounded-xl overflow-hidden relative">
             <img src={imgTemperatura} alt="Escala térmica" className="w-full h-64 md:h-80 object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#050808] via-[#050808]/30 to-transparent" />
             <div className="absolute bottom-4 left-4 right-4">
               <span className="text-xs font-mono tracking-widest uppercase text-red-400/70">Hipotermia · Normal · Febre · Hiperpirexia</span>
             </div>
