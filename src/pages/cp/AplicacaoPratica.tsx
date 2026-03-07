@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import ScrollToTop from '@/components/ScrollToTop';
+import CinematicHero from '@/components/CinematicHero';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -72,6 +73,7 @@ export default function AplicacaoPratica() {
         backLabel="Conhecimento Perdido"
       />
 
+      <div className="relative z-10 max-w-5xl mx-auto px-6 md:px-10 pt-12 pb-32">
         {/* ─── INFORMAÇÃO VS FORMAÇÃO ─── */}
         <div className="gsap-reveal mb-28">
           <div className="relative rounded-3xl overflow-hidden">
