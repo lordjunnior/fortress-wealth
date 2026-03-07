@@ -533,28 +533,28 @@ export default function ConservacaoArmazenamento() {
         {/* ═══ FRAMEWORK VISUAL ═══ */}
         <motion.div
           initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}
-          className="bg-stone-100/60 border border-stone-300/40 p-8 md:p-10 rounded-2xl backdrop-blur-sm mb-20"
+          className="bg-white/[0.03] border border-white/[0.06] p-8 md:p-10 rounded-2xl mb-20"
         >
-          <p className="text-stone-600 text-[10px] font-bold uppercase tracking-[0.4em] mb-6">Critérios de seleção do estoque</p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-stone-500">
+          <p className="text-stone-500 text-[10px] font-bold uppercase tracking-[0.4em] mb-6">Critérios de seleção do estoque</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-stone-400">
             <div className="flex items-start gap-3">
-              <Clock className="text-amber-600 shrink-0 mt-0.5" size={16} />
+              <Clock className="text-amber-400 shrink-0 mt-0.5" size={16} />
               <div>
-                <p className="text-stone-700 font-semibold mb-1">Durabilidade extrema</p>
+                <p className="text-stone-200 font-semibold mb-1">Durabilidade extrema</p>
                 <p className="text-xs leading-relaxed">Armazenamento prolongado sem deterioração — muitos ultrapassam 5 anos.</p>
               </div>
             </div>
             <div className="flex items-start gap-3">
-              <Flame className="text-amber-600 shrink-0 mt-0.5" size={16} />
+              <Flame className="text-amber-400 shrink-0 mt-0.5" size={16} />
               <div>
-                <p className="text-stone-700 font-semibold mb-1">Densidade calórica</p>
+                <p className="text-stone-200 font-semibold mb-1">Densidade calórica</p>
                 <p className="text-xs leading-relaxed">Alto teor calórico e nutricional. Energia sustentável em situações de escassez.</p>
               </div>
             </div>
             <div className="flex items-start gap-3">
-              <ShieldCheck className="text-amber-600 shrink-0 mt-0.5" size={16} />
+              <ShieldCheck className="text-amber-400 shrink-0 mt-0.5" size={16} />
               <div>
-                <p className="text-stone-700 font-semibold mb-1">Independência elétrica</p>
+                <p className="text-stone-200 font-semibold mb-1">Independência elétrica</p>
                 <p className="text-xs leading-relaxed">Sem necessidade de refrigeração. Funciona em condições de falta de energia.</p>
               </div>
             </div>
@@ -562,27 +562,14 @@ export default function ConservacaoArmazenamento() {
         </motion.div>
 
         {/* ═══ SEÇÃO 1: 10 ALIMENTOS ═══ */}
-        {/* Section Image: Alimentos Essenciais */}
-        <motion.div
-          initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}
-          className="relative rounded-3xl overflow-hidden mb-10 border border-amber-200/30"
-        >
-          <img src={imgAlimentosEssenciais} alt="Os 10 alimentos essenciais para estoque estratégico" className="w-full h-48 md:h-72 object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-t from-stone-900/50 via-transparent to-transparent" />
-          <div className="absolute bottom-5 left-6 right-6">
-            <p className="text-white/90 text-sm font-semibold">Arroz, feijão, mel, sal, aveia, nozes — densidade nutricional máxima.</p>
-          </div>
-        </motion.div>
-
         <motion.section className="mb-28" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}>
           <div className="mb-10">
-            <span className="text-amber-600 text-[10px] font-bold tracking-[0.4em] uppercase">Bloco 01 — Estoque Estratégico</span>
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight mt-2 text-stone-800">
-              Os 10 Alimentos <span className="text-amber-700">Essenciais</span>
+            <span className="text-amber-500 text-[10px] font-bold tracking-[0.4em] uppercase">Bloco 01 — Estoque Estratégico</span>
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight mt-2 text-stone-100">
+              Os 10 Alimentos <span className="text-amber-400">Essenciais</span>
             </h2>
-            <p className="text-stone-500 text-sm leading-relaxed mt-3 max-w-2xl">
-              Selecionados por durabilidade, valor nutricional, versatilidade e custo acessível. 
-              Um estoque bem planejado combina carboidratos, proteínas, gorduras saudáveis e micronutrientes essenciais.
+            <p className="text-stone-400 text-sm leading-relaxed mt-3 max-w-2xl">
+              Selecionados por durabilidade, valor nutricional, versatilidade e custo acessível.
             </p>
           </div>
 
@@ -592,45 +579,29 @@ export default function ConservacaoArmazenamento() {
             ))}
           </div>
 
-          {/* CTA intermediário */}
           <motion.div
             initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}
-            className="mt-10 bg-amber-50/60 border border-amber-200/50 p-8 rounded-2xl text-center"
+            className="mt-10 bg-amber-500/[0.08] border border-amber-500/[0.15] p-8 rounded-2xl text-center"
           >
-            <p className="text-amber-800 text-sm font-semibold mb-2">O ambiente ideal é fresco, seco e escuro.</p>
+            <p className="text-amber-400 text-sm font-semibold mb-2">O ambiente ideal é fresco, seco e escuro.</p>
             <p className="text-stone-500 text-xs max-w-lg mx-auto leading-relaxed">
-              Temperatura e umidade elevadas são os principais inimigos. Recipientes herméticos, absorvedores de oxigênio e 
-              rotulagem adequada prolongam significativamente a vida útil. Adote a estratégia "primeiro a entrar, primeiro a sair".
+              Temperatura e umidade elevadas são os principais inimigos. Recipientes herméticos, absorvedores de oxigênio e
+              rotulagem adequada prolongam significativamente a vida útil.
             </p>
           </motion.div>
         </motion.section>
 
-        {/* ═══ SEÇÃO 2: 20 MÉTODOS ═══ */}
-        {/* Section Image: Métodos de Conservação */}
-        <motion.div
-          initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}
-          className="relative rounded-3xl overflow-hidden mb-10 border border-emerald-200/30"
-        >
-          <img src={imgMetodosPreservacao} alt="Métodos de conservação: enlatamento, desidratação, fermentação e defumação" className="w-full h-48 md:h-72 object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-t from-stone-900/50 via-transparent to-transparent" />
-          <div className="absolute bottom-5 left-6 right-6">
-            <p className="text-white/90 text-sm font-semibold">Conservas, desidratação, defumação e fermentação — técnicas milenares validadas.</p>
-          </div>
-        </motion.div>
-
         <motion.section className="mb-28" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}>
           <div className="mb-10">
-            <span className="text-emerald-600 text-[10px] font-bold tracking-[0.4em] uppercase">Bloco 02 — Arsenal de Técnicas</span>
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight mt-2 text-stone-800">
-              20 Métodos de <span className="text-emerald-700">Conservação</span>
+            <span className="text-emerald-500 text-[10px] font-bold tracking-[0.4em] uppercase">Bloco 02 — Arsenal de Técnicas</span>
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight mt-2 text-stone-100">
+              20 Métodos de <span className="text-emerald-400">Conservação</span>
             </h2>
-            <p className="text-stone-500 text-sm leading-relaxed mt-3 max-w-2xl">
-              De técnicas milenares a tecnologias industriais. A combinação de diferentes métodos frequentemente proporciona resultados superiores 
-              — como embutidos que envolvem salga, fermentação e defumação em um único processo.
+            <p className="text-stone-400 text-sm leading-relaxed mt-3 max-w-2xl">
+              De técnicas milenares a tecnologias industriais. A combinação de diferentes métodos frequentemente proporciona resultados superiores.
             </p>
           </div>
 
-          {/* Classificação visual */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mb-8">
             {[
               { label: 'Redução de umidade', methods: 'Desidratação, Liofilização, Salga' },
@@ -640,8 +611,8 @@ export default function ConservacaoArmazenamento() {
               { label: 'Atmosfera', methods: 'Vácuo, Atmosfera Modificada, Silos' },
               { label: 'Especializados', methods: 'Irradiação, Cura, Defumação, Defumação Líquida' },
             ].map(cat => (
-              <div key={cat.label} className="bg-emerald-50/50 border border-emerald-100/50 rounded-xl p-4">
-                <p className="text-emerald-700 text-[10px] font-bold uppercase tracking-wider mb-1">{cat.label}</p>
+              <div key={cat.label} className="bg-emerald-500/[0.06] border border-emerald-500/[0.1] rounded-xl p-4">
+                <p className="text-emerald-400 text-[10px] font-bold uppercase tracking-wider mb-1">{cat.label}</p>
                 <p className="text-stone-500 text-xs">{cat.methods}</p>
               </div>
             ))}
@@ -654,81 +625,41 @@ export default function ConservacaoArmazenamento() {
           </div>
         </motion.section>
 
-        {/* ═══ SEÇÃO 3: ALIMENTOS NATURALMENTE DURADOUROS ═══ */}
-        {/* Section Image: Alimentos Naturalmente Duradouros */}
-        <motion.div
-          initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}
-          className="relative rounded-3xl overflow-hidden mb-10 border border-emerald-200/30"
-        >
-          <img src={imgAlimentosDuradouros} alt="Alimentos naturalmente duradouros: grãos, leguminosas, especiarias e raízes" className="w-full h-48 md:h-72 object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-t from-stone-900/50 via-transparent to-transparent" />
-          <div className="absolute bottom-5 left-6 right-6">
-            <p className="text-white/90 text-sm font-semibold">Grãos integrais, leguminosas, especiarias — longevidade natural sem intervenção.</p>
-          </div>
-        </motion.div>
-
+        {/* ═══ SEÇÃO 3: NATURALMENTE DURADOUROS ═══ */}
         <motion.section className="mb-28" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}>
           <div className="mb-10">
             <span className="text-stone-500 text-[10px] font-bold tracking-[0.4em] uppercase">Bloco 03 — Longevidade Natural</span>
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight mt-2 text-stone-800">
-              Alimentos <span className="text-emerald-700">Naturalmente Duradouros</span>
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight mt-2 text-stone-100">
+              Alimentos <span className="text-emerald-400">Naturalmente Duradouros</span>
             </h2>
-            <p className="text-stone-500 text-sm leading-relaxed mt-3 max-w-2xl">
-              A natureza desenvolveu alimentos com extraordinária capacidade de conservação intrínseca — sem intervenção tecnológica. 
-              Baixa atividade de água, compostos antimicrobianos naturais, cascas protetoras e sistemas enzimáticos especializados.
+            <p className="text-stone-400 text-sm leading-relaxed mt-3 max-w-2xl">
+              A natureza desenvolveu alimentos com extraordinária capacidade de conservação intrínseca — sem intervenção tecnológica.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {[
-              {
-                icon: Droplets, name: 'Vinagre', tagline: 'O Conservante Multifuncional',
-                body: 'pH entre 2,4 e 3,4. Autoprotetor por acidez extrema. Vinagres não filtrados com "mãe do vinagre" podem ser perpetuados indefinidamente — recurso renovável permanente.',
-                details: ['Pickling, marinadas, condimentos estabilizados, acidificação corretiva', 'Intensifica extração de minerais de ossos em caldos', 'Potencializa biodisponibilidade de cálcio em vegetais fermentados', 'Produção caseira simples a partir de qualquer substrato alcoólico'],
-              },
-              {
-                icon: Wheat, name: 'Grãos Integrais', tagline: 'Cápsulas Biológicas de Nutrição',
-                body: 'Gérmen + endosperma + farelo = sistema biologicamente estável em dormência metabólica. Trigo: 15–30 anos. Milho requer nixtamalização para máxima biodisponibilidade.',
-                details: ['Trigo, aveia, centeio, cevada, milho, quinoa, amaranto', 'Umidade abaixo de 10% (ideal 7–8%)', 'Capacidade germinativa preservada = produção de brotos e cultivo futuro', 'Capital biológico renovável, não apenas reserva estática'],
-              },
-              {
-                icon: Egg, name: 'Leguminosas Secas', tagline: 'Proteína Vegetal de Longa Duração',
-                body: '20–25% proteína, ricas em lisina (deficiente em cereais). Complementaridade com grãos cria nutrição completa. Armazenamento de 2–10 anos.',
-                details: ['Feijões, grão-de-bico, lentilhas, ervilha seca, soja, fava, guandu', '"Casca dura" com tempo — resolver com remolho em bicarbonato ou panela de pressão', 'Baixo teor lipídico minimiza rancificação', 'Congelamento prévio por 72h elimina ovos de insetos'],
-              },
-              {
-                icon: Package, name: 'Alimentos Enlatados', tagline: 'Praticidade e Décadas de Estabilidade',
-                body: 'Esterilização comercial cria ambiente interno estéril e anaeróbico. Datas impressas indicam qualidade ótima, não segurança. Evidências de preservação por +100 anos.',
-                details: ['Alta acidez: 3–5 anos. Baixa acidez: 2–5 anos oficialmente, décadas na prática', 'Proteínas inalteradas, minerais preservados, licopeno com biodisponibilidade aumentada', 'Vidros permitem reutilização; latas resistem impactos para kits de evacuação', 'Sistema FIFO para rotatividade eficiente'],
-              },
-              {
-                icon: Leaf, name: 'Raízes e Tubérculos Curados', tagline: 'Reserva Natural de 3–12 Meses',
-                body: 'Inhames, batatas, mandioca, beterrabas. Cura adequada antes do armazenamento é etapa crucial. Manter viabilidade reprodutiva para ciclos futuros.',
-                details: ['Proteção contra oscilações de temperatura', 'Ventilação controlada para produtos que respiram durante armazenamento', 'Potencial reprodutivo preservado — garantia de produção futura', 'Estabilidade térmica natural é mais importante que refrigeração'],
-              },
-              {
-                icon: Leaf, name: 'Especiarias e Ervas Secas', tagline: 'Óleos Essenciais Conservantes',
-                body: 'Ricas em óleos essenciais com propriedades conservantes intrínsecas. Melhoram palatabilidade e segurança microbiológica simultaneamente.',
-                details: ['Recurso renovável quando cultivadas', 'Valor de troca em cenários de escassez', 'Propriedades medicinais complementares', 'Armazenar em recipientes herméticos ao abrigo da luz'],
-              },
+              { icon: Droplets, name: 'Vinagre', tagline: 'O Conservante Multifuncional', body: 'pH entre 2,4 e 3,4. Autoprotetor por acidez extrema.', details: ['Pickling, marinadas, condimentos estabilizados', 'Intensifica extração de minerais de ossos em caldos', 'Potencializa biodisponibilidade de cálcio', 'Produção caseira simples'] },
+              { icon: Wheat, name: 'Grãos Integrais', tagline: 'Cápsulas Biológicas de Nutrição', body: 'Trigo: 15–30 anos. Milho requer nixtamalização.', details: ['Trigo, aveia, centeio, cevada, milho, quinoa', 'Umidade abaixo de 10%', 'Capacidade germinativa preservada', 'Capital biológico renovável'] },
+              { icon: Egg, name: 'Leguminosas Secas', tagline: 'Proteína Vegetal de Longa Duração', body: '20–25% proteína. Armazenamento de 2–10 anos.', details: ['Feijões, grão-de-bico, lentilhas, ervilha seca', 'Complementaridade com grãos = nutrição completa', 'Baixo teor lipídico minimiza rancificação', 'Congelamento prévio elimina ovos de insetos'] },
+              { icon: Package, name: 'Alimentos Enlatados', tagline: 'Praticidade e Décadas de Estabilidade', body: 'Esterilização comercial cria ambiente estéril.', details: ['Alta acidez: 3–5 anos oficialmente, décadas na prática', 'Proteínas inalteradas, minerais preservados', 'Vidros permitem reutilização', 'Sistema FIFO para rotatividade'] },
+              { icon: Leaf, name: 'Raízes e Tubérculos Curados', tagline: 'Reserva Natural de 3–12 Meses', body: 'Inhames, batatas, mandioca, beterrabas.', details: ['Proteção contra oscilações de temperatura', 'Ventilação controlada', 'Potencial reprodutivo preservado', 'Estabilidade térmica natural'] },
+              { icon: Leaf, name: 'Especiarias e Ervas Secas', tagline: 'Óleos Essenciais Conservantes', body: 'Ricas em óleos essenciais com propriedades conservantes.', details: ['Recurso renovável quando cultivadas', 'Valor de troca em cenários de escassez', 'Propriedades medicinais complementares', 'Recipientes herméticos ao abrigo da luz'] },
             ].map((item, i) => {
               const Icon = item.icon;
               return (
-                <motion.div
-                  key={item.name}
-                  initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i}
-                  className="bg-white/60 border border-stone-200/60 rounded-2xl p-6 md:p-8 backdrop-blur-sm"
-                >
+                <motion.div key={item.name} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i}
+                  className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-6 md:p-8">
                   <div className="flex items-start gap-4 mb-4">
-                    <div className="p-2.5 bg-emerald-100/60 rounded-xl shrink-0">
-                      <Icon className="text-emerald-700" size={18} />
+                    <div className="p-2.5 bg-emerald-500/[0.12] rounded-xl shrink-0">
+                      <Icon className="text-emerald-400" size={18} />
                     </div>
                     <div>
-                      <h3 className="text-base font-bold text-stone-800">{item.name}</h3>
-                      <p className="text-emerald-600/80 text-[10px] font-bold uppercase tracking-wider">{item.tagline}</p>
+                      <h3 className="text-base font-bold text-stone-200">{item.name}</h3>
+                      <p className="text-emerald-500/80 text-[10px] font-bold uppercase tracking-wider">{item.tagline}</p>
                     </div>
                   </div>
-                  <p className="text-stone-600 text-sm leading-relaxed mb-3">{item.body}</p>
+                  <p className="text-stone-400 text-sm leading-relaxed mb-3">{item.body}</p>
                   <ul className="space-y-1.5">
                     {item.details.map((d, j) => (
                       <li key={j} className="flex items-start gap-2">
