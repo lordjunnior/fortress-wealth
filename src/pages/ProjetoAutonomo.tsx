@@ -171,6 +171,33 @@ export default function ProjetoAutonomo() {
          SECTION 1 — FULL-VIEWPORT CINEMATIC HERO
       ═══════════════════════════════════════════════════════════ */}
       <section className="relative z-10 min-h-screen flex flex-col justify-center px-6 md:px-16 lg:px-24">
+        {/* Hero background image with parallax */}
+        <motion.div
+          className="absolute inset-0 z-0"
+          style={{ y: useTransform(scrollYProgress, [0, 0.3], [0, 120]) }}
+        >
+          <div
+            className="absolute inset-0 bg-cover bg-center will-change-transform"
+            style={{
+              backgroundImage: `url('/heroes/projeto-autonomo.webp')`,
+              filter: 'brightness(0.45) saturate(0.85)',
+            }}
+          />
+          {/* Cinematic overlay gradient */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background: 'linear-gradient(180deg, rgba(5,8,8,0.25) 0%, rgba(5,8,8,0.6) 40%, rgba(5,8,8,0.92) 75%, rgba(5,8,8,1) 100%)',
+            }}
+          />
+          {/* Side vignette */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background: 'radial-gradient(ellipse 120% 100% at 50% 40%, transparent 40%, rgba(5,8,8,0.8) 100%)',
+            }}
+          />
+        </motion.div>
         {/* Breadcrumb — top left */}
         <nav className="absolute top-6 left-6 md:left-16 flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em]">
           <Link to="/" className="text-stone-600 hover:text-emerald-400 transition-colors">Início</Link>
