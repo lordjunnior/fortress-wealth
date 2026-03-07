@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { ArrowLeft, Ban, Globe, ShieldAlert, Eye, Banknote, AlertTriangle, Lock, Users, ChevronRight, ChevronDown, Scale, Play, GraduationCap, Zap, BookOpen, HelpCircle } from 'lucide-react';
-import { NAV_ITEMS, LIMITES_INTERNACIONAIS, FERRAMENTAS, CONSEQUENCIAS, FAQ_ITEMS, ESCADA_RESTRICAO } from '@/lib/proibicaoDinheiroData';
+import { ArrowLeft, Ban, Globe, ShieldAlert, Eye, Banknote, AlertTriangle, Lock, Users, ChevronRight, ChevronDown, Scale, Play, GraduationCap, Zap, BookOpen, HelpCircle, Clock, CheckCircle, XCircle, ArrowDown } from 'lucide-react';
+import { NAV_ITEMS, LIMITES_INTERNACIONAIS, FERRAMENTAS, CONSEQUENCIAS, FAQ_ITEMS, ESCADA_RESTRICAO, TIMELINE_ITEMS, PL_NAO_FAZ, PL_MAS_FAZ } from '@/lib/proibicaoDinheiroData';
 
 /* ───────────── FAQ SCHEMA JSON-LD ───────────── */
 const faqSchema = {
@@ -177,12 +177,18 @@ export default function ProibicaoDinheiro() {
                 <span className="title-shimmer italic inline-block pt-1">Limitar Seu Dinheiro</span>
               </h1>
 
-              <p className="text-lg md:text-xl text-slate-400 leading-relaxed max-w-3xl mb-6 font-medium">
-                O Projeto de Lei <strong className="text-white">PL 3.951/2019</strong> abriu caminho para que o governo brasileiro estabeleça <strong className="text-red-500">limites ao uso de dinheiro em espécie</strong>. Hoje começa com transações específicas. Amanhã, pode ser o troco do pão.
+              <p className="text-lg md:text-xl text-slate-400 leading-relaxed max-w-3xl mb-4 font-medium">
+                O Projeto de Lei <strong className="text-white">PL 3.951/2019</strong> abriu caminho para que o governo brasileiro estabeleça <strong className="text-red-500">limites ao uso de dinheiro em espécie</strong>.
               </p>
               <p className="text-base text-slate-500 leading-relaxed max-w-3xl mb-10 font-medium">
-                Aqui você vai entender o que está acontecendo, ver como a Europa já avançou nessa agenda, conhecer as ferramentas legais para proteger sua privacidade financeira — e descobrir como <strong className="text-white">manter o poder na sua mão</strong>.
+                Entenda o que está acontecendo, veja como a Europa já avançou nessa agenda e descubra ferramentas legais para proteger sua <strong className="text-white">soberania financeira</strong>.
               </p>
+
+              {/* Micro-CTA de retenção */}
+              <button onClick={() => scrollTo('pl3951')} className="inline-flex items-center gap-2 text-slate-500 hover:text-white text-xs font-bold uppercase tracking-wider transition-colors mb-10 group">
+                <ArrowDown size={14} className="text-red-500 group-hover:translate-y-1 transition-transform" />
+                Entenda o que está acontecendo
+              </button>
 
               <div className="flex flex-col sm:flex-row gap-4 mb-10">
                 <button onClick={() => scrollTo('ferramentas')} className="cta-gold px-8 py-4 rounded-sm font-black uppercase text-sm tracking-widest text-center">
