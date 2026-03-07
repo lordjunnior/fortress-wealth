@@ -1,8 +1,12 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { ArrowLeft, Calendar, AlertTriangle, Vault, Lock, Users, Scale, TrendingDown, BookOpen, ShieldAlert, DollarSign, Clock, UserX } from "lucide-react";
 import ConfiscoFaq from "@/components/confisco/ConfiscoFaq";
+import ConfiscoCitations from "@/components/confisco/ConfiscoCitations";
+import ScrollProgressBar from "@/components/confisco/ScrollProgressBar";
+import FloatingToc from "@/components/confisco/FloatingToc";
 import { confiscoArticleSchema, confiscoFaqSchema, confiscoBreadcrumbSchema } from "@/lib/confiscoData";
 import presidenteImg from "@/assets/presidente-confisco-1990.jpg";
 import hiperinflacaoImg from "@/assets/confisco-hiperinflacao-1989.jpg";
@@ -15,6 +19,7 @@ import bitcoinImg from "@/assets/confisco-bitcoin-solucao.jpg";
 
 const chapters = [
   {
+    id: "cap-1",
     phase: "CAPÍTULO 1",
     title: "O Cenário: Brasil, 1989",
     icon: Calendar,
@@ -27,6 +32,7 @@ const chapters = [
     ],
   },
   {
+    id: "cap-2",
     phase: "CAPÍTULO 2",
     title: "A Noite Antes do Confisco",
     icon: Vault,
@@ -39,6 +45,7 @@ const chapters = [
     ],
   },
   {
+    id: "cap-3",
     phase: "CAPÍTULO 3",
     title: "16 de Março, 1990: O Dia em que o Brasil Acordou Sem Nada",
     icon: Lock,
@@ -52,6 +59,7 @@ const chapters = [
     ],
   },
   {
+    id: "cap-4",
     phase: "CAPÍTULO 4",
     title: "As Consequências Humanas",
     icon: Users,
@@ -65,6 +73,7 @@ const chapters = [
     ],
   },
   {
+    id: "cap-5",
     phase: "CAPÍTULO 5",
     title: "O Dinheiro Nunca Voltou (Como Prometido)",
     icon: TrendingDown,
@@ -77,6 +86,7 @@ const chapters = [
     ],
   },
   {
+    id: "cap-6",
     phase: "CAPÍTULO 6",
     title: "O Mecanismo Legal Ainda Existe",
     icon: Scale,
@@ -89,6 +99,7 @@ const chapters = [
     ],
   },
   {
+    id: "cap-7",
     phase: "CAPÍTULO 7",
     title: "A Lição que Ninguém Ensina",
     icon: BookOpen,
@@ -110,26 +121,33 @@ const impactStats = [
   { icon: UserX, value: "Milhões", label: "de contas afetadas" },
 ];
 
+/* ── Parallax Chapter Image ── */
 const ChapterImage = ({ src, alt, index }: { src: string; alt: string; index: number }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
+  const y = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
   const isEven = index % 2 === 0;
+
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 1.05 }}
+      ref={ref}
+      initial={{ opacity: 0, scale: 1.02 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-      className="relative w-full h-48 md:h-56 rounded-xl overflow-hidden my-4"
+      className="relative w-full h-48 md:h-60 rounded-xl overflow-hidden my-4"
     >
-      <img
+      <motion.img
         src={src}
         alt={alt}
-        className="w-full h-full object-cover"
+        style={{ y }}
+        className="absolute inset-0 w-full h-[120%] object-cover -top-[10%]"
         loading="lazy"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
-      <div className={`absolute inset-0 bg-gradient-to-${isEven ? 'r' : 'l'} from-background/80 via-transparent to-background/40`} />
-      <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-transparent to-transparent" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,hsl(var(--background)/0.6)_100%)]" />
+      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/15 to-transparent" />
+      <div className={`absolute inset-0 ${isEven ? 'bg-gradient-to-r' : 'bg-gradient-to-l'} from-background/70 via-transparent to-background/30`} />
+      <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,hsl(var(--background)/0.5)_100%)]" />
     </motion.div>
   );
 };
@@ -151,23 +169,31 @@ const Confisco1990 = () => {
         <script type="application/ld+json">{JSON.stringify(confiscoBreadcrumbSchema)}</script>
       </Helmet>
 
+      {/* ── Scroll Progress Bar ── */}
+      <ScrollProgressBar />
+
+      {/* ── Floating Table of Contents ── */}
+      <FloatingToc />
+
       {/* ── Global Background Layers ── */}
-      {/* Grain texture */}
+      {/* Film grain */}
       <div 
-        className="fixed inset-0 pointer-events-none z-[1] opacity-[0.03]"
+        className="fixed inset-0 pointer-events-none z-[1] opacity-[0.035]"
         style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
           backgroundRepeat: 'repeat',
           backgroundSize: '128px 128px',
         }}
       />
-      {/* Ambient red vignette that follows scroll */}
-      <div className="fixed inset-0 pointer-events-none z-[1] bg-[radial-gradient(ellipse_at_50%_20%,hsl(0_84%_60%/0.04)_0%,transparent_60%)]" />
-      <div className="fixed inset-0 pointer-events-none z-[1] bg-[radial-gradient(ellipse_at_50%_80%,hsl(0_84%_60%/0.03)_0%,transparent_50%)]" />
-      {/* Subtle vertical gradient bands for depth */}
+      {/* Ambient documentary glows */}
+      <div className="fixed inset-0 pointer-events-none z-[1] bg-[radial-gradient(ellipse_at_30%_20%,hsl(0_84%_60%/0.04)_0%,transparent_55%)]" />
+      <div className="fixed inset-0 pointer-events-none z-[1] bg-[radial-gradient(ellipse_at_70%_80%,hsl(0_84%_60%/0.03)_0%,transparent_50%)]" />
+      {/* Light beam (cinematic) */}
+      <div className="fixed inset-0 pointer-events-none z-[1] bg-[linear-gradient(120deg,transparent_40%,hsl(0_0%_100%/0.02)_50%,transparent_60%)]" />
+      {/* Vertical depth rhythm */}
       <div className="fixed inset-0 pointer-events-none z-[1] bg-[linear-gradient(180deg,hsl(222_47%_4%/0)_0%,hsl(0_84%_60%/0.02)_25%,hsl(222_47%_4%/0)_50%,hsl(0_84%_60%/0.015)_75%,hsl(222_47%_4%/0)_100%)]" />
 
-      {/* ── Content (above background layers) ── */}
+      {/* ── Content ── */}
       <div className="relative z-[2]">
 
         {/* Hero */}
@@ -215,7 +241,7 @@ const Confisco1990 = () => {
           </motion.div>
         </section>
 
-        {/* Impact Stats Block */}
+        {/* Impact Stats */}
         <section className="max-w-4xl mx-auto px-6 -mt-8 relative z-20">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -250,7 +276,7 @@ const Confisco1990 = () => {
           </motion.div>
         </section>
 
-        {/* Ambient glow between stats and chapters */}
+        {/* Connector */}
         <div className="relative max-w-4xl mx-auto">
           <div className="absolute left-1/2 -translate-x-1/2 top-0 w-px h-32 bg-gradient-to-b from-destructive/20 to-transparent" />
         </div>
@@ -267,19 +293,21 @@ const Confisco1990 = () => {
 
           {chapters.map((chapter, i) => {
             const Icon = chapter.icon;
+            const isEvenChapter = i % 2 !== 0;
             return (
               <motion.article
                 key={i}
+                id={chapter.id}
                 initial={{ opacity: 0, y: 40, filter: "blur(6px)" }}
                 whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-                className="space-y-4 relative"
+                className={`space-y-4 relative rounded-2xl ${isEvenChapter ? 'bg-[hsl(222_47%_5.5%)]' : ''} ${isEvenChapter ? 'p-6 md:p-8 -mx-2 md:-mx-4' : ''}`}
               >
                 {/* Glow lateral */}
-                <div className="absolute -left-4 top-0 w-1 h-full bg-gradient-to-b from-destructive/30 via-destructive/10 to-transparent rounded-full" />
+                <div className={`absolute ${isEvenChapter ? 'left-2 md:left-4' : '-left-4'} top-0 w-1 h-full bg-gradient-to-b from-destructive/30 via-destructive/10 to-transparent rounded-full`} />
                 
-                {/* Ambient glow behind chapter */}
+                {/* Ambient glow */}
                 <div className="absolute -inset-12 bg-[radial-gradient(ellipse_at_center,hsl(0_84%_60%/0.03)_0%,transparent_70%)] pointer-events-none" />
 
                 <div className="flex items-center gap-3 mb-2 relative">
@@ -304,7 +332,6 @@ const Confisco1990 = () => {
 
                 <div className="h-px bg-gradient-to-r from-destructive/30 via-border/50 to-transparent" />
 
-                {/* Chapter Image with fade */}
                 <ChapterImage src={chapter.image} alt={chapter.imageAlt} index={i} />
 
                 <div className="space-y-5">
@@ -322,8 +349,7 @@ const Confisco1990 = () => {
                   ))}
                 </div>
 
-                {/* Divider between chapters */}
-                {i < chapters.length - 1 && (
+                {i < chapters.length - 1 && !isEvenChapter && (
                   <motion.div
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
@@ -340,49 +366,42 @@ const Confisco1990 = () => {
             );
           })}
 
-          {/* ══════════════════════════════════════════════════ */}
-          {/* TRANSITION BLOCK: 1990 → HOJE */}
-          {/* ══════════════════════════════════════════════════ */}
+          {/* ══════════════════════════════════════ */}
+          {/* TRANSITION: 1990 → HOJE               */}
+          {/* ══════════════════════════════════════ */}
           <motion.div
+            id="transicao"
             initial={{ opacity: 0, scale: 0.92, filter: "blur(12px)" }}
             whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
             className="relative overflow-hidden rounded-2xl py-20 md:py-28 px-8 md:px-16 text-center -mx-6 md:-mx-12"
           >
-            {/* Multi-layer background */}
             <div className="absolute inset-0 bg-gradient-to-b from-destructive/20 via-destructive/8 to-background rounded-2xl" />
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,hsl(0_84%_60%/0.15)_0%,transparent_60%)]" />
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,hsl(0_84%_60%/0.1)_0%,transparent_50%)]" />
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,hsl(40_92%_56%/0.05)_0%,transparent_50%)]" />
             
-            {/* Outer border */}
             <div className="absolute inset-0 rounded-2xl border border-destructive/25" />
             
-            {/* Pulsing inner border */}
             <motion.div
               className="absolute inset-2 rounded-xl border border-destructive/15"
               animate={{ opacity: [0.3, 0.7, 0.3] }}
               transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
             />
 
-            {/* Animated corner accents */}
-            <div className="absolute top-0 left-0 w-16 h-16">
-              <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-destructive/50 to-transparent" />
-              <div className="absolute top-0 left-0 h-full w-px bg-gradient-to-b from-destructive/50 to-transparent" />
-            </div>
-            <div className="absolute top-0 right-0 w-16 h-16">
-              <div className="absolute top-0 right-0 w-full h-px bg-gradient-to-l from-destructive/50 to-transparent" />
-              <div className="absolute top-0 right-0 h-full w-px bg-gradient-to-b from-destructive/50 to-transparent" />
-            </div>
-            <div className="absolute bottom-0 left-0 w-16 h-16">
-              <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-destructive/50 to-transparent" />
-              <div className="absolute bottom-0 left-0 h-full w-px bg-gradient-to-t from-destructive/50 to-transparent" />
-            </div>
-            <div className="absolute bottom-0 right-0 w-16 h-16">
-              <div className="absolute bottom-0 right-0 w-full h-px bg-gradient-to-l from-destructive/50 to-transparent" />
-              <div className="absolute bottom-0 right-0 h-full w-px bg-gradient-to-t from-destructive/50 to-transparent" />
-            </div>
+            {/* Corner accents */}
+            {[
+              "top-0 left-0",
+              "top-0 right-0",
+              "bottom-0 left-0",
+              "bottom-0 right-0",
+            ].map((pos, i) => (
+              <div key={i} className={`absolute ${pos} w-16 h-16`}>
+                <div className={`absolute ${pos.includes("top") ? "top-0" : "bottom-0"} ${pos.includes("left") ? "left-0" : "right-0"} w-full h-px bg-gradient-to-${pos.includes("left") ? "r" : "l"} from-destructive/50 to-transparent`} />
+                <div className={`absolute ${pos.includes("top") ? "top-0" : "bottom-0"} ${pos.includes("left") ? "left-0" : "right-0"} h-full w-px bg-gradient-to-${pos.includes("top") ? "b" : "t"} from-destructive/50 to-transparent`} />
+              </div>
+            ))}
 
             <div className="relative z-10 space-y-10">
               <motion.p
@@ -395,7 +414,6 @@ const Confisco1990 = () => {
                 1990: NÃO EXISTIA ALTERNATIVA
               </motion.p>
 
-              {/* Horizontal rule */}
               <motion.div
                 initial={{ scaleX: 0 }}
                 whileInView={{ scaleX: 1 }}
@@ -414,7 +432,6 @@ const Confisco1990 = () => {
                 Hoje existe.
               </motion.h3>
               
-              {/* Gold divider */}
               <motion.div
                 initial={{ width: 0 }}
                 whileInView={{ width: "160px" }}
@@ -485,8 +502,13 @@ const Confisco1990 = () => {
             </div>
           </motion.div>
 
-          {/* FAQ Section */}
-          <ConfiscoFaq />
+          {/* FAQ */}
+          <div id="faq">
+            <ConfiscoFaq />
+          </div>
+
+          {/* Citations */}
+          <ConfiscoCitations />
 
           {/* Internal Linking */}
           <motion.nav
@@ -523,7 +545,7 @@ const Confisco1990 = () => {
             </div>
           </motion.nav>
 
-          {/* Breadcrumb (semantic, visible) */}
+          {/* Breadcrumb */}
           <nav aria-label="Breadcrumb" className="pt-8">
             <ol className="flex items-center gap-2 text-xs text-muted-foreground/50 font-mono">
               <li><Link to="/" className="hover:text-foreground transition-colors">Início</Link></li>
