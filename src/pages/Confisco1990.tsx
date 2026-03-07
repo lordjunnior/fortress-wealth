@@ -312,33 +312,41 @@ const Confisco1990 = () => {
 
         {/* Final CTA */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="border border-destructive/30 rounded-xl bg-destructive/5 p-8 md:p-12 text-center space-y-6"
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className="relative overflow-hidden border border-destructive/30 rounded-2xl bg-gradient-to-b from-destructive/10 to-destructive/5 p-8 md:p-12 text-center space-y-6"
         >
-          <AlertTriangle className="w-10 h-10 text-destructive mx-auto" />
-          <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tight">
-            Quanto do seu patrimônio está a uma assinatura de distância de desaparecer?
-          </h3>
-          <p className="text-muted-foreground max-w-xl mx-auto leading-relaxed">
-            Em 1990 não existia alternativa. Hoje existe.
-            O Bitcoin é a única tecnologia que garante que nenhum presidente, nenhum decreto e nenhuma medida provisória pode tocar no seu dinheiro.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-            <Link
-              to="/autocustodia"
-              className="inline-flex items-center justify-center gap-2 bg-gold text-background font-bold px-8 py-3.5 rounded-lg text-sm tracking-wide hover:bg-gold/90 transition-colors"
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,hsl(var(--destructive)/0.15)_0%,transparent_60%)]" />
+          <div className="relative z-10 space-y-6">
+            <motion.div
+              animate={{ rotate: [0, 5, -5, 0] }}
+              transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
             >
-              Descobrir Como Proteger Meu Patrimônio
-            </Link>
-            <Link
-              to="/historia-do-dinheiro"
-              className="inline-flex items-center justify-center gap-2 border border-border bg-background font-bold px-8 py-3.5 rounded-lg text-sm tracking-wide hover:bg-card transition-colors"
-            >
-              Entender a História Completa
-            </Link>
+              <AlertTriangle className="w-12 h-12 text-destructive mx-auto" />
+            </motion.div>
+            <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tight">
+              Quanto do seu patrimônio está a uma assinatura de distância de desaparecer?
+            </h3>
+            <p className="text-muted-foreground max-w-xl mx-auto leading-relaxed">
+              Em 1990 não existia alternativa. Hoje existe.
+              O Bitcoin é a única tecnologia que garante que nenhum presidente, nenhum decreto e nenhuma medida provisória pode tocar no seu dinheiro.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+              <Link
+                to="/autocustodia"
+                className="inline-flex items-center justify-center gap-2 bg-gold text-background font-bold px-8 py-3.5 rounded-lg text-sm tracking-wide hover:bg-gold/90 transition-all duration-300 hover:shadow-[0_0_20px_hsl(var(--gold)/0.3)]"
+              >
+                Descobrir Como Proteger Meu Patrimônio
+              </Link>
+              <Link
+                to="/historia-do-dinheiro"
+                className="inline-flex items-center justify-center gap-2 border border-border bg-background font-bold px-8 py-3.5 rounded-lg text-sm tracking-wide hover:bg-card hover:border-foreground/20 transition-all duration-300"
+              >
+                Entender a História Completa
+              </Link>
+            </div>
           </div>
         </motion.div>
 
