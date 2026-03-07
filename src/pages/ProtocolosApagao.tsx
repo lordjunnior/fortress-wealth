@@ -11,10 +11,6 @@ import imgConservacao from '@/assets/apagao-conservacao.jpg';
 import imgTermico from '@/assets/apagao-termico.jpg';
 import imgEnergia from '@/assets/apagao-energia.jpg';
 
-/* ═══════════════════════════════════════════════════════════════
-   DADOS — IMPACTOS DO APAGÃO
-   ═══════════════════════════════════════════════════════════════ */
-
 const IMPACTOS_4H = [
   'Geladeiras começam a perder temperatura segura',
   'Elevadores param',
@@ -28,29 +24,17 @@ const IMPACTOS_24H = [
   'Sistema bancário pode falhar',
 ];
 
-/* ═══════════════════════════════════════════════════════════════
-   DADOS — NÍVEIS DE ILUMINAÇÃO
-   ═══════════════════════════════════════════════════════════════ */
-
 const NIVEIS_ILUMINACAO = [
   { nivel: 'Individual', desc: 'Lanterna portátil LED. Ideal: recarregável + pilha reserva.', icon: '🔦' },
   { nivel: 'Ambiente', desc: 'Lanterna de mesa ou luminária de emergência.', icon: '💡' },
   { nivel: 'Longa Duração', desc: 'Lâmpadas recarregáveis USB. Power bank como suporte.', icon: '🔋' },
 ];
 
-/* ═══════════════════════════════════════════════════════════════
-   DADOS — OPÇÕES DE COCÇÃO
-   ═══════════════════════════════════════════════════════════════ */
-
 const OPCOES_COCCAO = [
   { nome: 'Fogareiro portátil a gás (butano)', desc: 'Mais eficiente. Usar sempre em ambiente ventilado.', seguro: true },
   { nome: 'Fogão a gás convencional', desc: 'Desde que tenha ignição manual (fósforo/isqueiro).', seguro: true },
   { nome: 'Churrasqueira externa', desc: 'Nunca dentro de casa. Apenas em área aberta.', seguro: true },
 ];
-
-/* ═══════════════════════════════════════════════════════════════
-   DADOS — SINTOMAS MONÓXIDO
-   ═══════════════════════════════════════════════════════════════ */
 
 const SINTOMAS_CO = [
   'Dor de cabeça persistente',
@@ -59,19 +43,11 @@ const SINTOMAS_CO = [
   'Confusão mental',
 ];
 
-/* ═══════════════════════════════════════════════════════════════
-   DADOS — ALIMENTOS QUE ESTRAGAM PRIMEIRO
-   ═══════════════════════════════════════════════════════════════ */
-
 const PERECIVEIS = [
   'Carnes (bovina, frango, peixe)',
   'Laticínios (leite, queijos, iogurte)',
   'Alimentos cozidos e sobras',
 ];
-
-/* ═══════════════════════════════════════════════════════════════
-   DADOS — ENERGIA ALTERNATIVA
-   ═══════════════════════════════════════════════════════════════ */
 
 const ENERGIA_ALT = [
   { nome: 'Power bank', desc: 'Celular e dispositivos USB. Manter carregado.', icon: Battery },
@@ -80,10 +56,6 @@ const ENERGIA_ALT = [
   { nome: 'Placa solar portátil', desc: 'Recarrega power banks e dispositivos pequenos.', icon: Sun },
 ];
 
-/* ═══════════════════════════════════════════════════════════════
-   DADOS — ERROS COMUNS
-   ═══════════════════════════════════════════════════════════════ */
-
 const ERROS = [
   'Uso interno de carvão ou fogareiro em ambiente fechado',
   'Uso de gerador dentro de garagem ou área coberta',
@@ -91,10 +63,6 @@ const ERROS = [
   'Abrir geladeira repetidamente durante o apagão',
   'Não ter pilhas reserva ou power bank carregado',
 ];
-
-/* ═══════════════════════════════════════════════════════════════
-   COMPONENTE PRINCIPAL
-   ═══════════════════════════════════════════════════════════════ */
 
 export default function ProtocolosApagao() {
   React.useEffect(() => { window.scrollTo(0, 0); }, []);
@@ -112,41 +80,39 @@ export default function ProtocolosApagao() {
 
       <div className="max-w-4xl mx-auto px-5 md:px-8 pt-12 pb-32">
 
-        {/* ══════════════════════════════════════════════════════════
-           CONTEXTO — IMPACTOS PROGRESSIVOS
-           ══════════════════════════════════════════════════════════ */}
+        {/* CONTEXTO */}
         <motion.section
-          className="bg-amber-50/80 border border-amber-200/50 rounded-2xl p-6 md:p-10 mb-10"
+          className="bg-amber-500/[0.08] border border-amber-500/[0.15] rounded-2xl p-6 md:p-10 mb-10"
           variants={fadeUp} initial="hidden" whileInView="visible" viewport={viewportOnce}
         >
-          <h2 className="text-lg font-bold text-stone-800 mb-4 flex items-center gap-2">
+          <h2 className="text-lg font-bold text-stone-200 mb-4 flex items-center gap-2">
             <Shield size={18} className="text-amber-500" />
             O que um apagão compromete?
           </h2>
-          <p className="text-stone-600 text-sm leading-relaxed mb-5">
+          <p className="text-stone-400 text-sm leading-relaxed mb-5">
             Conservação de alimentos, comunicação, segurança, aquecimento ou resfriamento, capacidade de cozinhar e abastecimento de água (em prédios).
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="bg-white/60 rounded-xl p-5 border border-amber-100">
-              <p className="text-amber-600 text-xs font-bold uppercase tracking-wider mb-3 flex items-center gap-2">
+            <div className="bg-white/[0.03] rounded-xl p-5 border border-amber-500/[0.1]">
+              <p className="text-amber-400 text-xs font-bold uppercase tracking-wider mb-3 flex items-center gap-2">
                 <Clock size={13} /> Após 4–6 horas
               </p>
               <ul className="space-y-2">
                 {IMPACTOS_4H.map((item, i) => (
-                  <li key={i} className="flex items-start gap-2 text-stone-600 text-sm">
+                  <li key={i} className="flex items-start gap-2 text-stone-400 text-sm">
                     <AlertTriangle size={13} className="text-amber-400 mt-0.5 shrink-0" /> {item}
                   </li>
                 ))}
               </ul>
             </div>
-            <div className="bg-rose-50/60 rounded-xl p-5 border border-rose-100">
-              <p className="text-rose-600 text-xs font-bold uppercase tracking-wider mb-3 flex items-center gap-2">
+            <div className="bg-rose-500/[0.06] rounded-xl p-5 border border-rose-500/[0.1]">
+              <p className="text-rose-400 text-xs font-bold uppercase tracking-wider mb-3 flex items-center gap-2">
                 <Clock size={13} /> Após 24 horas
               </p>
               <ul className="space-y-2">
                 {IMPACTOS_24H.map((item, i) => (
-                  <li key={i} className="flex items-start gap-2 text-stone-600 text-sm">
+                  <li key={i} className="flex items-start gap-2 text-stone-400 text-sm">
                     <AlertTriangle size={13} className="text-rose-400 mt-0.5 shrink-0" /> {item}
                   </li>
                 ))}
@@ -154,38 +120,36 @@ export default function ProtocolosApagao() {
             </div>
           </div>
 
-          <div className="mt-5 bg-white/60 rounded-xl p-4 border border-amber-100">
-            <p className="text-stone-700 text-sm font-semibold leading-relaxed">
+          <div className="mt-5 bg-white/[0.03] rounded-xl p-4 border border-amber-500/[0.1]">
+            <p className="text-stone-300 text-sm font-semibold leading-relaxed">
               Este protocolo organiza resposta em três camadas:{' '}
-              <span className="text-amber-600">Iluminação</span>,{' '}
-              <span className="text-rose-600">Alimentação e cocção</span> e{' '}
-              <span className="text-blue-600">Controle térmico</span>.
+              <span className="text-amber-400">Iluminação</span>,{' '}
+              <span className="text-rose-400">Alimentação e cocção</span> e{' '}
+              <span className="text-blue-400">Controle térmico</span>.
             </p>
           </div>
         </motion.section>
 
-        {/* ══════════════════════════════════════════════════════════
-           CAMADA 1 — ILUMINAÇÃO ESTRATÉGICA
-           ══════════════════════════════════════════════════════════ */}
+        {/* CAMADA 1 — ILUMINAÇÃO */}
         <motion.section
           className="mb-10"
           variants={fadeUp} initial="hidden" whileInView="visible" viewport={viewportOnce}
         >
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center">
-              <Lightbulb size={16} className="text-amber-600" />
+            <div className="w-8 h-8 rounded-full bg-amber-500/[0.15] flex items-center justify-center">
+              <Lightbulb size={16} className="text-amber-400" />
             </div>
-            <h2 className="text-xl font-bold text-stone-800">1. Iluminação Estratégica</h2>
+            <h2 className="text-xl font-bold text-stone-200">1. Iluminação Estratégica</h2>
           </div>
 
-          <div className="rounded-2xl overflow-hidden mb-6 border border-stone-200/40">
+          <div className="rounded-2xl overflow-hidden mb-6 border border-white/[0.06]">
             <img src={imgIluminacao} alt="Sistema de iluminação em apagão" className="w-full h-56 md:h-72 object-cover" loading="lazy" />
           </div>
 
           <div className="space-y-4">
-            <div className="bg-white/80 border border-stone-200/60 rounded-xl p-5">
-              <p className="text-stone-600 text-sm leading-relaxed">
-                Iluminação não é conforto — é <strong className="text-stone-800">segurança</strong>. Reduz quedas, lesões, pânico e vulnerabilidade.
+            <div className="bg-white/[0.03] border border-white/[0.06] rounded-xl p-5">
+              <p className="text-stone-400 text-sm leading-relaxed">
+                Iluminação não é conforto — é <strong className="text-stone-200">segurança</strong>. Reduz quedas, lesões, pânico e vulnerabilidade.
               </p>
             </div>
 
@@ -196,26 +160,26 @@ export default function ProtocolosApagao() {
               {NIVEIS_ILUMINACAO.map((n, i) => (
                 <motion.div
                   key={i}
-                  className="flex items-center gap-4 bg-amber-50/80 border border-amber-200/40 rounded-xl px-5 py-4"
+                  className="flex items-center gap-4 bg-amber-500/[0.08] border border-amber-500/[0.1] rounded-xl px-5 py-4"
                   variants={staggerChild}
                 >
                   <span className="text-2xl">{n.icon}</span>
                   <div>
-                    <p className="text-stone-700 text-sm font-semibold">Iluminação {n.nivel}</p>
+                    <p className="text-stone-300 text-sm font-semibold">Iluminação {n.nivel}</p>
                     <p className="text-stone-500 text-xs">{n.desc}</p>
                   </div>
                 </motion.div>
               ))}
             </motion.div>
 
-            <div className="bg-rose-50/80 border border-rose-200/50 rounded-xl p-5">
+            <div className="bg-rose-500/[0.08] border border-rose-500/[0.15] rounded-xl p-5">
               <p className="text-[10px] font-bold tracking-widest uppercase text-rose-500 mb-3">⚠ Velas — Uso Controlado</p>
-              <p className="text-stone-600 text-sm leading-relaxed mb-3">
+              <p className="text-stone-400 text-sm leading-relaxed mb-3">
                 Risco de incêndio, monóxido de carbono e acidentes noturnos. Se usar:
               </p>
               <ul className="space-y-1.5">
                 {['Base estável e resistente ao calor', 'Longe de tecidos, cortinas e papel', 'Nunca dormir com vela acesa'].map((item, i) => (
-                  <li key={i} className="flex items-start gap-2 text-stone-600 text-sm">
+                  <li key={i} className="flex items-start gap-2 text-stone-400 text-sm">
                     <CheckCircle2 size={13} className="text-emerald-500 mt-0.5 shrink-0" /> {item}
                   </li>
                 ))}
@@ -224,39 +188,37 @@ export default function ProtocolosApagao() {
           </div>
         </motion.section>
 
-        {/* ══════════════════════════════════════════════════════════
-           CAMADA 2 — COCÇÃO SEM ENERGIA
-           ══════════════════════════════════════════════════════════ */}
+        {/* CAMADA 2 — COCÇÃO */}
         <motion.section
           className="mb-10"
           variants={fadeUp} initial="hidden" whileInView="visible" viewport={viewportOnce}
         >
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-8 h-8 rounded-full bg-rose-100 flex items-center justify-center">
-              <UtensilsCrossed size={16} className="text-rose-500" />
+            <div className="w-8 h-8 rounded-full bg-rose-500/[0.15] flex items-center justify-center">
+              <UtensilsCrossed size={16} className="text-rose-400" />
             </div>
-            <h2 className="text-xl font-bold text-stone-800">2. Cozimento em Ausência de Energia</h2>
+            <h2 className="text-xl font-bold text-stone-200">2. Cozimento em Ausência de Energia</h2>
           </div>
 
-          <div className="rounded-2xl overflow-hidden mb-6 border border-stone-200/40">
+          <div className="rounded-2xl overflow-hidden mb-6 border border-white/[0.06]">
             <img src={imgCoccao} alt="Cocção segura em apagão" className="w-full h-56 md:h-72 object-cover" loading="lazy" />
           </div>
 
           <div className="space-y-4">
-            <div className="bg-white/80 border border-stone-200/60 rounded-xl p-5">
-              <p className="text-stone-600 text-sm leading-relaxed">
-                Sem energia elétrica, fogão elétrico, micro-ondas e indução ficam inutilizados. Alternativas precisam ser <strong className="text-stone-800">seguras, ventiladas e controladas</strong>.
+            <div className="bg-white/[0.03] border border-white/[0.06] rounded-xl p-5">
+              <p className="text-stone-400 text-sm leading-relaxed">
+                Sem energia elétrica, fogão elétrico, micro-ondas e indução ficam inutilizados. Alternativas precisam ser <strong className="text-stone-200">seguras, ventiladas e controladas</strong>.
               </p>
             </div>
 
-            <div className="bg-emerald-50/80 border border-emerald-200/50 rounded-xl p-5">
+            <div className="bg-emerald-500/[0.08] border border-emerald-500/[0.15] rounded-xl p-5">
               <p className="text-[10px] font-bold tracking-widest uppercase text-emerald-500 mb-3">🔥 Opções Seguras</p>
               <div className="space-y-3">
                 {OPCOES_COCCAO.map((op, i) => (
-                  <div key={i} className="flex items-start gap-3 bg-white/60 rounded-lg px-4 py-3 border border-emerald-100">
+                  <div key={i} className="flex items-start gap-3 bg-white/[0.03] rounded-lg px-4 py-3 border border-emerald-500/[0.1]">
                     <CheckCircle2 size={14} className="text-emerald-500 mt-0.5 shrink-0" />
                     <div>
-                      <p className="text-stone-700 text-sm font-semibold">{op.nome}</p>
+                      <p className="text-stone-300 text-sm font-semibold">{op.nome}</p>
                       <p className="text-stone-500 text-xs">{op.desc}</p>
                     </div>
                   </div>
@@ -296,41 +258,39 @@ export default function ProtocolosApagao() {
           </div>
         </motion.section>
 
-        {/* ══════════════════════════════════════════════════════════
-           CAMADA 3 — CONSERVAÇÃO DE ALIMENTOS
-           ══════════════════════════════════════════════════════════ */}
+        {/* CAMADA 3 — CONSERVAÇÃO */}
         <motion.section
           className="mb-10"
           variants={fadeUp} initial="hidden" whileInView="visible" viewport={viewportOnce}
         >
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
-              <Snowflake size={16} className="text-blue-500" />
+            <div className="w-8 h-8 rounded-full bg-blue-500/[0.15] flex items-center justify-center">
+              <Snowflake size={16} className="text-blue-400" />
             </div>
-            <h2 className="text-xl font-bold text-stone-800">3. Conservação de Alimentos</h2>
+            <h2 className="text-xl font-bold text-stone-200">3. Conservação de Alimentos</h2>
           </div>
 
-          <div className="rounded-2xl overflow-hidden mb-6 border border-stone-200/40">
+          <div className="rounded-2xl overflow-hidden mb-6 border border-white/[0.06]">
             <img src={imgConservacao} alt="Conservação sem energia" className="w-full h-56 md:h-72 object-cover" loading="lazy" />
           </div>
 
           <div className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="bg-blue-50/80 border border-blue-200/50 rounded-xl p-5">
+              <div className="bg-blue-500/[0.08] border border-blue-500/[0.15] rounded-xl p-5">
                 <p className="text-[10px] font-bold tracking-widest uppercase text-blue-500 mb-2">Geladeira fechada mantém frio por</p>
-                <p className="text-2xl font-bold text-stone-800">4 horas <span className="text-sm font-normal text-stone-500">(porta fechada)</span></p>
-                <p className="text-stone-500 text-xs mt-2">Freezer cheio: <strong className="text-stone-700">até 24 horas</strong></p>
+                <p className="text-2xl font-bold text-stone-200">4 horas <span className="text-sm font-normal text-stone-500">(porta fechada)</span></p>
+                <p className="text-stone-500 text-xs mt-2">Freezer cheio: <strong className="text-stone-300">até 24 horas</strong></p>
               </div>
 
-              <div className="bg-white/80 border border-stone-200/60 rounded-xl p-5">
-                <p className="text-[10px] font-bold tracking-widest uppercase text-stone-400 mb-3">Estratégia Inteligente</p>
+              <div className="bg-white/[0.03] border border-white/[0.06] rounded-xl p-5">
+                <p className="text-[10px] font-bold tracking-widest uppercase text-stone-500 mb-3">Estratégia Inteligente</p>
                 <ul className="space-y-1.5">
                   {[
                     'Não abrir desnecessariamente',
                     'Priorizar consumo de perecíveis',
                     'Congelar garrafas de água previamente (massa térmica)',
                   ].map((item, i) => (
-                    <li key={i} className="flex items-start gap-2 text-stone-600 text-sm">
+                    <li key={i} className="flex items-start gap-2 text-stone-400 text-sm">
                       <CheckCircle2 size={13} className="text-emerald-500 mt-0.5 shrink-0" /> {item}
                     </li>
                   ))}
@@ -338,17 +298,17 @@ export default function ProtocolosApagao() {
               </div>
             </div>
 
-            <div className="bg-rose-50/80 border border-rose-200/50 rounded-xl p-5">
+            <div className="bg-rose-500/[0.08] border border-rose-500/[0.15] rounded-xl p-5">
               <p className="text-[10px] font-bold tracking-widest uppercase text-rose-500 mb-3">⚠ Alimentos que Estragam Primeiro</p>
               <div className="flex flex-wrap gap-2 mb-3">
                 {PERECIVEIS.map((item, i) => (
-                  <span key={i} className="bg-white/60 border border-rose-100 rounded-lg px-3 py-1.5 text-stone-600 text-sm">
+                  <span key={i} className="bg-white/[0.03] border border-rose-500/[0.1] rounded-lg px-3 py-1.5 text-stone-400 text-sm">
                     {item}
                   </span>
                 ))}
               </div>
-              <div className="bg-white/60 rounded-lg p-3 border border-rose-100">
-                <p className="text-rose-700 text-xs font-semibold">
+              <div className="bg-white/[0.03] rounded-lg p-3 border border-rose-500/[0.1]">
+                <p className="text-rose-400 text-xs font-semibold">
                   Se temperatura ultrapassar 5°C por mais de 2 horas: <strong>descartar</strong>.
                 </p>
               </div>
@@ -356,34 +316,32 @@ export default function ProtocolosApagao() {
           </div>
         </motion.section>
 
-        {/* ══════════════════════════════════════════════════════════
-           CAMADA 4 — CONTROLE TÉRMICO
-           ══════════════════════════════════════════════════════════ */}
+        {/* CAMADA 4 — CONTROLE TÉRMICO */}
         <motion.section
           className="mb-10"
           variants={fadeUp} initial="hidden" whileInView="visible" viewport={viewportOnce}
         >
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center">
-              <Thermometer size={16} className="text-orange-600" />
+            <div className="w-8 h-8 rounded-full bg-orange-500/[0.15] flex items-center justify-center">
+              <Thermometer size={16} className="text-orange-400" />
             </div>
-            <h2 className="text-xl font-bold text-stone-800">4. Controle Térmico</h2>
+            <h2 className="text-xl font-bold text-stone-200">4. Controle Térmico</h2>
           </div>
 
-          <div className="rounded-2xl overflow-hidden mb-6 border border-stone-200/40">
+          <div className="rounded-2xl overflow-hidden mb-6 border border-white/[0.06]">
             <img src={imgTermico} alt="Isolamento térmico caseiro" className="w-full h-56 md:h-72 object-cover" loading="lazy" />
           </div>
 
           <div className="space-y-4">
-            <div className="bg-white/80 border border-stone-200/60 rounded-xl p-5">
-              <p className="text-stone-600 text-sm leading-relaxed">
+            <div className="bg-white/[0.03] border border-white/[0.06] rounded-xl p-5">
+              <p className="text-stone-400 text-sm leading-relaxed">
                 Apagões em inverno ou verão são críticos. Sem climatização, o corpo precisa de estratégias passivas de controle térmico.
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="bg-red-50/80 border border-red-200/50 rounded-xl p-5">
-                <p className="text-red-600 text-xs font-bold uppercase tracking-wider mb-3 flex items-center gap-2">
+              <div className="bg-red-500/[0.08] border border-red-500/[0.15] rounded-xl p-5">
+                <p className="text-red-400 text-xs font-bold uppercase tracking-wider mb-3 flex items-center gap-2">
                   <Sun size={14} /> Calor Excessivo
                 </p>
                 <ul className="space-y-1.5">
@@ -393,15 +351,15 @@ export default function ProtocolosApagao() {
                     'Hidratação constante',
                     'Fechar cortinas no horário de pico solar',
                   ].map((item, i) => (
-                    <li key={i} className="flex items-start gap-2 text-stone-600 text-sm">
+                    <li key={i} className="flex items-start gap-2 text-stone-400 text-sm">
                       <CheckCircle2 size={13} className="text-emerald-500 mt-0.5 shrink-0" /> {item}
                     </li>
                   ))}
                 </ul>
               </div>
 
-              <div className="bg-blue-50/80 border border-blue-200/50 rounded-xl p-5">
-                <p className="text-blue-600 text-xs font-bold uppercase tracking-wider mb-3 flex items-center gap-2">
+              <div className="bg-blue-500/[0.08] border border-blue-500/[0.15] rounded-xl p-5">
+                <p className="text-blue-400 text-xs font-bold uppercase tracking-wider mb-3 flex items-center gap-2">
                   <Snowflake size={14} /> Frio Excessivo
                 </p>
                 <ul className="space-y-1.5">
@@ -411,7 +369,7 @@ export default function ProtocolosApagao() {
                     'Isolar janelas com tecido ou manta térmica',
                     'Dormir em ambiente menor (concentra calor corporal)',
                   ].map((item, i) => (
-                    <li key={i} className="flex items-start gap-2 text-stone-600 text-sm">
+                    <li key={i} className="flex items-start gap-2 text-stone-400 text-sm">
                       <CheckCircle2 size={13} className="text-emerald-500 mt-0.5 shrink-0" /> {item}
                     </li>
                   ))}
@@ -421,21 +379,19 @@ export default function ProtocolosApagao() {
           </div>
         </motion.section>
 
-        {/* ══════════════════════════════════════════════════════════
-           CAMADA 5 — ENERGIA DE EMERGÊNCIA
-           ══════════════════════════════════════════════════════════ */}
+        {/* CAMADA 5 — ENERGIA */}
         <motion.section
           className="mb-10"
           variants={fadeUp} initial="hidden" whileInView="visible" viewport={viewportOnce}
         >
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center">
-              <Zap size={16} className="text-emerald-600" />
+            <div className="w-8 h-8 rounded-full bg-emerald-500/[0.15] flex items-center justify-center">
+              <Zap size={16} className="text-emerald-400" />
             </div>
-            <h2 className="text-xl font-bold text-stone-800">5. Energia de Emergência</h2>
+            <h2 className="text-xl font-bold text-stone-200">5. Energia de Emergência</h2>
           </div>
 
-          <div className="rounded-2xl overflow-hidden mb-6 border border-stone-200/40">
+          <div className="rounded-2xl overflow-hidden mb-6 border border-white/[0.06]">
             <img src={imgEnergia} alt="Energia alternativa de emergência" className="w-full h-56 md:h-72 object-cover" loading="lazy" />
           </div>
 
@@ -449,14 +405,14 @@ export default function ProtocolosApagao() {
                 return (
                   <motion.div
                     key={i}
-                    className="flex items-start gap-3 bg-white/80 border border-stone-200/60 rounded-xl px-5 py-4"
+                    className="flex items-start gap-3 bg-white/[0.03] border border-white/[0.06] rounded-xl px-5 py-4"
                     variants={staggerChild}
                   >
-                    <div className="w-9 h-9 rounded-full bg-emerald-100 flex items-center justify-center shrink-0">
-                      <Icon size={16} className="text-emerald-600" />
+                    <div className="w-9 h-9 rounded-full bg-emerald-500/[0.15] flex items-center justify-center shrink-0">
+                      <Icon size={16} className="text-emerald-400" />
                     </div>
                     <div>
-                      <p className="text-stone-700 text-sm font-semibold">{e.nome}</p>
+                      <p className="text-stone-300 text-sm font-semibold">{e.nome}</p>
                       <p className="text-stone-500 text-xs">{e.desc}</p>
                     </div>
                   </motion.div>
@@ -464,7 +420,7 @@ export default function ProtocolosApagao() {
               })}
             </motion.div>
 
-            <div className="bg-rose-50/80 border border-rose-200/50 rounded-xl p-5">
+            <div className="bg-rose-500/[0.08] border border-rose-500/[0.15] rounded-xl p-5">
               <p className="text-[10px] font-bold tracking-widest uppercase text-rose-500 mb-2">⚠ Regras de Segurança — Gerador</p>
               <ul className="space-y-1.5">
                 {[
@@ -472,7 +428,7 @@ export default function ProtocolosApagao() {
                   'Distante de janelas e aberturas de ventilação',
                   'Nunca em garagem fechada ou área coberta',
                 ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-2 text-stone-600 text-sm">
+                  <li key={i} className="flex items-start gap-2 text-stone-400 text-sm">
                     <AlertTriangle size={13} className="text-rose-400 mt-0.5 shrink-0" /> {item}
                   </li>
                 ))}
@@ -481,9 +437,7 @@ export default function ProtocolosApagao() {
           </div>
         </motion.section>
 
-        {/* ══════════════════════════════════════════════════════════
-           PROTOCOLO DE AÇÃO EM APAGÃO
-           ══════════════════════════════════════════════════════════ */}
+        {/* PROTOCOLO DE AÇÃO */}
         <motion.section
           className="bg-stone-800 text-white rounded-2xl p-6 md:p-10 mb-10"
           variants={fadeUp} initial="hidden" whileInView="visible" viewport={viewportOnce}
@@ -527,30 +481,26 @@ export default function ProtocolosApagao() {
           </div>
         </motion.section>
 
-        {/* ══════════════════════════════════════════════════════════
-           ERROS COMUNS
-           ══════════════════════════════════════════════════════════ */}
+        {/* ERROS COMUNS */}
         <motion.section
-          className="bg-rose-50/80 border border-rose-200/50 rounded-2xl p-6 md:p-10 mb-10"
+          className="bg-rose-500/[0.08] border border-rose-500/[0.15] rounded-2xl p-6 md:p-10 mb-10"
           variants={fadeUp} initial="hidden" whileInView="visible" viewport={viewportOnce}
         >
-          <h2 className="text-lg font-bold text-stone-800 mb-5 flex items-center gap-2">
+          <h2 className="text-lg font-bold text-stone-200 mb-5 flex items-center gap-2">
             <AlertTriangle size={18} className="text-rose-500" />
             Erros Comuns
           </h2>
           <ul className="space-y-3">
             {ERROS.map((erro, i) => (
-              <li key={i} className="flex items-start gap-3 bg-white/60 rounded-xl px-4 py-3 border border-rose-100">
+              <li key={i} className="flex items-start gap-3 bg-white/[0.03] rounded-xl px-4 py-3 border border-rose-500/[0.1]">
                 <XCircle size={14} className="text-rose-400 mt-0.5 shrink-0" />
-                <span className="text-stone-600 text-sm">{erro}</span>
+                <span className="text-stone-400 text-sm">{erro}</span>
               </li>
             ))}
           </ul>
         </motion.section>
 
-        {/* ══════════════════════════════════════════════════════════
-           PRINCÍPIO CENTRAL
-           ══════════════════════════════════════════════════════════ */}
+        {/* PRINCÍPIO CENTRAL */}
         <motion.div
           className="text-center mt-12"
           variants={fadeUp} initial="hidden" whileInView="visible" viewport={viewportOnce}

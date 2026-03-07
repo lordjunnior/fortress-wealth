@@ -25,7 +25,7 @@ const Section = ({ num, title, children }: { num: number; title: string; childre
   <motion.section className="mb-14" {...fade()}>
     <div className="flex items-center gap-3 mb-6">
       <div className="w-8 h-8 rounded-full bg-rose-500 text-white flex items-center justify-center text-sm font-bold">{num}</div>
-      <h2 className="text-xl md:text-2xl font-bold text-stone-800">{title}</h2>
+      <h2 className="text-xl md:text-2xl font-bold text-stone-200">{title}</h2>
     </div>
     {children}
   </motion.section>
@@ -36,7 +36,7 @@ const Check = ({ items }: { items: string[] }) => (
     {items.map(s => (
       <div key={s} className="flex items-start gap-2">
         <span className="text-rose-500 text-sm mt-0.5">✔</span>
-        <span className="text-stone-600 text-sm">{s}</span>
+        <span className="text-stone-400 text-sm">{s}</span>
       </div>
     ))}
   </div>
@@ -58,8 +58,8 @@ export default function AbrigoEmergencia() {
 
       <div className="max-w-4xl mx-auto px-5 md:px-8 pt-12 pb-32">
 
-          <div className="bg-rose-50 border border-rose-200/60 rounded-2xl p-5 md:p-6 mb-4">
-            <p className="text-stone-700 text-sm font-semibold mb-3">Abrigo não é apenas "ter um teto". É:</p>
+          <div className="bg-rose-500/[0.08] border border-rose-500/[0.15] rounded-2xl p-5 md:p-6 mb-4">
+            <p className="text-stone-300 text-sm font-semibold mb-3">Abrigo não é apenas "ter um teto". É:</p>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
               {[
                 { icon: Thermometer, label: 'Controle térmico' },
@@ -69,9 +69,9 @@ export default function AbrigoEmergencia() {
                 { icon: Droplets, label: 'Higiene básica' },
                 { icon: Brain, label: 'Estabilidade emocional' },
               ].map(({ icon: Icon, label }) => (
-                <div key={label} className="bg-white/70 rounded-xl p-3 text-center">
-                  <Icon size={16} className="text-rose-500 mx-auto mb-1.5" />
-                  <span className="text-[11px] font-semibold text-stone-600">{label}</span>
+                <div key={label} className="bg-white/[0.04] rounded-xl p-3 text-center">
+                  <Icon size={16} className="text-rose-400 mx-auto mb-1.5" />
+                  <span className="text-[11px] font-semibold text-stone-400">{label}</span>
                 </div>
               ))}
             </div>
@@ -79,17 +79,17 @@ export default function AbrigoEmergencia() {
           </div>
 
           {/* Fundamento Fisiológico */}
-          <div className="bg-white/80 border border-stone-200/60 rounded-2xl p-5 md:p-6">
-            <h3 className="text-sm font-bold text-rose-600 uppercase tracking-wider mb-3">📌 Fundamento Fisiológico</h3>
-            <p className="text-stone-600 text-sm leading-relaxed mb-3">O corpo humano entra em declínio quando:</p>
+          <div className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-5 md:p-6">
+            <h3 className="text-sm font-bold text-rose-400 uppercase tracking-wider mb-3">📌 Fundamento Fisiológico</h3>
+            <p className="text-stone-400 text-sm leading-relaxed mb-3">O corpo humano entra em declínio quando:</p>
             <div className="grid grid-cols-2 gap-2 mb-4">
               {['Temperatura corporal < 35°C', 'Exposição contínua à umidade', 'Privação de sono', 'Estresse térmico prolongado'].map(item => (
-                <div key={item} className="bg-red-50/60 rounded-lg p-2.5">
-                  <span className="text-xs text-stone-600">• {item}</span>
+                <div key={item} className="bg-red-500/[0.06] rounded-lg p-2.5">
+                  <span className="text-xs text-stone-400">• {item}</span>
                 </div>
               ))}
             </div>
-            <p className="text-stone-600 text-sm mb-2 font-semibold">Abrigo bem feito reduz:</p>
+            <p className="text-stone-400 text-sm mb-2 font-semibold">Abrigo bem feito reduz:</p>
             <Check items={['Perda calórica', 'Estresse metabólico', 'Gasto energético', 'Risco infeccioso']} />
           </div>
 
@@ -106,38 +106,38 @@ export default function AbrigoEmergencia() {
             </div>
           </div>
 
-        {/* ══ 1 — CAMADA DO SOLO ══ */}
+        {/* 1 — CAMADA DO SOLO */}
         <Section num={1} title="Camada do Solo — Base Térmica">
-          <p className="text-stone-600 text-sm leading-relaxed mb-4">
-            O solo é o <strong className="text-stone-800">maior dissipador de calor</strong>. Dormir direto no chão pode reduzir temperatura corporal rapidamente.
+          <p className="text-stone-400 text-sm leading-relaxed mb-4">
+            O solo é o <strong className="text-stone-200">maior dissipador de calor</strong>. Dormir direto no chão pode reduzir temperatura corporal rapidamente.
           </p>
-          <div className="bg-white/80 border border-stone-200/60 rounded-2xl overflow-hidden mb-4">
+          <div className="bg-white/[0.03] border border-white/[0.06] rounded-2xl overflow-hidden mb-4">
             <img src={imgSoloIsolamento} alt="Isolamento do solo com papelão e cobertores" className="w-full h-48 md:h-64 object-cover" />
             <div className="p-5 md:p-6">
-              <h3 className="text-base font-bold text-stone-800 mb-3">Técnicas Domésticas Aplicáveis</h3>
+              <h3 className="text-base font-bold text-stone-200 mb-3">Técnicas Domésticas Aplicáveis</h3>
               <Check items={['3 camadas de papelão', 'Tapetes + cobertor inferior', 'Paletes reaproveitados', 'Estrado improvisado com madeira']} />
-              <div className="mt-4 bg-amber-50 border border-amber-200/60 rounded-xl p-3">
-                <p className="text-amber-700 text-xs font-semibold">Espessura mínima recomendada: 5 cm de material isolante.</p>
+              <div className="mt-4 bg-amber-500/[0.08] border border-amber-500/[0.15] rounded-xl p-3">
+                <p className="text-amber-400 text-xs font-semibold">Espessura mínima recomendada: 5 cm de material isolante.</p>
               </div>
             </div>
           </div>
         </Section>
 
-        {/* ══ 2 — ESTRUTURA ══ */}
+        {/* 2 — ESTRUTURA */}
         <Section num={2} title="Estrutura — Resistência ao Vento e Impacto">
-          <p className="text-stone-600 text-sm leading-relaxed mb-4">
-            Mesmo dentro de casa, <strong className="text-stone-800">janelas são pontos frágeis</strong>.
+          <p className="text-stone-400 text-sm leading-relaxed mb-4">
+            Mesmo dentro de casa, <strong className="text-stone-200">janelas são pontos frágeis</strong>.
           </p>
-          <div className="bg-white/80 border border-stone-200/60 rounded-2xl overflow-hidden mb-4">
+          <div className="bg-white/[0.03] border border-white/[0.06] rounded-2xl overflow-hidden mb-4">
             <img src={imgReforcoJanela} alt="Janela reforçada com compensado e fita adesiva" className="w-full h-48 md:h-64 object-cover" />
             <div className="p-5 md:p-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <h3 className="text-sm font-bold text-rose-600 mb-2">Reforço Doméstico</h3>
+                  <h3 className="text-sm font-bold text-rose-400 mb-2">Reforço Doméstico</h3>
                   <Check items={['Madeira ou compensado para janelas', 'Fita adesiva em "X" no vidro (reduz estilhaçamento)', 'Retirar objetos soltos próximos a janelas']} />
                 </div>
                 <div>
-                  <h3 className="text-sm font-bold text-rose-600 mb-2">Abrigo Externo</h3>
+                  <h3 className="text-sm font-bold text-rose-400 mb-2">Abrigo Externo</h3>
                   <Check items={['Estrutura triangular (mais estável)', 'Fixação com estacas profundas', 'Evitar áreas baixas (risco de enchente)']} />
                 </div>
               </div>
@@ -145,28 +145,28 @@ export default function AbrigoEmergencia() {
           </div>
         </Section>
 
-        {/* ══ 3 — ISOLAMENTO TÉRMICO ══ */}
+        {/* 3 — ISOLAMENTO TÉRMICO */}
         <Section num={3} title="Isolamento Térmico — Controle do Microclima">
-          <p className="text-stone-600 text-sm leading-relaxed mb-4">
-            Objetivo: <strong className="text-stone-800">manter ar quente interno e impedir troca com ar frio externo</strong>.
+          <p className="text-stone-400 text-sm leading-relaxed mb-4">
+            Objetivo: <strong className="text-stone-200">manter ar quente interno e impedir troca com ar frio externo</strong>.
           </p>
 
-          <div className="bg-white/80 border border-stone-200/60 rounded-2xl overflow-hidden mb-4">
+          <div className="bg-white/[0.03] border border-white/[0.06] rounded-2xl overflow-hidden mb-4">
             <img src={imgQuartoNucleo} alt="Ambiente compacto isolado" className="w-full h-48 md:h-64 object-cover" />
             <div className="p-5 md:p-6">
               <div className="flex items-center gap-2 mb-3">
-                <Home size={16} className="text-rose-500" />
-                <h3 className="text-lg font-bold text-stone-800">Técnica do "Ambiente Compacto"</h3>
+                <Home size={16} className="text-rose-400" />
+                <h3 className="text-lg font-bold text-stone-200">Técnica do "Ambiente Compacto"</h3>
               </div>
-              <p className="text-stone-600 text-sm leading-relaxed mb-4">
-                Escolher o <strong className="text-stone-800">menor cômodo disponível</strong>. Reduzir volume de ar aumenta retenção térmica.
+              <p className="text-stone-400 text-sm leading-relaxed mb-4">
+                Escolher o <strong className="text-stone-200">menor cômodo disponível</strong>. Reduzir volume de ar aumenta retenção térmica.
               </p>
-              <h4 className="text-xs font-bold text-rose-600 mb-2">Vedação Completa</h4>
+              <h4 className="text-xs font-bold text-rose-400 mb-2">Vedação Completa</h4>
               <div className="grid grid-cols-2 gap-2 mb-4">
                 {['Toalhas nas frestas', 'Plástico grosso em janelas', 'Cortinas pesadas', 'Vedação inferior de portas'].map(item => (
-                  <div key={item} className="bg-stone-50 rounded-lg p-2.5 flex items-center gap-2">
+                  <div key={item} className="bg-white/[0.04] rounded-lg p-2.5 flex items-center gap-2">
                     <Wind size={12} className="text-rose-400 shrink-0" />
-                    <span className="text-xs text-stone-600">{item}</span>
+                    <span className="text-xs text-stone-400">{item}</span>
                   </div>
                 ))}
               </div>
@@ -174,112 +174,112 @@ export default function AbrigoEmergencia() {
           </div>
 
           {/* Camadas corporais */}
-          <div className="bg-rose-50/60 border border-rose-200/60 rounded-2xl p-5 md:p-6">
-            <h3 className="text-base font-bold text-stone-800 mb-3">Estratégia de Camadas Corporais</h3>
-            <p className="text-stone-600 text-sm mb-3"><strong className="text-stone-800">Nunca usar apenas uma peça grossa.</strong></p>
+          <div className="bg-rose-500/[0.06] border border-rose-500/[0.15] rounded-2xl p-5 md:p-6">
+            <h3 className="text-base font-bold text-stone-200 mb-3">Estratégia de Camadas Corporais</h3>
+            <p className="text-stone-400 text-sm mb-3"><strong className="text-stone-200">Nunca usar apenas uma peça grossa.</strong></p>
             <div className="grid grid-cols-3 gap-3">
               {[
                 { num: '1', label: 'Absorve suor' },
                 { num: '2', label: 'Retém calor' },
                 { num: '3', label: 'Bloqueia vento' },
               ].map(item => (
-                <div key={item.num} className="bg-white/70 rounded-xl p-3 text-center">
-                  <span className="text-lg font-bold text-rose-500 block">{item.num}</span>
-                  <span className="text-[11px] font-semibold text-stone-600">{item.label}</span>
+                <div key={item.num} className="bg-white/[0.04] rounded-xl p-3 text-center">
+                  <span className="text-lg font-bold text-rose-400 block">{item.num}</span>
+                  <span className="text-[11px] font-semibold text-stone-400">{item.label}</span>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Aquecedor de vela (mantido do original) */}
-          <div className="bg-white/80 border border-stone-200/60 rounded-2xl overflow-hidden mt-4">
+          {/* Aquecedor de vela */}
+          <div className="bg-white/[0.03] border border-white/[0.06] rounded-2xl overflow-hidden mt-4">
             <img src={imgAquecedorVela} alt="Aquecedor artesanal de vela com vasos de cerâmica" className="w-full h-48 md:h-64 object-cover" />
             <div className="p-5 md:p-6">
-              <h3 className="text-base font-bold text-stone-800 mb-3">Técnica Manual — Aquecedor de Vela Controlado</h3>
+              <h3 className="text-base font-bold text-stone-200 mb-3">Técnica Manual — Aquecedor de Vela Controlado</h3>
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <span className="text-xs font-bold text-rose-600 block mb-2">Materiais</span>
+                  <span className="text-xs font-bold text-rose-400 block mb-2">Materiais</span>
                   <ul className="space-y-1">
                     {['2 vasos de cerâmica', '1 vela grossa', 'Base não inflamável'].map(m => (
-                      <li key={m} className="text-stone-600 text-sm flex items-center gap-2">
+                      <li key={m} className="text-stone-400 text-sm flex items-center gap-2">
                         <span className="w-1.5 h-1.5 rounded-full bg-rose-400" /> {m}
                       </li>
                     ))}
                   </ul>
                 </div>
                 <div>
-                  <span className="text-xs font-bold text-rose-600 block mb-2">Montagem</span>
-                  <p className="text-stone-600 text-sm leading-relaxed">
+                  <span className="text-xs font-bold text-rose-400 block mb-2">Montagem</span>
+                  <p className="text-stone-400 text-sm leading-relaxed">
                     Colocar vaso menor invertido sobre vela. Vaso maior cobrindo parcialmente. A cerâmica acumula calor e libera lentamente.
                   </p>
                 </div>
               </div>
-              <div className="mt-4 bg-amber-50 border border-amber-200/60 rounded-xl p-3">
-                <p className="text-amber-700 text-xs font-semibold">⚠ Usar somente em ambiente ventilado e sob supervisão.</p>
+              <div className="mt-4 bg-amber-500/[0.08] border border-amber-500/[0.15] rounded-xl p-3">
+                <p className="text-amber-400 text-xs font-semibold">⚠ Usar somente em ambiente ventilado e sob supervisão.</p>
               </div>
             </div>
           </div>
 
           {/* Alerta CO */}
-          <div className="bg-red-50 border border-red-200 rounded-2xl p-5 mt-4">
+          <div className="bg-red-500/[0.08] border border-red-500/[0.15] rounded-2xl p-5 mt-4">
             <div className="flex items-center gap-2 mb-2">
               <AlertTriangle size={16} className="text-red-500" />
-              <span className="text-sm font-bold text-red-700">Nunca usar carvão ou churrasqueira dentro de casa</span>
+              <span className="text-sm font-bold text-red-400">Nunca usar carvão ou churrasqueira dentro de casa</span>
             </div>
-            <p className="text-red-600 text-xs leading-relaxed">Monóxido de carbono é invisível e letal. Risco real em ambientes fechados.</p>
+            <p className="text-red-400/80 text-xs leading-relaxed">Monóxido de carbono é invisível e letal. Risco real em ambientes fechados.</p>
           </div>
         </Section>
 
-        {/* ══ 4 — VENTILAÇÃO CONTROLADA ══ */}
+        {/* 4 — VENTILAÇÃO */}
         <Section num={4} title="Ventilação Controlada">
-          <div className="bg-amber-50 border border-amber-200/60 rounded-2xl p-5 md:p-6">
-            <p className="text-stone-700 text-sm font-semibold mb-3">Erro comum: fechar tudo completamente.</p>
-            <p className="text-stone-600 text-sm leading-relaxed mb-3">Sem ventilação mínima:</p>
+          <div className="bg-amber-500/[0.08] border border-amber-500/[0.15] rounded-2xl p-5 md:p-6">
+            <p className="text-stone-300 text-sm font-semibold mb-3">Erro comum: fechar tudo completamente.</p>
+            <p className="text-stone-400 text-sm leading-relaxed mb-3">Sem ventilação mínima:</p>
             <div className="grid grid-cols-3 gap-2 mb-4">
               {['Umidade aumenta', 'Mofo surge', 'CO₂ se acumula'].map(item => (
-                <div key={item} className="bg-white/70 rounded-lg p-2.5 text-center">
-                  <span className="text-xs font-semibold text-stone-600">{item}</span>
+                <div key={item} className="bg-white/[0.04] rounded-lg p-2.5 text-center">
+                  <span className="text-xs font-semibold text-stone-400">{item}</span>
                 </div>
               ))}
             </div>
-            <div className="bg-white/80 rounded-xl p-4">
-              <p className="text-stone-800 text-sm font-bold">Regra prática:</p>
-              <p className="text-rose-600 text-sm font-semibold mt-1">Ventilar 5 a 10 minutos, 2x ao dia.</p>
+            <div className="bg-white/[0.03] rounded-xl p-4">
+              <p className="text-stone-200 text-sm font-bold">Regra prática:</p>
+              <p className="text-rose-400 text-sm font-semibold mt-1">Ventilar 5 a 10 minutos, 2x ao dia.</p>
             </div>
           </div>
         </Section>
 
-        {/* ══ 5 — HIGIENE E CONTROLE SANITÁRIO ══ */}
+        {/* 5 — HIGIENE */}
         <Section num={5} title="Higiene e Controle Sanitário">
-          <p className="text-stone-600 text-sm leading-relaxed mb-4">
-            <strong className="text-stone-800">Abrigo mal higienizado gera surtos internos.</strong>
+          <p className="text-stone-400 text-sm leading-relaxed mb-4">
+            <strong className="text-stone-200">Abrigo mal higienizado gera surtos internos.</strong>
           </p>
-          <div className="bg-white/80 border border-stone-200/60 rounded-2xl p-5 md:p-6 mb-4">
-            <h3 className="text-base font-bold text-stone-800 mb-3">Organizar</h3>
+          <div className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-5 md:p-6 mb-4">
+            <h3 className="text-base font-bold text-stone-200 mb-3">Organizar</h3>
             <Check items={['Área para descarte de resíduos', 'Recipiente fechado para lixo', 'Água separada para higiene']} />
           </div>
 
-          <div className="bg-white/80 border border-stone-200/60 rounded-2xl overflow-hidden">
+          <div className="bg-white/[0.03] border border-white/[0.06] rounded-2xl overflow-hidden">
             <img src={imgBanheiroImprovisado} alt="Banheiro improvisado com balde e serragem" className="w-full h-48 md:h-64 object-cover" />
             <div className="p-5 md:p-6">
               <div className="flex items-center gap-2 mb-3">
-                <Trash2 size={16} className="text-rose-500" />
-                <h3 className="text-lg font-bold text-stone-800">Banheiro Improvisado</h3>
+                <Trash2 size={16} className="text-rose-400" />
+                <h3 className="text-lg font-bold text-stone-200">Banheiro Improvisado</h3>
               </div>
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <span className="text-xs font-bold text-rose-600 block mb-2">Materiais</span>
+                  <span className="text-xs font-bold text-rose-400 block mb-2">Materiais</span>
                   <ul className="space-y-1">
                     {['Balde', 'Saco resistente', 'Serragem ou areia'].map(m => (
-                      <li key={m} className="text-stone-600 text-sm flex items-center gap-2">
+                      <li key={m} className="text-stone-400 text-sm flex items-center gap-2">
                         <span className="w-1.5 h-1.5 rounded-full bg-rose-400" /> {m}
                       </li>
                     ))}
                   </ul>
                 </div>
                 <div>
-                  <p className="text-stone-600 text-sm leading-relaxed">
-                    <strong className="text-stone-800">Cobrir resíduos após cada uso</strong> reduz odor e contaminação.
+                  <p className="text-stone-400 text-sm leading-relaxed">
+                    <strong className="text-stone-200">Cobrir resíduos após cada uso</strong> reduz odor e contaminação.
                   </p>
                 </div>
               </div>
@@ -287,46 +287,46 @@ export default function AbrigoEmergencia() {
           </div>
         </Section>
 
-        {/* ══ 6 — SEGURANÇA INTERNA ══ */}
+        {/* 6 — SEGURANÇA INTERNA */}
         <Section num={6} title="Segurança Interna">
-          <p className="text-stone-600 text-sm leading-relaxed mb-4">
+          <p className="text-stone-400 text-sm leading-relaxed mb-4">
             Durante crises, risco de quedas aumenta e iluminação precária causa acidentes.
           </p>
-          <div className="bg-white/80 border border-stone-200/60 rounded-2xl p-5 md:p-6">
+          <div className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-5 md:p-6">
             <Check items={['Lanternas fixas em pontos estratégicos', 'Caminhos livres', 'Objetos cortantes organizados']} />
           </div>
         </Section>
 
-        {/* ══ 7 — PROTEÇÃO CONTRA CALOR ══ */}
+        {/* 7 — PROTEÇÃO CONTRA CALOR */}
         <Section num={7} title="Proteção Contra Calor Excessivo">
-          <p className="text-stone-600 text-sm leading-relaxed mb-4">
-            Abrigo também protege contra <strong className="text-stone-800">superaquecimento</strong>.
+          <p className="text-stone-400 text-sm leading-relaxed mb-4">
+            Abrigo também protege contra <strong className="text-stone-200">superaquecimento</strong>.
           </p>
-          <div className="bg-white/80 border border-stone-200/60 rounded-2xl p-5 md:p-6 mb-4">
-            <h3 className="text-base font-bold text-stone-800 mb-3">Em Ondas de Calor</h3>
+          <div className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-5 md:p-6 mb-4">
+            <h3 className="text-base font-bold text-stone-200 mb-3">Em Ondas de Calor</h3>
             <Check items={['Ventilação cruzada', 'Cobrir janelas externas', 'Uso de panos úmidos para resfriamento evaporativo']} />
           </div>
 
-          <div className="bg-white/80 border border-stone-200/60 rounded-2xl overflow-hidden">
+          <div className="bg-white/[0.03] border border-white/[0.06] rounded-2xl overflow-hidden">
             <img src={imgResfriamentoPassivo} alt="Resfriamento passivo com pano úmido na janela" className="w-full h-48 md:h-64 object-cover" />
             <div className="p-5 md:p-6">
               <div className="flex items-center gap-2 mb-3">
-                <Sun size={16} className="text-rose-500" />
-                <h3 className="text-lg font-bold text-stone-800">Técnica de Resfriamento Passivo</h3>
+                <Sun size={16} className="text-rose-400" />
+                <h3 className="text-lg font-bold text-stone-200">Técnica de Resfriamento Passivo</h3>
               </div>
-              <p className="text-stone-600 text-sm leading-relaxed">
-                Pendurar pano úmido em janela com corrente de ar. <strong className="text-stone-800">Evaporação reduz temperatura local.</strong>
+              <p className="text-stone-400 text-sm leading-relaxed">
+                Pendurar pano úmido em janela com corrente de ar. <strong className="text-stone-200">Evaporação reduz temperatura local.</strong>
               </p>
             </div>
           </div>
         </Section>
 
-        {/* ══ 8 — ORGANIZAÇÃO LOGÍSTICA ══ */}
+        {/* 8 — ORGANIZAÇÃO LOGÍSTICA */}
         <Section num={8} title="Organização Logística Interna">
-          <p className="text-stone-600 text-sm leading-relaxed mb-4">
-            <strong className="text-stone-800">Caos aumenta estresse.</strong> Rotina reduz ansiedade.
+          <p className="text-stone-400 text-sm leading-relaxed mb-4">
+            <strong className="text-stone-200">Caos aumenta estresse.</strong> Rotina reduz ansiedade.
           </p>
-          <div className="bg-white/80 border border-stone-200/60 rounded-2xl overflow-hidden">
+          <div className="bg-white/[0.03] border border-white/[0.06] rounded-2xl overflow-hidden">
             <img src={imgOrganizacao} alt="Abrigo organizado com áreas definidas" className="w-full h-48 md:h-64 object-cover" />
             <div className="p-5 md:p-6">
               <div className="grid grid-cols-2 gap-3">
@@ -336,9 +336,9 @@ export default function AbrigoEmergencia() {
                   { icon: Lightbulb, label: 'Iluminar' },
                   { icon: Thermometer, label: 'Preparar alimentos' },
                 ].map(({ icon: Icon, label }) => (
-                  <div key={label} className="bg-rose-50/60 rounded-xl p-3 flex items-center gap-2">
-                    <Icon size={14} className="text-rose-500 shrink-0" />
-                    <span className="text-xs font-semibold text-stone-600">{label}</span>
+                  <div key={label} className="bg-rose-500/[0.06] rounded-xl p-3 flex items-center gap-2">
+                    <Icon size={14} className="text-rose-400 shrink-0" />
+                    <span className="text-xs font-semibold text-stone-400">{label}</span>
                   </div>
                 ))}
               </div>
@@ -346,20 +346,20 @@ export default function AbrigoEmergencia() {
           </div>
         </Section>
 
-        {/* ══ 9 — PSICOLOGIA DO ABRIGO ══ */}
+        {/* 9 — PSICOLOGIA */}
         <Section num={9} title="Psicologia do Abrigo">
-          <div className="bg-white/80 border border-stone-200/60 rounded-2xl p-5 md:p-6">
+          <div className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-5 md:p-6">
             <div className="flex items-center gap-2 mb-4">
-              <Brain size={16} className="text-rose-500" />
-              <h3 className="text-base font-bold text-stone-800">Ambiente organizado:</h3>
+              <Brain size={16} className="text-rose-400" />
+              <h3 className="text-base font-bold text-stone-200">Ambiente organizado:</h3>
             </div>
             <Check items={['Reduz cortisol', 'Aumenta sensação de controle', 'Mantém clareza mental']} />
-            <div className="mt-4 pt-4 border-t border-stone-200/60">
-              <h4 className="text-sm font-bold text-stone-800 mb-2">Pequenos hábitos que fazem diferença:</h4>
+            <div className="mt-4 pt-4 border-t border-white/[0.06]">
+              <h4 className="text-sm font-bold text-stone-200 mb-2">Pequenos hábitos que fazem diferença:</h4>
               <div className="grid grid-cols-3 gap-2">
                 {['Horário fixo para dormir', 'Manter higiene básica', 'Organização visual'].map(item => (
-                  <div key={item} className="bg-rose-50/60 rounded-lg p-2.5 text-center">
-                    <span className="text-[11px] font-semibold text-stone-600">{item}</span>
+                  <div key={item} className="bg-rose-500/[0.06] rounded-lg p-2.5 text-center">
+                    <span className="text-[11px] font-semibold text-stone-400">{item}</span>
                   </div>
                 ))}
               </div>
@@ -367,13 +367,13 @@ export default function AbrigoEmergencia() {
           </div>
         </Section>
 
-        {/* ══ 10 — ERROS GRAVES ══ */}
+        {/* 10 — ERROS GRAVES */}
         <motion.section className="mb-14" {...fade()}>
           <div className="flex items-center gap-3 mb-6">
             <ShieldAlert size={20} className="text-red-500" />
-            <h2 className="text-xl md:text-2xl font-bold text-stone-800">Erros Graves a Evitar</h2>
+            <h2 className="text-xl md:text-2xl font-bold text-stone-200">Erros Graves a Evitar</h2>
           </div>
-          <div className="bg-red-50 border border-red-200/60 rounded-2xl p-5 md:p-6">
+          <div className="bg-red-500/[0.1] border border-red-500/[0.2] rounded-2xl p-5 md:p-6">
             <div className="space-y-2">
               {[
                 'Usar carvão dentro de casa',
@@ -384,85 +384,85 @@ export default function AbrigoEmergencia() {
               ].map(err => (
                 <div key={err} className="flex items-start gap-2">
                   <span className="text-red-500 text-sm mt-0.5">❌</span>
-                  <span className="text-stone-700 text-sm font-medium">{err}</span>
+                  <span className="text-stone-300 text-sm font-medium">{err}</span>
                 </div>
               ))}
             </div>
           </div>
         </motion.section>
 
-        {/* ══ SINAIS DE ALERTA ══ */}
+        {/* SINAIS DE ALERTA */}
         <motion.section className="mb-14" {...fade()}>
           <div className="flex items-center gap-3 mb-6">
             <AlertTriangle size={20} className="text-red-500" />
-            <h2 className="text-xl md:text-2xl font-bold text-stone-800">Sinais de Alerta Fisiológico</h2>
+            <h2 className="text-xl md:text-2xl font-bold text-stone-200">Sinais de Alerta Fisiológico</h2>
           </div>
           <div className="grid md:grid-cols-3 gap-4">
-            <div className="bg-amber-100 border-2 border-amber-300 rounded-2xl p-5">
-              <h3 className="text-base font-bold text-amber-800 mb-3">Hipotermia Leve</h3>
+            <div className="bg-amber-500/[0.1] border border-amber-500/[0.2] rounded-2xl p-5">
+              <h3 className="text-base font-bold text-amber-300 mb-3">Hipotermia Leve</h3>
               <ul className="space-y-2">
                 {['Tremores', 'Extremidades frias'].map(s => (
-                  <li key={s} className="text-stone-800 text-sm font-medium flex items-center gap-2">
+                  <li key={s} className="text-stone-300 text-sm font-medium flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full bg-amber-500" /> {s}
                   </li>
                 ))}
               </ul>
             </div>
-            <div className="bg-orange-100 border-2 border-orange-300 rounded-2xl p-5">
-              <h3 className="text-base font-bold text-orange-800 mb-3">Moderada</h3>
+            <div className="bg-orange-500/[0.1] border border-orange-500/[0.2] rounded-2xl p-5">
+              <h3 className="text-base font-bold text-orange-300 mb-3">Moderada</h3>
               <ul className="space-y-2">
                 {['Confusão', 'Fala lenta'].map(s => (
-                  <li key={s} className="text-stone-800 text-sm font-medium flex items-center gap-2">
+                  <li key={s} className="text-stone-300 text-sm font-medium flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full bg-orange-500" /> {s}
                   </li>
                 ))}
               </ul>
             </div>
-            <div className="bg-red-100 border-2 border-red-300 rounded-2xl p-5">
-              <h3 className="text-base font-bold text-red-800 mb-3">Grave</h3>
+            <div className="bg-red-500/[0.1] border border-red-500/[0.2] rounded-2xl p-5">
+              <h3 className="text-base font-bold text-red-300 mb-3">Grave</h3>
               <ul className="space-y-2">
                 {['Sonolência', 'Pulso fraco'].map(s => (
-                  <li key={s} className="text-stone-800 text-sm font-medium flex items-center gap-2">
+                  <li key={s} className="text-stone-300 text-sm font-medium flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full bg-red-500" /> {s}
                   </li>
                 ))}
               </ul>
             </div>
           </div>
-          <div className="mt-4 bg-red-50 border border-red-200 rounded-xl p-4">
-            <p className="text-red-700 text-sm font-semibold flex items-start gap-2">
+          <div className="mt-4 bg-red-500/[0.08] border border-red-500/[0.15] rounded-xl p-4">
+            <p className="text-red-400 text-sm font-semibold flex items-start gap-2">
               <Heart size={16} className="shrink-0 mt-0.5" />
               Aquecimento deve ser gradual. Nunca água muito quente direta na pele fria.
             </p>
           </div>
         </motion.section>
 
-        {/* ══ ABRIGO EXTERNO (A-FRAME) ══ */}
+        {/* ABRIGO EXTERNO (A-FRAME) */}
         <motion.section className="mb-14" {...fade()}>
           <div className="flex items-center gap-3 mb-6">
-            <TreePine size={20} className="text-rose-500" />
-            <h2 className="text-xl md:text-2xl font-bold text-stone-800">Abrigo Improvisado Fora de Casa</h2>
+            <TreePine size={20} className="text-rose-400" />
+            <h2 className="text-xl md:text-2xl font-bold text-stone-200">Abrigo Improvisado Fora de Casa</h2>
           </div>
-          <div className="bg-white/80 border border-stone-200/60 rounded-2xl overflow-hidden mb-4">
+          <div className="bg-white/[0.03] border border-white/[0.06] rounded-2xl overflow-hidden mb-4">
             <img src={imgAFrame} alt="Abrigo A-Frame com lona" className="w-full h-48 md:h-64 object-cover" />
             <div className="p-5 md:p-6">
-              <h3 className="text-lg font-bold text-stone-800 mb-3">Técnica A-Frame com Lona</h3>
+              <h3 className="text-lg font-bold text-stone-200 mb-3">Técnica A-Frame com Lona</h3>
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <span className="text-xs font-bold text-rose-600 block mb-2">Materiais</span>
+                  <span className="text-xs font-bold text-rose-400 block mb-2">Materiais</span>
                   <ul className="space-y-1">
                     {['Lona', 'Corda', 'Galhos'].map(m => (
-                      <li key={m} className="text-stone-600 text-sm flex items-center gap-2">
+                      <li key={m} className="text-stone-400 text-sm flex items-center gap-2">
                         <span className="w-1.5 h-1.5 rounded-full bg-rose-400" /> {m}
                       </li>
                     ))}
                   </ul>
                 </div>
                 <div>
-                  <span className="text-xs font-bold text-rose-600 block mb-2">Montagem</span>
+                  <span className="text-xs font-bold text-rose-400 block mb-2">Montagem</span>
                   <ol className="space-y-1">
                     {['Amarrar corda entre duas árvores', 'Estender lona formando triângulo', 'Fixar laterais ao solo', 'Isolar chão com folhas secas + plástico'].map((s, i) => (
-                      <li key={i} className="text-stone-600 text-sm flex items-start gap-2">
+                      <li key={i} className="text-stone-400 text-sm flex items-start gap-2">
                         <span className="text-rose-500 font-bold text-xs mt-0.5">{i + 1}.</span> {s}
                       </li>
                     ))}
@@ -471,22 +471,22 @@ export default function AbrigoEmergencia() {
               </div>
             </div>
           </div>
-          <div className="bg-stone-100/80 border border-stone-200/60 rounded-2xl p-5 md:p-6">
-            <h3 className="text-base font-bold text-stone-800 mb-3">Material Urbano</h3>
-            <p className="text-stone-600 text-sm leading-relaxed mb-3">
-              <strong className="text-stone-800">Criar barreira contra vento é prioridade maior que estética.</strong>
+          <div className="bg-white/[0.05] border border-white/[0.06] rounded-2xl p-5 md:p-6">
+            <h3 className="text-base font-bold text-stone-200 mb-3">Material Urbano</h3>
+            <p className="text-stone-400 text-sm leading-relaxed mb-3">
+              <strong className="text-stone-200">Criar barreira contra vento é prioridade maior que estética.</strong>
             </p>
             <div className="grid grid-cols-2 gap-2">
               {['Paletes', 'Portas antigas', 'Placas de madeira', 'Estruturas metálicas'].map(item => (
-                <div key={item} className="bg-white/70 rounded-lg p-2.5 text-center">
-                  <span className="text-xs font-semibold text-stone-600">{item}</span>
+                <div key={item} className="bg-white/[0.04] rounded-lg p-2.5 text-center">
+                  <span className="text-xs font-semibold text-stone-400">{item}</span>
                 </div>
               ))}
             </div>
           </div>
         </motion.section>
 
-        {/* ══ PRINCÍPIO CENTRAL ══ */}
+        {/* PRINCÍPIO CENTRAL */}
         <motion.section className="mb-8" {...fade()}>
           <div className="bg-stone-800 text-white rounded-2xl p-6 md:p-8 text-center">
             <Tent size={28} className="mx-auto mb-4 text-rose-400" />
@@ -507,7 +507,7 @@ export default function AbrigoEmergencia() {
 
         {/* Back bottom */}
         <div className="text-center pt-8">
-          <Link to="/projeto-autonomo" className="inline-flex items-center gap-2 text-stone-400 hover:text-stone-700 text-xs font-semibold uppercase tracking-[0.2em] transition-colors">
+          <Link to="/projeto-autonomo" className="inline-flex items-center gap-2 text-stone-500 hover:text-white text-xs font-semibold uppercase tracking-[0.2em] transition-colors">
             <ArrowLeft size={14} /> Voltar ao Projeto Autônomo
           </Link>
         </div>
