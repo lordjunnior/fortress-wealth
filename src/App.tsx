@@ -30,6 +30,8 @@ import BlindagemGolpes from "./pages/BlindagemGolpes";
 import ProibicaoDinheiro from "./pages/ProibicaoDinheiro";
 import AlertasHub from "./pages/AlertasHub";
 import CbdcBrasil from "./pages/CbdcBrasil";
+import HistoriaDoDinheiro from "./pages/HistoriaDoDinheiro";
+import InflacaoImpostoOculto from "./pages/InflacaoImpostoOculto";
 import HardCap21 from "./pages/HardCap21";
 import BitcoinSeguro from "./pages/BitcoinSeguro";
 import ChavesPage from "./pages/ChavesPage";
