@@ -21,9 +21,9 @@ export const FERRAMENTAS = [
   },
   {
     icon: Shield,
-    titulo: 'Bitcoin P2P — Sem Intermediários',
+    titulo: 'Bitcoin P2P, Sem Intermediários',
     subtitulo: 'Exchanges Descentralizadas',
-    descricao: 'Plataformas como Bisq, Spike to Spike e RoboSats permitem comprar e vender Bitcoin diretamente entre indivíduos, sem exigir documentos invasivos (KYC). Você negocia ponto a ponto, como o dinheiro foi projetado para funcionar — antes do estado sequestrar o conceito.',
+    descricao: 'Plataformas como Bisq, Spike to Spike e RoboSats permitem comprar e vender Bitcoin diretamente entre indivíduos, sem exigir documentos invasivos (KYC). Você negocia ponto a ponto, como o dinheiro foi projetado para funcionar, antes do estado sequestrar o conceito.',
     destaque: 'Sem KYC = Sem registro permanente vinculado à sua identidade.',
   },
   {
@@ -65,7 +65,7 @@ export const CONSEQUENCIAS = [
 export const FAQ_ITEMS = [
   {
     pergunta: 'O governo vai proibir o dinheiro vivo no Brasil?',
-    resposta: 'Não necessariamente uma proibição total imediata. O PL 3.951/2019 cria o mecanismo legal para que o Conselho Monetário Nacional estabeleça limites para transações em dinheiro em espécie. Na prática, isso abre um precedente para restrições progressivas — hoje R$ 10.000, amanhã pode ser R$ 1.000. A direção é clara: digitalização forçada para controle total.',
+    resposta: 'Não necessariamente uma proibição total imediata. O PL 3.951/2019 cria o mecanismo legal para que o Conselho Monetário Nacional estabeleça limites para transações em dinheiro em espécie. Na prática, isso abre um precedente para restrições progressivas, hoje R$ 10.000, amanhã pode ser R$ 1.000. A direção é clara: digitalização forçada para controle total.',
   },
   {
     pergunta: 'O que é o PL 3951/2019?',
@@ -85,7 +85,7 @@ export const FAQ_ITEMS = [
   },
   {
     pergunta: 'Privacidade financeira é ilegal?',
-    resposta: 'Não. Privacidade financeira é um direito fundamental. Utilizar ferramentas legais para proteger sua privacidade — como exchanges P2P, cartões sem KYC ou contas internacionais — é completamente legal. O que muda é o nível de informação que você voluntariamente entrega ao Estado. Manter o poder de decisão na sua mão não é crime.',
+    resposta: 'Não. Privacidade financeira é um direito fundamental. Utilizar ferramentas legais para proteger sua privacidade, como exchanges P2P, cartões sem KYC ou contas internacionais, é completamente legal. O que muda é o nível de informação que você voluntariamente entrega ao Estado. Manter o poder de decisão na sua mão não é crime.',
   },
   {
     pergunta: 'O que acontece quando o dinheiro físico é abolido?',
@@ -93,11 +93,11 @@ export const FAQ_ITEMS = [
   },
   {
     pergunta: 'O que é autocustódia de Bitcoin?',
-    resposta: 'Autocustódia significa que você controla as chaves privadas do seu Bitcoin — sem intermediários, sem exchanges, sem bancos. Seus bitcoins ficam em uma carteira que só você pode acessar. Isso garante que nenhum governo, banco ou plataforma pode congelar, confiscar ou bloquear seus fundos.',
+    resposta: 'Autocustódia significa que você controla as chaves privadas do seu Bitcoin, sem intermediários, sem exchanges, sem bancos. Seus bitcoins ficam em uma carteira que só você pode acessar. Isso garante que nenhum governo, banco ou plataforma pode congelar, confiscar ou bloquear seus fundos.',
   },
   {
     pergunta: 'Existe limite para dinheiro vivo no Brasil?',
-    resposta: 'Atualmente não existe um limite legal definido para transações em dinheiro vivo no Brasil. No entanto, o PL 3.951/2019, aprovado pela CCJ, cria o mecanismo para que o Conselho Monetário Nacional possa estabelecer esses limites a qualquer momento — sem necessidade de nova aprovação legislativa. Transações acima de R$ 10.000 já devem ser comunicadas ao COAF por instituições financeiras.',
+    resposta: 'Atualmente não existe um limite legal definido para transações em dinheiro vivo no Brasil. No entanto, o PL 3.951/2019, aprovado pela CCJ, cria o mecanismo para que o Conselho Monetário Nacional possa estabelecer esses limites a qualquer momento, sem necessidade de nova aprovação legislativa. Transações acima de R$ 10.000 já devem ser comunicadas ao COAF por instituições financeiras.',
   },
   {
     pergunta: 'Quanto dinheiro posso carregar em espécie?',
@@ -109,7 +109,7 @@ export const FAQ_ITEMS = [
 export const NAV_ITEMS = [
   { id: 'hero', label: 'O Fim do Dinheiro Vivo' },
   { id: 'video', label: 'Assista ao Vídeo' },
-  { id: 'pl3951', label: 'PL 3951 — O Precedente' },
+  { id: 'pl3951', label: 'PL 3951, O Precedente' },
   { id: 'agenda-global', label: 'A Agenda Global' },
   { id: 'timeline', label: 'Linha do Tempo' },
   { id: 'consequencias', label: 'O Que Muda Pra Você' },
@@ -122,7 +122,7 @@ export const NAV_ITEMS = [
 
 /* ───────────── ESCADA DA RESTRIÇÃO ───────────── */
 export const ESCADA_RESTRICAO = [
-  { valor: 'R$ 10.000', desc: 'Primeira tentativa — confisco e ilegalização de transações acima desse valor.' },
+  { valor: 'R$ 10.000', desc: 'Primeira tentativa, confisco e ilegalização de transações acima desse valor.' },
   { valor: 'R$ 5.000', desc: 'O próximo degrau lógico. Menos barulho político, mesmo impacto no controle.' },
   { valor: 'R$ 1.000', desc: 'O objetivo final. Nessa faixa, até compras rotineiras ficam sob vigilância total.' },
   { valor: 'R$ 0', desc: 'O endgame. Dinheiro físico completamente abolido. Tudo digital. Tudo rastreado. Tudo tributado.' },
@@ -130,7 +130,7 @@ export const ESCADA_RESTRICAO = [
 
 /* ───────────── LINHA DO TEMPO ───────────── */
 export const TIMELINE_ITEMS = [
-  { ano: '2020', evento: 'PIX lançado', desc: 'O governo cria a infraestrutura de pagamentos digitais instantâneos — gratuita, rápida e totalmente rastreável.' },
+  { ano: '2020', evento: 'PIX lançado', desc: 'O governo cria a infraestrutura de pagamentos digitais instantâneos, gratuita, rápida e totalmente rastreável.' },
   { ano: '2022', evento: 'DREX anunciado', desc: 'O Banco Central anuncia o Real Digital (DREX), moeda programável com controle total sobre cada transação.' },
   { ano: '2023', evento: 'Discussões sobre CBDC avançam', desc: 'Testes piloto do DREX começam com instituições financeiras. A infraestrutura de controle se consolida.' },
   { ano: '2025', evento: 'PL 3.951 avança na CCJ', desc: 'O projeto que limita transações em dinheiro vivo é aprovado na Comissão de Constituição e Justiça.' },
@@ -144,5 +144,4 @@ export const PL_NAO_FAZ = [
   'Não criminaliza a posse de dinheiro em espécie',
 ];
 
-export const PL_MAS_FAZ = 'Cria o mecanismo legal para que o Conselho Monetário Nacional defina limites a qualquer momento — sem necessidade de nova aprovação legislativa.';
-
+export const PL_MAS_FAZ = 'Cria o mecanismo legal para que o Conselho Monetário Nacional defina limites a qualquer momento, sem necessidade de nova aprovação legislativa.';

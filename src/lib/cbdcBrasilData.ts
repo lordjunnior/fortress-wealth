@@ -29,7 +29,7 @@ export const CBDC_GLOBAL = [
 export const COMO_FUNCIONA_ETAPAS = [
   {
     titulo: 'Tokenização de Ativos',
-    descricao: 'O DREX permite que ativos reais — imóveis, títulos, veículos — sejam representados digitalmente na blockchain do Banco Central. Isso parece inovação. Mas significa que o governo terá um registro digital completo de tudo o que você possui.',
+    descricao: 'O DREX permite que ativos reais (imóveis, títulos, veículos) sejam representados digitalmente na blockchain do Banco Central. Isso parece inovação. Mas significa que o governo terá um registro digital completo de tudo o que você possui.',
     icon: Code,
   },
   {
@@ -39,26 +39,26 @@ export const COMO_FUNCIONA_ETAPAS = [
   },
   {
     titulo: 'Intermediação Obrigatória',
-    descricao: 'Diferente do Bitcoin, que funciona peer-to-peer, o DREX exige intermediários — bancos e instituições financeiras autorizadas pelo BC. Você não pode usar DREX diretamente. Você precisa de permissão. E quem dá permissão pode tirá-la.',
+    descricao: 'Diferente do Bitcoin, que funciona peer-to-peer, o DREX exige intermediários, bancos e instituições financeiras autorizadas pelo BC. Você não pode usar DREX diretamente. Você precisa de permissão. E quem dá permissão pode tirá-la.',
     icon: Landmark,
   },
   {
     titulo: 'Rastreabilidade Total',
-    descricao: 'Cada transação no DREX é registrada, monitorada e vinculada à sua identidade. Não existe anonimato. Não existe privacidade. Cada real movimentado é um dado coletado pelo Estado — em tempo real, para sempre.',
+    descricao: 'Cada transação no DREX é registrada, monitorada e vinculada à sua identidade. Não existe anonimato. Não existe privacidade. Cada real movimentado é um dado coletado pelo Estado, em tempo real, para sempre.',
     icon: Eye,
   },
 ];
 
 /* ───────────── DREX vs BITCOIN ───────────── */
 export const COMPARACAO = [
-  { aspecto: 'Controle', drex: 'Banco Central do Brasil', bitcoin: 'Nenhuma entidade — descentralizado' },
-  { aspecto: 'Privacidade', drex: 'Zero — tudo rastreado', bitcoin: 'Pseudônimo — privacidade por design' },
-  { aspecto: 'Oferta', drex: 'Ilimitada — pode ser impressa', bitcoin: 'Fixa — 21 milhões para sempre' },
+  { aspecto: 'Controle', drex: 'Banco Central do Brasil', bitcoin: 'Nenhuma entidade, descentralizado' },
+  { aspecto: 'Privacidade', drex: 'Zero, tudo rastreado', bitcoin: 'Pseudônimo, privacidade por design' },
+  { aspecto: 'Oferta', drex: 'Ilimitada, pode ser impressa', bitcoin: 'Fixa, 21 milhões para sempre' },
   { aspecto: 'Confisco', drex: 'Possível com um clique', bitcoin: 'Impossível com autocustódia' },
-  { aspecto: 'Programabilidade', drex: 'Pelo governo — contra você', bitcoin: 'Por você — a seu favor' },
-  { aspecto: 'Permissão', drex: 'Necessária — o BC decide', bitcoin: 'Dispensável — permissionless' },
+  { aspecto: 'Programabilidade', drex: 'Pelo governo, contra você', bitcoin: 'Por você, a seu favor' },
+  { aspecto: 'Permissão', drex: 'Necessária, o BC decide', bitcoin: 'Dispensável, permissionless' },
   { aspecto: 'Censura', drex: 'Transações podem ser bloqueadas', bitcoin: 'Resistente à censura' },
-  { aspecto: 'Fronteiras', drex: 'Limitado ao Brasil', bitcoin: 'Global — sem fronteiras' },
+  { aspecto: 'Fronteiras', drex: 'Limitado ao Brasil', bitcoin: 'Global, sem fronteiras' },
 ];
 
 /* ───────────── 5 RISCOS ───────────── */
@@ -66,7 +66,7 @@ export const RISCOS = [
   {
     icon: Eye,
     titulo: 'Vigilância Financeira Absoluta',
-    descricao: 'Cada transação registrada em tempo real. Cada compra, cada doação, cada pagamento vinculado à sua identidade. O Estado saberá exatamente como, quando e com quem você gasta cada centavo — e poderá usar essa informação contra você a qualquer momento.',
+    descricao: 'Cada transação registrada em tempo real. Cada compra, cada doação, cada pagamento vinculado à sua identidade. O Estado saberá exatamente como, quando e com quem você gasta cada centavo, e poderá usar essa informação contra você a qualquer momento.',
     gravidade: 'CRÍTICO',
   },
   {
@@ -78,7 +78,7 @@ export const RISCOS = [
   {
     icon: Ban,
     titulo: 'Confisco Digital Instantâneo',
-    descricao: 'Com dinheiro programável, o governo pode congelar, confiscar ou redirecionar seus fundos com um clique. Sem ordem judicial presencial. Sem aviso prévio. Sem recurso imediato. O Plano Collor 2.0 — só que dessa vez, digital e irreversível.',
+    descricao: 'Com dinheiro programável, o governo pode congelar, confiscar ou redirecionar seus fundos com um clique. Sem ordem judicial presencial. Sem aviso prévio. Sem recurso imediato. O Plano Collor 2.0, só que dessa vez, digital e irreversível.',
     gravidade: 'CRÍTICO',
   },
   {
@@ -90,7 +90,7 @@ export const RISCOS = [
   {
     icon: Server,
     titulo: 'Ponto Único de Falha',
-    descricao: 'Todo o sistema depende da infraestrutura do Banco Central. Um ataque cibernético, uma falha técnica, uma decisão política — qualquer um desses eventos pode paralisar toda a economia do país. Com dinheiro físico, você ainda pode transacionar. Com DREX? Tudo para.',
+    descricao: 'Todo o sistema depende da infraestrutura do Banco Central. Um ataque cibernético, uma falha técnica, uma decisão política, qualquer um desses eventos pode paralisar toda a economia do país. Com dinheiro físico, você ainda pode transacionar. Com DREX? Tudo para.',
     gravidade: 'ALTO',
   },
 ];
@@ -101,19 +101,19 @@ export const FERRAMENTAS = [
     icon: Shield,
     titulo: 'Bitcoin com Autocustódia',
     subtitulo: 'Soberania Total',
-    descricao: 'Armazene seus bitcoins em carteiras onde só você controla as chaves privadas. Nenhum governo, banco ou plataforma pode congelar, confiscar ou bloquear seus fundos. Isso é o oposto exato do DREX — é dinheiro que só obedece a você.',
+    descricao: 'Armazene seus bitcoins em carteiras onde só você controla as chaves privadas. Nenhum governo, banco ou plataforma pode congelar, confiscar ou bloquear seus fundos. Isso é o oposto exato do DREX, é dinheiro que só obedece a você.',
     destaque: 'Suas chaves, seu Bitcoin. Sem chaves, sem Bitcoin.',
   },
   {
     icon: Globe,
     titulo: 'Diversificação Jurisdicional',
     subtitulo: 'Teoria das Bandeiras',
-    descricao: 'Distribua sua vida financeira entre múltiplas jurisdições. Documentação estrangeira, contas internacionais, exchanges em diferentes países. Quanto mais bandeiras, menor o risco de um único governo — e um único DREX — controlar todo o seu patrimônio.',
+    descricao: 'Distribua sua vida financeira entre múltiplas jurisdições. Documentação estrangeira, contas internacionais, exchanges em diferentes países. Quanto mais bandeiras, menor o risco de um único governo, e um único DREX, controlar todo o seu patrimônio.',
     destaque: 'Não coloque todo o seu patrimônio sob uma única jurisdição.',
   },
   {
     icon: Wallet,
-    titulo: 'Bitcoin P2P — Sem Intermediários',
+    titulo: 'Bitcoin P2P, Sem Intermediários',
     subtitulo: 'Exchanges Descentralizadas',
     descricao: 'Plataformas como Bisq, Spike to Spike e RoboSats permitem comprar e vender Bitcoin diretamente entre indivíduos, sem KYC. Enquanto o DREX exige intermediários autorizados pelo BC, o Bitcoin funciona como o dinheiro deveria: ponto a ponto.',
     destaque: 'Sem KYC = Sem registro permanente vinculado à sua identidade.',
@@ -122,15 +122,15 @@ export const FERRAMENTAS = [
     icon: Cpu,
     titulo: 'Lightning Network',
     subtitulo: 'Pagamentos Instantâneos',
-    descricao: 'A Lightning Network permite transações de Bitcoin quase instantâneas e com taxas mínimas. É o "PIX do Bitcoin" — só que descentralizado, privado e sem a vigilância do Banco Central. Funciona globalmente, 24 horas por dia, 365 dias por ano.',
+    descricao: 'A Lightning Network permite transações de Bitcoin quase instantâneas e com taxas mínimas. É o "PIX do Bitcoin", só que descentralizado, privado e sem a vigilância do Banco Central. Funciona globalmente, 24 horas por dia, 365 dias por ano.',
     destaque: 'Velocidade do PIX. Privacidade do dinheiro. Soberania do Bitcoin.',
   },
 ];
 
 /* ───────────── TIMELINE ───────────── */
 export const TIMELINE_ITEMS = [
-  { ano: '2020', evento: 'PIX é lançado', desc: 'O governo cria a infraestrutura de pagamentos digitais instantâneos — gratuita, rápida e totalmente rastreável. A isca perfeita.' },
-  { ano: '2022', evento: 'DREX é anunciado', desc: 'O Banco Central anuncia oficialmente o projeto do Real Digital (DREX) — uma moeda digital programável com controle total sobre cada transação.' },
+  { ano: '2020', evento: 'PIX é lançado', desc: 'O governo cria a infraestrutura de pagamentos digitais instantâneos, gratuita, rápida e totalmente rastreável. A isca perfeita.' },
+  { ano: '2022', evento: 'DREX é anunciado', desc: 'O Banco Central anuncia oficialmente o projeto do Real Digital (DREX), uma moeda digital programável com controle total sobre cada transação.' },
   { ano: '2023', evento: 'Piloto com bancos', desc: 'Testes piloto do DREX começam com instituições financeiras selecionadas. A infraestrutura de controle se consolida em silêncio.' },
   { ano: '2024', evento: 'Testes de tokenização', desc: 'O BC testa tokenização de títulos públicos e depósitos bancários no ambiente DREX. A fusão entre dinheiro e vigilância avança.' },
   { ano: '2025', evento: 'Expansão dos testes', desc: 'Mais instituições entram no piloto. Casos de uso se multiplicam: imóveis, veículos, contratos. O cerco se fecha.' },
@@ -141,7 +141,7 @@ export const TIMELINE_ITEMS = [
 export const FAQ_ITEMS = [
   {
     pergunta: 'O que é o DREX?',
-    resposta: 'O DREX (antes chamado de Real Digital) é a moeda digital do Banco Central do Brasil — uma CBDC (Central Bank Digital Currency). Diferente do PIX, que é um sistema de pagamentos, o DREX é uma nova forma de dinheiro: totalmente digital, programável pelo governo e rastreável em cada transação.',
+    resposta: 'O DREX (antes chamado de Real Digital) é a moeda digital do Banco Central do Brasil, uma CBDC (Central Bank Digital Currency). Diferente do PIX, que é um sistema de pagamentos, o DREX é uma nova forma de dinheiro: totalmente digital, programável pelo governo e rastreável em cada transação.',
   },
   {
     pergunta: 'DREX é o mesmo que Bitcoin?',
@@ -149,7 +149,7 @@ export const FAQ_ITEMS = [
   },
   {
     pergunta: 'O DREX vai substituir o dinheiro físico?',
-    resposta: 'Oficialmente, o Banco Central afirma que não. Mas a infraestrutura do DREX torna o dinheiro físico progressivamente obsoleto. Quando toda a economia operar digitalmente, manter dinheiro em espécie se tornará cada vez mais difícil e custoso — até que simplesmente desapareça.',
+    resposta: 'Oficialmente, o Banco Central afirma que não. Mas a infraestrutura do DREX torna o dinheiro físico progressivamente obsoleto. Quando toda a economia operar digitalmente, manter dinheiro em espécie se tornará cada vez mais difícil e custoso, até que simplesmente desapareça.',
   },
   {
     pergunta: 'O governo pode bloquear meu DREX?',
@@ -157,26 +157,26 @@ export const FAQ_ITEMS = [
   },
   {
     pergunta: 'DREX como funciona na prática?',
-    resposta: 'O DREX funciona em uma blockchain permissionada (Hyperledger Besu) controlada pelo Banco Central. Instituições financeiras autorizadas tokenizam depósitos e ativos. Você acessa o DREX através de bancos e fintechs — nunca diretamente. Cada transação é registrada, monitorada e vinculada à sua identidade fiscal.',
+    resposta: 'O DREX funciona em uma blockchain permissionada (Hyperledger Besu) controlada pelo Banco Central. Instituições financeiras autorizadas tokenizam depósitos e ativos. Você acessa o DREX através de bancos e fintechs, nunca diretamente. Cada transação é registrada, monitorada e vinculada à sua identidade fiscal.',
   },
   {
     pergunta: 'O que é uma CBDC?',
-    resposta: 'CBDC significa Central Bank Digital Currency — Moeda Digital de Banco Central. É dinheiro digital emitido e controlado pelo governo. Mais de 130 países estão desenvolvendo CBDCs. A diferença fundamental: enquanto o dinheiro físico permite transações privadas, uma CBDC registra cada movimentação e permite controle programável pelo Estado.',
+    resposta: 'CBDC significa Central Bank Digital Currency, Moeda Digital de Banco Central. É dinheiro digital emitido e controlado pelo governo. Mais de 130 países estão desenvolvendo CBDCs. A diferença fundamental: enquanto o dinheiro físico permite transações privadas, uma CBDC registra cada movimentação e permite controle programável pelo Estado.',
   },
   {
     pergunta: 'Como me proteger do DREX?',
-    resposta: 'As estratégias principais são: (1) Bitcoin com autocustódia — armazene valor em um ativo que nenhum governo pode confiscar; (2) Diversificação jurisdicional — distribua patrimônio entre múltiplas jurisdições; (3) Bitcoin P2P — adquira sem KYC; (4) Lightning Network — transacione com privacidade e velocidade.',
+    resposta: 'As estratégias principais são: (1) Bitcoin com autocustódia, armazene valor em um ativo que nenhum governo pode confiscar; (2) Diversificação jurisdicional, distribua patrimônio entre múltiplas jurisdições; (3) Bitcoin P2P, adquira sem KYC; (4) Lightning Network, transacione com privacidade e velocidade.',
   },
   {
     pergunta: 'O DREX é seguro?',
-    resposta: 'Depende da sua definição de "seguro". Tecnologicamente, a blockchain do BC é robusta. Mas segurança financeira não é apenas tecnológica — é também política. O DREX é "seguro" no sentido de que funciona. Mas é extremamente inseguro no sentido de que dá ao governo poder absoluto sobre o seu dinheiro, sem contrapesos.',
+    resposta: 'Depende da sua definição de "seguro". Tecnologicamente, a blockchain do BC é robusta. Mas segurança financeira não é apenas tecnológica, é também política. O DREX é "seguro" no sentido de que funciona. Mas é extremamente inseguro no sentido de que dá ao governo poder absoluto sobre o seu dinheiro, sem contrapesos.',
   },
   {
     pergunta: 'Qual a diferença entre DREX e PIX?',
-    resposta: 'O PIX é um sistema de pagamentos instantâneos que movimenta reais entre contas bancárias tradicionais. O DREX é uma nova forma de dinheiro — uma moeda digital programável. Com o PIX, você transfere dinheiro. Com o DREX, o governo pode programar como, quando e onde esse dinheiro pode ser usado.',
+    resposta: 'O PIX é um sistema de pagamentos instantâneos que movimenta reais entre contas bancárias tradicionais. O DREX é uma nova forma de dinheiro, uma moeda digital programável. Com o PIX, você transfere dinheiro. Com o DREX, o governo pode programar como, quando e onde esse dinheiro pode ser usado.',
   },
   {
     pergunta: 'O DREX já está funcionando?',
-    resposta: 'Em 2026, o DREX está em fase de expansão dos testes piloto com instituições financeiras. O lançamento público está previsto para os próximos anos. Mas a infraestrutura já está sendo construída — e quando estiver pronta, a transição pode ser muito rápida.',
+    resposta: 'Em 2026, o DREX está em fase de expansão dos testes piloto com instituições financeiras. O lançamento público está previsto para os próximos anos. Mas a infraestrutura já está sendo construída, e quando estiver pronta, a transição pode ser muito rápida.',
   },
 ];

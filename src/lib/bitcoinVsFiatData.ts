@@ -15,19 +15,19 @@ export const NAV_ITEMS = [
 
 /* ───────────── COMPARAÇÃO ───────────── */
 export const COMPARACAO = [
-  { aspecto: 'Emissão', fiat: 'Ilimitada — banco central imprime quando quer', bitcoin: 'Fixa — 21 milhões, para sempre, sem exceção' },
-  { aspecto: 'Controle', fiat: 'Centralizado — governo e banco central decidem', bitcoin: 'Descentralizado — nenhuma entidade controla' },
-  { aspecto: 'Privacidade', fiat: 'Zero — todas as transações são monitoradas', bitcoin: 'Pseudônimo — privacidade por design' },
-  { aspecto: 'Confisco', fiat: 'Possível — com um clique (Plano Collor)', bitcoin: 'Impossível — com autocustódia' },
-  { aspecto: 'Inflação', fiat: 'Constante — perde valor todos os dias', bitcoin: 'Deflacionário — tende a valorizar com o tempo' },
-  { aspecto: 'Fronteiras', fiat: 'Nacional — limitado por jurisdição', bitcoin: 'Global — funciona em qualquer lugar do mundo' },
-  { aspecto: 'Censura', fiat: 'Fácil — transações podem ser bloqueadas', bitcoin: 'Impossível — resistente à censura' },
-  { aspecto: 'Permissão', fiat: 'Necessária — o banco decide se você pode operar', bitcoin: 'Dispensável — permissionless' },
-  { aspecto: 'Transparência', fiat: 'Opaco — você não sabe quanto é impresso', bitcoin: 'Totalmente transparente — blockchain aberta' },
+  { aspecto: 'Emissão', fiat: 'Ilimitada, banco central imprime quando quer', bitcoin: 'Fixa, 21 milhões, para sempre, sem exceção' },
+  { aspecto: 'Controle', fiat: 'Centralizado, governo e banco central decidem', bitcoin: 'Descentralizado, nenhuma entidade controla' },
+  { aspecto: 'Privacidade', fiat: 'Zero, todas as transações são monitoradas', bitcoin: 'Pseudônimo, privacidade por design' },
+  { aspecto: 'Confisco', fiat: 'Possível, com um clique (Plano Collor)', bitcoin: 'Impossível, com autocustódia' },
+  { aspecto: 'Inflação', fiat: 'Constante, perde valor todos os dias', bitcoin: 'Deflacionário, tende a valorizar com o tempo' },
+  { aspecto: 'Fronteiras', fiat: 'Nacional, limitado por jurisdição', bitcoin: 'Global, funciona em qualquer lugar do mundo' },
+  { aspecto: 'Censura', fiat: 'Fácil, transações podem ser bloqueadas', bitcoin: 'Impossível, resistente à censura' },
+  { aspecto: 'Permissão', fiat: 'Necessária, o banco decide se você pode operar', bitcoin: 'Dispensável, permissionless' },
+  { aspecto: 'Transparência', fiat: 'Opaco, você não sabe quanto é impresso', bitcoin: 'Totalmente transparente, blockchain aberta' },
   { aspecto: 'Horário', fiat: '5 dias por semana, horário bancário', bitcoin: '24/7, 365 dias por ano, sem parar' },
-  { aspecto: 'Velocidade Internacional', fiat: 'Dias — SWIFT, intermediários, taxas altas', bitcoin: 'Minutos — direto, sem intermediários' },
-  { aspecto: 'Custo de transação', fiat: 'Alto — taxas bancárias, IOF, câmbio', bitcoin: 'Baixo — especialmente via Lightning Network' },
-  { aspecto: 'Lastro', fiat: 'Nenhum — confiança no governo (desde 1971)', bitcoin: 'Energia + matemática + consenso distribuído' },
+  { aspecto: 'Velocidade Internacional', fiat: 'Dias, SWIFT, intermediários, taxas altas', bitcoin: 'Minutos, direto, sem intermediários' },
+  { aspecto: 'Custo de transação', fiat: 'Alto, taxas bancárias, IOF, câmbio', bitcoin: 'Baixo, especialmente via Lightning Network' },
+  { aspecto: 'Lastro', fiat: 'Nenhum, confiança no governo (desde 1971)', bitcoin: 'Energia + matemática + consenso distribuído' },
   { aspecto: 'Histórico', fiat: 'Toda moeda fiat foi a zero eventualmente', bitcoin: '15+ anos de funcionamento ininterrupto' },
 ];
 
@@ -41,7 +41,7 @@ export const PROBLEMAS_FIAT = [
   {
     icon: Lock,
     titulo: 'Confisco e Bloqueios',
-    descricao: 'Governos podem congelar, confiscar ou bloquear seu dinheiro a qualquer momento. O Brasil já fez isso em 1990 (Plano Collor). O Canadá fez em 2022 com caminhoneiros. A Grécia fez em 2015 com limite de saques. Seu dinheiro no banco não é seu — é uma promessa do banco.',
+    descricao: 'Governos podem congelar, confiscar ou bloquear seu dinheiro a qualquer momento. O Brasil já fez isso em 1990 (Plano Collor). O Canadá fez em 2022 com caminhoneiros. A Grécia fez em 2015 com limite de saques. Seu dinheiro no banco não é seu, é uma promessa do banco.',
   },
   {
     icon: Eye,
@@ -60,7 +60,7 @@ export const VANTAGENS_BITCOIN = [
   {
     icon: Shield,
     titulo: 'Escassez Absoluta',
-    descricao: 'Apenas 21 milhões de bitcoins existirão — isso é garantido por matemática e consenso distribuído, não por promessas de políticos. Nenhum banco central, governo ou CEO pode alterar essa regra. É a primeira vez na história que a humanidade tem acesso a um ativo com escassez verificável e absoluta.',
+    descricao: 'Apenas 21 milhões de bitcoins existirão, isso é garantido por matemática e consenso distribuído, não por promessas de políticos. Nenhum banco central, governo ou CEO pode alterar essa regra. É a primeira vez na história que a humanidade tem acesso a um ativo com escassez verificável e absoluta.',
   },
   {
     icon: Zap,
@@ -70,7 +70,7 @@ export const VANTAGENS_BITCOIN = [
   {
     icon: Globe,
     titulo: 'Sem Fronteiras',
-    descricao: 'O Bitcoin funciona identicamente no Brasil, no Japão, na Argentina ou em El Salvador. Não existem "câmbios", "IOF" ou "limites de remessa". Você pode carregar bilhões de dólares em valor cruzando qualquer fronteira — na sua cabeça, memorizando 12 palavras.',
+    descricao: 'O Bitcoin funciona identicamente no Brasil, no Japão, na Argentina ou em El Salvador. Não existem "câmbios", "IOF" ou "limites de remessa". Você pode carregar bilhões de dólares em valor cruzando qualquer fronteira, na sua cabeça, memorizando 12 palavras.',
   },
   {
     icon: Users,
@@ -83,23 +83,23 @@ export const VANTAGENS_BITCOIN = [
 export const OBJECOES = [
   {
     objecao: '"Bitcoin é muito volátil"',
-    resposta: 'Volatilidade é o preço da descoberta de valor de um ativo que cresce de zero para trilhões de dólares em capitalização. O dólar não é "estável" — ele perde valor consistentemente há 110 anos. O Bitcoin é volátil no curto prazo, mas consistentemente valoriza no longo prazo. Nenhuma moeda fiat pode dizer o mesmo.',
+    resposta: 'Volatilidade é o preço da descoberta de valor de um ativo que cresce de zero para trilhões de dólares em capitalização. O dólar não é "estável", ele perde valor consistentemente há 110 anos. O Bitcoin é volátil no curto prazo, mas consistentemente valoriza no longo prazo. Nenhuma moeda fiat pode dizer o mesmo.',
   },
   {
     objecao: '"Bitcoin não tem lastro"',
-    resposta: 'Bitcoin é lastreado em energia, matemática e consenso distribuído. Para criar 1 bitcoin, é preciso gastar energia elétrica real em um processo de mineração. O dólar não é lastreado em nada desde 1971. O real não é lastreado em nada desde a criação. O "lastro" do fiat é apenas a confiança no governo — e governos quebram promessas rotineiramente.',
+    resposta: 'Bitcoin é lastreado em energia, matemática e consenso distribuído. Para criar 1 bitcoin, é preciso gastar energia elétrica real em um processo de mineração. O dólar não é lastreado em nada desde 1971. O real não é lastreado em nada desde a criação. O "lastro" do fiat é apenas a confiança no governo, e governos quebram promessas rotineiramente.',
   },
   {
     objecao: '"O governo pode proibir Bitcoin"',
-    resposta: 'Governos já tentaram proibir Bitcoin — e falharam. A China "proibiu" Bitcoin 7 vezes e ainda tem a segunda maior base de mineradores do mundo. O Bitcoin funciona via internet, satélite, rádio e até Bluetooth. Proibir Bitcoin é como proibir a matemática — tecnicamente impossível.',
+    resposta: 'Governos já tentaram proibir Bitcoin, e falharam. A China "proibiu" Bitcoin 7 vezes e ainda tem a segunda maior base de mineradores do mundo. O Bitcoin funciona via internet, satélite, rádio e até Bluetooth. Proibir Bitcoin é como proibir a matemática, tecnicamente impossível.',
   },
   {
     objecao: '"Bitcoin é usado por criminosos"',
-    resposta: 'O dólar americano é a moeda mais usada para atividades ilícitas no mundo — de longe. O sistema bancário tradicional lava mais dinheiro em um ano do que todo o Bitcoin já movimentou. O argumento "criminosos usam" se aplica a qualquer tecnologia: internet, telefones, carros, dinheiro em espécie.',
+    resposta: 'O dólar americano é a moeda mais usada para atividades ilícitas no mundo, de longe. O sistema bancário tradicional lava mais dinheiro em um ano do que todo o Bitcoin já movimentou. O argumento "criminosos usam" se aplica a qualquer tecnologia: internet, telefones, carros, dinheiro em espécie.',
   },
   {
     objecao: '"Bitcoin gasta muita energia"',
-    resposta: 'Bitcoin usa energia para garantir a segurança de uma rede de trilhões de dólares — assim como mineração de ouro, data centers bancários e bases militares. A diferença: mais de 50% da energia do Bitcoin já vem de fontes renováveis, e a mineração frequentemente utiliza energia que seria desperdiçada (gás queimado, hidrelétricas em períodos chuvosos).',
+    resposta: 'Bitcoin usa energia para garantir a segurança de uma rede de trilhões de dólares, assim como mineração de ouro, data centers bancários e bases militares. A diferença: mais de 50% da energia do Bitcoin já vem de fontes renováveis, e a mineração frequentemente utiliza energia que seria desperdiçada (gás queimado, hidrelétricas em períodos chuvosos).',
   },
 ];
 
@@ -119,14 +119,14 @@ export const FERRAMENTAS = [
     icon: Wallet,
     titulo: 'Autocustódia de Bitcoin',
     subtitulo: 'Suas Chaves, Seu Dinheiro',
-    descricao: 'O primeiro passo é armazenar Bitcoin em uma carteira onde só você controla as chaves privadas. Hardware wallets como Ledger, Trezor ou Coldcard garantem que ninguém — nem exchanges, nem governos — pode acessar seus fundos.',
+    descricao: 'O primeiro passo é armazenar Bitcoin em uma carteira onde só você controla as chaves privadas. Hardware wallets como Ledger, Trezor ou Coldcard garantem que ninguém, nem exchanges, nem governos, pode acessar seus fundos.',
     destaque: 'Not your keys, not your coins.',
   },
   {
     icon: Zap,
     titulo: 'Lightning Network',
     subtitulo: 'Pagamentos Instantâneos',
-    descricao: 'A Lightning Network permite transações de Bitcoin quase instantâneas e com taxas de centavos. É o "PIX do Bitcoin" — mas descentralizado, privado e global. Perfeito para o dia a dia.',
+    descricao: 'A Lightning Network permite transações de Bitcoin quase instantâneas e com taxas de centavos. É o "PIX do Bitcoin", mas descentralizado, privado e global. Perfeito para o dia a dia.',
     destaque: 'Velocidade do PIX. Soberania do Bitcoin.',
   },
   {
@@ -153,7 +153,7 @@ export const FAQ_ITEMS = [
   },
   {
     pergunta: 'Qual a diferença entre Bitcoin e dinheiro?',
-    resposta: 'O Bitcoin é dinheiro — mas com propriedades superiores ao fiat. É escasso (21 milhões), descentralizado (sem banco central), global (sem fronteiras), resistente à censura (ninguém pode bloqueá-lo) e transparente (blockchain pública). O Real é uma moeda fiduciária com oferta ilimitada, controlada por um governo com histórico de confisco.',
+    resposta: 'O Bitcoin é dinheiro, mas com propriedades superiores ao fiat. É escasso (21 milhões), descentralizado (sem banco central), global (sem fronteiras), resistente à censura (ninguém pode bloqueá-lo) e transparente (blockchain pública). O Real é uma moeda fiduciária com oferta ilimitada, controlada por um governo com histórico de confisco.',
   },
   {
     pergunta: 'Vantagens do Bitcoin sobre moedas tradicionais?',
@@ -161,7 +161,7 @@ export const FAQ_ITEMS = [
   },
   {
     pergunta: 'Bitcoin pode substituir o dinheiro tradicional?',
-    resposta: 'O Bitcoin já funciona como dinheiro em El Salvador (onde é moeda de curso legal) e em milhares de comunidades ao redor do mundo. Com a Lightning Network, transações são instantâneas e baratas. O Bitcoin não precisa substituir completamente o fiat — basta existir como alternativa soberana para quem valoriza privacidade, liberdade e preservação de valor.',
+    resposta: 'O Bitcoin já funciona como dinheiro em El Salvador (onde é moeda de curso legal) e em milhares de comunidades ao redor do mundo. Com a Lightning Network, transações são instantâneas e baratas. O Bitcoin não precisa substituir completamente o fiat, basta existir como alternativa soberana para quem valoriza privacidade, liberdade e preservação de valor.',
   },
   {
     pergunta: 'Por que Bitcoin é considerado escasso?',
