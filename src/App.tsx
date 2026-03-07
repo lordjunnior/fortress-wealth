@@ -76,6 +76,7 @@ import BankOfGeorgia from "./pages/BankOfGeorgia";
 import WisePage from "./pages/Wise";
 import PayoneerPage from "./pages/Payoneer";
 import ContasOffshore from "./pages/ContasOffshore";
+import AberturaRemota from "./pages/AberturaRemota";
 import IndiceSoberaniaFinanceira from "./pages/IndiceSoberaniaFinanceira";
 import CpContextoHistorico from "./pages/cp/ContextoHistorico";
 import CpBaseFisiologica from "./pages/cp/BaseFisiologica";
