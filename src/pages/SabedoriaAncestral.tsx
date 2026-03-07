@@ -120,28 +120,11 @@ const PILARES = [
 ══════════════════════════════════════════════════════════════ */
 export default function SabedoriaAncestral() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const heroRef = useRef<HTMLDivElement>(null);
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-  const smoothX = useSpring(mouseX, { stiffness: 30, damping: 20 });
-  const smoothY = useSpring(mouseY, { stiffness: 30, damping: 20 });
 
   const { scrollYProgress } = useScroll();
   const progressWidth = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
 
   useEffect(() => { window.scrollTo(0, 0); }, []);
-
-  /* ── Mouse parallax ── */
-  useEffect(() => {
-    const isMobile = window.innerWidth < 768;
-    if (isMobile) return;
-    const handler = (e: MouseEvent) => {
-      mouseX.set((e.clientX / window.innerWidth - 0.5) * 40);
-      mouseY.set((e.clientY / window.innerHeight - 0.5) * 40);
-    };
-    window.addEventListener('mousemove', handler);
-    return () => window.removeEventListener('mousemove', handler);
-  }, [mouseX, mouseY]);
 
   /* ── GSAP ScrollTrigger reveals ── */
   useEffect(() => {
