@@ -1,4 +1,4 @@
-import { Instagram, Youtube, Twitter, Github, LayoutGrid, BookOpen, Headphones, Wrench, QrCode, Zap, Library, ShieldAlert, Shield } from "lucide-react";
+import { Instagram, Youtube, Twitter, Github, LayoutGrid, BookOpen, Headphones, Wrench, QrCode, Zap, Library, ShieldAlert, Shield, Globe } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useNavigate, useLocation } from "react-router-dom";
 import profilePhoto from "@/assets/profile-photo.jpg";
