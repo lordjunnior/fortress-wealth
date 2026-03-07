@@ -124,12 +124,9 @@ const ChapterImage = ({ src, alt, index }: { src: string; alt: string; index: nu
         className="w-full h-full object-cover"
         loading="lazy"
       />
-      {/* Fade overlays */}
-      <div className={`absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent`} />
+      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
       <div className={`absolute inset-0 bg-gradient-to-${isEven ? 'r' : 'l'} from-background/80 via-transparent to-background/40`} />
-      {/* Top fade */}
       <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-transparent to-transparent" />
-      {/* Subtle vignette */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,hsl(var(--background)/0.6)_100%)]" />
     </motion.div>
   );
@@ -137,277 +134,357 @@ const ChapterImage = ({ src, alt, index }: { src: string; alt: string; index: nu
 
 const Confisco1990 = () => {
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground relative overflow-hidden">
       <Helmet>
         <title>Confisco de 1990: A História Real do Plano Collor</title>
         <meta name="description" content="Em 16 de março de 1990, o governo brasileiro confiscou 80% do dinheiro da população com o Plano Collor. O confisco da poupança bloqueou US$ 80 bilhões. Esta é a história completa." />
         <meta name="keywords" content="plano collor confisco, confisco poupança 1990, plano collor dinheiro bloqueado, confisco da poupança brasil, história plano collor, confisco collor" />
       </Helmet>
 
-      {/* Hero */}
-      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0">
-          <img
-            src={presidenteImg}
-            alt="Presidente com faixa presidencial, 1990"
-            className="w-full h-full object-cover object-top opacity-40"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/70 to-background" />
-          <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-transparent to-background/80" />
-        </div>
+      {/* ── Global Background Layers ── */}
+      {/* Grain texture */}
+      <div 
+        className="fixed inset-0 pointer-events-none z-[1] opacity-[0.03]"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
+          backgroundRepeat: 'repeat',
+          backgroundSize: '128px 128px',
+        }}
+      />
+      {/* Ambient red vignette that follows scroll */}
+      <div className="fixed inset-0 pointer-events-none z-[1] bg-[radial-gradient(ellipse_at_50%_20%,hsl(0_84%_60%/0.04)_0%,transparent_60%)]" />
+      <div className="fixed inset-0 pointer-events-none z-[1] bg-[radial-gradient(ellipse_at_50%_80%,hsl(0_84%_60%/0.03)_0%,transparent_50%)]" />
+      {/* Subtle vertical gradient bands for depth */}
+      <div className="fixed inset-0 pointer-events-none z-[1] bg-[linear-gradient(180deg,hsl(222_47%_4%/0)_0%,hsl(0_84%_60%/0.02)_25%,hsl(222_47%_4%/0)_50%,hsl(0_84%_60%/0.015)_75%,hsl(222_47%_4%/0)_100%)]" />
 
-        <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
+      {/* ── Content (above background layers) ── */}
+      <div className="relative z-[2]">
+
+        {/* Hero */}
+        <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+          <div className="absolute inset-0">
+            <img
+              src={presidenteImg}
+              alt="Presidente com faixa presidencial, 1990"
+              className="w-full h-full object-cover object-top opacity-40"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/70 to-background" />
+            <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-transparent to-background/80" />
+          </div>
+
+          <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <p className="font-mono text-[10px] tracking-[0.5em] uppercase text-destructive mb-6">
+                16 DE MARÇO DE 1990
+              </p>
+              <h1 className="text-3xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight leading-[0.9] mb-6">
+                ELE ASSINOU.
+                <br />
+                <span className="text-destructive">VOCÊ PERDEU TUDO.</span>
+              </h1>
+              <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-4">
+                A história real do maior confisco da história do Brasil.
+                80% do dinheiro da população, bloqueado por um decreto assinado enquanto você dormia.
+              </p>
+              <p className="font-mono text-xs text-muted-foreground/60 tracking-widest">
+                O MECANISMO LEGAL AINDA ESTÁ ATIVO
+              </p>
+            </motion.div>
+          </div>
+
+          <motion.div
+            className="absolute bottom-8 left-1/2 -translate-x-1/2"
+            animate={{ y: [0, 8, 0] }}
+            transition={{ repeat: Infinity, duration: 2 }}
+          >
+            <div className="w-px h-12 bg-gradient-to-b from-muted-foreground/40 to-transparent" />
+          </motion.div>
+        </section>
+
+        {/* Impact Stats Block */}
+        <section className="max-w-4xl mx-auto px-6 -mt-8 relative z-20">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="p-6 md:p-8 rounded-2xl border border-destructive/20 bg-gradient-to-b from-destructive/10 via-destructive/5 to-background/80 backdrop-blur-sm"
           >
-            <p className="font-mono text-[10px] tracking-[0.5em] uppercase text-destructive mb-6">
-              16 DE MARÇO DE 1990
+            <p className="font-mono text-[10px] tracking-[0.5em] uppercase text-destructive/70 text-center mb-6">
+              O QUE FOI BLOQUEADO
             </p>
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight leading-[0.9] mb-6">
-              ELE ASSINOU.
-              <br />
-              <span className="text-destructive">VOCÊ PERDEU TUDO.</span>
-            </h1>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-4">
-              A história real do maior confisco da história do Brasil.
-              80% do dinheiro da população, bloqueado por um decreto assinado enquanto você dormia.
-            </p>
-            <p className="font-mono text-xs text-muted-foreground/60 tracking-widest">
-              O MECANISMO LEGAL AINDA ESTÁ ATIVO
-            </p>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {impactStats.map((stat, i) => {
+                const Icon = stat.icon;
+                return (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, scale: 0.8, filter: "blur(8px)" }}
+                    whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.2 + i * 0.12, ease: [0.22, 1, 0.36, 1] }}
+                    className="relative group border border-destructive/15 bg-destructive/5 rounded-xl p-5 text-center space-y-2 hover:border-destructive/40 transition-all duration-500"
+                  >
+                    <div className="absolute inset-0 rounded-xl bg-gradient-to-t from-destructive/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <Icon className="w-6 h-6 text-destructive mx-auto relative z-10" />
+                    <p className="text-xl md:text-2xl font-black text-foreground relative z-10">{stat.value}</p>
+                    <p className="text-xs text-muted-foreground leading-tight relative z-10">{stat.label}</p>
+                  </motion.div>
+                );
+              })}
+            </div>
           </motion.div>
+        </section>
+
+        {/* Ambient glow between stats and chapters */}
+        <div className="relative max-w-4xl mx-auto">
+          <div className="absolute left-1/2 -translate-x-1/2 top-0 w-px h-32 bg-gradient-to-b from-destructive/20 to-transparent" />
         </div>
 
-        <motion.div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
-          animate={{ y: [0, 8, 0] }}
-          transition={{ repeat: Infinity, duration: 2 }}
-        >
-          <div className="w-px h-12 bg-gradient-to-b from-muted-foreground/40 to-transparent" />
-        </motion.div>
-      </section>
+        {/* Chapters */}
+        <div className="max-w-3xl mx-auto px-6 py-16 space-y-24">
+          <Link
+            to="/"
+            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            Voltar ao início
+          </Link>
 
-      {/* Impact Stats Block */}
-      <section className="max-w-4xl mx-auto px-6 -mt-8 relative z-20">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="p-6 md:p-8 rounded-2xl border border-destructive/20 bg-gradient-to-b from-destructive/10 via-destructive/5 to-background/80 backdrop-blur-sm"
-        >
-          <p className="font-mono text-[10px] tracking-[0.5em] uppercase text-destructive/70 text-center mb-6">
-            O QUE FOI BLOQUEADO
-          </p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {impactStats.map((stat, i) => {
-              const Icon = stat.icon;
-              return (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, scale: 0.8, filter: "blur(8px)" }}
-                  whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.2 + i * 0.12, ease: [0.22, 1, 0.36, 1] }}
-                  className="relative group border border-destructive/15 bg-destructive/5 rounded-xl p-5 text-center space-y-2 hover:border-destructive/40 transition-all duration-500"
-                >
-                  <div className="absolute inset-0 rounded-xl bg-gradient-to-t from-destructive/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <Icon className="w-6 h-6 text-destructive mx-auto relative z-10" />
-                  <p className="text-xl md:text-2xl font-black text-foreground relative z-10">{stat.value}</p>
-                  <p className="text-xs text-muted-foreground leading-tight relative z-10">{stat.label}</p>
-                </motion.div>
-              );
-            })}
-          </div>
-        </motion.div>
-      </section>
+          {chapters.map((chapter, i) => {
+            const Icon = chapter.icon;
+            return (
+              <motion.article
+                key={i}
+                initial={{ opacity: 0, y: 40, filter: "blur(6px)" }}
+                whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+                className="space-y-4 relative"
+              >
+                {/* Glow lateral */}
+                <div className="absolute -left-4 top-0 w-1 h-full bg-gradient-to-b from-destructive/30 via-destructive/10 to-transparent rounded-full" />
+                
+                {/* Ambient glow behind chapter */}
+                <div className="absolute -inset-12 bg-[radial-gradient(ellipse_at_center,hsl(0_84%_60%/0.03)_0%,transparent_70%)] pointer-events-none" />
 
-      {/* Chapters */}
-      <div className="max-w-3xl mx-auto px-6 py-16 space-y-20">
-        <Link
-          to="/"
-          className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          Voltar ao início
-        </Link>
-
-        {chapters.map((chapter, i) => {
-          const Icon = chapter.icon;
-          return (
-            <motion.article
-              key={i}
-              initial={{ opacity: 0, y: 40, filter: "blur(6px)" }}
-              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="space-y-4 relative"
-            >
-              {/* Glow lateral */}
-              <div className="absolute -left-4 top-0 w-1 h-full bg-gradient-to-b from-destructive/30 via-destructive/10 to-transparent rounded-full" />
-              
-              <div className="flex items-center gap-3 mb-2">
-                <motion.div
-                  initial={{ scale: 0.5, opacity: 0 }}
-                  whileInView={{ scale: 1, opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-                  className="w-10 h-10 rounded-lg border border-destructive/20 bg-destructive/5 flex items-center justify-center"
-                >
-                  <Icon className="w-5 h-5 text-destructive" />
-                </motion.div>
-                <div>
-                  <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-destructive/60">
-                    {chapter.phase}
-                  </p>
-                  <h2 className="text-xl md:text-2xl font-bold tracking-tight">
-                    {chapter.title}
-                  </h2>
-                </div>
-              </div>
-
-              <div className="h-px bg-gradient-to-r from-destructive/30 via-border/50 to-transparent" />
-
-              {/* Chapter Image with fade */}
-              <ChapterImage src={chapter.image} alt={chapter.imageAlt} index={i} />
-
-              <div className="space-y-5">
-                {chapter.content.map((paragraph, j) => (
-                  <motion.p
-                    key={j}
-                    initial={{ opacity: 0, x: -10 }}
-                    whileInView={{ opacity: 1, x: 0 }}
+                <div className="flex items-center gap-3 mb-2 relative">
+                  <motion.div
+                    initial={{ scale: 0.5, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.15 + j * 0.08, ease: [0.22, 1, 0.36, 1] }}
-                    className="text-base md:text-lg text-muted-foreground leading-relaxed"
+                    transition={{ duration: 0.5, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                    className="w-10 h-10 rounded-lg border border-destructive/20 bg-destructive/5 flex items-center justify-center"
                   >
-                    {paragraph}
-                  </motion.p>
-                ))}
-              </div>
-            </motion.article>
-          );
-        })}
+                    <Icon className="w-5 h-5 text-destructive" />
+                  </motion.div>
+                  <div>
+                    <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-destructive/60">
+                      {chapter.phase}
+                    </p>
+                    <h2 className="text-xl md:text-2xl font-bold tracking-tight">
+                      {chapter.title}
+                    </h2>
+                  </div>
+                </div>
 
-        {/* Transition Block */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95, filter: "blur(10px)" }}
-          whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="relative overflow-hidden rounded-2xl p-10 md:p-16 text-center"
-        >
-          <div className="absolute inset-0 bg-gradient-to-b from-destructive/15 via-destructive/5 to-background border border-destructive/20 rounded-2xl" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,hsl(var(--destructive)/0.1)_0%,transparent_70%)]" />
-          
+                <div className="h-px bg-gradient-to-r from-destructive/30 via-border/50 to-transparent" />
+
+                {/* Chapter Image with fade */}
+                <ChapterImage src={chapter.image} alt={chapter.imageAlt} index={i} />
+
+                <div className="space-y-5">
+                  {chapter.content.map((paragraph, j) => (
+                    <motion.p
+                      key={j}
+                      initial={{ opacity: 0, x: -10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: 0.15 + j * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                      className="text-base md:text-lg text-muted-foreground leading-relaxed relative"
+                    >
+                      {paragraph}
+                    </motion.p>
+                  ))}
+                </div>
+
+                {/* Divider between chapters */}
+                {i < chapters.length - 1 && (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.3 }}
+                    className="pt-8 flex items-center justify-center gap-2"
+                  >
+                    <div className="h-px w-8 bg-destructive/20" />
+                    <div className="w-1.5 h-1.5 rounded-full bg-destructive/30" />
+                    <div className="h-px w-8 bg-destructive/20" />
+                  </motion.div>
+                )}
+              </motion.article>
+            );
+          })}
+
+          {/* ══════════════════════════════════════════════════ */}
+          {/* TRANSITION BLOCK: 1990 → HOJE */}
+          {/* ══════════════════════════════════════════════════ */}
           <motion.div
-            className="absolute inset-0 rounded-2xl border-2 border-destructive/20"
-            animate={{ opacity: [0.2, 0.5, 0.2] }}
-            transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
-          />
-
-          <div className="relative z-10 space-y-8">
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="font-mono text-sm md:text-base tracking-[0.4em] uppercase text-destructive font-bold"
-            >
-              1990: NÃO EXISTIA ALTERNATIVA
-            </motion.p>
+            initial={{ opacity: 0, scale: 0.92, filter: "blur(12px)" }}
+            whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+            className="relative overflow-hidden rounded-2xl py-20 md:py-28 px-8 md:px-16 text-center -mx-6 md:-mx-12"
+          >
+            {/* Multi-layer background */}
+            <div className="absolute inset-0 bg-gradient-to-b from-destructive/20 via-destructive/8 to-background rounded-2xl" />
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,hsl(0_84%_60%/0.15)_0%,transparent_60%)]" />
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,hsl(0_84%_60%/0.1)_0%,transparent_50%)]" />
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,hsl(40_92%_56%/0.05)_0%,transparent_50%)]" />
             
-            <motion.h3
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-              className="text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight leading-none text-foreground"
-            >
-              Hoje existe.
-            </motion.h3>
+            {/* Outer border */}
+            <div className="absolute inset-0 rounded-2xl border border-destructive/25" />
             
+            {/* Pulsing inner border */}
             <motion.div
-              initial={{ width: 0 }}
-              whileInView={{ width: "120px" }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.7 }}
-              className="h-0.5 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto"
+              className="absolute inset-2 rounded-xl border border-destructive/15"
+              animate={{ opacity: [0.3, 0.7, 0.3] }}
+              transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
             />
-            
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.8 }}
-              className="text-muted-foreground max-w-xl mx-auto leading-relaxed text-lg"
-            >
-              Pela primeira vez na história, existe uma tecnologia que permite guardar patrimônio sem depender de bancos, governos ou decretos.
-            </motion.p>
-            
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 1 }}
-              className="text-gold font-black text-2xl md:text-3xl tracking-tight"
-            >
-              Essa tecnologia se chama Bitcoin.
-            </motion.p>
-          </div>
-        </motion.div>
 
-        {/* Final CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
-          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="relative overflow-hidden border border-destructive/30 rounded-2xl bg-gradient-to-b from-destructive/10 to-destructive/5 p-8 md:p-12 text-center space-y-6"
-        >
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,hsl(var(--destructive)/0.15)_0%,transparent_60%)]" />
-          <div className="relative z-10 space-y-6">
-            <motion.div
-              animate={{ rotate: [0, 5, -5, 0] }}
-              transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-            >
-              <AlertTriangle className="w-12 h-12 text-destructive mx-auto" />
-            </motion.div>
-            <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tight">
-              Quanto do seu patrimônio está a uma assinatura de distância de desaparecer?
-            </h3>
-            <p className="text-muted-foreground max-w-xl mx-auto leading-relaxed">
-              Em 1990 não existia alternativa. Hoje existe.
-              O Bitcoin é a única tecnologia que garante que nenhum presidente, nenhum decreto e nenhuma medida provisória pode tocar no seu dinheiro.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <Link
-                to="/autocustodia"
-                className="inline-flex items-center justify-center gap-2 bg-gold text-background font-bold px-8 py-3.5 rounded-lg text-sm tracking-wide hover:bg-gold/90 transition-all duration-300 hover:shadow-[0_0_20px_hsl(var(--gold)/0.3)]"
-              >
-                Descobrir Como Proteger Meu Patrimônio
-              </Link>
-              <Link
-                to="/historia-do-dinheiro"
-                className="inline-flex items-center justify-center gap-2 border border-border bg-background font-bold px-8 py-3.5 rounded-lg text-sm tracking-wide hover:bg-card hover:border-foreground/20 transition-all duration-300"
-              >
-                Entender a História Completa
-              </Link>
+            {/* Animated corner accents */}
+            <div className="absolute top-0 left-0 w-16 h-16">
+              <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-destructive/50 to-transparent" />
+              <div className="absolute top-0 left-0 h-full w-px bg-gradient-to-b from-destructive/50 to-transparent" />
             </div>
-          </div>
-        </motion.div>
+            <div className="absolute top-0 right-0 w-16 h-16">
+              <div className="absolute top-0 right-0 w-full h-px bg-gradient-to-l from-destructive/50 to-transparent" />
+              <div className="absolute top-0 right-0 h-full w-px bg-gradient-to-b from-destructive/50 to-transparent" />
+            </div>
+            <div className="absolute bottom-0 left-0 w-16 h-16">
+              <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-destructive/50 to-transparent" />
+              <div className="absolute bottom-0 left-0 h-full w-px bg-gradient-to-t from-destructive/50 to-transparent" />
+            </div>
+            <div className="absolute bottom-0 right-0 w-16 h-16">
+              <div className="absolute bottom-0 right-0 w-full h-px bg-gradient-to-l from-destructive/50 to-transparent" />
+              <div className="absolute bottom-0 right-0 h-full w-px bg-gradient-to-t from-destructive/50 to-transparent" />
+            </div>
 
-        {/* Footer */}
-        <footer className="pt-16 border-t border-border/20 text-center space-y-6">
-          <p className="text-muted-foreground font-mono text-xs tracking-widest uppercase">
-            Quem não conhece a história está condenado a repeti-la.
-          </p>
-          <p className="text-foreground/40 text-[9px] font-mono tracking-[0.5em] uppercase">
-            Lord Junnior © 2026
-          </p>
-        </footer>
+            <div className="relative z-10 space-y-10">
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="font-mono text-base md:text-lg tracking-[0.5em] uppercase text-destructive font-bold"
+              >
+                1990: NÃO EXISTIA ALTERNATIVA
+              </motion.p>
+
+              {/* Horizontal rule */}
+              <motion.div
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="h-px w-32 mx-auto bg-gradient-to-r from-transparent via-destructive/40 to-transparent origin-center"
+              />
+              
+              <motion.h3
+                initial={{ opacity: 0, scale: 0.7, filter: "blur(10px)" }}
+                whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                className="text-5xl md:text-6xl lg:text-8xl font-black uppercase tracking-tight leading-none text-foreground"
+              >
+                Hoje existe.
+              </motion.h3>
+              
+              {/* Gold divider */}
+              <motion.div
+                initial={{ width: 0 }}
+                whileInView={{ width: "160px" }}
+                viewport={{ once: true }}
+                transition={{ duration: 1, delay: 0.8 }}
+                className="h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto"
+              />
+              
+              <motion.p
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.9 }}
+                className="text-muted-foreground max-w-xl mx-auto leading-relaxed text-lg md:text-xl"
+              >
+                Pela primeira vez na história, existe uma tecnologia que permite guardar patrimônio sem depender de bancos, governos ou decretos.
+              </motion.p>
+              
+              <motion.p
+                initial={{ opacity: 0, y: 15, filter: "blur(6px)" }}
+                whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: 1.1 }}
+                className="text-primary font-black text-3xl md:text-4xl tracking-tight"
+              >
+                Essa tecnologia se chama Bitcoin.
+              </motion.p>
+            </div>
+          </motion.div>
+
+          {/* Final CTA */}
+          <motion.div
+            initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="relative overflow-hidden border border-destructive/30 rounded-2xl bg-gradient-to-b from-destructive/10 to-destructive/5 p-8 md:p-12 text-center space-y-6"
+          >
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,hsl(var(--destructive)/0.15)_0%,transparent_60%)]" />
+            <div className="relative z-10 space-y-6">
+              <motion.div
+                animate={{ rotate: [0, 5, -5, 0] }}
+                transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+              >
+                <AlertTriangle className="w-12 h-12 text-destructive mx-auto" />
+              </motion.div>
+              <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tight">
+                Quanto do seu patrimônio está a uma assinatura de distância de desaparecer?
+              </h3>
+              <p className="text-muted-foreground max-w-xl mx-auto leading-relaxed">
+                Em 1990 não existia alternativa. Hoje existe.
+                O Bitcoin é a única tecnologia que garante que nenhum presidente, nenhum decreto e nenhuma medida provisória pode tocar no seu dinheiro.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+                <Link
+                  to="/autocustodia"
+                  className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground font-bold px-8 py-3.5 rounded-lg text-sm tracking-wide hover:bg-primary/90 transition-all duration-300 hover:shadow-[0_0_20px_hsl(var(--primary)/0.3)]"
+                >
+                  Descobrir Como Proteger Meu Patrimônio
+                </Link>
+                <Link
+                  to="/historia-do-dinheiro"
+                  className="inline-flex items-center justify-center gap-2 border border-border bg-background font-bold px-8 py-3.5 rounded-lg text-sm tracking-wide hover:bg-card hover:border-foreground/20 transition-all duration-300"
+                >
+                  Entender a História Completa
+                </Link>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Footer */}
+          <footer className="pt-16 border-t border-border/20 text-center space-y-6">
+            <p className="text-muted-foreground font-mono text-xs tracking-widest uppercase">
+              Quem não conhece a história está condenado a repeti-la.
+            </p>
+            <p className="text-foreground/40 text-[9px] font-mono tracking-[0.5em] uppercase">
+              Lord Junnior © 2026
+            </p>
+          </footer>
+        </div>
       </div>
     </div>
   );
