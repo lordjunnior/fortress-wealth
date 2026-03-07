@@ -27,6 +27,7 @@ import Arsenal from "./pages/Arsenal";
 import NotFound from "./pages/NotFound";
 import BlindagemGolpes from "./pages/BlindagemGolpes";
 import ProibicaoDinheiro from "./pages/ProibicaoDinheiro";
+import AlertasHub from "./pages/AlertasHub";
 import HardCap21 from "./pages/HardCap21";
 import BitcoinSeguro from "./pages/BitcoinSeguro";
 import ChavesPage from "./pages/ChavesPage";
@@ -103,6 +104,8 @@ const App = () => (
           <Route path="/arsenal" element={<Arsenal />} />
           <Route path="/blindagem-golpes" element={<BlindagemGolpes />} />
           <Route path="/proibicao-dinheiro" element={<ProibicaoDinheiro />} />
+          <Route path="/alertas" element={<AlertasHub />} />
+          <Route path="/alertas/fim-do-dinheiro-vivo" element={<ProibicaoDinheiro />} />
           <Route path="/21-milhoes" element={<HardCap21 />} />
           <Route path="/bitcoin-seguro" element={<BitcoinSeguro />} />
           <Route path="/chaves" element={<ChavesPage />} />
