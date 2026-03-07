@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Tent, Thermometer, Wind, Droplets, AlertTriangle, Shield, Home, TreePine, Layers, Heart, Brain, Sun, Trash2, Lightbulb, ShieldAlert } from 'lucide-react';
 import { motion } from 'framer-motion';
+import CinematicHero from '@/components/CinematicHero';
 
 import imgSoloIsolamento from '@/assets/abrigo-solo-isolamento.jpg';
 import imgReforcoJanela from '@/assets/abrigo-reforco-janela.jpg';

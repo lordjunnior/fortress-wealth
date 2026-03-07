@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Siren, Radio, MapPin, Eye, Users, Battery, ShieldAlert, Lock, FileText, Clock, AlertTriangle } from 'lucide-react';
 import { motion } from 'framer-motion';
+import CinematicHero from '@/components/CinematicHero';
 
 import imgRadio from '@/assets/comms-radio-amfm.jpg';
 import imgMapa from '@/assets/comms-mapa-encontro.jpg';

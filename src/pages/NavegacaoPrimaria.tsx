@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Wind, Sun, Compass, Mountain, Building, Route, MapPinned, Moon, AlertTriangle, ShieldAlert, Brain } from 'lucide-react';
 import { motion } from 'framer-motion';
+import CinematicHero from '@/components/CinematicHero';
 
 import imgSombra from '@/assets/nav-metodo-sombra.jpg';
 import imgBussola from '@/assets/nav-bussola.jpg';
