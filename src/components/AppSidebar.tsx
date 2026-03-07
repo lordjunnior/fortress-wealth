@@ -19,6 +19,7 @@ const menuItems: MenuItem[] = [
   { icon: Wrench, label: "Ferramentas", route: "/ferramentas" },
   { icon: QrCode, label: "PIX Crypto", route: "/pix-cripto" },
   { icon: Shield, label: "Projeto Autônomo", route: "/projeto-autonomo" },
+  { icon: Globe, label: "Soberania Financeira", route: "/soberania-financeira" },
 ];
 
 const socialLinks = [
