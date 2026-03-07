@@ -74,6 +74,7 @@ import Neobankless from "./pages/Neobankless";
 import SoberaniaFinanceira from "./pages/SoberaniaFinanceira";
 import BankOfGeorgia from "./pages/BankOfGeorgia";
 import WisePage from "./pages/Wise";
+import PayoneerPage from "./pages/Payoneer";
 import IndiceSoberaniaFinanceira from "./pages/IndiceSoberaniaFinanceira";
 import CpContextoHistorico from "./pages/cp/ContextoHistorico";
 import CpBaseFisiologica from "./pages/cp/BaseFisiologica";
