@@ -133,6 +133,7 @@ const App = () => (
           <Route path="/neobankless" element={<Navigate to="/soberania-financeira/contas-internacionais/neobankless" replace />} />
           <Route path="/soberania-financeira/contas-internacionais/bank-of-georgia" element={<BankOfGeorgia />} />
           <Route path="/soberania-financeira/contas-internacionais/wise" element={<WisePage />} />
+          <Route path="/soberania-financeira/contas-internacionais/payoneer" element={<PayoneerPage />} />
           <Route path="/indice-de-soberania-financeira" element={<IndiceSoberaniaFinanceira />} />
           <Route path="/21-milhoes" element={<HardCap21 />} />
           <Route path="/bitcoin-seguro" element={<BitcoinSeguro />} />
