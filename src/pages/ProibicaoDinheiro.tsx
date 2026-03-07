@@ -27,7 +27,7 @@ const articleSchema = {
   "publisher": { "@type": "Organization", "name": "Lord Junnior", "url": "https://lordjunnior.com.br" },
   "datePublished": "2026-03-07",
   "dateModified": "2026-03-07",
-  "url": "https://lordjunnior.com.br/proibicao-dinheiro",
+  "url": "https://lordjunnior.com.br/alertas/fim-do-dinheiro-vivo",
   "keywords": "PL 3951, limite dinheiro vivo Brasil, privacidade financeira, Bitcoin sem KYC, teoria das bandeiras, autocustódia Bitcoin"
 };
 
@@ -67,7 +67,7 @@ export default function ProibicaoDinheiro() {
         <link rel="canonical" href="https://lordjunnior.com.br/alertas/fim-do-dinheiro-vivo" />
         <meta property="og:title" content="Governo Limita Dinheiro Vivo no Brasil — PL 3951" />
         <meta property="og:description" content="Entenda o PL 3.951 e como proteger sua privacidade financeira com Bitcoin P2P, teoria das bandeiras e autocustódia." />
-        <meta property="og:url" content="https://lordjunnior.com.br/proibicao-dinheiro" />
+        <meta property="og:url" content="https://lordjunnior.com.br/alertas/fim-do-dinheiro-vivo" />
         <meta property="og:type" content="article" />
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>
