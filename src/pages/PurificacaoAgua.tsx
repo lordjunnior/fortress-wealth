@@ -88,45 +88,17 @@ export default function PurificacaoAgua() {
   React.useEffect(() => { window.scrollTo(0, 0); }, []);
 
   return (
-    <div
-      className="min-h-screen selection:bg-blue-200"
-      style={{ background: 'linear-gradient(180deg, #eef4f9 0%, #f0f5fa 30%, #f5f0ea 60%, #ede8e0 100%)' }}
-    >
-      <div className="max-w-4xl mx-auto px-5 md:px-8 pt-20 pb-32">
+    <div className="min-h-screen selection:bg-blue-300/30" style={{ background: '#050808' }}>
+      <CinematicHero
+        image="/heroes/purificacao-agua.webp"
+        phase="Fase 01 · Base 72"
+        title="Purificação de Água"
+        subtitle="Fervura, cloração e filtração improvisada. Métodos validados em protocolos de defesa civil para ambientes com recursos limitados."
+        icon={Droplets}
+        accentColor="blue"
+      />
 
-        {/* ── Voltar ── */}
-        <Link
-          to="/projeto-autonomo"
-          className="inline-flex items-center gap-2 text-stone-400 hover:text-stone-700 text-xs font-semibold uppercase tracking-[0.2em] transition-colors mb-12"
-        >
-          <ArrowLeft size={14} /> Projeto Autônomo
-        </Link>
-
-        {/* ══════════════════════════════════════════════════════════
-           HERO
-           ══════════════════════════════════════════════════════════ */}
-        <motion.section
-          className="mb-16"
-          initial="hidden" animate="visible" variants={fadeUp}
-        >
-          <span className="text-[10px] font-bold tracking-[0.5em] uppercase text-blue-500 opacity-70">
-            Fase 01 · Base 72
-          </span>
-
-          <div className="mt-4 flex items-start gap-4 md:gap-5">
-            <div className="p-3 md:p-4 bg-blue-100 rounded-2xl shrink-0 mt-1">
-              <Droplets className="text-blue-600" size={28} />
-            </div>
-            <div>
-              <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-stone-800 leading-tight">
-                Purificação de Água
-              </h1>
-              <p className="text-stone-500 text-base md:text-lg leading-relaxed mt-3 max-w-2xl">
-                Fervura, cloração e filtração improvisada. Métodos validados em protocolos de defesa civil para ambientes com recursos limitados.
-              </p>
-            </div>
-          </div>
-        </motion.section>
+      <div className="max-w-4xl mx-auto px-5 md:px-8 pt-12 pb-32">
 
         {/* ══════════════════════════════════════════════════════════
            CONTEXTO — RISCO SANITÁRIO

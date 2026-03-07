@@ -99,46 +99,17 @@ export default function ProtocolosApagao() {
   React.useEffect(() => { window.scrollTo(0, 0); }, []);
 
   return (
-    <div
-      className="min-h-screen selection:bg-amber-200"
-      style={{ background: 'linear-gradient(180deg, #f5f0ea 0%, #f2ede4 30%, #ede8de 60%, #e8e2d6 100%)' }}
-    >
-      <div className="max-w-4xl mx-auto px-5 md:px-8 pt-20 pb-32">
+    <div className="min-h-screen selection:bg-amber-300/30" style={{ background: '#050808' }}>
+      <CinematicHero
+        image="/heroes/protocolos-apagao.webp"
+        phase="Fase 01 · Base 72"
+        title="Protocolos de Apagão"
+        subtitle="Iluminação, cozimento e aquecimento alternativos quando a rede elétrica está indisponível. Um apagão não é apenas falta de luz — ele compromete toda a cadeia de autonomia doméstica."
+        icon={Flame}
+        accentColor="amber"
+      />
 
-        {/* ── Voltar ── */}
-        <Link
-          to="/projeto-autonomo"
-          className="inline-flex items-center gap-2 text-stone-400 hover:text-stone-700 text-xs font-semibold uppercase tracking-[0.2em] transition-colors mb-12"
-        >
-          <ArrowLeft size={14} /> Projeto Autônomo
-        </Link>
-
-        {/* ══════════════════════════════════════════════════════════
-           HERO
-           ══════════════════════════════════════════════════════════ */}
-        <motion.section
-          className="mb-16"
-          initial="hidden" animate="visible" variants={fadeUp}
-        >
-          <span className="text-[10px] font-bold tracking-[0.5em] uppercase text-rose-500 opacity-70">
-            Fase 01 · Base 72
-          </span>
-
-          <div className="mt-4 flex items-start gap-4 md:gap-5">
-            <div className="p-3 md:p-4 bg-amber-100 rounded-2xl shrink-0 mt-1">
-              <Flame className="text-amber-600" size={28} />
-            </div>
-            <div>
-              <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-stone-800 leading-tight">
-                Protocolos de Apagão
-              </h1>
-              <p className="text-stone-500 text-base md:text-lg leading-relaxed mt-3 max-w-2xl">
-                Iluminação, cozimento e aquecimento alternativos quando a rede elétrica está indisponível.
-                Um apagão não é apenas falta de luz — ele compromete toda a cadeia de autonomia doméstica.
-              </p>
-            </div>
-          </div>
-        </motion.section>
+      <div className="max-w-4xl mx-auto px-5 md:px-8 pt-12 pb-32">
 
         {/* ══════════════════════════════════════════════════════════
            CONTEXTO — IMPACTOS PROGRESSIVOS
