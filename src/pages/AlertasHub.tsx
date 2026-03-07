@@ -12,14 +12,17 @@ const ALERTAS = [
     tag: 'LEGISLATIVO',
     status: 'ATIVO',
   },
+  {
+    slug: 'cbdc-brasil',
+    titulo: 'DREX — A Moeda Digital Programável do Governo',
+    subtitulo: 'CBDC · Real Digital · Controle Programável',
+    descricao: 'Entenda o DREX, a moeda digital do Banco Central que dá ao governo controle total sobre o seu dinheiro. Veja os riscos e como se proteger.',
+    tag: 'MONETÁRIO',
+    status: 'ATIVO',
+  },
 ];
 
 const ALERTAS_PROXIMOS = [
-  {
-    titulo: 'DREX — A Moeda Digital do Banco Central',
-    subtitulo: 'CBDC · Real Digital · Controle Programável',
-    tag: 'MONETÁRIO',
-  },
   {
     titulo: 'Imposto Global Sobre Patrimônio',
     subtitulo: 'OCDE · Tributação Internacional · Confisco Legalizado',
