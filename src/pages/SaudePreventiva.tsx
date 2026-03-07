@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import ScrollToTop from '@/components/ScrollToTop';
+import CinematicHero from '@/components/CinematicHero';
 
 import imgMicrobiota from '@/assets/saude-microbiota.jpg';
 import imgCortisol from '@/assets/saude-cortisol.jpg';
@@ -117,7 +118,7 @@ const SaudePreventiva = () => {
               })}
             </div>
           </motion.div>
-        </motion.header>
+        </div>
 
         {/* ═══ INFLAMAÇÃO CRÔNICA ═══ */}
         <div className="gsap-reveal mb-28">
