@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { Menu, X, LayoutGrid, BookOpen, Headphones, Wrench, QrCode, Zap, Library, ShieldAlert, Shield } from "lucide-react";
+import { Menu, X, LayoutGrid, BookOpen, Headphones, Wrench, QrCode, Zap, Library, ShieldAlert, Shield, Globe } from "lucide-react";
 import { useReadingProgress } from "@/hooks/useReadingProgress";
 
 const menuItems = [
@@ -12,6 +12,7 @@ const menuItems = [
   { icon: Wrench, label: "Ferramentas", route: "/ferramentas" },
   { icon: QrCode, label: "PIX Crypto", route: "/pix-cripto" },
   { icon: Shield, label: "Projeto Autônomo", route: "/projeto-autonomo" },
+  { icon: Globe, label: "Soberania Financeira", route: "/soberania-financeira" },
 ];
 
 const MobileNav = () => {
