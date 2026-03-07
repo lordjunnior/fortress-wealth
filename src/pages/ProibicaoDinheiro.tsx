@@ -588,22 +588,28 @@ export default function ProibicaoDinheiro() {
                 </p>
               </div>
 
-              {/* Internal Links Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {/* CTA Principal */}
+              <Link to="/autocustodia" className="cta-gold flex items-center justify-center gap-3 px-10 py-5 rounded-sm font-black uppercase text-sm tracking-[0.2em] text-center mb-8 w-full md:w-auto md:inline-flex">
+                🔐 Aprender Autocustódia e Soberania Financeira
+              </Link>
+
+              {/* CTAs Secundários */}
+              <p className="text-slate-600 text-[9px] font-black uppercase tracking-[0.3em] font-mono mb-4">Continue Aprendendo</p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                 {[
-                  { to: '/economia-paralela', titulo: 'Economia Paralela', desc: 'Aprenda a operar fora do sistema' },
-                  { to: '/autocustodia', titulo: 'Autocustódia', desc: 'Seu Bitcoin, suas chaves' },
-                  { to: '/pix-cripto', titulo: 'PIX → Cripto', desc: 'Converta sem intermediários' },
-                  { to: '/taxa-de-fuga', titulo: 'Taxa de Fuga', desc: 'Saia enquanto ainda pode' },
-                  { to: '/blindagem-golpes', titulo: 'Blindagem Anti-Golpes', desc: 'O elo fraco é você — proteja-se' },
-                  { to: '/entenda-bitcoin', titulo: 'Entenda o Bitcoin', desc: 'Do zero à soberania digital' },
+                  { to: '/economia-paralela', titulo: 'Economia Paralela', desc: 'Operar fora do sistema' },
+                  { to: '/pix-cripto', titulo: 'PIX → Cripto', desc: 'Converter sem intermediários' },
+                  { to: '/taxa-de-fuga', titulo: 'Taxa de Fuga', desc: 'Sair enquanto pode' },
+                  { to: '/blindagem-golpes', titulo: 'Blindagem Anti-Golpes', desc: 'Proteger o elo fraco' },
+                  { to: '/entenda-bitcoin', titulo: 'Entenda o Bitcoin', desc: 'Do zero à soberania' },
+                  { to: '/alertas', titulo: 'Central de Alertas', desc: 'Todos os alertas ativos' },
                 ].map((link, i) => (
-                  <Link key={i} to={link.to} className="border border-white/10 bg-white/[0.02] rounded-sm p-6 hover:bg-red-600/[0.05] hover:border-red-600/30 transition-all group flex items-center justify-between">
+                  <Link key={i} to={link.to} className="border border-white/5 bg-white/[0.01] rounded-sm px-5 py-4 hover:bg-red-600/[0.03] hover:border-white/10 transition-all group flex items-center justify-between">
                     <div>
-                      <h4 className="text-white font-black uppercase text-xs tracking-wider mb-1 font-mono">{link.titulo}</h4>
-                      <p className="text-slate-500 text-[10px] font-bold uppercase tracking-wider">{link.desc}</p>
+                      <span className="text-white/80 font-bold uppercase text-[10px] tracking-wider font-mono">{link.titulo}</span>
+                      <span className="text-slate-600 text-[9px] font-bold uppercase tracking-wider ml-2">{link.desc}</span>
                     </div>
-                    <ChevronRight className="text-slate-600 group-hover:text-red-500 transition-colors shrink-0" size={18} />
+                    <ChevronRight className="text-slate-700 group-hover:text-red-500 transition-colors shrink-0" size={14} />
                   </Link>
                 ))}
               </div>
