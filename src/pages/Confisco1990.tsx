@@ -191,18 +191,27 @@ const Confisco1990 = () => {
           return (
             <motion.article
               key={i}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 40, filter: "blur(6px)" }}
+              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="space-y-6"
+              transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+              className="space-y-6 relative"
             >
+              {/* Glow lateral */}
+              <div className="absolute -left-4 top-0 w-1 h-full bg-gradient-to-b from-destructive/30 via-destructive/10 to-transparent rounded-full" />
+              
               <div className="flex items-center gap-3 mb-2">
-                <div className="w-10 h-10 rounded-lg border border-border bg-card flex items-center justify-center">
-                  <Icon className="w-5 h-5 text-muted-foreground" />
-                </div>
+                <motion.div
+                  initial={{ scale: 0.5, opacity: 0 }}
+                  whileInView={{ scale: 1, opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                  className="w-10 h-10 rounded-lg border border-destructive/20 bg-destructive/5 flex items-center justify-center"
+                >
+                  <Icon className="w-5 h-5 text-destructive" />
+                </motion.div>
                 <div>
-                  <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-muted-foreground">
+                  <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-destructive/60">
                     {chapter.phase}
                   </p>
                   <h2 className="text-xl md:text-2xl font-bold tracking-tight">
@@ -211,16 +220,20 @@ const Confisco1990 = () => {
                 </div>
               </div>
 
-              <div className="h-px bg-border/50" />
+              <div className="h-px bg-gradient-to-r from-destructive/30 via-border/50 to-transparent" />
 
               <div className="space-y-5">
                 {chapter.content.map((paragraph, j) => (
-                  <p
+                  <motion.p
                     key={j}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.15 + j * 0.08, ease: [0.22, 1, 0.36, 1] }}
                     className="text-base md:text-lg text-muted-foreground leading-relaxed"
                   >
                     {paragraph}
-                  </p>
+                  </motion.p>
                 ))}
               </div>
             </motion.article>
