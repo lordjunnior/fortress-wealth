@@ -70,6 +70,7 @@ import ComunicacaoOffline from "./pages/ComunicacaoOffline";
 import NavegacaoPrimaria from "./pages/NavegacaoPrimaria";
 import ConhecimentoPerdido from "./pages/ConhecimentoPerdido";
 import Confisco1990 from "./pages/Confisco1990";
+import Neobankless from "./pages/Neobankless";
 import CpContextoHistorico from "./pages/cp/ContextoHistorico";
 import CpBaseFisiologica from "./pages/cp/BaseFisiologica";
 import CpSegurancaLimites from "./pages/cp/SegurancaLimites";
@@ -122,6 +123,7 @@ const App = () => (
           <Route path="/teoria-das-bandeiras" element={<TeoriaDasBandeiras />} />
           <Route path="/indice-do-despertar" element={<IndiceDoDesespertar />} />
           <Route path="/confisco-1990" element={<Confisco1990 />} />
+          <Route path="/neobankless" element={<Neobankless />} />
           <Route path="/21-milhoes" element={<HardCap21 />} />
           <Route path="/bitcoin-seguro" element={<BitcoinSeguro />} />
           <Route path="/chaves" element={<ChavesPage />} />
