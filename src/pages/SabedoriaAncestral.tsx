@@ -1,7 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, Leaf, Sprout, Heart, Sun, Cross, Thermometer, Bug, Shield, Wheat, TreePine, BookOpen, Flame, Layers, Egg, Shovel, ChevronDown, Eye, Zap } from 'lucide-react';
-import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import CinematicHero from '@/components/CinematicHero';
+import ScrollToTop from '@/components/ScrollToTop';
 
 /* ─── GSAP ─── */
 import gsap from 'gsap';
