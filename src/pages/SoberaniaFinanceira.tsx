@@ -68,12 +68,12 @@ const CATEGORIES = [
     description: 'Plataformas cripto sem KYC, exchanges que entregam dinheiro vivo e o ecossistema fora do sistema.',
     image: nokycImg,
     items: [
-      { name: 'KYCNot.me — Guia completo', status: 'em breve', link: null },
+      { name: 'KYCNot.me — Guia completo', status: 'disponível', link: '/soberania-financeira/exchanges-sem-kyc/kycnot-me' },
       { name: 'Exchange que entrega dinheiro vivo', status: 'em breve', link: null },
       { name: 'Plataformas sem verificação', status: 'em breve', link: null },
     ],
     privacyLevel: 'Muito Alto',
-    reviewCount: 0,
+    reviewCount: 1,
   },
   {
     id: 'sistemas-alternativos',
