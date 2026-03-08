@@ -9,6 +9,7 @@ import {
   AlertCircle, Fingerprint, Plane, BookOpen,
 } from 'lucide-react';
 import ScrollToTop from '@/components/ScrollToTop';
+import LeadCaptureModal from '@/components/LeadCaptureModal';
 
 import heroImg from '@/assets/abertura-remota-hero.jpg';
 import chapterDocImg from '@/assets/abertura-chapter-documentos.jpg';
@@ -312,6 +313,7 @@ const AberturaRemota = () => {
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
   const heroY = useTransform(scrollYProgress, [0, 1], [0, 150]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
+  const [showLeadModal, setShowLeadModal] = useState(false);
 
   return (
     <>
@@ -691,10 +693,8 @@ const AberturaRemota = () => {
                           ))}
                         </div>
 
-                        <motion.a
-                          href="https://www.youtube.com/@autonomiadoindividuo/join"
-                          target="_blank"
-                          rel="noopener noreferrer"
+                        <motion.button
+                          onClick={() => setShowLeadModal(true)}
                           whileHover={{ scale: 1.04, y: -2 }}
                           whileTap={{ scale: 0.98 }}
                           className="group relative inline-flex items-center gap-3 px-10 py-5 rounded-xl text-base font-bold overflow-hidden"
@@ -706,11 +706,10 @@ const AberturaRemota = () => {
                             className="absolute inset-0 bg-gradient-to-r from-amber-500/10 via-amber-400/20 to-amber-500/10 rounded-xl"
                           />
                           <span className="relative z-10 flex items-center gap-3 text-amber-200">
-                            <Star size={20} className="group-hover:rotate-12 transition-transform" />
-                            Tornar-se Membro Agora
-                            <ExternalLink size={14} />
+                            <Star size={18} className="group-hover:rotate-12 transition-transform" />
+                            Solicitar Assessoria
                           </span>
-                        </motion.a>
+                        </motion.button>
 
                         <p className="text-stone-600 text-[10px] mt-5 tracking-[0.2em] uppercase">
                           Cédula + Abertura + OPSEC + Suporte Contínuo
@@ -791,6 +790,7 @@ const AberturaRemota = () => {
           <p className="text-stone-600 text-[10px] tracking-[0.3em] uppercase">Abertura Remota · Cédula Paraguaia · Contas Offshore · Privacidade</p>
         </footer>
       </div>
+      <LeadCaptureModal isOpen={showLeadModal} onClose={() => setShowLeadModal(false)} interesse="assessoria-abertura-remota" />
     </>
   );
 };
