@@ -61,7 +61,7 @@ const ScrollSection = ({ children, className, isOdd }: { children: React.ReactNo
 /* ═══ DATA ═══ */
 const SPECS = [
   { label: 'Plataforma', value: 'Optima Exchange', icon: Send },
-  { label: 'Operacao via', value: 'Telegram (@optimaexchange)', icon: MessageCircle },
+  { label: 'Operacao via', value: 'Telegram (@Optima_Exchange_Argentinas)', icon: MessageCircle },
   { label: 'KYC', value: 'Nenhum', icon: EyeOff },
   { label: 'Entrega', value: 'Dinheiro fisico na porta + transferencia bancaria', icon: Truck },
   { label: 'Moedas Fiat', value: 'BRL, ARS, USD, EUR, RUB, UAH, GEL, TRY, KZT', icon: Globe },
@@ -71,7 +71,7 @@ const SPECS = [
 ];
 
 const STEPS = [
-  { step: '01', title: 'Acesse o Telegram @optimaexchange', desc: 'Abra o Telegram e procure por @optimaexchange. Cuidado com perfis fakes — utilize exclusivamente o @ oficial. Se voce quer privacidade maxima, use um numero de telefone sem KYC para criar seu Telegram.' },
+  { step: '01', title: 'Acesse o Telegram da Optima Exchange', desc: 'Abra o Telegram e acesse diretamente o canal oficial: t.me/Optima_Exchange_Argentinas. Cuidado com perfis fakes — utilize exclusivamente o link oficial. Se voce quer privacidade maxima, use um numero de telefone sem KYC para criar seu Telegram.' },
   { step: '02', title: 'Contate o operador e peca cotacao', desc: 'Envie uma mensagem informando quanto deseja vender e em qual moeda deseja receber. Exemplo: "Quero converter 2000 USDT para ARS (pesos argentinos) em cash." O operador vai responder com a cotacao e instruções. A comunicacao inicial sera em russo — use o tradutor integrado do Telegram.' },
   { step: '03', title: 'Envie o USDT e a hash da transacao', desc: 'O operador vai enviar um QR code ou endereco para voce enviar o USDT. Apos enviar, compartilhe a hash da transacao no chat para confirmacao. Aguarde a validacao da transacao na blockchain.' },
   { step: '04', title: 'Receba o dinheiro fisico na sua porta', desc: 'Um entregador vai ate o endereco combinado e entrega o dinheiro Fiat em especie — reais, dolares, euros, pesos ou a moeda local. Voce tambem pode optar por transferencia bancaria (Wise, Revolut, conta local), mas isso reduz a privacidade.' },
@@ -206,14 +206,14 @@ export default function OptimaExchange() {
                 </p>
 
                 <div className="flex flex-wrap gap-4">
-                  <a href="#passo-a-passo"
+                  <a href="https://t.me/Optima_Exchange_Argentinas" target="_blank" rel="noopener noreferrer"
                     className="group relative inline-flex items-center gap-2 bg-emerald-500/15 border border-emerald-500/40 text-emerald-200 font-bold text-sm uppercase tracking-wider px-8 py-4 rounded-xl overflow-hidden transition-all hover:shadow-[0_0_40px_rgba(16,185,129,0.3)]">
                     <span className="absolute inset-0 bg-emerald-500/10 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
-                    <span className="relative">Ver passo a passo</span><ArrowRight size={14} className="relative" />
+                    <span className="relative">Acessar no Telegram</span><ExternalLink size={14} className="relative" />
                   </a>
-                  <a href="#cobertura"
+                  <a href="#passo-a-passo"
                     className="inline-flex items-center gap-2 border border-white/[0.08] text-stone-400 font-bold text-sm uppercase tracking-wider px-8 py-4 rounded-xl hover:border-white/20 hover:text-white transition-colors">
-                    Paises disponiveis <ChevronDown size={14} />
+                    Ver passo a passo <ChevronDown size={14} />
                   </a>
                 </div>
               </motion.div>
