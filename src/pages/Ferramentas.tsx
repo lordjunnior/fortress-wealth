@@ -124,6 +124,32 @@ const TOOLS_LIST = [
     iframeUrl: 'https://minhahorajusta.vercel.app'
   },
   {
+    id: 'savesat',
+    title: 'SaveSat',
+    badge: 'Compare Taxas',
+    desc: 'Compare taxas de 6 exchanges em tempo real. Cada centavo economizado é mais Satoshi na sua Ledger. Ranking atualizado com preço BTC, taxa de trading, saque e custo total.',
+    cta: 'Ver Ranking',
+    color: 'from-emerald-500/20 to-emerald-500/0',
+    borderColor: 'group-hover:border-emerald-500/50',
+    textColor: 'text-emerald-400',
+    icon: Calculator,
+    component: null,
+    iframeUrl: 'https://savesat.vercel.app'
+  },
+  {
+    id: 'lucro-bitcoin',
+    title: 'Bitcoin Time Machine',
+    badge: 'Simulador de ROI',
+    desc: 'E se você tivesse comprado Bitcoin naquela época? Simule quanto seu dinheiro valeria hoje comparando contra Ouro, CDI, Dólar, IPCA e Selic.',
+    cta: 'Simular Agora',
+    color: 'from-orange-500/20 to-orange-500/0',
+    borderColor: 'group-hover:border-orange-500/50',
+    textColor: 'text-orange-400',
+    icon: Clock,
+    component: null,
+    iframeUrl: 'https://lucrodobitcoin.vercel.app'
+  },
+  {
     id: 'dev',
     title: 'Em Desenvolvimento',
     badge: 'Em Breve',
