@@ -36,6 +36,17 @@ const ALERTAS = [
     accent: 'from-amber-600/20 to-amber-900/10',
     borderAccent: 'hover:border-amber-600/30',
   },
+  {
+    slug: 'depix-reporte-2026',
+    titulo: 'DePix Vai Reportar Transações em 2026',
+    subtitulo: 'Banco Central · Reporte Obrigatório · Junho 2026',
+    descricao: 'Plataformas DePix serão obrigadas a reportar transações a partir de junho de 2026. Entenda os riscos, o IOF aprovado e as alternativas com privacidade real.',
+    tag: 'REGULATÓRIO',
+    status: 'ATIVO',
+    icon: TrendingDown,
+    accent: 'from-rose-600/20 to-rose-900/10',
+    borderAccent: 'hover:border-rose-600/30',
+  },
 ];
 
 /* ── Próximos alertas ── */
