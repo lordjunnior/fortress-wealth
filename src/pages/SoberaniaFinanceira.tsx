@@ -138,7 +138,7 @@ const CategoryCard = ({ cat, idx }: { cat: typeof CATEGORIES[0]; idx: number }) 
   const inView = useInView(ref, { once: true, margin: '-60px' });
   const colors = colorMap[cat.color];
   const Icon = cat.icon;
-  const hasReviews = cat.items.some(i => i.status === 'review' && i.link);
+  const hasReviews = cat.items.some(i => (i.status === 'review' || i.status === 'disponível') && i.link);
 
   return (
     <motion.div
@@ -205,14 +205,14 @@ const CategoryCard = ({ cat, idx }: { cat: typeof CATEGORIES[0]; idx: number }) 
           <div className="space-y-2.5 mb-6">
             {cat.items.map((item) => (
               <div key={item.name} className="flex items-center justify-between group/item">
-                {item.status === 'review' && item.link ? (
+                {(item.status === 'review' || item.status === 'disponível') && item.link ? (
                   <Link
                     to={item.link}
                     className="flex items-center justify-between w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.05] hover:bg-white/[0.06] hover:border-white/[0.1] transition-all duration-300"
                   >
                     <span className="text-stone-200 text-sm font-medium">{item.name}</span>
                     <span className={`${colors.text} flex items-center gap-1 text-xs font-semibold`}>
-                      Ler review <ArrowRight size={12} className="group-hover/item:translate-x-1 transition-transform" />
+                      {item.status === 'review' ? 'Ler review' : 'Acessar'} <ArrowRight size={12} className="group-hover/item:translate-x-1 transition-transform" />
                     </span>
                   </Link>
                 ) : (
