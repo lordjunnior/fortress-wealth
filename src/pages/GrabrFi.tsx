@@ -187,6 +187,15 @@ const GrabrFi = () => {
       </Helmet>
       <ScrollToTop />
 
+      {/* ── BOTÃO VOLTAR FIXO ── */}
+      <Link
+        to="/soberania-financeira"
+        className="fixed top-4 left-4 z-50 flex items-center gap-2 px-4 py-2 rounded-lg bg-card/80 backdrop-blur-md border border-border text-muted-foreground hover:text-foreground transition-colors text-sm"
+      >
+        <ArrowLeft className="w-4 h-4" />
+        Voltar
+      </Link>
+
       {/* ── CH01: HERO ── */}
       <ChapterKickoff number="01" title="A Conta Americana que Fala Cripto" image={heroImg} id="hero" isOdd />
 
