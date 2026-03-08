@@ -1,55 +1,14 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { BookOpen, Shield, Compass, BarChart3, Bitcoin } from "lucide-react";
+import { Shield, Zap, BarChart3, Terminal, ArrowRight, Lock, Cpu } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { AreaChart, Area, ResponsiveContainer } from "recharts";
-import { fadeUp, stagger, staggerChild, viewportOnce, ease } from "@/lib/motion";
+import { fadeUp, stagger, staggerChild, viewportOnce } from "@/lib/motion";
 
-const miniChartData = [
-  { v: 100 }, { v: 95 }, { v: 88 }, { v: 80 }, { v: 70 },
-  { v: 55 }, { v: 45 }, { v: 35 }, { v: 22 }, { v: 15 }, { v: 8 },
-];
-
-const tools = [
-  {
-    title: "BITCOIN VS. IMÓVEIS",
-    icon: Bitcoin,
-    description: "Simulador de valorização histórica. Compare dinheiro escasso versus setor imobiliário inflado com dados reais e atualizados.",
-    button: "Abrir Calculadora",
-    tag: "CALCULADORA",
-    route: "/bitcoin-vs-imovel",
-  },
-  {
-    title: "TRADUTOR DE NOVILÍNGUA",
-    icon: BookOpen,
-    description: "A mídia e o Estado operam através de eufemismos. Decifre a linguagem da manipulação antes que ela se torne o seu pensamento. Banco de dados offline.",
-    button: "Traduzir Mentiras",
-    tag: "OFFLINE",
-  },
-  {
-    title: "GERE SUA SEED",
-    icon: Shield,
-    description: "Não confie em geradores automáticos. Crie suas 12 ou 24 palavras de segurança com aleatoriedade real usando o caos dos seus movimentos de mouse. 100% offline e executado localmente.",
-    button: "Gerar Fortaleza (Offline)",
-    tag: "AIR-GAPPED",
-  },
-  {
-    title: "TAXA DE FUGA",
-    icon: Compass,
-    description: "O Estado mede o quanto pode te extrair antes de você ir embora. Calcule o custo matemático da sua saída e planeje sua liberdade geográfica.",
-    button: "Calcular Custos de Saída",
-    tag: "SIMULADOR",
-    route: "/taxa-de-fuga",
-  },
-  {
-    title: "RELÓGIO DO JUÍZO FINAL",
-    icon: BarChart3,
-    description: "Countdown ao vivo até o próximo halving. Dados reais da blockchain, supply minerado, blocos restantes — a escassez absoluta do Bitcoin em tempo real. A porta está fechando.",
-    button: "Iniciar Contagem Regressiva",
-    tag: "AO VIVO",
-    progress: 93.4,
-    route: "/supply-shock",
-  },
+const highlights = [
+  { icon: BarChart3, label: "Calculadoras de ROI" },
+  { icon: Shield, label: "Geradores Air-Gapped" },
+  { icon: Cpu, label: "Rastreadores de Blockchain" },
+  { icon: Lock, label: "Simuladores de Custódia" },
 ];
 
 const ToolsSection = () => {
@@ -59,84 +18,92 @@ const ToolsSection = () => {
 
   return (
     <section className="section-padding" ref={ref}>
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-5xl mx-auto">
+        {/* Header */}
         <motion.div
           variants={fadeUp}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="mb-14"
+          className="mb-10"
         >
           <p className="pre-title">PAINEL OPERACIONAL</p>
-          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight mb-3">
-            Ferramentas de <span className="text-gradient-gold">Operação</span>
+          <h2 className="font-display text-3xl md:text-5xl font-bold tracking-tight mb-4">
+            Arsenal de <span className="text-gradient-gold">Blindagem</span>
           </h2>
-          <p className="text-muted-foreground text-lg">
-            Aplicativos locais e simuladores. Escolha sua ferramenta de blindagem.
+          <p className="text-muted-foreground text-lg max-w-2xl">
+            Ecossistema de ferramentas para Soberania Financeira e gestão de Bitcoin.
           </p>
         </motion.div>
 
+        {/* Central Card — The "Open Loop" */}
         <motion.div
-          variants={stagger(0.1)}
+          variants={fadeUp}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6"
+          className="relative overflow-hidden rounded-sm border border-border bg-card/80 backdrop-blur-sm"
         >
-          {tools.map((tool, i) => {
-            const Icon = tool.icon;
-            return (
-              <motion.div
-                key={i}
-                variants={staggerChild}
-                className="card-wealth flex flex-col relative overflow-hidden group"
-              >
-                {/* Background mini chart */}
-                <div className="absolute inset-0 opacity-[0.06] pointer-events-none">
-                  <ResponsiveContainer width="100%" height="100%">
-                    <AreaChart data={miniChartData}>
-                      <Area type="monotone" dataKey="v" stroke="hsl(0 72% 51%)" fill="hsl(0 72% 51%)" fillOpacity={0.3} strokeWidth={1} />
-                    </AreaChart>
-                  </ResponsiveContainer>
-                </div>
-                <div className="flex items-start justify-between mb-4">
-                  <div className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center">
-                    <Icon className="w-5 h-5 text-gold" />
-                  </div>
-                  <span className="font-mono text-[10px] tracking-widest text-gold bg-gold/10 px-2 py-1 rounded">
-                    {tool.tag}
-                  </span>
-                </div>
+          {/* Ambient glow */}
+          <div className="absolute -top-20 -right-20 w-60 h-60 bg-primary/[0.07] rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -bottom-16 -left-16 w-48 h-48 bg-destructive/[0.04] rounded-full blur-3xl pointer-events-none" />
 
-                <h3 className="font-display text-lg font-semibold tracking-tight mb-3">{tool.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed flex-1 mb-6">
-                  {tool.description}
-                </p>
+          <div className="relative p-6 md:p-10">
+            {/* Exclusivity Tag */}
+            <div className="flex items-center gap-2 mb-6">
+              <Terminal className="w-4 h-4 text-primary" />
+              <span className="font-mono text-[10px] tracking-[0.2em] text-primary uppercase">
+                Acesso Restrito
+              </span>
+            </div>
 
-                {tool.progress !== undefined && (
-                  <div className="mb-6">
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="font-mono text-xs text-muted-foreground">Minerados</span>
-                      <span className="font-mono text-xs text-gold">{tool.progress}%</span>
-                    </div>
-                    <div className="h-2 bg-secondary rounded-full overflow-hidden">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        animate={isInView ? { width: `${tool.progress}%` } : {}}
-                        transition={{ duration: 1.5, delay: 0.5 }}
-                        className="h-full gradient-gold rounded-full"
-                      />
-                    </div>
-                  </div>
-                )}
+            {/* PNL Hook — The Open Loop */}
+            <blockquote className="text-lg md:text-xl font-medium text-foreground/90 leading-relaxed mb-3 max-w-2xl">
+              "Você está vendo apenas o topo do iceberg."
+            </blockquote>
+            <p className="text-sm md:text-base text-muted-foreground leading-relaxed max-w-xl mb-8">
+              O Painel Operacional contém calculadoras de ROI, rastreadores de nodes
+              e simuladores de custódia que o público comum não utiliza.
+              <span className="block mt-2 text-primary/80 font-medium text-xs tracking-wide">
+                Algumas dessas ferramentas não existem em nenhum outro lugar.
+              </span>
+            </p>
 
-                <button
-                  onClick={() => tool.route && navigate(tool.route)}
-                  className="btn-secondary w-full py-3 px-4 text-gold border-gold-dim hover:bg-gold/5"
-                >
-                  {tool.button}
-                </button>
-              </motion.div>
-            );
-          })}
+            {/* Highlights Grid */}
+            <motion.div
+              variants={stagger(0.08)}
+              initial="hidden"
+              animate={isInView ? "visible" : "hidden"}
+              className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-10"
+            >
+              {highlights.map((item, i) => {
+                const Icon = item.icon;
+                return (
+                  <motion.div
+                    key={i}
+                    variants={staggerChild}
+                    className="flex items-center gap-3 p-3 rounded-sm bg-secondary/50 border border-border/50"
+                  >
+                    <Icon className="w-4 h-4 text-primary shrink-0" />
+                    <span className="text-xs font-medium text-foreground/80">{item.label}</span>
+                  </motion.div>
+                );
+              })}
+            </motion.div>
+
+            {/* CTA */}
+            <button
+              onClick={() => navigate("/ferramentas")}
+              className="group inline-flex items-center gap-3 btn-secondary py-3.5 px-8 text-primary border-primary/20 hover:bg-primary/5 hover:border-primary/40 transition-all duration-300"
+            >
+              <Zap className="w-4 h-4" />
+              <span className="font-semibold tracking-wide text-sm">Acessar Arsenal Completo</span>
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            </button>
+
+            {/* Counter — Social Proof */}
+            <p className="mt-6 font-mono text-[10px] tracking-widest text-muted-foreground/60 uppercase">
+              +12 ferramentas operacionais · 100% gratuitas · execução local
+            </p>
+          </div>
         </motion.div>
       </div>
     </section>
