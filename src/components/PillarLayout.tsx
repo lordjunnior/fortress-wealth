@@ -152,37 +152,54 @@ const PillarLayout = ({ pillar }: { pillar: Pillar }) => {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.6 + i * 0.15 }}
-                    whileHover={{ y: -6, scale: 1.02 }}
-                    className="card-wealth flex flex-col group cursor-pointer"
+                    whileHover={{ y: -8, scale: 1.03 }}
+                    onClick={() => resource.route && navigate(resource.route)}
+                    className="relative card-wealth flex flex-col group cursor-pointer overflow-hidden"
                   >
-                    {/* Top bar */}
-                    <div className="flex items-center justify-between mb-5">
-                      <div className={`w-12 h-12 rounded-xl ${accent.bg} flex items-center justify-center`}>
-                        <Icon className={`w-6 h-6 ${accent.text}`} />
-                      </div>
-                      <span className={`font-mono text-[9px] tracking-widest ${accent.text} ${accent.bg} px-2.5 py-1 rounded border ${accent.border}`}>
-                        {label}
-                      </span>
+                    {/* Animated glow border */}
+                    <div className={`absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none`}>
+                      <div className={`absolute inset-0 rounded-xl border ${accent.border}`} />
+                      <div className={`absolute -inset-1 rounded-2xl ${accent.bg} blur-xl`} />
                     </div>
 
-                    {/* Content */}
-                    <h3 className="text-lg font-bold mb-2 group-hover:text-gold transition-colors">
-                      {resource.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed flex-1 mb-6">
-                      {resource.description}
-                    </p>
+                    {/* Shimmer line on hover */}
+                    <div className="absolute inset-0 overflow-hidden rounded-xl pointer-events-none">
+                      <div className="absolute top-0 -left-full w-full h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent group-hover:left-full transition-all duration-1000 ease-in-out" />
+                    </div>
 
-                    {/* Action button */}
-                    <button
-                      onClick={() => resource.route && navigate(resource.route)}
-                      className={`w-full py-3.5 rounded-lg border ${accent.border} ${accent.text} font-semibold text-sm hover:${accent.bg} flex items-center justify-center gap-2 transition-all duration-300 group-hover:gap-3`}
-                    >
-                      {resource.type === "ebook" && <Download className="w-4 h-4" />}
-                      {resource.type === "audio" && <Play className="w-4 h-4" />}
-                      {resource.type === "tool" && <ArrowRight className="w-4 h-4" />}
-                      {resource.action}
-                    </button>
+                    <div className="relative z-10">
+                      {/* Top bar */}
+                      <div className="flex items-center justify-between mb-5">
+                        <motion.div
+                          animate={{ boxShadow: ["0 0 0px rgba(212,175,55,0)", "0 0 12px rgba(212,175,55,0.15)", "0 0 0px rgba(212,175,55,0)"] }}
+                          transition={{ duration: 3, repeat: Infinity, delay: i * 0.5 }}
+                          className={`w-12 h-12 rounded-xl ${accent.bg} flex items-center justify-center`}
+                        >
+                          <Icon className={`w-6 h-6 ${accent.text}`} />
+                        </motion.div>
+                        <span className={`font-mono text-[9px] tracking-widest ${accent.text} ${accent.bg} px-2.5 py-1 rounded border ${accent.border}`}>
+                          {label}
+                        </span>
+                      </div>
+
+                      {/* Content */}
+                      <h3 className="text-lg font-bold mb-2 group-hover:text-gold transition-colors duration-500">
+                        {resource.title}
+                      </h3>
+                      <p className="text-sm text-muted-foreground leading-relaxed flex-1 mb-6">
+                        {resource.description}
+                      </p>
+
+                      {/* Action button */}
+                      <button
+                        className={`w-full py-3.5 rounded-lg border ${accent.border} ${accent.text} font-semibold text-sm flex items-center justify-center gap-2 transition-all duration-500 group-hover:gap-3 group-hover:bg-gold/10 group-hover:border-gold/40 group-hover:text-gold group-hover:shadow-[0_0_20px_rgba(212,175,55,0.1)]`}
+                      >
+                        {resource.type === "ebook" && <Download className="w-4 h-4" />}
+                        {resource.type === "audio" && <Play className="w-4 h-4" />}
+                        {resource.type === "tool" && <ArrowRight className="w-4 h-4" />}
+                        {resource.action}
+                      </button>
+                    </div>
                   </motion.div>
                 );
               })}

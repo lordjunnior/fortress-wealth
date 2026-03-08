@@ -186,18 +186,21 @@ export const pillars: Pillar[] = [
         title: "A Ética da Liberdade",
         description: "A obra definitiva de Murray Rothbard sobre os direitos de propriedade e a moralidade do livre mercado.",
         action: "Baixar Ebook",
+        route: "/ebooks",
       },
       {
         type: "ebook",
         title: "Teologia do Trabalho",
         description: "Um mergulho profundo no discernimento bíblico sobre vocação, criação de valor e a responsabilidade cristã com o capital.",
         action: "Baixar Estudo",
+        route: "/ebooks",
       },
       {
         type: "tool",
         title: "Cultura & Verdade",
         description: "Materiais focados em alinhar a sua visão de mundo com a realidade dos fatos, longe das narrativas de engenharia social.",
         action: "Acessar Biblioteca",
+        route: "/ebooks",
       },
     ],
     objectives: [
