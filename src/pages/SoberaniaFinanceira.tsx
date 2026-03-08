@@ -71,7 +71,7 @@ const CATEGORIES = [
     items: [
       { name: 'KYCNot.me — O mapa da privacidade cripto', status: 'disponível', link: '/soberania-financeira/exchanges-sem-kyc/kycnot-me' },
       { name: 'Optima — Cripto por dinheiro vivo na sua porta', status: 'disponível', link: '/soberania-financeira/exchanges-sem-kyc/optima-exchange' },
-      { name: 'Plataformas sem verificação', status: 'em breve', link: null },
+      { name: 'PegasusSwap — Swap sem KYC oculto', status: 'disponível', link: '/soberania-financeira/exchanges-sem-kyc/pegasus-swap' },
     ],
     privacyLevel: 'Muito Alto',
     reviewCount: 2,
