@@ -649,9 +649,9 @@ const AberturaRemota = () => {
 
                 <div className="relative border border-amber-500/25 rounded-3xl overflow-hidden">
                   <div className="absolute inset-0">
-                    <img src={brasilParaguaiImg} alt="" className="w-full h-full object-cover" style={{ filter: 'brightness(0.2) saturate(0.6)' }} />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#070b0b] via-[#070b0b]/70 to-[#070b0b]/40" />
-                    <div className="absolute inset-0 bg-gradient-to-r from-[#070b0b]/60 to-transparent" />
+                    <img src={brasilParaguaiImg} alt="Bandeiras do Brasil e Paraguai" className="w-full h-full object-cover" style={{ filter: 'brightness(0.45) saturate(0.85)' }} />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#070b0b] via-[#070b0b]/50 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#070b0b]/40 to-transparent" />
                   </div>
 
                   <div className="relative z-10 p-8 md:p-14 lg:p-20">
