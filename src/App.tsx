@@ -79,6 +79,7 @@ import ContasOffshore from "./pages/ContasOffshore";
 import AberturaRemota from "./pages/AberturaRemota";
 import IndiceSoberaniaFinanceira from "./pages/IndiceSoberaniaFinanceira";
 import KycNotMe from "./pages/KycNotMe";
+import BricsPay from "./pages/BricsPay";
 import CpContextoHistorico from "./pages/cp/ContextoHistorico";
 import CpBaseFisiologica from "./pages/cp/BaseFisiologica";
 import CpSegurancaLimites from "./pages/cp/SegurancaLimites";
@@ -141,6 +142,7 @@ const App = () => (
           <Route path="/soberania-financeira/contas-offshore/abertura-remota" element={<AberturaRemota />} />
           <Route path="/indice-de-soberania-financeira" element={<IndiceSoberaniaFinanceira />} />
           <Route path="/soberania-financeira/exchanges-sem-kyc/kycnot-me" element={<KycNotMe />} />
+          <Route path="/soberania-financeira/brics-pay" element={<BricsPay />} />
           <Route path="/21-milhoes" element={<HardCap21 />} />
           <Route path="/bitcoin-seguro" element={<BitcoinSeguro />} />
           <Route path="/chaves" element={<ChavesPage />} />
