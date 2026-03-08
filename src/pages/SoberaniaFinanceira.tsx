@@ -43,7 +43,7 @@ const CATEGORIES = [
       { name: 'GrabrFi — Conta bancária nos EUA com stablecoins', status: 'review', link: '/soberania-financeira/contas-internacionais/grabrfi' },
     ],
     privacyLevel: 'Médio',
-    reviewCount: 4,
+    reviewCount: 5,
   },
   {
     id: 'contas-offshore',
