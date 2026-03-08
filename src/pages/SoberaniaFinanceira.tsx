@@ -69,11 +69,11 @@ const CATEGORIES = [
     image: nokycImg,
     items: [
       { name: 'KYCNot.me — Guia completo', status: 'disponível', link: '/soberania-financeira/exchanges-sem-kyc/kycnot-me' },
-      { name: 'Exchange que entrega dinheiro vivo', status: 'em breve', link: null },
+      { name: 'Exchange que entrega dinheiro vivo', status: 'disponível', link: '/soberania-financeira/exchanges-sem-kyc/optima-exchange' },
       { name: 'Plataformas sem verificação', status: 'em breve', link: null },
     ],
     privacyLevel: 'Muito Alto',
-    reviewCount: 1,
+    reviewCount: 2,
   },
   {
     id: 'sistemas-alternativos',
