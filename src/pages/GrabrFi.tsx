@@ -175,6 +175,7 @@ const faqSchemaLD = {
 
 /* ═══ COMPONENT ═══ */
 const GrabrFi = () => {
+  const [leadOpen, setLeadOpen] = useState(false);
   return (
     <>
       <Helmet>
