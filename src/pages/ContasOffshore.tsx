@@ -8,6 +8,7 @@ import {
   ExternalLink, Star, ChevronDown, Users, Zap, Award,
 } from 'lucide-react';
 import ScrollToTop from '@/components/ScrollToTop';
+import LeadCaptureModal from '@/components/LeadCaptureModal';
 
 import heroImg from '@/assets/offshore-hero.jpg';
 import cardsImg from '@/assets/offshore-cards.jpg';
@@ -756,6 +757,7 @@ const ContasOffshore = () => {
           <p className="text-stone-600 text-[10px] tracking-[0.3em] uppercase">Contas Offshore Cripto · Privacidade · Soberania · Ranking Técnico</p>
         </footer>
       </div>
+      <LeadCaptureModal isOpen={showLeadModal} onClose={() => setShowLeadModal(false)} interesse="assessoria-offshore-ranking" />
     </>
   );
 };

@@ -9,6 +9,7 @@ import {
   AlertCircle, Fingerprint, Plane, BookOpen,
 } from 'lucide-react';
 import ScrollToTop from '@/components/ScrollToTop';
+import LeadCaptureModal from '@/components/LeadCaptureModal';
 
 import heroImg from '@/assets/abertura-remota-hero.jpg';
 import chapterDocImg from '@/assets/abertura-chapter-documentos.jpg';
@@ -789,6 +790,7 @@ const AberturaRemota = () => {
           <p className="text-stone-600 text-[10px] tracking-[0.3em] uppercase">Abertura Remota · Cédula Paraguaia · Contas Offshore · Privacidade</p>
         </footer>
       </div>
+      <LeadCaptureModal isOpen={showLeadModal} onClose={() => setShowLeadModal(false)} interesse="assessoria-abertura-remota" />
     </>
   );
 };
