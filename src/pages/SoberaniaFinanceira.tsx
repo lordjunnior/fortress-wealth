@@ -40,6 +40,7 @@ const CATEGORIES = [
       { name: 'Bank of Georgia', status: 'review', link: '/soberania-financeira/contas-internacionais/bank-of-georgia' },
       { name: 'Wise', status: 'review', link: '/soberania-financeira/contas-internacionais/wise' },
       { name: 'Payoneer', status: 'review', link: '/soberania-financeira/contas-internacionais/payoneer' },
+      { name: 'GrabrFi — Conta bancária nos EUA com stablecoins', status: 'review', link: '/soberania-financeira/contas-internacionais/grabrfi' },
     ],
     privacyLevel: 'Médio',
     reviewCount: 4,
