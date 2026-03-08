@@ -88,7 +88,7 @@ const CATEGORIES = [
       { name: 'App da Nova Ordem Mundial', status: 'em breve', link: null },
     ],
     privacyLevel: 'Variável',
-    reviewCount: 0,
+    reviewCount: 1,
   },
 ];
 
