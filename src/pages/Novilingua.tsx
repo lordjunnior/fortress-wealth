@@ -1,6 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Search, BookOpen } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
+import { Search, BookOpen, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import CinematicHero from '@/components/CinematicHero';
+import ScrollToTop from '@/components/ScrollToTop';
 
 const TERMS = [
   { term: "Justiça Social", real: "Redistribuição forçada de riqueza produzida por terceiros, sem consentimento, sob ameaça de violência estatal." },
@@ -85,8 +89,21 @@ const TERMS = [
   { term: "Sigilo de 100 Anos", real: "Classificação que impede o povo de saber o que o governo fez com o dinheiro do povo." },
 ];
 
+const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
+const fadeUp = {
+  hidden: { opacity: 0, y: 30, filter: 'blur(6px)' },
+  visible: (i: number) => ({ opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.7, ease: APPLE_EASE, delay: i * 0.08 } }),
+};
+
 const Novilingua: React.FC = () => {
   const [search, setSearch] = useState('');
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  useEffect(() => { window.scrollTo(0, 0); }, []);
+  useEffect(() => {
+    const h = () => { const t = document.documentElement.scrollHeight - window.innerHeight; setScrollProgress(t > 0 ? Math.min((window.scrollY / t) * 100, 100) : 0); };
+    window.addEventListener('scroll', h, { passive: true }); return () => window.removeEventListener('scroll', h);
+  }, []);
 
   const filtered = TERMS.filter(t =>
     t.term.toLowerCase().includes(search.toLowerCase()) ||
@@ -94,58 +111,77 @@ const Novilingua: React.FC = () => {
   );
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-12">
-      <div className="text-center mb-12">
-        <div className="inline-flex items-center gap-2 bg-destructive/10 text-destructive px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest mb-6">
-          <BookOpen className="w-4 h-4" />
-          Dicionário de Novilíngua
+    <div className="min-h-screen text-stone-100 font-sans selection:bg-red-400/50 relative overflow-hidden" style={{ background: '#050808' }}>
+      <Helmet>
+        <title>Novilíngua — Dicionário de Mentiras Estatais | Lord Junnior</title>
+        <meta name="description" content="Dicionário completo de Novilíngua: traduções reais de 80+ termos usados pelo Estado e pela mídia para manipular a percepção pública. Justiça Social, Regulação, Inflação..." />
+      </Helmet>
+      <ScrollToTop />
+
+      <div className="fixed top-0 left-0 right-0 z-50 h-[3px]">
+        <div className="h-full transition-all duration-150 ease-out" style={{ width: `${scrollProgress}%`, background: 'linear-gradient(90deg, #dc2626, #f59e0b)' }} />
+      </div>
+
+      <div className="fixed inset-0 pointer-events-none z-[1]">
+        <div className="absolute inset-0 opacity-[0.035]" style={{ backgroundImage: "url('data:image/svg+xml,%3Csvg viewBox=\"0 0 256 256\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cfilter id=\"n\"%3E%3CfeTurbulence type=\"fractalNoise\" baseFrequency=\"0.9\" numOctaves=\"4\" stitchTiles=\"stitch\"/%3E%3C/filter%3E%3Crect width=\"100%25\" height=\"100%25\" filter=\"url(%23n)\"/%3E%3C/svg%3E')", backgroundSize: '128px 128px' }} />
+        <div className="absolute inset-0 opacity-[0.02]" style={{ background: 'linear-gradient(125deg, transparent 30%, rgba(220,38,38,0.06) 50%, transparent 70%)' }} />
+      </div>
+
+      <CinematicHero image="/heroes/novilingua.webp" phase="Cosmovisão & Discernimento" title="Tradutor de Mentiras"
+        subtitle="A mídia e o Estado operam através de eufemismos. Aqui, cada termo é traduzido para a realidade nua e crua. 80+ termos decodificados."
+        icon={BookOpen} accentColor="rose" backLink="/filosofia" backLabel="Filosofia" />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 lg:px-16 pt-8 pb-32">
+
+        {/* Search */}
+        <div className="relative mb-12 max-w-2xl mx-auto">
+          <Search className="absolute left-5 top-1/2 -translate-y-1/2 text-stone-600" size={18} />
+          <input type="text" placeholder="Buscar termo..." value={search} onChange={(e) => setSearch(e.target.value)}
+            className="w-full pl-14 pr-6 py-4 bg-white/[0.03] border border-white/[0.08] rounded-2xl text-white placeholder:text-stone-600
+                       focus:outline-none focus:border-amber-500/30 focus:shadow-[0_0_20px_rgba(245,158,11,0.05)] transition-all backdrop-blur-sm" />
+          <span className="absolute right-5 top-1/2 -translate-y-1/2 text-[10px] text-stone-600 font-bold">{filtered.length} termos</span>
         </div>
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-          Tradutor de <span className="text-gold">Mentiras</span>
-        </h2>
-        <p className="text-muted-foreground max-w-2xl mx-auto">
-          A mídia e o Estado operam através de eufemismos. Aqui, cada termo é traduzido para a realidade nua e crua.
-        </p>
-      </div>
 
-      <div className="relative mb-8">
-        <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
-        <input
-          type="text"
-          placeholder="Buscar termo..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="w-full pl-12 pr-4 py-4 bg-card border border-border rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-gold transition-colors"
-        />
-      </div>
+        {/* Terms Grid */}
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} className="space-y-3">
+          {filtered.map((item, i) => (
+            <motion.div key={item.term} variants={fadeUp} custom={Math.min(i, 5)}
+              className="bg-white/[0.02] border border-white/[0.05] rounded-xl p-6 hover:border-red-500/15 hover:bg-red-500/[0.01] transition-all duration-300 group">
+              <h3 className="text-lg font-bold text-white mb-2" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                "{item.term}"
+              </h3>
+              <p className="text-[9px] font-bold tracking-[0.3em] uppercase text-red-400/50 mb-2">Tradução real:</p>
+              <p className="text-stone-400 text-sm leading-relaxed">{item.real}</p>
+            </motion.div>
+          ))}
+        </motion.div>
 
-      <div className="space-y-4">
-        {filtered.map((item, i) => (
-          <motion.div
-            key={item.term}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: i * 0.05 }}
-            className="bg-card border border-border rounded-xl p-6 hover:border-gold/30 transition-colors"
-          >
-            <div className="flex items-start gap-4">
-              <div className="flex-1">
-                <h3 className="text-lg font-bold text-foreground mb-1">
-                  "{item.term}"
-                </h3>
-                <p className="text-sm text-destructive/80 font-mono uppercase tracking-wider mb-2">Tradução real:</p>
-                <p className="text-muted-foreground leading-relaxed">{item.real}</p>
-              </div>
+        {filtered.length === 0 && (
+          <div className="text-center py-20 text-stone-600">
+            Nenhum termo encontrado. Tente outra busca.
+          </div>
+        )}
+
+        {/* CTA */}
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} className="mt-20">
+          <motion.div variants={fadeUp} custom={0}
+            className="bg-white/[0.02] border border-red-500/10 rounded-3xl p-10 md:p-14 text-center relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-radial from-red-500/[0.02] via-transparent to-transparent" />
+            <div className="relative z-10 space-y-6">
+              <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-white" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                Quem controla a linguagem, controla o <span className="text-red-400">pensamento.</span>
+              </h2>
+              <Link to="/filosofia" className="inline-flex items-center gap-3 bg-amber-500/10 border border-amber-500/25 rounded-xl px-8 py-4 text-amber-400 text-sm font-bold uppercase tracking-wider hover:bg-amber-500/20 hover:border-amber-500/40 transition-all duration-500 group">
+                Filosofia & Discernimento <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+              </Link>
             </div>
           </motion.div>
-        ))}
-      </div>
+        </motion.div>
 
-      {filtered.length === 0 && (
-        <div className="text-center py-16 text-muted-foreground">
-          Nenhum termo encontrado. Tente outra busca.
-        </div>
-      )}
+        <footer className="border-t border-white/[0.05] pt-12 mt-16 text-center">
+          <p className="text-stone-700 text-[9px] font-bold tracking-[0.5em] uppercase">Lord Junnior © 2026</p>
+        </footer>
+      </div>
     </div>
   );
 };

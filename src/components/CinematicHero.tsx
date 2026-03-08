@@ -41,6 +41,7 @@ const CinematicHero: React.FC<CinematicHeroProps> = ({
     blue: { text: 'text-blue-400', bg: 'bg-blue-500/15', border: 'border-blue-500/25', glow: 'rgba(59,130,246,0.3)' },
     emerald: { text: 'text-emerald-400', bg: 'bg-emerald-500/15', border: 'border-emerald-500/25', glow: 'rgba(16,185,129,0.3)' },
     teal: { text: 'text-teal-400', bg: 'bg-teal-500/15', border: 'border-teal-500/25', glow: 'rgba(20,184,166,0.3)' },
+    purple: { text: 'text-purple-400', bg: 'bg-purple-500/15', border: 'border-purple-500/25', glow: 'rgba(168,85,247,0.3)' },
   };
   const colors = colorMap[accentColor] || colorMap.rose;
 
