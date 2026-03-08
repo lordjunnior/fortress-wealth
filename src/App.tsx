@@ -145,6 +145,7 @@ const App = () => (
           <Route path="/soberania-financeira/contas-offshore/top-10" element={<ContasOffshore />} />
           <Route path="/soberania-financeira/contas-offshore/abertura-remota" element={<AberturaRemota />} />
           <Route path="/indice-de-soberania-financeira" element={<IndiceSoberaniaFinanceira />} />
+          <Route path="/soberania-financeira/exchanges-sem-kyc" element={<ExchangesSemKyc />} />
           <Route path="/soberania-financeira/exchanges-sem-kyc/kycnot-me" element={<KycNotMe />} />
           <Route path="/soberania-financeira/exchanges-sem-kyc/optima-exchange" element={<OptimaExchange />} />
           <Route path="/soberania-financeira/brics-pay" element={<BricsPay />} />
