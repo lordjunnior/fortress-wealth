@@ -153,6 +153,13 @@ export default function KycNotMe() {
           )}
         </AnimatePresence>
 
+        {/* ═══ BACK BUTTON (always visible) ═══ */}
+        <div className="fixed top-4 left-4 z-50 lg:left-[276px]">
+          <Link to="/soberania-financeira" className="flex items-center gap-2 px-4 py-2 rounded-lg bg-card/80 backdrop-blur-md border border-border/50 text-muted-foreground hover:text-foreground transition-colors text-xs font-bold tracking-wider uppercase">
+            <ChevronRight size={14} className="rotate-180" /> Voltar
+          </Link>
+        </div>
+
         {/* ═══ HERO ═══ */}
         <div ref={heroRef} className="relative h-screen min-h-[700px] max-h-[1000px] overflow-hidden">
           <motion.div className="absolute inset-0" style={{ y: heroImgY, scale: heroImgScale }}>
