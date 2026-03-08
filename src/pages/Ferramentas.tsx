@@ -296,7 +296,7 @@ const Ferramentas: React.FC = () => {
             <ArrowLeft className="w-4 h-4" /> Centro de Comando
           </Link>
           <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Arsenal <span className="text-gold">Operacional</span>
+            Torre de <span className="text-gold">Controle</span>
           </h1>
           <p className="text-muted-foreground text-lg max-w-3xl">
             Aplicativos desenvolvidos para auxiliar no cálculo de custos de oportunidade, verificação de privacidade e gestão de patrimônio fora do sistema tradicional. Todas gratuitas, sem rastreamento e com código auditável.
