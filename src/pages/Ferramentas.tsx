@@ -138,10 +138,10 @@ const TOOLS_LIST = [
   },
   {
     id: 'lucro-bitcoin',
-    title: 'Bitcoin Time Machine',
+    title: 'Lucro do Bitcoin — O Mapa da sua Alforria',
     badge: 'Simulador de ROI',
-    desc: 'E se você tivesse comprado Bitcoin naquela época? Simule quanto seu dinheiro valeria hoje comparando contra Ouro, CDI, Dólar, IPCA e Selic.',
-    cta: 'Simular Agora',
+    desc: 'O tempo é o seu ativo mais escasso. Simule o crescimento do seu patrimônio em BTC, calcule seu Preço Médio (DCA) e projete sua data de independência financeira. Projeções baseadas em modelos matemáticos de escassez e valorização histórica real.',
+    cta: 'Calcular Minha Liberdade',
     color: 'from-orange-500/20 to-orange-500/0',
     borderColor: 'group-hover:border-orange-500/50',
     textColor: 'text-orange-400',
