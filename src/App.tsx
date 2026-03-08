@@ -82,6 +82,7 @@ import KycNotMe from "./pages/KycNotMe";
 import BricsPay from "./pages/BricsPay";
 import DepixReporte from "./pages/DepixReporte";
 import OptimaExchange from "./pages/OptimaExchange";
+import ExchangesSemKyc from "./pages/ExchangesSemKyc";
 import CpContextoHistorico from "./pages/cp/ContextoHistorico";
 import CpBaseFisiologica from "./pages/cp/BaseFisiologica";
 import CpSegurancaLimites from "./pages/cp/SegurancaLimites";

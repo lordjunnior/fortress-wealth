@@ -317,13 +317,12 @@ const ExchangesSemKyc = () => {
             <p className="text-stone-400 text-sm mb-6 max-w-md mx-auto">
               Novas plataformas privadas surgem constantemente. Receba atualizações quando novos serviços forem analisados.
             </p>
-            <LeadCaptureModal
-              trigger={
-                <button className="inline-flex items-center gap-2 bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/30 rounded-full px-6 py-3 text-sm font-semibold transition-all duration-300">
-                  <Eye size={16} /> Acompanhar atualizações
-                </button>
-              }
-            />
+            <button
+              onClick={() => setLeadOpen(true)}
+              className="inline-flex items-center gap-2 bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/30 rounded-full px-6 py-3 text-sm font-semibold transition-all duration-300"
+            >
+              <Eye size={16} /> Acompanhar atualizações
+            </button>
           </motion.div>
         </section>
 
