@@ -8,7 +8,7 @@ import {
 } from 'lucide-react';
 
 /* ─── SEO: meta keywords target ───
-   arsenal bitcoin, central de operações bitcoin, autocustódia bitcoin,
+   torre de controle bitcoin, autocustódia bitcoin,
    economia paralela cripto, infraestrutura node bitcoin, lightning network,
    segurança bitcoin, blindagem golpes cripto, seed phrase segurança
 ─────────────────────────────────── */
@@ -257,7 +257,7 @@ export default function Arsenal() {
             <ArrowLeft size={12} /> Início
           </Link>
           <span className="text-stone-700">/</span>
-          <span className="text-red-400">Arsenal Técnico</span>
+          <span className="text-red-400">Torre de Controle</span>
         </nav>
 
         <div className="max-w-5xl relative z-10">
@@ -287,7 +287,7 @@ export default function Arsenal() {
               animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
               transition={{ duration: 1, ease: APPLE_EASE, delay: 0.1 }}
             >
-              CENTRAL DE
+              TORRE DE
             </motion.span>
             <motion.span
               className="block text-6xl md:text-[8rem] lg:text-[10rem] font-black tracking-tighter text-red-500"
@@ -295,7 +295,7 @@ export default function Arsenal() {
               animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
               transition={{ duration: 1, ease: APPLE_EASE, delay: 0.3 }}
             >
-              OPERAÇÕES
+              CONTROLE
             </motion.span>
           </h1>
 
