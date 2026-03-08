@@ -257,7 +257,7 @@ export default function Arsenal() {
             <ArrowLeft size={12} /> Início
           </Link>
           <span className="text-stone-700">/</span>
-          <span className="text-red-400">Arsenal Técnico</span>
+          <span className="text-red-400">Torre de Controle</span>
         </nav>
 
         <div className="max-w-5xl relative z-10">
