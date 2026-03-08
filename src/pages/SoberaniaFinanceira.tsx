@@ -84,7 +84,7 @@ const CATEGORIES = [
     description: 'BRICS Pay, apps da "Nova Ordem Mundial" e a infraestrutura financeira paralela fora do SWIFT.',
     image: sistemasImg,
     items: [
-      { name: 'BRICS Pay — Análise técnica', status: 'em breve', link: null },
+      { name: 'BRICS Pay — Análise técnica', status: 'disponível', link: '/soberania-financeira/brics-pay' },
       { name: 'App da Nova Ordem Mundial', status: 'em breve', link: null },
     ],
     privacyLevel: 'Variável',
