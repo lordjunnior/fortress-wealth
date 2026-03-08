@@ -1,249 +1,202 @@
-import React from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
 import {
-  ArrowLeft, Server, HardDrive, Cpu,
-  ShieldCheck, Network, EyeOff, Lock, AlertTriangle, BookOpen
+  Server, HardDrive, Cpu, ShieldCheck, Network,
+  EyeOff, Lock, AlertTriangle, ArrowRight
 } from 'lucide-react';
+import CinematicHero from '@/components/CinematicHero';
+import ScrollToTop from '@/components/ScrollToTop';
 
+const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 const fadeUp = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
+  hidden: { opacity: 0, y: 30, filter: 'blur(6px)' },
+  visible: (i: number) => ({ opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.7, ease: APPLE_EASE, delay: i * 0.12 } }),
+};
+const scaleIn = {
+  hidden: { opacity: 0, scale: 0.92, filter: 'blur(8px)' },
+  visible: (i: number) => ({ opacity: 1, scale: 1, filter: 'blur(0px)', transition: { duration: 0.8, ease: APPLE_EASE, delay: i * 0.15 } }),
 };
 
-const Infraestrutura: React.FC = () => {
+function useMouseParallax(strength = 15) {
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const springX = useSpring(mouseX, { stiffness: 50, damping: 20 });
+  const springY = useSpring(mouseY, { stiffness: 50, damping: 20 });
+  const handleMouse = useCallback((e: MouseEvent) => {
+    const cx = window.innerWidth / 2; const cy = window.innerHeight / 2;
+    mouseX.set(((e.clientX - cx) / cx) * strength);
+    mouseY.set(((e.clientY - cy) / cy) * strength);
+  }, [mouseX, mouseY, strength]);
+  useEffect(() => { window.addEventListener('mousemove', handleMouse); return () => window.removeEventListener('mousemove', handleMouse); }, [handleMouse]);
+  return { springX, springY };
+}
+
+export default function Infraestrutura() {
+  const { springX, springY } = useMouseParallax(8);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  useEffect(() => { window.scrollTo(0, 0); }, []);
+  useEffect(() => {
+    const h = () => { const t = document.documentElement.scrollHeight - window.innerHeight; setScrollProgress(t > 0 ? Math.min((window.scrollY / t) * 100, 100) : 0); };
+    window.addEventListener('scroll', h, { passive: true }); return () => window.removeEventListener('scroll', h);
+  }, []);
+
   return (
-    <article className="min-h-screen bg-background pt-28 pb-12 px-4 animate-fade-in font-sans relative overflow-hidden">
+    <div className="min-h-screen text-stone-100 font-sans selection:bg-purple-300/50 relative overflow-hidden" style={{ background: '#050808' }}>
+      <Helmet>
+        <title>Infraestrutura — Rode seu Próprio Node Bitcoin | Lord Junnior</title>
+        <meta name="description" content="Aprenda a montar seu próprio Node Bitcoin: hardware, software, validação soberana. Se você não roda seu próprio node, está confiando no computador de outra pessoa." />
+      </Helmet>
+      <ScrollToTop />
 
-      {/* Circuit/Data Particles - simulando fluxo de dados */}
-      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-30">
-        <div className="circuit-layer"></div>
-        <div className="circuit-layer circuit-layer-2"></div>
+      <div className="fixed top-0 left-0 right-0 z-50 h-[3px]">
+        <div className="h-full transition-all duration-150 ease-out" style={{ width: `${scrollProgress}%`, background: 'linear-gradient(90deg, #a855f7, #7c3aed)' }} />
       </div>
+
+      <div className="fixed inset-0 pointer-events-none z-[1]">
+        <div className="absolute inset-0 opacity-[0.035]" style={{ backgroundImage: "url('data:image/svg+xml,%3Csvg viewBox=\"0 0 256 256\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cfilter id=\"n\"%3E%3CfeTurbulence type=\"fractalNoise\" baseFrequency=\"0.9\" numOctaves=\"4\" stitchTiles=\"stitch\"/%3E%3C/filter%3E%3Crect width=\"100%25\" height=\"100%25\" filter=\"url(%23n)\"/%3E%3C/svg%3E')", backgroundSize: '128px 128px' }} />
+        <div className="absolute inset-0 opacity-[0.02]" style={{ background: 'linear-gradient(125deg, transparent 30%, rgba(168,85,247,0.06) 50%, transparent 70%)' }} />
+      </div>
+
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-        <div className="data-stream data-stream-1"></div>
-        <div className="data-stream data-stream-2"></div>
-        <div className="data-stream data-stream-3"></div>
-      </div>
-      <style>{`
-        @keyframes driftCircuit {
-          0% { transform: translateY(0) translateX(0); }
-          100% { transform: translateY(-1000px) translateX(40px); }
-        }
-        @keyframes streamDown {
-          0% { top: -20%; opacity: 0; }
-          10% { opacity: 0.06; }
-          90% { opacity: 0.06; }
-          100% { top: 120%; opacity: 0; }
-        }
-        .circuit-layer {
-          position: absolute; width: 100%; height: 200%;
-          background-image:
-            radial-gradient(1.5px 1.5px at 10% 20%, rgba(168,85,247,0.3) 100%, transparent),
-            radial-gradient(1px 1px at 35% 50%, rgba(255,255,255,0.15) 100%, transparent),
-            radial-gradient(2px 2px at 60% 30%, rgba(168,85,247,0.2) 100%, transparent),
-            radial-gradient(1px 1px at 80% 70%, rgba(255,255,255,0.1) 100%, transparent);
-          background-size: 200px 200px;
-          animation: driftCircuit 60s linear infinite;
-        }
-        .circuit-layer-2 {
-          background-size: 300px 300px;
-          animation: driftCircuit 85s linear infinite reverse;
-          opacity: 0.5;
-        }
-        .data-stream {
-          position: absolute; width: 1px; height: 60px;
-          background: linear-gradient(180deg, transparent, rgba(168,85,247,0.2), transparent);
-          animation: streamDown 6s linear infinite;
-        }
-        .data-stream-1 { left: 20%; animation-delay: 0s; }
-        .data-stream-2 { left: 55%; animation-delay: 2s; }
-        .data-stream-3 { left: 80%; animation-delay: 4s; }
-      `}</style>
-
-      {/* Navegação */}
-      <div className="max-w-5xl mx-auto mb-12">
-        <Link to="/educacao" className="text-muted-foreground hover:text-purple-400 flex items-center gap-2 text-xs uppercase tracking-widest transition-colors w-fit group">
-          <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" /> Voltar ao Arsenal
-        </Link>
+        <motion.div style={{ x: springX, y: springY }} className="absolute top-[20%] right-[10%] w-[500px] h-[500px] rounded-full opacity-[0.04]"
+          animate={{ scale: [1, 1.1, 1] }} transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}>
+          <div className="w-full h-full rounded-full bg-gradient-radial from-purple-500/30 to-transparent blur-3xl" />
+        </motion.div>
       </div>
 
-      {/* Hero */}
-      <motion.header {...fadeUp} transition={{ duration: 0.6 }} className="max-w-5xl mx-auto mb-20 border-b border-border/50 pb-12">
-        <div className="inline-block px-3 py-1 mb-6 border border-purple-500/20 rounded bg-purple-500/5">
-          <span className="text-purple-400 text-[10px] font-bold uppercase tracking-[0.2em]">Don't Trust. Verify.</span>
-        </div>
-        <h1 className="text-4xl md:text-6xl font-serif font-bold text-foreground mb-6 leading-tight">
-          Rodando com o <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-purple-600 to-indigo-600">Urso Dov</span>
-        </h1>
-        <h2 className="text-xl text-muted-foreground font-light max-w-3xl leading-relaxed mb-10">
-          Se você não roda seu próprio node, você está confiando no computador de outra pessoa para dizer quanto dinheiro você tem e ditando as regras. <strong className="text-foreground font-medium">Isso não é soberania. É terceirização da verdade.</strong>
-        </h2>
+      <CinematicHero image="/heroes/infraestrutura-node.webp" phase="Don't Trust. Verify." title="Rodando com o Urso Dov"
+        subtitle="Se você não roda seu próprio node, você está confiando no computador de outra pessoa para dizer quanto dinheiro você tem. Isso não é soberania. É terceirização da verdade."
+        icon={Server} accentColor="purple" backLink="/educacao" backLabel="Arsenal Técnico" />
 
-        <button className="inline-flex items-center gap-3 px-8 py-4 bg-purple-600 hover:bg-purple-500 text-white font-bold rounded-xl transition-all transform hover:-translate-y-1 shadow-[0_0_25px_rgba(147,51,234,0.3)] uppercase tracking-wide text-sm">
-          <BookOpen className="w-5 h-5" /> Acessar Guia de Montagem
-        </button>
-      </motion.header>
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 lg:px-16 pt-16 pb-32">
 
-      {/* O Falso Soberano */}
-      <motion.section {...fadeUp} transition={{ duration: 0.6, delay: 0.1 }} className="max-w-5xl mx-auto mb-24">
-        <div className="bg-card border border-destructive/20 rounded-3xl p-8 md:p-12 relative overflow-hidden shadow-lg">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-destructive/5 blur-[100px] rounded-full pointer-events-none" />
-
-          <div className="flex items-center gap-4 mb-8 relative z-10">
-            <div className="p-3 bg-destructive/10 border border-destructive/20 rounded-xl">
-              <AlertTriangle className="w-6 h-6 text-destructive" />
+        {/* Cap 01 — A Ilusão da Privacidade */}
+        <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }} className="mb-28">
+          <motion.div variants={fadeUp} custom={0} className="mb-10">
+            <div className="flex items-center gap-3 mb-2"><AlertTriangle size={16} className="text-red-400" /><span className="text-[10px] font-bold tracking-[0.5em] uppercase text-red-400/60">Alerta Tático</span></div>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>A Ilusão da Privacidade</h2>
+          </motion.div>
+          <motion.div variants={scaleIn} custom={1} className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-8 md:p-12 relative overflow-hidden">
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-red-500/30 to-transparent" />
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+              <div className="text-stone-400 leading-relaxed">
+                <p>Muitos compram uma Hardware Wallet (Ledger, Trezor) e acham que estão 100% protegidos. O problema é o software (Ledger Live, Trezor Suite). Ao usá-los sem um Node próprio, sua carteira consulta os servidores da fabricante para checar seu saldo.</p>
+              </div>
+              <div className="bg-red-950/15 border border-red-500/15 rounded-xl p-8">
+                <div className="flex items-center gap-2 mb-4"><EyeOff size={16} className="text-red-400" /><span className="text-[9px] font-bold tracking-[0.3em] uppercase text-red-400/60">O que eles descobrem:</span></div>
+                <ul className="space-y-3 text-stone-300 text-sm">
+                  <li className="flex items-center gap-3"><div className="w-1.5 h-1.5 bg-red-500 rounded-full shrink-0" /> Seu endereço IP (sua localização física).</li>
+                  <li className="flex items-center gap-3"><div className="w-1.5 h-1.5 bg-red-500 rounded-full shrink-0" /> Todos os seus endereços de Bitcoin.</li>
+                  <li className="flex items-center gap-3"><div className="w-1.5 h-1.5 bg-red-500 rounded-full shrink-0" /> Seu saldo total e histórico de transações.</li>
+                </ul>
+              </div>
             </div>
-            <h3 className="text-3xl font-serif text-foreground">A Ilusão da Privacidade</h3>
-          </div>
+          </motion.div>
+        </motion.section>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 relative z-10">
-            <p className="text-muted-foreground leading-relaxed text-lg">
-              Muitos compram uma Hardware Wallet (Ledger, Trezor) e acham que estão 100% protegidos. O problema é o software (Ledger Live, Trezor Suite). Ao usá-los sem um Node próprio, sua carteira consulta os servidores da fabricante para checar seu saldo.
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-purple-500/20 to-transparent mb-28" />
+
+        {/* Cap 02 — Banco Central Pessoal */}
+        <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }} className="mb-28">
+          <motion.div variants={fadeUp} custom={0} className="text-center mb-10">
+            <span className="text-[10px] font-bold tracking-[0.5em] uppercase text-purple-400/60">Capítulo 02</span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white mt-2" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>O seu Banco Central Pessoal</h2>
+          </motion.div>
+          <motion.div variants={fadeUp} custom={1} className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-8 md:p-12 text-center max-w-4xl mx-auto">
+            <p className="text-stone-400 text-base leading-relaxed">
+              Um Node é um computador que baixa e valida de forma independente toda a blockchain do Bitcoin, desde o bloco gênesis em 2009. Ele garante matematicamente que as regras do consenso estão sendo seguidas e que <strong className="text-white">ninguém está imprimindo dinheiro falso</strong> (inflação não autorizada pelo código).
             </p>
-            <div className="bg-background/50 border border-destructive/20 p-6 rounded-xl">
-              <h4 className="text-destructive font-bold mb-4 uppercase tracking-widest text-xs flex items-center gap-2">
-                <EyeOff className="w-4 h-4" /> O que eles descobrem:
-              </h4>
-              <ul className="space-y-3 text-foreground/80 text-sm">
-                <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 bg-destructive rounded-full" /> Seu endereço IP (sua localização física).</li>
-                <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 bg-destructive rounded-full" /> Todos os seus endereços de Bitcoin.</li>
-                <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 bg-destructive rounded-full" /> Seu saldo total e histórico de transações.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </motion.section>
+          </motion.div>
+        </motion.section>
 
-      {/* O que é um Node */}
-      <motion.section {...fadeUp} transition={{ duration: 0.6, delay: 0.15 }} className="max-w-5xl mx-auto mb-24 text-center">
-        <h3 className="text-3xl font-serif text-foreground mb-6">O seu Banco Central Pessoal</h3>
-        <p className="text-muted-foreground max-w-3xl mx-auto text-lg leading-relaxed">
-          Um Node é um computador que baixa e valida de forma independente toda a blockchain do Bitcoin, desde o bloco gênesis em 2009. Ele garante matematicamente que as regras do consenso estão sendo seguidas e que <strong className="text-foreground">ninguém está imprimindo dinheiro falso</strong> (inflação não autorizada pelo código).
-        </p>
-      </motion.section>
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-purple-500/20 to-transparent mb-28" />
 
-      {/* Hardware Bento Grid */}
-      <motion.section {...fadeUp} transition={{ duration: 0.6, delay: 0.2 }} className="max-w-5xl mx-auto mb-24">
-        <div className="flex items-center gap-4 mb-10 border-l-2 border-purple-500 pl-6">
-          <div>
-            <h3 className="text-3xl font-serif text-foreground mb-2">Hardware & Setup</h3>
-            <p className="text-muted-foreground text-sm uppercase tracking-widest font-bold">A Máquina de Validação</p>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {[
-            {
-              icon: Cpu,
-              title: 'O Cérebro (Mini PC/Pi)',
-              desc: 'Você não precisa de um supercomputador, mas de uma máquina dedicada que rode 24/7 com baixo consumo de energia.',
-              spec: 'Recomendado: Raspberry Pi 4/5 ou Mini PC Intel N100',
-            },
-            {
-              icon: HardDrive,
-              title: 'O Cofre (SSD 1TB+)',
-              desc: 'O histórico completo do Bitcoin pesa mais de 500GB e cresce diariamente. HDDs mecânicos são proibidos (causam lentidão severa na sincronização).',
-              spec: 'Obrigatório: SSD NVMe ou SATA de 1TB (Mínimo)',
-            },
-            {
-              icon: Server,
-              title: 'O Sistema (OS)',
-              desc: 'Softwares modernos transformaram a configuração de um Node em uma experiência "Plug and Play", instalável em poucos cliques.',
-              spec: 'Sistemas: Umbrel, Start9 ou RoninDojo',
-            },
-          ].map((item) => {
-            const Icon = item.icon;
-            return (
-              <div key={item.title} className="bg-card border border-border rounded-2xl p-8 hover:border-purple-500/30 transition-colors group">
-                <div className="p-4 bg-background border border-border rounded-xl text-purple-400 w-fit mb-6">
-                  <Icon className="w-6 h-6" />
+        {/* Cap 03 — Hardware & Setup */}
+        <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }} className="mb-28">
+          <motion.div variants={fadeUp} custom={0} className="mb-10">
+            <span className="text-[10px] font-bold tracking-[0.5em] uppercase text-purple-400/60">Capítulo 03</span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white mt-2" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Hardware & Setup</h2>
+            <p className="text-stone-500 text-sm mt-2">A Máquina de Validação</p>
+          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              { icon: Cpu, title: 'O Cérebro (Mini PC/Pi)', desc: 'Você não precisa de um supercomputador, mas de uma máquina dedicada que rode 24/7 com baixo consumo de energia.', spec: 'Raspberry Pi 4/5 ou Mini PC Intel N100' },
+              { icon: HardDrive, title: 'O Cofre (SSD 1TB+)', desc: 'O histórico completo do Bitcoin pesa mais de 500GB e cresce diariamente. HDDs mecânicos são proibidos (causam lentidão severa na sincronização).', spec: 'SSD NVMe ou SATA de 1TB (Mínimo)' },
+              { icon: Server, title: 'O Sistema (OS)', desc: 'Softwares modernos transformaram a configuração de um Node em uma experiência "Plug and Play", instalável em poucos cliques.', spec: 'Umbrel, Start9 ou RoninDojo' },
+            ].map((item, i) => (
+              <motion.div key={item.title} variants={scaleIn} custom={i}
+                className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-8 hover:border-purple-500/20 hover:bg-purple-500/[0.02] transition-all duration-500 group">
+                <div className="p-3 rounded-xl bg-purple-500/8 border border-purple-500/15 w-fit mb-6 group-hover:bg-purple-500/15 transition-all">
+                  <item.icon size={22} className="text-purple-400" />
                 </div>
-                <h4 className="text-xl font-bold text-foreground mb-2">{item.title}</h4>
-                <p className="text-muted-foreground text-sm leading-relaxed mb-4">{item.desc}</p>
-                <div className="text-xs text-purple-400 font-mono bg-purple-500/10 px-3 py-2 rounded border border-purple-500/20 inline-block">
-                  {item.spec}
+                <h4 className="text-lg font-bold text-white mb-3" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{item.title}</h4>
+                <p className="text-stone-500 text-sm leading-relaxed mb-4">{item.desc}</p>
+                <span className="text-[10px] font-bold text-purple-400 bg-purple-500/10 px-3 py-1.5 rounded-lg border border-purple-500/15 font-mono">{item.spec}</span>
+              </motion.div>
+            ))}
+          </div>
+        </motion.section>
+
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-purple-500/20 to-transparent mb-28" />
+
+        {/* Cap 04 — Validação Soberana */}
+        <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }} className="mb-28">
+          <motion.div variants={fadeUp} custom={0} className="mb-10">
+            <span className="text-[10px] font-bold tracking-[0.5em] uppercase text-purple-400/60">Capítulo 04</span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white mt-2" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Validação Soberana</h2>
+          </motion.div>
+          <motion.div variants={scaleIn} custom={1}
+            className="bg-purple-500/[0.03] border border-purple-500/15 rounded-2xl p-8 md:p-12 relative overflow-hidden">
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-500/40 to-transparent" />
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+              <div className="space-y-6">
+                <p className="text-stone-400 leading-relaxed">
+                  O objetivo final de construir o Urso Dov é <strong className="text-white">conectar sua Hardware Wallet exclusivamente ao seu próprio Node</strong> via rede Tor ou rede local.
+                </p>
+                <div className="bg-purple-500/[0.06] border-l-2 border-purple-500/50 rounded-r-xl p-6">
+                  <p className="text-white font-medium leading-relaxed">
+                    Isso impede que os servidores dos fabricantes da carteira saibam seus endereços e saldos, garantindo <span className="text-purple-400 font-bold">privacidade total</span>.
+                  </p>
                 </div>
               </div>
-            );
-          })}
-        </div>
-      </motion.section>
-
-      {/* Validação Soberana */}
-      <motion.section {...fadeUp} transition={{ duration: 0.6, delay: 0.3 }} className="max-w-5xl mx-auto mb-24 bg-gradient-to-br from-card to-background border border-purple-500/20 rounded-3xl p-8 md:p-12 relative overflow-hidden shadow-2xl">
-        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-purple-500 to-transparent opacity-50" />
-
-        <div className="flex items-center gap-4 mb-8">
-          <div className="p-3 bg-purple-500/10 rounded-lg border border-purple-500/20">
-            <ShieldCheck className="w-6 h-6 text-purple-400" />
-          </div>
-          <h3 className="text-3xl font-serif text-foreground">O Objetivo: Validação Soberana</h3>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6">
-            <p className="text-muted-foreground leading-relaxed text-lg">
-              O objetivo final de construir o Urso Dov é <strong className="text-foreground">conectar sua Hardware Wallet exclusivamente ao seu próprio Node</strong> via rede Tor ou rede local.
-            </p>
-            <div className="p-6 bg-purple-500/5 border-l-2 border-purple-500 rounded-r-xl">
-              <p className="text-foreground font-medium">
-                Isso impede que os servidores dos fabricantes da carteira saibam seus endereços e saldos, garantindo <span className="text-purple-400 font-bold uppercase tracking-wider">privacidade total</span>.
-              </p>
-            </div>
-          </div>
-
-          <div className="bg-background/80 border border-border rounded-2xl p-6 flex flex-col items-center justify-center gap-6">
-            <div className="flex items-center gap-4 w-full justify-between">
-              <div className="text-center">
-                <Lock className="w-8 h-8 text-muted-foreground mx-auto mb-2" />
-                <span className="text-xs text-muted-foreground font-bold uppercase">Sua Carteira</span>
-              </div>
-              <div className="flex-1 border-t-2 border-dashed border-purple-500/50 relative">
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-purple-500/20 px-2 py-1 rounded text-[10px] text-purple-400 font-bold uppercase whitespace-nowrap">Rede Local / Tor</div>
-              </div>
-              <div className="text-center">
-                <Server className="w-8 h-8 text-purple-400 mx-auto mb-2" />
-                <span className="text-xs text-purple-400 font-bold uppercase">Seu Node</span>
-              </div>
-              <div className="flex-1 border-t-2 border-dashed border-border relative" />
-              <div className="text-center opacity-50">
-                <Network className="w-8 h-8 text-muted-foreground mx-auto mb-2" />
-                <span className="text-xs text-muted-foreground font-bold uppercase">Rede BTC</span>
+              <div className="bg-white/[0.02] border border-white/[0.05] rounded-2xl p-6 flex flex-col items-center justify-center gap-4">
+                <div className="flex items-center gap-4 w-full justify-between">
+                  <div className="text-center"><Lock size={24} className="text-stone-500 mx-auto mb-2" /><span className="text-[9px] text-stone-500 font-bold uppercase tracking-wider">Sua Carteira</span></div>
+                  <div className="flex-1 border-t-2 border-dashed border-purple-500/30 relative">
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-purple-500/10 px-2 py-1 rounded text-[9px] text-purple-400 font-bold uppercase whitespace-nowrap border border-purple-500/20">Rede Local / Tor</div>
+                  </div>
+                  <div className="text-center"><Server size={24} className="text-purple-400 mx-auto mb-2" /><span className="text-[9px] text-purple-400 font-bold uppercase tracking-wider">Seu Node</span></div>
+                  <div className="flex-1 border-t-2 border-dashed border-white/10" />
+                  <div className="text-center opacity-40"><Network size={24} className="text-stone-500 mx-auto mb-2" /><span className="text-[9px] text-stone-500 font-bold uppercase tracking-wider">Rede BTC</span></div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-      </motion.section>
+          </motion.div>
+        </motion.section>
 
-      {/* Footer Soberano */}
-      <footer className="max-w-5xl mx-auto text-center pt-12 border-t border-border/50 space-y-6 mt-12">
-        <p className="text-2xl font-serif text-foreground/80">Not your keys, not your money.</p>
-        <div className="text-muted-foreground text-sm space-y-1">
-          <p>Quem não assume a custódia aceita a dependência.</p>
-          <p>Autocustódia exige responsabilidade.</p>
-        </div>
-        <div className="w-12 h-[1px] bg-border mx-auto my-6" />
-        <p className="text-gold/80 text-sm font-medium">
-          Dependência financeira nunca foi acidente. Sempre foi projeto.
-        </p>
-        <p className="text-[10px] text-muted-foreground/50 uppercase tracking-widest pt-4">
-          Lord Junnior © 2026
-        </p>
-        <div className="flex items-center justify-center gap-6 pt-8 pb-8">
-          <Link to="#" className="text-xs text-muted-foreground/50 hover:text-gold uppercase tracking-wider transition-colors">Termos</Link>
-          <span className="text-border">·</span>
-          <Link to="#" className="text-xs text-muted-foreground/50 hover:text-gold uppercase tracking-wider transition-colors">Privacidade</Link>
-          <span className="text-border">·</span>
-          <Link to="#" className="text-xs text-muted-foreground/50 hover:text-gold uppercase tracking-wider transition-colors flex items-center gap-1">
-            <Lock className="w-3 h-3" /> PGP
-          </Link>
-        </div>
-      </footer>
+        {/* CTA */}
+        <motion.section initial="hidden" whileInView="visible" viewport={{ once: true }} className="mb-20">
+          <motion.div variants={fadeUp} custom={0} className="bg-white/[0.02] border border-purple-500/10 rounded-3xl p-10 md:p-16 text-center relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-radial from-purple-500/[0.03] via-transparent to-transparent" />
+            <div className="relative z-10 space-y-6">
+              <h2 className="text-2xl md:text-4xl font-bold tracking-tight text-white" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                Not your node, not your <span className="text-purple-400">rules.</span>
+              </h2>
+              <div className="pt-4">
+                <Link to="/autocustodia" className="inline-flex items-center gap-3 bg-purple-500/10 border border-purple-500/25 rounded-xl px-8 py-4 text-purple-400 text-sm font-bold uppercase tracking-wider hover:bg-purple-500/20 hover:border-purple-500/40 hover:shadow-[0_0_30px_rgba(168,85,247,0.1)] transition-all duration-500 group">
+                  Autocustódia <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </div>
+            </div>
+          </motion.div>
+        </motion.section>
 
-    </article>
+        <footer className="border-t border-white/[0.05] pt-12 text-center">
+          <p className="text-stone-700 text-[9px] font-bold tracking-[0.5em] uppercase">Lord Junnior © 2026</p>
+        </footer>
+      </div>
+    </div>
   );
-};
-
-export default Infraestrutura;
+}
