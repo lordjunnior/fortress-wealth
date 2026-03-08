@@ -206,14 +206,14 @@ export default function OptimaExchange() {
                 </p>
 
                 <div className="flex flex-wrap gap-4">
-                  <a href="#passo-a-passo"
+                  <a href="https://t.me/Optima_Exchange_Argentinas" target="_blank" rel="noopener noreferrer"
                     className="group relative inline-flex items-center gap-2 bg-emerald-500/15 border border-emerald-500/40 text-emerald-200 font-bold text-sm uppercase tracking-wider px-8 py-4 rounded-xl overflow-hidden transition-all hover:shadow-[0_0_40px_rgba(16,185,129,0.3)]">
                     <span className="absolute inset-0 bg-emerald-500/10 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
-                    <span className="relative">Ver passo a passo</span><ArrowRight size={14} className="relative" />
+                    <span className="relative">Acessar no Telegram</span><ExternalLink size={14} className="relative" />
                   </a>
-                  <a href="#cobertura"
+                  <a href="#passo-a-passo"
                     className="inline-flex items-center gap-2 border border-white/[0.08] text-stone-400 font-bold text-sm uppercase tracking-wider px-8 py-4 rounded-xl hover:border-white/20 hover:text-white transition-colors">
-                    Paises disponiveis <ChevronDown size={14} />
+                    Ver passo a passo <ChevronDown size={14} />
                   </a>
                 </div>
               </motion.div>
