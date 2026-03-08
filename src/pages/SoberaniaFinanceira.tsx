@@ -81,11 +81,10 @@ const CATEGORIES = [
     color: 'rose',
     title: 'Sistemas Alternativos',
     subtitle: 'Infraestrutura geopolítica emergente',
-    description: 'BRICS Pay, apps da "Nova Ordem Mundial" e a infraestrutura financeira paralela fora do SWIFT.',
+    description: 'BRICS Pay e a infraestrutura financeira paralela fora do SWIFT — análise de vigilância e oportunidades.',
     image: sistemasImg,
     items: [
-      { name: 'BRICS Pay — Análise técnica', status: 'disponível', link: '/soberania-financeira/brics-pay' },
-      { name: 'App da Nova Ordem Mundial', status: 'em breve', link: null },
+      { name: 'BRICS Pay — O App da Nova Ordem Mundial', status: 'disponível', link: '/soberania-financeira/brics-pay' },
     ],
     privacyLevel: 'Variável',
     reviewCount: 1,
