@@ -196,7 +196,7 @@ export default function AlertasHub() {
             className="flex flex-wrap gap-8 mt-10 pt-8 border-t border-border/30"
           >
             {[
-              { label: 'Alertas ativos', value: '02' },
+              { label: 'Alertas ativos', value: '03' },
               { label: 'Em produção', value: '02' },
               { label: 'Países monitorados', value: '12+' },
             ].map((s, i) => (
