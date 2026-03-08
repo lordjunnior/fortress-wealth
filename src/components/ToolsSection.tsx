@@ -111,17 +111,15 @@ const ToolsSection = () => {
             {/* Glow */}
             <div className="absolute -top-12 -right-12 w-40 h-40 bg-primary/[0.08] rounded-full blur-3xl pointer-events-none" />
 
-            <blockquote className="text-base md:text-lg font-medium text-foreground/90 leading-relaxed mb-3 italic"
-              style={{ fontFamily: "'Playfair Display', serif" }}
-            >
-              "Você está vendo apenas o topo do iceberg."
+            <blockquote className="font-display text-lg md:text-2xl font-bold text-foreground/90 leading-tight mb-3 uppercase tracking-wide">
+              "VOCÊ ESTÁ VENDO APENAS O TOPO DO ICEBERG."
             </blockquote>
-            <p className="text-sm text-muted-foreground leading-relaxed mb-2">
+            <p className="text-sm text-muted-foreground leading-relaxed mb-4">
               O Painel Operacional contém calculadoras de ROI, rastreadores de nodes
               e simuladores de custódia que o público comum não utiliza.
             </p>
-            <p className="text-xs text-primary/80 font-medium tracking-wide">
-              Algumas dessas ferramentas não existem em nenhum outro lugar.
+            <p className="text-sm font-semibold tracking-wider uppercase text-gradient-gold inline-block border-b border-primary/30 pb-1">
+              ⚡ Algumas dessas ferramentas não existem em nenhum outro lugar.
             </p>
           </motion.div>
 
