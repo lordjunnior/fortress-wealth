@@ -176,6 +176,7 @@ const VERDICT_AGAINST = [
 export default function BankOfGeorgia() {
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
+  const [showLeadModal, setShowLeadModal] = useState(false);
   const heroY = useTransform(scrollYProgress, [0, 1], [0, 150]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
 
@@ -360,11 +361,11 @@ export default function BankOfGeorgia() {
                 Tutorial exclusivo com todos os detalhes. Disponível para membros do canal.
               </p>
               <div className="flex flex-wrap gap-4">
-                <a href={MEMBERSHIP_LINK} target="_blank" rel="noopener noreferrer"
+                <button onClick={() => setShowLeadModal(true)}
                   className="group relative inline-flex items-center gap-2 bg-emerald-600 text-white font-bold text-sm uppercase tracking-wider px-8 py-4 rounded-xl overflow-hidden transition-all hover:shadow-[0_0_40px_rgba(16,185,129,0.4)]">
                   <span className="absolute inset-0 bg-white/10 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
-                  <span className="relative">Tornar-se membro</span><ExternalLink size={14} className="relative" />
-                </a>
+                  <span className="relative">Solicitar Assessoria</span>
+                </button>
                 <Link to="/autocustodia" className="inline-flex items-center gap-2 border border-white/[0.08] text-stone-400 font-bold text-sm uppercase tracking-wider px-8 py-4 rounded-xl hover:border-white/20 hover:text-white transition-colors">Prefiro autocustódia</Link>
               </div>
             </motion.div>
@@ -406,6 +407,7 @@ export default function BankOfGeorgia() {
 
         <footer className="max-w-5xl mx-auto px-6 pb-16"><div className="pt-12 border-t border-white/[0.04] text-center"><p className="text-stone-600 text-[9px] font-black tracking-[0.5em] uppercase font-mono">Análise independente · Lord Junnior © 2026</p></div></footer>
       </div>
+      <LeadCaptureModal isOpen={showLeadModal} onClose={() => setShowLeadModal(false)} interesse="assessoria-bank-georgia" />
     </>
   );
 }
