@@ -125,10 +125,10 @@ const TOOLS_LIST = [
   },
   {
     id: 'savesat',
-    title: 'SaveSat',
+    title: 'SaveSat — O Guardião dos seus Satoshis',
     badge: 'Compare Taxas',
-    desc: 'Compare taxas de 6 exchanges em tempo real. Cada centavo economizado é mais Satoshi na sua Ledger. Ranking atualizado com preço BTC, taxa de trading, saque e custo total.',
-    cta: 'Ver Ranking',
+    desc: 'Pare de entregar seus Satoshis para as corretoras. Monitora as maiores exchanges para encontrar o menor spread e a menor taxa de saque agora. Ranking de confiança baseado em Auditoria de Reservas (PoR) e transparência total de taxas ocultas.',
+    cta: 'Ver Taxas Agora',
     color: 'from-emerald-500/20 to-emerald-500/0',
     borderColor: 'group-hover:border-emerald-500/50',
     textColor: 'text-emerald-400',
