@@ -1,145 +1,405 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { ShieldAlert, Lock, Globe, Cpu, Zap, ArrowRight, ArrowLeft, ShieldCheck, Database, Key, AlertTriangle } from 'lucide-react';
+import React, { useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { motion, useInView } from 'framer-motion';
+import { useRef } from 'react';
+import {
+  ShieldAlert, Lock, Globe, Cpu, Zap, ArrowRight,
+  ShieldCheck, AlertTriangle, Crosshair, Skull, Eye, Fingerprint
+} from 'lucide-react';
+import CinematicHero from '@/components/CinematicHero';
+import NoiseBackground from '@/components/NoiseBackground';
+import AppSidebar from '@/components/AppSidebar';
+import MobileNav from '@/components/MobileNav';
+import NetworkTicker from '@/components/NetworkTicker';
+
+const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
+
+const pillars = [
+  {
+    to: '/autocustodia',
+    icon: Lock,
+    label: 'CUSTÓDIA',
+    title: 'Arquitetura de Autocustódia',
+    hook: 'A posse real das chaves.',
+    desc: 'Use chaves privadas para provar propriedade e assinar transações sem intermediários.',
+    accent: 'gold',
+  },
+  {
+    to: '/economia-paralela',
+    icon: Globe,
+    label: 'P2P',
+    title: 'Economia Paralela',
+    hook: 'Privacidade e P2P.',
+    desc: 'O Bitcoin é pseudônimo, não anônimo. Proteja seu rastro através de transações diretas.',
+    accent: 'emerald',
+  },
+  {
+    to: '/infraestrutura',
+    icon: Cpu,
+    label: 'NODO',
+    title: 'Rede de Validação',
+    hook: 'Rodando seu próprio nó.',
+    desc: 'Seja o auditor da rede. Verifique cada transação e garanta o limite de 21 milhões.',
+    accent: 'sky',
+  },
+  {
+    to: '/lightning',
+    icon: Zap,
+    label: 'LIGHTNING',
+    title: 'Lightning no Bolso',
+    hook: 'Microtransações em Sats.',
+    desc: 'Transfira frações de centavo instantaneamente. O Satoshi é a unidade do futuro soberano.',
+    accent: 'amber',
+  },
+];
+
+const accentMap: Record<string, { text: string; bg: string; border: string }> = {
+  gold: { text: 'text-gold', bg: 'bg-gold/10', border: 'border-gold/20' },
+  emerald: { text: 'text-emerald-400', bg: 'bg-emerald-500/10', border: 'border-emerald-500/20' },
+  sky: { text: 'text-sky-400', bg: 'bg-sky-500/10', border: 'border-sky-500/20' },
+  amber: { text: 'text-amber-400', bg: 'bg-amber-500/10', border: 'border-amber-500/20' },
+};
+
+const defenseItems = [
+  {
+    icon: Skull,
+    title: 'Engenharia Social',
+    desc: 'Hackers não quebram o SHA-256, eles quebram sua confiança usando medo e urgência.',
+  },
+  {
+    icon: Eye,
+    title: 'A Regra de Ouro',
+    desc: 'Ninguém legítimo jamais pedirá suas 12/24 palavras (Seed Phrase). Se pedirem, é roubo.',
+  },
+  {
+    icon: Fingerprint,
+    title: 'Higiene Digital',
+    desc: 'Use Cold Storage, autenticação 2FA por app e nunca clique em links suspeitos.',
+  },
+];
 
 export default function Arsenal() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const protocoloRef = useRef(null);
+  const protocoloInView = useInView(protocoloRef, { once: true, margin: '-100px' });
+
+  const pillarsRef = useRef(null);
+  const pillarsInView = useInView(pillarsRef, { once: true, margin: '-80px' });
+
+  const defenseRef = useRef(null);
+  const defenseInView = useInView(defenseRef, { once: true, margin: '-80px' });
+
+  const autonomoRef = useRef(null);
+  const autonomoInView = useInView(autonomoRef, { once: true, margin: '-80px' });
+
   return (
-    <div className="min-h-screen bg-[#070A12] text-white font-sans selection:bg-red-600 pb-32 relative overflow-hidden">
+    <div className="min-h-screen bg-[#050808] text-foreground">
+      <NoiseBackground />
+      <AppSidebar />
+      <MobileNav />
 
-      {/* MANTIDO: Tactical Radar Particles */}
-      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-30">
-        <div className="radar-layer"></div>
-        <div className="radar-layer radar-layer-2"></div>
-      </div>
-      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-        <div className="radar-sweep"></div>
-      </div>
-      <style>{`
-        @keyframes driftRadar { 0% { transform: translateY(0); } 100% { transform: translateY(-1000px); } }
-        @keyframes radarSweep { 0% { transform: rotate(0deg); opacity: 0.04; } 100% { transform: rotate(360deg); opacity: 0.04; } }
-        .radar-layer {
-          position: absolute; width: 100%; height: 200%;
-          background-image: radial-gradient(2px 2px at 20% 15%, rgba(220,38,38,0.3) 100%, transparent);
-          background-size: 200px 200px; animation: driftRadar 55s linear infinite;
-        }
-        .radar-layer-2 { animation: driftRadar 80s linear infinite reverse; opacity: 0.5; }
-        .radar-sweep {
-          position: absolute; top: 50%; left: 50%; width: 600px; height: 600px; margin: -300px 0 0 -300px;
-          background: conic-gradient(from 0deg, transparent 0deg, rgba(220,38,38,0.06) 30deg, transparent 60deg);
-          border-radius: 50%; animation: radarSweep 12s linear infinite;
-        }
-        .glow-red:hover { box-shadow: 0 0 20px rgba(220,38,38,0.2); border-color: rgba(220,38,38,0.5); }
-      `}</style>
+      <div className="relative z-10 lg:ml-[260px]">
+        {/* Cinematic Hero */}
+        <CinematicHero
+          image="/heroes/arsenal-operacional.webp"
+          phase="Arsenal Técnico"
+          title="Central de Operações"
+          subtitle="Domínio técnico e defesa de ativos. A soberania começa quando você detém as ferramentas certas."
+          icon={Crosshair}
+          accentColor="rose"
+          backLink="/"
+          backLabel="Voltar ao Comando"
+        />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 pt-28">
-        
-        <Link to="/" className="inline-flex items-center gap-2 text-slate-500 hover:text-white mb-16 text-[10px] font-black uppercase tracking-[0.3em] transition-all">
-          <ArrowLeft size={14} /> Voltar ao Painel
-        </Link>
+        <div className="px-6 md:px-12 lg:px-20 pb-24">
 
-        <header className="mb-20">
-          <h1 className="text-6xl md:text-9xl font-black tracking-tighter uppercase mb-4 leading-none italic">CENTRAL DE <br/><span className="text-red-600">OPERAÇÕES</span></h1>
-          <p className="text-slate-500 font-bold uppercase tracking-[0.4em] text-xs">Domínio Técnico e Defesa de Ativos</p>
-        </header>
+          {/* ═══════════════════════════════════════════
+              CAPÍTULO 1 — PROTOCOLO INICIAL
+          ═══════════════════════════════════════════ */}
+          <section ref={protocoloRef} className="py-16 md:py-24">
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={protocoloInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, ease: APPLE_EASE }}
+            >
+              <Link to="/protocolo-inicial" className="group block">
+                <div className="relative overflow-hidden rounded-2xl border border-destructive/20 bg-white/[0.02] backdrop-blur-sm p-10 md:p-16 transition-all duration-700 hover:border-destructive/50 hover:bg-white/[0.04]">
+                  {/* Background icon */}
+                  <ShieldAlert
+                    size={280}
+                    className="absolute -top-8 -right-8 text-destructive/[0.04] group-hover:text-destructive/[0.08] group-hover:scale-110 transition-all duration-1000"
+                  />
 
-        {/* CARD MASTER: PROTOCOLO INICIAL (MANTIDO) */}
-        <section className="mb-16">
-          <Link to="/protocolo-inicial" className="group block">
-            <div className="bg-red-600 p-12 md:p-20 rounded-none relative overflow-hidden transition-all duration-500 hover:bg-white">
-              <div className="absolute top-0 right-0 p-12 opacity-10 group-hover:scale-110 transition-transform text-black">
-                <ShieldAlert size={220} />
-              </div>
-              <div className="relative z-10">
-                <h2 className="text-5xl md:text-7xl font-black tracking-tighter uppercase mb-6 italic text-black leading-none">PROTOCOLO INICIAL</h2>
-                <p className="text-black font-black text-xl md:text-2xl max-w-2xl leading-tight mb-8">
-                  Neutralize o tédio e a mentira. Aprenda por que o limite de 21 milhões é a lei suprema e como sua semente (seed) é seu único exército.
-                </p>
-                <div className="inline-flex items-center gap-4 bg-black text-white px-10 py-5 font-black text-xs uppercase tracking-[0.3em] group-hover:bg-red-600 transition-all">
-                  REPROGRAMAR CONSCIÊNCIA <ArrowRight size={20} />
+                  {/* Shimmer line */}
+                  <div className="absolute inset-0 overflow-hidden rounded-2xl pointer-events-none">
+                    <div className="absolute top-0 -left-full w-full h-px bg-gradient-to-r from-transparent via-destructive/40 to-transparent group-hover:left-full transition-all duration-[1.5s] ease-in-out" />
+                  </div>
+
+                  <div className="relative z-10">
+                    <span className="inline-block font-mono text-[10px] tracking-[0.4em] text-destructive/80 bg-destructive/10 border border-destructive/20 px-3 py-1.5 rounded-md mb-6">
+                      PONTO DE PARTIDA
+                    </span>
+
+                    <h2
+                      className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 leading-[0.95]"
+                      style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+                    >
+                      Protocolo{' '}
+                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-destructive to-red-400">
+                        Inicial
+                      </span>
+                    </h2>
+
+                    <p className="text-muted-foreground text-base md:text-lg max-w-2xl leading-relaxed mb-10">
+                      Neutralize o tédio e a mentira. Aprenda por que o limite de 21 milhões é a lei suprema
+                      e como sua semente (seed) é seu único exército.
+                    </p>
+
+                    <motion.div
+                      whileHover={{ x: 6 }}
+                      className="inline-flex items-center gap-3 bg-destructive/90 hover:bg-destructive text-white px-8 py-4 rounded-xl font-semibold text-sm tracking-wide transition-colors duration-500"
+                    >
+                      REPROGRAMAR CONSCIÊNCIA
+                      <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                    </motion.div>
+                  </div>
+                </div>
+              </Link>
+            </motion.div>
+          </section>
+
+          {/* Section divider */}
+          <div className="flex items-center gap-4 mb-12">
+            <div className="h-px flex-1 bg-gradient-to-r from-transparent via-border to-transparent" />
+            <span className="font-mono text-[10px] tracking-[0.3em] text-muted-foreground/50">
+              OS QUATRO PILARES
+            </span>
+            <div className="h-px flex-1 bg-gradient-to-r from-transparent via-border to-transparent" />
+          </div>
+
+          {/* ═══════════════════════════════════════════
+              CAPÍTULO 2 — OS QUATRO PILARES
+          ═══════════════════════════════════════════ */}
+          <section ref={pillarsRef} className="pb-16 md:pb-24">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              {pillars.map((pillar, i) => {
+                const colors = accentMap[pillar.accent];
+                const Icon = pillar.icon;
+                return (
+                  <motion.div
+                    key={pillar.to}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={pillarsInView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 0.6, delay: i * 0.12, ease: APPLE_EASE }}
+                  >
+                    <Link to={pillar.to} className="group block h-full">
+                      <div className={`relative h-full overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02] backdrop-blur-sm p-8 md:p-10 transition-all duration-700 hover:border-gold/30 hover:bg-white/[0.04]`}>
+                        {/* Glow on hover */}
+                        <div className={`absolute -inset-1 rounded-3xl ${colors.bg} blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none`} />
+
+                        <div className="relative z-10">
+                          {/* Icon + Tag */}
+                          <div className="flex items-center justify-between mb-6">
+                            <motion.div
+                              animate={{
+                                boxShadow: [
+                                  '0 0 0px rgba(212,175,55,0)',
+                                  '0 0 14px rgba(212,175,55,0.12)',
+                                  '0 0 0px rgba(212,175,55,0)',
+                                ],
+                              }}
+                              transition={{ duration: 3.5, repeat: Infinity, delay: i * 0.8 }}
+                              className={`w-14 h-14 rounded-xl ${colors.bg} border ${colors.border} flex items-center justify-center`}
+                            >
+                              <Icon className={`w-7 h-7 ${colors.text}`} />
+                            </motion.div>
+                            <span className={`font-mono text-[9px] tracking-[0.3em] ${colors.text} ${colors.bg} border ${colors.border} px-2.5 py-1 rounded-md`}>
+                              {pillar.label}
+                            </span>
+                          </div>
+
+                          <h3
+                            className="text-xl md:text-2xl font-bold tracking-tight mb-2 group-hover:text-gold transition-colors duration-500"
+                            style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+                          >
+                            {pillar.title}
+                          </h3>
+
+                          <p className="text-gold/60 text-xs font-semibold tracking-widest uppercase mb-3">
+                            {pillar.hook}
+                          </p>
+
+                          <p className="text-muted-foreground text-sm leading-relaxed mb-6">
+                            {pillar.desc}
+                          </p>
+
+                          <div className="flex items-center gap-2 text-gold text-sm font-medium group-hover:gap-3 transition-all duration-500">
+                            Acessar Módulo
+                            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-500" />
+                          </div>
+                        </div>
+
+                        {/* Shimmer */}
+                        <div className="absolute inset-0 overflow-hidden rounded-2xl pointer-events-none">
+                          <div className="absolute top-0 -left-full w-full h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent group-hover:left-full transition-all duration-1000 ease-in-out" />
+                        </div>
+                      </div>
+                    </Link>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </section>
+
+          {/* Section divider */}
+          <div className="flex items-center gap-4 mb-12">
+            <div className="h-px flex-1 bg-gradient-to-r from-transparent via-border to-transparent" />
+            <span className="font-mono text-[10px] tracking-[0.3em] text-muted-foreground/50">
+              DEFESA CONTRA PREDADORES
+            </span>
+            <div className="h-px flex-1 bg-gradient-to-r from-transparent via-border to-transparent" />
+          </div>
+
+          {/* ═══════════════════════════════════════════
+              CAPÍTULO 3 — BLINDAGEM CONTRA GOLPES
+          ═══════════════════════════════════════════ */}
+          <section ref={defenseRef} className="pb-16 md:pb-24">
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={defenseInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, ease: APPLE_EASE }}
+            >
+              <div className="relative overflow-hidden rounded-2xl border border-destructive/20 bg-white/[0.02] backdrop-blur-sm p-8 md:p-14">
+                {/* Background icon */}
+                <AlertTriangle
+                  size={250}
+                  className="absolute -bottom-10 -right-10 text-destructive/[0.03] pointer-events-none"
+                />
+
+                <div className="relative z-10">
+                  <div className="flex items-center gap-4 mb-10">
+                    <div className="w-12 h-12 rounded-xl bg-destructive/10 border border-destructive/20 flex items-center justify-center">
+                      <ShieldAlert className="w-6 h-6 text-destructive" />
+                    </div>
+                    <div>
+                      <h3
+                        className="text-2xl md:text-3xl font-bold tracking-tight"
+                        style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+                      >
+                        Blindagem Contra Golpes
+                      </h3>
+                      <p className="text-muted-foreground text-xs mt-1">A blockchain nunca foi hackeada. Sua segurança depende de você.</p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                    {defenseItems.map((item, i) => {
+                      const Icon = item.icon;
+                      return (
+                        <motion.div
+                          key={i}
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={defenseInView ? { opacity: 1, y: 0 } : {}}
+                          transition={{ duration: 0.5, delay: 0.3 + i * 0.15, ease: APPLE_EASE }}
+                          className="bg-white/[0.03] border border-white/[0.06] rounded-xl p-6 hover:border-destructive/30 transition-colors duration-500"
+                        >
+                          <Icon className="w-5 h-5 text-destructive mb-4" />
+                          <h4 className="text-sm font-bold mb-2">{item.title}</h4>
+                          <p className="text-xs text-muted-foreground leading-relaxed">{item.desc}</p>
+                        </motion.div>
+                      );
+                    })}
+                  </div>
+
+                  <Link
+                    to="/blindagem-golpes"
+                    className="inline-flex items-center gap-2 text-destructive text-sm font-medium mt-8 hover:gap-3 transition-all duration-500"
+                  >
+                    Acessar Protocolo Completo
+                    <ArrowRight size={16} />
+                  </Link>
                 </div>
               </div>
-            </div>
-          </Link>
-        </section>
+            </motion.div>
+          </section>
 
-        {/* OS QUATRO PILARES REABASTECIDOS */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
-          
-          <Link to="/autocustodia" className="bg-[#0B0F19] border border-white/5 p-10 hover:border-red-600/50 transition-all group glow-red">
-            <Lock className="text-red-600 mb-8" size={32} />
-            <h3 className="text-xl font-black uppercase tracking-tighter mb-4 italic">Arquitetura de Autocustódia</h3>
-            <p className="text-slate-500 text-[10px] font-black leading-relaxed uppercase tracking-widest mb-4">A posse real das chaves.</p>
-            <p className="text-slate-400 text-xs font-bold leading-relaxed uppercase">Use chaves privadas para provar propriedade e assinar transações sem intermediários.</p>
-          </Link>
+          {/* ═══════════════════════════════════════════
+              CAPÍTULO 4 — PROJETO AUTÔNOMO
+          ═══════════════════════════════════════════ */}
+          <section ref={autonomoRef} className="pb-12">
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={autonomoInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, ease: APPLE_EASE }}
+            >
+              <Link to="/projeto-autonomo" className="group block">
+                <div className="relative overflow-hidden rounded-2xl border border-amber-500/20 bg-white/[0.02] backdrop-blur-sm p-10 md:p-16 transition-all duration-700 hover:border-amber-500/50 hover:bg-white/[0.04]">
+                  {/* Background icon */}
+                  <ShieldCheck
+                    size={260}
+                    className="absolute -top-6 -right-6 text-amber-500/[0.04] group-hover:text-amber-500/[0.08] group-hover:scale-110 transition-all duration-1000"
+                  />
 
-          <Link to="/economia-paralela" className="bg-[#0B0F19] border border-white/5 p-10 hover:border-red-600/50 transition-all group glow-red">
-            <Globe className="text-red-600 mb-8" size={32} />
-            <h3 className="text-xl font-black uppercase tracking-tighter mb-4 italic">Economia Paralela</h3>
-            <p className="text-slate-500 text-[10px] font-black leading-relaxed uppercase tracking-widest mb-4">Privacidade e P2P.</p>
-            <p className="text-slate-400 text-xs font-bold leading-relaxed uppercase">O Bitcoin é pseudônimo, não anônimo. Proteja seu rastro através de transações diretas.</p>
-          </Link>
+                  {/* Shimmer */}
+                  <div className="absolute inset-0 overflow-hidden rounded-2xl pointer-events-none">
+                    <div className="absolute top-0 -left-full w-full h-px bg-gradient-to-r from-transparent via-amber-400/40 to-transparent group-hover:left-full transition-all duration-[1.5s] ease-in-out" />
+                  </div>
 
-          <Link to="/infraestrutura" className="bg-[#0B0F19] border border-white/5 p-10 hover:border-red-600/50 transition-all group glow-red">
-            <Cpu className="text-red-600 mb-8" size={32} />
-            <h3 className="text-xl font-black uppercase tracking-tighter mb-4 italic">Rede de Validação</h3>
-            <p className="text-slate-500 text-[10px] font-black leading-relaxed uppercase tracking-widest mb-4">Rodando seu próprio nó.</p>
-            <p className="text-slate-400 text-xs font-bold leading-relaxed uppercase">Seja o auditor da rede. Verifique cada transação e garanta o limite de 21 milhões.</p>
-          </Link>
+                  <div className="relative z-10">
+                    <span className="inline-block font-mono text-[10px] tracking-[0.4em] text-amber-400/80 bg-amber-500/10 border border-amber-500/20 px-3 py-1.5 rounded-md mb-6">
+                      MÓDULO DE RESILIÊNCIA
+                    </span>
 
-          <Link to="/lightning" className="bg-[#0B0F19] border border-white/5 p-10 hover:border-red-600/50 transition-all group glow-red">
-            <Zap className="text-red-600 mb-8" size={32} />
-            <h3 className="text-xl font-black uppercase tracking-tighter mb-4 italic">Lightning no Bolso</h3>
-            <p className="text-slate-500 text-[10px] font-black leading-relaxed uppercase tracking-widest mb-4">Microtransações em Sats.</p>
-            <p className="text-slate-400 text-xs font-bold leading-relaxed uppercase">Transfira frações de centavo instantaneamente. O Satoshi é a unidade do futuro soberano.</p>
-          </Link>
+                    <h3
+                      className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4 leading-[0.95]"
+                      style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+                    >
+                      Projeto{' '}
+                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-400">
+                        Autônomo
+                      </span>
+                    </h3>
 
-        </div>
+                    <p className="text-muted-foreground text-sm md:text-base max-w-2xl leading-relaxed mb-4">
+                      Base 72 · Autonomia Biológica · Soberania Alimentar — Preparação real para quando o sistema falhar.
+                    </p>
 
-        {/* NOVO: MÓDULO DE DEFESA CONTRA PREDADORES */}
-        <div className="bg-red-950/10 border-2 border-red-600 p-10 md:p-16 relative overflow-hidden group">
-          <AlertTriangle className="absolute top-0 right-0 text-red-600/5 -mr-12 -mt-12 group-hover:scale-110 transition-transform" size={300} />
-          <div className="relative z-10">
-            <h3 className="text-3xl font-black uppercase tracking-tighter mb-8 italic flex items-center gap-4">
-              <ShieldAlert size={32} className="text-red-600" /> BLINDAGEM CONTRA GOLPES
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-              <div className="space-y-6">
-                <p className="text-sm font-black uppercase tracking-widest leading-relaxed">
-                  <span className="text-red-600 underline">Engenharia Social:</span> Hackers não quebram o SHA-256, eles quebram sua confiança usando medo e urgência.
-                </p>
-                <p className="text-sm font-black uppercase tracking-widest leading-relaxed">
-                  <span className="text-red-600 underline">A Regra de Ouro:</span> Ninguém legítimo jamais pedirá suas 12/24 palavras (Seed Phrase). Se pedirem, é roubo.
-                </p>
-              </div>
-              <div className="bg-black/50 p-8 border border-red-600/30 font-bold text-xs uppercase tracking-[0.2em] leading-loose">
-                A blockchain nunca foi hackeada. A segurança individual depende da sua higiene digital: use Cold Storage, autenticação 2FA por app e nunca clique em links suspeitos.
-              </div>
-            </div>
-          </div>
-        </div>
+                    <motion.div
+                      whileHover={{ x: 6 }}
+                      className="inline-flex items-center gap-3 bg-amber-500/90 hover:bg-amber-500 text-black px-8 py-4 rounded-xl font-semibold text-sm tracking-wide transition-colors duration-500"
+                    >
+                      ACESSAR PROTOCOLO
+                      <ArrowRight size={18} />
+                    </motion.div>
+                  </div>
+                </div>
+              </Link>
+            </motion.div>
+          </section>
 
-        {/* PROJETO AUTÔNOMO - MÓDULO DE RESILIÊNCIA */}
-        <Link to="/projeto-autonomo" className="block mt-16 group">
-          <div className="bg-gradient-to-r from-orange-950/30 to-amber-950/20 border-2 border-orange-600/40 p-12 md:p-16 relative overflow-hidden hover:border-orange-500 transition-all duration-500">
-            <ShieldCheck className="absolute top-0 right-0 text-orange-600/5 -mr-8 -mt-8 group-hover:scale-110 transition-transform" size={250} />
-            <div className="relative z-10">
-              <p className="text-orange-500 text-[10px] font-black uppercase tracking-[0.4em] mb-4">Módulo de Resiliência</p>
-              <h3 className="text-4xl md:text-6xl font-black tracking-tighter uppercase italic mb-6 leading-none">PROJETO <span className="text-orange-500">AUTÔNOMO</span></h3>
-              <p className="text-slate-400 text-sm font-bold uppercase tracking-wider leading-relaxed max-w-2xl mb-8">
-                Base 72 · Autonomia Biológica · Soberania Alimentar — Preparação real para quando o sistema falhar.
-              </p>
-              <div className="inline-flex items-center gap-4 bg-orange-600 text-black px-10 py-5 font-black text-xs uppercase tracking-[0.3em] group-hover:bg-white transition-all">
-                ACESSAR PROTOCOLO <ArrowRight size={20} />
-              </div>
-            </div>
-          </div>
-        </Link>
-
-        {/* RODAPÉ DE BLINDAGEM (MANTIDO) */}
-        <div className="mt-32 pt-16 border-t border-white/5 text-right">
-            <p className="text-white font-black uppercase text-xl tracking-tighter italic opacity-40">Not your keys, not your money.</p>
+          {/* Bottom signature */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.5 }}
+            className="mt-16 pt-10 border-t border-border/30 text-center"
+          >
+            <p
+              className="text-muted-foreground/30 font-bold uppercase tracking-[0.2em] text-xs italic"
+              style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+            >
+              Not your keys, not your money.
+            </p>
+          </motion.div>
         </div>
       </div>
+
+      <NetworkTicker />
     </div>
   );
 }
