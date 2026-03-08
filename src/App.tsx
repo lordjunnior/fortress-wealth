@@ -80,6 +80,7 @@ import AberturaRemota from "./pages/AberturaRemota";
 import IndiceSoberaniaFinanceira from "./pages/IndiceSoberaniaFinanceira";
 import KycNotMe from "./pages/KycNotMe";
 import BricsPay from "./pages/BricsPay";
+import DepixReporte from "./pages/DepixReporte";
 import CpContextoHistorico from "./pages/cp/ContextoHistorico";
 import CpBaseFisiologica from "./pages/cp/BaseFisiologica";
 import CpSegurancaLimites from "./pages/cp/SegurancaLimites";
@@ -126,6 +127,7 @@ const App = () => (
           <Route path="/alertas" element={<AlertasHub />} />
           <Route path="/alertas/cbdc-brasil" element={<CbdcBrasil />} />
           <Route path="/alertas/fim-do-dinheiro-vivo" element={<ProibicaoDinheiro />} />
+          <Route path="/alertas/depix-reporte-2026" element={<DepixReporte />} />
           <Route path="/historia-do-dinheiro" element={<HistoriaDoDinheiro />} />
           <Route path="/inflacao-imposto-oculto" element={<InflacaoImpostoOculto />} />
           <Route path="/bitcoin-vs-fiat" element={<BitcoinVsFiat />} />
