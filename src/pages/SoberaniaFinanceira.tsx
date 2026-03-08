@@ -138,7 +138,7 @@ const CategoryCard = ({ cat, idx }: { cat: typeof CATEGORIES[0]; idx: number }) 
   const inView = useInView(ref, { once: true, margin: '-60px' });
   const colors = colorMap[cat.color];
   const Icon = cat.icon;
-  const hasReviews = cat.items.some(i => i.status === 'review' && i.link);
+  const hasReviews = cat.items.some(i => (i.status === 'review' || i.status === 'disponível') && i.link);
 
   return (
     <motion.div
