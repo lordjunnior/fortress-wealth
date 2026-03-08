@@ -100,9 +100,11 @@ const ExchangesSemKyc = () => {
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
   const heroY = useTransform(scrollYProgress, [0, 1], [0, -80]);
   const heroScale = useTransform(scrollYProgress, [0, 1], [1, 1.08]);
+  const [leadOpen, setLeadOpen] = useState(false);
 
   return (
     <>
+      <LeadCaptureModal isOpen={leadOpen} onClose={() => setLeadOpen(false)} interesse="exchanges-sem-kyc" />
       <Helmet>
         <title>Plataformas sem KYC — Exchanges e Serviços Privados</title>
         <meta name="description" content="Descubra plataformas sem verificação KYC: exchanges privadas, swaps e ferramentas para maior privacidade financeira." />
