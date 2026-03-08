@@ -192,8 +192,7 @@ export default function OptimaExchange() {
                 </div>
 
                 <h1 className="text-4xl md:text-6xl lg:text-7xl font-black uppercase leading-[0.9] tracking-tight mb-6" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                  <span className="text-white">Exchange sem KYC</span><br />
-                  <span className="text-white">que entrega </span>
+                  <span className="text-white">Cripto por</span><br />
                   <span className="text-emerald-400">dinheiro vivo</span><br />
                   <span className="text-white">na sua </span>
                   <span className="text-emerald-400">porta</span>
