@@ -73,7 +73,7 @@ const CATEGORIES = [
       { name: 'Plataformas sem verificação', status: 'em breve', link: null },
     ],
     privacyLevel: 'Muito Alto',
-    reviewCount: 1,
+    reviewCount: 2,
   },
   {
     id: 'sistemas-alternativos',
