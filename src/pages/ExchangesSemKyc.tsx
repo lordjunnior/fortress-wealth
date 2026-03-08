@@ -9,6 +9,7 @@ import {
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import ScrollToTop from '@/components/ScrollToTop';
 import LeadCaptureModal from '@/components/LeadCaptureModal';
+import { useState } from 'react';
 import heroImg from '@/assets/exchanges-nokyc-hero.jpg';
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
