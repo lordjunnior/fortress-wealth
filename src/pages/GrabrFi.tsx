@@ -362,14 +362,14 @@ const GrabrFi = () => {
               >
                 <ExternalLink size={14} /> Acessar GrabrFi
               </a>
-              <LeadCaptureModal
-                trigger={
-                  <button className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-amber-500/20 border border-amber-500/30 text-amber-400 text-sm font-bold hover:bg-amber-500/30 transition-all">
-                    <Zap size={14} /> Quero minha cédula paraguaia
-                  </button>
-                }
-              />
+              <button
+                onClick={() => setLeadOpen(true)}
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-amber-500/20 border border-amber-500/30 text-amber-400 text-sm font-bold hover:bg-amber-500/30 transition-all"
+              >
+                <Zap size={14} /> Quero minha cédula paraguaia
+              </button>
             </div>
+            <LeadCaptureModal isOpen={leadOpen} onClose={() => setLeadOpen(false)} interesse="cedula-paraguaia" />
           </motion.div>
         </motion.div>
       </ScrollSection>
