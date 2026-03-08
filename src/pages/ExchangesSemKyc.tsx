@@ -35,6 +35,12 @@ const ACTIVE_REVIEWS = [
     type: 'P2P / Telegram',
     link: '/soberania-financeira/exchanges-sem-kyc/optima-exchange',
   },
+  {
+    name: 'PegasusSwap',
+    desc: 'Swap instantâneo de 1.000+ criptos sem registro, sem documento, sem KYC oculto.',
+    type: 'Swap Instantâneo',
+    link: '/soberania-financeira/exchanges-sem-kyc/pegasus-swap',
+  },
 ];
 
 /* ── Upcoming Platforms ── */
