@@ -134,11 +134,27 @@ const ToolsSection = () => {
                   variants={fadeUp}
                   initial="hidden"
                   animate={isInView ? "visible" : "hidden"}
-                  className="group p-4 rounded-sm border border-border/40 bg-card/20 backdrop-blur-sm hover:bg-card/40 hover:border-primary/20 transition-all duration-500"
+                  whileHover={{ scale: 1.04, y: -4 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  className="group relative p-5 rounded-sm border border-border/40 bg-card/20 backdrop-blur-sm overflow-hidden cursor-default
+                    hover:border-primary/40 hover:bg-card/40 transition-colors duration-500"
                 >
-                  <Icon className="w-5 h-5 text-primary mb-3" />
-                  <h3 className="text-sm font-semibold text-foreground mb-1">{item.label}</h3>
+                  {/* Ambient shimmer */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
+                    <div className="absolute -inset-1 bg-gradient-to-br from-primary/[0.08] via-transparent to-primary/[0.04]" />
+                  </div>
+
+                  {/* Icon with breathing glow */}
+                  <div className="relative w-9 h-9 mb-3 flex items-center justify-center">
+                    <div className="absolute inset-0 rounded-full bg-primary/10 animate-[pulse_3s_ease-in-out_infinite] group-hover:bg-primary/20" />
+                    <Icon className="relative w-5 h-5 text-primary transition-transform duration-300 group-hover:scale-110" />
+                  </div>
+
+                  <h3 className="text-sm font-semibold text-foreground mb-1 transition-colors duration-300 group-hover:text-primary">{item.label}</h3>
                   <p className="text-xs text-muted-foreground leading-relaxed">{item.desc}</p>
+
+                  {/* Bottom accent line */}
+                  <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-primary/40 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
                 </motion.div>
               );
             })}
