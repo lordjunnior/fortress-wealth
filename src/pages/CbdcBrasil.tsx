@@ -619,7 +619,7 @@ export default function CbdcBrasil() {
                   { to: '/alertas/fim-do-dinheiro-vivo', titulo: 'Fim do Dinheiro Vivo', desc: 'PL 3.951 e limites ao espécie' },
                   { to: '/economia-paralela', titulo: 'Economia Paralela', desc: 'Operar fora do sistema' },
                   { to: '/lightning', titulo: 'Lightning Network', desc: 'Pagamentos soberanos' },
-                  { to: '/entenda-bitcoin', titulo: 'Entenda o Bitcoin', desc: 'Do zero à soberania' },
+                  { to: '/o-que-e-bitcoin', titulo: 'O Que é o Bitcoin', desc: 'Do zero à soberania' },
                   { to: '/blindagem-golpes', titulo: 'Blindagem Anti-Golpes', desc: 'Proteger o elo fraco' },
                   { to: '/alertas', titulo: 'Central de Alertas', desc: 'Todos os alertas ativos' },
                 ].map((link, i) => (

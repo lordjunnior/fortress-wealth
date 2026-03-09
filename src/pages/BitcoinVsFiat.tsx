@@ -235,7 +235,7 @@ export default function BitcoinVsFiat() {
                 <p className="font-medium text-base">Você pode continuar aceitando que seu dinheiro perde valor todos os dias, que governos controlam cada transação, que bancos podem congelar sua conta a qualquer momento.</p>
                 <p className="font-medium text-base">Ou você pode escolher <strong className="text-orange-500">soberania</strong>. Escolher um dinheiro que ninguém pode imprimir, confiscar ou censurar. A tecnologia já existe. A escolha é sua.</p>
               </div>
-              <Link to="/entenda-bitcoin" className="cta-gold flex items-center justify-center gap-3 px-10 py-5 rounded-sm font-black uppercase text-sm tracking-[0.2em] text-center mb-8 w-full md:w-auto md:inline-flex">₿ Entender o Bitcoin</Link>
+              <Link to="/o-que-e-bitcoin" className="cta-gold flex items-center justify-center gap-3 px-10 py-5 rounded-sm font-black uppercase text-sm tracking-[0.2em] text-center mb-8 w-full md:w-auto md:inline-flex">₿ O Que é o Bitcoin</Link>
               <p className="text-slate-600 text-[9px] font-black uppercase tracking-[0.3em] font-mono mb-4">Continue Aprendendo</p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                 {[

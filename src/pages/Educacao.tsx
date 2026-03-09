@@ -316,7 +316,7 @@ export default function Educacao() {
           </motion.div>
 
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={scaleIn} custom={0}>
-            <Link to="/entenda-bitcoin" className="group block">
+            <Link to="/o-que-e-bitcoin" className="group block">
               <div
                 className="relative overflow-hidden rounded-2xl border border-white/[0.06] p-10 md:p-16 transition-all duration-700 hover:border-yellow-500/30 hover:-translate-y-1"
                 style={{ background: 'linear-gradient(135deg, rgba(212,175,55,0.06), transparent 60%)' }}

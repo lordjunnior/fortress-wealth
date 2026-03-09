@@ -31,7 +31,7 @@ const TRILHA = [
     desc: 'O Bitcoin não é uma moda. É a resposta tecnológica ao problema monetário mais antigo da civilização. Entenda por que ele é diferente de tudo que veio antes.',
     itens: [
       { to: '/bitcoin-vs-fiat', titulo: 'Bitcoin vs Dinheiro Fiat', desc: 'Comparação direta em 14 fatores: escassez, controle, inflação, privacidade, censura e mais.', icon: Zap, tag: 'COMPARAÇÃO' },
-      { to: '/entenda-bitcoin', titulo: 'Entenda o Bitcoin', desc: 'Do zero à compreensão completa. O que é, como funciona e por que importa.', icon: BookOpen, tag: 'FUNDAMENTO' },
+      { to: '/o-que-e-bitcoin', titulo: 'O Que é o Bitcoin', desc: 'Do zero à compreensão completa. O que é, como funciona e por que importa.', icon: BookOpen, tag: 'FUNDAMENTO' },
     ],
   },
   {

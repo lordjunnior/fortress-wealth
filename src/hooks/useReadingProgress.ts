@@ -5,7 +5,7 @@ const STORAGE_KEY = "bp_reading_progress";
 
 const TRACKED_PAGES = [
   "/economia", "/economia-paralela", "/bitcoin-vs-imovel", "/taxa-de-fuga",
-  "/bitcoin", "/entenda-bitcoin", "/autocustodia", "/o-que-e-bitcoin",
+  "/bitcoin", "/autocustodia", "/o-que-e-bitcoin",
   "/nocoes-bitcoin", "/chaves", "/transacoes", "/mineracao", "/lightning",
   "/supply-shock", "/halving-bitcoin", "/volatilidade", "/lastro",
   "/futuro-bitcoin", "/21-milhoes", "/bitcoin-seguro", "/blindagem-golpes",

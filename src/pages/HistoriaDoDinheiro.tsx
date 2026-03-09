@@ -277,7 +277,7 @@ export default function HistoriaDoDinheiro() {
               {[
                 { to: '/inflacao-imposto-oculto', titulo: 'Inflação: O Imposto Oculto', desc: 'Como a inflação funciona e rouba seu poder de compra', tag: 'EDUCAÇÃO' },
                 { to: '/alertas/fim-do-dinheiro-vivo', titulo: 'Fim do Dinheiro Vivo', desc: 'PL 3.951 e os limites ao dinheiro em espécie', tag: 'ALERTA' },
-                { to: '/entenda-bitcoin', titulo: 'Entenda o Bitcoin', desc: 'Do zero à soberania financeira completa', tag: 'FUNDAMENTO' },
+                { to: '/o-que-e-bitcoin', titulo: 'O Que é o Bitcoin', desc: 'Do zero à soberania financeira completa', tag: 'FUNDAMENTO' },
               ].map((link, i) => (
                 <Link key={i} to={link.to} className="bg-[#0a0a0a] border border-white/5 rounded-sm p-6 hover:border-amber-500/20 hover:bg-amber-500/[0.02] transition-all group">
                   <span className="text-[8px] font-black uppercase tracking-[0.3em] text-slate-600 font-mono">{link.tag}</span>
