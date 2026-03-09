@@ -20,6 +20,7 @@ const menuItems: MenuItem[] = [
   { icon: QrCode, label: "PIX Crypto", route: "/pix-cripto" },
   { icon: Shield, label: "Projeto Autônomo", route: "/projeto-autonomo" },
   { icon: Globe, label: "Soberania Financeira", route: "/soberania-financeira" },
+  { icon: BookOpen, label: "Criptonário", route: "/dicionario-cripto" },
 ];
 
 const socialLinks = [
