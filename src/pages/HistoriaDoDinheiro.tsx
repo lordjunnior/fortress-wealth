@@ -221,7 +221,7 @@ export default function HistoriaDoDinheiro() {
                   <p className="font-medium text-base">O Bitcoin foi projetado como o <strong className="text-white">oposto exato do dinheiro estatal</strong>: oferta fixa (21 milhões), descentralizado (sem banco central), resistente à censura (ninguém pode bloqueá-lo), transparente (blockchain pública) e permissionless (não precisa de aprovação para usar).</p>
                   <p className="font-medium text-base">Pela primeira vez em 5.000 anos, a humanidade tem acesso a uma forma de dinheiro que <strong className="text-white">não pode ser corrompida por governos</strong>. Não pode ser impressa. Não pode ser confiscada com autocustódia. Não pode ser censurada. O Bitcoin é a resposta tecnológica ao problema monetário mais antigo da civilização.</p>
                 </div>
-                <div className="mt-8"><Link to="/entenda-bitcoin" className="cta-gold inline-flex items-center justify-center gap-3 px-8 py-4 rounded-sm font-black uppercase text-xs tracking-[0.2em]">₿ Entenda o Bitcoin</Link></div>
+                <div className="mt-8"><Link to="/o-que-e-bitcoin" className="cta-gold inline-flex items-center justify-center gap-3 px-8 py-4 rounded-sm font-black uppercase text-xs tracking-[0.2em]">₿ O Que é o Bitcoin</Link></div>
               </div>
             </div>
           </section>
