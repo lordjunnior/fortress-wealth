@@ -1,18 +1,19 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { 
-  ArrowLeft, Play, Pause, Clock, 
-  Headphones, Lock, Volume2, FastForward, Rewind, BarChart2
+  ArrowLeft, Play, Pause, Headphones, Lock, Volume2, 
+  FastForward, Rewind, Radio
 } from 'lucide-react';
+
 import coverPaiRico from '@/assets/cover-pai-rico.jpg';
 import coverPadraoBitcoin from '@/assets/cover-padrao-bitcoin.jpg';
 import coverEticaLiberdade from '@/assets/cover-etica-liberdade.jpg';
 import coverAnatomiaEstado from '@/assets/cover-anatomia-estado.jpg';
 import coverRiquezaNacoes from '@/assets/cover-riqueza-nacoes.jpg';
 
-interface AudiobooksProps {
-  onPlay?: (track: any) => void;
-}
+const APPLE_EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
 const AUDIOBOOKS_DB = [
   {
@@ -21,8 +22,6 @@ const AUDIOBOOKS_DB = [
     author: 'Robert T. Kiyosaki',
     duration: '16:31:00',
     category: 'Educação Financeira',
-    coverGradient: 'bg-gradient-to-br from-emerald-900 via-emerald-600 to-black',
-    accent: 'text-emerald-500',
     coverImage: coverPaiRico,
     audioUrl: 'https://oytebhfcdnhpelaycvjd.supabase.co/storage/v1/object/public/audiobooks/pai-rico-pai-pobre.mp3'
   },
@@ -32,8 +31,6 @@ const AUDIOBOOKS_DB = [
     author: 'Saifedean Ammous',
     duration: '10:45:00',
     category: 'Soberania Monetária',
-    coverGradient: 'bg-gradient-to-br from-orange-900 via-orange-600 to-black',
-    accent: 'text-orange-500',
     coverImage: coverPadraoBitcoin
   },
   {
@@ -42,8 +39,6 @@ const AUDIOBOOKS_DB = [
     author: 'Murray N. Rothbard',
     duration: '14:20:00',
     category: 'Fundamentos',
-    coverGradient: 'bg-gradient-to-br from-blue-900 via-blue-600 to-black',
-    accent: 'text-blue-500',
     coverImage: coverEticaLiberdade
   },
   {
@@ -52,8 +47,6 @@ const AUDIOBOOKS_DB = [
     author: 'Murray N. Rothbard',
     duration: '02:15:00',
     category: 'Fundamentos',
-    coverGradient: 'bg-gradient-to-br from-red-900 via-red-600 to-black',
-    accent: 'text-red-500',
     coverImage: coverAnatomiaEstado
   },
   {
@@ -62,20 +55,83 @@ const AUDIOBOOKS_DB = [
     author: 'Adam Smith',
     duration: '18:45:00',
     category: 'Economia Clássica',
-    coverGradient: 'bg-gradient-to-br from-amber-900 via-amber-700 to-black',
-    accent: 'text-amber-500',
     coverImage: coverRiquezaNacoes
   }
 ];
 
+// Visual Equalizer Animation
 const VisualEqualizer = ({ active }: { active: boolean }) => (
-  <div className="flex items-end gap-1 h-4">
-    <div className={`w-1 bg-gold-500 rounded-t-sm ${active ? 'animate-[bounce_1s_infinite]' : 'h-1'}`} style={{ animationDelay: '0ms' }}></div>
-    <div className={`w-1 bg-gold-500 rounded-t-sm ${active ? 'animate-[bounce_1.2s_infinite]' : 'h-2'}`} style={{ animationDelay: '150ms' }}></div>
-    <div className={`w-1 bg-gold-500 rounded-t-sm ${active ? 'animate-[bounce_0.8s_infinite]' : 'h-1'}`} style={{ animationDelay: '300ms' }}></div>
-    <div className={`w-1 bg-gold-500 rounded-t-sm ${active ? 'animate-[bounce_1.1s_infinite]' : 'h-3'}`} style={{ animationDelay: '450ms' }}></div>
+  <div className="flex items-end gap-0.5 h-4">
+    {[0, 150, 300, 450].map((delay, i) => (
+      <motion.div
+        key={i}
+        className="w-1 bg-destructive rounded-t-sm"
+        animate={active ? { height: [4, 16, 8, 12, 4] } : { height: 4 }}
+        transition={{ duration: 0.8, repeat: active ? Infinity : 0, delay: delay / 1000 }}
+      />
+    ))}
   </div>
 );
+
+// Film Grain Overlay
+const FilmGrain = () => (
+  <div className="pointer-events-none fixed inset-0 z-50 opacity-[0.035]">
+    <svg className="w-full h-full">
+      <filter id="grain-audio">
+        <feTurbulence baseFrequency="0.9" numOctaves="4" stitchTiles="stitch" />
+        <feColorMatrix type="saturate" values="0" />
+      </filter>
+      <rect width="100%" height="100%" filter="url(#grain-audio)" />
+    </svg>
+  </div>
+);
+
+// Sound Wave Particles
+const SoundWaveParticles = () => (
+  <>
+    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-40">
+      <div className="sound-particle-layer" />
+      <div className="sound-particle-layer sound-layer-2" />
+    </div>
+    <style>{`
+      @keyframes soundDrift {
+        0% { transform: translateY(0) translateX(0); opacity: 0.3; }
+        50% { transform: translateY(-600px) translateX(80px); opacity: 0.6; }
+        100% { transform: translateY(-1200px) translateX(160px); opacity: 0.2; }
+      }
+      .sound-particle-layer {
+        position: absolute; width: 100%; height: 200%;
+        background-image:
+          radial-gradient(2px 2px at 15% 20%, hsl(var(--destructive) / 0.4) 100%, transparent),
+          radial-gradient(1.5px 1.5px at 35% 50%, hsl(var(--destructive) / 0.3) 100%, transparent),
+          radial-gradient(1px 1px at 55% 70%, hsl(var(--foreground) / 0.2) 100%, transparent),
+          radial-gradient(2px 2px at 75% 30%, hsl(var(--destructive) / 0.35) 100%, transparent),
+          radial-gradient(1px 1px at 90% 80%, hsl(var(--foreground) / 0.15) 100%, transparent);
+        background-size: 250px 250px;
+        animation: soundDrift 70s linear infinite;
+      }
+      .sound-layer-2 {
+        background-size: 320px 320px;
+        animation: soundDrift 100s linear infinite reverse;
+        opacity: 0.5;
+      }
+    `}</style>
+  </>
+);
+
+// Light Beams
+const LightBeams = () => (
+  <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+    <div 
+      className="absolute -top-1/2 -left-1/4 w-full h-[200%] opacity-[0.025]"
+      style={{ background: 'linear-gradient(115deg, transparent 40%, hsl(var(--destructive)) 50%, transparent 60%)' }}
+    />
+  </div>
+);
+
+interface AudiobooksProps {
+  onPlay?: (track: any) => void;
+}
 
 const Audiobooks: React.FC<AudiobooksProps> = ({ onPlay }) => {
   const [activeTrack, setActiveTrack] = useState(AUDIOBOOKS_DB[0]);
@@ -83,6 +139,15 @@ const Audiobooks: React.FC<AudiobooksProps> = ({ onPlay }) => {
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const audioRef = useRef<HTMLAudioElement>(null);
+  const heroRef = useRef<HTMLDivElement>(null);
+
+  const { scrollY } = useScroll();
+  const heroY = useTransform(scrollY, [0, 500], [0, 150]);
+  const heroOpacity = useTransform(scrollY, [0, 400], [1, 0.3]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -111,19 +176,14 @@ const Audiobooks: React.FC<AudiobooksProps> = ({ onPlay }) => {
     } else {
       setIsPlaying(false);
     }
-    if (onPlay) {
-      onPlay({ id: book.id, title: book.title, author: book.author, url: book.audioUrl || '#' });
-    }
+    onPlay?.({ id: book.id, title: book.title, author: book.author, url: book.audioUrl || '#' });
   };
 
   const togglePlayState = () => {
     const audio = audioRef.current;
     if (!audio || !activeTrack.audioUrl) return;
-    if (isPlaying) {
-      audio.pause();
-    } else {
-      audio.play();
-    }
+    if (isPlaying) audio.pause();
+    else audio.play();
     setIsPlaying(!isPlaying);
   };
 
@@ -151,217 +211,254 @@ const Audiobooks: React.FC<AudiobooksProps> = ({ onPlay }) => {
   const progress = duration > 0 ? (currentTime / duration) * 100 : 0;
 
   return (
-    <div className="min-h-screen bg-[#070A12] font-sans selection:bg-gold-500 selection:text-black pb-24 relative overflow-hidden">
-      {/* Hidden audio element */}
-      <audio ref={audioRef} src={activeTrack.audioUrl || ''} preload="metadata" />
-       {/* Sound Wave Particles Background */}
-       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-50">
-         <div className="sound-wave-layer"></div>
-         <div className="sound-wave-layer sound-wave-layer-2"></div>
-         <div className="sound-wave-layer sound-wave-layer-3"></div>
-       </div>
+    <>
+      <Helmet>
+        <title>Audioteca Soberana | Audiobooks para Mentes Livres</title>
+        <meta name="description" content="Acervo de audiobooks sobre Bitcoin, economia austríaca e filosofia da liberdade. Conhecimento enquanto você vive." />
+      </Helmet>
 
-       {/* Horizontal Frequency Lines */}
-       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-         <div className="freq-line freq-line-1"></div>
-         <div className="freq-line freq-line-2"></div>
-         <div className="freq-line freq-line-3"></div>
-         <div className="freq-line freq-line-4"></div>
-         <div className="freq-line freq-line-5"></div>
-       </div>
+      <div className="min-h-screen bg-[#050808] font-sans selection:bg-destructive selection:text-destructive-foreground relative overflow-hidden">
+        <FilmGrain />
+        <SoundWaveParticles />
+        <LightBeams />
+        <audio ref={audioRef} src={activeTrack.audioUrl || ''} preload="metadata" />
 
-       <style>{`
-         @keyframes driftSound {
-           0% { transform: translateY(0) translateX(0) scale(1); }
-           50% { transform: translateY(-500px) translateX(60px) scale(1.05); }
-           100% { transform: translateY(-1000px) translateX(120px) scale(1); }
-         }
-         @keyframes pulseLine {
-           0%, 100% { opacity: 0.03; transform: scaleY(1); }
-           50% { opacity: 0.08; transform: scaleY(1.5); }
-         }
-         .sound-wave-layer {
-           position: absolute; width: 100%; height: 200%;
-           background-image:
-             radial-gradient(2px 2px at 10% 15%, rgba(234,179,8,0.35) 100%, transparent),
-             radial-gradient(1.5px 1.5px at 25% 40%, rgba(234,179,8,0.25) 100%, transparent),
-             radial-gradient(1px 1px at 45% 65%, rgba(255,255,255,0.2) 100%, transparent),
-             radial-gradient(2px 2px at 65% 25%, rgba(234,179,8,0.3) 100%, transparent),
-             radial-gradient(1px 1px at 85% 75%, rgba(255,255,255,0.15) 100%, transparent),
-             radial-gradient(1.5px 1.5px at 50% 50%, rgba(234,179,8,0.2) 100%, transparent);
-           background-size: 200px 200px;
-           animation: driftSound 60s linear infinite;
-         }
-         .sound-wave-layer-2 {
-           background-size: 280px 280px;
-           animation: driftSound 85s linear infinite reverse;
-           opacity: 0.6;
-         }
-         .sound-wave-layer-3 {
-           background-size: 350px 350px;
-           animation: driftSound 110s linear infinite;
-           opacity: 0.3;
-         }
-         .freq-line {
-           position: absolute;
-           left: 0; right: 0;
-           height: 1px;
-           background: linear-gradient(90deg, transparent 0%, rgba(234,179,8,0.15) 30%, rgba(234,179,8,0.25) 50%, rgba(234,179,8,0.15) 70%, transparent 100%);
-           animation: pulseLine 4s ease-in-out infinite;
-         }
-         .freq-line-1 { top: 18%; animation-delay: 0s; }
-         .freq-line-2 { top: 35%; animation-delay: 0.8s; }
-         .freq-line-3 { top: 52%; animation-delay: 1.6s; }
-         .freq-line-4 { top: 70%; animation-delay: 2.4s; }
-         .freq-line-5 { top: 87%; animation-delay: 3.2s; }
-       `}</style>
-       
-       <div className="pt-28 px-4 max-w-6xl mx-auto mb-8">
-         <Link to="/" className="text-slate-500 hover:text-white flex items-center gap-2 text-xs uppercase tracking-widest transition-colors w-fit group">
-           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" /> Retornar ao Comando
-         </Link>
-       </div>
+        {/* Cinematic Hero */}
+        <motion.section 
+          ref={heroRef}
+          className="relative h-[70vh] min-h-[500px] flex items-end overflow-hidden"
+          style={{ y: heroY, opacity: heroOpacity }}
+        >
+          <div className="absolute inset-0">
+            <img 
+              src="/heroes/audioteca-soberana.webp" 
+              alt="Audioteca Soberana"
+              className="w-full h-full object-cover brightness-[0.4] saturate-[0.85] scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#050808] via-[#050808]/60 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#050808]/80 via-transparent to-[#050808]/40" />
+          </div>
 
-       <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-12 gap-10">
-          
-          {/* LADO ESQUERDO: Player em Destaque */}
-          <div className="lg:col-span-5 flex flex-col gap-8">
-             <div className="sticky top-32">
-                <div className="text-white text-[10px] font-bold uppercase tracking-[0.2em] flex items-center gap-2 mb-6 opacity-60">
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 pb-16 w-full">
+            <Link 
+              to="/" 
+              className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground text-xs uppercase tracking-[0.2em] mb-8 transition-colors group"
+            >
+              <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+              Retornar ao Comando
+            </Link>
+
+            <motion.div
+              initial={{ opacity: 0, y: 40, filter: 'blur(10px)' }}
+              animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              transition={{ duration: 1, ease: APPLE_EASE }}
+            >
+              <div className="flex items-center gap-3 mb-4">
+                <Radio className="w-5 h-5 text-destructive" />
+                <span className="text-destructive font-black text-[10px] uppercase tracking-[0.3em]">
+                  Streaming Exclusivo
+                </span>
+              </div>
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-foreground tracking-tighter leading-[0.9] mb-4">
+                AUDIOTECA<br />
+                <span className="text-destructive italic font-light">SOBERANA</span>
+              </h1>
+              <p className="text-muted-foreground text-lg md:text-xl max-w-xl font-medium">
+                Conhecimento que entra pelos ouvidos enquanto você vive. Sem distrações. Sem algoritmos.
+              </p>
+            </motion.div>
+          </div>
+        </motion.section>
+
+        {/* Main Content */}
+        <section className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-16">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
+            
+            {/* Player Principal */}
+            <motion.div 
+              className="lg:col-span-5"
+              initial={{ opacity: 0, x: -40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.3, ease: APPLE_EASE }}
+            >
+              <div className="sticky top-32">
+                <div className="text-foreground text-[10px] font-bold uppercase tracking-[0.2em] flex items-center gap-2 mb-6 opacity-60">
                   <Headphones className="w-4 h-4" /> Em Destaque
                 </div>
                 
-                <div className="w-full aspect-square rounded-3xl mb-8 relative overflow-hidden shadow-2xl border border-white/5 group">
-                    <img src={activeTrack.coverImage} alt={activeTrack.title} className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-                   <button 
-                     onClick={togglePlayState}
-                     className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 bg-black/40 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center text-white hover:scale-110 hover:bg-gold-500 hover:text-black hover:border-gold-500 transition-all duration-300 shadow-[0_0_30px_rgba(0,0,0,0.5)] group-hover:shadow-[0_0_40px_rgba(234,179,8,0.3)]"
-                   >
-                     {isPlaying ? <Pause className="w-8 h-8" /> : <Play className="w-8 h-8 translate-x-1" />}
-                   </button>
-                </div>
+                {/* Album Art */}
+                <motion.div 
+                  className="w-full aspect-square rounded-2xl mb-8 relative overflow-hidden border border-border/30 group cursor-pointer"
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.4, ease: APPLE_EASE }}
+                  onClick={togglePlayState}
+                >
+                  <img 
+                    src={activeTrack.coverImage} 
+                    alt={activeTrack.title} 
+                    className="absolute inset-0 w-full h-full object-cover transition-all duration-700 group-hover:scale-105 group-hover:brightness-75" 
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                  <motion.button 
+                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 bg-black/50 backdrop-blur-md border border-border/50 rounded-full flex items-center justify-center text-foreground opacity-0 group-hover:opacity-100 transition-all duration-300"
+                    whileHover={{ scale: 1.1, backgroundColor: 'hsl(var(--destructive))' }}
+                  >
+                    {isPlaying ? <Pause className="w-8 h-8" /> : <Play className="w-8 h-8 translate-x-0.5" />}
+                  </motion.button>
+                </motion.div>
 
+                {/* Track Info */}
                 <div>
-                   <h1 className="text-4xl font-sans font-black text-white mb-2 leading-tight tracking-tight">
-                     {activeTrack.title}
-                   </h1>
-                   <p className="text-xl text-slate-400 font-light mb-6">
-                     {activeTrack.author}
-                   </p>
-                   
-                   {/* Progress bar */}
-                   <div className="mb-4">
-                     <div className="w-full h-1.5 bg-white/10 rounded-full cursor-pointer group/bar" onClick={seekAudio}>
-                       <div className="h-full bg-gold-500 rounded-full relative transition-all" style={{ width: `${progress}%` }}>
-                         <div className="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-3 bg-white rounded-full opacity-0 group-hover/bar:opacity-100 transition-opacity" />
-                       </div>
-                     </div>
-                     <div className="flex justify-between mt-1.5 text-[10px] font-mono text-slate-500">
-                       <span>{formatTime(currentTime)}</span>
-                       <span>{duration > 0 ? formatTime(duration) : activeTrack.duration}</span>
-                     </div>
-                   </div>
+                  <h2 className="text-3xl md:text-4xl font-black text-foreground mb-2 tracking-tight">
+                    {activeTrack.title}
+                  </h2>
+                  <p className="text-xl text-muted-foreground font-light mb-6">
+                    {activeTrack.author}
+                  </p>
+                  
+                  {/* Progress Bar */}
+                  <div className="mb-6">
+                    <div 
+                      className="w-full h-1.5 bg-border/30 rounded-full cursor-pointer group/bar overflow-hidden"
+                      onClick={seekAudio}
+                    >
+                      <motion.div 
+                        className="h-full bg-gradient-to-r from-destructive to-destructive/70 rounded-full relative"
+                        style={{ width: `${progress}%` }}
+                        layoutId="progress"
+                      />
+                    </div>
+                    <div className="flex justify-between mt-2 text-[10px] font-mono text-muted-foreground">
+                      <span>{formatTime(currentTime)}</span>
+                      <span>{duration > 0 ? formatTime(duration) : activeTrack.duration}</span>
+                    </div>
+                  </div>
 
-                   <div className="flex items-center justify-between p-4 bg-[#0B0F19] border border-white/5 rounded-2xl">
-                      <div className="flex items-center gap-4">
-                         <button onClick={() => skipTime(-30)} className="text-slate-500 hover:text-white transition-colors" title="-30s"><Rewind className="w-5 h-5" /></button>
-                         <button onClick={togglePlayState} className={`w-10 h-10 rounded-full flex items-center justify-center transition-colors ${activeTrack.audioUrl ? 'bg-white text-black hover:bg-gold-500' : 'bg-white/20 text-slate-500 cursor-not-allowed'}`}>
-                           {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 translate-x-0.5" />}
-                         </button>
-                         <button onClick={() => skipTime(30)} className="text-slate-500 hover:text-white transition-colors" title="+30s"><FastForward className="w-5 h-5" /></button>
+                  {/* Controls */}
+                  <div className="flex items-center justify-between p-4 bg-card/50 backdrop-blur-sm border border-border/30 rounded-xl">
+                    <div className="flex items-center gap-4">
+                      <button onClick={() => skipTime(-30)} className="text-muted-foreground hover:text-foreground transition-colors" title="-30s">
+                        <Rewind className="w-5 h-5" />
+                      </button>
+                      <motion.button 
+                        onClick={togglePlayState}
+                        className={`w-12 h-12 rounded-full flex items-center justify-center transition-colors ${activeTrack.audioUrl ? 'bg-foreground text-background hover:bg-destructive' : 'bg-muted text-muted-foreground cursor-not-allowed'}`}
+                        whileHover={activeTrack.audioUrl ? { scale: 1.05 } : {}}
+                        whileTap={activeTrack.audioUrl ? { scale: 0.95 } : {}}
+                      >
+                        {isPlaying ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5 translate-x-0.5" />}
+                      </motion.button>
+                      <button onClick={() => skipTime(30)} className="text-muted-foreground hover:text-foreground transition-colors" title="+30s">
+                        <FastForward className="w-5 h-5" />
+                      </button>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Volume2 className="w-4 h-4 text-muted-foreground" />
+                      <div className="w-16 h-1 bg-border/30 rounded-full overflow-hidden">
+                        <div className="w-2/3 h-full bg-muted-foreground rounded-full" />
                       </div>
-                      <div className="flex items-center gap-2">
-                        <Volume2 className="w-4 h-4 text-slate-500" />
-                        <div className="w-16 h-1 bg-white/10 rounded-full overflow-hidden">
-                           <div className="w-2/3 h-full bg-slate-400 rounded-full"></div>
-                        </div>
-                      </div>
-                   </div>
-                   {!activeTrack.audioUrl && (
-                     <p className="text-[10px] text-slate-600 uppercase tracking-widest mt-3 text-center">Em breve disponível</p>
-                   )}
+                    </div>
+                  </div>
+                  
+                  {!activeTrack.audioUrl && (
+                    <p className="text-[10px] text-muted-foreground uppercase tracking-widest mt-4 text-center">
+                      Em breve disponível
+                    </p>
+                  )}
                 </div>
-             </div>
-          </div>
+              </div>
+            </motion.div>
 
-          {/* LADO DIREITO: Tracklist */}
-          <div className="lg:col-span-7 pt-4 lg:pt-14">
-             <div className="flex items-center justify-between mb-8 border-b border-white/5 pb-4">
-                <h2 className="text-2xl font-sans font-extrabold text-white tracking-tight">Acervo Sonoro</h2>
-                <span className="text-xs text-slate-500 font-mono">{AUDIOBOOKS_DB.length} Obras</span>
-             </div>
+            {/* Tracklist */}
+            <motion.div 
+              className="lg:col-span-7 pt-4 lg:pt-14"
+              initial={{ opacity: 0, x: 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.5, ease: APPLE_EASE }}
+            >
+              <div className="flex items-center justify-between mb-8 border-b border-border/30 pb-4">
+                <h3 className="text-2xl font-black text-foreground tracking-tight">Acervo Sonoro</h3>
+                <span className="text-xs text-muted-foreground font-mono">{AUDIOBOOKS_DB.length} Obras</span>
+              </div>
 
-             <div className="space-y-3">
+              <div className="space-y-3">
                 {AUDIOBOOKS_DB.map((book, index) => {
-                   const isActive = activeTrack.id === book.id;
+                  const isActive = activeTrack.id === book.id;
+                  return (
+                    <motion.div 
+                      key={book.id} 
+                      onClick={() => handleTrackClick(book)}
+                      className={`group flex items-center gap-4 p-4 rounded-xl cursor-pointer transition-all duration-300 border ${
+                        isActive 
+                          ? 'bg-card/50 border-border/50 shadow-lg' 
+                          : 'bg-transparent border-transparent hover:bg-card/30 hover:border-border/30'
+                      }`}
+                      whileHover={{ x: 4 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <div className="w-8 flex justify-center shrink-0">
+                        {isActive && isPlaying ? (
+                          <VisualEqualizer active={true} />
+                        ) : (
+                          <span className={`text-sm font-mono font-bold ${isActive ? 'text-destructive' : 'text-muted-foreground group-hover:text-foreground'}`}>
+                            {(index + 1).toString().padStart(2, '0')}
+                          </span>
+                        )}
+                      </div>
 
-                   return (
-                     <div 
-                       key={book.id} 
-                       onClick={() => handleTrackClick(book)}
-                       className={`group flex items-center gap-4 p-4 rounded-2xl cursor-pointer transition-all duration-300 border ${
-                         isActive 
-                           ? 'bg-white/5 border-white/10 shadow-lg' 
-                           : 'bg-transparent border-transparent hover:bg-[#0B0F19] hover:border-white/5'
-                       }`}
-                     >
-                        <div className="w-8 flex justify-center shrink-0">
-                           {isActive && isPlaying ? (
-                             <VisualEqualizer active={true} />
-                           ) : (
-                             <span className={`text-sm font-mono font-bold ${isActive ? 'text-gold-500' : 'text-slate-600 group-hover:text-white'}`}>
-                               {(index + 1).toString().padStart(2, '0')}
-                             </span>
-                           )}
+                      <div className="w-12 h-12 rounded-lg shrink-0 overflow-hidden border border-border/20">
+                        <img src={book.coverImage} alt={book.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                      </div>
+
+                      <div className="flex-1 min-w-0">
+                        <h4 className={`text-base font-bold truncate transition-colors ${isActive ? 'text-destructive' : 'text-foreground group-hover:text-destructive'}`}>
+                          {book.title}
+                        </h4>
+                        <div className="flex items-center gap-3 text-sm mt-0.5">
+                          <span className="text-muted-foreground truncate">{book.author}</span>
+                          <span className="w-1 h-1 bg-border rounded-full" />
+                          <span className="text-muted-foreground/60 text-xs uppercase tracking-widest truncate">{book.category}</span>
                         </div>
+                      </div>
 
-                         <div className="w-12 h-12 rounded-lg shrink-0 overflow-hidden shadow-md">
-                            <img src={book.coverImage} alt={book.title} className="w-full h-full object-cover" />
-                         </div>
-
-                        <div className="flex-1 min-w-0">
-                           <h3 className={`text-base font-bold truncate transition-colors ${isActive ? 'text-gold-500' : 'text-white group-hover:text-gold-400'}`}>
-                             {book.title}
-                           </h3>
-                           <div className="flex items-center gap-3 text-sm mt-0.5">
-                              <span className="text-slate-400 truncate">{book.author}</span>
-                              <span className="w-1 h-1 bg-slate-700 rounded-full"></span>
-                              <span className="text-slate-500 text-xs uppercase tracking-widest truncate">{book.category}</span>
-                           </div>
-                        </div>
-
-                        <div className="flex items-center gap-6 shrink-0 pl-4">
-                           <span className="text-slate-500 font-mono text-xs hidden sm:block">
-                             {book.duration}
-                           </span>
-                           <button className={`w-10 h-10 rounded-full border flex items-center justify-center transition-all ${
-                             isActive
-                               ? 'border-gold-500 text-gold-500 bg-gold-500/10'
-                               : 'border-white/10 text-white opacity-0 group-hover:opacity-100 group-hover:bg-white group-hover:text-black group-hover:border-white'
-                           }`}>
-                             {isActive && isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 translate-x-0.5" />}
-                           </button>
-                        </div>
-                     </div>
-                   );
+                      <div className="flex items-center gap-6 shrink-0 pl-4">
+                        <span className="text-muted-foreground font-mono text-xs hidden sm:block">
+                          {book.duration}
+                        </span>
+                        <motion.button 
+                          className={`w-10 h-10 rounded-full border flex items-center justify-center transition-all ${
+                            isActive
+                              ? 'border-destructive text-destructive bg-destructive/10'
+                              : 'border-border/30 text-foreground opacity-0 group-hover:opacity-100 group-hover:bg-foreground group-hover:text-background group-hover:border-foreground'
+                          }`}
+                          whileHover={{ scale: 1.1 }}
+                          whileTap={{ scale: 0.9 }}
+                        >
+                          {isActive && isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 translate-x-0.5" />}
+                        </motion.button>
+                      </div>
+                    </motion.div>
+                  );
                 })}
-             </div>
+              </div>
 
-             <div className="mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
-                <p className="text-[10px] text-slate-600 uppercase tracking-widest">
+              {/* Footer */}
+              <div className="mt-20 pt-8 border-t border-border/30 flex flex-col md:flex-row items-center justify-between gap-4">
+                <p className="text-[10px] text-muted-foreground uppercase tracking-widest">
                   Lord Junnior © 2026
                 </p>
                 <div className="flex items-center gap-6">
-                  <Link to="#" className="text-[10px] text-slate-600 hover:text-white uppercase tracking-wider transition-colors">Termos</Link>
-                  <Link to="#" className="text-[10px] text-slate-600 hover:text-white uppercase tracking-wider transition-colors flex items-center gap-1">
+                  <Link to="#" className="text-[10px] text-muted-foreground hover:text-foreground uppercase tracking-wider transition-colors">Termos</Link>
+                  <Link to="#" className="text-[10px] text-muted-foreground hover:text-foreground uppercase tracking-wider transition-colors flex items-center gap-1">
                     <Lock className="w-3 h-3" /> PGP
                   </Link>
                 </div>
-             </div>
+              </div>
+            </motion.div>
           </div>
-       </div>
-    </div>
+        </section>
+      </div>
+    </>
   );
 };
 
