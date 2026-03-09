@@ -1,8 +1,9 @@
 import React, { useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
-import { ArrowLeft, ArrowRight, PieChart, AlertTriangle, TrendingDown, ShieldCheck, Flame, ChevronDown, Scale, Target, Skull, Crown } from 'lucide-react';
+import { ArrowLeft, ArrowRight, PieChart, AlertTriangle, TrendingDown, ShieldCheck, Flame, ChevronDown, Scale, Target, Skull, Crown, Shield } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
+import diversificacaoImg from '@/assets/diversificacao-falacia.jpg';
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 const fadeUp = {
@@ -112,6 +113,56 @@ export default function Diversificacao() {
             <ChevronDown size={16} className="mx-auto" />
           </motion.div>
         </motion.div>
+      </section>
+
+      {/* ══ DISCLAIMER DE SOBERANIA ══ */}
+      <section className="relative z-10 py-12 md:py-16">
+        <div className="max-w-4xl mx-auto px-6 md:px-10">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}
+            className="relative rounded-2xl border border-amber-500/20 p-6 md:p-8 overflow-hidden"
+            style={{ background: 'linear-gradient(135deg, rgba(245,158,11,0.06), rgba(239,68,68,0.03), transparent 70%)' }}
+          >
+            <motion.div 
+              className="absolute inset-0 pointer-events-none rounded-2xl"
+              animate={{ boxShadow: ['inset 0 0 0px rgba(245,158,11,0)', 'inset 0 0 30px rgba(245,158,11,0.05)', 'inset 0 0 0px rgba(245,158,11,0)'] }}
+              transition={{ duration: 4, repeat: Infinity }}
+            />
+            <div className="absolute top-0 left-0 right-0 h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(245,158,11,0.4), transparent)' }} />
+            
+            <div className="relative z-10 flex items-start gap-4">
+              <div className="p-3 rounded-xl bg-amber-500/10 border border-amber-500/20 shrink-0 mt-0.5">
+                <Shield className="text-amber-400" size={22} />
+              </div>
+              <div>
+                <p className="text-amber-400 font-bold text-xs uppercase tracking-[0.3em] mb-3">⚠ Aviso de Posicionamento</p>
+                <p className="text-stone-300 text-sm md:text-base leading-relaxed mb-3">
+                  <span className="text-white font-bold">Este conteúdo não constitui recomendação financeira.</span> A tese de concentração em Bitcoin apresentada aqui é <span className="text-amber-400 font-semibold">uma análise estratégica pessoal</span>, baseada em dados históricos e na filosofia de autocustódia que permeia todo este ecossistema.
+                </p>
+                <p className="text-stone-400 text-sm leading-relaxed mb-3">
+                  Este material foi criado <span className="text-stone-200 font-semibold">como ferramenta educacional</span> a pedido recorrente da comunidade. Cada indivíduo deve fazer sua própria pesquisa e tomar decisões com base em sua realidade financeira e tolerância a risco.
+                </p>
+                <p className="text-stone-500 text-xs leading-relaxed italic">
+                  "A convicção vem do estudo profundo, não da opinião alheia." — Faça sua própria análise antes de agir.
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ══ IMAGEM CINEMATOGRÁFICA ══ */}
+      <section className="relative z-10 py-12 md:py-16">
+        <div className="max-w-5xl mx-auto px-6 md:px-10">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}
+            className="relative rounded-2xl overflow-hidden border border-white/[0.06]"
+          >
+            <img src={diversificacaoImg} alt="Ativos tradicionais se desintegrando ao redor do Bitcoin" className="w-full h-64 md:h-96 object-cover" style={{ filter: 'brightness(0.7) saturate(0.9)' }} />
+            <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, transparent 30%, rgba(5,8,8,0.85) 100%)' }} />
+            <div className="absolute bottom-6 left-6 right-6">
+              <p className="text-stone-400 text-xs font-mono uppercase tracking-widest">Quando tudo é denominado na mesma moeda podre, diversificar é ilusão</p>
+            </div>
+          </motion.div>
+        </div>
       </section>
 
       {/* ══ POR QUE FALHA ══ */}

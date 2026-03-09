@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
 import { ArrowLeft, ArrowRight, CandlestickChart, TrendingUp, TrendingDown, Eye, Brain, AlertTriangle, ChevronDown, Target, BarChart3, Shield, Info, Activity, LineChart, Gauge, BookOpen } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
+import candlestickAnatomiaImg from '@/assets/candlestick-anatomia.jpg';
+import candlestickPadroesImg from '@/assets/candlestick-padroes.jpg';
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 const fadeUp = {
@@ -207,6 +209,21 @@ export default function Candlestick() {
         </div>
       </section>
 
+      {/* ══ IMAGEM CINEMATOGRÁFICA ══ */}
+      <section className="relative z-10 py-12 md:py-16">
+        <div className="max-w-5xl mx-auto px-6 md:px-10">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}
+            className="relative rounded-2xl overflow-hidden border border-white/[0.06]"
+          >
+            <img src={candlestickAnatomiaImg} alt="Gráfico candlestick em terminal profissional" className="w-full h-64 md:h-96 object-cover" style={{ filter: 'brightness(0.7) saturate(0.9)' }} />
+            <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, transparent 30%, rgba(5,8,8,0.8) 100%)' }} />
+            <div className="absolute bottom-6 left-6 right-6">
+              <p className="text-stone-400 text-xs font-mono uppercase tracking-widest">Cada vela carrega quatro dimensões do mercado</p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* ══ ANATOMIA DA VELA ══ */}
       <section className="relative z-10 py-20 md:py-32">
         <div className="max-w-6xl mx-auto px-6 md:px-10">
@@ -271,6 +288,21 @@ export default function Candlestick() {
               );
             })}
           </div>
+        </div>
+      </section>
+
+      {/* ══ IMAGEM PADRÕES ══ */}
+      <section className="relative z-10 py-12 md:py-16">
+        <div className="max-w-5xl mx-auto px-6 md:px-10">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}
+            className="relative rounded-2xl overflow-hidden border border-white/[0.06]"
+          >
+            <img src={candlestickPadroesImg} alt="Sala de operações com múltiplos monitores de análise gráfica" className="w-full h-64 md:h-96 object-cover" style={{ filter: 'brightness(0.65) saturate(0.85)' }} />
+            <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, transparent 30%, rgba(5,8,8,0.85) 100%)' }} />
+            <div className="absolute bottom-6 left-6 right-6">
+              <p className="text-stone-400 text-xs font-mono uppercase tracking-widest">Padrões se repetem porque a psicologia humana não muda</p>
+            </div>
+          </motion.div>
         </div>
       </section>
 

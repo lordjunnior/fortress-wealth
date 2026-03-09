@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
 import { ArrowLeft, ArrowRight, Blocks, Lock, Database, Search, ShieldCheck, Network, Cpu, ChevronDown, Fingerprint, Globe, Clock, Users, Zap, BookOpen, Scale, Eye, Hash, Box, Link2, AlertTriangle } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
+import blockchainBlocosImg from '@/assets/blockchain-blocos.jpg';
+import blockchainMineracaoImg from '@/assets/blockchain-mineracao.jpg';
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 const fadeUp = {
@@ -187,6 +189,21 @@ export default function Blockchain() {
         </div>
       </section>
 
+      {/* ══ IMAGEM BLOCOS ══ */}
+      <section className="relative z-10 py-12 md:py-16">
+        <div className="max-w-5xl mx-auto px-6 md:px-10">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}
+            className="relative rounded-2xl overflow-hidden border border-white/[0.06]"
+          >
+            <img src={blockchainBlocosImg} alt="Blocos conectados na cadeia blockchain" className="w-full h-64 md:h-96 object-cover" style={{ filter: 'brightness(0.75) saturate(0.9)' }} />
+            <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, transparent 30%, rgba(5,8,8,0.85) 100%)' }} />
+            <div className="absolute bottom-6 left-6 right-6">
+              <p className="text-stone-400 text-xs font-mono uppercase tracking-widest">Cada bloco é um elo permanente na cadeia de confiança</p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* ══ COMO A REDE É FORMADA ══ */}
       <section className="relative z-10 py-20 md:py-28 border-y border-white/[0.04]" style={{ background: '#070b0b' }}>
         <div className="max-w-5xl mx-auto px-6 md:px-10">
@@ -221,6 +238,21 @@ export default function Blockchain() {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ══ IMAGEM MINERAÇÃO ══ */}
+      <section className="relative z-10 py-12 md:py-16">
+        <div className="max-w-5xl mx-auto px-6 md:px-10">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}
+            className="relative rounded-2xl overflow-hidden border border-white/[0.06]"
+          >
+            <img src={blockchainMineracaoImg} alt="Infraestrutura de mineração blockchain" className="w-full h-64 md:h-96 object-cover" style={{ filter: 'brightness(0.65) saturate(0.85)' }} />
+            <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, transparent 30%, rgba(5,8,8,0.85) 100%)' }} />
+            <div className="absolute bottom-6 left-6 right-6">
+              <p className="text-stone-400 text-xs font-mono uppercase tracking-widest">Energia real convertida em segurança matemática</p>
+            </div>
+          </motion.div>
         </div>
       </section>
 
