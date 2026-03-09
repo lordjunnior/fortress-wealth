@@ -1,8 +1,9 @@
 import React, { useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
-import { ArrowLeft, ArrowRight, PieChart, AlertTriangle, TrendingDown, ShieldCheck, Flame, ChevronDown, Scale, Target, Skull, Crown } from 'lucide-react';
+import { ArrowLeft, ArrowRight, PieChart, AlertTriangle, TrendingDown, ShieldCheck, Flame, ChevronDown, Scale, Target, Skull, Crown, Shield } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
+import diversificacaoImg from '@/assets/diversificacao-falacia.jpg';
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 const fadeUp = {
