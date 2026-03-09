@@ -282,7 +282,7 @@ export default function TeoriaDasBandeiras() {
               {[
                 { to: '/bitcoin-vs-fiat', titulo: 'Bitcoin vs Fiat', desc: 'A comparação direta e definitiva', tag: 'COMPARAÇÃO' },
                 { to: '/alertas/cbdc-brasil', titulo: 'DREX: CBDC Brasil', desc: 'A moeda digital programável do governo', tag: 'ALERTA' },
-                { to: '/entenda-bitcoin', titulo: 'Entenda o Bitcoin', desc: 'Do zero à soberania financeira', tag: 'FUNDAMENTO' },
+                { to: '/o-que-e-bitcoin', titulo: 'O Que é o Bitcoin', desc: 'Do zero à soberania financeira', tag: 'FUNDAMENTO' },
               ].map((link, i) => (
                 <Link key={i} to={link.to} className="bg-[#0a0a0a] border border-white/5 rounded-sm p-6 hover:border-emerald-500/20 hover:bg-emerald-500/[0.02] transition-all group">
                   <span className="text-[8px] font-black uppercase tracking-[0.3em] text-slate-600 font-mono">{link.tag}</span>

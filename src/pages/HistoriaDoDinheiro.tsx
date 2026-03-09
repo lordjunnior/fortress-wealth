@@ -221,7 +221,7 @@ export default function HistoriaDoDinheiro() {
                   <p className="font-medium text-base">O Bitcoin foi projetado como o <strong className="text-white">oposto exato do dinheiro estatal</strong>: oferta fixa (21 milhões), descentralizado (sem banco central), resistente à censura (ninguém pode bloqueá-lo), transparente (blockchain pública) e permissionless (não precisa de aprovação para usar).</p>
                   <p className="font-medium text-base">Pela primeira vez em 5.000 anos, a humanidade tem acesso a uma forma de dinheiro que <strong className="text-white">não pode ser corrompida por governos</strong>. Não pode ser impressa. Não pode ser confiscada com autocustódia. Não pode ser censurada. O Bitcoin é a resposta tecnológica ao problema monetário mais antigo da civilização.</p>
                 </div>
-                <div className="mt-8"><Link to="/entenda-bitcoin" className="cta-gold inline-flex items-center justify-center gap-3 px-8 py-4 rounded-sm font-black uppercase text-xs tracking-[0.2em]">₿ Entenda o Bitcoin</Link></div>
+                <div className="mt-8"><Link to="/o-que-e-bitcoin" className="cta-gold inline-flex items-center justify-center gap-3 px-8 py-4 rounded-sm font-black uppercase text-xs tracking-[0.2em]">₿ O Que é o Bitcoin</Link></div>
               </div>
             </div>
           </section>
@@ -252,7 +252,7 @@ export default function HistoriaDoDinheiro() {
                 <p className="font-medium text-base">Agora você sabe o que <strong className="text-white">nunca te ensinaram na escola</strong>: que o dinheiro foi corrompido, que a inflação é um imposto, que bancos centrais destroem poder de compra e que o sistema atual é projetado para beneficiar quem imprime, não quem trabalha.</p>
                 <p className="font-medium text-base">Mas saber não basta. O próximo passo é <strong className="text-amber-500">agir</strong>. Entender o Bitcoin. Praticar autocustódia. Diversificar jurisdições. Construir soberania financeira real.</p>
               </div>
-              <Link to="/entenda-bitcoin" className="cta-gold flex items-center justify-center gap-3 px-10 py-5 rounded-sm font-black uppercase text-sm tracking-[0.2em] text-center mb-8 w-full md:w-auto md:inline-flex">₿ Entender o Bitcoin</Link>
+              <Link to="/o-que-e-bitcoin" className="cta-gold flex items-center justify-center gap-3 px-10 py-5 rounded-sm font-black uppercase text-sm tracking-[0.2em] text-center mb-8 w-full md:w-auto md:inline-flex">₿ O Que é o Bitcoin</Link>
               <p className="text-slate-600 text-[9px] font-black uppercase tracking-[0.3em] font-mono mb-4">Continue Aprendendo</p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                 {[
@@ -277,7 +277,7 @@ export default function HistoriaDoDinheiro() {
               {[
                 { to: '/inflacao-imposto-oculto', titulo: 'Inflação: O Imposto Oculto', desc: 'Como a inflação funciona e rouba seu poder de compra', tag: 'EDUCAÇÃO' },
                 { to: '/alertas/fim-do-dinheiro-vivo', titulo: 'Fim do Dinheiro Vivo', desc: 'PL 3.951 e os limites ao dinheiro em espécie', tag: 'ALERTA' },
-                { to: '/entenda-bitcoin', titulo: 'Entenda o Bitcoin', desc: 'Do zero à soberania financeira completa', tag: 'FUNDAMENTO' },
+                { to: '/o-que-e-bitcoin', titulo: 'O Que é o Bitcoin', desc: 'Do zero à soberania financeira completa', tag: 'FUNDAMENTO' },
               ].map((link, i) => (
                 <Link key={i} to={link.to} className="bg-[#0a0a0a] border border-white/5 rounded-sm p-6 hover:border-amber-500/20 hover:bg-amber-500/[0.02] transition-all group">
                   <span className="text-[8px] font-black uppercase tracking-[0.3em] text-slate-600 font-mono">{link.tag}</span>

@@ -13,7 +13,7 @@ import Filosofia from "./pages/Filosofia";
 import Saida from "./pages/Saida";
 import Ferramentas from "./pages/Ferramentas";
 import Educacao from "./pages/Educacao";
-import EntendaBitcoin from "./pages/EntendaBitcoin";
+
 import Autocustodia from "./pages/Autocustodia";
 import EconomiaParalela from "./pages/EconomiaParalela";
 import Infraestrutura from "./pages/Infraestrutura";
@@ -115,7 +115,7 @@ const App = () => (
           <Route path="/ferramentas" element={<Ferramentas />} />
           <Route path="/ferramentas/:toolId" element={<Ferramentas />} />
           <Route path="/educacao" element={<Educacao />} />
-          <Route path="/entenda-bitcoin" element={<EntendaBitcoin />} />
+          <Route path="/entenda-bitcoin" element={<Navigate to="/o-que-e-bitcoin" replace />} />
           <Route path="/autocustodia" element={<Autocustodia />} />
           <Route path="/economia-paralela" element={<EconomiaParalela />} />
           <Route path="/infraestrutura" element={<Infraestrutura />} />
