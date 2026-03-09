@@ -1,8 +1,11 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { ArrowRight, Download, BookOpen, FileText } from "lucide-react";
-import FormationSection from "@/components/FormationSection";
+import {
+  ArrowRight, Download, BookOpen, FileText, Shield, Zap,
+  Lock, Server, Repeat, KeyRound, Landmark, Brain,
+  Cpu, Crosshair, GraduationCap, Flame
+} from "lucide-react";
 import { fadeUp, stagger, staggerChild, viewportOnce, ease } from "@/lib/motion";
 
 import bookSeisLicoes from "@/assets/book-seis-licoes.jpg";
@@ -11,15 +14,73 @@ import bookBancoCentral from "@/assets/book-banco-central.jpg";
 import bookWhitepaper from "@/assets/book-whitepaper.jpg";
 import bookRedpill from "@/assets/book-redpill.jpg";
 
+const APPLE_EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
+
+/* ─── Trilhas de Formação (Cards Grandes) ─── */
 const trails = [
-  { level: "Iniciante", title: "Fundamentos do Dinheiro", desc: "Entenda por que o sistema fiduciário falha e a história da moeda.", btn: "Ler Artigo", route: "/economia" },
-  { level: "Essencial", title: "Autocustódia", desc: "Arquitetura de chaves privadas, Cold Wallets e o fim da dependência bancária.", btn: "Acessar Guia", route: "/autocustodia" },
-  { level: "Intermediário", title: "Rede Lightning", desc: "A camada de liquidez que torna o Bitcoin dinheiro corrente instantâneo.", btn: "Acessar Guia", route: "/lightning" },
-  { level: "Técnico", title: "Infraestrutura Soberana", desc: "Rode seu próprio Node. 'Don't Trust, Verify'.", btn: "Acessar Guia", route: "/infraestrutura" },
-  { level: "Avançado", title: "Economia Paralela", desc: "Operações P2P via BISQ e transações sem intermediários e KYC.", btn: "Acessar Guia", route: "/economia-paralela" },
-  { level: "Extremo", title: "Herança Soberana", desc: "Estruture suas chaves (multisig/timelock) para seus herdeiros acessarem seu patrimônio sem inventários.", btn: "Acessar Protocolo", route: "/filosofia" },
+  {
+    level: "01",
+    badge: "FUNDAMENTOS",
+    icon: Landmark,
+    title: "Despertar Monetário",
+    desc: "Entenda por que o sistema fiduciário falha, a história da moeda e como a inflação é o imposto que ninguém votou.",
+    route: "/economia",
+    color: "from-amber-500/20 to-amber-900/5",
+    borderColor: "hover:border-amber-500/40",
+  },
+  {
+    level: "02",
+    badge: "OPERACIONAL",
+    icon: Lock,
+    title: "Autocustódia",
+    desc: "Arquitetura de chaves privadas, Cold Wallets, seed phrases e o fim da dependência bancária. Seja seu próprio banco.",
+    route: "/autocustodia",
+    color: "from-red-500/20 to-red-900/5",
+    borderColor: "hover:border-red-500/40",
+  },
+  {
+    level: "03",
+    badge: "VELOCIDADE",
+    icon: Zap,
+    title: "Rede Lightning",
+    desc: "A camada de liquidez que torna o Bitcoin dinheiro corrente instantâneo. Pagamentos em milissegundos, taxas de centavos.",
+    route: "/lightning",
+    color: "from-yellow-500/20 to-yellow-900/5",
+    borderColor: "hover:border-yellow-500/40",
+  },
+  {
+    level: "04",
+    badge: "TÉCNICO",
+    icon: Server,
+    title: "Infraestrutura Soberana",
+    desc: "Rode seu próprio Node. Valide suas transações. 'Don't Trust, Verify.' — A soberania técnica absoluta.",
+    route: "/infraestrutura",
+    color: "from-emerald-500/20 to-emerald-900/5",
+    borderColor: "hover:border-emerald-500/40",
+  },
+  {
+    level: "05",
+    badge: "AVANÇADO",
+    icon: Repeat,
+    title: "Economia Paralela",
+    desc: "Operações P2P via BISQ, transações sem intermediários, sem KYC. O mercado livre digital na prática.",
+    route: "/economia-paralela",
+    color: "from-violet-500/20 to-violet-900/5",
+    borderColor: "hover:border-violet-500/40",
+  },
+  {
+    level: "06",
+    badge: "MÁXIMO",
+    icon: KeyRound,
+    title: "Herança Soberana",
+    desc: "Multisig, timelock e infraestrutura para que seus herdeiros acessem seu patrimônio sem inventários ou burocracia.",
+    route: "/filosofia",
+    color: "from-sky-500/20 to-sky-900/5",
+    borderColor: "hover:border-sky-500/40",
+  },
 ];
 
+/* ─── Biblioteca PDF ─── */
 const books = [
   {
     title: "As Seis Lições",
@@ -31,16 +92,16 @@ const books = [
     pdf: "/pdfs/seis-licoes.pdf",
   },
   {
-    title: "Democracia: O Deus que Falhou",
+    title: "O Deus que Falhou",
     author: "Hans-Hermann Hoppe",
     cover: bookDemocracia,
     desc: "Por que a democracia destrói a civilização mais rápido que qualquer monarquia. Análise radical e sem filtros.",
     pages: "322 págs",
-    tag: "FILOSOFIA POLÍTICA",
+    tag: "FILOSOFIA",
     pdf: "/pdfs/democracia-deus-falhou.pdf",
   },
   {
-    title: "Pelo Fim do Banco Central",
+    title: "Fim do Banco Central",
     author: "Murray Rothbard",
     cover: bookBancoCentral,
     desc: "Rothbard disseca o sistema bancário de reservas fracionárias e demonstra como o Fed rouba seu poder de compra.",
@@ -59,7 +120,7 @@ const books = [
   },
   {
     title: "Bitcoin Red Pill",
-    author: "Renato Amoedo & Alan Schramm",
+    author: "Renato Amoedo",
     cover: bookRedpill,
     desc: "O despertar sobre dinheiro, liberdade e soberania individual através do Bitcoin. A pílula vermelha brasileira.",
     pages: "284 págs",
@@ -74,128 +135,189 @@ const KnowledgeSection = () => {
   const navigate = useNavigate();
 
   return (
-    <section className="section-padding" ref={ref}>
-      <div className="max-w-5xl mx-auto">
+    <section className="relative py-24 md:py-32 overflow-hidden" ref={ref}>
+      {/* Background texture */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#050808] via-[#070b0b] to-[#050808]" />
+      <div className="absolute inset-0 opacity-[0.02]" style={{
+        backgroundImage: 'radial-gradient(circle at 25% 25%, hsl(var(--destructive)) 1px, transparent 1px)',
+        backgroundSize: '60px 60px'
+      }} />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
+        {/* Section Header */}
         <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          className="mb-14"
+          initial={{ opacity: 0, y: 40, filter: 'blur(10px)' }}
+          animate={isInView ? { opacity: 1, y: 0, filter: 'blur(0px)' } : {}}
+          transition={{ duration: 1, ease: APPLE_EASE }}
+          className="mb-20 max-w-3xl"
         >
-          <p className="pre-title">ARSENAL DE CONHECIMENTO</p>
-          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight mb-3">
-            A Base <span className="text-gradient-gold">Intelectual</span>
+          <div className="flex items-center gap-3 mb-5">
+            <div className="w-8 h-8 rounded-lg bg-destructive/10 border border-destructive/20 flex items-center justify-center">
+              <Shield className="w-4 h-4 text-destructive" />
+            </div>
+            <span className="text-destructive font-black text-[10px] uppercase tracking-[0.3em]">
+              Arsenal de Conhecimento
+            </span>
+          </div>
+          <h2 className="text-4xl md:text-6xl font-black text-foreground tracking-tighter leading-[0.95] mb-5">
+            A BASE<br />
+            <span className="text-destructive italic font-light">INTELECTUAL</span>
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl">
+          <p className="text-muted-foreground text-lg md:text-xl leading-relaxed max-w-2xl">
             Antes de proteger o bolso, você blinda a mente. Manuais técnicos, documentações
-            e teoria econômica sem rastro de CPF e sem propagandas.
+            e teoria econômica — sem rastro de CPF, sem propagandas.
           </p>
         </motion.div>
 
-        {/* Formation Levels */}
-        <FormationSection />
-
-        {/* Learning trails */}
-        <motion.div
-          variants={stagger(0.06)}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          className="space-y-3 mb-16"
-        >
-          {trails.map((trail, i) => (
-            <motion.div
-              key={i}
-              variants={staggerChild}
-              className="card-wealth flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 group cursor-pointer"
-              onClick={() => navigate(trail.route)}
-            >
-              <span className="font-mono text-[10px] tracking-widest text-gold bg-gold/10 px-2.5 py-1 rounded w-fit whitespace-nowrap">
-                {trail.level.toUpperCase()}
-              </span>
-              <div className="flex-1 min-w-0">
-                <h4 className="font-display font-semibold text-sm mb-1">{trail.title}</h4>
-                <p className="text-xs text-muted-foreground">{trail.desc}</p>
-              </div>
-              <button className="flex items-center gap-2 text-gold text-sm font-medium whitespace-nowrap group-hover:gap-3 transition-all duration-500">
-                {trail.btn}
-                <ArrowRight className="w-4 h-4" />
-              </button>
-            </motion.div>
-          ))}
-        </motion.div>
-
-        {/* PDF Library */}
-        <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-        >
-          <div className="flex items-center gap-3 mb-6">
-            <BookOpen className="w-5 h-5 text-gold" />
-            <h3 className="font-display text-xl font-semibold">Biblioteca em PDF</h3>
-          </div>
-
+        {/* ─── TRILHAS DE FORMAÇÃO ─── */}
+        <div className="mb-24">
           <motion.div
-            variants={stagger(0.08)}
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.2, ease: APPLE_EASE }}
+            className="flex items-center gap-3 mb-10"
           >
+            <GraduationCap className="w-5 h-5 text-destructive" />
+            <h3 className="text-2xl md:text-3xl font-black text-foreground tracking-tight">
+              Trilhas de Formação
+            </h3>
+            <div className="flex-1 h-px bg-gradient-to-r from-border/50 to-transparent ml-4" />
+          </motion.div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {trails.map((trail, i) => {
+              const Icon = trail.icon;
+              return (
+                <motion.div
+                  key={trail.level}
+                  initial={{ opacity: 0, y: 30, filter: 'blur(6px)' }}
+                  animate={isInView ? { opacity: 1, y: 0, filter: 'blur(0px)' } : {}}
+                  transition={{ duration: 0.7, delay: 0.3 + i * 0.08, ease: APPLE_EASE }}
+                  onClick={() => navigate(trail.route)}
+                  className={`group relative cursor-pointer rounded-2xl border border-border/20 ${trail.borderColor} bg-white/[0.02] backdrop-blur-sm overflow-hidden transition-all duration-500 hover:bg-white/[0.04] hover:shadow-2xl hover:shadow-black/20`}
+                >
+                  {/* Gradient accent top */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${trail.color} opacity-0 group-hover:opacity-100 transition-opacity duration-700`} />
+
+                  <div className="relative z-10 p-6">
+                    {/* Header */}
+                    <div className="flex items-center justify-between mb-5">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-xl bg-white/[0.05] border border-border/30 flex items-center justify-center group-hover:border-destructive/30 group-hover:bg-destructive/10 transition-all duration-500">
+                          <Icon className="w-5 h-5 text-muted-foreground group-hover:text-destructive transition-colors duration-500" />
+                        </div>
+                        <span className="font-mono text-3xl font-black text-foreground/20 group-hover:text-foreground/40 transition-colors duration-500">
+                          {trail.level}
+                        </span>
+                      </div>
+                      <span className="font-mono text-[9px] tracking-[0.15em] text-destructive/70 bg-destructive/10 px-2.5 py-1 rounded-full border border-destructive/10">
+                        {trail.badge}
+                      </span>
+                    </div>
+
+                    {/* Content */}
+                    <h4 className="text-xl font-black text-foreground mb-2 tracking-tight group-hover:text-foreground transition-colors">
+                      {trail.title}
+                    </h4>
+                    <p className="text-sm text-muted-foreground leading-relaxed mb-5">
+                      {trail.desc}
+                    </p>
+
+                    {/* CTA */}
+                    <div className="flex items-center gap-2 text-destructive text-sm font-bold group-hover:gap-3 transition-all duration-500">
+                      <span>Acessar</span>
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                    </div>
+                  </div>
+
+                  {/* Bottom accent line */}
+                  <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-destructive/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* ─── BIBLIOTECA PDF ─── */}
+        <div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.4, ease: APPLE_EASE }}
+            className="flex items-center gap-3 mb-10"
+          >
+            <BookOpen className="w-5 h-5 text-destructive" />
+            <h3 className="text-2xl md:text-3xl font-black text-foreground tracking-tight">
+              Biblioteca em PDF
+            </h3>
+            <div className="flex-1 h-px bg-gradient-to-r from-border/50 to-transparent ml-4" />
+            <motion.button
+              onClick={() => navigate('/ebooks')}
+              className="flex items-center gap-2 text-destructive text-xs font-bold uppercase tracking-widest hover:gap-3 transition-all duration-300"
+              whileHover={{ x: 4 }}
+            >
+              Ver Acervo Completo
+              <ArrowRight className="w-3.5 h-3.5" />
+            </motion.button>
+          </motion.div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-5">
             {books.map((book, i) => (
               <motion.a
-                key={i}
-                variants={staggerChild}
-                whileHover={{ y: -6 }}
-                transition={{ duration: 0.5, ease: ease.sovereign }}
-                className="group cursor-pointer"
+                key={book.title}
                 href={book.pdf}
-                download
                 target="_blank"
                 rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 30, filter: 'blur(6px)' }}
+                animate={isInView ? { opacity: 1, y: 0, filter: 'blur(0px)' } : {}}
+                transition={{ duration: 0.7, delay: 0.5 + i * 0.1, ease: APPLE_EASE }}
+                className="group relative cursor-pointer"
+                whileHover={{ y: -8 }}
               >
-                <div className="card-wealth p-0 overflow-hidden flex flex-col h-full">
-                  {/* Cover Image */}
-                  <div className="relative overflow-hidden aspect-[3/4]">
+                <div className="relative rounded-xl overflow-hidden border border-border/20 bg-white/[0.02] hover:border-border/40 transition-all duration-500 hover:shadow-2xl hover:shadow-black/30">
+                  {/* Cover */}
+                  <div className="relative aspect-[3/4] overflow-hidden">
                     <img
                       src={book.cover}
                       alt={book.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
                     />
-                    {/* Overlay on hover */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end justify-center pb-6">
-                      <span className="flex items-center gap-2 text-gold font-semibold text-sm">
-                        <Download className="w-4 h-4" />
-                        Baixar PDF
-                      </span>
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#050808] via-[#050808]/30 to-transparent" />
+
+                    {/* Download overlay */}
+                    <div className="absolute inset-0 bg-black/60 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center">
+                      <div className="w-14 h-14 rounded-full bg-destructive/20 border border-destructive/40 flex items-center justify-center">
+                        <Download className="w-6 h-6 text-destructive" />
+                      </div>
                     </div>
+
                     {/* Tag */}
-                    <span className="absolute top-3 left-3 font-mono text-[9px] tracking-widest text-gold bg-background/80 backdrop-blur-sm px-2 py-1 rounded">
+                    <span className="absolute top-3 left-3 font-mono text-[8px] tracking-[0.15em] text-destructive bg-black/70 backdrop-blur-sm px-2 py-1 rounded-full border border-destructive/20">
                       {book.tag}
                     </span>
                   </div>
 
                   {/* Info */}
-                  <div className="p-4 flex-1 flex flex-col">
-                    <h4 className="text-sm font-bold mb-1 group-hover:text-gold transition-colors duration-500 leading-tight">
+                  <div className="p-4">
+                    <h4 className="text-sm font-bold text-foreground mb-1 leading-tight group-hover:text-destructive transition-colors duration-500 line-clamp-2">
                       {book.title}
                     </h4>
-                    <p className="text-xs text-muted-foreground mb-2">{book.author}</p>
-                    <p className="text-xs text-muted-foreground/80 leading-relaxed flex-1">
-                      {book.desc}
+                    <p className="text-[11px] text-muted-foreground mb-2 font-medium">
+                      {book.author}
                     </p>
-                    <div className="flex items-center justify-between mt-3 pt-3 border-t border-border">
-                      <span className="font-mono text-[10px] text-muted-foreground flex items-center gap-1">
+                    <div className="flex items-center justify-between">
+                      <span className="font-mono text-[9px] text-muted-foreground/60 flex items-center gap-1">
                         <FileText className="w-3 h-3" />
                         {book.pages}
                       </span>
-                      <ArrowRight className="w-3.5 h-3.5 text-muted-foreground group-hover:text-gold group-hover:translate-x-1 transition-all duration-500" />
+                      <ArrowRight className="w-3 h-3 text-muted-foreground/40 group-hover:text-destructive group-hover:translate-x-1 transition-all duration-300" />
                     </div>
                   </div>
                 </div>
               </motion.a>
             ))}
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   );
