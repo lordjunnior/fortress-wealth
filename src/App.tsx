@@ -174,6 +174,7 @@ const App = () => (
           <Route path="/candlestick" element={<CandlestickPage />} />
           <Route path="/diversificacao" element={<DiversificacaoPage />} />
           <Route path="/bitcoin-vs-altcoins" element={<BitcoinVsAltcoinsPage />} />
+          <Route path="/dicionario-cripto" element={<DicionarioCripto />} />
           <Route path="/projeto-autonomo" element={<ProjetoAutonomo />} />
           <Route path="/projeto-autonomo/conservacao-armazenamento" element={<ConservacaoArmazenamento />} />
           <Route path="/projeto-autonomo/producao-pequenos-espacos" element={<ProducaoPequenosEspacos />} />
