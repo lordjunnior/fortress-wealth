@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
 import { ArrowLeft, ArrowRight, Blocks, Lock, Database, Search, ShieldCheck, Network, Cpu, ChevronDown, Fingerprint, Globe, Clock, Users, Zap, BookOpen, Scale, Eye, Hash, Box, Link2, AlertTriangle } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
+import blockchainBlocosImg from '@/assets/blockchain-blocos.jpg';
+import blockchainMineracaoImg from '@/assets/blockchain-mineracao.jpg';
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 const fadeUp = {
