@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
 import { ArrowLeft, ArrowRight, CandlestickChart, TrendingUp, TrendingDown, Eye, Brain, AlertTriangle, ChevronDown, Target, BarChart3, Shield, Info, Activity, LineChart, Gauge, BookOpen } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
+import candlestickAnatomiaImg from '@/assets/candlestick-anatomia.jpg';
+import candlestickPadroesImg from '@/assets/candlestick-padroes.jpg';
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 const fadeUp = {

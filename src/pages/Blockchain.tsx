@@ -241,6 +241,21 @@ export default function Blockchain() {
         </div>
       </section>
 
+      {/* ══ IMAGEM MINERAÇÃO ══ */}
+      <section className="relative z-10 py-12 md:py-16">
+        <div className="max-w-5xl mx-auto px-6 md:px-10">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}
+            className="relative rounded-2xl overflow-hidden border border-white/[0.06]"
+          >
+            <img src={blockchainMineracaoImg} alt="Infraestrutura de mineração blockchain" className="w-full h-64 md:h-96 object-cover" style={{ filter: 'brightness(0.65) saturate(0.85)' }} />
+            <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, transparent 30%, rgba(5,8,8,0.85) 100%)' }} />
+            <div className="absolute bottom-6 left-6 right-6">
+              <p className="text-stone-400 text-xs font-mono uppercase tracking-widest">Energia real convertida em segurança matemática</p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* ══ 6 PILARES TÉCNICOS ══ */}
       <section className="relative z-10 py-20 md:py-32">
         <div className="max-w-6xl mx-auto px-6 md:px-10">
