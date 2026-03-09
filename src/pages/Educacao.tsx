@@ -526,6 +526,55 @@ export default function Educacao() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
+         SECTION 3B — FORMAÇÃO COMPLEMENTAR
+      ═══════════════════════════════════════════════════════════ */}
+      <section className="relative z-10 py-20 md:py-32 border-t border-white/[0.04]">
+        <div className="max-w-6xl mx-auto px-6 md:px-10">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="mb-16">
+            <span className="text-stone-600 text-[10px] font-bold uppercase tracking-[0.5em] block mb-3">Complemento Técnico</span>
+            <h2 className="text-3xl md:text-5xl font-black tracking-tight text-white" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+              Formação <span className="text-transparent bg-clip-text bg-gradient-to-r" style={{ backgroundImage: 'linear-gradient(to right, #d4af37, #f59e0b)' }}>expandida.</span>
+            </h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {[
+              { to: '/blockchain', num: '05', label: 'FUNDAMENTO', title: 'O Que é Blockchain', hook: 'Blocos, Hashing, PoW & Consenso.', desc: 'A espinha dorsal do Bitcoin. Entenda como a cadeia de blocos elimina a necessidade de confiar em terceiros e cria um registro imutável e transparente.', accent: '#38bdf8', cta: 'DOMINAR A BASE' },
+              { to: '/candlestick', num: '06', label: 'ANÁLISE', title: 'Candlestick', hook: 'Velas, Padrões & Psicologia de Mercado.', desc: 'A linguagem visual do mercado. Domine a leitura de gráficos japoneses para entender a batalha entre compradores e vendedores em qualquer timeframe.', accent: '#34d399', cta: 'LER O MERCADO' },
+              { to: '/diversificacao', num: '07', label: 'ESTRATÉGIA', title: 'A Falácia da Diversificação', hook: 'Correlação, Inflação & Assimetria.', desc: 'Por que diversificar entre ativos fiat é diluir patrimônio com ilusão de segurança. Dados, tabelas comparativas e argumentos que encerram o debate.', accent: '#f59e0b', cta: 'VER OS DADOS' },
+              { to: '/bitcoin-vs-altcoins', num: '08', label: 'VEREDICTO', title: 'Bitcoin vs Altcoins', hook: 'ETH, XRP, LTC & Stablecoins.', desc: 'Análise técnica destruindo os argumentos de Ethereum, XRP, Litecoin e stablecoins. Por que só existe um Bitcoin e por que este projeto não recomenda alternativas.', accent: '#f43f5e', cta: 'VER O VEREDICTO' },
+            ].map((mod, i) => (
+              <motion.div key={mod.num} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-40px' }} variants={fadeUp} custom={i * 0.15}>
+                <Link to={mod.to} className="group block">
+                  <div className="rounded-2xl border border-white/[0.06] p-6 md:p-8 transition-all duration-500 hover:-translate-y-2 hover:border-white/[0.15] relative overflow-hidden"
+                    style={{ background: `linear-gradient(135deg, ${mod.accent}08, transparent 60%)` }}
+                  >
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" style={{ background: `radial-gradient(ellipse at top left, ${mod.accent}15, transparent 60%)` }} />
+                    <div className="absolute inset-0 overflow-hidden rounded-2xl pointer-events-none">
+                      <div className="absolute top-0 -left-full w-full h-px group-hover:left-full transition-all duration-1000 ease-in-out" style={{ background: `linear-gradient(to right, transparent, ${mod.accent}40, transparent)` }} />
+                    </div>
+                    <div className="relative z-10">
+                      <div className="flex items-center justify-between mb-4">
+                        <span className="text-[10px] font-bold tracking-[0.5em] uppercase" style={{ color: mod.accent }}>Módulo {mod.num}</span>
+                        <span className="font-mono text-[9px] tracking-[0.3em] px-2.5 py-1 rounded-md border" style={{ color: mod.accent, background: `${mod.accent}10`, borderColor: `${mod.accent}25` }}>{mod.label}</span>
+                      </div>
+                      <h3 className="text-xl md:text-2xl font-bold tracking-tight text-white mb-1 group-hover:text-stone-100 transition-colors">{mod.title}</h3>
+                      <p className="text-xs font-semibold uppercase tracking-wider mb-3 opacity-70" style={{ color: mod.accent }}>{mod.hook}</p>
+                      <div className="w-12 h-[2px] rounded-full mb-4" style={{ background: `${mod.accent}40` }} />
+                      <p className="text-stone-500 text-sm leading-relaxed group-hover:text-stone-400 transition-colors mb-6">{mod.desc}</p>
+                      <div className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider group-hover:gap-3 transition-all duration-500" style={{ color: mod.accent }}>
+                        {mod.cta} <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-500" />
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════
          SECTION 4 — WARNING BLOCK
       ═══════════════════════════════════════════════════════════ */}
       <section className="relative z-10 py-16 border-t border-white/[0.04]" style={{ background: '#070b0b' }}>

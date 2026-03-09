@@ -85,6 +85,10 @@ import OptimaExchange from "./pages/OptimaExchange";
 import PegasusSwap from "./pages/PegasusSwap";
 import GrabrFi from "./pages/GrabrFi";
 import ExchangesSemKyc from "./pages/ExchangesSemKyc";
+import BlockchainPage from "./pages/Blockchain";
+import CandlestickPage from "./pages/Candlestick";
+import DiversificacaoPage from "./pages/Diversificacao";
+import BitcoinVsAltcoinsPage from "./pages/BitcoinVsAltcoins";
 import CpContextoHistorico from "./pages/cp/ContextoHistorico";
 import CpBaseFisiologica from "./pages/cp/BaseFisiologica";
 import CpSegurancaLimites from "./pages/cp/SegurancaLimites";
@@ -165,6 +169,10 @@ const App = () => (
           <Route path="/halving-bitcoin" element={<HalvingBitcoin />} />
           <Route path="/volatilidade" element={<VolatilidadeBitcoin />} />
           <Route path="/lastro" element={<LastroBitcoin />} />
+          <Route path="/blockchain" element={<BlockchainPage />} />
+          <Route path="/candlestick" element={<CandlestickPage />} />
+          <Route path="/diversificacao" element={<DiversificacaoPage />} />
+          <Route path="/bitcoin-vs-altcoins" element={<BitcoinVsAltcoinsPage />} />
           <Route path="/projeto-autonomo" element={<ProjetoAutonomo />} />
           <Route path="/projeto-autonomo/conservacao-armazenamento" element={<ConservacaoArmazenamento />} />
           <Route path="/projeto-autonomo/producao-pequenos-espacos" element={<ProducaoPequenosEspacos />} />
