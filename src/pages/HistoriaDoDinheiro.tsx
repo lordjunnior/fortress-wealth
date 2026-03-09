@@ -252,7 +252,7 @@ export default function HistoriaDoDinheiro() {
                 <p className="font-medium text-base">Agora você sabe o que <strong className="text-white">nunca te ensinaram na escola</strong>: que o dinheiro foi corrompido, que a inflação é um imposto, que bancos centrais destroem poder de compra e que o sistema atual é projetado para beneficiar quem imprime, não quem trabalha.</p>
                 <p className="font-medium text-base">Mas saber não basta. O próximo passo é <strong className="text-amber-500">agir</strong>. Entender o Bitcoin. Praticar autocustódia. Diversificar jurisdições. Construir soberania financeira real.</p>
               </div>
-              <Link to="/entenda-bitcoin" className="cta-gold flex items-center justify-center gap-3 px-10 py-5 rounded-sm font-black uppercase text-sm tracking-[0.2em] text-center mb-8 w-full md:w-auto md:inline-flex">₿ Entender o Bitcoin</Link>
+              <Link to="/o-que-e-bitcoin" className="cta-gold flex items-center justify-center gap-3 px-10 py-5 rounded-sm font-black uppercase text-sm tracking-[0.2em] text-center mb-8 w-full md:w-auto md:inline-flex">₿ O Que é o Bitcoin</Link>
               <p className="text-slate-600 text-[9px] font-black uppercase tracking-[0.3em] font-mono mb-4">Continue Aprendendo</p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                 {[
