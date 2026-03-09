@@ -13,7 +13,7 @@ import Filosofia from "./pages/Filosofia";
 import Saida from "./pages/Saida";
 import Ferramentas from "./pages/Ferramentas";
 import Educacao from "./pages/Educacao";
-import EntendaBitcoin from "./pages/EntendaBitcoin";
+
 import Autocustodia from "./pages/Autocustodia";
 import EconomiaParalela from "./pages/EconomiaParalela";
 import Infraestrutura from "./pages/Infraestrutura";
