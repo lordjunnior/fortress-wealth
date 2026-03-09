@@ -89,6 +89,7 @@ import BlockchainPage from "./pages/Blockchain";
 import CandlestickPage from "./pages/Candlestick";
 import DiversificacaoPage from "./pages/Diversificacao";
 import BitcoinVsAltcoinsPage from "./pages/BitcoinVsAltcoins";
+import DicionarioCripto from "./pages/DicionarioCripto";
 import CpContextoHistorico from "./pages/cp/ContextoHistorico";
 import CpBaseFisiologica from "./pages/cp/BaseFisiologica";
 import CpSegurancaLimites from "./pages/cp/SegurancaLimites";

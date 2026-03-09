@@ -494,9 +494,14 @@ const DicionarioCripto = () => {
 
       {/* ─── HERO ─── */}
       <CinematicHero
+        image="/heroes/dicionario-cripto.webp"
+        phase="CRIPTONÁRIO"
         title="CRIPTONÁRIO"
         subtitle="O dicionário definitivo do universo cripto"
-        backgroundImage="/heroes/dicionario-cripto.webp"
+        icon={BookOpen}
+        accentColor="yellow"
+        backLink="/educacao"
+        backLabel="Educação"
       />
 
       {/* ─── INTRO ─── */}
