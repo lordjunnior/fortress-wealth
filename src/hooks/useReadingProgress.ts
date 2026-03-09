@@ -21,6 +21,7 @@ const TRACKED_PAGES = [
   "/projeto-autonomo/solo-fertilidade", "/projeto-autonomo/sabedoria-ancestral",
   "/projeto-autonomo/conhecimento-perdido",
   "/filosofia", "/educacao", "/protocolo-inicial", "/ebooks", "/audiobooks",
+  "/blockchain", "/candlestick", "/diversificacao", "/bitcoin-vs-altcoins",
 ];
 
 export interface ReadingLevel {
