@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowLeft, ArrowRight, Search, Apple, Brain, Smartphone, Leaf, Eye, Shield, AlertTriangle } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Search, Apple, Brain, Smartphone, Leaf, Eye, Shield, AlertTriangle, Microscope } from 'lucide-react';
 import CinematicHero from '@/components/CinematicHero';
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
