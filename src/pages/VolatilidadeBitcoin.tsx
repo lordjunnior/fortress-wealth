@@ -70,7 +70,7 @@ const FAQ_DATA = [
 ];
 
 export default function VolatilidadeBitcoin() {
-  const { sx, sy } = useMouseParallax();
+  
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
   /* Reading progress */
