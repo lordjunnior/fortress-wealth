@@ -122,6 +122,7 @@ export default function ProjetoAutonomo() {
     { num: '02', title: 'Autonomia Biológica', sub: 'Fortalece o corpo', accent: '#10b981', sectionId: 'fase-02', icon: Heart },
     { num: '03', title: 'Soberania Alimentar', sub: 'Alimenta o corpo', accent: '#f59e0b', sectionId: 'fase-03', icon: Wheat },
     { num: '04', title: 'Conhecimento Perdido', sub: 'Ensina a entender o corpo', accent: '#14b8a6', sectionId: 'fase-04', icon: BookOpen },
+    { num: '05', title: 'Tóxicos Ocultos', sub: 'Remove dependências invisíveis', accent: '#ef4444', sectionId: 'fase-05', icon: Eye },
   ];
 
   return (
