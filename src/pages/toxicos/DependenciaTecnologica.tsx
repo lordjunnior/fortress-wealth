@@ -63,9 +63,8 @@ export default function DependenciaTecnologica() {
 
       <motion.div className="fixed top-0 left-0 right-0 h-[2px] z-50 origin-left"
         style={{ width: progressWidth, background: 'linear-gradient(90deg, #06b6d4, #0ea5e9)' }} />
-
-
-
+      <CinematicHero
+        image="/heroes/dependencia-tecnologica.webp"
         phase="Vetor 03 · Comportamento"
         title="Dependência Tecnológica"
         subtitle="Ferramentas digitais construídas para capturar atenção e moldar decisões. Ciclos de dopamina, coleta de dados e obsolescência programada."

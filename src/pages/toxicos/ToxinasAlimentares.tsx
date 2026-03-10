@@ -67,9 +67,8 @@ export default function ToxinasAlimentares() {
 
       <motion.div className="fixed top-0 left-0 right-0 h-[2px] z-50 origin-left"
         style={{ width: progressWidth, background: 'linear-gradient(90deg, #f59e0b, #ef4444)' }} />
-
-
-
+      <CinematicHero
+        image="/heroes/toxinas-alimentares.webp"
         phase="Vetor 01 · Corpo"
         title="Toxinas Alimentares"
         subtitle="O que a indústria alimentar adiciona silenciosamente à sua dieta. Aditivos, ultraprocessados, açúcar disfarçado e resíduos de pesticidas."

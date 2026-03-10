@@ -67,9 +67,8 @@ export default function ToxinasAmbientais() {
 
       <motion.div className="fixed top-0 left-0 right-0 h-[2px] z-50 origin-left"
         style={{ width: progressWidth, background: 'linear-gradient(90deg, #22c55e, #10b981)' }} />
-
-
-
+      <CinematicHero
+        image="/heroes/toxinas-ambientais.webp"
         phase="Vetor 04 · Ambiente"
         title="Toxinas Ambientais"
         subtitle="Contaminantes domésticos, materiais sintéticos, qualidade do ar interno e produtos químicos que atravessam a pele e os pulmões diariamente."

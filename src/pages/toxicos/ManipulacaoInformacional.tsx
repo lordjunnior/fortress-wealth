@@ -64,9 +64,8 @@ export default function ManipulacaoInformacional() {
 
       <motion.div className="fixed top-0 left-0 right-0 h-[2px] z-50 origin-left"
         style={{ width: progressWidth, background: 'linear-gradient(90deg, #a855f7, #6366f1)' }} />
-
-
-
+      <CinematicHero
+        image="/heroes/manipulacao-informacional.webp"
         phase="Vetor 02 · Mente"
         title="Manipulação Informacional"
         subtitle="Da propaganda estatal ao filtro algorítmico, camadas de manipulação projetadas para moldar percepções e crenças sem que você perceba."
