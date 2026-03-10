@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useCallback } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
 import {
   ArrowLeft, ArrowRight, ShieldCheck, Globe, Server, Zap, BookOpen,
