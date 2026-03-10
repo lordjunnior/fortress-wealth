@@ -965,8 +965,75 @@ export default function ProjetoAutonomo() {
         </div>
       </section>
 
+      {/* DIVIDER */}
+      <div className="relative z-10 max-w-6xl mx-auto px-10">
+        <div className="h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
+      </div>
+
       {/* ═══════════════════════════════════════════════════════════
-         FOOTER — COMPLETELY NEW LAYOUT
+         FASE 05 — TÓXICOS OCULTOS — LABORATÓRIO DE DISCERNIMENTO
+      ═══════════════════════════════════════════════════════════ */}
+      <section id="fase-05" className="relative z-10 scroll-mt-20 py-20 md:py-32">
+        <div className="max-w-7xl mx-auto px-6 md:px-10">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={scaleIn} custom={0}
+            className="relative rounded-3xl overflow-hidden mb-16 md:mb-20 h-72 md:h-[450px]"
+          >
+            <motion.img src="/heroes/toxicos-ocultos.webp" alt="Tóxicos Ocultos" className="absolute inset-0 w-full h-full object-cover"
+              whileInView={{ scale: [1.1, 1] }} viewport={{ once: true }} transition={{ duration: 1.5, ease: APPLE_EASE }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#050808] via-black/50 to-black/30" />
+            <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-14">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-8 h-[2px] bg-red-500 rounded-full" />
+                <span className="text-red-400 text-[10px] font-bold tracking-[0.5em] uppercase">Fase 05</span>
+              </div>
+              <h2 className="text-4xl md:text-7xl font-black tracking-tight text-white mb-3" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                TÓXICOS <span className="text-red-400">OCULTOS</span>
+              </h2>
+              <p className="text-stone-300 text-sm md:text-base leading-relaxed max-w-2xl">
+                Laboratório de discernimento: corpo, mente, comportamento e ambiente.
+                Quatro vetores de investigação sobre influências invisíveis que reduzem clareza, saúde e liberdade de escolha.
+              </p>
+            </div>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
+            {[
+              { icon: Target, label: 'Toxinas Alimentares', desc: 'Aditivos, ultraprocessados, açúcar oculto e agrotóxicos na dieta cotidiana.', link: '/projeto-autonomo/toxicos-ocultos/toxinas-alimentares', color: 'amber' },
+              { icon: Brain, label: 'Manipulação Informacional', desc: 'Propaganda, novilíngua, viés algorítmico e engenharia de consentimento.', link: '/projeto-autonomo/toxicos-ocultos/manipulacao-informacional', color: 'violet' },
+              { icon: Compass, label: 'Dependência Tecnológica', desc: 'Design comportamental, dopamina digital, rastreamento e obsolescência.', link: '/projeto-autonomo/toxicos-ocultos/dependencia-tecnologica', color: 'cyan' },
+              { icon: Eye, label: 'Toxinas Ambientais', desc: 'Plásticos, produtos de limpeza, poluição indoor e cosméticos tóxicos.', link: '/projeto-autonomo/toxicos-ocultos/toxinas-ambientais', color: 'green' },
+            ].map((item, i) => (
+              <motion.div key={item.label} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i * 0.15}>
+                <Link to={item.link}
+                  className="group block h-full relative overflow-hidden rounded-xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.05] hover:border-red-500/15 transition-all duration-500 hover:-translate-y-1 p-6"
+                >
+                  <div className="absolute top-0 left-0 w-full h-[2px] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-700 bg-gradient-to-r from-red-500 to-transparent" />
+                  <div className="flex items-start gap-4">
+                    <div className="p-2 rounded-lg bg-red-500/8 border border-red-500/10 shrink-0 group-hover:scale-110 transition-transform duration-500">
+                      <item.icon size={18} className="text-red-400/70" />
+                    </div>
+                    <div>
+                      <h4 className="text-sm font-bold text-stone-200 mb-1 group-hover:text-white transition-colors">{item.label}</h4>
+                      <p className="text-stone-600 text-xs leading-relaxed group-hover:text-stone-500 transition-colors">{item.desc}</p>
+                    </div>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}>
+            <Link to="/projeto-autonomo/toxicos-ocultos"
+              className="inline-flex items-center justify-center gap-3 bg-red-500 text-white px-8 py-4 font-semibold text-sm tracking-wide rounded-xl hover:bg-red-400 hover:shadow-xl hover:shadow-red-500/20 hover:scale-[1.02] transition-all duration-500 group"
+            >
+              <Eye size={18} className="group-hover:rotate-12 transition-transform duration-500" /> Explorar Laboratório Completo
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
+
          (was: status grid + text CTA, now: immersive closing)
       ═══════════════════════════════════════════════════════════ */}
       <section className="relative z-10 border-t border-white/[0.04]">
