@@ -436,6 +436,23 @@ const Ferramentas: React.FC = () => {
       className="min-h-screen text-stone-100 font-sans selection:bg-amber-400/30 relative overflow-hidden"
       style={{ background: '#050808' }}
     >
+      <Helmet>
+        <title>Torre de Controle | Ferramentas de Soberania Financeira</title>
+        <meta name="description" content="Calculadoras, simuladores e ferramentas de verificação para quem opera fora do sistema financeiro tradicional. Sem rastreamento, sem KYC, código auditável." />
+        <meta name="keywords" content="ferramentas bitcoin, calculadora bitcoin, simulador bitcoin, taxa de fuga, bitcoin vs imóvel, gerador seed, supply shock bitcoin, novilíngua, soberania financeira" />
+        <meta property="og:title" content="Torre de Controle | Ferramentas de Soberania" />
+        <meta property="og:description" content="Calculadoras, simuladores e ferramentas de verificação para quem opera fora do sistema financeiro tradicional." />
+        <meta property="og:type" content="website" />
+        <link rel="canonical" href="https://lordjunnior.com.br/ferramentas" />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          "name": "Torre de Controle — Ferramentas de Soberania",
+          "description": "Calculadoras, simuladores e ferramentas de verificação para soberania financeira.",
+          "url": "https://lordjunnior.com.br/ferramentas",
+          "author": { "@type": "Person", "name": "Lord Junnior" }
+        })}</script>
+      </Helmet>
       {/* ── SCROLL PROGRESS BAR ── */}
       <motion.div
         className="fixed top-0 left-0 right-0 h-[2px] z-50 origin-left"
