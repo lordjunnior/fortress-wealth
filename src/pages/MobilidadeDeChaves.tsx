@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import {
-  ArrowLeft, ArrowRight, Shield, Lock, Key, Smartphone, Wifi, WifiOff,
-  QrCode, Nfc, Globe, AlertTriangle, CheckCircle, Eye, BookOpen, Play,
+  ArrowRight, Shield, Lock, Key,  WifiOff,
+  QrCode, Nfc, Globe, AlertTriangle, CheckCircle, Eye, BookOpen,
   ChevronDown, Download, Fingerprint, HardDrive, ScanLine, Tag, Cpu,
   CircleDot, Package, Wrench, Terminal, Copy, FileCheck, Layers, Zap
 } from 'lucide-react';
@@ -110,27 +110,27 @@ const TUTORIAL_STEPS = [
 const NFC_MEIOS = [
   {
     titulo: 'Anel NFC',
-    desc: 'Usado pelo desenvolvedor ODudex na demonstração oficial. Discreto, sempre com você, difícil de associar a criptomoedas. "Reche seu anel de Bitcoin" — na verdade, a chave criptografada.',
+    desc: 'Usado pelo desenvolvedor ODudex na demonstração oficial. Discreto, sempre com você, difícil de associar a criptomoedas. "Recheia seu anel de Bitcoin" — na verdade, a chave criptografada.',
     bytes: '~500-900 bytes',
-    icon: '💍',
+    lucideIcon: CircleDot,
   },
   {
     titulo: 'Cartão NFC (NTAG 216)',
     desc: 'Formato cartão de crédito. 924 bytes de armazenamento. O plástico protege o chip contra dobras. Pode ir na carteira comum, gaveta ou cofre.',
     bytes: '924 bytes',
-    icon: '💳',
+    lucideIcon: HardDrive,
   },
   {
     titulo: 'Moeda NFC (NTAG 215)',
     desc: 'Forma de moeda plástica. Menos armazenamento (540 bytes), mas suficiente para uma seed criptografada. Compacta e discreta.',
     bytes: '540 bytes',
-    icon: '🪙',
+    lucideIcon: CircleDot,
   },
   {
     titulo: 'Adesivo NFC',
     desc: 'O mais versátil. Cole dentro de um livro, atrás de um quadro, na caixa de um produto qualquer. Um adesivo NFC num frasco de perfume parece um tag de loja — passa completamente despercebido.',
     bytes: '~500+ bytes',
-    icon: '🏷️',
+    lucideIcon: Tag,
   },
 ];
 
@@ -257,6 +257,36 @@ export default function MobilidadeDeChaves() {
 
   return (
     <div className="min-h-screen text-stone-100 font-sans selection:bg-amber-400/30 relative overflow-hidden" style={{ background: '#050808' }}>
+
+      {/* ─── FILM GRAIN + LIGHT BEAMS ─── */}
+      <div className="fixed inset-0 pointer-events-none z-[1]">
+        <div className="absolute inset-0 opacity-[0.035]"
+          style={{ backgroundImage: "url('data:image/svg+xml,%3Csvg viewBox=\"0 0 256 256\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cfilter id=\"n\"%3E%3CfeTurbulence type=\"fractalNoise\" baseFrequency=\"0.9\" numOctaves=\"4\" stitchTiles=\"stitch\"/%3E%3C/filter%3E%3Crect width=\"100%25\" height=\"100%25\" filter=\"url(%23n)\"/%3E%3C/svg%3E')", backgroundSize: '128px 128px' }} />
+        <div className="absolute inset-0 opacity-[0.02]"
+          style={{ background: 'linear-gradient(125deg, transparent 30%, rgba(245,158,11,0.08) 50%, transparent 70%)' }} />
+      </div>
+
+      {/* ─── BREATHING ORBS ─── */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <motion.div
+          className="absolute top-[15%] left-[8%] w-[600px] h-[600px] rounded-full"
+          animate={{ scale: [1, 1.15, 1], opacity: [0.03, 0.06, 0.03] }}
+          transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}>
+          <div className="w-full h-full rounded-full blur-3xl" style={{ background: 'radial-gradient(circle, rgba(245,158,11,0.25), transparent)' }} />
+        </motion.div>
+        <motion.div
+          className="absolute top-[50%] right-[5%] w-[500px] h-[500px] rounded-full"
+          animate={{ scale: [1, 1.2, 1], opacity: [0.02, 0.05, 0.02] }}
+          transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut', delay: 4 }}>
+          <div className="w-full h-full rounded-full blur-3xl" style={{ background: 'radial-gradient(circle, rgba(217,119,6,0.2), transparent)' }} />
+        </motion.div>
+        <motion.div
+          className="absolute bottom-[20%] left-[30%] w-[400px] h-[400px] rounded-full"
+          animate={{ scale: [1, 1.1, 1], opacity: [0.02, 0.04, 0.02] }}
+          transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut', delay: 7 }}>
+          <div className="w-full h-full rounded-full blur-3xl" style={{ background: 'radial-gradient(circle, rgba(251,191,36,0.15), transparent)' }} />
+        </motion.div>
+      </div>
       <Helmet>
         <title>Como Levar sua Chave de Bitcoin para o Exterior com Segurança | Lord Junnior</title>
         <meta name="description" content="Tutorial completo: como criptografar e transportar sua seed phrase Bitcoin usando Krux, NFC tags e criptografia AES. Passo a passo com NTAG 215/216, BinaryEye e NFC Tools." />
@@ -618,7 +648,9 @@ export default function MobilidadeDeChaves() {
                 className="group p-6 rounded-xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.04] transition-all duration-500"
               >
                 <div className="flex items-start gap-4">
-                  <span className="text-2xl">{meio.icon}</span>
+                  <div className="w-10 h-10 rounded-lg bg-amber-500/10 border border-amber-500/15 flex items-center justify-center shrink-0">
+                    <meio.lucideIcon size={18} className="text-amber-400" />
+                  </div>
                   <div className="flex-1">
                     <div className="flex items-center justify-between mb-2">
                       <h4 className="text-sm font-bold text-stone-200">{meio.titulo}</h4>
@@ -887,52 +919,12 @@ export default function MobilidadeDeChaves() {
         </div>
       </section>
 
-      {/* Divider */}
-      <div className="relative z-10 max-w-5xl mx-auto px-10">
-        <div className="h-px bg-gradient-to-r from-transparent via-amber-500/20 to-transparent" />
-      </div>
 
       {/* ═══════════════════════════════════════════════════════════
-         CAPÍTULO 09 — VÍDEO + CTA
+         CTA — PRÓXIMOS PASSOS
       ═══════════════════════════════════════════════════════════ */}
       <section className="relative z-10 py-20 md:py-32">
         <div className="max-w-5xl mx-auto px-6 md:px-10">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="mb-16">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-8 h-[2px] bg-amber-500 rounded-full" />
-              <span className="text-amber-400 text-[10px] font-bold tracking-[0.5em] uppercase">Capítulo 09</span>
-            </div>
-            <h2 className="text-3xl md:text-5xl font-black tracking-tight text-white mb-6" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-              GUIA <span className="text-amber-400">DEMONSTRATIVO</span>
-            </h2>
-            <p className="text-stone-400 text-sm leading-relaxed max-w-3xl">
-              Assista ao guia completo e veja o processo inteiro ao vivo: criptografia na Krux, gravação no NFC, leitura com BinaryEye e recuperação da seed.
-            </p>
-          </motion.div>
-
-          {/* Video Placeholder */}
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0.2}
-            className="relative rounded-2xl border border-amber-500/20 bg-amber-500/[0.03] p-12 md:p-16 text-center mb-16 overflow-hidden"
-          >
-            <div className="absolute inset-0 opacity-30"
-              style={{ background: 'radial-gradient(ellipse at center, rgba(245,158,11,0.1), transparent 60%)' }} />
-            <div className="relative z-10">
-              <div className="w-20 h-20 rounded-full bg-amber-500/20 border border-amber-500/30 flex items-center justify-center mx-auto mb-8 hover:scale-110 transition-transform duration-500 cursor-pointer">
-                <Play size={32} className="text-amber-400 ml-1" />
-              </div>
-              <h3 className="text-xl md:text-2xl font-bold text-stone-200 mb-4">
-                Assista ao guia completo
-              </h3>
-              <p className="text-stone-400 text-sm leading-relaxed max-w-xl mx-auto mb-8">
-                Processo completo: importar seed na Krux, criptografar com AES, gerar QR code, escanear com BinaryEye, gravar no NFC com NFC Tools e recuperar tudo do zero.
-              </p>
-              <p className="text-stone-600 text-xs italic">
-                Vídeo disponível no canal — link será adicionado em breve.
-              </p>
-            </div>
-          </motion.div>
-
-          {/* Dual CTA */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}>
               <Link to="/autocustodia"
