@@ -1,4 +1,5 @@
 import { useRef, useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
