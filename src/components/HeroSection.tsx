@@ -24,10 +24,6 @@ const HeroSection = () => {
     return () => window.removeEventListener("mousemove", handleMouse);
   }, []);
 
-  useEffect(() => {
-    const interval = setInterval(() => setSeedOffset((p) => p + 5), 300000);
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <section
