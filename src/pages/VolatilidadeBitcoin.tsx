@@ -1,3 +1,4 @@
+// Volatilidade Bitcoin - Padrão Nobel v2
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
