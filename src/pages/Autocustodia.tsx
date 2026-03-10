@@ -546,6 +546,26 @@ export default function Autocustodia() {
             />
           </NobelSection>
 
+          {/* ── MOBILIDADE DE CHAVES CTA ── */}
+          <NobelSection className="mb-20">
+            <Link to="/mobilidade-de-chaves" className="group block relative overflow-hidden rounded-sm border border-primary/15 bg-card/20 hover:bg-card/40 hover:border-primary/30 transition-all duration-500 hover:-translate-y-1">
+              <div className="absolute top-0 left-0 w-full h-[2px] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-700 bg-gradient-to-r from-primary to-transparent" />
+              <div className="p-8 md:p-10 flex flex-col md:flex-row md:items-center gap-6">
+                <div className="w-14 h-14 rounded-sm bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0">
+                  <KeyRound className="w-6 h-6 text-primary" />
+                </div>
+                <div className="flex-1">
+                  <p className="font-mono text-[10px] tracking-[0.4em] text-primary/60 uppercase mb-2">Módulo Avançado</p>
+                  <h4 className="text-lg font-bold tracking-tight mb-2 group-hover:text-primary transition-colors">Mobilidade de Chaves — Transporte sua Soberania pelo Mundo</h4>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    Tutorial completo: como criptografar sua seed com a Krux e transportá-la em tags NFC invisíveis. Anel, adesivo, cartão — riqueza que atravessa fronteiras em poucos bytes criptografados.
+                  </p>
+                </div>
+                <ArrowRight className="w-5 h-5 text-primary/40 group-hover:text-primary group-hover:translate-x-1 transition-all shrink-0" />
+              </div>
+            </Link>
+          </NobelSection>
+
           {/* ── CLOSING ── */}
           <NobelSection className="mb-20">
             <div className="relative p-10 md:p-16 rounded-sm border border-border/20 bg-card/20 text-center overflow-hidden">
