@@ -2,8 +2,10 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowLeft, ArrowRight, Search, Apple, Brain, Smartphone, Leaf, Eye, Shield, AlertTriangle, Microscope } from 'lucide-react';
+import { ArrowRight, Apple, Brain, Smartphone, Leaf, Eye, Shield, Microscope, Clock, Zap, FlaskConical, FileWarning, Quote, TrendingUp, Users, Factory, Wifi, Pill, Droplets, MonitorSmartphone } from 'lucide-react';
 import CinematicHero from '@/components/CinematicHero';
+import DossieRealidade from '@/components/toxicos/DossieRealidade';
+import TimelineDia from '@/components/toxicos/TimelineDia';
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 const fadeUp = {
@@ -71,11 +73,35 @@ export default function ToxicosOcultos() {
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       </Helmet>
 
+      {/* === VFX LAYER === */}
+      <div className="fixed inset-0 pointer-events-none z-[1]">
+        {/* Film grain */}
+        <div className="absolute inset-0 opacity-[0.035]" style={{
+          backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E\")",
+          backgroundRepeat: 'repeat', backgroundSize: '128px',
+        }} />
+        {/* Light beams */}
+        <div className="absolute inset-0" style={{
+          background: 'linear-gradient(160deg, transparent 20%, rgba(239,68,68,0.04) 40%, transparent 60%, rgba(245,158,11,0.03) 80%, transparent)',
+        }} />
+        {/* Breathing orbs */}
+        <motion.div className="absolute top-[15%] left-[10%] w-[500px] h-[500px] rounded-full"
+          animate={{ scale: [1, 1.2, 1], opacity: [0.02, 0.05, 0.02] }}
+          transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
+          style={{ background: 'radial-gradient(circle, rgba(239,68,68,0.15), transparent 70%)' }} />
+        <motion.div className="absolute bottom-[20%] right-[5%] w-[600px] h-[600px] rounded-full"
+          animate={{ scale: [1, 1.15, 1], opacity: [0.015, 0.04, 0.015] }}
+          transition={{ duration: 16, repeat: Infinity, ease: 'easeInOut', delay: 4 }}
+          style={{ background: 'radial-gradient(circle, rgba(168,85,247,0.12), transparent 70%)' }} />
+        <motion.div className="absolute top-[60%] left-[40%] w-[400px] h-[400px] rounded-full"
+          animate={{ scale: [1, 1.1, 1], opacity: [0.01, 0.035, 0.01] }}
+          transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut', delay: 8 }}
+          style={{ background: 'radial-gradient(circle, rgba(6,182,212,0.12), transparent 70%)' }} />
+      </div>
+
       {/* Progress bar */}
       <motion.div className="fixed top-0 left-0 right-0 h-[2px] z-50 origin-left"
         style={{ width: progressWidth, background: 'linear-gradient(90deg, #ef4444, #f59e0b)' }} />
-
-
 
       <CinematicHero
         image="/heroes/toxicos-ocultos.webp"
@@ -88,12 +114,121 @@ export default function ToxicosOcultos() {
         backLabel="Projeto Autônomo"
       />
 
-      {/* Quadratura visual */}
+      {/* ═══════════════════════════════════════════════════ */}
+      {/* ABERTURA CONCEITUAL — O gancho que fura a bolha    */}
+      {/* ═══════════════════════════════════════════════════ */}
+      <section className="relative z-10 py-20 md:py-32">
+        <div className="max-w-4xl mx-auto px-6 md:px-10">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}
+            className="text-center mb-16">
+            <div className="flex items-center justify-center gap-3 mb-8">
+              <div className="w-10 h-[1px] bg-red-500/40" />
+              <FlaskConical size={14} className="text-red-400" />
+              <span className="text-red-400/70 text-[10px] font-bold tracking-[0.5em] uppercase">Pergunta zero</span>
+              <FlaskConical size={14} className="text-red-400" />
+              <div className="w-10 h-[1px] bg-red-500/40" />
+            </div>
+          </motion.div>
+
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={1}>
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tight text-center leading-[1.1] mb-10"
+              style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+              <span className="text-stone-300">E se a maioria das decisões </span>
+              <span className="text-stone-300">que você toma no dia </span>
+              <span className="text-red-400">não forem realmente suas?</span>
+            </h2>
+          </motion.div>
+
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={2}
+            className="space-y-6 max-w-3xl mx-auto">
+            <p className="text-stone-400 text-base md:text-lg leading-relaxed">
+              Não estamos falando de teorias. Estamos falando de <span className="text-stone-200 font-semibold">bioquímica documentada</span>, 
+              <span className="text-stone-200 font-semibold"> engenharia comportamental patenteada</span> e 
+              <span className="text-stone-200 font-semibold"> regulamentações que protegem indústrias, não pessoas</span>.
+            </p>
+            <p className="text-stone-500 text-sm md:text-base leading-relaxed">
+              Existe uma distância enorme entre o que você acredita que escolhe livremente e o que realmente acontece dentro do seu corpo,
+              da sua mente e do seu ambiente a cada hora do dia. Essa distância tem nome: <span className="text-red-400/80 font-semibold">influência invisível</span>.
+              E ela opera em quatro vetores simultâneos que a maioria das pessoas nunca examinou com atenção.
+            </p>
+          </motion.div>
+
+          {/* Stat blocks — dados que chocam */}
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={3}
+            className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mt-16">
+            {[
+              { num: '7.000+', label: 'Aditivos alimentares aprovados sem testes de longo prazo', icon: Pill, color: 'amber' },
+              { num: '5h12', label: 'Tempo médio diário em telas — mais que dormindo', icon: MonitorSmartphone, color: 'cyan' },
+              { num: '353', label: 'Substâncias tóxicas detectadas no sangue do cordão umbilical', icon: Droplets, color: 'green' },
+              { num: '2.000×', label: 'Mais expostos a propaganda que uma pessoa em 1900', icon: Wifi, color: 'violet' },
+            ].map((stat, i) => (
+              <motion.div key={stat.num}
+                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.1 + i * 0.1 }}
+                className={`relative overflow-hidden rounded-xl border p-5 md:p-6 text-center
+                  ${stat.color === 'amber' ? 'border-amber-500/10 bg-amber-500/[0.03]' :
+                    stat.color === 'cyan' ? 'border-cyan-500/10 bg-cyan-500/[0.03]' :
+                    stat.color === 'green' ? 'border-green-500/10 bg-green-500/[0.03]' :
+                    'border-violet-500/10 bg-violet-500/[0.03]'}`}
+              >
+                <stat.icon size={16} className={`mx-auto mb-3 
+                  ${stat.color === 'amber' ? 'text-amber-400/60' :
+                    stat.color === 'cyan' ? 'text-cyan-400/60' :
+                    stat.color === 'green' ? 'text-green-400/60' :
+                    'text-violet-400/60'}`} />
+                <p className={`text-2xl md:text-3xl font-black tabular-nums mb-2
+                  ${stat.color === 'amber' ? 'text-amber-400' :
+                    stat.color === 'cyan' ? 'text-cyan-400' :
+                    stat.color === 'green' ? 'text-green-400' :
+                    'text-violet-400'}`}
+                  style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                  {stat.num}
+                </p>
+                <p className="text-stone-500 text-[10px] md:text-xs leading-snug">{stat.label}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Animated divider */}
+      <div className="relative z-10 max-w-6xl mx-auto px-6">
+        <motion.div className="h-[1px]" initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }}
+          viewport={{ once: true }} transition={{ duration: 1.2, ease: APPLE_EASE }}
+          style={{ background: 'linear-gradient(90deg, transparent, rgba(239,68,68,0.3), transparent)', transformOrigin: 'left' }} />
+      </div>
+
+      {/* ═══════════════════════════════════════════════════ */}
+      {/* TIMELINE — 24 HORAS SOB INFLUÊNCIA                */}
+      {/* ═══════════════════════════════════════════════════ */}
+      <TimelineDia />
+
+      {/* Animated divider */}
+      <div className="relative z-10 max-w-6xl mx-auto px-6">
+        <motion.div className="h-[1px]" initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }}
+          viewport={{ once: true }} transition={{ duration: 1.2, ease: APPLE_EASE }}
+          style={{ background: 'linear-gradient(90deg, transparent, rgba(168,85,247,0.3), transparent)', transformOrigin: 'right' }} />
+      </div>
+
+      {/* ═══════════════════════════════════════════════════ */}
+      {/* DOSSIÊ — EVIDÊNCIAS VERIFICÁVEIS                  */}
+      {/* ═══════════════════════════════════════════════════ */}
+      <DossieRealidade />
+
+      {/* Animated divider */}
+      <div className="relative z-10 max-w-6xl mx-auto px-6">
+        <motion.div className="h-[1px]" initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }}
+          viewport={{ once: true }} transition={{ duration: 1.2, ease: APPLE_EASE }}
+          style={{ background: 'linear-gradient(90deg, transparent, rgba(245,158,11,0.3), transparent)', transformOrigin: 'left' }} />
+      </div>
+
+      {/* ═══════════════════════════════════════════════════ */}
+      {/* QUADRATURA — OS 4 VETORES                         */}
+      {/* ═══════════════════════════════════════════════════ */}
       <section className="relative z-10 py-16 md:py-24">
         <div className="max-w-6xl mx-auto px-6 md:px-10">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}
-            className="text-center mb-16"
-          >
+            className="text-center mb-16">
             <div className="flex items-center justify-center gap-3 mb-6">
               <div className="w-8 h-[2px] bg-red-500 rounded-full" />
               <span className="text-red-400 text-[10px] font-bold tracking-[0.5em] uppercase">Quadratura da Autonomia</span>
@@ -113,8 +248,7 @@ export default function ToxicosOcultos() {
             {['Corpo', 'Mente', 'Comportamento', 'Ambiente'].map((dim, i) => (
               <motion.div key={dim} initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }} transition={{ duration: 0.5, ease: APPLE_EASE, delay: i * 0.15 }}
-                className="flex items-center gap-3"
-              >
+                className="flex items-center gap-3">
                 <div className={`w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center border
                   ${i === 0 ? 'bg-amber-500/10 border-amber-500/20' : i === 1 ? 'bg-violet-500/10 border-violet-500/20' : i === 2 ? 'bg-cyan-500/10 border-cyan-500/20' : 'bg-green-500/10 border-green-500/20'}`}>
                   {i === 0 ? <Apple className="text-amber-400" size={20} /> : i === 1 ? <Brain className="text-violet-400" size={20} /> : i === 2 ? <Smartphone className="text-cyan-400" size={20} /> : <Leaf className="text-green-400" size={20} />}
@@ -131,15 +265,11 @@ export default function ToxicosOcultos() {
               <motion.div key={spoke.slug} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i * 0.15}>
                 <Link to={`/projeto-autonomo/toxicos-ocultos/${spoke.slug}`}
                   className="group block h-full relative overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.05] transition-all duration-500 hover:-translate-y-1 p-8 md:p-10"
-                  style={{ ['--spoke-accent' as string]: spoke.accent }}
-                >
+                  style={{ ['--spoke-accent' as string]: spoke.accent }}>
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
                     style={{ background: `radial-gradient(ellipse at bottom right, ${spoke.accent}12, transparent 60%)` }} />
-
-                  {/* Top accent line */}
                   <div className="absolute top-0 left-0 w-full h-[2px] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-700"
                     style={{ background: `linear-gradient(to right, ${spoke.accent}, transparent)` }} />
-
                   <div className="relative z-10">
                     <div className="flex items-center gap-3 mb-5">
                       <span className="text-2xl font-black text-stone-700 tabular-nums" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{spoke.num}</span>
@@ -149,20 +279,12 @@ export default function ToxicosOcultos() {
                       </div>
                       <span className="text-[10px] font-bold uppercase tracking-[0.4em] ml-auto" style={{ color: `${spoke.accent}99` }}>{spoke.subtitle}</span>
                     </div>
-
-                    <h3 className="text-xl md:text-2xl font-bold text-stone-200 tracking-tight mb-3 group-hover:text-white transition-colors">
-                      {spoke.title}
-                    </h3>
+                    <h3 className="text-xl md:text-2xl font-bold text-stone-200 tracking-tight mb-3 group-hover:text-white transition-colors">{spoke.title}</h3>
                     <p className="text-[10px] font-semibold uppercase tracking-wider mb-4" style={{ color: `${spoke.accent}80` }}>{spoke.desc}</p>
-                    <p className="text-stone-500 text-sm leading-relaxed mb-6 group-hover:text-stone-400 transition-colors">
-                      {spoke.longDesc}
-                    </p>
-
-                    {/* PNL quote */}
+                    <p className="text-stone-500 text-sm leading-relaxed mb-6 group-hover:text-stone-400 transition-colors">{spoke.longDesc}</p>
                     <div className="border-l-2 pl-4 mb-6" style={{ borderColor: `${spoke.accent}40` }}>
                       <p className="text-xs italic" style={{ color: `${spoke.accent}90` }}>"{spoke.pnl}"</p>
                     </div>
-
                     <div className="flex items-center gap-2 transition-colors" style={{ color: `${spoke.accent}70` }}>
                       <Eye size={14} />
                       <span className="text-[10px] font-bold uppercase tracking-wider">Investigar módulo</span>
@@ -176,7 +298,9 @@ export default function ToxicosOcultos() {
         </div>
       </section>
 
-      {/* Manifesto Section */}
+      {/* ═══════════════════════════════════════════════════ */}
+      {/* MANIFESTO                                         */}
+      {/* ═══════════════════════════════════════════════════ */}
       <section className="relative z-10 py-20 md:py-32 border-t border-white/[0.04]">
         <div className="max-w-4xl mx-auto px-6 md:px-10 text-center">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}>
@@ -192,8 +316,7 @@ export default function ToxicosOcultos() {
               Identificar o que entra silenciosamente na vida cotidiana é o primeiro passo para recuperar consciência e autonomia.
             </p>
             <Link to="/projeto-autonomo"
-              className="inline-flex items-center gap-3 bg-red-500 text-white px-10 py-5 font-bold text-sm tracking-wide rounded-xl hover:bg-red-400 hover:shadow-2xl hover:shadow-red-500/20 hover:scale-[1.03] hover:-translate-y-1 transition-all duration-500 group"
-            >
+              className="inline-flex items-center gap-3 bg-red-500 text-white px-10 py-5 font-bold text-sm tracking-wide rounded-xl hover:bg-red-400 hover:shadow-2xl hover:shadow-red-500/20 hover:scale-[1.03] hover:-translate-y-1 transition-all duration-500 group">
               <Shield size={18} className="group-hover:rotate-12 transition-transform duration-500" /> Voltar ao Projeto Autônomo
             </Link>
           </motion.div>
