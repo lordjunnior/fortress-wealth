@@ -1,25 +1,35 @@
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { ArrowLeft, Zap, ShieldCheck, ArrowRight, CheckCircle2, Loader2, Copy, Check } from "lucide-react";
-import { useNavigate } from "react-router-dom";
-import NoiseBackground from "@/components/NoiseBackground";
-import AppSidebar from "@/components/AppSidebar";
-import MobileNav from "@/components/MobileNav";
-import NetworkTicker from "@/components/NetworkTicker";
-import EmergencyManual from "@/components/EmergencyManual";
+import { Helmet } from "react-helmet-async";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { ArrowLeft, Zap, ShieldCheck, ArrowRight, CheckCircle2, Loader2, Copy, Check, ChevronDown, Shield, Lock } from "lucide-react";
+import { Link } from "react-router-dom";
+
+const APPLE_EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 30, filter: 'blur(6px)' },
+  visible: (i: number) => ({
+    opacity: 1, y: 0, filter: 'blur(0px)',
+    transition: { duration: 0.7, ease: APPLE_EASE, delay: i * 0.12 },
+  }),
+};
 
 type Stage = "input" | "processing" | "success";
 
 const Gateway = () => {
-  const navigate = useNavigate();
   const [pixKey, setPixKey] = useState("");
   const [valueBRL, setValueBRL] = useState<number>(0);
   const [btcPriceBRL, setBtcPriceBRL] = useState<number | null>(null);
   const [stage, setStage] = useState<Stage>("input");
   const [copied, setCopied] = useState(false);
 
+  const { scrollYProgress } = useScroll();
+  const progressWidth = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
+
   const fakeTxId = "b7e3f1a9c4d2e8f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4";
   const SALDO_SATS = 1247830;
+
+  useEffect(() => { window.scrollTo(0, 0); }, []);
 
   useEffect(() => {
     const fetchPrice = async () => {
@@ -66,319 +76,244 @@ const Gateway = () => {
   };
 
   return (
-    <div className="min-h-screen text-foreground">
-      <NoiseBackground />
-      <AppSidebar />
-      <MobileNav />
+    <div className="min-h-screen text-stone-100 font-sans selection:bg-amber-400/30 relative overflow-hidden" style={{ background: '#050808' }}>
+      <Helmet>
+        <title>Gateway PIX via Bitcoin | Liquidez Descentralizada</title>
+        <meta name="description" content="Converta Bitcoin em PIX instantaneamente via Lightning Network. Sem KYC, sem banco, sem intermediário. Taxa de ~1 sat." />
+        <meta name="keywords" content="pix via bitcoin, lightning network pix, gateway bitcoin, converter bitcoin reais, bitcoin sem kyc, pagamento lightning" />
+        <meta property="og:title" content="Gateway PIX via Bitcoin | Lightning Network" />
+        <meta property="og:description" content="Converta Bitcoin em PIX instantaneamente. Sem KYC, taxa de ~1 sat." />
+        <meta property="og:type" content="website" />
+        <link rel="canonical" href="https://lordjunnior.com.br/saida/gateway" />
+      </Helmet>
 
-      <div className="relative z-10 lg:ml-[260px] pb-20">
-        <div className="section-padding pt-6 pb-0">
-          <motion.button
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            onClick={() => navigate(-1)}
-            className="flex items-center gap-2 text-sm text-muted-foreground hover:text-gold transition-colors group"
-          >
-            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-            <span className="font-mono tracking-wider text-xs">VOLTAR</span>
-          </motion.button>
-        </div>
+      {/* Scroll Progress */}
+      <motion.div
+        className="fixed top-0 left-0 right-0 h-[2px] z-50 origin-left"
+        style={{ width: progressWidth, background: 'linear-gradient(90deg, #f59e0b, #f97316)' }}
+      />
 
-        <section className="section-padding pt-8">
-          <div className="max-w-5xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-              {/* Phone Simulator */}
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7 }}
-                className="flex justify-center"
-              >
-                <div className="relative w-[320px] rounded-[40px] border-2 border-border bg-card p-3 shadow-2xl">
-                  {/* Notch */}
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-background rounded-b-2xl z-10" />
-
-                  <div className="w-full rounded-[32px] bg-background overflow-hidden">
-                    {/* Status bar */}
-                    <div className="flex items-center justify-between px-6 pt-8 pb-3">
-                      <span className="font-mono text-[10px] text-muted-foreground">21:47</span>
-                      <div className="flex gap-1 items-center">
-                        <Zap className="w-3 h-3 text-gold" />
-                        <span className="font-mono text-[10px] text-gold">Lightning</span>
-                      </div>
-                    </div>
-
-                    <div className="px-5 pb-6">
-                      {/* Balance */}
-                      <div className="mb-6">
-                        <p className="text-[10px] text-muted-foreground font-mono mb-1">SALDO DISPONÍVEL</p>
-                        <p className="text-2xl font-bold text-foreground">
-                          {SALDO_SATS.toLocaleString("pt-BR")}{" "}
-                          <span className="text-sm text-gold">sats</span>
-                        </p>
-                        <p className="text-[9px] text-muted-foreground font-mono mt-1">
-                          BTC/BRL {btcPriceBRL ? `R$ ${btcPriceBRL.toLocaleString("pt-BR", { maximumFractionDigits: 0 })}` : "---"}
-                        </p>
-                      </div>
-
-                      <AnimatePresence mode="wait">
-                        {stage === "input" && (
-                          <motion.div
-                            key="input"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                          >
-                            {/* PIX Key */}
-                            <div className="mb-4">
-                              <label className="text-[10px] text-muted-foreground font-mono block mb-1.5">
-                                CHAVE PIX DO DESTINATÁRIO
-                              </label>
-                              <input
-                                type="text"
-                                value={pixKey}
-                                onChange={(e) => setPixKey(e.target.value)}
-                                placeholder="email, CPF ou telefone"
-                                className="w-full bg-secondary/50 border border-border rounded-lg px-3 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/50 focus:border-gold/50 focus:outline-none transition-colors"
-                              />
-                            </div>
-
-                            {/* Value */}
-                            <div className="mb-4">
-                              <label className="text-[10px] text-muted-foreground font-mono block mb-1.5">
-                                VALOR EM R$
-                              </label>
-                              <input
-                                type="number"
-                                value={valueBRL || ""}
-                                onChange={(e) => setValueBRL(Number(e.target.value))}
-                                placeholder="0,00"
-                                className="w-full bg-secondary/50 border border-border rounded-lg px-3 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/50 focus:border-gold/50 focus:outline-none transition-colors"
-                              />
-                            </div>
-
-                            {/* Conversion */}
-                            {valueBRL > 0 && (
-                              <motion.div
-                                initial={{ opacity: 0, height: 0 }}
-                                animate={{ opacity: 1, height: "auto" }}
-                                className="border border-border rounded-lg p-3 mb-4"
-                              >
-                                <div className="flex items-center justify-between">
-                                  <div>
-                                    <p className="text-[10px] text-muted-foreground font-mono">VALOR</p>
-                                    <p className="text-lg font-semibold">
-                                      R$ {valueBRL.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}
-                                    </p>
-                                  </div>
-                                  <ArrowRight className="w-4 h-4 text-gold" />
-                                  <div className="text-right">
-                                    <p className="text-[10px] text-muted-foreground font-mono">DÉBITO</p>
-                                    <p className="text-lg font-semibold text-gold">
-                                      {satsAmount.toLocaleString("pt-BR")} sats
-                                    </p>
-                                  </div>
-                                </div>
-                                <div className="flex items-center justify-between mt-2 pt-2 border-t border-border/50">
-                                  <span className="text-[9px] text-muted-foreground font-mono">TAXA DA REDE</span>
-                                  <span className="text-[9px] text-gold font-mono font-bold">~1 sat (≈ R$ 0,00)</span>
-                                </div>
-                              </motion.div>
-                            )}
-
-                            {/* Confirm Button */}
-                            <button
-                              onClick={handleConfirm}
-                              disabled={!pixKey || valueBRL <= 0}
-                              className="w-full gradient-gold rounded-lg py-3 text-center disabled:opacity-40 disabled:cursor-not-allowed transition-opacity"
-                            >
-                              <span className="text-sm font-semibold text-primary-foreground">
-                                Confirmar via Lightning
-                              </span>
-                            </button>
-
-                            <p className="text-[9px] text-muted-foreground text-center mt-3 font-mono">
-                              GATEWAY DESCENTRALIZADO · SEM KYC
-                            </p>
-                          </motion.div>
-                        )}
-
-                        {stage === "processing" && (
-                          <motion.div
-                            key="processing"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            className="py-10 flex flex-col items-center gap-4"
-                          >
-                            <Loader2 className="w-10 h-10 text-gold animate-spin" />
-                            <p className="font-mono text-sm text-gold animate-pulse">Gerando Invoice...</p>
-                            <div className="w-full bg-secondary rounded-full h-1.5 overflow-hidden">
-                              <motion.div
-                                initial={{ width: "0%" }}
-                                animate={{ width: "100%" }}
-                                transition={{ duration: 3.2, ease: "easeInOut" }}
-                                className="h-full gradient-gold rounded-full"
-                              />
-                            </div>
-                            <p className="text-[9px] text-muted-foreground font-mono text-center">
-                              VALIDANDO INVOICE · PROPAGANDO HTLC · CONFIRMANDO ROTA
-                            </p>
-                          </motion.div>
-                        )}
-
-                        {stage === "success" && (
-                          <motion.div
-                            key="success"
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            className="py-6 flex flex-col items-center gap-3"
-                          >
-                            <CheckCircle2 className="w-12 h-12 text-chart-green" />
-                            <p className="font-bold text-foreground">Operação Concluída</p>
-                            <div className="w-full border border-border rounded-lg p-3 space-y-2">
-                              <div className="flex justify-between text-xs">
-                                <span className="text-muted-foreground">Destino PIX</span>
-                                <span className="text-foreground font-mono">{pixKey}</span>
-                              </div>
-                              <div className="flex justify-between text-xs">
-                                <span className="text-muted-foreground">Valor</span>
-                                <span className="text-foreground">R$ {valueBRL.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}</span>
-                              </div>
-                              <div className="flex justify-between text-xs">
-                                <span className="text-muted-foreground">Debitado</span>
-                                <span className="text-gold font-bold">{satsAmount.toLocaleString("pt-BR")} sats</span>
-                              </div>
-                              <div className="flex justify-between text-xs">
-                                <span className="text-muted-foreground">Taxa</span>
-                                <span className="text-chart-green">1 sat</span>
-                              </div>
-                              <div className="pt-2 border-t border-border/50">
-                                <p className="text-[9px] text-muted-foreground font-mono mb-1">TX ID</p>
-                                <div
-                                  className="flex items-center gap-1 cursor-pointer group"
-                                  onClick={handleCopyTx}
-                                >
-                                  <code className="text-[8px] text-muted-foreground break-all group-hover:text-foreground transition-colors">
-                                    {fakeTxId}
-                                  </code>
-                                  {copied ? (
-                                    <Check className="w-3 h-3 text-chart-green flex-shrink-0" />
-                                  ) : (
-                                    <Copy className="w-3 h-3 text-muted-foreground flex-shrink-0" />
-                                  )}
-                                </div>
-                              </div>
-                            </div>
-                            <button
-                              onClick={reset}
-                              className="w-full mt-2 py-2.5 rounded-lg border border-gold-dim text-gold font-semibold text-sm hover:bg-gold/5 transition-colors"
-                            >
-                              Nova Operação
-                            </button>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Right side content */}
-              <motion.div
-                initial={{ opacity: 0, x: 40 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.7, delay: 0.2 }}
-                className="lg:pt-8"
-              >
-                <div className="flex items-center gap-3 mb-4">
-                  <span className="font-mono text-[10px] tracking-widest text-gold bg-gold/10 px-2.5 py-1 rounded">
-                    GATEWAY DESCENTRALIZADO
-                  </span>
-                </div>
-
-                <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-4 leading-tight">
-                  PIX via{" "}
-                  <span className="text-gradient-gold">Bitcoin</span>
-                </h1>
-
-                <p className="text-muted-foreground text-lg leading-relaxed mb-8">
-                  Liquidez em qualquer balcão do Brasil, sem pedir permissão a gerente de banco.
-                </p>
-
-                {/* Rules */}
-                <div className="space-y-4 mb-10">
-                  {[
-                    {
-                      icon: ShieldCheck,
-                      title: "Sem KYC",
-                      desc: "Nenhuma informação pessoal é coletada. Sem CPF, sem selfie, sem gerente.",
-                    },
-                    {
-                      icon: Zap,
-                      title: "Taxa Real: ~1 sat",
-                      desc: "Enquanto bancos cobram R$ 10+ por TED, a Lightning cobra frações de centavo.",
-                    },
-                    {
-                      icon: CheckCircle2,
-                      title: "Liquidação Instantânea",
-                      desc: "O pagamento PIX chega em segundos. Sem dias úteis, sem horário comercial.",
-                    },
-                  ].map((rule, i) => (
-                    <motion.div
-                      key={i}
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.5 + i * 0.15 }}
-                      className="flex gap-4 items-start"
-                    >
-                      <div className="w-10 h-10 rounded-lg bg-gold/10 flex items-center justify-center flex-shrink-0">
-                        <rule.icon className="w-5 h-5 text-gold" />
-                      </div>
-                      <div>
-                        <h3 className="font-bold text-sm mb-0.5">{rule.title}</h3>
-                        <p className="text-sm text-muted-foreground leading-relaxed">{rule.desc}</p>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-
-                {/* Comparison */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1 }}
-                  className="card-wealth"
-                >
-                  <p className="font-mono text-[10px] tracking-widest text-muted-foreground mb-3">
-                    COMPARATIVO DE TAXAS
-                  </p>
-                  <div className="space-y-2">
-                    <div className="flex items-center justify-between text-sm">
-                      <span className="text-muted-foreground">TED Bancário</span>
-                      <span className="text-chart-red font-mono font-bold">R$ 10,00 – R$ 22,00</span>
-                    </div>
-                    <div className="flex items-center justify-between text-sm">
-                      <span className="text-muted-foreground">PIX (com taxa oculta de dados)</span>
-                      <span className="text-chart-red font-mono font-bold">Seu CPF + Rastreio</span>
-                    </div>
-                    <div className="h-px bg-border my-1" />
-                    <div className="flex items-center justify-between text-sm">
-                      <span className="text-foreground font-medium">Lightning Network</span>
-                      <span className="text-chart-green font-mono font-bold">~1 sat (≈ R$ 0,00)</span>
-                    </div>
-                  </div>
-                </motion.div>
-              </motion.div>
-            </div>
-          </div>
-        </section>
-
-        {/* Emergency Manual */}
-        <EmergencyManual />
+      {/* Film grain */}
+      <div className="pointer-events-none fixed inset-0 z-50 opacity-[0.035]">
+        <svg className="w-full h-full">
+          <filter id="grain-gw"><feTurbulence baseFrequency="0.85" numOctaves="4" stitchTiles="stitch" /><feColorMatrix type="saturate" values="0" /></filter>
+          <rect width="100%" height="100%" filter="url(#grain-gw)" />
+        </svg>
       </div>
 
-      <NetworkTicker />
+      {/* Light beams */}
+      <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+        <div className="absolute inset-0 bg-[linear-gradient(120deg,transparent_40%,hsl(0_0%_100%/0.012)_50%,transparent_60%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(240deg,transparent_35%,hsl(40_92%_56%/0.008)_48%,transparent_55%)]" />
+      </div>
+
+      {/* ═══ HERO ═══ */}
+      <section className="relative z-10 pt-24 pb-16 px-6 md:px-16 lg:px-24">
+        <Link
+          to="/saida"
+          className="inline-flex items-center gap-2 text-stone-600 hover:text-amber-400 text-xs font-bold uppercase tracking-[0.2em] transition-colors mb-10"
+        >
+          <ArrowLeft size={14} /> Estratégias de Saída
+        </Link>
+
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: APPLE_EASE }}
+        >
+          <div className="flex items-center gap-3 mb-6">
+            <div className="p-3.5 bg-amber-500/10 border border-amber-500/20 rounded-2xl">
+              <Zap className="text-amber-400" size={24} />
+            </div>
+            <span className="text-amber-500/60 text-[10px] font-bold uppercase tracking-[0.5em]">
+              Gateway Descentralizado
+            </span>
+          </div>
+
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter text-white mb-4 leading-[0.9]" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+            PIX via <span style={{ color: '#f59e0b' }}>Bitcoin</span>
+          </h1>
+          <p className="text-stone-400 text-lg md:text-xl leading-relaxed max-w-2xl">
+            Liquidez em qualquer balcão do Brasil, sem pedir permissão a gerente de banco.
+          </p>
+        </motion.div>
+      </section>
+
+      {/* ═══ MAIN CONTENT ═══ */}
+      <section className="relative z-10 pb-20 px-6 md:px-16 lg:px-24">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+
+          {/* Phone Simulator */}
+          <motion.div
+            initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}
+            className="flex justify-center"
+          >
+            <div className="relative w-[320px] rounded-[40px] border-2 border-white/[0.08] p-3 shadow-2xl" style={{ background: 'rgba(255,255,255,0.02)' }}>
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 rounded-b-2xl z-10" style={{ background: '#050808' }} />
+              <div className="w-full rounded-[32px] overflow-hidden" style={{ background: '#0a0e0e' }}>
+                {/* Status bar */}
+                <div className="flex items-center justify-between px-6 pt-8 pb-3">
+                  <span className="font-mono text-[10px] text-stone-600">21:47</span>
+                  <div className="flex gap-1 items-center">
+                    <Zap className="w-3 h-3 text-amber-400" />
+                    <span className="font-mono text-[10px] text-amber-400">Lightning</span>
+                  </div>
+                </div>
+
+                <div className="px-5 pb-6">
+                  {/* Balance */}
+                  <div className="mb-6">
+                    <p className="text-[10px] text-stone-600 font-mono mb-1">SALDO DISPONÍVEL</p>
+                    <p className="text-2xl font-bold text-white">
+                      {SALDO_SATS.toLocaleString("pt-BR")}{" "}
+                      <span className="text-sm text-amber-400">sats</span>
+                    </p>
+                    <p className="text-[9px] text-stone-600 font-mono mt-1">
+                      BTC/BRL {btcPriceBRL ? `R$ ${btcPriceBRL.toLocaleString("pt-BR", { maximumFractionDigits: 0 })}` : "---"}
+                    </p>
+                  </div>
+
+                  <AnimatePresence mode="wait">
+                    {stage === "input" && (
+                      <motion.div key="input" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+                        <div className="mb-4">
+                          <label className="text-[10px] text-stone-600 font-mono block mb-1.5">CHAVE PIX DO DESTINATÁRIO</label>
+                          <input
+                            type="text" value={pixKey} onChange={(e) => setPixKey(e.target.value)}
+                            placeholder="email, CPF ou telefone"
+                            className="w-full bg-white/[0.03] border border-white/[0.08] rounded-lg px-3 py-2.5 text-sm text-white placeholder:text-stone-700 focus:border-amber-500/50 focus:outline-none transition-colors"
+                          />
+                        </div>
+                        <div className="mb-4">
+                          <label className="text-[10px] text-stone-600 font-mono block mb-1.5">VALOR EM R$</label>
+                          <input
+                            type="number" value={valueBRL || ""} onChange={(e) => setValueBRL(Number(e.target.value))}
+                            placeholder="0,00"
+                            className="w-full bg-white/[0.03] border border-white/[0.08] rounded-lg px-3 py-2.5 text-sm text-white placeholder:text-stone-700 focus:border-amber-500/50 focus:outline-none transition-colors"
+                          />
+                        </div>
+                        {valueBRL > 0 && (
+                          <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} className="border border-white/[0.08] rounded-lg p-3 mb-4">
+                            <div className="flex items-center justify-between">
+                              <div>
+                                <p className="text-[10px] text-stone-600 font-mono">VALOR</p>
+                                <p className="text-lg font-semibold text-white">R$ {valueBRL.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}</p>
+                              </div>
+                              <ArrowRight className="w-4 h-4 text-amber-400" />
+                              <div className="text-right">
+                                <p className="text-[10px] text-stone-600 font-mono">DÉBITO</p>
+                                <p className="text-lg font-semibold text-amber-400">{satsAmount.toLocaleString("pt-BR")} sats</p>
+                              </div>
+                            </div>
+                            <div className="flex items-center justify-between mt-2 pt-2 border-t border-white/[0.06]">
+                              <span className="text-[9px] text-stone-600 font-mono">TAXA DA REDE</span>
+                              <span className="text-[9px] text-emerald-400 font-mono font-bold">~1 sat (≈ R$ 0,00)</span>
+                            </div>
+                          </motion.div>
+                        )}
+                        <button
+                          onClick={handleConfirm} disabled={!pixKey || valueBRL <= 0}
+                          className="w-full rounded-lg py-3 text-center disabled:opacity-40 disabled:cursor-not-allowed transition-opacity font-semibold text-sm text-stone-900"
+                          style={{ background: 'linear-gradient(135deg, #f59e0b, #d97706)' }}
+                        >
+                          Confirmar via Lightning
+                        </button>
+                        <p className="text-[9px] text-stone-700 text-center mt-3 font-mono">GATEWAY DESCENTRALIZADO · SEM KYC</p>
+                      </motion.div>
+                    )}
+
+                    {stage === "processing" && (
+                      <motion.div key="processing" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="py-10 flex flex-col items-center gap-4">
+                        <Loader2 className="w-10 h-10 text-amber-400 animate-spin" />
+                        <p className="font-mono text-sm text-amber-400 animate-pulse">Gerando Invoice...</p>
+                        <div className="w-full bg-white/[0.04] rounded-full h-1.5 overflow-hidden">
+                          <motion.div initial={{ width: "0%" }} animate={{ width: "100%" }} transition={{ duration: 3.2, ease: "easeInOut" }} className="h-full rounded-full" style={{ background: 'linear-gradient(90deg, #f59e0b, #d97706)' }} />
+                        </div>
+                        <p className="text-[9px] text-stone-600 font-mono text-center">VALIDANDO INVOICE · PROPAGANDO HTLC · CONFIRMANDO ROTA</p>
+                      </motion.div>
+                    )}
+
+                    {stage === "success" && (
+                      <motion.div key="success" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="py-6 flex flex-col items-center gap-3">
+                        <CheckCircle2 className="w-12 h-12 text-emerald-400" />
+                        <p className="font-bold text-white">Operação Concluída</p>
+                        <div className="w-full border border-white/[0.08] rounded-lg p-3 space-y-2">
+                          <div className="flex justify-between text-xs"><span className="text-stone-600">Destino PIX</span><span className="text-white font-mono">{pixKey}</span></div>
+                          <div className="flex justify-between text-xs"><span className="text-stone-600">Valor</span><span className="text-white">R$ {valueBRL.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}</span></div>
+                          <div className="flex justify-between text-xs"><span className="text-stone-600">Debitado</span><span className="text-amber-400 font-bold">{satsAmount.toLocaleString("pt-BR")} sats</span></div>
+                          <div className="flex justify-between text-xs"><span className="text-stone-600">Taxa</span><span className="text-emerald-400">1 sat</span></div>
+                          <div className="pt-2 border-t border-white/[0.06]">
+                            <p className="text-[9px] text-stone-600 font-mono mb-1">TX ID</p>
+                            <div className="flex items-center gap-1 cursor-pointer group" onClick={handleCopyTx}>
+                              <code className="text-[8px] text-stone-600 break-all group-hover:text-white transition-colors">{fakeTxId}</code>
+                              {copied ? <Check className="w-3 h-3 text-emerald-400 flex-shrink-0" /> : <Copy className="w-3 h-3 text-stone-600 flex-shrink-0" />}
+                            </div>
+                          </div>
+                        </div>
+                        <button onClick={reset} className="w-full mt-2 py-2.5 rounded-lg border border-amber-500/30 text-amber-400 font-semibold text-sm hover:bg-amber-500/5 transition-colors">
+                          Nova Operação
+                        </button>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Right: Features */}
+          <div className="space-y-8">
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="space-y-6">
+              {[
+                { icon: ShieldCheck, title: "Sem KYC", desc: "Nenhuma informação pessoal é coletada. Sem CPF, sem selfie, sem gerente.", accent: '#f59e0b' },
+                { icon: Zap, title: "Taxa Real: ~1 sat", desc: "Enquanto bancos cobram R$ 10+ por TED, a Lightning cobra frações de centavo.", accent: '#f59e0b' },
+                { icon: CheckCircle2, title: "Liquidação Instantânea", desc: "O pagamento PIX chega em segundos. Sem dias úteis, sem horário comercial.", accent: '#10b981' },
+              ].map((rule, i) => (
+                <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i} className="flex gap-4 items-start">
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 border" style={{ background: `${rule.accent}10`, borderColor: `${rule.accent}25` }}>
+                    <rule.icon className="w-5 h-5" style={{ color: rule.accent }} />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-white text-base mb-1">{rule.title}</h3>
+                    <p className="text-sm text-stone-500 leading-relaxed">{rule.desc}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+
+            {/* Comparison */}
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={2}>
+              <div className="rounded-2xl border border-white/[0.06] p-6 md:p-8" style={{ background: 'rgba(255,255,255,0.02)' }}>
+                <p className="font-mono text-[10px] tracking-widest text-stone-600 mb-4 uppercase">Comparativo de Taxas</p>
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between text-sm">
+                    <span className="text-stone-500">TED Bancário</span>
+                    <span className="text-red-400 font-mono font-bold">R$ 10,00 – R$ 22,00</span>
+                  </div>
+                  <div className="flex items-center justify-between text-sm">
+                    <span className="text-stone-500">PIX (com taxa oculta de dados)</span>
+                    <span className="text-red-400 font-mono font-bold">Seu CPF + Rastreio</span>
+                  </div>
+                  <div className="h-px bg-white/[0.06] my-1" />
+                  <div className="flex items-center justify-between text-sm">
+                    <span className="text-white font-medium">Lightning Network</span>
+                    <span className="text-emerald-400 font-mono font-bold">~1 sat (≈ R$ 0,00)</span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Bottom signature */}
+      <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-10 py-16">
+        <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-center space-y-4">
+          <div className="h-px w-32 mx-auto mb-6" style={{ background: 'linear-gradient(to right, transparent, rgba(245,158,11,0.2), transparent)' }} />
+          <p className="text-stone-600 font-mono text-xs uppercase tracking-widest">Not your keys. Not your money.</p>
+          <p className="text-stone-800 font-mono text-[10px] tracking-widest">Lord Junnior © 2026</p>
+        </motion.div>
+      </div>
     </div>
   );
 };
