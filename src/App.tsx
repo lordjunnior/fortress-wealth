@@ -206,6 +206,11 @@ const App = () => (
           <Route path="/conhecimento-perdido/seguranca-e-limites" element={<CpSegurancaLimites />} />
           <Route path="/conhecimento-perdido/aplicacao-pratica" element={<CpAplicacaoPratica />} />
           <Route path="/conhecimento-perdido/continuidade-familiar" element={<CpContinuidadeFamiliar />} />
+          <Route path="/projeto-autonomo/toxicos-ocultos" element={<ToxicosOcultos />} />
+          <Route path="/projeto-autonomo/toxicos-ocultos/toxinas-alimentares" element={<ToxinasAlimentares />} />
+          <Route path="/projeto-autonomo/toxicos-ocultos/manipulacao-informacional" element={<ManipulacaoInformacional />} />
+          <Route path="/projeto-autonomo/toxicos-ocultos/dependencia-tecnologica" element={<DependenciaTecnologica />} />
+          <Route path="/projeto-autonomo/toxicos-ocultos/toxinas-ambientais" element={<ToxinasAmbientais />} />
           <Route path="/projeto-autonomo/:slug" element={<ModuloAutonomo />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
