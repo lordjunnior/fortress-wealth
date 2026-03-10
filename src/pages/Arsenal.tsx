@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { motion, useScroll, useTransform, useMotionValue, useSpring, useInView } from 'framer-motion';
 import {
   ShieldAlert, Lock, Globe, Cpu, Zap, ArrowRight, ArrowLeft,
@@ -139,6 +140,15 @@ export default function Arsenal() {
       className="min-h-screen text-stone-100 font-sans selection:bg-red-400/30 relative overflow-hidden"
       style={{ background: '#050808' }}
     >
+      <Helmet>
+        <title>Arsenal de Blindagem | Segurança e Privacidade Bitcoin</title>
+        <meta name="description" content="Arsenal tático de segurança Bitcoin: blindagem contra golpes, identificação de ameaças e protocolos de proteção de patrimônio digital." />
+        <meta name="keywords" content="segurança bitcoin, blindagem golpes cripto, proteção patrimônio digital, phishing bitcoin, engenharia social cripto, seed phrase segurança" />
+        <meta property="og:title" content="Arsenal de Blindagem | Segurança Bitcoin" />
+        <meta property="og:description" content="Arsenal tático de segurança para proteção de patrimônio digital." />
+        <meta property="og:type" content="website" />
+        <link rel="canonical" href="https://lordjunnior.com.br/arsenal" />
+      </Helmet>
       {/* ── SCROLL PROGRESS BAR ── */}
       <motion.div
         className="fixed top-0 left-0 right-0 h-[2px] z-50 origin-left"

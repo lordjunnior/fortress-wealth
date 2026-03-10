@@ -1,5 +1,6 @@
 import React, { useState, useCallback, useEffect, useRef } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
 import {
   ArrowLeft, ArrowRight, Calculator, Plane,
@@ -50,16 +51,7 @@ function useMouseParallax(strength = 15) {
   return { springX, springY };
 }
 
-const VerdadeSalarial = () => (
-  <div className="p-8 text-center text-foreground pt-32">
-    <div className="inline-flex items-center gap-2 bg-purple-500/10 text-purple-400 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest mb-6">
-      <Clock className="w-4 h-4" />
-      Em Desenvolvimento
-    </div>
-    <h2 className="text-3xl font-bold mb-4">Calculadora Salarial</h2>
-    <p className="text-muted-foreground">Em codificação. Disponível em breve.</p>
-  </div>
-);
+/* VerdadeSalarial placeholder removed — tool card will show "Em Breve" */
 
 const TOOLS_LIST = [
   {
@@ -134,10 +126,10 @@ const TOOLS_LIST = [
     title: 'Amigo CLT — Salário Líquido',
     badge: 'O Custo do Estado',
     desc: 'Descubra o custo real do trabalho formal. Quanto o Estado extrai do seu esforço antes que o dinheiro chegue na sua mão.',
-    cta: 'Calcular Roubo',
+    cta: 'Em Breve',
     accent: '#a855f7',
     icon: Clock,
-    component: VerdadeSalarial,
+    component: null,
     num: '07',
   },
   {
@@ -178,10 +170,10 @@ const TOOLS_LIST = [
   },
   {
     id: 'dev',
-    title: 'Em Desenvolvimento',
-    badge: 'Em Breve',
-    desc: 'Novas ferramentas para P2P e gestão de UTXO chegando em breve. Desenvolvimento ativo e contínuo.',
-    cta: 'Aguarde',
+    title: 'Próximas Ferramentas',
+    badge: 'Roadmap',
+    desc: 'Gestão de UTXO, verificador de privacidade on-chain e scanner de contratos inteligentes. Cada atualização é uma camada a mais de soberania.',
+    cta: 'Roadmap Ativo',
     accent: '#64748b',
     icon: Terminal,
     component: null,
@@ -444,6 +436,23 @@ const Ferramentas: React.FC = () => {
       className="min-h-screen text-stone-100 font-sans selection:bg-amber-400/30 relative overflow-hidden"
       style={{ background: '#050808' }}
     >
+      <Helmet>
+        <title>Torre de Controle | Ferramentas de Soberania Financeira</title>
+        <meta name="description" content="Calculadoras, simuladores e ferramentas de verificação para quem opera fora do sistema financeiro tradicional. Sem rastreamento, sem KYC, código auditável." />
+        <meta name="keywords" content="ferramentas bitcoin, calculadora bitcoin, simulador bitcoin, taxa de fuga, bitcoin vs imóvel, gerador seed, supply shock bitcoin, novilíngua, soberania financeira" />
+        <meta property="og:title" content="Torre de Controle | Ferramentas de Soberania" />
+        <meta property="og:description" content="Calculadoras, simuladores e ferramentas de verificação para quem opera fora do sistema financeiro tradicional." />
+        <meta property="og:type" content="website" />
+        <link rel="canonical" href="https://lordjunnior.com.br/ferramentas" />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          "name": "Torre de Controle — Ferramentas de Soberania",
+          "description": "Calculadoras, simuladores e ferramentas de verificação para soberania financeira.",
+          "url": "https://lordjunnior.com.br/ferramentas",
+          "author": { "@type": "Person", "name": "Lord Junnior" }
+        })}</script>
+      </Helmet>
       {/* ── SCROLL PROGRESS BAR ── */}
       <motion.div
         className="fixed top-0 left-0 right-0 h-[2px] z-50 origin-left"
