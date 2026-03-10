@@ -96,48 +96,48 @@ const Index = () => {
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "O que é Bitcoin e como ele protege contra a inflação?",
-        "acceptedAnswer": { "@type": "Answer", "text": "O Bitcoin é um protocolo monetário descentralizado com oferta fixa de 21 milhões de unidades. Diferente do real ou do dólar, nenhum governo pode imprimir mais Bitcoin. Essa escassez programada faz dele uma proteção natural contra a inflação e a desvalorização monetária provocada por políticas de expansão de crédito." }
+        "name": "O que é o Bitcoin e por que ele é valioso?",
+        "acceptedAnswer": { "@type": "Answer", "text": "O Bitcoin é a primeira moeda digital descentralizada e escassa. Seu valor vem da matemática e da rede global que garante que apenas 21 milhões de unidades existirão, servindo como proteção contra a inflação estatal." }
       },
       {
         "@type": "Question",
-        "name": "Como fazer autocustódia de Bitcoin com segurança?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Autocustódia significa guardar suas próprias chaves privadas, sem depender de corretoras ou bancos. Use uma hardware wallet (como Ledger ou Trezor), anote sua seed phrase em metal ou papel à prova de fogo, e nunca armazene digitalmente. A regra é: Not your keys, not your coins." }
+        "name": "O que significa fazer a autocustódia de Bitcoin?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Autocustódia é o ato de possuir suas próprias chaves privadas. Ao retirar seus Bitcoins das corretoras e usar uma carteira própria, você se torna seu próprio banco, eliminando o risco de terceiros." }
       },
       {
         "@type": "Question",
-        "name": "Bitcoin é pirâmide financeira ou esquema Ponzi?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Não. Pirâmides dependem de novos participantes pagando os antigos e colapsam quando param de entrar. O Bitcoin é um protocolo matemático de código aberto, sem dono, sem empresa por trás e sem promessa de retorno. Ele é dinheiro digital escasso — não um esquema de investimento." }
+        "name": "Como proteger meu patrimônio contra a inflação?",
+        "acceptedAnswer": { "@type": "Answer", "text": "O Bitcoin é uma ferramenta de preservação de valor a longo prazo. Diferente das moedas fiduciárias que perdem poder de compra, o BTC possui uma política monetária fixa e imutável." }
       },
       {
         "@type": "Question",
-        "name": "Como comprar Bitcoin sem KYC no Brasil?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Existem plataformas P2P (peer-to-peer) que permitem comprar Bitcoin sem verificação de identidade, como Bisq, Hodl Hodl e RoboSats via Lightning Network. Essas ferramentas preservam sua privacidade financeira e eliminam o risco de ter seus dados em bancos de dados centralizados de corretoras." }
+        "name": "O que é Cold Storage e por que é importante?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Cold Storage é o armazenamento de chaves privadas offline. É o método mais seguro de guardar Bitcoin, protegendo seus ativos contra ataques hackers e engenharia social." }
       },
       {
         "@type": "Question",
-        "name": "O governo pode proibir ou confiscar Bitcoin?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Governos podem dificultar o acesso via regulação, mas não podem impedir o funcionamento do protocolo — não existe servidor para desligar. O Bitcoin opera em uma rede descentralizada global. Com autocustódia e operações P2P, você mantém soberania sobre seu patrimônio independentemente da regulação local." }
+        "name": "É possível comprar Bitcoin de forma privada?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sim. Através de métodos P2P e ferramentas que não exigem vigilância corporativa (KYC), é possível adquirir e transacionar Bitcoin preservando sua privacidade financeira." }
       },
       {
         "@type": "Question",
-        "name": "Vale a pena comprar Bitcoin com pouco dinheiro em 2025?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Sim. O Bitcoin é divisível em 100 milhões de satoshis — você pode começar com R$50. Menos de 5% da população mundial possui Bitcoin. O hábito de empilhar satoshis regularmente (DCA) é mais poderoso do que qualquer aporte único. Você não está atrasado." }
+        "name": "O que são chaves privadas e sementes (seed phrases)?",
+        "acceptedAnswer": { "@type": "Answer", "text": "São as provas de propriedade do seu Bitcoin. A chave privada permite assinar transações, enquanto a seed phrase é o backup universal que garante o acesso aos seus fundos em caso de perda da carteira." }
       },
       {
         "@type": "Question",
-        "name": "O que é Lightning Network e como funciona?",
-        "acceptedAnswer": { "@type": "Answer", "text": "A Lightning Network é uma segunda camada construída sobre o Bitcoin que permite pagamentos instantâneos com taxas próximas de zero. Ela herda a segurança da blockchain principal e é ideal para transações do dia a dia, como pagar um café ou transferir valor entre pessoas em tempo real." }
+        "name": "O Bitcoin é legal no Brasil?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sim, o Bitcoin é uma propriedade digital reconhecida. A autocustódia é um direito do indivíduo de gerir sua própria riqueza de forma independente." }
       },
       {
         "@type": "Question",
-        "name": "Posso deixar meu Bitcoin em corretora? É seguro?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Não é recomendado. Corretoras são bancos de dados centralizados sujeitos a hacks, bloqueios judiciais, falências e confiscos — como aconteceu com a FTX. Aprenda autocustódia: transfira para sua própria carteira e controle suas chaves privadas." }
+        "name": "Como começar na autocustódia de elite?",
+        "acceptedAnswer": { "@type": "Answer", "text": "O primeiro passo é entender a responsabilidade de gerar suas próprias chaves. O uso de hardware wallets e o estudo sobre segurança digital são essenciais para uma blindagem completa." }
       },
       {
         "@type": "Question",
-        "name": "Como proteger meu patrimônio da desvalorização do real?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Diversifique para ativos fora do controle estatal: Bitcoin em autocustódia, contas internacionais e reservas em moedas fortes. O real perdeu mais de 80% do poder de compra desde o Plano Real. Proteger patrimônio começa por entender que inflação é um imposto oculto sobre a sua poupança." }
+        "name": "Onde aprender sobre Bitcoin e soberania financeira de graça?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No site lordjunnior.com, oferecemos ebooks, audiobooks e tutoriais gratuitos focados em educação técnica, matemática aplicada e ferramentas de privacidade para BTC." }
       }
     ]
   };
