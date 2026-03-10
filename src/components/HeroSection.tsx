@@ -1,7 +1,7 @@
-import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
-import { ChevronDown, Shield, AlertTriangle, Zap } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { ChevronDown, Shield, AlertTriangle } from "lucide-react";
+import { ease } from "@/lib/motion";
 import { ease } from "@/lib/motion";
 
 const HeroSection = () => {
