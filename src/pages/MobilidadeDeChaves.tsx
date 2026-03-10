@@ -648,7 +648,9 @@ export default function MobilidadeDeChaves() {
                 className="group p-6 rounded-xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.04] transition-all duration-500"
               >
                 <div className="flex items-start gap-4">
-                  <span className="text-2xl">{meio.icon}</span>
+                  <div className="w-10 h-10 rounded-lg bg-amber-500/10 border border-amber-500/15 flex items-center justify-center shrink-0">
+                    <meio.lucideIcon size={18} className="text-amber-400" />
+                  </div>
                   <div className="flex-1">
                     <div className="flex items-center justify-between mb-2">
                       <h4 className="text-sm font-bold text-stone-200">{meio.titulo}</h4>
