@@ -51,16 +51,7 @@ function useMouseParallax(strength = 15) {
   return { springX, springY };
 }
 
-const VerdadeSalarial = () => (
-  <div className="p-8 text-center text-foreground pt-32">
-    <div className="inline-flex items-center gap-2 bg-purple-500/10 text-purple-400 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest mb-6">
-      <Clock className="w-4 h-4" />
-      Em Desenvolvimento
-    </div>
-    <h2 className="text-3xl font-bold mb-4">Calculadora Salarial</h2>
-    <p className="text-muted-foreground">Em codificação. Disponível em breve.</p>
-  </div>
-);
+/* VerdadeSalarial placeholder removed — tool card will show "Em Breve" */
 
 const TOOLS_LIST = [
   {
