@@ -113,6 +113,23 @@ export default function Educacao() {
       className="min-h-screen text-stone-100 font-sans selection:bg-yellow-400/30 relative overflow-hidden"
       style={{ background: '#050808' }}
     >
+      <Helmet>
+        <title>Arsenal Técnico | Manuais de Operação Bitcoin</title>
+        <meta name="description" content="Manuais técnicos de operação para autocustódia, economia paralela, validação de rede e Lightning Network. Para quem decidiu assumir a responsabilidade total sobre seu patrimônio." />
+        <meta name="keywords" content="arsenal bitcoin, autocustódia bitcoin, economia paralela cripto, infraestrutura node bitcoin, lightning network brasil, segurança bitcoin, manuais bitcoin, soberania financeira" />
+        <meta property="og:title" content="Arsenal Técnico | Manuais de Operação Bitcoin" />
+        <meta property="og:description" content="Manuais técnicos para autocustódia, economia paralela, validação de rede e Lightning Network." />
+        <meta property="og:type" content="website" />
+        <link rel="canonical" href="https://lordjunnior.com.br/educacao" />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          "name": "Arsenal Técnico — Manuais de Operação Bitcoin",
+          "description": "Manuais técnicos de operação para soberania financeira.",
+          "url": "https://lordjunnior.com.br/educacao",
+          "author": { "@type": "Person", "name": "Lord Junnior" }
+        })}</script>
+      </Helmet>
       {/* ── SCROLL PROGRESS BAR ── */}
       <motion.div
         className="fixed top-0 left-0 right-0 h-[2px] z-50 origin-left"
