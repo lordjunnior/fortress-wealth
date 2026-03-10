@@ -1,6 +1,6 @@
-import React, { useEffect, useCallback, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, useScroll, useTransform, useMotionValue, useSpring, useInView } from 'framer-motion';
+import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 import { Activity, Flame, BarChart3, TrendingUp, TrendingDown, Zap, Shield, Scale, Eye, ArrowRight, BookOpen } from 'lucide-react';
 import CinematicHero from '@/components/CinematicHero';
@@ -15,17 +15,6 @@ const fadeUp = {
   }),
 };
 
-function useMouseParallax(s = 12) {
-  const mx = useMotionValue(0), my = useMotionValue(0);
-  const sx = useSpring(mx, { stiffness: 50, damping: 20 });
-  const sy = useSpring(my, { stiffness: 50, damping: 20 });
-  const h = useCallback((e: MouseEvent) => {
-    mx.set(((e.clientX - window.innerWidth / 2) / (window.innerWidth / 2)) * s);
-    my.set(((e.clientY - window.innerHeight / 2) / (window.innerHeight / 2)) * s);
-  }, [mx, my, s]);
-  useEffect(() => { window.addEventListener('mousemove', h); return () => window.removeEventListener('mousemove', h); }, [h]);
-  return { sx, sy };
-}
 
 /* ══ Section Glow ══ */
 const SectionGlow: React.FC<{ color: string; position?: string }> = ({ color, position = '50% 30%' }) => (
@@ -81,7 +70,7 @@ const FAQ_DATA = [
 ];
 
 export default function VolatilidadeBitcoin() {
-  const { sx, sy } = useMouseParallax();
+  
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
   /* Reading progress */
