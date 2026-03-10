@@ -82,8 +82,9 @@ const GeradorEntropy: React.FC = () => {
       style={{ background: '#050808' }} onMouseMove={handleMouseMove}>
 
       <Helmet>
-        <title>Gerador de Entropia — Seed Phrase Segura | Lord Junnior</title>
-        <meta name="description" content="Gere sua seed phrase de 12 ou 24 palavras com aleatoriedade real via movimento do mouse. Ferramenta educativa de segurança Bitcoin." />
+        <title>Gerador de Seed Phrase Offline e Client-Side — BIP39 | Lord Junnior</title>
+        <meta name="description" content="Como gerar uma seed phrase de 12 ou 24 palavras offline? Use nosso gerador 100% client-side com entropia real via movimento do mouse. Padrão BIP39, nenhum dado enviado ao servidor." />
+        <link rel="canonical" href="https://lordjunnior.com/ferramentas/entropy" />
       </Helmet>
       <ScrollToTop />
 
