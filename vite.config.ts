@@ -64,9 +64,15 @@ export default defineConfig(({ mode }) => ({
     }),
   ].filter(Boolean),
   build: {
-    chunkSizeWarningLimit: 2000,
+    chunkSizeWarningLimit: 3000,
     reportCompressedSize: false,
+    rollupOptions: {
+      output: {
+        assetFileNames: 'assets/[name]-[hash][extname]',
+      },
+    },
   },
+  logLevel: 'warn',
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
