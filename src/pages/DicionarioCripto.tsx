@@ -480,10 +480,10 @@ const DicionarioCripto = () => {
   return (
     <div className="min-h-screen text-foreground relative overflow-hidden" style={{ background: BG_DARK }}>
       <Helmet>
-        <title>Criptonário – Dicionário Cripto Completo | Lord Junnior</title>
+        <title>Alfabeto Cripto – Dicionário Cripto Completo | Lord Junnior</title>
         <meta name="description" content="Dicionário cripto completo com mais de 100 termos, siglas e gírias do universo das criptomoedas. De HODL a Halving, de Satoshi a Smart Contract. O guia definitivo para decodificar o mundo cripto." />
-        <meta name="keywords" content="dicionário cripto, glossário bitcoin, termos criptomoedas, siglas cripto, HODL, halving, blockchain, satoshi, altcoin" />
-        <meta property="og:title" content="Criptonário – Dicionário Cripto Completo" />
+        <meta name="keywords" content="alfabeto cripto, dicionário cripto, glossário bitcoin, termos criptomoedas, siglas cripto, HODL, halving, blockchain, satoshi, altcoin" />
+        <meta property="og:title" content="Alfabeto Cripto – Dicionário Cripto Completo" />
         <meta property="og:description" content="Mais de 100 termos, siglas e gírias do universo cripto explicados de forma direta e sem enrolação." />
         <meta property="og:type" content="article" />
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
@@ -525,8 +525,8 @@ const DicionarioCripto = () => {
       {/* ─── HERO ─── */}
       <CinematicHero
         image="/heroes/dicionario-cripto.webp"
-        phase="CRIPTONÁRIO"
-        title="CRIPTONÁRIO"
+        phase="ALFABETO CRIPTO"
+        title="ALFABETO CRIPTO"
         subtitle="O dicionário definitivo do universo cripto"
         icon={BookOpen}
         accentColor="yellow"
