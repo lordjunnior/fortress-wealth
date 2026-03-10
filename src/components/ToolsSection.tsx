@@ -14,10 +14,10 @@ const fadeUp = {
 };
 
 const highlights = [
-  { icon: BarChart3, label: "Calculadoras de ROI", desc: "Simule crescimento patrimonial em BTC" },
-  { icon: Shield, label: "Geradores Air-Gapped", desc: "Seeds com entropia real, 100% offline" },
-  { icon: Cpu, label: "Rastreadores Blockchain", desc: "Dados ao vivo da rede Bitcoin" },
-  { icon: Lock, label: "Simuladores de Custódia", desc: "Planeje sua herança soberana" },
+  { icon: BarChart3, label: "Simulador de Valorização BTC", desc: "Compare Bitcoin vs. Imóveis, Poupança e Bolsa ao longo do tempo" },
+  { icon: Shield, label: "Gerador de Seed Offline", desc: "Crie chaves privadas com entropia real, 100% air-gapped" },
+  { icon: Cpu, label: "Monitor de Rede Bitcoin", desc: "Hashrate, blocos e taxas da blockchain em tempo real" },
+  { icon: Lock, label: "Calculadora de Autocustódia", desc: "Planeje herança soberana e cold storage multisig" },
 ];
 
 const ToolsSection = () => {
