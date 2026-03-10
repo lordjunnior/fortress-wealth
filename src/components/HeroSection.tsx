@@ -1,14 +1,11 @@
 import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
-import { ChevronDown, Shield, AlertTriangle, Zap } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { ChevronDown, Shield, AlertTriangle } from "lucide-react";
 import { ease } from "@/lib/motion";
 
 const HeroSection = () => {
-  const [seedOffset, setSeedOffset] = useState(0);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const sectionRef = useRef<HTMLElement>(null);
-  const navigate = useNavigate();
 
   // Parallax on scroll
   const { scrollY } = useScroll();
@@ -27,10 +24,6 @@ const HeroSection = () => {
     return () => window.removeEventListener("mousemove", handleMouse);
   }, []);
 
-  useEffect(() => {
-    const interval = setInterval(() => setSeedOffset((p) => p + 5), 300000);
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <section
@@ -127,10 +120,10 @@ const HeroSection = () => {
           transition={{ duration: 0.8, ease: ease.sovereign }}
           className="mb-8"
         >
-          <div className="inline-flex items-center gap-3 border border-border px-5 py-2.5 rounded-sm bg-background/40 backdrop-blur-sm">
-            <AlertTriangle className="w-4 h-4 text-gold animate-pulse-gold" />
-            <span className="font-mono text-[11px] md:text-xs tracking-[0.2em] uppercase text-muted-foreground">
-              Para quem percebeu que algo está errado com o dinheiro
+          <div className="inline-flex items-center gap-3 border border-chart-red/40 px-5 py-2.5 rounded-sm bg-chart-red/5 backdrop-blur-sm">
+            <AlertTriangle className="w-4 h-4 text-chart-red animate-pulse" />
+            <span className="font-mono text-[11px] md:text-xs tracking-[0.2em] uppercase text-chart-red/80 font-semibold">
+              Enquanto você lê isto, seu patrimônio está sendo confiscado
             </span>
           </div>
         </motion.div>
@@ -211,75 +204,64 @@ const HeroSection = () => {
         />
 
         {/* ─── Subtitle / Mission ─── */}
+        {/* ─── CAMADA 4: Subtítulo PNL + CTA ─── */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 2.0, ease: ease.sovereign }}
-          className="font-display text-base md:text-lg text-muted-foreground max-w-2xl leading-relaxed mb-10"
+          className="font-display text-base md:text-lg text-foreground/70 max-w-2xl leading-relaxed mb-10"
         >
-          Alfabetização monetária, ferramentas de autocustódia e estratégias de saída.
-          A infraestrutura técnica e intelectual para quem decidiu parar de financiar
-          o próprio roubo.
+          O manual que o sistema não quer que você leia.{" "}
+          <span className="text-foreground/90 font-semibold">
+            Alfabetização monetária, autocustódia e estratégias de saída
+          </span>{" "}
+          — a infraestrutura para quem decidiu parar de financiar o próprio roubo.
         </motion.p>
 
-        {/* ─── CAMADA 4: Scroll Indicator ─── */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 2.2, ease: ease.sovereign }}
-          className="flex flex-col items-start gap-3 mb-14"
+          className="flex flex-wrap items-center gap-4 mb-14"
         >
           <motion.button
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
             onClick={() => {
-              const nextSection = document.querySelector('section, [id]');
+              const manifesto = document.getElementById('manifesto');
+              if (manifesto) manifesto.scrollIntoView({ behavior: 'smooth' });
+            }}
+            className="group relative inline-flex items-center gap-3 px-8 py-4 rounded-sm font-display font-bold text-sm md:text-base tracking-wide uppercase overflow-hidden transition-all duration-300"
+            style={{
+              background: "linear-gradient(135deg, hsl(var(--gold)), hsl(40 80% 45%))",
+              color: "hsl(var(--background))",
+              boxShadow: "0 0 30px hsl(var(--gold) / 0.3), 0 4px 20px hsl(var(--gold) / 0.2)",
+            }}
+          >
+            <Shield className="w-5 h-5" />
+            <span>Comece pelo Despertar</span>
+            <div className="absolute inset-0 bg-white/10 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 skew-x-[-20deg]" />
+          </motion.button>
+
+          <motion.button
+            onClick={() => {
               const heroEl = document.getElementById('hero-section');
               const target = heroEl?.nextElementSibling;
               if (target) target.scrollIntoView({ behavior: 'smooth' });
               else window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
             }}
-            className="flex items-center gap-3 text-stone-500 hover:text-stone-300 transition-colors group cursor-pointer"
+            className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors group cursor-pointer"
           >
             <motion.div
-              animate={{ y: [0, 8, 0] }}
+              animate={{ y: [0, 6, 0] }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-              className="flex flex-col items-center"
             >
-              <div className="w-[1px] h-8 bg-gradient-to-b from-transparent via-stone-600 to-stone-400" />
-              <ChevronDown size={16} className="text-stone-400 group-hover:text-amber-400 transition-colors -mt-1" />
+              <ChevronDown size={16} className="text-muted-foreground group-hover:text-gold transition-colors" />
             </motion.div>
             <span className="text-[10px] font-bold tracking-[0.3em] uppercase opacity-60 group-hover:opacity-100 transition-opacity">
-              Desça para entender
+              Ou explore o arsenal
             </span>
           </motion.button>
-        </motion.div>
-
-        {/* Social proof — left aligned */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 2.5 }}
-          className="flex items-center gap-4"
-        >
-          <div className="flex -space-x-2">
-            <AnimatePresence mode="wait">
-              {[0, 1, 2, 3, 4].map((i) => (
-                <motion.img
-                  key={`${i}-${seedOffset}`}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 0.8, scale: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.4, delay: i * 0.06 }}
-                  src={`https://i.pravatar.cc/100?u=${i + seedOffset}`}
-                  alt=""
-                  className="w-9 h-9 rounded-full border-2 border-background object-cover"
-                  style={{ filter: "grayscale(100%) contrast(1.1)" }}
-                />
-              ))}
-            </AnimatePresence>
-          </div>
-          <p className="text-sm text-muted-foreground">
-            Junte-se a <span className="text-foreground font-semibold">2.400+</span> soberanos que já baixaram.
-          </p>
         </motion.div>
       </motion.div>
 
