@@ -481,6 +481,20 @@ export default function MobilidadeDeChaves() {
                 <p className="text-stone-500 text-xs leading-relaxed">
                   O processo completo acontece offline. A seed nunca toca a internet, nunca passa por um celular desbloqueado, nunca é exposta. A criptografia é feita dentro do dispositivo air-gapped e o resultado é um blob de texto indistinguível de ruído.
                 </p>
+                <div className="flex flex-wrap gap-3 mt-3">
+                  <a href="https://selfcustody.github.io/krux/" target="_blank" rel="noopener noreferrer"
+                    className="text-[10px] font-bold uppercase tracking-wider text-amber-400/70 hover:text-amber-400 bg-amber-500/10 px-3 py-1.5 rounded transition-colors inline-flex items-center gap-1">
+                    Manual da Krux <ArrowRight size={10} />
+                  </a>
+                  <a href="https://github.com/selfcustody/krux" target="_blank" rel="noopener noreferrer"
+                    className="text-[10px] font-bold uppercase tracking-wider text-stone-500 hover:text-stone-300 bg-white/[0.04] px-3 py-1.5 rounded transition-colors inline-flex items-center gap-1">
+                    GitHub <ArrowRight size={10} />
+                  </a>
+                  <a href="https://github.com/selfcustody/krux-installer" target="_blank" rel="noopener noreferrer"
+                    className="text-[10px] font-bold uppercase tracking-wider text-stone-500 hover:text-stone-300 bg-white/[0.04] px-3 py-1.5 rounded transition-colors inline-flex items-center gap-1">
+                    Installer <ArrowRight size={10} />
+                  </a>
+                </div>
               </div>
             </div>
           </motion.div>
