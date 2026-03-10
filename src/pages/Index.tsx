@@ -96,48 +96,48 @@ const Index = () => {
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "E se o governo proibir Bitcoin no Brasil?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Governos podem dificultar o acesso, mas não podem impedir o funcionamento do protocolo. O Bitcoin opera em uma rede descentralizada global — não existe um servidor para desligar. Com conhecimento técnico de autocustódia e operações P2P, você opera com soberania independentemente da regulação local." }
+        "name": "O que é Bitcoin e como ele protege contra a inflação?",
+        "acceptedAnswer": { "@type": "Answer", "text": "O Bitcoin é um protocolo monetário descentralizado com oferta fixa de 21 milhões de unidades. Diferente do real ou do dólar, nenhum governo pode imprimir mais Bitcoin. Essa escassez programada faz dele uma proteção natural contra a inflação e a desvalorização monetária provocada por políticas de expansão de crédito." }
       },
       {
         "@type": "Question",
-        "name": "Bitcoin é pirâmide financeira?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Não. Pirâmides dependem de novos participantes pagando os antigos. O Bitcoin é um protocolo matemático com oferta fixa de 21 milhões de unidades, sem dono, sem empresa por trás, sem promessa de retorno. Ele é dinheiro — não um esquema de investimento." }
+        "name": "Como fazer autocustódia de Bitcoin com segurança?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Autocustódia significa guardar suas próprias chaves privadas, sem depender de corretoras ou bancos. Use uma hardware wallet (como Ledger ou Trezor), anote sua seed phrase em metal ou papel à prova de fogo, e nunca armazene digitalmente. A regra é: Not your keys, not your coins." }
       },
       {
         "@type": "Question",
-        "name": "Preciso ser programador para usar Bitcoin?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Absolutamente não. Assim como você não precisa entender TCP/IP para usar a internet, você não precisa programar para usar Bitcoin. As ferramentas modernas de autocustódia são intuitivas. O que você precisa é de educação financeira." }
+        "name": "Bitcoin é pirâmide financeira ou esquema Ponzi?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Não. Pirâmides dependem de novos participantes pagando os antigos e colapsam quando param de entrar. O Bitcoin é um protocolo matemático de código aberto, sem dono, sem empresa por trás e sem promessa de retorno. Ele é dinheiro digital escasso — não um esquema de investimento." }
       },
       {
         "@type": "Question",
-        "name": "Posso deixar Bitcoin em corretora?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Pode, mas não deveria. Corretoras são bancos de dados centralizados — sujeitas a hacks, bloqueios judiciais, falências e confiscos. A regra é simples: Not your keys, not your coins. Aprenda autocustódia." }
+        "name": "Como comprar Bitcoin sem KYC no Brasil?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Existem plataformas P2P (peer-to-peer) que permitem comprar Bitcoin sem verificação de identidade, como Bisq, Hodl Hodl e RoboSats via Lightning Network. Essas ferramentas preservam sua privacidade financeira e eliminam o risco de ter seus dados em bancos de dados centralizados de corretoras." }
       },
       {
         "@type": "Question",
-        "name": "Como começar com pouco dinheiro?",
-        "acceptedAnswer": { "@type": "Answer", "text": "O Bitcoin é divisível em 100 milhões de satoshis. Você pode começar com R$50. Compre uma fração, transfira para sua própria carteira, aprenda autocustódia. O hábito de empilhar satoshis regularmente é mais poderoso do que qualquer aporte único." }
+        "name": "O governo pode proibir ou confiscar Bitcoin?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Governos podem dificultar o acesso via regulação, mas não podem impedir o funcionamento do protocolo — não existe servidor para desligar. O Bitcoin opera em uma rede descentralizada global. Com autocustódia e operações P2P, você mantém soberania sobre seu patrimônio independentemente da regulação local." }
       },
       {
         "@type": "Question",
-        "name": "Bitcoin substitui bancos?",
-        "acceptedAnswer": { "@type": "Answer", "text": "O Bitcoin não substitui bancos — ele torna bancos opcionais. Você pode enviar, receber e guardar valor sem precisar de permissão de nenhuma instituição. Pela primeira vez na história, o indivíduo pode ser seu próprio banco." }
+        "name": "Vale a pena comprar Bitcoin com pouco dinheiro em 2025?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sim. O Bitcoin é divisível em 100 milhões de satoshis — você pode começar com R$50. Menos de 5% da população mundial possui Bitcoin. O hábito de empilhar satoshis regularmente (DCA) é mais poderoso do que qualquer aporte único. Você não está atrasado." }
       },
       {
         "@type": "Question",
-        "name": "Lightning Network é segura?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Sim. A Lightning Network é uma camada de pagamentos construída sobre o Bitcoin que permite transações instantâneas com taxas próximas de zero. Ela herda a segurança da blockchain e é ideal para pagamentos do dia a dia." }
+        "name": "O que é Lightning Network e como funciona?",
+        "acceptedAnswer": { "@type": "Answer", "text": "A Lightning Network é uma segunda camada construída sobre o Bitcoin que permite pagamentos instantâneos com taxas próximas de zero. Ela herda a segurança da blockchain principal e é ideal para transações do dia a dia, como pagar um café ou transferir valor entre pessoas em tempo real." }
       },
       {
         "@type": "Question",
-        "name": "Já perdi muito tempo, vale a pena comprar Bitcoin hoje?",
-        "acceptedAnswer": { "@type": "Answer", "text": "O Bitcoin ainda está no início da curva de adoção global. Menos de 5% da população mundial possui Bitcoin. Você não está atrasado — a maioria das pessoas ainda nem começou a entender o que está acontecendo com o sistema monetário." }
+        "name": "Posso deixar meu Bitcoin em corretora? É seguro?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Não é recomendado. Corretoras são bancos de dados centralizados sujeitos a hacks, bloqueios judiciais, falências e confiscos — como aconteceu com a FTX. Aprenda autocustódia: transfira para sua própria carteira e controle suas chaves privadas." }
       },
       {
         "@type": "Question",
-        "name": "Existe risco regulatório com Bitcoin?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Sempre existe risco regulatório em qualquer ativo. Mas o Bitcoin foi projetado para ser resistente à censura. Com autocustódia e conhecimento técnico de operações P2P, você minimiza drasticamente a exposição regulatória." }
+        "name": "Como proteger meu patrimônio da desvalorização do real?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Diversifique para ativos fora do controle estatal: Bitcoin em autocustódia, contas internacionais e reservas em moedas fortes. O real perdeu mais de 80% do poder de compra desde o Plano Real. Proteger patrimônio começa por entender que inflação é um imposto oculto sobre a sua poupança." }
       }
     ]
   };
@@ -162,7 +162,10 @@ const Index = () => {
     "name": "Lord Junnior",
     "url": "https://lordjunnior.com",
     "logo": "https://lordjunnior.com/favicon.svg",
-    "sameAs": [],
+    "sameAs": [
+      "https://twitter.com/lordjunnior",
+      "https://instagram.com/lordjunnior"
+    ],
     "description": "Ecossistema de soberania individual: Bitcoin, autocustódia, autonomia alimentar e blindagem financeira."
   };
 
