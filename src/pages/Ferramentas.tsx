@@ -292,9 +292,17 @@ const ToolCard: React.FC<{
         </h3>
 
         {/* Description */}
-        <p className="text-stone-500 text-sm leading-relaxed mb-8 flex-grow">
+        <p className="text-stone-500 text-sm leading-relaxed mb-4 flex-grow">
           {tool.desc}
         </p>
+
+        {/* Client-side privacy badge */}
+        {(tool as any).clientSide && (
+          <p className="text-emerald-500/60 text-[10px] font-mono tracking-wide mb-6 flex items-center gap-1.5">
+            <ShieldCheck size={11} className="shrink-0" />
+            Privacidade garantida: cálculos realizados localmente. Nenhum dado enviado ao servidor.
+          </p>
+        )}
 
         {/* CTA */}
         <div
