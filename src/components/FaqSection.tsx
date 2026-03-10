@@ -4,49 +4,49 @@ import { ChevronLeft, ChevronRight, HelpCircle } from "lucide-react";
 
 const faqItems = [
   {
-    question: "E se o governo proibir Bitcoin no Brasil?",
+    question: "O que é o Bitcoin e por que ele é valioso?",
     answer:
-      "Governos podem dificultar o acesso, mas não podem impedir o funcionamento do protocolo. O Bitcoin opera em uma rede descentralizada global — não existe um servidor para desligar. Países como China tentaram proibir e falharam. O que você precisa é de conhecimento técnico para operar com soberania, independentemente da regulação local.",
+      "O Bitcoin é a primeira moeda digital descentralizada e escassa. Seu valor vem da matemática e da rede global que garante que apenas 21 milhões de unidades existirão, servindo como proteção contra a inflação estatal.",
   },
   {
-    question: "Preciso ser programador para usar?",
+    question: "O que significa fazer a autocustódia de Bitcoin?",
     answer:
-      "Absolutamente não. Assim como você não precisa entender TCP/IP para usar a internet, você não precisa programar para usar Bitcoin. As ferramentas modernas de autocustódia são intuitivas. O que você precisa é de educação financeira — e é exatamente isso que este arsenal oferece gratuitamente.",
+      "Autocustódia é o ato de possuir suas próprias chaves privadas. Ao retirar seus Bitcoins das corretoras e usar uma carteira própria, você se torna seu próprio banco, eliminando o risco de terceiros.",
   },
   {
-    question: "Bitcoin é pirâmide financeira?",
+    question: "Como proteger meu patrimônio contra a inflação?",
     answer:
-      "Não. Pirâmides dependem de novos participantes pagando os antigos e colapsam quando param de entrar. O Bitcoin é um protocolo matemático com oferta fixa de 21 milhões de unidades, sem dono, sem empresa por trás, sem promessa de retorno. Ele é dinheiro — não um esquema de investimento.",
+      "O Bitcoin é uma ferramenta de preservação de valor a longo prazo. Diferente das moedas fiduciárias que perdem poder de compra, o BTC possui uma política monetária fixa e imutável.",
   },
   {
-    question: "Já perdi muito tempo, não vale a pena comprar BTC hoje?",
+    question: "O que é Cold Storage e por que é importante?",
     answer:
-      "O melhor momento para comprar Bitcoin foi ontem. O segundo melhor é hoje. O Bitcoin ainda está no início da curva de adoção global. Menos de 5% da população mundial possui Bitcoin. Você não está atrasado — a maioria das pessoas ainda nem começou a entender o que está acontecendo com o sistema monetário.",
+      "Cold Storage é o armazenamento de chaves privadas offline. É o método mais seguro de guardar Bitcoin, protegendo seus ativos contra ataques hackers e engenharia social.",
   },
   {
-    question: "Posso deixar Bitcoin em corretora?",
+    question: "É possível comprar Bitcoin de forma privada?",
     answer:
-      'Pode, mas não deveria. Corretoras são bancos de dados centralizados — sujeitas a hacks, bloqueios judiciais, falências e confiscos. A FTX colapsou com bilhões de dólares de clientes. A regra é simples: "Not your keys, not your coins." Aprenda autocustódia e durma em paz.',
+      "Sim. Através de métodos P2P e ferramentas que não exigem vigilância corporativa (KYC), é possível adquirir e transacionar Bitcoin preservando sua privacidade financeira.",
   },
   {
-    question: "Bitcoin substitui bancos?",
+    question: "O que são chaves privadas e sementes (seed phrases)?",
     answer:
-      "O Bitcoin não substitui bancos — ele torna bancos opcionais. Você pode enviar, receber e guardar valor sem precisar de permissão de nenhuma instituição. Pela primeira vez na história, o indivíduo pode ser seu próprio banco com soberania total sobre seu patrimônio.",
+      "São as provas de propriedade do seu Bitcoin. A chave privada permite assinar transações, enquanto a seed phrase é o backup universal que garante o acesso aos seus fundos em caso de perda da carteira.",
   },
   {
-    question: "Lightning é seguro?",
+    question: "O Bitcoin é legal no Brasil?",
     answer:
-      "Sim. A Lightning Network é uma camada de pagamentos construída sobre o Bitcoin que permite transações instantâneas com taxas próximas de zero. Ela herda a segurança da blockchain e é ideal para pagamentos do dia a dia, enquanto a camada base serve como reserva de valor de longo prazo.",
+      "Sim, o Bitcoin é uma propriedade digital reconhecida. A autocustódia é um direito do indivíduo de gerir sua própria riqueza de forma independente.",
   },
   {
-    question: "Existe risco regulatório?",
+    question: "Como começar na autocustódia de elite?",
     answer:
-      "Sempre existe risco regulatório em qualquer ativo. Governos podem criar impostos, restrições de acesso ou regras de compliance. Mas o Bitcoin foi projetado para ser resistente à censura. Com autocustódia e conhecimento técnico de operações P2P, você minimiza drasticamente a exposição regulatória.",
+      "O primeiro passo é entender a responsabilidade de gerar suas próprias chaves. O uso de hardware wallets e o estudo sobre segurança digital são essenciais para uma blindagem completa.",
   },
   {
-    question: "Como começar com pouco dinheiro?",
+    question: "Onde aprender sobre Bitcoin e soberania financeira de graça?",
     answer:
-      "O Bitcoin é divisível em 100 milhões de satoshis. Você pode começar com R$50, R$100 — o valor não importa. O que importa é começar. Compre uma fração, transfira para sua própria carteira, aprenda autocustódia. O hábito de empilhar satoshis regularmente é mais poderoso do que qualquer aporte único.",
+      "No site lordjunnior.com, oferecemos ebooks, audiobooks e tutoriais gratuitos focados em educação técnica, matemática aplicada e ferramentas de privacidade para BTC.",
   },
 ];
 
