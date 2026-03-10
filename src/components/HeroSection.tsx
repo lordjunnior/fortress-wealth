@@ -127,10 +127,10 @@ const HeroSection = () => {
           transition={{ duration: 0.8, ease: ease.sovereign }}
           className="mb-8"
         >
-          <div className="inline-flex items-center gap-3 border border-border px-5 py-2.5 rounded-sm bg-background/40 backdrop-blur-sm">
-            <AlertTriangle className="w-4 h-4 text-gold animate-pulse-gold" />
-            <span className="font-mono text-[11px] md:text-xs tracking-[0.2em] uppercase text-muted-foreground">
-              Para quem percebeu que algo está errado com o dinheiro
+          <div className="inline-flex items-center gap-3 border border-chart-red/40 px-5 py-2.5 rounded-sm bg-chart-red/5 backdrop-blur-sm">
+            <AlertTriangle className="w-4 h-4 text-chart-red animate-pulse" />
+            <span className="font-mono text-[11px] md:text-xs tracking-[0.2em] uppercase text-chart-red/80 font-semibold">
+              Enquanto você lê isto, seu patrimônio está sendo confiscado
             </span>
           </div>
         </motion.div>
