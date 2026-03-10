@@ -5,10 +5,8 @@ import { ease } from "@/lib/motion";
 import { ease } from "@/lib/motion";
 
 const HeroSection = () => {
-  const [seedOffset, setSeedOffset] = useState(0);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const sectionRef = useRef<HTMLElement>(null);
-  const navigate = useNavigate();
 
   // Parallax on scroll
   const { scrollY } = useScroll();
