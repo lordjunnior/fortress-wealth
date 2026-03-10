@@ -1,6 +1,6 @@
-import React, { useEffect, useCallback, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, useScroll, useTransform, useMotionValue, useSpring, useInView } from 'framer-motion';
+import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 import { Activity, Flame, BarChart3, TrendingUp, TrendingDown, Zap, Shield, Scale, Eye, ArrowRight, BookOpen } from 'lucide-react';
 import CinematicHero from '@/components/CinematicHero';
