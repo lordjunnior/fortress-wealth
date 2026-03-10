@@ -1,4 +1,5 @@
 import { useRef, useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -89,8 +90,100 @@ const Index = () => {
   // Dust parallax
   const dustY = useTransform(scrollYProgress, [0, 1], [0, -300]);
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "E se o governo proibir Bitcoin no Brasil?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Governos podem dificultar o acesso, mas não podem impedir o funcionamento do protocolo. O Bitcoin opera em uma rede descentralizada global — não existe um servidor para desligar. Com conhecimento técnico de autocustódia e operações P2P, você opera com soberania independentemente da regulação local." }
+      },
+      {
+        "@type": "Question",
+        "name": "Bitcoin é pirâmide financeira?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Não. Pirâmides dependem de novos participantes pagando os antigos. O Bitcoin é um protocolo matemático com oferta fixa de 21 milhões de unidades, sem dono, sem empresa por trás, sem promessa de retorno. Ele é dinheiro — não um esquema de investimento." }
+      },
+      {
+        "@type": "Question",
+        "name": "Preciso ser programador para usar Bitcoin?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Absolutamente não. Assim como você não precisa entender TCP/IP para usar a internet, você não precisa programar para usar Bitcoin. As ferramentas modernas de autocustódia são intuitivas. O que você precisa é de educação financeira." }
+      },
+      {
+        "@type": "Question",
+        "name": "Posso deixar Bitcoin em corretora?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Pode, mas não deveria. Corretoras são bancos de dados centralizados — sujeitas a hacks, bloqueios judiciais, falências e confiscos. A regra é simples: Not your keys, not your coins. Aprenda autocustódia." }
+      },
+      {
+        "@type": "Question",
+        "name": "Como começar com pouco dinheiro?",
+        "acceptedAnswer": { "@type": "Answer", "text": "O Bitcoin é divisível em 100 milhões de satoshis. Você pode começar com R$50. Compre uma fração, transfira para sua própria carteira, aprenda autocustódia. O hábito de empilhar satoshis regularmente é mais poderoso do que qualquer aporte único." }
+      },
+      {
+        "@type": "Question",
+        "name": "Bitcoin substitui bancos?",
+        "acceptedAnswer": { "@type": "Answer", "text": "O Bitcoin não substitui bancos — ele torna bancos opcionais. Você pode enviar, receber e guardar valor sem precisar de permissão de nenhuma instituição. Pela primeira vez na história, o indivíduo pode ser seu próprio banco." }
+      },
+      {
+        "@type": "Question",
+        "name": "Lightning Network é segura?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sim. A Lightning Network é uma camada de pagamentos construída sobre o Bitcoin que permite transações instantâneas com taxas próximas de zero. Ela herda a segurança da blockchain e é ideal para pagamentos do dia a dia." }
+      },
+      {
+        "@type": "Question",
+        "name": "Já perdi muito tempo, vale a pena comprar Bitcoin hoje?",
+        "acceptedAnswer": { "@type": "Answer", "text": "O Bitcoin ainda está no início da curva de adoção global. Menos de 5% da população mundial possui Bitcoin. Você não está atrasado — a maioria das pessoas ainda nem começou a entender o que está acontecendo com o sistema monetário." }
+      },
+      {
+        "@type": "Question",
+        "name": "Existe risco regulatório com Bitcoin?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sempre existe risco regulatório em qualquer ativo. Mas o Bitcoin foi projetado para ser resistente à censura. Com autocustódia e conhecimento técnico de operações P2P, você minimiza drasticamente a exposição regulatória." }
+      }
+    ]
+  };
+
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Lord Junnior — Soberania Individual",
+    "url": "https://lordjunnior.com",
+    "description": "Alfabetização monetária, autocustódia Bitcoin e estratégias de saída do sistema fiat. O manual que o sistema não quer que você leia.",
+    "inLanguage": "pt-BR",
+    "publisher": {
+      "@type": "Person",
+      "name": "Lord Junnior",
+      "url": "https://lordjunnior.com"
+    }
+  };
+
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Lord Junnior",
+    "url": "https://lordjunnior.com",
+    "logo": "https://lordjunnior.com/favicon.svg",
+    "sameAs": [],
+    "description": "Ecossistema de soberania individual: Bitcoin, autocustódia, autonomia alimentar e blindagem financeira."
+  };
+
   return (
     <div className="min-h-screen text-foreground pt-[62px] overflow-x-hidden">
+      <Helmet>
+        <title>Seu dinheiro está derretendo — Lord Junnior | Soberania Individual</title>
+        <meta name="description" content="Alfabetização monetária, autocustódia Bitcoin e estratégias de saída. A infraestrutura técnica e intelectual para quem decidiu parar de financiar o próprio roubo." />
+        <link rel="canonical" href="https://lordjunnior.com/" />
+        <meta property="og:title" content="Seu dinheiro está derretendo. A culpa não é do acaso." />
+        <meta property="og:description" content="O manual que o sistema não quer que você leia. Alfabetização monetária, autocustódia e estratégias de saída do sistema fiat." />
+        <meta property="og:url" content="https://lordjunnior.com/" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://lordjunnior.com/og-image.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Seu dinheiro está derretendo. A culpa não é do acaso." />
+        <meta name="twitter:description" content="O manual que o sistema não quer que você leia. Alfabetização monetária, autocustódia e estratégias de saída." />
+        <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
+        <script type="application/ld+json">{JSON.stringify(websiteSchema)}</script>
+        <script type="application/ld+json">{JSON.stringify(organizationSchema)}</script>
+      </Helmet>
       <NetworkTicker />
       <CommandCenter />
       <SovereignTermModal />
