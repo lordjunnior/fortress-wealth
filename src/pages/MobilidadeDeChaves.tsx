@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import {
-  ArrowLeft, ArrowRight, Shield, Lock, Key, Smartphone, Wifi, WifiOff,
-  QrCode, Nfc, Globe, AlertTriangle, CheckCircle, Eye, BookOpen, Play,
+  ArrowRight, Shield, Lock, Key,  WifiOff,
+  QrCode, Nfc, Globe, AlertTriangle, CheckCircle, Eye, BookOpen,
   ChevronDown, Download, Fingerprint, HardDrive, ScanLine, Tag, Cpu,
   CircleDot, Package, Wrench, Terminal, Copy, FileCheck, Layers, Zap
 } from 'lucide-react';
