@@ -72,12 +72,14 @@ export default function ManipulacaoInformacional() {
       </Link>
 
       <CinematicHero
-        title="MANIPULAÇÃO"
-        titleAccent="INFORMACIONAL"
-        subtitle="Vetor 02 — Mente"
-        description="Da propaganda estatal ao filtro algorítmico, existem camadas de manipulação projetadas para moldar percepções e crenças. Treine o olhar crítico para identificar padrões de influência invisível que operam sobre bilhões de mentes diariamente."
-        imageSrc="/heroes/manipulacao-informacional.webp"
-        accentColor="#a855f7"
+        image="/heroes/manipulacao-informacional.webp"
+        phase="Vetor 02 · Mente"
+        title="Manipulação Informacional"
+        subtitle="Da propaganda estatal ao filtro algorítmico, camadas de manipulação projetadas para moldar percepções e crenças sem que você perceba."
+        icon={Brain}
+        accentColor="violet"
+        backLink="/projeto-autonomo/toxicos-ocultos"
+        backLabel="Tóxicos Ocultos"
       />
 
       {/* Chapter 1: Arsenal de Técnicas */}

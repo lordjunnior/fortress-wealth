@@ -71,12 +71,14 @@ export default function DependenciaTecnologica() {
       </Link>
 
       <CinematicHero
-        title="DEPENDÊNCIA"
-        titleAccent="TECNOLÓGICA"
-        subtitle="Vetor 03 — Comportamento"
-        description="Ferramentas digitais construídas para capturar atenção e moldar decisões. Ciclos de dopamina, coleta de dados, obsolescência programada e ecossistemas fechados que transformam usuários em produtos."
-        imageSrc="/heroes/dependencia-tecnologica.webp"
-        accentColor="#06b6d4"
+        image="/heroes/dependencia-tecnologica.webp"
+        phase="Vetor 03 · Comportamento"
+        title="Dependência Tecnológica"
+        subtitle="Ferramentas digitais construídas para capturar atenção e moldar decisões. Ciclos de dopamina, coleta de dados e obsolescência programada."
+        icon={Smartphone}
+        accentColor="cyan"
+        backLink="/projeto-autonomo/toxicos-ocultos"
+        backLabel="Tóxicos Ocultos"
       />
 
       {/* Chapter 1: Mecanismos */}

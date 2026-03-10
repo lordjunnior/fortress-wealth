@@ -75,12 +75,14 @@ export default function ToxinasAmbientais() {
       </Link>
 
       <CinematicHero
-        title="TOXINAS"
-        titleAccent="AMBIENTAIS"
-        subtitle="Vetor 04 — Ambiente"
-        description="Contaminantes domésticos, materiais sintéticos, qualidade do ar interno e produtos químicos cotidianos que atravessam a pele e os pulmões diariamente. Proteger o território começa por entender o que está dentro dele."
-        imageSrc="/heroes/toxinas-ambientais.webp"
-        accentColor="#22c55e"
+        image="/heroes/toxinas-ambientais.webp"
+        phase="Vetor 04 · Ambiente"
+        title="Toxinas Ambientais"
+        subtitle="Contaminantes domésticos, materiais sintéticos, qualidade do ar interno e produtos químicos que atravessam a pele e os pulmões diariamente."
+        icon={Leaf}
+        accentColor="green"
+        backLink="/projeto-autonomo/toxicos-ocultos"
+        backLabel="Tóxicos Ocultos"
       />
 
       {/* Chapter 1: Contaminantes */}

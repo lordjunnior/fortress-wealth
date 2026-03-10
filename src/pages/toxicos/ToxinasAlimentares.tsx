@@ -75,12 +75,14 @@ export default function ToxinasAlimentares() {
       </Link>
 
       <CinematicHero
-        title="TOXINAS"
-        titleAccent="ALIMENTARES"
-        subtitle="Vetor 01 — Corpo"
-        description="O que a indústria alimentar adiciona silenciosamente à sua dieta. Aditivos, ultraprocessados, açúcar disfarçado e resíduos de pesticidas: cada rótulo esconde decisões industriais que afetam diretamente sua saúde."
-        imageSrc="/heroes/toxinas-alimentares.webp"
-        accentColor="#f59e0b"
+        image="/heroes/toxinas-alimentares.webp"
+        phase="Vetor 01 · Corpo"
+        title="Toxinas Alimentares"
+        subtitle="O que a indústria alimentar adiciona silenciosamente à sua dieta. Aditivos, ultraprocessados, açúcar disfarçado e resíduos de pesticidas."
+        icon={Apple}
+        accentColor="amber"
+        backLink="/projeto-autonomo/toxicos-ocultos"
+        backLabel="Tóxicos Ocultos"
       />
 
       {/* Chapter 1: O Problema */}

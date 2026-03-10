@@ -84,12 +84,14 @@ export default function ToxicosOcultos() {
 
       {/* Hero */}
       <CinematicHero
-        title="REMOVENDO TÓXICOS"
-        titleAccent="OCULTOS"
-        subtitle="Laboratório de Discernimento"
-        description="Corpo, mente, comportamento e ambiente. Quatro dimensões de investigação sobre influências invisíveis que reduzem clareza, saúde e liberdade de escolha."
-        imageSrc="/heroes/toxicos-ocultos.webp"
-        accentColor="#ef4444"
+        image="/heroes/toxicos-ocultos.webp"
+        phase="Laboratório de Discernimento"
+        title="Removendo Tóxicos Ocultos"
+        subtitle="Corpo, mente, comportamento e ambiente. Quatro dimensões de investigação sobre influências invisíveis que reduzem clareza, saúde e liberdade de escolha."
+        icon={Microscope}
+        accentColor="red"
+        backLink="/projeto-autonomo"
+        backLabel="Projeto Autônomo"
       />
 
       {/* Quadratura visual */}
