@@ -126,10 +126,10 @@ const TOOLS_LIST = [
     title: 'Amigo CLT — Salário Líquido',
     badge: 'O Custo do Estado',
     desc: 'Descubra o custo real do trabalho formal. Quanto o Estado extrai do seu esforço antes que o dinheiro chegue na sua mão.',
-    cta: 'Calcular Roubo',
+    cta: 'Em Breve',
     accent: '#a855f7',
     icon: Clock,
-    component: VerdadeSalarial,
+    component: null,
     num: '07',
   },
   {
