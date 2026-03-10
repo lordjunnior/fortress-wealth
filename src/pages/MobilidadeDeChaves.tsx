@@ -2,7 +2,12 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowLeft, ArrowRight, Shield, Lock, Key, Smartphone, Wifi, WifiOff, QrCode, Nfc, Globe, AlertTriangle, CheckCircle, Eye, BookOpen, Play, ChevronDown } from 'lucide-react';
+import {
+  ArrowLeft, ArrowRight, Shield, Lock, Key, Smartphone, Wifi, WifiOff,
+  QrCode, Nfc, Globe, AlertTriangle, CheckCircle, Eye, BookOpen, Play,
+  ChevronDown, Download, Fingerprint, HardDrive, ScanLine, Tag, Cpu,
+  CircleDot, Package, Wrench, Terminal, Copy, FileCheck, Layers, Zap
+} from 'lucide-react';
 import CinematicHero from '@/components/CinematicHero';
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
@@ -14,28 +19,106 @@ const fadeUp = {
   }),
 };
 
-/* ─── MÉTODOS DE ARMAZENAMENTO ─── */
-const METODOS = [
+/* ─── FERRAMENTAS NECESSÁRIAS ─── */
+const FERRAMENTAS = [
   {
-    icon: QrCode,
-    titulo: 'SeedQR — Código QR Compacto',
-    desc: 'A Krux permite converter sua seed phrase em um código QR compacto (SeedQR ou CompactSeedQR) que pode ser impresso, gravado em metal ou armazenado digitalmente de forma criptografada. O formato CompactSeedQR reduz a densidade do código ao mínimo possível, tornando-o legível mesmo em superfícies pequenas ou com resolução limitada.',
-    vantagens: ['Backup visual que dispensa digitação manual', 'Pode ser gravado em placa de metal (resistente a fogo e água)', 'Leitura instantânea pela câmera da Krux', 'Formato padronizado e interoperável'],
-    cuidados: ['Sem criptografia nativa — qualquer pessoa com acesso ao QR acessa a seed', 'Para transporte seguro, deve ser combinado com criptografia AES via Krux'],
+    icon: Cpu,
+    titulo: 'Krux Hardwallet',
+    desc: 'Hardwallet open-source, open-hardware, air-gapped. Projeto RISC-V brasileiro liderado por ODudex com comunidade ativa de desenvolvedores. O instalador oficial (Krux Installer) simplifica a gravação do firmware no dispositivo.',
+    link: 'selfcustody/krux no GitHub',
+    badge: 'Obrigatório',
+    badgeColor: 'amber',
   },
   {
-    icon: Nfc,
-    titulo: 'NFC Tags — Armazenamento Invisível',
-    desc: 'A Krux agora suporta gravação de dados criptografados em tags NFC comuns (NTAG 215 e NTAG 216). Uma tag NFC custa centavos, é do tamanho de uma moeda e pode ser escondida dentro de objetos, colada em documentos ou costurada em roupas. Quando combinada com criptografia AES e senha forte, torna-se um meio de transporte de chaves praticamente invisível e indetectável.',
-    vantagens: ['Tags NTAG 215/216 custam centavos e são facilmente encontradas', 'Sem componente eletrônico ativo — não possui bateria, não emite sinais', 'Pode ser lida apenas por contato próximo (< 4cm)', 'Dados criptografados ficam ilegíveis sem a senha e a Krux'],
-    cuidados: ['NTAG 215 possui 504 bytes de armazenamento — suficiente para uma seed criptografada', 'NTAG 216 possui 888 bytes — comporta mais dados ou seeds maiores', 'Tags NFC podem ser danificadas por campos magnéticos muito fortes ou dobras excessivas'],
+    icon: Tag,
+    titulo: 'NFC Tools (Wakdev)',
+    desc: 'Aplicativo para ler, escrever e bloquear tags NFC. Disponível na Play Store, App Store e como APK standalone (sem Google Play). A versão gratuita é suficiente; a licença paga (€3,29) desbloqueia recursos avançados.',
+    link: 'wakdev.com/nfc-tools',
+    badge: 'Android/iOS',
+    badgeColor: 'sky',
   },
   {
+    icon: ScanLine,
+    titulo: 'BinaryEye (Leitor QR)',
+    desc: 'Leitor e gerador de QR codes open-source. Disponível no F-Droid e Google Play. Leve, sem rastreamento, sem necessidade de acesso à rede. No iOS, a própria câmera nativa funciona como leitor.',
+    link: 'Disponível no F-Droid',
+    badge: 'Open Source',
+    badgeColor: 'emerald',
+  },
+  {
+    icon: CircleDot,
+    titulo: 'Tags NFC (NTAG 215/216)',
+    desc: 'Tags passivas sem bateria, sem emissão de sinal. Disponíveis como cartão, moeda, adesivo, anel ou chaveiro. NTAG 215: 504 bytes. NTAG 216: 888 bytes. Uma seed criptografada de 12 palavras ocupa apenas ~54 bytes.',
+    link: 'Qualquer loja de eletrônicos',
+    badge: 'Centavos',
+    badgeColor: 'violet',
+  },
+];
+
+/* ─── PASSO A PASSO ─── */
+const TUTORIAL_STEPS = [
+  {
+    step: '01',
+    titulo: 'Carregar a seed na Krux',
+    desc: 'Ligue a Krux e carregue seu mnemônico. Você pode digitá-lo manualmente (entrada por palavras), escanear um SeedQR existente ou usar outro método suportado. A Krux é amnésica: ao desligar, a seed é apagada da memória.',
+    detalhe: 'Se digitar manualmente, basta acertar as 4 primeiras letras de cada palavra BIP39. A última palavra serve como checksum — se alguma palavra anterior estiver errada, a última não será aceita. Confira também o fingerprint da carteira para confirmar que a seed está correta.',
+    icon: Key,
+  },
+  {
+    step: '02',
+    titulo: 'Criptografar o backup da seed',
+    desc: 'No menu, acesse Backup de Mnemônico → Criptografado → QR Code Criptografado. A Krux pedirá uma chave (senha). Use uma senha forte — mínimo 20+ caracteres, com mistura de tipos. A Krux mostrará a força da senha e o comprimento.',
+    detalhe: 'O modo de criptografia padrão é AES-ECB. Para alterar: Configurações → Criptografia → Modo de criptografia. Para uso único de seed privada, AES-ECB é adequado. Para múltiplos usos (Datum, passphrase), use AES-GCM. O número de iterações padrão (100.000 PBKDF2) é suficiente para qualquer modo.',
     icon: Lock,
-    titulo: 'Backup Criptografado — Camada de Proteção',
-    desc: 'O recurso mais poderoso da Krux para transporte de chaves é a criptografia AES aplicada diretamente sobre a seed antes de exportar para QR ou NFC. A seed é criptografada com uma senha definida pelo usuário, gerando um bloco de dados que só pode ser decifrado com a mesma senha na mesma (ou outra) Krux. Sem a senha, os dados são completamente indecifráveis.',
-    vantagens: ['Criptografia AES de nível militar (128/256 bits)', 'Quatro modos disponíveis: AES-ECB, AES-GCM, AES-CTR, AES-CBC', '100.000 iterações de derivação de chave por padrão (PBKDF2)', 'Mesmo que o QR ou NFC seja interceptado, os dados são inúteis sem a senha'],
-    cuidados: ['A segurança depende inteiramente da força da senha escolhida', 'Perda da senha = perda permanente do acesso ao backup criptografado', 'AES-ECB é adequado para blocos aleatórios (seeds), mas AES-GCM é recomendado para uso geral'],
+  },
+  {
+    step: '03',
+    titulo: 'Escanear o QR com BinaryEye',
+    desc: 'A Krux exibirá um QR Code contendo a seed criptografada. Abra o BinaryEye no celular e escaneie. Os novos QR codes criptografados da Krux são codificados em texto puro — qualquer leitor consegue ler. O resultado será um blob de ~47-54 caracteres totalmente ilegível sem a senha.',
+    detalhe: 'Importante: sem a senha, esses caracteres são indistinguíveis de ruído aleatório. Ninguém que leia esse texto saberá que se trata de uma chave de Bitcoin. Uma seed de 12 palavras criptografada ocupa apenas ~54 bytes — muito menos do que a capacidade de qualquer tag NFC.',
+    icon: QrCode,
+  },
+  {
+    step: '04',
+    titulo: 'Gravar no tag NFC',
+    desc: 'Abra o NFC Tools → Escrever → Adicionar Registro → Texto simples. Cole o texto copiado do BinaryEye. Aproxime o tag NFC (cartão, moeda, adesivo ou anel) do celular. Gravação concluída. Repita para criar backups redundantes em múltiplos tags.',
+    detalhe: 'O processo leva segundos. Um NTAG 216 tem 924 bytes — sobra espaço para mais de 15 seeds criptografadas. Após gravar e verificar, você pode bloquear o tag (NFC Tools → Outros → Bloquear Tag). Atenção: o bloqueio é irreversível — o tag nunca mais poderá ser reescrito.',
+    icon: Nfc,
+  },
+  {
+    step: '05',
+    titulo: 'Verificar a recuperação',
+    desc: 'ANTES de confiar no backup: desligue e reinicie a Krux (limpa a memória). Leia o tag NFC com NFC Tools → copie o texto. No BinaryEye, converta o texto de volta em QR Code (formato QR Code, correção baixa). Escaneie com a Krux → ela detectará "KF Criptografado" → digite a senha → seed recuperada.',
+    detalhe: 'Se o fingerprint corresponder ao que você anotou, a recuperação foi perfeita. Nunca confie em um backup sem testá-lo. Faça o ciclo completo: criptografar → gravar → desligar → recuperar. Só então destrua o backup anterior (se aplicável).',
+    icon: FileCheck,
+  },
+];
+
+/* ─── MEIOS NFC CRIATIVOS ─── */
+const NFC_MEIOS = [
+  {
+    titulo: 'Anel NFC',
+    desc: 'Usado pelo desenvolvedor ODudex na demonstração oficial. Discreto, sempre com você, difícil de associar a criptomoedas. "Reche seu anel de Bitcoin" — na verdade, a chave criptografada.',
+    bytes: '~500-900 bytes',
+    icon: '💍',
+  },
+  {
+    titulo: 'Cartão NFC (NTAG 216)',
+    desc: 'Formato cartão de crédito. 924 bytes de armazenamento. O plástico protege o chip contra dobras. Pode ir na carteira comum, gaveta ou cofre.',
+    bytes: '924 bytes',
+    icon: '💳',
+  },
+  {
+    titulo: 'Moeda NFC (NTAG 215)',
+    desc: 'Forma de moeda plástica. Menos armazenamento (540 bytes), mas suficiente para uma seed criptografada. Compacta e discreta.',
+    bytes: '540 bytes',
+    icon: '🪙',
+  },
+  {
+    titulo: 'Adesivo NFC',
+    desc: 'O mais versátil. Cole dentro de um livro, atrás de um quadro, na caixa de um produto qualquer. Um adesivo NFC num frasco de perfume parece um tag de loja — passa completamente despercebido.',
+    bytes: '~500+ bytes',
+    icon: '🏷️',
   },
 ];
 
@@ -45,7 +128,7 @@ const MODOS_AES = [
     modo: 'AES-ECB',
     nome: 'Electronic Codebook',
     seguranca: 'Adequado',
-    desc: 'Modo mais simples. Cada bloco de 16 bytes é criptografado independentemente com a mesma chave. Para dados verdadeiramente aleatórios como uma seed phrase (que já possui alta entropia), oferece segurança adequada. Não é recomendado para textos ou dados com padrões repetitivos, pois blocos idênticos geram criptogramas idênticos.',
+    desc: 'Modo mais simples. Cada bloco de 16 bytes é criptografado independentemente. Para dados aleatórios como uma seed phrase BIP39 (alta entropia), oferece segurança adequada. Não recomendado para textos ou dados com padrões repetitivos.',
     quando: 'Criptografia única de uma seed phrase que ficará armazenada de forma privada.',
     cor: 'amber',
   },
@@ -53,15 +136,15 @@ const MODOS_AES = [
     modo: 'AES-GCM',
     nome: 'Galois/Counter Mode',
     seguranca: 'Recomendado',
-    desc: 'Modo autenticado que combina criptografia e verificação de integridade em uma única operação. Adiciona um nonce (número usado uma vez) e um tag de autenticação, garantindo que qualquer alteração nos dados seja detectada. É o modo mais robusto e versátil disponível na Krux.',
-    quando: 'Uso geral, especialmente quando o backup criptografado será utilizado em múltiplos contextos (Ferramentas → Datum, passphrase, etc.).',
+    desc: 'Modo autenticado que combina criptografia e verificação de integridade. Adiciona nonce e tag de autenticação, detectando qualquer alteração nos dados. O mais robusto e versátil disponível na Krux.',
+    quando: 'Uso geral, especialmente para múltiplos contextos (Ferramentas → Datum, passphrase, etc.).',
     cor: 'emerald',
   },
   {
     modo: 'AES-CTR',
     nome: 'Counter Mode',
     seguranca: 'Bom',
-    desc: 'Transforma o AES em um cifrador de fluxo usando um contador incremental. Cada bloco recebe um nonce único, eliminando o problema de blocos idênticos do ECB. Não possui autenticação nativa — se alguém alterar bits do criptograma, a decriptação produz dados corrompidos sem aviso.',
+    desc: 'Transforma AES em cifrador de fluxo usando contador incremental. Cada bloco recebe nonce único. Não possui autenticação nativa — alterações no criptograma geram dados corrompidos sem aviso.',
     quando: 'Quando performance é prioridade e a integridade é verificada por outros meios.',
     cor: 'sky',
   },
@@ -69,8 +152,8 @@ const MODOS_AES = [
     modo: 'AES-CBC',
     nome: 'Cipher Block Chaining',
     seguranca: 'Bom',
-    desc: 'Cada bloco de texto claro é combinado (XOR) com o bloco criptografado anterior antes de ser cifrado. Isso significa que blocos idênticos geram criptogramas diferentes — resolvendo a principal limitação do ECB. Requer um vetor de inicialização (IV) aleatório para o primeiro bloco.',
-    quando: 'Quando se deseja segurança superior ao ECB com complexidade moderada.',
+    desc: 'Cada bloco é combinado (XOR) com o bloco criptografado anterior antes de ser cifrado. Blocos idênticos geram criptogramas diferentes. Requer vetor de inicialização (IV) aleatório.',
+    quando: 'Segurança superior ao ECB com complexidade moderada.',
     cor: 'violet',
   },
 ];
@@ -79,34 +162,47 @@ const MODOS_AES = [
 const FAQ_ITEMS = [
   {
     q: 'Como levar Bitcoin para outro país com segurança?',
-    a: 'Bitcoin não precisa ser "transportado" fisicamente — ele existe na blockchain. O que você transporta é a chave privada (seed phrase) que dá acesso aos seus bitcoins. Usando uma hardwallet air-gapped como a Krux, você pode criptografar sua seed com AES e armazená-la em um QR Code impresso, uma tag NFC ou até memorizá-la. Nenhuma dessas formas é detectável por scanners, raio-X ou revistas de fronteira.',
+    a: 'Bitcoin existe na blockchain — não precisa ser transportado fisicamente. O que você transporta é a chave privada (seed phrase). Usando a Krux, você criptografa a seed com AES e armazena em um tag NFC (anel, adesivo, cartão). Nenhum scanner de aeroporto detecta uma tag NFC passiva com dados criptografados. Você pode inclusive viajar sem a Krux: no destino, consiga o dispositivo, instale o firmware e recupere a seed do NFC.',
   },
   {
-    q: 'O que é uma hardwallet air-gapped?',
-    a: 'Uma hardwallet air-gapped é um dispositivo de assinatura de transações Bitcoin que nunca se conecta à internet, Bluetooth ou qualquer rede. A Krux é um exemplo: ela usa apenas a câmera (para ler QR codes) e o display como interfaces de entrada e saída. Isso elimina vetores de ataque remotos — ninguém pode hackear um dispositivo que não possui conexão de rede.',
+    q: 'Os QR codes criptografados da Krux funcionam em qualquer leitor?',
+    a: 'Sim, desde julho de 2025. Os novos QR codes criptografados da Krux são codificados em texto puro (antes eram binários). Qualquer leitor de QR code (BinaryEye, câmera do celular) consegue ler — mas verá apenas um blob de caracteres sem sentido. Só a Krux com a senha correta consegue decifrar o conteúdo.',
+  },
+  {
+    q: 'A seed criptografada exposta há 3 anos foi quebrada?',
+    a: 'Não. O desenvolvedor ODudex publicou um QR code criptografado de uma seed real de Bitcoin em vídeo público há mais de 3 anos. A seed permanece segura até hoje — ninguém conseguiu quebrar a criptografia. Isso demonstra que, com senha forte, a criptografia AES da Krux é computacionalmente inquebrável com a tecnologia atual.',
   },
   {
     q: 'Qual a diferença entre NTAG 215 e NTAG 216?',
-    a: 'A diferença principal é a capacidade de armazenamento. NTAG 215 oferece 504 bytes de memória utilizável — suficiente para uma seed criptografada padrão de 12 ou 24 palavras. NTAG 216 oferece 888 bytes — útil para seeds maiores, múltiplos backups ou dados adicionais como passphrases criptografadas. Ambas são tags NFC passivas (sem bateria) que custam centavos e podem ser lidas por contato próximo (< 4cm).',
+    a: 'NTAG 215: 504 bytes de memória. NTAG 216: 888 bytes (924 bytes brutos). Ambos são tags passivas sem bateria. Uma seed criptografada de 12 palavras ocupa apenas ~54 bytes — ambos são mais que suficientes. A diferença prática é que o NTAG 216 comporta dados adicionais ou múltiplos backups.',
   },
   {
-    q: 'AES-ECB é inseguro?',
-    a: 'Depende do contexto. AES-ECB é considerado fraco para criptografar dados com padrões repetitivos (como texto comum ou imagens), porque blocos idênticos de entrada geram blocos idênticos de saída. Porém, para dados com alta entropia como uma seed phrase BIP39 (que é essencialmente aleatória), este problema não se aplica. Para uso único de backup de seed privada, AES-ECB oferece segurança adequada. Para uso geral ou múltiplos backups, AES-GCM é recomendado.',
+    q: 'Tags NFC são afetadas por scanners de aeroporto?',
+    a: 'Não. Tags NFC passivas não são afetadas por magnetismo, raio-X ou scanners de segurança de aeroporto. Elas não possuem bateria e não emitem sinais — funcionam apenas quando aproximadas a um leitor NFC (< 4cm). Podem ser transportadas livremente em qualquer lugar.',
   },
   {
-    q: 'O que acontece se eu perder a senha da criptografia?',
-    a: 'Se você perder a senha usada para criptografar seu backup, não há recuperação possível. A criptografia AES com 100.000 iterações PBKDF2 torna ataques de força bruta computacionalmente inviáveis para senhas fortes. Por isso, a senha deve ser memorizada com segurança ou armazenada em local separado do backup criptografado. Nunca armazene a senha junto com o QR ou NFC criptografado.',
+    q: 'Posso usar outra seed como senha de criptografia?',
+    a: 'Sim. Uma seed BIP39 de 12 ou 24 palavras é essencialmente uma senha extremamente forte e impossível de quebrar por força bruta. Você pode levar essa "seed-senha" exposta (ela não protege nenhum Bitcoin diretamente) e usá-la para descriptografar a seed real que está no NFC. A seed-senha pode ir anotada; a seed real viaja criptografada.',
   },
   {
-    q: 'Posso usar qualquer tag NFC com a Krux?',
-    a: 'A Krux é compatível com tags NFC do tipo NTAG 215 e NTAG 216 (NFC Forum Type 2). Essas tags são amplamente disponíveis, custam centavos por unidade e podem ser compradas em formato adesivo, cartão ou chaveiro. Não use tags NFC de outros tipos (como MIFARE Classic) pois a compatibilidade não é garantida.',
+    q: 'AES-ECB é inseguro para proteger minha seed?',
+    a: 'Depende do contexto. AES-ECB é fraco para dados com padrões repetitivos (texto, imagens). Para uma seed BIP39 (dados essencialmente aleatórios), o problema não se aplica. Para uso único de backup privado, é adequado. Para múltiplos usos ou dados estruturados, AES-GCM é recomendado.',
   },
   {
-    q: 'Como guardar a seed phrase de forma segura?',
-    a: 'Existem múltiplas camadas de segurança disponíveis: (1) Memorização — a seed pode ser memorizada como sequência de palavras; (2) Metal — gravação em placa de aço inox resistente a fogo e água; (3) SeedQR — conversão em código QR compacto; (4) NFC criptografado — armazenamento em tag NFC com AES; (5) Multisig — distribuição de chaves entre múltiplos dispositivos/locais. A abordagem mais segura combina pelo menos dois métodos com armazenamento geográfico separado.',
+    q: 'Posso bloquear o tag NFC após gravar?',
+    a: 'Sim. No NFC Tools: Outros → Bloquear Tag. Isso torna o tag somente leitura permanentemente — ninguém poderá sobrescrever ou apagar os dados. ATENÇÃO: este processo é irreversível. Sempre verifique que a recuperação funciona ANTES de bloquear.',
+  },
+  {
+    q: 'O que acontece se eu perder a senha?',
+    a: 'Sem recuperação possível. AES com 100.000 iterações PBKDF2 torna força bruta inviável para senhas fortes. Nunca armazene a senha junto com o NFC criptografado. Memorize-a, ou guarde em local separado. Tenha sempre pelo menos um backup não-criptografado da seed em local seguro (metal, cofre).',
+  },
+  {
+    q: 'Isso substitui o Border Wallets?',
+    a: 'Na prática, sim. O Border Wallets era um esquema para criptografia de seed em papel usando uma grade de padrões. O NFC criptografado da Krux oferece o mesmo propósito (transportar seeds por fronteiras) com implementação mais robusta, menor complexidade e maior discrição.',
   },
 ];
 
+/* ─── COMPONENTE PRINCIPAL ─── */
 export default function MobilidadeDeChaves() {
   const { scrollYProgress } = useScroll();
   const progressWidth = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
@@ -120,6 +216,19 @@ export default function MobilidadeDeChaves() {
       "@type": "Question",
       "name": item.q,
       "acceptedAnswer": { "@type": "Answer", "text": item.a },
+    })),
+  };
+
+  const howToSchema = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "Como criptografar e transportar sua seed Bitcoin em NFC com a Krux",
+    "description": "Tutorial passo a passo para criptografar uma seed phrase Bitcoin usando a hardwallet Krux e armazená-la em um tag NFC para transporte seguro por fronteiras.",
+    "step": TUTORIAL_STEPS.map((s, i) => ({
+      "@type": "HowToStep",
+      "position": i + 1,
+      "name": s.titulo,
+      "text": s.desc,
     })),
   };
 
@@ -138,14 +247,15 @@ export default function MobilidadeDeChaves() {
     <div className="min-h-screen text-stone-100 font-sans selection:bg-amber-400/30 relative overflow-hidden" style={{ background: '#050808' }}>
       <Helmet>
         <title>Como Levar sua Chave de Bitcoin para o Exterior com Segurança | Lord Junnior</title>
-        <meta name="description" content="Guia completo: como transportar sua seed phrase Bitcoin com segurança usando Krux, SeedQR, NFC tags e criptografia AES. Backup air-gapped, NTAG 215/216 e modos de criptografia explicados." />
-        <meta name="keywords" content="como levar bitcoin para outro país, como transportar bitcoin, como guardar seed phrase, backup seed bitcoin, krux hardwallet, seedqr, nfc bitcoin, criptografia aes seed, ntag 215, ntag 216, autocustódia bitcoin, air-gapped wallet" />
+        <meta name="description" content="Tutorial completo: como criptografar e transportar sua seed phrase Bitcoin usando Krux, NFC tags e criptografia AES. Passo a passo com NTAG 215/216, BinaryEye e NFC Tools." />
+        <meta name="keywords" content="como levar bitcoin para outro país, como transportar bitcoin, como guardar seed phrase, backup seed bitcoin, krux hardwallet, seedqr, nfc bitcoin, criptografia aes seed, ntag 215, ntag 216, autocustódia bitcoin, air-gapped wallet, border wallets" />
         <meta property="og:title" content="Como Levar sua Chave de Bitcoin para o Exterior com Segurança" />
-        <meta property="og:description" content="Riqueza que atravessa fronteiras em poucos bytes criptografados. Guia técnico com Krux, SeedQR, NFC e AES." />
+        <meta property="og:description" content="Riqueza que atravessa fronteiras em poucos bytes criptografados. Tutorial completo com Krux, NFC e AES." />
         <meta property="og:image" content="https://lordjunnior.com.br/heroes/mobilidade-chaves.webp" />
         <meta property="og:type" content="article" />
         <link rel="canonical" href="https://lordjunnior.com.br/mobilidade-de-chaves" />
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
+        <script type="application/ld+json">{JSON.stringify(howToSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>
       </Helmet>
 
@@ -194,17 +304,33 @@ export default function MobilidadeDeChaves() {
             <p className="text-stone-400 text-sm leading-relaxed">
               Ouro precisava de cofres. Propriedade precisava de registro estatal. Fronteiras sempre significaram risco de confisco.
               Bitcoin introduziu algo quase paradoxal: riqueza que pode viajar dentro da cabeça de alguém ou escondida em poucos bytes invisíveis.
-              Nenhum scanner de aeroporto detecta uma seed phrase memorizada. Nenhum agente de fronteira identifica uma tag NFC criptografada.
-              A soberania financeira, pela primeira vez na história, tornou-se genuinamente portátil.
+              Nenhum scanner de aeroporto detecta uma seed phrase memorizada. Nenhum agente de fronteira identifica uma tag NFC criptografada dentro de um anel.
             </p>
           </motion.div>
 
+          {/* Prova social: 3 anos exposta */}
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0.3}
+            className="rounded-xl border border-emerald-500/15 bg-emerald-500/[0.03] p-6 md:p-8 mb-16"
+          >
+            <div className="flex items-start gap-4">
+              <Shield size={20} className="text-emerald-400 shrink-0 mt-0.5" />
+              <div>
+                <h4 className="text-sm font-bold text-emerald-300 mb-2">Prova de resistência: 3+ anos na internet</h4>
+                <p className="text-stone-400 text-xs leading-relaxed">
+                  O desenvolvedor ODudex publicou um QR Code criptografado de uma seed real de Bitcoin em vídeo público há mais de 3 anos.
+                  A seed permanece segura até hoje — ninguém conseguiu quebrá-la. Super exposta, super segura.
+                  Isso demonstra que, com senha forte, a criptografia AES da Krux é computacionalmente inquebrável com a tecnologia atual.
+                </p>
+              </div>
+            </div>
+          </motion.div>
+
           {/* Context blocks */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {[
-              { icon: Globe, title: 'Mobilidade Global', desc: 'Sua riqueza não está presa a nenhum banco, país ou jurisdição. A seed phrase é a chave que abre seu cofre em qualquer lugar do mundo.' },
-              { icon: Shield, title: 'Resistência a Confisco', desc: 'Governos podem congelar contas bancárias em segundos. Ninguém pode confiscar uma seed phrase que existe apenas na sua memória ou em bytes criptografados.' },
-              { icon: Eye, title: 'Privacidade Absoluta', desc: 'Sem declaração de fronteira, sem registros bancários internacionais, sem rastreamento. A criptografia transforma soberania em dados indistinguíveis de ruído aleatório.' },
+              { icon: Globe, title: 'Mobilidade Global', desc: 'Sua riqueza não está presa a nenhum banco, país ou jurisdição. A seed phrase é a chave que abre seu cofre em qualquer lugar do mundo. Chegue ao destino, consiga uma Krux, recupere sua seed do NFC.' },
+              { icon: Shield, title: 'Resistência a Confisco', desc: 'Governos congelam contas bancárias em segundos. Metal não passa em fronteiras sem chamar atenção. Um anel NFC com 54 bytes criptografados? Invisível.' },
+              { icon: Eye, title: 'Privacidade Absoluta', desc: 'Sem declaração de fronteira, sem registros bancários. A criptografia AES transforma sua seed em ruído aleatório indistinguível de qualquer outro dado digital.' },
             ].map((item, i) => (
               <motion.div key={item.title} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i * 0.15}
                 className="p-6 rounded-xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.04] transition-all duration-500"
@@ -226,7 +352,7 @@ export default function MobilidadeDeChaves() {
       </div>
 
       {/* ═══════════════════════════════════════════════════════════
-         CAPÍTULO 02 — KRUX: O DISPOSITIVO AIR-GAPPED
+         CAPÍTULO 02 — ARSENAL: O QUE VOCÊ VAI PRECISAR
       ═══════════════════════════════════════════════════════════ */}
       <section className="relative z-10 py-20 md:py-32">
         <div className="max-w-5xl mx-auto px-6 md:px-10">
@@ -236,129 +362,36 @@ export default function MobilidadeDeChaves() {
               <span className="text-amber-400 text-[10px] font-bold tracking-[0.5em] uppercase">Capítulo 02</span>
             </div>
             <h2 className="text-3xl md:text-5xl font-black tracking-tight text-white mb-6" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-              KRUX — O DISPOSITIVO <span className="text-amber-400">AIR-GAPPED</span>
-            </h2>
-            <p className="text-stone-400 text-sm md:text-base leading-relaxed max-w-3xl">
-              A Krux é uma hardwallet de código aberto que opera completamente offline — sem Wi-Fi, sem Bluetooth, sem USB de dados.
-              Toda comunicação acontece via câmera (leitura de QR codes) e display (exibição de QR codes). Isso elimina todos os vetores de ataque remoto.
-            </p>
-          </motion.div>
-
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0.2}
-            className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-8 mb-16"
-          >
-            <h3 className="text-lg font-bold text-stone-200 mb-6" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-              Por que Air-Gapped importa
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <div className="flex items-center gap-3 mb-3">
-                  <WifiOff size={18} className="text-amber-400" />
-                  <h4 className="text-sm font-bold text-stone-300">Zero conexão de rede</h4>
-                </div>
-                <p className="text-stone-500 text-xs leading-relaxed">
-                  Sem Wi-Fi, Bluetooth, NFC de leitura passiva ou conexão USB de dados. A Krux é um computador isolado que nunca tocou a internet.
-                  Hackers remotos precisam de um vetor de rede para atacar — a Krux simplesmente não oferece nenhum.
-                </p>
-              </div>
-              <div>
-                <div className="flex items-center gap-3 mb-3">
-                  <QrCode size={18} className="text-amber-400" />
-                  <h4 className="text-sm font-bold text-stone-300">Comunicação verificável</h4>
-                </div>
-                <p className="text-stone-500 text-xs leading-relaxed">
-                  Toda informação que entra e sai do dispositivo passa por QR codes — um formato auditável visualmente.
-                  Você pode inspecionar cada byte transferido antes de confirmar. Não há canal oculto de comunicação.
-                </p>
-              </div>
-              <div>
-                <div className="flex items-center gap-3 mb-3">
-                  <BookOpen size={18} className="text-amber-400" />
-                  <h4 className="text-sm font-bold text-stone-300">Código aberto</h4>
-                </div>
-                <p className="text-stone-500 text-xs leading-relaxed">
-                  O firmware da Krux é completamente open-source. Qualquer pessoa pode auditar o código, compilar sua própria versão
-                  e verificar que não existem backdoors ou transmissões ocultas. Segurança por transparência, não por confiança cega.
-                </p>
-              </div>
-              <div>
-                <div className="flex items-center gap-3 mb-3">
-                  <Nfc size={18} className="text-amber-400" />
-                  <h4 className="text-sm font-bold text-stone-300">NFC para gravação</h4>
-                </div>
-                <p className="text-stone-500 text-xs leading-relaxed">
-                  O NFC da Krux é utilizado exclusivamente para gravar dados criptografados em tags passivas. Diferente de smartphones,
-                  a Krux não lê tags arbitrárias — ela grava dados que já foram criptografados internamente no dispositivo air-gapped.
-                </p>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Divider */}
-      <div className="relative z-10 max-w-5xl mx-auto px-10">
-        <div className="h-px bg-gradient-to-r from-transparent via-amber-500/20 to-transparent" />
-      </div>
-
-      {/* ═══════════════════════════════════════════════════════════
-         CAPÍTULO 03 — MÉTODOS DE ARMAZENAMENTO
-      ═══════════════════════════════════════════════════════════ */}
-      <section className="relative z-10 py-20 md:py-32">
-        <div className="max-w-5xl mx-auto px-6 md:px-10">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="mb-16">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-8 h-[2px] bg-amber-500 rounded-full" />
-              <span className="text-amber-400 text-[10px] font-bold tracking-[0.5em] uppercase">Capítulo 03</span>
-            </div>
-            <h2 className="text-3xl md:text-5xl font-black tracking-tight text-white mb-6" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-              MÉTODOS DE <span className="text-amber-400">ARMAZENAMENTO</span>
+              ARSENAL — <span className="text-amber-400">O QUE VOCÊ PRECISA</span>
             </h2>
             <p className="text-stone-400 text-sm leading-relaxed max-w-3xl">
-              Três formas de armazenar e transportar suas chaves com a Krux. Cada método possui características distintas de segurança, portabilidade e resiliência.
+              Quatro ferramentas. Nenhuma assinatura, nenhum cadastro, nenhuma dependência de terceiros. Tudo o que você precisa para criptografar e transportar sua chave de Bitcoin.
             </p>
           </motion.div>
 
-          <div className="space-y-6">
-            {METODOS.map((metodo, i) => (
-              <motion.div key={metodo.titulo} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i * 0.15}
-                className="group relative overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.04] transition-all duration-500 p-8 md:p-10"
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {FERRAMENTAS.map((tool, i) => (
+              <motion.div key={tool.titulo} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i * 0.12}
+                className="group relative overflow-hidden rounded-xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.04] transition-all duration-500 p-6"
               >
                 <div className="absolute top-0 left-0 w-full h-[2px] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-700 bg-gradient-to-r from-amber-500 to-transparent" />
-                <div className="flex flex-col md:flex-row md:items-start gap-6">
-                  <div className="shrink-0">
-                    <div className="w-14 h-14 rounded-2xl bg-amber-500/10 border border-amber-500/15 flex items-center justify-center">
-                      <metodo.icon size={24} className="text-amber-400" />
-                    </div>
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/15 flex items-center justify-center shrink-0">
+                    <tool.icon size={22} className="text-amber-400" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-lg md:text-xl font-bold text-stone-200 mb-4">{metodo.titulo}</h3>
-                    <p className="text-stone-400 text-sm leading-relaxed mb-6">{metodo.desc}</p>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div>
-                        <p className="text-[10px] text-emerald-400/70 font-bold uppercase tracking-wider mb-3">Vantagens</p>
-                        <ul className="space-y-2">
-                          {metodo.vantagens.map((v) => (
-                            <li key={v} className="flex items-start gap-2">
-                              <CheckCircle size={12} className="text-emerald-400/60 mt-0.5 shrink-0" />
-                              <span className="text-stone-400 text-xs leading-relaxed">{v}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                      <div>
-                        <p className="text-[10px] text-amber-400/70 font-bold uppercase tracking-wider mb-3">Cuidados</p>
-                        <ul className="space-y-2">
-                          {metodo.cuidados.map((c) => (
-                            <li key={c} className="flex items-start gap-2">
-                              <AlertTriangle size={12} className="text-amber-400/60 mt-0.5 shrink-0" />
-                              <span className="text-stone-500 text-xs leading-relaxed">{c}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
+                    <div className="flex items-center gap-2 mb-2">
+                      <h4 className="text-sm font-bold text-stone-200">{tool.titulo}</h4>
+                      <span className={`text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded
+                        ${tool.badgeColor === 'amber' ? 'text-amber-400 bg-amber-500/10' :
+                          tool.badgeColor === 'emerald' ? 'text-emerald-400 bg-emerald-500/10' :
+                          tool.badgeColor === 'sky' ? 'text-sky-400 bg-sky-500/10' :
+                          'text-violet-400 bg-violet-500/10'}`}>
+                        {tool.badge}
+                      </span>
                     </div>
+                    <p className="text-stone-500 text-xs leading-relaxed mb-2">{tool.desc}</p>
+                    <p className="text-stone-600 text-[10px] italic">{tool.link}</p>
                   </div>
                 </div>
               </motion.div>
@@ -373,7 +406,76 @@ export default function MobilidadeDeChaves() {
       </div>
 
       {/* ═══════════════════════════════════════════════════════════
-         CAPÍTULO 04 — CRIPTOGRAFIA EXPLICADA
+         CAPÍTULO 03 — KRUX: COMPANHEIRO CRIPTOGRÁFICO
+      ═══════════════════════════════════════════════════════════ */}
+      <section className="relative z-10 py-20 md:py-32">
+        <div className="max-w-5xl mx-auto px-6 md:px-10">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="mb-16">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-8 h-[2px] bg-amber-500 rounded-full" />
+              <span className="text-amber-400 text-[10px] font-bold tracking-[0.5em] uppercase">Capítulo 03</span>
+            </div>
+            <h2 className="text-3xl md:text-5xl font-black tracking-tight text-white mb-6" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+              KRUX — <span className="text-amber-400">COMPANHEIRO CRIPTOGRÁFICO</span>
+            </h2>
+            <p className="text-stone-400 text-sm md:text-base leading-relaxed max-w-3xl">
+              Mais do que uma hardwallet: a Krux é uma ferramenta criptográfica sem substituta. Open-source, open-hardware, RISC-V, projeto brasileiro.
+              Mesmo que você já tenha outra hardwallet, vale ter uma Krux — ela faz coisas que nenhuma outra faz.
+            </p>
+          </motion.div>
+
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0.2}
+            className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-8 mb-8"
+          >
+            <h3 className="text-lg font-bold text-stone-200 mb-6" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+              Por que Air-Gapped importa
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {[
+                { icon: WifiOff, title: 'Zero conexão de rede', desc: 'Sem Wi-Fi, Bluetooth, NFC passivo ou USB de dados. Hackers remotos precisam de um vetor de rede — a Krux não oferece nenhum.' },
+                { icon: QrCode, title: 'Comunicação verificável', desc: 'Toda informação entra e sai via QR codes — formato auditável visualmente. Você inspeciona cada byte. Sem canal oculto de comunicação.' },
+                { icon: BookOpen, title: 'Código 100% aberto', desc: 'Firmware open-source auditável. Compile sua própria versão. Muitos desenvolvedores brasileiros levando o projeto adiante.' },
+                { icon: Zap, title: 'Amnésica por design', desc: 'Ao desligar, a seed é apagada. Se quiser certeza absoluta: flasheie o firmware novamente. Nenhum vestígio permanece no dispositivo.' },
+              ].map((item, i) => (
+                <div key={item.title}>
+                  <div className="flex items-center gap-3 mb-3">
+                    <item.icon size={18} className="text-amber-400" />
+                    <h4 className="text-sm font-bold text-stone-300">{item.title}</h4>
+                  </div>
+                  <p className="text-stone-500 text-xs leading-relaxed">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* NFC na Krux */}
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0.3}
+            className="rounded-xl border border-amber-500/15 bg-amber-500/[0.03] p-6 md:p-8"
+          >
+            <div className="flex items-start gap-4">
+              <Nfc size={20} className="text-amber-400 shrink-0 mt-0.5" />
+              <div>
+                <h4 className="text-sm font-bold text-stone-200 mb-2">Recurso exclusivo: Criptografia de seed em QR e NFC</h4>
+                <p className="text-stone-400 text-xs leading-relaxed mb-3">
+                  A Krux possui um recurso único que nenhuma outra hardwallet oferece: criptografia da seed diretamente no dispositivo air-gapped, com exportação para QR Code e gravação em tags NFC.
+                  Desde julho de 2025, os QR codes criptografados são codificados em texto puro, melhorando compatibilidade com leitores comuns e módulos NFC.
+                </p>
+                <p className="text-stone-500 text-xs leading-relaxed">
+                  O processo completo acontece offline. A seed nunca toca a internet, nunca passa por um celular desbloqueado, nunca é exposta. A criptografia é feita dentro do dispositivo air-gapped e o resultado é um blob de texto indistinguível de ruído.
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Divider */}
+      <div className="relative z-10 max-w-5xl mx-auto px-10">
+        <div className="h-px bg-gradient-to-r from-transparent via-amber-500/20 to-transparent" />
+      </div>
+
+      {/* ═══════════════════════════════════════════════════════════
+         CAPÍTULO 04 — TUTORIAL PASSO A PASSO
       ═══════════════════════════════════════════════════════════ */}
       <section className="relative z-10 py-20 md:py-32">
         <div className="max-w-5xl mx-auto px-6 md:px-10">
@@ -383,16 +485,161 @@ export default function MobilidadeDeChaves() {
               <span className="text-amber-400 text-[10px] font-bold tracking-[0.5em] uppercase">Capítulo 04</span>
             </div>
             <h2 className="text-3xl md:text-5xl font-black tracking-tight text-white mb-6" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-              CRIPTOGRAFIA <span className="text-amber-400">EXPLICADA</span>
+              TUTORIAL — <span className="text-amber-400">PASSO A PASSO</span>
             </h2>
             <p className="text-stone-400 text-sm leading-relaxed max-w-3xl">
-              A Krux oferece quatro modos de criptografia AES. Cada um possui características distintas de segurança e aplicação.
-              O número de iterações padrão de 100.000 (PBKDF2) é suficiente para qualquer um dos modos.
-              Recomendamos que você pesquise mais sobre cada modo e escolha o mais adequado à sua aplicação.
+              O processo completo: da seed no papel (ou metal) até a chave criptografada no NFC, pronta para atravessar qualquer fronteira.
+              Cinco passos. Sem internet. Sem confiança em terceiros.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-16">
+          <div className="space-y-6">
+            {TUTORIAL_STEPS.map((step, i) => (
+              <motion.div key={step.step} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i * 0.1}
+                className="group relative overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.04] transition-all duration-500"
+              >
+                <div className="absolute top-0 left-0 w-full h-[2px] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-700 bg-gradient-to-r from-amber-500 to-transparent" />
+                <div className="p-8 md:p-10">
+                  <div className="flex items-start gap-6">
+                    {/* Step number */}
+                    <div className="shrink-0">
+                      <div className="w-14 h-14 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center">
+                        <span className="text-amber-400 font-black text-lg font-mono">{step.step}</span>
+                      </div>
+                    </div>
+
+                    <div className="flex-1">
+                      <div className="flex items-center gap-3 mb-3">
+                        <step.icon size={16} className="text-amber-400/70" />
+                        <h3 className="text-lg font-bold text-stone-200">{step.titulo}</h3>
+                      </div>
+                      <p className="text-stone-300 text-sm leading-relaxed mb-4">{step.desc}</p>
+
+                      {/* Detalhe técnico */}
+                      <div className="border-l-2 border-amber-500/20 pl-4">
+                        <p className="text-[10px] text-amber-400/60 font-bold uppercase tracking-wider mb-1">Detalhe técnico</p>
+                        <p className="text-stone-500 text-xs leading-relaxed">{step.detalhe}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Fluxo resumido */}
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}
+            className="mt-12 p-6 rounded-xl border border-white/[0.06] bg-white/[0.02]"
+          >
+            <p className="text-[10px] text-stone-600 font-bold uppercase tracking-wider mb-4">Fluxo resumido</p>
+            <div className="flex flex-wrap items-center gap-2 text-xs">
+              {[
+                'Seed (papel/metal)',
+                '→ Krux (offline)',
+                '→ Criptografia AES',
+                '→ QR Code (texto)',
+                '→ BinaryEye (copiar)',
+                '→ NFC Tools (gravar)',
+                '→ Tag NFC',
+                '→ 🌍 Fronteira',
+                '→ NFC Tools (ler)',
+                '→ BinaryEye (QR)',
+                '→ Krux (decifrar)',
+                '→ Seed recuperada ✓'
+              ].map((item, i) => (
+                <span key={i} className={`${item.includes('→') && !item.includes('NFC') && !item.includes('Seed') && !item.includes('Krux') && !item.includes('Binary') && !item.includes('QR') && !item.includes('Cript') && !item.includes('Fronteira') ? 'text-stone-600' : item.includes('Fronteira') ? 'text-amber-400 font-bold' : 'text-stone-400 bg-white/[0.04] px-2 py-1 rounded'}`}>
+                  {item}
+                </span>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Divider */}
+      <div className="relative z-10 max-w-5xl mx-auto px-10">
+        <div className="h-px bg-gradient-to-r from-transparent via-amber-500/20 to-transparent" />
+      </div>
+
+      {/* ═══════════════════════════════════════════════════════════
+         CAPÍTULO 05 — MEIOS NFC: ONDE ESCONDER SUA CHAVE
+      ═══════════════════════════════════════════════════════════ */}
+      <section className="relative z-10 py-20 md:py-32">
+        <div className="max-w-5xl mx-auto px-6 md:px-10">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="mb-16">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-8 h-[2px] bg-amber-500 rounded-full" />
+              <span className="text-amber-400 text-[10px] font-bold tracking-[0.5em] uppercase">Capítulo 05</span>
+            </div>
+            <h2 className="text-3xl md:text-5xl font-black tracking-tight text-white mb-6" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+              MEIOS NFC — <span className="text-amber-400">ONDE ESCONDER SUA CHAVE</span>
+            </h2>
+            <p className="text-stone-400 text-sm leading-relaxed max-w-3xl">
+              Tags NFC passivas não possuem bateria, não emitem sinais e não são afetadas por scanners de aeroporto ou magnetismo.
+              O limite é a criatividade. Uma loja coloca tags NFC em qualquer produto — por que o seu anel, adesivo ou cartão chamaria atenção?
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
+            {NFC_MEIOS.map((meio, i) => (
+              <motion.div key={meio.titulo} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i * 0.12}
+                className="group p-6 rounded-xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.04] transition-all duration-500"
+              >
+                <div className="flex items-start gap-4">
+                  <span className="text-2xl">{meio.icon}</span>
+                  <div className="flex-1">
+                    <div className="flex items-center justify-between mb-2">
+                      <h4 className="text-sm font-bold text-stone-200">{meio.titulo}</h4>
+                      <span className="text-[9px] font-mono text-amber-400/60 bg-amber-500/10 px-2 py-0.5 rounded">{meio.bytes}</span>
+                    </div>
+                    <p className="text-stone-500 text-xs leading-relaxed">{meio.desc}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Dica criativa */}
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}
+            className="border-l-2 border-amber-500/40 pl-6"
+          >
+            <p className="text-amber-400/80 text-sm italic leading-relaxed mb-3">
+              "É assim que se carrega Bitcoin no anel. Você recheia o anel de Bitcoin."
+            </p>
+            <p className="text-stone-500 text-xs leading-relaxed">
+              Na verdade, Bitcoin está na blockchain — nunca está com você. Você carrega apenas a chave criptografada.
+              Ninguém que encontre seu anel, adesivo ou cartão saberá que aqueles bytes são uma chave.
+              E mesmo que saiba, sem a senha forte, os dados são computacionalmente inúteis.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Divider */}
+      <div className="relative z-10 max-w-5xl mx-auto px-10">
+        <div className="h-px bg-gradient-to-r from-transparent via-amber-500/20 to-transparent" />
+      </div>
+
+      {/* ═══════════════════════════════════════════════════════════
+         CAPÍTULO 06 — CRIPTOGRAFIA EXPLICADA
+      ═══════════════════════════════════════════════════════════ */}
+      <section className="relative z-10 py-20 md:py-32">
+        <div className="max-w-5xl mx-auto px-6 md:px-10">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="mb-16">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-8 h-[2px] bg-amber-500 rounded-full" />
+              <span className="text-amber-400 text-[10px] font-bold tracking-[0.5em] uppercase">Capítulo 06</span>
+            </div>
+            <h2 className="text-3xl md:text-5xl font-black tracking-tight text-white mb-6" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+              CRIPTOGRAFIA <span className="text-amber-400">EXPLICADA</span>
+            </h2>
+            <p className="text-stone-400 text-sm leading-relaxed max-w-3xl">
+              A Krux oferece quatro modos de criptografia AES. Para alterar: <span className="font-mono text-amber-400/80">Configurações → Criptografia → Modo de criptografia</span>.
+              O número de iterações padrão de 100.000 (PBKDF2) é suficiente independente do modo. Pesquise sobre cada modo e escolha o mais adequado.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
             {MODOS_AES.map((modo, i) => (
               <motion.div key={modo.modo} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i * 0.12}
                 className="group relative overflow-hidden rounded-xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.04] transition-all duration-500 p-6 md:p-8"
@@ -407,10 +654,8 @@ export default function MobilidadeDeChaves() {
                     {modo.seguranca}
                   </span>
                 </div>
-
                 <p className="text-stone-600 text-[10px] font-bold uppercase tracking-wider mb-3">{modo.nome}</p>
                 <p className="text-stone-400 text-xs leading-relaxed mb-5">{modo.desc}</p>
-
                 <div className="border-l-2 pl-4"
                   style={{ borderColor: modo.cor === 'amber' ? '#f59e0b40' : modo.cor === 'emerald' ? '#10b98140' : modo.cor === 'sky' ? '#0ea5e940' : '#8b5cf640' }}>
                   <p className="text-[10px] font-bold uppercase tracking-wider mb-1"
@@ -421,20 +666,20 @@ export default function MobilidadeDeChaves() {
             ))}
           </div>
 
-          {/* Configuração */}
+          {/* Nota importante sobre modos */}
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}
-            className="rounded-xl border border-amber-500/15 bg-amber-500/[0.03] p-6 md:p-8 mb-10"
+            className="rounded-xl border border-amber-500/15 bg-amber-500/[0.03] p-6 md:p-8"
           >
             <div className="flex items-start gap-4">
               <AlertTriangle size={20} className="text-amber-400 shrink-0 mt-0.5" />
               <div>
-                <h4 className="text-sm font-bold text-stone-200 mb-2">Configuração na Krux</h4>
-                <p className="text-stone-400 text-xs leading-relaxed mb-3">
-                  Para alterar o modo de criptografia: <span className="font-mono text-amber-400/80">Configurações → Criptografia → Modo de criptografia</span>.
-                  O modo padrão é AES-ECB. Se você pretende usar a criptografia para múltiplas aplicações (Ferramentas → Datum, passphrase, etc.), altere para AES-GCM antes de criptografar.
+                <h4 className="text-sm font-bold text-stone-200 mb-2">Importante sobre os modos</h4>
+                <p className="text-stone-400 text-xs leading-relaxed mb-2">
+                  Todos os quatro modos são bons apenas para criptografar <strong className="text-stone-300">blocos de dados aleatórios</strong> (como uma seed phrase) — não para dados com padrões claramente definidos como texto comum.
                 </p>
                 <p className="text-stone-500 text-xs leading-relaxed">
-                  O número de iterações padrão de 100.000 é suficiente para todas as aplicações. Aumentar esse número torna a derivação mais lenta (mais segura contra força bruta), mas o ganho marginal para senhas fortes é mínimo.
+                  Se você pretende usar a criptografia também para outras coisas (Ferramentas → Datum, backup de passphrase), altere para AES-GCM antes de criptografar.
+                  Ambos modos funcionam com os mesmos caracteres ASCII disponíveis na Krux — o mesmo conjunto usado para passphrases de Bitcoin.
                 </p>
               </div>
             </div>
@@ -448,33 +693,33 @@ export default function MobilidadeDeChaves() {
       </div>
 
       {/* ═══════════════════════════════════════════════════════════
-         CAPÍTULO 05 — A IMPORTÂNCIA DE UMA SENHA FORTE
+         CAPÍTULO 07 — SENHA FORTE: A VERDADEIRA PROTEÇÃO
       ═══════════════════════════════════════════════════════════ */}
       <section className="relative z-10 py-20 md:py-32">
         <div className="max-w-5xl mx-auto px-6 md:px-10">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="mb-16">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-8 h-[2px] bg-amber-500 rounded-full" />
-              <span className="text-amber-400 text-[10px] font-bold tracking-[0.5em] uppercase">Capítulo 05</span>
+              <span className="text-amber-400 text-[10px] font-bold tracking-[0.5em] uppercase">Capítulo 07</span>
             </div>
             <h2 className="text-3xl md:text-5xl font-black tracking-tight text-white mb-6" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-              SEGURANÇA REAL — <span className="text-amber-400">SENHA FORTE</span>
+              SENHA FORTE — <span className="text-amber-400">A VERDADEIRA PROTEÇÃO</span>
             </h2>
             <p className="text-stone-400 text-sm leading-relaxed max-w-3xl">
-              Em todos os casos — independente do modo AES, do método de armazenamento ou do número de iterações — o fator mais importante é a <strong className="text-stone-200">força da senha</strong>.
-              Só uma senha forte de verdade protege seus dados. Todo o resto é complementar.
+              Em todos os casos — independente do modo AES, do tipo de tag NFC ou do número de iterações — <strong className="text-stone-200">só uma senha forte de verdade protege os dados</strong>.
+              A criptografia mais sofisticada do mundo é inútil se a senha for fraca. Inclusive contra Google e Apple, que possuem força computacional significativa.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}
               className="p-6 rounded-xl border border-red-500/15 bg-red-500/[0.03]"
             >
               <h4 className="text-sm font-bold text-red-400 mb-4 flex items-center gap-2">
-                <AlertTriangle size={16} /> Senhas Fracas (NÃO USE)
+                <AlertTriangle size={16} /> Senhas Fracas — NÃO USE
               </h4>
               <ul className="space-y-2">
-                {['123456, bitcoin, senha123', 'Datas de nascimento, nomes de família', 'Palavras do dicionário isoladas', 'Sequências de teclado (qwerty, asdf)', 'Qualquer senha com menos de 12 caracteres'].map((item) => (
+                {['123456, bitcoin, senha123', 'Datas de nascimento, nomes de família', 'Palavras isoladas do dicionário', 'Sequências de teclado (qwerty, asdf)', 'Qualquer senha com menos de 16 caracteres'].map((item) => (
                   <li key={item} className="flex items-start gap-2">
                     <span className="text-red-400/60 text-xs mt-0.5">✕</span>
                     <span className="text-stone-400 text-xs">{item}</span>
@@ -486,10 +731,16 @@ export default function MobilidadeDeChaves() {
               className="p-6 rounded-xl border border-emerald-500/15 bg-emerald-500/[0.03]"
             >
               <h4 className="text-sm font-bold text-emerald-400 mb-4 flex items-center gap-2">
-                <CheckCircle size={16} /> Senhas Fortes (RECOMENDADO)
+                <CheckCircle size={16} /> Senhas Fortes — RECOMENDADO
               </h4>
               <ul className="space-y-2">
-                {['Mínimo 16 caracteres, idealmente 20+', 'Mistura de maiúsculas, minúsculas, números e símbolos', 'Frases longas sem sentido óbvio (passphrase)', 'Geradas por geradores de entropia confiáveis', 'Nunca reutilizadas entre serviços'].map((item) => (
+                {[
+                  'Frases longas (20+ caracteres) fáceis de lembrar',
+                  'Mistura de maiúsculas, minúsculas, acentos, números',
+                  'Todos os caracteres ASCII disponíveis na Krux',
+                  'Outra seed BIP39 como senha (12/24 palavras = impossível de quebrar)',
+                  'Nunca armazenada junto com o backup criptografado',
+                ].map((item) => (
                   <li key={item} className="flex items-start gap-2">
                     <CheckCircle size={12} className="text-emerald-400/60 mt-0.5 shrink-0" />
                     <span className="text-stone-400 text-xs">{item}</span>
@@ -499,8 +750,28 @@ export default function MobilidadeDeChaves() {
             </motion.div>
           </div>
 
+          {/* Técnica avançada: seed como senha */}
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}
-            className="border-l-2 border-amber-500/40 pl-6 mb-10"
+            className="rounded-xl border border-violet-500/15 bg-violet-500/[0.03] p-6 md:p-8 mb-8"
+          >
+            <div className="flex items-start gap-4">
+              <Layers size={20} className="text-violet-400 shrink-0 mt-0.5" />
+              <div>
+                <h4 className="text-sm font-bold text-violet-300 mb-2">Técnica avançada: Seed como senha</h4>
+                <p className="text-stone-400 text-xs leading-relaxed mb-2">
+                  Tem gente que usa outra seed como senha de criptografia. A seed-senha não protege nenhum Bitcoin diretamente — ela protege apenas a criptografia.
+                  Você pode levar essa seed-senha anotada ou exposta (não há risco financeiro direto). A seed real viaja criptografada no NFC.
+                </p>
+                <p className="text-stone-500 text-xs leading-relaxed">
+                  Uma seed BIP39 é essencialmente uma senha impossível de quebrar por força bruta. Se fosse possível, o Bitcoin inteiro estaria comprometido.
+                  Com a computação atual — e por bastante tempo — essa abordagem permanece segura.
+                </p>
+              </div>
+            </div>
+          </motion.div>
+
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}
+            className="border-l-2 border-amber-500/40 pl-6"
           >
             <p className="text-amber-400/80 text-sm italic leading-relaxed">
               "A criptografia mais sofisticada do mundo é inútil se a senha for '12345'. AES-256 com 100.000 iterações PBKDF2 protege contra supercomputadores — mas não protege contra senhas fracas. Sua segurança começa e termina na qualidade da sua senha."
@@ -515,24 +786,99 @@ export default function MobilidadeDeChaves() {
       </div>
 
       {/* ═══════════════════════════════════════════════════════════
-         CAPÍTULO 06 — VÍDEO DEMONSTRATIVO + CTA
+         CAPÍTULO 08 — CENÁRIO: CRUZANDO FRONTEIRAS
       ═══════════════════════════════════════════════════════════ */}
       <section className="relative z-10 py-20 md:py-32">
         <div className="max-w-5xl mx-auto px-6 md:px-10">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="mb-16">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-8 h-[2px] bg-amber-500 rounded-full" />
-              <span className="text-amber-400 text-[10px] font-bold tracking-[0.5em] uppercase">Capítulo 06</span>
+              <span className="text-amber-400 text-[10px] font-bold tracking-[0.5em] uppercase">Capítulo 08</span>
+            </div>
+            <h2 className="text-3xl md:text-5xl font-black tracking-tight text-white mb-6" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+              CENÁRIO — <span className="text-amber-400">CRUZANDO FRONTEIRAS</span>
+            </h2>
+          </motion.div>
+
+          {/* Timeline de cenário */}
+          <div className="relative space-y-8 mb-16">
+            <div className="absolute left-[22px] top-4 bottom-4 w-px bg-gradient-to-b from-amber-500/40 via-amber-500/20 to-transparent" />
+
+            {[
+              { titulo: 'Antes da viagem', desc: 'Criptografe a seed na Krux. Grave em 2-3 tags NFC (anel, adesivo, cartão). Verifique a recuperação. Distribua os tags em locais diferentes da bagagem ou corpo. Destrua ou guarde o backup original em local seguro.', icon: Lock },
+              { titulo: 'Na fronteira', desc: 'Tags NFC não são afetadas por raio-X, magnetismo ou scanners de segurança. Sem bateria, sem emissão de sinal. Um adesivo NFC colado na caixa de um perfume parece um tag de loja. Um anel NFC parece... um anel. Metal na fronteira é complicado — NFC é invisível.', icon: Globe },
+              { titulo: 'Cenário extremo', desc: 'Você pode viajar sem Krux, sem celular — só com o tag NFC e a senha na cabeça. No destino: consiga um celular, instale NFC Tools + BinaryEye (apps gratuitos, open source). Consiga uma Krux ou instale o firmware num dispositivo compatível. Leia o NFC, gere o QR, escaneie na Krux, digite a senha. Seed recuperada.', icon: Zap },
+              { titulo: 'Uso contínuo', desc: 'O NFC criptografado serve como backup permanente. Pode substituir protocolos mais complexos como Border Wallets. Mantenha sempre pelo menos um backup não-criptografado em local seguro (metal/cofre) como última instância.', icon: Shield },
+            ].map((item, i) => (
+              <motion.div key={item.titulo} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i * 0.12}
+                className="relative pl-14"
+              >
+                <div className="absolute left-0 top-0 w-11 h-11 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center">
+                  <item.icon size={18} className="text-amber-400" />
+                </div>
+                <h4 className="text-sm font-bold text-stone-200 mb-2">{item.titulo}</h4>
+                <p className="text-stone-500 text-xs leading-relaxed">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Border Wallets comparison */}
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}
+            className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-6 md:p-8"
+          >
+            <h4 className="text-sm font-bold text-stone-200 mb-4">NFC Criptografado vs Border Wallets</h4>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <p className="text-[10px] text-stone-600 font-bold uppercase tracking-wider mb-3">Border Wallets (antigo)</p>
+                <ul className="space-y-2">
+                  {['Criptografia baseada em padrões visuais no papel', 'Requer grade impressa + padrão memorizado', 'Processo manual complexo e propenso a erros', 'Pode ser detectado como material suspeito'].map(item => (
+                    <li key={item} className="flex items-start gap-2">
+                      <span className="text-stone-600 text-xs mt-0.5">—</span>
+                      <span className="text-stone-500 text-xs">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <p className="text-[10px] text-amber-400/70 font-bold uppercase tracking-wider mb-3">NFC + Krux (atual)</p>
+                <ul className="space-y-2">
+                  {['Criptografia AES de nível militar', 'Tag NFC invisível, indistinguível de produtos comuns', 'Processo digital verificável e reproduzível', '3+ anos de prova prática sem quebra'].map(item => (
+                    <li key={item} className="flex items-start gap-2">
+                      <CheckCircle size={12} className="text-amber-400/60 mt-0.5 shrink-0" />
+                      <span className="text-stone-400 text-xs">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Divider */}
+      <div className="relative z-10 max-w-5xl mx-auto px-10">
+        <div className="h-px bg-gradient-to-r from-transparent via-amber-500/20 to-transparent" />
+      </div>
+
+      {/* ═══════════════════════════════════════════════════════════
+         CAPÍTULO 09 — VÍDEO + CTA
+      ═══════════════════════════════════════════════════════════ */}
+      <section className="relative z-10 py-20 md:py-32">
+        <div className="max-w-5xl mx-auto px-6 md:px-10">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="mb-16">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-8 h-[2px] bg-amber-500 rounded-full" />
+              <span className="text-amber-400 text-[10px] font-bold tracking-[0.5em] uppercase">Capítulo 09</span>
             </div>
             <h2 className="text-3xl md:text-5xl font-black tracking-tight text-white mb-6" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
               GUIA <span className="text-amber-400">DEMONSTRATIVO</span>
             </h2>
             <p className="text-stone-400 text-sm leading-relaxed max-w-3xl">
-              Assista ao guia completo e aprenda a transportar suas chaves com segurança. O vídeo demonstra passo a passo o processo de criptografia, gravação em NFC e leitura de SeedQR na Krux.
+              Assista ao guia completo e veja o processo inteiro ao vivo: criptografia na Krux, gravação no NFC, leitura com BinaryEye e recuperação da seed.
             </p>
           </motion.div>
 
-          {/* Video Placeholder / CTA */}
+          {/* Video Placeholder */}
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0.2}
             className="relative rounded-2xl border border-amber-500/20 bg-amber-500/[0.03] p-12 md:p-16 text-center mb-16 overflow-hidden"
           >
@@ -546,7 +892,7 @@ export default function MobilidadeDeChaves() {
                 Assista ao guia completo
               </h3>
               <p className="text-stone-400 text-sm leading-relaxed max-w-xl mx-auto mb-8">
-                Processo completo de criptografia AES na Krux, gravação em tag NFC NTAG 216, geração de SeedQR criptografado e demonstração de recuperação.
+                Processo completo: importar seed na Krux, criptografar com AES, gerar QR code, escanear com BinaryEye, gravar no NFC com NFC Tools e recuperar tudo do zero.
               </p>
               <p className="text-stone-600 text-xs italic">
                 Vídeo disponível no canal — link será adicionado em breve.
