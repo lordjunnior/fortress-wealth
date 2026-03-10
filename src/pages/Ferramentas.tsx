@@ -64,6 +64,7 @@ const TOOLS_LIST = [
     icon: BookA,
     component: Novilingua,
     num: '01',
+    clientSide: true,
   },
   {
     id: 'fuga',
@@ -75,6 +76,7 @@ const TOOLS_LIST = [
     icon: Plane,
     component: TaxaDeFuga,
     num: '02',
+    clientSide: true,
   },
   {
     id: 'btc-imovel',
@@ -86,17 +88,19 @@ const TOOLS_LIST = [
     icon: Calculator,
     component: BitcoinVsImovel,
     num: '03',
+    clientSide: true,
   },
   {
     id: 'entropy',
     title: 'Gere sua Seed',
     badge: 'Crie sua Seed Offline',
-    desc: 'Ferramenta de segurança máxima que usa o caos dos seus movimentos do mouse para gerar chaves privadas completamente offline.',
+    desc: 'Gerador de Seed Phrase 100% Offline e Client-Side. Usa o caos dos seus movimentos do mouse para gerar chaves privadas com entropia real.',
     cta: 'Gerar Seed',
     accent: '#10b981',
     icon: ShieldCheck,
     component: GeradorEntropy,
     num: '04',
+    clientSide: true,
   },
   {
     id: 'supply-shock',
