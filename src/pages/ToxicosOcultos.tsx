@@ -75,14 +75,8 @@ export default function ToxicosOcultos() {
       <motion.div className="fixed top-0 left-0 right-0 h-[2px] z-50 origin-left"
         style={{ width: progressWidth, background: 'linear-gradient(90deg, #ef4444, #f59e0b)' }} />
 
-      {/* Back button */}
-      <Link to="/projeto-autonomo"
-        className="fixed top-4 left-4 z-40 flex items-center gap-2 px-3 py-2 rounded-lg bg-card/80 backdrop-blur-md border border-border text-muted-foreground hover:text-foreground transition-colors text-xs"
-      >
-        <ArrowLeft size={14} /> Projeto Autônomo
-      </Link>
 
-      {/* Hero */}
+
       <CinematicHero
         image="/heroes/toxicos-ocultos.webp"
         phase="Laboratório de Discernimento"
