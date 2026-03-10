@@ -492,6 +492,36 @@ const DicionarioCripto = () => {
       <ScrollToTop />
       <CryptoParticles />
 
+      {/* ─── FILM GRAIN + LIGHT BEAMS ─── */}
+      <div className="fixed inset-0 pointer-events-none z-[1]">
+        <div className="absolute inset-0 opacity-[0.035]"
+          style={{ backgroundImage: "url('data:image/svg+xml,%3Csvg viewBox=\"0 0 256 256\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cfilter id=\"n\"%3E%3CfeTurbulence type=\"fractalNoise\" baseFrequency=\"0.9\" numOctaves=\"4\" stitchTiles=\"stitch\"/%3E%3C/filter%3E%3Crect width=\"100%25\" height=\"100%25\" filter=\"url(%23n)\"/%3E%3C/svg%3E')", backgroundSize: '128px 128px' }} />
+        <div className="absolute inset-0 opacity-[0.03]"
+          style={{ background: 'linear-gradient(125deg, transparent 25%, rgba(234,179,8,0.08) 50%, transparent 75%)' }} />
+      </div>
+
+      {/* ─── BREATHING ORBS ─── */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <motion.div
+          className="absolute top-[15%] left-[10%] w-[600px] h-[600px] rounded-full"
+          animate={{ scale: [1, 1.15, 1], opacity: [0.03, 0.06, 0.03] }}
+          transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}>
+          <div className="w-full h-full rounded-full bg-gradient-radial from-yellow-500/30 to-transparent blur-3xl" />
+        </motion.div>
+        <motion.div
+          className="absolute top-[50%] right-[5%] w-[500px] h-[500px] rounded-full"
+          animate={{ scale: [1, 1.2, 1], opacity: [0.02, 0.05, 0.02] }}
+          transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut', delay: 3 }}>
+          <div className="w-full h-full rounded-full bg-gradient-radial from-emerald-500/25 to-transparent blur-3xl" />
+        </motion.div>
+        <motion.div
+          className="absolute bottom-[10%] left-[30%] w-[400px] h-[400px] rounded-full"
+          animate={{ scale: [1, 1.1, 1], opacity: [0.02, 0.04, 0.02] }}
+          transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut', delay: 6 }}>
+          <div className="w-full h-full rounded-full bg-gradient-radial from-violet-500/20 to-transparent blur-3xl" />
+        </motion.div>
+      </div>
+
       {/* ─── HERO ─── */}
       <CinematicHero
         image="/heroes/dicionario-cripto.webp"
