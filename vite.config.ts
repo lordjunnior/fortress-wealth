@@ -65,6 +65,7 @@ export default defineConfig(({ mode }) => ({
   ].filter(Boolean),
   build: {
     chunkSizeWarningLimit: 2000,
+    reportCompressedSize: false,
   },
   resolve: {
     alias: {
