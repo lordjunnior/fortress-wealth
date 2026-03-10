@@ -25,8 +25,18 @@ const FERRAMENTAS = [
     icon: Cpu,
     titulo: 'Krux Hardwallet',
     desc: 'Hardwallet open-source, open-hardware, air-gapped. Projeto RISC-V brasileiro liderado por ODudex com comunidade ativa de desenvolvedores. O instalador oficial (Krux Installer) simplifica a gravação do firmware no dispositivo.',
-    link: 'selfcustody/krux no GitHub',
+    link: 'github.com/selfcustody/krux',
+    url: 'https://github.com/selfcustody/krux',
     badge: 'Obrigatório',
+    badgeColor: 'amber',
+  },
+  {
+    icon: Download,
+    titulo: 'Krux Installer',
+    desc: 'Instalador oficial para gravar o firmware da Krux no seu dispositivo. Interface gráfica simples — sem linha de comando. Disponível para Windows, Mac e Linux.',
+    link: 'github.com/selfcustody/krux-installer',
+    url: 'https://github.com/selfcustody/krux-installer',
+    badge: 'Instalador',
     badgeColor: 'amber',
   },
   {
@@ -34,6 +44,7 @@ const FERRAMENTAS = [
     titulo: 'NFC Tools (Wakdev)',
     desc: 'Aplicativo para ler, escrever e bloquear tags NFC. Disponível na Play Store, App Store e como APK standalone (sem Google Play). A versão gratuita é suficiente; a licença paga (€3,29) desbloqueia recursos avançados.',
     link: 'wakdev.com/nfc-tools',
+    url: 'https://www.wakdev.com/en/apps/nfc-tools.html',
     badge: 'Android/iOS',
     badgeColor: 'sky',
   },
@@ -41,7 +52,8 @@ const FERRAMENTAS = [
     icon: ScanLine,
     titulo: 'BinaryEye (Leitor QR)',
     desc: 'Leitor e gerador de QR codes open-source. Disponível no F-Droid e Google Play. Leve, sem rastreamento, sem necessidade de acesso à rede. No iOS, a própria câmera nativa funciona como leitor.',
-    link: 'Disponível no F-Droid',
+    link: 'github.com/markusfisch/BinaryEye',
+    url: 'https://github.com/markusfisch/BinaryEye',
     badge: 'Open Source',
     badgeColor: 'emerald',
   },
@@ -391,7 +403,13 @@ export default function MobilidadeDeChaves() {
                       </span>
                     </div>
                     <p className="text-stone-500 text-xs leading-relaxed mb-2">{tool.desc}</p>
-                    <p className="text-stone-600 text-[10px] italic">{tool.link}</p>
+                    {'url' in tool && tool.url ? (
+                      <a href={tool.url} target="_blank" rel="noopener noreferrer" className="text-amber-400/60 hover:text-amber-400 text-[10px] font-medium transition-colors inline-flex items-center gap-1">
+                        {tool.link} <ArrowRight size={10} />
+                      </a>
+                    ) : (
+                      <p className="text-stone-600 text-[10px] italic">{tool.link}</p>
+                    )}
                   </div>
                 </div>
               </motion.div>
@@ -463,6 +481,20 @@ export default function MobilidadeDeChaves() {
                 <p className="text-stone-500 text-xs leading-relaxed">
                   O processo completo acontece offline. A seed nunca toca a internet, nunca passa por um celular desbloqueado, nunca é exposta. A criptografia é feita dentro do dispositivo air-gapped e o resultado é um blob de texto indistinguível de ruído.
                 </p>
+                <div className="flex flex-wrap gap-3 mt-3">
+                  <a href="https://selfcustody.github.io/krux/" target="_blank" rel="noopener noreferrer"
+                    className="text-[10px] font-bold uppercase tracking-wider text-amber-400/70 hover:text-amber-400 bg-amber-500/10 px-3 py-1.5 rounded transition-colors inline-flex items-center gap-1">
+                    Manual da Krux <ArrowRight size={10} />
+                  </a>
+                  <a href="https://github.com/selfcustody/krux" target="_blank" rel="noopener noreferrer"
+                    className="text-[10px] font-bold uppercase tracking-wider text-stone-500 hover:text-stone-300 bg-white/[0.04] px-3 py-1.5 rounded transition-colors inline-flex items-center gap-1">
+                    GitHub <ArrowRight size={10} />
+                  </a>
+                  <a href="https://github.com/selfcustody/krux-installer" target="_blank" rel="noopener noreferrer"
+                    className="text-[10px] font-bold uppercase tracking-wider text-stone-500 hover:text-stone-300 bg-white/[0.04] px-3 py-1.5 rounded transition-colors inline-flex items-center gap-1">
+                    Installer <ArrowRight size={10} />
+                  </a>
+                </div>
               </div>
             </div>
           </motion.div>
