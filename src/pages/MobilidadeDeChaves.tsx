@@ -403,7 +403,13 @@ export default function MobilidadeDeChaves() {
                       </span>
                     </div>
                     <p className="text-stone-500 text-xs leading-relaxed mb-2">{tool.desc}</p>
-                    <p className="text-stone-600 text-[10px] italic">{tool.link}</p>
+                    {'url' in tool && tool.url ? (
+                      <a href={tool.url} target="_blank" rel="noopener noreferrer" className="text-amber-400/60 hover:text-amber-400 text-[10px] font-medium transition-colors inline-flex items-center gap-1">
+                        {tool.link} <ArrowRight size={10} />
+                      </a>
+                    ) : (
+                      <p className="text-stone-600 text-[10px] italic">{tool.link}</p>
+                    )}
                   </div>
                 </div>
               </motion.div>
