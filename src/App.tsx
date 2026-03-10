@@ -95,6 +95,11 @@ import CpBaseFisiologica from "./pages/cp/BaseFisiologica";
 import CpSegurancaLimites from "./pages/cp/SegurancaLimites";
 import CpAplicacaoPratica from "./pages/cp/AplicacaoPratica";
 import CpContinuidadeFamiliar from "./pages/cp/ContinuidadeFamiliar";
+import ToxicosOcultos from "./pages/ToxicosOcultos";
+import ToxinasAlimentares from "./pages/toxicos/ToxinasAlimentares";
+import ManipulacaoInformacional from "./pages/toxicos/ManipulacaoInformacional";
+import DependenciaTecnologica from "./pages/toxicos/DependenciaTecnologica";
+import ToxinasAmbientais from "./pages/toxicos/ToxinasAmbientais";
 import CodigoAutonomiaModal from "./components/CodigoAutonomiaModal";
 import ScrollToTop from "./components/ScrollToTop";
 const queryClient = new QueryClient();
@@ -201,6 +206,11 @@ const App = () => (
           <Route path="/conhecimento-perdido/seguranca-e-limites" element={<CpSegurancaLimites />} />
           <Route path="/conhecimento-perdido/aplicacao-pratica" element={<CpAplicacaoPratica />} />
           <Route path="/conhecimento-perdido/continuidade-familiar" element={<CpContinuidadeFamiliar />} />
+          <Route path="/projeto-autonomo/toxicos-ocultos" element={<ToxicosOcultos />} />
+          <Route path="/projeto-autonomo/toxicos-ocultos/toxinas-alimentares" element={<ToxinasAlimentares />} />
+          <Route path="/projeto-autonomo/toxicos-ocultos/manipulacao-informacional" element={<ManipulacaoInformacional />} />
+          <Route path="/projeto-autonomo/toxicos-ocultos/dependencia-tecnologica" element={<DependenciaTecnologica />} />
+          <Route path="/projeto-autonomo/toxicos-ocultos/toxinas-ambientais" element={<ToxinasAmbientais />} />
           <Route path="/projeto-autonomo/:slug" element={<ModuloAutonomo />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
