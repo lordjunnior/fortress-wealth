@@ -1033,8 +1033,8 @@ export default function ProjetoAutonomo() {
         </div>
       </section>
 
-
-         (was: status grid + text CTA, now: immersive closing)
+      {/* ═══════════════════════════════════════════════════════════
+         FOOTER — COMPLETELY NEW LAYOUT
       ═══════════════════════════════════════════════════════════ */}
       <section className="relative z-10 border-t border-white/[0.04]">
         {/* Status indicators — horizontal ribbon */}
