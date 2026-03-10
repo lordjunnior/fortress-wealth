@@ -135,7 +135,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 50, filter: "blur(8px)" }}
               animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               transition={{ duration: 0.7, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              className="block text-[clamp(3.2rem,9vw,8.5rem)] text-ice-white"
+              className="block text-[clamp(2.4rem,8vw,8.5rem)] text-ice-white"
             >
               SEU DINHEIRO ESTÁ
             </motion.span>
@@ -143,7 +143,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 50, filter: "blur(8px)" }}
               animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               transition={{ duration: 0.7, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-              className="block text-[clamp(3.2rem,9vw,8.5rem)] text-chart-red"
+              className="block text-[clamp(2.4rem,8vw,8.5rem)] text-chart-red"
               style={{ textShadow: "0 0 40px hsl(0 72% 51% / 0.6), 0 0 80px hsl(0 72% 51% / 0.2)" }}
             >
               DERRETENDO.
@@ -152,7 +152,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 50, filter: "blur(8px)" }}
               animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               transition={{ duration: 0.7, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
-              className="block text-[clamp(3.2rem,9vw,8.5rem)] text-ice-white"
+              className="block text-[clamp(2.4rem,8vw,8.5rem)] text-ice-white"
             >
               A CULPA NÃO É DO
             </motion.span>
@@ -160,7 +160,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 50, filter: "blur(8px)" }}
               animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               transition={{ duration: 0.7, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
-              className="block text-[clamp(3.2rem,9vw,8.5rem)] hero-shimmer"
+              className="block text-[clamp(2.4rem,8vw,8.5rem)] hero-shimmer"
             >
               ACASO.
             </motion.span>
