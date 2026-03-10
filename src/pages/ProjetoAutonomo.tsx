@@ -1045,6 +1045,7 @@ export default function ProjetoAutonomo() {
               { phase: 'Autonomia Biológica', accent: '#10b981' },
               { phase: 'Soberania Alimentar', accent: '#f59e0b' },
               { phase: 'Conhecimento Perdido', accent: '#14b8a6' },
+              { phase: 'Tóxicos Ocultos', accent: '#ef4444' },
             ].map((s) => (
               <div key={s.phase} className="flex items-center gap-2 border border-white/[0.06] bg-white/[0.02] px-4 py-2 rounded-full">
                 <div className="w-2 h-2 rounded-full" style={{ background: s.accent }} />
