@@ -82,8 +82,9 @@ const GeradorEntropy: React.FC = () => {
       style={{ background: '#050808' }} onMouseMove={handleMouseMove}>
 
       <Helmet>
-        <title>Gerador de Entropia — Seed Phrase Segura | Lord Junnior</title>
-        <meta name="description" content="Gere sua seed phrase de 12 ou 24 palavras com aleatoriedade real via movimento do mouse. Ferramenta educativa de segurança Bitcoin." />
+        <title>Gerador de Seed Phrase Offline e Client-Side — BIP39 | Lord Junnior</title>
+        <meta name="description" content="Como gerar uma seed phrase de 12 ou 24 palavras offline? Use nosso gerador 100% client-side com entropia real via movimento do mouse. Padrão BIP39, nenhum dado enviado ao servidor." />
+        <link rel="canonical" href="https://lordjunnior.com/ferramentas/entropy" />
       </Helmet>
       <ScrollToTop />
 
@@ -250,7 +251,29 @@ const GeradorEntropy: React.FC = () => {
           </div>
         </div>
 
-        <footer className="border-t border-white/[0.05] pt-12 mt-20 text-center">
+        {/* SEO: Featured Snippet block */}
+        <section className="mb-20 max-w-3xl mx-auto">
+          <h3 className="text-lg font-bold text-white mb-4" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+            Como gerar uma seed phrase de 12 palavras offline?
+          </h3>
+          <div className="text-stone-400 text-sm leading-relaxed space-y-3">
+            <p>
+              Uma <strong className="text-stone-300">seed phrase</strong> (ou frase-semente) é um conjunto de 12 ou 24 palavras que funciona como backup universal da sua carteira Bitcoin. Este gerador utiliza o <strong className="text-stone-300">padrão BIP39</strong>, o mesmo protocolo usado por hardware wallets como Ledger e Trezor.
+            </p>
+            <p>
+              A entropia é gerada <strong className="text-stone-300">localmente no seu navegador</strong> através dos movimentos aleatórios do seu mouse — nenhum dado é transmitido a servidores externos. Todo o processamento é 100% client-side, garantindo que suas chaves privadas nunca deixem o seu dispositivo.
+            </p>
+            <p>
+              Para segurança máxima, recomendamos: <strong className="text-stone-300">desconecte a internet</strong> antes de gerar, anote as palavras em papel ou metal (nunca digitalmente) e jamais tire foto ou screenshot da sua seed phrase.
+            </p>
+          </div>
+          <p className="mt-6 text-emerald-500/50 text-[10px] font-mono tracking-wide flex items-center gap-1.5">
+            <ShieldCheck size={11} className="shrink-0" />
+            Privacidade garantida: cálculos realizados localmente em seu navegador. Nenhum dado é enviado ao servidor.
+          </p>
+        </section>
+
+        <footer className="border-t border-white/[0.05] pt-12 text-center">
           <p className="text-stone-700 text-[9px] font-bold tracking-[0.5em] uppercase">Lord Junnior © 2026</p>
         </footer>
       </div>
