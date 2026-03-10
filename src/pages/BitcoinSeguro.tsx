@@ -6,7 +6,7 @@ import { ArrowLeft, Shield, ShieldCheck, Lock, Key, AlertTriangle, Smartphone, M
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as const } },
 };
 
 function AnimSection({ children, className = '' }: { children: React.ReactNode; className?: string }) {
