@@ -919,52 +919,12 @@ export default function MobilidadeDeChaves() {
         </div>
       </section>
 
-      {/* Divider */}
-      <div className="relative z-10 max-w-5xl mx-auto px-10">
-        <div className="h-px bg-gradient-to-r from-transparent via-amber-500/20 to-transparent" />
-      </div>
 
       {/* ═══════════════════════════════════════════════════════════
-         CAPÍTULO 09 — VÍDEO + CTA
+         CTA — PRÓXIMOS PASSOS
       ═══════════════════════════════════════════════════════════ */}
       <section className="relative z-10 py-20 md:py-32">
         <div className="max-w-5xl mx-auto px-6 md:px-10">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="mb-16">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-8 h-[2px] bg-amber-500 rounded-full" />
-              <span className="text-amber-400 text-[10px] font-bold tracking-[0.5em] uppercase">Capítulo 09</span>
-            </div>
-            <h2 className="text-3xl md:text-5xl font-black tracking-tight text-white mb-6" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-              GUIA <span className="text-amber-400">DEMONSTRATIVO</span>
-            </h2>
-            <p className="text-stone-400 text-sm leading-relaxed max-w-3xl">
-              Assista ao guia completo e veja o processo inteiro ao vivo: criptografia na Krux, gravação no NFC, leitura com BinaryEye e recuperação da seed.
-            </p>
-          </motion.div>
-
-          {/* Video Placeholder */}
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0.2}
-            className="relative rounded-2xl border border-amber-500/20 bg-amber-500/[0.03] p-12 md:p-16 text-center mb-16 overflow-hidden"
-          >
-            <div className="absolute inset-0 opacity-30"
-              style={{ background: 'radial-gradient(ellipse at center, rgba(245,158,11,0.1), transparent 60%)' }} />
-            <div className="relative z-10">
-              <div className="w-20 h-20 rounded-full bg-amber-500/20 border border-amber-500/30 flex items-center justify-center mx-auto mb-8 hover:scale-110 transition-transform duration-500 cursor-pointer">
-                <Play size={32} className="text-amber-400 ml-1" />
-              </div>
-              <h3 className="text-xl md:text-2xl font-bold text-stone-200 mb-4">
-                Assista ao guia completo
-              </h3>
-              <p className="text-stone-400 text-sm leading-relaxed max-w-xl mx-auto mb-8">
-                Processo completo: importar seed na Krux, criptografar com AES, gerar QR code, escanear com BinaryEye, gravar no NFC com NFC Tools e recuperar tudo do zero.
-              </p>
-              <p className="text-stone-600 text-xs italic">
-                Vídeo disponível no canal — link será adicionado em breve.
-              </p>
-            </div>
-          </motion.div>
-
-          {/* Dual CTA */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}>
               <Link to="/autocustodia"
