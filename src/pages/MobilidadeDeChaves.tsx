@@ -110,27 +110,27 @@ const TUTORIAL_STEPS = [
 const NFC_MEIOS = [
   {
     titulo: 'Anel NFC',
-    desc: 'Usado pelo desenvolvedor ODudex na demonstração oficial. Discreto, sempre com você, difícil de associar a criptomoedas. "Reche seu anel de Bitcoin" — na verdade, a chave criptografada.',
+    desc: 'Usado pelo desenvolvedor ODudex na demonstração oficial. Discreto, sempre com você, difícil de associar a criptomoedas. "Recheia seu anel de Bitcoin" — na verdade, a chave criptografada.',
     bytes: '~500-900 bytes',
-    icon: '💍',
+    lucideIcon: CircleDot,
   },
   {
     titulo: 'Cartão NFC (NTAG 216)',
     desc: 'Formato cartão de crédito. 924 bytes de armazenamento. O plástico protege o chip contra dobras. Pode ir na carteira comum, gaveta ou cofre.',
     bytes: '924 bytes',
-    icon: '💳',
+    lucideIcon: HardDrive,
   },
   {
     titulo: 'Moeda NFC (NTAG 215)',
     desc: 'Forma de moeda plástica. Menos armazenamento (540 bytes), mas suficiente para uma seed criptografada. Compacta e discreta.',
     bytes: '540 bytes',
-    icon: '🪙',
+    lucideIcon: CircleDot,
   },
   {
     titulo: 'Adesivo NFC',
     desc: 'O mais versátil. Cole dentro de um livro, atrás de um quadro, na caixa de um produto qualquer. Um adesivo NFC num frasco de perfume parece um tag de loja — passa completamente despercebido.',
     bytes: '~500+ bytes',
-    icon: '🏷️',
+    lucideIcon: Tag,
   },
 ];
 
