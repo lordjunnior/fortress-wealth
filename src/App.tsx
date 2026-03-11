@@ -129,6 +129,7 @@ const App = () => (
           <Route path="/educacao" element={<Educacao />} />
           <Route path="/entenda-bitcoin" element={<Navigate to="/o-que-e-bitcoin" replace />} />
           <Route path="/autocustodia" element={<Autocustodia />} />
+          <Route path="/autocustodia/hardware-wallet-diy-bitcoin" element={<HardwareWalletDiy />} />
           <Route path="/economia-paralela" element={<EconomiaParalela />} />
           <Route path="/infraestrutura" element={<Infraestrutura />} />
           <Route path="/lightning" element={<LightningPage />} />
