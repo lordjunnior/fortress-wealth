@@ -107,7 +107,18 @@ export default function ToxicosOcultos() {
       <CinematicHero
         image="/heroes/toxicos-ocultos.webp"
         phase="Laboratório de Discernimento"
-        title="Removendo Tóxicos Ocultos"
+        title={
+          <span className="flex flex-col items-start">
+            <span>Removendo</span>
+            <LiquidText
+              text="Tóxicos Ocultos"
+              className="w-[320px] md:w-[500px] lg:w-[620px] h-auto -ml-1"
+              gradientFrom="#ef4444"
+              gradientTo="#991b1b"
+              speed={1.8}
+            />
+          </span>
+        }
         subtitle="Corpo, mente, comportamento e ambiente. Quatro dimensões de investigação sobre influências invisíveis que reduzem clareza, saúde e liberdade de escolha."
         icon={Microscope}
         accentColor="red"
