@@ -109,7 +109,7 @@ export default function ToxicosOcultos() {
         phase="Laboratório de Discernimento"
         title={
           <span className="flex flex-col items-start">
-            <span>Removendo</span>
+            <span>REMOVENDO</span>
             <LiquidText
               text="Tóxicos Ocultos"
               className="w-[320px] md:w-[500px] lg:w-[620px] h-auto -ml-1"
