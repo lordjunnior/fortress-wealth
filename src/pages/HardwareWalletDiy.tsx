@@ -256,7 +256,7 @@ const HardwareWalletDiy = () => {
                 {[
                   { icon: WifiOff, label: 'Zero conexão', desc: 'Sem WiFi, Bluetooth, USB data ou qualquer canal de comunicação digital' },
                   { icon: QrCode, label: 'QR Code', desc: 'Transações assinadas são transmitidas via QR code — canal visual unidirecional' },
-                  { icon: SdCard, label: 'Cartão SD', desc: 'Alternativa ao QR: PSBTs exportados via cartão microSD removível' },
+                  { icon: Database, label: 'Cartão SD', desc: 'Alternativa ao QR: PSBTs exportados via cartão microSD removível' },
                 ].map((item, i) => (
                   <motion.div
                     key={item.label}
