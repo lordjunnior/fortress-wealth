@@ -91,6 +91,7 @@ import DiversificacaoPage from "./pages/Diversificacao";
 import BitcoinVsAltcoinsPage from "./pages/BitcoinVsAltcoins";
 import DicionarioCripto from "./pages/DicionarioCripto";
 import MobilidadeDeChaves from "./pages/MobilidadeDeChaves";
+import HardwareWalletDiy from "./pages/HardwareWalletDiy";
 import CpContextoHistorico from "./pages/cp/ContextoHistorico";
 import CpBaseFisiologica from "./pages/cp/BaseFisiologica";
 import CpSegurancaLimites from "./pages/cp/SegurancaLimites";
