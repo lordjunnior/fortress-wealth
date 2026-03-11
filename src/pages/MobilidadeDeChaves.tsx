@@ -628,9 +628,7 @@ export default function MobilidadeDeChaves() {
       </section>
 
       {/* Divider */}
-      <div className="relative z-10 max-w-5xl mx-auto px-10">
-        <div className="h-px bg-gradient-to-r from-transparent via-amber-500/20 to-transparent" />
-      </div>
+      <div className="relative z-10 section-divider" />
 
       {/* ═══════════════════════════════════════════════════════════
          CAPÍTULO 05 — MEIOS NFC: ONDE ESCONDER SUA CHAVE
