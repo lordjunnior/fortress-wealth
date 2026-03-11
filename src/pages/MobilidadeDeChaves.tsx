@@ -764,6 +764,8 @@ export default function MobilidadeDeChaves() {
         <div className="h-px bg-gradient-to-r from-transparent via-amber-500/20 to-transparent" />
       </div>
 
+      <div className="relative z-10 section-divider" />
+
       {/* ═══════════════════════════════════════════════════════════
          CAPÍTULO 07 — SENHA FORTE: A VERDADEIRA PROTEÇÃO
       ═══════════════════════════════════════════════════════════ */}
