@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, useScroll, useTransform, useInView } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -11,7 +11,10 @@ import {
   XCircle, ShieldOff, Search, Globe, Zap, Target, Bug, Store
 } from 'lucide-react';
 
-import heroImg from '@/assets/hw-diy-hero.jpg';
+import CinematicHero from '@/components/CinematicHero';
+import LiquidText from '@/components/LiquidText';
+import ScrollToTop from '@/components/ScrollToTop';
+
 import imgCadeia from '@/assets/hw-diy-cadeia-confianca.jpg';
 import imgAirgapped from '@/assets/hw-diy-airgapped.jpg';
 import imgComponentes from '@/assets/hw-diy-componentes.jpg';
@@ -29,7 +32,7 @@ const fadeUp = {
   }),
 };
 
-/* ── Nobel Section ── */
+/* ── Nobel Section with GSAP ScrollTrigger ── */
 const NobelSection = ({ children, className = '', id, delay = 0 }: {
   children: React.ReactNode; className?: string; id?: string; delay?: number;
 }) => {
@@ -64,26 +67,36 @@ const CinematicBreak: React.FC<{ src: string; alt: string; caption: string }> = 
         <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, transparent 20%, rgba(5,8,8,0.7) 70%, rgba(5,8,8,0.95) 100%)' }} />
         <div className="absolute bottom-5 left-6 right-6 flex items-end justify-between">
           <p className="text-muted-foreground text-[11px] font-mono uppercase tracking-[0.2em] leading-relaxed max-w-lg">{caption}</p>
-          <div className="hidden md:block w-12 h-px bg-gradient-to-r from-amber-500/40 to-transparent" />
+          <div className="hidden md:block w-12 h-px bg-gradient-to-r from-primary/40 to-transparent" />
         </div>
       </motion.div>
     </div>
   </section>
 );
 
-/* ── Section Divider ── */
-const SectionGlow = () => (
-  <div className="relative z-10 h-px max-w-5xl mx-auto">
-    <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, transparent, rgba(217,169,78,0.15), transparent)' }} />
-  </div>
-);
+/* ── Animated Divider (Nobel standard) ── */
+const AnimatedDivider = () => {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true });
+  return (
+    <div ref={ref} className="relative z-10 h-px max-w-5xl mx-auto my-4">
+      <motion.div
+        initial={{ scaleX: 0, opacity: 0 }}
+        animate={isInView ? { scaleX: 1, opacity: 1 } : {}}
+        transition={{ duration: 1.2, ease: APPLE_EASE }}
+        className="absolute inset-0 origin-left"
+        style={{ background: 'linear-gradient(to right, transparent, hsl(var(--gold) / 0.2), transparent)' }}
+      />
+    </div>
+  );
+};
 
 /* ── Alert Box ── */
 const AlertBox: React.FC<{ icon: React.ElementType; title: string; children: React.ReactNode; variant?: 'danger' | 'warning' | 'info' }> = ({ icon: Icon, title, children, variant = 'danger' }) => {
   const colors = {
-    danger: { border: 'border-red-500/20', bg: 'rgba(239,68,68,0.06)', icon: 'text-red-400', title: 'text-red-400' },
-    warning: { border: 'border-amber-500/20', bg: 'rgba(245,158,11,0.06)', icon: 'text-amber-400', title: 'text-amber-400' },
-    info: { border: 'border-cyan-500/20', bg: 'rgba(56,189,248,0.06)', icon: 'text-cyan-400', title: 'text-cyan-400' },
+    danger: { border: 'border-destructive/20', bg: 'rgba(239,68,68,0.06)', icon: 'text-destructive', title: 'text-destructive' },
+    warning: { border: 'border-primary/20', bg: 'rgba(245,158,11,0.06)', icon: 'text-primary', title: 'text-primary' },
+    info: { border: 'border-sky-500/20', bg: 'rgba(56,189,248,0.06)', icon: 'text-sky-400', title: 'text-sky-400' },
   };
   const c = colors[variant];
   return (
@@ -105,7 +118,8 @@ const PROJECTS = [
   {
     icon: Cpu,
     name: 'SeedSigner',
-    accent: '#d4af37',
+    accent: 'hsl(var(--gold))',
+    accentRaw: '#d4af37',
     ethos: 'Usuário Maker',
     difficulty: 'Intermediário — requer montagem e solda',
     desc: 'Projeto baseado em Raspberry Pi Zero sem conexão à internet. Focado em simplicidade absoluta e assinatura via QR code. É 100% stateless: a seed nunca é armazenada na memória persistente. Após desligar, nenhum dado permanece no dispositivo. Você precisa montar fisicamente: soldar os pinos GPIO no Raspberry Pi Zero, conectar o display WaveShare LCD HAT, acoplar o módulo de câmera e instalar o firmware via cartão microSD.',
@@ -117,6 +131,7 @@ const PROJECTS = [
     icon: Lock,
     name: 'Krux',
     accent: '#38bdf8',
+    accentRaw: '#38bdf8',
     ethos: 'Plug & Play',
     difficulty: 'Iniciante — zero montagem necessária',
     desc: 'Firmware open source que roda em dispositivos com chip K210 (Sipeed Yahboom MV e Maix Amigo). A grande vantagem: você não precisa montar absolutamente nada, não precisa soldar nada, não precisa lidar com componentes separados. Compra o dispositivo pronto no AliExpress, baixa o Krux Installer no GitHub (Windows, macOS ou Linux), instala o firmware e pronto. O fornecedor (Sipeed/Yahboom) fabrica o dispositivo para uso geral em projetos de IA e detecção de imagens — ele não sabe que você vai usar para Bitcoin.',
@@ -128,6 +143,7 @@ const PROJECTS = [
     icon: Monitor,
     name: 'Specter DIY',
     accent: '#34d399',
+    accentRaw: '#34d399',
     ethos: 'Técnico Avançado',
     difficulty: 'Avançado — menos indicado atualmente',
     desc: 'Projeto baseado em ESP32 com tela touchscreen que integra com o Specter Desktop. Apesar de funcional, tem menos olhos atentos no desenvolvimento comparado ao SeedSigner e Krux. A comunidade de desenvolvimento é menor e as atualizações menos frequentes. Suporta PSBT (Partially Signed Bitcoin Transactions) e é uma opção válida para quem já opera dentro do ecossistema Specter.',
@@ -179,10 +195,6 @@ const PASSOS_KRUX = [
 /* ══════════════════════════════════════════════════════════════ */
 
 const HardwareWalletDiy = () => {
-  const { scrollYProgress } = useScroll();
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.05], [1, 0]);
-  const heroScale = useTransform(scrollYProgress, [0, 0.05], [1, 1.05]);
-
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
   const articleSchema = {
@@ -222,50 +234,63 @@ const HardwareWalletDiy = () => {
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       </Helmet>
 
-      {/* ══ Back Button ══ */}
-      <Link to="/autocustodia" className="fixed top-6 left-6 z-50 flex items-center gap-2 px-4 py-2 rounded-full bg-card/80 backdrop-blur-md border border-border text-muted-foreground hover:text-foreground transition-all text-sm">
-        <ArrowLeft className="w-4 h-4" /> Autocustódia
-      </Link>
+      <ScrollToTop />
 
-      {/* ══ Progress Bar ══ */}
-      <motion.div className="fixed top-0 left-0 right-0 h-[2px] z-[60] origin-left" style={{ scaleX: scrollYProgress, background: 'linear-gradient(to right, #d4af37, #f59e0b)' }} />
+      {/* ═══ Reading Progress Bar ═══ */}
+      <ProgressBar />
 
-      <div className="min-h-screen bg-background text-foreground">
+      <div className="min-h-screen text-foreground selection:bg-primary/30" style={{ background: '#050808' }}>
 
-        {/* ══════════════════════════════════════════════════════
-            HERO
-        ══════════════════════════════════════════════════════ */}
-        <motion.section className="relative h-screen flex items-center justify-center overflow-hidden" style={{ opacity: heroOpacity }}>
-          <motion.div className="absolute inset-0" style={{ scale: heroScale }}>
-            <img src={heroImg} alt="Hardware Wallet DIY Bitcoin" className="w-full h-full object-cover" style={{ filter: 'brightness(0.3) saturate(0.7)' }} />
-            <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(5,8,8,0.3) 0%, rgba(5,8,8,0.85) 70%, hsl(var(--background)) 100%)' }} />
-          </motion.div>
+        {/* ═══ VFX LAYER: Film Grain + Breathing Orbs + Light Beams ═══ */}
+        <div className="fixed inset-0 pointer-events-none z-[1]">
+          {/* Film Grain */}
+          <div className="absolute inset-0 opacity-[0.035]" style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.5'/%3E%3C/svg%3E")`,
+            backgroundRepeat: 'repeat',
+            mixBlendMode: 'overlay',
+          }} />
+          {/* Breathing Orbs */}
+          <div className="absolute top-[20%] left-[10%] w-[500px] h-[500px] rounded-full animate-pulse" style={{
+            background: 'radial-gradient(circle, hsl(var(--gold) / 0.04) 0%, transparent 70%)',
+            filter: 'blur(80px)',
+          }} />
+          <div className="absolute top-[60%] right-[5%] w-[400px] h-[400px] rounded-full animate-pulse" style={{
+            background: 'radial-gradient(circle, rgba(56,189,248,0.03) 0%, transparent 70%)',
+            filter: 'blur(80px)',
+            animationDelay: '2s',
+            animationDuration: '6s',
+          }} />
+          {/* Light Beams */}
+          <div className="absolute top-0 left-1/4 w-px h-full" style={{
+            background: 'linear-gradient(180deg, transparent 0%, hsl(var(--gold) / 0.03) 30%, transparent 70%)',
+          }} />
+          <div className="absolute top-0 right-1/3 w-px h-full" style={{
+            background: 'linear-gradient(180deg, transparent 10%, hsl(var(--gold) / 0.02) 50%, transparent 90%)',
+          }} />
+        </div>
 
-          <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
-            <motion.div initial="hidden" animate="visible" variants={{ visible: { transition: { staggerChildren: 0.15 } } }}>
-              <motion.p variants={fadeUp} custom={0} className="text-amber-500/80 font-mono text-xs tracking-[0.3em] uppercase mb-6">
-                Autocustódia Avançada — Nível Maker
-              </motion.p>
-              <motion.h1 variants={fadeUp} custom={1} className="text-4xl md:text-6xl lg:text-7xl font-black leading-[0.95] mb-6" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                Hardware Wallets DIY
-                <span className="block text-amber-500/90 text-2xl md:text-4xl lg:text-5xl mt-3">
-                  elimine a cadeia de confiança. Construa você mesmo.
-                </span>
-              </motion.h1>
-              <motion.p variants={fadeUp} custom={2} className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto mb-4 leading-relaxed">
-                Sua chave é o que lhe dá acesso aos seus satoshis na rede Bitcoin. Sem ela, você não tem nada. Criar essa chave com segurança é a decisão mais importante da sua vida financeira.
-              </motion.p>
-              <motion.p variants={fadeUp} custom={2.5} className="text-muted-foreground/60 text-sm max-w-xl mx-auto mb-10 leading-relaxed italic">
-                "Se você compra uma hardware wallet de um fabricante, você está confiando que ele não vai te roubar. Se você monta a sua, não precisa confiar em ninguém."
-              </motion.p>
-              <motion.div variants={fadeUp} custom={3}>
-                <a href="#cadeia" className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-amber-500/30 text-amber-500 hover:bg-amber-500/10 transition-all text-sm font-semibold">
-                  Entender os riscos <ChevronDown className="w-4 h-4 animate-bounce" />
-                </a>
-              </motion.div>
-            </motion.div>
-          </div>
-        </motion.section>
+        {/* ═══ CINEMATIC HERO (Nobel Standard) ═══ */}
+        <CinematicHero
+          image="/heroes/hardware-wallet-diy.webp"
+          phase="Autocustódia Avançada — Nível Maker"
+          title={
+            <span className="flex flex-col items-start">
+              <span className="text-foreground">CONSTRUA SEU</span>
+              <LiquidText
+                text="Dispositivo de Assinatura"
+                className="w-[300px] md:w-[480px] lg:w-[600px] h-auto -ml-1"
+                gradientFrom="hsl(40,92%,56%)"
+                gradientTo="hsl(35,80%,35%)"
+                fontSize={17}
+              />
+            </span>
+          }
+          subtitle="Sua chave é o que lhe dá acesso aos seus satoshis na rede Bitcoin. Sem ela, você não tem nada. Criar essa chave com segurança é a decisão mais importante da sua vida financeira."
+          icon={Cpu}
+          accentColor="amber"
+          backLink="/autocustodia"
+          backLabel="Autocustódia"
+        />
 
         {/* ══════════════════════════════════════════════════════
             CAP 01 — A CADEIA DE CONFIANÇA
@@ -273,8 +298,8 @@ const HardwareWalletDiy = () => {
         <section id="cadeia" className="relative z-10 py-20 md:py-32">
           <div className="max-w-5xl mx-auto px-6">
             <NobelSection>
-              <p className="text-amber-500/70 font-mono text-[10px] tracking-[0.3em] uppercase mb-4">Capítulo 01 — O problema</p>
-              <h2 className="text-3xl md:text-5xl font-black mb-8" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+              <p className="pre-title text-primary/70">Capítulo 01 — O problema</p>
+              <h2 className="text-3xl md:text-5xl font-black mb-8 font-display">
                 A cadeia de confiança que você não enxerga
               </h2>
               
@@ -286,7 +311,7 @@ const HardwareWalletDiy = () => {
                   Quando você faz essa compra, seu nome, endereço e CPF ficam vinculados a um produto cuja única função é proteger chaves privadas. O entregador sabe. A transportadora sabe. A alfândega sabe. Seu banco sabe (pela transação). E o fabricante tem o registro completo.
                 </p>
                 <p className="text-muted-foreground text-base md:text-lg leading-relaxed">
-                  Projetos DIY surgiram para <strong className="text-amber-500">eliminar completamente essa cadeia</strong>. Você compra componentes eletrônicos genéricos — microcontroladores vendidos para projetos infantis e educacionais — e instala firmware open source auditável. O fornecedor chinês no AliExpress acha que você vai montar um robozinho caseiro. <strong className="text-foreground">E esse é exatamente o ponto.</strong>
+                  Projetos DIY surgiram para <strong className="text-primary">eliminar completamente essa cadeia</strong>. Você compra componentes eletrônicos genéricos — microcontroladores vendidos para projetos infantis e educacionais — e instala firmware open source auditável. O fornecedor chinês no AliExpress acha que você vai montar um robozinho caseiro. <strong className="text-foreground">E esse é exatamente o ponto.</strong>
                 </p>
               </div>
 
@@ -297,11 +322,11 @@ const HardwareWalletDiy = () => {
                     key={r.label}
                     initial="hidden" whileInView="visible" viewport={{ once: true }}
                     variants={fadeUp} custom={i}
-                    className="p-5 rounded-xl border border-red-500/10 hover:border-red-500/25 transition-all duration-500"
+                    className="p-5 rounded-xl border border-destructive/10 hover:border-destructive/25 transition-all duration-500"
                     style={{ background: 'rgba(239,68,68,0.04)' }}
                   >
                     <div className="flex items-center gap-3 mb-2">
-                      <r.icon className="w-5 h-5 text-red-400" />
+                      <r.icon className="w-5 h-5 text-destructive" />
                       <h4 className="font-bold text-foreground text-sm">{r.label}</h4>
                     </div>
                     <p className="text-muted-foreground text-xs leading-relaxed">{r.desc}</p>
@@ -313,7 +338,7 @@ const HardwareWalletDiy = () => {
         </section>
 
         <CinematicBreak src={imgCadeia} alt="Cadeia de confiança quebrada" caption="Cada elo na cadeia de confiança é um ponto de vulnerabilidade — o maker elimina todos" />
-        <SectionGlow />
+        <AnimatedDivider />
 
         {/* ══════════════════════════════════════════════════════
             CAP 02 — ALERTA: KITS PRÉ-MONTADOS
@@ -321,20 +346,20 @@ const HardwareWalletDiy = () => {
         <section className="relative z-10 py-20 md:py-32">
           <div className="max-w-5xl mx-auto px-6">
             <NobelSection>
-              <p className="text-red-400/70 font-mono text-[10px] tracking-[0.3em] uppercase mb-4">Capítulo 02 — Alerta crítico</p>
-              <h2 className="text-3xl md:text-5xl font-black mb-8" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+              <p className="pre-title text-destructive/70">Capítulo 02 — Alerta crítico</p>
+              <h2 className="text-3xl md:text-5xl font-black mb-8 font-display">
                 Por que nunca comprar kits "Faça Você Mesmo"
               </h2>
 
               <div className="space-y-6 max-w-3xl mb-16">
                 <p className="text-muted-foreground text-base md:text-lg leading-relaxed">
-                  Existem lojas — na África do Sul, Europa, e inclusive no Brasil — vendendo "kits faça você mesmo" com todas as peças necessárias para montar uma SeedSigner ou Krux. <strong className="text-red-400">Isso derrota completamente o propósito do DIY.</strong>
+                  Existem lojas — na África do Sul, Europa, e inclusive no Brasil — vendendo "kits faça você mesmo" com todas as peças necessárias para montar uma SeedSigner ou Krux. <strong className="text-destructive">Isso derrota completamente o propósito do DIY.</strong>
                 </p>
                 <p className="text-muted-foreground text-base md:text-lg leading-relaxed">
                   O etos do projeto é que <strong className="text-foreground">você é o usuário maker</strong>. Você coloca o chapéu de maker. Você mesmo compra cada componente de fornecedores que vendem para uso geral. O momento em que você compra de alguém que sabe que é para Bitcoin, você reintroduziu a cadeia de confiança que estava tentando eliminar.
                 </p>
                 <p className="text-muted-foreground text-base md:text-lg leading-relaxed">
-                  Pior: mesmo que o revendedor brasileiro seja 100% honesto, ele pode estar comprando os componentes de um fornecedor que ele próprio informou que o uso final é Bitcoin. O fornecedor agora sabe que aquele lote específico vai armazenar chaves privadas. <strong className="text-amber-500">O incentivo para adulterar aquele lote acaba de se tornar milionário.</strong>
+                  Pior: mesmo que o revendedor brasileiro seja 100% honesto, ele pode estar comprando os componentes de um fornecedor que ele próprio informou que o uso final é Bitcoin. O fornecedor agora sabe que aquele lote específico vai armazenar chaves privadas. <strong className="text-primary">O incentivo para adulterar aquele lote acaba de se tornar milionário.</strong>
                 </p>
               </div>
 
@@ -348,11 +373,11 @@ const HardwareWalletDiy = () => {
                     key={r.label}
                     initial="hidden" whileInView="visible" viewport={{ once: true }}
                     variants={fadeUp} custom={i}
-                    className="p-5 rounded-xl border border-red-500/10 hover:border-red-500/25 transition-all duration-500"
+                    className="p-5 rounded-xl border border-destructive/10 hover:border-destructive/25 transition-all duration-500"
                     style={{ background: 'rgba(239,68,68,0.04)' }}
                   >
                     <div className="flex items-center gap-3 mb-2">
-                      <r.icon className="w-5 h-5 text-red-400" />
+                      <r.icon className="w-5 h-5 text-destructive" />
                       <h4 className="font-bold text-foreground text-sm">{r.label}</h4>
                     </div>
                     <p className="text-muted-foreground text-xs leading-relaxed">{r.desc}</p>
@@ -360,8 +385,8 @@ const HardwareWalletDiy = () => {
                 ))}
               </div>
 
-              <div className="mt-10 p-6 rounded-xl border border-amber-500/15" style={{ background: 'rgba(217,169,78,0.04)' }}>
-                <p className="font-mono text-[10px] tracking-[0.3em] text-amber-500/60 uppercase mb-3">Regra de ouro do maker</p>
+              <div className="mt-10 p-6 rounded-xl border border-primary/15" style={{ background: 'hsl(var(--gold) / 0.04)' }}>
+                <p className="font-mono text-[10px] tracking-[0.3em] text-primary/60 uppercase mb-3">Regra de ouro do maker</p>
                 <p className="text-foreground text-base font-semibold mb-2">Se o fornecedor sabe que é para Bitcoin, você já perdeu a vantagem.</p>
                 <p className="text-muted-foreground text-sm leading-relaxed">Compre cada componente separadamente de fornecedores genéricos. Nunca use links diretos do site do projeto. Nunca compre kits rotulados. Se perguntarem, é para um projetinho de robótica caseira. Ponto.</p>
               </div>
@@ -369,7 +394,7 @@ const HardwareWalletDiy = () => {
           </div>
         </section>
 
-        <SectionGlow />
+        <AnimatedDivider />
 
         {/* ══════════════════════════════════════════════════════
             CAP 03 — DISPOSITIVOS AIR-GAPPED
@@ -377,12 +402,12 @@ const HardwareWalletDiy = () => {
         <section className="relative z-10 py-20 md:py-32">
           <div className="max-w-5xl mx-auto px-6">
             <NobelSection>
-              <p className="text-amber-500/70 font-mono text-[10px] tracking-[0.3em] uppercase mb-4">Capítulo 03 — Fundamento técnico</p>
-              <h2 className="text-3xl md:text-5xl font-black mb-8" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+              <p className="pre-title text-primary/70">Capítulo 03 — Fundamento técnico</p>
+              <h2 className="text-3xl md:text-5xl font-black mb-8 font-display">
                 O conceito air-gapped: zero conexão, zero risco remoto
               </h2>
               <p className="text-muted-foreground text-base md:text-lg leading-relaxed max-w-3xl mb-12">
-                Dispositivos air-gapped <strong className="text-foreground">nunca se conectam à internet</strong>. Sem WiFi, sem Bluetooth, sem USB data, sem NFC, sem absolutamente nenhum canal de comunicação digital. Eles assinam transações offline e transmitem o resultado via QR code (canal visual unidirecional) ou cartão SD removível. A chave privada nunca toca a rede — é <strong className="text-amber-500">matematicamente impossível</strong> hackear remotamente o que não está conectado.
+                Dispositivos air-gapped <strong className="text-foreground">nunca se conectam à internet</strong>. Sem WiFi, sem Bluetooth, sem USB data, sem NFC, sem absolutamente nenhum canal de comunicação digital. Eles assinam transações offline e transmitem o resultado via QR code (canal visual unidirecional) ou cartão SD removível. A chave privada nunca toca a rede — é <strong className="text-primary">matematicamente impossível</strong> hackear remotamente o que não está conectado.
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
@@ -395,10 +420,10 @@ const HardwareWalletDiy = () => {
                     key={item.label}
                     initial="hidden" whileInView="visible" viewport={{ once: true }}
                     variants={fadeUp} custom={i}
-                    className="p-6 rounded-xl border border-amber-500/10 hover:border-amber-500/25 transition-all duration-500"
-                    style={{ background: 'rgba(217,169,78,0.04)' }}
+                    className="p-6 rounded-xl border border-primary/10 hover:border-primary/25 transition-all duration-500"
+                    style={{ background: 'hsl(var(--gold) / 0.04)' }}
                   >
-                    <item.icon className="w-8 h-8 text-amber-500 mb-3" />
+                    <item.icon className="w-8 h-8 text-primary mb-3" />
                     <h4 className="font-bold text-foreground text-sm mb-2">{item.label}</h4>
                     <p className="text-muted-foreground text-xs leading-relaxed">{item.desc}</p>
                   </motion.div>
@@ -409,7 +434,7 @@ const HardwareWalletDiy = () => {
         </section>
 
         <CinematicBreak src={imgAirgapped} alt="Dispositivo air-gapped exibindo QR code" caption="A assinatura acontece offline — a chave privada nunca toca a internet" />
-        <SectionGlow />
+        <AnimatedDivider />
 
         {/* ══════════════════════════════════════════════════════
             CAP 04 — PROJETOS DIY: SEEDSIGNER vs KRUX vs SPECTER
@@ -417,8 +442,8 @@ const HardwareWalletDiy = () => {
         <section className="relative z-10 py-20 md:py-32">
           <div className="max-w-5xl mx-auto px-6">
             <NobelSection>
-              <p className="text-amber-500/70 font-mono text-[10px] tracking-[0.3em] uppercase mb-4">Capítulo 04 — Os projetos</p>
-              <h2 className="text-3xl md:text-5xl font-black mb-8" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+              <p className="pre-title text-primary/70">Capítulo 04 — Os projetos</p>
+              <h2 className="text-3xl md:text-5xl font-black mb-8 font-display">
                 SeedSigner, Krux e Specter: qual escolher
               </h2>
               <p className="text-muted-foreground text-base md:text-lg leading-relaxed max-w-3xl mb-6">
@@ -436,19 +461,19 @@ const HardwareWalletDiy = () => {
                     initial="hidden" whileInView="visible" viewport={{ once: true }}
                     variants={fadeUp} custom={i}
                     className="relative p-8 rounded-2xl border border-border/30 hover:border-border/60 transition-all duration-500 group"
-                    style={{ background: `linear-gradient(135deg, ${p.accent}08, transparent 60%)` }}
+                    style={{ background: `linear-gradient(135deg, ${p.accentRaw}08, transparent 60%)` }}
                   >
                     <div className="flex flex-col md:flex-row md:items-center gap-4 mb-6">
                       <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 rounded-xl flex items-center justify-center" style={{ background: `${p.accent}15`, border: `1px solid ${p.accent}30` }}>
-                          <p.icon className="w-6 h-6" style={{ color: p.accent }} />
+                        <div className="w-12 h-12 rounded-xl flex items-center justify-center" style={{ background: `${p.accentRaw}15`, border: `1px solid ${p.accentRaw}30` }}>
+                          <p.icon className="w-6 h-6" style={{ color: p.accentRaw }} />
                         </div>
                         <div>
-                          <h3 className="text-2xl font-black" style={{ fontFamily: "'Space Grotesk', sans-serif", color: p.accent }}>{p.name}</h3>
+                          <h3 className="text-2xl font-black font-display" style={{ color: p.accentRaw }}>{p.name}</h3>
                           <p className="text-muted-foreground text-xs">{p.difficulty}</p>
                         </div>
                       </div>
-                      <span className="px-3 py-1 rounded-full text-[10px] font-mono uppercase tracking-wider border self-start md:ml-auto" style={{ borderColor: `${p.accent}30`, color: p.accent, background: `${p.accent}08` }}>
+                      <span className="px-3 py-1 rounded-full text-[10px] font-mono uppercase tracking-wider border self-start md:ml-auto" style={{ borderColor: `${p.accentRaw}30`, color: p.accentRaw, background: `${p.accentRaw}08` }}>
                         {p.ethos}
                       </span>
                     </div>
@@ -456,11 +481,11 @@ const HardwareWalletDiy = () => {
                     <p className="text-muted-foreground text-sm leading-relaxed mb-4 max-w-3xl">{p.desc}</p>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                      <div className="p-4 rounded-lg border border-border/20" style={{ background: `${p.accent}04` }}>
+                      <div className="p-4 rounded-lg border border-border/20" style={{ background: `${p.accentRaw}04` }}>
                         <p className="font-mono text-[9px] tracking-[0.2em] text-muted-foreground/60 uppercase mb-2">Componentes</p>
                         <p className="text-foreground text-xs leading-relaxed">{p.components}</p>
                       </div>
-                      <div className="p-4 rounded-lg border border-border/20" style={{ background: `${p.accent}04` }}>
+                      <div className="p-4 rounded-lg border border-border/20" style={{ background: `${p.accentRaw}04` }}>
                         <p className="font-mono text-[9px] tracking-[0.2em] text-muted-foreground/60 uppercase mb-2">Sourcing seguro</p>
                         <p className="text-foreground text-xs leading-relaxed">{p.sourcing}</p>
                       </div>
@@ -468,7 +493,7 @@ const HardwareWalletDiy = () => {
 
                     <div className="flex flex-wrap gap-2">
                       {p.features.map(f => (
-                        <span key={f} className="px-3 py-1 rounded-full text-[10px] font-mono uppercase tracking-wider border" style={{ borderColor: `${p.accent}30`, color: p.accent, background: `${p.accent}08` }}>
+                        <span key={f} className="px-3 py-1 rounded-full text-[10px] font-mono uppercase tracking-wider border" style={{ borderColor: `${p.accentRaw}30`, color: p.accentRaw, background: `${p.accentRaw}08` }}>
                           {f}
                         </span>
                       ))}
@@ -480,7 +505,7 @@ const HardwareWalletDiy = () => {
           </div>
         </section>
 
-        <SectionGlow />
+        <AnimatedDivider />
 
         {/* ══════════════════════════════════════════════════════
             CAP 05 — COMPONENTES SEEDSIGNER
@@ -488,39 +513,39 @@ const HardwareWalletDiy = () => {
         <section className="relative z-10 py-20 md:py-32">
           <div className="max-w-5xl mx-auto px-6">
             <NobelSection>
-              <p className="text-amber-500/70 font-mono text-[10px] tracking-[0.3em] uppercase mb-4">Capítulo 05 — Componentes</p>
-              <h2 className="text-3xl md:text-5xl font-black mb-8" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+              <p className="pre-title text-primary/70">Capítulo 05 — Componentes</p>
+              <h2 className="text-3xl md:text-5xl font-black mb-8 font-display">
                 O que comprar e onde comprar
               </h2>
               <p className="text-muted-foreground text-base md:text-lg leading-relaxed max-w-3xl mb-6">
-                Para a <strong className="text-foreground">SeedSigner</strong>, você precisa de componentes separados. Para a <strong className="text-foreground">Krux</strong>, basta um único dispositivo. Em ambos os casos, a regra é a mesma: <strong className="text-amber-500">compre de fornecedores genéricos que não sabem para que serve.</strong>
+                Para a <strong className="text-foreground">SeedSigner</strong>, você precisa de componentes separados. Para a <strong className="text-foreground">Krux</strong>, basta um único dispositivo. Em ambos os casos, a regra é a mesma: <strong className="text-primary">compre de fornecedores genéricos que não sabem para que serve.</strong>
               </p>
 
               <AlertBox icon={Search} title="Regra de sourcing" variant="warning">
                 <p>Nunca use links diretos do site do SeedSigner ou Krux para comprar componentes. Seu navegador registra a origem da navegação (referrer). O vendedor saberia que você chegou através de um site de Bitcoin. Vá diretamente ao AliExpress e busque pelo nome técnico do componente.</p>
               </AlertBox>
 
-              <h3 className="text-xl font-bold mt-12 mb-6" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Kit SeedSigner — componentes individuais</h3>
+              <h3 className="text-xl font-bold mt-12 mb-6 font-display">Kit SeedSigner — componentes individuais</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {COMPONENTES_SEEDSIGNER.map((c, i) => (
                   <motion.div
                     key={c.label}
                     initial="hidden" whileInView="visible" viewport={{ once: true }}
                     variants={fadeUp} custom={i}
-                    className="p-5 rounded-xl border border-border/20 hover:border-amber-500/20 transition-all duration-500 group"
-                    style={{ background: 'rgba(217,169,78,0.03)' }}
+                    className="p-5 rounded-xl border border-border/20 hover:border-primary/20 transition-all duration-500 group"
+                    style={{ background: 'hsl(var(--gold) / 0.03)' }}
                   >
-                    <c.icon className="w-6 h-6 text-amber-500/70 mb-3 group-hover:text-amber-500 transition-colors" />
+                    <c.icon className="w-6 h-6 text-primary/70 mb-3 group-hover:text-primary transition-colors" />
                     <h4 className="font-bold text-foreground text-sm mb-1">{c.label}</h4>
                     <p className="text-muted-foreground text-xs leading-relaxed">{c.desc}</p>
                   </motion.div>
                 ))}
               </div>
 
-              <div className="mt-10 p-6 rounded-xl border border-cyan-500/15" style={{ background: 'rgba(56,189,248,0.04)' }}>
+              <div className="mt-10 p-6 rounded-xl border border-sky-500/15" style={{ background: 'rgba(56,189,248,0.04)' }}>
                 <div className="flex items-center gap-3 mb-3">
-                  <Lock className="w-5 h-5 text-cyan-400" />
-                  <h4 className="font-bold text-sm text-cyan-400">Kit Krux — apenas um dispositivo</h4>
+                  <Lock className="w-5 h-5 text-sky-400" />
+                  <h4 className="font-bold text-sm text-sky-400">Kit Krux — apenas um dispositivo</h4>
                 </div>
                 <p className="text-muted-foreground text-sm leading-relaxed">Para a Krux, você precisa apenas do <strong className="text-foreground">Yahboom MV</strong> (recomendado) e um cartão microSD virgem. Busque "K210 Yahboom" no AliExpress. Frete grátis para o Brasil, parcelamento disponível, entrega em 2-3 semanas. O dispositivo já vem montado — zero soldas, zero montagem. Se perguntarem, é para um projeto de detecção de imagens por IA offline.</p>
               </div>
@@ -529,7 +554,7 @@ const HardwareWalletDiy = () => {
         </section>
 
         <CinematicBreak src={imgComponentes} alt="Componentes de hardware wallet DIY" caption="Componentes genéricos para uso geral — o vendedor chinês nunca saberá o verdadeiro propósito" />
-        <SectionGlow />
+        <AnimatedDivider />
 
         {/* ══════════════════════════════════════════════════════
             CAP 06 — PASSO A PASSO
@@ -537,18 +562,18 @@ const HardwareWalletDiy = () => {
         <section className="relative z-10 py-20 md:py-32">
           <div className="max-w-5xl mx-auto px-6">
             <NobelSection>
-              <p className="text-amber-500/70 font-mono text-[10px] tracking-[0.3em] uppercase mb-4">Capítulo 06 — Montagem</p>
-              <h2 className="text-3xl md:text-5xl font-black mb-8" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+              <p className="pre-title text-primary/70">Capítulo 06 — Montagem</p>
+              <h2 className="text-3xl md:text-5xl font-black mb-8 font-display">
                 Passo a passo: do componente à carteira soberana
               </h2>
 
               {/* SeedSigner Steps */}
               <div className="mb-16">
                 <div className="flex items-center gap-3 mb-8">
-                  <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ background: 'rgba(212,175,55,0.1)', border: '1px solid rgba(212,175,55,0.2)' }}>
-                    <Cpu className="w-5 h-5 text-amber-500" />
+                  <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ background: 'hsl(var(--gold) / 0.1)', border: '1px solid hsl(var(--gold) / 0.2)' }}>
+                    <Cpu className="w-5 h-5 text-primary" />
                   </div>
-                  <h3 className="text-xl font-bold" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Montando a SeedSigner</h3>
+                  <h3 className="text-xl font-bold font-display">Montando a SeedSigner</h3>
                 </div>
                 <div className="space-y-4">
                   {PASSOS_SEEDSIGNER.map((p, i) => (
@@ -556,11 +581,11 @@ const HardwareWalletDiy = () => {
                       key={p.num}
                       initial="hidden" whileInView="visible" viewport={{ once: true }}
                       variants={fadeUp} custom={i}
-                      className="flex gap-5 p-5 rounded-xl border border-border/20 hover:border-amber-500/15 transition-all duration-500"
-                      style={{ background: 'rgba(217,169,78,0.03)' }}
+                      className="flex gap-5 p-5 rounded-xl border border-border/20 hover:border-primary/15 transition-all duration-500"
+                      style={{ background: 'hsl(var(--gold) / 0.03)' }}
                     >
-                      <div className="flex-shrink-0 w-12 h-12 rounded-lg flex items-center justify-center border border-amber-500/20" style={{ background: 'rgba(217,169,78,0.08)' }}>
-                        <span className="text-amber-500 font-black text-sm" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{p.num}</span>
+                      <div className="flex-shrink-0 w-12 h-12 rounded-lg flex items-center justify-center border border-primary/20" style={{ background: 'hsl(var(--gold) / 0.08)' }}>
+                        <span className="text-primary font-black text-sm font-display">{p.num}</span>
                       </div>
                       <div>
                         <h4 className="font-bold text-foreground text-sm mb-1">{p.title}</h4>
@@ -575,10 +600,10 @@ const HardwareWalletDiy = () => {
               <div>
                 <div className="flex items-center gap-3 mb-8">
                   <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ background: 'rgba(56,189,248,0.1)', border: '1px solid rgba(56,189,248,0.2)' }}>
-                    <Lock className="w-5 h-5 text-cyan-400" />
+                    <Lock className="w-5 h-5 text-sky-400" />
                   </div>
-                  <h3 className="text-xl font-bold" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Instalando a Krux</h3>
-                  <span className="px-3 py-1 rounded-full text-[10px] font-mono uppercase tracking-wider border border-cyan-500/30 text-cyan-400" style={{ background: 'rgba(56,189,248,0.08)' }}>
+                  <h3 className="text-xl font-bold font-display">Instalando a Krux</h3>
+                  <span className="px-3 py-1 rounded-full text-[10px] font-mono uppercase tracking-wider border border-sky-500/30 text-sky-400" style={{ background: 'rgba(56,189,248,0.08)' }}>
                     Mais simples
                   </span>
                 </div>
@@ -588,11 +613,11 @@ const HardwareWalletDiy = () => {
                       key={p.num}
                       initial="hidden" whileInView="visible" viewport={{ once: true }}
                       variants={fadeUp} custom={i}
-                      className="flex gap-5 p-5 rounded-xl border border-border/20 hover:border-cyan-500/15 transition-all duration-500"
+                      className="flex gap-5 p-5 rounded-xl border border-border/20 hover:border-sky-500/15 transition-all duration-500"
                       style={{ background: 'rgba(56,189,248,0.03)' }}
                     >
-                      <div className="flex-shrink-0 w-12 h-12 rounded-lg flex items-center justify-center border border-cyan-500/20" style={{ background: 'rgba(56,189,248,0.08)' }}>
-                        <span className="text-cyan-400 font-black text-sm" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{p.num}</span>
+                      <div className="flex-shrink-0 w-12 h-12 rounded-lg flex items-center justify-center border border-sky-500/20" style={{ background: 'rgba(56,189,248,0.08)' }}>
+                        <span className="text-sky-400 font-black text-sm font-display">{p.num}</span>
                       </div>
                       <div>
                         <h4 className="font-bold text-foreground text-sm mb-1">{p.title}</h4>
@@ -606,22 +631,22 @@ const HardwareWalletDiy = () => {
           </div>
         </section>
 
-        <SectionGlow />
+        <AnimatedDivider />
 
         {/* ══════════════════════════════════════════════════════
-            CAP 07 — FIRMWARE: A PARTE QUE NINGUÉM PODE TERCEIRIZAR
+            CAP 07 — FIRMWARE
         ══════════════════════════════════════════════════════ */}
         <section className="relative z-10 py-20 md:py-32">
           <div className="max-w-5xl mx-auto px-6">
             <NobelSection>
-              <p className="text-red-400/70 font-mono text-[10px] tracking-[0.3em] uppercase mb-4">Capítulo 07 — Software</p>
-              <h2 className="text-3xl md:text-5xl font-black mb-8" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+              <p className="pre-title text-destructive/70">Capítulo 07 — Software</p>
+              <h2 className="text-3xl md:text-5xl font-black mb-8 font-display">
                 Firmware: a parte que você nunca terceiriza
               </h2>
 
               <div className="space-y-6 max-w-3xl mb-12">
                 <p className="text-muted-foreground text-base md:text-lg leading-relaxed">
-                  Mesmo que você resolva confiar no hardware de um kit, <strong className="text-red-400">nunca confie no software fornecido por terceiros</strong>. Nunca. Sob nenhuma circunstância. O firmware é a alma do dispositivo — é ele que gera entropia, cria sua seed e assina suas transações.
+                  Mesmo que você resolva confiar no hardware de um kit, <strong className="text-destructive">nunca confie no software fornecido por terceiros</strong>. Nunca. Sob nenhuma circunstância. O firmware é a alma do dispositivo — é ele que gera entropia, cria sua seed e assina suas transações.
                 </p>
                 <p className="text-muted-foreground text-base md:text-lg leading-relaxed">
                   Um firmware adulterado pode exibir a interface normal do SeedSigner ou Krux, mas por trás gerar entropia viciada — seeds que o atacante já conhece antes de você. Você vê 24 palavras aparentemente aleatórias na tela, mas o atacante já tem a mesma lista. Seus fundos estão comprometidos desde o primeiro segundo.
@@ -641,16 +666,16 @@ const HardwareWalletDiy = () => {
                     <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-500/60 mt-0.5 shrink-0" /><span>Sempre verifique a <strong className="text-foreground">assinatura GPG</strong> do release antes de instalar</span></li>
                   </ul>
                 </div>
-                <div className="p-6 rounded-xl border border-red-500/15" style={{ background: 'rgba(239,68,68,0.04)' }}>
+                <div className="p-6 rounded-xl border border-destructive/15" style={{ background: 'rgba(239,68,68,0.04)' }}>
                   <div className="flex items-center gap-3 mb-4">
-                    <XCircle className="w-5 h-5 text-red-400" />
-                    <h4 className="font-bold text-sm text-red-400">Nunca aceitar</h4>
+                    <XCircle className="w-5 h-5 text-destructive" />
+                    <h4 className="font-bold text-sm text-destructive">Nunca aceitar</h4>
                   </div>
                   <ul className="space-y-3 text-muted-foreground text-sm">
-                    <li className="flex items-start gap-2"><XCircle className="w-4 h-4 text-red-500/60 mt-0.5 shrink-0" /><span>Firmware pré-instalado em cartão SD de kits</span></li>
-                    <li className="flex items-start gap-2"><XCircle className="w-4 h-4 text-red-500/60 mt-0.5 shrink-0" /><span>Downloads de sites de terceiros ou revendedores</span></li>
-                    <li className="flex items-start gap-2"><XCircle className="w-4 h-4 text-red-500/60 mt-0.5 shrink-0" /><span>Links de grupos de Telegram ou WhatsApp</span></li>
-                    <li className="flex items-start gap-2"><XCircle className="w-4 h-4 text-red-500/60 mt-0.5 shrink-0" /><span>Qualquer firmware sem assinatura verificável</span></li>
+                    <li className="flex items-start gap-2"><XCircle className="w-4 h-4 text-destructive/60 mt-0.5 shrink-0" /><span>Firmware pré-instalado em cartão SD de kits</span></li>
+                    <li className="flex items-start gap-2"><XCircle className="w-4 h-4 text-destructive/60 mt-0.5 shrink-0" /><span>Downloads de sites de terceiros ou revendedores</span></li>
+                    <li className="flex items-start gap-2"><XCircle className="w-4 h-4 text-destructive/60 mt-0.5 shrink-0" /><span>Links de grupos de Telegram ou WhatsApp</span></li>
+                    <li className="flex items-start gap-2"><XCircle className="w-4 h-4 text-destructive/60 mt-0.5 shrink-0" /><span>Qualquer firmware sem assinatura verificável</span></li>
                   </ul>
                 </div>
               </div>
@@ -658,7 +683,7 @@ const HardwareWalletDiy = () => {
           </div>
         </section>
 
-        <SectionGlow />
+        <AnimatedDivider />
 
         {/* ══════════════════════════════════════════════════════
             CAP 08 — SEGURANÇA ALÉM DO DISPOSITIVO
@@ -666,8 +691,8 @@ const HardwareWalletDiy = () => {
         <section className="relative z-10 py-20 md:py-32">
           <div className="max-w-5xl mx-auto px-6">
             <NobelSection>
-              <p className="text-amber-500/70 font-mono text-[10px] tracking-[0.3em] uppercase mb-4">Capítulo 08 — Blindagem completa</p>
-              <h2 className="text-3xl md:text-5xl font-black mb-8" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+              <p className="pre-title text-primary/70">Capítulo 08 — Blindagem completa</p>
+              <h2 className="text-3xl md:text-5xl font-black mb-8 font-display">
                 O dispositivo assina. O backup protege.
               </h2>
               <p className="text-muted-foreground text-base md:text-lg leading-relaxed max-w-3xl mb-12">
@@ -685,10 +710,10 @@ const HardwareWalletDiy = () => {
                     key={item.title}
                     initial="hidden" whileInView="visible" viewport={{ once: true }}
                     variants={fadeUp} custom={i}
-                    className="p-6 rounded-xl border border-border/20 hover:border-amber-500/20 transition-all duration-500"
-                    style={{ background: 'rgba(217,169,78,0.04)' }}
+                    className="p-6 rounded-xl border border-border/20 hover:border-primary/20 transition-all duration-500"
+                    style={{ background: 'hsl(var(--gold) / 0.04)' }}
                   >
-                    <item.icon className="w-6 h-6 text-amber-500 mb-3" />
+                    <item.icon className="w-6 h-6 text-primary mb-3" />
                     <h4 className="font-bold text-foreground text-sm mb-2">{item.title}</h4>
                     <p className="text-muted-foreground text-xs leading-relaxed">{item.desc}</p>
                   </motion.div>
@@ -699,7 +724,7 @@ const HardwareWalletDiy = () => {
         </section>
 
         <CinematicBreak src={imgSeguranca} alt="Segurança em autocustódia Bitcoin" caption="Dispositivo de assinatura + backup em metal + redundância geográfica + silêncio absoluto" />
-        <SectionGlow />
+        <AnimatedDivider />
 
         {/* ══════════════════════════════════════════════════════
             CAP 09 — PREGUIÇOSO DEMAIS?
@@ -707,8 +732,8 @@ const HardwareWalletDiy = () => {
         <section className="relative z-10 py-20 md:py-32">
           <div className="max-w-5xl mx-auto px-6">
             <NobelSection>
-              <p className="text-amber-500/70 font-mono text-[10px] tracking-[0.3em] uppercase mb-4">Capítulo 09 — Alternativa honesta</p>
-              <h2 className="text-3xl md:text-5xl font-black mb-8" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+              <p className="pre-title text-primary/70">Capítulo 09 — Alternativa honesta</p>
+              <h2 className="text-3xl md:text-5xl font-black mb-8 font-display">
                 Não é maker? Compre de fabricante reputado.
               </h2>
               <div className="space-y-6 max-w-3xl mb-12">
@@ -716,10 +741,10 @@ const HardwareWalletDiy = () => {
                   Se você não está preparado para colocar a mão na massa — para soldar pinos, verificar assinaturas GPG, buscar componentes no AliExpress e instalar firmware pelo terminal — <strong className="text-foreground">então hardware wallet DIY não é para você. E tudo bem.</strong>
                 </p>
                 <p className="text-muted-foreground text-base md:text-lg leading-relaxed">
-                  Comprar uma <strong className="text-amber-500">BitBox 02, Trezor Safe 5 ou ColdCard Q</strong> de um fabricante com alta reputação é infinitamente mais seguro do que comprar um "kit faça você mesmo" de um revendedor amador. Essas empresas têm reputação pública a perder, código auditado por terceiros e processos de segurança de nível industrial.
+                  Comprar uma <strong className="text-primary">BitBox 02, Trezor Safe 5 ou ColdCard Q</strong> de um fabricante com alta reputação é infinitamente mais seguro do que comprar um "kit faça você mesmo" de um revendedor amador. Essas empresas têm reputação pública a perder, código auditado por terceiros e processos de segurança de nível industrial.
                 </p>
                 <p className="text-muted-foreground text-base md:text-lg leading-relaxed">
-                  O que <strong className="text-red-400">nunca faz sentido</strong> é o meio-termo: comprar um kit de alguém que monta hardware wallets no fundo de casa e vende como "DIY". Isso tem o pior dos dois mundos — a cadeia de confiança de um fabricante desconhecido, sem a auditoria e a reputação de uma empresa estabelecida.
+                  O que <strong className="text-destructive">nunca faz sentido</strong> é o meio-termo: comprar um kit de alguém que monta hardware wallets no fundo de casa e vende como "DIY". Isso tem o pior dos dois mundos — a cadeia de confiança de um fabricante desconhecido, sem a auditoria e a reputação de uma empresa estabelecida.
                 </p>
               </div>
 
@@ -749,7 +774,7 @@ const HardwareWalletDiy = () => {
           </div>
         </section>
 
-        <SectionGlow />
+        <AnimatedDivider />
 
         {/* ══════════════════════════════════════════════════════
             CONCLUSÃO
@@ -757,8 +782,8 @@ const HardwareWalletDiy = () => {
         <section className="relative z-10 py-20 md:py-32">
           <div className="max-w-3xl mx-auto px-6 text-center">
             <NobelSection>
-              <p className="text-amber-500/70 font-mono text-[10px] tracking-[0.3em] uppercase mb-6">Conclusão</p>
-              <h2 className="text-3xl md:text-5xl font-black mb-8" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+              <p className="pre-title text-primary/70">Conclusão</p>
+              <h2 className="text-3xl md:text-5xl font-black mb-8 font-display">
                 Faça você mesmo. De verdade.
               </h2>
               <p className="text-muted-foreground text-base md:text-lg leading-relaxed mb-6">
@@ -767,15 +792,15 @@ const HardwareWalletDiy = () => {
               <p className="text-muted-foreground text-base md:text-lg leading-relaxed mb-6">
                 Mas "faça você mesmo" significa exatamente isso. Não é comprar um kit de um amador e chamar de DIY. É você, pessoalmente, comprando componentes genéricos de fornecedores que vendem para uso geral. É você verificando a assinatura do firmware. É você soldando os pinos. É você gerando entropia com seus próprios dados.
               </p>
-              <p className="text-foreground text-xl md:text-2xl font-black mb-12" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                Sua seed, seu dispositivo, suas regras. <span className="text-amber-500">Sem exceções.</span>
+              <p className="text-foreground text-xl md:text-2xl font-black mb-12 font-display">
+                Sua seed, seu dispositivo, suas regras. <span className="text-primary">Sem exceções.</span>
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link to="/autocustodia" className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-amber-500/30 text-amber-500 hover:bg-amber-500/10 transition-all text-sm font-semibold">
+                <Link to="/autocustodia" className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-primary/30 text-primary hover:bg-primary/10 transition-all text-sm font-semibold">
                   <ArrowLeft className="w-4 h-4" /> Voltar à Autocustódia
                 </Link>
-                <Link to="/mobilidade-de-chaves" className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-500 hover:bg-amber-500/20 transition-all text-sm font-semibold">
+                <Link to="/mobilidade-de-chaves" className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary/10 border border-primary/30 text-primary hover:bg-primary/20 transition-all text-sm font-semibold">
                   Mobilidade de Chaves <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
@@ -787,8 +812,8 @@ const HardwareWalletDiy = () => {
         <section className="relative z-10 py-20 md:py-32 border-t border-border/10">
           <div className="max-w-3xl mx-auto px-6">
             <NobelSection>
-              <p className="text-amber-500/70 font-mono text-[10px] tracking-[0.3em] uppercase mb-4 text-center">Perguntas frequentes</p>
-              <h2 className="text-2xl md:text-4xl font-black mb-12 text-center" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+              <p className="pre-title text-primary/70 text-center">Perguntas frequentes</p>
+              <h2 className="text-2xl md:text-4xl font-black mb-12 text-center font-display">
                 FAQ — Hardware Wallets DIY
               </h2>
               <div className="space-y-6">
@@ -798,7 +823,7 @@ const HardwareWalletDiy = () => {
                     initial="hidden" whileInView="visible" viewport={{ once: true }}
                     variants={fadeUp} custom={i}
                     className="p-6 rounded-xl border border-border/20"
-                    style={{ background: 'rgba(217,169,78,0.03)' }}
+                    style={{ background: 'hsl(var(--gold) / 0.03)' }}
                   >
                     <h4 className="font-bold text-foreground text-sm mb-3">{faq.name}</h4>
                     <p className="text-muted-foreground text-xs leading-relaxed">{faq.acceptedAnswer.text}</p>
@@ -812,6 +837,17 @@ const HardwareWalletDiy = () => {
         <div className="h-24" />
       </div>
     </>
+  );
+};
+
+/* ── Progress Bar ── */
+const ProgressBar = () => {
+  const { scrollYProgress } = useScroll();
+  return (
+    <motion.div
+      className="fixed top-0 left-0 right-0 h-[2px] z-[60] origin-left"
+      style={{ scaleX: scrollYProgress, background: 'linear-gradient(to right, hsl(var(--gold)), hsl(var(--amber)))' }}
+    />
   );
 };
 
