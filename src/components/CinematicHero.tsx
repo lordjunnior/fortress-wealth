@@ -6,7 +6,7 @@ import { ArrowLeft, ChevronDown } from 'lucide-react';
 interface CinematicHeroProps {
   image: string;
   phase: string;
-  title: string;
+  title: React.ReactNode;
   subtitle: string;
   icon: React.ElementType;
   accentColor?: string;
