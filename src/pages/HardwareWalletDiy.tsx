@@ -7,7 +7,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import {
   ArrowLeft, Shield, Cpu, Wifi, WifiOff, QrCode, HardDrive, Eye, Lock,
   ChevronDown, Wrench, AlertTriangle, CheckCircle2, ArrowRight, Layers,
-  Camera, SdCard, Monitor, Fingerprint, ShieldCheck, KeyRound, Package
+  Camera, Monitor, Fingerprint, ShieldCheck, KeyRound, Package, Database
 } from 'lucide-react';
 
 import heroImg from '@/assets/hw-diy-hero.jpg';
