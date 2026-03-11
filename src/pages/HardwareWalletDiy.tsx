@@ -12,7 +12,6 @@ import {
 } from 'lucide-react';
 
 import CinematicHero from '@/components/CinematicHero';
-import LiquidText from '@/components/LiquidText';
 import ScrollToTop from '@/components/ScrollToTop';
 
 import imgCadeia from '@/assets/hw-diy-cadeia-confianca.jpg';
@@ -273,18 +272,7 @@ const HardwareWalletDiy = () => {
         <CinematicHero
           image="/heroes/hardware-wallet-diy.webp"
           phase="Autocustódia Avançada — Nível Maker"
-          title={
-            <span className="flex flex-col items-start">
-              <span className="text-foreground">CONSTRUA SEU</span>
-              <LiquidText
-                text="Dispositivo de Assinatura"
-                className="w-[300px] md:w-[480px] lg:w-[600px] h-auto -ml-1"
-                gradientFrom="hsl(40,92%,56%)"
-                gradientTo="hsl(35,80%,35%)"
-                fontSize={17}
-              />
-            </span>
-          }
+          title="Dispositivo de Assinatura"
           subtitle="Sua chave é o que lhe dá acesso aos seus satoshis na rede Bitcoin. Sem ela, você não tem nada. Criar essa chave com segurança é a decisão mais importante da sua vida financeira."
           icon={Cpu}
           accentColor="amber"

@@ -119,9 +119,9 @@ export default function MineracaoBitcoin() {
                 <div className="absolute top-4 left-4 md:top-8 md:left-8 text-amber-500/[0.04] pointer-events-none select-none font-black text-[200px] md:text-[300px] leading-none" style={{ fontFamily: 'Arial' }}>₿</div>
                 <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }} className="relative z-10">
                   <span className="text-amber-500 font-black uppercase tracking-[0.5em] text-[9px] mb-6 block font-mono">Leitura de 10 minutos</span>
-                  <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.85] uppercase mb-6">
+                  <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.9] uppercase mb-6">
                     Mineração de<br />
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-500 italic">Bitcoin</span>
+                    <span className="text-primary italic">Bitcoin</span>
                   </h1>
                   <p className="text-muted-foreground text-lg md:text-xl leading-relaxed max-w-3xl font-medium mb-4">
                     A mineração de Bitcoin é lucrativa?

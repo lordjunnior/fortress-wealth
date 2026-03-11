@@ -256,7 +256,7 @@ export default function MobilidadeDeChaves() {
   };
 
   return (
-    <div className="min-h-screen text-stone-100 font-sans selection:bg-amber-400/30 relative overflow-hidden" style={{ background: '#050808' }}>
+    <div className="min-h-screen bg-background text-foreground font-sans selection:bg-primary/30 relative overflow-hidden">
 
       {/* ─── FILM GRAIN + LIGHT BEAMS ─── */}
       <div className="fixed inset-0 pointer-events-none z-[1]">
