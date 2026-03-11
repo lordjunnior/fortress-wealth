@@ -9,6 +9,7 @@ import {
   CircleDot, Package, Wrench, Terminal, Copy, FileCheck, Layers, Zap
 } from 'lucide-react';
 import CinematicHero from '@/components/CinematicHero';
+import NoiseBackground from '@/components/NoiseBackground';
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 const fadeUp = {
