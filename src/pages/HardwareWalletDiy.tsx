@@ -107,7 +107,7 @@ const COMPONENTES = [
   { icon: Cpu, label: 'Raspberry Pi Zero', desc: 'Microcomputador compacto que executa o firmware open source' },
   { icon: Monitor, label: 'Display LCD', desc: 'Tela de 1.3" a 2.4" para visualização de QR codes e menus' },
   { icon: Camera, label: 'Câmera', desc: 'Módulo de câmera para leitura de QR codes e PSBTs' },
-  { icon: SdCard, label: 'Cartão microSD', desc: 'Armazena o firmware — único meio de comunicação com o mundo exterior' },
+  { icon: Database, label: 'Cartão microSD', desc: 'Armazena o firmware — único meio de comunicação com o mundo exterior' },
   { icon: Wrench, label: 'Botões físicos', desc: 'Navegação no menu sem necessidade de touchscreen' },
   { icon: Package, label: 'Case 3D', desc: 'Carcaça impressa em 3D para proteção e ergonomia' },
 ];
