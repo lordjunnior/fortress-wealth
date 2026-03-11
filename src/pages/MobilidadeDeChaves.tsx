@@ -259,33 +259,42 @@ export default function MobilidadeDeChaves() {
   return (
     <div className="min-h-screen bg-background text-foreground font-sans selection:bg-primary/30 relative overflow-hidden">
 
-      {/* ─── FILM GRAIN + LIGHT BEAMS ─── */}
+      {/* ─── NOISE BACKGROUND (depth + texture) ─── */}
+      <NoiseBackground />
+
+      {/* ─── ADDITIONAL LIGHT BEAMS ─── */}
       <div className="fixed inset-0 pointer-events-none z-[1]">
-        <div className="absolute inset-0 opacity-[0.035]"
-          style={{ backgroundImage: "url('data:image/svg+xml,%3Csvg viewBox=\"0 0 256 256\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cfilter id=\"n\"%3E%3CfeTurbulence type=\"fractalNoise\" baseFrequency=\"0.9\" numOctaves=\"4\" stitchTiles=\"stitch\"/%3E%3C/filter%3E%3Crect width=\"100%25\" height=\"100%25\" filter=\"url(%23n)\"/%3E%3C/svg%3E')", backgroundSize: '128px 128px' }} />
-        <div className="absolute inset-0 opacity-[0.02]"
-          style={{ background: 'linear-gradient(125deg, transparent 30%, rgba(245,158,11,0.08) 50%, transparent 70%)' }} />
+        <div className="absolute inset-0 opacity-[0.04]"
+          style={{ background: 'linear-gradient(125deg, transparent 20%, rgba(245,158,11,0.1) 45%, transparent 65%)' }} />
+        <div className="absolute inset-0 opacity-[0.03]"
+          style={{ background: 'linear-gradient(240deg, transparent 30%, rgba(217,119,6,0.08) 55%, transparent 75%)' }} />
       </div>
 
-      {/* ─── BREATHING ORBS ─── */}
-      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+      {/* ─── BREATHING ORBS (intensified) ─── */}
+      <div className="fixed inset-0 pointer-events-none z-[1] overflow-hidden">
         <motion.div
-          className="absolute top-[15%] left-[8%] w-[600px] h-[600px] rounded-full"
-          animate={{ scale: [1, 1.15, 1], opacity: [0.03, 0.06, 0.03] }}
+          className="absolute top-[10%] left-[5%] w-[700px] h-[700px] rounded-full"
+          animate={{ scale: [1, 1.2, 1], opacity: [0.04, 0.09, 0.04] }}
           transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}>
-          <div className="w-full h-full rounded-full blur-3xl" style={{ background: 'radial-gradient(circle, rgba(245,158,11,0.25), transparent)' }} />
+          <div className="w-full h-full rounded-full blur-3xl" style={{ background: 'radial-gradient(circle, rgba(245,158,11,0.3), transparent)' }} />
         </motion.div>
         <motion.div
-          className="absolute top-[50%] right-[5%] w-[500px] h-[500px] rounded-full"
-          animate={{ scale: [1, 1.2, 1], opacity: [0.02, 0.05, 0.02] }}
+          className="absolute top-[45%] right-[3%] w-[600px] h-[600px] rounded-full"
+          animate={{ scale: [1, 1.25, 1], opacity: [0.03, 0.07, 0.03] }}
           transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut', delay: 4 }}>
-          <div className="w-full h-full rounded-full blur-3xl" style={{ background: 'radial-gradient(circle, rgba(217,119,6,0.2), transparent)' }} />
+          <div className="w-full h-full rounded-full blur-3xl" style={{ background: 'radial-gradient(circle, rgba(217,119,6,0.25), transparent)' }} />
         </motion.div>
         <motion.div
-          className="absolute bottom-[20%] left-[30%] w-[400px] h-[400px] rounded-full"
-          animate={{ scale: [1, 1.1, 1], opacity: [0.02, 0.04, 0.02] }}
+          className="absolute bottom-[15%] left-[25%] w-[500px] h-[500px] rounded-full"
+          animate={{ scale: [1, 1.15, 1], opacity: [0.03, 0.06, 0.03] }}
           transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut', delay: 7 }}>
-          <div className="w-full h-full rounded-full blur-3xl" style={{ background: 'radial-gradient(circle, rgba(251,191,36,0.15), transparent)' }} />
+          <div className="w-full h-full rounded-full blur-3xl" style={{ background: 'radial-gradient(circle, rgba(251,191,36,0.2), transparent)' }} />
+        </motion.div>
+        <motion.div
+          className="absolute top-[75%] right-[25%] w-[450px] h-[450px] rounded-full"
+          animate={{ scale: [1, 1.18, 1], opacity: [0.02, 0.05, 0.02] }}
+          transition={{ duration: 16, repeat: Infinity, ease: 'easeInOut', delay: 2 }}>
+          <div className="w-full h-full rounded-full blur-3xl" style={{ background: 'radial-gradient(circle, rgba(168,85,247,0.15), transparent)' }} />
         </motion.div>
       </div>
       <Helmet>
