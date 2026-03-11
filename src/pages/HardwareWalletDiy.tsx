@@ -12,7 +12,6 @@ import {
 } from 'lucide-react';
 
 import CinematicHero from '@/components/CinematicHero';
-import LiquidText from '@/components/LiquidText';
 import ScrollToTop from '@/components/ScrollToTop';
 
 import imgCadeia from '@/assets/hw-diy-cadeia-confianca.jpg';
