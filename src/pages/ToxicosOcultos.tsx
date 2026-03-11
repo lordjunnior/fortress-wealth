@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, Apple, Brain, Smartphone, Leaf, Eye, Shield, Microscope, Clock, Zap, FlaskConical, FileWarning, Quote, TrendingUp, Users, Factory, Wifi, Pill, Droplets, MonitorSmartphone } from 'lucide-react';
 import CinematicHero from '@/components/CinematicHero';
+import LiquidText from '@/components/LiquidText';
 import DossieRealidade from '@/components/toxicos/DossieRealidade';
 import TimelineDia from '@/components/toxicos/TimelineDia';
 
