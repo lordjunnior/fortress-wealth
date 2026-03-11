@@ -689,12 +689,13 @@ export default function MobilidadeDeChaves() {
       {/* Divider */}
       <div className="relative z-10 max-w-5xl mx-auto px-10">
         <div className="h-px bg-gradient-to-r from-transparent via-amber-500/20 to-transparent" />
-      </div>
+
+      <div className="relative z-10 section-divider" />
 
       {/* ═══════════════════════════════════════════════════════════
          CAPÍTULO 06 — CRIPTOGRAFIA EXPLICADA
       ═══════════════════════════════════════════════════════════ */}
-      <section className="relative z-10 py-20 md:py-32">
+      <section className="relative z-10 py-20 md:py-32 section-alt">
         <div className="max-w-5xl mx-auto px-6 md:px-10">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="mb-16">
             <div className="flex items-center gap-3 mb-6">
