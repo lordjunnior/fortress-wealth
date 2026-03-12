@@ -7,6 +7,7 @@ import ConfiscoFaq from "@/components/confisco/ConfiscoFaq";
 import ConfiscoCitations from "@/components/confisco/ConfiscoCitations";
 import ScrollProgressBar from "@/components/confisco/ScrollProgressBar";
 import FloatingToc from "@/components/confisco/FloatingToc";
+import ScrollToTop from "@/components/ScrollToTop";
 import { confiscoArticleSchema, confiscoFaqSchema, confiscoBreadcrumbSchema } from "@/lib/confiscoData";
 import presidenteImg from "@/assets/presidente-confisco-1990.jpg";
 import hiperinflacaoImg from "@/assets/confisco-hiperinflacao-1989.jpg";
