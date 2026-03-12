@@ -170,6 +170,8 @@ const Confisco1990 = () => {
         <script type="application/ld+json">{JSON.stringify(confiscoBreadcrumbSchema)}</script>
       </Helmet>
 
+      <ScrollToTop />
+
       {/* ── Scroll Progress Bar ── */}
       <ScrollProgressBar />
 
