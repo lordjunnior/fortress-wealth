@@ -1,8 +1,10 @@
-import React, { useEffect, useCallback, useRef } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, useScroll, useTransform, useMotionValue, useSpring, useInView } from 'framer-motion';
-import { ArrowLeft, ArrowRight, PieChart, AlertTriangle, TrendingDown, ShieldCheck, Flame, ChevronDown, Scale, Target, Skull, Crown, Shield, Layers, BarChart3, Percent, Clock, Zap, BookOpen, Crosshair, Eye, Binary, TrendingUp, DollarSign, Building, Gem, Banknote, BarChart, Bird } from 'lucide-react';
+import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
+import { ArrowRight, PieChart, AlertTriangle, TrendingDown, ShieldCheck, Flame, ChevronDown, Scale, Target, Skull, Crown, Shield, Layers, Clock, Crosshair, TrendingUp, DollarSign, Building, Gem, Banknote, Bird, BookOpen } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
+import CinematicHero from '@/components/CinematicHero';
+import ScrollToTop from '@/components/ScrollToTop';
 import diversificacaoFalaciaImg from '@/assets/diversificacao-falacia.jpg';
 import diversificacaoBalancaImg from '@/assets/diversificacao-balanca.jpg';
 import diversificacaoCisneImg from '@/assets/diversificacao-cisne-negro.jpg';
