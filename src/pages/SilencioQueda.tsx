@@ -1,200 +1,284 @@
-import React from 'react';
-import { ArrowLeft, Download, ArrowRight, Key, Lock, CheckCircle2, ShieldCheck } from 'lucide-react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
+import { ArrowRight, Download, Key, Lock, CheckCircle2, ShieldCheck, BookOpen } from 'lucide-react';
+import CinematicHero from '@/components/CinematicHero';
+import ScrollToTop from '@/components/ScrollToTop';
 import coverImage from '@/assets/cover-silencio-queda.jpg';
 
+const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 30, filter: 'blur(6px)' },
+  visible: (i: number) => ({
+    opacity: 1, y: 0, filter: 'blur(0px)',
+    transition: { duration: 0.7, ease: APPLE_EASE, delay: i * 0.12 },
+  }),
+};
+
+const scaleIn = {
+  hidden: { opacity: 0, scale: 0.92, filter: 'blur(8px)' },
+  visible: (i: number) => ({
+    opacity: 1, scale: 1, filter: 'blur(0px)',
+    transition: { duration: 0.8, ease: APPLE_EASE, delay: i * 0.15 },
+  }),
+};
+
+function useMouseParallax(strength = 15) {
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const springX = useSpring(mouseX, { stiffness: 50, damping: 20 });
+  const springY = useSpring(mouseY, { stiffness: 50, damping: 20 });
+  const handleMouse = useCallback((e: MouseEvent) => {
+    const cx = window.innerWidth / 2;
+    const cy = window.innerHeight / 2;
+    mouseX.set(((e.clientX - cx) / cx) * strength);
+    mouseY.set(((e.clientY - cy) / cy) * strength);
+  }, [mouseX, mouseY, strength]);
+  useEffect(() => {
+    window.addEventListener('mousemove', handleMouse);
+    return () => window.removeEventListener('mousemove', handleMouse);
+  }, [handleMouse]);
+  return { springX, springY };
+}
+
 const SilencioQueda: React.FC = () => {
+  const { springX, springY } = useMouseParallax(8);
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  useEffect(() => { window.scrollTo(0, 0); }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const total = document.documentElement.scrollHeight - window.innerHeight;
+      setScrollProgress(total > 0 ? Math.min((window.scrollY / total) * 100, 100) : 0);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const handleDownload = () => {
     alert("Iniciando o download do Material Autoral...");
   };
 
   return (
-    <div className="min-h-screen bg-[#070A12] pt-28 pb-12 px-4 animate-fade-in font-sans relative overflow-hidden">
+    <div className="min-h-screen text-stone-100 font-sans selection:bg-amber-400/50 relative overflow-hidden"
+      style={{ background: '#050808' }}>
 
-      {/* Ink/Literary Particles - páginas caindo */}
-      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-40">
-        <div className="ink-layer"></div>
-        <div className="ink-layer ink-layer-2"></div>
-        <div className="ink-layer ink-layer-3"></div>
+      <Helmet>
+        <title>O Silêncio da Queda — Entenda o Bitcoin do Zero | Lord Junnior</title>
+        <meta name="description" content="Material gratuito para leigos absolutos. Entenda o Bitcoin usando linguagem simples e analogias do dia a dia. Sem jargão, sem especulação." />
+        <link rel="canonical" href="https://lordjunnior.com.br/silencio-da-queda" />
+      </Helmet>
+
+      <ScrollToTop />
+
+      {/* ─── READING PROGRESS BAR ─── */}
+      <div className="fixed top-0 left-0 right-0 z-50 h-[3px]">
+        <div className="h-full transition-all duration-150 ease-out"
+          style={{ width: `${scrollProgress}%`, background: 'linear-gradient(90deg, #d4af37, #f5d060)' }} />
       </div>
-      <style>{`
-        @keyframes driftInk {
-          0% { transform: translateY(0) translateX(0) rotate(0deg); }
-          100% { transform: translateY(-1000px) translateX(50px) rotate(2deg); }
-        }
-        .ink-layer {
-          position: absolute; width: 100%; height: 200%;
-          background-image:
-            radial-gradient(1.5px 1.5px at 10% 20%, rgba(234,179,8,0.25) 100%, transparent),
-            radial-gradient(1px 1px at 30% 50%, rgba(255,255,255,0.15) 100%, transparent),
-            radial-gradient(2px 2px at 55% 30%, rgba(234,179,8,0.2) 100%, transparent),
-            radial-gradient(1px 1px at 75% 70%, rgba(255,255,255,0.1) 100%, transparent),
-            radial-gradient(1.5px 1.5px at 90% 45%, rgba(234,179,8,0.15) 100%, transparent);
-          background-size: 240px 240px;
-          animation: driftInk 55s linear infinite;
-        }
-        .ink-layer-2 {
-          background-size: 320px 320px;
-          animation: driftInk 75s linear infinite reverse;
-          opacity: 0.6;
-        }
-        .ink-layer-3 {
-          background-size: 400px 400px;
-          animation: driftInk 100s linear infinite;
-          opacity: 0.3;
-        }
-      `}</style>
-       
-       {/* Navegação */}
-       <div className="max-w-6xl mx-auto mb-8">
-         <Link to="/" className="text-slate-500 hover:text-gold-500 flex items-center gap-2 text-xs uppercase tracking-widest transition-colors w-fit group">
-           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" /> Retornar ao Início
-         </Link>
-       </div>
 
-       {/* O CARD GIGANTE (Módulo Central) */}
-       <main className="max-w-6xl mx-auto bg-[#0B0F19] border border-white/10 rounded-[2.5rem] p-8 md:p-16 shadow-2xl relative overflow-hidden mb-16">
-          
-          {/* Efeitos de Luz de Fundo do Card */}
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gold-500/5 blur-[120px] rounded-full pointer-events-none"></div>
-          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-500/5 blur-[100px] rounded-full pointer-events-none"></div>
+      {/* ─── FILM GRAIN + LIGHT BEAMS ─── */}
+      <div className="fixed inset-0 pointer-events-none z-[1]">
+        <div className="absolute inset-0 opacity-[0.035]"
+          style={{ backgroundImage: "url('data:image/svg+xml,%3Csvg viewBox=\"0 0 256 256\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cfilter id=\"n\"%3E%3CfeTurbulence type=\"fractalNoise\" baseFrequency=\"0.9\" numOctaves=\"4\" stitchTiles=\"stitch\"/%3E%3C/filter%3E%3Crect width=\"100%25\" height=\"100%25\" filter=\"url(%23n)\"/%3E%3C/svg%3E')", backgroundSize: '128px 128px' }} />
+        <div className="absolute inset-0 opacity-[0.02]"
+          style={{ background: 'linear-gradient(125deg, transparent 30%, rgba(212,175,55,0.06) 50%, transparent 70%)' }} />
+      </div>
 
-          {/* PARTE SUPERIOR DO CARD: Capa + Hero Text */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 relative z-10 mb-20">
-             
-             {/* Coluna Esquerda: Mockup da Capa do Livro */}
-             <div className="lg:col-span-5 flex justify-center lg:justify-start">
-                <div className="relative w-full max-w-[400px] aspect-[3/4] rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/10 group">
-                   <img src={coverImage} alt="O Silêncio da Queda - Entenda o Bitcoin" className="w-full h-full object-cover" />
+      {/* ─── REACTIVE ORBS ─── */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <motion.div style={{ x: springX, y: springY }}
+          className="absolute top-[15%] left-[10%] w-[500px] h-[500px] rounded-full opacity-[0.04]"
+          animate={{ scale: [1, 1.1, 1] }}
+          transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}>
+          <div className="w-full h-full rounded-full bg-gradient-radial from-amber-500/30 to-transparent blur-3xl" />
+        </motion.div>
+        <motion.div style={{ x: springY, y: springX }}
+          className="absolute bottom-[20%] right-[10%] w-[400px] h-[400px] rounded-full opacity-[0.03]"
+          animate={{ scale: [1.1, 1, 1.1] }}
+          transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut' }}>
+          <div className="w-full h-full rounded-full bg-gradient-radial from-yellow-500/20 to-transparent blur-3xl" />
+        </motion.div>
+      </div>
+
+      {/* ─── CINEMATIC HERO ─── */}
+      <CinematicHero
+        image={coverImage}
+        phase="Material Autoral"
+        title="O Silêncio da Queda"
+        subtitle="Você não precisa entender de economia, programação ou gráficos. Este material usa linguagem simples e analogias do dia a dia para explicar o Bitcoin."
+        icon={BookOpen}
+        accentColor="amber"
+        backLink="/"
+        backLabel="Início"
+      />
+
+      {/* ─── MAIN CONTENT ─── */}
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 lg:px-16 pt-16 pb-32">
+
+        {/* ═══════════════════════════════════════════════════════
+            CAPÍTULO 01 — PARA QUEM É ESTE MATERIAL
+        ═══════════════════════════════════════════════════════ */}
+        <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }}
+          className="mb-28">
+          <motion.div variants={fadeUp} custom={0} className="mb-10">
+            <span className="text-[10px] font-bold tracking-[0.5em] uppercase text-amber-500/60">Capítulo 01</span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white mt-2"
+              style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+              Entenda o Bitcoin — Ainda Hoje
+            </h2>
+          </motion.div>
+
+          <motion.div variants={scaleIn} custom={1}
+            className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-8 md:p-12 relative overflow-hidden
+                       hover:border-amber-500/15 transition-all duration-500">
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-amber-500/30 to-transparent" />
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+              {/* Cover */}
+              <div className="flex justify-center lg:justify-start">
+                <div className="relative w-full max-w-[380px] aspect-[3/4] rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/10">
+                  <img src={coverImage} alt="O Silêncio da Queda" className="w-full h-full object-cover" />
                 </div>
-             </div>
+              </div>
 
-             {/* Coluna Direita: Argumentação e CTA */}
-             <div className="lg:col-span-7 flex flex-col justify-center">
-                <span className="text-gold-500 text-[10px] font-bold uppercase tracking-widest border border-gold-500/20 px-3 py-1.5 rounded bg-gold-500/5 w-fit mb-6">
-                  Para Leigos Absolutos
-                </span>
-                
-                <h1 className="text-4xl md:text-5xl font-serif font-bold text-white leading-tight mb-8">
-                  Entenda o Bitcoin <br/>
-                  <span className="text-slate-400 italic font-normal">— ainda hoje</span>
-                </h1>
-
-                <div className="space-y-6 text-lg text-slate-300 leading-relaxed font-light mb-10">
-                  <p>
-                    Você não precisa entender de economia, programação ou gráficos.
-                  </p>
-                  <p>
-                    Escrevi este material usando linguagem simples e analogias do dia a dia. Se você sabe enviar um e-mail ou usar o banco, você vai entender o Bitcoin ao terminar esta leitura.
-                  </p>
-                  <p className="text-xl text-white font-medium border-l-2 border-gold-500 pl-6 py-2 bg-gold-500/5 rounded-r-lg">
-                    É o fim das dúvidas e o início da sua liberdade.
-                  </p>
+              {/* Content */}
+              <div className="space-y-6">
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-amber-500/10 border border-amber-500/20">
+                  <span className="text-amber-400 text-[10px] font-bold uppercase tracking-[0.3em]">Para Leigos Absolutos</span>
                 </div>
 
-                <blockquote className="border-l-4 border-slate-700 pl-6 mb-12">
-                   <p className="text-slate-400 italic mb-4 relative z-10 text-base">
-                     "Este material não é um convite à especulação. É uma introdução à soberania individual. Avance apenas se estiver disposto a assumir a responsabilidade total sobre suas escolhas."
-                   </p>
-                   <footer className="text-gold-500 font-bold text-xs tracking-widest uppercase">
-                     — Lord Junnior
-                   </footer>
+                <div className="space-y-4 text-stone-400 leading-relaxed">
+                  <p>Você não precisa entender de economia, programação ou gráficos.</p>
+                  <p>Escrevi este material usando linguagem simples e analogias do dia a dia. Se você sabe enviar um e-mail ou usar o banco, você vai entender o Bitcoin ao terminar esta leitura.</p>
+                </div>
+
+                <div className="border-l-2 border-amber-500/40 pl-6 py-3 bg-amber-500/[0.03] rounded-r-xl">
+                  <p className="text-white text-lg font-medium">É o fim das dúvidas e o início da sua liberdade.</p>
+                </div>
+
+                <blockquote className="border-l-2 border-stone-700 pl-6">
+                  <p className="text-stone-500 italic text-sm leading-relaxed mb-2">
+                    "Este material não é um convite à especulação. É uma introdução à soberania individual. Avance apenas se estiver disposto a assumir a responsabilidade total sobre suas escolhas."
+                  </p>
+                  <footer className="text-amber-500 font-bold text-[10px] tracking-[0.3em] uppercase">— Lord Junnior</footer>
                 </blockquote>
 
-                {/* Botão Pulsante */}
-                 <button
-                   onClick={handleDownload}
-                   className="relative w-full sm:w-auto bg-white text-black font-black py-5 px-14 rounded-xl transition-all transform hover:-translate-y-1 hover:bg-red-600 hover:text-white flex items-center justify-center gap-3 uppercase tracking-[0.2em] text-sm shadow-[0_0_30px_rgba(255,255,255,0.15)]"
-                 >
-                   <Download className="w-5 h-5" /> Baixar PDF Gratuito
-                 </button>
-             </div>
-          </div>
+                <button onClick={handleDownload}
+                  className="inline-flex items-center gap-3 bg-amber-500/10 border border-amber-500/25 rounded-xl px-8 py-4
+                             text-amber-400 text-sm font-bold uppercase tracking-wider
+                             hover:bg-amber-500/20 hover:border-amber-500/40 hover:shadow-[0_0_30px_rgba(212,175,55,0.1)] transition-all duration-500 group">
+                  <Download size={16} /> Baixar PDF Gratuito
+                  <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                </button>
+              </div>
+            </div>
+          </motion.div>
+        </motion.section>
 
-          {/* PARTE INFERIOR DO CARD */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 pt-16 border-t border-white/5 relative z-10">
-             
-             <div>
-                <h3 className="text-2xl font-serif text-white mb-8">O que você vai entender</h3>
-                <ul className="space-y-6">
-                  <li className="flex items-start gap-4">
-                     <div className="mt-1 bg-black p-1 rounded-full border border-white/10 shrink-0">
-                        <CheckCircle2 className="w-4 h-4 text-gold-500" />
-                     </div>
-                     <p className="text-slate-300">A história do dinheiro (explicada como uma história, não uma aula).</p>
-                  </li>
-                  <li className="flex items-start gap-4">
-                     <div className="mt-1 bg-black p-1 rounded-full border border-white/10 shrink-0">
-                        <CheckCircle2 className="w-4 h-4 text-gold-500" />
-                     </div>
-                     <p className="text-slate-300">Por que o Bitcoin vale algo e por que não pode ser copiado.</p>
-                  </li>
-                  <li className="flex items-start gap-4">
-                     <div className="mt-1 bg-black p-1 rounded-full border border-white/10 shrink-0">
-                        <CheckCircle2 className="w-4 h-4 text-gold-500" />
-                     </div>
-                     <p className="text-slate-300">Como funciona sua "senha mestre" e a segurança da rede.</p>
-                  </li>
-                </ul>
-             </div>
+        {/* ─── SECTION DIVIDER ─── */}
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-amber-500/20 to-transparent mb-28" />
 
-             <div className="bg-black/30 p-8 rounded-2xl border border-white/5">
-                <h3 className="text-2xl font-serif text-white mb-6">Por que este material existe</h3>
-                <div className="space-y-4 text-slate-400 text-sm leading-relaxed">
-                   <p>A queda não é do mercado. <strong className="text-white">É da consciência.</strong></p>
-                   <p>A maioria só começa a perguntar como o dinheiro funciona quando percebe que já não tem controle sobre ele.</p>
-                   <div className="pl-4 border-l-2 border-gold-500/50 py-1 my-4">
-                     <p className="text-white">Bitcoin não surge como solução mágica.</p>
-                     <p className="text-slate-400">Surge como explicação tardia.</p>
-                   </div>
-                   <p>Quando a água bate no pescoço, muitos finalmente entendem o que ignoraram enquanto tudo parecia normal.</p>
-                   <p className="mt-6 pt-6 border-t border-white/5 italic">
-                     Este material é gratuito, não exige cadastro e não é uma "isca" para vender curso. Baixe, leia e tire suas conclusões.
-                   </p>
+        {/* ═══════════════════════════════════════════════════════
+            CAPÍTULO 02 — O QUE VOCÊ VAI ENTENDER
+        ═══════════════════════════════════════════════════════ */}
+        <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }}
+          className="mb-28">
+          <motion.div variants={fadeUp} custom={0} className="mb-10">
+            <span className="text-[10px] font-bold tracking-[0.5em] uppercase text-amber-500/60">Capítulo 02</span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white mt-2"
+              style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+              O Que Você Vai Entender
+            </h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <motion.div variants={scaleIn} custom={0}
+              className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-8 md:p-10
+                         hover:border-amber-500/20 transition-all duration-500">
+              <h4 className="text-xl font-bold text-white mb-6 tracking-tight"
+                style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Conteúdo</h4>
+              <ul className="space-y-5">
+                {[
+                  'A história do dinheiro (explicada como uma história, não uma aula).',
+                  'Por que o Bitcoin vale algo e por que não pode ser copiado.',
+                  'Como funciona sua "senha mestre" e a segurança da rede.',
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start gap-4">
+                    <div className="mt-0.5 p-1 rounded-full border border-amber-500/20 bg-amber-500/5 shrink-0">
+                      <CheckCircle2 size={14} className="text-amber-400" />
+                    </div>
+                    <p className="text-stone-400 text-sm leading-relaxed">{item}</p>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+
+            <motion.div variants={scaleIn} custom={1}
+              className="bg-white/[0.02] border border-stone-800/40 rounded-2xl p-8 md:p-10
+                         hover:border-amber-500/15 transition-all duration-500">
+              <h4 className="text-xl font-bold text-white mb-6 tracking-tight"
+                style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Por Que Este Material Existe</h4>
+              <div className="space-y-4 text-stone-500 text-sm leading-relaxed">
+                <p>A queda não é do mercado. <strong className="text-white">É da consciência.</strong></p>
+                <p>A maioria só começa a perguntar como o dinheiro funciona quando percebe que já não tem controle sobre ele.</p>
+                <div className="pl-4 border-l-2 border-amber-500/30 py-2 my-4">
+                  <p className="text-white text-sm">Bitcoin não surge como solução mágica.</p>
+                  <p className="text-stone-500 text-sm">Surge como explicação tardia.</p>
                 </div>
-             </div>
+                <p className="pt-4 border-t border-white/5 italic text-stone-600">
+                  Este material é gratuito, não exige cadastro e não é uma "isca" para vender curso. Baixe, leia e tire suas conclusões.
+                </p>
+              </div>
+            </motion.div>
+          </div>
+        </motion.section>
 
-          </div>
-       </main>
+        {/* ─── SECTION DIVIDER ─── */}
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-amber-500/20 to-transparent mb-28" />
 
-       {/* Next Steps */}
-       <div className="max-w-3xl mx-auto text-center py-12">
-          <div className="inline-flex p-4 rounded-2xl bg-[#0B0F19] border border-white/5 mb-6 shadow-lg">
-             <Key className="w-6 h-6 text-gold-500" />
-          </div>
-          <h3 className="text-3xl font-serif text-white mb-4">Próximo Nível</h3>
-          <p className="text-slate-400 mb-8 max-w-md mx-auto text-base leading-relaxed">
-            Depois de ler, você não será mais leigo. Aí sim, estará pronto para a prática.
-          </p>
-          <Link to="/educacao" className="inline-flex items-center gap-3 text-gold-500 hover:text-gold-400 font-bold uppercase tracking-widest text-sm border-b border-gold-500/30 pb-2 hover:border-gold-500 transition-all group">
-             Ir para o Arsenal Técnico <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </Link>
-       </div>
+        {/* ═══════════════════════════════════════════════════════
+            CTA FINAL — PRÓXIMO NÍVEL
+        ═══════════════════════════════════════════════════════ */}
+        <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }}
+          className="mb-20">
+          <motion.div variants={fadeUp} custom={0}
+            className="bg-white/[0.02] border border-amber-500/10 rounded-3xl p-10 md:p-16 text-center relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-radial from-amber-500/[0.03] via-transparent to-transparent" />
+            <div className="relative z-10 space-y-8">
+              <div className="inline-flex p-4 rounded-2xl bg-amber-500/5 border border-amber-500/15">
+                <Key size={24} className="text-amber-400" />
+              </div>
+              <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white leading-tight"
+                style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                Próximo <span className="text-amber-500">Nível</span>
+              </h2>
+              <p className="text-stone-500 max-w-md mx-auto leading-relaxed">
+                Depois de ler, você não será mais leigo. Aí sim, estará pronto para a prática.
+              </p>
+              <div className="pt-4">
+                <Link to="/educacao"
+                  className="inline-flex items-center gap-3 bg-amber-500/10 border border-amber-500/25 rounded-xl px-8 py-4
+                             text-amber-400 text-sm font-bold uppercase tracking-wider
+                             hover:bg-amber-500/20 hover:border-amber-500/40 hover:shadow-[0_0_30px_rgba(212,175,55,0.1)] transition-all duration-500 group">
+                  Ir para o Arsenal Técnico <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </div>
+            </div>
+          </motion.div>
+        </motion.section>
 
-       {/* Footer Soberano */}
-       <footer className="max-w-6xl mx-auto text-center pt-12 border-t border-white/5 space-y-6 mt-8 mb-12">
-          <p className="text-2xl font-serif text-white opacity-80">Not your keys, not your money.</p>
-          <div className="text-slate-500 text-sm space-y-1 opacity-80">
-            <p>Quem não assume a custódia aceita a dependência.</p>
-            <p>Autocustódia exige responsabilidade.</p>
-          </div>
-          <div className="w-12 h-[1px] bg-white/10 mx-auto my-6"></div>
-          <p className="text-gold-600/80 text-sm font-medium">
-            Dependência financeira nunca foi acidente. Sempre foi projeto.
+        {/* ─── FOOTER ─── */}
+        <footer className="border-t border-white/[0.05] pt-12 text-center space-y-4">
+          <p className="text-white/80 text-lg font-medium" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+            Not your keys, not your money.
           </p>
-          <p className="text-[10px] text-slate-600 uppercase tracking-widest pt-4">
-            Lord Junnior © 2026
-          </p>
-          <div className="flex items-center justify-center gap-6 pt-8 pb-4">
-            <Link to="#" className="text-xs text-slate-600 hover:text-gold-500 uppercase tracking-wider transition-colors">Termos</Link>
-            <span className="text-slate-800">•</span>
-            <Link to="#" className="text-xs text-slate-600 hover:text-gold-500 uppercase tracking-wider transition-colors">Privacidade</Link>
-            <span className="text-slate-800">•</span>
-            <Link to="#" className="text-xs text-slate-600 hover:text-gold-500 uppercase tracking-wider transition-colors flex items-center gap-1">
-              <Lock className="w-3 h-3" /> PGP
-            </Link>
-          </div>
-       </footer>
+          <p className="text-stone-700 text-[9px] font-bold tracking-[0.5em] uppercase">Lord Junnior © 2026</p>
+        </footer>
+      </div>
     </div>
   );
 };
