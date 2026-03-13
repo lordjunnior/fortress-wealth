@@ -3,10 +3,12 @@ import { Helmet } from "react-helmet-async";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
 import {
-  ArrowLeft, Zap, ShieldCheck, ArrowRight, CheckCircle2, Loader2, Copy, Check,
+  Zap, ShieldCheck, ArrowRight, CheckCircle2, Loader2, Copy, Check,
   Users, Lock, Globe, AlertTriangle, ExternalLink, Banknote, ChevronDown
 } from "lucide-react";
 import EmergencyManual from "@/components/EmergencyManual";
+import CinematicHero from '@/components/CinematicHero';
+import ScrollToTop from '@/components/ScrollToTop';
 
 const APPLE_EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
