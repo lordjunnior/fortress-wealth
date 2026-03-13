@@ -1,8 +1,10 @@
 import React, { useEffect, useCallback, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform, useMotionValue, useSpring, useInView } from 'framer-motion';
-import { ArrowLeft, ArrowRight, Blocks, Lock, Database, Search, ShieldCheck, Network, Cpu, ChevronDown, Fingerprint, Globe, Clock, Users, Zap, BookOpen, Scale, Eye, Hash, Box, Link2, AlertTriangle, Binary, Layers, Server, Waypoints } from 'lucide-react';
+import { ArrowRight, Blocks, Lock, Database, Search, ShieldCheck, Network, Cpu, ChevronDown, Fingerprint, Globe, Clock, Users, Zap, BookOpen, Scale, Eye, Hash, Box, Link2, AlertTriangle, Binary, Layers, Server, Waypoints } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
+import CinematicHero from '@/components/CinematicHero';
+import ScrollToTop from '@/components/ScrollToTop';
 import blockchainBlocosImg from '@/assets/blockchain-blocos.jpg';
 import blockchainMineracaoImg from '@/assets/blockchain-mineracao.jpg';
 import blockchainLivroImg from '@/assets/blockchain-livro-razao.jpg';
