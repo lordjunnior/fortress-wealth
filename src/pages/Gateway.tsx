@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
-import { ArrowLeft, Zap, ShieldCheck, ArrowRight, CheckCircle2, Loader2, Copy, Check, ChevronDown, Shield, Lock } from "lucide-react";
+import { Zap, ShieldCheck, ArrowRight, CheckCircle2, Loader2, Copy, Check, Shield, Lock } from "lucide-react";
 import { Link } from "react-router-dom";
+import CinematicHero from '@/components/CinematicHero';
+import ScrollToTop from '@/components/ScrollToTop';
 
 const APPLE_EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
