@@ -1,8 +1,10 @@
-import React, { useEffect, useCallback, useRef } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, useScroll, useTransform, useMotionValue, useSpring, useInView } from 'framer-motion';
-import { ArrowLeft, ArrowRight, PieChart, AlertTriangle, TrendingDown, ShieldCheck, Flame, ChevronDown, Scale, Target, Skull, Crown, Shield, Layers, BarChart3, Percent, Clock, Zap, BookOpen, Crosshair, Eye, Binary, TrendingUp, DollarSign, Building, Gem, Banknote, BarChart, Bird } from 'lucide-react';
+import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
+import { ArrowRight, PieChart, AlertTriangle, TrendingDown, ShieldCheck, Flame, ChevronDown, Scale, Target, Skull, Crown, Shield, Layers, Clock, Crosshair, TrendingUp, DollarSign, Building, Gem, Banknote, Bird, BookOpen } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
+import CinematicHero from '@/components/CinematicHero';
+import ScrollToTop from '@/components/ScrollToTop';
 import diversificacaoFalaciaImg from '@/assets/diversificacao-falacia.jpg';
 import diversificacaoBalancaImg from '@/assets/diversificacao-balanca.jpg';
 import diversificacaoCisneImg from '@/assets/diversificacao-cisne-negro.jpg';
@@ -99,69 +101,33 @@ export default function Diversificacao() {
         <meta name="keywords" content="diversificação, portfólio, investimentos, risco retorno, classes de ativos, renda fixa, ações, bitcoin investimento, cisne negro, perfil de risco" />
       </Helmet>
 
+      <ScrollToTop />
+
       <motion.div className="fixed top-0 left-0 right-0 h-[2px] z-50 origin-left" style={{ width: pw, background: 'linear-gradient(90deg, #d4af37, #f59e0b)' }} />
 
-      {/* Ambient */}
-      <div className="fixed inset-0 pointer-events-none z-0">
-        <motion.div className="absolute top-[-10%] right-[-10%] w-[800px] h-[800px] rounded-full" style={{ background: 'radial-gradient(circle, rgba(212,175,55,0.06) 0%, transparent 60%)', x: sx, y: sy }} />
-        <motion.div className="absolute bottom-[5%] left-[-5%] w-[600px] h-[600px] rounded-full" style={{ background: 'radial-gradient(circle, rgba(245,158,11,0.04) 0%, transparent 60%)', x: useTransform(sx, v => -v * 0.5), y: useTransform(sy, v => -v * 0.5) }} />
+      {/* Film grain + Light beams */}
+      <div className="fixed inset-0 pointer-events-none z-[1]">
         <div className="absolute inset-0 opacity-[0.035]" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`, backgroundSize: '128px 128px' }} />
+        <div className="absolute inset-0 opacity-[0.02]" style={{ background: 'linear-gradient(125deg, transparent 30%, rgba(212,175,55,0.06) 50%, transparent 70%)' }} />
       </div>
 
-      {/* ═══════════════════════════════════════════════════════════════ */}
-      {/* ══ HERO ══ */}
-      {/* ═══════════════════════════════════════════════════════════════ */}
-      <section className="relative z-10 min-h-screen flex flex-col justify-end px-6 md:px-16 lg:px-24 pb-16 md:pb-24">
-        <motion.div className="absolute inset-0 z-0" style={{ y: useTransform(scrollYProgress, [0, 0.3], [0, 120]) }}>
-          <div className="absolute inset-0 bg-cover bg-center scale-110" style={{ backgroundImage: `url('/heroes/diversificacao.webp')`, filter: 'brightness(0.3) saturate(0.7)' }} />
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(5,8,8,0.1) 0%, rgba(5,8,8,0.4) 30%, rgba(5,8,8,0.85) 65%, rgba(5,8,8,1) 100%)' }} />
-          <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse 130% 100% at 50% 35%, transparent 35%, rgba(5,8,8,0.9) 100%)' }} />
-        </motion.div>
+      {/* Breathing Orbs */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <motion.div className="absolute top-[-10%] right-[-10%] w-[800px] h-[800px] rounded-full" style={{ background: 'radial-gradient(circle, rgba(212,175,55,0.06) 0%, transparent 60%)', x: sx, y: sy }} />
+        <motion.div className="absolute bottom-[5%] left-[-5%] w-[600px] h-[600px] rounded-full" style={{ background: 'radial-gradient(circle, rgba(245,158,11,0.04) 0%, transparent 60%)', x: useTransform(sx, v => -v * 0.5), y: useTransform(sy, v => -v * 0.5) }} />
+      </div>
 
-        <nav className="absolute top-6 left-6 md:left-16 flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] z-20">
-          <Link to="/educacao" className="text-stone-600 hover:text-yellow-400 transition-colors flex items-center gap-2"><ArrowLeft size={12} /> Arsenal Técnico</Link>
-          <span className="text-stone-700">/</span>
-          <span className="text-yellow-400">Diversificação</span>
-        </nav>
-
-        <div className="max-w-5xl relative z-10">
-          <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, ease: APPLE_EASE }}>
-            <div className="flex items-center gap-3 mb-8">
-              <motion.div className="p-3.5 bg-yellow-500/10 border border-yellow-500/20 rounded-2xl" whileHover={{ scale: 1.1, rotate: 5 }}>
-                <PieChart className="text-yellow-400" size={24} />
-              </motion.div>
-              <span className="text-yellow-500/60 text-[10px] font-bold uppercase tracking-[0.5em]">Análise Estratégica</span>
-            </div>
-          </motion.div>
-
-          <h1 className="leading-[0.82] mb-10" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-            <motion.span className="block text-5xl md:text-[7rem] lg:text-[9rem] font-black tracking-tighter text-white" initial={{ opacity: 0, y: 60, filter: 'blur(12px)' }} animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }} transition={{ duration: 1, ease: APPLE_EASE, delay: 0.1 }}>
-              DIVERSI
-            </motion.span>
-            <motion.span className="block text-5xl md:text-[7rem] lg:text-[9rem] font-black tracking-tighter" initial={{ opacity: 0, y: 60, filter: 'blur(12px)' }} animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }} transition={{ duration: 1, ease: APPLE_EASE, delay: 0.3 }}
-              style={{ background: 'linear-gradient(135deg, #d4af37, #f59e0b, #fbbf24)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}
-            >
-              FICAÇÃO
-            </motion.span>
-          </h1>
-
-          <motion.div className="max-w-2xl" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.6 }}>
-            <p className="text-stone-300 text-lg md:text-xl leading-relaxed mb-4">
-              Não importa se você está começando com <span className="font-bold text-yellow-400">R$ 500</span> ou se possui investimentos há alguns anos. Diversificar e elaborar de forma planejada um portfólio vai lhe ajudar a navegar qualquer tipo de cenário.
-            </p>
-            <p className="text-stone-600 text-sm leading-relaxed">
-              Venha se aprofundar no tema, entender as classes de ativos, o equilíbrio entre risco e retorno — e <span className="text-stone-400 font-semibold">descobrir por que o Bitcoin muda completamente esta equação</span>.
-            </p>
-          </motion.div>
-        </div>
-
-        <motion.div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-stone-600 z-10" initial={{ opacity: 0 }} animate={{ opacity: 0.6 }} transition={{ delay: 1.5 }}>
-          <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}>
-            <span className="text-[9px] uppercase tracking-[0.4em] font-bold block mb-1 text-center">Explorar</span>
-            <ChevronDown size={16} className="mx-auto" />
-          </motion.div>
-        </motion.div>
-      </section>
+      {/* ─── CINEMATIC HERO ─── */}
+      <CinematicHero
+        image="/heroes/diversificacao.webp"
+        phase="Análise Estratégica"
+        title={<>DIVERSI<span style={{ color: '#f59e0b' }}>FICAÇÃO</span></>}
+        subtitle="Não importa se você está começando com R$ 500 ou se possui investimentos há anos. Venha entender as classes de ativos, o equilíbrio entre risco e retorno — e descobrir por que o Bitcoin muda completamente esta equação."
+        icon={PieChart}
+        accentColor="amber"
+        backLink="/educacao"
+        backLabel="Arsenal Técnico"
+      />
 
       {/* ══ DISCLAIMER DE SOBERANIA ══ */}
       <section className="relative z-10 py-12 md:py-16">

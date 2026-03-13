@@ -3,10 +3,12 @@ import { Helmet } from "react-helmet-async";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
 import {
-  ArrowLeft, Zap, ShieldCheck, ArrowRight, CheckCircle2, Loader2, Copy, Check,
+  Zap, ShieldCheck, ArrowRight, CheckCircle2, Loader2, Copy, Check,
   Users, Lock, Globe, AlertTriangle, ExternalLink, Banknote, ChevronDown
 } from "lucide-react";
 import EmergencyManual from "@/components/EmergencyManual";
+import CinematicHero from '@/components/CinematicHero';
+import ScrollToTop from '@/components/ScrollToTop';
 
 const APPLE_EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
@@ -107,39 +109,19 @@ const Saida = () => {
       <div className="min-h-screen bg-[#050808] text-foreground font-sans selection:bg-destructive selection:text-destructive-foreground relative overflow-hidden">
         <FilmGrain />
         <LightBeams />
+        <ScrollToTop />
 
         {/* ── Cinematic Hero ── */}
-        <section ref={heroRef} className="relative h-[70vh] min-h-[500px] max-h-[800px] flex items-end overflow-hidden">
-          <motion.div className="absolute inset-0 z-0" style={{ y: bgY }}>
-            <div className="absolute inset-0 bg-cover bg-center scale-110"
-              style={{ backgroundImage: `url('/heroes/economia-paralela.webp')`, filter: 'brightness(0.4) saturate(0.85)' }} />
-            <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(5,8,8,0.15) 0%, rgba(5,8,8,0.5) 50%, rgba(5,8,8,0.92) 80%, rgba(5,8,8,1) 100%)' }} />
-            <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse 120% 100% at 50% 30%, transparent 40%, rgba(5,8,8,0.85) 100%)' }} />
-          </motion.div>
-          <motion.div className="relative z-10 w-full px-6 md:px-12 lg:px-20 pb-12 md:pb-16" style={{ opacity: contentOpacity }}>
-            <Link to="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground text-xs font-semibold uppercase tracking-[0.2em] transition-colors mb-8 group">
-              <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" /> Retornar ao Comando
-            </Link>
-            <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, ease: APPLE_EASE }} className="mb-4">
-              <span className="text-[10px] font-bold tracking-[0.5em] uppercase text-destructive opacity-70">NÍVEL 03 · DEFESA PATRIMONIAL</span>
-            </motion.div>
-            <motion.h1 initial={{ opacity: 0, y: 30, filter: 'blur(8px)' }} animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-              transition={{ duration: 0.8, delay: 0.15, ease: APPLE_EASE }}
-              className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter text-foreground leading-[0.9] mb-4"
-              style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-              Independência<br /><span className="text-destructive italic font-light">Operacional</span>
-            </motion.h1>
-            <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 0.8, y: 0 }} transition={{ duration: 0.6, delay: 0.4, ease: APPLE_EASE }}
-              className="text-muted-foreground text-base md:text-lg max-w-2xl leading-relaxed mt-3">
-              Protocolos de liquidez imediata, privacidade on-chain e liberdade geográfica. Sem intermediários, sem permissão.
-            </motion.p>
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 0.5 }} transition={{ delay: 1.2 }} className="flex items-center gap-2 mt-8">
-              <motion.div animate={{ y: [0, 6, 0] }} transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}><ChevronDown size={14} className="text-muted-foreground" /></motion.div>
-              <span className="text-[9px] font-bold tracking-[0.3em] uppercase text-muted-foreground/60">Role para explorar</span>
-            </motion.div>
-          </motion.div>
-          <div className="absolute bottom-0 left-0 right-0 h-16 z-10 pointer-events-none" style={{ background: 'linear-gradient(to bottom, transparent, #050808)' }} />
-        </section>
+        <CinematicHero
+          image="/heroes/economia-paralela.webp"
+          phase="Nível 03 · Defesa Patrimonial"
+          title={<>Independência<br /><span className="text-destructive italic font-light">Operacional</span></>}
+          subtitle="Protocolos de liquidez imediata, privacidade on-chain e liberdade geográfica. Sem intermediários, sem permissão."
+          icon={Zap}
+          accentColor="rose"
+          backLink="/"
+          backLabel="Retornar ao Comando"
+        />
 
         {/* ── Lightning Network ── */}
         <section id="lightning" className="relative z-10 px-6 md:px-12 lg:px-20 py-16">

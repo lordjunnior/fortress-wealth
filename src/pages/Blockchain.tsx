@@ -1,8 +1,10 @@
 import React, { useEffect, useCallback, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform, useMotionValue, useSpring, useInView } from 'framer-motion';
-import { ArrowLeft, ArrowRight, Blocks, Lock, Database, Search, ShieldCheck, Network, Cpu, ChevronDown, Fingerprint, Globe, Clock, Users, Zap, BookOpen, Scale, Eye, Hash, Box, Link2, AlertTriangle, Binary, Layers, Server, Waypoints } from 'lucide-react';
+import { ArrowRight, Blocks, Lock, Database, Search, ShieldCheck, Network, Cpu, ChevronDown, Fingerprint, Globe, Clock, Users, Zap, BookOpen, Scale, Eye, Hash, Box, Link2, AlertTriangle, Binary, Layers, Server, Waypoints } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
+import CinematicHero from '@/components/CinematicHero';
+import ScrollToTop from '@/components/ScrollToTop';
 import blockchainBlocosImg from '@/assets/blockchain-blocos.jpg';
 import blockchainMineracaoImg from '@/assets/blockchain-mineracao.jpg';
 import blockchainLivroImg from '@/assets/blockchain-livro-razao.jpg';
@@ -114,75 +116,33 @@ export default function Blockchain() {
     <div className="min-h-screen text-stone-100 font-sans selection:bg-cyan-400/30 relative overflow-hidden" style={{ background: '#050808' }}>
       <Helmet>
         <title>O Que é Blockchain — Como Funciona a Tecnologia por Trás do Bitcoin | Arsenal Técnico</title>
-        <meta name="description" content="Entenda o que é blockchain de verdade: como funciona, como os dados são armazenados em blocos, como a rede é formada por mineradores e como transações são validadas por consenso. Guia completo com Proof of Work, hashing SHA-256 e imutabilidade." />
-        <meta name="keywords" content="blockchain, o que é blockchain, como funciona blockchain, bitcoin blockchain, proof of work, mineração bitcoin, hash SHA-256, livro-razão distribuído, consenso blockchain" />
+        <meta name="description" content="Entenda o que é blockchain de verdade: como funciona, como os dados são armazenados em blocos, como a rede é formada por mineradores e como transações são validadas por consenso." />
+        <meta name="keywords" content="blockchain, o que é blockchain, como funciona blockchain, bitcoin blockchain, proof of work, mineração bitcoin, hash SHA-256" />
       </Helmet>
+
+      <ScrollToTop />
 
       {/* Progress */}
       <motion.div className="fixed top-0 left-0 right-0 h-[2px] z-50 origin-left" style={{ width: pw, background: 'linear-gradient(90deg, #38bdf8, #06b6d4)' }} />
 
-      {/* Ambient Orbs */}
+      {/* VFX Stack */}
       <div className="fixed inset-0 pointer-events-none z-0">
         <motion.div className="absolute top-[-10%] right-[-10%] w-[800px] h-[800px] rounded-full" style={{ background: 'radial-gradient(circle, rgba(56,189,248,0.06) 0%, transparent 60%)', x: sx, y: sy }} />
         <motion.div className="absolute bottom-[5%] left-[-5%] w-[600px] h-[600px] rounded-full" style={{ background: 'radial-gradient(circle, rgba(6,182,212,0.04) 0%, transparent 60%)', x: useTransform(sx, v => -v * 0.5), y: useTransform(sy, v => -v * 0.5) }} />
         <div className="absolute inset-0 opacity-[0.035]" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`, backgroundSize: '128px 128px' }} />
       </div>
 
-      {/* ═══════════════════════════════════════════════════════════════ */}
-      {/* ══ HERO — Full Cinematic ══ */}
-      {/* ═══════════════════════════════════════════════════════════════ */}
-      <section className="relative z-10 min-h-screen flex flex-col justify-end px-6 md:px-16 lg:px-24 pb-16 md:pb-24">
-        <motion.div className="absolute inset-0 z-0" style={{ y: useTransform(scrollYProgress, [0, 0.3], [0, 120]) }}>
-          <div className="absolute inset-0 bg-cover bg-center scale-110" style={{ backgroundImage: `url('/heroes/blockchain.webp')`, filter: 'brightness(0.3) saturate(0.7)' }} />
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(5,8,8,0.1) 0%, rgba(5,8,8,0.4) 30%, rgba(5,8,8,0.85) 65%, rgba(5,8,8,1) 100%)' }} />
-          <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse 130% 100% at 50% 35%, transparent 35%, rgba(5,8,8,0.9) 100%)' }} />
-        </motion.div>
-
-        {/* Nav breadcrumb */}
-        <nav className="absolute top-6 left-6 md:left-16 flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] z-20">
-          <Link to="/educacao" className="text-stone-600 hover:text-cyan-400 transition-colors flex items-center gap-2"><ArrowLeft size={12} /> Arsenal Técnico</Link>
-          <span className="text-stone-700">/</span>
-          <span className="text-cyan-400">Blockchain</span>
-        </nav>
-
-        <div className="max-w-5xl relative z-10">
-          <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, ease: APPLE_EASE }}>
-            <div className="flex items-center gap-3 mb-8">
-              <motion.div className="p-3.5 bg-cyan-500/10 border border-cyan-500/20 rounded-2xl" whileHover={{ scale: 1.1, rotate: 5 }}>
-                <Blocks className="text-cyan-400" size={24} />
-              </motion.div>
-              <span className="text-cyan-500/60 text-[10px] font-bold uppercase tracking-[0.5em]">Fundamento Técnico</span>
-            </div>
-          </motion.div>
-
-          <h1 className="leading-[0.82] mb-10" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-            <motion.span className="block text-6xl md:text-[8rem] lg:text-[11rem] font-black tracking-tighter text-white" initial={{ opacity: 0, y: 60, filter: 'blur(12px)' }} animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }} transition={{ duration: 1, ease: APPLE_EASE, delay: 0.1 }}>
-              BLOCK
-            </motion.span>
-            <motion.span className="block text-6xl md:text-[8rem] lg:text-[11rem] font-black tracking-tighter" initial={{ opacity: 0, y: 60, filter: 'blur(12px)' }} animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }} transition={{ duration: 1, ease: APPLE_EASE, delay: 0.3 }}
-              style={{ background: 'linear-gradient(135deg, #38bdf8, #06b6d4, #22d3ee)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}
-            >
-              CHAIN
-            </motion.span>
-          </h1>
-
-          <motion.div className="max-w-2xl" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.6 }}>
-            <p className="text-stone-300 text-lg md:text-xl leading-relaxed mb-4">
-              A tecnologia Blockchain é um <span className="font-bold text-cyan-400">livro-razão público</span> que registra transações de moeda digital de forma confiável, transparente e imutável — sem intermediários, sem permissão, sem censura.
-            </p>
-            <p className="text-stone-600 text-sm leading-relaxed">
-              Não é "tecnologia do futuro". É a infraestrutura que já opera <span className="text-stone-400 font-semibold">24/7/365</span>, há mais de 16 anos — sem downtime, sem CEO e sem banco central. E suas utilizações vão muito além de fazer transações de forma segura e eficaz.
-            </p>
-          </motion.div>
-        </div>
-
-        <motion.div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-stone-600 z-10" initial={{ opacity: 0 }} animate={{ opacity: 0.6 }} transition={{ delay: 1.5 }}>
-          <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}>
-            <span className="text-[9px] uppercase tracking-[0.4em] font-bold block mb-1 text-center">Explorar</span>
-            <ChevronDown size={16} className="mx-auto" />
-          </motion.div>
-        </motion.div>
-      </section>
+      {/* ─── CINEMATIC HERO ─── */}
+      <CinematicHero
+        image="/heroes/blockchain.webp"
+        phase="Fundamento Técnico"
+        title={<>BLOCK<span className="text-cyan-400">CHAIN</span></>}
+        subtitle="A tecnologia Blockchain é um livro-razão público que registra transações de forma confiável, transparente e imutável — sem intermediários, sem permissão, sem censura. Funciona 24/7/365, há mais de 16 anos."
+        icon={Blocks}
+        accentColor="blue"
+        backLink="/educacao"
+        backLabel="Arsenal Técnico"
+      />
 
       {/* ═══════════════════════════════════════════════════════════════ */}
       {/* ══ CAP 01 — O Que a Blockchain Registra ══ */}

@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
-import { ArrowLeft, Zap, ShieldCheck, ArrowRight, CheckCircle2, Loader2, Copy, Check, ChevronDown, Shield, Lock } from "lucide-react";
+import { Zap, ShieldCheck, ArrowRight, CheckCircle2, Loader2, Copy, Check, Shield, Lock } from "lucide-react";
 import { Link } from "react-router-dom";
+import CinematicHero from '@/components/CinematicHero';
+import ScrollToTop from '@/components/ScrollToTop';
 
 const APPLE_EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
@@ -87,6 +89,8 @@ const Gateway = () => {
         <link rel="canonical" href="https://lordjunnior.com.br/saida/gateway" />
       </Helmet>
 
+      <ScrollToTop />
+
       {/* Scroll Progress */}
       <motion.div
         className="fixed top-0 left-0 right-0 h-[2px] z-50 origin-left"
@@ -94,50 +98,24 @@ const Gateway = () => {
       />
 
       {/* Film grain */}
-      <div className="pointer-events-none fixed inset-0 z-50 opacity-[0.035]">
-        <svg className="w-full h-full">
-          <filter id="grain-gw"><feTurbulence baseFrequency="0.85" numOctaves="4" stitchTiles="stitch" /><feColorMatrix type="saturate" values="0" /></filter>
-          <rect width="100%" height="100%" filter="url(#grain-gw)" />
-        </svg>
+      <div className="fixed inset-0 pointer-events-none z-[1]">
+        <div className="absolute inset-0 opacity-[0.035]"
+          style={{ backgroundImage: "url('data:image/svg+xml,%3Csvg viewBox=\"0 0 256 256\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cfilter id=\"n\"%3E%3CfeTurbulence type=\"fractalNoise\" baseFrequency=\"0.85\" numOctaves=\"4\" stitchTiles=\"stitch\"/%3E%3C/filter%3E%3Crect width=\"100%25\" height=\"100%25\" filter=\"url(%23n)\"/%3E%3C/svg%3E')", backgroundSize: '128px 128px' }} />
+        <div className="absolute inset-0 opacity-[0.02]"
+          style={{ background: 'linear-gradient(125deg, transparent 30%, rgba(245,158,11,0.06) 50%, transparent 70%)' }} />
       </div>
 
-      {/* Light beams */}
-      <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
-        <div className="absolute inset-0 bg-[linear-gradient(120deg,transparent_40%,hsl(0_0%_100%/0.012)_50%,transparent_60%)]" />
-        <div className="absolute inset-0 bg-[linear-gradient(240deg,transparent_35%,hsl(40_92%_56%/0.008)_48%,transparent_55%)]" />
-      </div>
-
-      {/* ═══ HERO ═══ */}
-      <section className="relative z-10 pt-24 pb-16 px-6 md:px-16 lg:px-24">
-        <Link
-          to="/saida"
-          className="inline-flex items-center gap-2 text-stone-600 hover:text-amber-400 text-xs font-bold uppercase tracking-[0.2em] transition-colors mb-10"
-        >
-          <ArrowLeft size={14} /> Estratégias de Saída
-        </Link>
-
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: APPLE_EASE }}
-        >
-          <div className="flex items-center gap-3 mb-6">
-            <div className="p-3.5 bg-amber-500/10 border border-amber-500/20 rounded-2xl">
-              <Zap className="text-amber-400" size={24} />
-            </div>
-            <span className="text-amber-500/60 text-[10px] font-bold uppercase tracking-[0.5em]">
-              Gateway Descentralizado
-            </span>
-          </div>
-
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter text-white mb-4 leading-[0.9]" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-            PIX via <span style={{ color: '#f59e0b' }}>Bitcoin</span>
-          </h1>
-          <p className="text-stone-400 text-lg md:text-xl leading-relaxed max-w-2xl">
-            Liquidez em qualquer balcão do Brasil, sem pedir permissão a gerente de banco.
-          </p>
-        </motion.div>
-      </section>
+      {/* ═══ CINEMATIC HERO ═══ */}
+      <CinematicHero
+        image="/heroes/economia-paralela.webp"
+        phase="Gateway Descentralizado"
+        title={<>PIX via <span style={{ color: '#f59e0b' }}>Bitcoin</span></>}
+        subtitle="Liquidez em qualquer balcão do Brasil, sem pedir permissão a gerente de banco. Conversão instantânea via Lightning Network com taxa de ~1 satoshi."
+        icon={Zap}
+        accentColor="amber"
+        backLink="/saida"
+        backLabel="Estratégias de Saída"
+      />
 
       {/* ═══ MAIN CONTENT ═══ */}
       <section className="relative z-10 pb-20 px-6 md:px-16 lg:px-24">
