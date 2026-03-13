@@ -74,8 +74,11 @@ export default function Candlestick() {
         <meta name="keywords" content="candlestick, gráfico de vela, análise técnica, bitcoin trading, padrões candlestick, média móvel, RSI, IFR, como ler gráficos" />
       </Helmet>
 
+      <ScrollToTop />
+
       <motion.div className="fixed top-0 left-0 right-0 h-[2px] z-50 origin-left" style={{ width: pw, background: 'linear-gradient(90deg, #34d399, #10b981)' }} />
 
+      {/* VFX Stack */}
       <div className="fixed inset-0 pointer-events-none z-0">
         <motion.div className="absolute top-[-10%] right-[-10%] w-[800px] h-[800px] rounded-full" style={{ background: 'radial-gradient(circle, rgba(52,211,153,0.06) 0%, transparent 60%)', x: sx, y: sy }} />
         <motion.div className="absolute bottom-[5%] left-[-5%] w-[600px] h-[600px] rounded-full" style={{ background: 'radial-gradient(circle, rgba(239,68,68,0.04) 0%, transparent 60%)', x: useTransform(sx, v => -v * 0.5), y: useTransform(sy, v => -v * 0.5) }} />
@@ -83,56 +86,17 @@ export default function Candlestick() {
         <div className="absolute inset-0 bg-[linear-gradient(120deg,transparent_40%,hsl(0_0%_100%/0.015)_50%,transparent_60%)]" />
       </div>
 
-      {/* ══ HERO ══ */}
-      <section className="relative z-10 min-h-screen flex flex-col justify-center px-6 md:px-16 lg:px-24">
-        <motion.div className="absolute inset-0 z-0" style={{ y: useTransform(scrollYProgress, [0, 0.3], [0, 120]) }}>
-          <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('/heroes/candlestick.webp')`, filter: 'brightness(0.30) saturate(0.7)' }} />
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(5,8,8,0.2) 0%, rgba(5,8,8,0.55) 40%, rgba(5,8,8,0.92) 75%, rgba(5,8,8,1) 100%)' }} />
-          <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse 120% 100% at 50% 40%, transparent 40%, rgba(5,8,8,0.85) 100%)' }} />
-        </motion.div>
-
-        <nav className="absolute top-6 left-6 md:left-16 flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] z-20">
-          <Link to="/educacao" className="text-stone-600 hover:text-emerald-400 transition-colors flex items-center gap-2"><ArrowLeft size={12} /> Arsenal Técnico</Link>
-          <span className="text-stone-700">/</span>
-          <span className="text-emerald-400">Candlestick</span>
-        </nav>
-
-        <div className="max-w-5xl relative z-10">
-          <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, ease: APPLE_EASE }} className="mb-6">
-            <div className="flex items-center gap-3 mb-6">
-              <motion.div className="p-3.5 bg-emerald-500/10 border border-emerald-500/20 rounded-2xl" whileHover={{ scale: 1.1, rotate: 5 }}>
-                <CandlestickChart className="text-emerald-400" size={24} />
-              </motion.div>
-              <span className="text-emerald-500/60 text-[10px] font-bold uppercase tracking-[0.5em]">Análise Técnica Fundamental</span>
-            </div>
-          </motion.div>
-
-          <h1 className="leading-[0.85] mb-8" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-            <motion.span className="block text-6xl md:text-[8rem] lg:text-[10rem] font-black tracking-tighter text-white" initial={{ opacity: 0, y: 60, filter: 'blur(12px)' }} animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }} transition={{ duration: 1, ease: APPLE_EASE, delay: 0.1 }}>
-              CANDLE
-            </motion.span>
-            <motion.span className="block text-6xl md:text-[8rem] lg:text-[10rem] font-black tracking-tighter text-emerald-400" initial={{ opacity: 0, y: 60, filter: 'blur(12px)' }} animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }} transition={{ duration: 1, ease: APPLE_EASE, delay: 0.3 }}>
-              STICK
-            </motion.span>
-          </h1>
-
-          <motion.div className="max-w-2xl" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.6 }}>
-            <p className="text-stone-400 text-lg md:text-xl leading-relaxed mb-4">
-              A <span className="font-bold text-emerald-400">linguagem visual do mercado</span>. Uma das primeiras coisas que você encontra ao abrir qualquer plataforma de trade — e embora pareça assustador ao primeiro olhar, carrega informações muito mais completas que um simples gráfico de linha.
-            </p>
-            <p className="text-stone-600 text-sm leading-relaxed">
-              Inventado no <span className="text-stone-300 font-semibold">Japão do século XVIII</span> por comerciantes de arroz. Mais de 300 anos depois, continua sendo a ferramenta mais eficaz para ler a psicologia do mercado — seja Bitcoin, ações, dólar ou qualquer ativo.
-            </p>
-          </motion.div>
-        </div>
-
-        <motion.div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-stone-600 z-10" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.5 }}>
-          <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}>
-            <span className="text-[9px] uppercase tracking-[0.4em] font-bold block mb-1 text-center">Explorar</span>
-            <ChevronDown size={16} className="mx-auto" />
-          </motion.div>
-        </motion.div>
-      </section>
+      {/* ─── CINEMATIC HERO ─── */}
+      <CinematicHero
+        image="/heroes/candlestick.webp"
+        phase="Análise Técnica Fundamental"
+        title={<>CANDLE<span className="text-emerald-400">STICK</span></>}
+        subtitle="A linguagem visual do mercado. Inventada no Japão do século XVIII por comerciantes de arroz, continua sendo a ferramenta mais eficaz para ler a psicologia do mercado — seja Bitcoin, ações ou qualquer ativo."
+        icon={CandlestickChart}
+        accentColor="emerald"
+        backLink="/educacao"
+        backLabel="Arsenal Técnico"
+      />
 
       {/* ══ DISCLAIMER DE AUTOCUSTÓDIA ══ */}
       <section className="relative z-10 py-12 md:py-16">
