@@ -1,8 +1,10 @@
 import React, { useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
-import { ArrowLeft, ArrowRight, Swords, AlertTriangle, ShieldCheck, Skull, Crown, ChevronDown, Users, Lock, Cpu, Globe, Banknote, Flame, Shield } from 'lucide-react';
+import { ArrowRight, Swords, AlertTriangle, ShieldCheck, Skull, Crown, ChevronDown, Users, Lock, Cpu, Globe, Banknote, Flame, Shield } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
+import CinematicHero from '@/components/CinematicHero';
+import ScrollToTop from '@/components/ScrollToTop';
 import bitcoinVsAltcoinsImg from '@/assets/bitcoin-vs-altcoins-xadrez.jpg';
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
