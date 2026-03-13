@@ -1,8 +1,10 @@
 import React, { useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
-import { ArrowLeft, ArrowRight, CandlestickChart, TrendingUp, TrendingDown, Eye, Brain, AlertTriangle, ChevronDown, Target, BarChart3, Shield, Info, Activity, LineChart, Gauge, BookOpen } from 'lucide-react';
+import { ArrowRight, CandlestickChart, TrendingUp, TrendingDown, Eye, Brain, AlertTriangle, ChevronDown, Target, BarChart3, Shield, Info, Activity, LineChart, Gauge, BookOpen } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
+import CinematicHero from '@/components/CinematicHero';
+import ScrollToTop from '@/components/ScrollToTop';
 import candlestickAnatomiaImg from '@/assets/candlestick-anatomia.jpg';
 import candlestickPadroesImg from '@/assets/candlestick-padroes.jpg';
 
