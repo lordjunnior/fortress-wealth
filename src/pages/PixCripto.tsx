@@ -1,116 +1,64 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, useInView } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
+import { motion, useMotionValue, useSpring, useInView, AnimatePresence } from 'framer-motion';
 import {
-  ArrowLeft, Zap, ArrowRight, ShieldCheck,
-  Smartphone, QrCode, RefreshCcw, ChevronDown
+  ArrowRight, ArrowLeft, Zap, Smartphone, ShieldCheck,
+  QrCode, RefreshCcw, ChevronDown, Copy, Check, X
 } from 'lucide-react';
 import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
+  Accordion, AccordionContent, AccordionItem, AccordionTrigger,
 } from "@/components/ui/accordion";
+import CinematicHero from '@/components/CinematicHero';
+import ScrollToTop from '@/components/ScrollToTop';
 import qrCodeLightning from '@/assets/qrcode-lightning.jpeg';
 import pixCritoHero from '@/assets/pix-cripto-hero.jpg';
 import pixCritoTutorial from '@/assets/pix-cripto-tutorial.jpg';
 
+/* ─── CONSTANTS ─── */
+const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
+const BG_DARK = '#050808';
+const BG_ALT = '#070b0b';
+
+/* ─── ANIMATIONS ─── */
 const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: (i: number = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
+  hidden: { opacity: 0, y: 30, filter: 'blur(6px)' },
+  visible: (i: number) => ({
+    opacity: 1, y: 0, filter: 'blur(0px)',
+    transition: { duration: 0.7, ease: APPLE_EASE, delay: i * 0.12 },
   }),
 };
 
-/* Card que "respira" — hover leve, borda reage */
-const BreathingCard: React.FC<{
-  children: React.ReactNode;
-  className?: string;
-  delay?: number;
-}> = ({ children, className = '', delay = 0 }) => (
-  <motion.div
-    variants={fadeUp}
-    initial="hidden"
-    whileInView="visible"
-    viewport={{ once: true }}
-    custom={delay}
-    whileHover={{
-      y: -6,
-      scale: 1.015,
-      borderColor: 'hsl(40 92% 56% / 0.3)',
-      boxShadow: '0 8px 40px hsl(40 92% 56% / 0.06)',
-      transition: { duration: 0.3, ease: 'easeOut' },
-    }}
-    className={`bg-card border border-border rounded-2xl transition-colors duration-500 ${className}`}
-  >
-    {children}
-  </motion.div>
-);
-
-/* Card que "grita" — pulso na borda, brilho persistente, hover agressivo */
-const ScreamingCard: React.FC<{
-  children: React.ReactNode;
-  className?: string;
-  delay?: number;
-  color?: 'destructive' | 'gold';
-}> = ({ children, className = '', delay = 0, color = 'destructive' }) => {
-  const borderColor = color === 'destructive' ? 'hsl(0 72% 51% / 0.4)' : 'hsl(40 92% 56% / 0.4)';
-  const glowColor = color === 'destructive' ? 'hsl(0 72% 51% / 0.12)' : 'hsl(40 92% 56% / 0.12)';
-  const hoverGlow = color === 'destructive' ? 'hsl(0 72% 51% / 0.2)' : 'hsl(40 92% 56% / 0.2)';
-  const hoverBorder = color === 'destructive' ? 'hsl(0 72% 51% / 0.7)' : 'hsl(40 92% 56% / 0.7)';
-
-  return (
-    <motion.div
-      variants={fadeUp}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
-      custom={delay}
-      animate={{
-        boxShadow: [
-          `0 0 0px ${glowColor}, inset 0 0 0px transparent`,
-          `0 0 30px ${glowColor}, inset 0 1px 0 ${glowColor}`,
-          `0 0 0px ${glowColor}, inset 0 0 0px transparent`,
-        ],
-        borderColor: [
-          borderColor,
-          hoverBorder,
-          borderColor,
-        ],
-      }}
-      transition={{
-        duration: 3,
-        repeat: Infinity,
-        ease: 'easeInOut',
-      }}
-      whileHover={{
-        y: -8,
-        scale: 1.025,
-        boxShadow: `0 12px 50px ${hoverGlow}`,
-        borderColor: hoverBorder,
-        transition: { duration: 0.25, ease: 'easeOut' },
-      }}
-      className={`bg-card border rounded-2xl relative overflow-hidden ${className}`}
-    >
-      {/* Subtle shimmer line at top */}
-      <motion.div
-        className="absolute top-0 left-0 right-0 h-px"
-        style={{
-          background: color === 'destructive'
-            ? 'linear-gradient(90deg, transparent, hsl(0 72% 51% / 0.5), transparent)'
-            : 'linear-gradient(90deg, transparent, hsl(40 92% 56% / 0.5), transparent)',
-        }}
-        animate={{ opacity: [0.3, 1, 0.3] }}
-        transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-      />
-      {children}
-    </motion.div>
-  );
+const scaleIn = {
+  hidden: { opacity: 0, scale: 0.92, filter: 'blur(8px)' },
+  visible: (i: number) => ({
+    opacity: 1, scale: 1, filter: 'blur(0px)',
+    transition: { duration: 0.8, ease: APPLE_EASE, delay: i * 0.15 },
+  }),
 };
 
+/* ─── MOUSE PARALLAX ─── */
+function useMouseParallax(strength = 15) {
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const springX = useSpring(mouseX, { stiffness: 50, damping: 20 });
+  const springY = useSpring(mouseY, { stiffness: 50, damping: 20 });
+  const handleMouse = useCallback((e: MouseEvent) => {
+    const cx = window.innerWidth / 2;
+    const cy = window.innerHeight / 2;
+    mouseX.set(((e.clientX - cx) / cx) * strength);
+    mouseY.set(((e.clientY - cy) / cy) * strength);
+  }, [mouseX, mouseY, strength]);
+  useEffect(() => {
+    window.addEventListener('mousemove', handleMouse);
+    return () => window.removeEventListener('mousemove', handleMouse);
+  }, [handleMouse]);
+  return { springX, springY };
+}
+
 const PixCripto: React.FC = () => {
+  const { springX, springY } = useMouseParallax(8);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const [brlValue, setBrlValue] = useState<string>('350.00');
   const [pixKey, setPixKey] = useState<string>('');
   const [isProcessing, setIsProcessing] = useState(false);
@@ -119,6 +67,17 @@ const PixCripto: React.FC = () => {
 
   const BRL_TO_SATS_RATE = 285.71;
   const satsValue = Math.floor(Number(brlValue) * BRL_TO_SATS_RATE);
+
+  useEffect(() => { window.scrollTo(0, 0); }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const total = document.documentElement.scrollHeight - window.innerHeight;
+      setScrollProgress(total > 0 ? Math.min((window.scrollY / total) * 100, 100) : 0);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleSimulate = () => {
     if (!brlValue || !pixKey) return;
@@ -131,548 +90,416 @@ const PixCripto: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background pt-28 pb-0 px-4 font-sans relative overflow-hidden">
+    <div className="min-h-screen text-stone-100 font-sans selection:bg-amber-400/50 relative overflow-hidden"
+      style={{ background: BG_DARK }}>
 
-      {/* Electric/Zap Particles */}
-      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-35">
-        <div className="zap-layer"></div>
-        <div className="zap-layer zap-layer-2"></div>
+      <Helmet>
+        <title>PIX via Bitcoin — Guia Completo de Conversão Cripto→PIX | Lord Junnior</title>
+        <meta name="description" content="Aprenda a pagar PIX com Bitcoin, USDT e Ethereum. Guia completo com passo a passo, riscos, segurança e simulador interativo." />
+      </Helmet>
+
+      <ScrollToTop />
+
+      {/* ─── READING PROGRESS BAR ─── */}
+      <div className="fixed top-0 left-0 right-0 z-50 h-[3px]">
+        <div className="h-full transition-all duration-150 ease-out"
+          style={{ width: `${scrollProgress}%`, background: 'linear-gradient(90deg, #d4af37, #f59e0b)' }} />
       </div>
+
+      {/* ─── FILM GRAIN + LIGHT BEAMS ─── */}
+      <div className="fixed inset-0 pointer-events-none z-[1]">
+        <div className="absolute inset-0 opacity-[0.035]"
+          style={{ backgroundImage: "url('data:image/svg+xml,%3Csvg viewBox=\"0 0 256 256\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cfilter id=\"n\"%3E%3CfeTurbulence type=\"fractalNoise\" baseFrequency=\"0.9\" numOctaves=\"4\" stitchTiles=\"stitch\"/%3E%3C/filter%3E%3Crect width=\"100%25\" height=\"100%25\" filter=\"url(%23n)\"/%3E%3C/svg%3E')", backgroundSize: '128px 128px' }} />
+        <div className="absolute inset-0 opacity-[0.02]"
+          style={{ background: 'linear-gradient(125deg, transparent 30%, rgba(234,179,8,0.06) 50%, transparent 70%)' }} />
+      </div>
+
+      {/* ─── REACTIVE ORBS ─── */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-        <div className="zap-flash zap-flash-1"></div>
-        <div className="zap-flash zap-flash-2"></div>
-        <div className="zap-flash zap-flash-3"></div>
+        <motion.div style={{ x: springX, y: springY }}
+          className="absolute top-[15%] left-[10%] w-[500px] h-[500px] rounded-full opacity-[0.04]"
+          animate={{ scale: [1, 1.1, 1] }}
+          transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}>
+          <div className="w-full h-full rounded-full bg-gradient-radial from-amber-500/30 to-transparent blur-3xl" />
+        </motion.div>
+        <motion.div style={{ x: springY, y: springX }}
+          className="absolute bottom-[20%] right-[10%] w-[400px] h-[400px] rounded-full opacity-[0.03]"
+          animate={{ scale: [1.1, 1, 1.1] }}
+          transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut' }}>
+          <div className="w-full h-full rounded-full bg-gradient-radial from-yellow-500/20 to-transparent blur-3xl" />
+        </motion.div>
       </div>
-      <style>{`
-        @keyframes driftZap {
-          0% { transform: translateY(0) translateX(0); }
-          100% { transform: translateY(-1000px) translateX(50px); }
-        }
-        @keyframes flashZap {
-          0%, 90%, 100% { opacity: 0; }
-          92%, 96% { opacity: 0.12; }
-          94% { opacity: 0; }
-        }
-        .zap-layer {
-          position: absolute; width: 100%; height: 200%;
-          background-image:
-            radial-gradient(2px 2px at 12% 18%, rgba(234,179,8,0.35) 100%, transparent),
-            radial-gradient(1px 1px at 32% 52%, rgba(255,255,255,0.15) 100%, transparent),
-            radial-gradient(1.5px 1.5px at 58% 38%, rgba(234,179,8,0.25) 100%, transparent),
-            radial-gradient(1px 1px at 78% 68%, rgba(255,255,255,0.1) 100%, transparent),
-            radial-gradient(2px 2px at 95% 22%, rgba(234,179,8,0.2) 100%, transparent);
-          background-size: 230px 230px;
-          animation: driftZap 55s linear infinite;
-        }
-        .zap-layer-2 {
-          background-size: 320px 320px;
-          animation: driftZap 78s linear infinite reverse;
-          opacity: 0.5;
-        }
-        .zap-flash {
-          position: absolute; width: 1px; 
-          background: linear-gradient(180deg, transparent, rgba(234,179,8,0.4), transparent);
-          animation: flashZap 4s ease-in-out infinite;
-        }
-        .zap-flash-1 { left: 25%; top: 10%; height: 80px; animation-delay: 0s; }
-        .zap-flash-2 { left: 60%; top: 30%; height: 60px; animation-delay: 1.5s; }
-        .zap-flash-3 { left: 82%; top: 55%; height: 50px; animation-delay: 3s; }
-      `}</style>
 
-      <div className="max-w-6xl mx-auto relative z-10">
+      {/* ─── CINEMATIC HERO ─── */}
+      <CinematicHero
+        image={pixCritoHero}
+        phase="Estratégia de Saída"
+        title="PIX via Bitcoin"
+        subtitle="Mantenha seu capital em Bitcoin e converta para PIX apenas no segundo exato do pagamento. Liquidez em qualquer balcão do Brasil, sem pedir permissão."
+        icon={Zap}
+        accentColor="amber"
+        backLink="/ferramentas"
+        backLabel="Arsenal"
+      />
 
-        <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}>
-          <Link to="/ferramentas" className="text-muted-foreground hover:text-gold flex items-center gap-2 text-xs uppercase tracking-widest transition-colors w-fit mb-12">
-            <ArrowLeft className="w-4 h-4" /> Voltar ao Arsenal
-          </Link>
-        </motion.div>
+      {/* ─── MAIN CONTENT ─── */}
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 lg:px-16 pt-16 pb-32">
 
-        {/* ═══════════════════════════════════════════════════════════ */}
-        {/* SEÇÃO 1: Hero Image + Argumentação */}
-        {/* ═══════════════════════════════════════════════════════════ */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          className="rounded-2xl overflow-hidden border border-border mb-16"
-        >
-          <img src={pixCritoHero} alt="PIX via Bitcoin" className="w-full h-auto object-cover" />
-        </motion.div>
-
-        <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }} className="max-w-4xl mx-auto space-y-8 mb-8">
-          <div>
-            <span className="text-[10px] text-gold uppercase tracking-widest font-bold border border-gold/20 px-3 py-1 rounded-full bg-gold/5 mb-6 inline-block">
-              Estratégia de Saída
-            </span>
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6 leading-tight">
-              O Fim da Desculpa:<br /><span className="text-gold">PIX via Bitcoin</span>
-            </h1>
-          </div>
-          <div className="space-y-6 text-muted-foreground leading-relaxed text-lg">
-            <p>A maior mentira que te contaram é que o Bitcoin é "difícil de usar" ou "apenas para o futuro". Essa narrativa serve exclusivamente para te manter dentro do curral bancário.</p>
-            <p>Aprenda a manter seu capital em Bitcoin — <strong className="text-foreground">inalcançável por bloqueios judiciais e confiscos</strong> — e converta para PIX apenas no segundo exato do pagamento, usando gateways descentralizados.</p>
-            <div className="p-6 border-l-2 border-gold bg-gold/5 text-foreground font-medium text-xl">
-              Liquidez em qualquer balcão do Brasil, sem pedir permissão a gerente de banco.
-            </div>
-          </div>
-          <div className="pt-8 border-t border-border">
-            <h3 className="text-foreground font-bold mb-4 uppercase text-xs tracking-widest">Aplicações Práticas</h3>
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <li className="flex gap-3 bg-card p-4 rounded-xl border border-border">
-                <Smartphone className="w-5 h-5 text-gold shrink-0" />
-                <span className="text-sm text-muted-foreground">Pagamento de contas do dia a dia.</span>
-              </li>
-              <li className="flex gap-3 bg-card p-4 rounded-xl border border-border">
-                <ShieldCheck className="w-5 h-5 text-gold shrink-0" />
-                <span className="text-sm text-muted-foreground">Fuga de bloqueios do BacenJud.</span>
-              </li>
-            </ul>
-          </div>
-        </motion.div>
-
-        <div className="w-full h-px bg-border my-24" />
-
-        {/* ═══════════════════════════════════════════════════════════ */}
-        {/* GUIA COMPLETO — HERO */}
-        {/* ═══════════════════════════════════════════════════════════ */}
-        <AnimatedSection>
-          <div className="text-center max-w-3xl mx-auto space-y-6">
-            <p className="text-[10px] text-gold uppercase tracking-[0.3em] font-bold">Guia completo · Brasil · PIX + Cripto</p>
-            <h2 className="text-3xl md:text-5xl font-bold text-foreground leading-tight">
-              Como Fazer e RECEBER PIX com Criptomoedas no Brasil{' '}
-              <span className="text-muted-foreground">(Bitcoin, USDT, Ethereum)</span> — Guia Completo
+        {/* ═══════════════════════════════════════════════════════
+            CAPÍTULO 01 — COMO FUNCIONA
+        ═══════════════════════════════════════════════════════ */}
+        <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }}
+          className="mb-28">
+          <motion.div variants={fadeUp} custom={0} className="mb-10">
+            <span className="text-[10px] font-bold tracking-[0.5em] uppercase text-amber-500/60">Capítulo 01</span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white mt-2"
+              style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+              Como Funciona (De Verdade)
             </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Após muitos pedidos de implementação do PIX dentro do ecossistema cripto, criamos esta página para mostrar o que de fato acontece "por trás" e como usar com clareza e segurança.
-            </p>
-            <div className="p-6 border-l-2 border-gold bg-gold/5 text-foreground text-lg text-left">
-              A ideia é simples: você paga com cripto, o outro lado recebe um PIX comum em reais — sem precisar saber nada sobre cripto.
-            </div>
-            <div className="flex flex-wrap justify-center gap-3 pt-4">
-              <a href="#passo-a-passo" className="px-6 py-3 bg-gold text-background font-bold rounded-lg text-sm hover:brightness-110 transition-all">Ver passo a passo agora</a>
-              <a href="#como-funciona" className="px-6 py-3 bg-card border border-border text-foreground font-bold rounded-lg text-sm hover:border-gold/50 transition-all">Entender como funciona</a>
-              <a href="#apoiar" className="px-6 py-3 bg-card border border-border text-gold font-bold rounded-lg text-sm hover:border-gold/50 transition-all">Apoiar com Lightning</a>
-            </div>
-            <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 pt-6 text-xs text-muted-foreground font-mono uppercase tracking-wider">
-              <span>Sem cadastro aqui</span><span>Sem promessa</span><span>Sem recomendação de investimento</span><span>Didático + direto</span>
-            </div>
-          </div>
-        </AnimatedSection>
+          </motion.div>
 
-        <div className="w-full h-px bg-border my-20" />
+          <motion.div variants={scaleIn} custom={1}
+            className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-8 md:p-12 relative overflow-hidden
+                       hover:border-amber-500/15 transition-all duration-500">
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-amber-500/30 to-transparent" />
+            <div className="space-y-6 text-stone-400 leading-relaxed">
+              <p>A maior mentira que te contaram é que o Bitcoin é "difícil de usar". Essa narrativa serve exclusivamente para te manter dentro do curral bancário.</p>
+              <p>O que essas plataformas fazem é simples: usam seu saldo em criptomoedas e, no momento do pagamento, convertem automaticamente para reais. O recebedor recebe um PIX normal.</p>
+              <div className="border-l-2 border-amber-500/40 pl-6 py-3 bg-amber-500/[0.03] rounded-r-xl">
+                <p className="text-white text-lg font-medium">Cripto → Conversão → Real → PIX. Liquidez instantânea.</p>
+              </div>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
+              <div className="flex gap-3 bg-white/[0.02] border border-white/[0.05] p-4 rounded-xl">
+                <Smartphone size={18} className="text-amber-400 shrink-0 mt-0.5" />
+                <span className="text-sm text-stone-400">Pagamento de contas do dia a dia.</span>
+              </div>
+              <div className="flex gap-3 bg-white/[0.02] border border-white/[0.05] p-4 rounded-xl">
+                <ShieldCheck size={18} className="text-amber-400 shrink-0 mt-0.5" />
+                <span className="text-sm text-stone-400">Fuga de bloqueios do BacenJud.</span>
+              </div>
+            </div>
+          </motion.div>
+        </motion.section>
 
-        {/* ═══════════════════════════════════════════════════════════ */}
-        {/* O QUE VOCÊ VAI APRENDER — cards que respiram */}
-        {/* ═══════════════════════════════════════════════════════════ */}
-        <AnimatedSection>
-          <div className="text-center mb-12">
-            <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4">O que você vai aprender</h3>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Um tutorial objetivo, com autoridade, sem hype. Você vai entender: conversão automática, como pagar, como receber, e os riscos.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-amber-500/20 to-transparent mb-28" />
+
+        {/* ═══════════════════════════════════════════════════════
+            CAPÍTULO 02 — PASSO A PASSO
+        ═══════════════════════════════════════════════════════ */}
+        <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }}
+          className="mb-28" id="passo-a-passo">
+          <motion.div variants={fadeUp} custom={0} className="mb-10">
+            <span className="text-[10px] font-bold tracking-[0.5em] uppercase text-amber-500/60">Capítulo 02</span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white mt-2"
+              style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+              Passo a Passo Objetivo
+            </h2>
+          </motion.div>
+
+          {/* Tutorial image */}
+          <motion.div variants={scaleIn} custom={0}
+            className="rounded-2xl overflow-hidden border border-white/[0.06] mb-12">
+            <img src={pixCritoTutorial} alt="Tutorial PIX com Cripto" className="w-full h-auto object-cover" />
+          </motion.div>
+
+          <div className="max-w-3xl space-y-0">
             {[
-              { num: '1', title: 'Como funciona (de verdade)', desc: 'Cripto → conversão → real → PIX.' },
-              { num: '2', title: 'Como fazer o PIX com cripto', desc: 'QR Code / chave PIX, igual banco.' },
-              { num: '3', title: 'Riscos & segurança', desc: 'Custódia, KYC, travas e dependências.' },
+              { step: '01', title: 'Abra o app da plataforma', desc: 'Entre na área de pagamento e procure o ícone/atalho do PIX (geralmente um leitor de QR Code).' },
+              { step: '02', title: 'Escaneie o QR Code ou cole o código', desc: 'Você pode ler o QR Code do recebedor ou colar o "copia e cola" do PIX.' },
+              { step: '03', title: 'Escolha o "saldo" de pagamento', desc: 'Selecione qual cripto vai usar (BTC, USDT, ETH). A plataforma converte automaticamente para reais.' },
+              { step: '04', title: 'Confirme e finalize', desc: 'O recebedor recebe em reais via PIX. Para ele, é um PIX normal. Para você, foi cripto virando reais no ato.' },
             ].map((item, i) => (
-              <BreathingCard key={item.num} delay={i} className="p-8 text-center">
-                <motion.div
-                  className="w-12 h-12 rounded-full bg-gold/10 border border-gold/20 text-gold font-bold text-lg flex items-center justify-center mx-auto mb-5"
-                  animate={{ scale: [1, 1.08, 1], opacity: [0.8, 1, 0.8] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: i * 0.6 }}
-                >
-                  {item.num}
-                </motion.div>
-                <h4 className="text-foreground font-bold mb-2">{item.title}</h4>
-                <p className="text-sm text-muted-foreground">{item.desc}</p>
-              </BreathingCard>
+              <motion.div key={item.step} variants={fadeUp} custom={i}
+                className="flex gap-6 pb-10 relative group">
+                {i < 3 && <div className="absolute left-5 top-12 w-px h-[calc(100%-2rem)] bg-white/[0.06]" />}
+                <div className="w-10 h-10 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 font-mono font-bold text-sm flex items-center justify-center shrink-0 relative z-10 group-hover:bg-amber-500/20 group-hover:border-amber-500/40 transition-all duration-300">
+                  {item.step}
+                </div>
+                <div className="pt-1">
+                  <h5 className="text-white font-bold mb-1 group-hover:text-amber-400 transition-colors">{item.title}</h5>
+                  <p className="text-sm text-stone-500 leading-relaxed">{item.desc}</p>
+                </div>
+              </motion.div>
             ))}
           </div>
-        </AnimatedSection>
 
-        <div className="w-full h-px bg-border my-20" />
-
-        {/* ═══════════════════════════════════════════════════════════ */}
-        {/* PASSO A PASSO */}
-        {/* ═══════════════════════════════════════════════════════════ */}
-        <AnimatedSection id="passo-a-passo">
-          <div className="max-w-3xl mx-auto">
-            <p className="text-[10px] text-gold uppercase tracking-[0.3em] font-bold mb-4">Passo a passo</p>
-            <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Como fazer (passo a passo)</h3>
-            <p className="text-muted-foreground text-lg mb-8">
-              É parecido com o seu banco: escanear QR, colar código ou inserir chave PIX. A diferença é que você escolhe qual cripto vira reais.
+          {/* Dica estratégica */}
+          <motion.div variants={scaleIn} custom={2}
+            className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-8 mt-8 hover:border-amber-500/15 transition-all duration-500">
+            <h4 className="text-white font-bold mb-4" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Dica estratégica</h4>
+            <p className="text-stone-400 leading-relaxed mb-3">
+              Se quer <strong className="text-white">estabilidade</strong>, stablecoins (USDT) são mais previsíveis.
+              Se quer <strong className="text-white">diversificação</strong>, mantém parte em BTC/ETH mas aceita a volatilidade.
             </p>
-
-            {/* Tutorial image */}
-            <div className="rounded-2xl overflow-hidden border border-border mb-12">
-              <img src={pixCritoTutorial} alt="Tutorial PIX com Cripto" className="w-full h-auto object-cover" />
+            <div className="flex flex-wrap gap-3 pt-2">
+              <span className="px-4 py-2 bg-white/[0.03] border border-white/[0.06] rounded-lg text-sm text-stone-300">Estabilidade: stablecoins</span>
+              <span className="px-4 py-2 bg-white/[0.03] border border-white/[0.06] rounded-lg text-sm text-stone-300">Volatilidade: BTC/ETH</span>
             </div>
+          </motion.div>
+        </motion.section>
 
-            <h4 className="text-foreground font-bold uppercase text-xs tracking-widest mb-8">Passo a passo objetivo</h4>
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-red-500/20 to-transparent mb-28" />
 
-            <div className="space-y-0">
+        {/* ═══════════════════════════════════════════════════════
+            CAPÍTULO 03 — RISCOS & SEGURANÇA
+        ═══════════════════════════════════════════════════════ */}
+        <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }}
+          className="mb-28" id="riscos" style={{ background: BG_ALT, margin: '0 -1.5rem', padding: '4rem 1.5rem' }}>
+          <div className="max-w-7xl mx-auto">
+            <motion.div variants={fadeUp} custom={0} className="mb-10">
+              <span className="text-[10px] font-bold tracking-[0.5em] uppercase text-red-500/60">Capítulo 03</span>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white mt-2"
+                style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                Riscos & Segurança
+              </h2>
+              <p className="text-stone-500 mt-4 max-w-2xl">O que ninguém te fala. Aqui é onde você ganha autoridade.</p>
+            </motion.div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {[
-                { step: '01', title: 'Abra o app da plataforma', desc: 'Entre na área de pagamento e procure o ícone/atalho do PIX (geralmente um leitor de QR Code).' },
-                { step: '02', title: 'Escaneie o QR Code ou cole o código', desc: 'Você pode ler o QR Code do recebedor ou colar o "copia e cola" do PIX.' },
-                { step: '03', title: 'Escolha o "saldo" de pagamento', desc: 'Selecione qual cripto vai usar (BTC, USDT, ETH, etc.). A plataforma converte automaticamente para reais.' },
-                { step: '04', title: 'Confirme e finalize', desc: 'O recebedor recebe em reais via PIX. Para ele, é um PIX normal. Para você, foi cripto virando reais no ato.' },
+                {
+                  title: 'Custódia', color: 'red',
+                  desc: 'Para pagar PIX com cripto, quase sempre você precisa manter saldo numa plataforma. Saldo em exchange ≠ autocustódia.',
+                  footer: { label: 'Not your keys…', sub: '…not your money' },
+                },
+                {
+                  title: 'KYC / Regras', color: 'red',
+                  desc: 'Plataformas costumam exigir verificação e podem impor limites. Regras podem mudar sem aviso.',
+                  tags: ['Limites', 'Bloqueios', 'Mudanças de política'],
+                },
+                {
+                  title: 'Risco Regulatório', color: 'red',
+                  desc: 'O ambiente regulatório pode mudar. Isso afeta disponibilidade, taxas, limites e operações. Planeje com margem.',
+                  tags: ['Sem certezas', 'Tenha plano B'],
+                },
               ].map((item, i) => (
-                <motion.div
-                  key={item.step}
-                  variants={fadeUp}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                  custom={i}
-                  className="flex gap-6 pb-10 relative group"
-                >
-                  {i < 3 && <div className="absolute left-5 top-12 w-px h-[calc(100%-2rem)] bg-border" />}
-                  <motion.div
-                    className="w-10 h-10 rounded-full bg-gold/10 border border-gold/20 text-gold font-mono font-bold text-sm flex items-center justify-center shrink-0 relative z-10 transition-all duration-300 group-hover:bg-gold/20 group-hover:border-gold/40 group-hover:shadow-[0_0_20px_hsl(40_92%_56%/0.15)]"
-                  >
-                    {item.step}
-                  </motion.div>
-                  <div className="pt-1">
-                    <h5 className="text-foreground font-bold mb-1 transition-colors duration-300 group-hover:text-gold">{item.title}</h5>
-                    <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
-                  </div>
+                <motion.div key={item.title} variants={scaleIn} custom={i}
+                  className="bg-white/[0.03] border border-red-500/15 rounded-2xl p-8 relative overflow-hidden
+                             hover:border-red-500/30 hover:bg-red-500/[0.02] transition-all duration-500">
+                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-red-500/20 to-transparent" />
+                  <h4 className="text-white font-bold text-lg mb-4" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{item.title}</h4>
+                  <p className="text-sm text-stone-500 leading-relaxed mb-4">{item.desc}</p>
+                  {item.footer && (
+                    <div className="border-t border-red-500/10 pt-4">
+                      <p className="text-white font-bold text-sm">{item.footer.label}</p>
+                      <p className="text-red-400 text-sm font-medium">{item.footer.sub}</p>
+                    </div>
+                  )}
+                  {item.tags && (
+                    <div className="flex flex-wrap gap-2 pt-2">
+                      {item.tags.map(tag => (
+                        <span key={tag} className="px-3 py-1 bg-red-500/10 border border-red-500/15 rounded-md text-xs text-red-400">{tag}</span>
+                      ))}
+                    </div>
+                  )}
                 </motion.div>
               ))}
             </div>
 
-            {/* Dica estratégica — card que respira */}
-            <BreathingCard delay={0} className="p-8 mt-8 space-y-4">
-              <h4 className="text-foreground font-bold">Dica estratégica (sem hype)</h4>
-              <p className="text-muted-foreground leading-relaxed">
-                Se você quer <strong className="text-foreground">estabilidade</strong> para pagamentos do dia a dia, usar stablecoins (ex.: USDT) como saldo costuma ser mais previsível do que BTC/ETH.
-              </p>
-              <p className="text-muted-foreground leading-relaxed">
-                Se você quer <strong className="text-foreground">diversificação</strong>, mantém parte em BTC/ETH, mas entende que o preço varia.
-              </p>
-              <div className="flex flex-wrap gap-3 pt-2">
-                <span className="px-4 py-2 bg-background border border-border rounded-lg text-sm text-foreground font-medium">Estabilidade: stablecoins</span>
-                <span className="px-4 py-2 bg-background border border-border rounded-lg text-sm text-foreground font-medium">Volatilidade: BTC/ETH</span>
-                <span className="px-4 py-2 bg-background border border-border rounded-lg text-sm text-muted-foreground">Sem travas = depende da plataforma</span>
-              </div>
-            </BreathingCard>
-
-            {/* CTA intermediário — card que respira */}
-            <BreathingCard delay={1} className="p-8 mt-8 text-center space-y-4">
-              <h4 className="text-foreground font-bold text-lg">Quer ver isso na prática?</h4>
-              <p className="text-muted-foreground">
-                Você pode testar com valores pequenos para entender o fluxo e validar se faz sentido para sua rotina.
-              </p>
-              <div className="flex flex-wrap justify-center gap-3">
-                <a href="#riscos" className="px-6 py-3 bg-card border border-border text-foreground font-bold rounded-lg text-sm hover:border-gold/50 transition-all">Ver riscos antes</a>
-                <a href="#apoiar" className="px-6 py-3 bg-gold/10 border border-gold/20 text-gold font-bold rounded-lg text-sm hover:bg-gold/20 transition-all">Apoiar</a>
-              </div>
-            </BreathingCard>
-          </div>
-        </AnimatedSection>
-
-        <div className="w-full h-px bg-border my-20" />
-
-        {/* ═══════════════════════════════════════════════════════════ */}
-        {/* RISCOS & SEGURANÇA — cards que GRITAM */}
-        {/* ═══════════════════════════════════════════════════════════ */}
-        <AnimatedSection id="riscos">
-          <div className="max-w-4xl mx-auto">
-            <p className="text-[10px] text-gold uppercase tracking-[0.3em] font-bold mb-4">Riscos & segurança</p>
-            <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Riscos & segurança (o que ninguém te fala)</h3>
-            <p className="text-muted-foreground text-lg mb-12">
-              Se você quer parecer adulto e não "iniciante empolgado", você precisa saber isso. Aqui é onde você ganha autoridade.
-            </p>
-
-            <div className="grid md:grid-cols-3 gap-6">
-              {/* Custódia — GRITA */}
-              <ScreamingCard delay={0} color="destructive" className="p-8 space-y-4">
-                <h4 className="text-foreground font-bold text-lg">Custódia</h4>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  Para pagar PIX com cripto, quase sempre você precisa manter saldo numa plataforma.
-                </p>
-                <p className="text-sm text-muted-foreground">Saldo em exchange ≠ autocustódia.</p>
-                <div className="border-t border-destructive/20 pt-4 mt-4">
-                  <p className="text-foreground font-bold text-sm">Not your keys…</p>
-                  <p className="text-destructive text-sm font-medium">…not your money</p>
-                </div>
-              </ScreamingCard>
-
-              {/* KYC — GRITA */}
-              <ScreamingCard delay={1} color="destructive" className="p-8 space-y-4">
-                <h4 className="text-foreground font-bold text-lg">KYC / Regras</h4>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  Plataformas costumam exigir verificação e podem impor limites. Regras podem mudar sem aviso.
-                </p>
-                <div className="flex flex-wrap gap-2 pt-2">
-                  <span className="px-3 py-1 bg-destructive/10 border border-destructive/20 rounded-md text-xs text-destructive">Limites</span>
-                  <span className="px-3 py-1 bg-destructive/10 border border-destructive/20 rounded-md text-xs text-destructive">Bloqueios</span>
-                  <span className="px-3 py-1 bg-destructive/10 border border-destructive/20 rounded-md text-xs text-destructive">Mudanças de política</span>
-                </div>
-              </ScreamingCard>
-
-              {/* Risco regulatório — GRITA */}
-              <ScreamingCard delay={2} color="destructive" className="p-8 space-y-4">
-                <h4 className="text-foreground font-bold text-lg">Risco regulatório</h4>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  O ambiente regulatório pode mudar. Isso afeta disponibilidade, taxas, limites e operações.
-                </p>
-                <p className="text-sm text-muted-foreground">Planeje com margem.</p>
-                <div className="flex flex-wrap gap-2 pt-2">
-                  <span className="px-3 py-1 bg-destructive/10 border border-destructive/20 rounded-md text-xs text-destructive">Sem certezas</span>
-                  <span className="px-3 py-1 bg-destructive/10 border border-destructive/20 rounded-md text-xs text-destructive">Tenha plano B</span>
-                </div>
-              </ScreamingCard>
-            </div>
-
-            {/* Conclusão prática — grita com gold */}
-            <ScreamingCard delay={0} color="gold" className="mt-12 p-8">
-              <h4 className="text-foreground font-bold text-lg mb-3">Conclusão prática</h4>
-              <p className="text-muted-foreground leading-relaxed text-lg">
+            {/* Conclusão prática */}
+            <motion.div variants={scaleIn} custom={3}
+              className="bg-white/[0.03] border border-amber-500/15 rounded-2xl p-8 mt-8
+                         hover:border-amber-500/30 transition-all duration-500">
+              <h4 className="text-white font-bold text-lg mb-3" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Conclusão prática</h4>
+              <p className="text-stone-400 leading-relaxed text-lg">
                 Usar PIX com cripto é uma ponte útil para a realidade brasileira — mas não é substituto de soberania. Use como ferramenta, não como muleta.
               </p>
-            </ScreamingCard>
-
-            <div className="flex flex-wrap justify-center gap-3 mt-8">
-              <a href="#faq" className="px-6 py-3 bg-card border border-border text-foreground font-bold rounded-lg text-sm hover:border-gold/50 transition-all">Tirar dúvidas (FAQ)</a>
-              <a href="#apoiar" className="px-6 py-3 bg-gold/10 border border-gold/20 text-gold font-bold rounded-lg text-sm hover:bg-gold/20 transition-all">Manter gratuito</a>
-            </div>
+            </motion.div>
           </div>
-        </AnimatedSection>
+        </motion.section>
 
-        <div className="w-full h-px bg-border my-20" />
+        {/* ═══════════════════════════════════════════════════════
+            CAPÍTULO 04 — CLAREZA TÉCNICA
+        ═══════════════════════════════════════════════════════ */}
+        <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }}
+          className="mb-28" id="como-funciona">
+          <motion.div variants={fadeUp} custom={0} className="mb-10">
+            <span className="text-[10px] font-bold tracking-[0.5em] uppercase text-amber-500/60">Capítulo 04</span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white mt-2"
+              style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+              Clareza Técnica
+            </h2>
+          </motion.div>
 
-        {/* ═══════════════════════════════════════════════════════════ */}
-        {/* CLAREZA TÉCNICA — cards que respiram */}
-        {/* ═══════════════════════════════════════════════════════════ */}
-        <AnimatedSection id="como-funciona">
-          <div className="max-w-3xl mx-auto">
-            <p className="text-[10px] text-gold uppercase tracking-[0.3em] font-bold mb-4">Clareza técnica</p>
-            <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4">O que é (clareza técnica)</h3>
-            <p className="text-muted-foreground mb-8">Sem frases de marketing. Apenas o mecanismo real do PIX com cripto.</p>
-
-            <BreathingCard delay={0} className="p-8 space-y-6">
-              <h4 className="text-foreground font-bold text-lg">O que acontece quando você "faz PIX com cripto"?</h4>
-              <p className="text-muted-foreground leading-relaxed">
-                O que essas plataformas fazem é simples: usam seu saldo em criptomoedas e, no momento do pagamento, convertem automaticamente para reais.
-              </p>
-              <p className="text-muted-foreground leading-relaxed">
-                Do outro lado, o recebedor recebe um PIX normal na conta — e não precisa saber que você pagou com cripto.
-              </p>
-              <div className="flex flex-wrap gap-3 pt-2">
-                <span className="px-4 py-2 bg-background border border-gold/20 rounded-lg text-sm text-gold font-medium">Cripto → Real</span>
-                <span className="px-4 py-2 bg-background border border-border rounded-lg text-sm text-foreground">Liquidação instantânea</span>
-                <span className="px-4 py-2 bg-background border border-border rounded-lg text-sm text-foreground">Recebedor recebe BRL</span>
+          <div className="space-y-6 max-w-3xl">
+            <motion.div variants={scaleIn} custom={0}
+              className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-8 hover:border-amber-500/15 transition-all duration-500">
+              <h4 className="text-white font-bold text-lg mb-4" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>O que acontece quando você "faz PIX com cripto"?</h4>
+              <p className="text-stone-400 leading-relaxed mb-3">A plataforma usa seu saldo em criptomoedas e converte automaticamente para reais no momento do pagamento.</p>
+              <p className="text-stone-400 leading-relaxed">O recebedor recebe um PIX normal — e não precisa saber que você pagou com cripto.</p>
+              <div className="flex flex-wrap gap-3 pt-4">
+                <span className="px-4 py-2 bg-amber-500/10 border border-amber-500/20 rounded-lg text-sm text-amber-400 font-medium">Cripto → Real</span>
+                <span className="px-4 py-2 bg-white/[0.03] border border-white/[0.06] rounded-lg text-sm text-stone-300">Liquidação instantânea</span>
               </div>
-            </BreathingCard>
-
-            <BreathingCard delay={1} className="p-8 space-y-6 mt-6">
-              <h4 className="text-foreground font-bold text-lg">Por que isso importa?</h4>
-              <p className="text-muted-foreground leading-relaxed">
-                Porque isso reduz fricção. Em vez de "sacar" e esperar, você usa cripto como saldo e paga como se fosse banco.
-              </p>
-              <p className="text-muted-foreground leading-relaxed">
-                Mas atenção: isso quase sempre envolve custódia (saldo numa corretora) e regras da plataforma.
-              </p>
-              <div className="flex flex-wrap gap-3 pt-2">
-                <span className="px-4 py-2 bg-background border border-border rounded-lg text-sm text-foreground">Praticidade</span>
-                <span className="px-4 py-2 bg-background border border-border rounded-lg text-sm text-muted-foreground">Depende da plataforma</span>
-                <span className="px-4 py-2 bg-background border border-border rounded-lg text-sm text-muted-foreground">Não substitui autocustódia</span>
-              </div>
-            </BreathingCard>
+            </motion.div>
 
             {/* Plataforma revelável */}
-            <div className="mt-8">
-              <motion.button
-                onClick={() => setShowPlatform(!showPlatform)}
-                whileHover={{ scale: 1.01, borderColor: 'hsl(40 92% 56% / 0.4)' }}
-                whileTap={{ scale: 0.99 }}
-                className="w-full bg-card border border-border rounded-2xl p-6 text-left transition-all flex items-center justify-between"
-              >
-                <span className="text-foreground font-bold">Qual plataforma faz isso hoje? (clique para revelar)</span>
-                <ChevronDown className={`w-5 h-5 text-muted-foreground transition-transform duration-300 ${showPlatform ? 'rotate-180' : ''}`} />
-              </motion.button>
+            <motion.div variants={scaleIn} custom={1}>
+              <button onClick={() => setShowPlatform(!showPlatform)}
+                className="w-full bg-white/[0.03] border border-white/[0.06] rounded-2xl p-6 text-left transition-all flex items-center justify-between hover:border-amber-500/15">
+                <span className="text-white font-bold">Qual plataforma faz isso hoje? (clique para revelar)</span>
+                <ChevronDown className={`w-5 h-5 text-stone-500 transition-transform duration-300 ${showPlatform ? 'rotate-180' : ''}`} />
+              </button>
               {showPlatform && (
-                <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} className="bg-card border border-border border-t-0 rounded-b-2xl p-8 -mt-2">
-                  <p className="text-foreground font-bold text-lg mb-2">Bybit</p>
-                  <p className="text-muted-foreground leading-relaxed">
+                <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }}
+                  className="bg-white/[0.02] border border-white/[0.06] border-t-0 rounded-b-2xl p-8 -mt-2">
+                  <p className="text-white font-bold text-lg mb-2">Bybit</p>
+                  <p className="text-stone-400 leading-relaxed">
                     A Bybit oferece funcionalidade de pagamento via PIX usando saldo em criptomoedas. Verifique sempre as regras, limites e taxas diretamente no app antes de operar.
                   </p>
-                  <p className="text-xs text-muted-foreground/60 mt-4 font-mono">
+                  <p className="text-xs text-stone-600 mt-4 font-mono">
                     Isso não é recomendação. Pesquise, teste com valores pequenos, e tire suas próprias conclusões.
                   </p>
                 </motion.div>
               )}
-            </div>
+            </motion.div>
           </div>
-        </AnimatedSection>
+        </motion.section>
 
-        <div className="w-full h-px bg-border my-20" />
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-amber-500/20 to-transparent mb-28" />
 
-        {/* ═══════════════════════════════════════════════════════════ */}
-        {/* FAQ — items que respiram */}
-        {/* ═══════════════════════════════════════════════════════════ */}
-        <AnimatedSection id="faq">
-          <div className="max-w-3xl mx-auto">
-            <p className="text-[10px] text-gold uppercase tracking-[0.3em] font-bold mb-4">FAQ</p>
-            <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4">FAQ (respostas diretas)</h3>
-            <p className="text-muted-foreground mb-10">Perguntas que todo mundo faz — respondidas sem enrolação.</p>
+        {/* ═══════════════════════════════════════════════════════
+            CAPÍTULO 05 — FAQ
+        ═══════════════════════════════════════════════════════ */}
+        <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }}
+          className="mb-28" id="faq">
+          <motion.div variants={fadeUp} custom={0} className="mb-10">
+            <span className="text-[10px] font-bold tracking-[0.5em] uppercase text-amber-500/60">Capítulo 05</span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white mt-2"
+              style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+              FAQ (Respostas Diretas)
+            </h2>
+          </motion.div>
 
+          <div className="max-w-3xl">
             <Accordion type="single" collapsible className="space-y-3">
               {[
-                { q: 'Quem recebe o PIX precisa ter conta em cripto?', a: 'Não. O recebedor recebe um PIX normal em reais. Ele não precisa saber que você usou criptomoedas para pagar. Para ele, é um PIX comum.' },
-                { q: 'Eu pago em BTC/USDT/ETH e a pessoa recebe em reais?', a: 'Sim. A plataforma converte automaticamente o saldo da cripto escolhida para reais no momento do pagamento. O recebedor recebe BRL via PIX.' },
-                { q: 'Isso substitui autocustódia?', a: 'Não. Para usar esse serviço, você precisa manter saldo na plataforma (exchange). Isso é custódia terceirizada. Para soberania real, mantenha a maior parte do seu Bitcoin em carteira própria.' },
-                { q: 'Posso ser bloqueado?', a: 'Sim, dependendo da plataforma e das regras vigentes. Exchanges podem impor limites, exigir verificação adicional ou bloquear operações sem aviso prévio. Tenha sempre um plano B.' },
-                { q: 'Isso é recomendação de investimento?', a: 'Não. Todo conteúdo aqui é estritamente educacional. Não fazemos recomendação de compra, venda ou uso de qualquer plataforma ou criptoativo.' },
+                { q: 'Quem recebe o PIX precisa ter conta em cripto?', a: 'Não. O recebedor recebe um PIX normal em reais. Ele não precisa saber que você usou criptomoedas para pagar.' },
+                { q: 'Eu pago em BTC/USDT/ETH e a pessoa recebe em reais?', a: 'Sim. A plataforma converte automaticamente o saldo da cripto escolhida para reais no momento do pagamento.' },
+                { q: 'Isso substitui autocustódia?', a: 'Não. Para usar esse serviço, você precisa manter saldo na plataforma (exchange). Para soberania real, mantenha a maior parte do seu Bitcoin em carteira própria.' },
+                { q: 'Posso ser bloqueado?', a: 'Sim, dependendo da plataforma. Exchanges podem impor limites, exigir verificação adicional ou bloquear operações. Tenha sempre um plano B.' },
+                { q: 'Isso é recomendação de investimento?', a: 'Não. Todo conteúdo aqui é estritamente educacional.' },
               ].map((item, i) => (
-                <motion.div
-                  key={i}
-                  variants={fadeUp}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                  custom={i}
-                  whileHover={{ y: -2, transition: { duration: 0.2 } }}
-                >
-                  <AccordionItem value={`faq-${i}`} className="bg-card border border-border rounded-xl px-6 overflow-hidden transition-colors duration-300 hover:border-gold/30">
-                    <AccordionTrigger className="text-foreground font-medium text-left hover:no-underline py-5">{item.q}</AccordionTrigger>
-                    <AccordionContent className="text-muted-foreground leading-relaxed pb-5">{item.a}</AccordionContent>
+                <motion.div key={i} variants={fadeUp} custom={i}>
+                  <AccordionItem value={`faq-${i}`}
+                    className="bg-white/[0.03] border border-white/[0.06] rounded-xl px-6 overflow-hidden hover:border-amber-500/15 transition-colors">
+                    <AccordionTrigger className="text-white font-medium text-left hover:no-underline py-5">{item.q}</AccordionTrigger>
+                    <AccordionContent className="text-stone-400 leading-relaxed pb-5">{item.a}</AccordionContent>
                   </AccordionItem>
                 </motion.div>
               ))}
             </Accordion>
-
-            <p className="text-xs text-muted-foreground/50 mt-8 text-center font-mono leading-relaxed">
-              Aviso: Conteúdo educacional. Não é recomendação de investimento. Plataformas e telas podem mudar. Verifique sempre taxas, limites e regras no app que você usar.
-            </p>
           </div>
-        </AnimatedSection>
+        </motion.section>
 
-        <div className="w-full h-px bg-border my-20" />
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-amber-500/20 to-transparent mb-28" />
 
-        {/* ═══════════════════════════════════════════════════════════ */}
-        {/* APOIAR COM LIGHTNING */}
-        {/* ═══════════════════════════════════════════════════════════ */}
-        <AnimatedSection id="apoiar">
-          <div className="max-w-3xl mx-auto text-center space-y-8">
-            <p className="text-[10px] text-gold uppercase tracking-[0.3em] font-bold">Apoie este projeto</p>
-            <h3 className="text-2xl md:text-3xl font-bold text-foreground">Apoie este projeto (Lightning)</h3>
-            <p className="text-muted-foreground text-lg leading-relaxed max-w-2xl mx-auto">
-              Você acessa tudo de graça. Sem paywall. Sem assinatura. Se isso te ajudou, apoie voluntariamente — é assim que projetos soberanos sobrevivem.
-            </p>
+        {/* ═══════════════════════════════════════════════════════
+            CAPÍTULO 06 — SIMULADOR
+        ═══════════════════════════════════════════════════════ */}
+        <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }}
+          className="mb-28">
+          <motion.div variants={fadeUp} custom={0} className="mb-10 text-center">
+            <span className="text-[10px] font-bold tracking-[0.5em] uppercase text-amber-500/60">Simulação Interativa</span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white mt-2"
+              style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+              Teste Você Mesmo
+            </h2>
+            <p className="text-stone-500 mt-4 max-w-2xl mx-auto">Simule uma operação de PIX via Bitcoin. Veja como funcionaria na prática.</p>
+          </motion.div>
 
-            <BreathingCard delay={0} className="p-8 space-y-6 text-left">
-              <h4 className="text-foreground font-bold">Por que doar?</h4>
-              <p className="text-muted-foreground leading-relaxed">Tempo de curadoria, construção de páginas, organização de biblioteca, apps e guias.</p>
-              <p className="text-muted-foreground leading-relaxed">Se você quer ver isso crescendo (mais apps, mais guias, mais material), Lightning é o caminho mais coerente.</p>
-              <div className="flex flex-wrap gap-3 pt-2">
-                <span className="px-4 py-2 bg-background border border-border rounded-lg text-sm text-foreground">Voluntário</span>
-                <span className="px-4 py-2 bg-background border border-border rounded-lg text-sm text-foreground">Sem pressão</span>
-                <span className="px-4 py-2 bg-background border border-border rounded-lg text-sm text-foreground">Direto ao ponto</span>
+          <motion.div variants={scaleIn} custom={1} className="relative mx-auto w-full max-w-[360px]">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-amber-500/[0.03] blur-[100px] rounded-full pointer-events-none" />
+            <div className="relative bg-white/[0.03] border border-white/[0.08] rounded-[2.5rem] p-6 shadow-2xl h-[700px] flex flex-col overflow-hidden">
+              <div className="flex justify-between items-center mb-8 text-stone-500 text-xs font-bold font-mono">
+                <span>21:47</span>
+                <span className="flex items-center gap-1 text-amber-400"><Zap className="w-3 h-3 fill-current" /> Lightning</span>
               </div>
-            </BreathingCard>
+              <div className="mb-10">
+                <span className="text-[10px] text-stone-600 uppercase tracking-widest font-bold block mb-2">Saldo Disponível</span>
+                <div className="flex items-baseline gap-2">
+                  <span className="text-3xl font-black text-white tracking-tighter">1.247.830</span>
+                  <span className="text-amber-400 font-bold text-sm">sats</span>
+                </div>
+                <span className="text-xs text-stone-600 mt-1 block">≈ R$ 4.367,50</span>
+              </div>
+              <div className="bg-white/[0.02] border border-white/[0.05] rounded-2xl p-5 mb-auto">
+                <span className="text-[10px] text-stone-600 uppercase tracking-widest font-bold block mb-4">Enviar PIX</span>
+                <div className="space-y-4">
+                  <div className="relative">
+                    <QrCode className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-stone-600" />
+                    <input type="text" placeholder="Chave PIX" value={pixKey} onChange={(e) => setPixKey(e.target.value)}
+                      className="w-full bg-white/[0.03] border border-white/[0.08] rounded-lg py-3 pl-10 pr-4 text-white text-sm focus:outline-none focus:border-amber-500/40 transition-colors placeholder:text-stone-600" />
+                  </div>
+                  <div className="flex items-center gap-4 pt-2">
+                    <div className="flex-1">
+                      <span className="text-xs text-stone-600 block mb-1">Valor R$</span>
+                      <input type="number" value={brlValue} onChange={(e) => setBrlValue(e.target.value)}
+                        className="w-full bg-white/[0.03] border border-white/[0.08] rounded-lg py-3 px-4 text-white font-bold text-lg focus:outline-none focus:border-amber-500/40 transition-colors" />
+                    </div>
+                    <ArrowRight className="w-5 h-5 text-stone-700 shrink-0 mt-5" />
+                    <div className="flex-1 text-right">
+                      <span className="text-xs text-stone-600 block mb-1">Débito Estimado</span>
+                      <div className="bg-white/[0.02] border border-white/[0.05] rounded-lg py-3 px-4">
+                        <span className="text-amber-400 font-bold text-lg">{satsValue.toLocaleString('pt-BR')}</span>
+                        <span className="text-xs text-amber-500/70 ml-1">sats</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button onClick={handleSimulate} disabled={isProcessing || success}
+                className={`w-full py-4 rounded-xl font-bold uppercase tracking-wide text-sm flex items-center justify-center gap-2 transition-all ${
+                  success ? 'bg-emerald-500/20 border border-emerald-500/30 text-emerald-400'
+                  : isProcessing ? 'bg-amber-500/10 border border-amber-500/20 text-amber-400/60 cursor-not-allowed'
+                  : 'bg-amber-500/10 border border-amber-500/25 text-amber-400 hover:bg-amber-500/20 hover:border-amber-500/40'
+                }`}>
+                {success ? (<><ShieldCheck className="w-5 h-5" /> PIX Enviado</>) : isProcessing ? (<><RefreshCcw className="w-5 h-5 animate-spin" /> Roteando...</>) : (<><Zap className="w-5 h-5 fill-current" /> Confirmar via Lightning</>)}
+              </button>
+              <div className="text-center mt-4">
+                <span className="text-[9px] text-stone-700 uppercase tracking-widest font-mono">Gateway Descentralizado · Sem KYC</span>
+              </div>
+            </div>
+          </motion.div>
+        </motion.section>
 
-            <BreathingCard delay={1} className="p-8 flex flex-col items-center">
-              <img src={qrCodeLightning} alt="QR Code Lightning Network" className="w-48 h-48 rounded-xl border border-border object-cover" />
-              <p className="text-xs text-muted-foreground/50 mt-4 font-mono">Lightning Network</p>
-            </BreathingCard>
-          </div>
-        </AnimatedSection>
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-amber-500/20 to-transparent mb-28" />
 
-        <div className="w-full h-px bg-border my-20" />
-
-        {/* ═══════════════════════════════════════════════════════════ */}
-        {/* SIMULADOR MOBILE — Teste você mesmo */}
-        {/* ═══════════════════════════════════════════════════════════ */}
-        <AnimatedSection>
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <p className="text-[10px] text-gold uppercase tracking-[0.3em] font-bold mb-4">Simulação interativa</p>
-              <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Teste você mesmo</h3>
-              <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-                Simule uma operação de PIX via Bitcoin. Insira um valor, uma chave PIX e veja como funcionaria na prática.
+        {/* ═══════════════════════════════════════════════════════
+            APOIAR COM LIGHTNING
+        ═══════════════════════════════════════════════════════ */}
+        <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }}
+          className="mb-20" id="apoiar">
+          <motion.div variants={fadeUp} custom={0}
+            className="bg-white/[0.02] border border-amber-500/10 rounded-3xl p-10 md:p-16 text-center relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-radial from-amber-500/[0.03] via-transparent to-transparent" />
+            <div className="relative z-10 space-y-8">
+              <span className="text-[10px] font-bold tracking-[0.5em] uppercase text-amber-500/60">Apoie este projeto</span>
+              <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white leading-tight"
+                style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                Apoie com <span className="text-amber-500">Lightning</span>
+              </h2>
+              <p className="text-stone-500 max-w-xl mx-auto leading-relaxed">
+                Tudo aqui é gratuito. Sem paywall. Sem assinatura. Se isso te ajudou, apoie voluntariamente — é assim que projetos soberanos sobrevivem.
               </p>
-            </div>
-
-            <div className="relative mx-auto w-full max-w-[360px]">
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gold/5 blur-[100px] rounded-full pointer-events-none" />
-              <div className="relative bg-card border border-border rounded-[2.5rem] p-6 shadow-2xl h-[700px] flex flex-col overflow-hidden">
-                <div className="flex justify-between items-center mb-8 text-muted-foreground text-xs font-bold font-mono">
-                  <span>21:47</span>
-                  <span className="flex items-center gap-1 text-gold"><Zap className="w-3 h-3 fill-current" /> Lightning</span>
-                </div>
-                <div className="mb-10">
-                  <span className="text-[10px] text-muted-foreground uppercase tracking-widest font-bold block mb-2">Saldo Disponível</span>
-                  <div className="flex items-baseline gap-2">
-                    <span className="text-3xl font-black text-foreground tracking-tighter">1.247.830</span>
-                    <span className="text-gold font-bold text-sm">sats</span>
-                  </div>
-                  <span className="text-xs text-muted-foreground mt-1 block">≈ R$ 4.367,50</span>
-                </div>
-                <div className="bg-background border border-border rounded-2xl p-5 mb-auto">
-                  <span className="text-[10px] text-muted-foreground uppercase tracking-widest font-bold block mb-4">Enviar PIX</span>
-                  <div className="space-y-4">
-                    <div className="relative">
-                      <QrCode className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-                      <input type="text" placeholder="Chave PIX (E-mail, CPF, Celular)" value={pixKey} onChange={(e) => setPixKey(e.target.value)}
-                        className="w-full bg-card border border-border rounded-lg py-3 pl-10 pr-4 text-foreground text-sm focus:outline-none focus:border-gold transition-colors placeholder:text-muted-foreground" />
-                    </div>
-                    <div className="flex items-center gap-4 pt-2">
-                      <div className="flex-1">
-                        <span className="text-xs text-muted-foreground block mb-1">Valor R$</span>
-                        <input type="number" value={brlValue} onChange={(e) => setBrlValue(e.target.value)}
-                          className="w-full bg-card border border-border rounded-lg py-3 px-4 text-foreground font-bold text-lg focus:outline-none focus:border-gold transition-colors" />
-                      </div>
-                      <ArrowRight className="w-5 h-5 text-muted-foreground/40 shrink-0 mt-5" />
-                      <div className="flex-1 text-right">
-                        <span className="text-xs text-muted-foreground block mb-1">Débito Estimado</span>
-                        <div className="bg-card border border-border/50 rounded-lg py-3 px-4">
-                          <span className="text-gold font-bold text-lg">{satsValue.toLocaleString('pt-BR')}</span>
-                          <span className="text-xs text-gold/70 ml-1">sats</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <button onClick={handleSimulate} disabled={isProcessing || success}
-                  className={`w-full py-4 rounded-xl font-bold uppercase tracking-wide text-sm flex items-center justify-center gap-2 transition-all ${
-                    success ? 'bg-chart-green text-background' : isProcessing ? 'bg-gold/50 text-background cursor-not-allowed'
-                    : 'bg-gold hover:brightness-110 text-background shadow-[0_0_20px_hsl(var(--gold)/0.3)]'
-                  }`}>
-                  {success ? (<><ShieldCheck className="w-5 h-5" /> PIX Enviado com Sucesso</>) : isProcessing ? (<><RefreshCcw className="w-5 h-5 animate-spin" /> Roteando na Rede...</>) : (<><Zap className="w-5 h-5 fill-current" /> Confirmar via Lightning</>)}
-                </button>
-                <div className="text-center mt-4">
-                  <span className="text-[9px] text-muted-foreground/50 uppercase tracking-widest font-mono">Gateway Descentralizado · Sem KYC</span>
-                </div>
+              <div className="inline-block rounded-2xl overflow-hidden border border-white/[0.08]">
+                <img src={qrCodeLightning} alt="QR Code Lightning Network" className="w-48 h-48 object-cover" />
               </div>
+              <p className="text-xs text-stone-700 font-mono">Lightning Network</p>
             </div>
-          </div>
-        </AnimatedSection>
+          </motion.div>
+        </motion.section>
 
-      </div>
-
-      {/* FOOTER */}
-      <div className="border-t border-border mt-24">
-        <div className="max-w-6xl mx-auto py-16 px-4 text-center space-y-4">
-          <p className="text-foreground font-bold text-lg">Soberania não é discurso. É prática.</p>
-          <p className="text-muted-foreground text-sm">Pensar ainda é permitido. Agir também.</p>
-          <p className="text-xs text-muted-foreground/40 font-mono mt-8">© Lord Junnior · 2026</p>
-        </div>
+        {/* ─── FOOTER ─── */}
+        <footer className="border-t border-white/[0.05] pt-12 text-center space-y-4">
+          <p className="text-white/80 text-lg font-medium" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+            Soberania não é discurso. É prática.
+          </p>
+          <p className="text-stone-700 text-[9px] font-bold tracking-[0.5em] uppercase">Lord Junnior © 2026</p>
+        </footer>
       </div>
     </div>
-  );
-};
-
-/* Componente auxiliar para animação de seção */
-const AnimatedSection: React.FC<{ children: React.ReactNode; id?: string }> = ({ children, id }) => {
-  const ref = React.useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-80px" });
-  return (
-    <motion.section id={id} ref={ref} initial={{ opacity: 0, y: 40 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7 }}>
-      {children}
-    </motion.section>
   );
 };
 
