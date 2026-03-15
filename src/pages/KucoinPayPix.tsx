@@ -11,6 +11,13 @@ import {
 import CinematicHero from '@/components/CinematicHero';
 import ScrollToTop from '@/components/ScrollToTop';
 
+import kucoinSupermercado from '@/assets/kucoin-supermercado.jpg';
+import kucoinPosto from '@/assets/kucoin-posto.jpg';
+import kucoinCafe from '@/assets/kucoin-cafe.jpg';
+import kucoinFarmacia from '@/assets/kucoin-farmacia.jpg';
+
+const AFFILIATE_LINK = 'https://www.kucoin.com/r/rf/QBAPZG6X';
+
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 const BG_DARK = '#050808';
 
