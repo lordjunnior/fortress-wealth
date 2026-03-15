@@ -37,8 +37,8 @@ const articleSchema = {
   headline: "Independência Operacional — Defesa Patrimonial",
   description: "Protocolos de liquidez imediata via Lightning Network, P2P sem KYC e gateway descentralizado PIX-Bitcoin.",
   author: { "@type": "Person", name: "Lord Junnior" },
-  publisher: { "@type": "Organization", name: "Autonomia do Indivíduo" },
-  url: "https://autonomiadoindividuo.com/saida"
+  publisher: { "@type": "Organization", name: "Lord Junnior" },
+  url: "https://lordjunnior.com.br/saida"
 };
 
 const FilmGrain = () => (
