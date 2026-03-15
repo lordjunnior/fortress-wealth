@@ -106,6 +106,7 @@ import DependenciaTecnologica from "./pages/toxicos/DependenciaTecnologica";
 import ToxinasAmbientais from "./pages/toxicos/ToxinasAmbientais";
 import CodigoAutonomiaModal from "./components/CodigoAutonomiaModal";
 import ScrollToTop from "./components/ScrollToTop";
+import MapaDaSoberania from "./pages/MapaDaSoberania";
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -222,6 +223,7 @@ const App = () => (
           <Route path="/projeto-autonomo/toxicos-ocultos/dependencia-tecnologica" element={<DependenciaTecnologica />} />
           <Route path="/projeto-autonomo/toxicos-ocultos/toxinas-ambientais" element={<ToxinasAmbientais />} />
           <Route path="/projeto-autonomo/:slug" element={<ModuloAutonomo />} />
+          <Route path="/mapa-da-soberania" element={<MapaDaSoberania />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
