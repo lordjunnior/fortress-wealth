@@ -51,8 +51,8 @@ const articleSchema = {
   headline: "Blindagem Operacional — Soberania Bitcoin",
   description: "Guia completo de autocustódia, hardware wallets, node Bitcoin e comparativo BTC vs imóveis.",
   author: { "@type": "Person", name: "Lord Junnior" },
-  publisher: { "@type": "Organization", name: "Autonomia do Indivíduo" },
-  url: "https://autonomiadoindividuo.com/bitcoin"
+  publisher: { "@type": "Organization", name: "Lord Junnior" },
+  url: "https://lordjunnior.com.br/bitcoin"
 };
 
 const FilmGrain = () => (
