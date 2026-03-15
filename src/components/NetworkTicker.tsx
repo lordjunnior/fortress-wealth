@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { useTheme } from "./ThemeProvider";
 
 // ===== CONFIGURAÇÃO FISCAL (LOA 2025 / Receita Federal) =====
 const ARRECADACAO_ANUAL = 3e12;
