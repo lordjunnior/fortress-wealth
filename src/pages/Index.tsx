@@ -273,6 +273,16 @@ const Index = () => {
       <div className="relative z-10 lg:ml-[260px] pb-10">
         <HeroSection />
 
+        <NobelSection className="section-divider px-5 md:px-8" delay={0.05}>
+          <div className="max-w-4xl mx-auto lg:ml-0">
+            <SnippetBait
+              text="Enquanto você lê este parágrafo, o Real perdeu mais poder de compra. A diferença entre quem preserva patrimônio e quem financia a própria ruína é uma decisão: aprender a blindar o que é seu."
+              cta="Comece pela autocustódia →"
+              href="/autocustodia"
+            />
+          </div>
+        </NobelSection>
+
         <NobelSection className="section-divider" delay={0.05}>
           <AlertBanner />
         </NobelSection>
