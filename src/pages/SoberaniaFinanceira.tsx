@@ -123,7 +123,7 @@ const schemaLD = {
   '@type': 'CollectionPage',
   name: 'Soberania Financeira — Contas, Exchanges e Infraestrutura Fora do Sistema',
   description: 'Hub completo de ferramentas de soberania financeira.',
-  url: 'https://autonomiadoindividuo.com/soberania-financeira',
+  url: 'https://lordjunnior.com.br/soberania-financeira',
   mainEntity: {
     '@type': 'ItemList',
     itemListElement: CATEGORIES.map((c, i) => ({

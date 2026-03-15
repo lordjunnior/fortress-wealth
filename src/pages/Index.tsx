@@ -174,12 +174,12 @@ const Index = () => {
       <Helmet>
         <title>Seu dinheiro está derretendo — Lord Junnior | Soberania Individual</title>
         <meta name="description" content="Alfabetização monetária, autocustódia Bitcoin e estratégias de saída. A infraestrutura técnica e intelectual para quem decidiu parar de financiar o próprio roubo." />
-        <link rel="canonical" href="https://lordjunnior.com/" />
+        <link rel="canonical" href="https://lordjunnior.com.br/" />
         <meta property="og:title" content="Seu dinheiro está derretendo. A culpa não é do acaso." />
         <meta property="og:description" content="O manual que o sistema não quer que você leia. Alfabetização monetária, autocustódia e estratégias de saída do sistema fiat." />
-        <meta property="og:url" content="https://lordjunnior.com/" />
+        <meta property="og:url" content="https://lordjunnior.com.br/" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://lordjunnior.com/og-image.png" />
+        <meta property="og:image" content="https://lordjunnior.com.br/og-image.png" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Seu dinheiro está derretendo. A culpa não é do acaso." />
         <meta name="twitter:description" content="O manual que o sistema não quer que você leia. Alfabetização monetária, autocustódia e estratégias de saída." />

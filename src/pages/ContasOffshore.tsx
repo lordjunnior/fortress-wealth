@@ -400,7 +400,7 @@ const ContasOffshore = () => {
       <Helmet>
         <title>10 Contas Offshore Cripto que NÃO Reportam — Abertura Remota | Soberania Financeira</title>
         <meta name="description" content="Ranking técnico de 10 fintechs e bancos cripto internacionais em paraísos fiscais que não reportam transações. RedotPay, OffRamp, Etherfy, Dukascopy e mais." />
-        <link rel="canonical" href="https://autonomiadoindividuo.com/soberania-financeira/contas-offshore/top-10" />
+        <link rel="canonical" href="https://lordjunnior.com.br/soberania-financeira/contas-offshore/top-10" />
         <script type="application/ld+json">{JSON.stringify(schemaLD)}</script>
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       </Helmet>
