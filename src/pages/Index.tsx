@@ -160,8 +160,8 @@ const Index = () => {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Lord Junnior",
-    "url": "https://lordjunnior.com",
-    "logo": "https://lordjunnior.com/favicon.svg",
+    "url": "https://lordjunnior.com.br",
+    "logo": "https://lordjunnior.com.br/favicon.svg",
     "sameAs": [
       "https://twitter.com/lordjunnior",
       "https://instagram.com/lordjunnior"
