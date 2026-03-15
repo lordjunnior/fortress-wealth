@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import ScrollToTop from '@/components/ScrollToTop';
 import LeadCaptureModal from '@/components/LeadCaptureModal';
+import SovereignDisclaimer from '@/components/SovereignDisclaimer';
 
 import heroImg from '@/assets/abertura-remota-hero.jpg';
 import chapterDocImg from '@/assets/abertura-chapter-documentos.jpg';
