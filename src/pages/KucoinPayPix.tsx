@@ -192,27 +192,56 @@ export default function KucoinPayPix() {
 
       {/* ─── FILM GRAIN + LIGHT BEAMS ─── */}
       <div className="fixed inset-0 pointer-events-none z-[1]">
+        {/* Film grain */}
         <div className="absolute inset-0 opacity-[0.035]"
           style={{ backgroundImage: "url('data:image/svg+xml,%3Csvg viewBox=\"0 0 256 256\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cfilter id=\"n\"%3E%3CfeTurbulence type=\"fractalNoise\" baseFrequency=\"0.9\" numOctaves=\"4\" stitchTiles=\"stitch\"/%3E%3C/filter%3E%3Crect width=\"100%25\" height=\"100%25\" filter=\"url(%23n)\"/%3E%3C/svg%3E')", backgroundSize: '128px 128px' }} />
-        <div className="absolute inset-0 opacity-[0.02]"
-          style={{ background: 'linear-gradient(125deg, transparent 30%, rgba(16,185,129,0.06) 50%, transparent 70%)' }} />
+        {/* Sweeping light beam 1 */}
+        <motion.div className="absolute inset-0 opacity-[0.04]"
+          animate={{ backgroundPosition: ['0% 0%', '100% 100%', '0% 0%'] }}
+          transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
+          style={{ background: 'linear-gradient(125deg, transparent 20%, rgba(16,185,129,0.12) 35%, transparent 50%, rgba(245,158,11,0.08) 65%, transparent 80%)', backgroundSize: '300% 300%' }} />
+        {/* Sweeping light beam 2 (counter) */}
+        <motion.div className="absolute inset-0 opacity-[0.03]"
+          animate={{ backgroundPosition: ['100% 0%', '0% 100%', '100% 0%'] }}
+          transition={{ duration: 35, repeat: Infinity, ease: 'linear' }}
+          style={{ background: 'linear-gradient(225deg, transparent 30%, rgba(16,185,129,0.08) 45%, transparent 60%, rgba(168,85,247,0.06) 75%, transparent 90%)', backgroundSize: '400% 400%' }} />
+        {/* Subtle grid overlay */}
         <div className="absolute inset-0 opacity-[0.015]"
-          style={{ background: 'linear-gradient(225deg, transparent 40%, rgba(245,158,11,0.05) 55%, transparent 75%)' }} />
+          style={{ backgroundImage: 'linear-gradient(rgba(16,185,129,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(16,185,129,0.1) 1px, transparent 1px)', backgroundSize: '80px 80px' }} />
       </div>
 
-      {/* ─── REACTIVE ORBS ─── */}
+      {/* ─── REACTIVE ORBS (breathing, mouse-tracked) ─── */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        {/* Primary emerald orb */}
         <motion.div style={{ x: springX, y: springY }}
-          className="absolute top-[15%] left-[10%] w-[500px] h-[500px] rounded-full opacity-[0.04]"
-          animate={{ scale: [1, 1.1, 1] }}
+          className="absolute top-[10%] left-[8%] w-[600px] h-[600px] rounded-full opacity-[0.06]"
+          animate={{ scale: [1, 1.15, 1], rotate: [0, 5, 0] }}
           transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}>
-          <div className="w-full h-full rounded-full bg-gradient-radial from-emerald-600/30 to-transparent blur-3xl" />
+          <div className="w-full h-full rounded-full bg-gradient-radial from-emerald-500/40 to-transparent blur-3xl" />
         </motion.div>
+        {/* Secondary amber orb */}
         <motion.div style={{ x: springY, y: springX }}
-          className="absolute bottom-[20%] right-[10%] w-[400px] h-[400px] rounded-full opacity-[0.03]"
-          animate={{ scale: [1.1, 1, 1.1] }}
-          transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut' }}>
-          <div className="w-full h-full rounded-full bg-gradient-radial from-amber-500/20 to-transparent blur-3xl" />
+          className="absolute bottom-[15%] right-[8%] w-[500px] h-[500px] rounded-full opacity-[0.05]"
+          animate={{ scale: [1.1, 0.95, 1.1], rotate: [0, -3, 0] }}
+          transition={{ duration: 18, repeat: Infinity, ease: 'easeInOut' }}>
+          <div className="w-full h-full rounded-full bg-gradient-radial from-amber-500/30 to-transparent blur-3xl" />
+        </motion.div>
+        {/* Tertiary teal mid-page orb */}
+        <motion.div
+          className="absolute top-[50%] left-[50%] w-[700px] h-[700px] rounded-full opacity-[0.025]"
+          animate={{ scale: [0.9, 1.1, 0.9], x: [-50, 50, -50], y: [-30, 30, -30] }}
+          transition={{ duration: 22, repeat: Infinity, ease: 'easeInOut' }}>
+          <div className="w-full h-full rounded-full bg-gradient-radial from-teal-400/20 to-transparent blur-3xl" />
+        </motion.div>
+        {/* Floating particles */}
+        {[...Array(6)].map((_, i) => (
+          <motion.div key={i}
+            className="absolute w-1 h-1 rounded-full bg-emerald-400/20"
+            style={{ left: `${15 + i * 14}%`, top: `${20 + (i % 3) * 25}%` }}
+            animate={{ y: [0, -40, 0], opacity: [0.1, 0.4, 0.1] }}
+            transition={{ duration: 6 + i * 1.5, repeat: Infinity, ease: 'easeInOut', delay: i * 0.8 }}
+          />
+        ))}
         </motion.div>
       </div>
 
