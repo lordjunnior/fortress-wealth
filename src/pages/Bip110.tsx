@@ -132,13 +132,13 @@ export default function Bip110() {
   return (
     <>
       <Helmet>
-        <title>BIP-110: O Que É a Proposta de Soft Fork Temporário no Bitcoin (RDTS) — Guia Completo 2025</title>
-        <meta name="description" content="BIP-110 explicada: entenda o que é a Reduced Data Temporary Softfork, por que divide a comunidade Bitcoin, quem é contra (Adam Back), quem apoia, se afeta seus BTC e se vai passar. Análise técnica completa com FAQ." />
-        <meta name="keywords" content="BIP-110, BIP 110 Bitcoin, soft fork Bitcoin 2025, Reduced Data Temporary Softfork, RDTS Bitcoin, proposta soft fork temporário, spam blockchain Bitcoin, Ordinals Bitcoin polêmica, OP_RETURN Bitcoin, Bitcoin Knots vs Core, filtro spam Bitcoin, chain split Bitcoin, Bitcoin Core v30, Taproot consequências, espaço de bloco Bitcoin, security budget mineradores, hard fork vs soft fork, UASF Bitcoin, SegWit história, consensus Bitcoin, Luke Dashjr BIP, Adam Back BIP-110, Matt Odell opinião, Lightning Network impacto, multisig chain split, Bitcoin descentralização nodes, NFT Bitcoin Inscriptions, autocustódia segura, halving security budget, Bitcoin melhoria proposta" />
-        <meta property="og:title" content="BIP-110: A Proposta Polêmica de Soft Fork Temporário no Bitcoin — Guia Completo" />
-        <meta property="og:description" content="Análise técnica e editorial da BIP-110 (RDTS). Entenda o debate que divide a comunidade Bitcoin sobre uso do espaço de bloco, spam, Ordinals e o futuro do consenso." />
+        <title>BIP-110: A Guerra do Espaço de Bloco no Bitcoin — Análise Técnica Completa 2025</title>
+        <meta name="description" content="BIP-110: A Guerra do Espaço de Bloco. Entenda a proposta que divide desenvolvedores Bitcoin — Reduced Data Temporary Softfork, quem apoia (Bitcoin Knots), quem é contra (Adam Back), impactos em autocustódia e se vai passar. Análise editorial completa." />
+        <meta name="keywords" content="BIP-110, BIP 110 Bitcoin, soft fork Bitcoin 2025, Reduced Data Temporary Softfork, RDTS Bitcoin, proposta soft fork temporário, spam blockchain Bitcoin, Ordinals Bitcoin polêmica, OP_RETURN Bitcoin, Bitcoin Knots vs Core, filtro spam Bitcoin, chain split Bitcoin, Bitcoin Core v30, Taproot consequências, espaço de bloco Bitcoin, security budget mineradores, hard fork vs soft fork, UASF Bitcoin, SegWit história, consensus Bitcoin, Luke Dashjr BIP, Adam Back BIP-110, Matt Odell opinião, Lightning Network impacto, multisig chain split, Bitcoin descentralização nodes, NFT Bitcoin Inscriptions, autocustódia segura, halving security budget, Bitcoin melhoria proposta, guerra espaço de bloco, protocolo bitcoin conflito" />
+        <meta property="og:title" content="BIP-110: A Guerra do Espaço de Bloco — A Proposta Que Divide o Bitcoin" />
+        <meta property="og:description" content="Análise editorial e técnica da BIP-110 (RDTS). O debate que divide desenvolvedores sobre spam, consenso, Ordinals e o futuro do espaço de bloco no Bitcoin." />
         <meta property="og:image" content="https://lordjunnior.com/heroes/bip-110.webp" />
-        <meta property="og:url" content="https://lordjunnior.com/bip-110" />
+        <meta property="og:url" content="https://lordjunnior.com/protocolo-bitcoin/bip-110" />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Lord Junnior" />
         <meta name="twitter:card" content="summary_large_image" />
