@@ -91,6 +91,7 @@ import CandlestickPage from "./pages/Candlestick";
 import DiversificacaoPage from "./pages/Diversificacao";
 import BitcoinVsAltcoinsPage from "./pages/BitcoinVsAltcoins";
 import DicionarioCripto from "./pages/DicionarioCripto";
+import Bip110 from "./pages/Bip110";
 import MobilidadeDeChaves from "./pages/MobilidadeDeChaves";
 import HardwareWalletDiy from "./pages/HardwareWalletDiy";
 import CpContextoHistorico from "./pages/cp/ContextoHistorico";
