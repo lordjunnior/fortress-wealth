@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import ScrollToTop from '@/components/ScrollToTop';
+import NobelVFX from '@/components/NobelVFX';
 import LeadCaptureModal from '@/components/LeadCaptureModal';
 import heroImg from '@/assets/pegasusswap-hero.jpg';
 import tutorialImg from '@/assets/pegasusswap-tutorial.jpg';
@@ -240,6 +241,7 @@ export default function PegasusSwap() {
       </div>
 
       <div className="min-h-screen" style={{ background: '#050808' }}>
+        <NobelVFX accentColor="purple" />
 
         {/* ═══ NAVIGATION BAR ═══ */}
         <AnimatePresence>

@@ -13,6 +13,7 @@ import {
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import ScrollToTop from '@/components/ScrollToTop';
 import LeadCaptureModal from '@/components/LeadCaptureModal';
+import NobelVFX from '@/components/NobelVFX';
 import heroImg from '@/assets/optima-hero.jpg';
 import telegramImg from '@/assets/optima-telegram.jpg';
 import brasilParaguaiImg from '@/assets/offshore-brasil-paraguai.jpg';
@@ -159,6 +160,7 @@ export default function OptimaExchange() {
       <LeadCaptureModal isOpen={leadModalOpen} onClose={() => setLeadModalOpen(false)} interesse="assessoria-cedula-paraguaia-optima" />
 
       <div className="min-h-screen" style={{ background: '#050808' }}>
+        <NobelVFX accentColor="emerald" />
 
         {/* ═══ NAVIGATION BAR ═══ */}
         <AnimatePresence>

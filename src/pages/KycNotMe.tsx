@@ -12,6 +12,7 @@ import {
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import ScrollToTop from '@/components/ScrollToTop';
 import LeadCaptureModal from '@/components/LeadCaptureModal';
+import NobelVFX from '@/components/NobelVFX';
 import heroImg from '@/assets/kycnot-hero.jpg';
 import filtrosImg from '@/assets/kycnot-filtros.jpg';
 import armadilhaImg from '@/assets/kycnot-armadilha.jpg';
@@ -137,6 +138,7 @@ export default function KycNotMe() {
       <LeadCaptureModal isOpen={leadModalOpen} onClose={() => setLeadModalOpen(false)} interesse="assessoria-cedula-paraguaia-kycnot" />
 
       <div className="min-h-screen" style={{ background: '#050808' }}>
+        <NobelVFX accentColor="amber" />
 
         {/* ═══ NAVIGATION BAR ═══ */}
         <AnimatePresence>
