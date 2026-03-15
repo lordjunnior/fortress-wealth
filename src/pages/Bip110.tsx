@@ -212,12 +212,7 @@ export default function Bip110() {
       />
 
       <main className="relative z-10">
-        {/* ─── BACK NAV ─── */}
-        <div className="max-w-6xl mx-auto px-4 md:px-10 pt-8">
-          <Link to="/blockchain" className="inline-flex items-center gap-2 text-amber-500/70 hover:text-amber-500 text-xs font-mono tracking-wider transition-colors">
-            <ArrowLeft className="w-3 h-3" /> VOLTAR PARA BLOCKCHAIN
-          </Link>
-        </div>
+        {/* Back nav now handled by CinematicHero backLink */}
 
         {/* ═══ PARÁGRAFO DE ABERTURA SEO ═══ */}
         <section className="relative z-10 py-12 md:py-20">
