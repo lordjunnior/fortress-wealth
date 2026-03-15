@@ -382,6 +382,14 @@ export default function KucoinPayPix() {
                   {s.title}
                 </h5>
                 <p className="text-stone-500 text-sm leading-relaxed">{s.desc}</p>
+                {'cta' in s && (s as any).cta && (
+                  <a href={AFFILIATE_LINK} target="_blank" rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 mt-4 bg-emerald-500/10 border border-emerald-500/20 rounded-lg px-4 py-2
+                               text-emerald-400 text-xs font-bold uppercase tracking-wider
+                               hover:bg-emerald-500/20 transition-all duration-300">
+                    <Sparkles size={12} /> Começar Agora <ArrowRight size={12} />
+                  </a>
+                )}
               </motion.div>
             ))}
           </div>
