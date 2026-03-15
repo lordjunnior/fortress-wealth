@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { ArrowLeft, Droplets, Flame, FlaskConical, Layers, CloudRain, Archive, AlertTriangle, CheckCircle2, XCircle, Shield, Eye, ArrowDown } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { fadeUp, stagger, staggerChild, viewportOnce } from '@/lib/motion';

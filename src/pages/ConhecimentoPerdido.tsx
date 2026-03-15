@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { Leaf, Shield, Heart, Brain, Flame, Wind, BookOpen, TreePine, Compass, ChevronRight, FlaskConical, Users, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
 
