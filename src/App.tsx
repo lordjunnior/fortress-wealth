@@ -106,6 +106,7 @@ import DependenciaTecnologica from "./pages/toxicos/DependenciaTecnologica";
 import ToxinasAmbientais from "./pages/toxicos/ToxinasAmbientais";
 import CodigoAutonomiaModal from "./components/CodigoAutonomiaModal";
 import ScrollToTop from "./components/ScrollToTop";
+import MapaDaSoberania from "./pages/MapaDaSoberania";
 const queryClient = new QueryClient();
 
 const App = () => (
