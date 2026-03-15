@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { ArrowLeft, ArrowRight, Shovel, Leaf, Bug, Droplets, FlaskConical, Layers, AlertTriangle, ChevronRight, CheckCircle2, XCircle, CircleDot } from 'lucide-react';
 import { motion } from 'framer-motion';
 import CinematicHero from '@/components/CinematicHero';

@@ -289,7 +289,7 @@ const FAQ = [
   { q: 'Como acessar a assessoria de abertura?', a: 'A assessoria completa — incluindo obtenção da cédula paraguaia e abertura de contas — está disponível exclusivamente para membros do canal. O processo é assessorado do início ao fim com suporte 1-a-1.' },
 ];
 
-const schemaLD = { '@context': 'https://schema.org', '@type': 'Article', headline: '10 Contas Offshore Cripto que NÃO Reportam — Abertura Remota', description: 'Ranking técnico de 10 fintechs e bancos cripto internacionais em paraísos fiscais que não reportam transações.', url: 'https://autonomiadoindividuo.com/soberania-financeira/contas-offshore/top-10' };
+const schemaLD = { '@context': 'https://schema.org', '@type': 'Article', headline: '10 Contas Offshore Cripto que NÃO Reportam — Abertura Remota', description: 'Ranking técnico de 10 fintechs e bancos cripto internacionais em paraísos fiscais que não reportam transações.', url: 'https://lordjunnior.com.br/soberania-financeira/contas-offshore/top-10' };
 const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: FAQ.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
 
 /* ═══ ACCOUNT CARD ═══ */
@@ -400,7 +400,7 @@ const ContasOffshore = () => {
       <Helmet>
         <title>10 Contas Offshore Cripto que NÃO Reportam — Abertura Remota | Soberania Financeira</title>
         <meta name="description" content="Ranking técnico de 10 fintechs e bancos cripto internacionais em paraísos fiscais que não reportam transações. RedotPay, OffRamp, Etherfy, Dukascopy e mais." />
-        <link rel="canonical" href="https://autonomiadoindividuo.com/soberania-financeira/contas-offshore/top-10" />
+        <link rel="canonical" href="https://lordjunnior.com.br/soberania-financeira/contas-offshore/top-10" />
         <script type="application/ld+json">{JSON.stringify(schemaLD)}</script>
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       </Helmet>

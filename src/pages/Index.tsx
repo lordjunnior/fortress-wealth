@@ -146,13 +146,13 @@ const Index = () => {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "Lord Junnior — Soberania Individual",
-    "url": "https://lordjunnior.com",
+    "url": "https://lordjunnior.com.br",
     "description": "Alfabetização monetária, autocustódia Bitcoin e estratégias de saída do sistema fiat. O manual que o sistema não quer que você leia.",
     "inLanguage": "pt-BR",
     "publisher": {
       "@type": "Person",
       "name": "Lord Junnior",
-      "url": "https://lordjunnior.com"
+      "url": "https://lordjunnior.com.br"
     }
   };
 
@@ -160,8 +160,8 @@ const Index = () => {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Lord Junnior",
-    "url": "https://lordjunnior.com",
-    "logo": "https://lordjunnior.com/favicon.svg",
+    "url": "https://lordjunnior.com.br",
+    "logo": "https://lordjunnior.com.br/favicon.svg",
     "sameAs": [
       "https://twitter.com/lordjunnior",
       "https://instagram.com/lordjunnior"
@@ -174,12 +174,12 @@ const Index = () => {
       <Helmet>
         <title>Seu dinheiro está derretendo — Lord Junnior | Soberania Individual</title>
         <meta name="description" content="Alfabetização monetária, autocustódia Bitcoin e estratégias de saída. A infraestrutura técnica e intelectual para quem decidiu parar de financiar o próprio roubo." />
-        <link rel="canonical" href="https://lordjunnior.com/" />
+        <link rel="canonical" href="https://lordjunnior.com.br/" />
         <meta property="og:title" content="Seu dinheiro está derretendo. A culpa não é do acaso." />
         <meta property="og:description" content="O manual que o sistema não quer que você leia. Alfabetização monetária, autocustódia e estratégias de saída do sistema fiat." />
-        <meta property="og:url" content="https://lordjunnior.com/" />
+        <meta property="og:url" content="https://lordjunnior.com.br/" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://lordjunnior.com/og-image.png" />
+        <meta property="og:image" content="https://lordjunnior.com.br/og-image.png" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Seu dinheiro está derretendo. A culpa não é do acaso." />
         <meta name="twitter:description" content="O manual que o sistema não quer que você leia. Alfabetização monetária, autocustódia e estratégias de saída." />

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { ArrowLeft, Flame, Lightbulb, UtensilsCrossed, Thermometer, Battery, AlertTriangle, CheckCircle2, XCircle, Shield, Clock, Zap, Sun, Snowflake } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { fadeUp, stagger, staggerChild, viewportOnce } from '@/lib/motion';
@@ -68,6 +69,12 @@ export default function ProtocolosApagao() {
   React.useEffect(() => { window.scrollTo(0, 0); }, []);
 
   return (
+    <>
+      <Helmet>
+        <title>Protocolos de Apagão — Sobrevivência sem Energia Elétrica | Lord Junnior</title>
+        <meta name="description" content="Protocolos completos para sobreviver a apagões: iluminação, cocção, conservação de alimentos, energia alternativa e controle térmico sem eletricidade." />
+        <link rel="canonical" href="https://lordjunnior.com.br/projeto-autonomo/protocolos-apagao" />
+      </Helmet>
     <div className="min-h-screen selection:bg-amber-300/30" style={{ background: '#050808' }}>
       <CinematicHero
         image="/heroes/protocolos-apagao.webp"
@@ -518,5 +525,6 @@ export default function ProtocolosApagao() {
 
       </div>
     </div>
+    </>
   );
 }

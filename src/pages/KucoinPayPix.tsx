@@ -169,7 +169,7 @@ export default function KucoinPayPix() {
       <Helmet>
         <title>KuCoin Pay Pix — Pague com Cripto via Pix e Ganhe Cashback | Lord Junnior</title>
         <meta name="description" content="Guia completo do KuCoin Pay Pix: pague com criptomoedas via Pix em qualquer estabelecimento do Brasil. Campanha de cashback de até 100 USDT + sorteio Samsung Galaxy Buds." />
-        <link rel="canonical" href="https://lordjunnior.com/kucoin-pay-pix" />
+        <link rel="canonical" href="https://lordjunnior.com.br/kucoin-pay-pix" />
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>
       </Helmet>

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { ArrowLeft, Leaf, Shield, AlertTriangle, Droplets, Flame, FlaskConical, Package, Activity, XCircle, ChevronRight, Heart, Thermometer, Sun, Clock } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';

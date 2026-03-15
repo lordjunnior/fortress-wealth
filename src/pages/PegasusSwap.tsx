@@ -213,10 +213,10 @@ export default function PegasusSwap() {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://lordjunnior.com/' },
-      { '@type': 'ListItem', position: 2, name: 'Soberania Financeira', item: 'https://lordjunnior.com/soberania-financeira' },
-      { '@type': 'ListItem', position: 3, name: 'Exchanges sem KYC', item: 'https://lordjunnior.com/soberania-financeira/exchanges-sem-kyc' },
-      { '@type': 'ListItem', position: 4, name: 'PegasusSwap', item: 'https://lordjunnior.com/soberania-financeira/exchanges-sem-kyc/pegasus-swap' },
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://lordjunnior.com.br/' },
+      { '@type': 'ListItem', position: 2, name: 'Soberania Financeira', item: 'https://lordjunnior.com.br/soberania-financeira' },
+      { '@type': 'ListItem', position: 3, name: 'Exchanges sem KYC', item: 'https://lordjunnior.com.br/soberania-financeira/exchanges-sem-kyc' },
+      { '@type': 'ListItem', position: 4, name: 'PegasusSwap', item: 'https://lordjunnior.com.br/soberania-financeira/exchanges-sem-kyc/pegasus-swap' },
     ],
   };
 
@@ -228,7 +228,7 @@ export default function PegasusSwap() {
         <meta property="og:title" content="PegasusSwap — Swap Cripto Instantaneo Sem KYC" />
         <meta property="og:description" content="1.000+ criptomoedas. Sem registro. Sem documentos. Swap em minutos com privacidade real." />
         <meta property="og:type" content="article" />
-        <link rel="canonical" href="https://lordjunnior.com/soberania-financeira/exchanges-sem-kyc/pegasus-swap" />
+        <link rel="canonical" href="https://lordjunnior.com.br/soberania-financeira/exchanges-sem-kyc/pegasus-swap" />
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>

@@ -66,8 +66,8 @@ const articleSchema = {
   headline: "A Lógica da Pilhagem — Como o Sistema Rouba Seu Tempo",
   description: "Entenda como o sistema fiduciário destrói o poder de compra do trabalhador através da inflação, carga tributária e expansão monetária.",
   author: { "@type": "Person", name: "Lord Junnior" },
-  publisher: { "@type": "Organization", name: "Autonomia do Indivíduo" },
-  url: "https://autonomiadoindividuo.com/economia"
+  publisher: { "@type": "Organization", name: "Lord Junnior" },
+  url: "https://lordjunnior.com.br/economia"
 };
 
 // Film Grain
@@ -123,8 +123,8 @@ const Economia = () => {
         <meta property="og:title" content="A Lógica da Pilhagem — Despertar Monetário" />
         <meta property="og:description" content="R$ 100 em 1994 valem R$ 11 hoje. Descubra quanto do seu dia de trabalho pertence ao Estado." />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://autonomiadoindividuo.com/economia" />
-        <link rel="canonical" href="https://autonomiadoindividuo.com/economia" />
+        <meta property="og:url" content="https://lordjunnior.com.br/economia" />
+        <link rel="canonical" href="https://lordjunnior.com.br/economia" />
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>
       </Helmet>

@@ -84,26 +84,26 @@ const GeradorEntropy: React.FC = () => {
       <Helmet>
         <title>Gerador de Seed Phrase BIP39 Offline — 100% Client-Side | Lord Junnior</title>
         <meta name="description" content="Gerador de Seed Phrase BIP39 Offline: Use entropia real para criar suas chaves privadas de Bitcoin sem enviar dados para a rede. Segurança 100% client-side." />
-        <link rel="canonical" href="https://lordjunnior.com/ferramentas/entropy" />
+        <link rel="canonical" href="https://lordjunnior.com.br/ferramentas/entropy" />
         <meta property="og:title" content="Gerador de Seed Offline: Segurança Máxima no Navegador" />
         <meta property="og:description" content="Crie sua seed phrase de 12 ou 24 palavras com entropia real via movimento do mouse. 100% offline, 100% client-side. Nenhum dado enviado ao servidor." />
-        <meta property="og:image" content="https://lordjunnior.com/heroes/og-gerador-seed.png" />
-        <meta property="og:url" content="https://lordjunnior.com/ferramentas/entropy" />
+        <meta property="og:image" content="https://lordjunnior.com.br/heroes/og-gerador-seed.png" />
+        <meta property="og:url" content="https://lordjunnior.com.br/ferramentas/entropy" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Gerador de Seed Offline: Segurança Máxima no Navegador" />
         <meta name="twitter:description" content="Seed Phrase BIP39 com entropia real. 100% client-side, nenhum dado enviado." />
-        <meta name="twitter:image" content="https://lordjunnior.com/heroes/og-gerador-seed.png" />
+        <meta name="twitter:image" content="https://lordjunnior.com.br/heroes/og-gerador-seed.png" />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
           "@type": "SoftwareApplication",
           "name": "Gerador de Seed Phrase BIP39 Offline",
           "description": "Ferramenta gratuita e 100% client-side para gerar seed phrases de 12 ou 24 palavras usando entropia real via movimento do mouse. Padrão BIP39, nenhum dado transmitido a servidores.",
-          "url": "https://lordjunnior.com/ferramentas/entropy",
+          "url": "https://lordjunnior.com.br/ferramentas/entropy",
           "applicationCategory": "SecurityApplication",
           "operatingSystem": "Web Browser",
           "offers": { "@type": "Offer", "price": "0", "priceCurrency": "BRL" },
-          "author": { "@type": "Person", "name": "Lord Junnior", "url": "https://lordjunnior.com" },
+          "author": { "@type": "Person", "name": "Lord Junnior", "url": "https://lordjunnior.com.br" },
           "browserRequirements": "Requires JavaScript. Works offline after first load.",
           "softwareVersion": "1.0",
           "inLanguage": "pt-BR"

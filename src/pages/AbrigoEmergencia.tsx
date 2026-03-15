@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { ArrowLeft, Tent, Thermometer, Wind, Droplets, AlertTriangle, Shield, Home, TreePine, Layers, Heart, Brain, Sun, Trash2, Lightbulb, ShieldAlert } from 'lucide-react';
 import { motion } from 'framer-motion';
 import CinematicHero from '@/components/CinematicHero';

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { ArrowLeft, Package, Droplets, UtensilsCrossed, FileText, Radio, Pill, AlertTriangle, CheckCircle2, XCircle, Clock, Layers, Shield, RefreshCw } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { fadeUp, stagger, staggerChild, viewportOnce } from '@/lib/motion';
@@ -109,6 +110,12 @@ export default function Kit72h() {
   React.useEffect(() => { window.scrollTo(0, 0); }, []);
 
   return (
+    <>
+      <Helmet>
+        <title>Kit 72 Horas — Lista Completa de Sobrevivência Urbana | Lord Junnior</title>
+        <meta name="description" content="Monte seu kit de emergência 72h: água, alimento, medicamentos, documentos e comunicação. Checklist completo para sobrevivência urbana no Brasil." />
+        <link rel="canonical" href="https://lordjunnior.com.br/projeto-autonomo/kit-72h" />
+      </Helmet>
     <div className="min-h-screen selection:bg-rose-300/30" style={{ background: '#050808' }}>
       <CinematicHero
         image="/heroes/kit-72h.webp"
@@ -505,6 +512,7 @@ export default function Kit72h() {
 
       </div>
     </div>
+    </>
   );
 }
 

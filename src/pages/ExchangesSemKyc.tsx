@@ -90,7 +90,7 @@ const schemaLD = {
   '@type': 'CollectionPage',
   name: 'Plataformas sem KYC — Exchanges e Serviços Privados',
   description: 'Diretório de plataformas sem verificação KYC: exchanges privadas, swaps e ferramentas para maior privacidade financeira.',
-  url: 'https://autonomiadoindividuo.com/soberania-financeira/exchanges-sem-kyc',
+  url: 'https://lordjunnior.com.br/soberania-financeira/exchanges-sem-kyc',
 };
 
 const faqSchema = {
@@ -116,7 +116,7 @@ const ExchangesSemKyc = () => {
       <Helmet>
         <title>Plataformas sem KYC — Exchanges e Serviços Privados</title>
         <meta name="description" content="Descubra plataformas sem verificação KYC: exchanges privadas, swaps e ferramentas para maior privacidade financeira." />
-        <link rel="canonical" href="https://autonomiadoindividuo.com/soberania-financeira/exchanges-sem-kyc" />
+        <link rel="canonical" href="https://lordjunnior.com.br/soberania-financeira/exchanges-sem-kyc" />
         <script type="application/ld+json">{JSON.stringify(schemaLD)}</script>
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       </Helmet>

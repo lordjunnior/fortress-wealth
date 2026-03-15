@@ -154,7 +154,7 @@ export default function OptimaExchange() {
         <meta property="og:title" content="Optima Exchange — Cripto para Dinheiro Vivo na Sua Porta" />
         <meta property="og:description" content="Exchange sem KYC que entrega dinheiro fisico. Venda USDT e receba reais, dolares ou euros na sua porta." />
         <meta property="og:type" content="article" />
-        <link rel="canonical" href="https://lordjunnior.com/soberania-financeira/exchanges-sem-kyc/optima-exchange" />
+        <link rel="canonical" href="https://lordjunnior.com.br/soberania-financeira/exchanges-sem-kyc/optima-exchange" />
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       </Helmet>
       <ScrollToTop />

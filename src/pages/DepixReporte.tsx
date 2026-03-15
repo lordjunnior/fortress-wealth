@@ -140,7 +140,7 @@ export default function DepixReporte() {
         <meta property="og:title" content="DePix vai Reportar Transacoes em 2026?" />
         <meta property="og:description" content="Analise completa sobre o reporte de DePix, riscos de imposto sobre patrimonio e como comprar Bitcoin com dinheiro vivo." />
         <meta property="og:type" content="article" />
-        <link rel="canonical" href="https://lordjunnior.com/alertas/depix-reporte-2026" />
+        <link rel="canonical" href="https://lordjunnior.com.br/alertas/depix-reporte-2026" />
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>
       </Helmet>

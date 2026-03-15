@@ -37,8 +37,8 @@ const articleSchema = {
   headline: "Independência Operacional — Defesa Patrimonial",
   description: "Protocolos de liquidez imediata via Lightning Network, P2P sem KYC e gateway descentralizado PIX-Bitcoin.",
   author: { "@type": "Person", name: "Lord Junnior" },
-  publisher: { "@type": "Organization", name: "Autonomia do Indivíduo" },
-  url: "https://autonomiadoindividuo.com/saida"
+  publisher: { "@type": "Organization", name: "Lord Junnior" },
+  url: "https://lordjunnior.com.br/saida"
 };
 
 const FilmGrain = () => (
@@ -100,8 +100,8 @@ const Saida = () => {
         <meta property="og:title" content="Independência Operacional — Defesa Patrimonial" />
         <meta property="og:description" content="Não basta possuir Bitcoin; é preciso saber utilizá-lo como ferramenta de saída do curral bancário." />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://autonomiadoindividuo.com/saida" />
-        <link rel="canonical" href="https://autonomiadoindividuo.com/saida" />
+        <meta property="og:url" content="https://lordjunnior.com.br/saida" />
+        <link rel="canonical" href="https://lordjunnior.com.br/saida" />
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>
       </Helmet>

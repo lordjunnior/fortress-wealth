@@ -162,7 +162,7 @@ const schemaLD = {
   '@type': 'Article',
   headline: 'GrabrFi — Conta Bancária nos EUA com Stablecoins e SWIFT Internacional',
   description: 'Review completa da GrabrFi: conta corrente americana com USDT, USDC, PYUSD, transferências SWIFT e integração com PayPal, Wise e Payoneer.',
-  url: 'https://autonomiadoindividuo.com/soberania-financeira/contas-internacionais/grabrfi',
+  url: 'https://lordjunnior.com.br/soberania-financeira/contas-internacionais/grabrfi',
 };
 
 const faqSchemaLD = {
@@ -183,7 +183,7 @@ const GrabrFi = () => {
       <Helmet>
         <title>GrabrFi — Conta nos EUA com Stablecoins e SWIFT | Review Completa</title>
         <meta name="description" content="Review completa da GrabrFi: conta corrente nos EUA em USD, stablecoins (USDT, USDC, PYUSD), SWIFT internacional, integração PayPal/Wise/Payoneer. Abra com cédula paraguaia para máxima privacidade." />
-        <link rel="canonical" href="https://autonomiadoindividuo.com/soberania-financeira/contas-internacionais/grabrfi" />
+        <link rel="canonical" href="https://lordjunnior.com.br/soberania-financeira/contas-internacionais/grabrfi" />
         <script type="application/ld+json">{JSON.stringify(schemaLD)}</script>
         <script type="application/ld+json">{JSON.stringify(faqSchemaLD)}</script>
       </Helmet>

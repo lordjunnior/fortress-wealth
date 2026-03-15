@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { ArrowLeft, ArrowRight, Shield, Clock, Leaf, Wheat, AlertTriangle, Heart, Sprout, Package, Flame, Droplets, Wind, Sun, Tent, Siren, Cross, Egg, TreePine, Layers, Thermometer, Bug, Shovel, BookOpen, ChevronDown, Activity, Brain, Zap, Pill, Wind as WindIcon, ChevronRight, Eye, Target, Compass } from 'lucide-react';
 import { motion, useScroll, useTransform, useMotionValue, useSpring, AnimatePresence } from 'framer-motion';
 
@@ -126,6 +127,12 @@ export default function ProjetoAutonomo() {
   ];
 
   return (
+    <>
+      <Helmet>
+        <title>Projeto Autônomo — Sobrevivência, Saúde e Autossuficiência | Lord Junnior</title>
+        <meta name="description" content="Guia completo de autonomia: kit 72h, purificação de água, primeiros socorros, horta urbana, fitoterapia e protocolos de emergência para sobrevivência real." />
+        <link rel="canonical" href="https://lordjunnior.com.br/projeto-autonomo" />
+      </Helmet>
     <div
       ref={containerRef}
       className="min-h-screen text-stone-100 font-sans selection:bg-emerald-400/30 relative overflow-hidden"
@@ -1077,5 +1084,6 @@ export default function ProjetoAutonomo() {
         </div>
       </section>
     </div>
+    </>
   );
 }

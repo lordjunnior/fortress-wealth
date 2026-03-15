@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { FlaskConical, Leaf, Activity, Brain, Shield, XCircle, AlertTriangle, Eye, Package, Sun, CheckCircle2, ChevronRight } from 'lucide-react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import gsap from 'gsap';

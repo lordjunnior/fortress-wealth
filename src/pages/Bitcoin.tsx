@@ -51,8 +51,8 @@ const articleSchema = {
   headline: "Blindagem Operacional — Soberania Bitcoin",
   description: "Guia completo de autocustódia, hardware wallets, node Bitcoin e comparativo BTC vs imóveis.",
   author: { "@type": "Person", name: "Lord Junnior" },
-  publisher: { "@type": "Organization", name: "Autonomia do Indivíduo" },
-  url: "https://autonomiadoindividuo.com/bitcoin"
+  publisher: { "@type": "Organization", name: "Lord Junnior" },
+  url: "https://lordjunnior.com.br/bitcoin"
 };
 
 const FilmGrain = () => (
@@ -103,8 +103,8 @@ const Bitcoin = () => {
         <meta property="og:title" content="Blindagem Operacional — Soberania Bitcoin" />
         <meta property="og:description" content="Se você não tem as chaves, as moedas não são suas. Guia completo de autocustódia." />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://autonomiadoindividuo.com/bitcoin" />
-        <link rel="canonical" href="https://autonomiadoindividuo.com/bitcoin" />
+        <meta property="og:url" content="https://lordjunnior.com.br/bitcoin" />
+        <link rel="canonical" href="https://lordjunnior.com.br/bitcoin" />
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>
       </Helmet>

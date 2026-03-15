@@ -13,4 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://lordjunnior.com/sitemap.xml
+Sitemap: https://lordjunnior.com.br/sitemap.xml
