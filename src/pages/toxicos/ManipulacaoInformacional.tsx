@@ -51,6 +51,25 @@ export default function ManipulacaoInformacional() {
     })),
   };
 
+  const claimReviewSchema = {
+    "@context": "https://schema.org",
+    "@type": "ClaimReview",
+    "url": "https://lordjunnior.com.br/projeto-autonomo/toxicos-ocultos/manipulacao-informacional",
+    "claimReviewed": "Algoritmos de redes sociais não influenciam significativamente opiniões políticas e comportamento",
+    "author": { "@type": "Person", "name": "Lord Junnior" },
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": 1,
+      "bestRating": 5,
+      "worstRating": 1,
+      "alternateName": "Falso"
+    },
+    "itemReviewed": {
+      "@type": "CreativeWork",
+      "author": { "@type": "Organization", "name": "Plataformas Digitais" }
+    }
+  };
+
   return (
     <div className="min-h-screen text-stone-100 font-sans selection:bg-violet-400/30 relative overflow-hidden" style={{ background: '#050808' }}>
       <Helmet>
