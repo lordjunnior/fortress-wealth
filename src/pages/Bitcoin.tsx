@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import { Line, LineChart, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, Legend } from "recharts";
 import SimboloOculto from '@/components/SimboloOculto';
+import SnippetBait from '@/components/SnippetBait';
 
 const APPLE_EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 

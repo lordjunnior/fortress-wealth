@@ -7,6 +7,7 @@ import {
   AlertTriangle, BarChart3, ArrowRight, Sparkles, TrendingUp,
 } from 'lucide-react';
 import ScrollToTop from '@/components/ScrollToTop';
+import SnippetBait from '@/components/SnippetBait';
 
 import heroImg from '@/assets/soberania-hub-hero.jpg';
 import contasIntlImg from '@/assets/soberania-contas-intl.jpg';

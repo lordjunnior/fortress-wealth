@@ -185,7 +185,10 @@ const FooterSection = () => {
           {/* 6. BOTÕES DE AÇÃO */}
           <motion.div {...fadeUp(0.5)} className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
             <button
-              onClick={() => setShowQrModal(true)}
+              onClick={() => {
+                setShowQrModal(true);
+                trackLightningEvent('open_qr_modal', selectedLevel !== null ? fundingLevels[selectedLevel].label : 'none');
+              }}
               className="px-8 py-3.5 rounded-lg gradient-gold text-primary-foreground font-semibold text-sm glow-gold hover:glow-gold-strong transition-all duration-300 flex items-center gap-2 cursor-pointer"
             >
               APOIAR AGORA

@@ -11,6 +11,7 @@ import {
   Server, Eye, ShieldOff, Cpu, Wrench
 } from 'lucide-react';
 import RiskBlock from '@/components/RiskBlock';
+import SnippetBait from '@/components/SnippetBait';
 import heroImg from '@/assets/autocustodia-hero.jpg';
 import imgPapelFogo from '@/assets/autocustodia-papel-fogo.jpg';
 import imgMetalPlaca from '@/assets/autocustodia-metal-placa.jpg';
