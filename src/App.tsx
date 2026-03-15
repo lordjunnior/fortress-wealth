@@ -104,18 +104,14 @@ import DependenciaTecnologica from "./pages/toxicos/DependenciaTecnologica";
 import ToxinasAmbientais from "./pages/toxicos/ToxinasAmbientais";
 import CodigoAutonomiaModal from "./components/CodigoAutonomiaModal";
 import ScrollToTop from "./components/ScrollToTop";
-import { ThemeProvider } from "./components/ThemeProvider";
-import ThemeToggle from "./components/ThemeToggle";
 const queryClient = new QueryClient();
 
 const App = () => (
   <HelmetProvider>
-  <ThemeProvider>
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <ThemeToggle />
       <BrowserRouter>
         <CodigoAutonomiaModal />
         <ScrollToTop />
@@ -226,7 +222,6 @@ const App = () => (
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
-  </ThemeProvider>
   </HelmetProvider>
 );
 
