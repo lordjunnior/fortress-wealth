@@ -379,6 +379,8 @@ export default function AutonomiaBiologica() {
           </div>
         </section>
 
+        <MicroCtaResistencia variant="saude" />
+
         {/* ═══ NAV FOOTER ═══ */}
         <div className="flex flex-col sm:flex-row gap-4 pt-8 border-t border-white/5">
           <Link to="/projeto-autonomo"

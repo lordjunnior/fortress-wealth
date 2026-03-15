@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { fadeUp, stagger, staggerChild, viewportOnce } from '@/lib/motion';
 import CinematicHero from '@/components/CinematicHero';
 import ScrollToTop from '@/components/ScrollToTop';
+import MicroCtaResistencia from '@/components/MicroCtaResistencia';
 
 import imgRepelentes from '@/assets/vetores-repelentes.jpg';
 import imgCiclo from '@/assets/vetores-ciclo-mosquito.jpg';

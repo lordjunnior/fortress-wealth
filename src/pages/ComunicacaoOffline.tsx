@@ -387,6 +387,8 @@ export default function ComunicacaoOffline() {
           </div>
         </motion.section>
 
+        <MicroCtaResistencia variant="default" />
+
         {/* Back bottom */}
         <div className="text-center pt-8">
           <Link to="/projeto-autonomo" className="inline-flex items-center gap-2 text-stone-500 hover:text-white text-xs font-semibold uppercase tracking-[0.2em] transition-colors">

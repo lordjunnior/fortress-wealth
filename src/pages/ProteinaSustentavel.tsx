@@ -5,6 +5,7 @@ import { ArrowLeft, ArrowRight, Egg, Layers, Droplets, Shield, CircleDot, Chevro
 import { motion } from 'framer-motion';
 import CinematicHero from '@/components/CinematicHero';
 import ScrollToTop from '@/components/ScrollToTop';
+import MicroCtaResistencia from '@/components/MicroCtaResistencia';
 
 import imgGalinheiro from '@/assets/proteina-galinheiro-movel.jpg';
 import imgCodornas from '@/assets/proteina-codornas-vertical.jpg';

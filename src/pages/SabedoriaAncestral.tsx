@@ -5,6 +5,7 @@ import { ArrowLeft, ArrowRight, Leaf, Sprout, Heart, Sun, Cross, Thermometer, Bu
 import { motion, useScroll, useTransform } from 'framer-motion';
 import CinematicHero from '@/components/CinematicHero';
 import ScrollToTop from '@/components/ScrollToTop';
+import MicroCtaResistencia from '@/components/MicroCtaResistencia';
 
 /* ─── GSAP ─── */
 import gsap from 'gsap';

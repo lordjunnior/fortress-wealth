@@ -5,6 +5,7 @@ import { ArrowLeft, ArrowRight, Package, Flame, Droplets, Wheat, Snowflake, Wind
 import { motion, AnimatePresence } from 'framer-motion';
 import CinematicHero from '@/components/CinematicHero';
 import ScrollToTop from '@/components/ScrollToTop';
+import MicroCtaResistencia from '@/components/MicroCtaResistencia';
 
 import imgHeroEstoque from '@/assets/conserva-hero-estoque.jpg';
 import imgAlimentosEssenciais from '@/assets/conserva-alimentos-essenciais.jpg';

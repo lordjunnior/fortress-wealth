@@ -5,6 +5,7 @@ import { ArrowLeft, Layers, Sprout, Leaf, Sun, Droplets, ArrowRight } from 'luci
 import { motion } from 'framer-motion';
 import CinematicHero from '@/components/CinematicHero';
 import ScrollToTop from '@/components/ScrollToTop';
+import MicroCtaResistencia from '@/components/MicroCtaResistencia';
 
 import imgLayout from '@/assets/producao-layout-canteiros.jpg';
 import imgConsorcio from '@/assets/producao-consorcio-culturas.jpg';

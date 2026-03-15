@@ -537,6 +537,8 @@ export default function HortaUrbana() {
           </div>
         </motion.section>
 
+        <MicroCtaResistencia variant="alimentar" />
+
         {/* Footer */}
         <div className="mt-16 text-center">
           <p className="text-stone-600 text-[10px] font-bold tracking-[0.5em] uppercase">
