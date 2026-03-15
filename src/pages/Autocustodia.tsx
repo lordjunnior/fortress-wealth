@@ -194,6 +194,12 @@ export default function Autocustodia() {
   const heroScale = useTransform(heroScroll, [0, 0.5], [1, 1.08]);
 
   return (
+    <>
+      <Helmet>
+        <title>Autocustódia Bitcoin — Guia Completo de Hardware Wallets e Segurança | Lord Junnior</title>
+        <meta name="description" content="Aprenda autocustódia Bitcoin: hardware wallets, seed phrases, multisig e cold storage. Guia completo para proteger seus satoshis sem depender de terceiros." />
+        <link rel="canonical" href="https://lordjunnior.com.br/autocustodia" />
+      </Helmet>
     <div className="min-h-screen bg-background text-foreground relative overflow-hidden">
       {/* ── FILM GRAIN + ATMOSPHERE ── */}
       <div className="fixed inset-0 pointer-events-none z-50 opacity-[0.035]" style={{
