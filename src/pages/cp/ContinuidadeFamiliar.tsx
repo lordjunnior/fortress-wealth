@@ -121,6 +121,8 @@ export default function ContinuidadeFamiliar() {
         </div>
       </div>
 
+      <MicroCtaResistencia variant="conhecimento" />
+
       <ScrollToTop />
 
       <style>{`

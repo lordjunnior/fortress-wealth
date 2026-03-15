@@ -247,6 +247,8 @@ export default function AplicacaoPratica() {
         </div>
       </div>
 
+      <MicroCtaResistencia variant="conhecimento" />
+
       <ScrollToTop />
 
       <style>{`
