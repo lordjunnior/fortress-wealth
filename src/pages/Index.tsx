@@ -25,6 +25,7 @@ import NivelZero from "@/components/NivelZero";
 import StrategicSignature from "@/components/StrategicSignature";
 import RiskBlock from "@/components/RiskBlock";
 import AlertBanner from "@/components/AlertBanner";
+import SnippetBait from "@/components/SnippetBait";
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
