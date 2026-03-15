@@ -64,6 +64,219 @@
     --mono: 'JetBrains Mono', monospace;
   }
 
+  /* ═══ DARK MODE — O padrão soberano ═══ */
+  .dark {
+    --background: 222 47% 4%;
+    --foreground: 210 40% 98%;
+  }
+
+  /* ═══ LIGHT MODE — Pergaminho Soberano ═══ */
+  .light {
+    --background: 35 25% 93%;
+    --foreground: 222 35% 12%;
+
+    --card: 35 20% 89%;
+    --card-foreground: 222 35% 12%;
+
+    --popover: 35 20% 91%;
+    --popover-foreground: 222 30% 15%;
+
+    --primary: 40 85% 42%;
+    --primary-foreground: 35 25% 95%;
+
+    --destructive: 0 75% 45%;
+    --destructive-foreground: 0 0% 100%;
+
+    --secondary: 35 15% 82%;
+    --secondary-foreground: 222 25% 18%;
+
+    --muted: 35 15% 85%;
+    --muted-foreground: 222 15% 38%;
+
+    --accent: 40 85% 42%;
+    --accent-foreground: 35 25% 95%;
+
+    --border: 35 15% 78%;
+    --input: 35 15% 78%;
+    --ring: 40 85% 42%;
+
+    --sidebar-background: 35 20% 90%;
+    --sidebar-foreground: 222 25% 18%;
+    --sidebar-primary: 40 85% 42%;
+    --sidebar-primary-foreground: 35 25% 95%;
+    --sidebar-accent: 35 15% 84%;
+    --sidebar-accent-foreground: 222 25% 18%;
+    --sidebar-border: 35 15% 80%;
+    --sidebar-ring: 40 85% 42%;
+
+    --gold: 40 85% 42%;
+    --gold-dim: 40 85% 42% / 0.15;
+    --amber: 35 90% 38%;
+    --ice-white: 222 35% 12%;
+    --midnight: 35 25% 93%;
+    --midnight-light: 35 20% 89%;
+    --surface-elevated: 35 18% 87%;
+    --section-alt: 35 20% 90%;
+    --chart-red: 0 72% 40%;
+    --chart-green: 142 65% 32%;
+  }
+}
+
+/* ═══════════════════════════════════════════
+   LIGHT MODE — Override de cores hardcoded
+   Corrige text-white, bg-black, bg-gray-*,
+   text-[#hex] e demais cores fixas
+   ═══════════════════════════════════════════ */
+
+/* --- Textos brancos → escuros --- */
+.light .text-white {
+  color: hsl(222 35% 12%) !important;
+}
+.light .text-gray-100,
+.light .text-gray-200 {
+  color: hsl(222 25% 22%) !important;
+}
+.light .text-gray-300 {
+  color: hsl(222 20% 28%) !important;
+}
+.light .text-gray-400 {
+  color: hsl(222 15% 38%) !important;
+}
+.light .text-gray-500 {
+  color: hsl(222 12% 45%) !important;
+}
+.light .text-stone-500 {
+  color: hsl(222 12% 45%) !important;
+}
+
+/* --- Fundos pretos/escuros → claros --- */
+.light .bg-black {
+  background-color: hsl(35 25% 93%) !important;
+}
+.light .bg-black\/50 {
+  background-color: hsl(35 20% 89% / 0.5) !important;
+}
+.light .bg-black\/40 {
+  background-color: hsl(35 20% 89% / 0.4) !important;
+}
+.light .bg-black\/30 {
+  background-color: hsl(35 20% 89% / 0.3) !important;
+}
+.light .bg-black\/20 {
+  background-color: hsl(35 20% 89% / 0.2) !important;
+}
+.light .bg-gray-900 {
+  background-color: hsl(35 20% 89%) !important;
+}
+.light .bg-gray-900\/50 {
+  background-color: hsl(35 20% 89% / 0.5) !important;
+}
+.light .bg-gray-900\/80 {
+  background-color: hsl(35 20% 89% / 0.8) !important;
+}
+.light .bg-gray-800 {
+  background-color: hsl(35 18% 85%) !important;
+}
+.light .bg-gray-950 {
+  background-color: hsl(35 25% 93%) !important;
+}
+.light .bg-gray-950\/95 {
+  background-color: hsl(35 25% 93% / 0.95) !important;
+}
+.light .bg-\[\#0a0a0a\],
+.light .bg-\[\#050808\],
+.light .bg-\[\#0d1117\],
+.light .bg-\[\#0f172a\] {
+  background-color: hsl(35 25% 93%) !important;
+}
+
+/* --- Bordas escuras → claras --- */
+.light .border-white\/5,
+.light .border-white\/10,
+.light .border-white\/\[0\.06\] {
+  border-color: hsl(35 15% 78%) !important;
+}
+.light .border-gray-800,
+.light .border-gray-700 {
+  border-color: hsl(35 15% 78%) !important;
+}
+
+/* --- Overrides de white/alpha --- */
+.light .bg-white\/5,
+.light .bg-white\/\[0\.03\] {
+  background-color: hsl(222 35% 12% / 0.04) !important;
+}
+.light .bg-white\/10 {
+  background-color: hsl(222 35% 12% / 0.06) !important;
+}
+.light .text-white\/60,
+.light .text-white\/70,
+.light .text-white\/80,
+.light .text-white\/90 {
+  color: hsl(222 35% 12% / 0.8) !important;
+}
+
+/* --- Textos com cores hex fixas (Bitcoin orange, red) — ficam iguais --- */
+/* Mantemos #F7931A e #EF4444 pois funcionam nos dois modos */
+
+/* --- Fundos fixos dos backgrounds cinematográficos --- */
+.light .fixed.inset-0.z-0 {
+  opacity: 0.3;
+}
+
+/* --- Gradient dark → light --- */
+.light .gradient-dark {
+  background: linear-gradient(180deg, hsl(35 25% 93%), hsl(35 25% 90%)) !important;
+}
+
+/* --- Botão secundário --- */
+.light .btn-secondary {
+  color: hsl(222 35% 12%) !important;
+  border-color: hsl(35 15% 70%) !important;
+}
+.light .btn-secondary:hover {
+  background-color: hsl(222 35% 12% / 0.05) !important;
+  color: hsl(40 85% 42%) !important;
+}
+
+/* --- Cards com bg midnight --- */
+.light .card-wealth,
+.light .card-elite {
+  background: hsl(35 20% 89% / 0.9) !important;
+  box-shadow: inset 0 0 0 1px hsl(40 85% 42% / 0.12), 0 4px 20px -10px hsl(222 35% 12% / 0.1) !important;
+}
+
+/* --- Sombras de texto brilhantes → suaves --- */
+.light [style*="textShadow"] {
+  text-shadow: none !important;
+}
+
+/* --- Scrollbar --- */
+.light ::-webkit-scrollbar-track {
+  background: hsl(35 25% 93%);
+}
+.light ::-webkit-scrollbar-thumb {
+  background: hsl(35 15% 72%);
+}
+.light ::-webkit-scrollbar-thumb:hover {
+  background: hsl(35 15% 60%);
+}
+
+/* --- Dust particles invisible in light mode --- */
+.light .dust-layer-home,
+.light .dust-layer-home-2,
+.light .dust-layer-home-3 {
+  opacity: 0 !important;
+}
+
+/* --- Hero scanline softer --- */
+.light .hero-scanline {
+  opacity: 0.15 !important;
+}
+
+/* --- Section alt --- */
+.light .section-alt {
+  background-color: hsl(35 20% 90% / 0.8) !important;
 }
 
 @layer base {
