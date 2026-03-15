@@ -69,6 +69,12 @@ export default function ProtocolosApagao() {
   React.useEffect(() => { window.scrollTo(0, 0); }, []);
 
   return (
+    <>
+      <Helmet>
+        <title>Protocolos de Apagão — Sobrevivência sem Energia Elétrica | Lord Junnior</title>
+        <meta name="description" content="Protocolos completos para sobreviver a apagões: iluminação, cocção, conservação de alimentos, energia alternativa e controle térmico sem eletricidade." />
+        <link rel="canonical" href="https://lordjunnior.com.br/projeto-autonomo/protocolos-apagao" />
+      </Helmet>
     <div className="min-h-screen selection:bg-amber-300/30" style={{ background: '#050808' }}>
       <CinematicHero
         image="/heroes/protocolos-apagao.webp"

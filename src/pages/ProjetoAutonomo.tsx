@@ -1084,5 +1084,6 @@ export default function ProjetoAutonomo() {
         </div>
       </section>
     </div>
+    </>
   );
 }

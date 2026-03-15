@@ -573,5 +573,6 @@ export default function ProtocoloInicial() {
         </div>
       </div>
     </div>
+    </>
   );
 }

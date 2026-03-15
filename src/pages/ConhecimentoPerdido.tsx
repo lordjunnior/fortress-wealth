@@ -102,6 +102,12 @@ export default function ConhecimentoPerdido() {
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
   return (
+    <>
+      <Helmet>
+        <title>Conhecimento Perdido — Plantas Medicinais e Sabedoria Ancestral | Lord Junnior</title>
+        <meta name="description" content="Resgate o conhecimento ancestral de plantas medicinais: fitoterapia, preparos tradicionais e autonomia em saúde natural. Guia completo com 16+ espécies." />
+        <link rel="canonical" href="https://lordjunnior.com.br/projeto-autonomo/conhecimento-perdido" />
+      </Helmet>
     <div className="min-h-screen text-stone-100 font-sans selection:bg-amber-300/30 relative overflow-hidden"
       style={{ background: 'linear-gradient(180deg, #0d0b08 0%, #151210 8%, #1a1510 20%, #1e1912 35%, #211c14 50%, #1e1912 70%, #151210 85%, #0d0b08 100%)' }}
     >
