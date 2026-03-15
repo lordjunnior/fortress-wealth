@@ -47,6 +47,15 @@ export default function AbrigoEmergencia() {
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
   return (
+    <>
+      <Helmet>
+        <title>Abrigo de Emergência: Proteção e Blindagem em Cenários Críticos | Lord Junnior</title>
+        <meta name="description" content="Guia técnico para construção e adaptação de abrigos de emergência. Isolamento térmico, reforço estrutural, banheiro improvisado e ventilação passiva. Proteja sua família com protocolos de soberania física." />
+        <link rel="canonical" href="https://lordjunnior.com.br/projeto-autonomo/abrigo-emergencia" />
+        <meta property="og:title" content="Abrigo de Emergência: O Guia de Blindagem Física Urbana" />
+        <meta property="og:description" content="Protocolos de abrigo, isolamento e proteção para quem não aceita ser vítima do caos. Soberania física real." />
+        <meta property="og:url" content="https://lordjunnior.com.br/projeto-autonomo/abrigo-emergencia" />
+      </Helmet>
     <div className="min-h-screen selection:bg-rose-300/30" style={{ background: '#050808' }}>
       <CinematicHero
         image="/heroes/abrigo-emergencia.webp"
@@ -514,5 +523,6 @@ export default function AbrigoEmergencia() {
         </div>
       </div>
     </div>
+    </>
   );
 }

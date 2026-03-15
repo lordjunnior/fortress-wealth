@@ -123,6 +123,15 @@ export default function ProteinaSustentavel() {
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
   return (
+    <>
+      <Helmet>
+        <title>Proteína Sustentável: Galinhas, Codornas e Aquaponia em Espaços Urbanos | Lord Junnior</title>
+        <meta name="description" content="Como produzir proteína animal em espaços reduzidos. Galinheiro móvel, criação vertical de codornas, aquaponia com tilápia e manejo sanitário. Alta densidade proteica por m²." />
+        <link rel="canonical" href="https://lordjunnior.com.br/projeto-autonomo/proteina-sustentavel" />
+        <meta property="og:title" content="Proteína Sustentável: Produção Animal Urbana Compacta" />
+        <meta property="og:description" content="Galinhas, codornas e tilápias em sistemas compactos. Proteína de qualidade com autonomia total." />
+        <meta property="og:url" content="https://lordjunnior.com.br/projeto-autonomo/proteina-sustentavel" />
+      </Helmet>
     <div className="min-h-screen text-stone-100 font-sans selection:bg-amber-300/50 pb-32 relative overflow-hidden" style={{ background: '#050808' }}>
       <CinematicHero
         image="/heroes/proteina-sustentavel.webp"
@@ -374,5 +383,6 @@ export default function ProteinaSustentavel() {
 
       <ScrollToTop />
     </div>
+    </>
   );
 }

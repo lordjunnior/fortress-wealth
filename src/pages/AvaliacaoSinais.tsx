@@ -17,6 +17,15 @@ const AvaliacaoSinais = () => {
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
   return (
+    <>
+      <Helmet>
+        <title>Avaliação de Sinais Vitais: Interpretação Clínica com Recursos Mínimos | Lord Junnior</title>
+        <meta name="description" content="Como avaliar sinais vitais sem equipamento hospitalar. Temperatura, pulso, perfusão, desidratação e escala AVPU. Faixas numéricas e critérios de decisão para cenários de crise." />
+        <link rel="canonical" href="https://lordjunnior.com.br/projeto-autonomo/avaliacao-sinais" />
+        <meta property="og:title" content="Avaliação de Sinais Vitais: Diagnóstico Essencial de Campo" />
+        <meta property="og:description" content="6 pilares de avaliação funcional com faixas numéricas. Saiba quando agir e quando buscar ajuda profissional." />
+        <meta property="og:url" content="https://lordjunnior.com.br/projeto-autonomo/avaliacao-sinais" />
+      </Helmet>
     <div className="min-h-screen text-stone-100" style={{ background: 'linear-gradient(180deg, #050808 0%, #0a0d0a 8%, #0d120d 20%, #0a0d0a 60%, #050808 100%)' }}>
       <CinematicHero
         image="/heroes/avaliacao-sinais.webp"
@@ -497,6 +506,7 @@ const AvaliacaoSinais = () => {
       </main>
       <ScrollToTop />
     </div>
+    </>
   );
 };
 

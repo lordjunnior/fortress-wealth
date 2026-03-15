@@ -26,6 +26,15 @@ export default function BaseFisiologica() {
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
   return (
+    <>
+      <Helmet>
+        <title>Base Fisiológica: Sistemas Corporais e Mecanismos Bioquímicos das Plantas | Lord Junnior</title>
+        <meta name="description" content="Organização técnica por sistemas corporais. Flavonoides, alcaloides, terpenos e compostos fenólicos aplicados ao corpo humano. Entenda como as plantas agem em cada sistema." />
+        <link rel="canonical" href="https://lordjunnior.com.br/projeto-autonomo/conhecimento-perdido/base-fisiologica" />
+        <meta property="og:title" content="Base Fisiológica: Como as Plantas Agem no Corpo" />
+        <meta property="og:description" content="Digestivo, respiratório, nervoso, imune e muscular. Compostos bioativos e mecanismos de ação documentados." />
+        <meta property="og:url" content="https://lordjunnior.com.br/projeto-autonomo/conhecimento-perdido/base-fisiologica" />
+      </Helmet>
     <div className="min-h-screen text-stone-100 font-sans selection:bg-emerald-300/50 relative overflow-hidden"
       style={{ background: '#050808' }}
     >
@@ -102,5 +111,6 @@ export default function BaseFisiologica() {
         </div>
       </div>
     </div>
+    </>
   );
 }

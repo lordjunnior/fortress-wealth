@@ -267,6 +267,15 @@ export default function ModuloAutonomo() {
     : 'linear-gradient(180deg, #faf6ef 0%, #f8f4ea 30%, #f2ede4 60%, #ede8e0 100%)';
 
   return (
+    <>
+      <Helmet>
+        <title>{`${mod.title}: Módulo do Projeto Autônomo — Fase ${mod.phase} | Lord Junnior`}</title>
+        <meta name="description" content={`${mod.description} Parte da Fase ${mod.phase} (${mod.phaseLabel}) do Projeto Autônomo de soberania e resiliência.`} />
+        <link rel="canonical" href={`https://lordjunnior.com.br/projeto-autonomo/modulo/${slug}`} />
+        <meta property="og:title" content={`${mod.title} — Projeto Autônomo`} />
+        <meta property="og:description" content={mod.description} />
+        <meta property="og:url" content={`https://lordjunnior.com.br/projeto-autonomo/modulo/${slug}`} />
+      </Helmet>
     <div className="min-h-screen selection:bg-emerald-200" style={{ background: phaseGradient }}>
       <div className="max-w-3xl mx-auto px-5 md:px-6 pt-20 pb-32">
 
@@ -406,5 +415,6 @@ export default function ModuloAutonomo() {
 
       </div>
     </div>
+    </>
   );
 }

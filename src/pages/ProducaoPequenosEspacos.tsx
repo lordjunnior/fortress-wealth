@@ -111,6 +111,15 @@ export default function ProducaoPequenosEspacos() {
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
   return (
+    <>
+      <Helmet>
+        <title>Produção em Pequenos Espaços: Soberania Alimentar em 4m² | Lord Junnior</title>
+        <meta name="description" content="Como produzir alimento em espaços mínimos. Layout de canteiros, consórcio de culturas, rotação sazonal e microclimas urbanos. Transforme metros quadrados em fonte de alimento." />
+        <link rel="canonical" href="https://lordjunnior.com.br/projeto-autonomo/producao-pequenos-espacos" />
+        <meta property="og:title" content="Produção em Pequenos Espaços: 4m² que Alimentam" />
+        <meta property="og:description" content="Planejamento inteligente transforma varandas e quintais em fonte de alimento. Consórcio de culturas e rotação sazonal." />
+        <meta property="og:url" content="https://lordjunnior.com.br/projeto-autonomo/producao-pequenos-espacos" />
+      </Helmet>
     <div className="min-h-screen text-stone-100 font-sans selection:bg-amber-300/50 pb-32 relative overflow-hidden" style={{ background: '#050808' }}>
       <CinematicHero
         image="/heroes/producao-pequenos-espacos.webp"
@@ -304,5 +313,6 @@ export default function ProducaoPequenosEspacos() {
 
       <ScrollToTop />
     </div>
+    </>
   );
 }

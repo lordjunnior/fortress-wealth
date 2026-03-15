@@ -154,6 +154,15 @@ export default function SabedoriaAncestral() {
   }, []);
 
   return (
+    <>
+      <Helmet>
+        <title>Sabedoria Ancestral: Conhecimentos Perdidos de Saúde, Solo e Sobrevivência | Lord Junnior</title>
+        <meta name="description" content="Hub completo de conhecimentos ancestrais de sobrevivência. Plantas medicinais, saúde natural, soberania alimentar e técnicas antigas validadas pela ciência moderna. O que não é transmitido morre." />
+        <link rel="canonical" href="https://lordjunnior.com.br/projeto-autonomo/sabedoria-ancestral" />
+        <meta property="og:title" content="Sabedoria Ancestral: Conhecimentos que o Sistema Apagou" />
+        <meta property="og:description" content="Plantas medicinais, produção de alimentos e saúde natural. O conhecimento que suas avós tinham e você precisa recuperar." />
+        <meta property="og:url" content="https://lordjunnior.com.br/projeto-autonomo/sabedoria-ancestral" />
+      </Helmet>
     <div ref={containerRef} className="min-h-screen font-sans selection:bg-amber-300/30 relative overflow-hidden"
       style={{ background: '#050808' }}
     >
@@ -574,5 +583,6 @@ export default function SabedoriaAncestral() {
 
       </div>
     </div>
+    </>
   );
 }

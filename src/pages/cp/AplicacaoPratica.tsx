@@ -59,6 +59,15 @@ export default function AplicacaoPratica() {
   }, []);
 
   return (
+    <>
+      <Helmet>
+        <title>Aplicação Prática: Fichas Técnicas de Plantas Medicinais com Dosagem e Segurança | Lord Junnior</title>
+        <meta name="description" content="Fichas técnicas completas de plantas medicinais com compostos ativos, mecanismo de ação, dosagem segura, contraindicações e sinergias. Conhecimento perdido documentado com rigor." />
+        <link rel="canonical" href="https://lordjunnior.com.br/projeto-autonomo/conhecimento-perdido/aplicacao-pratica" />
+        <meta property="og:title" content="Aplicação Prática: Fichas Técnicas de Plantas Medicinais" />
+        <meta property="og:description" content="Cada planta com ficha completa: compostos, dosagem, preparo, contraindicações e sinergias documentadas." />
+        <meta property="og:url" content="https://lordjunnior.com.br/projeto-autonomo/conhecimento-perdido/aplicacao-pratica" />
+      </Helmet>
     <div ref={containerRef} className="min-h-screen text-stone-100 font-sans selection:bg-emerald-300/50 relative overflow-hidden"
       style={{ background: '#050808' }}
     >
@@ -247,5 +256,6 @@ export default function AplicacaoPratica() {
         }
       `}</style>
     </div>
+    </>
   );
 }

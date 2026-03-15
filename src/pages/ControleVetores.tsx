@@ -41,6 +41,15 @@ const ControleVetores = () => {
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
   return (
+    <>
+      <Helmet>
+        <title>Controle de Vetores: Repelentes Naturais e Barreiras Físicas Contra Pragas | Lord Junnior</title>
+        <meta name="description" content="Estratégia sanitária de baixo impacto ambiental. Óleos essenciais repelentes, eliminação de criadouros de mosquitos, barreiras físicas e plantas que afastam insetos naturalmente." />
+        <link rel="canonical" href="https://lordjunnior.com.br/projeto-autonomo/controle-vetores" />
+        <meta property="og:title" content="Controle de Vetores: Defesa Sanitária Natural" />
+        <meta property="og:description" content="Repelentes naturais, eliminação de criadouros e plantas que afastam pragas. Proteção sem químicos industriais." />
+        <meta property="og:url" content="https://lordjunnior.com.br/projeto-autonomo/controle-vetores" />
+      </Helmet>
     <div className="min-h-screen text-stone-100" style={{ background: 'linear-gradient(180deg, #050808 0%, #0a0d0a 8%, #0d120d 20%, #0a0d0a 60%, #050808 100%)' }}>
       <CinematicHero
         image="/heroes/controle-vetores.webp"
@@ -489,6 +498,7 @@ const ControleVetores = () => {
       </main>
       <ScrollToTop />
     </div>
+    </>
   );
 };
 
