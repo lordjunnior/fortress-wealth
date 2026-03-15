@@ -145,7 +145,7 @@ const TOOLS_LIST = [
     accent: '#06b6d4',
     icon: Timer,
     component: null,
-    iframeUrl: 'https://minhahorajusta.vercel.app',
+    iframeUrl: 'https://horacertaclt.vercel.app',
     num: '08',
   },
   {
