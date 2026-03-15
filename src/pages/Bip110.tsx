@@ -132,22 +132,50 @@ export default function Bip110() {
   return (
     <>
       <Helmet>
-        <title>BIP-110: A Proposta Polêmica de Soft Fork no Bitcoin | Lord Junnior</title>
-        <meta name="description" content="Entenda a BIP-110 (RDTS): a proposta polêmica de soft fork temporário no Bitcoin que quer filtrar spam da blockchain. O que é, quem apoia, quem é contra e se vai passar." />
-        <meta property="og:title" content="BIP-110: A Proposta Polêmica de Soft Fork no Bitcoin" />
-        <meta property="og:description" content="Análise completa da BIP-110 — Reduced Data Temporary Softfork. Entenda o debate que divide a comunidade Bitcoin sobre uso do espaço de bloco." />
-        <meta property="og:image" content="/heroes/bip-110.webp" />
+        <title>BIP-110: O Que É a Proposta de Soft Fork Temporário no Bitcoin (RDTS) — Guia Completo 2025</title>
+        <meta name="description" content="BIP-110 explicada: entenda o que é a Reduced Data Temporary Softfork, por que divide a comunidade Bitcoin, quem é contra (Adam Back), quem apoia, se afeta seus BTC e se vai passar. Análise técnica completa com FAQ." />
+        <meta name="keywords" content="BIP-110, BIP 110 Bitcoin, soft fork Bitcoin 2025, Reduced Data Temporary Softfork, RDTS Bitcoin, proposta soft fork temporário, spam blockchain Bitcoin, Ordinals Bitcoin polêmica, OP_RETURN Bitcoin, Bitcoin Knots vs Core, filtro spam Bitcoin, chain split Bitcoin, Bitcoin Core v30, Taproot consequências, espaço de bloco Bitcoin, security budget mineradores, hard fork vs soft fork, UASF Bitcoin, SegWit história, consensus Bitcoin, Luke Dashjr BIP, Adam Back BIP-110, Matt Odell opinião, Lightning Network impacto, multisig chain split, Bitcoin descentralização nodes, NFT Bitcoin Inscriptions, autocustódia segura, halving security budget, Bitcoin melhoria proposta" />
+        <meta property="og:title" content="BIP-110: A Proposta Polêmica de Soft Fork Temporário no Bitcoin — Guia Completo" />
+        <meta property="og:description" content="Análise técnica e editorial da BIP-110 (RDTS). Entenda o debate que divide a comunidade Bitcoin sobre uso do espaço de bloco, spam, Ordinals e o futuro do consenso." />
+        <meta property="og:image" content="https://lordjunnior.com/heroes/bip-110.webp" />
+        <meta property="og:url" content="https://lordjunnior.com/bip-110" />
         <meta property="og:type" content="article" />
+        <meta property="og:site_name" content="Lord Junnior" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="BIP-110: O Soft Fork Temporário Que Divide o Bitcoin — Guia Completo 2025" />
+        <meta name="twitter:description" content="BIP-110 (RDTS): o que é, quem apoia, quem é contra, impactos em Lightning e mineração, e se vai passar. Análise editorial completa." />
+        <meta name="twitter:image" content="https://lordjunnior.com/heroes/bip-110.webp" />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+        <meta name="author" content="Lord Junnior" />
+        <meta name="article:published_time" content="2025-02-22T00:00:00Z" />
+        <meta name="article:modified_time" content="2025-03-15T00:00:00Z" />
+        <meta name="article:section" content="Bitcoin" />
+        <meta name="article:tag" content="BIP-110" />
+        <meta name="article:tag" content="Soft Fork" />
+        <meta name="article:tag" content="Bitcoin Consenso" />
+        <meta name="article:tag" content="Blockchain" />
+        <meta name="article:tag" content="RDTS" />
+        <meta name="article:tag" content="Ordinals" />
+        <meta name="article:tag" content="OP_RETURN" />
+        <meta name="article:tag" content="Bitcoin Knots" />
+        <meta name="article:tag" content="Lightning Network" />
+        <meta name="article:tag" content="Descentralização" />
         <link rel="canonical" href="https://lordjunnior.com/bip-110" />
         <script type="application/ld+json">{JSON.stringify({
           '@context': 'https://schema.org',
           '@type': 'Article',
-          headline: 'BIP-110: A Proposta Polêmica de Soft Fork no Bitcoin (RDTS)',
-          description: 'Análise técnica completa da BIP-110 — Reduced Data Temporary Softfork. O debate sobre spam, consenso e o futuro do espaço de bloco no Bitcoin.',
-          author: { '@type': 'Person', name: 'Lord Junnior' },
-          publisher: { '@type': 'Organization', name: 'Lord Junnior' },
+          headline: 'BIP-110: O Que É a Proposta de Soft Fork Temporário no Bitcoin (RDTS) — Guia Completo 2025',
+          description: 'Análise técnica completa da BIP-110 — Reduced Data Temporary Softfork. O debate sobre spam, consenso, Ordinals e o futuro do espaço de bloco no Bitcoin.',
+          author: { '@type': 'Person', name: 'Lord Junnior', url: 'https://lordjunnior.com' },
+          publisher: { '@type': 'Organization', name: 'Lord Junnior', url: 'https://lordjunnior.com', logo: { '@type': 'ImageObject', url: 'https://lordjunnior.com/og-image.png' } },
           datePublished: '2025-02-22',
-          image: '/heroes/bip-110.webp',
+          dateModified: '2025-03-15',
+          image: 'https://lordjunnior.com/heroes/bip-110.webp',
+          url: 'https://lordjunnior.com/bip-110',
+          mainEntityOfPage: { '@type': 'WebPage', '@id': 'https://lordjunnior.com/bip-110' },
+          keywords: 'BIP-110, soft fork Bitcoin, RDTS, Reduced Data Temporary Softfork, spam blockchain, Ordinals, OP_RETURN, Bitcoin Knots, chain split, Lightning Network, Adam Back, descentralização',
+          articleSection: 'Bitcoin',
+          inLanguage: 'pt-BR',
         })}</script>
         <script type="application/ld+json">{JSON.stringify({
           '@context': 'https://schema.org',
@@ -157,6 +185,15 @@ export default function Bip110() {
             name: f.q,
             acceptedAnswer: { '@type': 'Answer', text: f.a },
           })),
+        })}</script>
+        <script type="application/ld+json">{JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Início', item: 'https://lordjunnior.com' },
+            { '@type': 'ListItem', position: 2, name: 'Blockchain', item: 'https://lordjunnior.com/blockchain' },
+            { '@type': 'ListItem', position: 3, name: 'BIP-110', item: 'https://lordjunnior.com/bip-110' },
+          ],
         })}</script>
       </Helmet>
 
