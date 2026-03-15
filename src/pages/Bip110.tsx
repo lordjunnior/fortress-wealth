@@ -488,7 +488,7 @@ export default function Bip110() {
         {/* ═══ CH.09 — FAQ ═══ */}
         <section className="relative z-10 py-14 md:py-20">
           <div className="max-w-4xl mx-auto px-4 md:px-10">
-            <ChapterKickoff number="CAPÍTULO 09" title="Perguntas Frequentes" subtitle="As dúvidas mais comuns sobre a BIP-110, soft forks, chain splits e o impacto nos seus Bitcoins." />
+            <ChapterKickoff number="CAPÍTULO 08" title="Perguntas Frequentes sobre a BIP-110" subtitle="As dúvidas mais comuns sobre a BIP-110, soft forks, chain splits e o impacto nos seus Bitcoins em autocustódia." />
             <Accordion type="single" collapsible className="space-y-3">
               {faqData.map((faq, i) => (
                 <AccordionItem key={i} value={`faq-${i}`} className="border border-white/[0.06] rounded-xl px-5 hover:border-amber-500/20 transition-colors">
