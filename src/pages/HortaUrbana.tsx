@@ -140,6 +140,20 @@ export default function HortaUrbana() {
         <meta property="og:title" content="Horta Urbana: Produza Alimento em Qualquer Espaço" />
         <meta property="og:description" content="Espaço mínimo, colheita consistente. Cultivo vertical, autoirrigação e espécies para iniciantes." />
         <meta property="og:url" content="https://lordjunnior.com.br/projeto-autonomo/horta-urbana" />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "HowTo",
+          "name": "Como Montar uma Horta Urbana em Pequenos Espaços",
+          "description": "Guia completo para criar uma horta urbana em varandas e espaços reduzidos com autoirrigação e cultivo vertical.",
+          "step": [
+            { "@type": "HowToStep", "name": "Avalie a luz solar", "text": "Identifique áreas com pelo menos 4-6 horas de sol direto por dia." },
+            { "@type": "HowToStep", "name": "Monte vasos autoirrigáveis", "text": "Construa vasos com reservatório de água usando garrafas PET cortadas." },
+            { "@type": "HowToStep", "name": "Prepare o substrato", "text": "Misture terra vegetal, húmus e perlita na proporção 2:1:1." },
+            { "@type": "HowToStep", "name": "Escolha espécies iniciantes", "text": "Comece com alface, cebolinha, hortelã e manjericão." },
+            { "@type": "HowToStep", "name": "Implemente cultivo vertical", "text": "Use treliças e estruturas verticais para maximizar o espaço." },
+            { "@type": "HowToStep", "name": "Siga o calendário de plantio", "text": "Respeite a sazonalidade de cada espécie para sua região." }
+          ]
+        })}</script>
       </Helmet>
     <div className="min-h-screen text-stone-100 font-sans selection:bg-emerald-300/50 relative overflow-hidden" style={{ background: '#050808' }}>
       <CinematicHero
