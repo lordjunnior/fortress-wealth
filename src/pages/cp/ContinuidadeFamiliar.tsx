@@ -54,6 +54,17 @@ export default function ContinuidadeFamiliar() {
         <meta property="og:title" content="Continuidade Familiar: O Conhecimento que Não Pode Morrer" />
         <meta property="og:description" content="Educação botânica para crianças e famílias. Transmita autonomia biológica antes que o conhecimento desapareça." />
         <meta property="og:url" content="https://lordjunnior.com.br/projeto-autonomo/conhecimento-perdido/continuidade-familiar" />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "MedicalWebPage",
+          "name": "Continuidade Familiar: Educação Botânica para Gerações",
+          "description": "Transmissão de conhecimento ancestral de plantas medicinais para famílias.",
+          "url": "https://lordjunnior.com.br/projeto-autonomo/conhecimento-perdido/continuidade-familiar",
+          "author": { "@type": "Person", "name": "Lord Junnior" },
+          "medicalAudience": { "@type": "MedicalAudience", "audienceType": "Patient" },
+          "lastReviewed": "2026-03-01",
+          "disclaimer": "Conteúdo educacional sobre educação botânica. Não substitui orientação médica."
+        })}</script>
       </Helmet>
     <div ref={containerRef} className="min-h-screen text-stone-100 font-sans selection:bg-purple-300/50 relative overflow-hidden"
       style={{ background: '#050808' }}

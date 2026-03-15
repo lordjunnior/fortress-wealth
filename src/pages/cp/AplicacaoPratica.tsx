@@ -68,6 +68,17 @@ export default function AplicacaoPratica() {
         <meta property="og:title" content="Aplicação Prática: Fichas Técnicas de Plantas Medicinais" />
         <meta property="og:description" content="Cada planta com ficha completa: compostos, dosagem, preparo, contraindicações e sinergias documentadas." />
         <meta property="og:url" content="https://lordjunnior.com.br/projeto-autonomo/conhecimento-perdido/aplicacao-pratica" />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "MedicalWebPage",
+          "name": "Aplicação Prática: Fichas Técnicas de Plantas Medicinais",
+          "description": "Fichas técnicas com compostos ativos, dosagem, preparo e contraindicações.",
+          "url": "https://lordjunnior.com.br/projeto-autonomo/conhecimento-perdido/aplicacao-pratica",
+          "author": { "@type": "Person", "name": "Lord Junnior" },
+          "medicalAudience": { "@type": "MedicalAudience", "audienceType": "Patient" },
+          "lastReviewed": "2026-03-01",
+          "disclaimer": "Conteúdo educacional. Consulte profissional de saúde antes de usar qualquer planta medicinal."
+        })}</script>
       </Helmet>
     <div ref={containerRef} className="min-h-screen text-stone-100 font-sans selection:bg-emerald-300/50 relative overflow-hidden"
       style={{ background: '#050808' }}
