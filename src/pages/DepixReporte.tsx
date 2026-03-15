@@ -13,6 +13,7 @@ import {
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import ScrollToTop from '@/components/ScrollToTop';
 import LeadCaptureModal from '@/components/LeadCaptureModal';
+import SovereignDisclaimer from '@/components/SovereignDisclaimer';
 import heroImg from '@/assets/depix-hero.jpg';
 import dinheiroVivoImg from '@/assets/depix-dinheiro-vivo.jpg';
 import brasilParaguaiImg from '@/assets/offshore-brasil-paraguai.jpg';
