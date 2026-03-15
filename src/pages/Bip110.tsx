@@ -201,9 +201,9 @@ export default function Bip110() {
 
       {/* ─── HERO ─── */}
       <CinematicHero
-        phase="ANÁLISE TÉCNICA"
-        title="BIP-110"
-        subtitle="A proposta polêmica de soft fork temporário que divide a comunidade Bitcoin — e por que provavelmente não vai passar."
+        phase="ANÁLISE TÉCNICA • GUIA COMPLETO 2025"
+        title="BIP-110: O Que É o Soft Fork Temporário Que Divide o Bitcoin"
+        subtitle="Entenda a Reduced Data Temporary Softfork (RDTS), quem apoia, quem é contra, se afeta seus BTC em autocustódia e se essa proposta polêmica vai passar."
         image="/heroes/bip-110.webp"
         icon={GitFork}
         accentColor="amber"
