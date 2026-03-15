@@ -483,12 +483,12 @@ export default function KucoinPayPix() {
                 Use-a no café da manhã, no tanque do carro, na farmácia. O KuCoin Pay transforma cada pagamento Pix em uma oportunidade de cashback.
               </p>
               <div className="pt-4 flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="https://www.kucoin.com/kucoin-pay" target="_blank" rel="noopener noreferrer"
+                <a href={AFFILIATE_LINK} target="_blank" rel="noopener noreferrer"
                   className="inline-flex items-center gap-3 bg-emerald-500/15 border border-emerald-500/30 rounded-xl px-8 py-4
                              text-emerald-400 text-sm font-bold uppercase tracking-wider
                              hover:bg-emerald-500/25 hover:border-emerald-500/50 hover:shadow-[0_0_40px_rgba(16,185,129,0.15)]
                              transition-all duration-500 group animate-pulse">
-                  <Zap size={16} /> Ativar KuCoin Pay
+                  <Zap size={16} /> Criar Conta Gratuita
                   <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                 </a>
                 <Link to="/soberania-financeira"
