@@ -167,6 +167,7 @@ const App = () => (
           <Route path="/soberania-financeira/exchanges-sem-kyc/optima-exchange" element={<OptimaExchange />} />
           <Route path="/soberania-financeira/exchanges-sem-kyc/pegasus-swap" element={<PegasusSwap />} />
           <Route path="/soberania-financeira/brics-pay" element={<BricsPay />} />
+          <Route path="/soberania-financeira/kucoin-pay-pix" element={<KucoinPayPix />} />
           <Route path="/21-milhoes" element={<HardCap21 />} />
           <Route path="/bitcoin-seguro" element={<BitcoinSeguro />} />
           <Route path="/chaves" element={<ChavesPage />} />
