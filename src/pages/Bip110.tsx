@@ -217,23 +217,23 @@ export default function Bip110() {
           </Link>
         </div>
 
-        {/* ═══ CH.01 — VIDEO ═══ */}
+        {/* ═══ PARÁGRAFO DE ABERTURA SEO ═══ */}
         <section className="relative z-10 py-12 md:py-20">
-          <div className="max-w-6xl mx-auto px-4 md:px-10">
-            <ChapterKickoff number="CAPÍTULO 01" title="O Debate Completo em Vídeo" subtitle="Assista à análise completa sobre a BIP-110, seus fundamentos técnicos, a polêmica por trás e se essa proposta tem chance real de avançar." />
-            <VideoEmbed videoId="COLE_O_ID_DO_VIDEO_AQUI" />
-            <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-center text-muted-foreground/60 text-xs font-mono tracking-wider mt-6"
+          <div className="max-w-4xl mx-auto px-4 md:px-10">
+            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }} transition={{ duration: 0.8, ease: APPLE_EASE }}
+              className="prose prose-invert max-w-none"
             >
-              <Play className="w-3 h-3 inline mr-1" /> PODCAST COMPLETO • FEVEREIRO 2025
-            </motion.p>
+              <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
+                A <strong className="text-foreground">BIP-110</strong>, também conhecida como <strong className="text-foreground">Reduced Data Temporary Softfork (RDTS)</strong>, é uma proposta de melhoria do Bitcoin que quer criar um <strong className="text-foreground">soft fork temporário de um ano</strong> para restringir a inserção de dados não-monetários na blockchain — como NFTs, Ordinals, Inscriptions e tokens especulativos. A proposta restauraria o limite histórico de <strong className="text-foreground">83 bytes no OP_RETURN</strong> e filtraria até 41% das transações consideradas "spam", liberando 36% de espaço no bloco. Mas o debate vai muito além da técnica: envolve <strong className="text-foreground">consenso, descentralização, censura, security budget</strong> e o próprio futuro do Bitcoin como rede monetária. Figuras como <strong className="text-foreground">Adam Back</strong> se posicionaram contra, enquanto a comunidade que roda <strong className="text-foreground">Bitcoin Knots</strong> defende a medida. Neste guia completo, você entende tudo sobre a BIP-110 — o que é, quem apoia, quem é contra, se afeta seus Bitcoins em autocustódia e se essa proposta tem chance real de ser aprovada em 2025.
+              </p>
+            </motion.div>
           </div>
         </section>
 
         <SectionGlow />
 
-        {/* ═══ CH.02 — O QUE É BIP ═══ */}
+        {/* ═══ CH.01 — O QUE É BIP ═══ */}
         <section className="relative z-10 py-14 md:py-20">
           <div className="max-w-6xl mx-auto px-4 md:px-10">
             <ChapterKickoff number="CAPÍTULO 02" title="Antes de Tudo: O Que é uma BIP?" subtitle="Bitcoin Improvement Proposal — a única forma de evoluir o protocolo mais descentralizado do mundo. Sem CEO, sem roadmap, sem permissão." />
