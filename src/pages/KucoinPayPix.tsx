@@ -11,6 +11,13 @@ import {
 import CinematicHero from '@/components/CinematicHero';
 import ScrollToTop from '@/components/ScrollToTop';
 
+import kucoinSupermercado from '@/assets/kucoin-supermercado.jpg';
+import kucoinPosto from '@/assets/kucoin-posto.jpg';
+import kucoinCafe from '@/assets/kucoin-cafe.jpg';
+import kucoinFarmacia from '@/assets/kucoin-farmacia.jpg';
+
+const AFFILIATE_LINK = 'https://www.kucoin.com/r/rf/QBAPZG6X';
+
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 const BG_DARK = '#050808';
 
@@ -84,9 +91,10 @@ const rewards = [
 const steps = [
   {
     step: '01',
-    title: 'Registre-se',
-    desc: 'Clique no botão "Get Rewards" para registrar-se e garantir sua elegibilidade ao cashback. Sem registro, sem recompensa.',
+    title: 'Crie Sua Conta Gratuita',
+    desc: 'O primeiro passo é criar sua conta — leva menos de 2 minutos. Sem isso, você não consegue ativar o KuCoin Pay nem participar das recompensas.',
     icon: Target,
+    cta: true,
   },
   {
     step: '02',
@@ -344,6 +352,19 @@ export default function KucoinPayPix() {
           </div>
         </motion.section>
 
+        {/* ─── MID-PAGE CTA ─── */}
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="mb-28 text-center">
+          <a href={AFFILIATE_LINK} target="_blank" rel="noopener noreferrer"
+            className="inline-flex items-center gap-3 bg-gradient-to-r from-emerald-500/15 to-amber-500/10 border border-emerald-500/25 rounded-2xl px-10 py-5
+                       text-emerald-400 text-sm font-bold uppercase tracking-wider
+                       hover:from-emerald-500/25 hover:to-amber-500/15 hover:shadow-[0_0_60px_rgba(16,185,129,0.12)]
+                       transition-all duration-500 group">
+            <Shield size={18} /> Ainda não tem conta? Crie a sua em 2 minutos
+            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+          </a>
+          <p className="text-stone-600 text-[11px] mt-3">É necessário para seguir o tutorial abaixo.</p>
+        </motion.div>
+
         {/* ─── DIVIDER ─── */}
         <div className="w-full h-px bg-gradient-to-r from-transparent via-emerald-500/20 to-transparent mb-28" />
 
@@ -374,6 +395,14 @@ export default function KucoinPayPix() {
                   {s.title}
                 </h5>
                 <p className="text-stone-500 text-sm leading-relaxed">{s.desc}</p>
+                {'cta' in s && (s as any).cta && (
+                  <a href={AFFILIATE_LINK} target="_blank" rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 mt-4 bg-emerald-500/10 border border-emerald-500/20 rounded-lg px-4 py-2
+                               text-emerald-400 text-xs font-bold uppercase tracking-wider
+                               hover:bg-emerald-500/20 transition-all duration-300">
+                    <Sparkles size={12} /> Começar Agora <ArrowRight size={12} />
+                  </a>
+                )}
               </motion.div>
             ))}
           </div>
@@ -394,19 +423,26 @@ export default function KucoinPayPix() {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
-              { icon: ShoppingCart, label: 'Supermercados', example: 'Pão de Açúcar, Carrefour' },
-              { icon: Fuel, label: 'Postos', example: 'Posto Ipiranga, Shell' },
-              { icon: Coffee, label: 'Cafés', example: 'Starbucks, Padarias' },
-              { icon: Pill, label: 'Farmácias', example: 'Droga Raia, Drogasil' },
+              { icon: ShoppingCart, label: 'Supermercados', example: 'Pão de Açúcar, Carrefour', img: kucoinSupermercado },
+              { icon: Fuel, label: 'Postos', example: 'Posto Ipiranga, Shell', img: kucoinPosto },
+              { icon: Coffee, label: 'Cafés', example: 'Starbucks, Padarias', img: kucoinCafe },
+              { icon: Pill, label: 'Farmácias', example: 'Droga Raia, Drogasil', img: kucoinFarmacia },
             ].map((place, i) => (
               <motion.div key={place.label} variants={scaleIn} custom={i}
-                className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-6 text-center
-                           hover:border-emerald-500/15 transition-all duration-500">
-                <div className="p-3 rounded-xl bg-emerald-500/8 border border-emerald-500/15 w-fit mx-auto mb-4">
-                  <place.icon size={20} className="text-emerald-400" />
+                className="bg-white/[0.03] border border-white/[0.06] rounded-2xl overflow-hidden
+                           hover:border-emerald-500/15 transition-all duration-500 group">
+                <div className="relative h-32 md:h-40 overflow-hidden">
+                  <img src={place.img} alt={place.label} className="w-full h-full object-cover
+                    group-hover:scale-110 transition-transform duration-700 ease-out" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#050808] via-[#050808]/40 to-transparent" />
+                  <div className="absolute top-3 left-3 p-2 rounded-lg bg-black/50 backdrop-blur-sm border border-white/10">
+                    <place.icon size={16} className="text-emerald-400" />
+                  </div>
                 </div>
-                <h5 className="text-sm font-bold text-white mb-1">{place.label}</h5>
-                <p className="text-[11px] text-stone-600">{place.example}</p>
+                <div className="p-4 text-center">
+                  <h5 className="text-sm font-bold text-white mb-1">{place.label}</h5>
+                  <p className="text-[11px] text-stone-600">{place.example}</p>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -469,12 +505,12 @@ export default function KucoinPayPix() {
                 Use-a no café da manhã, no tanque do carro, na farmácia. O KuCoin Pay transforma cada pagamento Pix em uma oportunidade de cashback.
               </p>
               <div className="pt-4 flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="https://www.kucoin.com/kucoin-pay" target="_blank" rel="noopener noreferrer"
+                <a href={AFFILIATE_LINK} target="_blank" rel="noopener noreferrer"
                   className="inline-flex items-center gap-3 bg-emerald-500/15 border border-emerald-500/30 rounded-xl px-8 py-4
                              text-emerald-400 text-sm font-bold uppercase tracking-wider
                              hover:bg-emerald-500/25 hover:border-emerald-500/50 hover:shadow-[0_0_40px_rgba(16,185,129,0.15)]
                              transition-all duration-500 group animate-pulse">
-                  <Zap size={16} /> Ativar KuCoin Pay
+                  <Zap size={16} /> Criar Conta Gratuita
                   <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                 </a>
                 <Link to="/soberania-financeira"
