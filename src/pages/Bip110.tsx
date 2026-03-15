@@ -404,7 +404,7 @@ export default function Bip110() {
         {/* ═══ CH.07 — VEREDICTO ═══ */}
         <section className="relative z-10 py-14 md:py-20">
           <div className="max-w-6xl mx-auto px-4 md:px-10">
-            <ChapterKickoff number="CAPÍTULO 07" title="Veredicto: Vai Passar ou Não?" subtitle="Nossa análise sobre a probabilidade real desta proposta avançar — e o que você, holder, precisa (ou não) fazer." />
+            <ChapterKickoff number="CAPÍTULO 06" title="Veredicto: Vai Passar ou Não?" subtitle="Nossa análise sobre a probabilidade real desta proposta avançar — e o que você, holder, precisa (ou não) fazer." />
 
             <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }} transition={{ duration: 0.8, ease: APPLE_EASE }}
