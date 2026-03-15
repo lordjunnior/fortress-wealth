@@ -134,8 +134,6 @@ const NetworkTicker = () => {
     gold: "hsl(40, 92%, 56%)",
   };
 
-  // Detect light mode
-  const isLight = document.documentElement.classList.contains("light");
 
   const renderItem = (item: typeof items[0], key: number) => (
     <div
