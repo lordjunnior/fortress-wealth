@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { ArrowLeft, AlertTriangle, Leaf, Wind, Brain, Stethoscope, Bone, Shield, Clock, CheckCircle2, XCircle, Activity, Zap, Moon, Thermometer } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { fadeUp, stagger, staggerChild, viewportOnce } from '@/lib/motion';

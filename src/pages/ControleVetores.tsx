@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { ArrowLeft, Bug, Shield, Droplets, Leaf, Home, AlertTriangle, CheckCircle2, XCircle, Sprout, FlaskConical, Clock, Rat, Trash2, Wind } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { fadeUp, stagger, staggerChild, viewportOnce } from '@/lib/motion';

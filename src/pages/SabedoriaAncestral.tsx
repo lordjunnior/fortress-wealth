@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { ArrowLeft, ArrowRight, Leaf, Sprout, Heart, Sun, Cross, Thermometer, Bug, Shield, Wheat, TreePine, BookOpen, Flame, Layers, Egg, Shovel, ChevronDown, Eye, Zap } from 'lucide-react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import CinematicHero from '@/components/CinematicHero';
