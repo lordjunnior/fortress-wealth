@@ -160,21 +160,21 @@ export default function Bip110() {
         <meta name="article:tag" content="Bitcoin Knots" />
         <meta name="article:tag" content="Lightning Network" />
         <meta name="article:tag" content="Descentralização" />
-        <link rel="canonical" href="https://lordjunnior.com/bip-110" />
+        <link rel="canonical" href="https://lordjunnior.com/protocolo-bitcoin/bip-110" />
         <script type="application/ld+json">{JSON.stringify({
           '@context': 'https://schema.org',
           '@type': 'Article',
-          headline: 'BIP-110: O Que É a Proposta de Soft Fork Temporário no Bitcoin (RDTS) — Guia Completo 2025',
-          description: 'Análise técnica completa da BIP-110 — Reduced Data Temporary Softfork. O debate sobre spam, consenso, Ordinals e o futuro do espaço de bloco no Bitcoin.',
+          headline: 'BIP-110: A Guerra do Espaço de Bloco no Bitcoin — Análise Técnica Completa 2025',
+          description: 'Análise editorial e técnica da BIP-110 — Reduced Data Temporary Softfork. O debate que divide desenvolvedores sobre spam, consenso, Ordinals e o futuro do espaço de bloco.',
           author: { '@type': 'Person', name: 'Lord Junnior', url: 'https://lordjunnior.com' },
           publisher: { '@type': 'Organization', name: 'Lord Junnior', url: 'https://lordjunnior.com', logo: { '@type': 'ImageObject', url: 'https://lordjunnior.com/og-image.png' } },
           datePublished: '2025-02-22',
           dateModified: '2025-03-15',
           image: 'https://lordjunnior.com/heroes/bip-110.webp',
-          url: 'https://lordjunnior.com/bip-110',
-          mainEntityOfPage: { '@type': 'WebPage', '@id': 'https://lordjunnior.com/bip-110' },
-          keywords: 'BIP-110, soft fork Bitcoin, RDTS, Reduced Data Temporary Softfork, spam blockchain, Ordinals, OP_RETURN, Bitcoin Knots, chain split, Lightning Network, Adam Back, descentralização',
-          articleSection: 'Bitcoin',
+          url: 'https://lordjunnior.com/protocolo-bitcoin/bip-110',
+          mainEntityOfPage: { '@type': 'WebPage', '@id': 'https://lordjunnior.com/protocolo-bitcoin/bip-110' },
+          keywords: 'BIP-110, guerra espaço de bloco, soft fork Bitcoin, RDTS, Reduced Data Temporary Softfork, spam blockchain, Ordinals, OP_RETURN, Bitcoin Knots, chain split, Lightning Network, Adam Back, descentralização, protocolo bitcoin conflito',
+          articleSection: 'Protocolo Bitcoin',
           inLanguage: 'pt-BR',
         })}</script>
         <script type="application/ld+json">{JSON.stringify({
