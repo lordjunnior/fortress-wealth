@@ -15,6 +15,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import ScrollToTop from '@/components/ScrollToTop';
 import NobelVFX from '@/components/NobelVFX';
 import LeadCaptureModal from '@/components/LeadCaptureModal';
+import SovereignDisclaimer from '@/components/SovereignDisclaimer';
 import heroImg from '@/assets/pegasusswap-hero.jpg';
 import tutorialImg from '@/assets/pegasusswap-tutorial.jpg';
 
