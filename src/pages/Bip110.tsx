@@ -24,7 +24,6 @@ import {
   Layers,
   List,
   Lock,
-  MessageSquare,
   Network,
   Pickaxe,
   Scale,
