@@ -3,207 +3,408 @@ import { Link } from 'react-router-dom';
 import { motion, useInView } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 import {
-  ArrowRight, Blocks, GitFork, Shield, AlertTriangle, Network, Scale, Clock,
-  Users, Zap, BookOpen, Lock, Layers, Binary,
-  ArrowLeft, MessageSquare, Target, BadgeAlert, Vote, Pickaxe
+  ArrowRight,
+  Blocks,
+  GitFork,
+  Shield,
+  AlertTriangle,
+  Network,
+  Scale,
+  Clock,
+  Users,
+  Zap,
+  BookOpen,
+  Lock,
+  Layers,
+  Binary,
+  MessageSquare,
+  Target,
+  BadgeAlert,
+  Vote,
+  Pickaxe,
+  Radar,
+  CircleDollarSign,
+  CheckCircle2,
 } from 'lucide-react';
+
 import NobelVFX from '@/components/NobelVFX';
 import CinematicHero from '@/components/CinematicHero';
 import FooterSection from '@/components/FooterSection';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
+import blockchainRedeGlobal from '@/assets/blockchain-rede-global.jpg';
+import blockchainBlocos from '@/assets/blockchain-blocos.jpg';
+import blockchainLivroRazao from '@/assets/blockchain-livro-razao.jpg';
+
+const AFFILIATE_LINK = 'https://www.kucoin.com/r/rf/QBAPZG6X';
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 30, filter: 'blur(6px)' },
+  hidden: { opacity: 0, y: 28, filter: 'blur(6px)' },
   visible: (i: number) => ({
-    opacity: 1, y: 0, filter: 'blur(0px)',
-    transition: { duration: 0.7, ease: APPLE_EASE, delay: i * 0.12 },
+    opacity: 1,
+    y: 0,
+    filter: 'blur(0px)',
+    transition: { duration: 0.72, ease: APPLE_EASE, delay: i * 0.1 },
   }),
 };
 
-/* ══ Section Glow Divider ══ */
+const sectionShell = 'relative z-10 py-14 md:py-20';
+const sectionInner = 'max-w-6xl mx-auto px-4 md:px-10';
+const panelClass = 'rounded-2xl border border-border/70 bg-card/70 backdrop-blur-sm shadow-sm';
+
 const SectionGlow = () => (
-  <div className="relative z-10 h-px max-w-5xl mx-auto">
-    <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, transparent, rgba(245,158,11,0.15), transparent)' }} />
-  </div>
+  <div className="relative z-10 h-px max-w-6xl mx-auto bg-gradient-to-r from-transparent via-border to-transparent" />
 );
 
-/* ══ Chapter Kickoff ══ */
 const ChapterKickoff: React.FC<{ number: string; title: string; subtitle: string }> = ({ number, title, subtitle }) => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-60px' });
+  const isInView = useInView(ref, { once: true, margin: '-70px' });
+
   return (
     <motion.div ref={ref} initial="hidden" animate={isInView ? 'visible' : 'hidden'} className="mb-10 md:mb-14">
       <motion.div variants={fadeUp} custom={0} className="flex items-center gap-3 mb-4">
-        <span className="font-mono text-[10px] tracking-[0.3em] text-amber-500 font-bold">{number}</span>
-        <div className="w-8 h-px bg-gradient-to-r from-amber-500/50 to-transparent" />
+        <span className="font-mono text-[10px] tracking-[0.3em] text-primary font-bold">{number}</span>
+        <div className="h-px w-10 bg-gradient-to-r from-primary/70 to-transparent" />
       </motion.div>
-      <motion.h2 variants={fadeUp} custom={1}
+
+      <motion.h2
+        variants={fadeUp}
+        custom={1}
         className="text-2xl md:text-4xl font-black tracking-tight text-foreground mb-3 leading-[1.1]"
         style={{ fontFamily: "'Bebas Neue', 'Space Grotesk', sans-serif" }}
-      >{title}</motion.h2>
-      <motion.p variants={fadeUp} custom={2} className="text-muted-foreground text-sm md:text-base max-w-2xl leading-relaxed">
+      >
+        {title}
+      </motion.h2>
+
+      <motion.p variants={fadeUp} custom={2} className="text-muted-foreground text-sm md:text-base max-w-3xl leading-relaxed">
         {subtitle}
       </motion.p>
     </motion.div>
   );
 };
 
-/* ══ Info Card ══ */
-const InfoCard: React.FC<{ icon: React.ElementType; title: string; desc: string; accent: string; delay?: number }> = ({ icon: Icon, title, desc, accent, delay = 0 }) => {
+const InfoCard: React.FC<{ icon: React.ElementType; title: string; desc: string; delay?: number }> = ({
+  icon: Icon,
+  title,
+  desc,
+  delay = 0,
+}) => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-40px' });
+  const isInView = useInView(ref, { once: true, margin: '-50px' });
+
   return (
-    <motion.div ref={ref} initial={{ opacity: 0, y: 30 }} animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.7, ease: APPLE_EASE, delay }}
-      className="group relative p-6 md:p-8 rounded-2xl border border-white/[0.06] hover:border-amber-500/20 transition-all duration-500"
-      style={{ background: `linear-gradient(135deg, ${accent}08, transparent 60%)` }}
+    <motion.article
+      ref={ref}
+      initial={{ opacity: 0, y: 24 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.65, ease: APPLE_EASE, delay }}
+      className={`${panelClass} group p-6 md:p-7 transition-all duration-500 hover:-translate-y-1 hover:border-primary/40 hover:bg-card`}
     >
       <div className="flex items-center gap-3 mb-4">
-        <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: `${accent}15` }}>
-          <Icon className="w-5 h-5" style={{ color: accent }} />
+        <div className="w-10 h-10 rounded-xl bg-primary/15 text-primary flex items-center justify-center">
+          <Icon className="w-5 h-5" />
         </div>
         <h3 className="text-base md:text-lg font-bold text-foreground tracking-tight">{title}</h3>
       </div>
-      <p className="text-muted-foreground text-sm leading-relaxed">{desc}</p>
-    </motion.div>
+      <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
+    </motion.article>
   );
 };
 
-/* ══ Timeline Item ══ */
 const TimelineItem: React.FC<{ time: string; title: string; delay?: number }> = ({ time, title, delay = 0 }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-40px' });
+
   return (
-    <motion.div ref={ref} initial={{ opacity: 0, x: -20 }} animate={isInView ? { opacity: 1, x: 0 } : {}}
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, x: -18 }}
+      animate={isInView ? { opacity: 1, x: 0 } : {}}
       transition={{ duration: 0.5, ease: APPLE_EASE, delay }}
-      className="flex items-start gap-4 group"
+      className="flex items-start gap-4"
     >
       <div className="flex flex-col items-center">
-        <div className="w-3 h-3 rounded-full bg-amber-500/40 group-hover:bg-amber-500 transition-colors border-2 border-amber-500/60" />
-        <div className="w-px h-full bg-amber-500/15 min-h-[30px]" />
+        <div className="w-3 h-3 rounded-full bg-primary/70 border-2 border-primary" />
+        <div className="w-px h-full bg-border min-h-[28px]" />
       </div>
       <div className="pb-5">
-        <span className="font-mono text-[10px] text-amber-500/70 tracking-wider">{time}</span>
+        <span className="font-mono text-[10px] text-primary/90 tracking-wider">{time}</span>
         <p className="text-sm text-muted-foreground leading-relaxed mt-0.5">{title}</p>
       </div>
     </motion.div>
   );
 };
 
-/* ══ MAIN PAGE ══ */
 export default function Bip110() {
   const faqData = [
     {
       q: 'O que é a BIP-110?',
-      a: 'A BIP-110 (Reduced Data Temporary Softfork — RDTS) é uma proposta de melhoria do Bitcoin que visa criar um soft fork temporário de um ano para restringir a inserção de dados não-monetários na blockchain, como NFTs e tokens especulativos, restaurando limites históricos de campos como OP_RETURN para 83 bytes.'
+      a: 'A BIP-110 (Reduced Data Temporary Softfork — RDTS) é uma proposta de mudança de consenso no Bitcoin para limitar dados não monetários na blockchain por um período definido (52.416 blocos). A tese central é restaurar limites históricos de propagação e reduzir pressão artificial de taxas causada por inscrições e tokens.',
     },
     {
-      q: 'A BIP-110 pode fazer eu perder meus Bitcoins?',
-      a: 'Não. A proposta não altera a quantidade de moedas nem afeta a custódia. Seus satoshis permanecem seguros na sua hardware wallet. O pior cenário — extremamente improvável — seria um chain split, onde suas moedas existiriam nas duas versões da rede.'
+      q: 'A BIP-110 pode afetar meus satoshis em autocustódia?',
+      a: 'Não existe confisco automático de saldo. O risco discutido não é perda direta de custódia, e sim instabilidade operacional caso houvesse ruptura de consenso entre implementações diferentes. Nesse cenário extremo, moedas continuariam existindo, mas fluxos de liquidação, serviços e UX poderiam ficar temporariamente desorganizados.',
     },
     {
-      q: 'Qual a diferença entre soft fork e hard fork?',
-      a: 'Um soft fork é uma atualização retrocompatível — nodes antigos ainda se comunicam com os novos. Um hard fork cria uma rede completamente separada e incompatível, como aconteceu com o Bitcoin Cash. O Bitcoin historicamente só evoluiu via soft forks.'
+      q: 'Qual é a diferença prática entre soft fork e hard fork nesse debate?',
+      a: 'Soft fork mantém retrocompatibilidade de validação para regras mais restritivas, enquanto hard fork quebra compatibilidade e cria outra rede. A crítica principal à BIP-110 é que, mesmo sendo formalmente soft fork, uma ativação sem consenso social amplo pode produzir efeitos práticos semelhantes a cisão de mercado.',
     },
     {
-      q: 'Por que a BIP-110 é temporária?',
-      a: 'A proposta teria duração de 52.416 blocos (aproximadamente um ano), servindo como medida emergencial enquanto soluções permanentes são desenvolvidas. Esse caráter temporário é, paradoxalmente, um dos pontos mais criticados — um soft fork temporário é algo inédito no Bitcoin.'
+      q: 'Por que a ideia de "soft fork temporário" é tão controversa?',
+      a: 'Porque estabilidade previsível é um pilar do Bitcoin. Regras com "prazo para expirar" levantam dúvidas de coordenação, segurança jurídica e governança técnica. O argumento contrário é que exceções temporárias podem abrir precedente para ciclos políticos de intervenção no protocolo.',
     },
     {
-      q: 'A BIP-110 pode afetar a Lightning Network?',
-      a: 'Indiretamente, sim. Se um chain split ocorresse, canais Lightning poderiam enfrentar problemas de compatibilidade entre as duas redes, especialmente em transações multisig que são a base dos canais de pagamento. Porém, isso só aconteceria em um cenário extremo de falha de consenso.'
+      q: 'Isso impacta a Lightning Network?',
+      a: 'Indiretamente, pode impactar. A Lightning depende da camada base para abertura/fechamento de canais e execução de penalidades. Divergências na camada de consenso, mesmo raras, aumentam risco operacional para roteadores, custodians e usuários que exigem liquidação rápida e previsível em L1.',
     },
     {
-      q: 'Quem é contra e quem é a favor da BIP-110?',
-      a: 'A favor: comunidade que roda Bitcoin Knots e defende que Bitcoin deve ser exclusivamente uma rede monetária, filtrando "spam" como Ordinals e tokens. Contra: figuras como Adam Back e Matt Odell, que argumentam que a proposta gera insegurança no consenso e que mudanças temporárias são contraditórias com a filosofia de estabilidade do Bitcoin.'
+      q: 'Quem está a favor e quem está contra?',
+      a: 'A favor: grupos que priorizam uso estritamente monetário da camada base e defendem filtragem mais dura de dados arbitrários. Contra: desenvolvedores e operadores que enxergam risco de centralização política das regras, censura de uso legítimo e instabilidade de consenso em um protocolo que deve mudar lentamente.',
     },
     {
-      q: 'Preciso fazer algo agora por causa da BIP-110?',
-      a: 'Não. Se você é um holder que compra e guarda Bitcoin em autocustódia, não há nenhuma ação necessária. A proposta afeta o nível de consenso da rede e quem roda nodes. Continue com sua estratégia de acumulação e autocustódia normalmente.'
+      q: 'Preciso tomar alguma ação agora?',
+      a: 'Para a maioria dos holders, não. A resposta racional é reforçar autocustódia, backups de seed, teste de recuperação e diversificação operacional (wallet + canal de liquidez + plano de contingência). A discussão da BIP-110 é estratégica para quem acompanha infraestrutura e governança de rede.',
     },
     {
-      q: 'Essa proposta vai ser aprovada?',
-      a: 'É muito improvável. Para um soft fork ser ativado, precisa de consenso massivo da rede (sinalização de mais de 55% dos nodes). Atualmente, apenas cerca de 2-3% da rede apoia a BIP-110. Historicamente, mudanças de consenso no Bitcoin levam anos de debate — como o SegWit, que levou de 2015 a 2017.'
+      q: 'A proposta tem chance alta de aprovação em 2025?',
+      a: 'Hoje a probabilidade parece baixa sem realinhamento relevante entre operadores de node, mineradores, empresas e comunidade técnica. Mudanças de consenso no Bitcoin historicamente exigem debate longo, sinalização robusta e convergência social, não apenas argumento técnico isolado.',
+    },
+  ];
+
+  const protocolRules = [
+    {
+      icon: Clock,
+      title: 'Janela de execução de 52.416 blocos',
+      desc: 'A proposta estabelece um ciclo aproximado de um ano. Esse recorte temporal tenta reduzir danos percebidos no curto prazo, mas cria uma nova superfície de coordenação: como entrar e sair das regras sem desorganizar o ecossistema?',
+    },
+    {
+      icon: Binary,
+      title: 'Reaperto de limites de dados',
+      desc: 'A lógica técnica busca reverter permissões amplas de propagação e restabelecer limites históricos associados ao OP_RETURN e estruturas adjacentes. O alvo é reduzir cargas consideradas não monetárias na camada base.',
+    },
+    {
+      icon: Layers,
+      title: 'Restrições em partes de witness/script',
+      desc: 'A proposta discute invalidação de estruturas acima de certos tamanhos e exceções para estados anteriores. O ponto sensível é evitar efeitos colaterais em contratos válidos, monitoramento de mempool e ferramentas de infraestrutura.',
+    },
+    {
+      icon: Lock,
+      title: 'Compatibilidade e exceções históricas',
+      desc: 'Para mitigar quebra imediata, são citadas exceções para UTXOs já existentes antes da ativação. Ainda assim, críticos apontam que exceções complexas tendem a elevar custo de auditoria e risco de interpretações divergentes entre clientes.',
+    },
+  ];
+
+  const timeline = [
+    { time: '2009', title: 'Bloco gênesis inaugura o uso narrativo de dados no Bitcoin, mas com foco monetário explícito e contexto de crítica ao sistema bancário.' },
+    { time: '2015-2017', title: 'Período da guerra dos blocos amadurece a noção de que mudanças sem coordenação social profunda cobram preço alto em confiança coletiva.' },
+    { time: '2021', title: 'Ativação do Taproot amplia possibilidades de script e eficiência, abrindo também novas interpretações sobre limite entre uso financeiro e uso arbitrário de dados.' },
+    { time: '2023-2024', title: 'Escalada de Ordinals/Inscriptions e tokens aumenta disputa por espaço de bloco, elevando taxas e polarizando narrativas sobre liberdade versus ruído.' },
+    { time: 'Core v30', title: 'Afrouxamentos de política operacional reacendem o conflito. Parte da comunidade lê como evolução pragmática; outra parte, como porta aberta para degradação da função monetária.' },
+    { time: 'BIP-110', title: 'Surge como resposta de contenção: filtrar tráfego não monetário por janela temporária para tentar recuperar previsibilidade de uso econômico da camada base.' },
+  ];
+
+  const positions = [
+    {
+      name: 'Adam Back',
+      pos: 'Contra',
+      quote:
+        'Mudar consenso para responder spam pode gerar mais risco sistêmico que o próprio problema original. O custo de coordenação social precisa ser tratado como variável de primeira ordem.',
+    },
+    {
+      name: 'Matt Odell',
+      pos: 'Contra',
+      quote:
+        'Intervenções desse tipo podem virar ferramenta de disputa entre implementações e enfraquecer a previsibilidade institucional do protocolo para o mercado global.',
+    },
+    {
+      name: 'Comunidade Knots',
+      pos: 'A favor',
+      quote:
+        'Sem filtros mais firmes, a camada base corre risco de virar canal de carga oportunista, pressionando taxas e dificultando operação de nodes por indivíduos comuns.',
+    },
+    {
+      name: 'Luke Dashjr',
+      pos: 'A favor',
+      quote:
+        'Manter custos de validação em níveis acessíveis é requisito de descentralização. Se rodar node ficar proibitivo, a segurança política da rede enfraquece.',
+    },
+  ];
+
+  const impactScenarios = [
+    {
+      img: blockchainRedeGlobal,
+      title: 'Infraestrutura Global de Nodes',
+      desc: 'Se espaço de bloco continuar pressionado por usos não monetários de alta densidade, aumenta a barreira operacional para novos validadores independentes.'
+    },
+    {
+      img: blockchainBlocos,
+      title: 'Mercado de Taxas e Prioridade',
+      desc: 'A disputa por inclusão em bloco determina quem liquida primeiro. Mudanças de política alteram incentivos econômicos de usuários, carteiras e serviços.'
+    },
+    {
+      img: blockchainLivroRazao,
+      title: 'Governança de Longo Prazo',
+      desc: 'Cada precedente em consenso impacta expectativas futuras. O mercado observa não só a regra técnica, mas o método político de atualização adotado.'
+    },
+  ];
+
+  const riskMatrix = [
+    {
+      icon: Radar,
+      title: 'Risco de Narrativa Binária',
+      severity: 'Alto',
+      action:
+        'Evitar leitura tribal ("censura" vs "liberdade total"). Avaliar métricas: custo de node, compressão de taxas, impacto em uso monetário real e robustez de consenso.',
+    },
+    {
+      icon: Network,
+      title: 'Risco de Fragmentação Operacional',
+      severity: 'Médio/Alto',
+      action:
+        'Monitorar aderência de clientes e provedores de infraestrutura. Em divergência, priorizar carteiras com boa telemetria de rede e plano de fallback transacional.',
+    },
+    {
+      icon: Zap,
+      title: 'Risco para Liquidação em L2',
+      severity: 'Médio',
+      action:
+        'Revisar estratégias de abertura/fechamento de canais Lightning, limites de roteamento e contingência para períodos de taxa elevada e latência de confirmação.',
+    },
+    {
+      icon: Pickaxe,
+      title: 'Risco para Receita de Mineradores',
+      severity: 'Médio',
+      action:
+        'Acompanhar equilíbrio entre fee market de curto prazo e saúde monetária de longo prazo. Incentivos imediatos não podem corroer a confiança na camada base.',
+    },
+    {
+      icon: Shield,
+      title: 'Risco para Holder Desinformado',
+      severity: 'Baixo/Médio',
+      action:
+        'Blindar autocustódia: seed offline, teste de restauração, redundância geográfica de backup e higiene operacional contra golpes em momentos de ruído narrativo.',
+    },
+    {
+      icon: CircleDollarSign,
+      title: 'Risco de Dependência de Terceiros',
+      severity: 'Alto',
+      action:
+        'Construir rota alternativa de liquidez e saída. Não depender de um único banco, uma única exchange ou um único trilho de pagamento para decisões críticas.',
     },
   ];
 
   return (
     <>
       <Helmet>
-        <title>BIP-110: A Guerra do Espaço de Bloco no Bitcoin — Análise Técnica Completa 2025</title>
-        <meta name="description" content="BIP-110: A Guerra do Espaço de Bloco. Entenda a proposta que divide desenvolvedores Bitcoin — Reduced Data Temporary Softfork, quem apoia (Bitcoin Knots), quem é contra (Adam Back), impactos em autocustódia e se vai passar. Análise editorial completa." />
-        <meta name="keywords" content="BIP-110, BIP 110 Bitcoin, soft fork Bitcoin 2025, Reduced Data Temporary Softfork, RDTS Bitcoin, proposta soft fork temporário, spam blockchain Bitcoin, Ordinals Bitcoin polêmica, OP_RETURN Bitcoin, Bitcoin Knots vs Core, filtro spam Bitcoin, chain split Bitcoin, Bitcoin Core v30, Taproot consequências, espaço de bloco Bitcoin, security budget mineradores, hard fork vs soft fork, UASF Bitcoin, SegWit história, consensus Bitcoin, Luke Dashjr BIP, Adam Back BIP-110, Matt Odell opinião, Lightning Network impacto, multisig chain split, Bitcoin descentralização nodes, NFT Bitcoin Inscriptions, autocustódia segura, halving security budget, Bitcoin melhoria proposta, guerra espaço de bloco, protocolo bitcoin conflito" />
-        <meta property="og:title" content="BIP-110: A Guerra do Espaço de Bloco — A Proposta Que Divide o Bitcoin" />
-        <meta property="og:description" content="Análise editorial e técnica da BIP-110 (RDTS). O debate que divide desenvolvedores sobre spam, consenso, Ordinals e o futuro do espaço de bloco no Bitcoin." />
-        <meta property="og:image" content="https://lordjunnior.com/heroes/bip-110.webp" />
-        <meta property="og:url" content="https://lordjunnior.com/protocolo-bitcoin/bip-110" />
+        <title>BIP-110: O Que É o Soft Fork Temporário Que Divide o Bitcoin | Guia Editorial 2025</title>
+        <meta
+          name="description"
+          content="BIP-110 (RDTS) sem simplificação: regras técnicas, impactos em consenso, mineração e Lightning, análise de risco operacional e veredicto editorial para quem protege patrimônio em Bitcoin."
+        />
+        <meta
+          name="keywords"
+          content="BIP-110, RDTS, soft fork temporário, OP_RETURN 83 bytes, Bitcoin Knots, Bitcoin Core v30, consenso Bitcoin, chain split, Lightning Network, mineração, espaço de bloco, descentralização"
+        />
+        <meta property="og:title" content="BIP-110: O Soft Fork Temporário Que Divide o Bitcoin" />
+        <meta
+          property="og:description"
+          content="Análise técnica e estratégica da BIP-110: regras, controvérsias, impactos e plano de ação para holders em autocustódia."
+        />
+        <meta property="og:image" content="https://lordjunnior.com.br/heroes/bip-110.webp" />
+        <meta property="og:url" content="https://lordjunnior.com.br/protocolo-bitcoin/bip-110" />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Lord Junnior" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="BIP-110: A Guerra do Espaço de Bloco — Análise Técnica 2025" />
-        <meta name="twitter:description" content="BIP-110 (RDTS): a guerra do espaço de bloco no Bitcoin. Quem apoia, quem é contra, impactos e se vai passar. Análise editorial completa." />
-        <meta name="twitter:image" content="https://lordjunnior.com/heroes/bip-110.webp" />
-        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+        <meta name="twitter:title" content="BIP-110: Guia Editorial Técnico 2025" />
+        <meta
+          name="twitter:description"
+          content="A proposta RDTS explicada com profundidade: riscos de consenso, efeitos econômicos e veredicto para quem vive autocustódia de verdade."
+        />
+        <meta name="twitter:image" content="https://lordjunnior.com.br/heroes/bip-110.webp" />
+        <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
         <meta name="author" content="Lord Junnior" />
-        <meta name="article:published_time" content="2025-02-22T00:00:00Z" />
-        <meta name="article:modified_time" content="2025-03-15T00:00:00Z" />
-        <meta name="article:section" content="Bitcoin" />
-        <meta name="article:tag" content="BIP-110" />
-        <meta name="article:tag" content="Soft Fork" />
-        <meta name="article:tag" content="Bitcoin Consenso" />
-        <meta name="article:tag" content="Blockchain" />
-        <meta name="article:tag" content="RDTS" />
-        <meta name="article:tag" content="Ordinals" />
-        <meta name="article:tag" content="OP_RETURN" />
-        <meta name="article:tag" content="Bitcoin Knots" />
-        <meta name="article:tag" content="Lightning Network" />
-        <meta name="article:tag" content="Descentralização" />
-        <link rel="canonical" href="https://lordjunnior.com/protocolo-bitcoin/bip-110" />
-        <script type="application/ld+json">{JSON.stringify({
-          '@context': 'https://schema.org',
-          '@type': 'Article',
-          headline: 'BIP-110: A Guerra do Espaço de Bloco no Bitcoin — Análise Técnica Completa 2025',
-          description: 'Análise editorial e técnica da BIP-110 — Reduced Data Temporary Softfork. O debate que divide desenvolvedores sobre spam, consenso, Ordinals e o futuro do espaço de bloco.',
-          author: { '@type': 'Person', name: 'Lord Junnior', url: 'https://lordjunnior.com' },
-          publisher: { '@type': 'Organization', name: 'Lord Junnior', url: 'https://lordjunnior.com', logo: { '@type': 'ImageObject', url: 'https://lordjunnior.com/og-image.png' } },
-          datePublished: '2025-02-22',
-          dateModified: '2025-03-15',
-          image: 'https://lordjunnior.com/heroes/bip-110.webp',
-          url: 'https://lordjunnior.com/protocolo-bitcoin/bip-110',
-          mainEntityOfPage: { '@type': 'WebPage', '@id': 'https://lordjunnior.com/protocolo-bitcoin/bip-110' },
-          keywords: 'BIP-110, guerra espaço de bloco, soft fork Bitcoin, RDTS, Reduced Data Temporary Softfork, spam blockchain, Ordinals, OP_RETURN, Bitcoin Knots, chain split, Lightning Network, Adam Back, descentralização, protocolo bitcoin conflito',
-          articleSection: 'Protocolo Bitcoin',
-          inLanguage: 'pt-BR',
-        })}</script>
-        <script type="application/ld+json">{JSON.stringify({
-          '@context': 'https://schema.org',
-          '@type': 'FAQPage',
-          mainEntity: faqData.map(f => ({
-            '@type': 'Question',
-            name: f.q,
-            acceptedAnswer: { '@type': 'Answer', text: f.a },
-          })),
-        })}</script>
-        <script type="application/ld+json">{JSON.stringify({
-          '@context': 'https://schema.org',
-          '@type': 'BreadcrumbList',
-          itemListElement: [
-            { '@type': 'ListItem', position: 1, name: 'Início', item: 'https://lordjunnior.com' },
-            { '@type': 'ListItem', position: 2, name: 'Protocolo Bitcoin', item: 'https://lordjunnior.com/protocolo-bitcoin' },
-            { '@type': 'ListItem', position: 3, name: 'BIP-110: A Guerra do Espaço de Bloco', item: 'https://lordjunnior.com/protocolo-bitcoin/bip-110' },
-          ],
-        })}</script>
+        <link rel="canonical" href="https://lordjunnior.com.br/protocolo-bitcoin/bip-110" />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Article',
+              headline: 'BIP-110: O Que É o Soft Fork Temporário Que Divide o Bitcoin',
+              description:
+                'Análise técnica e estratégica da BIP-110 (RDTS): regras de consenso, disputa de narrativas, impactos operacionais e plano de blindagem para holders.',
+              author: { '@type': 'Person', name: 'Lord Junnior', url: 'https://lordjunnior.com.br' },
+              publisher: {
+                '@type': 'Organization',
+                name: 'Lord Junnior',
+                url: 'https://lordjunnior.com.br',
+                logo: { '@type': 'ImageObject', url: 'https://lordjunnior.com.br/og-image.png' },
+              },
+              datePublished: '2025-02-22',
+              dateModified: '2026-03-15',
+              image: 'https://lordjunnior.com.br/heroes/bip-110.webp',
+              url: 'https://lordjunnior.com.br/protocolo-bitcoin/bip-110',
+              mainEntityOfPage: {
+                '@type': 'WebPage',
+                '@id': 'https://lordjunnior.com.br/protocolo-bitcoin/bip-110',
+              },
+              keywords:
+                'BIP-110, RDTS, OP_RETURN, Bitcoin Knots, consenso Bitcoin, chain split, Lightning Network, espaço de bloco, mineração',
+              articleSection: 'Protocolo Bitcoin',
+              inLanguage: 'pt-BR',
+            }),
+          }}
+        />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'FAQPage',
+              mainEntity: faqData.map((f) => ({
+                '@type': 'Question',
+                name: f.q,
+                acceptedAnswer: { '@type': 'Answer', text: f.a },
+              })),
+            }),
+          }}
+        />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'BreadcrumbList',
+              itemListElement: [
+                { '@type': 'ListItem', position: 1, name: 'Início', item: 'https://lordjunnior.com.br' },
+                {
+                  '@type': 'ListItem',
+                  position: 2,
+                  name: 'Protocolo Bitcoin',
+                  item: 'https://lordjunnior.com.br/protocolo-bitcoin',
+                },
+                {
+                  '@type': 'ListItem',
+                  position: 3,
+                  name: 'BIP-110',
+                  item: 'https://lordjunnior.com.br/protocolo-bitcoin/bip-110',
+                },
+              ],
+            }),
+          }}
+        />
       </Helmet>
 
       <NobelVFX accentColor="amber" />
 
-      {/* ─── HERO ─── */}
       <CinematicHero
-        phase="PROTOCOLO BITCOIN • ANÁLISE EDITORIAL 2025"
-        title="BIP-110: A Guerra do Espaço de Bloco"
-        subtitle="A proposta que divide desenvolvedores. Entenda o conflito técnico, político e filosófico que pode redefinir o que entra — e o que fica de fora — da blockchain do Bitcoin."
+        phase="PROTOCOLO BITCOIN • ANÁLISE EDITORIAL"
+        title="BIP-110: O Soft Fork Temporário Que Divide o Bitcoin"
+        subtitle="Sem resumo raso: aqui você entende regras técnicas, disputa de consenso e impacto real para quem protege patrimônio em autocustódia."
         image="/heroes/bip-110.webp"
         icon={GitFork}
         accentColor="amber"
@@ -212,40 +413,60 @@ export default function Bip110() {
       />
 
       <main className="relative z-10">
-        {/* Back nav now handled by CinematicHero backLink */}
-
-        {/* ═══ PARÁGRAFO DE ABERTURA SEO ═══ */}
-        <section className="relative z-10 py-12 md:py-20">
+        <section className={sectionShell}>
           <div className="max-w-4xl mx-auto px-4 md:px-10">
-            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }} transition={{ duration: 0.8, ease: APPLE_EASE }}
-              className="prose prose-invert max-w-none"
+            <motion.article
+              initial={{ opacity: 0, y: 22 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.75, ease: APPLE_EASE }}
+              className={`${panelClass} p-6 md:p-8`}
             >
-              <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-                A <strong className="text-foreground">BIP-110</strong>, também conhecida como <strong className="text-foreground">Reduced Data Temporary Softfork (RDTS)</strong>, é uma proposta de melhoria do Bitcoin que quer criar um <strong className="text-foreground">soft fork temporário de um ano</strong> para restringir a inserção de dados não-monetários na blockchain — como NFTs, Ordinals, Inscriptions e tokens especulativos. A proposta restauraria o limite histórico de <strong className="text-foreground">83 bytes no OP_RETURN</strong> e filtraria até 41% das transações consideradas "spam", liberando 36% de espaço no bloco. Mas o debate vai muito além da técnica: envolve <strong className="text-foreground">consenso, descentralização, censura, security budget</strong> e o próprio futuro do Bitcoin como rede monetária. Figuras como <strong className="text-foreground">Adam Back</strong> se posicionaram contra, enquanto a comunidade que roda <strong className="text-foreground">Bitcoin Knots</strong> defende a medida. Neste guia completo, você entende tudo sobre a BIP-110 — o que é, quem apoia, quem é contra, se afeta seus Bitcoins em autocustódia e se essa proposta tem chance real de ser aprovada em 2025.
+              <p className="text-base md:text-lg text-foreground/90 leading-relaxed">
+                A BIP-110 (Reduced Data Temporary Softfork) não é uma pauta periférica: ela toca no coração da
+                governança do Bitcoin. A proposta tenta reimpor limites de dados para preservar a camada base como
+                trilho monetário prioritário, reduzindo pressão de cargas não financeiras. Defensores afirmam que isso
+                protege descentralização e acessibilidade para quem roda node; críticos argumentam que filtros podem
+                abrir precedente político perigoso e elevar risco de fragmentação social do consenso. O ponto-chave não
+                é apenas “spam versus liberdade”, mas o custo sistêmico de qualquer mudança em um protocolo cujo valor
+                depende de previsibilidade, neutralidade e credibilidade intergeracional.
               </p>
-            </motion.div>
+            </motion.article>
           </div>
         </section>
 
         <SectionGlow />
 
-        {/* ═══ CH.01 — O QUE É BIP ═══ */}
-        <section className="relative z-10 py-14 md:py-20">
-          <div className="max-w-6xl mx-auto px-4 md:px-10">
-            <ChapterKickoff number="CAPÍTULO 01" title="Antes de Tudo: O Que é uma BIP?" subtitle="Bitcoin Improvement Proposal — a única forma de evoluir o protocolo mais descentralizado do mundo. Sem CEO, sem roadmap, sem permissão." />
+        <section className={sectionShell}>
+          <div className={sectionInner}>
+            <ChapterKickoff
+              number="CAPÍTULO 01"
+              title="Antes da BIP-110: Como o Bitcoin Realmente Evolui"
+              subtitle="Sem CEO, sem comitê central e sem atalho político. Mudança de consenso exige convergência técnica e social em ritmo lento por design."
+            />
             <div className="grid md:grid-cols-2 gap-5">
-              <InfoCard icon={BookOpen} title="Bitcoin Improvement Proposal" accent="#f59e0b"
-                desc="BIP é uma sigla para Bitcoin Improvement Proposal — uma proposta de melhoria para o Bitcoin. Como o Bitcoin é um protocolo open source, não existe nenhuma empresa, CEO ou startup definindo qual será a próxima atualização. Todas as melhorias, correções de bugs e atualizações acontecem através de BIPs que desenvolvedores propõem de forma aberta. Toda a rede — mantenedores, nodes, mineradores e até quem apenas acompanha — pode analisar, debugar e comentar nas propostas."
+              <InfoCard
+                icon={BookOpen}
+                title="BIP como rito de mudança"
+                desc="Bitcoin Improvement Proposal é o formato aberto para discutir alterações de protocolo. Não é decreto: é documento vivo submetido a revisão pública, stress test intelectual e disputa argumentativa entre pessoas com incentivos diferentes."
               />
-              <InfoCard icon={GitFork} title="Soft Fork vs. Hard Fork" accent="#38bdf8" delay={0.1}
-                desc="Toda vez que uma BIP é implementada, o Bitcoin evolui via soft forks — atualizações retrocompatíveis onde nodes antigos ainda se comunicam com os novos. Um hard fork cria uma rede completamente incompatível: as moedas não transitam mais entre as redes, os nodes não se comunicam. Bitcoin nunca fez hard fork. Quem fez foram protocolos que copiaram o código e mudaram tanto que criaram redes separadas — como Bitcoin Cash e Bitcoin SV, que definharam."
+              <InfoCard
+                icon={GitFork}
+                title="Soft fork ≠ passe livre"
+                desc="Mesmo retrocompatível no papel, soft fork depende de coordenação real de mercado. Sem legitimidade social ampla, a mudança vira vetor de atrito operacional, fragmenta expectativas e corrói confiança no mecanismo de governança."
+                delay={0.08}
               />
-              <InfoCard icon={Vote} title="Consenso Descentralizado" accent="#34d399" delay={0.2}
-                desc="Para uma BIP ser ativada, não basta um grupo propor — a rede inteira precisa concordar. Se a maioria dos nodes não atualiza para a nova versão, a proposta simplesmente não passa. É por isso que mudanças no Bitcoin levam anos: o SegWit, por exemplo, foi debatido de 2015 a 2017 até ser ativado. Essa lentidão proposital é uma feature, não um bug — é o que impede que qualquer grupo centralize decisões sobre o dinheiro de todos."
+              <InfoCard
+                icon={Vote}
+                title="Consenso é processo, não slogan"
+                desc="Consenso no Bitcoin não nasce de likes no X. Ele emerge quando operadores de node, mineradores, empresas e usuários convergem para um mesmo conjunto de regras com horizonte de longo prazo."
+                delay={0.16}
               />
-              <InfoCard icon={Shield} title="A Lição dos Hard Forks Fracassados" accent="#c084fc" delay={0.3}
-                desc="Bitcoin Cash, Bitcoin SV, Bitcoin Gold — todos fizeram hard forks do Bitcoin tentando 'melhorar' o protocolo. Todos definharam: queda de mais de 90% no preço e hash rate milhões de vezes abaixo da rede Bitcoin. A 'evolução natural' do Bitcoin funciona assim: ideias que não atingem consenso criam forks para tentar sobreviver sozinhas — e as que não funcionam, morrem. É a lei da selva aplicada ao dinheiro digital."
+              <InfoCard
+                icon={Shield}
+                title="Lentidão é blindagem"
+                desc="A dificuldade de mudar o protocolo é justamente o que protege o ativo de capturas oportunistas. Um sistema monetário global não pode funcionar em lógica de atualização apressada por pressão de curto prazo."
+                delay={0.24}
               />
             </div>
           </div>
@@ -253,111 +474,135 @@ export default function Bip110() {
 
         <SectionGlow />
 
-        {/* ═══ CH.03 — A PROPOSTA ═══ */}
-        <section className="relative z-10 py-14 md:py-20">
-          <div className="max-w-6xl mx-auto px-4 md:px-10">
-            <ChapterKickoff number="CAPÍTULO 02" title="BIP-110: Reduced Data Temporary Softfork" subtitle="A proposta quer criar um soft fork temporário de um ano para filtrar 'spam' da blockchain e restaurar limites históricos de dados por bloco." />
+        <section className={sectionShell}>
+          <div className={sectionInner}>
+            <ChapterKickoff
+              number="CAPÍTULO 02"
+              title="Anatomia Técnica da BIP-110 (RDTS)"
+              subtitle="O texto propõe uma janela temporária de endurecimento para reduzir tráfego não monetário em camada base e reequilibrar o mercado de espaço de bloco."
+            />
 
-            <div className="relative p-6 md:p-10 rounded-2xl border border-amber-500/15 mb-10" style={{ background: 'linear-gradient(135deg, rgba(245,158,11,0.04), transparent 60%)' }}>
+            <article className={`${panelClass} p-6 md:p-10 mb-10`}>
               <div className="flex items-center gap-3 mb-6">
-                <AlertTriangle className="w-5 h-5 text-amber-500" />
-                <span className="font-mono text-[10px] tracking-[0.3em] text-amber-500 font-bold">REGRAS TÉCNICAS DA BIP-110</span>
+                <AlertTriangle className="w-5 h-5 text-primary" />
+                <span className="font-mono text-[10px] tracking-[0.3em] text-primary font-bold">REGRAS OPERACIONAIS EM DISCUSSÃO</span>
               </div>
-              <div className="grid md:grid-cols-2 gap-6">
-                {[
-                  { icon: Clock, title: 'Duração: 52.416 blocos', desc: 'Aproximadamente um ano de vigência. Um soft fork temporário — algo inédito na história do Bitcoin.' },
-                  { icon: Binary, title: 'Scripts PubKey > 34 bytes', desc: 'Novos scripts com mais de 34 bytes serão invalidados, exceto OP_RETURN até 83 bytes (limite histórico).' },
-                  { icon: Layers, title: 'Witness SegWit limitado', desc: 'Elementos de witness acima de 256 bytes também serão invalidados, criando restrições em campos do Taproot.' },
-                  { icon: Lock, title: 'Restrições em Taproot', desc: 'Campos como OP_IF e OP_NOTIF para tap scripts limitados a 257 bytes. Exceções para UTXOs criados antes da ativação.' },
-                ].map((item, i) => (
-                  <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.1, ease: APPLE_EASE }}
-                    className="flex items-start gap-4 p-4 rounded-xl border border-white/[0.04] hover:border-amber-500/15 transition-colors"
-                    style={{ background: 'rgba(245,158,11,0.02)' }}
+
+              <div className="grid md:grid-cols-2 gap-4 md:gap-5">
+                {protocolRules.map((item, i) => (
+                  <motion.div
+                    key={item.title}
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.55, delay: i * 0.08, ease: APPLE_EASE }}
+                    className="rounded-xl border border-border/60 bg-secondary/30 p-4 md:p-5"
                   >
-                    <item.icon className="w-5 h-5 text-amber-500/70 mt-0.5 shrink-0" />
-                    <div>
-                      <h4 className="text-sm font-bold text-foreground mb-1">{item.title}</h4>
-                      <p className="text-xs text-muted-foreground leading-relaxed">{item.desc}</p>
-                    </div>
+                    <item.icon className="w-5 h-5 text-primary mb-3" />
+                    <h4 className="text-sm font-bold text-foreground mb-1.5">{item.title}</h4>
+                    <p className="text-xs text-muted-foreground leading-relaxed">{item.desc}</p>
                   </motion.div>
                 ))}
               </div>
-              <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
-                transition={{ delay: 0.5 }} className="mt-6 p-4 rounded-xl border border-emerald-500/15" style={{ background: 'rgba(16,185,129,0.03)' }}>
-                <p className="text-sm text-foreground/80">
-                  <span className="font-bold text-emerald-400">Impacto simulado:</span> filtraria <span className="text-amber-400 font-bold">41%</span> das transações de spam e liberaria <span className="text-amber-400 font-bold">36%</span> de espaço no bloco — sem bloquear nenhuma transação financeira legítima.
+
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.35 }}
+                className="mt-6 rounded-xl border border-primary/30 bg-primary/10 p-4"
+              >
+                <p className="text-sm text-foreground/90 leading-relaxed">
+                  <span className="font-bold text-primary">Hipótese de impacto declarada:</span> redução relevante de cargas
+                  não monetárias e recuperação de previsibilidade de taxas para liquidação financeira. A discussão crítica
+                  é se o benefício operacional compensa o risco político de um soft fork com validade temporária.
                 </p>
               </motion.div>
-            </div>
+            </article>
           </div>
         </section>
 
         <SectionGlow />
 
-        {/* ═══ CH.04 — O CONTEXTO / LINHA DO TEMPO ═══ */}
-        <section className="relative z-10 py-14 md:py-20">
-          <div className="max-w-6xl mx-auto px-4 md:px-10">
-            <ChapterKickoff number="CAPÍTULO 03" title="A Guerra do Espaço de Bloco" subtitle="O conflito não começou agora. A briga sobre como o espaço de bloco deve ser usado vem desde os primórdios do Bitcoin — e se intensificou com Ordinals, Inscriptions e o Taproot." />
+        <section className={sectionShell}>
+          <div className={sectionInner}>
+            <ChapterKickoff
+              number="CAPÍTULO 03"
+              title="A Guerra do Espaço de Bloco"
+              subtitle="O conflito é antigo: quem define o uso legítimo de um recurso escasso global chamado bloco?"
+            />
 
-            <div className="grid md:grid-cols-2 gap-10">
-              <div>
+            <div className="grid md:grid-cols-2 gap-8 md:gap-10">
+              <article className={`${panelClass} p-6 md:p-7`}>
                 <h3 className="text-lg font-bold text-foreground mb-6 flex items-center gap-2">
-                  <Target className="w-4 h-4 text-amber-500" /> Linha do Tempo do Conflito
+                  <Target className="w-4 h-4 text-primary" /> Linha do Tempo Estratégica
                 </h3>
                 <div className="space-y-0">
-                  <TimelineItem time="2009" title="Satoshi registra a primeira informação no bloco Gênesis via OP_RETURN: 'Chancellor on the brink of second bailout for banks'" />
-                  <TimelineItem time="2015-2017" title="Guerra dos blocos: debate sobre tamanho de bloco culmina na ativação do SegWit via UASF (User Activated Soft Fork)" delay={0.05} />
-                  <TimelineItem time="2017" title="Hard forks fracassados: Bitcoin Cash e Bitcoin SV tentam aumentar blocos e definham (–90% vs BTC)" delay={0.1} />
-                  <TimelineItem time="2021" title="Ativação do Taproot: soft fork que abre novas possibilidades de scripts — incluindo as que permitem Ordinals" delay={0.15} />
-                  <TimelineItem time="2023-2024" title="Explosão de Inscriptions e Ordinals: NFTs e tokens dentro do Bitcoin geram debate feroz sobre 'spam' na blockchain" delay={0.2} />
-                  <TimelineItem time="Nov 2024" title="Bitcoin Core v30 afrouxa limites de OP_RETURN de 83 bytes para 100.000 bytes — polêmica entre Core e comunidade de nodes" delay={0.25} />
-                  <TimelineItem time="Dez 2024" title="BIP-110 é proposta por desenvolvedor anônimo como resposta direta ao afrouxamento do Core v30" delay={0.3} />
+                  {timeline.map((item, i) => (
+                    <TimelineItem key={item.time} time={item.time} title={item.title} delay={i * 0.04} />
+                  ))}
                 </div>
-              </div>
+              </article>
 
-              <div>
+              <article className={`${panelClass} p-6 md:p-7`}>
                 <h3 className="text-lg font-bold text-foreground mb-6 flex items-center gap-2">
-                  <Scale className="w-4 h-4 text-amber-500" /> Os Dois Lados
+                  <Scale className="w-4 h-4 text-primary" /> Os Dois Eixos de Disputa
                 </h3>
+
                 <div className="space-y-4">
-                  <div className="p-5 rounded-xl border border-emerald-500/15" style={{ background: 'rgba(16,185,129,0.03)' }}>
-                    <h4 className="text-sm font-bold text-emerald-400 mb-2 flex items-center gap-2">
-                      <Shield className="w-4 h-4" /> Bitcoin é Dinheiro — Filtre o Spam
+                  <div className="rounded-xl border border-border/70 bg-secondary/30 p-5">
+                    <h4 className="text-sm font-bold text-foreground mb-2 flex items-center gap-2">
+                      <Shield className="w-4 h-4 text-primary" /> Eixo 1 — Bitcoin como trilho monetário
                     </h4>
                     <p className="text-xs text-muted-foreground leading-relaxed">
-                      A blockchain é uma rede financeira. Dados aleatórios — fotos de gatinhos, NFTs especulativas, tokens de shitcoin — são ruído que enche os blocos, expulsa transações monetárias legítimas via taxas altas e faz a blockchain ficar cada vez mais pesada, dificultando que pessoas comuns rodem seus próprios nodes. Com o tempo, isso empurra a rede para centralização em data centers — exatamente como aconteceu com as altcoins que faliram.
+                      Esta leitura sustenta que a camada base deve priorizar liquidação financeira e preservar custo de
+                      validação baixo para indivíduos. Sob essa ótica, dados arbitrários deslocam função monetária,
+                      encarecem operação e podem induzir concentração técnica no longo prazo.
                     </p>
                   </div>
-                  <div className="p-5 rounded-xl border border-purple-500/15" style={{ background: 'rgba(168,85,247,0.03)' }}>
-                    <h4 className="text-sm font-bold text-purple-400 mb-2 flex items-center gap-2">
-                      <Users className="w-4 h-4" /> Rede Livre — Quem Paga Taxa, Decide
+
+                  <div className="rounded-xl border border-border/70 bg-secondary/30 p-5">
+                    <h4 className="text-sm font-bold text-foreground mb-2 flex items-center gap-2">
+                      <Users className="w-4 h-4 text-primary" /> Eixo 2 — Neutralidade de uso mediante taxa
                     </h4>
                     <p className="text-xs text-muted-foreground leading-relaxed">
-                      Quem define como a rede Bitcoin deve ser usada? Se eu pago a taxa para inserir minha transação no bloco, por que deveria ser bloqueado? Filtros de dados são uma forma de censura disfarçada de proteção. A flexibilidade gera mais demanda, mais uso de espaço de bloco, taxas mais altas — o que resolve o problema do security budget dos mineradores a longo prazo, já que a recompensa por bloco diminui a cada halving.
+                      Esta leitura argumenta que, se a transação cumpre regra de consenso e paga taxa de mercado, não
+                      cabe filtragem política de finalidade. O risco seria transformar política de mempool em instrumento
+                      de censura, enfraquecendo a neutralidade credível da rede.
                     </p>
                   </div>
                 </div>
-              </div>
+              </article>
             </div>
           </div>
         </section>
 
         <SectionGlow />
 
-        {/* ═══ CH.05 — IMPACTOS ═══ */}
-        <section className="relative z-10 py-14 md:py-20">
-          <div className="max-w-6xl mx-auto px-4 md:px-10">
-            <ChapterKickoff number="CAPÍTULO 04" title="Impactos: Mineração, Lightning e Consenso" subtitle="Se a BIP-110 passasse, quais seriam as consequências reais para mineradores, Lightning Network e a estabilidade da rede?" />
+        <section className={sectionShell}>
+          <div className={sectionInner}>
+            <ChapterKickoff
+              number="CAPÍTULO 04"
+              title="Impactos Sistêmicos: Mineração, Lightning e Consenso"
+              subtitle="Se regras de propagação e validação mudam, os efeitos viajam por toda a cadeia econômica do Bitcoin."
+            />
             <div className="grid md:grid-cols-3 gap-5">
-              <InfoCard icon={Pickaxe} title="Mineradores" accent="#f59e0b"
-                desc="Bloquear transações não-monetárias reduziria a competição por espaço de bloco, potencialmente diminuindo as taxas. No curto prazo, mineradores receberiam menos em fees. Porém, defensores argumentam que proteger a descentralização garante o valor do Bitcoin a longo prazo — e mineradores só ganham se o Bitcoin continuar valendo algo."
+              <InfoCard
+                icon={Pickaxe}
+                title="Mineradores"
+                desc="No curto prazo, filtrar certo tipo de carga pode reduzir competição por bloco e alterar curva de fees. A pergunta estratégica é se o ajuste reforça ou enfraquece o valor do ativo que remunera a própria mineração no longo prazo."
               />
-              <InfoCard icon={Zap} title="Lightning Network" accent="#38bdf8" delay={0.1}
-                desc="A Lightning funciona através de transações multisig registradas na blockchain. Num chain split, canais poderiam enfrentar problemas de compatibilidade — uma abertura de canal numa rede, fechamento na outra, reorganização de blocos que invalidariam transações confirmadas. Porém, esse cenário extremo exigiria uma falha massiva de consenso, que é improvável."
+              <InfoCard
+                icon={Zap}
+                title="Lightning Network"
+                desc="A Lightning depende da camada base para abertura, fechamento e enforcement. Qualquer ruído de consenso aumenta risco de execução para operadores de canais, provedores de liquidez e usuários com necessidade de settlement confiável."
+                delay={0.1}
               />
-              <InfoCard icon={Network} title="Risco de Chain Split" accent="#ef4444" delay={0.2}
-                desc="Se a proposta fosse ativada na marra sem consenso, poderia ocorrer um chain split — duas versões paralelas da rede. Parte dos nodes rodando a versão com filtros e outra parte sem. Isso geraria insegurança sobre confirmações, reorganização de blocos e incompatibilidade entre redes. É o cenário mais temido e o principal argumento contra forçar a barra."
+              <InfoCard
+                icon={Network}
+                title="Estabilidade de consenso"
+                desc="O maior risco não está no código isolado, mas na coordenação social. Se diferentes grupos adotarem narrativas irreconciliáveis, o mercado precifica incerteza institucional — e isso afeta usabilidade, confiança e alocação de capital."
+                delay={0.2}
               />
             </div>
           </div>
@@ -365,32 +610,36 @@ export default function Bip110() {
 
         <SectionGlow />
 
-        {/* ═══ CH.06 — QUEM DISSE O QUÊ ═══ */}
-        <section className="relative z-10 py-14 md:py-20">
-          <div className="max-w-6xl mx-auto px-4 md:px-10">
-            <ChapterKickoff number="CAPÍTULO 05" title="Quem se Posicionou e o Que Disseram" subtitle="As figuras mais influentes do ecossistema Bitcoin já se posicionaram sobre a BIP-110. O debate é técnico, ideológico e filosófico." />
-
-            <div className="grid md:grid-cols-2 gap-5">
-              {[
-                { name: 'Adam Back', pos: 'CONTRA', color: '#ef4444', quote: 'Fazer uma mudança de consenso para resolver spam gera mais insegurança do que o próprio problema que tenta resolver. Soft forks temporários são contraditórios com a filosofia de estabilidade do Bitcoin.' },
-                { name: 'Matt Odell', pos: 'CONTRA', color: '#ef4444', quote: 'A proposta pode ser uma tentativa de ampliar o uso de implementações alternativas como o Knots. Mudanças de consenso não devem servir interesses de grupos específicos.' },
-                { name: 'Comunidade Knots', pos: 'A FAVOR', color: '#22c55e', quote: 'O Bitcoin Core foi infiltrado por empresas com interesse em lançar protocolos de tokens dentro do Bitcoin. O afrouxamento de políticas de propagação de dados é um ataque à descentralização.' },
-                { name: 'Luke Dashjr', pos: 'A FAVOR', color: '#22c55e', quote: 'Os filtros de spam são necessários para manter a rede enxuta e acessível. Sem eles, rodar um full node vai se tornar cada vez mais caro e inviável para pessoas comuns.' },
-              ].map((p, i) => (
-                <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }} transition={{ duration: 0.6, delay: i * 0.1, ease: APPLE_EASE }}
-                  className="p-6 rounded-2xl border border-white/[0.06] hover:border-amber-500/15 transition-all duration-500"
-                  style={{ background: `${p.color}04` }}
+        <section className={sectionShell}>
+          <div className={sectionInner}>
+            <ChapterKickoff
+              number="CAPÍTULO 05"
+              title="Cenários Reais: Onde Isso Bate no Mundo Prático"
+              subtitle="Nada aqui é teoria de fórum. Decisões de consenso impactam operação, custos e previsibilidade para quem usa Bitcoin como infraestrutura de soberania."
+            />
+            <div className="grid md:grid-cols-3 gap-5">
+              {impactScenarios.map((item, i) => (
+                <motion.article
+                  key={item.title}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.65, delay: i * 0.1, ease: APPLE_EASE }}
+                  className={`${panelClass} overflow-hidden`}
                 >
-                  <div className="flex items-center gap-3 mb-3">
-                    <MessageSquare className="w-4 h-4" style={{ color: p.color }} />
-                    <span className="text-sm font-bold text-foreground">{p.name}</span>
-                    <span className="font-mono text-[9px] px-2 py-0.5 rounded-full tracking-wider font-bold"
-                      style={{ color: p.color, background: `${p.color}15`, border: `1px solid ${p.color}30` }}
-                    >{p.pos}</span>
+                  <div className="relative h-44 overflow-hidden">
+                    <img
+                      src={item.img}
+                      alt={item.title}
+                      className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/85 via-background/20 to-transparent" />
                   </div>
-                  <p className="text-sm text-muted-foreground leading-relaxed italic">"{p.quote}"</p>
-                </motion.div>
+                  <div className="p-5">
+                    <h3 className="text-sm font-bold text-foreground mb-2">{item.title}</h3>
+                    <p className="text-xs text-muted-foreground leading-relaxed">{item.desc}</p>
+                  </div>
+                </motion.article>
               ))}
             </div>
           </div>
@@ -398,40 +647,196 @@ export default function Bip110() {
 
         <SectionGlow />
 
-        {/* ═══ CH.07 — VEREDICTO ═══ */}
-        <section className="relative z-10 py-14 md:py-20">
-          <div className="max-w-6xl mx-auto px-4 md:px-10">
-            <ChapterKickoff number="CAPÍTULO 06" title="Veredicto: Vai Passar ou Não?" subtitle="Nossa análise sobre a probabilidade real desta proposta avançar — e o que você, holder, precisa (ou não) fazer." />
+        <section className={sectionShell}>
+          <div className={sectionInner}>
+            <ChapterKickoff
+              number="CAPÍTULO 06"
+              title="Mapa de Risco Operacional para Holder e Operador"
+              subtitle="No lugar de timestamps de vídeo: uma matriz de decisão prática para atravessar ruído narrativo sem perder controle estratégico."
+            />
 
-            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }} transition={{ duration: 0.8, ease: APPLE_EASE }}
-              className="relative p-8 md:p-12 rounded-2xl border border-amber-500/20"
-              style={{ background: 'linear-gradient(135deg, rgba(245,158,11,0.06), rgba(16,185,129,0.03) 60%, transparent)' }}
+            <div className="grid md:grid-cols-2 gap-5">
+              {riskMatrix.map((risk, i) => (
+                <motion.article
+                  key={risk.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.55, delay: i * 0.08, ease: APPLE_EASE }}
+                  className={`${panelClass} p-6`}
+                >
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-9 h-9 rounded-lg bg-primary/15 text-primary flex items-center justify-center">
+                      <risk.icon className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <h3 className="text-sm font-bold text-foreground">{risk.title}</h3>
+                      <p className="font-mono text-[10px] tracking-wider text-primary">SEVERIDADE: {risk.severity}</p>
+                    </div>
+                  </div>
+                  <p className="text-xs text-muted-foreground leading-relaxed">{risk.action}</p>
+                </motion.article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <SectionGlow />
+
+        <section className={sectionShell}>
+          <div className={sectionInner}>
+            <ChapterKickoff
+              number="CAPÍTULO 07"
+              title="Quem se Posicionou e Por Quê"
+              subtitle="A divergência é séria porque envolve filosofia de protocolo, incentivos econômicos e risco político de governança."
+            />
+
+            <div className="grid md:grid-cols-2 gap-5">
+              {positions.map((p, i) => (
+                <motion.article
+                  key={p.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.55, delay: i * 0.08, ease: APPLE_EASE }}
+                  className={`${panelClass} p-6`}
+                >
+                  <div className="flex items-center gap-3 mb-3">
+                    <MessageSquare className="w-4 h-4 text-primary" />
+                    <span className="text-sm font-bold text-foreground">{p.name}</span>
+                    <span className="font-mono text-[9px] px-2 py-0.5 rounded-full tracking-wider font-bold border border-primary/30 bg-primary/10 text-primary">
+                      {p.pos.toUpperCase()}
+                    </span>
+                  </div>
+                  <p className="text-sm text-muted-foreground leading-relaxed italic">“{p.quote}”</p>
+                </motion.article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <SectionGlow />
+
+        <section className={sectionShell}>
+          <div className={sectionInner}>
+            <ChapterKickoff
+              number="CAPÍTULO 08"
+              title="Veredicto Editorial: Probabilidade, Risco e Postura"
+              subtitle="A decisão inteligente não é torcer por lado; é blindar patrimônio enquanto o debate amadurece."
+            />
+
+            <motion.article
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.72, ease: APPLE_EASE }}
+              className={`${panelClass} p-8 md:p-12`}
             >
-              <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-amber-500/40 to-transparent" />
-
               <div className="flex items-center gap-3 mb-6">
-                <BadgeAlert className="w-6 h-6 text-amber-500" />
-                <span className="font-mono text-[10px] tracking-[0.3em] text-amber-500 font-bold">VEREDICTO EDITORIAL</span>
+                <BadgeAlert className="w-6 h-6 text-primary" />
+                <span className="font-mono text-[10px] tracking-[0.3em] text-primary font-bold">VEREDICTO</span>
               </div>
 
               <h3 className="text-xl md:text-3xl font-black text-foreground mb-6 leading-tight" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
-                A BIP-110 provavelmente não vai passar.
+                A chance de aprovação rápida é baixa — o valor está em aprender a operar no meio do ruído.
               </h3>
 
               <div className="space-y-4 text-sm text-muted-foreground leading-relaxed">
                 <p>
-                  Para um soft fork ser ativado, é necessário consenso massivo da rede — sinalização de mais de 55% dos nodes. Atualmente, <span className="text-amber-400 font-bold">apenas 2-3% da rede apoia a BIP-110</span>. Historicamente, mudanças de consenso no Bitcoin levam anos de debate intenso.
+                  Mudanças de consenso no Bitcoin exigem coalizão ampla e tempo de maturação social. Hoje, o cenário
+                  sugere assimetria entre intensidade de debate e capacidade real de ativação coordenada. Isso reduz
+                  probabilidade de avanço imediato, mas não reduz a importância do tema.
                 </p>
                 <p>
-                  A proposta de um soft fork temporário é algo inédito e contraditório com a filosofia central do Bitcoin: estabilidade e previsibilidade. Você propõe uma mudança para depois mudar de novo — isso gera insegurança jurídica, técnica e filosófica no protocolo.
-                </p>
-                <p>
-                  O debate é legítimo e fortalece o Bitcoin. A polarização entre "Bitcoin é dinheiro" e "a rede é livre" é saudável porque força a comunidade a ser mais consciente sobre o que fortalece e o que enfraquece a rede. Mas não é através de um soft fork temporário imposto por uma minoria que esse problema de décadas será resolvido.
+                  O aprendizado central para quem constrói soberania não é “ganhar discussão em rede social”; é elevar
+                  prontidão operacional: autocustódia sólida, redundância de liquidez, leitura crítica de narrativas e
+                  acompanhamento técnico sem terceirizar julgamento.
                 </p>
                 <p className="text-foreground font-semibold">
-                  Se você é holder: não há nada a fazer. Seus satoshis continuam seguros na sua hardware wallet. Continue com sua estratégia de autocustódia e acumulação.
+                  Em termos práticos: segure seus satoshis com disciplina, fortaleça infraestrutura pessoal e use o
+                  debate da BIP-110 como treino de governança para as próximas batalhas do protocolo.
                 </p>
+              </div>
+            </motion.article>
+          </div>
+        </section>
+
+        <SectionGlow />
+
+        <section className={sectionShell}>
+          <div className="max-w-5xl mx-auto px-4 md:px-10">
+            <ChapterKickoff
+              number="CAPÍTULO 09"
+              title="Trio da Blindagem: Plano de Ação em 3 Níveis"
+              subtitle="Autoridade técnica, conversão operacional e execução de contingência — sem depender de uma única rota."
+            />
+
+            <div className="grid md:grid-cols-3 gap-5">
+              <article className={`${panelClass} p-6`}>
+                <p className="font-mono text-[10px] tracking-[0.25em] text-primary mb-2">NÍVEL 01</p>
+                <h3 className="text-base font-bold text-foreground mb-2">Base de Autoridade</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed mb-5">
+                  Domine os fundamentos técnicos da camada base para interpretar qualquer nova proposta sem depender de
+                  opinião de terceiros.
+                </p>
+                <Link
+                  to="/blockchain"
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:opacity-80 transition-opacity"
+                >
+                  Estudar Blockchain <ArrowRight className="w-4 h-4" />
+                </Link>
+              </article>
+
+              <article className={`${panelClass} p-6`}>
+                <p className="font-mono text-[10px] tracking-[0.25em] text-primary mb-2">NÍVEL 02</p>
+                <h3 className="text-base font-bold text-foreground mb-2">Rota de Liquidez</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed mb-5">
+                  Tenha um canal alternativo de execução para quando o sistema tradicional travar. Não espere emergência
+                  para montar infraestrutura.
+                </p>
+                <a
+                  href={AFFILIATE_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:opacity-80 transition-opacity"
+                >
+                  Ativar rota operacional <ArrowRight className="w-4 h-4" />
+                </a>
+              </article>
+
+              <article className={`${panelClass} p-6`}>
+                <p className="font-mono text-[10px] tracking-[0.25em] text-primary mb-2">NÍVEL 03</p>
+                <h3 className="text-base font-bold text-foreground mb-2">Execução Completa</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed mb-5">
+                  Integre conta internacional, autocustódia, redundância de acesso e protocolo de contingência para não
+                  ficar refém de um único trilho financeiro.
+                </p>
+                <Link
+                  to="/soberania-financeira"
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:opacity-80 transition-opacity"
+                >
+                  Ver ecossistema completo <ArrowRight className="w-4 h-4" />
+                </Link>
+              </article>
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease: APPLE_EASE }}
+              className={`${panelClass} mt-8 p-6 md:p-7`}
+            >
+              <div className="flex flex-wrap items-center justify-between gap-4">
+                <div>
+                  <p className="text-sm font-bold text-foreground">Checklist rápido de blindagem operacional</p>
+                  <p className="text-xs text-muted-foreground mt-1">3 verificações mínimas antes da próxima crise de narrativa</p>
+                </div>
+                <div className="flex flex-col gap-1.5 text-xs text-muted-foreground">
+                  <span className="inline-flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-primary" /> Seed testada e restaurável</span>
+                  <span className="inline-flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-primary" /> Rota secundária de liquidez ativa</span>
+                  <span className="inline-flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-primary" /> Plano de execução documentado</span>
+                </div>
               </div>
             </motion.div>
           </div>
@@ -439,56 +844,16 @@ export default function Bip110() {
 
         <SectionGlow />
 
-        {/* ═══ CH.08 — TIMESTAMPS ═══ */}
-        <section className="relative z-10 py-14 md:py-20">
-          <div className="max-w-6xl mx-auto px-4 md:px-10">
-            <ChapterKickoff number="CAPÍTULO 07" title="Índice Detalhado do Conteúdo" subtitle="Navegue pelos tópicos abordados nesta análise completa da BIP-110." />
-
-            <div className="grid md:grid-cols-2 gap-x-10 gap-y-0">
-              {[
-                { t: '00:00', d: 'O que é a proposta chamada BIP-110' },
-                { t: '02:41', d: 'O "problema" que motivou a BIP-110' },
-                { t: '03:33', d: 'O que é BIP-110 e por que virou briga' },
-                { t: '04:35', d: 'Como o Bitcoin evolui: melhorias via BIPs' },
-                { t: '05:27', d: 'Processo aberto: devs propõem e refinam em público' },
-                { t: '07:09', d: 'Histórico da treta e as narrativas em disputa' },
-                { t: '08:58', d: 'Risco de incompatibilidade entre nodes' },
-                { t: '09:56', d: 'Taproot e seus efeitos colaterais' },
-                { t: '11:44', d: '"Ruído" na blockchain: a crítica contra certos usos' },
-                { t: '13:33', d: 'O que é rodar um nó: verificar sua própria rede' },
-                { t: '15:23', d: 'Bitcoin Core v30: a mudança que acendeu o debate' },
-                { t: '16:27', d: 'Por que fazer um soft fork durar um ano?' },
-                { t: '17:30', d: 'Comparação com SegWit: mecanismo já usado no passado' },
-                { t: '20:25', d: 'Adam Back e outros contra: posicionamentos' },
-                { t: '23:33', d: 'Regras técnicas: o que ficaria inválido' },
-                { t: '24:37', d: 'Limites históricos de 83 bytes: origem do número' },
-                { t: '26:29', d: 'Impacto em taxas e mineradores' },
-                { t: '29:09', d: 'Quem decide o "uso correto" do Bitcoin?' },
-                { t: '31:56', d: 'Taxas mais altas: bom para mineradores?' },
-                { t: '34:34', d: '"Lei da selva": propostas que morrem e sobrevivem' },
-                { t: '37:25', d: 'Lightning Network cresceu absurdamente em 2025' },
-                { t: '38:19', d: 'Como a BIP-110 impactaria a Lightning?' },
-                { t: '39:17', d: 'Risco de chain split e rede "partida"' },
-                { t: '42:10', d: 'Por que coordenação rápida é irrealista' },
-                { t: '44:04', d: 'Consenso não nasce do nada: não vai "passar rápido"' },
-                { t: '49:18', d: 'Opinião final: chance real de avançar' },
-                { t: '52:06', d: 'Todo ano tem uma polêmica técnica no Bitcoin' },
-              ].map((item, i) => (
-                <TimelineItem key={i} time={item.t} title={item.d} delay={i * 0.02} />
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <SectionGlow />
-
-        {/* ═══ CH.09 — FAQ ═══ */}
-        <section className="relative z-10 py-14 md:py-20">
+        <section className={sectionShell}>
           <div className="max-w-4xl mx-auto px-4 md:px-10">
-            <ChapterKickoff number="CAPÍTULO 08" title="Perguntas Frequentes sobre a BIP-110" subtitle="As dúvidas mais comuns sobre a BIP-110, soft forks, chain splits e o impacto nos seus Bitcoins em autocustódia." />
+            <ChapterKickoff
+              number="CAPÍTULO 10"
+              title="Perguntas Frequentes sobre BIP-110"
+              subtitle="FAQ sincronizado com o conteúdo visível para manter consistência editorial e estrutura técnica de SEO."
+            />
             <Accordion type="single" collapsible className="space-y-3">
               {faqData.map((faq, i) => (
-                <AccordionItem key={i} value={`faq-${i}`} className="border border-white/[0.06] rounded-xl px-5 hover:border-amber-500/20 transition-colors">
+                <AccordionItem key={i} value={`faq-${i}`} className="rounded-xl px-5 border border-border/70 bg-card/60">
                   <AccordionTrigger className="text-sm md:text-base font-semibold text-foreground hover:no-underline py-5">
                     {faq.q}
                   </AccordionTrigger>
@@ -498,33 +863,6 @@ export default function Bip110() {
                 </AccordionItem>
               ))}
             </Accordion>
-          </div>
-        </section>
-
-        <SectionGlow />
-
-        {/* ═══ CTA FINAL ═══ */}
-        <section className="relative z-10 py-14 md:py-20">
-          <div className="max-w-4xl mx-auto px-4 md:px-10 text-center">
-            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }} transition={{ duration: 0.8, ease: APPLE_EASE }}
-            >
-              <p className="font-mono text-[10px] tracking-[0.3em] text-amber-500 font-bold mb-4">PRÓXIMO PASSO</p>
-              <h3 className="text-xl md:text-3xl font-black text-foreground mb-4" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
-                Entenda a Tecnologia por Trás do Debate
-              </h3>
-              <p className="text-muted-foreground text-sm mb-8 max-w-lg mx-auto">
-                Para compreender a BIP-110 em profundidade, você precisa dominar como a blockchain funciona. Nosso guia completo desmonta cada camada técnica.
-              </p>
-              <div className="flex flex-wrap gap-4 justify-center">
-                <Link to="/blockchain" className="group inline-flex items-center gap-3 py-3 px-6 rounded-xl border border-amber-500/30 bg-amber-500/[0.06] hover:bg-amber-500/[0.15] hover:border-amber-500/50 text-amber-500 font-semibold text-sm tracking-wide transition-all duration-300">
-                  <Blocks className="w-4 h-4" /> Guia Blockchain Completo <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1.5" />
-                </Link>
-                <Link to="/autocustodia" className="group inline-flex items-center gap-3 py-3 px-6 rounded-xl border border-emerald-500/30 bg-emerald-500/[0.06] hover:bg-emerald-500/[0.15] hover:border-emerald-500/50 text-emerald-400 font-semibold text-sm tracking-wide transition-all duration-300">
-                  <Shield className="w-4 h-4" /> Autocustódia — Proteja seus BTC <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1.5" />
-                </Link>
-              </div>
-            </motion.div>
           </div>
         </section>
 
