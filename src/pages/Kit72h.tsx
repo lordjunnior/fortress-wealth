@@ -112,9 +112,13 @@ export default function Kit72h() {
   return (
     <>
       <Helmet>
-        <title>Kit 72 Horas — Lista Completa de Sobrevivência Urbana | Lord Junnior</title>
-        <meta name="description" content="Monte seu kit de emergência 72h: água, alimento, medicamentos, documentos e comunicação. Checklist completo para sobrevivência urbana no Brasil." />
+        <title>Kit de Sobrevivência 72h: O Guia de Prontidão Crítica | Lord Junnior</title>
+        <meta name="description" content="Monte seu kit tático de 72 horas com checklist completo: água, alimento, medicamentos, documentos e comunicação. Esteja pronto antes que o caos chegue." />
         <link rel="canonical" href="https://lordjunnior.com.br/projeto-autonomo/kit-72h" />
+        <meta property="og:title" content="Kit de Sobrevivência 72h: Prontidão Crítica para Cenários Reais" />
+        <meta property="og:description" content="O checklist definitivo para autonomia mínima de 3 dias. Sem improviso, sem pânico." />
+        <meta property="og:url" content="https://lordjunnior.com.br/projeto-autonomo/kit-72h" />
+        <meta property="og:type" content="article" />
       </Helmet>
     <div className="min-h-screen selection:bg-rose-300/30" style={{ background: '#050808' }}>
       <CinematicHero

@@ -71,9 +71,13 @@ export default function ProtocolosApagao() {
   return (
     <>
       <Helmet>
-        <title>Protocolos de Apagão — Sobrevivência sem Energia Elétrica | Lord Junnior</title>
-        <meta name="description" content="Protocolos completos para sobreviver a apagões: iluminação, cocção, conservação de alimentos, energia alternativa e controle térmico sem eletricidade." />
+        <title>Como Sobreviver a um Apagão Sistêmico: Guia de Protocolos | Lord Junnior</title>
+        <meta name="description" content="Protocolos de sobrevivência para apagões prolongados: iluminação alternativa, cocção sem gás, conservação de alimentos e energia off-grid. Prepare-se antes que a rede caia." />
         <link rel="canonical" href="https://lordjunnior.com.br/projeto-autonomo/protocolos-apagao" />
+        <meta property="og:title" content="Sobreviva ao Apagão: Protocolos de Autonomia Energética" />
+        <meta property="og:description" content="Quando a rede elétrica cai, quem não tem protocolo vira refém. Guia completo de sobrevivência sem energia." />
+        <meta property="og:url" content="https://lordjunnior.com.br/projeto-autonomo/protocolos-apagao" />
+        <meta property="og:type" content="article" />
       </Helmet>
     <div className="min-h-screen selection:bg-amber-300/30" style={{ background: '#050808' }}>
       <CinematicHero
