@@ -205,20 +205,20 @@ const NetworkTicker = () => {
       `}</style>
 
       <div
-        className="fixed top-0 left-0 right-0 z-[9999] h-[36px] flex items-center overflow-hidden"
+        className="fixed top-0 left-0 right-0 z-[9999] h-[36px] flex items-center overflow-hidden ticker-bar"
         style={{
-          background: "#000000",
-          borderBottom: "1px solid rgba(255,255,255,0.08)",
+          background: isLight ? "hsl(35, 20%, 89%)" : "#000000",
+          borderBottom: isLight ? "1px solid rgba(0,0,0,0.1)" : "1px solid rgba(255,255,255,0.08)",
         }}
       >
         {/* Hard edge masks */}
         <div
           className="absolute top-0 bottom-0 left-0 w-[50px] z-[2] pointer-events-none"
-          style={{ background: "linear-gradient(90deg, #000000, transparent)" }}
+          style={{ background: isLight ? "linear-gradient(90deg, hsl(35,20%,89%), transparent)" : "linear-gradient(90deg, #000000, transparent)" }}
         />
         <div
           className="absolute top-0 bottom-0 right-0 w-[50px] z-[2] pointer-events-none"
-          style={{ background: "linear-gradient(-90deg, #000000, transparent)" }}
+          style={{ background: isLight ? "linear-gradient(-90deg, hsl(35,20%,89%), transparent)" : "linear-gradient(-90deg, #000000, transparent)" }}
         />
 
         {/* Scrolling track */}
