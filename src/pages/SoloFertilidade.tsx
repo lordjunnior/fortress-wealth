@@ -5,6 +5,7 @@ import { ArrowLeft, ArrowRight, Shovel, Leaf, Bug, Droplets, FlaskConical, Layer
 import { motion } from 'framer-motion';
 import CinematicHero from '@/components/CinematicHero';
 import ScrollToTop from '@/components/ScrollToTop';
+import MicroCtaResistencia from '@/components/MicroCtaResistencia';
 import imgComposteira from '@/assets/solo-composteira.jpg';
 import imgBokashi from '@/assets/solo-bokashi.jpg';
 import imgMinhocario from '@/assets/solo-minhocario.jpg';
