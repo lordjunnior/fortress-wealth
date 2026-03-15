@@ -194,7 +194,7 @@ const Index = () => {
       <NoiseBackground />
 
       {/* ── CINEMATIC BACKGROUND — Radial glows + grain ── */}
-      <div className="fixed inset-0 z-0 pointer-events-none">
+      <div className="cinematic-bg fixed inset-0 z-0 pointer-events-none">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_hsl(var(--gold)/0.1),_transparent_60%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_hsl(var(--chart-red)/0.06),_transparent_60%)]" />
         {/* Grain texture overlay */}
