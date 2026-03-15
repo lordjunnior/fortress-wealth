@@ -108,12 +108,10 @@ const queryClient = new QueryClient();
 
 const App = () => (
   <HelmetProvider>
-  <ThemeProvider>
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <ThemeToggle />
       <BrowserRouter>
         <CodigoAutonomiaModal />
         <ScrollToTop />
