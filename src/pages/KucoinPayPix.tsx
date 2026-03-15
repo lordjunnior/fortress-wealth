@@ -39,23 +39,6 @@ const scaleIn = {
   }),
 };
 
-function useMouseParallax(strength = 15) {
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-  const springX = useSpring(mouseX, { stiffness: 50, damping: 20 });
-  const springY = useSpring(mouseY, { stiffness: 50, damping: 20 });
-  const handleMouse = useCallback((e: MouseEvent) => {
-    const cx = window.innerWidth / 2;
-    const cy = window.innerHeight / 2;
-    mouseX.set(((e.clientX - cx) / cx) * strength);
-    mouseY.set(((e.clientY - cy) / cy) * strength);
-  }, [mouseX, mouseY, strength]);
-  useEffect(() => {
-    window.addEventListener('mousemove', handleMouse);
-    return () => window.removeEventListener('mousemove', handleMouse);
-  }, [handleMouse]);
-  return { springX, springY };
-}
 
 const rewards = [
   {
