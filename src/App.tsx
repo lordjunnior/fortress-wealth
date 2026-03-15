@@ -107,6 +107,7 @@ import ToxinasAmbientais from "./pages/toxicos/ToxinasAmbientais";
 import CodigoAutonomiaModal from "./components/CodigoAutonomiaModal";
 import ScrollToTop from "./components/ScrollToTop";
 import MapaDaSoberania from "./pages/MapaDaSoberania";
+import ExitIntentLeadMagnet from "./components/ExitIntentLeadMagnet";
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -117,6 +118,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <CodigoAutonomiaModal />
+        <ExitIntentLeadMagnet />
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />

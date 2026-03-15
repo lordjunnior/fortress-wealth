@@ -8,6 +8,7 @@ import ConfiscoCitations from "@/components/confisco/ConfiscoCitations";
 import ScrollProgressBar from "@/components/confisco/ScrollProgressBar";
 import FloatingToc from "@/components/confisco/FloatingToc";
 import ScrollToTop from "@/components/ScrollToTop";
+import SnippetBait from "@/components/SnippetBait";
 import { confiscoArticleSchema, confiscoFaqSchema, confiscoBreadcrumbSchema } from "@/lib/confiscoData";
 import presidenteImg from "@/assets/presidente-confisco-1990.jpg";
 import hiperinflacaoImg from "@/assets/confisco-hiperinflacao-1989.jpg";
@@ -243,6 +244,15 @@ const Confisco1990 = () => {
             <div className="w-px h-12 bg-gradient-to-b from-muted-foreground/40 to-transparent" />
           </motion.div>
         </section>
+
+        {/* SnippetBait */}
+        <div className="max-w-4xl mx-auto px-6">
+          <SnippetBait
+            text="Em 1990, bastou uma assinatura para confiscar 80% do dinheiro da população. O mecanismo legal ainda existe. A diferença é que hoje existe um ativo que nenhum decreto pode bloquear."
+            cta="Aprenda autocustódia Bitcoin →"
+            href="/autocustodia"
+          />
+        </div>
 
         {/* Impact Stats */}
         <section className="max-w-4xl mx-auto px-6 -mt-8 relative z-20">

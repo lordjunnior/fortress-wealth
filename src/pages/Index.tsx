@@ -25,6 +25,7 @@ import NivelZero from "@/components/NivelZero";
 import StrategicSignature from "@/components/StrategicSignature";
 import RiskBlock from "@/components/RiskBlock";
 import AlertBanner from "@/components/AlertBanner";
+import SnippetBait from "@/components/SnippetBait";
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
@@ -271,6 +272,16 @@ const Index = () => {
       {/* Main content with sidebar offset on desktop */}
       <div className="relative z-10 lg:ml-[260px] pb-10">
         <HeroSection />
+
+        <NobelSection className="section-divider px-5 md:px-8" delay={0.05}>
+          <div className="max-w-4xl mx-auto lg:ml-0">
+            <SnippetBait
+              text="Enquanto você lê este parágrafo, o Real perdeu mais poder de compra. A diferença entre quem preserva patrimônio e quem financia a própria ruína é uma decisão: aprender a blindar o que é seu."
+              cta="Comece pela autocustódia →"
+              href="/autocustodia"
+            />
+          </div>
+        </NobelSection>
 
         <NobelSection className="section-divider" delay={0.05}>
           <AlertBanner />

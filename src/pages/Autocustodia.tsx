@@ -11,6 +11,7 @@ import {
   Server, Eye, ShieldOff, Cpu, Wrench
 } from 'lucide-react';
 import RiskBlock from '@/components/RiskBlock';
+import SnippetBait from '@/components/SnippetBait';
 import heroImg from '@/assets/autocustodia-hero.jpg';
 import imgPapelFogo from '@/assets/autocustodia-papel-fogo.jpg';
 import imgMetalPlaca from '@/assets/autocustodia-metal-placa.jpg';
@@ -273,6 +274,12 @@ export default function Autocustodia() {
       {/* ══════════════ CONTENT ══════════════ */}
       <div className="relative z-10 px-6 md:px-12 lg:px-20 pb-32">
         <div className="max-w-5xl mx-auto">
+
+          <SnippetBait
+            text="Você pode proteger seus ativos contra fogo, água e roubo. Mas se eles estiverem numa corretora, basta uma canetada para perdê-los. Autocustódia não é paranoia — é matemática aplicada à sobrevivência patrimonial."
+            cta="Veja o confisco de 1990 →"
+            href="/confisco-1990"
+          />
 
           {/* ── CHAPTER 1: CAMADA FÍSICA ── */}
           <NobelSection className="pt-20 md:pt-28 mb-20" delay={0.1}>

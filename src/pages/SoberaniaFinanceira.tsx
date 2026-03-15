@@ -7,6 +7,7 @@ import {
   AlertTriangle, BarChart3, ArrowRight, Sparkles, TrendingUp,
 } from 'lucide-react';
 import ScrollToTop from '@/components/ScrollToTop';
+import SnippetBait from '@/components/SnippetBait';
 
 import heroImg from '@/assets/soberania-hub-hero.jpg';
 import contasIntlImg from '@/assets/soberania-contas-intl.jpg';
@@ -363,6 +364,15 @@ const SoberaniaFinanceira = () => {
           {/* Bottom fade */}
           <div className="absolute bottom-0 left-0 right-0 h-24 z-10 pointer-events-none"
             style={{ background: 'linear-gradient(to bottom, transparent, #050808)' }} />
+        </div>
+
+        {/* SnippetBait */}
+        <div className="max-w-5xl mx-auto px-6">
+          <SnippetBait
+            text="Ter dinheiro em um só país é o mesmo que ter todas as chaves na mesma gaveta. Diversificação jurisdicional não é luxo de milionário — é blindagem básica contra confisco, inflação e controle de capitais."
+            cta="Explore a autocustódia →"
+            href="/autocustodia"
+          />
         </div>
 
         {/* ═══ INTRO ═══ */}

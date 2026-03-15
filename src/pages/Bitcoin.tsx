@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import { Line, LineChart, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, Legend } from "recharts";
 import SimboloOculto from '@/components/SimboloOculto';
+import SnippetBait from '@/components/SnippetBait';
 
 const APPLE_EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
@@ -145,6 +146,15 @@ const Bitcoin = () => {
           </motion.div>
           <div className="absolute bottom-0 left-0 right-0 h-16 z-10 pointer-events-none" style={{ background: 'linear-gradient(to bottom, transparent, #050808)' }} />
         </section>
+
+        {/* ── SnippetBait ── */}
+        <div className="relative z-10 px-6 md:px-12 lg:px-20">
+          <SnippetBait
+            text="O Real perdeu 87% do seu poder de compra desde o Plano Real. Quem entendeu isso, migrou para um ativo com oferta fixa e sem fronteiras. Quem não entendeu, continua financiando o próprio empobrecimento."
+            cta="Conheça a autocustódia de elite →"
+            href="/autocustodia"
+          />
+        </div>
 
         {/* ── Mantra ── */}
         <section id="autocustodia" className="relative z-10 px-6 md:px-12 lg:px-20 py-16">
