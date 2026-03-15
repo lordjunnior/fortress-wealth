@@ -31,6 +31,8 @@ const formatBRL = (n: number) => {
 };
 
 const NetworkTicker = () => {
+  const { theme } = useTheme();
+  const isLight = theme === "light";
   const [block, setBlock] = useState<number | null>(null);
   const [priceUsd, setPriceUsd] = useState<number | null>(null);
   const [priceBrl, setPriceBrl] = useState<number | null>(null);
