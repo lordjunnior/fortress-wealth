@@ -13,6 +13,7 @@ import {
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import ScrollToTop from '@/components/ScrollToTop';
 import LeadCaptureModal from '@/components/LeadCaptureModal';
+import SovereignDisclaimer from '@/components/SovereignDisclaimer';
 import NobelVFX from '@/components/NobelVFX';
 import heroImg from '@/assets/optima-hero.jpg';
 import telegramImg from '@/assets/optima-telegram.jpg';
