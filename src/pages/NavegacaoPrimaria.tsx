@@ -43,6 +43,15 @@ export default function NavegacaoPrimaria() {
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
   return (
+    <>
+      <Helmet>
+        <title>Navegação Primária: Orientação por Bússola, Sol e Terreno Sem GPS | Lord Junnior</title>
+        <meta name="description" content="Como se orientar sem GPS. Método da sombra, bússola improvisada, navegação noturna por estrelas e referências urbanas. Deslocamento seguro sem dependência digital." />
+        <link rel="canonical" href="https://lordjunnior.com.br/projeto-autonomo/navegacao-primaria" />
+        <meta property="og:title" content="Navegação Primária: Orientação Sem Tecnologia" />
+        <meta property="og:description" content="Técnicas ancestrais de navegação por sol, estrelas e terreno. Autonomia de deslocamento quando a tecnologia falha." />
+        <meta property="og:url" content="https://lordjunnior.com.br/projeto-autonomo/navegacao-primaria" />
+      </Helmet>
     <div className="min-h-screen selection:bg-teal-300/30" style={{ background: '#050808' }}>
       <CinematicHero
         image="/heroes/navegacao-primaria.webp"

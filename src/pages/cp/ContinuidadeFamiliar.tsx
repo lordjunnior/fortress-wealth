@@ -45,6 +45,15 @@ export default function ContinuidadeFamiliar() {
   }, []);
 
   return (
+    <>
+      <Helmet>
+        <title>Continuidade Familiar: Educação Botânica e Autonomia Biológica para Gerações | Lord Junnior</title>
+        <meta name="description" content="Como transmitir conhecimento ancestral de plantas medicinais para as próximas gerações. Educação botânica aplicada, identificação segura e construção progressiva de autonomia biológica familiar." />
+        <link rel="canonical" href="https://lordjunnior.com.br/projeto-autonomo/conhecimento-perdido/continuidade-familiar" />
+        <meta property="og:title" content="Continuidade Familiar: O Conhecimento que Não Pode Morrer" />
+        <meta property="og:description" content="Educação botânica para crianças e famílias. Transmita autonomia biológica antes que o conhecimento desapareça." />
+        <meta property="og:url" content="https://lordjunnior.com.br/projeto-autonomo/conhecimento-perdido/continuidade-familiar" />
+      </Helmet>
     <div ref={containerRef} className="min-h-screen text-stone-100 font-sans selection:bg-purple-300/50 relative overflow-hidden"
       style={{ background: '#050808' }}
     >

@@ -47,6 +47,15 @@ const SaudePreventiva = () => {
   }, []);
 
   return (
+    <>
+      <Helmet>
+        <title>Saúde Preventiva: Blindagem Imunológica Sem Dependência do Sistema | Lord Junnior</title>
+        <meta name="description" content="Estratégias anti-inflamatórias avançadas, exposição solar segura, higiene do sono e alimentação funcional. Longevidade e saúde fora do sistema convencional." />
+        <link rel="canonical" href="https://lordjunnior.com.br/projeto-autonomo/saude-preventiva" />
+        <meta property="og:title" content="Saúde Preventiva: Protocolo de Blindagem Imunológica" />
+        <meta property="og:description" content="Fortaleça seu sistema imunológico com protocolos validados. Sol, sono, movimento e alimentação anti-inflamatória." />
+        <meta property="og:url" content="https://lordjunnior.com.br/projeto-autonomo/saude-preventiva" />
+      </Helmet>
     <div ref={containerRef} className="min-h-screen text-stone-100 font-sans selection:bg-emerald-300/50 relative overflow-hidden"
       style={{ background: 'linear-gradient(180deg, #050808 0%, #0a0d08 8%, #0f1a0f 20%, #142214 40%, #111f11 70%, #0f1a0f 90%, #0a0d08 100%)' }}
     >

@@ -90,6 +90,15 @@ const FitoterapiaAplicada = () => {
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
   return (
+    <>
+      <Helmet>
+        <title>Fitoterapia Aplicada: Protocolos Combinados por Sistema Corporal | Lord Junnior</title>
+        <meta name="description" content="Protocolos fitoterápicos estratégicos organizados por sistema corporal. Sinergia entre plantas, ciclos de uso, ajuste por idade e critérios de interrupção documentados." />
+        <link rel="canonical" href="https://lordjunnior.com.br/projeto-autonomo/fitoterapia-aplicada" />
+        <meta property="og:title" content="Fitoterapia Aplicada: Protocolos Terapêuticos Combinados" />
+        <meta property="og:description" content="Combinação estratégica de plantas medicinais por condição. Ciclos de uso, dosagem por idade e critérios de segurança." />
+        <meta property="og:url" content="https://lordjunnior.com.br/projeto-autonomo/fitoterapia-aplicada" />
+      </Helmet>
     <div className="min-h-screen text-stone-100" style={{ background: 'linear-gradient(180deg, #050808 0%, #0a0d0a 8%, #0d120d 20%, #0a0d0a 60%, #050808 100%)' }}>
       <CinematicHero
         image="/heroes/fitoterapia-aplicada.webp"

@@ -71,6 +71,15 @@ export default function PlantaDetalhe() {
   };
 
   return (
+    <>
+      <Helmet>
+        <title>{`${planta.nome} (${planta.cientifico}): Ficha Técnica Completa — Dosagem, Preparo e Contraindicações | Lord Junnior`}</title>
+        <meta name="description" content={`Ficha técnica completa de ${planta.nome} (${planta.cientifico}). ${planta.resumo} Dosagem segura, métodos de preparo, contraindicações e mecanismo de ação documentados.`} />
+        <link rel="canonical" href={`https://lordjunnior.com.br/projeto-autonomo/planta/${planta.slug}`} />
+        <meta property="og:title" content={`${planta.nome}: Guia Completo de Fitoterapia`} />
+        <meta property="og:description" content={`${planta.resumo} Ficha técnica com dosagem, preparo e segurança.`} />
+        <meta property="og:url" content={`https://lordjunnior.com.br/projeto-autonomo/planta/${planta.slug}`} />
+      </Helmet>
     <div ref={containerRef} className="min-h-screen text-stone-100 font-sans selection:bg-emerald-300/30"
       style={{ background: 'linear-gradient(180deg, #060806 0%, #0a0f0a 6%, #0d150d 15%, #101a10 30%, #0d150d 60%, #0a0f0a 85%, #060806 100%)' }}>
 

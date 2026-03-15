@@ -21,6 +21,15 @@ export default function SegurancaLimites() {
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
   return (
+    <>
+      <Helmet>
+        <title>Segurança e Limites: Contraindicações e Uso Responsável de Plantas Medicinais | Lord Junnior</title>
+        <meta name="description" content="Critérios de uso responsável, contraindicações documentadas, interações medicamentosas conhecidas e parâmetros de suspensão. Sem essa base de segurança, não existe credibilidade fitoterápica." />
+        <link rel="canonical" href="https://lordjunnior.com.br/projeto-autonomo/conhecimento-perdido/seguranca-limites" />
+        <meta property="og:title" content="Segurança e Limites: Uso Responsável de Fitoterapia" />
+        <meta property="og:description" content="Contraindicações, interações medicamentosas e critérios de suspensão. A base de segurança que valida todo o conhecimento." />
+        <meta property="og:url" content="https://lordjunnior.com.br/projeto-autonomo/conhecimento-perdido/seguranca-limites" />
+      </Helmet>
     <div className="min-h-screen text-stone-100 font-sans selection:bg-amber-300/50 relative overflow-hidden"
       style={{ background: '#050808' }}
     >

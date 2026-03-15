@@ -16,6 +16,15 @@ const PrimeirosSocorros = () => {
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
   return (
+    <>
+      <Helmet>
+        <title>Primeiros Socorros: Estabilização de Emergência com Recursos Mínimos | Lord Junnior</title>
+        <meta name="description" content="Guia de primeiros socorros para cenários de crise. Hemostasia, imobilização, queimaduras e kit mínimo. Estabilize vítimas até a chegada de suporte especializado." />
+        <link rel="canonical" href="https://lordjunnior.com.br/projeto-autonomo/primeiros-socorros" />
+        <meta property="og:title" content="Primeiros Socorros: Protocolo de Estabilização Imediata" />
+        <meta property="og:description" content="Técnicas de hemostasia, imobilização e manejo de queimaduras. O conhecimento que salva vidas quando o sistema falha." />
+        <meta property="og:url" content="https://lordjunnior.com.br/projeto-autonomo/primeiros-socorros" />
+      </Helmet>
     <div className="min-h-screen text-stone-100" style={{ background: 'linear-gradient(180deg, #050808 0%, #0a0d0a 8%, #0d120d 20%, #0a0d0a 60%, #050808 100%)' }}>
       <CinematicHero
         image="/heroes/primeiros-socorros.webp"

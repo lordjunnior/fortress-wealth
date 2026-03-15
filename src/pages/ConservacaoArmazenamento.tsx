@@ -517,6 +517,15 @@ export default function ConservacaoArmazenamento() {
   }, []);
 
   return (
+    <>
+      <Helmet>
+        <title>Conservação e Armazenamento de Alimentos: Estoque Estratégico de Sobrevivência | Lord Junnior</title>
+        <meta name="description" content="Guia completo de conservação de alimentos para autossuficiência. 10 alimentos essenciais, 18 métodos de preservação validados, desidratação, fermentação e estoque estratégico familiar." />
+        <link rel="canonical" href="https://lordjunnior.com.br/projeto-autonomo/conservacao-armazenamento" />
+        <meta property="og:title" content="Conservação de Alimentos: Estoque Estratégico Familiar" />
+        <meta property="og:description" content="10 alimentos essenciais + 18 métodos de conservação. Construa um estoque que dura décadas." />
+        <meta property="og:url" content="https://lordjunnior.com.br/projeto-autonomo/conservacao-armazenamento" />
+      </Helmet>
     <div className="min-h-screen text-stone-100 font-sans selection:bg-amber-300/50 pb-32 relative overflow-hidden" style={{ background: '#050808' }}>
       <CinematicHero
         image="/heroes/conservacao-armazenamento.webp"

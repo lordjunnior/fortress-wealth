@@ -19,6 +19,15 @@ export default function ContextoHistorico() {
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
   return (
+    <>
+      <Helmet>
+        <title>Contexto Histórico: Como a Medicina Moderna Apagou o Conhecimento Ancestral | Lord Junnior</title>
+        <meta name="description" content="Mapeamento documentado da transição entre práticas tradicionais e institucionalização médica. Linha temporal, agentes envolvidos e impactos na autonomia biológica das famílias." />
+        <link rel="canonical" href="https://lordjunnior.com.br/projeto-autonomo/conhecimento-perdido/contexto-historico" />
+        <meta property="og:title" content="Contexto Histórico: O Apagamento do Conhecimento Ancestral" />
+        <meta property="og:description" content="Como a autonomia biológica das famílias foi sistematicamente substituída pela dependência institucional." />
+        <meta property="og:url" content="https://lordjunnior.com.br/projeto-autonomo/conhecimento-perdido/contexto-historico" />
+      </Helmet>
     <div className="min-h-screen text-stone-100 font-sans selection:bg-emerald-300/50 relative overflow-hidden"
       style={{ background: '#050808' }}
     >

@@ -118,6 +118,15 @@ export default function SoloFertilidade() {
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
   return (
+    <>
+      <Helmet>
+        <title>Solo e Fertilidade: Compostagem, Bokashi e Húmus para Soberania Alimentar | Lord Junnior</title>
+        <meta name="description" content="Guia técnico de fertilidade do solo. Composteira doméstica, bokashi, minhocário, teste de pH e substrato ideal. A base que sustenta tudo que cresce na sua produção autônoma." />
+        <link rel="canonical" href="https://lordjunnior.com.br/projeto-autonomo/solo-fertilidade" />
+        <meta property="og:title" content="Solo e Fertilidade: A Base da Soberania Alimentar" />
+        <meta property="og:description" content="Compostagem, bokashi e húmus de minhoca. Sem solo fértil, nada cresce. Aprenda a construir a base." />
+        <meta property="og:url" content="https://lordjunnior.com.br/projeto-autonomo/solo-fertilidade" />
+      </Helmet>
     <div className="min-h-screen text-stone-100 font-sans selection:bg-amber-300/50 pb-32 relative overflow-hidden" style={{ background: '#050808' }}>
       <ScrollToTop />
 
