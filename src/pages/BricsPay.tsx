@@ -12,6 +12,7 @@ import {
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import ScrollToTop from '@/components/ScrollToTop';
 import LeadCaptureModal from '@/components/LeadCaptureModal';
+import SovereignDisclaimer from '@/components/SovereignDisclaimer';
 import heroImg from '@/assets/bricspay-hero.jpg';
 import vigilanciaImg from '@/assets/bricspay-vigilancia.jpg';
 import brasilParaguaiImg from '@/assets/offshore-brasil-paraguai.jpg';
