@@ -301,7 +301,7 @@ export default function Bip110() {
         {/* ═══ CH.04 — O CONTEXTO / LINHA DO TEMPO ═══ */}
         <section className="relative z-10 py-14 md:py-20">
           <div className="max-w-6xl mx-auto px-4 md:px-10">
-            <ChapterKickoff number="CAPÍTULO 04" title="A Guerra do Espaço de Bloco" subtitle="O conflito não começou agora. A briga sobre como o espaço de bloco deve ser usado vem desde os primórdios do Bitcoin — e se intensificou com Ordinals, Inscriptions e o Taproot." />
+            <ChapterKickoff number="CAPÍTULO 03" title="A Guerra do Espaço de Bloco" subtitle="O conflito não começou agora. A briga sobre como o espaço de bloco deve ser usado vem desde os primórdios do Bitcoin — e se intensificou com Ordinals, Inscriptions e o Taproot." />
 
             <div className="grid md:grid-cols-2 gap-10">
               <div>
