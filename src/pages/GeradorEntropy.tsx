@@ -99,11 +99,11 @@ const GeradorEntropy: React.FC = () => {
           "@type": "SoftwareApplication",
           "name": "Gerador de Seed Phrase BIP39 Offline",
           "description": "Ferramenta gratuita e 100% client-side para gerar seed phrases de 12 ou 24 palavras usando entropia real via movimento do mouse. Padrão BIP39, nenhum dado transmitido a servidores.",
-          "url": "https://lordjunnior.com/ferramentas/entropy",
+          "url": "https://lordjunnior.com.br/ferramentas/entropy",
           "applicationCategory": "SecurityApplication",
           "operatingSystem": "Web Browser",
           "offers": { "@type": "Offer", "price": "0", "priceCurrency": "BRL" },
-          "author": { "@type": "Person", "name": "Lord Junnior", "url": "https://lordjunnior.com" },
+          "author": { "@type": "Person", "name": "Lord Junnior", "url": "https://lordjunnior.com.br" },
           "browserRequirements": "Requires JavaScript. Works offline after first load.",
           "softwareVersion": "1.0",
           "inLanguage": "pt-BR"

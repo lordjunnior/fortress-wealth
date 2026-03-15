@@ -146,7 +146,7 @@ const Index = () => {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "Lord Junnior — Soberania Individual",
-    "url": "https://lordjunnior.com",
+    "url": "https://lordjunnior.com.br",
     "description": "Alfabetização monetária, autocustódia Bitcoin e estratégias de saída do sistema fiat. O manual que o sistema não quer que você leia.",
     "inLanguage": "pt-BR",
     "publisher": {
