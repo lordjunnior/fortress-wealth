@@ -415,5 +415,6 @@ export default function ModuloAutonomo() {
 
       </div>
     </div>
+    </>
   );
 }
