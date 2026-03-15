@@ -53,6 +53,25 @@ export default function ToxinasAlimentares() {
     })),
   };
 
+  const claimReviewSchema = {
+    "@context": "https://schema.org",
+    "@type": "ClaimReview",
+    "url": "https://lordjunnior.com.br/projeto-autonomo/toxicos-ocultos/toxinas-alimentares",
+    "claimReviewed": "Aditivos alimentares industriais como MSG, HFCS e Nitrito de Sódio são seguros para consumo diário",
+    "author": { "@type": "Person", "name": "Lord Junnior" },
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": 2,
+      "bestRating": 5,
+      "worstRating": 1,
+      "alternateName": "Parcialmente falso"
+    },
+    "itemReviewed": {
+      "@type": "CreativeWork",
+      "author": { "@type": "Organization", "name": "Indústria Alimentícia" }
+    }
+  };
+
   return (
     <div className="min-h-screen text-stone-100 font-sans selection:bg-amber-400/30 relative overflow-hidden" style={{ background: '#050808' }}>
       <Helmet>
@@ -63,6 +82,7 @@ export default function ToxinasAlimentares() {
         <meta property="og:image" content="https://lordjunnior.com.br/heroes/toxinas-alimentares.webp" />
         <link rel="canonical" href="https://lordjunnior.com.br/projeto-autonomo/toxicos-ocultos/toxinas-alimentares" />
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
+        <script type="application/ld+json">{JSON.stringify(claimReviewSchema)}</script>
       </Helmet>
 
       <motion.div className="fixed top-0 left-0 right-0 h-[2px] z-50 origin-left"

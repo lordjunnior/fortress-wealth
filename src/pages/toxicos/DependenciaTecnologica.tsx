@@ -50,6 +50,25 @@ export default function DependenciaTecnologica() {
     })),
   };
 
+  const claimReviewSchema = {
+    "@context": "https://schema.org",
+    "@type": "ClaimReview",
+    "url": "https://lordjunnior.com.br/projeto-autonomo/toxicos-ocultos/dependencia-tecnologica",
+    "claimReviewed": "Redes sociais e aplicativos são projetados apenas para oferecer valor ao usuário, sem mecanismos de dependência",
+    "author": { "@type": "Person", "name": "Lord Junnior" },
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": 1,
+      "bestRating": 5,
+      "worstRating": 1,
+      "alternateName": "Falso"
+    },
+    "itemReviewed": {
+      "@type": "CreativeWork",
+      "author": { "@type": "Organization", "name": "Big Tech" }
+    }
+  };
+
   return (
     <div className="min-h-screen text-stone-100 font-sans selection:bg-cyan-400/30 relative overflow-hidden" style={{ background: '#050808' }}>
       <Helmet>
@@ -59,6 +78,7 @@ export default function DependenciaTecnologica() {
         <meta property="og:image" content="https://lordjunnior.com.br/heroes/dependencia-tecnologica.webp" />
         <link rel="canonical" href="https://lordjunnior.com.br/projeto-autonomo/toxicos-ocultos/dependencia-tecnologica" />
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
+        <script type="application/ld+json">{JSON.stringify(claimReviewSchema)}</script>
       </Helmet>
 
       <motion.div className="fixed top-0 left-0 right-0 h-[2px] z-50 origin-left"

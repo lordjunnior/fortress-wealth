@@ -23,7 +23,7 @@ const SnippetBait = ({ text, cta = 'Entenda a blindagem →', href = '/autocusto
       background: 'linear-gradient(135deg, rgba(234,179,8,0.4), rgba(245,158,11,0.15) 40%, transparent 60%, rgba(234,179,8,0.3) 90%)',
     }} />
 
-    <div className="relative rounded-2xl border border-amber-500/20 bg-amber-500/[0.04] backdrop-blur-sm px-6 py-5 md:px-8 md:py-6">
+    <div className="relative rounded-2xl border border-amber-500/25 bg-amber-500/[0.08] backdrop-blur-sm px-6 py-5 md:px-8 md:py-6">
       <div className="flex items-start gap-3">
         <Zap size={16} className="text-amber-400 mt-1 flex-shrink-0" />
         <div>

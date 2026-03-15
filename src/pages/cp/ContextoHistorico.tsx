@@ -28,6 +28,18 @@ export default function ContextoHistorico() {
         <meta property="og:title" content="Contexto Histórico: O Apagamento do Conhecimento Ancestral" />
         <meta property="og:description" content="Como a autonomia biológica das famílias foi sistematicamente substituída pela dependência institucional." />
         <meta property="og:url" content="https://lordjunnior.com.br/projeto-autonomo/conhecimento-perdido/contexto-historico" />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "MedicalWebPage",
+          "name": "Contexto Histórico: Transição da Medicina Tradicional para a Moderna",
+          "description": "Mapeamento documentado da transição entre práticas tradicionais e institucionalização médica moderna.",
+          "url": "https://lordjunnior.com.br/projeto-autonomo/conhecimento-perdido/contexto-historico",
+          "author": { "@type": "Person", "name": "Lord Junnior" },
+          "medicalAudience": { "@type": "MedicalAudience", "audienceType": "Patient" },
+          "lastReviewed": "2026-03-01",
+          "about": { "@type": "MedicalCondition", "name": "Autonomia em Saúde" },
+          "disclaimer": "Este conteúdo é estritamente educacional e histórico. Não constitui aconselhamento médico."
+        })}</script>
       </Helmet>
     <div className="min-h-screen text-stone-100 font-sans selection:bg-emerald-300/50 relative overflow-hidden"
       style={{ background: '#050808' }}

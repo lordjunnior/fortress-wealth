@@ -78,6 +78,36 @@ const trails = [
     color: "from-sky-500/20 to-sky-900/5",
     borderColor: "hover:border-sky-500/40",
   },
+  {
+    level: "07",
+    badge: "BIOLÓGICO",
+    icon: Brain,
+    title: "Conhecimento Perdido",
+    desc: "Fitoterapia, fisiologia e autonomia biológica. O saber ancestral suprimido, documentado com rigor técnico.",
+    route: "/projeto-autonomo/conhecimento-perdido",
+    color: "from-green-500/20 to-green-900/5",
+    borderColor: "hover:border-green-500/40",
+  },
+  {
+    level: "08",
+    badge: "DESCONSTRUÇÃO",
+    icon: Crosshair,
+    title: "Tóxicos Ocultos",
+    desc: "Toxinas alimentares, ambientais, manipulação informacional e dependência tecnológica. A matriz de controle exposta.",
+    route: "/projeto-autonomo/toxicos-ocultos",
+    color: "from-rose-500/20 to-rose-900/5",
+    borderColor: "hover:border-rose-500/40",
+  },
+  {
+    level: "09",
+    badge: "RESILIÊNCIA",
+    icon: Flame,
+    title: "Protocolos de Emergência",
+    desc: "Abrigo, purificação de água, primeiros socorros e comunicação offline. Sobrevivência quando o sistema falha.",
+    route: "/projeto-autonomo",
+    color: "from-orange-500/20 to-orange-900/5",
+    borderColor: "hover:border-orange-500/40",
+  },
 ];
 
 /* ─── Biblioteca PDF ─── */

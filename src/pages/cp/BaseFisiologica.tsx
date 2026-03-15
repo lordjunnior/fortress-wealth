@@ -35,6 +35,17 @@ export default function BaseFisiologica() {
         <meta property="og:title" content="Base Fisiológica: Como as Plantas Agem no Corpo" />
         <meta property="og:description" content="Digestivo, respiratório, nervoso, imune e muscular. Compostos bioativos e mecanismos de ação documentados." />
         <meta property="og:url" content="https://lordjunnior.com.br/projeto-autonomo/conhecimento-perdido/base-fisiologica" />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "MedicalWebPage",
+          "name": "Base Fisiológica: Mecanismos Bioquímicos das Plantas Medicinais",
+          "description": "Organização técnica por sistemas corporais e compostos bioativos.",
+          "url": "https://lordjunnior.com.br/projeto-autonomo/conhecimento-perdido/base-fisiologica",
+          "author": { "@type": "Person", "name": "Lord Junnior" },
+          "medicalAudience": { "@type": "MedicalAudience", "audienceType": "Patient" },
+          "lastReviewed": "2026-03-01",
+          "disclaimer": "Conteúdo educacional sobre fitoterapia. Não substitui orientação médica profissional."
+        })}</script>
       </Helmet>
     <div className="min-h-screen text-stone-100 font-sans selection:bg-emerald-300/50 relative overflow-hidden"
       style={{ background: '#050808' }}

@@ -104,9 +104,27 @@ export default function ConhecimentoPerdido() {
   return (
     <>
       <Helmet>
-        <title>Conhecimento Perdido — Plantas Medicinais e Sabedoria Ancestral | Lord Junnior</title>
-        <meta name="description" content="Resgate o conhecimento ancestral de plantas medicinais: fitoterapia, preparos tradicionais e autonomia em saúde natural. Guia completo com 16+ espécies." />
+        <title>Conhecimento Perdido: O Resgate da Autonomia Biológica | Lord Junnior</title>
+        <meta name="description" content="Recupere o saber ancestral suprimido. Protocolos técnicos de fitoterapia, fisiologia e saúde preventiva fora do sistema industrial. 5 módulos, 16+ espécies documentadas." />
         <link rel="canonical" href="https://lordjunnior.com.br/projeto-autonomo/conhecimento-perdido" />
+        <meta property="og:title" content="Conhecimento Perdido: O Resgate da Autonomia Biológica" />
+        <meta property="og:description" content="Protocolos técnicos de fitoterapia, fisiologia e saúde preventiva fora do sistema industrial." />
+        <meta property="og:url" content="https://lordjunnior.com.br/projeto-autonomo/conhecimento-perdido" />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "CreativeWorkSeries",
+          "name": "Conhecimento Perdido",
+          "author": { "@type": "Person", "name": "Lord Junnior" },
+          "description": "Série técnica sobre autonomia biológica, fitoterapia e resiliência. Contexto histórico, base fisiológica, segurança, aplicação prática e continuidade familiar.",
+          "url": "https://lordjunnior.com.br/projeto-autonomo/conhecimento-perdido",
+          "hasPart": [
+            { "@type": "Article", "name": "Contexto Histórico", "url": "https://lordjunnior.com.br/projeto-autonomo/conhecimento-perdido/contexto-historico" },
+            { "@type": "Article", "name": "Base Fisiológica", "url": "https://lordjunnior.com.br/projeto-autonomo/conhecimento-perdido/base-fisiologica" },
+            { "@type": "Article", "name": "Segurança e Limites", "url": "https://lordjunnior.com.br/projeto-autonomo/conhecimento-perdido/seguranca-e-limites" },
+            { "@type": "Article", "name": "Aplicação Prática", "url": "https://lordjunnior.com.br/projeto-autonomo/conhecimento-perdido/aplicacao-pratica" },
+            { "@type": "Article", "name": "Continuidade Familiar", "url": "https://lordjunnior.com.br/projeto-autonomo/conhecimento-perdido/continuidade-familiar" }
+          ]
+        })}</script>
       </Helmet>
     <div className="min-h-screen text-stone-100 font-sans selection:bg-amber-300/30 relative overflow-hidden"
       style={{ background: 'linear-gradient(180deg, #0d0b08 0%, #151210 8%, #1a1510 20%, #1e1912 35%, #211c14 50%, #1e1912 70%, #151210 85%, #0d0b08 100%)' }}

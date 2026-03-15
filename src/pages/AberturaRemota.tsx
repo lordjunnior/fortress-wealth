@@ -713,7 +713,7 @@ const AberturaRemota = () => {
                           />
                           <span className="relative z-10 flex items-center gap-3 text-amber-200">
                             <Star size={18} className="group-hover:rotate-12 transition-transform" />
-                            Solicitar Assessoria
+                            REIVINDICAR MINHA JURISDIÇÃO ESTRANGEIRA
                           </span>
                         </motion.button>
 
