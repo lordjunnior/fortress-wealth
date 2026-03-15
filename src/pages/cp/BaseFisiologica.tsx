@@ -5,6 +5,7 @@ import { Brain, Flame, Wind, Shield, Heart, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import CinematicHero from '@/components/CinematicHero';
 import ScrollToTop from '@/components/ScrollToTop';
+import MicroCtaResistencia from '@/components/MicroCtaResistencia';
 
 import imgSistemas from '@/assets/cp-sistemas-corpo.jpg';
 import imgPlantas from '@/assets/cp-plantas-pratica.jpg';
