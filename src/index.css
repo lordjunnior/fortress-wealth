@@ -220,8 +220,11 @@
 /* Mantemos #F7931A e #EF4444 pois funcionam nos dois modos */
 
 /* --- Fundos fixos dos backgrounds cinematográficos --- */
+.light .cinematic-bg {
+  opacity: 0.15 !important;
+}
 .light .fixed.inset-0.z-0 {
-  opacity: 0.3;
+  opacity: 0.15 !important;
 }
 
 /* --- Gradient dark → light --- */
