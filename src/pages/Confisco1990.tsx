@@ -160,11 +160,11 @@ const Confisco1990 = () => {
         <title>Confisco de 1990: A História Real do Plano Collor</title>
         <meta name="description" content="Em 16 de março de 1990, o governo brasileiro confiscou 80% do dinheiro da população com o Plano Collor. O confisco da poupança bloqueou US$ 80 bilhões. Esta é a história completa." />
         <meta name="keywords" content="plano collor confisco, confisco poupança 1990, plano collor dinheiro bloqueado, confisco da poupança brasil, história plano collor, confisco collor" />
-        <link rel="canonical" href="https://lordjunnior.com/confisco-1990" />
+        <link rel="canonical" href="https://lordjunnior.com.br/confisco-1990" />
         <meta property="og:title" content="Confisco de 1990: A História Real do Plano Collor" />
         <meta property="og:description" content="80% do dinheiro da população bloqueado por decreto. A história que o sistema educacional brasileiro nunca vai ensinar." />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://lordjunnior.com/confisco-1990" />
+        <meta property="og:url" content="https://lordjunnior.com.br/confisco-1990" />
         <script type="application/ld+json">{JSON.stringify(confiscoArticleSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(confiscoFaqSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(confiscoBreadcrumbSchema)}</script>

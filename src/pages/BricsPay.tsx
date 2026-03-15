@@ -136,7 +136,7 @@ export default function BricsPay() {
         <meta property="og:title" content="BRICS Pay — O App da Nova Ordem Mundial" />
         <meta property="og:description" content="Baixei, testei e analiso o aplicativo de pagamentos do bloco BRICS. Funcionalidades, riscos e como se proteger." />
         <meta property="og:type" content="article" />
-        <link rel="canonical" href="https://lordjunnior.com/soberania-financeira/brics-pay" />
+        <link rel="canonical" href="https://lordjunnior.com.br/soberania-financeira/brics-pay" />
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       </Helmet>
       <ScrollToTop />

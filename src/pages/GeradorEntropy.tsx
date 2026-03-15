@@ -84,16 +84,16 @@ const GeradorEntropy: React.FC = () => {
       <Helmet>
         <title>Gerador de Seed Phrase BIP39 Offline — 100% Client-Side | Lord Junnior</title>
         <meta name="description" content="Gerador de Seed Phrase BIP39 Offline: Use entropia real para criar suas chaves privadas de Bitcoin sem enviar dados para a rede. Segurança 100% client-side." />
-        <link rel="canonical" href="https://lordjunnior.com/ferramentas/entropy" />
+        <link rel="canonical" href="https://lordjunnior.com.br/ferramentas/entropy" />
         <meta property="og:title" content="Gerador de Seed Offline: Segurança Máxima no Navegador" />
         <meta property="og:description" content="Crie sua seed phrase de 12 ou 24 palavras com entropia real via movimento do mouse. 100% offline, 100% client-side. Nenhum dado enviado ao servidor." />
-        <meta property="og:image" content="https://lordjunnior.com/heroes/og-gerador-seed.png" />
-        <meta property="og:url" content="https://lordjunnior.com/ferramentas/entropy" />
+        <meta property="og:image" content="https://lordjunnior.com.br/heroes/og-gerador-seed.png" />
+        <meta property="og:url" content="https://lordjunnior.com.br/ferramentas/entropy" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Gerador de Seed Offline: Segurança Máxima no Navegador" />
         <meta name="twitter:description" content="Seed Phrase BIP39 com entropia real. 100% client-side, nenhum dado enviado." />
-        <meta name="twitter:image" content="https://lordjunnior.com/heroes/og-gerador-seed.png" />
+        <meta name="twitter:image" content="https://lordjunnior.com.br/heroes/og-gerador-seed.png" />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
           "@type": "SoftwareApplication",

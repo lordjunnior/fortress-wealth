@@ -228,7 +228,7 @@ export default function PegasusSwap() {
         <meta property="og:title" content="PegasusSwap — Swap Cripto Instantaneo Sem KYC" />
         <meta property="og:description" content="1.000+ criptomoedas. Sem registro. Sem documentos. Swap em minutos com privacidade real." />
         <meta property="og:type" content="article" />
-        <link rel="canonical" href="https://lordjunnior.com/soberania-financeira/exchanges-sem-kyc/pegasus-swap" />
+        <link rel="canonical" href="https://lordjunnior.com.br/soberania-financeira/exchanges-sem-kyc/pegasus-swap" />
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
