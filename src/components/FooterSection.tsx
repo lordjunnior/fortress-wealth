@@ -29,15 +29,27 @@ const FooterSection = () => {
   const [selectedLevel, setSelectedLevel] = useState<number | null>(null);
   const [showQrModal, setShowQrModal] = useState(false);
 
+  const trackLightningEvent = (action: string, label: string) => {
+    if (typeof window !== 'undefined' && (window as any).dataLayer) {
+      (window as any).dataLayer.push({
+        event: 'lightning_donation',
+        donation_action: action,
+        donation_label: label,
+      });
+    }
+  };
+
   const handleCopy = () => {
     navigator.clipboard.writeText(LIGHTNING_ADDRESS);
     setCopied(true);
+    trackLightningEvent('copy_address', 'footer');
     setTimeout(() => setCopied(false), 2000);
   };
 
   const handleCopyModal = () => {
     navigator.clipboard.writeText(LIGHTNING_ADDRESS);
     setCopiedModal(true);
+    trackLightningEvent('copy_address', 'modal');
     setTimeout(() => setCopiedModal(false), 2000);
   };
 
