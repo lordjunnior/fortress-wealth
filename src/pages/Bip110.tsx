@@ -236,7 +236,7 @@ export default function Bip110() {
         {/* ═══ CH.01 — O QUE É BIP ═══ */}
         <section className="relative z-10 py-14 md:py-20">
           <div className="max-w-6xl mx-auto px-4 md:px-10">
-            <ChapterKickoff number="CAPÍTULO 02" title="Antes de Tudo: O Que é uma BIP?" subtitle="Bitcoin Improvement Proposal — a única forma de evoluir o protocolo mais descentralizado do mundo. Sem CEO, sem roadmap, sem permissão." />
+            <ChapterKickoff number="CAPÍTULO 01" title="Antes de Tudo: O Que é uma BIP?" subtitle="Bitcoin Improvement Proposal — a única forma de evoluir o protocolo mais descentralizado do mundo. Sem CEO, sem roadmap, sem permissão." />
             <div className="grid md:grid-cols-2 gap-5">
               <InfoCard icon={BookOpen} title="Bitcoin Improvement Proposal" accent="#f59e0b"
                 desc="BIP é uma sigla para Bitcoin Improvement Proposal — uma proposta de melhoria para o Bitcoin. Como o Bitcoin é um protocolo open source, não existe nenhuma empresa, CEO ou startup definindo qual será a próxima atualização. Todas as melhorias, correções de bugs e atualizações acontecem através de BIPs que desenvolvedores propõem de forma aberta. Toda a rede — mantenedores, nodes, mineradores e até quem apenas acompanha — pode analisar, debugar e comentar nas propostas."
