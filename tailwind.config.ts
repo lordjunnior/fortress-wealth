@@ -61,11 +61,6 @@ export default {
         "section-alt": "hsl(var(--section-alt))",
         "chart-red": "hsl(var(--chart-red))",
         "chart-green": "hsl(var(--chart-green))",
-        tech: "hsl(var(--tech))",
-        "tech-dim": "hsl(var(--tech-dim))",
-        success: "hsl(var(--success))",
-        danger: "hsl(var(--danger))",
-        warning: "hsl(var(--warning))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",

@@ -33,29 +33,29 @@ export default function AlertBanner() {
   return (
     <section ref={ref} className="relative z-10 overflow-hidden">
       {/* ── CINEMATIC HERO BACKGROUND ── */}
-      <motion.div className="absolute inset-0 z-0 cinematic-bg" style={{ y: bgY }}>
+      <motion.div className="absolute inset-0 z-0" style={{ y: bgY }}>
         <img
           src={alertImg}
           alt="Dinheiro em chamas sob câmeras de vigilância"
           className="absolute inset-0 w-full h-full object-cover will-change-transform"
           style={{ filter: 'brightness(0.35) saturate(0.9)' }}
         />
-        {/* Bottom fade — uses background token */}
+        {/* Bottom fade */}
         <div
           className="absolute inset-0"
           style={{
-            background: 'linear-gradient(180deg, hsl(var(--background) / 0.2) 0%, hsl(var(--background) / 0.5) 30%, hsl(var(--background) / 0.9) 70%, hsl(var(--background)) 100%)',
+            background: 'linear-gradient(180deg, rgba(5,8,8,0.2) 0%, rgba(5,8,8,0.5) 30%, rgba(5,8,8,0.9) 70%, rgba(5,8,8,1) 100%)',
           }}
         />
         {/* Side vignette */}
         <div
           className="absolute inset-0"
           style={{
-            background: 'radial-gradient(ellipse 120% 100% at 50% 40%, transparent 30%, hsl(var(--background) / 0.85) 100%)',
+            background: 'radial-gradient(ellipse 120% 100% at 50% 40%, transparent 30%, rgba(5,8,8,0.85) 100%)',
           }}
         />
         {/* Red emergency glow */}
-        <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at top center, hsl(var(--destructive) / 0.12), transparent 60%)' }} />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_center,_rgba(220,38,38,0.12),_transparent_60%)]" />
       </motion.div>
 
       {/* ── CONTENT ── */}
@@ -88,7 +88,7 @@ export default function AlertBanner() {
             variants={fadeUp}
             initial="hidden"
             animate={isInView ? 'visible' : 'hidden'}
-            className="font-display text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-4 leading-[0.95] text-foreground"
+            className="font-display text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-4 leading-[0.95]"
           >
             O governo quer{' '}
             <span className="text-destructive">proibir</span>{' '}
@@ -120,10 +120,10 @@ export default function AlertBanner() {
                   variants={fadeUp}
                   initial="hidden"
                   animate={isInView ? 'visible' : 'hidden'}
-                  className="group relative p-5 rounded-[14px] border border-destructive/20 bg-card/40 backdrop-blur-md overflow-hidden
+                  className="group relative p-5 rounded-sm border border-destructive/20 bg-card/40 backdrop-blur-md overflow-hidden
                     hover:border-destructive/50 hover:bg-card/60 transition-all duration-500"
                   style={{
-                    boxShadow: '0 0 20px hsl(var(--destructive) / 0.06), inset 0 1px 0 hsl(var(--destructive) / 0.08)',
+                    boxShadow: '0 0 20px rgba(220,38,38,0.06), inset 0 1px 0 rgba(220,38,38,0.08)',
                   }}
                 >
                   {/* Top accent */}
@@ -157,7 +157,7 @@ export default function AlertBanner() {
           >
             <Link
               to="/alertas/fim-do-dinheiro-vivo"
-              className="group inline-flex items-center gap-3 py-4 px-10 rounded-[14px] border border-destructive/30 bg-destructive/[0.08] hover:bg-destructive/[0.18] hover:border-destructive/50 text-destructive font-semibold tracking-wide text-sm transition-all duration-300"
+              className="group inline-flex items-center gap-3 py-4 px-10 rounded-sm border border-destructive/30 bg-destructive/[0.08] hover:bg-destructive/[0.18] hover:border-destructive/50 text-destructive font-semibold tracking-wide text-sm transition-all duration-300"
               style={{ animation: 'alertCta 3s ease-in-out infinite' }}
             >
               <ShieldAlert className="w-4 h-4" />
@@ -174,7 +174,7 @@ export default function AlertBanner() {
 
       <style>{`
         @keyframes alertBlink { 0%,100%{opacity:1} 50%{opacity:0.2} }
-        @keyframes alertCta { 0%,100%{box-shadow:0 0 0 transparent} 50%{box-shadow:0 0 30px hsl(var(--destructive) / 0.12)} }
+        @keyframes alertCta { 0%,100%{box-shadow:0 0 0 rgba(220,38,38,0)} 50%{box-shadow:0 0 30px rgba(220,38,38,0.12)} }
       `}</style>
     </section>
   );

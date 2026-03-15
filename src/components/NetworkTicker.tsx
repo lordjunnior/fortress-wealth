@@ -58,6 +58,7 @@ const NetworkTicker = () => {
           if (priceData.BRL) {
             setPriceBrl(priceData.BRL);
           } else if (priceData.USD) {
+            // fallback: USD * ~5.5
             setPriceBrl(Math.round(priceData.USD * 5.5));
           }
         }
@@ -82,7 +83,7 @@ const NetworkTicker = () => {
     return () => document.removeEventListener("visibilitychange", handleVisibility);
   }, []);
 
-  // Fiscal clock
+  // Fiscal clock — timestamp-based, zero drift, rAF-driven
   useEffect(() => {
     const tick = (now: number) => {
       rafRef.current = requestAnimationFrame(tick);
@@ -107,6 +108,7 @@ const NetworkTicker = () => {
     return () => { if (rafRef.current) cancelAnimationFrame(rafRef.current); };
   }, []);
 
+  // Bloomberg-style items with semantic coloring
   const items = [
     { label: "BTC/USD", value: priceUsd !== null ? `$${priceUsd.toLocaleString("en-US")}` : "---", color: "green" as const, live: true },
     { label: "BTC/BRL", value: priceBrl !== null ? `R$ ${priceBrl.toLocaleString("pt-BR")}` : "---", color: "green" as const },
@@ -122,39 +124,61 @@ const NetworkTicker = () => {
     { label: "", value: "AUTOCUSTODIA E LIBERDADE", color: "gold" as const },
   ];
 
+  const colorMap = {
+    green: "#00ff66",
+    red: "#ff3b3b",
+    neutral: "#8a9bb5",
+    gold: "hsl(40, 92%, 56%)",
+  };
+
   const renderItem = (item: typeof items[0], key: number) => (
     <div
       key={key}
-      className="ticker-item inline-flex items-center gap-1.5 px-5 py-1 font-mono text-[11px] tracking-wide transition-all duration-200 cursor-default border-r border-border/30"
+      className="inline-flex items-center gap-1.5 px-5 py-1 font-mono text-[11px] tracking-wide transition-all duration-200 cursor-default"
+      style={{
+        borderRight: "1px solid rgba(255,255,255,0.06)",
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.background = `${colorMap[item.color]}11`;
+        e.currentTarget.style.boxShadow = `inset 0 -2px 0 ${colorMap[item.color]}88`;
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.background = "transparent";
+        e.currentTarget.style.boxShadow = "none";
+      }}
     >
       {/* Live pulse dot */}
       {item.live && (
-        <span className="w-[5px] h-[5px] rounded-full flex-shrink-0 animate-pulse ticker-dot-green" />
+        <span
+          className="w-[5px] h-[5px] rounded-full flex-shrink-0 animate-pulse"
+          style={{ background: colorMap.green }}
+        />
       )}
 
       {/* Label */}
       {item.label && (
-        <span className="uppercase tracking-[0.12em] font-medium text-muted-foreground/50 text-[10px]">
+        <span
+          className="uppercase tracking-[0.12em] font-medium"
+          style={{ color: "rgba(255,255,255,0.35)", fontSize: "10px" }}
+        >
           {item.label}
         </span>
       )}
 
-      {/* Value */}
+      {/* Value — protagonist */}
       <span
-        className={`font-bold tracking-[0.04em] ${
-          item.color === "green" ? "ticker-val-green" :
-          item.color === "red" ? "ticker-val-red" :
-          item.color === "gold" ? "ticker-val-gold text-[10px] tracking-[0.18em]" :
-          "text-muted-foreground"
-        }`}
-        style={{ fontSize: item.color === "gold" ? "10px" : "12px" }}
+        className="font-bold tracking-[0.04em]"
+        style={{ color: colorMap[item.color], fontSize: item.color === "gold" ? "10px" : "12px", letterSpacing: item.color === "gold" ? "0.18em" : undefined }}
       >
         {item.value}
       </span>
 
       {/* Arrow indicator */}
       {item.arrow === "up" && (
-        <span className="ticker-val-red text-[9px] font-bold">▲</span>
+        <span style={{ color: colorMap.red, fontSize: "9px", fontWeight: 700 }}>▲</span>
+      )}
+      {(item as any).arrow === "down" && (
+        <span style={{ color: colorMap.green, fontSize: "9px", fontWeight: 700 }}>▼</span>
       )}
     </div>
   );
@@ -175,19 +199,24 @@ const NetworkTicker = () => {
         .bloomberg-track:hover {
           animation-play-state: paused;
         }
-        .ticker-dot-green { background: hsl(var(--success)); }
-        .ticker-val-green { color: hsl(var(--success)); }
-        .ticker-val-red { color: hsl(var(--danger)); }
-        .ticker-val-gold { color: hsl(var(--gold)); }
-        .ticker-item:hover {
-          background: hsl(var(--muted) / 0.5);
-        }
       `}</style>
 
-      <div className="fixed top-0 left-0 right-0 z-[9999] h-[36px] flex items-center overflow-hidden bg-secondary border-b border-border">
-        {/* Edge masks using semantic background */}
-        <div className="absolute top-0 bottom-0 left-0 w-[50px] z-[2] pointer-events-none bg-gradient-to-r from-secondary to-transparent" />
-        <div className="absolute top-0 bottom-0 right-0 w-[50px] z-[2] pointer-events-none bg-gradient-to-l from-secondary to-transparent" />
+      <div
+        className="fixed top-0 left-0 right-0 z-[9999] h-[36px] flex items-center overflow-hidden"
+        style={{
+          background: "#000000",
+          borderBottom: "1px solid rgba(255,255,255,0.08)",
+        }}
+      >
+        {/* Hard edge masks */}
+        <div
+          className="absolute top-0 bottom-0 left-0 w-[50px] z-[2] pointer-events-none"
+          style={{ background: "linear-gradient(90deg, #000000, transparent)" }}
+        />
+        <div
+          className="absolute top-0 bottom-0 right-0 w-[50px] z-[2] pointer-events-none"
+          style={{ background: "linear-gradient(-90deg, #000000, transparent)" }}
+        />
 
         {/* Scrolling track */}
         <div className="bloomberg-track">

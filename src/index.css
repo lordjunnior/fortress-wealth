@@ -4,357 +4,82 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ═══════════════════════════════════════════════
-   DESIGN SYSTEM PROFISSIONAL — Dark-first
-   Paleta: Preto Profundo + Laranja Revolucionário
-   + Azul Tecnológico + Cinza Frio
-   ═══════════════════════════════════════════════ */
-
 @layer base {
   :root {
-    /* ── BACKGROUNDS ── */
-    --background: 228 45% 3%;          /* #07080c */
-    --foreground: 220 14% 96%;         /* #f3f4f6 */
+    /* Fundo Absoluto e Textos */
+    --background: 222 47% 4%;
+    --foreground: 210 40% 98%;
 
-    --card: 225 35% 9%;               /* #151a28 */
-    --card-foreground: 220 14% 96%;
+    /* Superfícies */
+    --card: 222 47% 6%;
+    --card-foreground: 210 40% 98%;
 
-    --popover: 226 38% 7%;            /* #111521 */
-    --popover-foreground: 220 14% 96%;
+    --popover: 222 40% 8%;
+    --popover-foreground: 210 40% 96%;
 
-    /* ── PRIMARY (Laranja Revolucionário) ── */
-    --primary: 25 100% 50%;           /* #ff6a00 */
-    --primary-foreground: 0 0% 100%;
+    /* Cores de Guerra (Ouro Bitcoin e Vermelho Alerta) */
+    --primary: 40 92% 56%; 
+    --primary-foreground: 0 0% 0%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
 
-    /* ── DESTRUCTIVE ── */
-    --destructive: 0 84% 60%;         /* #ef4444 */
-    --destructive-foreground: 0 0% 100%;
+    --secondary: 220 20% 10%;
+    --secondary-foreground: 210 30% 80%;
 
-    /* ── SECONDARY ── */
-    --secondary: 226 38% 7%;
-    --secondary-foreground: 215 21% 80%;  /* #cbd5e1 */
+    --muted: 220 20% 8%;
+    --muted-foreground: 215 15% 55%;
 
-    /* ── MUTED ── */
-    --muted: 225 25% 10%;
-    --muted-foreground: 215 16% 57%;   /* #94a3b8 */
+    --accent: 40 92% 56%;
+    --accent-foreground: 222 47% 5%;
 
-    /* ── ACCENT ── */
-    --accent: 25 100% 50%;
-    --accent-foreground: 0 0% 100%;
+    --border: 220 20% 12%;
+    --input: 220 20% 12%;
+    --ring: 40 92% 56%;
 
-    /* ── BORDERS ── */
-    --border: 220 20% 16%;            /* #1f2937 */
-    --input: 220 20% 16%;
-    --ring: 25 100% 50%;
+    /* Brutalismo: Bordas zeradas ou mínimas */
+    --radius: 0.125rem; 
 
-    --radius: 0.125rem;
-
-    /* ── SIDEBAR ── */
-    --sidebar-background: 227 40% 5%;
-    --sidebar-foreground: 215 21% 80%;
-    --sidebar-primary: 25 100% 50%;
-    --sidebar-primary-foreground: 0 0% 100%;
+    /* Sidebar */
+    --sidebar-background: 222 40% 6%;
+    --sidebar-foreground: 210 30% 80%;
+    --sidebar-primary: 40 92% 56%;
+    --sidebar-primary-foreground: 222 47% 5%;
     --sidebar-accent: 220 20% 14%;
-    --sidebar-accent-foreground: 215 21% 80%;
+    --sidebar-accent-foreground: 210 30% 80%;
     --sidebar-border: 220 20% 16%;
-    --sidebar-ring: 25 100% 50%;
+    --sidebar-ring: 40 92% 56%;
 
-    /* ── CUSTOM TOKENS ── */
-    --gold: 25 100% 50%;
-    --gold-dim: 25 100% 50% / 0.2;
+    /* Cores Customizadas Extras */
+    --gold: 40 92% 56%;
+    --gold-dim: 40 92% 56% / 0.2;
     --amber: 35 95% 50%;
-    --ice-white: 220 14% 96%;
-    --midnight: 228 45% 3%;
-    --midnight-light: 225 35% 9%;
-    --surface-elevated: 226 38% 7%;
-    --section-alt: 227 40% 5%;
+    --ice-white: 210 40% 98%;
+    --midnight: 222 47% 4%;
+    --midnight-light: 222 47% 6%;
+    --surface-elevated: 222 40% 9%;
+    --section-alt: 222 42% 7%;
     --chart-red: 0 72% 51%;
     --chart-green: 142 71% 45%;
     --mono: 'JetBrains Mono', monospace;
-
-    /* ── STATUS ── */
-    --success: 142 71% 45%;
-    --danger: 0 84% 60%;
-    --warning: 38 92% 50%;
-
-    /* ── GLOWS ── */
-    --glow-primary: 25 100% 50% / 0.35;
-    --glow-tech: 217 91% 60% / 0.35;
-
-    /* ── TECH (Azul Tecnológico) ── */
-    --tech: 217 91% 60%;
-    --tech-dim: 217 91% 60% / 0.15;
   }
 
-  /* ═══ DARK MODE — Padrão Soberano ═══ */
   .dark {
-    --background: 228 45% 3%;
-    --foreground: 220 14% 96%;
-  }
-
-  /* ═══ LIGHT MODE — Pergaminho Tático ═══ */
-  .light {
-    --background: 40 18% 95%;         /* Pergaminho claro */
-    --foreground: 228 35% 10%;
-
-    --card: 40 14% 91%;
-    --card-foreground: 228 35% 10%;
-
-    --popover: 40 14% 93%;
-    --popover-foreground: 228 30% 12%;
-
-    --primary: 25 95% 42%;
-    --primary-foreground: 0 0% 100%;
-
-    --destructive: 0 75% 42%;
-    --destructive-foreground: 0 0% 100%;
-
-    --secondary: 40 12% 86%;
-    --secondary-foreground: 228 25% 18%;
-
-    --muted: 40 12% 88%;
-    --muted-foreground: 220 12% 38%;
-
-    --accent: 25 95% 42%;
-    --accent-foreground: 0 0% 100%;
-
-    --border: 40 12% 78%;
-    --input: 40 12% 78%;
-    --ring: 25 95% 42%;
-
-    --sidebar-background: 40 14% 92%;
-    --sidebar-foreground: 228 25% 18%;
-    --sidebar-primary: 25 95% 42%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 40 12% 86%;
-    --sidebar-accent-foreground: 228 25% 18%;
-    --sidebar-border: 40 12% 80%;
-    --sidebar-ring: 25 95% 42%;
-
-    --gold: 25 95% 42%;
-    --gold-dim: 25 95% 42% / 0.15;
-    --amber: 35 90% 38%;
-    --ice-white: 228 35% 10%;
-    --midnight: 40 18% 95%;
-    --midnight-light: 40 14% 91%;
-    --surface-elevated: 40 12% 88%;
-    --section-alt: 40 14% 93%;
-    --chart-red: 0 72% 38%;
-    --chart-green: 142 65% 30%;
-
-    --success: 142 65% 30%;
-    --danger: 0 75% 42%;
-    --warning: 38 85% 42%;
-
-    --glow-primary: 25 95% 42% / 0.2;
-    --glow-tech: 217 91% 50% / 0.2;
-    --tech: 217 91% 45%;
-    --tech-dim: 217 91% 45% / 0.1;
+    --background: 222 47% 4%;
+    --foreground: 210 40% 98%;
   }
 }
-
-/* ═══════════════════════════════════════════
-   LIGHT MODE — Override de cores hardcoded
-   ═══════════════════════════════════════════ */
-
-/* --- Textos brancos → escuros --- */
-.light .text-white {
-  color: hsl(228 35% 10%) !important;
-}
-.light .text-gray-100,
-.light .text-gray-200 {
-  color: hsl(228 25% 18%) !important;
-}
-.light .text-gray-300 {
-  color: hsl(228 20% 25%) !important;
-}
-.light .text-gray-400 {
-  color: hsl(220 15% 35%) !important;
-}
-.light .text-gray-500 {
-  color: hsl(220 12% 42%) !important;
-}
-.light .text-stone-500 {
-  color: hsl(220 12% 42%) !important;
-}
-
-/* --- Fundos pretos/escuros → claros --- */
-.light .bg-black {
-  background-color: hsl(40 18% 95%) !important;
-}
-.light .bg-black\/50,
-.light .bg-black\/40,
-.light .bg-black\/30,
-.light .bg-black\/20 {
-  background-color: hsl(40 14% 91% / 0.5) !important;
-}
-.light .bg-gray-900,
-.light .bg-gray-900\/50,
-.light .bg-gray-900\/80 {
-  background-color: hsl(40 14% 91%) !important;
-}
-.light .bg-gray-800 {
-  background-color: hsl(40 12% 88%) !important;
-}
-.light .bg-gray-950,
-.light .bg-gray-950\/95 {
-  background-color: hsl(40 18% 95%) !important;
-}
-.light .bg-\[\#0a0a0a\],
-.light .bg-\[\#050808\],
-.light .bg-\[\#0d1117\],
-.light .bg-\[\#0f172a\],
-.light .bg-\[\#07080c\],
-.light .bg-\[\#0c0f17\],
-.light .bg-\[\#0a0d16\] {
-  background-color: hsl(40 18% 95%) !important;
-}
-
-/* --- Bordas --- */
-.light .border-white\/5,
-.light .border-white\/10,
-.light .border-white\/\[0\.06\] {
-  border-color: hsl(40 12% 78%) !important;
-}
-.light .border-gray-800,
-.light .border-gray-700 {
-  border-color: hsl(40 12% 78%) !important;
-}
-
-/* --- White alpha backgrounds --- */
-.light .bg-white\/5,
-.light .bg-white\/\[0\.03\] {
-  background-color: hsl(228 35% 10% / 0.04) !important;
-}
-.light .bg-white\/10 {
-  background-color: hsl(228 35% 10% / 0.06) !important;
-}
-.light .text-white\/60,
-.light .text-white\/70,
-.light .text-white\/80,
-.light .text-white\/90 {
-  color: hsl(228 35% 10% / 0.8) !important;
-}
-
-/* --- Backgrounds cinematográficos --- */
-.light .cinematic-bg {
-  opacity: 0.12 !important;
-}
-
-/* --- Gradient dark --- */
-.light .gradient-dark {
-  background: linear-gradient(180deg, hsl(40 18% 95%), hsl(40 18% 92%)) !important;
-}
-
-/* --- Botão secundário --- */
-.light .btn-secondary {
-  color: hsl(228 35% 10%) !important;
-  border-color: hsl(40 12% 70%) !important;
-}
-.light .btn-secondary:hover {
-  background-color: hsl(228 35% 10% / 0.05) !important;
-  color: hsl(25 95% 42%) !important;
-}
-
-/* --- Cards --- */
-.light .card-wealth,
-.light .card-elite {
-  background: hsl(40 14% 91% / 0.9) !important;
-  box-shadow: inset 0 0 0 1px hsl(25 95% 42% / 0.1), 0 4px 20px -10px hsl(228 35% 10% / 0.08) !important;
-}
-
-/* --- Text shadows off in light --- */
-.light [style*="textShadow"] {
-  text-shadow: none !important;
-}
-
-/* --- Scrollbar --- */
-.light ::-webkit-scrollbar-track {
-  background: hsl(40 18% 95%);
-}
-.light ::-webkit-scrollbar-thumb {
-  background: hsl(40 12% 72%);
-}
-.light ::-webkit-scrollbar-thumb:hover {
-  background: hsl(40 12% 58%);
-}
-
-/* --- Particles & effects off --- */
-.light .dust-layer-home,
-.light .dust-layer-home-2,
-.light .dust-layer-home-3 {
-  opacity: 0 !important;
-}
-.light .hero-scanline {
-  opacity: 0.1 !important;
-}
-
-/* --- Section alt --- */
-.light .section-alt {
-  background-color: hsl(40 14% 93% / 0.8) !important;
-}
-
-/* --- Color text overrides --- */
-.light .text-red-400,
-.light .text-red-400\/70,
-.light .text-red-500 {
-  color: hsl(0 72% 38%) !important;
-}
-.light .text-amber-500,
-.light .text-amber-400,
-.light .text-orange-500,
-.light .text-orange-400 {
-  color: hsl(25 90% 36%) !important;
-}
-.light .text-emerald-400,
-.light .text-emerald-500,
-.light .text-green-400,
-.light .text-green-500 {
-  color: hsl(142 65% 26%) !important;
-}
-
-/* --- Hover states --- */
-.light .hover\:text-white:hover {
-  color: hsl(228 35% 10%) !important;
-}
-.light .hover\:text-gold:hover {
-  color: hsl(25 95% 35%) !important;
-}
-.light .hover\:bg-white\/5:hover {
-  background-color: hsl(228 35% 10% / 0.05) !important;
-}
-
-/* ═══════════════════════════════════════════
-   TRANSIÇÃO SUAVE — Apple UX Premium
-   ═══════════════════════════════════════════ */
-html,
-body,
-.section-alt,
-.card-wealth,
-.card-elite,
-.btn-primary,
-.btn-secondary {
-  transition: background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease;
-}
-
-/* ═══════════════════════════════════════════
-   BASE STYLES
-   ═══════════════════════════════════════════ */
 
 @layer base {
   * {
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground antialiased selection:bg-primary selection:text-primary-foreground;
+    @apply bg-background text-foreground antialiased selection:bg-primary selection:text-black;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
-    /* Background noise + gradient cinematográfico */
-    background-image:
-      radial-gradient(circle at top, hsl(var(--glow-primary)), transparent 60%);
-    background-attachment: fixed;
   }
-
+  
   h1, h2, h3, h4, h5, h6 {
     @apply font-sans tracking-tight;
   }
@@ -364,22 +89,21 @@ body,
   }
 }
 
-/* ═══════════════════════════════════════════
-   UTILITIES
-   ═══════════════════════════════════════════ */
-
 @layer utilities {
+  /* Curva de Animação Apple Global */
   .ease-apple {
     transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
   }
 
-  /* ── Typography ── */
+  /* ─── Typography ─── */
   .font-editorial {
     font-family: 'Playfair Display', Georgia, serif;
   }
+
   .font-display {
     font-family: 'Space Grotesk', sans-serif;
   }
+
   .font-unbounded {
     font-family: 'Unbounded', sans-serif;
   }
@@ -397,76 +121,78 @@ body,
   .text-gold {
     color: hsl(var(--gold));
   }
+
   .text-ice {
     color: hsl(var(--ice-white));
   }
+
   .text-chart-red {
     color: hsl(var(--chart-red));
   }
 
   /* Gradientes de Texto */
   .text-gradient-gold {
-    @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(var(--gold)), hsl(var(--amber)));
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[hsl(40,92%,56%)] to-[hsl(35,95%,40%)];
   }
-
-  /* ── Backgrounds ── */
+  
+  /* ─── Backgrounds ─── */
   .bg-midnight {
     background-color: hsl(var(--midnight));
   }
+
   .bg-midnight-light {
     background-color: hsl(var(--midnight-light));
   }
+
   .bg-gold {
     background-color: hsl(var(--gold));
   }
+
   .gradient-gold {
     background: linear-gradient(135deg, hsl(var(--gold)), hsl(var(--amber)));
   }
+
   .gradient-dark {
-    background: linear-gradient(180deg, hsl(var(--background)), hsl(228 45% 2%));
+    background: linear-gradient(180deg, hsl(222 47% 4%), hsl(222 47% 2%));
   }
 
-  /* ── Borders ── */
+  /* ─── Borders ─── */
   .border-gold {
     border-color: hsl(var(--gold));
   }
+
   .border-gold-dim {
     border-color: hsl(var(--gold-dim));
   }
 
-  /* ── Glows ── */
+  /* ─── Glows ─── */
   .glow-gold {
     box-shadow: 0 0 20px hsl(var(--gold) / 0.2);
   }
+
   .glow-gold-strong {
     box-shadow: 0 0 40px hsl(var(--gold) / 0.4);
   }
-  .glow-primary {
-    box-shadow: 0 0 30px hsl(var(--glow-primary));
-  }
-  .glow-tech {
-    box-shadow: 0 0 30px hsl(var(--glow-tech));
-  }
 
-  /* Padding padrão — mobile-first */
+  /* Padding padrão do site — mobile-first com mais respiro */
   .section-padding {
     @apply px-5 py-20 md:px-8 md:py-24 lg:px-12 lg:py-28;
   }
 
-  /* Seção alternada */
+  /* Seção alternada — glassmorphism com contraste visual claro no mobile */
   .section-alt {
     background-color: hsl(var(--section-alt) / 0.8);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
   }
 
-  /* Divisor entre seções */
+  /* Divisor visível entre seções — mobile precisa de separação clara */
   .section-divider {
     @apply border-t;
     border-color: hsl(var(--gold) / 0.12);
     position: relative;
   }
+
   .section-divider::before {
     content: '';
     position: absolute;
@@ -482,6 +208,7 @@ body,
       @apply mt-2 mb-2;
       border-color: hsl(var(--gold) / 0.18);
     }
+
     .section-divider::before {
       height: 2px;
       background: linear-gradient(90deg, transparent, hsl(var(--gold) / 0.35), transparent);
@@ -493,58 +220,51 @@ body,
   }
 }
 
-/* ═══════════════════════════════════════════
-   COMPONENTS
-   ═══════════════════════════════════════════ */
-
 @layer components {
-  /* ── Botão Primário — Gradiente Laranja ── */
+  /* ─── O Novo Botão de Ação (Brutalista e Massivo) ─── */
   .btn-primary {
-    @apply px-7 py-4 font-bold tracking-wide uppercase text-sm ease-apple transition-all duration-300 flex items-center justify-center gap-3;
-    background: linear-gradient(135deg, hsl(var(--gold)), hsl(25 100% 42%));
-    color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 10px 30px hsl(var(--glow-primary));
-    border: 1px solid hsl(var(--gold) / 0.6);
-    letter-spacing: 0.03em;
+    @apply px-10 py-5 rounded-sm font-black tracking-widest uppercase text-sm ease-apple transition-all duration-500 flex items-center justify-center gap-3;
+    background: linear-gradient(135deg, hsl(var(--gold)), hsl(40, 92%, 45%));
+    color: #000000;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.3), 0 10px 30px -10px rgba(247,147,26,0.4);
+    border: 1px solid rgba(247,147,26,0.8);
   }
+
   .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 14px 40px hsl(var(--gold) / 0.5);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.4), 0 20px 40px -10px rgba(247,147,26,0.6);
+    transform: translateY(-2px) scale(1.01);
   }
+
   .btn-primary:active {
     transform: translateY(1px) scale(0.99);
-    box-shadow: 0 5px 15px hsl(var(--gold) / 0.3);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.1), 0 5px 15px -5px rgba(247,147,26,0.4);
   }
 
-  /* ── Botão Secundário ── */
+  /* Botão Secundário */
   .btn-secondary {
-    @apply px-7 py-4 font-bold tracking-wide uppercase text-xs ease-apple transition-all duration-300 bg-transparent;
-    color: hsl(var(--foreground));
-    border: 1px solid hsl(var(--border));
-    border-radius: 8px;
-  }
-  .btn-secondary:hover {
-    border-color: hsl(var(--gold) / 0.5);
-    background: hsl(var(--gold) / 0.05);
-    color: hsl(var(--gold));
+    @apply px-8 py-4 rounded-sm font-bold tracking-widest uppercase text-xs ease-apple transition-all duration-500 bg-transparent text-white;
+    border: 1px solid rgba(255,255,255,0.1);
   }
 
-  /* ── Cards de Sistema ── */
+  .btn-secondary:hover {
+    @apply bg-white/5 border-white/30 text-gold;
+  }
+
+  /* ─── Os Novos Cards de Sistema ─── */
   .card-wealth, .card-elite {
-    @apply p-8 md:p-10 relative overflow-hidden ease-apple transition-all duration-500;
-    background: hsl(var(--card));
-    border-radius: 14px;
-    border: 1px solid hsl(var(--border));
+    @apply p-8 md:p-10 relative overflow-hidden ease-apple transition-all duration-500 rounded-sm;
+    background: hsl(var(--midnight) / 0.75);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
+    box-shadow: inset 0 0 0 1px hsl(var(--gold) / 0.08), 0 10px 40px -20px rgba(0,0,0,0.8);
   }
+
   .card-wealth:hover, .card-elite:hover {
     transform: translateY(-4px);
-    border-color: hsl(var(--gold) / 0.5);
-    background: hsl(var(--surface-elevated));
-    box-shadow: 0 0 40px hsl(var(--glow-primary));
+    background: hsl(var(--midnight) / 0.85);
+    box-shadow: inset 0 0 0 1px hsl(var(--gold) / 0.2), 0 20px 40px -20px hsl(var(--gold) / 0.15);
   }
+
   .card-wealth::before, .card-elite::before {
     content: '';
     position: absolute;
@@ -552,12 +272,13 @@ body,
     left: 0;
     width: 100%;
     height: 1px;
-    background: linear-gradient(90deg, transparent, hsl(var(--gold) / 0.15), transparent);
+    background: linear-gradient(90deg, transparent, hsl(var(--gold) / 0.1), transparent);
     opacity: 0;
     transition: opacity 0.5s ease;
   }
+
   .card-wealth:hover::before, .card-elite:hover::before {
     opacity: 1;
-    background: linear-gradient(90deg, transparent, hsl(var(--gold) / 0.6), transparent);
+    background: linear-gradient(90deg, transparent, hsl(var(--gold) / 0.5), transparent);
   }
 }
