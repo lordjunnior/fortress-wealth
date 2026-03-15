@@ -352,6 +352,19 @@ export default function KucoinPayPix() {
           </div>
         </motion.section>
 
+        {/* ─── MID-PAGE CTA ─── */}
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="mb-28 text-center">
+          <a href={AFFILIATE_LINK} target="_blank" rel="noopener noreferrer"
+            className="inline-flex items-center gap-3 bg-gradient-to-r from-emerald-500/15 to-amber-500/10 border border-emerald-500/25 rounded-2xl px-10 py-5
+                       text-emerald-400 text-sm font-bold uppercase tracking-wider
+                       hover:from-emerald-500/25 hover:to-amber-500/15 hover:shadow-[0_0_60px_rgba(16,185,129,0.12)]
+                       transition-all duration-500 group">
+            <Shield size={18} /> Ainda não tem conta? Crie a sua em 2 minutos
+            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+          </a>
+          <p className="text-stone-600 text-[11px] mt-3">É necessário para seguir o tutorial abaixo.</p>
+        </motion.div>
+
         {/* ─── DIVIDER ─── */}
         <div className="w-full h-px bg-gradient-to-r from-transparent via-emerald-500/20 to-transparent mb-28" />
 
