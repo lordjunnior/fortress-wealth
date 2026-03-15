@@ -142,8 +142,8 @@ export default function Bip110() {
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Lord Junnior" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="BIP-110: O Soft Fork Temporário Que Divide o Bitcoin — Guia Completo 2025" />
-        <meta name="twitter:description" content="BIP-110 (RDTS): o que é, quem apoia, quem é contra, impactos em Lightning e mineração, e se vai passar. Análise editorial completa." />
+        <meta name="twitter:title" content="BIP-110: A Guerra do Espaço de Bloco — Análise Técnica 2025" />
+        <meta name="twitter:description" content="BIP-110 (RDTS): a guerra do espaço de bloco no Bitcoin. Quem apoia, quem é contra, impactos e se vai passar. Análise editorial completa." />
         <meta name="twitter:image" content="https://lordjunnior.com/heroes/bip-110.webp" />
         <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
         <meta name="author" content="Lord Junnior" />
