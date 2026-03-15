@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import ScrollToTop from '@/components/ScrollToTop';
+import NobelVFX from '@/components/NobelVFX';
 import heroImg from '@/assets/wise-hero.jpg';
 import appImg from '@/assets/wise-app.jpg';
 
