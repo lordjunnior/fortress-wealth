@@ -50,6 +50,25 @@ export default function DependenciaTecnologica() {
     })),
   };
 
+  const claimReviewSchema = {
+    "@context": "https://schema.org",
+    "@type": "ClaimReview",
+    "url": "https://lordjunnior.com.br/projeto-autonomo/toxicos-ocultos/dependencia-tecnologica",
+    "claimReviewed": "Redes sociais e aplicativos são projetados apenas para oferecer valor ao usuário, sem mecanismos de dependência",
+    "author": { "@type": "Person", "name": "Lord Junnior" },
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": 1,
+      "bestRating": 5,
+      "worstRating": 1,
+      "alternateName": "Falso"
+    },
+    "itemReviewed": {
+      "@type": "CreativeWork",
+      "author": { "@type": "Organization", "name": "Big Tech" }
+    }
+  };
+
   return (
     <div className="min-h-screen text-stone-100 font-sans selection:bg-cyan-400/30 relative overflow-hidden" style={{ background: '#050808' }}>
       <Helmet>
