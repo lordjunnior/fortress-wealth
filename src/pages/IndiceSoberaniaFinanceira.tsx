@@ -108,7 +108,7 @@ const IndiceSoberaniaFinanceira = () => {
       <Helmet>
         <title>Índice de Soberania Financeira — Ranking de Privacidade por Plataforma</title>
         <meta name="description" content="Ranking comparativo de plataformas financeiras por nível de privacidade, status de reporte e jurisdição. Compare contas internacionais, offshore e exchanges sem KYC." />
-        <link rel="canonical" href="https://autonomiadoindividuo.com/indice-de-soberania-financeira" />
+        <link rel="canonical" href="https://lordjunnior.com.br/indice-de-soberania-financeira" />
         <script type="application/ld+json">{JSON.stringify(schemaLD)}</script>
       </Helmet>
       <ScrollToTop />

@@ -123,8 +123,8 @@ const Economia = () => {
         <meta property="og:title" content="A Lógica da Pilhagem — Despertar Monetário" />
         <meta property="og:description" content="R$ 100 em 1994 valem R$ 11 hoje. Descubra quanto do seu dia de trabalho pertence ao Estado." />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://autonomiadoindividuo.com/economia" />
-        <link rel="canonical" href="https://autonomiadoindividuo.com/economia" />
+        <meta property="og:url" content="https://lordjunnior.com.br/economia" />
+        <link rel="canonical" href="https://lordjunnior.com.br/economia" />
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>
       </Helmet>

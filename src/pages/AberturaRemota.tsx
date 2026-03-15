@@ -321,7 +321,7 @@ const AberturaRemota = () => {
       <Helmet>
         <title>Guia de Abertura Remota — Contas Offshore Cripto com Cédula Paraguaia | Soberania Financeira</title>
         <meta name="description" content="Passo-a-passo completo para abrir contas offshore cripto remotamente usando cédula paraguaia. Sem CPF, sem reporte, sem KYC brasileiro." />
-        <link rel="canonical" href="https://autonomiadoindividuo.com/soberania-financeira/contas-offshore/abertura-remota" />
+        <link rel="canonical" href="https://lordjunnior.com.br/soberania-financeira/contas-offshore/abertura-remota" />
         <script type="application/ld+json">{JSON.stringify(schemaLD)}</script>
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       </Helmet>

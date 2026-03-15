@@ -103,8 +103,8 @@ const Bitcoin = () => {
         <meta property="og:title" content="Blindagem Operacional — Soberania Bitcoin" />
         <meta property="og:description" content="Se você não tem as chaves, as moedas não são suas. Guia completo de autocustódia." />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://autonomiadoindividuo.com/bitcoin" />
-        <link rel="canonical" href="https://autonomiadoindividuo.com/bitcoin" />
+        <meta property="og:url" content="https://lordjunnior.com.br/bitcoin" />
+        <link rel="canonical" href="https://lordjunnior.com.br/bitcoin" />
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>
       </Helmet>

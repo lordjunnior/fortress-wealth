@@ -253,7 +253,7 @@ const SoberaniaFinanceira = () => {
       <Helmet>
         <title>Soberania Financeira — Contas Internacionais, Offshore e Cripto sem KYC</title>
         <meta name="description" content="Hub completo de ferramentas de soberania financeira: contas internacionais, contas offshore cripto, exchanges sem KYC e sistemas financeiros alternativos." />
-        <link rel="canonical" href="https://autonomiadoindividuo.com/soberania-financeira" />
+        <link rel="canonical" href="https://lordjunnior.com.br/soberania-financeira" />
         <script type="application/ld+json">{JSON.stringify(schemaLD)}</script>
       </Helmet>
       <ScrollToTop />
