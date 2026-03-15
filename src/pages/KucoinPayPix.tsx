@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import CinematicHero from '@/components/CinematicHero';
 import ScrollToTop from '@/components/ScrollToTop';
+import SovereignDisclaimer from '@/components/SovereignDisclaimer';
 
 import kucoinSupermercado from '@/assets/kucoin-supermercado.jpg';
 import kucoinPosto from '@/assets/kucoin-posto.jpg';
@@ -263,6 +264,11 @@ export default function KucoinPayPix() {
         backLink="/soberania-financeira"
         backLabel="Soberania Financeira"
       />
+
+      {/* ─── SOVEREIGN DISCLAIMER ─── */}
+      <div className="relative z-10 px-6 md:px-10 lg:px-16">
+        <SovereignDisclaimer variant="payment" />
+      </div>
 
       {/* ─── MAIN CONTENT ─── */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 lg:px-16 pt-16 pb-32">

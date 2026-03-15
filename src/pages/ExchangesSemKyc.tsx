@@ -10,6 +10,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import ScrollToTop from '@/components/ScrollToTop';
 import LeadCaptureModal from '@/components/LeadCaptureModal';
 import NobelVFX from '@/components/NobelVFX';
+import SovereignDisclaimer from '@/components/SovereignDisclaimer';
 import { useState } from 'react';
 import heroImg from '@/assets/exchanges-nokyc-hero.jpg';
 
@@ -161,6 +162,11 @@ const ExchangesSemKyc = () => {
               </motion.p>
             </div>
           </div>
+        </div>
+
+        {/* ═══ SOVEREIGN DISCLAIMER ═══ */}
+        <div className="px-6">
+          <SovereignDisclaimer variant="exchange" />
         </div>
 
         {/* ── Critical Alert ── */}

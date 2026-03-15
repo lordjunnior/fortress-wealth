@@ -12,6 +12,7 @@ import {
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import ScrollToTop from '@/components/ScrollToTop';
 import LeadCaptureModal from '@/components/LeadCaptureModal';
+import SovereignDisclaimer from '@/components/SovereignDisclaimer';
 import heroImg from '@/assets/bricspay-hero.jpg';
 import vigilanciaImg from '@/assets/bricspay-vigilancia.jpg';
 import brasilParaguaiImg from '@/assets/offshore-brasil-paraguai.jpg';
@@ -200,6 +201,11 @@ export default function BricsPay() {
               </motion.div>
             </div>
           </motion.div>
+        </div>
+
+        {/* ═══ SOVEREIGN DISCLAIMER ═══ */}
+        <div className="px-6 md:px-12 lg:px-20">
+          <SovereignDisclaimer variant="surveillance" />
         </div>
 
         {/* ═══ CH01 — FICHA TECNICA ═══ */}

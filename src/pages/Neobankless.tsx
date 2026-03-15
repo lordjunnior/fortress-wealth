@@ -11,6 +11,7 @@ import {
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import ScrollToTop from '@/components/ScrollToTop';
 import NobelVFX from '@/components/NobelVFX';
+import SovereignDisclaimer from '@/components/SovereignDisclaimer';
 import heroImg from '@/assets/neobankless-hero.jpg';
 import appImg from '@/assets/neobankless-app.jpg';
 
@@ -258,6 +259,11 @@ export default function Neobankless() {
             </motion.div>
           </motion.div>
           <div className="absolute bottom-0 left-0 right-0 h-32 z-10 pointer-events-none" style={{ background: 'linear-gradient(to bottom, transparent, #050808)' }} />
+        </div>
+
+        {/* ═══ SOVEREIGN DISCLAIMER ═══ */}
+        <div className="px-6 md:px-12 lg:px-20">
+          <SovereignDisclaimer variant="bank" />
         </div>
 
         {/* ═══ CHAPTER 01 — FICHA TÉCNICA (odd) ═══ */}

@@ -13,6 +13,7 @@ import {
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import ScrollToTop from '@/components/ScrollToTop';
 import LeadCaptureModal from '@/components/LeadCaptureModal';
+import SovereignDisclaimer from '@/components/SovereignDisclaimer';
 import NobelVFX from '@/components/NobelVFX';
 import heroImg from '@/assets/optima-hero.jpg';
 import telegramImg from '@/assets/optima-telegram.jpg';
@@ -220,6 +221,11 @@ export default function OptimaExchange() {
               </motion.div>
             </div>
           </motion.div>
+        </div>
+
+        {/* ═══ SOVEREIGN DISCLAIMER ═══ */}
+        <div className="px-6 md:px-12 lg:px-20">
+          <SovereignDisclaimer variant="exchange" />
         </div>
 
         {/* ═══ CH01 — FICHA TECNICA ═══ */}

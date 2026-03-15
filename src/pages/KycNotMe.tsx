@@ -13,6 +13,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import ScrollToTop from '@/components/ScrollToTop';
 import LeadCaptureModal from '@/components/LeadCaptureModal';
 import NobelVFX from '@/components/NobelVFX';
+import SovereignDisclaimer from '@/components/SovereignDisclaimer';
 import heroImg from '@/assets/kycnot-hero.jpg';
 import filtrosImg from '@/assets/kycnot-filtros.jpg';
 import armadilhaImg from '@/assets/kycnot-armadilha.jpg';
@@ -204,6 +205,11 @@ export default function KycNotMe() {
               </motion.div>
             </div>
           </motion.div>
+        </div>
+
+        {/* ═══ SOVEREIGN DISCLAIMER ═══ */}
+        <div className="px-6 md:px-12 lg:px-20">
+          <SovereignDisclaimer variant="exchange" />
         </div>
 
         {/* ═══ CH01 — O QUE E ═══ */}

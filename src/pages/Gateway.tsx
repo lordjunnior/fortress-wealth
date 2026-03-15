@@ -5,6 +5,7 @@ import { Zap, ShieldCheck, ArrowRight, CheckCircle2, Loader2, Copy, Check, Shiel
 import { Link } from "react-router-dom";
 import CinematicHero from '@/components/CinematicHero';
 import ScrollToTop from '@/components/ScrollToTop';
+import SovereignDisclaimer from '@/components/SovereignDisclaimer';
 
 const APPLE_EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
@@ -116,6 +117,11 @@ const Gateway = () => {
         backLink="/saida"
         backLabel="Estratégias de Saída"
       />
+
+      {/* ═══ SOVEREIGN DISCLAIMER ═══ */}
+      <div className="relative z-10 px-6 md:px-16 lg:px-24">
+        <SovereignDisclaimer variant="payment" />
+      </div>
 
       {/* ═══ MAIN CONTENT ═══ */}
       <section className="relative z-10 pb-20 px-6 md:px-16 lg:px-24">

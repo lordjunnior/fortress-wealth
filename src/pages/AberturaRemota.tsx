@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import ScrollToTop from '@/components/ScrollToTop';
 import LeadCaptureModal from '@/components/LeadCaptureModal';
+import SovereignDisclaimer from '@/components/SovereignDisclaimer';
 
 import heroImg from '@/assets/abertura-remota-hero.jpg';
 import chapterDocImg from '@/assets/abertura-chapter-documentos.jpg';
@@ -399,6 +400,11 @@ const AberturaRemota = () => {
               <span className="text-stone-600 text-[10px] tracking-[0.25em] uppercase">Role para começar</span>
             </motion.div>
           </motion.div>
+        </div>
+
+        {/* ═══ SOVEREIGN DISCLAIMER ═══ */}
+        <div className="px-6 md:px-12 lg:px-20">
+          <SovereignDisclaimer variant="offshore" />
         </div>
 
         {/* ═══════════════════════════════════════

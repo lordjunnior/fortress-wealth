@@ -15,6 +15,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import ScrollToTop from '@/components/ScrollToTop';
 import NobelVFX from '@/components/NobelVFX';
 import LeadCaptureModal from '@/components/LeadCaptureModal';
+import SovereignDisclaimer from '@/components/SovereignDisclaimer';
 import heroImg from '@/assets/pegasusswap-hero.jpg';
 import tutorialImg from '@/assets/pegasusswap-tutorial.jpg';
 
@@ -304,6 +305,11 @@ export default function PegasusSwap() {
               </motion.div>
             </div>
           </motion.div>
+        </div>
+
+        {/* ═══ SOVEREIGN DISCLAIMER ═══ */}
+        <div className="px-6 md:px-12 lg:px-20">
+          <SovereignDisclaimer variant="exchange" />
         </div>
 
         {/* ═══ CH01 — FICHA TECNICA ═══ */}

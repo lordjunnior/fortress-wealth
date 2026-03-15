@@ -13,6 +13,7 @@ import {
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import ScrollToTop from '@/components/ScrollToTop';
 import LeadCaptureModal from '@/components/LeadCaptureModal';
+import SovereignDisclaimer from '@/components/SovereignDisclaimer';
 import heroImg from '@/assets/depix-hero.jpg';
 import dinheiroVivoImg from '@/assets/depix-dinheiro-vivo.jpg';
 import brasilParaguaiImg from '@/assets/offshore-brasil-paraguai.jpg';
@@ -206,6 +207,11 @@ export default function DepixReporte() {
               </motion.div>
             </div>
           </motion.div>
+        </div>
+
+        {/* ═══ SOVEREIGN DISCLAIMER ═══ */}
+        <div className="px-6 md:px-12 lg:px-20">
+          <SovereignDisclaimer variant="surveillance" />
         </div>
 
         {/* ═══ CH01 — O QUE E DEPIX ═══ */}

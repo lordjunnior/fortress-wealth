@@ -9,6 +9,7 @@ import {
 } from 'lucide-react';
 import ScrollToTop from '@/components/ScrollToTop';
 import LeadCaptureModal from '@/components/LeadCaptureModal';
+import SovereignDisclaimer from '@/components/SovereignDisclaimer';
 
 import heroImg from '@/assets/offshore-hero.jpg';
 import cardsImg from '@/assets/offshore-cards.jpg';
@@ -482,6 +483,11 @@ const ContasOffshore = () => {
             </motion.div>
           </motion.div>
           <div className="absolute bottom-0 left-0 right-0 h-32 z-10 pointer-events-none" style={{ background: 'linear-gradient(to bottom, transparent, #050808)' }} />
+        </div>
+
+        {/* ═══ SOVEREIGN DISCLAIMER ═══ */}
+        <div className="px-6 md:px-12 lg:px-20">
+          <SovereignDisclaimer variant="offshore" />
         </div>
 
         {/* ═══════════════════════════════════════

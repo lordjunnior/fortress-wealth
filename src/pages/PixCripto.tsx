@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/accordion";
 import CinematicHero from '@/components/CinematicHero';
 import ScrollToTop from '@/components/ScrollToTop';
+import SovereignDisclaimer from '@/components/SovereignDisclaimer';
 import qrCodeLightning from '@/assets/qrcode-lightning.jpeg';
 import pixCritoHero from '@/assets/pix-cripto-hero.jpg';
 import pixCritoTutorial from '@/assets/pix-cripto-tutorial.jpg';
@@ -141,6 +142,11 @@ const PixCripto: React.FC = () => {
         backLink="/ferramentas"
         backLabel="Arsenal"
       />
+
+      {/* ─── SOVEREIGN DISCLAIMER ─── */}
+      <div className="relative z-10 px-6 md:px-10 lg:px-16">
+        <SovereignDisclaimer variant="payment" />
+      </div>
 
       {/* ─── MAIN CONTENT ─── */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 lg:px-16 pt-16 pb-32">

@@ -14,6 +14,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import ScrollToTop from '@/components/ScrollToTop';
 import LeadCaptureModal from '@/components/LeadCaptureModal';
 import NobelVFX from '@/components/NobelVFX';
+import SovereignDisclaimer from '@/components/SovereignDisclaimer';
 import heroImg from '@/assets/grabrfi-hero.jpg';
 import appImg from '@/assets/grabrfi-app.jpg';
 import brasilParaguaiImg from '@/assets/offshore-brasil-paraguai.jpg';
@@ -198,6 +199,11 @@ const GrabrFi = () => {
         <ArrowLeft className="w-4 h-4" />
         Voltar
       </Link>
+
+      {/* ═══ SOVEREIGN DISCLAIMER ═══ */}
+      <div className="px-6 md:px-12 lg:px-20 pt-20">
+        <SovereignDisclaimer variant="bank" />
+      </div>
 
       {/* ── CH01: HERO ── */}
       <ChapterKickoff number="01" title="A Conta Americana que Fala Cripto" image={heroImg} id="hero" isOdd />
