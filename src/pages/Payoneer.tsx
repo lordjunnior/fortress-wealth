@@ -203,13 +203,8 @@ export default function Payoneer() {
       <FloatingToc />
 
       <div className="min-h-screen bg-[#050808] text-stone-200">
-        <div className="fixed inset-0 z-50 pointer-events-none opacity-[0.035]">
-          <svg width="100%" height="100%"><filter id="pay-grain"><feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="4" stitchTiles="stitch" /><feColorMatrix type="saturate" values="0" /></filter><rect width="100%" height="100%" filter="url(#pay-grain)" /></svg>
-        </div>
-        <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-          <div className="absolute -top-[200px] -left-[200px] w-[1200px] h-[300px] opacity-[0.025] rotate-[25deg]" style={{ background: 'linear-gradient(180deg, transparent, rgba(249,115,22,0.6), transparent)' }} />
-          <div className="absolute -bottom-[150px] -right-[150px] w-[900px] h-[200px] opacity-[0.02] -rotate-[30deg]" style={{ background: 'linear-gradient(180deg, transparent, rgba(245,158,11,0.5), transparent)' }} />
-        </div>
+        <NobelVFX accentColor="orange" />
+
 
         {/* HERO */}
         <div ref={heroRef} className="relative h-[90vh] min-h-[650px] max-h-[950px] flex items-end overflow-hidden">
