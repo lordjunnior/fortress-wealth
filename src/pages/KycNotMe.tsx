@@ -12,6 +12,7 @@ import {
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import ScrollToTop from '@/components/ScrollToTop';
 import LeadCaptureModal from '@/components/LeadCaptureModal';
+import NobelVFX from '@/components/NobelVFX';
 import heroImg from '@/assets/kycnot-hero.jpg';
 import filtrosImg from '@/assets/kycnot-filtros.jpg';
 import armadilhaImg from '@/assets/kycnot-armadilha.jpg';
