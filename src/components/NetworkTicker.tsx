@@ -162,7 +162,7 @@ const NetworkTicker = () => {
       {item.label && (
         <span
           className="uppercase tracking-[0.12em] font-medium"
-          style={{ color: "rgba(255,255,255,0.35)", fontSize: "10px" }}
+          style={{ color: isLight ? "rgba(0,0,0,0.45)" : "rgba(255,255,255,0.35)", fontSize: "10px" }}
         >
           {item.label}
         </span>
