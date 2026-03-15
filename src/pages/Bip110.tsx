@@ -4,7 +4,6 @@ import { motion, useInView } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 import {
   ArrowRight,
-  Blocks,
   GitFork,
   Shield,
   AlertTriangle,
