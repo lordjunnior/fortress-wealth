@@ -61,8 +61,8 @@ const AppSidebar = () => {
   };
 
   return (
-    <aside className="hidden lg:flex fixed left-0 top-0 bottom-0 w-[260px] z-50 flex-col border-r border-border/50 bg-[#070A12]/95 backdrop-blur-xl pt-[38px]">
-      {/* Profile Photo - Square, full width */}
+    <aside className="hidden lg:flex fixed left-0 top-0 bottom-0 w-[260px] z-50 flex-col border-r border-border bg-secondary/95 backdrop-blur-xl pt-[38px]">
+      {/* Profile Photo */}
       <div className="w-full aspect-square overflow-hidden">
         <img
           src={profilePhoto}
@@ -72,7 +72,7 @@ const AppSidebar = () => {
       </div>
 
       {/* Identity */}
-      <div className="px-5 py-4 border-b border-border/50">
+      <div className="px-5 py-4 border-b border-border">
         <h2 className="font-bold text-sm tracking-wider text-foreground">LORD JUNNIOR</h2>
         <div className="flex items-center gap-3 mt-3">
           {socialLinks.map((social) => (
@@ -81,7 +81,7 @@ const AppSidebar = () => {
               href={social.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-gold transition-colors"
+              className="text-muted-foreground hover:text-primary transition-colors"
             >
               <social.icon className="w-4 h-4" />
             </a>
@@ -93,7 +93,7 @@ const AppSidebar = () => {
       <ReadingLevelIndicator />
 
       {/* Alert Text */}
-      <div className="px-5 py-4 border-b border-border/50">
+      <div className="px-5 py-4 border-b border-border">
         <p className="text-[10px] text-muted-foreground leading-relaxed tracking-wide uppercase">
           AQUI EU NÃO VENDO BITCOIN... EU ENSINO COMO SAIR DO CABRESTO ESTATAL...
         </p>
@@ -104,10 +104,10 @@ const AppSidebar = () => {
 
       {/* Navigation */}
       <nav className="flex-1 px-3 py-4 space-y-1">
-        {/* Protocolo Inicial - primeiro item */}
+        {/* Protocolo Inicial */}
         <Link
           to="/protocolo-inicial"
-          className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-all duration-200 group"
+          className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-popover transition-all duration-200 group"
         >
           <div className="relative">
             <ShieldAlert className="w-4 h-4 text-destructive/80 group-hover:text-destructive transition-colors" />
@@ -123,9 +123,9 @@ const AppSidebar = () => {
           <button
             key={item.label}
             onClick={() => handleNav(item)}
-            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-all duration-200 group"
+            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-popover transition-all duration-200 group"
           >
-            <item.icon className="w-4 h-4 group-hover:text-gold transition-colors" />
+            <item.icon className="w-4 h-4 group-hover:text-primary transition-colors" />
             <span className="text-sm font-medium">{item.label}</span>
           </button>
         ))}
@@ -135,7 +135,7 @@ const AppSidebar = () => {
       <div className="px-3 pb-4">
         <button
           onClick={handleApoio}
-          className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-lg border border-gold-dim/50 bg-card text-gold font-semibold text-sm hover:border-gold hover:bg-gold/5 transition-all duration-300"
+          className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-lg border border-primary/20 bg-card text-primary font-semibold text-sm hover:border-primary hover:bg-primary/5 transition-all duration-300"
         >
           <Zap className="w-4 h-4" />
           Apoio Lightning
@@ -143,7 +143,7 @@ const AppSidebar = () => {
       </div>
 
       {/* Footer seal */}
-      <div className="px-5 py-3 border-t border-border/50">
+      <div className="px-5 py-3 border-t border-border">
         <p className="font-mono text-[9px] text-muted-foreground/50 tracking-widest text-center">
           AUTOCUSTÓDIA É LIBERDADE
         </p>
