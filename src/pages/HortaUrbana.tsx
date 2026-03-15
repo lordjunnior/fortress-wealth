@@ -5,6 +5,7 @@ import { ArrowLeft, Sun, Wind, Droplets, Layers, Calendar, Sprout, Beaker, Therm
 import { motion } from 'framer-motion';
 import CinematicHero from '@/components/CinematicHero';
 import ScrollToTop from '@/components/ScrollToTop';
+import MicroCtaResistencia from '@/components/MicroCtaResistencia';
 
 import imgLuzSolar from '@/assets/horta-luz-solar.jpg';
 import imgVasoAutoirrigavel from '@/assets/horta-vaso-autoirrigavel.jpg';
