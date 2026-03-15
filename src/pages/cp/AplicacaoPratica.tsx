@@ -256,5 +256,6 @@ export default function AplicacaoPratica() {
         }
       `}</style>
     </div>
+    </>
   );
 }

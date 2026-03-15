@@ -111,5 +111,6 @@ export default function BaseFisiologica() {
         </div>
       </div>
     </div>
+    </>
   );
 }

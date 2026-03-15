@@ -111,5 +111,6 @@ export default function SegurancaLimites() {
         </div>
       </div>
     </div>
+    </>
   );
 }

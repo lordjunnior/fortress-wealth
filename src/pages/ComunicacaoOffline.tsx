@@ -394,5 +394,6 @@ export default function ComunicacaoOffline() {
         </div>
       </div>
     </div>
+    </>
   );
 }

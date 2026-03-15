@@ -130,5 +130,6 @@ export default function ContinuidadeFamiliar() {
         }
       `}</style>
     </div>
+    </>
   );
 }

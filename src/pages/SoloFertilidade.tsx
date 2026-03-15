@@ -689,5 +689,6 @@ export default function SoloFertilidade() {
 
       </div>
     </div>
+    </>
   );
 }

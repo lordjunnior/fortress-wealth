@@ -124,5 +124,6 @@ export default function ContextoHistorico() {
         </div>
       </div>
     </div>
+    </>
   );
 }

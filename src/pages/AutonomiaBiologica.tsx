@@ -393,5 +393,6 @@ export default function AutonomiaBiologica() {
         </div>
       </main>
     </div>
+    </>
   );
 }

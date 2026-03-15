@@ -311,6 +311,7 @@ const FitoterapiaAplicada = () => {
       </main>
       <ScrollToTop />
     </div>
+    </>
   );
 };
 

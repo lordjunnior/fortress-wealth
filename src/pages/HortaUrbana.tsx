@@ -546,5 +546,6 @@ export default function HortaUrbana() {
 
       <ScrollToTop />
     </div>
+    </>
   );
 }

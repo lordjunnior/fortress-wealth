@@ -332,5 +332,6 @@ export default function PlantaDetalhe() {
         </nav>
       </main>
     </div>
+    </>
   );
 }

@@ -498,6 +498,7 @@ const ControleVetores = () => {
       </main>
       <ScrollToTop />
     </div>
+    </>
   );
 };
 

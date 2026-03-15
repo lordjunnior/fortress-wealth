@@ -506,6 +506,7 @@ const AvaliacaoSinais = () => {
       </main>
       <ScrollToTop />
     </div>
+    </>
   );
 };
 
