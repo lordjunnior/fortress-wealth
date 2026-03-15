@@ -6,6 +6,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { PLANTAS } from '@/lib/plantData';
 import CinematicHero from '@/components/CinematicHero';
+import MicroCtaResistencia from '@/components/MicroCtaResistencia';
 
 import imgMetodosPreparo from '@/assets/bio-metodos-preparo.jpg';
 import imgArmazenamento from '@/assets/bio-armazenamento.jpg';
