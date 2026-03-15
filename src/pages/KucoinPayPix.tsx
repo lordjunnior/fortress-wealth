@@ -401,19 +401,26 @@ export default function KucoinPayPix() {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
-              { icon: ShoppingCart, label: 'Supermercados', example: 'Pão de Açúcar, Carrefour' },
-              { icon: Fuel, label: 'Postos', example: 'Posto Ipiranga, Shell' },
-              { icon: Coffee, label: 'Cafés', example: 'Starbucks, Padarias' },
-              { icon: Pill, label: 'Farmácias', example: 'Droga Raia, Drogasil' },
+              { icon: ShoppingCart, label: 'Supermercados', example: 'Pão de Açúcar, Carrefour', img: kucoinSupermercado },
+              { icon: Fuel, label: 'Postos', example: 'Posto Ipiranga, Shell', img: kucoinPosto },
+              { icon: Coffee, label: 'Cafés', example: 'Starbucks, Padarias', img: kucoinCafe },
+              { icon: Pill, label: 'Farmácias', example: 'Droga Raia, Drogasil', img: kucoinFarmacia },
             ].map((place, i) => (
               <motion.div key={place.label} variants={scaleIn} custom={i}
-                className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-6 text-center
-                           hover:border-emerald-500/15 transition-all duration-500">
-                <div className="p-3 rounded-xl bg-emerald-500/8 border border-emerald-500/15 w-fit mx-auto mb-4">
-                  <place.icon size={20} className="text-emerald-400" />
+                className="bg-white/[0.03] border border-white/[0.06] rounded-2xl overflow-hidden
+                           hover:border-emerald-500/15 transition-all duration-500 group">
+                <div className="relative h-32 md:h-40 overflow-hidden">
+                  <img src={place.img} alt={place.label} className="w-full h-full object-cover
+                    group-hover:scale-110 transition-transform duration-700 ease-out" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#050808] via-[#050808]/40 to-transparent" />
+                  <div className="absolute top-3 left-3 p-2 rounded-lg bg-black/50 backdrop-blur-sm border border-white/10">
+                    <place.icon size={16} className="text-emerald-400" />
+                  </div>
                 </div>
-                <h5 className="text-sm font-bold text-white mb-1">{place.label}</h5>
-                <p className="text-[11px] text-stone-600">{place.example}</p>
+                <div className="p-4 text-center">
+                  <h5 className="text-sm font-bold text-white mb-1">{place.label}</h5>
+                  <p className="text-[11px] text-stone-600">{place.example}</p>
+                </div>
               </motion.div>
             ))}
           </div>
