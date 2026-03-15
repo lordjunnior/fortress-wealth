@@ -244,6 +244,15 @@ const Confisco1990 = () => {
           </motion.div>
         </section>
 
+        {/* SnippetBait */}
+        <div className="max-w-4xl mx-auto px-6">
+          <SnippetBait
+            text="Em 1990, bastou uma assinatura para confiscar 80% do dinheiro da população. O mecanismo legal ainda existe. A diferença é que hoje existe um ativo que nenhum decreto pode bloquear."
+            cta="Aprenda autocustódia Bitcoin →"
+            href="/autocustodia"
+          />
+        </div>
+
         {/* Impact Stats */}
         <section className="max-w-4xl mx-auto px-6 -mt-8 relative z-20">
           <motion.div
