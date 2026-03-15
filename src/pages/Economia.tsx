@@ -66,8 +66,8 @@ const articleSchema = {
   headline: "A Lógica da Pilhagem — Como o Sistema Rouba Seu Tempo",
   description: "Entenda como o sistema fiduciário destrói o poder de compra do trabalhador através da inflação, carga tributária e expansão monetária.",
   author: { "@type": "Person", name: "Lord Junnior" },
-  publisher: { "@type": "Organization", name: "Autonomia do Indivíduo" },
-  url: "https://autonomiadoindividuo.com/economia"
+  publisher: { "@type": "Organization", name: "Lord Junnior" },
+  url: "https://lordjunnior.com.br/economia"
 };
 
 // Film Grain
