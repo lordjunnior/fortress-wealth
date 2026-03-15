@@ -189,11 +189,12 @@ export default function Bip110() {
 
       {/* ─── HERO ─── */}
       <CinematicHero
-        badge="ANÁLISE TÉCNICA"
+        phase="ANÁLISE TÉCNICA"
         title="BIP-110"
         subtitle="A proposta polêmica de soft fork temporário que divide a comunidade Bitcoin — e por que provavelmente não vai passar."
         image="/heroes/bip-110.webp"
-        accent="amber"
+        icon={GitFork}
+        accentColor="amber"
       />
 
       <main className="relative z-10">
