@@ -118,6 +118,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <CodigoAutonomiaModal />
+        <ExitIntentLeadMagnet />
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
