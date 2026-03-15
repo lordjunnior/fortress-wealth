@@ -152,7 +152,7 @@ const Index = () => {
     "publisher": {
       "@type": "Person",
       "name": "Lord Junnior",
-      "url": "https://lordjunnior.com"
+      "url": "https://lordjunnior.com.br"
     }
   };
 
