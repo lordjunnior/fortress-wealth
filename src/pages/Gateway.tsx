@@ -117,6 +117,11 @@ const Gateway = () => {
         backLabel="Estratégias de Saída"
       />
 
+      {/* ═══ SOVEREIGN DISCLAIMER ═══ */}
+      <div className="relative z-10 px-6 md:px-16 lg:px-24">
+        <SovereignDisclaimer variant="payment" />
+      </div>
+
       {/* ═══ MAIN CONTENT ═══ */}
       <section className="relative z-10 pb-20 px-6 md:px-16 lg:px-24">
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
