@@ -351,7 +351,7 @@ export default function Bip110() {
         {/* ═══ CH.05 — IMPACTOS ═══ */}
         <section className="relative z-10 py-14 md:py-20">
           <div className="max-w-6xl mx-auto px-4 md:px-10">
-            <ChapterKickoff number="CAPÍTULO 05" title="Impactos: Mineração, Lightning e Consenso" subtitle="Se a BIP-110 passasse, quais seriam as consequências reais para mineradores, Lightning Network e a estabilidade da rede?" />
+            <ChapterKickoff number="CAPÍTULO 04" title="Impactos: Mineração, Lightning e Consenso" subtitle="Se a BIP-110 passasse, quais seriam as consequências reais para mineradores, Lightning Network e a estabilidade da rede?" />
             <div className="grid md:grid-cols-3 gap-5">
               <InfoCard icon={Pickaxe} title="Mineradores" accent="#f59e0b"
                 desc="Bloquear transações não-monetárias reduziria a competição por espaço de bloco, potencialmente diminuindo as taxas. No curto prazo, mineradores receberiam menos em fees. Porém, defensores argumentam que proteger a descentralização garante o valor do Bitcoin a longo prazo — e mineradores só ganham se o Bitcoin continuar valendo algo."
