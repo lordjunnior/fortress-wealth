@@ -203,6 +203,11 @@ export default function BricsPay() {
           </motion.div>
         </div>
 
+        {/* ═══ SOVEREIGN DISCLAIMER ═══ */}
+        <div className="px-6 md:px-12 lg:px-20">
+          <SovereignDisclaimer variant="surveillance" />
+        </div>
+
         {/* ═══ CH01 — FICHA TECNICA ═══ */}
         <ChapterKickoff number="01" title="Ficha Tecnica" image={heroImg} id="funcionalidades" isOdd={true} />
         <ScrollSection className="max-w-5xl mx-auto px-6 py-16 md:py-20" isOdd={true}>

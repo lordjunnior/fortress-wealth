@@ -485,6 +485,11 @@ const ContasOffshore = () => {
           <div className="absolute bottom-0 left-0 right-0 h-32 z-10 pointer-events-none" style={{ background: 'linear-gradient(to bottom, transparent, #050808)' }} />
         </div>
 
+        {/* ═══ SOVEREIGN DISCLAIMER ═══ */}
+        <div className="px-6 md:px-12 lg:px-20">
+          <SovereignDisclaimer variant="offshore" />
+        </div>
+
         {/* ═══════════════════════════════════════
            CAPÍTULO 01 — A CONDIÇÃO (odd = dark)
            ═══════════════════════════════════════ */}

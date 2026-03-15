@@ -209,6 +209,11 @@ export default function DepixReporte() {
           </motion.div>
         </div>
 
+        {/* ═══ SOVEREIGN DISCLAIMER ═══ */}
+        <div className="px-6 md:px-12 lg:px-20">
+          <SovereignDisclaimer variant="surveillance" />
+        </div>
+
         {/* ═══ CH01 — O QUE E DEPIX ═══ */}
         <ChapterKickoff number="01" title="O que e o DePix" image={heroImg} id="depix" isOdd />
         <ScrollSection isOdd className="max-w-6xl mx-auto px-6 py-20 md:py-28">

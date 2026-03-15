@@ -207,6 +207,11 @@ export default function KycNotMe() {
           </motion.div>
         </div>
 
+        {/* ═══ SOVEREIGN DISCLAIMER ═══ */}
+        <div className="px-6 md:px-12 lg:px-20">
+          <SovereignDisclaimer variant="exchange" />
+        </div>
+
         {/* ═══ CH01 — O QUE E ═══ */}
         <ChapterKickoff number="01" title="O que e o KYCNot.me" image={heroImg} id="categorias" isOdd={true} />
         <ScrollSection className="max-w-5xl mx-auto px-6 py-16 md:py-20" isOdd={true}>

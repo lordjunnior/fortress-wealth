@@ -164,6 +164,11 @@ const ExchangesSemKyc = () => {
           </div>
         </div>
 
+        {/* ═══ SOVEREIGN DISCLAIMER ═══ */}
+        <div className="px-6">
+          <SovereignDisclaimer variant="exchange" />
+        </div>
+
         {/* ── Critical Alert ── */}
         <section className="max-w-4xl mx-auto px-6 py-12">
           <motion.div

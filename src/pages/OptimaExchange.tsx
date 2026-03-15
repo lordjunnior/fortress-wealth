@@ -223,6 +223,11 @@ export default function OptimaExchange() {
           </motion.div>
         </div>
 
+        {/* ═══ SOVEREIGN DISCLAIMER ═══ */}
+        <div className="px-6 md:px-12 lg:px-20">
+          <SovereignDisclaimer variant="exchange" />
+        </div>
+
         {/* ═══ CH01 — FICHA TECNICA ═══ */}
         <ChapterKickoff number="01" title="O que e a Optima Exchange" image={heroImg} id="ficha" isOdd />
         <ScrollSection isOdd className="max-w-6xl mx-auto px-6 py-20 md:py-28">
