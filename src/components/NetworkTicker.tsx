@@ -139,7 +139,7 @@ const NetworkTicker = () => {
       key={key}
       className="inline-flex items-center gap-1.5 px-5 py-1 font-mono text-[11px] tracking-wide transition-all duration-200 cursor-default"
       style={{
-        borderRight: "1px solid rgba(255,255,255,0.06)",
+        borderRight: isLight ? "1px solid rgba(0,0,0,0.08)" : "1px solid rgba(255,255,255,0.06)",
       }}
       onMouseEnter={(e) => {
         e.currentTarget.style.background = `${colorMap[item.color]}11`;
