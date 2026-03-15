@@ -203,7 +203,6 @@ export default function Neobankless() {
       <FloatingToc />
 
       <div className="min-h-screen bg-[#050808] text-stone-200">
-      <div className="min-h-screen bg-[#050808] text-stone-200">
         <NobelVFX accentColor="orange" />
 
 
