@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { fadeUp, stagger, staggerChild, viewportOnce } from '@/lib/motion';
 import CinematicHero from '@/components/CinematicHero';
 import ScrollToTop from '@/components/ScrollToTop';
+import MicroCtaResistencia from '@/components/MicroCtaResistencia';
 
 import imgRepelentes from '@/assets/vetores-repelentes.jpg';
 import imgCiclo from '@/assets/vetores-ciclo-mosquito.jpg';
@@ -487,6 +488,8 @@ const ControleVetores = () => {
             </div>
           </div>
         </motion.div>
+
+        <MicroCtaResistencia variant="saude" />
 
         {/* ─── NAV FOOTER ─── */}
         <div className="flex items-center justify-between pt-8 border-t border-white/[0.06]">

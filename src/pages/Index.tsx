@@ -145,28 +145,51 @@ const Index = () => {
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "Lord Junnior — Soberania Individual",
+    "name": "Arsenal de Soberania",
+    "alternateName": "Lord Junnior Arsenal",
     "url": "https://lordjunnior.com.br",
-    "description": "Alfabetização monetária, autocustódia Bitcoin e estratégias de saída do sistema fiat. O manual que o sistema não quer que você leia.",
+    "description": "Infraestrutura de educação soberanista: Bitcoin, Autocustódia e Autonomia Individual.",
     "inLanguage": "pt-BR",
     "publisher": {
-      "@type": "Person",
-      "name": "Lord Junnior",
-      "url": "https://lordjunnior.com.br"
+      "@type": "Organization",
+      "name": "Arsenal de Soberania",
+      "url": "https://lordjunnior.com.br",
+      "logo": "https://lordjunnior.com.br/favicon.svg"
+    },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://lordjunnior.com.br/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
     }
   };
 
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "Lord Junnior",
+    "name": "Arsenal de Soberania",
+    "alternateName": "Lord Junnior",
     "url": "https://lordjunnior.com.br",
     "logo": "https://lordjunnior.com.br/favicon.svg",
     "sameAs": [
       "https://twitter.com/lordjunnior",
       "https://instagram.com/lordjunnior"
     ],
-    "description": "Ecossistema de soberania individual: Bitcoin, autocustódia, autonomia alimentar e blindagem financeira."
+    "description": "Ecossistema de soberania individual: Bitcoin, autocustódia, autonomia alimentar e blindagem financeira.",
+    "founder": {
+      "@type": "Person",
+      "name": "Lord Junnior"
+    }
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://lordjunnior.com.br/" },
+      { "@type": "ListItem", "position": 2, "name": "Bitcoin", "item": "https://lordjunnior.com.br/bitcoin" },
+      { "@type": "ListItem", "position": 3, "name": "Projeto Autônomo", "item": "https://lordjunnior.com.br/projeto-autonomo" },
+      { "@type": "ListItem", "position": 4, "name": "Soberania Financeira", "item": "https://lordjunnior.com.br/soberania-financeira" }
+    ]
   };
 
   return (
@@ -186,6 +209,7 @@ const Index = () => {
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(websiteSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(organizationSchema)}</script>
+        <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
       </Helmet>
       <NetworkTicker />
       <CommandCenter />

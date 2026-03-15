@@ -5,6 +5,7 @@ import { ArrowLeft, ArrowRight, Leaf, Sprout, Heart, Sun, Cross, Thermometer, Bu
 import { motion, useScroll, useTransform } from 'framer-motion';
 import CinematicHero from '@/components/CinematicHero';
 import ScrollToTop from '@/components/ScrollToTop';
+import MicroCtaResistencia from '@/components/MicroCtaResistencia';
 
 /* ─── GSAP ─── */
 import gsap from 'gsap';
@@ -569,6 +570,8 @@ export default function SabedoriaAncestral() {
             </motion.div>
           </div>
         </section>
+
+        <MicroCtaResistencia variant="conhecimento" />
 
         {/* ─── CTA FINAL ─── */}
         <div className="relative py-20 px-6 md:px-16 lg:px-24 gsap-reveal">

@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import { ArrowLeft, Tent, Thermometer, Wind, Droplets, AlertTriangle, Shield, Home, TreePine, Layers, Heart, Brain, Sun, Trash2, Lightbulb, ShieldAlert } from 'lucide-react';
 import { motion } from 'framer-motion';
 import CinematicHero from '@/components/CinematicHero';
+import MicroCtaResistencia from '@/components/MicroCtaResistencia';
 
 import imgSoloIsolamento from '@/assets/abrigo-solo-isolamento.jpg';
 import imgReforcoJanela from '@/assets/abrigo-reforco-janela.jpg';
@@ -55,6 +56,19 @@ export default function AbrigoEmergencia() {
         <meta property="og:title" content="Abrigo de Emergência: O Guia de Blindagem Física Urbana" />
         <meta property="og:description" content="Protocolos de abrigo, isolamento e proteção para quem não aceita ser vítima do caos. Soberania física real." />
         <meta property="og:url" content="https://lordjunnior.com.br/projeto-autonomo/abrigo-emergencia" />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "HowTo",
+          "name": "Como Construir um Abrigo de Emergência",
+          "description": "Guia técnico para adaptação e construção de abrigos de emergência com isolamento térmico, reforço estrutural e saneamento improvisado.",
+          "step": [
+            { "@type": "HowToStep", "name": "Isolamento do solo", "text": "Crie barreira térmica entre o corpo e o chão usando camadas de material isolante." },
+            { "@type": "HowToStep", "name": "Reforço estrutural", "text": "Proteja janelas e aberturas com materiais improvisados para segurança." },
+            { "@type": "HowToStep", "name": "Quarto núcleo", "text": "Defina o menor cômodo como espaço central de sobrevivência." },
+            { "@type": "HowToStep", "name": "Saneamento", "text": "Monte banheiro improvisado com balde, sacos e cal virgem." },
+            { "@type": "HowToStep", "name": "Ventilação passiva", "text": "Mantenha circulação de ar para evitar acúmulo de CO₂." }
+          ]
+        })}</script>
       </Helmet>
     <div className="min-h-screen selection:bg-rose-300/30" style={{ background: '#050808' }}>
       <CinematicHero
@@ -514,6 +528,8 @@ export default function AbrigoEmergencia() {
             </div>
           </div>
         </motion.section>
+
+        <MicroCtaResistencia variant="default" />
 
         {/* Back bottom */}
         <div className="text-center pt-8">

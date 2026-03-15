@@ -5,6 +5,7 @@ import { Brain, Flame, Wind, Shield, Heart, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import CinematicHero from '@/components/CinematicHero';
 import ScrollToTop from '@/components/ScrollToTop';
+import MicroCtaResistencia from '@/components/MicroCtaResistencia';
 
 import imgSistemas from '@/assets/cp-sistemas-corpo.jpg';
 import imgPlantas from '@/assets/cp-plantas-pratica.jpg';
@@ -97,6 +98,8 @@ export default function BaseFisiologica() {
 
         {/* ─── MATRIZ COMPARATIVA ─── */}
         <MatrizComparativa />
+
+        <MicroCtaResistencia variant="conhecimento" />
 
         {/* ─── NAVEGAÇÃO ENTRE BLOCOS ─── */}
         <div className="flex flex-col sm:flex-row gap-4 mt-20">

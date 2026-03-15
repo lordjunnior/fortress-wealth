@@ -5,6 +5,7 @@ import { ArrowLeft, ArrowRight, Shovel, Leaf, Bug, Droplets, FlaskConical, Layer
 import { motion } from 'framer-motion';
 import CinematicHero from '@/components/CinematicHero';
 import ScrollToTop from '@/components/ScrollToTop';
+import MicroCtaResistencia from '@/components/MicroCtaResistencia';
 import imgComposteira from '@/assets/solo-composteira.jpg';
 import imgBokashi from '@/assets/solo-bokashi.jpg';
 import imgMinhocario from '@/assets/solo-minhocario.jpg';
@@ -678,6 +679,8 @@ export default function SoloFertilidade() {
             <ArrowRight size={16} className="text-stone-500 group-hover:text-amber-400 transition-colors" />
           </Link>
         </motion.div>
+
+        <MicroCtaResistencia variant="alimentar" />
 
         {/* Footer */}
         <motion.div className="mt-12 text-center" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.5 }}>

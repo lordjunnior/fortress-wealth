@@ -5,6 +5,7 @@ import { ArrowLeft, Layers, Sprout, Leaf, Sun, Droplets, ArrowRight } from 'luci
 import { motion } from 'framer-motion';
 import CinematicHero from '@/components/CinematicHero';
 import ScrollToTop from '@/components/ScrollToTop';
+import MicroCtaResistencia from '@/components/MicroCtaResistencia';
 
 import imgLayout from '@/assets/producao-layout-canteiros.jpg';
 import imgConsorcio from '@/assets/producao-consorcio-culturas.jpg';
@@ -300,6 +301,8 @@ export default function ProducaoPequenosEspacos() {
             <ArrowRight size={16} className="text-stone-500 group-hover:text-amber-400 transition-colors" />
           </Link>
         </motion.div>
+
+        <MicroCtaResistencia variant="alimentar" />
 
         {/* Footer */}
         <motion.div className="mt-12 text-center" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.5 }}>

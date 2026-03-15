@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import { ArrowLeft, Siren, Radio, MapPin, Eye, Users, Battery, ShieldAlert, Lock, FileText, Clock, AlertTriangle } from 'lucide-react';
 import { motion } from 'framer-motion';
 import CinematicHero from '@/components/CinematicHero';
+import MicroCtaResistencia from '@/components/MicroCtaResistencia';
 
 import imgRadio from '@/assets/comms-radio-amfm.jpg';
 import imgMapa from '@/assets/comms-mapa-encontro.jpg';
@@ -385,6 +386,8 @@ export default function ComunicacaoOffline() {
             </div>
           </div>
         </motion.section>
+
+        <MicroCtaResistencia variant="default" />
 
         {/* Back bottom */}
         <div className="text-center pt-8">

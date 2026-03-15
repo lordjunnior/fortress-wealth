@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { fadeUp, stagger, staggerChild, viewportOnce } from '@/lib/motion';
 import CinematicHero from '@/components/CinematicHero';
 import ScrollToTop from '@/components/ScrollToTop';
+import MicroCtaResistencia from '@/components/MicroCtaResistencia';
 
 import imgTemperatura from '@/assets/sinais-temperatura.jpg';
 import imgPerfusao from '@/assets/sinais-perfusao.jpg';
@@ -491,6 +492,8 @@ const AvaliacaoSinais = () => {
             </div>
           </div>
         </motion.div>
+
+        <MicroCtaResistencia variant="saude" />
 
         {/* ─── NAV FOOTER ─── */}
         <div className="flex items-center justify-between pt-8 border-t border-white/[0.06]">

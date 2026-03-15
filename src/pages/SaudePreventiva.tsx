@@ -6,6 +6,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import ScrollToTop from '@/components/ScrollToTop';
+import MicroCtaResistencia from '@/components/MicroCtaResistencia';
 import CinematicHero from '@/components/CinematicHero';
 
 import imgMicrobiota from '@/assets/saude-microbiota.jpg';
@@ -514,6 +515,8 @@ const SaudePreventiva = () => {
           </Link>
         </div>
       </div>
+
+      <MicroCtaResistencia variant="saude" />
 
       <ScrollToTop />
 

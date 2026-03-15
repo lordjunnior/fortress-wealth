@@ -6,6 +6,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { PLANTAS } from '@/lib/plantData';
 import CinematicHero from '@/components/CinematicHero';
+import MicroCtaResistencia from '@/components/MicroCtaResistencia';
 
 import imgMetodosPreparo from '@/assets/bio-metodos-preparo.jpg';
 import imgArmazenamento from '@/assets/bio-armazenamento.jpg';
@@ -377,6 +378,8 @@ export default function AutonomiaBiologica() {
             </div>
           </div>
         </section>
+
+        <MicroCtaResistencia variant="saude" />
 
         {/* ═══ NAV FOOTER ═══ */}
         <div className="flex flex-col sm:flex-row gap-4 pt-8 border-t border-white/5">

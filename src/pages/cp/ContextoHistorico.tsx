@@ -5,6 +5,7 @@ import { BookOpen, Leaf, TreePine, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import CinematicHero from '@/components/CinematicHero';
 import ScrollToTop from '@/components/ScrollToTop';
+import MicroCtaResistencia from '@/components/MicroCtaResistencia';
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 const fadeUp = {
@@ -110,6 +111,8 @@ export default function ContextoHistorico() {
             </div>
           </div>
         </motion.section>
+
+        <MicroCtaResistencia variant="conhecimento" />
 
         {/* ─── NAVEGAÇÃO ENTRE BLOCOS ─── */}
         <div className="flex flex-col sm:flex-row gap-4">

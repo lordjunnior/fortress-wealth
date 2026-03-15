@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import { ArrowLeft, Wind, Sun, Compass, Mountain, Building, Route, MapPinned, Moon, AlertTriangle, ShieldAlert, Brain } from 'lucide-react';
 import { motion } from 'framer-motion';
 import CinematicHero from '@/components/CinematicHero';
+import MicroCtaResistencia from '@/components/MicroCtaResistencia';
 
 import imgSombra from '@/assets/nav-metodo-sombra.jpg';
 import imgBussola from '@/assets/nav-bussola.jpg';
@@ -391,6 +392,8 @@ export default function NavegacaoPrimaria() {
             </div>
           </div>
         </motion.section>
+
+        <MicroCtaResistencia variant="default" />
 
         <div className="text-center pt-8">
           <Link to="/projeto-autonomo" className="inline-flex items-center gap-2 text-stone-500 hover:text-white text-xs font-semibold uppercase tracking-[0.2em] transition-colors">
