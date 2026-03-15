@@ -148,7 +148,7 @@ const articleSchema = {
 };
 
 export default function KucoinPayPix() {
-  const { springX, springY } = useMouseParallax(8);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
