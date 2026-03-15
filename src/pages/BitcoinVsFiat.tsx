@@ -30,11 +30,11 @@ export default function BitcoinVsFiat() {
   return (
     <div className="min-h-screen text-stone-100 font-sans selection:bg-orange-400/30 relative overflow-hidden" style={{ background: '#050808' }}>
       <Helmet>
-        <title>Bitcoin vs Dinheiro Fiat: A Comparação Definitiva | Lord Junnior</title>
-        <meta name="description" content="Compare Bitcoin e moedas fiduciárias como Real e Dólar em 14 aspectos fundamentais: escassez, controle, inflação, privacidade, censura e mais." />
+        <title>Bitcoin vs Real: Por Que o Seu Dinheiro Está Morrendo? | Lord Junnior</title>
+        <meta name="description" content="Descubra por que o Real perde valor todo dia enquanto o Bitcoin se fortalece. 14 comparações brutais entre moeda estatal e dinheiro soberano. Dados verificáveis." />
         <link rel="canonical" href="https://lordjunnior.com.br/bitcoin-vs-fiat" />
-        <meta property="og:title" content="Bitcoin vs Dinheiro Fiat: A Comparação Definitiva" />
-        <meta property="og:description" content="14 fatores que mostram por que o Bitcoin é superior ao dinheiro estatal." />
+        <meta property="og:title" content="Bitcoin vs Real: A Morte Silenciosa do Seu Dinheiro" />
+        <meta property="og:description" content="14 fatores que provam por que guardar Real é perder patrimônio. Comparação definitiva com dados reais." />
         <meta property="og:url" content="https://lordjunnior.com.br/bitcoin-vs-fiat" />
         <meta property="og:type" content="article" />
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
