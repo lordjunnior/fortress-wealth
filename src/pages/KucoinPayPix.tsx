@@ -264,6 +264,11 @@ export default function KucoinPayPix() {
         backLabel="Soberania Financeira"
       />
 
+      {/* ─── SOVEREIGN DISCLAIMER ─── */}
+      <div className="relative z-10 px-6 md:px-10 lg:px-16">
+        <SovereignDisclaimer variant="payment" />
+      </div>
+
       {/* ─── MAIN CONTENT ─── */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 lg:px-16 pt-16 pb-32">
 
