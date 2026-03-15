@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/accordion";
 import CinematicHero from '@/components/CinematicHero';
 import ScrollToTop from '@/components/ScrollToTop';
+import SovereignDisclaimer from '@/components/SovereignDisclaimer';
 import qrCodeLightning from '@/assets/qrcode-lightning.jpeg';
 import pixCritoHero from '@/assets/pix-cripto-hero.jpg';
 import pixCritoTutorial from '@/assets/pix-cripto-tutorial.jpg';

@@ -199,6 +199,11 @@ const GrabrFi = () => {
         Voltar
       </Link>
 
+      {/* ═══ SOVEREIGN DISCLAIMER ═══ */}
+      <div className="px-6 md:px-12 lg:px-20 pt-20">
+        <SovereignDisclaimer variant="bank" />
+      </div>
+
       {/* ── CH01: HERO ── */}
       <ChapterKickoff number="01" title="A Conta Americana que Fala Cripto" image={heroImg} id="hero" isOdd />
 

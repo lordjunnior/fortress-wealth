@@ -5,6 +5,7 @@ import { Zap, ShieldCheck, ArrowRight, CheckCircle2, Loader2, Copy, Check, Shiel
 import { Link } from "react-router-dom";
 import CinematicHero from '@/components/CinematicHero';
 import ScrollToTop from '@/components/ScrollToTop';
+import SovereignDisclaimer from '@/components/SovereignDisclaimer';
 
 const APPLE_EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 

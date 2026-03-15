@@ -260,6 +260,11 @@ export default function Neobankless() {
           <div className="absolute bottom-0 left-0 right-0 h-32 z-10 pointer-events-none" style={{ background: 'linear-gradient(to bottom, transparent, #050808)' }} />
         </div>
 
+        {/* ═══ SOVEREIGN DISCLAIMER ═══ */}
+        <div className="px-6 md:px-12 lg:px-20">
+          <SovereignDisclaimer variant="bank" />
+        </div>
+
         {/* ═══ CHAPTER 01 — FICHA TÉCNICA (odd) ═══ */}
         <ChapterKickoff number="01" title="Ficha Técnica da Plataforma" image={appImg} id="ficha-tecnica" isOdd={true} />
         <ScrollSection className="max-w-5xl mx-auto px-6 py-16 md:py-20" isOdd={true}>

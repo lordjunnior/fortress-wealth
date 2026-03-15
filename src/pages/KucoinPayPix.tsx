@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import CinematicHero from '@/components/CinematicHero';
 import ScrollToTop from '@/components/ScrollToTop';
+import SovereignDisclaimer from '@/components/SovereignDisclaimer';
 
 import kucoinSupermercado from '@/assets/kucoin-supermercado.jpg';
 import kucoinPosto from '@/assets/kucoin-posto.jpg';
