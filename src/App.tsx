@@ -186,8 +186,9 @@ const App = () => (
           <Route path="/diversificacao" element={<DiversificacaoPage />} />
           <Route path="/bitcoin-vs-altcoins" element={<BitcoinVsAltcoinsPage />} />
           <Route path="/dicionario-cripto" element={<DicionarioCripto />} />
-          <Route path="/protocolo-bitcoin/bip-110" element={<Bip110 />} />
-          <Route path="/bip-110" element={<Navigate to="/protocolo-bitcoin/bip-110" replace />} />
+          <Route path="/bitcoin/bip-110-guerra-espaco-bloco" element={<Bip110 />} />
+          <Route path="/protocolo-bitcoin/bip-110" element={<Navigate to="/bitcoin/bip-110-guerra-espaco-bloco" replace />} />
+          <Route path="/bip-110" element={<Navigate to="/bitcoin/bip-110-guerra-espaco-bloco" replace />} />
           <Route path="/mobilidade-de-chaves" element={<MobilidadeDeChaves />} />
           <Route path="/projeto-autonomo" element={<ProjetoAutonomo />} />
           <Route path="/projeto-autonomo/conservacao-armazenamento" element={<ConservacaoArmazenamento />} />
