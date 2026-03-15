@@ -445,7 +445,7 @@ export default function Bip110() {
         {/* ═══ CH.08 — TIMESTAMPS ═══ */}
         <section className="relative z-10 py-14 md:py-20">
           <div className="max-w-6xl mx-auto px-4 md:px-10">
-            <ChapterKickoff number="CAPÍTULO 08" title="Navegue pelo Episódio" subtitle="Use os timestamps abaixo para ir direto ao trecho que te interessa no vídeo." />
+            <ChapterKickoff number="CAPÍTULO 07" title="Índice Detalhado do Conteúdo" subtitle="Navegue pelos tópicos abordados nesta análise completa da BIP-110." />
 
             <div className="grid md:grid-cols-2 gap-x-10 gap-y-0">
               {[
