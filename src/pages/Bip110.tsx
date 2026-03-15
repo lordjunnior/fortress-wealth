@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import { motion, useInView } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 import {
-  ArrowRight, Blocks, GitFork, Shield, AlertTriangle, Cpu, Network, Scale, Clock,
-  Users, Zap, BookOpen, ChevronDown, Lock, Hash, Layers, Server, Eye, Binary,
-  ArrowLeft, Play, MessageSquare, Target, Shuffle, BadgeAlert, Vote, Pickaxe
+  ArrowRight, Blocks, GitFork, Shield, AlertTriangle, Network, Scale, Clock,
+  Users, Zap, BookOpen, Lock, Layers, Binary,
+  ArrowLeft, MessageSquare, Target, BadgeAlert, Vote, Pickaxe
 } from 'lucide-react';
 import NobelVFX from '@/components/NobelVFX';
 import CinematicHero from '@/components/CinematicHero';
