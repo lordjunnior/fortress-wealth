@@ -85,6 +85,7 @@ import OptimaExchange from "./pages/OptimaExchange";
 import PegasusSwap from "./pages/PegasusSwap";
 import GrabrFi from "./pages/GrabrFi";
 import ExchangesSemKyc from "./pages/ExchangesSemKyc";
+import KucoinPayPix from "./pages/KucoinPayPix";
 import BlockchainPage from "./pages/Blockchain";
 import CandlestickPage from "./pages/Candlestick";
 import DiversificacaoPage from "./pages/Diversificacao";
