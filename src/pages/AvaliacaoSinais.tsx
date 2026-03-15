@@ -493,6 +493,8 @@ const AvaliacaoSinais = () => {
           </div>
         </motion.div>
 
+        <MicroCtaResistencia variant="saude" />
+
         {/* ─── NAV FOOTER ─── */}
         <div className="flex items-center justify-between pt-8 border-t border-white/[0.06]">
           <Link to="/projeto-autonomo" className="text-stone-500 hover:text-emerald-400 transition-colors text-sm font-mono flex items-center gap-2">

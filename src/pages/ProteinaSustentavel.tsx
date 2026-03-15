@@ -374,6 +374,8 @@ export default function ProteinaSustentavel() {
           </Link>
         </motion.div>
 
+        <MicroCtaResistencia variant="alimentar" />
+
         <motion.div className="mt-12 text-center" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.5 }}>
           <p className="text-stone-600 text-xs leading-relaxed max-w-md mx-auto">
             Este módulo faz parte da Fase 03 — Soberania Alimentar do Projeto Autônomo.

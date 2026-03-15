@@ -516,6 +516,8 @@ const SaudePreventiva = () => {
         </div>
       </div>
 
+      <MicroCtaResistencia variant="saude" />
+
       <ScrollToTop />
 
       <style>{`

@@ -873,6 +873,7 @@ export default function ConservacaoArmazenamento() {
             </div>
           </div>
         </motion.section>
+        <MicroCtaResistencia variant="alimentar" />
 
       </div>
     </div>

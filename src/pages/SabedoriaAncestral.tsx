@@ -571,6 +571,8 @@ export default function SabedoriaAncestral() {
           </div>
         </section>
 
+        <MicroCtaResistencia variant="conhecimento" />
+
         {/* ─── CTA FINAL ─── */}
         <div className="relative py-20 px-6 md:px-16 lg:px-24 gsap-reveal">
           <div className="text-center">
