@@ -91,9 +91,10 @@ const rewards = [
 const steps = [
   {
     step: '01',
-    title: 'Registre-se',
-    desc: 'Clique no botão "Get Rewards" para registrar-se e garantir sua elegibilidade ao cashback. Sem registro, sem recompensa.',
+    title: 'Crie Sua Conta Gratuita',
+    desc: 'O primeiro passo é criar sua conta — leva menos de 2 minutos. Sem isso, você não consegue ativar o KuCoin Pay nem participar das recompensas.',
     icon: Target,
+    cta: true,
   },
   {
     step: '02',
