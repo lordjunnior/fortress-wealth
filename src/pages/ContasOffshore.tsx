@@ -9,6 +9,7 @@ import {
 } from 'lucide-react';
 import ScrollToTop from '@/components/ScrollToTop';
 import LeadCaptureModal from '@/components/LeadCaptureModal';
+import SovereignDisclaimer from '@/components/SovereignDisclaimer';
 
 import heroImg from '@/assets/offshore-hero.jpg';
 import cardsImg from '@/assets/offshore-cards.jpg';
