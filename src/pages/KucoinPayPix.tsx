@@ -242,7 +242,6 @@ export default function KucoinPayPix() {
             transition={{ duration: 6 + i * 1.5, repeat: Infinity, ease: 'easeInOut', delay: i * 0.8 }}
           />
         ))}
-        </motion.div>
       </div>
 
       {/* ─── CINEMATIC HERO ─── */}
