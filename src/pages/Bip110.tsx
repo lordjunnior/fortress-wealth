@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import { motion, useInView } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 import {
-  ArrowRight, Blocks, GitFork, Shield, AlertTriangle, Cpu, Network, Scale, Clock,
-  Users, Zap, BookOpen, ChevronDown, Lock, Hash, Layers, Server, Eye, Binary,
-  ArrowLeft, Play, MessageSquare, Target, Shuffle, BadgeAlert, Vote, Pickaxe
+  ArrowRight, Blocks, GitFork, Shield, AlertTriangle, Network, Scale, Clock,
+  Users, Zap, BookOpen, Lock, Layers, Binary,
+  ArrowLeft, MessageSquare, Target, BadgeAlert, Vote, Pickaxe
 } from 'lucide-react';
 import NobelVFX from '@/components/NobelVFX';
 import CinematicHero from '@/components/CinematicHero';
@@ -71,31 +71,6 @@ const InfoCard: React.FC<{ icon: React.ElementType; title: string; desc: string;
   );
 };
 
-/* ══ Video Embed ══ */
-const VideoEmbed: React.FC<{ videoId: string }> = ({ videoId }) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-60px' });
-  return (
-    <motion.div ref={ref} initial={{ opacity: 0, y: 40, scale: 0.97 }}
-      animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
-      transition={{ duration: 0.9, ease: APPLE_EASE }}
-      className="relative rounded-2xl overflow-hidden border border-amber-500/20 group max-w-5xl mx-auto"
-    >
-      <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
-        <iframe
-          className="absolute inset-0 w-full h-full"
-          src={`https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1`}
-          title="BIP-110 — Entenda a proposta polêmica de soft fork no Bitcoin"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowFullScreen
-          loading="lazy"
-        />
-      </div>
-      <div className="absolute inset-0 pointer-events-none rounded-2xl" style={{ boxShadow: 'inset 0 0 80px rgba(245,158,11,0.05)' }} />
-    </motion.div>
-  );
-};
-
 /* ══ Timeline Item ══ */
 const TimelineItem: React.FC<{ time: string; title: string; delay?: number }> = ({ time, title, delay = 0 }) => {
   const ref = useRef(null);
@@ -157,22 +132,50 @@ export default function Bip110() {
   return (
     <>
       <Helmet>
-        <title>BIP-110: A Proposta Polêmica de Soft Fork no Bitcoin | Lord Junnior</title>
-        <meta name="description" content="Entenda a BIP-110 (RDTS): a proposta polêmica de soft fork temporário no Bitcoin que quer filtrar spam da blockchain. O que é, quem apoia, quem é contra e se vai passar." />
-        <meta property="og:title" content="BIP-110: A Proposta Polêmica de Soft Fork no Bitcoin" />
-        <meta property="og:description" content="Análise completa da BIP-110 — Reduced Data Temporary Softfork. Entenda o debate que divide a comunidade Bitcoin sobre uso do espaço de bloco." />
-        <meta property="og:image" content="/heroes/bip-110.webp" />
+        <title>BIP-110: O Que É a Proposta de Soft Fork Temporário no Bitcoin (RDTS) — Guia Completo 2025</title>
+        <meta name="description" content="BIP-110 explicada: entenda o que é a Reduced Data Temporary Softfork, por que divide a comunidade Bitcoin, quem é contra (Adam Back), quem apoia, se afeta seus BTC e se vai passar. Análise técnica completa com FAQ." />
+        <meta name="keywords" content="BIP-110, BIP 110 Bitcoin, soft fork Bitcoin 2025, Reduced Data Temporary Softfork, RDTS Bitcoin, proposta soft fork temporário, spam blockchain Bitcoin, Ordinals Bitcoin polêmica, OP_RETURN Bitcoin, Bitcoin Knots vs Core, filtro spam Bitcoin, chain split Bitcoin, Bitcoin Core v30, Taproot consequências, espaço de bloco Bitcoin, security budget mineradores, hard fork vs soft fork, UASF Bitcoin, SegWit história, consensus Bitcoin, Luke Dashjr BIP, Adam Back BIP-110, Matt Odell opinião, Lightning Network impacto, multisig chain split, Bitcoin descentralização nodes, NFT Bitcoin Inscriptions, autocustódia segura, halving security budget, Bitcoin melhoria proposta" />
+        <meta property="og:title" content="BIP-110: A Proposta Polêmica de Soft Fork Temporário no Bitcoin — Guia Completo" />
+        <meta property="og:description" content="Análise técnica e editorial da BIP-110 (RDTS). Entenda o debate que divide a comunidade Bitcoin sobre uso do espaço de bloco, spam, Ordinals e o futuro do consenso." />
+        <meta property="og:image" content="https://lordjunnior.com/heroes/bip-110.webp" />
+        <meta property="og:url" content="https://lordjunnior.com/bip-110" />
         <meta property="og:type" content="article" />
+        <meta property="og:site_name" content="Lord Junnior" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="BIP-110: O Soft Fork Temporário Que Divide o Bitcoin — Guia Completo 2025" />
+        <meta name="twitter:description" content="BIP-110 (RDTS): o que é, quem apoia, quem é contra, impactos em Lightning e mineração, e se vai passar. Análise editorial completa." />
+        <meta name="twitter:image" content="https://lordjunnior.com/heroes/bip-110.webp" />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+        <meta name="author" content="Lord Junnior" />
+        <meta name="article:published_time" content="2025-02-22T00:00:00Z" />
+        <meta name="article:modified_time" content="2025-03-15T00:00:00Z" />
+        <meta name="article:section" content="Bitcoin" />
+        <meta name="article:tag" content="BIP-110" />
+        <meta name="article:tag" content="Soft Fork" />
+        <meta name="article:tag" content="Bitcoin Consenso" />
+        <meta name="article:tag" content="Blockchain" />
+        <meta name="article:tag" content="RDTS" />
+        <meta name="article:tag" content="Ordinals" />
+        <meta name="article:tag" content="OP_RETURN" />
+        <meta name="article:tag" content="Bitcoin Knots" />
+        <meta name="article:tag" content="Lightning Network" />
+        <meta name="article:tag" content="Descentralização" />
         <link rel="canonical" href="https://lordjunnior.com/bip-110" />
         <script type="application/ld+json">{JSON.stringify({
           '@context': 'https://schema.org',
           '@type': 'Article',
-          headline: 'BIP-110: A Proposta Polêmica de Soft Fork no Bitcoin (RDTS)',
-          description: 'Análise técnica completa da BIP-110 — Reduced Data Temporary Softfork. O debate sobre spam, consenso e o futuro do espaço de bloco no Bitcoin.',
-          author: { '@type': 'Person', name: 'Lord Junnior' },
-          publisher: { '@type': 'Organization', name: 'Lord Junnior' },
+          headline: 'BIP-110: O Que É a Proposta de Soft Fork Temporário no Bitcoin (RDTS) — Guia Completo 2025',
+          description: 'Análise técnica completa da BIP-110 — Reduced Data Temporary Softfork. O debate sobre spam, consenso, Ordinals e o futuro do espaço de bloco no Bitcoin.',
+          author: { '@type': 'Person', name: 'Lord Junnior', url: 'https://lordjunnior.com' },
+          publisher: { '@type': 'Organization', name: 'Lord Junnior', url: 'https://lordjunnior.com', logo: { '@type': 'ImageObject', url: 'https://lordjunnior.com/og-image.png' } },
           datePublished: '2025-02-22',
-          image: '/heroes/bip-110.webp',
+          dateModified: '2025-03-15',
+          image: 'https://lordjunnior.com/heroes/bip-110.webp',
+          url: 'https://lordjunnior.com/bip-110',
+          mainEntityOfPage: { '@type': 'WebPage', '@id': 'https://lordjunnior.com/bip-110' },
+          keywords: 'BIP-110, soft fork Bitcoin, RDTS, Reduced Data Temporary Softfork, spam blockchain, Ordinals, OP_RETURN, Bitcoin Knots, chain split, Lightning Network, Adam Back, descentralização',
+          articleSection: 'Bitcoin',
+          inLanguage: 'pt-BR',
         })}</script>
         <script type="application/ld+json">{JSON.stringify({
           '@context': 'https://schema.org',
@@ -183,15 +186,24 @@ export default function Bip110() {
             acceptedAnswer: { '@type': 'Answer', text: f.a },
           })),
         })}</script>
+        <script type="application/ld+json">{JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Início', item: 'https://lordjunnior.com' },
+            { '@type': 'ListItem', position: 2, name: 'Blockchain', item: 'https://lordjunnior.com/blockchain' },
+            { '@type': 'ListItem', position: 3, name: 'BIP-110', item: 'https://lordjunnior.com/bip-110' },
+          ],
+        })}</script>
       </Helmet>
 
       <NobelVFX accentColor="amber" />
 
       {/* ─── HERO ─── */}
       <CinematicHero
-        phase="ANÁLISE TÉCNICA"
-        title="BIP-110"
-        subtitle="A proposta polêmica de soft fork temporário que divide a comunidade Bitcoin — e por que provavelmente não vai passar."
+        phase="ANÁLISE TÉCNICA • GUIA COMPLETO 2025"
+        title="BIP-110: O Que É o Soft Fork Temporário Que Divide o Bitcoin"
+        subtitle="Entenda a Reduced Data Temporary Softfork (RDTS), quem apoia, quem é contra, se afeta seus BTC em autocustódia e se essa proposta polêmica vai passar."
         image="/heroes/bip-110.webp"
         icon={GitFork}
         accentColor="amber"
@@ -205,26 +217,26 @@ export default function Bip110() {
           </Link>
         </div>
 
-        {/* ═══ CH.01 — VIDEO ═══ */}
+        {/* ═══ PARÁGRAFO DE ABERTURA SEO ═══ */}
         <section className="relative z-10 py-12 md:py-20">
-          <div className="max-w-6xl mx-auto px-4 md:px-10">
-            <ChapterKickoff number="CAPÍTULO 01" title="O Debate Completo em Vídeo" subtitle="Assista à análise completa sobre a BIP-110, seus fundamentos técnicos, a polêmica por trás e se essa proposta tem chance real de avançar." />
-            <VideoEmbed videoId="COLE_O_ID_DO_VIDEO_AQUI" />
-            <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-center text-muted-foreground/60 text-xs font-mono tracking-wider mt-6"
+          <div className="max-w-4xl mx-auto px-4 md:px-10">
+            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }} transition={{ duration: 0.8, ease: APPLE_EASE }}
+              className="prose prose-invert max-w-none"
             >
-              <Play className="w-3 h-3 inline mr-1" /> PODCAST COMPLETO • FEVEREIRO 2025
-            </motion.p>
+              <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
+                A <strong className="text-foreground">BIP-110</strong>, também conhecida como <strong className="text-foreground">Reduced Data Temporary Softfork (RDTS)</strong>, é uma proposta de melhoria do Bitcoin que quer criar um <strong className="text-foreground">soft fork temporário de um ano</strong> para restringir a inserção de dados não-monetários na blockchain — como NFTs, Ordinals, Inscriptions e tokens especulativos. A proposta restauraria o limite histórico de <strong className="text-foreground">83 bytes no OP_RETURN</strong> e filtraria até 41% das transações consideradas "spam", liberando 36% de espaço no bloco. Mas o debate vai muito além da técnica: envolve <strong className="text-foreground">consenso, descentralização, censura, security budget</strong> e o próprio futuro do Bitcoin como rede monetária. Figuras como <strong className="text-foreground">Adam Back</strong> se posicionaram contra, enquanto a comunidade que roda <strong className="text-foreground">Bitcoin Knots</strong> defende a medida. Neste guia completo, você entende tudo sobre a BIP-110 — o que é, quem apoia, quem é contra, se afeta seus Bitcoins em autocustódia e se essa proposta tem chance real de ser aprovada em 2025.
+              </p>
+            </motion.div>
           </div>
         </section>
 
         <SectionGlow />
 
-        {/* ═══ CH.02 — O QUE É BIP ═══ */}
+        {/* ═══ CH.01 — O QUE É BIP ═══ */}
         <section className="relative z-10 py-14 md:py-20">
           <div className="max-w-6xl mx-auto px-4 md:px-10">
-            <ChapterKickoff number="CAPÍTULO 02" title="Antes de Tudo: O Que é uma BIP?" subtitle="Bitcoin Improvement Proposal — a única forma de evoluir o protocolo mais descentralizado do mundo. Sem CEO, sem roadmap, sem permissão." />
+            <ChapterKickoff number="CAPÍTULO 01" title="Antes de Tudo: O Que é uma BIP?" subtitle="Bitcoin Improvement Proposal — a única forma de evoluir o protocolo mais descentralizado do mundo. Sem CEO, sem roadmap, sem permissão." />
             <div className="grid md:grid-cols-2 gap-5">
               <InfoCard icon={BookOpen} title="Bitcoin Improvement Proposal" accent="#f59e0b"
                 desc="BIP é uma sigla para Bitcoin Improvement Proposal — uma proposta de melhoria para o Bitcoin. Como o Bitcoin é um protocolo open source, não existe nenhuma empresa, CEO ou startup definindo qual será a próxima atualização. Todas as melhorias, correções de bugs e atualizações acontecem através de BIPs que desenvolvedores propõem de forma aberta. Toda a rede — mantenedores, nodes, mineradores e até quem apenas acompanha — pode analisar, debugar e comentar nas propostas."
@@ -247,7 +259,7 @@ export default function Bip110() {
         {/* ═══ CH.03 — A PROPOSTA ═══ */}
         <section className="relative z-10 py-14 md:py-20">
           <div className="max-w-6xl mx-auto px-4 md:px-10">
-            <ChapterKickoff number="CAPÍTULO 03" title="BIP-110: Reduced Data Temporary Softfork" subtitle="A proposta quer criar um soft fork temporário de um ano para filtrar 'spam' da blockchain e restaurar limites históricos de dados por bloco." />
+            <ChapterKickoff number="CAPÍTULO 02" title="BIP-110: Reduced Data Temporary Softfork" subtitle="A proposta quer criar um soft fork temporário de um ano para filtrar 'spam' da blockchain e restaurar limites históricos de dados por bloco." />
 
             <div className="relative p-6 md:p-10 rounded-2xl border border-amber-500/15 mb-10" style={{ background: 'linear-gradient(135deg, rgba(245,158,11,0.04), transparent 60%)' }}>
               <div className="flex items-center gap-3 mb-6">
@@ -289,7 +301,7 @@ export default function Bip110() {
         {/* ═══ CH.04 — O CONTEXTO / LINHA DO TEMPO ═══ */}
         <section className="relative z-10 py-14 md:py-20">
           <div className="max-w-6xl mx-auto px-4 md:px-10">
-            <ChapterKickoff number="CAPÍTULO 04" title="A Guerra do Espaço de Bloco" subtitle="O conflito não começou agora. A briga sobre como o espaço de bloco deve ser usado vem desde os primórdios do Bitcoin — e se intensificou com Ordinals, Inscriptions e o Taproot." />
+            <ChapterKickoff number="CAPÍTULO 03" title="A Guerra do Espaço de Bloco" subtitle="O conflito não começou agora. A briga sobre como o espaço de bloco deve ser usado vem desde os primórdios do Bitcoin — e se intensificou com Ordinals, Inscriptions e o Taproot." />
 
             <div className="grid md:grid-cols-2 gap-10">
               <div>
@@ -339,7 +351,7 @@ export default function Bip110() {
         {/* ═══ CH.05 — IMPACTOS ═══ */}
         <section className="relative z-10 py-14 md:py-20">
           <div className="max-w-6xl mx-auto px-4 md:px-10">
-            <ChapterKickoff number="CAPÍTULO 05" title="Impactos: Mineração, Lightning e Consenso" subtitle="Se a BIP-110 passasse, quais seriam as consequências reais para mineradores, Lightning Network e a estabilidade da rede?" />
+            <ChapterKickoff number="CAPÍTULO 04" title="Impactos: Mineração, Lightning e Consenso" subtitle="Se a BIP-110 passasse, quais seriam as consequências reais para mineradores, Lightning Network e a estabilidade da rede?" />
             <div className="grid md:grid-cols-3 gap-5">
               <InfoCard icon={Pickaxe} title="Mineradores" accent="#f59e0b"
                 desc="Bloquear transações não-monetárias reduziria a competição por espaço de bloco, potencialmente diminuindo as taxas. No curto prazo, mineradores receberiam menos em fees. Porém, defensores argumentam que proteger a descentralização garante o valor do Bitcoin a longo prazo — e mineradores só ganham se o Bitcoin continuar valendo algo."
@@ -359,7 +371,7 @@ export default function Bip110() {
         {/* ═══ CH.06 — QUEM DISSE O QUÊ ═══ */}
         <section className="relative z-10 py-14 md:py-20">
           <div className="max-w-6xl mx-auto px-4 md:px-10">
-            <ChapterKickoff number="CAPÍTULO 06" title="Quem se Posicionou e o Que Disseram" subtitle="As figuras mais influentes do ecossistema Bitcoin já se posicionaram sobre a BIP-110. O debate é técnico, ideológico e filosófico." />
+            <ChapterKickoff number="CAPÍTULO 05" title="Quem se Posicionou e o Que Disseram" subtitle="As figuras mais influentes do ecossistema Bitcoin já se posicionaram sobre a BIP-110. O debate é técnico, ideológico e filosófico." />
 
             <div className="grid md:grid-cols-2 gap-5">
               {[
@@ -392,7 +404,7 @@ export default function Bip110() {
         {/* ═══ CH.07 — VEREDICTO ═══ */}
         <section className="relative z-10 py-14 md:py-20">
           <div className="max-w-6xl mx-auto px-4 md:px-10">
-            <ChapterKickoff number="CAPÍTULO 07" title="Veredicto: Vai Passar ou Não?" subtitle="Nossa análise sobre a probabilidade real desta proposta avançar — e o que você, holder, precisa (ou não) fazer." />
+            <ChapterKickoff number="CAPÍTULO 06" title="Veredicto: Vai Passar ou Não?" subtitle="Nossa análise sobre a probabilidade real desta proposta avançar — e o que você, holder, precisa (ou não) fazer." />
 
             <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }} transition={{ duration: 0.8, ease: APPLE_EASE }}
@@ -433,7 +445,7 @@ export default function Bip110() {
         {/* ═══ CH.08 — TIMESTAMPS ═══ */}
         <section className="relative z-10 py-14 md:py-20">
           <div className="max-w-6xl mx-auto px-4 md:px-10">
-            <ChapterKickoff number="CAPÍTULO 08" title="Navegue pelo Episódio" subtitle="Use os timestamps abaixo para ir direto ao trecho que te interessa no vídeo." />
+            <ChapterKickoff number="CAPÍTULO 07" title="Índice Detalhado do Conteúdo" subtitle="Navegue pelos tópicos abordados nesta análise completa da BIP-110." />
 
             <div className="grid md:grid-cols-2 gap-x-10 gap-y-0">
               {[
@@ -476,7 +488,7 @@ export default function Bip110() {
         {/* ═══ CH.09 — FAQ ═══ */}
         <section className="relative z-10 py-14 md:py-20">
           <div className="max-w-4xl mx-auto px-4 md:px-10">
-            <ChapterKickoff number="CAPÍTULO 09" title="Perguntas Frequentes" subtitle="As dúvidas mais comuns sobre a BIP-110, soft forks, chain splits e o impacto nos seus Bitcoins." />
+            <ChapterKickoff number="CAPÍTULO 08" title="Perguntas Frequentes sobre a BIP-110" subtitle="As dúvidas mais comuns sobre a BIP-110, soft forks, chain splits e o impacto nos seus Bitcoins em autocustódia." />
             <Accordion type="single" collapsible className="space-y-3">
               {faqData.map((faq, i) => (
                 <AccordionItem key={i} value={`faq-${i}`} className="border border-white/[0.06] rounded-xl px-5 hover:border-amber-500/20 transition-colors">
