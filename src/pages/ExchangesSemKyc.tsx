@@ -90,7 +90,7 @@ const schemaLD = {
   '@type': 'CollectionPage',
   name: 'Plataformas sem KYC — Exchanges e Serviços Privados',
   description: 'Diretório de plataformas sem verificação KYC: exchanges privadas, swaps e ferramentas para maior privacidade financeira.',
-  url: 'https://autonomiadoindividuo.com/soberania-financeira/exchanges-sem-kyc',
+  url: 'https://lordjunnior.com.br/soberania-financeira/exchanges-sem-kyc',
 };
 
 const faqSchema = {
