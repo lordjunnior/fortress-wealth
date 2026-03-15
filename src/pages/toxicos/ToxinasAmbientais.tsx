@@ -54,6 +54,25 @@ export default function ToxinasAmbientais() {
     })),
   };
 
+  const claimReviewSchema = {
+    "@context": "https://schema.org",
+    "@type": "ClaimReview",
+    "url": "https://lordjunnior.com.br/projeto-autonomo/toxicos-ocultos/toxinas-ambientais",
+    "claimReviewed": "O ar dentro de casa é mais limpo que o ar externo por estar protegido da poluição urbana",
+    "author": { "@type": "Person", "name": "Lord Junnior" },
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": 1,
+      "bestRating": 5,
+      "worstRating": 1,
+      "alternateName": "Falso"
+    },
+    "itemReviewed": {
+      "@type": "CreativeWork",
+      "author": { "@type": "Organization", "name": "Senso Comum" }
+    }
+  };
+
   return (
     <div className="min-h-screen text-stone-100 font-sans selection:bg-green-400/30 relative overflow-hidden" style={{ background: '#050808' }}>
       <Helmet>
