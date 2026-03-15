@@ -78,6 +78,7 @@ export default function DependenciaTecnologica() {
         <meta property="og:image" content="https://lordjunnior.com.br/heroes/dependencia-tecnologica.webp" />
         <link rel="canonical" href="https://lordjunnior.com.br/projeto-autonomo/toxicos-ocultos/dependencia-tecnologica" />
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
+        <script type="application/ld+json">{JSON.stringify(claimReviewSchema)}</script>
       </Helmet>
 
       <motion.div className="fixed top-0 left-0 right-0 h-[2px] z-50 origin-left"
