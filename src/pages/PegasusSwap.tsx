@@ -213,10 +213,10 @@ export default function PegasusSwap() {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://lordjunnior.com/' },
-      { '@type': 'ListItem', position: 2, name: 'Soberania Financeira', item: 'https://lordjunnior.com/soberania-financeira' },
-      { '@type': 'ListItem', position: 3, name: 'Exchanges sem KYC', item: 'https://lordjunnior.com/soberania-financeira/exchanges-sem-kyc' },
-      { '@type': 'ListItem', position: 4, name: 'PegasusSwap', item: 'https://lordjunnior.com/soberania-financeira/exchanges-sem-kyc/pegasus-swap' },
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://lordjunnior.com.br/' },
+      { '@type': 'ListItem', position: 2, name: 'Soberania Financeira', item: 'https://lordjunnior.com.br/soberania-financeira' },
+      { '@type': 'ListItem', position: 3, name: 'Exchanges sem KYC', item: 'https://lordjunnior.com.br/soberania-financeira/exchanges-sem-kyc' },
+      { '@type': 'ListItem', position: 4, name: 'PegasusSwap', item: 'https://lordjunnior.com.br/soberania-financeira/exchanges-sem-kyc/pegasus-swap' },
     ],
   };
 
