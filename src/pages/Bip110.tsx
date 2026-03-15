@@ -259,7 +259,7 @@ export default function Bip110() {
         {/* ═══ CH.03 — A PROPOSTA ═══ */}
         <section className="relative z-10 py-14 md:py-20">
           <div className="max-w-6xl mx-auto px-4 md:px-10">
-            <ChapterKickoff number="CAPÍTULO 03" title="BIP-110: Reduced Data Temporary Softfork" subtitle="A proposta quer criar um soft fork temporário de um ano para filtrar 'spam' da blockchain e restaurar limites históricos de dados por bloco." />
+            <ChapterKickoff number="CAPÍTULO 02" title="BIP-110: Reduced Data Temporary Softfork" subtitle="A proposta quer criar um soft fork temporário de um ano para filtrar 'spam' da blockchain e restaurar limites históricos de dados por bloco." />
 
             <div className="relative p-6 md:p-10 rounded-2xl border border-amber-500/15 mb-10" style={{ background: 'linear-gradient(135deg, rgba(245,158,11,0.04), transparent 60%)' }}>
               <div className="flex items-center gap-3 mb-6">
