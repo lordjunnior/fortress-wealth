@@ -128,10 +128,10 @@ const NetworkTicker = () => {
   ];
 
   const colorMap = {
-    green: "#00ff66",
-    red: "#ff3b3b",
-    neutral: "#8a9bb5",
-    gold: "hsl(40, 92%, 56%)",
+    green: isLight ? "#16a34a" : "#00ff66",
+    red: isLight ? "#dc2626" : "#ff3b3b",
+    neutral: isLight ? "#64748b" : "#8a9bb5",
+    gold: isLight ? "hsl(25, 95%, 42%)" : "hsl(25, 100%, 50%)",
   };
 
 

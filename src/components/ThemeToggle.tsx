@@ -9,7 +9,7 @@ const ThemeToggle = () => {
       onClick={toggleTheme}
       aria-label={theme === "dark" ? "Ativar modo claro" : "Ativar modo escuro"}
       title={theme === "dark" ? "Modo Pergaminho" : "Modo Noturno"}
-      className="fixed top-2 right-4 z-[10000] w-10 h-10 rounded-sm bg-card/90 backdrop-blur-md border border-border flex items-center justify-center text-muted-foreground hover:text-primary transition-all duration-300 hover:border-primary/40 hover:shadow-[0_0_12px_hsl(var(--gold)/0.2)]"
+      className="fixed top-2 right-4 z-[10000] w-10 h-10 rounded-lg bg-card/90 backdrop-blur-md border border-border flex items-center justify-center text-muted-foreground hover:text-primary transition-all duration-300 hover:border-primary/40 hover:shadow-[0_0_15px_hsl(var(--glow-primary))]"
     >
       {theme === "dark" ? (
         <Sun className="w-[18px] h-[18px]" />
