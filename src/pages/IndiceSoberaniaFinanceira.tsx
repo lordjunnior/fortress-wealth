@@ -93,7 +93,7 @@ const schemaLD = {
   '@type': 'ItemList',
   name: 'Índice de Soberania Financeira — Ranking de Plataformas por Privacidade',
   description: 'Ranking comparativo de contas internacionais, offshore e exchanges por nível de privacidade, reporte e jurisdição.',
-  url: 'https://autonomiadoindividuo.com/indice-de-soberania-financeira',
+  url: 'https://lordjunnior.com.br/indice-de-soberania-financeira',
   itemListElement: PLATFORMS.map((p, i) => ({
     '@type': 'ListItem',
     position: i + 1,
