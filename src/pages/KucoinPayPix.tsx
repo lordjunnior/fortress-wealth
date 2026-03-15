@@ -149,7 +149,6 @@ const articleSchema = {
 
 export default function KucoinPayPix() {
   const [scrollProgress, setScrollProgress] = useState(0);
-  const [scrollProgress, setScrollProgress] = useState(0);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   useEffect(() => { window.scrollTo(0, 0); }, []);
