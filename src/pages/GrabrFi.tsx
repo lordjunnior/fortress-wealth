@@ -162,7 +162,7 @@ const schemaLD = {
   '@type': 'Article',
   headline: 'GrabrFi — Conta Bancária nos EUA com Stablecoins e SWIFT Internacional',
   description: 'Review completa da GrabrFi: conta corrente americana com USDT, USDC, PYUSD, transferências SWIFT e integração com PayPal, Wise e Payoneer.',
-  url: 'https://autonomiadoindividuo.com/soberania-financeira/contas-internacionais/grabrfi',
+  url: 'https://lordjunnior.com.br/soberania-financeira/contas-internacionais/grabrfi',
 };
 
 const faqSchemaLD = {
