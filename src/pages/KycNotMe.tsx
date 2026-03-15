@@ -138,6 +138,7 @@ export default function KycNotMe() {
       <LeadCaptureModal isOpen={leadModalOpen} onClose={() => setLeadModalOpen(false)} interesse="assessoria-cedula-paraguaia-kycnot" />
 
       <div className="min-h-screen" style={{ background: '#050808' }}>
+        <NobelVFX accentColor="amber" />
 
         {/* ═══ NAVIGATION BAR ═══ */}
         <AnimatePresence>

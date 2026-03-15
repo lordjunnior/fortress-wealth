@@ -121,6 +121,7 @@ const ExchangesSemKyc = () => {
       <ScrollToTop />
 
       <div className="min-h-screen bg-[#050808] text-stone-200">
+        <NobelVFX accentColor="amber" />
         {/* ── Back Button ── */}
         <Link
           to="/soberania-financeira"

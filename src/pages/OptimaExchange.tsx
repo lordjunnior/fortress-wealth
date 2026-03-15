@@ -160,6 +160,7 @@ export default function OptimaExchange() {
       <LeadCaptureModal isOpen={leadModalOpen} onClose={() => setLeadModalOpen(false)} interesse="assessoria-cedula-paraguaia-optima" />
 
       <div className="min-h-screen" style={{ background: '#050808' }}>
+        <NobelVFX accentColor="emerald" />
 
         {/* ═══ NAVIGATION BAR ═══ */}
         <AnimatePresence>

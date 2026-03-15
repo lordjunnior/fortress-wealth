@@ -188,6 +188,8 @@ const GrabrFi = () => {
       </Helmet>
       <ScrollToTop />
 
+      <NobelVFX accentColor="teal" />
+
       {/* ── BOTÃO VOLTAR FIXO ── */}
       <Link
         to="/soberania-financeira"
