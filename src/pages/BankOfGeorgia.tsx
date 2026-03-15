@@ -11,6 +11,7 @@ import {
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import ScrollToTop from '@/components/ScrollToTop';
 import NobelVFX from '@/components/NobelVFX';
+import SovereignDisclaimer from '@/components/SovereignDisclaimer';
 import LeadCaptureModal from '@/components/LeadCaptureModal';
 import heroImg from '@/assets/bank-georgia-hero.jpg';
 import appImg from '@/assets/bank-georgia-app.jpg';

@@ -11,6 +11,7 @@ import {
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import ScrollToTop from '@/components/ScrollToTop';
 import NobelVFX from '@/components/NobelVFX';
+import SovereignDisclaimer from '@/components/SovereignDisclaimer';
 import heroImg from '@/assets/neobankless-hero.jpg';
 import appImg from '@/assets/neobankless-app.jpg';
 

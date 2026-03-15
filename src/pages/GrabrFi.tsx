@@ -14,6 +14,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import ScrollToTop from '@/components/ScrollToTop';
 import LeadCaptureModal from '@/components/LeadCaptureModal';
 import NobelVFX from '@/components/NobelVFX';
+import SovereignDisclaimer from '@/components/SovereignDisclaimer';
 import heroImg from '@/assets/grabrfi-hero.jpg';
 import appImg from '@/assets/grabrfi-app.jpg';
 import brasilParaguaiImg from '@/assets/offshore-brasil-paraguai.jpg';
