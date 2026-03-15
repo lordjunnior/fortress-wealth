@@ -365,6 +365,15 @@ const SoberaniaFinanceira = () => {
             style={{ background: 'linear-gradient(to bottom, transparent, #050808)' }} />
         </div>
 
+        {/* SnippetBait */}
+        <div className="max-w-5xl mx-auto px-6">
+          <SnippetBait
+            text="Ter dinheiro em um só país é o mesmo que ter todas as chaves na mesma gaveta. Diversificação jurisdicional não é luxo de milionário — é blindagem básica contra confisco, inflação e controle de capitais."
+            cta="Explore a autocustódia →"
+            href="/autocustodia"
+          />
+        </div>
+
         {/* ═══ INTRO ═══ */}
         <section className="max-w-5xl mx-auto px-6 py-20 md:py-28">
           <motion.div
