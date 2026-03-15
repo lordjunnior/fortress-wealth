@@ -49,12 +49,12 @@ const CinematicHero: React.FC<CinematicHeroProps> = ({
     <section ref={sectionRef} className="relative h-[70vh] min-h-[500px] max-h-[800px] flex items-end overflow-hidden">
       {/* Parallax background image */}
       <motion.div className="absolute inset-0 z-0" style={{ y: bgY }}>
-        <div
-          className="absolute inset-0 bg-cover bg-center will-change-transform scale-110"
-          style={{
-            backgroundImage: `url('${image}')`,
-            filter: 'brightness(0.45) saturate(0.85)',
-          }}
+        <img
+          src={image}
+          alt=""
+          fetchPriority="high"
+          className="absolute inset-0 w-full h-full object-cover will-change-transform scale-110"
+          style={{ filter: 'brightness(0.45) saturate(0.85)' }}
         />
         {/* Multi-layer overlay */}
         <div
