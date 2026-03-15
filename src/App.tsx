@@ -91,6 +91,7 @@ import CandlestickPage from "./pages/Candlestick";
 import DiversificacaoPage from "./pages/Diversificacao";
 import BitcoinVsAltcoinsPage from "./pages/BitcoinVsAltcoins";
 import DicionarioCripto from "./pages/DicionarioCripto";
+import Bip110 from "./pages/Bip110";
 import MobilidadeDeChaves from "./pages/MobilidadeDeChaves";
 import HardwareWalletDiy from "./pages/HardwareWalletDiy";
 import CpContextoHistorico from "./pages/cp/ContextoHistorico";
@@ -185,6 +186,7 @@ const App = () => (
           <Route path="/diversificacao" element={<DiversificacaoPage />} />
           <Route path="/bitcoin-vs-altcoins" element={<BitcoinVsAltcoinsPage />} />
           <Route path="/dicionario-cripto" element={<DicionarioCripto />} />
+          <Route path="/bip-110" element={<Bip110 />} />
           <Route path="/mobilidade-de-chaves" element={<MobilidadeDeChaves />} />
           <Route path="/projeto-autonomo" element={<ProjetoAutonomo />} />
           <Route path="/projeto-autonomo/conservacao-armazenamento" element={<ConservacaoArmazenamento />} />
