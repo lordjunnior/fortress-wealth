@@ -303,7 +303,7 @@ const FAQ = [
   { q: 'Posso usar cartão dessas contas no Brasil?', a: 'Sim. Cartões cripto internacionais funcionam em qualquer maquininha Visa/Mastercard no Brasil e no mundo. O câmbio é feito automaticamente pela plataforma no momento da compra.' },
 ];
 
-const schemaLD = { '@context': 'https://schema.org', '@type': 'HowTo', name: 'Como Abrir Contas Offshore Remotamente com Cédula Paraguaia', description: 'Guia completo passo-a-passo para abertura remota de contas offshore cripto usando documentação paraguaia — sem vincular ao CPF brasileiro.', url: 'https://autonomiadoindividuo.com/soberania-financeira/contas-offshore/abertura-remota', step: STEPS.map(s => ({ '@type': 'HowToStep', name: s.title, text: s.description })) };
+const schemaLD = { '@context': 'https://schema.org', '@type': 'HowTo', name: 'Como Abrir Contas Offshore Remotamente com Cédula Paraguaia', description: 'Guia completo passo-a-passo para abertura remota de contas offshore cripto usando documentação paraguaia — sem vincular ao CPF brasileiro.', url: 'https://lordjunnior.com.br/soberania-financeira/contas-offshore/abertura-remota', step: STEPS.map(s => ({ '@type': 'HowToStep', name: s.title, text: s.description })) };
 const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: FAQ.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
 
 /* ═══════════════════════════════════════════════════════════
