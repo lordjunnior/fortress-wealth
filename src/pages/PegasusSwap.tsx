@@ -241,6 +241,7 @@ export default function PegasusSwap() {
       </div>
 
       <div className="min-h-screen" style={{ background: '#050808' }}>
+        <NobelVFX accentColor="purple" />
 
         {/* ═══ NAVIGATION BAR ═══ */}
         <AnimatePresence>
