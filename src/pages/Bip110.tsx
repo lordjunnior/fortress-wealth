@@ -71,31 +71,6 @@ const InfoCard: React.FC<{ icon: React.ElementType; title: string; desc: string;
   );
 };
 
-/* ══ Video Embed ══ */
-const VideoEmbed: React.FC<{ videoId: string }> = ({ videoId }) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-60px' });
-  return (
-    <motion.div ref={ref} initial={{ opacity: 0, y: 40, scale: 0.97 }}
-      animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
-      transition={{ duration: 0.9, ease: APPLE_EASE }}
-      className="relative rounded-2xl overflow-hidden border border-amber-500/20 group max-w-5xl mx-auto"
-    >
-      <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
-        <iframe
-          className="absolute inset-0 w-full h-full"
-          src={`https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1`}
-          title="BIP-110 — Entenda a proposta polêmica de soft fork no Bitcoin"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowFullScreen
-          loading="lazy"
-        />
-      </div>
-      <div className="absolute inset-0 pointer-events-none rounded-2xl" style={{ boxShadow: 'inset 0 0 80px rgba(245,158,11,0.05)' }} />
-    </motion.div>
-  );
-};
-
 /* ══ Timeline Item ══ */
 const TimelineItem: React.FC<{ time: string; title: string; delay?: number }> = ({ time, title, delay = 0 }) => {
   const ref = useRef(null);
