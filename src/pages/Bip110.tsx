@@ -371,7 +371,7 @@ export default function Bip110() {
         {/* ═══ CH.06 — QUEM DISSE O QUÊ ═══ */}
         <section className="relative z-10 py-14 md:py-20">
           <div className="max-w-6xl mx-auto px-4 md:px-10">
-            <ChapterKickoff number="CAPÍTULO 06" title="Quem se Posicionou e o Que Disseram" subtitle="As figuras mais influentes do ecossistema Bitcoin já se posicionaram sobre a BIP-110. O debate é técnico, ideológico e filosófico." />
+            <ChapterKickoff number="CAPÍTULO 05" title="Quem se Posicionou e o Que Disseram" subtitle="As figuras mais influentes do ecossistema Bitcoin já se posicionaram sobre a BIP-110. O debate é técnico, ideológico e filosófico." />
 
             <div className="grid md:grid-cols-2 gap-5">
               {[
