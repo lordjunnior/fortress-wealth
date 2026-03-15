@@ -498,5 +498,6 @@ export default function PurificacaoAgua() {
 
       </div>
     </div>
+    </>
   );
 }

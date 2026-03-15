@@ -512,6 +512,7 @@ export default function Kit72h() {
 
       </div>
     </div>
+    </>
   );
 }
 

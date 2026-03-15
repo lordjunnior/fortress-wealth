@@ -525,5 +525,6 @@ export default function ProtocolosApagao() {
 
       </div>
     </div>
+    </>
   );
 }
