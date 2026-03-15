@@ -38,6 +38,12 @@ export default function ProtocoloInicial() {
   const scrollTo = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
   return (
+    <>
+      <Helmet>
+        <title>Protocolo Inicial — Guia Bitcoin do Zero ao Avançado | Lord Junnior</title>
+        <meta name="description" content="Trilha completa de aprendizado Bitcoin: do conceito à autocustódia. 6 estágios progressivos para dominar o protocolo e proteger seu patrimônio." />
+        <link rel="canonical" href="https://lordjunnior.com.br/protocolo-inicial" />
+      </Helmet>
     <div className="min-h-screen bg-[#070A12] text-white font-sans selection:bg-red-600 overflow-x-hidden">
       {/* Particles */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-30">
