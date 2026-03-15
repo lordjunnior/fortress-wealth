@@ -191,8 +191,8 @@ export default function Bip110() {
           '@type': 'BreadcrumbList',
           itemListElement: [
             { '@type': 'ListItem', position: 1, name: 'Início', item: 'https://lordjunnior.com' },
-            { '@type': 'ListItem', position: 2, name: 'Blockchain', item: 'https://lordjunnior.com/blockchain' },
-            { '@type': 'ListItem', position: 3, name: 'BIP-110', item: 'https://lordjunnior.com/bip-110' },
+            { '@type': 'ListItem', position: 2, name: 'Protocolo Bitcoin', item: 'https://lordjunnior.com/protocolo-bitcoin' },
+            { '@type': 'ListItem', position: 3, name: 'BIP-110: A Guerra do Espaço de Bloco', item: 'https://lordjunnior.com/protocolo-bitcoin/bip-110' },
           ],
         })}</script>
       </Helmet>
