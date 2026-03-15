@@ -9,6 +9,7 @@ import {
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import ScrollToTop from '@/components/ScrollToTop';
 import LeadCaptureModal from '@/components/LeadCaptureModal';
+import NobelVFX from '@/components/NobelVFX';
 import { useState } from 'react';
 import heroImg from '@/assets/exchanges-nokyc-hero.jpg';
 
