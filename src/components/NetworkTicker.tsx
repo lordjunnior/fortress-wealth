@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { useTheme } from "./ThemeProvider";
 
 // ===== CONFIGURAÇÃO FISCAL (LOA 2025 / Receita Federal) =====
 const ARRECADACAO_ANUAL = 3e12;
@@ -30,6 +31,8 @@ const formatBRL = (n: number) => {
 };
 
 const NetworkTicker = () => {
+  const { theme } = useTheme();
+  const isLight = theme === "light";
   const [block, setBlock] = useState<number | null>(null);
   const [priceUsd, setPriceUsd] = useState<number | null>(null);
   const [priceBrl, setPriceBrl] = useState<number | null>(null);
@@ -131,12 +134,13 @@ const NetworkTicker = () => {
     gold: "hsl(40, 92%, 56%)",
   };
 
+
   const renderItem = (item: typeof items[0], key: number) => (
     <div
       key={key}
       className="inline-flex items-center gap-1.5 px-5 py-1 font-mono text-[11px] tracking-wide transition-all duration-200 cursor-default"
       style={{
-        borderRight: "1px solid rgba(255,255,255,0.06)",
+        borderRight: isLight ? "1px solid rgba(0,0,0,0.08)" : "1px solid rgba(255,255,255,0.06)",
       }}
       onMouseEnter={(e) => {
         e.currentTarget.style.background = `${colorMap[item.color]}11`;
@@ -159,7 +163,7 @@ const NetworkTicker = () => {
       {item.label && (
         <span
           className="uppercase tracking-[0.12em] font-medium"
-          style={{ color: "rgba(255,255,255,0.35)", fontSize: "10px" }}
+          style={{ color: isLight ? "rgba(0,0,0,0.45)" : "rgba(255,255,255,0.35)", fontSize: "10px" }}
         >
           {item.label}
         </span>
@@ -202,20 +206,20 @@ const NetworkTicker = () => {
       `}</style>
 
       <div
-        className="fixed top-0 left-0 right-0 z-[9999] h-[36px] flex items-center overflow-hidden"
+        className="fixed top-0 left-0 right-0 z-[9999] h-[36px] flex items-center overflow-hidden ticker-bar"
         style={{
-          background: "#000000",
-          borderBottom: "1px solid rgba(255,255,255,0.08)",
+          background: isLight ? "hsl(35, 20%, 89%)" : "#000000",
+          borderBottom: isLight ? "1px solid rgba(0,0,0,0.1)" : "1px solid rgba(255,255,255,0.08)",
         }}
       >
         {/* Hard edge masks */}
         <div
           className="absolute top-0 bottom-0 left-0 w-[50px] z-[2] pointer-events-none"
-          style={{ background: "linear-gradient(90deg, #000000, transparent)" }}
+          style={{ background: isLight ? "linear-gradient(90deg, hsl(35,20%,89%), transparent)" : "linear-gradient(90deg, #000000, transparent)" }}
         />
         <div
           className="absolute top-0 bottom-0 right-0 w-[50px] z-[2] pointer-events-none"
-          style={{ background: "linear-gradient(-90deg, #000000, transparent)" }}
+          style={{ background: isLight ? "linear-gradient(-90deg, hsl(35,20%,89%), transparent)" : "linear-gradient(-90deg, #000000, transparent)" }}
         />
 
         {/* Scrolling track */}

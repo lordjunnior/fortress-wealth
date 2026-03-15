@@ -220,8 +220,11 @@
 /* Mantemos #F7931A e #EF4444 pois funcionam nos dois modos */
 
 /* --- Fundos fixos dos backgrounds cinematográficos --- */
+.light .cinematic-bg {
+  opacity: 0.15 !important;
+}
 .light .fixed.inset-0.z-0 {
-  opacity: 0.3;
+  opacity: 0.15 !important;
 }
 
 /* --- Gradient dark → light --- */
@@ -277,6 +280,68 @@
 /* --- Section alt --- */
 .light .section-alt {
   background-color: hsl(35 20% 90% / 0.8) !important;
+}
+
+/* --- Hero section: invert the background overlays --- */
+.light section[id="hero-section"] .absolute.inset-0.z-0 {
+  opacity: 0.15 !important;
+}
+
+/* --- CommandCenter bar stays themed --- */
+.light .command-center-bar {
+  background: hsl(35 20% 89%) !important;
+  border-color: hsl(35 15% 78%) !important;
+}
+
+/* --- SovereignTermModal / NivelZero modals keep dark (intentional) --- */
+
+/* --- AlertBanner background images: lighten overlays --- */
+.light .section-divider img[style*="brightness"] {
+  filter: brightness(0.55) saturate(0.8) !important;
+}
+
+/* --- Texto red que precisa de contraste no light --- */
+.light .text-red-400,
+.light .text-red-400\/70,
+.light .text-red-500 {
+  color: hsl(0 72% 40%) !important;
+}
+
+/* --- Amber/orange textos --- */
+.light .text-amber-500,
+.light .text-amber-400,
+.light .text-orange-500,
+.light .text-orange-400 {
+  color: hsl(35 90% 38%) !important;
+}
+
+/* --- Emerald/green textos --- */
+.light .text-emerald-400,
+.light .text-emerald-500,
+.light .text-green-400,
+.light .text-green-500 {
+  color: hsl(142 65% 28%) !important;
+}
+
+/* --- Hover on gold text in light --- */
+.light .hover\:text-gold:hover {
+  color: hsl(40 85% 35%) !important;
+}
+
+/* --- Fix hover states --- */
+.light .hover\:text-white:hover {
+  color: hsl(222 35% 12%) !important;
+}
+.light .hover\:bg-white\/5:hover {
+  background-color: hsl(222 35% 12% / 0.05) !important;
+}
+
+/* --- Transition for smooth theme switch --- */
+html {
+  transition: background-color 0.4s ease, color 0.3s ease;
+}
+body {
+  transition: background-color 0.4s ease, color 0.3s ease;
 }
 
 @layer base {
