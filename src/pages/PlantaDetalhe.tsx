@@ -331,6 +331,7 @@ export default function PlantaDetalhe() {
             </Link>
           ) : <div className="flex-1" />}
         </nav>
+        <MicroCtaResistencia variant="saude" />
       </main>
     </div>
     </>

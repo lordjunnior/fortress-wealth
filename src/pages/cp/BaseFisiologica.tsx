@@ -99,6 +99,8 @@ export default function BaseFisiologica() {
         {/* ─── MATRIZ COMPARATIVA ─── */}
         <MatrizComparativa />
 
+        <MicroCtaResistencia variant="conhecimento" />
+
         {/* ─── NAVEGAÇÃO ENTRE BLOCOS ─── */}
         <div className="flex flex-col sm:flex-row gap-4 mt-20">
           <Link to="/conhecimento-perdido/contexto-historico"

@@ -112,6 +112,8 @@ export default function ContextoHistorico() {
           </div>
         </motion.section>
 
+        <MicroCtaResistencia variant="conhecimento" />
+
         {/* ─── NAVEGAÇÃO ENTRE BLOCOS ─── */}
         <div className="flex flex-col sm:flex-row gap-4">
           <Link to="/projeto-autonomo/conhecimento-perdido"

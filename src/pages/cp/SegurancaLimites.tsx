@@ -99,6 +99,8 @@ export default function SegurancaLimites() {
           </div>
         </motion.section>
 
+        <MicroCtaResistencia variant="conhecimento" />
+
         {/* ─── NAVEGAÇÃO ENTRE BLOCOS ─── */}
         <div className="flex flex-col sm:flex-row gap-4">
           <Link to="/conhecimento-perdido/base-fisiologica"
