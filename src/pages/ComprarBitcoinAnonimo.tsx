@@ -555,7 +555,7 @@ export default function ComprarBitcoinAnonimo() {
                 </p>
                 <img
                   src={infograficoImg}
-                  alt="Infográfico do Protocolo RoboSats: Mind Unlock, Mochila Digital, Perfil Fantasma (Robô) e Troca Soberana — 4 etapas para comprar Bitcoin com privacidade"
+                  alt="Infográfico do Protocolo RoboSats: Mind Unlock, Mochila Digital, Perfil Fantasma (Robô) e Troca Soberana. 4 etapas para comprar Bitcoin com privacidade"
                   className="w-full rounded-sm"
                   loading="lazy"
                 />
