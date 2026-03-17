@@ -621,7 +621,7 @@ export default function ComprarBitcoinAnonimo() {
                 <MacroStep
                   number={2}
                   title="Acesse a RoboSats e Crie Sua Identidade"
-                  summary="Entre na plataforma pelo Tor e gere seu Robot — sua identidade temporária e privada."
+                  summary="Entre na plataforma pelo Tor e gere seu Robot, sua identidade temporária e privada."
                   icon={Bot}
                 >
                   <div className="space-y-3">
