@@ -249,7 +249,7 @@ export default function ComprarBitcoinAnonimo() {
         <meta name="description" content="Aprenda a comprar Bitcoin com mais privacidade, sem KYC, a partir de R$10 usando RoboSats e Lightning Network. Tutorial passo a passo para iniciantes absolutos. Mais controle, menos exposição." />
         <meta name="keywords" content="comprar bitcoin anônimo, bitcoin sem kyc, robosats tutorial, bitcoin sem documento, comprar bitcoin pix, lightning network, bitcoin privacidade" />
         <link rel="canonical" href="https://lordjunnior.com.br/comprar-bitcoin-anonimo" />
-        <meta property="og:title" content="Comprar Bitcoin com Mais Privacidade por R$10 — Menos Exposição, Mais Controle" />
+        <meta property="og:title" content="Comprar Bitcoin com Mais Privacidade por R$10. Menos Exposição, Mais Controle" />
         <meta property="og:description" content="O guia definitivo para comprar Bitcoin com privacidade real. De R$10 a soberania financeira com menos exposição." />
         <meta property="og:type" content="article" />
         <meta property="og:url" content="https://lordjunnior.com.br/comprar-bitcoin-anonimo" />
