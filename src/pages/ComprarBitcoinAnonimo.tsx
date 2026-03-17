@@ -770,8 +770,8 @@ export default function ComprarBitcoinAnonimo() {
             {/* ── FAQ ── */}
             <section id="faq" className="space-y-6">
               <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }}>
-                <motion.h3 custom={0} variants={fadeUp} className="text-2xl md:text-3xl font-bold tracking-tight text-foreground mb-2">
-                  Perguntas Frequentes
+                <motion.h3 custom={0} variants={fadeUp} className="text-2xl md:text-3xl font-bold tracking-tight text-foreground mb-2 uppercase" style={{ fontFamily: "'Poppins', sans-serif" }}>
+                  PERGUNTAS FREQUENTES
                 </motion.h3>
                 <motion.p custom={1} variants={fadeUp} className="text-muted-foreground text-sm mb-6">
                   As dúvidas mais comuns de quem está comprando Bitcoin pela primeira vez com mais privacidade.
