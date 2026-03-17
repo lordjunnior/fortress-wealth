@@ -197,6 +197,15 @@ const MacroStep = ({
       >
         <div className="px-6 pb-6 space-y-4 border-t border-border/20 pt-4">
           {children}
+          {/* Mobile-friendly CTA at thumb reach */}
+          <a
+            href="#pre-requisitos"
+            className="mt-4 w-full inline-flex items-center justify-center gap-3 py-4 px-6 rounded-sm border border-primary/30 bg-primary/[0.08] hover:bg-primary/[0.18] hover:border-primary/50 text-primary font-semibold tracking-wide text-sm transition-all duration-300 sm:hidden"
+          >
+            <Shield className="w-4 h-4" />
+            Assumir Meu Controle
+            <ArrowRight className="w-4 h-4" />
+          </a>
         </div>
       </motion.div>
     </motion.div>
