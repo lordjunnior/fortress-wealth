@@ -672,7 +672,7 @@ export default function ComprarBitcoinAnonimo() {
                     </div>
                     <div className="flex items-start gap-2 p-3 rounded-sm bg-amber-500/[0.06] border border-amber-500/15">
                       <Zap className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
-                      <p className="text-xs text-amber-200/80 leading-relaxed">Prefira vendedores com muitas negociações concluídas (ícone de estrela). A fiança só é perdida se você abandonar a negociação no meio — ela é sua garantia de seriedade.</p>
+                      <p className="text-xs text-amber-200/80 leading-relaxed">Prefira vendedores com muitas negociações concluídas (ícone de estrela). A fiança só é perdida se você abandonar a negociação no meio. Ela é sua garantia de seriedade.</p>
                     </div>
                   </div>
                 </MacroStep>
