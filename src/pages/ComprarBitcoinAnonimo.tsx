@@ -545,8 +545,8 @@ export default function ComprarBitcoinAnonimo() {
                   </motion.div>
                 </div>
                 <div className="p-8 md:p-10 bg-card/60 backdrop-blur-sm border border-border/30 rounded-b-sm mb-8">
-                  <motion.h3 custom={1} variants={fadeUp} className="text-2xl md:text-3xl font-bold tracking-tight text-foreground mb-3">
-                    4 Passos Para Sua Primeira Compra
+                  <motion.h3 custom={1} variants={fadeUp} className="text-2xl md:text-3xl font-bold tracking-tight text-foreground mb-3 uppercase" style={{ fontFamily: "'Poppins', sans-serif" }}>
+                    4 PASSOS PARA SUA PRIMEIRA COMPRA
                   </motion.h3>
                   <motion.p custom={2} variants={fadeUp} className="text-muted-foreground leading-relaxed">
                     Siga cada passo no seu ritmo. Se é sua primeira vez, vá com calma — <strong className="text-foreground">R$10 é suficiente para aprender sem risco.</strong>
