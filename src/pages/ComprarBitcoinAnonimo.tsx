@@ -386,7 +386,7 @@ export default function ComprarBitcoinAnonimo() {
               title="Por Que Comprar Bitcoin com Mais Privacidade?"
               icon={EyeOff}
               image={anonimatoImg}
-              imageAlt="Câmera de vigilância em rua urbana noturna — conceito de privacidade financeira"
+              imageAlt="Câmera de vigilância monitorando rua urbana à noite — por que privacidade financeira importa na era digital"
               index={0}
             >
               <p>
