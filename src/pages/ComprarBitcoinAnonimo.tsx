@@ -142,7 +142,7 @@ const ChapterBlock = ({
       </div>
 
       <div className="p-8 md:p-10 bg-card/60 backdrop-blur-sm border border-border/30 rounded-b-sm">
-        <motion.h3 custom={1} variants={fadeUp} className="text-2xl md:text-3xl font-bold tracking-tight text-foreground mb-6">
+        <motion.h3 custom={1} variants={fadeUp} className="text-2xl md:text-3xl font-bold tracking-tight text-foreground mb-6 uppercase" style={{ fontFamily: "'Poppins', sans-serif" }}>
           {title}
         </motion.h3>
         <motion.div custom={2} variants={fadeUp} className="space-y-4 text-muted-foreground leading-relaxed">
