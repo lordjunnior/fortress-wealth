@@ -283,6 +283,39 @@ const Index = () => {
           </div>
         </NobelSection>
 
+        {/* ── BITCOIN ANÔNIMO ALERT ── */}
+        <NobelSection className="section-divider px-5 md:px-8" delay={0.05}>
+          <div className="max-w-4xl mx-auto lg:ml-0">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+              className="relative overflow-hidden rounded-sm border border-primary/20 bg-primary/[0.04] backdrop-blur-sm group hover:border-primary/40 transition-all duration-500"
+            >
+              <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
+              <Link to="/comprar-bitcoin-anonimo" className="flex flex-col sm:flex-row items-start sm:items-center gap-4 p-6">
+                <div className="relative shrink-0">
+                  <div className="absolute inset-0 rounded-full bg-primary/20 animate-[ping_3s_ease-in-out_infinite]" />
+                  <div className="relative w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center border border-primary/30">
+                    <EyeOff className="w-5 h-5 text-primary" />
+                  </div>
+                </div>
+                <div className="flex-1">
+                  <p className="font-mono text-[9px] tracking-[0.3em] text-primary/60 uppercase mb-1">Novo Guia · Nível Iniciante</p>
+                  <p className="text-foreground font-semibold text-base mb-1">
+                    Compre Bitcoin por R$10 — <span className="text-primary">sem documento, sem rastro</span>
+                  </p>
+                  <p className="text-xs text-muted-foreground leading-relaxed">
+                    Tutorial passo a passo para comprar Bitcoin 100% anônimo via RoboSats. Sem CPF, sem selfie, sem exchange.
+                  </p>
+                </div>
+                <ArrowRight className="w-5 h-5 text-primary shrink-0 transition-transform group-hover:translate-x-1.5" />
+              </Link>
+            </motion.div>
+          </div>
+        </NobelSection>
+
         <NobelSection className="section-divider" delay={0.05}>
           <AlertBanner />
         </NobelSection>
