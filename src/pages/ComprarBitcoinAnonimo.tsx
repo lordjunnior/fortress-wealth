@@ -510,10 +510,10 @@ export default function ComprarBitcoinAnonimo() {
                   <div>
                     <h4 className="font-semibold text-foreground mb-1">2. Carteira Lightning (Sua "Conta" de Bitcoin)</h4>
                     <p className="text-sm text-muted-foreground leading-relaxed mb-2">
-                      Uma carteira Lightning é um aplicativo no seu celular que funciona como uma "conta bancária" de Bitcoin — mas sem banco. Você é o dono, ninguém pode bloquear, congelar ou confiscar.
+                      Uma carteira Lightning é um aplicativo no seu celular que funciona como uma "conta bancária" de Bitcoin, mas sem banco. Você é o dono, ninguém pode bloquear, congelar ou confiscar.
                     </p>
                     <p className="text-xs text-muted-foreground/70 mb-2">
-                      <strong className="text-foreground/80">Recomendação para iniciantes:</strong> <span className="text-primary">Phoenix Wallet</span> (Android/iOS). É a mais simples e confiável — baixe, abra, e pronto, sua carteira está criada em 30 segundos.
+                      <strong className="text-foreground/80">Recomendação para iniciantes:</strong> <span className="text-primary">Phoenix Wallet</span> (Android/iOS) para soberania total, ou <span className="text-primary">Wallet of Satoshi</span> para quem quer a experiência mais simples possível (custodial). <Link to="/lightning" className="text-primary/80 hover:underline underline-offset-2">Veja nosso guia completo de carteiras Lightning →</Link>
                     </p>
                     <p className="text-xs text-muted-foreground/60 italic">
                       Alternativas: Blixt Wallet, Zeus, Breez. Todas são gratuitas e não pedem seus dados.
