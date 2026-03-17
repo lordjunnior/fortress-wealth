@@ -792,8 +792,8 @@ export default function ComprarBitcoinAnonimo() {
               viewport={{ once: true }}
               className="text-center py-12 space-y-6"
             >
-              <p className="font-display text-3xl md:text-4xl font-bold tracking-tight">
-                Pronto para <span className="text-primary">assumir o controle</span>?
+              <p className="text-3xl md:text-4xl font-bold tracking-tight uppercase" style={{ fontFamily: "'Poppins', sans-serif" }}>
+                PRONTO PARA <span className="text-primary">ASSUMIR O CONTROLE</span>?
               </p>
               <p className="text-muted-foreground max-w-lg mx-auto leading-relaxed">
                 O primeiro passo é sempre o mais difícil, mas com R$10 e 30 minutos você quebra a maior barreira: o medo do desconhecido.
