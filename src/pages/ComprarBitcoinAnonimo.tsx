@@ -317,7 +317,7 @@ export default function ComprarBitcoinAnonimo() {
               custom={3} variants={fadeUp} initial="hidden" animate="visible"
               className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-8 leading-relaxed"
             >
-              R$10 é tudo que você precisa — sem CPF, sem selfie, sem banco.
+              R$10 é tudo que você precisa. Sem CPF, sem selfie, sem banco.
               Neste guia você vai comprar Bitcoin pela primeira vez usando uma ferramenta que{" "}
               <span className="text-foreground font-semibold">nenhuma exchange controla</span>.
             </motion.p>
