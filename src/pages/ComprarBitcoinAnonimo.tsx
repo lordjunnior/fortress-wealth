@@ -242,7 +242,7 @@ export default function ComprarBitcoinAnonimo() {
       </Helmet>
 
       <ScrollProgressBar />
-      <FloatingToc chapters={chapters} />
+      
       <ScrollToTop />
       <AppSidebar />
       <MobileNav />
