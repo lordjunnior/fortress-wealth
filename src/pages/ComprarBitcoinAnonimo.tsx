@@ -723,7 +723,7 @@ export default function ComprarBitcoinAnonimo() {
               title="Como a RoboSats Protege Você (Sistema de Escrow)"
               icon={Shield}
               image={escrowImg}
-              imageAlt="Smartphone com interface de chat criptografado e ícones de segurança — sistema escrow"
+              imageAlt="Cofre digital transparente simbolizando segurança em trocas P2P — sistema de escrow da RoboSats protegendo comprador e vendedor"
               index={4}
             >
               <p>
