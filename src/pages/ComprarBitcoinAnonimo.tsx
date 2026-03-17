@@ -480,7 +480,7 @@ export default function ComprarBitcoinAnonimo() {
               index={2}
             >
               <p className="mb-6">
-                Você só precisa de 2 ferramentas para começar — ambas são <strong className="text-foreground">gratuitas</strong> e levam menos de 10 minutos para configurar.
+                Você só precisa de 2 ferramentas para começar, ambas são <strong className="text-foreground">gratuitas</strong> e levam menos de 10 minutos para configurar.
               </p>
 
               {/* Item 1 */}
