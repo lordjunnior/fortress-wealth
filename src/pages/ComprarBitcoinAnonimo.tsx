@@ -640,7 +640,7 @@ export default function ComprarBitcoinAnonimo() {
                     <div className="p-3 rounded-sm bg-muted/10 border border-border/20">
                       <p className="text-sm text-foreground font-medium mb-1">🤖 Gerar Seu Robot</p>
                       <p className="text-xs text-muted-foreground leading-relaxed">
-                        Clique em "Generate Robot". O sistema cria um apelido aleatório e um avatar — essa é sua identidade na plataforma, não vinculada a nenhum dado pessoal. <strong className="text-foreground/80">IMPORTANTE:</strong> copie e salve o token que aparecer, ele é seu "login" para retomar negociações.
+                        Clique em "Generate Robot". O sistema cria um apelido aleatório e um avatar. Essa é sua identidade na plataforma, não vinculada a nenhum dado pessoal. <strong className="text-foreground/80">IMPORTANTE:</strong> copie e salve o token que aparecer, ele é seu "login" para retomar negociações.
                       </p>
                     </div>
                     <div className="flex items-start gap-2 p-3 rounded-sm bg-amber-500/[0.06] border border-amber-500/15">
