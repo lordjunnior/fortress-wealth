@@ -446,7 +446,7 @@ export default function ComprarBitcoinAnonimo() {
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 my-6">
                 {[
-                  { icon: UserX, label: "Maior Privacidade", desc: "Sem cadastro, sem e-mail, sem documentos — sua identidade é um robô aleatório." },
+                  { icon: UserX, label: "Maior Privacidade", desc: "Sem cadastro, sem e-mail, sem documentos. Sua identidade é um robô aleatório." },
                   { icon: Zap, label: "Via Lightning", desc: "Pagamentos instantâneos e com taxas quase zero, receba em segundos." },
                   { icon: Lock, label: "Escrow Seguro", desc: "Garantia automática: se o vendedor não cumprir, ele perde dinheiro, não você." },
                 ].map((item, i) => {
