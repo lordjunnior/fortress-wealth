@@ -531,6 +531,30 @@ export default function ComprarBitcoinAnonimo() {
               </div>
             </ChapterBlock>
 
+            {/* ── INFOGRÁFICO ROBOSATS PROTOCOL ── */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="relative overflow-hidden rounded-sm border border-primary/20 bg-card/40 backdrop-blur-sm"
+            >
+              <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
+              <div className="p-6 md:p-8">
+                <p className="font-mono text-[10px] tracking-[0.3em] text-primary uppercase font-bold mb-4">
+                  Visão Geral · RoboSats Protocol
+                </p>
+                <img
+                  src={infograficoImg}
+                  alt="Infográfico do Protocolo RoboSats: Mind Unlock, Mochila Digital, Perfil Fantasma (Robô) e Troca Soberana — 4 etapas para comprar Bitcoin com privacidade"
+                  className="w-full rounded-sm"
+                  loading="lazy"
+                />
+                <p className="text-xs text-muted-foreground/60 mt-4 text-center italic">
+                  Os 4 pilares do protocolo: desbloqueie a mente, prepare suas ferramentas, crie sua identidade fantasma e execute a troca soberana.
+                </p>
+              </div>
+            </motion.div>
+
             {/* ── CAP 4: TUTORIAL — 4 MACRO PASSOS EXPANSÍVEIS ── */}
             <section id="passo-a-passo" className="space-y-6">
               <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }}>
