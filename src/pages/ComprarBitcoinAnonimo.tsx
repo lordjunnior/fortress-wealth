@@ -694,7 +694,7 @@ export default function ComprarBitcoinAnonimo() {
                     <div className="p-3 rounded-sm bg-muted/10 border border-border/20">
                       <p className="text-sm text-foreground font-medium mb-1">⚡ Receber Satoshis</p>
                       <p className="text-xs text-muted-foreground leading-relaxed">
-                        Quando o vendedor confirmar o recebimento, a RoboSats libera automaticamente os satoshis para sua carteira Lightning. Em segundos, o saldo aparece na sua Phoenix Wallet. <strong className="text-foreground/80">Parabéns — você acabou de comprar Bitcoin com mais privacidade.</strong>
+                        Quando o vendedor confirmar o recebimento, a RoboSats libera automaticamente os satoshis para sua carteira Lightning. Em segundos, o saldo aparece na sua Phoenix Wallet. <strong className="text-foreground/80">Parabéns, você acabou de comprar Bitcoin com mais privacidade.</strong>
                       </p>
                     </div>
                     <div className="flex items-start gap-2 p-3 rounded-sm bg-amber-500/[0.06] border border-amber-500/15">
