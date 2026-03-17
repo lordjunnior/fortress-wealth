@@ -23,6 +23,7 @@ import p2pImg from "@/assets/robosats-p2p.jpg";
 import plataformaImg from "@/assets/robosats-plataforma.jpg";
 import escrowImg from "@/assets/robosats-escrow.jpg";
 import segurancaImg from "@/assets/robosats-seguranca.jpg";
+import infograficoImg from "@/assets/robosats-infografico.jpg";
 import sucessoImg from "@/assets/robosats-sucesso.jpg";
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
@@ -142,7 +143,7 @@ const ChapterBlock = ({
       </div>
 
       <div className="p-8 md:p-10 bg-card/60 backdrop-blur-sm border border-border/30 rounded-b-sm">
-        <motion.h3 custom={1} variants={fadeUp} className="text-2xl md:text-3xl font-bold tracking-tight text-foreground mb-6">
+        <motion.h3 custom={1} variants={fadeUp} className="text-2xl md:text-3xl font-bold tracking-tight text-foreground mb-6 uppercase" style={{ fontFamily: "'Poppins', sans-serif" }}>
           {title}
         </motion.h3>
         <motion.div custom={2} variants={fadeUp} className="space-y-4 text-muted-foreground leading-relaxed">
@@ -295,11 +296,11 @@ export default function ComprarBitcoinAnonimo() {
             {/* Title */}
             <motion.h1
               custom={2} variants={fadeUp} initial="hidden" animate="visible"
-              className="font-display text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-5 leading-[0.95]"
+              className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-5 leading-[0.95] uppercase" style={{ fontFamily: "'Poppins', sans-serif" }}
             >
-              Seu Primeiro Bitcoin{" "}
+              SEU PRIMEIRO BITCOIN{" "}
               <br className="hidden md:block" />
-              com <span className="text-primary">Mais Privacidade</span>
+              COM <span className="text-primary">MAIS PRIVACIDADE</span>
             </motion.h1>
 
             {/* Subtitle — pontuação corrigida: vírgulas em vez de pontos finais */}
@@ -531,6 +532,30 @@ export default function ComprarBitcoinAnonimo() {
               </div>
             </ChapterBlock>
 
+            {/* ── INFOGRÁFICO ROBOSATS PROTOCOL ── */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="relative overflow-hidden rounded-sm border border-primary/20 bg-card/40 backdrop-blur-sm"
+            >
+              <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
+              <div className="p-6 md:p-8">
+                <p className="font-mono text-[10px] tracking-[0.3em] text-primary uppercase font-bold mb-4">
+                  Visão Geral · RoboSats Protocol
+                </p>
+                <img
+                  src={infograficoImg}
+                  alt="Infográfico do Protocolo RoboSats: Mind Unlock, Mochila Digital, Perfil Fantasma (Robô) e Troca Soberana — 4 etapas para comprar Bitcoin com privacidade"
+                  className="w-full rounded-sm"
+                  loading="lazy"
+                />
+                <p className="text-xs text-muted-foreground/60 mt-4 text-center italic">
+                  Os 4 pilares do protocolo: desbloqueie a mente, prepare suas ferramentas, crie sua identidade fantasma e execute a troca soberana.
+                </p>
+              </div>
+            </motion.div>
+
             {/* ── CAP 4: TUTORIAL — 4 MACRO PASSOS EXPANSÍVEIS ── */}
             <section id="passo-a-passo" className="space-y-6">
               <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }}>
@@ -545,8 +570,8 @@ export default function ComprarBitcoinAnonimo() {
                   </motion.div>
                 </div>
                 <div className="p-8 md:p-10 bg-card/60 backdrop-blur-sm border border-border/30 rounded-b-sm mb-8">
-                  <motion.h3 custom={1} variants={fadeUp} className="text-2xl md:text-3xl font-bold tracking-tight text-foreground mb-3">
-                    4 Passos Para Sua Primeira Compra
+                  <motion.h3 custom={1} variants={fadeUp} className="text-2xl md:text-3xl font-bold tracking-tight text-foreground mb-3 uppercase" style={{ fontFamily: "'Poppins', sans-serif" }}>
+                    4 PASSOS PARA SUA PRIMEIRA COMPRA
                   </motion.h3>
                   <motion.p custom={2} variants={fadeUp} className="text-muted-foreground leading-relaxed">
                     Siga cada passo no seu ritmo. Se é sua primeira vez, vá com calma — <strong className="text-foreground">R$10 é suficiente para aprender sem risco.</strong>
@@ -770,8 +795,8 @@ export default function ComprarBitcoinAnonimo() {
             {/* ── FAQ ── */}
             <section id="faq" className="space-y-6">
               <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }}>
-                <motion.h3 custom={0} variants={fadeUp} className="text-2xl md:text-3xl font-bold tracking-tight text-foreground mb-2">
-                  Perguntas Frequentes
+                <motion.h3 custom={0} variants={fadeUp} className="text-2xl md:text-3xl font-bold tracking-tight text-foreground mb-2 uppercase" style={{ fontFamily: "'Poppins', sans-serif" }}>
+                  PERGUNTAS FREQUENTES
                 </motion.h3>
                 <motion.p custom={1} variants={fadeUp} className="text-muted-foreground text-sm mb-6">
                   As dúvidas mais comuns de quem está comprando Bitcoin pela primeira vez com mais privacidade.
@@ -792,8 +817,8 @@ export default function ComprarBitcoinAnonimo() {
               viewport={{ once: true }}
               className="text-center py-12 space-y-6"
             >
-              <p className="font-display text-3xl md:text-4xl font-bold tracking-tight">
-                Pronto para <span className="text-primary">assumir o controle</span>?
+              <p className="text-3xl md:text-4xl font-bold tracking-tight uppercase" style={{ fontFamily: "'Poppins', sans-serif" }}>
+                PRONTO PARA <span className="text-primary">ASSUMIR O CONTROLE</span>?
               </p>
               <p className="text-muted-foreground max-w-lg mx-auto leading-relaxed">
                 O primeiro passo é sempre o mais difícil, mas com R$10 e 30 minutos você quebra a maior barreira: o medo do desconhecido.
