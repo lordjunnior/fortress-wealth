@@ -756,7 +756,7 @@ export default function ComprarBitcoinAnonimo() {
               title="Cuidados Essenciais e Riscos Reais"
               icon={AlertTriangle}
               image={segurancaImg}
-              imageAlt="Escudo dourado com cadeado brilhando em âmbar sobre fundo escuro — cuidados essenciais e riscos reais na compra anônima de Bitcoin"
+              imageAlt="Escudo dourado com cadeado brilhando em âmbar sobre fundo escuro. Cuidados essenciais e riscos reais na compra de Bitcoin com privacidade"
               index={5}
             >
               <div className="space-y-4">
