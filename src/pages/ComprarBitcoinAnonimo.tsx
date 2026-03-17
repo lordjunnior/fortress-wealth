@@ -733,7 +733,7 @@ export default function ComprarBitcoinAnonimo() {
               index={4}
             >
               <p>
-                "Mas e se o vendedor pegar meu pagamento e não enviar os bitcoins?" — Esta é a pergunta mais importante, e a resposta é o que torna a RoboSats segura.
+                "Mas e se o vendedor pegar meu pagamento e não enviar os bitcoins?" Esta é a pergunta mais importante, e a resposta é o que torna a RoboSats segura.
               </p>
               <p>
                 A RoboSats usa um sistema chamado <strong className="text-foreground">escrow (garantia)</strong>. Funciona assim:
