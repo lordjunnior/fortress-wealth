@@ -534,7 +534,7 @@ export default function ComprarBitcoinAnonimo() {
                       <span className="text-[10px] font-mono tracking-wider text-muted-foreground/60 bg-muted/20 px-2 py-0.5 rounded-sm uppercase">Não obrigatório</span>
                     </div>
                     <p className="text-sm text-muted-foreground leading-relaxed">
-                      Na RoboSats, o vendedor define os métodos de pagamento aceitos. <strong className="text-foreground/80">Pix é o mais comum no Brasil</strong>, mas também existem vendedores que aceitam transferência bancária, criptomoedas ou até cash pessoalmente. Você escolhe a oferta que se encaixa na sua realidade — o Pix é uma opção, não uma exigência.
+                      Na RoboSats, o vendedor define os métodos de pagamento aceitos. <strong className="text-foreground/80">Pix é o mais comum no Brasil</strong>, mas também existem vendedores que aceitam transferência bancária, criptomoedas ou até cash pessoalmente. Você escolhe a oferta que se encaixa na sua realidade. O Pix é uma opção, não uma exigência.
                     </p>
                   </div>
                 </div>
