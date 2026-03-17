@@ -297,9 +297,9 @@ export default function ComprarBitcoinAnonimo() {
               custom={2} variants={fadeUp} initial="hidden" animate="visible"
               className="font-display text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-5 leading-[0.95]"
             >
-              Seu Primeiro Bitcoin{" "}
+              SEU PRIMEIRO BITCOIN{" "}
               <br className="hidden md:block" />
-              com <span className="text-primary">Mais Privacidade</span>
+              COM <span className="text-primary">MAIS PRIVACIDADE</span>
             </motion.h1>
 
             {/* Subtitle — pontuação corrigida: vírgulas em vez de pontos finais */}
