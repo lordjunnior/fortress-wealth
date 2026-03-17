@@ -593,7 +593,7 @@ export default function ComprarBitcoinAnonimo() {
                 <MacroStep
                   number={1}
                   title="Prepare Suas Ferramentas"
-                  summary="Instale o Tor Browser e configure sua carteira Lightning — leva menos de 10 minutos."
+                  summary="Instale o Tor Browser e configure sua carteira Lightning. Leva menos de 10 minutos."
                   icon={Download}
                   defaultOpen
                 >
