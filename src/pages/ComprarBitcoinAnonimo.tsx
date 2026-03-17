@@ -8,7 +8,7 @@ import {
   ShieldCheck, Clock, Handshake, FileCheck, Smartphone, ExternalLink
 } from "lucide-react";
 import ScrollProgressBar from "@/components/confisco/ScrollProgressBar";
-import FloatingToc from "@/components/confisco/FloatingToc";
+
 import ScrollToTop from "@/components/ScrollToTop";
 import SnippetBait from "@/components/SnippetBait";
 import RiskBlock from "@/components/RiskBlock";
