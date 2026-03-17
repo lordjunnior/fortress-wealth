@@ -472,6 +472,19 @@ const Confisco1990 = () => {
               >
                 Essa tecnologia se chama Bitcoin.
               </motion.p>
+
+              <motion.p
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 1.3 }}
+                className="text-muted-foreground max-w-lg mx-auto text-sm leading-relaxed"
+              >
+                O governo pode programar seu dinheiro, mas não pode programar o que ele não vê.{" "}
+                <Link to="/comprar-bitcoin-anonimo" className="text-primary font-semibold hover:underline underline-offset-4 transition-colors">
+                  Aprenda o Protocolo de Privacidade →
+                </Link>
+              </motion.p>
             </div>
           </motion.div>
 

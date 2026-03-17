@@ -268,6 +268,12 @@ export default function CbdcBrasil() {
               <div className="space-y-6 text-stone-400 leading-relaxed mb-10">
                 <p className="text-base">O DREX não é inevitável. Ele é inevitável <strong className="text-stone-100">para quem não se prepara</strong>. Para quem entende o jogo, existe Bitcoin, autocustódia, Lightning Network e jurisdições que respeitam a privacidade financeira.</p>
                 <p className="text-base">O DREX é a resposta do governo. O <strong className="text-stone-100">Bitcoin é a resposta do indivíduo</strong>.</p>
+                <p className="text-sm text-stone-400 mt-3">
+                  O governo pode programar seu dinheiro, mas não pode programar o que ele não vê.{" "}
+                  <Link to="/comprar-bitcoin-anonimo" className="text-amber-400 font-semibold hover:underline underline-offset-4 transition-colors">
+                    Aprenda o Protocolo de Privacidade →
+                  </Link>
+                </p>
               </div>
               <Link to="/autocustodia" className="inline-flex items-center justify-center gap-3 px-10 py-5 rounded-2xl font-bold uppercase text-sm tracking-[0.2em] bg-amber-500/15 border border-amber-500/25 text-amber-400 hover:bg-amber-500/25 transition-all">🔐 Aprender Autocustódia Agora</Link>
             </div>

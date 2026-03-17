@@ -197,6 +197,15 @@ const MacroStep = ({
       >
         <div className="px-6 pb-6 space-y-4 border-t border-border/20 pt-4">
           {children}
+          {/* Mobile-friendly CTA at thumb reach */}
+          <a
+            href="#pre-requisitos"
+            className="mt-4 w-full inline-flex items-center justify-center gap-3 py-4 px-6 rounded-sm border border-primary/30 bg-primary/[0.08] hover:bg-primary/[0.18] hover:border-primary/50 text-primary font-semibold tracking-wide text-sm transition-all duration-300 sm:hidden"
+          >
+            <Shield className="w-4 h-4" />
+            Assumir Meu Controle
+            <ArrowRight className="w-4 h-4" />
+          </a>
         </div>
       </motion.div>
     </motion.div>
@@ -261,7 +270,7 @@ export default function ComprarBitcoinAnonimo() {
           <motion.div className="absolute inset-0 z-0" style={{ y: heroY }}>
             <img
               src={heroImg}
-              alt="Pessoa segurando smartphone com interface Lightning Bitcoin em ambiente noturno"
+              alt="Mão segurando smartphone com carteira Lightning Network aberta em ambiente noturno urbano — privacidade financeira com Bitcoin"
               className="absolute inset-0 w-full h-full object-cover will-change-transform"
               style={{ filter: "brightness(0.3) saturate(0.85)" }}
             />
@@ -377,7 +386,7 @@ export default function ComprarBitcoinAnonimo() {
               title="Por Que Comprar Bitcoin com Mais Privacidade?"
               icon={EyeOff}
               image={anonimatoImg}
-              imageAlt="Câmera de vigilância em rua urbana noturna — conceito de privacidade financeira"
+              imageAlt="Câmera de vigilância monitorando rua urbana à noite — por que privacidade financeira importa na era digital"
               index={0}
             >
               <p>
@@ -428,7 +437,7 @@ export default function ComprarBitcoinAnonimo() {
               title="O Que é a RoboSats? (Explicado Para Leigos)"
               icon={Bot}
               image={plataformaImg}
-              imageAlt="Robô operando múltiplas telas com livro de ofertas Bitcoin — marketplace peer-to-peer"
+              imageAlt="Robô digital operando livro de ofertas peer-to-peer em múltiplas telas — interface da RoboSats para compra descentralizada de Bitcoin"
               index={1}
             >
               <p>
@@ -467,7 +476,7 @@ export default function ComprarBitcoinAnonimo() {
               title="Antes de Começar: 2 Itens Obrigatórios"
               icon={Download}
               image={prerequisitosImg}
-              imageAlt="Laptop com Tor Browser e carteira Lightning sobre mesa escura — ferramentas de privacidade"
+              imageAlt="Laptop aberto com Tor Browser e carteira Phoenix Lightning sobre mesa escura — ferramentas essenciais para comprar Bitcoin com privacidade"
               index={2}
             >
               <p className="mb-6">
@@ -560,7 +569,7 @@ export default function ComprarBitcoinAnonimo() {
             <section id="passo-a-passo" className="space-y-6">
               <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }}>
                 <div className="relative w-full h-56 md:h-72 overflow-hidden rounded-t-sm mb-0">
-                  <img src={p2pImg} alt="Troca peer-to-peer de Bitcoin — mão segurando moeda sob luz" className="w-full h-full object-cover" loading="lazy" />
+                  <img src={p2pImg} alt="Mão segurando moeda Bitcoin dourada sob luz de velas — troca peer-to-peer sem intermediários" className="w-full h-full object-cover" loading="lazy" />
                   <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background" />
                   <motion.div custom={0} variants={fadeUp} className="absolute top-6 left-6">
                     <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-sm bg-primary/20 backdrop-blur-md border border-primary/30 text-primary font-mono text-[10px] tracking-[0.2em] uppercase font-bold">
@@ -714,7 +723,7 @@ export default function ComprarBitcoinAnonimo() {
               title="Como a RoboSats Protege Você (Sistema de Escrow)"
               icon={Shield}
               image={escrowImg}
-              imageAlt="Smartphone com interface de chat criptografado e ícones de segurança — sistema escrow"
+              imageAlt="Cofre digital transparente simbolizando segurança em trocas P2P — sistema de escrow da RoboSats protegendo comprador e vendedor"
               index={4}
             >
               <p>
@@ -741,7 +750,7 @@ export default function ComprarBitcoinAnonimo() {
               title="Cuidados Essenciais e Riscos Reais"
               icon={AlertTriangle}
               image={segurancaImg}
-              imageAlt="Escudo com cadeado brilhando em âmbar sobre fundo escuro — segurança e precaução"
+              imageAlt="Escudo dourado com cadeado brilhando em âmbar sobre fundo escuro — cuidados essenciais e riscos reais na compra anônima de Bitcoin"
               index={5}
             >
               <div className="space-y-4">
@@ -770,7 +779,7 @@ export default function ComprarBitcoinAnonimo() {
               viewport={{ once: true }}
               className="relative w-full h-56 md:h-72 overflow-hidden rounded-sm"
             >
-              <img src={sucessoImg} alt="Confirmação de compra Bitcoin bem-sucedida com mais privacidade" className="w-full h-full object-cover" loading="lazy" />
+              <img src={sucessoImg} alt="Tela de smartphone exibindo confirmação de compra de Bitcoin bem-sucedida via Lightning Network — soberania financeira conquistada" className="w-full h-full object-cover" loading="lazy" />
               <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
               <div className="absolute bottom-6 left-6 right-6">
                 <p className="font-display text-2xl md:text-3xl font-bold text-foreground">
