@@ -437,7 +437,7 @@ export default function ComprarBitcoinAnonimo() {
               title="O Que é a RoboSats? (Explicado Para Leigos)"
               icon={Bot}
               image={plataformaImg}
-              imageAlt="Robô digital operando livro de ofertas peer-to-peer em múltiplas telas — interface da RoboSats para compra descentralizada de Bitcoin"
+              imageAlt="Robô digital operando livro de ofertas peer-to-peer em múltiplas telas. Interface da RoboSats para compra descentralizada de Bitcoin"
               index={1}
             >
               <p>
