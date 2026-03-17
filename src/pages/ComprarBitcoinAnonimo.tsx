@@ -569,7 +569,7 @@ export default function ComprarBitcoinAnonimo() {
             <section id="passo-a-passo" className="space-y-6">
               <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }}>
                 <div className="relative w-full h-56 md:h-72 overflow-hidden rounded-t-sm mb-0">
-                  <img src={p2pImg} alt="Troca peer-to-peer de Bitcoin — mão segurando moeda sob luz" className="w-full h-full object-cover" loading="lazy" />
+                  <img src={p2pImg} alt="Mão segurando moeda Bitcoin dourada sob luz de velas — troca peer-to-peer sem intermediários" className="w-full h-full object-cover" loading="lazy" />
                   <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background" />
                   <motion.div custom={0} variants={fadeUp} className="absolute top-6 left-6">
                     <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-sm bg-primary/20 backdrop-blur-md border border-primary/30 text-primary font-mono text-[10px] tracking-[0.2em] uppercase font-bold">
