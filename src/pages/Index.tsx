@@ -1,4 +1,6 @@
 import { useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { EyeOff, ArrowRight } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { gsap } from "gsap";
