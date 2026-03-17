@@ -23,6 +23,7 @@ import p2pImg from "@/assets/robosats-p2p.jpg";
 import plataformaImg from "@/assets/robosats-plataforma.jpg";
 import escrowImg from "@/assets/robosats-escrow.jpg";
 import segurancaImg from "@/assets/robosats-seguranca.jpg";
+import infograficoImg from "@/assets/robosats-infografico.jpg";
 import sucessoImg from "@/assets/robosats-sucesso.jpg";
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
