@@ -607,7 +607,7 @@ export default function ComprarBitcoinAnonimo() {
                     <div className="p-3 rounded-sm bg-muted/10 border border-border/20">
                       <p className="text-sm text-foreground font-medium mb-1">⚡ Carteira Lightning</p>
                       <p className="text-xs text-muted-foreground leading-relaxed">
-                        Baixe a Phoenix Wallet no seu celular, abra e pronto — sua carteira está criada. Sem cadastro, sem dados pessoais, sem banco.
+                        Baixe a <strong className="text-foreground/80">Phoenix Wallet</strong> (soberania total) ou a <strong className="text-foreground/80">Wallet of Satoshi</strong> (mais simples, custodial) no seu celular. Abra e pronto, sua carteira está criada. Sem cadastro, sem dados pessoais, sem banco. <Link to="/lightning" className="text-primary/80 hover:underline underline-offset-2">Veja todas as carteiras →</Link>
                       </p>
                     </div>
                     <div className="flex items-start gap-2 p-3 rounded-sm bg-amber-500/[0.06] border border-amber-500/15">
