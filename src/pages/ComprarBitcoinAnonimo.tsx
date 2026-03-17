@@ -295,7 +295,7 @@ export default function ComprarBitcoinAnonimo() {
             {/* Title */}
             <motion.h1
               custom={2} variants={fadeUp} initial="hidden" animate="visible"
-              className="font-display text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-5 leading-[0.95]"
+              className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-5 leading-[0.95] uppercase" style={{ fontFamily: "'Poppins', sans-serif" }}
             >
               SEU PRIMEIRO BITCOIN{" "}
               <br className="hidden md:block" />
