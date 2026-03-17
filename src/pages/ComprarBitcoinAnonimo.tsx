@@ -739,7 +739,7 @@ export default function ComprarBitcoinAnonimo() {
                 A RoboSats usa um sistema chamado <strong className="text-foreground">escrow (garantia)</strong>. Funciona assim:
               </p>
               <ol className="space-y-3 pl-4 list-decimal list-inside">
-                <li className="text-sm"><strong className="text-foreground">Antes da negociação:</strong> O vendedor deposita os bitcoins + fiança em um "cofre digital" controlado pela RoboSats — ele não tem acesso a esse dinheiro.</li>
+                <li className="text-sm"><strong className="text-foreground">Antes da negociação:</strong> O vendedor deposita os bitcoins + fiança em um "cofre digital" controlado pela RoboSats. Ele não tem acesso a esse dinheiro.</li>
                 <li className="text-sm"><strong className="text-foreground">Durante a negociação:</strong> Você faz o pagamento, e o dinheiro do vendedor continua travado no cofre.</li>
                 <li className="text-sm"><strong className="text-foreground">Após confirmação:</strong> Quando o vendedor confirma o recebimento, o cofre libera automaticamente os bitcoins para você.</li>
                 <li className="text-sm"><strong className="text-foreground">Se houver disputa:</strong> Se o vendedor não confirmar (tentativa de golpe), você abre uma disputa e um mediador analisa as evidências (comprovante) para decidir a favor de quem tem razão.</li>
