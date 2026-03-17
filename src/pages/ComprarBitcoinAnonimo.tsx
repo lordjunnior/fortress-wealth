@@ -374,7 +374,7 @@ export default function ComprarBitcoinAnonimo() {
               <div>
                 <p className="text-sm font-semibold text-foreground">Só de estar aqui, você já está à frente de 99% das pessoas.</p>
                 <p className="text-xs text-muted-foreground mt-1 leading-relaxed">
-                  A maioria nem sabe que pode comprar Bitcoin sem entregar seus dados. Você já está buscando controle — e isso muda tudo.
+                  A maioria nem sabe que pode comprar Bitcoin sem entregar seus dados. Você já está buscando controle, e isso muda tudo.
                 </p>
               </div>
             </motion.div>
