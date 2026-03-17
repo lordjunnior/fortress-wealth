@@ -583,7 +583,7 @@ export default function ComprarBitcoinAnonimo() {
                     4 PASSOS PARA SUA PRIMEIRA COMPRA
                   </motion.h3>
                   <motion.p custom={2} variants={fadeUp} className="text-muted-foreground leading-relaxed">
-                    Siga cada passo no seu ritmo. Se é sua primeira vez, vá com calma — <strong className="text-foreground">R$10 é suficiente para aprender sem risco.</strong>
+                    Siga cada passo no seu ritmo. Se é sua primeira vez, vá com calma. <strong className="text-foreground">R$10 é suficiente para aprender sem risco.</strong>
                   </motion.p>
                 </div>
               </motion.div>
