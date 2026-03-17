@@ -628,7 +628,13 @@ export default function ComprarBitcoinAnonimo() {
                     <div className="p-3 rounded-sm bg-muted/10 border border-border/20">
                       <p className="text-sm text-foreground font-medium mb-1">🌐 Acessar a RoboSats</p>
                       <p className="text-xs text-muted-foreground leading-relaxed">
-                        Na barra de endereço do Tor, cole o endereço .onion oficial da RoboSats. Ele é longo e estranho — isso é normal, endereços .onion são como "endereços secretos" que só funcionam no Tor. Salve nos favoritos para não precisar digitar novamente.
+                        Na barra de endereço do Tor, cole o endereço .onion oficial da RoboSats:
+                      </p>
+                      <p className="text-xs font-mono text-primary/90 bg-primary/[0.06] border border-primary/15 rounded-sm px-3 py-2 mt-2 break-all select-all">
+                        robosats6tkf3eva7x2voqso3a5wcorsnw34jveyrat2fgdszj3id.onion
+                      </p>
+                      <p className="text-xs text-muted-foreground/70 mt-2">
+                        Endereços .onion são "endereços secretos" que só funcionam no Tor. Salve nos favoritos para não precisar digitar novamente. Para fins de teste (menos privado), você pode acessar <a href="https://unsafe.robosats.com" target="_blank" rel="noopener noreferrer" className="text-primary/80 hover:underline underline-offset-2">unsafe.robosats.com</a> pelo navegador normal.
                       </p>
                     </div>
                     <div className="p-3 rounded-sm bg-muted/10 border border-border/20">
