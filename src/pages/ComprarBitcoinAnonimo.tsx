@@ -358,7 +358,7 @@ export default function ComprarBitcoinAnonimo() {
 
             {/* ── SNIPPET BAIT ── */}
             <SnippetBait
-              text="Para comprar Bitcoin com mais privacidade no Brasil em 2026, use a RoboSats via Tor Browser: instale uma carteira Lightning (Phoenix), acesse a plataforma .onion, gere um Robot ID, encontre uma oferta em BRL, deposite a fiança via Lightning, envie o pagamento ao vendedor e receba seus satoshis automaticamente — com menos exposição de dados pessoais."
+              text="Para comprar Bitcoin com mais privacidade no Brasil em 2026, use a RoboSats via Tor Browser: instale uma carteira Lightning (Phoenix ou Wallet of Satoshi), acesse a plataforma .onion, gere um Robot ID, encontre uma oferta em BRL, deposite a fiança via Lightning, envie o pagamento ao vendedor e receba seus satoshis automaticamente, com menos exposição de dados pessoais."
               cta="Leia o guia completo abaixo ↓"
               href="#por-que"
             />
