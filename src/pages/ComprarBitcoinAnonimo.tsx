@@ -270,7 +270,7 @@ export default function ComprarBitcoinAnonimo() {
           <motion.div className="absolute inset-0 z-0" style={{ y: heroY }}>
             <img
               src={heroImg}
-              alt="Mão segurando smartphone com carteira Lightning Network aberta em ambiente noturno urbano — privacidade financeira com Bitcoin"
+              alt="Mão segurando smartphone com carteira Lightning Network aberta em ambiente noturno urbano, privacidade financeira com Bitcoin"
               className="absolute inset-0 w-full h-full object-cover will-change-transform"
               style={{ filter: "brightness(0.3) saturate(0.85)" }}
             />
