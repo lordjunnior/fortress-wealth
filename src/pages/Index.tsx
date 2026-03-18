@@ -20,6 +20,7 @@ import WhyBitcoinSection from "@/components/WhyBitcoinSection";
 import FooterSection from "@/components/FooterSection";
 import QuoteCarousel from "@/components/QuoteCarousel";
 import BitcoinInsightsSection from "@/components/BitcoinInsightsSection";
+import ClosingManifesto from "@/components/ClosingManifesto";
 import NetworkTicker from "@/components/NetworkTicker";
 import CommandCenter from "@/components/CommandCenter";
 import SovereignTermModal from "@/components/SovereignTermModal";
@@ -382,6 +383,10 @@ const Index = () => {
 
         <NobelSection className="section-alt section-divider" delay={0.1}>
           <BitcoinInsightsSection />
+        </NobelSection>
+
+        <NobelSection className="section-divider" delay={0.1}>
+          <ClosingManifesto />
         </NobelSection>
 
         <NobelSection id="apoio" className="section-alt section-divider" delay={0.1}>
