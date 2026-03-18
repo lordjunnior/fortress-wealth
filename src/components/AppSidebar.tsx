@@ -145,6 +145,9 @@ const AppSidebar = () => {
             <span className="text-sm font-medium">{item.label}</span>
           </button>
         ))}
+
+        {/* Journey Map */}
+        <JourneyMap />
       </nav>
 
       {/* Lightning Support Button */}
