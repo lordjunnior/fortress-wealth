@@ -249,7 +249,7 @@ export default function ComprarBitcoinAnonimo() {
         <meta name="description" content="Aprenda a comprar Bitcoin com mais privacidade, sem KYC, a partir de R$10 usando RoboSats e Lightning Network. Tutorial passo a passo para iniciantes absolutos. Mais controle, menos exposição." />
         <meta name="keywords" content="comprar bitcoin anônimo, bitcoin sem kyc, robosats tutorial, bitcoin sem documento, comprar bitcoin pix, lightning network, bitcoin privacidade" />
         <link rel="canonical" href="https://lordjunnior.com.br/comprar-bitcoin-anonimo" />
-        <meta property="og:title" content="Comprar Bitcoin com Mais Privacidade por R$10 — Menos Exposição, Mais Controle" />
+        <meta property="og:title" content="Comprar Bitcoin com Mais Privacidade por R$10. Menos Exposição, Mais Controle" />
         <meta property="og:description" content="O guia definitivo para comprar Bitcoin com privacidade real. De R$10 a soberania financeira com menos exposição." />
         <meta property="og:type" content="article" />
         <meta property="og:url" content="https://lordjunnior.com.br/comprar-bitcoin-anonimo" />
@@ -270,7 +270,7 @@ export default function ComprarBitcoinAnonimo() {
           <motion.div className="absolute inset-0 z-0" style={{ y: heroY }}>
             <img
               src={heroImg}
-              alt="Mão segurando smartphone com carteira Lightning Network aberta em ambiente noturno urbano — privacidade financeira com Bitcoin"
+              alt="Mão segurando smartphone com carteira Lightning Network aberta em ambiente noturno urbano, privacidade financeira com Bitcoin"
               className="absolute inset-0 w-full h-full object-cover will-change-transform"
               style={{ filter: "brightness(0.3) saturate(0.85)" }}
             />
@@ -317,7 +317,7 @@ export default function ComprarBitcoinAnonimo() {
               custom={3} variants={fadeUp} initial="hidden" animate="visible"
               className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-8 leading-relaxed"
             >
-              R$10 é tudo que você precisa — sem CPF, sem selfie, sem banco.
+              R$10 é tudo que você precisa. Sem CPF, sem selfie, sem banco.
               Neste guia você vai comprar Bitcoin pela primeira vez usando uma ferramenta que{" "}
               <span className="text-foreground font-semibold">nenhuma exchange controla</span>.
             </motion.p>
@@ -358,7 +358,7 @@ export default function ComprarBitcoinAnonimo() {
 
             {/* ── SNIPPET BAIT ── */}
             <SnippetBait
-              text="Para comprar Bitcoin com mais privacidade no Brasil em 2026, use a RoboSats via Tor Browser: instale uma carteira Lightning (Phoenix), acesse a plataforma .onion, gere um Robot ID, encontre uma oferta em BRL, deposite a fiança via Lightning, envie o pagamento ao vendedor e receba seus satoshis automaticamente — com menos exposição de dados pessoais."
+              text="Para comprar Bitcoin com mais privacidade no Brasil em 2026, use a RoboSats via Tor Browser: instale uma carteira Lightning (Phoenix ou Wallet of Satoshi), acesse a plataforma .onion, gere um Robot ID, encontre uma oferta em BRL, deposite a fiança via Lightning, envie o pagamento ao vendedor e receba seus satoshis automaticamente, com menos exposição de dados pessoais."
               cta="Leia o guia completo abaixo ↓"
               href="#por-que"
             />
@@ -374,7 +374,7 @@ export default function ComprarBitcoinAnonimo() {
               <div>
                 <p className="text-sm font-semibold text-foreground">Só de estar aqui, você já está à frente de 99% das pessoas.</p>
                 <p className="text-xs text-muted-foreground mt-1 leading-relaxed">
-                  A maioria nem sabe que pode comprar Bitcoin sem entregar seus dados. Você já está buscando controle — e isso muda tudo.
+                  A maioria nem sabe que pode comprar Bitcoin sem entregar seus dados. Você já está buscando controle, e isso muda tudo.
                 </p>
               </div>
             </motion.div>
@@ -386,7 +386,7 @@ export default function ComprarBitcoinAnonimo() {
               title="Por Que Comprar Bitcoin com Mais Privacidade?"
               icon={EyeOff}
               image={anonimatoImg}
-              imageAlt="Câmera de vigilância monitorando rua urbana à noite — por que privacidade financeira importa na era digital"
+              imageAlt="Câmera de vigilância monitorando rua urbana à noite. Por que privacidade financeira importa na era digital"
               index={0}
             >
               <p>
@@ -437,7 +437,7 @@ export default function ComprarBitcoinAnonimo() {
               title="O Que é a RoboSats? (Explicado Para Leigos)"
               icon={Bot}
               image={plataformaImg}
-              imageAlt="Robô digital operando livro de ofertas peer-to-peer em múltiplas telas — interface da RoboSats para compra descentralizada de Bitcoin"
+              imageAlt="Robô digital operando livro de ofertas peer-to-peer em múltiplas telas. Interface da RoboSats para compra descentralizada de Bitcoin"
               index={1}
             >
               <p>
@@ -446,7 +446,7 @@ export default function ComprarBitcoinAnonimo() {
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 my-6">
                 {[
-                  { icon: UserX, label: "Maior Privacidade", desc: "Sem cadastro, sem e-mail, sem documentos — sua identidade é um robô aleatório." },
+                  { icon: UserX, label: "Maior Privacidade", desc: "Sem cadastro, sem e-mail, sem documentos. Sua identidade é um robô aleatório." },
                   { icon: Zap, label: "Via Lightning", desc: "Pagamentos instantâneos e com taxas quase zero, receba em segundos." },
                   { icon: Lock, label: "Escrow Seguro", desc: "Garantia automática: se o vendedor não cumprir, ele perde dinheiro, não você." },
                 ].map((item, i) => {
@@ -476,11 +476,11 @@ export default function ComprarBitcoinAnonimo() {
               title="Antes de Começar: 2 Itens Obrigatórios"
               icon={Download}
               image={prerequisitosImg}
-              imageAlt="Laptop aberto com Tor Browser e carteira Phoenix Lightning sobre mesa escura — ferramentas essenciais para comprar Bitcoin com privacidade"
+              imageAlt="Laptop aberto com Tor Browser e carteira Phoenix Lightning sobre mesa escura. Ferramentas essenciais para comprar Bitcoin com privacidade"
               index={2}
             >
               <p className="mb-6">
-                Você só precisa de 2 ferramentas para começar — ambas são <strong className="text-foreground">gratuitas</strong> e levam menos de 10 minutos para configurar.
+                Você só precisa de 2 ferramentas para começar, ambas são <strong className="text-foreground">gratuitas</strong> e levam menos de 10 minutos para configurar.
               </p>
 
               {/* Item 1 */}
@@ -510,10 +510,10 @@ export default function ComprarBitcoinAnonimo() {
                   <div>
                     <h4 className="font-semibold text-foreground mb-1">2. Carteira Lightning (Sua "Conta" de Bitcoin)</h4>
                     <p className="text-sm text-muted-foreground leading-relaxed mb-2">
-                      Uma carteira Lightning é um aplicativo no seu celular que funciona como uma "conta bancária" de Bitcoin — mas sem banco. Você é o dono, ninguém pode bloquear, congelar ou confiscar.
+                      Uma carteira Lightning é um aplicativo no seu celular que funciona como uma "conta bancária" de Bitcoin, mas sem banco. Você é o dono, ninguém pode bloquear, congelar ou confiscar.
                     </p>
                     <p className="text-xs text-muted-foreground/70 mb-2">
-                      <strong className="text-foreground/80">Recomendação para iniciantes:</strong> <span className="text-primary">Phoenix Wallet</span> (Android/iOS). É a mais simples e confiável — baixe, abra, e pronto, sua carteira está criada em 30 segundos.
+                      <strong className="text-foreground/80">Recomendação para iniciantes:</strong> <span className="text-primary">Phoenix Wallet</span> (Android/iOS) para soberania total, ou <span className="text-primary">Wallet of Satoshi</span> para quem quer a experiência mais simples possível (custodial). <Link to="/lightning" className="text-primary/80 hover:underline underline-offset-2">Veja nosso guia completo de carteiras Lightning →</Link>
                     </p>
                     <p className="text-xs text-muted-foreground/60 italic">
                       Alternativas: Blixt Wallet, Zeus, Breez. Todas são gratuitas e não pedem seus dados.
@@ -534,7 +534,7 @@ export default function ComprarBitcoinAnonimo() {
                       <span className="text-[10px] font-mono tracking-wider text-muted-foreground/60 bg-muted/20 px-2 py-0.5 rounded-sm uppercase">Não obrigatório</span>
                     </div>
                     <p className="text-sm text-muted-foreground leading-relaxed">
-                      Na RoboSats, o vendedor define os métodos de pagamento aceitos. <strong className="text-foreground/80">Pix é o mais comum no Brasil</strong>, mas também existem vendedores que aceitam transferência bancária, criptomoedas ou até cash pessoalmente. Você escolhe a oferta que se encaixa na sua realidade — o Pix é uma opção, não uma exigência.
+                      Na RoboSats, o vendedor define os métodos de pagamento aceitos. <strong className="text-foreground/80">Pix é o mais comum no Brasil</strong>, mas também existem vendedores que aceitam transferência bancária, criptomoedas ou até cash pessoalmente. Você escolhe a oferta que se encaixa na sua realidade. O Pix é uma opção, não uma exigência.
                     </p>
                   </div>
                 </div>
@@ -555,7 +555,7 @@ export default function ComprarBitcoinAnonimo() {
                 </p>
                 <img
                   src={infograficoImg}
-                  alt="Infográfico do Protocolo RoboSats: Mind Unlock, Mochila Digital, Perfil Fantasma (Robô) e Troca Soberana — 4 etapas para comprar Bitcoin com privacidade"
+                  alt="Infográfico do Protocolo RoboSats: Mind Unlock, Mochila Digital, Perfil Fantasma (Robô) e Troca Soberana. 4 etapas para comprar Bitcoin com privacidade"
                   className="w-full rounded-sm"
                   loading="lazy"
                 />
@@ -569,7 +569,7 @@ export default function ComprarBitcoinAnonimo() {
             <section id="passo-a-passo" className="space-y-6">
               <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }}>
                 <div className="relative w-full h-56 md:h-72 overflow-hidden rounded-t-sm mb-0">
-                  <img src={p2pImg} alt="Mão segurando moeda Bitcoin dourada sob luz de velas — troca peer-to-peer sem intermediários" className="w-full h-full object-cover" loading="lazy" />
+                  <img src={p2pImg} alt="Mão segurando moeda Bitcoin dourada sob luz de velas. Troca peer-to-peer sem intermediários" className="w-full h-full object-cover" loading="lazy" />
                   <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background" />
                   <motion.div custom={0} variants={fadeUp} className="absolute top-6 left-6">
                     <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-sm bg-primary/20 backdrop-blur-md border border-primary/30 text-primary font-mono text-[10px] tracking-[0.2em] uppercase font-bold">
@@ -583,7 +583,7 @@ export default function ComprarBitcoinAnonimo() {
                     4 PASSOS PARA SUA PRIMEIRA COMPRA
                   </motion.h3>
                   <motion.p custom={2} variants={fadeUp} className="text-muted-foreground leading-relaxed">
-                    Siga cada passo no seu ritmo. Se é sua primeira vez, vá com calma — <strong className="text-foreground">R$10 é suficiente para aprender sem risco.</strong>
+                    Siga cada passo no seu ritmo. Se é sua primeira vez, vá com calma. <strong className="text-foreground">R$10 é suficiente para aprender sem risco.</strong>
                   </motion.p>
                 </div>
               </motion.div>
@@ -593,7 +593,7 @@ export default function ComprarBitcoinAnonimo() {
                 <MacroStep
                   number={1}
                   title="Prepare Suas Ferramentas"
-                  summary="Instale o Tor Browser e configure sua carteira Lightning — leva menos de 10 minutos."
+                  summary="Instale o Tor Browser e configure sua carteira Lightning. Leva menos de 10 minutos."
                   icon={Download}
                   defaultOpen
                 >
@@ -607,12 +607,12 @@ export default function ComprarBitcoinAnonimo() {
                     <div className="p-3 rounded-sm bg-muted/10 border border-border/20">
                       <p className="text-sm text-foreground font-medium mb-1">⚡ Carteira Lightning</p>
                       <p className="text-xs text-muted-foreground leading-relaxed">
-                        Baixe a Phoenix Wallet no seu celular, abra e pronto — sua carteira está criada. Sem cadastro, sem dados pessoais, sem banco.
+                        Baixe a <strong className="text-foreground/80">Phoenix Wallet</strong> (soberania total) ou a <strong className="text-foreground/80">Wallet of Satoshi</strong> (mais simples, custodial) no seu celular. Abra e pronto, sua carteira está criada. Sem cadastro, sem dados pessoais, sem banco. <Link to="/lightning" className="text-primary/80 hover:underline underline-offset-2">Veja todas as carteiras →</Link>
                       </p>
                     </div>
                     <div className="flex items-start gap-2 p-3 rounded-sm bg-amber-500/[0.06] border border-amber-500/15">
                       <Zap className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
-                      <p className="text-xs text-amber-200/80 leading-relaxed">O Tor é mais lento que um navegador normal porque sua conexão passa por 3 servidores diferentes pelo mundo para proteger sua identidade — isso é esperado.</p>
+                      <p className="text-xs text-amber-200/80 leading-relaxed">O Tor é mais lento que um navegador normal porque sua conexão passa por 3 servidores diferentes pelo mundo para proteger sua identidade. Isso é esperado.</p>
                     </div>
                   </div>
                 </MacroStep>
@@ -621,20 +621,26 @@ export default function ComprarBitcoinAnonimo() {
                 <MacroStep
                   number={2}
                   title="Acesse a RoboSats e Crie Sua Identidade"
-                  summary="Entre na plataforma pelo Tor e gere seu Robot — sua identidade temporária e privada."
+                  summary="Entre na plataforma pelo Tor e gere seu Robot, sua identidade temporária e privada."
                   icon={Bot}
                 >
                   <div className="space-y-3">
                     <div className="p-3 rounded-sm bg-muted/10 border border-border/20">
                       <p className="text-sm text-foreground font-medium mb-1">🌐 Acessar a RoboSats</p>
                       <p className="text-xs text-muted-foreground leading-relaxed">
-                        Na barra de endereço do Tor, cole o endereço .onion oficial da RoboSats. Ele é longo e estranho — isso é normal, endereços .onion são como "endereços secretos" que só funcionam no Tor. Salve nos favoritos para não precisar digitar novamente.
+                        Na barra de endereço do Tor, cole o endereço .onion oficial da RoboSats:
+                      </p>
+                      <p className="text-xs font-mono text-primary/90 bg-primary/[0.06] border border-primary/15 rounded-sm px-3 py-2 mt-2 break-all select-all">
+                        robosats6tkf3eva7x2voqso3a5wcorsnw34jveyrat2fgdszj3id.onion
+                      </p>
+                      <p className="text-xs text-muted-foreground/70 mt-2">
+                        Endereços .onion são "endereços secretos" que só funcionam no Tor. Salve nos favoritos para não precisar digitar novamente. Para fins de teste (menos privado), você pode acessar <a href="https://unsafe.robosats.com" target="_blank" rel="noopener noreferrer" className="text-primary/80 hover:underline underline-offset-2">unsafe.robosats.com</a> pelo navegador normal.
                       </p>
                     </div>
                     <div className="p-3 rounded-sm bg-muted/10 border border-border/20">
                       <p className="text-sm text-foreground font-medium mb-1">🤖 Gerar Seu Robot</p>
                       <p className="text-xs text-muted-foreground leading-relaxed">
-                        Clique em "Generate Robot". O sistema cria um apelido aleatório e um avatar — essa é sua identidade na plataforma, não vinculada a nenhum dado pessoal. <strong className="text-foreground/80">IMPORTANTE:</strong> copie e salve o token que aparecer, ele é seu "login" para retomar negociações.
+                        Clique em "Generate Robot". O sistema cria um apelido aleatório e um avatar. Essa é sua identidade na plataforma, não vinculada a nenhum dado pessoal. <strong className="text-foreground/80">IMPORTANTE:</strong> copie e salve o token que aparecer, ele é seu "login" para retomar negociações.
                       </p>
                     </div>
                     <div className="flex items-start gap-2 p-3 rounded-sm bg-amber-500/[0.06] border border-amber-500/15">
@@ -661,12 +667,12 @@ export default function ComprarBitcoinAnonimo() {
                     <div className="p-3 rounded-sm bg-muted/10 border border-border/20">
                       <p className="text-sm text-foreground font-medium mb-1">✅ Aceitar e Depositar Fiança</p>
                       <p className="text-xs text-muted-foreground leading-relaxed">
-                        Encontrou uma oferta boa? Clique nela, defina o valor (comece com R$10-R$50), clique em "Take Order". A RoboSats vai pedir uma fiança (bond) via Lightning — geralmente 3% do valor. Abra sua carteira Phoenix, escaneie o QR Code e confirme. A fiança volta para você ao final da negociação.
+                        Encontrou uma oferta boa? Clique nela, defina o valor (comece com R$10-R$50), clique em "Take Order". A RoboSats vai pedir uma fiança (bond) via Lightning, geralmente 3% do valor. Abra sua carteira Phoenix, escaneie o QR Code e confirme. A fiança volta para você ao final da negociação.
                       </p>
                     </div>
                     <div className="flex items-start gap-2 p-3 rounded-sm bg-amber-500/[0.06] border border-amber-500/15">
                       <Zap className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
-                      <p className="text-xs text-amber-200/80 leading-relaxed">Prefira vendedores com muitas negociações concluídas (ícone de estrela). A fiança só é perdida se você abandonar a negociação no meio — ela é sua garantia de seriedade.</p>
+                      <p className="text-xs text-amber-200/80 leading-relaxed">Prefira vendedores com muitas negociações concluídas (ícone de estrela). A fiança só é perdida se você abandonar a negociação no meio. Ela é sua garantia de seriedade.</p>
                     </div>
                   </div>
                 </MacroStep>
@@ -688,7 +694,7 @@ export default function ComprarBitcoinAnonimo() {
                     <div className="p-3 rounded-sm bg-muted/10 border border-border/20">
                       <p className="text-sm text-foreground font-medium mb-1">⚡ Receber Satoshis</p>
                       <p className="text-xs text-muted-foreground leading-relaxed">
-                        Quando o vendedor confirmar o recebimento, a RoboSats libera automaticamente os satoshis para sua carteira Lightning. Em segundos, o saldo aparece na sua Phoenix Wallet. <strong className="text-foreground/80">Parabéns — você acabou de comprar Bitcoin com mais privacidade.</strong>
+                        Quando o vendedor confirmar o recebimento, a RoboSats libera automaticamente os satoshis para sua carteira Lightning. Em segundos, o saldo aparece na sua Phoenix Wallet. <strong className="text-foreground/80">Parabéns, você acabou de comprar Bitcoin com mais privacidade.</strong>
                       </p>
                     </div>
                     <div className="flex items-start gap-2 p-3 rounded-sm bg-amber-500/[0.06] border border-amber-500/15">
@@ -723,17 +729,17 @@ export default function ComprarBitcoinAnonimo() {
               title="Como a RoboSats Protege Você (Sistema de Escrow)"
               icon={Shield}
               image={escrowImg}
-              imageAlt="Cofre digital transparente simbolizando segurança em trocas P2P — sistema de escrow da RoboSats protegendo comprador e vendedor"
+              imageAlt="Cofre digital transparente simbolizando segurança em trocas P2P. Sistema de escrow da RoboSats protegendo comprador e vendedor"
               index={4}
             >
               <p>
-                "Mas e se o vendedor pegar meu pagamento e não enviar os bitcoins?" — Esta é a pergunta mais importante, e a resposta é o que torna a RoboSats segura.
+                "Mas e se o vendedor pegar meu pagamento e não enviar os bitcoins?" Esta é a pergunta mais importante, e a resposta é o que torna a RoboSats segura.
               </p>
               <p>
                 A RoboSats usa um sistema chamado <strong className="text-foreground">escrow (garantia)</strong>. Funciona assim:
               </p>
               <ol className="space-y-3 pl-4 list-decimal list-inside">
-                <li className="text-sm"><strong className="text-foreground">Antes da negociação:</strong> O vendedor deposita os bitcoins + fiança em um "cofre digital" controlado pela RoboSats — ele não tem acesso a esse dinheiro.</li>
+                <li className="text-sm"><strong className="text-foreground">Antes da negociação:</strong> O vendedor deposita os bitcoins + fiança em um "cofre digital" controlado pela RoboSats. Ele não tem acesso a esse dinheiro.</li>
                 <li className="text-sm"><strong className="text-foreground">Durante a negociação:</strong> Você faz o pagamento, e o dinheiro do vendedor continua travado no cofre.</li>
                 <li className="text-sm"><strong className="text-foreground">Após confirmação:</strong> Quando o vendedor confirma o recebimento, o cofre libera automaticamente os bitcoins para você.</li>
                 <li className="text-sm"><strong className="text-foreground">Se houver disputa:</strong> Se o vendedor não confirmar (tentativa de golpe), você abre uma disputa e um mediador analisa as evidências (comprovante) para decidir a favor de quem tem razão.</li>
@@ -750,16 +756,16 @@ export default function ComprarBitcoinAnonimo() {
               title="Cuidados Essenciais e Riscos Reais"
               icon={AlertTriangle}
               image={segurancaImg}
-              imageAlt="Escudo dourado com cadeado brilhando em âmbar sobre fundo escuro — cuidados essenciais e riscos reais na compra anônima de Bitcoin"
+              imageAlt="Escudo dourado com cadeado brilhando em âmbar sobre fundo escuro. Cuidados essenciais e riscos reais na compra de Bitcoin com privacidade"
               index={5}
             >
               <div className="space-y-4">
                 {[
-                  { title: "Comece Pequeno", desc: "Sua primeira compra deve ser de R$10 a R$50. Aprenda o processo antes de aumentar os valores — erros com R$10 são lições, erros com R$1.000 são prejuízo." },
+                  { title: "Comece Pequeno", desc: "Sua primeira compra deve ser de R$10 a R$50. Aprenda o processo antes de aumentar os valores. Erros com R$10 são lições, erros com R$1.000 são prejuízo." },
                   { title: "Nunca Compartilhe Seu Token Robot", desc: "O token é seu acesso à identidade na RoboSats. Se alguém tiver seu token, pode acessar suas negociações em andamento." },
-                  { title: "Verifique o Endereço .onion", desc: "Sempre acesse a RoboSats pelo endereço oficial. Sites falsos (phishing) podem parecer idênticos mas roubam suas fianças — confira o endereço caractere por caractere." },
+                  { title: "Verifique o Endereço .onion", desc: "Sempre acesse a RoboSats pelo endereço oficial. Sites falsos (phishing) podem parecer idênticos mas roubam suas fianças. Confira o endereço caractere por caractere." },
                   { title: "Não Negocie Fora da Plataforma", desc: "Se um vendedor pedir para continuar a conversa no Telegram ou WhatsApp, recuse. Fora da plataforma o escrow não funciona e você perde a proteção." },
-                  { title: "Backup da Carteira Lightning", desc: "Após receber os satoshis, faça backup da sua carteira Phoenix. Anote as 12 palavras de recuperação (seed) em papel e guarde em local seguro — se perder o celular, essas palavras são sua única forma de recuperar os bitcoins." },
+                  { title: "Backup da Carteira Lightning", desc: "Após receber os satoshis, faça backup da sua carteira Phoenix. Anote as 12 palavras de recuperação (seed) em papel e guarde em local seguro. Se perder o celular, essas palavras são sua única forma de recuperar os bitcoins." },
                 ].map((item, i) => (
                   <div key={i} className="flex items-start gap-3 p-4 rounded-sm border border-destructive/15 bg-destructive/[0.03]">
                     <AlertTriangle className="w-5 h-5 text-destructive shrink-0 mt-0.5" />
