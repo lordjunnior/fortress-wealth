@@ -110,7 +110,16 @@ const AppSidebar = () => {
       </div>
 
       {/* Navigation */}
-      <nav className="flex-1 px-3 py-4 space-y-1">
+      <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
+        {/* Por onde começar */}
+        <Link
+          to="/por-onde-comecar"
+          className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-all duration-200 group mb-1"
+        >
+          <Compass className="w-4 h-4 text-primary group-hover:text-primary transition-colors" />
+          <span className="text-sm font-medium">Por onde começar?</span>
+        </Link>
+
         {/* Protocolo Inicial - primeiro item */}
         <Link
           to="/protocolo-inicial"
