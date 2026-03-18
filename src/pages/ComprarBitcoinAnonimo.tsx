@@ -56,10 +56,10 @@ const articleSchema = {
   estimatedCost: { "@type": "MonetaryAmount", currency: "BRL", value: "10" },
   tool: [
     { "@type": "HowToTool", name: "Tor Browser" },
-    { "@type": "HowToTool", name: "Carteira Lightning (Phoenix, Blixt ou Zeus)" },
+    { "@type": "HowToTool", name: "Carteira Lightning (Wallet of Satoshi, Blixt ou Zeus)" },
   ],
   step: [
-    { "@type": "HowToStep", name: "Preparar ferramentas", text: "Instale o Tor Browser do site oficial torproject.org e baixe uma carteira Lightning como Phoenix Wallet no seu celular" },
+    { "@type": "HowToStep", name: "Preparar ferramentas", text: "Instale o Tor Browser do site oficial torproject.org e baixe a Wallet of Satoshi no seu celular" },
     { "@type": "HowToStep", name: "Acessar a RoboSats e criar identidade", text: "Abra o Tor Browser, acesse o endereço .onion da RoboSats e clique em Generate Robot para criar sua identidade temporária" },
     { "@type": "HowToStep", name: "Encontrar oferta e depositar fiança", text: "No livro de ofertas filtre por BRL, escolha um vendedor com boa reputação, aceite a ordem e deposite a fiança via Lightning" },
     { "@type": "HowToStep", name: "Pagar e receber seus satoshis", text: "Envie o pagamento ao vendedor pelo método combinado, confirme no chat e receba seus satoshis automaticamente via Lightning" },
@@ -99,6 +99,11 @@ const faqSchema = {
       "@type": "Question",
       name: "A RoboSats funciona no celular?",
       acceptedAnswer: { "@type": "Answer", text: "Sim. Você pode acessar a RoboSats pelo Tor Browser no Android, ou usar o Orbot + navegador no iOS. A interface é responsiva e funciona bem em telas menores." },
+    },
+    {
+      "@type": "Question",
+      name: "Por que usar a Wallet of Satoshi no RoboSats?",
+      acceptedAnswer: { "@type": "Answer", text: "A WoS é ideal para iniciantes por ser uma carteira de custódia Lightning simplificada. Ela permite que você receba seus primeiros R$ 10,00 do RoboSats instantaneamente, sem precisar entender de 'abertura de canais' ou 'liquidez'." },
     },
   ],
 };
@@ -358,7 +363,7 @@ export default function ComprarBitcoinAnonimo() {
 
             {/* ── SNIPPET BAIT ── */}
             <SnippetBait
-              text="Para comprar Bitcoin com mais privacidade no Brasil em 2026, use a RoboSats via Tor Browser: instale uma carteira Lightning (Phoenix ou Wallet of Satoshi), acesse a plataforma .onion, gere um Robot ID, encontre uma oferta em BRL, deposite a fiança via Lightning, envie o pagamento ao vendedor e receba seus satoshis automaticamente, com menos exposição de dados pessoais."
+              text="Para comprar Bitcoin com mais privacidade no Brasil em 2026, use a RoboSats via Tor Browser: instale a Wallet of Satoshi, acesse a plataforma .onion, gere um Robot ID, encontre uma oferta em BRL, deposite a fiança via Lightning, envie o pagamento ao vendedor e receba seus satoshis automaticamente, com menos exposição de dados pessoais."
               cta="Leia o guia completo abaixo ↓"
               href="#por-que"
             />
@@ -476,7 +481,7 @@ export default function ComprarBitcoinAnonimo() {
               title="Antes de Começar: 2 Itens Obrigatórios"
               icon={Download}
               image={prerequisitosImg}
-              imageAlt="Laptop aberto com Tor Browser e carteira Phoenix Lightning sobre mesa escura. Ferramentas essenciais para comprar Bitcoin com privacidade"
+              imageAlt="Laptop aberto com Tor Browser e Wallet of Satoshi sobre mesa escura. Ferramentas essenciais para comprar Bitcoin com privacidade"
               index={2}
             >
               <p className="mb-6">
@@ -513,7 +518,7 @@ export default function ComprarBitcoinAnonimo() {
                       Uma carteira Lightning é um aplicativo no seu celular que funciona como uma "conta bancária" de Bitcoin, mas sem banco. Você é o dono, ninguém pode bloquear, congelar ou confiscar.
                     </p>
                     <p className="text-xs text-muted-foreground/70 mb-2">
-                      <strong className="text-foreground/80">Recomendação para iniciantes:</strong> <span className="text-primary">Phoenix Wallet</span> (Android/iOS) para soberania total, ou <span className="text-primary">Wallet of Satoshi</span> para quem quer a experiência mais simples possível (custodial). <Link to="/lightning" className="text-primary/80 hover:underline underline-offset-2">Veja nosso guia completo de carteiras Lightning →</Link>
+                      <strong className="text-foreground/80">Recomendação para iniciantes:</strong> <span className="text-primary">Wallet of Satoshi</span> (Android/iOS). É a mais simples: baixe, abra, e pronto, sua carteira está criada em 30 segundos. Sem entender canais ou liquidez. <Link to="/lightning" className="text-primary/80 hover:underline underline-offset-2">Veja nosso guia completo de carteiras Lightning →</Link>
                     </p>
                     <p className="text-xs text-muted-foreground/60 italic">
                       Alternativas: Blixt Wallet, Zeus, Breez. Todas são gratuitas e não pedem seus dados.
@@ -607,7 +612,7 @@ export default function ComprarBitcoinAnonimo() {
                     <div className="p-3 rounded-sm bg-muted/10 border border-border/20">
                       <p className="text-sm text-foreground font-medium mb-1">⚡ Carteira Lightning</p>
                       <p className="text-xs text-muted-foreground leading-relaxed">
-                        Baixe a <strong className="text-foreground/80">Phoenix Wallet</strong> (soberania total) ou a <strong className="text-foreground/80">Wallet of Satoshi</strong> (mais simples, custodial) no seu celular. Abra e pronto, sua carteira está criada. Sem cadastro, sem dados pessoais, sem banco. <Link to="/lightning" className="text-primary/80 hover:underline underline-offset-2">Veja todas as carteiras →</Link>
+                        Baixe a <strong className="text-foreground/80">Wallet of Satoshi</strong> no seu celular. Abra e pronto, sua carteira está criada em 30 segundos. Sem cadastro, sem dados pessoais, sem banco. É a carteira Lightning mais simples para receber seus primeiros satoshis do RoboSats. <Link to="/lightning" className="text-primary/80 hover:underline underline-offset-2">Veja todas as carteiras →</Link>
                       </p>
                     </div>
                     <div className="flex items-start gap-2 p-3 rounded-sm bg-amber-500/[0.06] border border-amber-500/15">
@@ -667,7 +672,7 @@ export default function ComprarBitcoinAnonimo() {
                     <div className="p-3 rounded-sm bg-muted/10 border border-border/20">
                       <p className="text-sm text-foreground font-medium mb-1">✅ Aceitar e Depositar Fiança</p>
                       <p className="text-xs text-muted-foreground leading-relaxed">
-                        Encontrou uma oferta boa? Clique nela, defina o valor (comece com R$10-R$50), clique em "Take Order". A RoboSats vai pedir uma fiança (bond) via Lightning, geralmente 3% do valor. Abra sua carteira Phoenix, escaneie o QR Code e confirme. A fiança volta para você ao final da negociação.
+                        Encontrou uma oferta boa? Clique nela, defina o valor (comece com R$10-R$50), clique em "Take Order". A RoboSats vai pedir uma fiança (bond) via Lightning, geralmente 3% do valor. Abra sua Wallet of Satoshi, escaneie o QR Code e confirme. A fiança volta para você ao final da negociação.
                       </p>
                     </div>
                     <div className="flex items-start gap-2 p-3 rounded-sm bg-amber-500/[0.06] border border-amber-500/15">
@@ -694,7 +699,7 @@ export default function ComprarBitcoinAnonimo() {
                     <div className="p-3 rounded-sm bg-muted/10 border border-border/20">
                       <p className="text-sm text-foreground font-medium mb-1">⚡ Receber Satoshis</p>
                       <p className="text-xs text-muted-foreground leading-relaxed">
-                        Quando o vendedor confirmar o recebimento, a RoboSats libera automaticamente os satoshis para sua carteira Lightning. Em segundos, o saldo aparece na sua Phoenix Wallet. <strong className="text-foreground/80">Parabéns, você acabou de comprar Bitcoin com mais privacidade.</strong>
+                        Quando o vendedor confirmar o recebimento, a RoboSats libera automaticamente os satoshis para sua carteira Lightning. Em segundos, o saldo aparece na sua Wallet of Satoshi. <strong className="text-foreground/80">Parabéns, você acabou de comprar Bitcoin com mais privacidade.</strong>
                       </p>
                     </div>
                     <div className="flex items-start gap-2 p-3 rounded-sm bg-amber-500/[0.06] border border-amber-500/15">
@@ -717,7 +722,7 @@ export default function ComprarBitcoinAnonimo() {
               <div>
                 <p className="text-sm font-semibold text-foreground">Se você chegou até aqui, você já é diferente da maioria.</p>
                 <p className="text-xs text-muted-foreground mt-1 leading-relaxed">
-                  A maior parte das pessoas nem questiona o sistema. Você não só questionou — buscou uma alternativa real. Esse é o início da soberania.
+                  A maior parte das pessoas nem questiona o sistema. Você não só questionou, mas buscou uma alternativa real. Esse é o início da soberania.
                 </p>
               </div>
             </motion.div>
@@ -765,7 +770,7 @@ export default function ComprarBitcoinAnonimo() {
                   { title: "Nunca Compartilhe Seu Token Robot", desc: "O token é seu acesso à identidade na RoboSats. Se alguém tiver seu token, pode acessar suas negociações em andamento." },
                   { title: "Verifique o Endereço .onion", desc: "Sempre acesse a RoboSats pelo endereço oficial. Sites falsos (phishing) podem parecer idênticos mas roubam suas fianças. Confira o endereço caractere por caractere." },
                   { title: "Não Negocie Fora da Plataforma", desc: "Se um vendedor pedir para continuar a conversa no Telegram ou WhatsApp, recuse. Fora da plataforma o escrow não funciona e você perde a proteção." },
-                  { title: "Backup da Carteira Lightning", desc: "Após receber os satoshis, faça backup da sua carteira Phoenix. Anote as 12 palavras de recuperação (seed) em papel e guarde em local seguro. Se perder o celular, essas palavras são sua única forma de recuperar os bitcoins." },
+                  { title: "Backup da Carteira Lightning", desc: "Após receber os satoshis, faça backup da sua carteira. Se usa a Wallet of Satoshi, anote o e-mail de recuperação. Se migrar para uma carteira não-custodial, anote as 12 palavras de recuperação (seed) em papel e guarde em local seguro." },
                 ].map((item, i) => (
                   <div key={i} className="flex items-start gap-3 p-4 rounded-sm border border-destructive/15 bg-destructive/[0.03]">
                     <AlertTriangle className="w-5 h-5 text-destructive shrink-0 mt-0.5" />
@@ -785,13 +790,13 @@ export default function ComprarBitcoinAnonimo() {
               viewport={{ once: true }}
               className="relative w-full h-56 md:h-72 overflow-hidden rounded-sm"
             >
-              <img src={sucessoImg} alt="Tela de smartphone exibindo confirmação de compra de Bitcoin bem-sucedida via Lightning Network — soberania financeira conquistada" className="w-full h-full object-cover" loading="lazy" />
+              <img src={sucessoImg} alt="Tela de smartphone exibindo confirmação de compra de Bitcoin bem-sucedida via Lightning Network, soberania financeira conquistada" className="w-full h-full object-cover" loading="lazy" />
               <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
               <div className="absolute bottom-6 left-6 right-6">
                 <p className="font-display text-2xl md:text-3xl font-bold text-foreground">
                   Você agora tem <span className="text-primary">mais controle</span>.
                 </p>
-                <p className="text-sm text-muted-foreground mt-2">Seus primeiros satoshis estão na sua carteira — sem intermediários, sem permissão.</p>
+                <p className="text-sm text-muted-foreground mt-2">Seus primeiros satoshis estão na sua carteira. Sem intermediários, sem permissão.</p>
               </div>
             </motion.div>
 
@@ -855,7 +860,7 @@ export default function ComprarBitcoinAnonimo() {
                 </Link>
               </div>
               <p className="text-xs text-muted-foreground/50 italic mt-6">
-                "Quem controla as chaves, controla o futuro." — Este guia é educacional. Suas decisões financeiras são sua responsabilidade exclusiva.
+                "Quem controla as chaves, controla o futuro." Este guia é educacional. Suas decisões financeiras são sua responsabilidade exclusiva.
               </p>
             </motion.div>
 
