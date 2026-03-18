@@ -1,4 +1,5 @@
 import { motion, useScroll, useTransform } from "framer-motion";
+import DonationCTA from "@/components/DonationCTA";
 import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
@@ -992,6 +993,8 @@ export default function ComprarBitcoinAnonimo() {
                 "Quem controla as chaves, controla o futuro." Este guia é educacional. Suas decisões financeiras são sua responsabilidade exclusiva.
               </p>
             </motion.div>
+
+            <DonationCTA />
 
             {/* ── BACK ── */}
             <div className="pt-8 border-t border-border/20">

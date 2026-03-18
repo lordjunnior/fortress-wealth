@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import CinematicHero from '@/components/CinematicHero';
 import NoiseBackground from '@/components/NoiseBackground';
+import DonationCTA from '@/components/DonationCTA';
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 const fadeUp = {
@@ -1004,6 +1005,11 @@ export default function MobilidadeDeChaves() {
           </motion.div>
         </div>
       </section>
+
+      {/* Donation CTA */}
+      <div className="relative z-10 max-w-5xl mx-auto px-6 md:px-10">
+        <DonationCTA />
+      </div>
 
       {/* Seal */}
       <div className="relative z-10 max-w-6xl mx-auto px-6 py-8 border-t border-white/[0.04] text-right">

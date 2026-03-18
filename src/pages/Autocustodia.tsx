@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import DonationCTA from '@/components/DonationCTA';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion, useInView, useScroll, useTransform } from 'framer-motion';
@@ -637,6 +638,10 @@ export default function Autocustodia() {
                 Lord Junnior © 2026
               </p>
             </div>
+          </NobelSection>
+
+          <NobelSection>
+            <DonationCTA />
           </NobelSection>
         </div>
       </div>

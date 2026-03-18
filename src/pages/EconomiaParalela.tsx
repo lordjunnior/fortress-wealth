@@ -8,6 +8,7 @@ import {
 } from 'lucide-react';
 import CinematicHero from '@/components/CinematicHero';
 import ScrollToTop from '@/components/ScrollToTop';
+import DonationCTA from '@/components/DonationCTA';
 
 /* ─── SEO: meta keywords target ───
    economia paralela bitcoin, P2P bitcoin sem KYC, bisq exchange,
@@ -342,6 +343,8 @@ export default function EconomiaParalela() {
             </div>
           </motion.div>
         </motion.section>
+
+        <DonationCTA />
 
         {/* ─── FOOTER ─── */}
         <footer className="border-t border-white/[0.05] pt-12 text-center">
