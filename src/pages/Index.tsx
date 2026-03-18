@@ -198,7 +198,7 @@ const Index = () => {
   return (
     <div className="min-h-screen text-foreground pt-[62px] overflow-x-hidden">
       <Helmet>
-        <title>Seu dinheiro está derretendo — Lord Junnior | Soberania Individual</title>
+        <title>Seu dinheiro está derretendo | Lord Junnior · Soberania Individual</title>
         <meta name="description" content="Alfabetização monetária, autocustódia Bitcoin e estratégias de saída. A infraestrutura técnica e intelectual para quem decidiu parar de financiar o próprio roubo." />
         <link rel="canonical" href="https://lordjunnior.com.br/" />
         <meta property="og:title" content="Seu dinheiro está derretendo. A culpa não é do acaso." />
