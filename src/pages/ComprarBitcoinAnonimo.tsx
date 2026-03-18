@@ -672,7 +672,7 @@ export default function ComprarBitcoinAnonimo() {
                     <div className="p-3 rounded-sm bg-muted/10 border border-border/20">
                       <p className="text-sm text-foreground font-medium mb-1">✅ Aceitar e Depositar Fiança</p>
                       <p className="text-xs text-muted-foreground leading-relaxed">
-                        Encontrou uma oferta boa? Clique nela, defina o valor (comece com R$10-R$50), clique em "Take Order". A RoboSats vai pedir uma fiança (bond) via Lightning, geralmente 3% do valor. Abra sua carteira Phoenix, escaneie o QR Code e confirme. A fiança volta para você ao final da negociação.
+                        Encontrou uma oferta boa? Clique nela, defina o valor (comece com R$10-R$50), clique em "Take Order". A RoboSats vai pedir uma fiança (bond) via Lightning, geralmente 3% do valor. Abra sua Wallet of Satoshi, escaneie o QR Code e confirme. A fiança volta para você ao final da negociação.
                       </p>
                     </div>
                     <div className="flex items-start gap-2 p-3 rounded-sm bg-amber-500/[0.06] border border-amber-500/15">
