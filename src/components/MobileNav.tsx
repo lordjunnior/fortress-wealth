@@ -49,8 +49,13 @@ const MobileNav = () => {
         {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
       </button>
 
+      {/* Search trigger for mobile */}
+      <div className="lg:hidden fixed top-[46px] right-4 z-50">
+        <GlobalSearch />
+      </div>
+
       {open && (
-        <div className="absolute top-12 left-0 w-56 bg-card/95 backdrop-blur-xl border border-border rounded-lg p-3 space-y-1 shadow-2xl">
+        <div className="absolute top-12 left-0 w-56 bg-card/95 backdrop-blur-xl border border-border rounded-lg p-3 space-y-1 shadow-2xl max-h-[70vh] overflow-y-auto">
           {menuItems.map((item) => (
             <button
               key={item.label}
