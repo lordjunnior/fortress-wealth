@@ -481,7 +481,7 @@ export default function ComprarBitcoinAnonimo() {
               title="Antes de Começar: 2 Itens Obrigatórios"
               icon={Download}
               image={prerequisitosImg}
-              imageAlt="Laptop aberto com Tor Browser e carteira Phoenix Lightning sobre mesa escura. Ferramentas essenciais para comprar Bitcoin com privacidade"
+              imageAlt="Laptop aberto com Tor Browser e Wallet of Satoshi sobre mesa escura. Ferramentas essenciais para comprar Bitcoin com privacidade"
               index={2}
             >
               <p className="mb-6">
