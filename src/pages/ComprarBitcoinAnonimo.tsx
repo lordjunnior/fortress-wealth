@@ -289,6 +289,10 @@ export default function ComprarBitcoinAnonimo() {
           <motion.div style={{ opacity: heroOpacity }} className="relative z-10 px-6 md:px-12 pb-16 md:pb-20 max-w-4xl">
             {/* Breadcrumb */}
             <motion.div custom={0} variants={fadeUp} initial="hidden" animate="visible" className="flex items-center gap-2 mb-6">
+              <Link to="/" className="text-muted-foreground hover:text-primary transition-colors text-xs font-mono tracking-wider uppercase">
+                Início
+              </Link>
+              <span className="text-muted-foreground/40">/</span>
               <Link to="/bitcoin" className="text-muted-foreground hover:text-primary transition-colors text-xs font-mono tracking-wider uppercase">
                 Bitcoin
               </Link>
