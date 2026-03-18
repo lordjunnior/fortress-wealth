@@ -50,8 +50,8 @@ const chapters = [
 const articleSchema = {
   "@context": "https://schema.org",
   "@type": "HowTo",
-  name: "Como Comprar Bitcoin com Mais Privacidade por R$10 via RoboSats",
-  description: "Guia completo passo a passo para comprar Bitcoin com mais privacidade usando RoboSats via Tor Browser e Lightning Network. Para iniciantes absolutos.",
+  name: "Seu Primeiro Contato com Bitcoin na Prática por R$10 via RoboSats",
+  description: "Guia prático passo a passo para comprar Bitcoin usando RoboSats via Tor Browser e Lightning Network. Para iniciantes absolutos. Transparência total sobre privacidade.",
   totalTime: "PT30M",
   estimatedCost: { "@type": "MonetaryAmount", currency: "BRL", value: "10" },
   tool: [
