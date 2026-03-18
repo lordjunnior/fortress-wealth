@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { Menu, X, LayoutGrid, BookOpen, Headphones, Wrench, QrCode, Zap, Library, ShieldAlert, Shield, Globe } from "lucide-react";
+import { Menu, X, LayoutGrid, BookOpen, Headphones, Wrench, QrCode, Zap, Library, ShieldAlert, Shield, Globe, Compass, Search } from "lucide-react";
 import { useReadingProgress } from "@/hooks/useReadingProgress";
+import GlobalSearch from "@/components/GlobalSearch";
 
 const menuItems = [
+  { icon: Compass, label: "Por onde começar?", route: "/por-onde-comecar" },
   { icon: ShieldAlert, label: "Protocolo Inicial", route: "/protocolo-inicial", alert: true },
   { icon: LayoutGrid, label: "Manifesto", targetId: "manifesto" },
   { icon: BookOpen, label: "Educação", route: "/educacao" },
