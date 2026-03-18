@@ -722,7 +722,7 @@ export default function ComprarBitcoinAnonimo() {
               <div>
                 <p className="text-sm font-semibold text-foreground">Se você chegou até aqui, você já é diferente da maioria.</p>
                 <p className="text-xs text-muted-foreground mt-1 leading-relaxed">
-                  A maior parte das pessoas nem questiona o sistema. Você não só questionou — buscou uma alternativa real. Esse é o início da soberania.
+                  A maior parte das pessoas nem questiona o sistema. Você não só questionou, mas buscou uma alternativa real. Esse é o início da soberania.
                 </p>
               </div>
             </motion.div>
