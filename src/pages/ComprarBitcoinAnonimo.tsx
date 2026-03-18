@@ -796,7 +796,7 @@ export default function ComprarBitcoinAnonimo() {
                 <p className="font-display text-2xl md:text-3xl font-bold text-foreground">
                   Você agora tem <span className="text-primary">mais controle</span>.
                 </p>
-                <p className="text-sm text-muted-foreground mt-2">Seus primeiros satoshis estão na sua carteira — sem intermediários, sem permissão.</p>
+                <p className="text-sm text-muted-foreground mt-2">Seus primeiros satoshis estão na sua carteira. Sem intermediários, sem permissão.</p>
               </div>
             </motion.div>
 
