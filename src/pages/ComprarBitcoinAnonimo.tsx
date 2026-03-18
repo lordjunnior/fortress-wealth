@@ -860,7 +860,7 @@ export default function ComprarBitcoinAnonimo() {
                 </Link>
               </div>
               <p className="text-xs text-muted-foreground/50 italic mt-6">
-                "Quem controla as chaves, controla o futuro." — Este guia é educacional. Suas decisões financeiras são sua responsabilidade exclusiva.
+                "Quem controla as chaves, controla o futuro." Este guia é educacional. Suas decisões financeiras são sua responsabilidade exclusiva.
               </p>
             </motion.div>
 
