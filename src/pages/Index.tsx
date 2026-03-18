@@ -304,12 +304,12 @@ const Index = () => {
                   </div>
                 </div>
                 <div className="flex-1">
-                  <p className="font-mono text-[9px] tracking-[0.3em] text-primary/60 uppercase mb-1">Novo Guia · Nível Iniciante</p>
+                  <p className="font-mono text-[9px] tracking-[0.3em] text-destructive/80 uppercase mb-1">[ALERTA DE PRIVACIDADE]</p>
                   <p className="text-foreground font-semibold text-base mb-1 uppercase" style={{ fontFamily: "'Poppins', sans-serif" }}>
-                    COMPRE BITCOIN POR R$10 — <span className="text-primary">MAIS PRIVACIDADE, MAIS CONTROLE</span>
+                    QUER COMPRAR R$10 EM BTC?
                   </p>
                   <p className="text-xs text-muted-foreground leading-relaxed">
-                    Tutorial passo a passo para comprar Bitcoin com mais privacidade via RoboSats. Sem CPF, sem selfie, sem exchange.
+                    Use a <span className="text-primary font-semibold">Wallet of Satoshi</span> e o protocolo <span className="text-primary font-semibold">RoboSats</span> para ficar fora do radar.
                   </p>
                 </div>
                 <ArrowRight className="w-5 h-5 text-primary shrink-0 transition-transform group-hover:translate-x-1.5" />
