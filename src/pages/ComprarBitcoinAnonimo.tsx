@@ -761,11 +761,11 @@ export default function ComprarBitcoinAnonimo() {
             >
               <div className="space-y-4">
                 {[
-                  { title: "Comece Pequeno", desc: "Sua primeira compra deve ser de R$10 a R$50. Aprenda o processo antes de aumentar os valores — erros com R$10 são lições, erros com R$1.000 são prejuízo." },
+                  { title: "Comece Pequeno", desc: "Sua primeira compra deve ser de R$10 a R$50. Aprenda o processo antes de aumentar os valores. Erros com R$10 são lições, erros com R$1.000 são prejuízo." },
                   { title: "Nunca Compartilhe Seu Token Robot", desc: "O token é seu acesso à identidade na RoboSats. Se alguém tiver seu token, pode acessar suas negociações em andamento." },
-                  { title: "Verifique o Endereço .onion", desc: "Sempre acesse a RoboSats pelo endereço oficial. Sites falsos (phishing) podem parecer idênticos mas roubam suas fianças — confira o endereço caractere por caractere." },
+                  { title: "Verifique o Endereço .onion", desc: "Sempre acesse a RoboSats pelo endereço oficial. Sites falsos (phishing) podem parecer idênticos mas roubam suas fianças. Confira o endereço caractere por caractere." },
                   { title: "Não Negocie Fora da Plataforma", desc: "Se um vendedor pedir para continuar a conversa no Telegram ou WhatsApp, recuse. Fora da plataforma o escrow não funciona e você perde a proteção." },
-                  { title: "Backup da Carteira Lightning", desc: "Após receber os satoshis, faça backup da sua carteira Phoenix. Anote as 12 palavras de recuperação (seed) em papel e guarde em local seguro — se perder o celular, essas palavras são sua única forma de recuperar os bitcoins." },
+                  { title: "Backup da Carteira Lightning", desc: "Após receber os satoshis, faça backup da sua carteira Phoenix. Anote as 12 palavras de recuperação (seed) em papel e guarde em local seguro. Se perder o celular, essas palavras são sua única forma de recuperar os bitcoins." },
                 ].map((item, i) => (
                   <div key={i} className="flex items-start gap-3 p-4 rounded-sm border border-destructive/15 bg-destructive/[0.03]">
                     <AlertTriangle className="w-5 h-5 text-destructive shrink-0 mt-0.5" />
