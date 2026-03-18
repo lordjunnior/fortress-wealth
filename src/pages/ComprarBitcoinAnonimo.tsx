@@ -250,12 +250,12 @@ export default function ComprarBitcoinAnonimo() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Helmet>
-        <title>Como Comprar Bitcoin com Mais Privacidade por R$10 | Guia RoboSats 2026</title>
-        <meta name="description" content="Aprenda a comprar Bitcoin com mais privacidade, sem KYC, a partir de R$10 usando RoboSats e Lightning Network. Tutorial passo a passo para iniciantes absolutos. Mais controle, menos exposição." />
-        <meta name="keywords" content="comprar bitcoin anônimo, bitcoin sem kyc, robosats tutorial, bitcoin sem documento, comprar bitcoin pix, lightning network, bitcoin privacidade" />
+        <title>Seu Primeiro Contato com Bitcoin na Prática por R$10 | Guia RoboSats 2026</title>
+        <meta name="description" content="Guia prático para seu primeiro contato com Bitcoin a partir de R$10 usando RoboSats e Lightning Network. Tutorial passo a passo para iniciantes absolutos. Transparência total sobre privacidade e exposição." />
+        <meta name="keywords" content="comprar bitcoin, bitcoin sem kyc, robosats tutorial, bitcoin sem documento, comprar bitcoin pix, lightning network, bitcoin privacidade, wallet of satoshi" />
         <link rel="canonical" href="https://lordjunnior.com.br/comprar-bitcoin-anonimo" />
-        <meta property="og:title" content="Comprar Bitcoin com Mais Privacidade por R$10. Menos Exposição, Mais Controle" />
-        <meta property="og:description" content="O guia definitivo para comprar Bitcoin com privacidade real. De R$10 a soberania financeira com menos exposição." />
+        <meta property="og:title" content="Seu Primeiro Contato com Bitcoin na Prática por R$10. Transparência Total." />
+        <meta property="og:description" content="Guia prático para comprar Bitcoin com R$10 via RoboSats. Sem promessas falsas, com aviso claro sobre exposição." />
         <meta property="og:type" content="article" />
         <meta property="og:url" content="https://lordjunnior.com.br/comprar-bitcoin-anonimo" />
         <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>
