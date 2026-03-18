@@ -355,7 +355,7 @@ export default function ComprarBitcoinAnonimo() {
                 <div>
                   <p className="text-sm font-semibold text-amber-300 mb-1">Aviso Legal e Educacional</p>
                   <p className="text-xs text-muted-foreground leading-relaxed">
-                    Este conteúdo é <strong className="text-foreground/80">estritamente educacional</strong> e não constitui recomendação financeira, fiscal ou jurídica. O autor não se responsabiliza por decisões individuais tomadas com base neste material. A compra peer-to-peer de Bitcoin entre pessoas físicas é legal no Brasil, mas cada indivíduo é responsável por suas obrigações tributárias e pelo cumprimento das normas vigentes. Ao seguir este guia, você assume total responsabilidade pelas suas escolhas.
+                    ⚠️ Este conteúdo é <strong className="text-foreground/80">estritamente educacional</strong>. Criptomoedas envolvem riscos. Faça sua própria pesquisa. O autor não se responsabiliza por decisões individuais tomadas com base neste material. A compra peer-to-peer de Bitcoin entre pessoas físicas é legal no Brasil, mas cada indivíduo é responsável por suas obrigações tributárias e pelo cumprimento das normas vigentes. Ao seguir este guia, você assume total responsabilidade pelas suas escolhas.
                   </p>
                 </div>
               </div>
