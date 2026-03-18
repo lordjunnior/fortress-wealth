@@ -1,8 +1,10 @@
-import { Instagram, Youtube, Twitter, Github, LayoutGrid, BookOpen, Headphones, Wrench, QrCode, Zap, Library, ShieldAlert, Shield, Globe } from "lucide-react";
+import { Instagram, Youtube, Twitter, Github, LayoutGrid, BookOpen, Headphones, Wrench, QrCode, Zap, Library, ShieldAlert, Shield, Globe, Compass } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useNavigate, useLocation } from "react-router-dom";
 import profilePhoto from "@/assets/profile-photo.jpg";
 import ReadingLevelIndicator from "@/components/ReadingLevelIndicator";
+import GlobalSearch from "@/components/GlobalSearch";
+import JourneyMap from "@/components/JourneyMap";
 
 interface MenuItem {
   icon: typeof LayoutGrid;
