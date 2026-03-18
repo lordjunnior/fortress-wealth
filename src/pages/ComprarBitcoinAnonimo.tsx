@@ -355,7 +355,7 @@ export default function ComprarBitcoinAnonimo() {
                 <div>
                   <p className="text-sm font-semibold text-amber-300 mb-1">Aviso Legal e Educacional</p>
                   <p className="text-xs text-muted-foreground leading-relaxed">
-                    Este conteúdo é <strong className="text-foreground/80">estritamente educacional</strong> e não constitui recomendação financeira, fiscal ou jurídica. O autor não se responsabiliza por decisões individuais tomadas com base neste material. A compra peer-to-peer de Bitcoin entre pessoas físicas é legal no Brasil, mas cada indivíduo é responsável por suas obrigações tributárias e pelo cumprimento das normas vigentes. Ao seguir este guia, você assume total responsabilidade pelas suas escolhas.
+                    ⚠️ Este conteúdo é <strong className="text-foreground/80">estritamente educacional</strong>. Criptomoedas envolvem riscos. Faça sua própria pesquisa. O autor não se responsabiliza por decisões individuais tomadas com base neste material. A compra peer-to-peer de Bitcoin entre pessoas físicas é legal no Brasil, mas cada indivíduo é responsável por suas obrigações tributárias e pelo cumprimento das normas vigentes. Ao seguir este guia, você assume total responsabilidade pelas suas escolhas.
                   </p>
                 </div>
               </div>
@@ -499,9 +499,13 @@ export default function ComprarBitcoinAnonimo() {
                     <p className="text-sm text-muted-foreground leading-relaxed mb-2">
                       O Tor Browser é um navegador gratuito que esconde seu endereço IP (sua "localização digital"). É o mesmo navegador usado por jornalistas, ativistas e denunciantes no mundo inteiro para se proteger de governos autoritários.
                     </p>
-                    <p className="text-xs text-muted-foreground/70">
-                      <strong className="text-foreground/80">Onde baixar:</strong> Vá em <span className="text-primary font-mono">torproject.org</span> e clique em "Download". Instale como qualquer programa normal. No Android, procure "Tor Browser" na Play Store.
+                    <p className="text-xs text-muted-foreground/70 mb-2">
+                      <strong className="text-foreground/80">Onde baixar:</strong> Acesse o site oficial e clique em "Download". Instale como qualquer programa normal. No Android, procure "Tor Browser" na Play Store.
                     </p>
+                    <a href="https://www.torproject.org/download/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs text-primary hover:underline underline-offset-2 font-mono">
+                      <ExternalLink className="w-3 h-3" />
+                      torproject.org/download
+                    </a>
                   </div>
                 </div>
               </div>
@@ -641,6 +645,10 @@ export default function ComprarBitcoinAnonimo() {
                       <p className="text-xs text-muted-foreground/70 mt-2">
                         Endereços .onion são "endereços secretos" que só funcionam no Tor. Salve nos favoritos para não precisar digitar novamente. Para fins de teste (menos privado), você pode acessar <a href="https://unsafe.robosats.com" target="_blank" rel="noopener noreferrer" className="text-primary/80 hover:underline underline-offset-2">unsafe.robosats.com</a> pelo navegador normal.
                       </p>
+                      <a href="https://learn.robosats.org/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs text-primary hover:underline underline-offset-2 font-mono mt-2">
+                        <ExternalLink className="w-3 h-3" />
+                        learn.robosats.org (Documentação oficial)
+                      </a>
                     </div>
                     <div className="p-3 rounded-sm bg-muted/10 border border-border/20">
                       <p className="text-sm text-foreground font-medium mb-1">🤖 Gerar Seu Robot</p>
