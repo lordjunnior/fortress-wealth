@@ -790,7 +790,7 @@ export default function ComprarBitcoinAnonimo() {
               viewport={{ once: true }}
               className="relative w-full h-56 md:h-72 overflow-hidden rounded-sm"
             >
-              <img src={sucessoImg} alt="Tela de smartphone exibindo confirmação de compra de Bitcoin bem-sucedida via Lightning Network — soberania financeira conquistada" className="w-full h-full object-cover" loading="lazy" />
+              <img src={sucessoImg} alt="Tela de smartphone exibindo confirmação de compra de Bitcoin bem-sucedida via Lightning Network, soberania financeira conquistada" className="w-full h-full object-cover" loading="lazy" />
               <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
               <div className="absolute bottom-6 left-6 right-6">
                 <p className="font-display text-2xl md:text-3xl font-bold text-foreground">
