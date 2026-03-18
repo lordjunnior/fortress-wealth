@@ -645,6 +645,10 @@ export default function ComprarBitcoinAnonimo() {
                       <p className="text-xs text-muted-foreground/70 mt-2">
                         Endereços .onion são "endereços secretos" que só funcionam no Tor. Salve nos favoritos para não precisar digitar novamente. Para fins de teste (menos privado), você pode acessar <a href="https://unsafe.robosats.com" target="_blank" rel="noopener noreferrer" className="text-primary/80 hover:underline underline-offset-2">unsafe.robosats.com</a> pelo navegador normal.
                       </p>
+                      <a href="https://learn.robosats.org/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs text-primary hover:underline underline-offset-2 font-mono mt-2">
+                        <ExternalLink className="w-3 h-3" />
+                        learn.robosats.org (Documentação oficial)
+                      </a>
                     </div>
                     <div className="p-3 rounded-sm bg-muted/10 border border-border/20">
                       <p className="text-sm text-foreground font-medium mb-1">🤖 Gerar Seu Robot</p>
