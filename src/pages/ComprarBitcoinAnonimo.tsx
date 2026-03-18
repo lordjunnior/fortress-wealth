@@ -312,19 +312,28 @@ export default function ComprarBitcoinAnonimo() {
               custom={2} variants={fadeUp} initial="hidden" animate="visible"
               className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-5 leading-[0.95] uppercase" style={{ fontFamily: "'Poppins', sans-serif" }}
             >
-              SEU PRIMEIRO BITCOIN{" "}
+              SEU PRIMEIRO CONTATO{" "}
               <br className="hidden md:block" />
-              COM <span className="text-primary">MAIS PRIVACIDADE</span>
+              COM <span className="text-primary">BITCOIN NA PRÁTICA</span>
             </motion.h1>
 
-            {/* Subtitle — pontuação corrigida: vírgulas em vez de pontos finais */}
+            {/* Subtitle */}
             <motion.p
               custom={3} variants={fadeUp} initial="hidden" animate="visible"
-              className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-8 leading-relaxed"
+              className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-5 leading-relaxed"
             >
-              R$10 é tudo que você precisa. Sem CPF, sem selfie, sem banco.
-              Neste guia você vai comprar Bitcoin pela primeira vez usando uma ferramenta que{" "}
-              <span className="text-foreground font-semibold">nenhuma exchange controla</span>.
+              R$10 é tudo que você precisa para entender como funciona.
+              Sem complicação. Direto ao ponto.
+              Você vai usar uma ferramenta que não depende de exchange.{" "}
+              <span className="text-foreground font-semibold">E começar a enxergar o sistema com outros olhos.</span>
+            </motion.p>
+
+            {/* Sub-hero */}
+            <motion.p
+              custom={3.5} variants={fadeUp} initial="hidden" animate="visible"
+              className="text-sm text-muted-foreground/80 max-w-xl mb-8 leading-relaxed"
+            >
+              Este guia é para quem quer sair da teoria e ver na prática. Mesmo que ainda não esteja no nível ideal de privacidade.
             </motion.p>
 
             {/* CTA */}
@@ -333,12 +342,12 @@ export default function ComprarBitcoinAnonimo() {
                 href="#pre-requisitos"
                 className="group inline-flex items-center gap-3 py-4 px-8 rounded-sm border border-primary/30 bg-primary/[0.08] hover:bg-primary/[0.18] hover:border-primary/50 text-primary font-semibold tracking-wide text-sm transition-all duration-300"
               >
-                <Shield className="w-4 h-4" />
-                Assumir Meu Controle Agora
+                <Zap className="w-4 h-4" />
+                COMEÇAR AGORA COM R$10
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1.5" />
               </a>
               <span className="font-mono text-[10px] tracking-widest text-muted-foreground/50 uppercase">
-                Tempo estimado: 30 min · Custo: R$10
+                Entender na prática, mesmo que ainda não seja o cenário perfeito.
               </span>
             </motion.div>
           </motion.div>
