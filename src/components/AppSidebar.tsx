@@ -91,6 +91,11 @@ const AppSidebar = () => {
         </div>
       </div>
 
+      {/* Search */}
+      <div className="px-3 py-2 border-b border-border/50">
+        <GlobalSearch />
+      </div>
+
       {/* Reading Level */}
       <ReadingLevelIndicator />
 
