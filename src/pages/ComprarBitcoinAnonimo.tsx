@@ -357,6 +357,114 @@ export default function ComprarBitcoinAnonimo() {
         <main className="relative z-10 px-5 md:px-8 lg:px-12 pb-20">
           <div className="max-w-4xl mx-auto space-y-16 md:space-y-20">
 
+            {/* ── BLOCO DE ALERTA MÁXIMO: ACIMA DA DOBRA ── */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.96 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, ease: APPLE_EASE }}
+              className="relative p-6 md:p-8 rounded-sm border-2 border-destructive/60 bg-destructive/[0.06] backdrop-blur-sm overflow-hidden"
+              style={{ boxShadow: "0 0 40px rgba(220,38,38,0.12), 0 0 80px rgba(220,38,38,0.06)" }}
+            >
+              {/* Animated top bar */}
+              <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-destructive via-destructive/80 to-destructive animate-pulse" />
+
+              {/* Header */}
+              <div className="flex items-center gap-3 mb-5">
+                <div className="relative">
+                  <div className="absolute inset-0 rounded-full bg-destructive/40 animate-[ping_2s_ease-in-out_infinite]" />
+                  <AlertTriangle className="relative w-6 h-6 text-destructive" />
+                </div>
+                <span className="font-mono text-xs md:text-sm tracking-[0.15em] text-destructive uppercase font-black">
+                  🚨 ATENÇÃO ANTES DE CONTINUAR
+                </span>
+              </div>
+
+              <div className="space-y-4 text-sm md:text-base leading-relaxed">
+                <p className="text-foreground font-semibold">
+                  Se você chegou até aqui, precisa entender uma coisa com clareza:
+                </p>
+                <p className="text-foreground">
+                  Este site é focado em <span className="text-destructive font-black uppercase">AUTOCUSTÓDIA</span> e <span className="text-destructive font-black uppercase">PRIVACIDADE</span>.
+                  E isso significa evitar qualquer exposição desnecessária.
+                </p>
+                <p className="text-muted-foreground">
+                  O método mostrado neste guia pode envolver formas de pagamento ligadas ao sistema tradicional, como o PIX.
+                </p>
+
+                {/* Destaque máximo */}
+                <div className="flex items-start gap-3 p-4 rounded-sm border border-destructive/40 bg-destructive/[0.08]">
+                  <Eye className="w-5 h-5 text-destructive shrink-0 mt-0.5" />
+                  <p className="text-foreground font-bold">
+                    👉 Isso NÃO é privado. Simples assim.
+                    <span className="block text-muted-foreground font-normal mt-1">
+                      Se você utilizar esse tipo de método, existe exposição de dados. Não importa o resto da operação.
+                    </span>
+                  </p>
+                </div>
+
+                <p className="text-muted-foreground">
+                  Este guia existe por um único motivo:
+                </p>
+                <p className="text-foreground font-semibold">
+                  👉 Foi extremamente solicitado por pessoas que acompanham meu conteúdo.
+                  <span className="block text-muted-foreground font-normal mt-1">
+                    E muitas delas deixam claro que não se importam com esse nível de exposição no início.
+                  </span>
+                </p>
+
+                <div className="h-px w-full bg-destructive/20 my-2" />
+
+                <p className="text-foreground">
+                  Então aqui vai o ponto mais importante:
+                </p>
+
+                <div className="flex items-start gap-3 p-4 rounded-sm border border-destructive/40 bg-destructive/[0.08]">
+                  <ShieldCheck className="w-5 h-5 text-destructive shrink-0 mt-0.5" />
+                  <div>
+                    <p className="text-destructive font-black uppercase">
+                      Se você busca PRIVACIDADE REAL, este não é o caminho ideal.
+                    </p>
+                    <p className="text-muted-foreground mt-1">
+                      Se você quer apenas entender como funciona e dar o primeiro passo com simplicidade, então siga consciente.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="h-px w-full bg-destructive/20 my-2" />
+
+                <p className="text-foreground font-semibold text-base md:text-lg">
+                  Eu não incentivo exposição.{" "}
+                  <span className="text-primary">Eu ensino controle.</span>
+                </p>
+                <p className="text-muted-foreground text-xs font-mono tracking-wider uppercase">
+                  A decisão é sua.
+                </p>
+              </div>
+
+              {/* Bottom accent */}
+              <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-gradient-to-r from-destructive via-destructive/80 to-destructive animate-pulse" />
+            </motion.div>
+
+            {/* ── BLOCO DE REFORÇO PNL ── */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="flex items-start gap-4 p-5 rounded-sm border border-primary/20 bg-primary/[0.04]"
+            >
+              <Shield className="w-7 h-7 text-primary shrink-0 mt-0.5" />
+              <div className="space-y-2">
+                <p className="text-sm font-semibold text-foreground">Existe uma diferença entre começar e fazer do jeito ideal.</p>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Aqui, você está começando. Com o tempo, você ajusta, melhora e evolui.
+                </p>
+                <p className="text-sm text-foreground font-semibold">
+                  👉 O importante é não ficar parado.
+                </p>
+              </div>
+            </motion.div>
+
             {/* ── DISCLAIMER JURÍDICO ── */}
             <div className="p-5 rounded-sm border border-amber-500/25 bg-amber-500/[0.04] backdrop-blur-sm">
               <div className="flex items-start gap-3">
