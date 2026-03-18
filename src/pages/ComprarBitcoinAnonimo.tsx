@@ -50,8 +50,8 @@ const chapters = [
 const articleSchema = {
   "@context": "https://schema.org",
   "@type": "HowTo",
-  name: "Como Comprar Bitcoin com Mais Privacidade por R$10 via RoboSats",
-  description: "Guia completo passo a passo para comprar Bitcoin com mais privacidade usando RoboSats via Tor Browser e Lightning Network. Para iniciantes absolutos.",
+  name: "Seu Primeiro Contato com Bitcoin na Prática por R$10 via RoboSats",
+  description: "Guia prático passo a passo para comprar Bitcoin usando RoboSats via Tor Browser e Lightning Network. Para iniciantes absolutos. Transparência total sobre privacidade.",
   totalTime: "PT30M",
   estimatedCost: { "@type": "MonetaryAmount", currency: "BRL", value: "10" },
   tool: [
@@ -250,12 +250,12 @@ export default function ComprarBitcoinAnonimo() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Helmet>
-        <title>Como Comprar Bitcoin com Mais Privacidade por R$10 | Guia RoboSats 2026</title>
-        <meta name="description" content="Aprenda a comprar Bitcoin com mais privacidade, sem KYC, a partir de R$10 usando RoboSats e Lightning Network. Tutorial passo a passo para iniciantes absolutos. Mais controle, menos exposição." />
-        <meta name="keywords" content="comprar bitcoin anônimo, bitcoin sem kyc, robosats tutorial, bitcoin sem documento, comprar bitcoin pix, lightning network, bitcoin privacidade" />
+        <title>Seu Primeiro Contato com Bitcoin na Prática por R$10 | Guia RoboSats 2026</title>
+        <meta name="description" content="Guia prático para seu primeiro contato com Bitcoin a partir de R$10 usando RoboSats e Lightning Network. Tutorial passo a passo para iniciantes absolutos. Transparência total sobre privacidade e exposição." />
+        <meta name="keywords" content="comprar bitcoin, bitcoin sem kyc, robosats tutorial, bitcoin sem documento, comprar bitcoin pix, lightning network, bitcoin privacidade, wallet of satoshi" />
         <link rel="canonical" href="https://lordjunnior.com.br/comprar-bitcoin-anonimo" />
-        <meta property="og:title" content="Comprar Bitcoin com Mais Privacidade por R$10. Menos Exposição, Mais Controle" />
-        <meta property="og:description" content="O guia definitivo para comprar Bitcoin com privacidade real. De R$10 a soberania financeira com menos exposição." />
+        <meta property="og:title" content="Seu Primeiro Contato com Bitcoin na Prática por R$10. Transparência Total." />
+        <meta property="og:description" content="Guia prático para comprar Bitcoin com R$10 via RoboSats. Sem promessas falsas, com aviso claro sobre exposição." />
         <meta property="og:type" content="article" />
         <meta property="og:url" content="https://lordjunnior.com.br/comprar-bitcoin-anonimo" />
         <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>
@@ -312,19 +312,28 @@ export default function ComprarBitcoinAnonimo() {
               custom={2} variants={fadeUp} initial="hidden" animate="visible"
               className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-5 leading-[0.95] uppercase" style={{ fontFamily: "'Poppins', sans-serif" }}
             >
-              SEU PRIMEIRO BITCOIN{" "}
+              SEU PRIMEIRO CONTATO{" "}
               <br className="hidden md:block" />
-              COM <span className="text-primary">MAIS PRIVACIDADE</span>
+              COM <span className="text-primary">BITCOIN NA PRÁTICA</span>
             </motion.h1>
 
-            {/* Subtitle — pontuação corrigida: vírgulas em vez de pontos finais */}
+            {/* Subtitle */}
             <motion.p
               custom={3} variants={fadeUp} initial="hidden" animate="visible"
-              className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-8 leading-relaxed"
+              className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-5 leading-relaxed"
             >
-              R$10 é tudo que você precisa. Sem CPF, sem selfie, sem banco.
-              Neste guia você vai comprar Bitcoin pela primeira vez usando uma ferramenta que{" "}
-              <span className="text-foreground font-semibold">nenhuma exchange controla</span>.
+              R$10 é tudo que você precisa para entender como funciona.
+              Sem complicação. Direto ao ponto.
+              Você vai usar uma ferramenta que não depende de exchange.{" "}
+              <span className="text-foreground font-semibold">E começar a enxergar o sistema com outros olhos.</span>
+            </motion.p>
+
+            {/* Sub-hero */}
+            <motion.p
+              custom={3.5} variants={fadeUp} initial="hidden" animate="visible"
+              className="text-sm text-muted-foreground/80 max-w-xl mb-8 leading-relaxed"
+            >
+              Este guia é para quem quer sair da teoria e ver na prática. Mesmo que ainda não esteja no nível ideal de privacidade.
             </motion.p>
 
             {/* CTA */}
@@ -333,12 +342,12 @@ export default function ComprarBitcoinAnonimo() {
                 href="#pre-requisitos"
                 className="group inline-flex items-center gap-3 py-4 px-8 rounded-sm border border-primary/30 bg-primary/[0.08] hover:bg-primary/[0.18] hover:border-primary/50 text-primary font-semibold tracking-wide text-sm transition-all duration-300"
               >
-                <Shield className="w-4 h-4" />
-                Assumir Meu Controle Agora
+                <Zap className="w-4 h-4" />
+                COMEÇAR AGORA COM R$10
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1.5" />
               </a>
               <span className="font-mono text-[10px] tracking-widest text-muted-foreground/50 uppercase">
-                Tempo estimado: 30 min · Custo: R$10
+                Entender na prática, mesmo que ainda não seja o cenário perfeito.
               </span>
             </motion.div>
           </motion.div>
@@ -347,6 +356,114 @@ export default function ComprarBitcoinAnonimo() {
         {/* ════════ CONTENT ════════ */}
         <main className="relative z-10 px-5 md:px-8 lg:px-12 pb-20">
           <div className="max-w-4xl mx-auto space-y-16 md:space-y-20">
+
+            {/* ── BLOCO DE ALERTA MÁXIMO: ACIMA DA DOBRA ── */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.96 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, ease: APPLE_EASE }}
+              className="relative p-6 md:p-8 rounded-sm border-2 border-destructive/60 bg-destructive/[0.06] backdrop-blur-sm overflow-hidden"
+              style={{ boxShadow: "0 0 40px rgba(220,38,38,0.12), 0 0 80px rgba(220,38,38,0.06)" }}
+            >
+              {/* Animated top bar */}
+              <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-destructive via-destructive/80 to-destructive animate-pulse" />
+
+              {/* Header */}
+              <div className="flex items-center gap-3 mb-5">
+                <div className="relative">
+                  <div className="absolute inset-0 rounded-full bg-destructive/40 animate-[ping_2s_ease-in-out_infinite]" />
+                  <AlertTriangle className="relative w-6 h-6 text-destructive" />
+                </div>
+                <span className="font-mono text-xs md:text-sm tracking-[0.15em] text-destructive uppercase font-black">
+                  🚨 ATENÇÃO ANTES DE CONTINUAR
+                </span>
+              </div>
+
+              <div className="space-y-4 text-sm md:text-base leading-relaxed">
+                <p className="text-foreground font-semibold">
+                  Se você chegou até aqui, precisa entender uma coisa com clareza:
+                </p>
+                <p className="text-foreground">
+                  Este site é focado em <span className="text-destructive font-black uppercase">AUTOCUSTÓDIA</span> e <span className="text-destructive font-black uppercase">PRIVACIDADE</span>.
+                  E isso significa evitar qualquer exposição desnecessária.
+                </p>
+                <p className="text-muted-foreground">
+                  O método mostrado neste guia pode envolver formas de pagamento ligadas ao sistema tradicional, como o PIX.
+                </p>
+
+                {/* Destaque máximo */}
+                <div className="flex items-start gap-3 p-4 rounded-sm border border-destructive/40 bg-destructive/[0.08]">
+                  <Eye className="w-5 h-5 text-destructive shrink-0 mt-0.5" />
+                  <p className="text-foreground font-bold">
+                    👉 Isso NÃO é privado. Simples assim.
+                    <span className="block text-muted-foreground font-normal mt-1">
+                      Se você utilizar esse tipo de método, existe exposição de dados. Não importa o resto da operação.
+                    </span>
+                  </p>
+                </div>
+
+                <p className="text-muted-foreground">
+                  Este guia existe por um único motivo:
+                </p>
+                <p className="text-foreground font-semibold">
+                  👉 Foi extremamente solicitado por pessoas que acompanham meu conteúdo.
+                  <span className="block text-muted-foreground font-normal mt-1">
+                    E muitas delas deixam claro que não se importam com esse nível de exposição no início.
+                  </span>
+                </p>
+
+                <div className="h-px w-full bg-destructive/20 my-2" />
+
+                <p className="text-foreground">
+                  Então aqui vai o ponto mais importante:
+                </p>
+
+                <div className="flex items-start gap-3 p-4 rounded-sm border border-destructive/40 bg-destructive/[0.08]">
+                  <ShieldCheck className="w-5 h-5 text-destructive shrink-0 mt-0.5" />
+                  <div>
+                    <p className="text-destructive font-black uppercase">
+                      Se você busca PRIVACIDADE REAL, este não é o caminho ideal.
+                    </p>
+                    <p className="text-muted-foreground mt-1">
+                      Se você quer apenas entender como funciona e dar o primeiro passo com simplicidade, então siga consciente.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="h-px w-full bg-destructive/20 my-2" />
+
+                <p className="text-foreground font-semibold text-base md:text-lg">
+                  Eu não incentivo exposição.{" "}
+                  <span className="text-primary">Eu ensino controle.</span>
+                </p>
+                <p className="text-muted-foreground text-xs font-mono tracking-wider uppercase">
+                  A decisão é sua.
+                </p>
+              </div>
+
+              {/* Bottom accent */}
+              <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-gradient-to-r from-destructive via-destructive/80 to-destructive animate-pulse" />
+            </motion.div>
+
+            {/* ── BLOCO DE REFORÇO PNL ── */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="flex items-start gap-4 p-5 rounded-sm border border-primary/20 bg-primary/[0.04]"
+            >
+              <Shield className="w-7 h-7 text-primary shrink-0 mt-0.5" />
+              <div className="space-y-2">
+                <p className="text-sm font-semibold text-foreground">Existe uma diferença entre começar e fazer do jeito ideal.</p>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Aqui, você está começando. Com o tempo, você ajusta, melhora e evolui.
+                </p>
+                <p className="text-sm text-foreground font-semibold">
+                  👉 O importante é não ficar parado.
+                </p>
+              </div>
+            </motion.div>
 
             {/* ── DISCLAIMER JURÍDICO ── */}
             <div className="p-5 rounded-sm border border-amber-500/25 bg-amber-500/[0.04] backdrop-blur-sm">
