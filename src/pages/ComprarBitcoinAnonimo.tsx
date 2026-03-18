@@ -499,9 +499,13 @@ export default function ComprarBitcoinAnonimo() {
                     <p className="text-sm text-muted-foreground leading-relaxed mb-2">
                       O Tor Browser é um navegador gratuito que esconde seu endereço IP (sua "localização digital"). É o mesmo navegador usado por jornalistas, ativistas e denunciantes no mundo inteiro para se proteger de governos autoritários.
                     </p>
-                    <p className="text-xs text-muted-foreground/70">
-                      <strong className="text-foreground/80">Onde baixar:</strong> Vá em <span className="text-primary font-mono">torproject.org</span> e clique em "Download". Instale como qualquer programa normal. No Android, procure "Tor Browser" na Play Store.
+                    <p className="text-xs text-muted-foreground/70 mb-2">
+                      <strong className="text-foreground/80">Onde baixar:</strong> Acesse o site oficial e clique em "Download". Instale como qualquer programa normal. No Android, procure "Tor Browser" na Play Store.
                     </p>
+                    <a href="https://www.torproject.org/download/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs text-primary hover:underline underline-offset-2 font-mono">
+                      <ExternalLink className="w-3 h-3" />
+                      torproject.org/download
+                    </a>
                   </div>
                 </div>
               </div>
