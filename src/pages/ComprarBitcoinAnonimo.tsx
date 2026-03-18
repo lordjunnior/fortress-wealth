@@ -56,10 +56,10 @@ const articleSchema = {
   estimatedCost: { "@type": "MonetaryAmount", currency: "BRL", value: "10" },
   tool: [
     { "@type": "HowToTool", name: "Tor Browser" },
-    { "@type": "HowToTool", name: "Carteira Lightning (Phoenix, Blixt ou Zeus)" },
+    { "@type": "HowToTool", name: "Carteira Lightning (Wallet of Satoshi, Blixt ou Zeus)" },
   ],
   step: [
-    { "@type": "HowToStep", name: "Preparar ferramentas", text: "Instale o Tor Browser do site oficial torproject.org e baixe uma carteira Lightning como Phoenix Wallet no seu celular" },
+    { "@type": "HowToStep", name: "Preparar ferramentas", text: "Instale o Tor Browser do site oficial torproject.org e baixe a Wallet of Satoshi no seu celular" },
     { "@type": "HowToStep", name: "Acessar a RoboSats e criar identidade", text: "Abra o Tor Browser, acesse o endereço .onion da RoboSats e clique em Generate Robot para criar sua identidade temporária" },
     { "@type": "HowToStep", name: "Encontrar oferta e depositar fiança", text: "No livro de ofertas filtre por BRL, escolha um vendedor com boa reputação, aceite a ordem e deposite a fiança via Lightning" },
     { "@type": "HowToStep", name: "Pagar e receber seus satoshis", text: "Envie o pagamento ao vendedor pelo método combinado, confirme no chat e receba seus satoshis automaticamente via Lightning" },
