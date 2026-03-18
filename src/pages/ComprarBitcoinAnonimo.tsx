@@ -100,6 +100,11 @@ const faqSchema = {
       name: "A RoboSats funciona no celular?",
       acceptedAnswer: { "@type": "Answer", text: "Sim. Você pode acessar a RoboSats pelo Tor Browser no Android, ou usar o Orbot + navegador no iOS. A interface é responsiva e funciona bem em telas menores." },
     },
+    {
+      "@type": "Question",
+      name: "Por que usar a Wallet of Satoshi no RoboSats?",
+      acceptedAnswer: { "@type": "Answer", text: "A WoS é ideal para iniciantes por ser uma carteira de custódia Lightning simplificada. Ela permite que você receba seus primeiros R$ 10,00 do RoboSats instantaneamente, sem precisar entender de 'abertura de canais' ou 'liquidez'." },
+    },
   ],
 };
 
