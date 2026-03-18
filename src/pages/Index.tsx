@@ -385,6 +385,10 @@ const Index = () => {
           <BitcoinInsightsSection />
         </NobelSection>
 
+        <NobelSection className="section-divider" delay={0.1}>
+          <ClosingManifesto />
+        </NobelSection>
+
         <NobelSection id="apoio" className="section-alt section-divider" delay={0.1}>
           <FooterSection />
         </NobelSection>
