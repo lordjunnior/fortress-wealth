@@ -1006,6 +1006,11 @@ export default function MobilidadeDeChaves() {
         </div>
       </section>
 
+      {/* Donation CTA */}
+      <div className="relative z-10 max-w-5xl mx-auto px-6 md:px-10">
+        <DonationCTA />
+      </div>
+
       {/* Seal */}
       <div className="relative z-10 max-w-6xl mx-auto px-6 py-8 border-t border-white/[0.04] text-right">
         <p className="text-stone-700 font-medium text-base tracking-tight italic">Quem carrega a chave, carrega a liberdade.</p>

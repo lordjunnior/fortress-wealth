@@ -994,6 +994,8 @@ export default function ComprarBitcoinAnonimo() {
               </p>
             </motion.div>
 
+            <DonationCTA />
+
             {/* ── BACK ── */}
             <div className="pt-8 border-t border-border/20">
               <Link

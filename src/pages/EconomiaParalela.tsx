@@ -344,6 +344,8 @@ export default function EconomiaParalela() {
           </motion.div>
         </motion.section>
 
+        <DonationCTA />
+
         {/* ─── FOOTER ─── */}
         <footer className="border-t border-white/[0.05] pt-12 text-center">
           <p className="text-stone-700 text-[9px] font-bold tracking-[0.5em] uppercase">Lord Junnior © 2026</p>
