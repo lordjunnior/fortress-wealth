@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import CinematicHero from '@/components/CinematicHero';
 import NoiseBackground from '@/components/NoiseBackground';
+import DonationCTA from '@/components/DonationCTA';
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 const fadeUp = {
