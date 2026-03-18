@@ -108,6 +108,7 @@ import ToxinasAmbientais from "./pages/toxicos/ToxinasAmbientais";
 import CodigoAutonomiaModal from "./components/CodigoAutonomiaModal";
 import ScrollToTop from "./components/ScrollToTop";
 import MapaDaSoberania from "./pages/MapaDaSoberania";
+import PorOndeComecar from "./pages/PorOndeComecar";
 import ExitIntentLeadMagnet from "./components/ExitIntentLeadMagnet";
 const queryClient = new QueryClient();
 
@@ -228,6 +229,7 @@ const App = () => (
           <Route path="/projeto-autonomo/toxicos-ocultos/toxinas-ambientais" element={<ToxinasAmbientais />} />
           <Route path="/projeto-autonomo/:slug" element={<ModuloAutonomo />} />
           <Route path="/mapa-da-soberania" element={<MapaDaSoberania />} />
+          <Route path="/por-onde-comecar" element={<PorOndeComecar />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

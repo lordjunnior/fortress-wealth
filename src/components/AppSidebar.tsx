@@ -1,8 +1,10 @@
-import { Instagram, Youtube, Twitter, Github, LayoutGrid, BookOpen, Headphones, Wrench, QrCode, Zap, Library, ShieldAlert, Shield, Globe } from "lucide-react";
+import { Instagram, Youtube, Twitter, Github, LayoutGrid, BookOpen, Headphones, Wrench, QrCode, Zap, Library, ShieldAlert, Shield, Globe, Compass } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useNavigate, useLocation } from "react-router-dom";
 import profilePhoto from "@/assets/profile-photo.jpg";
 import ReadingLevelIndicator from "@/components/ReadingLevelIndicator";
+import GlobalSearch from "@/components/GlobalSearch";
+import JourneyMap from "@/components/JourneyMap";
 
 interface MenuItem {
   icon: typeof LayoutGrid;
@@ -89,6 +91,11 @@ const AppSidebar = () => {
         </div>
       </div>
 
+      {/* Search */}
+      <div className="px-3 py-2 border-b border-border/50">
+        <GlobalSearch />
+      </div>
+
       {/* Reading Level */}
       <ReadingLevelIndicator />
 
@@ -103,7 +110,16 @@ const AppSidebar = () => {
       </div>
 
       {/* Navigation */}
-      <nav className="flex-1 px-3 py-4 space-y-1">
+      <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
+        {/* Por onde começar */}
+        <Link
+          to="/por-onde-comecar"
+          className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-all duration-200 group mb-1"
+        >
+          <Compass className="w-4 h-4 text-primary group-hover:text-primary transition-colors" />
+          <span className="text-sm font-medium">Por onde começar?</span>
+        </Link>
+
         {/* Protocolo Inicial - primeiro item */}
         <Link
           to="/protocolo-inicial"
@@ -129,6 +145,9 @@ const AppSidebar = () => {
             <span className="text-sm font-medium">{item.label}</span>
           </button>
         ))}
+
+        {/* Journey Map */}
+        <JourneyMap />
       </nav>
 
       {/* Lightning Support Button */}
