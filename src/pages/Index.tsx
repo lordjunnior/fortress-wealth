@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { EyeOff, ArrowRight } from "lucide-react";
+import { EyeOff, ArrowRight, DollarSign } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { gsap } from "gsap";
@@ -314,6 +314,39 @@ const Index = () => {
                   </p>
                 </div>
                 <ArrowRight className="w-5 h-5 text-primary shrink-0 transition-transform group-hover:translate-x-1.5" />
+              </Link>
+            </motion.div>
+          </div>
+        </NobelSection>
+
+        {/* ── DÓLAR VIRTUAL CARD ── */}
+        <NobelSection className="section-divider px-5 md:px-8" delay={0.05}>
+          <div className="max-w-4xl mx-auto lg:ml-0">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+              className="relative overflow-hidden rounded-sm border border-chart-green/20 bg-chart-green/[0.04] backdrop-blur-sm group hover:border-chart-green/40 transition-all duration-500"
+            >
+              <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-chart-green/50 to-transparent" />
+              <Link to="/dolar-virtual" className="flex flex-col sm:flex-row items-start sm:items-center gap-4 p-6">
+                <div className="relative shrink-0">
+                  <div className="absolute inset-0 rounded-full bg-chart-green/20 animate-[ping_3s_ease-in-out_infinite]" />
+                  <div className="relative w-12 h-12 rounded-full bg-chart-green/10 flex items-center justify-center border border-chart-green/30">
+                    <DollarSign className="w-5 h-5 text-chart-green" />
+                  </div>
+                </div>
+                <div className="flex-1">
+                  <p className="font-mono text-[9px] tracking-[0.3em] text-chart-green/80 uppercase mb-1">[NOVO GUIA PRÁTICO]</p>
+                  <p className="text-foreground font-semibold text-base mb-1 uppercase" style={{ fontFamily: "'Poppins', sans-serif" }}>
+                    COMO COMPRAR DÓLAR VIRTUAL (USDT)
+                  </p>
+                  <p className="text-xs text-muted-foreground leading-relaxed">
+                    <span className="text-chart-green font-semibold">Jade Wallet</span> + <span className="text-chart-green font-semibold">AlfredP2P</span> + Rede Liquid. Sem corretora, sem KYC, com hardware wallet.
+                  </p>
+                </div>
+                <ArrowRight className="w-5 h-5 text-chart-green shrink-0 transition-transform group-hover:translate-x-1.5" />
               </Link>
             </motion.div>
           </div>

@@ -35,6 +35,7 @@ export const SEARCH_ENTRIES: SearchEntry[] = [
   { title: "Mobilidade de Chaves", description: "Portabilidade e backup seguro de chaves", path: "/mobilidade-de-chaves", tags: ["mobilidade", "backup", "seed", "migração"], category: "Autocustódia" },
   { title: "Blindagem contra Golpes", description: "Proteja-se contra fraudes e engenharia social", path: "/blindagem-golpes", tags: ["golpes", "fraude", "engenharia social", "phishing"], category: "Autocustódia" },
   { title: "Comprar Bitcoin Anônimo", description: "Métodos P2P sem KYC", path: "/comprar-bitcoin-anonimo", tags: ["anônimo", "p2p", "kyc", "privacidade"], category: "Autocustódia" },
+  { title: "Dólar Virtual (USDT)", description: "Comprar stablecoins com Jade Wallet e AlfredP2P", path: "/dolar-virtual", tags: ["usdt", "stablecoin", "dólar", "jade", "alfredp2p", "liquid", "tether"], category: "Autocustódia" },
 
   // Economia
   { title: "Economia", description: "Educação econômica para soberania", path: "/economia", tags: ["economia", "macro", "monetária", "política"], category: "Economia" },
