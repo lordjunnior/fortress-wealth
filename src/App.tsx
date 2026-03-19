@@ -92,6 +92,7 @@ import DiversificacaoPage from "./pages/Diversificacao";
 import BitcoinVsAltcoinsPage from "./pages/BitcoinVsAltcoins";
 import DicionarioCripto from "./pages/DicionarioCripto";
 import ComprarBitcoinAnonimo from "./pages/ComprarBitcoinAnonimo";
+import DolarVirtual from "./pages/DolarVirtual";
 import Bip110 from "./pages/Bip110";
 import MobilidadeDeChaves from "./pages/MobilidadeDeChaves";
 import HardwareWalletDiy from "./pages/HardwareWalletDiy";
