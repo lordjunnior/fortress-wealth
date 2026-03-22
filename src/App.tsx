@@ -213,6 +213,7 @@ const App = () => (
           <Route path="/projeto-autonomo/fitoterapia-aplicada" element={<FitoterapiaAplicada />} />
           <Route path="/projeto-autonomo/controle-vetores" element={<ControleVetores />} />
           <Route path="/projeto-autonomo/sabedoria-ancestral" element={<SabedoriaAncestral />} />
+          <Route path="/projeto-autonomo/babosa-acemannan" element={<BabosaAcemannan />} />
           <Route path="/projeto-autonomo/kit-72h" element={<Kit72h />} />
           <Route path="/projeto-autonomo/purificacao-agua" element={<PurificacaoAgua />} />
           <Route path="/projeto-autonomo/protocolos-apagao" element={<ProtocolosApagao />} />

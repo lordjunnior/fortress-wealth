@@ -159,6 +159,7 @@ const SILOS: Silo[] = [
       { title: "Fitoterapia Aplicada", href: "/projeto-autonomo/fitoterapia-aplicada" },
       { title: "Controle de Vetores", href: "/projeto-autonomo/controle-vetores" },
       { title: "Sabedoria Ancestral", href: "/projeto-autonomo/sabedoria-ancestral" },
+      { title: "Babosa & Acemannan", href: "/projeto-autonomo/babosa-acemannan" },
       { title: "Tóxicos Ocultos", href: "/projeto-autonomo/toxicos-ocultos" },
       { title: "Toxinas Alimentares", href: "/projeto-autonomo/toxicos-ocultos/toxinas-alimentares" },
       { title: "Toxinas Ambientais", href: "/projeto-autonomo/toxicos-ocultos/toxinas-ambientais" },
