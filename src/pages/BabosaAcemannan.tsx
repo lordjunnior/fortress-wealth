@@ -8,62 +8,28 @@ import ScrollToTop from '@/components/ScrollToTop';
 import MicroCtaResistencia from '@/components/MicroCtaResistencia';
 import PageFloatingToc from '@/components/PageFloatingToc';
 import babosaHero from '@/assets/babosa-hero.jpg';
+import RealTestimonial from '@/components/RealTestimonial';
 
-const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
-const fade = (delay = 0) => ({
-  initial: { opacity: 0, y: 24 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, margin: '-40px' },
-  transition: { duration: 0.7, ease: APPLE_EASE, delay },
-});
-
-const TOC_ITEMS = [
-  { id: 'descoberta', label: 'A Descoberta', num: '01' },
-  { id: 'acemannan', label: 'Acemannan', num: '02' },
-  { id: 'supressao', label: 'A Supressão', num: '03' },
-  { id: 'ciencia', label: 'A Ciência', num: '04' },
-  { id: 'relatos', label: 'Relatos Reais', num: '05' },
-  { id: 'composicao', label: 'Composição', num: '06' },
-  { id: 'faq', label: 'FAQ', num: '07' },
-  { id: 'conclusao', label: 'Conclusão', num: '08' },
-];
-
-/* ═══════════════════════════════════════════════════════════════
-   AVATAR — Iniciais coloridas (sem fotos AI)
-   ═══════════════════════════════════════════════════════════════ */
-
-const AVATAR_COLORS = [
-  'from-emerald-500 to-teal-600',
-  'from-amber-500 to-orange-600',
-  'from-sky-500 to-blue-600',
-  'from-violet-500 to-purple-600',
-  'from-rose-500 to-pink-600',
-  'from-lime-500 to-green-600',
-  'from-cyan-500 to-teal-500',
-  'from-fuchsia-500 to-purple-500',
-  'from-yellow-500 to-amber-600',
-  'from-indigo-500 to-blue-600',
-  'from-red-500 to-rose-600',
-  'from-emerald-400 to-cyan-600',
-  'from-orange-400 to-red-500',
-  'from-teal-400 to-emerald-600',
-  'from-blue-400 to-indigo-600',
-  'from-pink-400 to-rose-600',
-  'from-green-400 to-emerald-500',
-  'from-purple-400 to-violet-600',
-  'from-amber-400 to-yellow-600',
-  'from-sky-400 to-cyan-500',
-];
-
-function Avatar({ nome, idx }: { nome: string; idx: number }) {
-  const initials = nome.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
-  const color = AVATAR_COLORS[idx % AVATAR_COLORS.length];
-  return (
-    <div className={`w-11 h-11 rounded-full bg-gradient-to-br ${color} flex items-center justify-center shrink-0 shadow-lg`}>
-      <span className="text-white font-bold text-sm tracking-tight">{initials}</span>
-    </div>
-  );
-}
+import avatarRenata from '@/assets/avatar-babosa-renata.jpg';
+import avatarCarlos from '@/assets/avatar-babosa-carlos.jpg';
+import avatarAmanda from '@/assets/avatar-babosa-amanda.jpg';
+import avatarElza from '@/assets/avatar-babosa-elza.jpg';
+import avatarIgor from '@/assets/avatar-babosa-igor.jpg';
+import avatarTatiane from '@/assets/avatar-babosa-tatiane.jpg';
+import avatarBruno from '@/assets/avatar-babosa-bruno.jpg';
+import avatarMaranaldo from '@/assets/avatar-babosa-maranaldo.jpg';
+import avatarLuna from '@/assets/avatar-babosa-luna.jpg';
+import avatarMaria from '@/assets/avatar-babosa-maria.jpg';
+import avatarCris from '@/assets/avatar-babosa-cris.jpg';
+import avatarSelma from '@/assets/avatar-babosa-selma.jpg';
+import avatarAmandaD from '@/assets/avatar-babosa-amandad.jpg';
+import avatarReginaldo from '@/assets/avatar-babosa-reginaldo.jpg';
+import avatarLuca from '@/assets/avatar-babosa-luca.jpg';
+import avatarGabriel from '@/assets/avatar-babosa-gabriel.jpg';
+import avatarKelly from '@/assets/avatar-babosa-kelly.jpg';
+import avatarRodrigo from '@/assets/avatar-babosa-rodrigo.jpg';
+import avatarCecilia from '@/assets/avatar-babosa-cecilia.jpg';
+import avatarDiegoF from '@/assets/avatar-babosa-diegof.jpg';
 
 /* ═══════════════════════════════════════════════════════════════
    DEPOIMENTOS — Todos os relatos reais fornecidos
