@@ -145,7 +145,7 @@ export const navGroups: NavGroup[] = [
   {
     label: "Alertas & Dossiês",
     icon: AlertTriangle,
-    color: "text-destructive",
+    color: undefined,
     items: [
       { label: "Hub de Alertas", route: "/alertas" },
       { label: "CBDC Brasil", route: "/alertas/cbdc-brasil" },
