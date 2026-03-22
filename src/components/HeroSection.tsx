@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ChevronDown, Shield, AlertTriangle } from "lucide-react";
 import { ease } from "@/lib/motion";
-const HERO_VIDEO_URL = "/__l5e/assets-v1/31c80fba-7efc-4946-a529-ee0fc91b4cf9/hero-loop.mp4";
+const HERO_VIDEO_URL = "/__l5e/assets-v1/17b0d801-677e-4ff6-bc50-58b1277734d8/hero-loop.mp4";
 const HERO_POSTER_URL = "/heroes/hero-poster.webp";
 
 const HeroSection = () => {
