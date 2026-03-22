@@ -8,6 +8,7 @@ import {
   BookOpen, Ban, Beaker, ExternalLink, Lock, Target, Sparkles
 } from 'lucide-react';
 import PageFloatingToc from '@/components/PageFloatingToc';
+import RealTestimonial from '@/components/RealTestimonial';
 
 import avatarBruna from '@/assets/avatar-bruna.jpg';
 import avatarEba from '@/assets/avatar-eba.jpg';
@@ -17,50 +18,6 @@ import avatarCarlos from '@/assets/avatar-carlos.jpg';
 import avatarPatricia from '@/assets/avatar-patricia.jpg';
 import avatarDiego from '@/assets/avatar-diego.jpg';
 import avatarMarcia from '@/assets/avatar-marcia.jpg';
-
-const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
-const fade = (delay = 0) => ({
-  initial: { opacity: 0, y: 24 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, margin: '-40px' },
-  transition: { duration: 0.7, ease: APPLE_EASE, delay },
-});
-
-const TOC_ITEMS = [
-  { id: 'quebra-padrao', label: 'A Grande Mentira', num: '01' },
-  { id: 'ciencia-escondida', label: 'Ciência Escondida', num: '02' },
-  { id: 'mecanismo', label: 'O Mecanismo', num: '03' },
-  { id: 'aplicacoes', label: 'Aplicações', num: '04' },
-  { id: 'relatos', label: 'Relatos Reais', num: '05' },
-  { id: 'protocolo', label: 'Protocolo', num: '06' },
-  { id: 'faq', label: 'FAQ', num: '07' },
-];
-
-/* ── Avatar de iniciais ── */
-const AVATAR_COLORS = [
-  'from-amber-500 to-orange-600',
-  'from-emerald-500 to-teal-600',
-  'from-sky-500 to-blue-600',
-  'from-violet-500 to-purple-600',
-  'from-rose-500 to-pink-600',
-  'from-lime-500 to-green-600',
-  'from-cyan-500 to-teal-500',
-  'from-fuchsia-500 to-purple-500',
-  'from-yellow-500 to-amber-600',
-  'from-indigo-500 to-blue-600',
-  'from-red-500 to-rose-600',
-  'from-teal-400 to-emerald-600',
-];
-
-function Avatar({ nome, idx }: { nome: string; idx: number }) {
-  const initials = nome.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
-  const color = AVATAR_COLORS[idx % AVATAR_COLORS.length];
-  return (
-    <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${color} flex items-center justify-center flex-shrink-0`}>
-      <span className="text-white font-bold text-xs">{initials}</span>
-    </div>
-  );
-}
 
 /* ── DADOS ── */
 const SCIENTIFIC_EVIDENCE = [
