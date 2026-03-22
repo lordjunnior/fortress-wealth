@@ -1,12 +1,32 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ChevronDown, Shield, AlertTriangle } from "lucide-react";
 import { ease } from "@/lib/motion";
 const HERO_VIDEO_URL = "/__l5e/assets-v1/849f33e2-3478-48d7-8c09-9aacfa1998b9/hero-loop.mp4";
+const HERO_POSTER_URL = "/heroes/hero-poster.webp";
 
 const HeroSection = () => {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const videoRef = useRef<HTMLVideoElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
+
+  // Fallback: try to play video on first user interaction (Instagram in-app browser blocks autoplay)
+  const tryPlayVideo = useCallback(() => {
+    const vid = videoRef.current;
+    if (vid && vid.paused) {
+      vid.play().catch(() => {});
+    }
+  }, []);
+
+  useEffect(() => {
+    const events = ["touchstart", "click", "scroll"] as const;
+    const handler = () => {
+      tryPlayVideo();
+      events.forEach(e => document.removeEventListener(e, handler));
+    };
+    events.forEach(e => document.addEventListener(e, handler, { once: true, passive: true }));
+    return () => events.forEach(e => document.removeEventListener(e, handler));
+  }, [tryPlayVideo]);
 
   // Parallax on scroll
   const { scrollY } = useScroll();
@@ -38,10 +58,12 @@ const HeroSection = () => {
         className="absolute inset-0 z-0"
       >
         <video
+          ref={videoRef}
           autoPlay
           loop
           muted
           playsInline
+          poster={HERO_POSTER_URL}
           className="absolute inset-0 w-full h-full object-cover scale-110"
           style={{ filter: "brightness(0.3) saturate(0.7)" }}
         >
