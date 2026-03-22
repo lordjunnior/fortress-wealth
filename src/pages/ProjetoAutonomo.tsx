@@ -270,12 +270,12 @@ export default function ProjetoAutonomo() {
               initial={{ opacity: 0, y: 60, filter: 'blur(12px)' }}
               animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
               transition={{ duration: 1, ease: APPLE_EASE, delay: 0.1 }}
-            >PROJETO</motion.span>
+            >SOBERANIA</motion.span>
             <motion.span className="block text-5xl md:text-[6rem] lg:text-[8rem] font-black tracking-tighter text-emerald-400"
               initial={{ opacity: 0, y: 60, filter: 'blur(12px)' }}
               animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
               transition={{ duration: 1, ease: APPLE_EASE, delay: 0.3 }}
-            >AUTÔNOMO</motion.span>
+            >ORGÂNICA</motion.span>
           </h1>
 
           <motion.div
@@ -285,15 +285,15 @@ export default function ProjetoAutonomo() {
             transition={{ duration: 0.8, delay: 0.6 }}
           >
             <p className="text-stone-300 text-sm md:text-base leading-relaxed mb-3 font-medium">
-              O Soberania Orgânica é um manual prático de <span className="text-emerald-400 font-bold">independência real</span> — dividido em 5 fases progressivas que ensinam você a sobreviver, cuidar da saúde, produzir alimento, recuperar conhecimento perdido e eliminar dependências invisíveis.
+              A Soberania Orgânica é o seu <span className="text-emerald-400 font-bold">Manual da Terra definitivo</span>. Um resgate da nossa herança nativa dividido em 5 fases progressivas. Este protocolo ensina você a decifrar o código da natureza para curar, alimentar e proteger sua linhagem sem depender de cadeias de suprimentos colapsáveis.
             </p>
             <p className="text-stone-400 text-sm leading-relaxed mb-2">
-              Você terceiriza sua <span className="text-emerald-400 font-bold">comida</span> para uma indústria que lucra com a sua doença.
-              Terceiriza sua <span className="text-emerald-400 font-bold">saúde</span> para um sistema que lucra com a sua dependência.
-              E terceiriza sua <span className="text-emerald-400 font-bold">segurança</span> para um Estado que lucra com o seu medo.
+              Você terceiriza sua <span className="text-emerald-400 font-bold">nutrição</span> para uma indústria que desenha alimentos para viciar.
+              Terceiriza sua <span className="text-emerald-400 font-bold">cura</span> para um sistema que gerencia sintomas, mas nunca elimina causas.
+              E terceiriza seu <span className="text-emerald-400 font-bold">conhecimento</span> para algoritmos que escondem o que realmente importa.
             </p>
             <p className="text-stone-600 text-xs leading-relaxed">
-              Cinco fases. Uma progressão lógica. A construção metódica da sua <span className="font-semibold text-stone-300">independência real</span>.
+              Cinco camadas. Uma blindagem. A construção metódica da sua <span className="font-semibold text-stone-300">independência física</span>.
               <SimboloOculto id="folha" className="ml-2 align-middle" />
             </p>
           </motion.div>
