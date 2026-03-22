@@ -27,19 +27,19 @@ const RightSidebar = () => {
   } catch {}
 
   return (
-    <aside className="hidden 2xl:flex fixed right-0 top-[40px] bottom-0 w-[340px] z-40 flex-col border-l border-border/30 bg-[#060810]/95 backdrop-blur-2xl overflow-hidden">
+    <aside className="hidden 2xl:flex fixed right-0 top-[44px] bottom-0 w-[340px] z-40 flex-col border-l border-border/30 bg-[#060810]/95 backdrop-blur-2xl overflow-hidden">
       {/* Header */}
-      <div className="px-5 py-4 border-b border-border/30">
-        <div className="flex items-center justify-between mb-1">
-          <h3 className="font-mono text-[10px] tracking-[0.2em] text-muted-foreground uppercase">
+      <div className="px-5 pt-6 pb-4 border-b border-border/30">
+        <div className="flex items-center justify-between mb-2">
+          <h3 className="font-mono text-xs tracking-[0.2em] text-foreground uppercase font-semibold">
             Mapa da Jornada
           </h3>
-          <span className="font-mono text-[11px] text-gold font-bold">{percent}%</span>
+          <span className="font-mono text-sm text-gold font-bold">{percent}%</span>
         </div>
-        <p className="text-[11px] text-foreground font-medium mb-2">
+        <p className="text-sm text-foreground font-medium mb-3">
           Nível {level} — {label}
         </p>
-        <div className="h-[4px] bg-secondary/40 rounded-full overflow-hidden">
+        <div className="h-[5px] bg-secondary/40 rounded-full overflow-hidden">
           <motion.div
             initial={{ width: 0 }}
             animate={{ width: `${percent}%` }}
@@ -47,7 +47,7 @@ const RightSidebar = () => {
             className="h-full gradient-gold rounded-full"
           />
         </div>
-        <p className="font-mono text-[9px] text-muted-foreground mt-1.5">
+        <p className="font-mono text-[10px] text-muted-foreground mt-2">
           {visited}/{total} páginas concluídas
         </p>
       </div>
