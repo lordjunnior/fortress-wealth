@@ -58,10 +58,12 @@ const HeroSection = () => {
         className="absolute inset-0 z-0"
       >
         <video
+          ref={videoRef}
           autoPlay
           loop
           muted
           playsInline
+          poster={HERO_POSTER_URL}
           className="absolute inset-0 w-full h-full object-cover scale-110"
           style={{ filter: "brightness(0.3) saturate(0.7)" }}
         >
