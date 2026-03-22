@@ -162,7 +162,7 @@ export const navGroups: NavGroup[] = [
   {
     label: "Saída & Infraestrutura",
     icon: ArrowRightLeft,
-    color: "text-violet-400",
+    color: undefined,
     items: [
       { label: "Estratégias de Saída", route: "/saida" },
       { label: "Gateway", route: "/saida/gateway" },
