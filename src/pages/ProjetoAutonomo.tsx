@@ -224,6 +224,19 @@ export default function ProjetoAutonomo() {
         </div>
 
         <div className="max-w-5xl">
+          {/* — WHAT IS THIS — Clear intro block */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: APPLE_EASE }}
+            className="mb-8 inline-flex items-center gap-3 bg-emerald-500/10 border border-emerald-500/20 px-5 py-3 rounded-xl backdrop-blur-sm"
+          >
+            <Compass className="text-emerald-400" size={18} />
+            <span className="text-emerald-300/90 text-xs md:text-sm font-semibold">
+              Guia completo de autossuficiência: sobrevivência, saúde natural, produção de alimento e discernimento
+            </span>
+          </motion.div>
+
           <motion.div
             initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: APPLE_EASE }}
@@ -261,13 +274,16 @@ export default function ProjetoAutonomo() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            <p className="text-stone-400 text-lg md:text-xl leading-relaxed mb-4">
+            <p className="text-stone-300 text-lg md:text-xl leading-relaxed mb-4 font-medium">
+              O Projeto Autônomo é um manual prático de <span className="text-emerald-400 font-bold">independência real</span> — dividido em 5 fases progressivas que ensinam você a sobreviver, cuidar da saúde, produzir alimento, recuperar conhecimento perdido e eliminar dependências invisíveis.
+            </p>
+            <p className="text-stone-400 text-base leading-relaxed mb-4">
               Você terceiriza sua <span className="text-emerald-400 font-bold">comida</span> para uma indústria que lucra com a sua doença.
               Terceiriza sua <span className="text-emerald-400 font-bold">saúde</span> para um sistema que lucra com a sua dependência.
               E terceiriza sua <span className="text-emerald-400 font-bold">segurança</span> para um Estado que lucra com o seu medo.
             </p>
             <p className="text-stone-600 text-sm leading-relaxed">
-              Quatro fases. Uma progressão lógica. A construção metódica da sua <span className="font-semibold text-stone-300">independência real</span>.
+              Cinco fases. Uma progressão lógica. A construção metódica da sua <span className="font-semibold text-stone-300">independência real</span>.
               <SimboloOculto id="folha" className="ml-2 align-middle" />
             </p>
           </motion.div>
