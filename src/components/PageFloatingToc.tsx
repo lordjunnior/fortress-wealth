@@ -64,7 +64,7 @@ const PageFloatingToc = ({ items, accentColor = "orange" }: PageFloatingTocProps
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 24 }}
             transition={{ duration: 0.5, ease: EASE }}
-            className="fixed right-6 top-1/2 -translate-y-1/2 z-[55] hidden xl:flex flex-col gap-3"
+            className="fixed right-6 top-1/2 -translate-y-1/2 z-[55] hidden xl:flex 2xl:hidden flex-col gap-3"
           >
             {items.map((item) => (
               <a
