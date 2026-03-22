@@ -7,7 +7,26 @@ const HERO_POSTER_URL = "/heroes/hero-poster.webp";
 
 const HeroSection = () => {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const videoRef = useRef<HTMLVideoElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
+
+  // Fallback: try to play video on first user interaction (Instagram in-app browser blocks autoplay)
+  const tryPlayVideo = useCallback(() => {
+    const vid = videoRef.current;
+    if (vid && vid.paused) {
+      vid.play().catch(() => {});
+    }
+  }, []);
+
+  useEffect(() => {
+    const events = ["touchstart", "click", "scroll"] as const;
+    const handler = () => {
+      tryPlayVideo();
+      events.forEach(e => document.removeEventListener(e, handler));
+    };
+    events.forEach(e => document.addEventListener(e, handler, { once: true, passive: true }));
+    return () => events.forEach(e => document.removeEventListener(e, handler));
+  }, [tryPlayVideo]);
 
   // Parallax on scroll
   const { scrollY } = useScroll();
