@@ -9,6 +9,15 @@ import {
 } from 'lucide-react';
 import PageFloatingToc from '@/components/PageFloatingToc';
 
+import avatarBruna from '@/assets/avatar-bruna.jpg';
+import avatarEba from '@/assets/avatar-eba.jpg';
+import avatarAnaCarol from '@/assets/avatar-anacarol.jpg';
+import avatarRenata from '@/assets/avatar-renata.jpg';
+import avatarCarlos from '@/assets/avatar-carlos.jpg';
+import avatarPatricia from '@/assets/avatar-patricia.jpg';
+import avatarDiego from '@/assets/avatar-diego.jpg';
+import avatarMarcia from '@/assets/avatar-marcia.jpg';
+
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 const fade = (delay = 0) => ({
   initial: { opacity: 0, y: 24 },
