@@ -86,7 +86,7 @@ export const navGroups: NavGroup[] = [
   {
     label: "Soberania Financeira",
     icon: Globe,
-    color: "text-emerald-400",
+    color: undefined,
     items: [
       { label: "Hub Financeiro", route: "/soberania-financeira" },
       { label: "Exchanges sem KYC", route: "/soberania-financeira/exchanges-sem-kyc" },
