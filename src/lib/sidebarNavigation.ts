@@ -54,7 +54,7 @@ export const navGroups: NavGroup[] = [
   {
     label: "Segurança & Autocustódia",
     icon: Lock,
-    color: "text-red-500",
+    color: undefined,
     items: [
       { label: "Bitcoin Seguro", route: "/bitcoin-seguro" },
       { label: "Autocustódia", route: "/autocustodia" },
