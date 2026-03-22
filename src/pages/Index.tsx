@@ -235,7 +235,7 @@ const Index = () => {
       {/* Dust Particles Atmosphere — with scroll parallax */}
       <motion.div
         style={{ y: dustY }}
-        className="fixed inset-0 lg:left-[260px] pointer-events-none z-0 overflow-hidden opacity-60"
+        className="fixed inset-0 lg:left-[280px] pointer-events-none z-0 overflow-hidden opacity-60"
       >
         <div className="dust-layer-home"></div>
         <div className="dust-layer-home dust-layer-home-2"></div>
