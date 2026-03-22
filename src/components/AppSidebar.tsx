@@ -91,24 +91,26 @@ const AppSidebar = () => {
 
   return (
     <aside className="hidden lg:flex fixed left-0 top-[36px] bottom-0 w-[280px] z-50 flex-col border-r border-border/30 bg-[#060810]/95 backdrop-blur-2xl">
-      {/* ── Identity Header ── */}
-      <div className="flex items-center gap-3 px-4 py-3 border-b border-border/30">
-        <img
-          src={profilePhoto}
-          alt="Lord Junnior"
-          className="w-10 h-10 rounded-full object-cover ring-2 ring-gold/30 flex-shrink-0"
-          onError={(e) => {
-            const target = e.currentTarget;
-            target.style.display = 'none';
-            const fallback = document.createElement('div');
-            fallback.className = 'w-10 h-10 rounded-full bg-gold/20 ring-2 ring-gold/30 flex-shrink-0 flex items-center justify-center text-gold font-bold text-sm';
-            fallback.textContent = 'LJ';
-            target.parentNode?.insertBefore(fallback, target);
-          }}
-        />
-        <div className="flex-1 min-w-0">
-          <h2 className="font-bold text-[11px] tracking-[0.15em] text-foreground">LORD JUNNIOR</h2>
-          <div className="flex items-center gap-2 mt-1">
+      {/* ── Identity Header — Leadership Presence ── */}
+      <div className="px-4 pt-5 pb-4 border-b border-border/30">
+        <div className="flex flex-col items-center text-center gap-3">
+          <div className="relative">
+            <img
+              src={profilePhoto}
+              alt="Lord Junnior"
+              className="w-20 h-20 rounded-full object-cover ring-2 ring-gold/40 shadow-[0_0_30px_-5px_hsl(var(--gold)/0.3)]"
+              onError={(e) => {
+                const target = e.currentTarget;
+                target.style.display = 'none';
+              }}
+            />
+            <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-emerald-500 border-2 border-background" />
+          </div>
+          <div>
+            <h2 className="font-bold text-xs tracking-[0.2em] text-foreground uppercase">LORD JUNNIOR</h2>
+            <p className="font-mono text-[9px] tracking-[0.15em] text-muted-foreground/60 mt-0.5">SOBERANIA INDIVIDUAL</p>
+          </div>
+          <div className="flex items-center gap-3 mt-1">
             {socialLinks.map((social) => (
               <a
                 key={social.label}
@@ -117,7 +119,8 @@ const AppSidebar = () => {
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-gold transition-colors"
               >
-                <social.icon className="w-3 h-3" />
+                <social.icon className="w-3.5 h-3.5" />
+              </a>
               </a>
             ))}
           </div>
