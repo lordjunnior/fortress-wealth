@@ -34,7 +34,7 @@ export const navGroups: NavGroup[] = [
   {
     label: "Bitcoin — Fundamentos",
     icon: Bitcoin,
-    color: "text-amber-500",
+    color: undefined,
     items: [
       { label: "O que é Bitcoin?", route: "/o-que-e-bitcoin" },
       { label: "Noções Essenciais", route: "/nocoes-bitcoin" },
@@ -54,7 +54,7 @@ export const navGroups: NavGroup[] = [
   {
     label: "Segurança & Autocustódia",
     icon: Lock,
-    color: "text-red-500",
+    color: undefined,
     items: [
       { label: "Bitcoin Seguro", route: "/bitcoin-seguro" },
       { label: "Autocustódia", route: "/autocustodia" },
@@ -68,7 +68,7 @@ export const navGroups: NavGroup[] = [
   {
     label: "Economia & Filosofia",
     icon: TrendingUp,
-    color: "text-blue-400",
+    color: undefined,
     items: [
       { label: "Economia", route: "/economia" },
       { label: "Bitcoin vs Fiat", route: "/bitcoin-vs-fiat" },
@@ -86,7 +86,7 @@ export const navGroups: NavGroup[] = [
   {
     label: "Soberania Financeira",
     icon: Globe,
-    color: "text-emerald-400",
+    color: undefined,
     items: [
       { label: "Hub Financeiro", route: "/soberania-financeira" },
       { label: "Exchanges sem KYC", route: "/soberania-financeira/exchanges-sem-kyc" },
@@ -109,7 +109,7 @@ export const navGroups: NavGroup[] = [
   {
     label: "Soberania Orgânica",
     icon: Leaf,
-    color: "text-green-500",
+    color: undefined,
     items: [
       { label: "Hub Soberania Orgânica", route: "/soberania-organica" },
       { label: "Saúde Preventiva", route: "/soberania-organica/saude-preventiva" },
@@ -132,7 +132,7 @@ export const navGroups: NavGroup[] = [
   {
     label: "Sobrevivência & Resiliência",
     icon: Shield,
-    color: "text-orange-400",
+    color: undefined,
     items: [
       { label: "Kit 72h", route: "/soberania-organica/kit-72h" },
       { label: "Purificação de Água", route: "/soberania-organica/purificacao-agua" },
@@ -145,7 +145,7 @@ export const navGroups: NavGroup[] = [
   {
     label: "Alertas & Dossiês",
     icon: AlertTriangle,
-    color: "text-destructive",
+    color: undefined,
     items: [
       { label: "Hub de Alertas", route: "/alertas" },
       { label: "CBDC Brasil", route: "/alertas/cbdc-brasil" },
@@ -162,7 +162,7 @@ export const navGroups: NavGroup[] = [
   {
     label: "Saída & Infraestrutura",
     icon: ArrowRightLeft,
-    color: "text-violet-400",
+    color: undefined,
     items: [
       { label: "Estratégias de Saída", route: "/saida" },
       { label: "Gateway", route: "/saida/gateway" },
@@ -175,7 +175,7 @@ export const navGroups: NavGroup[] = [
   {
     label: "Biblioteca & Educação",
     icon: GraduationCap,
-    color: "text-sky-400",
+    color: undefined,
     items: [
       { label: "Educação", route: "/educacao" },
       { label: "Audiobooks", route: "/audiobooks" },
