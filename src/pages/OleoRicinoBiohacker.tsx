@@ -263,18 +263,18 @@ export default function OleoRicinoBiohacker() {
               </span>
             </motion.div>
 
-            <h1 className="leading-[0.88] mb-6" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-              <motion.span className="block text-4xl md:text-[5rem] lg:text-[7rem] font-black tracking-tighter text-white"
+            <h1 className="mb-8 space-y-2 md:space-y-3" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+              <motion.span className="block text-4xl md:text-[5rem] lg:text-[7rem] font-black tracking-tighter leading-[0.95] text-white"
                 initial={{ opacity: 0, y: 60, filter: 'blur(12px)' }}
                 animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
                 transition={{ duration: 1, ease: APPLE_EASE, delay: 0.1 }}
               >ÓLEO DE RÍCINO:</motion.span>
-              <motion.span className="block text-3xl md:text-[3.5rem] lg:text-[5rem] font-black tracking-tighter text-amber-400"
+              <motion.span className="block text-3xl md:text-[3.5rem] lg:text-[5rem] font-black tracking-tighter leading-[1.05] text-amber-400"
                 initial={{ opacity: 0, y: 60, filter: 'blur(12px)' }}
                 animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
                 transition={{ duration: 1, ease: APPLE_EASE, delay: 0.3 }}
               >O Biohacker de R$10</motion.span>
-              <motion.span className="block text-3xl md:text-[3.5rem] lg:text-[5rem] font-black tracking-tighter text-amber-600/60"
+              <motion.span className="block text-3xl md:text-[3.5rem] lg:text-[5rem] font-black tracking-tighter leading-[1.05] text-amber-600/60"
                 initial={{ opacity: 0, y: 60, filter: 'blur(12px)' }}
                 animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
                 transition={{ duration: 1, ease: APPLE_EASE, delay: 0.5 }}
