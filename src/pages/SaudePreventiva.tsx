@@ -56,6 +56,23 @@ const SaudePreventiva = () => {
         <meta property="og:title" content="Saúde Preventiva: Protocolo de Blindagem Imunológica" />
         <meta property="og:description" content="Fortaleça seu sistema imunológico com protocolos validados. Sol, sono, movimento e alimentação anti-inflamatória." />
         <meta property="og:url" content="https://lordjunnior.com.br/soberania-organica/saude-preventiva" />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "MedicalWebPage",
+          "headline": "Saúde Preventiva: Dossiê de Soberania Orgânica contra Inflamação",
+          "description": "Protocolo técnico de autossuficiência biológica para desintoxicação e blindagem do corpo contra inflamações sistêmicas.",
+          "url": "https://lordjunnior.com.br/soberania-organica/saude-preventiva",
+          "image": "https://lordjunnior.com.br/heroes/saude-preventiva.webp",
+          "author": { "@type": "Person", "name": "Lord Junnior", "url": "https://lordjunnior.com.br" },
+          "medicalAudience": "Patients",
+          "relevantSpecialty": { "@type": "MedicalSpecialty", "name": "Preventive Medicine" },
+          "about": [
+            { "@type": "Thing", "name": "Inflamação Crônica", "sameAs": "https://pt.wikipedia.org/wiki/Inflama%C3%A7%C3%A3o_cr%C3%B4nica" },
+            { "@type": "Thing", "name": "Saúde Preventiva", "sameAs": "https://pt.wikipedia.org/wiki/Medicina_preventiva" }
+          ],
+          "datePublished": "2026-03-01",
+          "dateModified": "2026-03-22"
+        })}</script>
       </Helmet>
     <div ref={containerRef} className="min-h-screen text-stone-100 font-sans selection:bg-emerald-300/50 relative overflow-hidden"
       style={{ background: 'linear-gradient(180deg, #050808 0%, #0a0d08 8%, #0f1a0f 20%, #142214 40%, #111f11 70%, #0f1a0f 90%, #0a0d08 100%)' }}
