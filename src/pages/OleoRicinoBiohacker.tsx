@@ -503,7 +503,7 @@ export default function OleoRicinoBiohacker() {
                     "{t.text}"
                   </blockquote>
                   <div className="flex items-center gap-3 pt-3 border-t border-stone-800/40">
-                    <Avatar nome={t.name} idx={i} />
+                    <img src={t.avatar} alt={t.name} className="w-10 h-10 rounded-full object-cover flex-shrink-0" />
                     <div className="min-w-0">
                       <figcaption className="text-white text-xs font-semibold truncate">{t.name}</figcaption>
                       <p className="text-stone-500 text-[10px]">{t.platform}</p>
