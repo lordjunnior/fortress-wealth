@@ -290,86 +290,98 @@ const Index = () => {
           </div>
         </NobelSection>
 
-        {/* ── ACTION CARDS GRID ── */}
+        {/* ── ACTION CARDS — IMAGE + TEXT BALANCED GRID ── */}
         <NobelSection className="section-divider px-5 md:px-8" delay={0.05}>
-          <div className="max-w-4xl mx-auto lg:ml-0 grid gap-4 md:grid-cols-2">
-            {/* BITCOIN ANÔNIMO */}
+          <div className="max-w-5xl mx-auto lg:ml-0 space-y-5">
+
+            {/* BITCOIN ANÔNIMO — text left, image right */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-              className="relative group"
             >
               <Link
                 to="/comprar-bitcoin-anonimo"
-                className="relative flex flex-col h-full rounded-xl border border-primary/15 bg-gradient-to-br from-primary/[0.06] via-primary/[0.02] to-transparent backdrop-blur-sm overflow-hidden hover:border-primary/35 transition-all duration-500"
+                className="group relative block rounded-xl border border-primary/15 bg-card/40 backdrop-blur-sm overflow-hidden hover:border-primary/35 transition-all duration-500"
               >
-                <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
-                <div className="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-primary/10 blur-3xl pointer-events-none" />
+                <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-primary/40 to-transparent z-10" />
 
-                <div className="relative p-6">
-                  <div className="flex items-center justify-between mb-4">
+                <div className="grid grid-cols-1 md:grid-cols-2">
+                  {/* TEXT */}
+                  <div className="relative p-6 md:p-8 lg:p-10 flex flex-col justify-center">
+                    <div className="absolute -top-12 -left-12 w-40 h-40 rounded-full bg-primary/8 blur-3xl pointer-events-none" />
                     <div className="relative">
-                      <div className="absolute inset-0 rounded-xl bg-primary/20 animate-[ping_4s_ease-in-out_infinite]" />
-                      <div className="relative w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center border border-primary/25">
-                        <EyeOff className="w-5 h-5 text-primary" />
-                      </div>
+                      <p className="font-mono text-[9px] tracking-[0.3em] text-destructive/70 uppercase mb-3">[ALERTA DE PRIVACIDADE]</p>
+                      <h3 className="text-foreground font-bold text-xl md:text-2xl mb-3 tracking-tight leading-tight" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+                        QUER COMPRAR R$10 EM BTC?
+                      </h3>
+                      <p className="text-sm md:text-base text-muted-foreground leading-relaxed mb-5">
+                        Use a <span className="text-primary font-semibold">Wallet of Satoshi</span> e o protocolo <span className="text-primary font-semibold">RoboSats</span> para ficar fora do radar. Sem KYC, sem rastro.
+                      </p>
+                      <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-primary/10 border border-primary/25 text-primary text-xs font-bold tracking-[0.15em] uppercase transition-all duration-500 group-hover:bg-primary/20">
+                        ACESSAR TUTORIAL
+                        <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
+                      </span>
                     </div>
-                    <ArrowRight className="w-5 h-5 text-primary/40 group-hover:text-primary group-hover:translate-x-1 transition-all duration-300" />
                   </div>
 
-                  <p className="font-mono text-[9px] tracking-[0.3em] text-destructive/70 uppercase mb-2">[ALERTA DE PRIVACIDADE]</p>
-                  <h3 className="text-foreground font-bold text-lg mb-2 tracking-tight" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
-                    QUER COMPRAR R$10 EM BTC?
-                  </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    Use a <span className="text-primary font-semibold">Wallet of Satoshi</span> e o protocolo <span className="text-primary font-semibold">RoboSats</span> para ficar fora do radar.
-                  </p>
+                  {/* IMAGE */}
+                  <div className="relative min-h-[200px] md:min-h-0">
+                    <img src={cardBtcAnonimo} alt="Transação Lightning Bitcoin" className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-card/80 via-card/20 to-transparent hidden md:block" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-card/60 via-transparent to-transparent md:hidden" />
+                  </div>
                 </div>
 
-                <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-primary/20 to-transparent z-10" />
               </Link>
             </motion.div>
 
-            {/* DÓLAR VIRTUAL */}
+            {/* DÓLAR VIRTUAL — image left, text right (alternating) */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="relative group"
             >
               <Link
                 to="/dolar-virtual"
-                className="relative flex flex-col h-full rounded-xl border border-chart-green/15 bg-gradient-to-br from-chart-green/[0.06] via-chart-green/[0.02] to-transparent backdrop-blur-sm overflow-hidden hover:border-chart-green/35 transition-all duration-500"
+                className="group relative block rounded-xl border border-chart-green/15 bg-card/40 backdrop-blur-sm overflow-hidden hover:border-chart-green/35 transition-all duration-500"
               >
-                <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-chart-green/40 to-transparent" />
-                <div className="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-chart-green/10 blur-3xl pointer-events-none" />
+                <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-chart-green/40 to-transparent z-10" />
 
-                <div className="relative p-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="relative">
-                      <div className="absolute inset-0 rounded-xl bg-chart-green/20 animate-[ping_4s_ease-in-out_infinite]" />
-                      <div className="relative w-11 h-11 rounded-xl bg-chart-green/10 flex items-center justify-center border border-chart-green/25">
-                        <DollarSign className="w-5 h-5 text-chart-green" />
-                      </div>
-                    </div>
-                    <ArrowRight className="w-5 h-5 text-chart-green/40 group-hover:text-chart-green group-hover:translate-x-1 transition-all duration-300" />
+                <div className="grid grid-cols-1 md:grid-cols-2">
+                  {/* IMAGE (left on desktop) */}
+                  <div className="relative min-h-[200px] md:min-h-0 order-1 md:order-none">
+                    <img src={cardDolarVirtual} alt="Hardware wallet com LED verde" className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+                    <div className="absolute inset-0 bg-gradient-to-l from-card/80 via-card/20 to-transparent hidden md:block" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-card/60 via-transparent to-transparent md:hidden" />
                   </div>
 
-                  <p className="font-mono text-[9px] tracking-[0.3em] text-chart-green/70 uppercase mb-2">[NOVO GUIA PRÁTICO]</p>
-                  <h3 className="text-foreground font-bold text-lg mb-2 tracking-tight" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
-                    COMO COMPRAR DÓLAR VIRTUAL (USDT)
-                  </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    <span className="text-chart-green font-semibold">Jade Wallet</span> + <span className="text-chart-green font-semibold">AlfredP2P</span> + Rede Liquid. Sem corretora, sem KYC, com hardware wallet.
-                  </p>
+                  {/* TEXT (right on desktop) */}
+                  <div className="relative p-6 md:p-8 lg:p-10 flex flex-col justify-center order-none md:order-1">
+                    <div className="absolute -top-12 -right-12 w-40 h-40 rounded-full bg-chart-green/8 blur-3xl pointer-events-none" />
+                    <div className="relative">
+                      <p className="font-mono text-[9px] tracking-[0.3em] text-chart-green/70 uppercase mb-3">[NOVO GUIA PRÁTICO]</p>
+                      <h3 className="text-foreground font-bold text-xl md:text-2xl mb-3 tracking-tight leading-tight" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+                        COMO COMPRAR DÓLAR VIRTUAL (USDT)
+                      </h3>
+                      <p className="text-sm md:text-base text-muted-foreground leading-relaxed mb-5">
+                        <span className="text-chart-green font-semibold">Jade Wallet</span> + <span className="text-chart-green font-semibold">AlfredP2P</span> + Rede Liquid. Sem corretora, sem KYC, com hardware wallet.
+                      </p>
+                      <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-chart-green/10 border border-chart-green/25 text-chart-green text-xs font-bold tracking-[0.15em] uppercase transition-all duration-500 group-hover:bg-chart-green/20">
+                        ACESSAR TUTORIAL
+                        <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
+                      </span>
+                    </div>
+                  </div>
                 </div>
 
-                <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-chart-green/20 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-chart-green/20 to-transparent z-10" />
               </Link>
             </motion.div>
+
           </div>
         </NobelSection>
 
