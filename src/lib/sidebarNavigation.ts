@@ -34,7 +34,7 @@ export const navGroups: NavGroup[] = [
   {
     label: "Bitcoin — Fundamentos",
     icon: Bitcoin,
-    color: "text-amber-500",
+    color: undefined,
     items: [
       { label: "O que é Bitcoin?", route: "/o-que-e-bitcoin" },
       { label: "Noções Essenciais", route: "/nocoes-bitcoin" },
