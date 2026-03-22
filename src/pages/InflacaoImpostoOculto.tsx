@@ -167,24 +167,35 @@ export default function InflacaoImpostoOculto() {
           </div>
         </motion.section>
 
-        {/* EFEITO CANTILLON */}
+        {/* EFEITO CANTILLON — Content Left, Image Right */}
         <motion.section initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="mb-28">
           <div className="flex items-center gap-3 mb-10">
             <div className="p-2.5 rounded-xl bg-red-500/10 border border-red-500/20"><Scale className="text-red-400" size={20} /></div>
             <h2 className="text-xl font-bold text-stone-200 uppercase tracking-wider" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Efeito Cantillon</h2>
           </div>
-          <p className="text-stone-400 text-base leading-relaxed mb-10 max-w-3xl">O dinheiro novo não aparece igualmente para todos. Ele segue uma <strong className="text-stone-100">hierarquia de acesso</strong>, e você está no final da fila:</p>
-          <div className="bg-white/[0.02] border border-white/[0.06] rounded-2xl overflow-hidden">
-            {CANTILLON_NIVEIS.map((n, i) => (
-              <div key={i} className={`grid grid-cols-[60px_1fr_1fr_1fr] group hover:bg-red-500/[0.03] transition-colors ${i < CANTILLON_NIVEIS.length - 1 ? 'border-b border-white/5' : ''}`}>
-                <div className="p-4 flex items-center justify-center"><span className={`font-bold text-sm font-mono ${i >= 3 ? 'text-red-400' : 'text-emerald-500/60'}`}>{n.nivel}</span></div>
-                <div className="p-4"><span className="text-stone-200 font-bold text-xs">{n.quem}</span></div>
-                <div className="p-4"><span className="text-stone-400 text-xs">{n.efeito}</span></div>
-                <div className="p-4"><span className={`text-xs font-bold ${i >= 3 ? 'text-red-400' : 'text-emerald-400/60'}`}>{n.resultado}</span></div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start mb-6">
+            <div>
+              <p className="text-stone-400 text-base leading-8 mb-8">O dinheiro novo não aparece igualmente para todos. Ele segue uma <strong className="text-stone-100">hierarquia de acesso</strong>, e você está no final da fila:</p>
+              <div className="bg-white/[0.02] border border-white/[0.06] rounded-2xl overflow-hidden">
+                {CANTILLON_NIVEIS.map((n, i) => (
+                  <div key={i} className={`grid grid-cols-[60px_1fr_1fr_1fr] group hover:bg-red-500/[0.03] transition-colors ${i < CANTILLON_NIVEIS.length - 1 ? 'border-b border-white/5' : ''}`}>
+                    <div className="p-4 flex items-center justify-center"><span className={`font-bold text-sm font-mono ${i >= 3 ? 'text-red-400' : 'text-emerald-500/60'}`}>{n.nivel}</span></div>
+                    <div className="p-4"><span className="text-stone-200 font-bold text-xs">{n.quem}</span></div>
+                    <div className="p-4"><span className="text-stone-400 text-xs">{n.efeito}</span></div>
+                    <div className="p-4"><span className={`text-xs font-bold ${i >= 3 ? 'text-red-400' : 'text-emerald-400/60'}`}>{n.resultado}</span></div>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
+            <motion.div variants={fadeUp} custom={1} className="relative rounded-2xl overflow-hidden border border-white/[0.06] group">
+              <img src={imgBalancaCantillon} alt="Balança desequilibrada — Efeito Cantillon" className="w-full h-[420px] object-cover transition-transform duration-[1.5s] group-hover:scale-[1.03]" style={{ filter: 'brightness(0.65) saturate(0.85)' }} loading="lazy" />
+              <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, transparent 30%, rgba(5,8,8,0.8) 80%, rgba(5,8,8,0.95) 100%)' }} />
+              <div className="absolute bottom-5 left-6 right-6">
+                <p className="text-stone-400 text-[11px] font-mono uppercase tracking-[0.2em] leading-relaxed">Quem imprime fica rico. Quem poupa empobrece. A balança nunca esteve equilibrada.</p>
+              </div>
+            </motion.div>
           </div>
-          <div className="bg-red-950/20 border border-red-500/20 rounded-2xl p-6 mt-6">
+          <div className="bg-red-950/20 border border-red-500/20 rounded-2xl p-6">
             <p className="text-red-400 text-[10px] font-bold uppercase tracking-wider mb-2">A Verdade Brutal</p>
             <p className="text-stone-100 font-bold text-base leading-tight uppercase italic">A inflação é a maior máquina de transferência de riqueza da história: dos pobres para os ricos, dos poupadores para os impressores.</p>
           </div>
