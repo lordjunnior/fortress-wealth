@@ -5,8 +5,23 @@ const MATRIX_CHARS = "0123456789₿⚡∞§#@&%▓░▒█";
 const GLITCH_DURATION = 600;
 const GLITCH_INTERVAL = 40;
 
+// Base: data de lançamento do site + crescimento orgânico baseado no tempo real
+const LAUNCH_DATE = new Date("2025-01-15T00:00:00Z").getTime();
+const BASE_SATS = 753;
+// ~50 sats/hora média = ~1200 sats/dia = crescimento orgânico plausível
+const SATS_PER_MS = 50 / 3_600_000;
+
+const getTimeSats = () => {
+  const elapsed = Date.now() - LAUNCH_DATE;
+  // Crescimento determinístico + micro-variação por hora (seed baseado no dia/hora)
+  const base = Math.floor(elapsed * SATS_PER_MS);
+  const hourSeed = Math.floor(elapsed / 3_600_000);
+  const jitter = Math.abs(Math.sin(hourSeed * 7919)) * 200;
+  return BASE_SATS + base + Math.floor(jitter);
+};
+
 const SatCounter = () => {
-  const [count, setCount] = useState(753);
+  const [count, setCount] = useState(getTimeSats);
   const [displayDigits, setDisplayDigits] = useState<string[]>([]);
   const [isGlitching, setIsGlitching] = useState(false);
   const [flash, setFlash] = useState(false);
@@ -51,20 +66,17 @@ const SatCounter = () => {
 
   // Initialize display
   useEffect(() => {
-    setDisplayDigits(formatNumber(753).split(""));
-  }, [formatNumber]);
+    setDisplayDigits(formatNumber(count).split(""));
+  }, [formatNumber, count]);
 
-  // Random increment timer
+  // Incremento periódico baseado no tempo real (a cada 20-40s)
   useEffect(() => {
     const scheduleNext = () => {
-      const delay = 15000 + Math.random() * 30000;
+      const delay = 20000 + Math.random() * 20000;
       return setTimeout(() => {
-        const increment = 1 + Math.floor(Math.random() * 5);
-        setCount((prev) => {
-          const next = prev + increment;
-          triggerGlitch(next);
-          return next;
-        });
+        const next = getTimeSats();
+        setCount(next);
+        triggerGlitch(next);
         timerRef = scheduleNext();
       }, delay);
     };
@@ -77,14 +89,14 @@ const SatCounter = () => {
     <div className="flex items-center justify-center gap-2 mt-3">
       <Zap
         className={`w-3.5 h-3.5 transition-all duration-300 ${
-          flash ? "text-gold scale-125 drop-shadow-[0_0_8px_rgba(234,179,8,0.8)]" : "text-gold-dim"
+          flash ? "text-gold scale-125 drop-shadow-[0_0_8px_rgba(234,179,8,0.8)]" : "text-muted-foreground"
         }`}
       />
       <div className="flex items-center gap-1.5">
         <span
           className="font-mono text-sm tracking-wider font-bold"
           style={{
-            color: "#EAB308",
+            color: "hsl(var(--gold))",
             textShadow: isGlitching
               ? "0 0 8px rgba(34,197,94,0.6), 0 0 20px rgba(34,197,94,0.3)"
               : "0 0 4px rgba(234,179,8,0.3)",
@@ -103,7 +115,7 @@ const SatCounter = () => {
             </span>
           ))}
         </span>
-        <span className="font-mono text-xs text-gold-dim tracking-wider">
+        <span className="font-mono text-xs text-muted-foreground tracking-wider">
           sats injetados na rede
         </span>
       </div>
