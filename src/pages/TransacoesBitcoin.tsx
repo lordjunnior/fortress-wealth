@@ -1,3 +1,4 @@
+import PageFloatingToc from "@/components/PageFloatingToc";
 import { useState, useEffect, useRef, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
@@ -26,6 +27,16 @@ const NAV_ITEMS = [
   { id: 'bloco-04', label: '04: Taxas e Prioridade' },
   { id: 'bloco-05', label: '05: Da Mempool ao Bloco' },
   { id: 'bloco-06', label: '06: Regras de Ouro' },
+];
+
+
+const TOC_ITEMS = [
+  { id: "bloco-01", label: "O Que É uma Transação" },
+  { id: "bloco-02", label: "Como Funciona" },
+  { id: "bloco-03", label: "Anatomia" },
+  { id: "bloco-04", label: "Taxas e Prioridade" },
+  { id: "bloco-05", label: "Mempool ao Bloco" },
+  { id: "bloco-06", label: "Regras de Ouro" },
 ];
 
 export default function TransacoesBitcoin() {
@@ -61,6 +72,8 @@ export default function TransacoesBitcoin() {
         <meta name="description" content="Entenda transações Bitcoin: inputs, outputs, taxas, mempool, confirmações e regras de ouro para transferir valor sem intermediários." />
         <meta name="keywords" content="transação bitcoin, UTXO, mempool, taxa bitcoin, confirmação blockchain, inputs outputs" />
       </Helmet>
+
+      <PageFloatingToc items={TOC_ITEMS} accentColor="orange" />
 
       <div className="min-h-screen bg-background text-foreground font-sans selection:bg-cyan-600/30 overflow-x-hidden">
         {/* Ambient VFX */}

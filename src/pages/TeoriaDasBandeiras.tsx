@@ -1,3 +1,4 @@
+import PageFloatingToc from "@/components/PageFloatingToc";
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
@@ -19,6 +20,17 @@ const fadeUp = {
   }),
 };
 
+
+const TOC_ITEMS = [
+  { id: "o-que-e", label: "O Que É" },
+  { id: "bandeiras", label: "As 5 Bandeiras" },
+  { id: "por-que", label: "Por Que Agora" },
+  { id: "brasil", label: "O Caso Brasil" },
+  { id: "primeiros-passos", label: "Primeiros Passos" },
+  { id: "ferramentas", label: "Arsenal Prático" },
+  { id: "faq", label: "FAQ" },
+];
+
 export default function TeoriaDasBandeiras() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [activeBandeira, setActiveBandeira] = useState(0);
@@ -38,6 +50,8 @@ export default function TeoriaDasBandeiras() {
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>
       </Helmet>
+
+      <PageFloatingToc items={TOC_ITEMS} accentColor="amber" />
 
       <ScrollToTop />
 

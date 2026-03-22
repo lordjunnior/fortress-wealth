@@ -1,3 +1,4 @@
+import PageFloatingToc from "@/components/PageFloatingToc";
 import { useState, useEffect, useRef, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
@@ -26,6 +27,16 @@ const NAV_ITEMS = [
   { id: 'bloco-04', label: '04: Assinaturas Digitais' },
   { id: 'bloco-05', label: '05: Armazenamento de Chaves' },
   { id: 'bloco-06', label: '06: Cold vs Hot Wallet' },
+];
+
+
+const TOC_ITEMS = [
+  { id: "bloco-01", label: "Chave Privada vs Pública" },
+  { id: "bloco-02", label: "Geração de Chaves" },
+  { id: "bloco-03", label: "Anatomia da Transação" },
+  { id: "bloco-04", label: "Assinaturas Digitais" },
+  { id: "bloco-05", label: "Armazenamento" },
+  { id: "bloco-06", label: "Cold vs Hot Wallet" },
 ];
 
 export default function ChavesPage() {
@@ -61,6 +72,8 @@ export default function ChavesPage() {
         <meta name="description" content="Entenda chaves públicas e privadas do Bitcoin: como são geradas, assinaturas digitais, cold storage vs hot wallet e as regras de autocustódia." />
         <meta name="keywords" content="chave privada bitcoin, chave pública, seed phrase, cold storage, hot wallet, assinatura digital, autocustódia" />
       </Helmet>
+
+      <PageFloatingToc items={TOC_ITEMS} accentColor="emerald" />
 
       <div className="min-h-screen bg-background text-foreground font-sans selection:bg-orange-600/30 overflow-x-hidden">
         {/* Ambient VFX */}

@@ -1,3 +1,4 @@
+import PageFloatingToc from "@/components/PageFloatingToc";
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
@@ -111,6 +112,17 @@ const howToSchema = {
 };
 
 /* ═══════════ COMPONENTE ═══════════ */
+
+const TOC_ITEMS = [
+  { id: "pl3951", label: "O Mecanismo Legal" },
+  { id: "agenda-global", label: "Agenda Global" },
+  { id: "timeline", label: "O Cerco" },
+  { id: "consequencias", label: "O Impacto" },
+  { id: "contradicao", label: "O Paradoxo" },
+  { id: "ferramentas", label: "Arsenal" },
+  { id: "faq", label: "FAQ" },
+];
+
 export default function ProibicaoDinheiro() {
   const [activeSection, setActiveSection] = useState('hero');
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -158,6 +170,8 @@ export default function ProibicaoDinheiro() {
         <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(howToSchema)}</script>
       </Helmet>
+
+      <PageFloatingToc items={TOC_ITEMS} accentColor="red" />
 
       {/* ── FILM GRAIN + ATMOSPHERE ── */}
       <div className="fixed inset-0 pointer-events-none z-50 opacity-[0.035]" style={{

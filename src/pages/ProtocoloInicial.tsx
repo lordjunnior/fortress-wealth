@@ -1,3 +1,4 @@
+import PageFloatingToc from "@/components/PageFloatingToc";
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
@@ -10,6 +11,15 @@ const NAV_ITEMS = [
   { id: 'estagio-03', label: 'Estágio 03: A Mecânica da Liberdade' },
   { id: 'estagio-04', label: 'Estágio 04: A Fortaleza' },
   { id: 'estagio-05', label: 'Estágio 05: Blindagem Mental' },
+];
+
+
+const TOC_ITEMS = [
+  { id: "estagio-01", label: "Fim da Ilusão" },
+  { id: "estagio-02", label: "Escassez Absoluta" },
+  { id: "estagio-03", label: "Mecânica da Liberdade" },
+  { id: "estagio-04", label: "A Fortaleza" },
+  { id: "estagio-05", label: "Blindagem Mental" },
 ];
 
 export default function ProtocoloInicial() {
@@ -44,6 +54,8 @@ export default function ProtocoloInicial() {
         <meta name="description" content="Trilha completa de aprendizado Bitcoin: do conceito à autocustódia. 6 estágios progressivos para dominar o protocolo e proteger seu patrimônio." />
         <link rel="canonical" href="https://lordjunnior.com.br/protocolo-inicial" />
       </Helmet>
+
+      <PageFloatingToc items={TOC_ITEMS} accentColor="orange" />
     <div className="min-h-screen bg-[#070A12] text-white font-sans selection:bg-red-600 overflow-x-hidden">
       {/* Particles */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-30">

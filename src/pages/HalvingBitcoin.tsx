@@ -1,3 +1,4 @@
+import PageFloatingToc from "@/components/PageFloatingToc";
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
@@ -21,6 +22,16 @@ const FAQ_ITEMS = [
   { q: "O que acontece no halving do Bitcoin?", a: "A recompensa dos mineradores por bloco é reduzida pela metade, diminuindo a taxa de emissão de novos bitcoins e aumentando a escassez programada do ativo." },
   { q: "Quando será o próximo halving?", a: "O próximo halving do Bitcoin está previsto para abril de 2028, quando a recompensa cairá de 3,125 para 1,5625 BTC por bloco." },
   { q: "O halving sempre faz o preço subir?", a: "Historicamente, os halvings precederam movimentos de alta significativos, mas o mercado é influenciado por múltiplos fatores e resultados passados não garantem resultados futuros." },
+];
+
+
+const TOC_ITEMS = [
+  { id: "o-que-e", label: "O Que É Halving" },
+  { id: "proximo-halving", label: "Próximo Halving" },
+  { id: "impacto-valor", label: "Impacto no Valor" },
+  { id: "todos-minerados", label: "Todos Minerados?" },
+  { id: "como-investir", label: "Como Investir" },
+  { id: "conclusao", label: "Conclusão" },
 ];
 
 const HalvingBitcoin = () => {
@@ -49,6 +60,8 @@ const HalvingBitcoin = () => {
           }))
         })}</script>
       </Helmet>
+
+      <PageFloatingToc items={TOC_ITEMS} accentColor="orange" />
 
       {/* Scroll Progress */}
       <motion.div

@@ -1,3 +1,4 @@
+import PageFloatingToc from "@/components/PageFloatingToc";
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
@@ -23,6 +24,17 @@ const NAV_ITEMS = [
   { id: 'escassez', label: '05. Escassez' },
   { id: 'soberania', label: '06. Soberania' },
   { id: 'alerta', label: 'Alerta Final' },
+];
+
+
+const TOC_ITEMS = [
+  { id: "definicao", label: "O Que É Bitcoin" },
+  { id: "utilizacao", label: "Como É Usado" },
+  { id: "vantagens", label: "Por Que É Superior" },
+  { id: "infraestrutura", label: "Blockchain" },
+  { id: "escassez", label: "21 Milhões" },
+  { id: "soberania", label: "Descentralização" },
+  { id: "alerta", label: "Alerta Final" },
 ];
 
 export default function OQueEBitcoin() {
@@ -58,6 +70,8 @@ export default function OQueEBitcoin() {
         <meta name="description" content="Entenda o que é Bitcoin: protocolo descentralizado, escassez absoluta de 21 milhões, blockchain imutável e soberania financeira individual." />
         <meta name="keywords" content="o que é bitcoin, bitcoin explicado, blockchain, descentralização, 21 milhões, satoshi nakamoto" />
       </Helmet>
+
+      <PageFloatingToc items={TOC_ITEMS} accentColor="orange" />
 
       <div className="min-h-screen bg-background text-foreground font-sans selection:bg-orange-600/30 overflow-x-hidden">
         {/* Ambient VFX */}

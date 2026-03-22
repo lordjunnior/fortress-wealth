@@ -1,3 +1,4 @@
+import PageFloatingToc from "@/components/PageFloatingToc";
 import React, { useState, useCallback, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
@@ -72,7 +73,16 @@ const PixCripto: React.FC = () => {
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
   useEffect(() => {
-    const handleScroll = () => {
+    
+const TOC_ITEMS = [
+  { id: "passo-a-passo", label: "Passo a Passo" },
+  { id: "riscos", label: "Riscos" },
+  { id: "como-funciona", label: "Como Funciona" },
+  { id: "faq", label: "FAQ" },
+  { id: "apoiar", label: "Apoiar" },
+];
+
+const handleScroll = () => {
       const total = document.documentElement.scrollHeight - window.innerHeight;
       setScrollProgress(total > 0 ? Math.min((window.scrollY / total) * 100, 100) : 0);
     };
@@ -98,6 +108,8 @@ const PixCripto: React.FC = () => {
         <title>PIX via Bitcoin — Guia Completo de Conversão Cripto→PIX | Lord Junnior</title>
         <meta name="description" content="Aprenda a pagar PIX com Bitcoin, USDT e Ethereum. Guia completo com passo a passo, riscos, segurança e simulador interativo." />
       </Helmet>
+
+      <PageFloatingToc items={TOC_ITEMS} accentColor="emerald" />
 
       <ScrollToTop />
 

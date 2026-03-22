@@ -1,3 +1,4 @@
+import PageFloatingToc from "@/components/PageFloatingToc";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
@@ -218,6 +219,17 @@ const FaqItem = ({ q, a }: { q: string; a: string }) => (
 );
 
 /* ══════════════════════ MAIN PAGE ══════════════════════ */
+
+const TOC_ITEMS = [
+  { id: "o-que-sao", label: "Stablecoins" },
+  { id: "regulamentacao", label: "Regulamentação" },
+  { id: "por-que-usar", label: "Por Que USDT?" },
+  { id: "jade-wallet", label: "Jade Wallet" },
+  { id: "comprando-usdt", label: "Comprando USDT" },
+  { id: "seguranca", label: "Segurança" },
+  { id: "faq", label: "FAQ" },
+];
+
 export default function DolarVirtual() {
   const heroRef = useRef(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
@@ -241,6 +253,8 @@ export default function DolarVirtual() {
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
       </Helmet>
+
+      <PageFloatingToc items={TOC_ITEMS} accentColor="emerald" />
 
       <ScrollProgressBar />
       <ScrollToTop />

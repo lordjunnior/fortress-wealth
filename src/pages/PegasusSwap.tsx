@@ -1,3 +1,4 @@
+import PageFloatingToc from "@/components/PageFloatingToc";
 import { useRef, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
@@ -165,6 +166,17 @@ const FAQ_DATA = [
 const AFFILIATE_URL = 'https://pegasusswap.com/?ref=QBSTBG9';
 
 /* ═══ COMPONENT ═══ */
+
+const TOC_ITEMS = [
+  { id: "ficha", label: "Ficha Técnica" },
+  { id: "tutorial", label: "Tutorial" },
+  { id: "pares", label: "Pares Suportados" },
+  { id: "comparativo", label: "Comparativo" },
+  { id: "analise", label: "Prós e Contras" },
+  { id: "veredicto", label: "Veredicto" },
+  { id: "faq", label: "FAQ" },
+];
+
 export default function PegasusSwap() {
   const [scrolled, setScrolled] = useState(false);
   const [leadModalOpen, setLeadModalOpen] = useState(false);
@@ -233,6 +245,8 @@ export default function PegasusSwap() {
         <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
       </Helmet>
+
+      <PageFloatingToc items={TOC_ITEMS} accentColor="cyan" />
       <ScrollToTop />
       <LeadCaptureModal isOpen={leadModalOpen} onClose={() => setLeadModalOpen(false)} interesse="assessoria-pegasusswap" />
 

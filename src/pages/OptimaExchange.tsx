@@ -1,3 +1,4 @@
+import PageFloatingToc from "@/components/PageFloatingToc";
 import { useRef, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
@@ -124,6 +125,16 @@ const FAQ_DATA = [
 ];
 
 /* ═══ COMPONENT ═══ */
+
+const TOC_ITEMS = [
+  { id: "ficha", label: "Ficha Técnica" },
+  { id: "passo-a-passo", label: "Como Funciona" },
+  { id: "cobertura", label: "Cobertura Global" },
+  { id: "analise", label: "Prós e Contras" },
+  { id: "cedula", label: "Cédula Paraguaia" },
+  { id: "faq", label: "FAQ" },
+];
+
 export default function OptimaExchange() {
   const [scrolled, setScrolled] = useState(false);
   const [leadModalOpen, setLeadModalOpen] = useState(false);
@@ -157,6 +168,8 @@ export default function OptimaExchange() {
         <link rel="canonical" href="https://lordjunnior.com.br/soberania-financeira/exchanges-sem-kyc/optima-exchange" />
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       </Helmet>
+
+      <PageFloatingToc items={TOC_ITEMS} accentColor="amber" />
       <ScrollToTop />
       <LeadCaptureModal isOpen={leadModalOpen} onClose={() => setLeadModalOpen(false)} interesse="assessoria-cedula-paraguaia-optima" />
 

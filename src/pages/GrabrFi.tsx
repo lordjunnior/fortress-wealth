@@ -1,3 +1,4 @@
+import PageFloatingToc from "@/components/PageFloatingToc";
 import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
@@ -176,6 +177,17 @@ const faqSchemaLD = {
 };
 
 /* ═══ COMPONENT ═══ */
+
+const TOC_ITEMS = [
+  { id: "specs", label: "Ficha Técnica" },
+  { id: "diferenciais", label: "Diferenciais" },
+  { id: "taxas", label: "Taxas" },
+  { id: "pros-contras", label: "Prós e Contras" },
+  { id: "veredicto", label: "Veredicto" },
+  { id: "assessoria", label: "Assessoria" },
+  { id: "faq", label: "FAQ" },
+];
+
 const GrabrFi = () => {
   const [leadOpen, setLeadOpen] = useState(false);
   return (
@@ -187,6 +199,8 @@ const GrabrFi = () => {
         <script type="application/ld+json">{JSON.stringify(schemaLD)}</script>
         <script type="application/ld+json">{JSON.stringify(faqSchemaLD)}</script>
       </Helmet>
+
+      <PageFloatingToc items={TOC_ITEMS} accentColor="amber" />
       <ScrollToTop />
 
       <NobelVFX accentColor="teal" />

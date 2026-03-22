@@ -1,3 +1,4 @@
+import PageFloatingToc from "@/components/PageFloatingToc";
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
@@ -113,6 +114,15 @@ function useMouseParallax(strength = 15) {
 /* ═══════════════════════════════════════════════════════════════
    MAIN PAGE — COMPLETE LAYOUT REDESIGN
 ═══════════════════════════════════════════════════════════════ */
+
+const TOC_ITEMS = [
+  { id: "fase-01", label: "Fase 01: Sobrevivência" },
+  { id: "fase-02", label: "Fase 02: Saúde Natural" },
+  { id: "fase-03", label: "Fase 03: Alimento" },
+  { id: "fase-04", label: "Fase 04: Conhecimento" },
+  { id: "fase-05", label: "Fase 05: Discernimento" },
+];
+
 export default function ProjetoAutonomo() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll();
@@ -138,6 +148,8 @@ export default function ProjetoAutonomo() {
         <meta name="description" content="Guia completo de autonomia: kit 72h, purificação de água, primeiros socorros, horta urbana, fitoterapia e protocolos de emergência para sobrevivência real." />
         <link rel="canonical" href="https://lordjunnior.com.br/projeto-autonomo" />
       </Helmet>
+
+      <PageFloatingToc items={TOC_ITEMS} accentColor="emerald" />
     <div
       ref={containerRef}
       className="min-h-screen text-stone-100 font-sans selection:bg-emerald-400/30 relative overflow-hidden"

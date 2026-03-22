@@ -1,3 +1,4 @@
+import PageFloatingToc from "@/components/PageFloatingToc";
 import { useRef, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
@@ -102,6 +103,16 @@ const FAQ_DATA = [
 ];
 
 /* ═══ COMPONENT ═══ */
+
+const TOC_ITEMS = [
+  { id: "categorias", label: "O Que é KYCNot.me" },
+  { id: "filtros", label: "Filtros" },
+  { id: "armadilhas", label: "Armadilhas" },
+  { id: "alternativas", label: "Alternativas" },
+  { id: "assessoria", label: "Assessoria" },
+  { id: "faq", label: "FAQ" },
+];
+
 export default function KycNotMe() {
   const [scrolled, setScrolled] = useState(false);
   const [leadModalOpen, setLeadModalOpen] = useState(false);
@@ -135,6 +146,8 @@ export default function KycNotMe() {
         <link rel="canonical" href="https://lordjunnior.com.br/soberania-financeira/exchanges-sem-kyc/kycnot-me" />
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       </Helmet>
+
+      <PageFloatingToc items={TOC_ITEMS} accentColor="orange" />
       <ScrollToTop />
       <LeadCaptureModal isOpen={leadModalOpen} onClose={() => setLeadModalOpen(false)} interesse="assessoria-cedula-paraguaia-kycnot" />
 

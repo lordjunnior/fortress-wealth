@@ -1,3 +1,4 @@
+import PageFloatingToc from "@/components/PageFloatingToc";
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
@@ -18,6 +19,17 @@ const fadeUp = {
     transition: { duration: 0.7, ease: APPLE_EASE, delay: i * 0.12 },
   }),
 };
+
+
+const TOC_ITEMS = [
+  { id: "tabela", label: "Tabela Comparativa" },
+  { id: "problema-fiat", label: "O Problema do Fiat" },
+  { id: "solucao-bitcoin", label: "A Solução: Bitcoin" },
+  { id: "objecoes", label: "Objeções Comuns" },
+  { id: "numeros", label: "Os Números" },
+  { id: "arsenal", label: "Primeiros Passos" },
+  { id: "faq", label: "FAQ" },
+];
 
 export default function BitcoinVsFiat() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -40,6 +52,8 @@ export default function BitcoinVsFiat() {
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>
       </Helmet>
+
+      <PageFloatingToc items={TOC_ITEMS} accentColor="orange" />
 
       <ScrollToTop />
 
