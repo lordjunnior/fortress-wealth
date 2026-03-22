@@ -160,6 +160,7 @@ const SILOS: Silo[] = [
       { title: "Controle de Vetores", href: "/projeto-autonomo/controle-vetores" },
       { title: "Sabedoria Ancestral", href: "/projeto-autonomo/sabedoria-ancestral" },
       { title: "Babosa & Acemannan", href: "/projeto-autonomo/babosa-acemannan" },
+      { title: "Óleo de Rícino: Dossiê Biohacker", href: "/soberania-organica/oleo-ricino-biohacker" },
       { title: "Tóxicos Ocultos", href: "/projeto-autonomo/toxicos-ocultos" },
       { title: "Toxinas Alimentares", href: "/projeto-autonomo/toxicos-ocultos/toxinas-alimentares" },
       { title: "Toxinas Ambientais", href: "/projeto-autonomo/toxicos-ocultos/toxinas-ambientais" },

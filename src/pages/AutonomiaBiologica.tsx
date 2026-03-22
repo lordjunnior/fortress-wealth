@@ -275,6 +275,35 @@ export default function AutonomiaBiologica() {
           </Link>
         </section>
 
+        {/* ═══ DESTAQUE: ÓLEO DE RÍCINO ═══ */}
+        <section className="mb-28">
+          <Link
+            to="/soberania-organica/oleo-ricino-biohacker"
+            className="group relative block rounded-2xl border border-amber-500/20 bg-gradient-to-br from-amber-500/[0.08] to-amber-600/[0.03] p-8 md:p-10 lg:p-12 hover:border-amber-500/40 hover:from-amber-500/[0.12] transition-all duration-700 overflow-hidden"
+          >
+            <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-amber-500/15 border border-amber-500/20">
+              <span className="text-amber-400 text-[10px] font-bold tracking-[0.2em] uppercase">Dossiê</span>
+            </div>
+            <div className="flex items-start gap-5">
+              <div className="w-14 h-14 rounded-xl bg-amber-500/10 flex items-center justify-center shrink-0 group-hover:bg-amber-500/20 transition-colors duration-500">
+                <Droplets size={28} className="text-amber-400" />
+              </div>
+              <div className="flex-1">
+                <h3 className="text-2xl md:text-3xl font-black text-stone-100 mb-3 group-hover:text-amber-300 transition-colors duration-500" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                  Óleo de Rícino: O Biohacker de R$10
+                </h3>
+                <p className="text-stone-400 text-sm md:text-base leading-relaxed mb-4 max-w-3xl">
+                  O ácido ricinoleico é uma ferramenta de penetração transdérmica que dissolve inflamações sistêmicas. 4 estudos científicos, 8 relatos reais, protocolo de cataplasma hepática e o dossiê completo sobre o biohacking de baixo custo que a Big Pharma odeia.
+                </p>
+                <div className="flex items-center gap-2 text-amber-400 text-sm font-bold uppercase tracking-wider group-hover:gap-3 transition-all duration-500">
+                  <span>Ler dossiê completo</span>
+                  <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform duration-500" />
+                </div>
+              </div>
+            </div>
+          </Link>
+        </section>
+
         {/* ═══ MÉTODOS DE PREPARO ═══ */}
         <section ref={(el) => { sectionsRef.current[0] = el; }} className="mb-28">
           <div className="mb-10">
