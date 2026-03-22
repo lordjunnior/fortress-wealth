@@ -132,7 +132,7 @@ export const navGroups: NavGroup[] = [
   {
     label: "Sobrevivência & Resiliência",
     icon: Shield,
-    color: "text-orange-400",
+    color: undefined,
     items: [
       { label: "Kit 72h", route: "/soberania-organica/kit-72h" },
       { label: "Purificação de Água", route: "/soberania-organica/purificacao-agua" },
