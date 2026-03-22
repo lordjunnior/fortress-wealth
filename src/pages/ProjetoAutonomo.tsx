@@ -430,6 +430,12 @@ export default function ProjetoAutonomo() {
          FASE 01 — BASE 72 — BENTO GRID LAYOUT (was: simple 3-col grid)
       ═══════════════════════════════════════════════════════════ */}
       <section id="fase-01" className="relative z-10 scroll-mt-20 py-20 md:py-32">
+        {/* Ambient background image */}
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <img src={bgFase01} alt="" className="absolute inset-0 w-full h-full object-cover opacity-[0.06]" style={{ filter: 'saturate(0.5)' }} />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#050808] via-transparent to-[#050808]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#050808] via-transparent to-[#050808]" />
+        </div>
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           {/* Phase Hero — Full-width immersive banner (new: split layout) */}
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={scaleIn} custom={0}
