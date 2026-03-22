@@ -232,8 +232,11 @@ const App = () => (
           <Route path="/soberania-organica/toxicos-ocultos/manipulacao-informacional" element={<ManipulacaoInformacional />} />
           <Route path="/soberania-organica/toxicos-ocultos/dependencia-tecnologica" element={<DependenciaTecnologica />} />
           <Route path="/soberania-organica/toxicos-ocultos/toxinas-ambientais" element={<ToxinasAmbientais />} />
-          <Route path="/soberania-organica/:slug" element={<ModuloAutonomo />} />
           <Route path="/soberania-organica/oleo-ricino-biohacker" element={<OleoRicinoBiohacker />} />
+          <Route path="/soberania-organica/:slug" element={<ModuloAutonomo />} />
+          {/* Redirects from old projeto-autonomo URLs */}
+          <Route path="/projeto-autonomo" element={<Navigate to="/soberania-organica" replace />} />
+          <Route path="/projeto-autonomo/*" element={<Navigate to="/soberania-organica" replace />} />
           <Route path="/mapa-da-soberania" element={<MapaDaSoberania />} />
           <Route path="/por-onde-comecar" element={<PorOndeComecar />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
