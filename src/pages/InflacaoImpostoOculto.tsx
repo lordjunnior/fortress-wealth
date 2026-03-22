@@ -139,22 +139,31 @@ export default function InflacaoImpostoOculto() {
           </div>
         </motion.section>
 
-        {/* COMO FUNCIONA */}
+        {/* COMO FUNCIONA — Image Left, Content Right */}
         <motion.section initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="mb-28">
           <div className="flex items-center gap-3 mb-10">
             <div className="p-2.5 rounded-xl bg-red-500/10 border border-red-500/20"><Landmark className="text-red-400" size={20} /></div>
             <h2 className="text-xl font-bold text-stone-200 uppercase tracking-wider" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Como a Inflação Funciona</h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {MECANISMO.map((item, i) => (
-              <motion.div key={i} variants={fadeUp} custom={i + 1} className="bg-white/[0.02] border border-red-500/10 rounded-2xl p-8 hover:-translate-y-1 transition-transform duration-300">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-10 h-10 rounded-full bg-red-500/10 border border-red-500/20 flex items-center justify-center"><item.icon className="text-red-400" size={18} /></div>
-                  <div><span className="text-red-500/60 font-bold text-[10px] tracking-wider">ETAPA {i + 1}</span><h3 className="text-stone-200 font-bold uppercase text-sm tracking-tight italic">{item.titulo}</h3></div>
-                </div>
-                <p className="text-stone-400 text-xs leading-relaxed">{item.descricao}</p>
-              </motion.div>
-            ))}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start mb-10">
+            <motion.div variants={fadeUp} custom={1} className="relative rounded-2xl overflow-hidden border border-white/[0.06] group">
+              <img src={imgImpressoraDinheiro} alt="Impressora de dinheiro do banco central" className="w-full h-[380px] object-cover transition-transform duration-[1.5s] group-hover:scale-[1.03]" style={{ filter: 'brightness(0.6) saturate(0.85)' }} loading="lazy" />
+              <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, transparent 30%, rgba(5,8,8,0.8) 80%, rgba(5,8,8,0.95) 100%)' }} />
+              <div className="absolute bottom-5 left-6 right-6">
+                <p className="text-stone-400 text-[11px] font-mono uppercase tracking-[0.2em] leading-relaxed">A máquina de impressão não descansa. Seu poder de compra, sim.</p>
+              </div>
+            </motion.div>
+            <div className="space-y-4">
+              {MECANISMO.map((item, i) => (
+                <motion.div key={i} variants={fadeUp} custom={i + 1} className="bg-white/[0.02] border border-red-500/10 rounded-2xl p-6 hover:-translate-y-1 transition-transform duration-300">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 rounded-full bg-red-500/10 border border-red-500/20 flex items-center justify-center"><item.icon className="text-red-400" size={18} /></div>
+                    <div><span className="text-red-500/60 font-bold text-[10px] tracking-wider">ETAPA {i + 1}</span><h3 className="text-stone-200 font-bold uppercase text-sm tracking-tight italic">{item.titulo}</h3></div>
+                  </div>
+                  <p className="text-stone-400 text-sm leading-8">{item.descricao}</p>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </motion.section>
 
