@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { Menu, X, ChevronDown, Zap, Search } from "lucide-react";
+import { Menu, X, ChevronRight, Zap } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useReadingProgress } from "@/hooks/useReadingProgress";
+import { useSiloProgress } from "@/hooks/useSiloProgress";
 import GlobalSearch from "@/components/GlobalSearch";
 import { topNavItems, navGroups, type NavItem } from "@/lib/sidebarNavigation";
 
@@ -12,6 +13,7 @@ const MobileNav = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { level, label, percent } = useReadingProgress();
+  const siloProgress = useSiloProgress();
 
   const toggleGroup = (groupLabel: string) => {
     setOpenGroups(prev => {
@@ -49,7 +51,6 @@ const MobileNav = () => {
         {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
       </button>
 
-      {/* Search trigger for mobile */}
       <div className="lg:hidden fixed top-[46px] right-4 z-50">
         <GlobalSearch />
       </div>
@@ -61,7 +62,7 @@ const MobileNav = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="absolute top-12 left-0 w-72 bg-card/95 backdrop-blur-xl border border-border rounded-lg p-3 shadow-2xl max-h-[75vh] overflow-y-auto"
+            className="absolute top-12 left-0 w-[300px] bg-card/95 backdrop-blur-xl border border-border rounded-xl p-3 shadow-2xl max-h-[75vh] overflow-y-auto"
           >
             {/* Top items */}
             {topNavItems.map((item) => (
@@ -91,20 +92,39 @@ const MobileNav = () => {
 
             <div className="h-px bg-border/30 my-2" />
 
-            {/* Accordion Groups */}
+            {/* Accordion Groups with dot connectors */}
             {navGroups.map((group) => {
               const isGroupOpen = openGroups.has(group.label);
+              const progress = siloProgress[group.label];
 
               return (
                 <div key={group.label} className="mb-0.5">
                   <button
                     onClick={() => toggleGroup(group.label)}
-                    className="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary/30 transition-all text-sm font-medium"
+                    className={`w-full flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-sm font-medium transition-all ${
+                      isGroupOpen
+                        ? "bg-card border border-border/40 text-foreground"
+                        : "text-muted-foreground hover:text-foreground hover:bg-secondary/30 border border-transparent"
+                    }`}
                   >
-                    <group.icon className={`w-4 h-4 ${group.color || ""} flex-shrink-0`} />
-                    <span className="flex-1 text-left truncate">{group.label}</span>
-                    <span className="font-mono text-[9px] text-muted-foreground/50 mr-1">{group.items.length}</span>
-                    <ChevronDown className={`w-3.5 h-3.5 text-muted-foreground/50 transition-transform duration-200 ${isGroupOpen ? "rotate-180" : ""}`} />
+                    <div className={`w-6 h-6 rounded-md flex items-center justify-center flex-shrink-0 ${
+                      isGroupOpen ? "bg-primary/10" : "bg-secondary/50"
+                    }`}>
+                      <group.icon className={`w-3.5 h-3.5 ${group.color || ""} flex-shrink-0`} />
+                    </div>
+                    <div className="flex-1 min-w-0 text-left">
+                      <span className="block truncate">{group.label}</span>
+                      {progress && progress.percent > 0 && (
+                        <div className="flex items-center gap-1.5 mt-0.5">
+                          <div className="flex-1 h-[2px] bg-secondary/60 rounded-full overflow-hidden">
+                            <div className="h-full gradient-gold rounded-full" style={{ width: `${progress.percent}%` }} />
+                          </div>
+                          <span className="font-mono text-[7px] text-gold/70">{progress.percent}%</span>
+                        </div>
+                      )}
+                    </div>
+                    <span className="font-mono text-[9px] text-muted-foreground/40">{group.items.length}</span>
+                    <ChevronRight className={`w-3.5 h-3.5 text-muted-foreground/40 transition-transform duration-200 ${isGroupOpen ? "rotate-90" : ""}`} />
                   </button>
 
                   <AnimatePresence initial={false}>
@@ -116,25 +136,38 @@ const MobileNav = () => {
                         transition={{ duration: 0.2 }}
                         className="overflow-hidden"
                       >
-                        <div className="ml-4 pl-3 border-l border-border/30 py-1 space-y-0.5">
-                          {group.items.map((item) => (
-                            <button
-                              key={item.label}
-                              onClick={() => handleNav(item)}
-                              className={`w-full text-left px-2.5 py-1.5 rounded-md transition-all text-[13px] ${
-                                isActive(item.route)
-                                  ? "bg-primary/10 text-primary font-medium"
-                                  : "text-muted-foreground/80 hover:text-foreground hover:bg-secondary/30"
-                              }`}
-                            >
-                              {item.label}
-                              {item.badge && (
-                                <span className="ml-2 text-[9px] font-mono px-1.5 py-0.5 rounded bg-primary/15 text-primary">
-                                  {item.badge}
-                                </span>
-                              )}
-                            </button>
-                          ))}
+                        <div className="ml-5 pl-0 py-1 relative">
+                          <div className="absolute left-0 top-1 bottom-1 w-px bg-border/30" />
+                          {group.items.map((item) => {
+                            const active = isActive(item.route);
+                            return (
+                              <button
+                                key={item.label}
+                                onClick={() => handleNav(item)}
+                                className={`w-full flex items-center gap-2 pl-4 pr-2 py-[6px] rounded-md transition-all text-[12.5px] relative ${
+                                  active
+                                    ? "text-gold font-semibold"
+                                    : "text-muted-foreground/70 hover:text-foreground hover:bg-secondary/30"
+                                }`}
+                              >
+                                <div className={`absolute left-[-2px] top-1/2 -translate-y-1/2 w-[5px] h-[5px] rounded-full border ${
+                                  active
+                                    ? "bg-gold border-gold shadow-[0_0_6px_rgba(255,215,0,0.4)]"
+                                    : "bg-card border-border/50"
+                                }`} />
+                                <span className="flex-1 text-left truncate">{item.label}</span>
+                                {item.badge && (
+                                  <span className={`text-[8px] font-mono px-1.5 py-0.5 rounded-full ${
+                                    item.badge === "Dossiê"
+                                      ? "bg-amber-500/15 text-amber-400 animate-pulse"
+                                      : "bg-primary/15 text-primary"
+                                  }`}>
+                                    {item.badge}
+                                  </span>
+                                )}
+                              </button>
+                            );
+                          })}
                         </div>
                       </motion.div>
                     )}
@@ -158,10 +191,10 @@ const MobileNav = () => {
             </div>
             <button
               onClick={() => handleNav({ targetId: "apoio", label: "Apoio" })}
-              className="w-full flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg border border-gold-dim/50 text-gold text-sm font-semibold"
+              className="w-full flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl border border-gold-dim/40 text-gold text-sm font-semibold"
             >
               <Zap className="w-4 h-4" />
-              Apoio
+              Apoio Lightning
             </button>
           </motion.div>
         )}
