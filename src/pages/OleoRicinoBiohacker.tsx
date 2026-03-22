@@ -126,14 +126,14 @@ const APPLICATIONS = [
 ];
 
 const TESTIMONIALS = [
-  { name: "Bruna Chufulim", platform: "Instagram", text: "Uma dermatologista me disse que mancharia minha pupila e causaria cegueira. Pura demonização. Hoje uso nos cílios e sobrancelhas para fortalecimento natural. Não abro mão.", badge: "Fortalecimento capilar" },
-  { name: "M.A.A. Eba", platform: "Instagram", text: "Este óleo é magnífico. Desfaz até esporão de calcâneo e catarata. É impressionante o poder que ele tem.", badge: "Dissolução de calcificações" },
-  { name: "Ana Carol Madsoo", platform: "Instagram", text: "Vi uma matéria falando que é excelente passar no pescoço para regular a tireoide. Incrível como escondem isso.", badge: "Regulação tireoidiana" },
-  { name: "Renata Oliveira", platform: "Instagram", text: "Minha avó usava cataplasma de mamona no fígado toda semana. Viveu até os 97 anos sem tomar nenhum remédio de farmácia. A sabedoria ancestral funciona.", badge: "Desintoxicação hepática" },
-  { name: "Carlos Machado", platform: "Instagram", text: "Passei meses gastando com anti-inflamatórios caros para dor no joelho. Comecei a aplicar óleo de rícino com flanela aquecida e em 3 semanas a inflamação cedeu completamente.", badge: "Anti-inflamatório natural" },
-  { name: "Patrícia Lemos", platform: "Instagram", text: "Uso há 2 anos nas sobrancelhas que eu destruí com pinça na adolescência. Voltaram a crescer de forma natural. Nenhum sérum de R$200 fez isso.", badge: "Regeneração folicular" },
-  { name: "Diego Santana", platform: "Instagram", text: "Meu filho de 4 anos tinha constipação crônica. A pediatra queria prescrever laxante industrial. Comecei a massagear o abdômen dele com óleo de rícino morno e em uma semana normalizou.", badge: "Regulação intestinal" },
-  { name: "Márcia Bonfim", platform: "Instagram", text: "Tenho fibromialgia e o único alívio real que encontrei foi compressa de rícino nas áreas de dor. Não é cura milagrosa, é bioquímica pura funcionando.", badge: "Controle de fibromialgia" },
+  { name: "Bruna Chufulim", platform: "Instagram", text: "Uma dermatologista me disse que mancharia minha pupila e causaria cegueira. Pura demonização. Hoje uso nos cílios e sobrancelhas para fortalecimento natural. Não abro mão.", badge: "Fortalecimento capilar", avatar: avatarBruna },
+  { name: "M.A.A. Eba", platform: "Instagram", text: "Este óleo é magnífico. Desfaz até esporão de calcâneo e catarata. É impressionante o poder que ele tem.", badge: "Dissolução de calcificações", avatar: avatarEba },
+  { name: "Ana Carol Madsoo", platform: "Instagram", text: "Vi uma matéria falando que é excelente passar no pescoço para regular a tireoide. Incrível como escondem isso.", badge: "Regulação tireoidiana", avatar: avatarAnaCarol },
+  { name: "Renata Oliveira", platform: "Instagram", text: "Minha avó usava cataplasma de mamona no fígado toda semana. Viveu até os 97 anos sem tomar nenhum remédio de farmácia. A sabedoria ancestral funciona.", badge: "Desintoxicação hepática", avatar: avatarRenata },
+  { name: "Carlos Machado", platform: "Instagram", text: "Passei meses gastando com anti-inflamatórios caros para dor no joelho. Comecei a aplicar óleo de rícino com flanela aquecida e em 3 semanas a inflamação cedeu completamente.", badge: "Anti-inflamatório natural", avatar: avatarCarlos },
+  { name: "Patrícia Lemos", platform: "Instagram", text: "Uso há 2 anos nas sobrancelhas que eu destruí com pinça na adolescência. Voltaram a crescer de forma natural. Nenhum sérum de R$200 fez isso.", badge: "Regeneração folicular", avatar: avatarPatricia },
+  { name: "Diego Santana", platform: "Instagram", text: "Meu filho de 4 anos tinha constipação crônica. A pediatra queria prescrever laxante industrial. Comecei a massagear o abdômen dele com óleo de rícino morno e em uma semana normalizou.", badge: "Regulação intestinal", avatar: avatarDiego },
+  { name: "Márcia Bonfim", platform: "Instagram", text: "Tenho fibromialgia e o único alívio real que encontrei foi compressa de rícino nas áreas de dor. Não é cura milagrosa, é bioquímica pura funcionando.", badge: "Controle de fibromialgia", avatar: avatarMarcia },
 ];
 
 const FAQ_DATA = [
