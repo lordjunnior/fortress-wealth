@@ -91,7 +91,7 @@ const SaudePreventiva = () => {
         ))}
       </div>
 
-      <div className="relative z-10 max-w-5xl mx-auto px-6 md:px-10 pt-12 pb-32">
+      <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-8 lg:px-12 pt-12 pb-32">
 
         {/* Hero context */}
         <motion.div initial="hidden" animate="visible" variants={fadeUp} custom={1} className="mb-28 max-w-3xl space-y-4 text-stone-300 leading-relaxed">
