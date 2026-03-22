@@ -533,6 +533,18 @@ export default function BabosaAcemannan() {
 
         <MicroCtaResistencia />
 
+        {/* ═══ SECTION DIVIDER: Cinematic Image ═══ */}
+        <div className="relative z-10 h-48 md:h-72 overflow-hidden">
+          <img src="/heroes/babosa-section-bg.webp" alt="Gel cristalino da babosa"
+            className="absolute inset-0 w-full h-full object-cover" style={{ filter: 'brightness(0.2) saturate(0.6)' }} />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(5,8,8,1) 0%, transparent 30%, transparent 70%, rgba(5,8,8,1) 100%)' }} />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <motion.p {...fade(0)} className="text-stone-600 text-xs md:text-sm font-bold uppercase tracking-[0.5em] text-center max-w-xl px-6">
+              75 substâncias ativas. Zero patentes acessíveis ao público.
+            </motion.p>
+          </div>
+        </div>
+
         {/* ═══════════════════════════════════════════════════════════════
            SEÇÃO 4 — A CIÊNCIA POR TRÁS
            ═══════════════════════════════════════════════════════════════ */}
