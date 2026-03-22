@@ -27,7 +27,7 @@ const RightSidebar = () => {
   } catch {}
 
   return (
-    <aside className="hidden 2xl:flex fixed right-0 top-[36px] bottom-0 w-[340px] z-40 flex-col border-l border-border/30 bg-[#060810]/95 backdrop-blur-2xl overflow-hidden">
+    <aside className="hidden 2xl:flex fixed right-0 top-[40px] bottom-0 w-[340px] z-40 flex-col border-l border-border/30 bg-[#060810]/95 backdrop-blur-2xl overflow-hidden">
       {/* Header */}
       <div className="px-5 py-4 border-b border-border/30">
         <div className="flex items-center justify-between mb-1">
