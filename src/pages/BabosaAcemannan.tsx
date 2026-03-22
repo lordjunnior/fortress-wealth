@@ -31,6 +31,48 @@ import avatarRodrigo from '@/assets/avatar-babosa-rodrigo.jpg';
 import avatarCecilia from '@/assets/avatar-babosa-cecilia.jpg';
 import avatarDiegoF from '@/assets/avatar-babosa-diegof.jpg';
 
+const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
+const fade = (delay = 0) => ({
+  initial: { opacity: 0, y: 24 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: '-40px' },
+  transition: { duration: 0.7, ease: APPLE_EASE, delay },
+});
+
+const TOC_ITEMS = [
+  { id: 'descoberta', label: 'A Descoberta', num: '01' },
+  { id: 'acemannan', label: 'Acemannan', num: '02' },
+  { id: 'supressao', label: 'A Supressão', num: '03' },
+  { id: 'ciencia', label: 'A Ciência', num: '04' },
+  { id: 'relatos', label: 'Relatos Reais', num: '05' },
+  { id: 'composicao', label: 'Composição', num: '06' },
+  { id: 'faq', label: 'FAQ', num: '07' },
+  { id: 'conclusao', label: 'Conclusão', num: '08' },
+];
+
+const AVATAR_MAP: Record<string, string> = {
+  'Renata Oliveira': avatarRenata,
+  'Carlos Mendes': avatarCarlos,
+  'Amanda Souza': avatarAmanda,
+  'Dona Elza Machado': avatarElza,
+  'Igor Loubet': avatarIgor,
+  'Tatiane Guimarães': avatarTatiane,
+  'Bruno Maranhão': avatarBruno,
+  'Seu Maranaldo': avatarMaranaldo,
+  'Luna Santos': avatarLuna,
+  'Maria Eugênia': avatarMaria,
+  'Cris Botelho': avatarCris,
+  'Selma Balbo': avatarSelma,
+  'Amanda Dias': avatarAmandaD,
+  'Reginaldo Rodrigues': avatarReginaldo,
+  'Luca Rocha': avatarLuca,
+  'Gabriel Santiago': avatarGabriel,
+  'Kelly Aguiar': avatarKelly,
+  'Rodrigo Becker': avatarRodrigo,
+  'Cecília Xavier': avatarCecilia,
+  'Diego Ferreira': avatarDiegoF,
+};
+
 /* ═══════════════════════════════════════════════════════════════
    DEPOIMENTOS — Todos os relatos reais fornecidos
    ═══════════════════════════════════════════════════════════════ */
