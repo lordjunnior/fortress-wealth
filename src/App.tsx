@@ -109,6 +109,7 @@ import ToxinasAmbientais from "./pages/toxicos/ToxinasAmbientais";
 import CodigoAutonomiaModal from "./components/CodigoAutonomiaModal";
 import ScrollToTop from "./components/ScrollToTop";
 import MapaDaSoberania from "./pages/MapaDaSoberania";
+import BabosaAcemannan from "./pages/BabosaAcemannan";
 import PorOndeComecar from "./pages/PorOndeComecar";
 import ExitIntentLeadMagnet from "./components/ExitIntentLeadMagnet";
 const queryClient = new QueryClient();
