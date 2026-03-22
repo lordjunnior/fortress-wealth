@@ -223,7 +223,7 @@ const ConfiscoTimeline = () => {
                   <img
                     src={presidenteImg}
                     alt="Presidente com a faixa presidencial, 1990"
-                    className="w-full h-full object-cover object-[center_30%] group-hover:scale-105 transition-transform duration-700"
+                    className="w-full h-full object-cover object-[center_45%] group-hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
                   <div className="absolute inset-0 bg-gradient-to-r from-background/40 via-transparent to-background/40" />
