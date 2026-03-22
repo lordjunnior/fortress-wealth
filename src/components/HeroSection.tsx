@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ChevronDown, Shield, AlertTriangle } from "lucide-react";
 import { ease } from "@/lib/motion";
+import heroVideo from "/heroes/hero-loop.mp4.asset.json";
 
 const HeroSection = () => {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
@@ -31,11 +32,30 @@ const HeroSection = () => {
       ref={sectionRef}
       className="relative min-h-[110vh] flex items-center overflow-hidden"
     >
-      {/* ── Parallax Background Layers ── */}
+      {/* ── Cinematic Video Background ── */}
       <motion.div
         style={{ y: bgY }}
         className="absolute inset-0 z-0"
       >
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover scale-110"
+          style={{ filter: "brightness(0.3) saturate(0.7)" }}
+        >
+          <source src={heroVideo.url} type="video/mp4" />
+        </video>
+
+        {/* Dark overlay for text legibility */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "linear-gradient(180deg, rgba(5,8,8,0.4) 0%, rgba(5,8,8,0.6) 40%, rgba(5,8,8,0.85) 80%, hsl(var(--background)) 100%)",
+          }}
+        />
+
         {/* Radial glow — deep red */}
         <div
           className="absolute top-1/4 -left-[20%] w-[70vw] h-[70vw] rounded-full opacity-[0.07]"
