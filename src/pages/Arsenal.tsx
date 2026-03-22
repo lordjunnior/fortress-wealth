@@ -650,7 +650,7 @@ export default function Arsenal() {
       <section className="relative z-10 py-20 md:py-32">
         <div className="max-w-6xl mx-auto px-6 md:px-10">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={scaleIn} custom={0}>
-            <Link to="/projeto-autonomo" className="group block">
+            <Link to="/soberania-organica" className="group block">
               <div
                 className="relative overflow-hidden rounded-2xl border border-white/[0.06] p-10 md:p-16 transition-all duration-700 hover:border-emerald-500/30 hover:-translate-y-1"
                 style={{ background: 'linear-gradient(135deg, rgba(16,185,129,0.06), rgba(245,158,11,0.03), transparent 60%)' }}

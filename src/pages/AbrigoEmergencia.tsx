@@ -52,10 +52,10 @@ export default function AbrigoEmergencia() {
       <Helmet>
         <title>Abrigo de Emergência: Proteção e Blindagem em Cenários Críticos | Lord Junnior</title>
         <meta name="description" content="Guia técnico para construção e adaptação de abrigos de emergência. Isolamento térmico, reforço estrutural, banheiro improvisado e ventilação passiva. Proteja sua família com protocolos de soberania física." />
-        <link rel="canonical" href="https://lordjunnior.com.br/projeto-autonomo/abrigo-emergencia" />
+        <link rel="canonical" href="https://lordjunnior.com.br/soberania-organica/abrigo-emergencia" />
         <meta property="og:title" content="Abrigo de Emergência: O Guia de Blindagem Física Urbana" />
         <meta property="og:description" content="Protocolos de abrigo, isolamento e proteção para quem não aceita ser vítima do caos. Soberania física real." />
-        <meta property="og:url" content="https://lordjunnior.com.br/projeto-autonomo/abrigo-emergencia" />
+        <meta property="og:url" content="https://lordjunnior.com.br/soberania-organica/abrigo-emergencia" />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
           "@type": "HowTo",
@@ -533,7 +533,7 @@ export default function AbrigoEmergencia() {
 
         {/* Back bottom */}
         <div className="text-center pt-8">
-          <Link to="/projeto-autonomo" className="inline-flex items-center gap-2 text-stone-500 hover:text-white text-xs font-semibold uppercase tracking-[0.2em] transition-colors">
+          <Link to="/soberania-organica" className="inline-flex items-center gap-2 text-stone-500 hover:text-white text-xs font-semibold uppercase tracking-[0.2em] transition-colors">
             <ArrowLeft size={14} /> Voltar ao Soberania Orgânica
           </Link>
         </div>

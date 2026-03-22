@@ -204,8 +204,8 @@ export default function OleoRicinoBiohacker() {
           "@type": "BreadcrumbList",
           "itemListElement": [
             { "@type": "ListItem", "position": 1, "name": "Início", "item": "https://lordjunnior.com.br/" },
-            { "@type": "ListItem", "position": 2, "name": "Soberania Orgânica", "item": "https://lordjunnior.com.br/projeto-autonomo" },
-            { "@type": "ListItem", "position": 3, "name": "Autonomia Biológica", "item": "https://lordjunnior.com.br/projeto-autonomo/autonomia-biologica" },
+            { "@type": "ListItem", "position": 2, "name": "Soberania Orgânica", "item": "https://lordjunnior.com.br/soberania-organica" },
+            { "@type": "ListItem", "position": 3, "name": "Autonomia Biológica", "item": "https://lordjunnior.com.br/soberania-organica/autonomia-biologica" },
             { "@type": "ListItem", "position": 4, "name": "Óleo de Rícino: Dossiê Biohacker", "item": "https://lordjunnior.com.br/soberania-organica/oleo-ricino-biohacker" }
           ]
         })}</script>
@@ -248,9 +248,9 @@ export default function OleoRicinoBiohacker() {
           <nav className="absolute top-6 left-6 md:left-16 flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] z-20">
             <Link to="/" className="text-stone-600 hover:text-amber-400 transition-colors">Início</Link>
             <span className="text-stone-700">/</span>
-            <Link to="/projeto-autonomo" className="text-stone-600 hover:text-amber-400 transition-colors">Soberania Orgânica</Link>
+            <Link to="/soberania-organica" className="text-stone-600 hover:text-amber-400 transition-colors">Soberania Orgânica</Link>
             <span className="text-stone-700">/</span>
-            <Link to="/projeto-autonomo/autonomia-biologica" className="text-stone-600 hover:text-amber-400 transition-colors">Fase 02</Link>
+            <Link to="/soberania-organica/autonomia-biologica" className="text-stone-600 hover:text-amber-400 transition-colors">Fase 02</Link>
             <span className="text-stone-700">/</span>
             <span className="text-amber-400">Dossiê Rícino</span>
           </nav>
@@ -617,13 +617,13 @@ export default function OleoRicinoBiohacker() {
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Link to="/projeto-autonomo/autonomia-biologica"
+                <Link to="/soberania-organica/autonomia-biologica"
                   className="inline-flex items-center gap-3 bg-amber-500 text-black px-8 py-4 font-bold text-sm tracking-wide rounded-xl hover:bg-amber-400 hover:scale-[1.03] transition-all duration-500 group">
                   <Leaf size={16} className="group-hover:rotate-12 transition-transform" />
                   Explorar Autonomia Biológica
                   <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
-                <Link to="/projeto-autonomo"
+                <Link to="/soberania-organica"
                   className="inline-flex items-center gap-3 border border-stone-700 text-stone-300 px-8 py-4 font-bold text-sm tracking-wide rounded-xl hover:border-amber-500/30 hover:text-amber-400 transition-all duration-500">
                   <ArrowLeft size={16} />
                   Voltar à Soberania Orgânica

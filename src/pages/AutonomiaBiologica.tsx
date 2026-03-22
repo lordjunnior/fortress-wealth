@@ -118,10 +118,10 @@ export default function AutonomiaBiologica() {
       <Helmet>
         <title>Autonomia Biológica: 12 Plantas Medicinais com Fichas Técnicas Completas | Lord Junnior</title>
         <meta name="description" content="Biblioteca técnica de 12 plantas medicinais essenciais com dosagens, contraindicações, métodos de preparo e mecanismos de ação. Biohacking e saúde soberana documentados com rigor farmacológico." />
-        <link rel="canonical" href="https://lordjunnior.com.br/projeto-autonomo/autonomia-biologica" />
+        <link rel="canonical" href="https://lordjunnior.com.br/soberania-organica/autonomia-biologica" />
         <meta property="og:title" content="Autonomia Biológica: Protocolos de Biohacking e Saúde Soberana" />
         <meta property="og:description" content="12 plantas medicinais documentadas com rigor farmacológico. Fichas técnicas, dosagens seguras e métodos de preparo validados." />
-        <meta property="og:url" content="https://lordjunnior.com.br/projeto-autonomo/autonomia-biologica" />
+        <meta property="og:url" content="https://lordjunnior.com.br/soberania-organica/autonomia-biologica" />
       </Helmet>
     <div ref={containerRef} className="min-h-screen text-stone-100 font-sans selection:bg-emerald-300/30"
       style={{ background: 'linear-gradient(180deg, #050808 0%, #060806 6%, #0a0f0a 15%, #0d150d 30%, #0a0f0a 60%, #060806 85%, #050808 100%)' }}>
@@ -133,7 +133,7 @@ export default function AutonomiaBiologica() {
         subtitle="Biblioteca técnica de 12 plantas medicinais documentadas com rigor farmacológico. Cada planta possui sua própria ficha completa."
         icon={Leaf}
         accentColor="emerald"
-        backLink="/projeto-autonomo"
+        backLink="/soberania-organica"
         backLabel="Soberania Orgânica"
       />
 
@@ -194,7 +194,7 @@ export default function AutonomiaBiologica() {
               <Link
                 key={p.slug}
                 ref={(el) => { cardsRef.current[i] = el; }}
-                to={`/projeto-autonomo/planta/${p.slug}`}
+                to={`/soberania-organica/planta/${p.slug}`}
                 className="group relative overflow-hidden rounded-2xl border border-white/5 hover:border-white/15 transition-all duration-700 block"
                 style={{ perspective: '800px' }}
               >
@@ -249,7 +249,7 @@ export default function AutonomiaBiologica() {
         {/* ═══ DESTAQUE: BABOSA & ACEMANNAN ═══ */}
         <section className="mb-28">
           <Link
-            to="/projeto-autonomo/babosa-acemannan"
+            to="/soberania-organica/babosa-acemannan"
             className="group relative block rounded-2xl border border-emerald-500/20 bg-gradient-to-br from-emerald-500/[0.08] to-emerald-600/[0.03] p-8 md:p-10 lg:p-12 hover:border-emerald-500/40 hover:from-emerald-500/[0.12] transition-all duration-700 overflow-hidden"
           >
             <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/20">
@@ -441,12 +441,12 @@ export default function AutonomiaBiologica() {
 
         {/* ═══ NAV FOOTER ═══ */}
         <div className="flex flex-col sm:flex-row gap-4 pt-8 border-t border-white/5">
-          <Link to="/projeto-autonomo"
+          <Link to="/soberania-organica"
             className="flex-1 flex items-center justify-center gap-2 bg-white/3 border border-white/8 rounded-xl px-6 py-4 text-stone-400 text-sm font-bold hover:bg-white/5 hover:text-emerald-400 transition-all duration-500">
             <ArrowLeft size={16} />
             Soberania Orgânica
           </Link>
-          <Link to="/projeto-autonomo/fitoterapia-aplicada"
+          <Link to="/soberania-organica/fitoterapia-aplicada"
             className="flex-1 flex items-center justify-center gap-2 bg-emerald-500/8 border border-emerald-500/20 rounded-xl px-6 py-4 text-emerald-400 text-sm font-bold hover:bg-emerald-500/15 transition-all duration-500 group">
             Fitoterapia Aplicada
             <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform duration-500" />

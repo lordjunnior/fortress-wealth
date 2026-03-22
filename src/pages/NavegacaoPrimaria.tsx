@@ -48,10 +48,10 @@ export default function NavegacaoPrimaria() {
       <Helmet>
         <title>Navegação Primária: Orientação por Bússola, Sol e Terreno Sem GPS | Lord Junnior</title>
         <meta name="description" content="Como se orientar sem GPS. Método da sombra, bússola improvisada, navegação noturna por estrelas e referências urbanas. Deslocamento seguro sem dependência digital." />
-        <link rel="canonical" href="https://lordjunnior.com.br/projeto-autonomo/navegacao-primaria" />
+        <link rel="canonical" href="https://lordjunnior.com.br/soberania-organica/navegacao-primaria" />
         <meta property="og:title" content="Navegação Primária: Orientação Sem Tecnologia" />
         <meta property="og:description" content="Técnicas ancestrais de navegação por sol, estrelas e terreno. Autonomia de deslocamento quando a tecnologia falha." />
-        <meta property="og:url" content="https://lordjunnior.com.br/projeto-autonomo/navegacao-primaria" />
+        <meta property="og:url" content="https://lordjunnior.com.br/soberania-organica/navegacao-primaria" />
       </Helmet>
     <div className="min-h-screen selection:bg-teal-300/30" style={{ background: '#050808' }}>
       <CinematicHero
@@ -396,7 +396,7 @@ export default function NavegacaoPrimaria() {
         <MicroCtaResistencia variant="default" />
 
         <div className="text-center pt-8">
-          <Link to="/projeto-autonomo" className="inline-flex items-center gap-2 text-stone-500 hover:text-white text-xs font-semibold uppercase tracking-[0.2em] transition-colors">
+          <Link to="/soberania-organica" className="inline-flex items-center gap-2 text-stone-500 hover:text-white text-xs font-semibold uppercase tracking-[0.2em] transition-colors">
             <ArrowLeft size={14} /> Voltar ao Soberania Orgânica
           </Link>
         </div>

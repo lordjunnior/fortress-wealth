@@ -66,7 +66,7 @@ export default function PurificacaoAgua() {
       <Helmet>
         <title>Purificação de Água — 4 Métodos de Emergência | Lord Junnior</title>
         <meta name="description" content="Aprenda a purificar água em emergências: fervura, cloração, filtração e destilação solar. Guia prático de sobrevivência para tornar qualquer água potável." />
-        <link rel="canonical" href="https://lordjunnior.com.br/projeto-autonomo/purificacao-agua" />
+        <link rel="canonical" href="https://lordjunnior.com.br/soberania-organica/purificacao-agua" />
       </Helmet>
     <div className="min-h-screen selection:bg-blue-300/30" style={{ background: '#050808' }}>
       <CinematicHero

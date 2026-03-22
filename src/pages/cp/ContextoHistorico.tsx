@@ -24,16 +24,16 @@ export default function ContextoHistorico() {
       <Helmet>
         <title>Contexto Histórico: Como a Medicina Moderna Apagou o Conhecimento Ancestral | Lord Junnior</title>
         <meta name="description" content="Mapeamento documentado da transição entre práticas tradicionais e institucionalização médica. Linha temporal, agentes envolvidos e impactos na autonomia biológica das famílias." />
-        <link rel="canonical" href="https://lordjunnior.com.br/projeto-autonomo/conhecimento-perdido/contexto-historico" />
+        <link rel="canonical" href="https://lordjunnior.com.br/soberania-organica/conhecimento-perdido/contexto-historico" />
         <meta property="og:title" content="Contexto Histórico: O Apagamento do Conhecimento Ancestral" />
         <meta property="og:description" content="Como a autonomia biológica das famílias foi sistematicamente substituída pela dependência institucional." />
-        <meta property="og:url" content="https://lordjunnior.com.br/projeto-autonomo/conhecimento-perdido/contexto-historico" />
+        <meta property="og:url" content="https://lordjunnior.com.br/soberania-organica/conhecimento-perdido/contexto-historico" />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
           "@type": "MedicalWebPage",
           "name": "Contexto Histórico: Transição da Medicina Tradicional para a Moderna",
           "description": "Mapeamento documentado da transição entre práticas tradicionais e institucionalização médica moderna.",
-          "url": "https://lordjunnior.com.br/projeto-autonomo/conhecimento-perdido/contexto-historico",
+          "url": "https://lordjunnior.com.br/soberania-organica/conhecimento-perdido/contexto-historico",
           "author": { "@type": "Person", "name": "Lord Junnior" },
           "medicalAudience": { "@type": "MedicalAudience", "audienceType": "Patient" },
           "lastReviewed": "2026-03-01",
@@ -52,7 +52,7 @@ export default function ContextoHistorico() {
         subtitle="Mapeamento documentado da transição entre práticas tradicionais e institucionalização médica moderna. Linha temporal, agentes envolvidos e impactos sistêmicos na autonomia biológica das famílias."
         icon={BookOpen}
         accentColor="emerald"
-        backLink="/projeto-autonomo/conhecimento-perdido"
+        backLink="/soberania-organica/conhecimento-perdido"
         backLabel="Conhecimento Perdido"
       />
 
@@ -128,7 +128,7 @@ export default function ContextoHistorico() {
 
         {/* ─── NAVEGAÇÃO ENTRE BLOCOS ─── */}
         <div className="flex flex-col sm:flex-row gap-4">
-          <Link to="/projeto-autonomo/conhecimento-perdido"
+          <Link to="/soberania-organica/conhecimento-perdido"
             className="flex-1 flex items-center justify-center gap-2 bg-emerald-500/8 border border-emerald-500/20 rounded-xl px-6 py-4 text-emerald-400 text-sm font-bold hover:bg-emerald-500/15 hover:border-emerald-400/30 transition-all">
             ← Voltar ao Hub
           </Link>

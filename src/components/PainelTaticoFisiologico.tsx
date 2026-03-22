@@ -114,7 +114,7 @@ export const PainelTaticoFisiologico = ({ isOpen, onClose, sistema, nome }: Pain
 
             {/* CTA Final — Trio da Blindagem */}
             <Link
-              to="/projeto-autonomo/autonomia-biologica"
+              to="/soberania-organica/autonomia-biologica"
               onClick={onClose}
               className="w-full py-5 bg-orange-600 hover:bg-orange-500 text-black font-bold text-sm tracking-wide transition-all duration-300 shadow-[0_0_30px_rgba(234,88,12,0.2)] hover:shadow-[0_0_50px_rgba(234,88,12,0.35)] flex items-center justify-center gap-3 group"
               style={{ fontFamily: "'Space Grotesk', sans-serif" }}

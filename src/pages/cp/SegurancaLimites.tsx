@@ -26,16 +26,16 @@ export default function SegurancaLimites() {
       <Helmet>
         <title>Segurança e Limites: Contraindicações e Uso Responsável de Plantas Medicinais | Lord Junnior</title>
         <meta name="description" content="Critérios de uso responsável, contraindicações documentadas, interações medicamentosas conhecidas e parâmetros de suspensão. Sem essa base de segurança, não existe credibilidade fitoterápica." />
-        <link rel="canonical" href="https://lordjunnior.com.br/projeto-autonomo/conhecimento-perdido/seguranca-limites" />
+        <link rel="canonical" href="https://lordjunnior.com.br/soberania-organica/conhecimento-perdido/seguranca-limites" />
         <meta property="og:title" content="Segurança e Limites: Uso Responsável de Fitoterapia" />
         <meta property="og:description" content="Contraindicações, interações medicamentosas e critérios de suspensão. A base de segurança que valida todo o conhecimento." />
-        <meta property="og:url" content="https://lordjunnior.com.br/projeto-autonomo/conhecimento-perdido/seguranca-limites" />
+        <meta property="og:url" content="https://lordjunnior.com.br/soberania-organica/conhecimento-perdido/seguranca-limites" />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
           "@type": "MedicalWebPage",
           "name": "Segurança e Limites: Contraindicações de Plantas Medicinais",
           "description": "Critérios de uso responsável, contraindicações e interações medicamentosas.",
-          "url": "https://lordjunnior.com.br/projeto-autonomo/conhecimento-perdido/seguranca-limites",
+          "url": "https://lordjunnior.com.br/soberania-organica/conhecimento-perdido/seguranca-limites",
           "author": { "@type": "Person", "name": "Lord Junnior" },
           "medicalAudience": { "@type": "MedicalAudience", "audienceType": "Patient" },
           "lastReviewed": "2026-03-01",
@@ -53,7 +53,7 @@ export default function SegurancaLimites() {
         subtitle="Critérios de uso responsável, contraindicações documentadas, interações medicamentosas conhecidas e parâmetros claros de suspensão. Sem essa base, não existe credibilidade."
         icon={Shield}
         accentColor="amber"
-        backLink="/projeto-autonomo/conhecimento-perdido"
+        backLink="/soberania-organica/conhecimento-perdido"
         backLabel="Conhecimento Perdido"
       />
 

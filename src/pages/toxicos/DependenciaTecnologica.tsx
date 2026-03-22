@@ -53,7 +53,7 @@ export default function DependenciaTecnologica() {
   const claimReviewSchema = {
     "@context": "https://schema.org",
     "@type": "ClaimReview",
-    "url": "https://lordjunnior.com.br/projeto-autonomo/toxicos-ocultos/dependencia-tecnologica",
+    "url": "https://lordjunnior.com.br/soberania-organica/toxicos-ocultos/dependencia-tecnologica",
     "claimReviewed": "Redes sociais e aplicativos são projetados apenas para oferecer valor ao usuário, sem mecanismos de dependência",
     "author": { "@type": "Person", "name": "Lord Junnior" },
     "reviewRating": {
@@ -76,7 +76,7 @@ export default function DependenciaTecnologica() {
         <meta name="description" content="Design comportamental, ciclos de dopamina digital, coleta de dados e obsolescência programada. Recupere controle sobre seu tempo e decisões." />
         <meta property="og:title" content="Dependência Tecnológica — Recupere o controle do seu tempo" />
         <meta property="og:image" content="https://lordjunnior.com.br/heroes/dependencia-tecnologica.webp" />
-        <link rel="canonical" href="https://lordjunnior.com.br/projeto-autonomo/toxicos-ocultos/dependencia-tecnologica" />
+        <link rel="canonical" href="https://lordjunnior.com.br/soberania-organica/toxicos-ocultos/dependencia-tecnologica" />
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(claimReviewSchema)}</script>
       </Helmet>
@@ -90,7 +90,7 @@ export default function DependenciaTecnologica() {
         subtitle="Ferramentas digitais construídas para capturar atenção e moldar decisões. Ciclos de dopamina, coleta de dados e obsolescência programada."
         icon={Smartphone}
         accentColor="cyan"
-        backLink="/projeto-autonomo/toxicos-ocultos"
+        backLink="/soberania-organica/toxicos-ocultos"
         backLabel="Tóxicos Ocultos"
       />
 
@@ -202,7 +202,7 @@ export default function DependenciaTecnologica() {
         <div className="max-w-4xl mx-auto px-6 text-center">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}>
             <p className="text-stone-700 text-xs font-medium uppercase tracking-[0.4em] mb-6">Próximo vetor</p>
-            <Link to="/projeto-autonomo/toxicos-ocultos/toxinas-ambientais"
+            <Link to="/soberania-organica/toxicos-ocultos/toxinas-ambientais"
               className="inline-flex items-center gap-3 bg-green-500 text-white px-10 py-5 font-bold text-sm tracking-wide rounded-xl hover:bg-green-400 hover:shadow-2xl hover:shadow-green-500/20 hover:scale-[1.03] transition-all duration-500 group"
             >
               Toxinas Ambientais <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />

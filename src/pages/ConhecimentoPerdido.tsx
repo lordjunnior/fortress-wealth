@@ -106,23 +106,23 @@ export default function ConhecimentoPerdido() {
       <Helmet>
         <title>Conhecimento Perdido: O Resgate da Autonomia Biológica | Lord Junnior</title>
         <meta name="description" content="Recupere o saber ancestral suprimido. Protocolos técnicos de fitoterapia, fisiologia e saúde preventiva fora do sistema industrial. 5 módulos, 16+ espécies documentadas." />
-        <link rel="canonical" href="https://lordjunnior.com.br/projeto-autonomo/conhecimento-perdido" />
+        <link rel="canonical" href="https://lordjunnior.com.br/soberania-organica/conhecimento-perdido" />
         <meta property="og:title" content="Conhecimento Perdido: O Resgate da Autonomia Biológica" />
         <meta property="og:description" content="Protocolos técnicos de fitoterapia, fisiologia e saúde preventiva fora do sistema industrial." />
-        <meta property="og:url" content="https://lordjunnior.com.br/projeto-autonomo/conhecimento-perdido" />
+        <meta property="og:url" content="https://lordjunnior.com.br/soberania-organica/conhecimento-perdido" />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
           "@type": "CreativeWorkSeries",
           "name": "Conhecimento Perdido",
           "author": { "@type": "Person", "name": "Lord Junnior" },
           "description": "Série técnica sobre autonomia biológica, fitoterapia e resiliência. Contexto histórico, base fisiológica, segurança, aplicação prática e continuidade familiar.",
-          "url": "https://lordjunnior.com.br/projeto-autonomo/conhecimento-perdido",
+          "url": "https://lordjunnior.com.br/soberania-organica/conhecimento-perdido",
           "hasPart": [
-            { "@type": "Article", "name": "Contexto Histórico", "url": "https://lordjunnior.com.br/projeto-autonomo/conhecimento-perdido/contexto-historico" },
-            { "@type": "Article", "name": "Base Fisiológica", "url": "https://lordjunnior.com.br/projeto-autonomo/conhecimento-perdido/base-fisiologica" },
-            { "@type": "Article", "name": "Segurança e Limites", "url": "https://lordjunnior.com.br/projeto-autonomo/conhecimento-perdido/seguranca-e-limites" },
-            { "@type": "Article", "name": "Aplicação Prática", "url": "https://lordjunnior.com.br/projeto-autonomo/conhecimento-perdido/aplicacao-pratica" },
-            { "@type": "Article", "name": "Continuidade Familiar", "url": "https://lordjunnior.com.br/projeto-autonomo/conhecimento-perdido/continuidade-familiar" }
+            { "@type": "Article", "name": "Contexto Histórico", "url": "https://lordjunnior.com.br/soberania-organica/conhecimento-perdido/contexto-historico" },
+            { "@type": "Article", "name": "Base Fisiológica", "url": "https://lordjunnior.com.br/soberania-organica/conhecimento-perdido/base-fisiologica" },
+            { "@type": "Article", "name": "Segurança e Limites", "url": "https://lordjunnior.com.br/soberania-organica/conhecimento-perdido/seguranca-e-limites" },
+            { "@type": "Article", "name": "Aplicação Prática", "url": "https://lordjunnior.com.br/soberania-organica/conhecimento-perdido/aplicacao-pratica" },
+            { "@type": "Article", "name": "Continuidade Familiar", "url": "https://lordjunnior.com.br/soberania-organica/conhecimento-perdido/continuidade-familiar" }
           ]
         })}</script>
       </Helmet>
@@ -188,7 +188,7 @@ export default function ConhecimentoPerdido() {
         <nav className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] mb-16 flex-wrap">
           <Link to="/" className="text-stone-600 hover:text-amber-400 transition-colors">Início</Link>
           <span className="text-stone-700">/</span>
-          <Link to="/projeto-autonomo" className="text-stone-600 hover:text-amber-400 transition-colors">Soberania Orgânica</Link>
+          <Link to="/soberania-organica" className="text-stone-600 hover:text-amber-400 transition-colors">Soberania Orgânica</Link>
           <span className="text-stone-700">/</span>
           <span className="text-amber-400">Conhecimento Perdido</span>
         </nav>
@@ -401,7 +401,7 @@ export default function ConhecimentoPerdido() {
               </p>
 
               {/* ─── Link bidirecional: Sabedoria Ancestral ─── */}
-              <Link to="/projeto-autonomo/sabedoria-ancestral"
+              <Link to="/soberania-organica/sabedoria-ancestral"
                 className="flex items-center justify-between bg-amber-500/8 border border-amber-500/20 rounded-xl p-5 hover:bg-amber-500/15 hover:border-amber-400/30 transition-all duration-300 group"
               >
                 <div className="flex items-center gap-4">
@@ -417,7 +417,7 @@ export default function ConhecimentoPerdido() {
               </Link>
 
               {/* ─── Conexão direta com Saúde Preventiva ─── */}
-              <Link to="/projeto-autonomo/saude-preventiva"
+              <Link to="/soberania-organica/saude-preventiva"
                 className="flex items-center justify-between bg-amber-500/8 border border-amber-500/15 rounded-xl p-5 hover:bg-amber-500/15 hover:border-amber-400/30 transition-all duration-300 group"
               >
                 <div className="flex items-center gap-4">
@@ -433,7 +433,7 @@ export default function ConhecimentoPerdido() {
               </Link>
 
               <div className="mt-4">
-                <Link to="/projeto-autonomo" className="btn-secondary text-center inline-block">
+                <Link to="/soberania-organica" className="btn-secondary text-center inline-block">
                   ← Soberania Orgânica
                 </Link>
               </div>

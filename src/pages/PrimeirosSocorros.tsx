@@ -21,10 +21,10 @@ const PrimeirosSocorros = () => {
       <Helmet>
         <title>Primeiros Socorros: Estabilização de Emergência com Recursos Mínimos | Lord Junnior</title>
         <meta name="description" content="Guia de primeiros socorros para cenários de crise. Hemostasia, imobilização, queimaduras e kit mínimo. Estabilize vítimas até a chegada de suporte especializado." />
-        <link rel="canonical" href="https://lordjunnior.com.br/projeto-autonomo/primeiros-socorros" />
+        <link rel="canonical" href="https://lordjunnior.com.br/soberania-organica/primeiros-socorros" />
         <meta property="og:title" content="Primeiros Socorros: Protocolo de Estabilização Imediata" />
         <meta property="og:description" content="Técnicas de hemostasia, imobilização e manejo de queimaduras. O conhecimento que salva vidas quando o sistema falha." />
-        <meta property="og:url" content="https://lordjunnior.com.br/projeto-autonomo/primeiros-socorros" />
+        <meta property="og:url" content="https://lordjunnior.com.br/soberania-organica/primeiros-socorros" />
       </Helmet>
     <div className="min-h-screen text-stone-100" style={{ background: 'linear-gradient(180deg, #050808 0%, #0a0d0a 8%, #0d120d 20%, #0a0d0a 60%, #050808 100%)' }}>
       <CinematicHero
@@ -34,7 +34,7 @@ const PrimeirosSocorros = () => {
         subtitle="Estabilização imediata até chegada de suporte especializado"
         icon={Cross}
         accentColor="rose"
-        backLink="/projeto-autonomo"
+        backLink="/soberania-organica"
         backLabel="Soberania Orgânica"
       />
 
@@ -410,11 +410,11 @@ const PrimeirosSocorros = () => {
 
         {/* ─── NAV FOOTER ─── */}
         <div className="flex items-center justify-between pt-8 border-t border-white/[0.06]">
-          <Link to="/projeto-autonomo" className="text-stone-500 hover:text-emerald-400 transition-colors text-sm font-mono flex items-center gap-2">
+          <Link to="/soberania-organica" className="text-stone-500 hover:text-emerald-400 transition-colors text-sm font-mono flex items-center gap-2">
             <ArrowLeft size={14} />
             Soberania Orgânica
           </Link>
-          <Link to="/projeto-autonomo/autonomia-biologica" className="text-stone-500 hover:text-emerald-400 transition-colors text-sm font-mono flex items-center gap-2">
+          <Link to="/soberania-organica/autonomia-biologica" className="text-stone-500 hover:text-emerald-400 transition-colors text-sm font-mono flex items-center gap-2">
             Suporte Fitoterápico
             <ArrowLeft size={14} className="rotate-180" />
           </Link>

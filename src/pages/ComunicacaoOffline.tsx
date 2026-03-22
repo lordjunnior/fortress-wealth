@@ -48,10 +48,10 @@ export default function ComunicacaoOffline() {
       <Helmet>
         <title>Comunicação Offline: Redes Mesh, Rádio e Protocolos no Apagão | Lord Junnior</title>
         <meta name="description" content="Como se comunicar sem internet e sem rede celular. Rádio AM/FM, sinais visuais, pontos de encontro e mensagens escritas. Coordenação familiar em cenários de colapso digital." />
-        <link rel="canonical" href="https://lordjunnior.com.br/projeto-autonomo/comunicacao-offline" />
+        <link rel="canonical" href="https://lordjunnior.com.br/soberania-organica/comunicacao-offline" />
         <meta property="og:title" content="Comunicação Offline: Sobreviva ao Apagão Digital" />
         <meta property="og:description" content="Protocolos de comunicação sem internet para coordenação familiar em emergências. Rádio, sinais visuais e redes mesh." />
-        <meta property="og:url" content="https://lordjunnior.com.br/projeto-autonomo/comunicacao-offline" />
+        <meta property="og:url" content="https://lordjunnior.com.br/soberania-organica/comunicacao-offline" />
       </Helmet>
     <div className="min-h-screen selection:bg-rose-300/30" style={{ background: '#050808' }}>
       <CinematicHero
@@ -391,7 +391,7 @@ export default function ComunicacaoOffline() {
 
         {/* Back bottom */}
         <div className="text-center pt-8">
-          <Link to="/projeto-autonomo" className="inline-flex items-center gap-2 text-stone-500 hover:text-white text-xs font-semibold uppercase tracking-[0.2em] transition-colors">
+          <Link to="/soberania-organica" className="inline-flex items-center gap-2 text-stone-500 hover:text-white text-xs font-semibold uppercase tracking-[0.2em] transition-colors">
             <ArrowLeft size={14} /> Voltar ao Soberania Orgânica
           </Link>
         </div>

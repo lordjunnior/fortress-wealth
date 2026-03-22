@@ -123,10 +123,10 @@ export default function SoloFertilidade() {
       <Helmet>
         <title>Solo e Fertilidade: Compostagem, Bokashi e Húmus para Soberania Alimentar | Lord Junnior</title>
         <meta name="description" content="Guia técnico de fertilidade do solo. Composteira doméstica, bokashi, minhocário, teste de pH e substrato ideal. A base que sustenta tudo que cresce na sua produção autônoma." />
-        <link rel="canonical" href="https://lordjunnior.com.br/projeto-autonomo/solo-fertilidade" />
+        <link rel="canonical" href="https://lordjunnior.com.br/soberania-organica/solo-fertilidade" />
         <meta property="og:title" content="Solo e Fertilidade: A Base da Soberania Alimentar" />
         <meta property="og:description" content="Compostagem, bokashi e húmus de minhoca. Sem solo fértil, nada cresce. Aprenda a construir a base." />
-        <meta property="og:url" content="https://lordjunnior.com.br/projeto-autonomo/solo-fertilidade" />
+        <meta property="og:url" content="https://lordjunnior.com.br/soberania-organica/solo-fertilidade" />
       </Helmet>
     <div className="min-h-screen text-stone-100 font-sans selection:bg-amber-300/50 pb-32 relative overflow-hidden" style={{ background: '#050808' }}>
       <ScrollToTop />
@@ -138,7 +138,7 @@ export default function SoloFertilidade() {
         subtitle="Solo fértil não é apenas 'terra escura'. Solo fértil é um ecossistema — microrganismos, fungos benéficos, matéria orgânica em decomposição, minerais disponíveis e umidade equilibrada."
         icon={Shovel}
         accentColor="amber"
-        backLink="/projeto-autonomo"
+        backLink="/soberania-organica"
         backLabel="Soberania Orgânica"
       />
 
@@ -662,7 +662,7 @@ export default function SoloFertilidade() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="flex flex-col sm:flex-row gap-4 justify-between"
         >
-          <Link to="/projeto-autonomo/proteina-sustentavel"
+          <Link to="/soberania-organica/proteina-sustentavel"
             className="flex items-center gap-3 bg-white/[0.03] border border-white/[0.06] rounded-2xl px-6 py-4 hover:bg-white/[0.06] hover:border-white/[0.1] transition-all duration-300 group">
             <ArrowLeft size={16} className="text-stone-500 group-hover:text-amber-400 transition-colors" />
             <div>
@@ -670,7 +670,7 @@ export default function SoloFertilidade() {
               <p className="text-stone-300 text-sm font-semibold">Proteína Sustentável</p>
             </div>
           </Link>
-          <Link to="/projeto-autonomo"
+          <Link to="/soberania-organica"
             className="flex items-center gap-3 bg-white/[0.03] border border-white/[0.06] rounded-2xl px-6 py-4 hover:bg-white/[0.06] hover:border-white/[0.1] transition-all duration-300 group justify-end">
             <div className="text-right">
               <span className="text-stone-600 text-[9px] font-bold uppercase tracking-wider">Voltar</span>

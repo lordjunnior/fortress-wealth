@@ -136,10 +136,10 @@ export default function HortaUrbana() {
       <Helmet>
         <title>Horta Urbana: Soberania Alimentar em Varandas e Pequenos Espaços | Lord Junnior</title>
         <meta name="description" content="Guia completo de cultivo urbano em varandas, janelas e telhados. Vaso autoirrigável DIY, cultivo vertical, calendário de plantio por região e espécies ideais para iniciantes." />
-        <link rel="canonical" href="https://lordjunnior.com.br/projeto-autonomo/horta-urbana" />
+        <link rel="canonical" href="https://lordjunnior.com.br/soberania-organica/horta-urbana" />
         <meta property="og:title" content="Horta Urbana: Produza Alimento em Qualquer Espaço" />
         <meta property="og:description" content="Espaço mínimo, colheita consistente. Cultivo vertical, autoirrigação e espécies para iniciantes." />
-        <meta property="og:url" content="https://lordjunnior.com.br/projeto-autonomo/horta-urbana" />
+        <meta property="og:url" content="https://lordjunnior.com.br/soberania-organica/horta-urbana" />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
           "@type": "HowTo",
@@ -163,7 +163,7 @@ export default function HortaUrbana() {
         subtitle="Varandas, janelas e telhados. Espaço mínimo, colheita consistente. Guia técnico completo de cultivo em ambientes urbanos reduzidos."
         icon={Sprout}
         accentColor="emerald"
-        backLink="/projeto-autonomo"
+        backLink="/soberania-organica"
         backLabel="Soberania Orgânica"
       />
 
@@ -537,13 +537,13 @@ export default function HortaUrbana() {
 
           <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
             <Link
-              to="/projeto-autonomo/solo-fertilidade"
+              to="/soberania-organica/solo-fertilidade"
               className="inline-flex items-center gap-2 bg-emerald-600 text-white text-sm font-semibold px-6 py-3 rounded-xl hover:bg-emerald-700 transition-colors"
             >
               Solo e Fertilidade <ChevronRight size={16} />
             </Link>
             <Link
-              to="/projeto-autonomo/producao-pequenos-espacos"
+              to="/soberania-organica/producao-pequenos-espacos"
               className="inline-flex items-center gap-2 bg-white/[0.06] border border-white/[0.1] text-stone-300 text-sm font-semibold px-6 py-3 rounded-xl hover:bg-white/[0.1] transition-colors"
             >
               Produção em Pequenos Espaços <ChevronRight size={16} />

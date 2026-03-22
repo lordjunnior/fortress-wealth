@@ -46,10 +46,10 @@ const ControleVetores = () => {
       <Helmet>
         <title>Controle de Vetores: Repelentes Naturais e Barreiras Físicas Contra Pragas | Lord Junnior</title>
         <meta name="description" content="Estratégia sanitária de baixo impacto ambiental. Óleos essenciais repelentes, eliminação de criadouros de mosquitos, barreiras físicas e plantas que afastam insetos naturalmente." />
-        <link rel="canonical" href="https://lordjunnior.com.br/projeto-autonomo/controle-vetores" />
+        <link rel="canonical" href="https://lordjunnior.com.br/soberania-organica/controle-vetores" />
         <meta property="og:title" content="Controle de Vetores: Defesa Sanitária Natural" />
         <meta property="og:description" content="Repelentes naturais, eliminação de criadouros e plantas que afastam pragas. Proteção sem químicos industriais." />
-        <meta property="og:url" content="https://lordjunnior.com.br/projeto-autonomo/controle-vetores" />
+        <meta property="og:url" content="https://lordjunnior.com.br/soberania-organica/controle-vetores" />
       </Helmet>
     <div className="min-h-screen text-stone-100" style={{ background: 'linear-gradient(180deg, #050808 0%, #0a0d0a 8%, #0d120d 20%, #0a0d0a 60%, #050808 100%)' }}>
       <CinematicHero
@@ -59,7 +59,7 @@ const ControleVetores = () => {
         subtitle="Estratégia sanitária de baixo impacto ambiental — redução de exposição, interrupção de ciclo reprodutivo e barreiras físicas"
         icon={Bug}
         accentColor="emerald"
-        backLink="/projeto-autonomo"
+        backLink="/soberania-organica"
         backLabel="Soberania Orgânica"
       />
 
@@ -493,7 +493,7 @@ const ControleVetores = () => {
 
         {/* ─── NAV FOOTER ─── */}
         <div className="flex items-center justify-between pt-8 border-t border-white/[0.06]">
-          <Link to="/projeto-autonomo" className="text-stone-500 hover:text-emerald-400 transition-colors text-sm font-mono flex items-center gap-2">
+          <Link to="/soberania-organica" className="text-stone-500 hover:text-emerald-400 transition-colors text-sm font-mono flex items-center gap-2">
             <ArrowLeft size={14} />
             Soberania Orgânica
           </Link>

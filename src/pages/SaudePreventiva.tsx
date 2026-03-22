@@ -52,10 +52,10 @@ const SaudePreventiva = () => {
       <Helmet>
         <title>Saúde Preventiva: Blindagem Imunológica Sem Dependência do Sistema | Lord Junnior</title>
         <meta name="description" content="Estratégias anti-inflamatórias avançadas, exposição solar segura, higiene do sono e alimentação funcional. Longevidade e saúde fora do sistema convencional." />
-        <link rel="canonical" href="https://lordjunnior.com.br/projeto-autonomo/saude-preventiva" />
+        <link rel="canonical" href="https://lordjunnior.com.br/soberania-organica/saude-preventiva" />
         <meta property="og:title" content="Saúde Preventiva: Protocolo de Blindagem Imunológica" />
         <meta property="og:description" content="Fortaleça seu sistema imunológico com protocolos validados. Sol, sono, movimento e alimentação anti-inflamatória." />
-        <meta property="og:url" content="https://lordjunnior.com.br/projeto-autonomo/saude-preventiva" />
+        <meta property="og:url" content="https://lordjunnior.com.br/soberania-organica/saude-preventiva" />
       </Helmet>
     <div ref={containerRef} className="min-h-screen text-stone-100 font-sans selection:bg-emerald-300/50 relative overflow-hidden"
       style={{ background: 'linear-gradient(180deg, #050808 0%, #0a0d08 8%, #0f1a0f 20%, #142214 40%, #111f11 70%, #0f1a0f 90%, #0a0d08 100%)' }}
@@ -67,7 +67,7 @@ const SaudePreventiva = () => {
         subtitle="Base Biológica e Estratégias Anti-Inflamatórias Avançadas"
         icon={Heart}
         accentColor="emerald"
-        backLink="/projeto-autonomo"
+        backLink="/soberania-organica"
         backLabel="Soberania Orgânica"
       />
 
@@ -503,12 +503,12 @@ const SaudePreventiva = () => {
 
         {/* ─── NAV FOOTER ─── */}
         <div className="gsap-reveal flex flex-col sm:flex-row gap-4">
-          <Link to="/projeto-autonomo"
+          <Link to="/soberania-organica"
             className="flex-1 group flex items-center justify-center gap-2 bg-white/[0.03] border border-white/[0.08] rounded-2xl px-6 py-5 text-stone-400 text-sm font-bold hover:bg-emerald-500/10 hover:border-emerald-500/20 hover:text-emerald-400 transition-all duration-300">
             <ChevronRight size={16} className="rotate-180 group-hover:-translate-x-1 transition-transform" />
             Soberania Orgânica
           </Link>
-          <Link to="/projeto-autonomo/avaliacao-sinais"
+          <Link to="/soberania-organica/avaliacao-sinais"
             className="flex-1 group flex items-center justify-center gap-2 bg-emerald-500/10 border border-emerald-500/20 rounded-2xl px-6 py-5 text-emerald-400 text-sm font-bold hover:bg-emerald-500/15 hover:border-emerald-400/30 transition-all duration-300">
             Avaliação de Sinais
             <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform" />

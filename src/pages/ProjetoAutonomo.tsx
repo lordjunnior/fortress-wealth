@@ -146,7 +146,7 @@ export default function ProjetoAutonomo() {
       <Helmet>
         <title>Soberania Orgânica — Manual da Terra: Curar, Alimentar e Proteger | Lord Junnior</title>
         <meta name="description" content="Soberania Orgânica: o Manual da Terra definitivo. 5 fases progressivas para decifrar o código da natureza — curar, alimentar e proteger sua linhagem sem cadeias de suprimentos colapsáveis." />
-        <link rel="canonical" href="https://lordjunnior.com.br/projeto-autonomo" />
+        <link rel="canonical" href="https://lordjunnior.com.br/soberania-organica" />
       </Helmet>
 
       <PageFloatingToc items={TOC_ITEMS} accentColor="emerald" />
@@ -204,7 +204,7 @@ export default function ProjetoAutonomo() {
           <div
             className="absolute inset-0 bg-cover bg-center will-change-transform"
             style={{
-              backgroundImage: `url('/heroes/projeto-autonomo.webp')`,
+              backgroundImage: `url('/heroes/soberania-organica.webp')`,
               filter: 'brightness(0.45) saturate(0.85)',
             }}
           />
@@ -365,7 +365,7 @@ export default function ProjetoAutonomo() {
                       style={{ background: `linear-gradient(135deg, ${phase.accent}08, transparent 60%)` }}
                       onClick={() => {
                         if (phase.num === '04') {
-                          window.location.href = '/projeto-autonomo/conhecimento-perdido';
+                          window.location.href = '/soberania-organica/conhecimento-perdido';
                         } else {
                           document.getElementById(phase.sectionId)?.scrollIntoView({ behavior: 'smooth' });
                         }
@@ -488,7 +488,7 @@ export default function ProjetoAutonomo() {
               <motion.div key={item.label} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i * 0.3}
                 className={i === 0 ? 'lg:row-span-2' : ''}
               >
-                <Link to={`/projeto-autonomo/${item.slug}`}
+                <Link to={`/soberania-organica/${item.slug}`}
                   className={`group block h-full relative overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.05] hover:border-rose-500/20 transition-all duration-500 hover:-translate-y-1 ${i === 0 ? 'p-8 md:p-10' : 'p-6 md:p-8'}`}
                 >
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
@@ -518,7 +518,7 @@ export default function ProjetoAutonomo() {
             {/* Remaining 4 cards */}
             {BASE72_ITEMS.slice(2).map((item, i) => (
               <motion.div key={item.label} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={(i + 2) * 0.2}>
-                <Link to={`/projeto-autonomo/${item.slug}`}
+                <Link to={`/soberania-organica/${item.slug}`}
                   className="group block h-full relative overflow-hidden rounded-xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.05] hover:border-rose-500/15 transition-all duration-500 hover:-translate-y-1 p-5"
                 >
                   <div className="flex items-start gap-4">
@@ -600,7 +600,7 @@ export default function ProjetoAutonomo() {
               <motion.div key={item.label} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}
                 className="lg:row-span-2"
               >
-                <Link to={`/projeto-autonomo/${item.slug}`}
+                <Link to={`/soberania-organica/${item.slug}`}
                   className="group block h-full relative overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.05] hover:border-emerald-500/20 transition-all duration-500 hover:-translate-y-1 p-8 md:p-10"
                 >
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
@@ -629,7 +629,7 @@ export default function ProjetoAutonomo() {
             {/* Medium cards — second tier */}
             {BIO_ITEMS.slice(1, 3).map((item, i) => (
               <motion.div key={item.label} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={(i + 1) * 0.3}>
-                <Link to={`/projeto-autonomo/${item.slug}`}
+                <Link to={`/soberania-organica/${item.slug}`}
                   className="group block h-full relative overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.05] hover:border-emerald-500/20 transition-all duration-500 hover:-translate-y-1 p-6 md:p-8"
                 >
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
@@ -654,7 +654,7 @@ export default function ProjetoAutonomo() {
             {/* Compact cards — bottom row */}
             {BIO_ITEMS.slice(3).map((item, i) => (
               <motion.div key={item.label} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={(i + 3) * 0.2}>
-                <Link to={`/projeto-autonomo/${item.slug}`}
+                <Link to={`/soberania-organica/${item.slug}`}
                   className="group block h-full relative overflow-hidden rounded-xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.05] hover:border-emerald-500/15 transition-all duration-500 hover:-translate-y-1 p-5"
                 >
                   <div className="flex items-start gap-4">
@@ -714,7 +714,7 @@ export default function ProjetoAutonomo() {
 
           {/* Sabedoria Ancestral CTA */}
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="mb-10">
-            <Link to="/projeto-autonomo/sabedoria-ancestral"
+            <Link to="/soberania-organica/sabedoria-ancestral"
               className="group block bg-emerald-500/[0.06] border border-emerald-500/15 rounded-xl p-6 hover:border-emerald-400/30 hover:bg-emerald-500/[0.1] transition-all duration-500"
             >
               <div className="flex items-center justify-between">
@@ -817,7 +817,7 @@ export default function ProjetoAutonomo() {
               <motion.div key={layer.title} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i * 0.3}
                 className={i === 0 ? 'lg:row-span-2' : ''}
               >
-                <Link to={`/projeto-autonomo/${layer.slug}`}
+                <Link to={`/soberania-organica/${layer.slug}`}
                   className={`group block h-full relative overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.05] hover:border-amber-500/20 transition-all duration-500 hover:-translate-y-1 ${i === 0 ? 'p-8 md:p-10' : 'p-6 md:p-8'}`}
                 >
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
@@ -850,7 +850,7 @@ export default function ProjetoAutonomo() {
             {/* Compact cards — remaining 3 */}
             {ALIMENTAR_LAYERS.slice(2).map((layer, i) => (
               <motion.div key={layer.title} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={(i + 2) * 0.2}>
-                <Link to={`/projeto-autonomo/${layer.slug}`}
+                <Link to={`/soberania-organica/${layer.slug}`}
                   className="group block h-full relative overflow-hidden rounded-xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.05] hover:border-amber-500/15 transition-all duration-500 hover:-translate-y-1 p-5"
                 >
                   <div className="flex items-start gap-4">
@@ -932,7 +932,7 @@ export default function ProjetoAutonomo() {
               { icon: Leaf, label: '5 Sistemas Corporais', desc: 'Digestivo, respiratório, nervoso, imunológico e circulatório mapeados.', longDesc: 'Cada sistema é documentado com suas plantas associadas, foco terapêutico e estratégia de autonomia. O mapa fisiológico conecta todos os pontos.', link: '/conhecimento-perdido/base-fisiologica' },
               { icon: BookOpen, label: '12 Plantas Documentadas', desc: 'Fichas técnicas com dosagens, contraindicações e métodos de preparo.', longDesc: 'Cada ficha possui 9 seções técnicas: identificação, princípios ativos, dosagens, contraindicações, interações, métodos de preparo, conservação, referências e aplicação prática.', link: '/conhecimento-perdido/aplicacao-pratica' },
               { icon: Heart, label: 'Educação Familiar', desc: 'Conteúdo adaptado para ensinar crianças sobre botânica e saúde natural.', longDesc: 'Atividades práticas de identificação botânica, jogos de reconhecimento de plantas e protocolos seguros de preparo supervisionado.', link: '/conhecimento-perdido/continuidade-familiar' },
-              { icon: Shield, label: 'Integração Completa', desc: 'Conectado a todo o Protocolo Autônomo como base de conhecimento.', longDesc: 'Hub central com navegação entre todos os blocos: contexto histórico, base fisiológica, segurança, aplicação prática e continuidade familiar.', link: '/projeto-autonomo/conhecimento-perdido' },
+              { icon: Shield, label: 'Integração Completa', desc: 'Conectado a todo o Protocolo Autônomo como base de conhecimento.', longDesc: 'Hub central com navegação entre todos os blocos: contexto histórico, base fisiológica, segurança, aplicação prática e continuidade familiar.', link: '/soberania-organica/conhecimento-perdido' },
             ];
             const Icon0 = cpItems[0].icon;
             const Icon1 = cpItems[1].icon;
@@ -1011,7 +1011,7 @@ export default function ProjetoAutonomo() {
           })()}
 
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="flex flex-col sm:flex-row gap-4 mb-10">
-            <Link to="/projeto-autonomo/conhecimento-perdido"
+            <Link to="/soberania-organica/conhecimento-perdido"
               className="inline-flex items-center justify-center gap-3 bg-teal-500 text-white px-8 py-4 font-semibold text-sm tracking-wide rounded-xl hover:bg-teal-400 hover:shadow-xl hover:shadow-teal-500/20 hover:scale-[1.02] transition-all duration-500 group"
             >
               <BookOpen size={18} className="group-hover:rotate-12 transition-transform duration-500" /> Explorar Ecossistema Completo
@@ -1067,10 +1067,10 @@ export default function ProjetoAutonomo() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
             {[
-              { icon: Target, label: 'Toxinas Alimentares', desc: 'Aditivos, ultraprocessados, açúcar oculto e agrotóxicos na dieta cotidiana.', link: '/projeto-autonomo/toxicos-ocultos/toxinas-alimentares', color: 'amber' },
-              { icon: Brain, label: 'Manipulação Informacional', desc: 'Propaganda, novilíngua, viés algorítmico e engenharia de consentimento.', link: '/projeto-autonomo/toxicos-ocultos/manipulacao-informacional', color: 'violet' },
-              { icon: Compass, label: 'Dependência Tecnológica', desc: 'Design comportamental, dopamina digital, rastreamento e obsolescência.', link: '/projeto-autonomo/toxicos-ocultos/dependencia-tecnologica', color: 'cyan' },
-              { icon: Eye, label: 'Toxinas Ambientais', desc: 'Plásticos, produtos de limpeza, poluição indoor e cosméticos tóxicos.', link: '/projeto-autonomo/toxicos-ocultos/toxinas-ambientais', color: 'green' },
+              { icon: Target, label: 'Toxinas Alimentares', desc: 'Aditivos, ultraprocessados, açúcar oculto e agrotóxicos na dieta cotidiana.', link: '/soberania-organica/toxicos-ocultos/toxinas-alimentares', color: 'amber' },
+              { icon: Brain, label: 'Manipulação Informacional', desc: 'Propaganda, novilíngua, viés algorítmico e engenharia de consentimento.', link: '/soberania-organica/toxicos-ocultos/manipulacao-informacional', color: 'violet' },
+              { icon: Compass, label: 'Dependência Tecnológica', desc: 'Design comportamental, dopamina digital, rastreamento e obsolescência.', link: '/soberania-organica/toxicos-ocultos/dependencia-tecnologica', color: 'cyan' },
+              { icon: Eye, label: 'Toxinas Ambientais', desc: 'Plásticos, produtos de limpeza, poluição indoor e cosméticos tóxicos.', link: '/soberania-organica/toxicos-ocultos/toxinas-ambientais', color: 'green' },
             ].map((item, i) => (
               <motion.div key={item.label} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i * 0.15}>
                 <Link to={item.link}
@@ -1092,7 +1092,7 @@ export default function ProjetoAutonomo() {
           </div>
 
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}>
-            <Link to="/projeto-autonomo/toxicos-ocultos"
+            <Link to="/soberania-organica/toxicos-ocultos"
               className="inline-flex items-center justify-center gap-3 bg-red-500 text-white px-8 py-4 font-semibold text-sm tracking-wide rounded-xl hover:bg-red-400 hover:shadow-xl hover:shadow-red-500/20 hover:scale-[1.02] transition-all duration-500 group"
             >
               <Eye size={18} className="group-hover:rotate-12 transition-transform duration-500" /> Explorar Laboratório Completo
