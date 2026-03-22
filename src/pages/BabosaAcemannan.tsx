@@ -223,11 +223,14 @@ export default function BabosaAcemannan() {
 
         {/* ─── HERO ─── */}
         <CinematicHero
+          image={babosaHero}
+          phase="INVESTIGAÇÃO DOCUMENTAL"
           title="Babosa & Acemannan"
           subtitle="A molécula imunomoduladora que recebeu status de medicamento órfão pela FDA em 1995 e depois desapareceu da pesquisa pública. Sob a casca verde existe um composto que a indústria prefere que você ignore."
-          backgroundImage={babosaHero}
+          icon={Leaf}
           accentColor="emerald"
-          tag="INVESTIGAÇÃO DOCUMENTAL"
+          backLink="/projeto-autonomo/autonomia-biologica"
+          backLabel="Autonomia Biológica"
         />
 
         {/* ─── NOISE + AMBIENT ─── */}
