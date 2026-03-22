@@ -8,6 +8,11 @@ import imgSoberaniaAlimentar from '@/assets/fase03-soberania-alimentar.jpg';
 import imgBase72 from '@/assets/fase01-base72.jpg';
 import imgAutonomiaBiologica from '@/assets/fase02-autonomia-biologica.jpg';
 import imgConhecimentoPerdido from '@/assets/cp-hero-conhecimento.jpg';
+import bgFase01 from '@/assets/bg-fase01-base72.jpg';
+import bgFase02 from '@/assets/bg-fase02-autonomia.jpg';
+import bgFase03 from '@/assets/bg-fase03-alimentar.jpg';
+import bgFase04 from '@/assets/bg-fase04-conhecimento.jpg';
+import bgFase05 from '@/assets/bg-fase05-toxicos.jpg';
 import SimboloOculto from '@/components/SimboloOculto';
 import RiskBlock from '@/components/RiskBlock';
 import { PainelTaticoFisiologico } from '@/components/PainelTaticoFisiologico';
@@ -219,6 +224,19 @@ export default function ProjetoAutonomo() {
         </div>
 
         <div className="max-w-5xl">
+          {/* — WHAT IS THIS — Clear intro block */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: APPLE_EASE }}
+            className="mb-8 inline-flex items-center gap-3 bg-emerald-500/10 border border-emerald-500/20 px-5 py-3 rounded-xl backdrop-blur-sm"
+          >
+            <Compass className="text-emerald-400" size={18} />
+            <span className="text-emerald-300/90 text-xs md:text-sm font-semibold">
+              Guia completo de autossuficiência: sobrevivência, saúde natural, produção de alimento e discernimento
+            </span>
+          </motion.div>
+
           <motion.div
             initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: APPLE_EASE }}
@@ -256,13 +274,16 @@ export default function ProjetoAutonomo() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            <p className="text-stone-400 text-lg md:text-xl leading-relaxed mb-4">
+            <p className="text-stone-300 text-lg md:text-xl leading-relaxed mb-4 font-medium">
+              O Projeto Autônomo é um manual prático de <span className="text-emerald-400 font-bold">independência real</span> — dividido em 5 fases progressivas que ensinam você a sobreviver, cuidar da saúde, produzir alimento, recuperar conhecimento perdido e eliminar dependências invisíveis.
+            </p>
+            <p className="text-stone-400 text-base leading-relaxed mb-4">
               Você terceiriza sua <span className="text-emerald-400 font-bold">comida</span> para uma indústria que lucra com a sua doença.
               Terceiriza sua <span className="text-emerald-400 font-bold">saúde</span> para um sistema que lucra com a sua dependência.
               E terceiriza sua <span className="text-emerald-400 font-bold">segurança</span> para um Estado que lucra com o seu medo.
             </p>
             <p className="text-stone-600 text-sm leading-relaxed">
-              Quatro fases. Uma progressão lógica. A construção metódica da sua <span className="font-semibold text-stone-300">independência real</span>.
+              Cinco fases. Uma progressão lógica. A construção metódica da sua <span className="font-semibold text-stone-300">independência real</span>.
               <SimboloOculto id="folha" className="ml-2 align-middle" />
             </p>
           </motion.div>
@@ -409,6 +430,12 @@ export default function ProjetoAutonomo() {
          FASE 01 — BASE 72 — BENTO GRID LAYOUT (was: simple 3-col grid)
       ═══════════════════════════════════════════════════════════ */}
       <section id="fase-01" className="relative z-10 scroll-mt-20 py-20 md:py-32">
+        {/* Ambient background image */}
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <img src={bgFase01} alt="" className="absolute inset-0 w-full h-full object-cover opacity-[0.06]" style={{ filter: 'saturate(0.5)' }} />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#050808] via-transparent to-[#050808]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#050808] via-transparent to-[#050808]" />
+        </div>
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           {/* Phase Hero — Full-width immersive banner (new: split layout) */}
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={scaleIn} custom={0}
@@ -516,6 +543,12 @@ export default function ProjetoAutonomo() {
          (was: same card grid, now: hero + 2-column split + interactive map)
       ═══════════════════════════════════════════════════════════ */}
       <section id="fase-02" className="relative z-10 scroll-mt-20 py-20 md:py-32">
+        {/* Ambient background image */}
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <img src={bgFase02} alt="" className="absolute inset-0 w-full h-full object-cover opacity-[0.07]" style={{ filter: 'saturate(0.5)' }} />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#050808] via-transparent to-[#050808]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#050808] via-transparent to-[#050808]" />
+        </div>
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           {/* Split Hero — Image right, content left */}
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={scaleIn} custom={0}
@@ -713,6 +746,12 @@ export default function ProjetoAutonomo() {
          (was: simple list cards, now: vertical pipeline with connected nodes)
       ═══════════════════════════════════════════════════════════ */}
       <section id="fase-03" className="relative z-10 scroll-mt-20 py-20 md:py-32">
+        {/* Ambient background image */}
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <img src={bgFase03} alt="" className="absolute inset-0 w-full h-full object-cover opacity-[0.07]" style={{ filter: 'saturate(0.4)' }} />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#050808] via-transparent to-[#050808]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#050808] via-transparent to-[#050808]" />
+        </div>
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           {/* Full-width hero with centered text over image */}
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={scaleIn} custom={0}
@@ -846,6 +885,12 @@ export default function ProjetoAutonomo() {
          (was: equal 4-card grid, now: large visual showcase)
       ═══════════════════════════════════════════════════════════ */}
       <section id="fase-04" className="relative z-10 scroll-mt-20 py-20 md:py-32">
+        {/* Ambient background image */}
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <img src={bgFase04} alt="" className="absolute inset-0 w-full h-full object-cover opacity-[0.06]" style={{ filter: 'saturate(0.4)' }} />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#050808] via-transparent to-[#050808]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#050808] via-transparent to-[#050808]" />
+        </div>
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           {/* Full-width image hero — centered overlay */}
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={scaleIn} custom={0}
@@ -981,6 +1026,12 @@ export default function ProjetoAutonomo() {
          FASE 05 — TÓXICOS OCULTOS — LABORATÓRIO DE DISCERNIMENTO
       ═══════════════════════════════════════════════════════════ */}
       <section id="fase-05" className="relative z-10 scroll-mt-20 py-20 md:py-32">
+        {/* Ambient background image */}
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <img src={bgFase05} alt="" className="absolute inset-0 w-full h-full object-cover opacity-[0.08]" style={{ filter: 'saturate(0.6)' }} />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#050808] via-transparent to-[#050808]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#050808] via-transparent to-[#050808]" />
+        </div>
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={scaleIn} custom={0}
             className="relative rounded-3xl overflow-hidden mb-16 md:mb-20 h-72 md:h-[450px]"
