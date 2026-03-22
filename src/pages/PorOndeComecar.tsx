@@ -167,7 +167,7 @@ export default function PorOndeComecar() {
         <AppSidebar />
         <MobileNav />
 
-        <div className="relative z-10 lg:ml-[260px] pb-10 min-h-screen flex flex-col">
+        <div className="relative z-10 lg:ml-[280px] pb-10 min-h-screen flex flex-col">
           {/* Back */}
           <div className="px-5 md:px-8 pt-6">
             <Link to="/" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors group">

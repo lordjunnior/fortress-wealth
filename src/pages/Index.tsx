@@ -235,7 +235,7 @@ const Index = () => {
       {/* Dust Particles Atmosphere — with scroll parallax */}
       <motion.div
         style={{ y: dustY }}
-        className="fixed inset-0 lg:left-[260px] pointer-events-none z-0 overflow-hidden opacity-60"
+        className="fixed inset-0 lg:left-[280px] pointer-events-none z-0 overflow-hidden opacity-60"
       >
         <div className="dust-layer-home"></div>
         <div className="dust-layer-home dust-layer-home-2"></div>
@@ -273,7 +273,7 @@ const Index = () => {
       <MobileNav />
 
       {/* Main content with sidebar offset on desktop */}
-      <div className="relative z-10 lg:ml-[260px] pb-10">
+      <div className="relative z-10 lg:ml-[280px] pb-10">
         <HeroSection />
 
         <NobelSection className="section-divider px-5 md:px-8" delay={0.05}>

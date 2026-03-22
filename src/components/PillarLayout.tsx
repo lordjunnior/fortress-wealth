@@ -48,7 +48,7 @@ const PillarLayout = ({ pillar }: { pillar: Pillar }) => {
       <AppSidebar />
       <MobileNav />
 
-      <div className="relative z-10 lg:ml-[260px] pb-10">
+      <div className="relative z-10 lg:ml-[280px] pb-10">
         {/* Back button */}
         <div className="section-padding pt-6 pb-0">
           <motion.button
