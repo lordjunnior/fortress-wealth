@@ -80,17 +80,17 @@ export default function BitcoinSeguro() {
         </div>
 
         {/* Floating TOC (Desktop) */}
-        <nav className="hidden xl:flex fixed right-6 top-1/2 -translate-y-1/2 z-50 flex-col gap-1">
-          <div className="bg-card/80 backdrop-blur-xl border border-border/50 rounded-lg p-3 space-y-1 shadow-2xl">
+        <nav className="hidden xl:flex 2xl:hidden fixed right-6 top-1/2 -translate-y-1/2 z-50 flex-col gap-1">
+          <div className="bg-card/80 backdrop-blur-xl border border-border/50 rounded-lg p-3 space-y-1 shadow-2xl max-w-[180px]">
             <div className="flex items-center gap-2 mb-3 pb-2 border-b border-border/50">
-              <Shield className="text-emerald-500" size={14} />
-              <span className="text-emerald-500 font-black uppercase text-[8px] tracking-[0.2em] font-mono">{progressVal}%</span>
+              <Shield className="text-muted-foreground" size={14} />
+              <span className="text-muted-foreground font-black uppercase text-[8px] tracking-[0.2em] font-mono">{progressVal}%</span>
             </div>
             {NAV_ITEMS.map((item) => (
               <button key={item.id} onClick={() => scrollTo(item.id)}
                 className={`w-full text-left px-3 py-2 rounded text-[9px] font-bold uppercase tracking-wider transition-all duration-300 font-mono ${
                   activeSection === item.id
-                    ? 'bg-emerald-500/10 text-emerald-400 border-l-2 border-emerald-500'
+                    ? 'bg-primary/10 text-primary border-l-2 border-primary'
                     : 'text-muted-foreground hover:text-foreground hover:bg-white/[0.03] border-l-2 border-transparent'
                 }`}
               >{item.label}</button>
