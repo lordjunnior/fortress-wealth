@@ -144,8 +144,8 @@ export default function ProjetoAutonomo() {
   return (
     <>
       <Helmet>
-        <title>Soberania Orgânica — Sobrevivência, Saúde e Autossuficiência | Lord Junnior</title>
-        <meta name="description" content="Guia completo de autonomia: kit 72h, purificação de água, primeiros socorros, horta urbana, fitoterapia e protocolos de emergência para sobrevivência real." />
+        <title>Soberania Orgânica — Manual da Terra: Curar, Alimentar e Proteger | Lord Junnior</title>
+        <meta name="description" content="Soberania Orgânica: o Manual da Terra definitivo. 5 fases progressivas para decifrar o código da natureza — curar, alimentar e proteger sua linhagem sem cadeias de suprimentos colapsáveis." />
         <link rel="canonical" href="https://lordjunnior.com.br/projeto-autonomo" />
       </Helmet>
 
