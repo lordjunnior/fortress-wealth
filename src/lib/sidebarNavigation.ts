@@ -175,7 +175,7 @@ export const navGroups: NavGroup[] = [
   {
     label: "Biblioteca & Educação",
     icon: GraduationCap,
-    color: "text-sky-400",
+    color: undefined,
     items: [
       { label: "Educação", route: "/educacao" },
       { label: "Audiobooks", route: "/audiobooks" },

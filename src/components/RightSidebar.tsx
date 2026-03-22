@@ -63,7 +63,7 @@ const RightSidebar = () => {
               key={ind.label}
               className="bg-card/50 border border-border/30 rounded-lg px-3 py-2.5 flex flex-col items-center text-center"
             >
-              <ind.icon className={`w-3.5 h-3.5 ${ind.color} mb-1`} />
+              <ind.icon className="w-3.5 h-3.5 text-muted-foreground mb-1" />
               <span className="font-mono text-sm font-bold text-foreground">{ind.value}</span>
               <span className="text-[8px] text-muted-foreground leading-tight mt-0.5">{ind.label}</span>
             </div>
