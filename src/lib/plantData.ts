@@ -10,6 +10,8 @@ import imgCalendula from '@/assets/planta-calendula.jpg';
 import imgCapimLimao from '@/assets/planta-capim-limao.jpg';
 import imgGuaco from '@/assets/planta-guaco.jpg';
 import imgTanchagem from '@/assets/planta-tanchagem.jpg';
+import imgBabosaCard from '@/assets/planta-babosa-card.jpg';
+import imgOleoRicino from '@/assets/planta-oleo-ricino.jpg';
 
 export interface PlantaData {
   slug: string;
