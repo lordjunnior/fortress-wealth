@@ -1026,6 +1026,12 @@ export default function ProjetoAutonomo() {
          FASE 05 — TÓXICOS OCULTOS — LABORATÓRIO DE DISCERNIMENTO
       ═══════════════════════════════════════════════════════════ */}
       <section id="fase-05" className="relative z-10 scroll-mt-20 py-20 md:py-32">
+        {/* Ambient background image */}
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <img src={bgFase05} alt="" className="absolute inset-0 w-full h-full object-cover opacity-[0.08]" style={{ filter: 'saturate(0.6)' }} />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#050808] via-transparent to-[#050808]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#050808] via-transparent to-[#050808]" />
+        </div>
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={scaleIn} custom={0}
             className="relative rounded-3xl overflow-hidden mb-16 md:mb-20 h-72 md:h-[450px]"
