@@ -72,17 +72,16 @@ const PixCripto: React.FC = () => {
 
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
-  useEffect(() => {
-    
-const TOC_ITEMS = [
-  { id: "passo-a-passo", label: "Passo a Passo" },
-  { id: "riscos", label: "Riscos" },
-  { id: "como-funciona", label: "Como Funciona" },
-  { id: "faq", label: "FAQ" },
-  { id: "apoiar", label: "Apoiar" },
-];
+  const TOC_ITEMS = [
+    { id: "passo-a-passo", label: "Passo a Passo" },
+    { id: "riscos", label: "Riscos" },
+    { id: "como-funciona", label: "Como Funciona" },
+    { id: "faq", label: "FAQ" },
+    { id: "apoiar", label: "Apoiar" },
+  ];
 
-const handleScroll = () => {
+  useEffect(() => {
+    const handleScroll = () => {
       const total = document.documentElement.scrollHeight - window.innerHeight;
       setScrollProgress(total > 0 ? Math.min((window.scrollY / total) * 100, 100) : 0);
     };
