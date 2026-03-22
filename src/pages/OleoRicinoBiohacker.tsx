@@ -19,6 +19,24 @@ import avatarPatricia from '@/assets/avatar-patricia.jpg';
 import avatarDiego from '@/assets/avatar-diego.jpg';
 import avatarMarcia from '@/assets/avatar-marcia.jpg';
 
+const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
+const fade = (delay = 0) => ({
+  initial: { opacity: 0, y: 24 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: '-40px' },
+  transition: { duration: 0.7, ease: APPLE_EASE, delay },
+});
+
+const TOC_ITEMS = [
+  { id: 'quebra-padrao', label: 'A Grande Mentira', num: '01' },
+  { id: 'ciencia-escondida', label: 'Ciência Escondida', num: '02' },
+  { id: 'mecanismo', label: 'O Mecanismo', num: '03' },
+  { id: 'aplicacoes', label: 'Aplicações', num: '04' },
+  { id: 'relatos', label: 'Relatos Reais', num: '05' },
+  { id: 'protocolo', label: 'Protocolo', num: '06' },
+  { id: 'faq', label: 'FAQ', num: '07' },
+];
+
 /* ── DADOS ── */
 const SCIENTIFIC_EVIDENCE = [
   {
