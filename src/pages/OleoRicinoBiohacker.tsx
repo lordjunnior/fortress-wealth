@@ -205,7 +205,18 @@ export default function OleoRicinoBiohacker() {
 
       <PageFloatingToc items={TOC_ITEMS} accentColor="amber" />
 
-      <article className="min-h-screen text-stone-100 font-sans selection:bg-amber-400/30 relative overflow-hidden" style={{ background: '#050505' }}>
+      <article className="min-h-screen text-stone-100 font-sans selection:bg-amber-400/30 relative overflow-hidden"
+        style={{ background: 'linear-gradient(180deg, #050505 0%, #080604 8%, #0d0a06 20%, #0a0806 40%, #080604 60%, #060504 80%, #050505 100%)' }}>
+
+        {/* ═══ AMBIENT ORBS ═══ */}
+        <div className="fixed inset-0 pointer-events-none z-0">
+          <div className="absolute top-[10%] right-[8%] w-[600px] h-[600px] rounded-full"
+            style={{ background: 'radial-gradient(circle, rgba(245,158,11,0.05) 0%, transparent 70%)' }} />
+          <div className="absolute top-[40%] left-[3%] w-[500px] h-[500px] rounded-full"
+            style={{ background: 'radial-gradient(circle, rgba(217,119,6,0.04) 0%, transparent 70%)' }} />
+          <div className="absolute bottom-[15%] right-[15%] w-[400px] h-[400px] rounded-full"
+            style={{ background: 'radial-gradient(circle, rgba(180,83,9,0.03) 0%, transparent 70%)' }} />
+        </div>
 
         {/* ═══════════════════════════════════════════════════════════
            HERO: A GRANDE QUEBRA DE PADRÃO
