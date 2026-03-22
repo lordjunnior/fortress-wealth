@@ -286,7 +286,7 @@ const schemaSiteNav = {
     { "@type": "WebPage", "name": "Fitoterapia Aplicada", "url": "https://lordjunnior.com.br/projeto-autonomo/fitoterapia-aplicada" },
     { "@type": "WebPage", "name": "Autonomia Biológica", "url": "https://lordjunnior.com.br/projeto-autonomo/autonomia-biologica" },
     { "@type": "WebPage", "name": "Sabedoria Ancestral", "url": "https://lordjunnior.com.br/projeto-autonomo/sabedoria-ancestral" },
-    { "@type": "WebPage", "name": "Projeto Autônomo", "url": "https://lordjunnior.com.br/projeto-autonomo" },
+    { "@type": "WebPage", "name": "Soberania Orgânica", "url": "https://lordjunnior.com.br/projeto-autonomo" },
   ],
 };
 
@@ -295,7 +295,7 @@ const schemaBreadcrumb = {
   "@type": "BreadcrumbList",
   "itemListElement": [
     { "@type": "ListItem", "position": 1, "name": "Início", "item": "https://lordjunnior.com.br" },
-    { "@type": "ListItem", "position": 2, "name": "Projeto Autônomo", "item": "https://lordjunnior.com.br/projeto-autonomo" },
+    { "@type": "ListItem", "position": 2, "name": "Soberania Orgânica", "item": "https://lordjunnior.com.br/projeto-autonomo" },
     { "@type": "ListItem", "position": 3, "name": "Autonomia Biológica", "item": "https://lordjunnior.com.br/projeto-autonomo/autonomia-biologica" },
     { "@type": "ListItem", "position": 4, "name": "Babosa e Acemannan", "item": "https://lordjunnior.com.br/projeto-autonomo/babosa-acemannan" },
   ],
@@ -768,7 +768,7 @@ export default function BabosaAcemannan() {
         <footer className="relative z-10 max-w-7xl mx-auto px-5 md:px-8 lg:px-12 pb-20 pt-8">
           <div className="flex flex-wrap justify-center gap-6">
             <Link to="/projeto-autonomo" className="inline-flex items-center gap-2 text-stone-600 hover:text-stone-300 text-xs font-semibold uppercase tracking-[0.2em] transition-colors">
-              <Zap size={14} /> Projeto Autônomo
+              <Zap size={14} /> Soberania Orgânica
             </Link>
             <Link to="/" className="inline-flex items-center gap-2 text-stone-600 hover:text-stone-300 text-xs font-semibold uppercase tracking-[0.2em] transition-colors">
               <Shield size={14} /> Voltar à Base

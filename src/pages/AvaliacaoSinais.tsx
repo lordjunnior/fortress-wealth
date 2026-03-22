@@ -36,7 +36,7 @@ const AvaliacaoSinais = () => {
         icon={Activity}
         accentColor="blue"
         backLink="/projeto-autonomo"
-        backLabel="Projeto Autônomo"
+        backLabel="Soberania Orgânica"
       />
 
       <main className="max-w-6xl mx-auto px-4 md:px-8 py-12 md:py-20">
@@ -499,7 +499,7 @@ const AvaliacaoSinais = () => {
         <div className="flex items-center justify-between pt-8 border-t border-white/[0.06]">
           <Link to="/projeto-autonomo" className="text-stone-500 hover:text-emerald-400 transition-colors text-sm font-mono flex items-center gap-2">
             <ArrowLeft size={14} />
-            Projeto Autônomo
+            Soberania Orgânica
           </Link>
           <Link to="/projeto-autonomo/primeiros-socorros" className="text-stone-500 hover:text-emerald-400 transition-colors text-sm font-mono flex items-center gap-2">
             Primeiros Socorros

@@ -101,7 +101,7 @@ function getRecommendations(answers: Record<string, string>): Recommendation[] {
     );
   } else if (objetivo === "autonomy") {
     recs.push(
-      { title: "Projeto Autônomo", description: "Alimento, saúde, energia e sobrevivência", path: "/projeto-autonomo", icon: Target, tag: "PRÁTICA" },
+      { title: "Soberania Orgânica", description: "Alimento, saúde, energia e sobrevivência", path: "/projeto-autonomo", icon: Target, tag: "PRÁTICA" },
       { title: "Kit 72h", description: "Seu kit de emergência essencial", path: "/projeto-autonomo/kit-72h", icon: Zap, tag: "PRIORITÁRIO" },
     );
   } else if (objetivo === "all") {

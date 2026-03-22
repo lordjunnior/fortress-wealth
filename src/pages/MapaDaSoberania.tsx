@@ -116,13 +116,13 @@ const SILOS: Silo[] = [
     ],
   },
   {
-    title: "Projeto Autônomo — Base 72",
+    title: "Soberania Orgânica — Base 72",
     icon: Flame,
     color: "text-rose-400",
     borderColor: "border-rose-500/[0.15]",
     bgColor: "bg-rose-500/[0.06]",
     links: [
-      { title: "Hub do Projeto Autônomo", href: "/projeto-autonomo" },
+      { title: "Hub do Soberania Orgânica", href: "/projeto-autonomo" },
       { title: "Kit Tático 72h", href: "/projeto-autonomo/kit-72h" },
       { title: "Purificação de Água", href: "/projeto-autonomo/purificacao-agua" },
       { title: "Protocolos de Apagão", href: "/projeto-autonomo/protocolos-apagao" },

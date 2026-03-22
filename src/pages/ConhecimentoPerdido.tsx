@@ -188,7 +188,7 @@ export default function ConhecimentoPerdido() {
         <nav className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] mb-16 flex-wrap">
           <Link to="/" className="text-stone-600 hover:text-amber-400 transition-colors">Início</Link>
           <span className="text-stone-700">/</span>
-          <Link to="/projeto-autonomo" className="text-stone-600 hover:text-amber-400 transition-colors">Projeto Autônomo</Link>
+          <Link to="/projeto-autonomo" className="text-stone-600 hover:text-amber-400 transition-colors">Soberania Orgânica</Link>
           <span className="text-stone-700">/</span>
           <span className="text-amber-400">Conhecimento Perdido</span>
         </nav>
@@ -211,7 +211,7 @@ export default function ConhecimentoPerdido() {
 
           <div className="max-w-3xl space-y-5">
             <p className="text-stone-300 text-lg md:text-xl leading-relaxed font-light">
-              Este não é um guia genérico de "chás que fazem bem". É o <span className="text-amber-400 font-semibold">núcleo biológico</span> do Projeto Autônomo — a base que sustenta toda decisão de saúde quando sistemas formais não estão disponíveis, são insuficientes ou simplesmente falharam.
+              Este não é um guia genérico de "chás que fazem bem". É o <span className="text-amber-400 font-semibold">núcleo biológico</span> do Soberania Orgânica — a base que sustenta toda decisão de saúde quando sistemas formais não estão disponíveis, são insuficientes ou simplesmente falharam.
             </p>
             <p className="text-stone-400 text-base leading-relaxed">
               Aqui, cada planta é tratada como ferramenta técnica: com compostos bioativos identificados, mecanismo de ação documentado, dosagem segura, contraindicações reais e limites de uso. Nada de misticismo. Nada de promessa vaga. Bioquímica aplicada com responsabilidade.
@@ -397,7 +397,7 @@ export default function ConhecimentoPerdido() {
 
             <div className="max-w-3xl space-y-5">
               <p className="text-stone-300 text-base md:text-lg leading-relaxed">
-                Este bloco se conecta com todos os módulos do Projeto Autônomo. <span className="text-amber-400 font-semibold">Sem corpo saudável, não há autonomia real.</span>
+                Este bloco se conecta com todos os módulos do Soberania Orgânica. <span className="text-amber-400 font-semibold">Sem corpo saudável, não há autonomia real.</span>
               </p>
 
               {/* ─── Link bidirecional: Sabedoria Ancestral ─── */}
@@ -434,7 +434,7 @@ export default function ConhecimentoPerdido() {
 
               <div className="mt-4">
                 <Link to="/projeto-autonomo" className="btn-secondary text-center inline-block">
-                  ← Projeto Autônomo
+                  ← Soberania Orgânica
                 </Link>
               </div>
             </div>

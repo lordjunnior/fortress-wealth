@@ -17,7 +17,7 @@ const categoryColors: Record<string, string> = {
   Educação: "text-amber-300",
   Ferramentas: "text-teal-400",
   Filosofia: "text-indigo-400",
-  "Projeto Autônomo": "text-green-400",
+  "Soberania Orgânica": "text-green-400",
   "Tóxicos Ocultos": "text-orange-400",
 };
 

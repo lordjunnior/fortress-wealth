@@ -24,7 +24,7 @@ const CinematicHero: React.FC<CinematicHeroProps> = ({
   icon: Icon,
   accentColor = 'rose',
   backLink = '/projeto-autonomo',
-  backLabel = 'Projeto Autônomo',
+  backLabel = 'Soberania Orgânica',
 }) => {
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({

@@ -191,7 +191,7 @@ const Index = () => {
     "itemListElement": [
       { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://lordjunnior.com.br/" },
       { "@type": "ListItem", "position": 2, "name": "Bitcoin", "item": "https://lordjunnior.com.br/bitcoin" },
-      { "@type": "ListItem", "position": 3, "name": "Projeto Autônomo", "item": "https://lordjunnior.com.br/projeto-autonomo" },
+      { "@type": "ListItem", "position": 3, "name": "Soberania Orgânica", "item": "https://lordjunnior.com.br/projeto-autonomo" },
       { "@type": "ListItem", "position": 4, "name": "Soberania Financeira", "item": "https://lordjunnior.com.br/soberania-financeira" }
     ]
   };

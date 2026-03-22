@@ -183,20 +183,20 @@ export default function SabedoriaAncestral() {
 
       <CinematicHero
         image="/heroes/sabedoria-ancestral.webp"
-        phase="Projeto Autônomo · Sabedoria Ancestral"
+        phase="Soberania Orgânica · Sabedoria Ancestral"
         title="O Que a Terra Ensina"
         subtitle="Conhecimento que alimentou famílias por séculos. Preservado aqui como ferramenta de soberania."
         icon={Leaf}
         accentColor="amber"
         backLink="/projeto-autonomo"
-        backLabel="Projeto Autônomo"
+        backLabel="Soberania Orgânica"
       />
 
       {/* ─── Schema.org / SEO Microdados ─── */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
         "@context": "https://schema.org",
         "@type": "CollectionPage",
-        "name": "Sabedoria Ancestral — Projeto Autônomo",
+        "name": "Sabedoria Ancestral — Soberania Orgânica",
         "description": "Hub de conhecimento ancestral sobre plantas medicinais, saúde natural e soberania alimentar.",
         "url": "https://verificabr.com/projeto-autonomo/sabedoria-ancestral",
         "mainEntity": {
@@ -590,8 +590,8 @@ export default function SabedoriaAncestral() {
           <div className="text-center">
             <Link to="/projeto-autonomo"
               className="inline-flex items-center gap-3 text-stone-600 hover:text-amber-400 text-xs font-bold uppercase tracking-[0.2em] transition-colors duration-300 focus:outline-none focus:ring-1 focus:ring-amber-500/50 rounded px-3 py-2"
-              aria-label="Voltar ao Projeto Autônomo">
-              <ArrowLeft size={14} aria-hidden="true" /> Voltar ao Projeto Autônomo
+              aria-label="Voltar ao Soberania Orgânica">
+              <ArrowLeft size={14} aria-hidden="true" /> Voltar ao Soberania Orgânica
             </Link>
           </div>
         </div>

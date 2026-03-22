@@ -72,7 +72,7 @@ const JOURNEY_CATEGORIES: JourneyCategory[] = [
     ],
   },
   {
-    name: "Projeto Autônomo",
+    name: "Soberania Orgânica",
     pages: [
       { path: "/projeto-autonomo", title: "Hub Autônomo" },
       { path: "/projeto-autonomo/kit-72h", title: "Kit 72h" },

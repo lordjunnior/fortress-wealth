@@ -214,7 +214,7 @@ export default function ToxinasAmbientais() {
             </h3>
             <p className="text-stone-500 text-sm leading-relaxed max-w-2xl mx-auto mb-10">
               Corpo, mente, comportamento e ambiente. Cada módulo investigou um vetor diferente de influência invisível.
-              O próximo passo é continuar construindo autonomia real dentro do Projeto Autônomo.
+              O próximo passo é continuar construindo autonomia real dentro do Soberania Orgânica.
             </p>
             <Link to="/projeto-autonomo/toxicos-ocultos"
               className="inline-flex items-center gap-3 bg-red-500 text-white px-10 py-5 font-bold text-sm tracking-wide rounded-xl hover:bg-red-400 hover:shadow-2xl hover:shadow-red-500/20 hover:scale-[1.03] transition-all duration-500 group"

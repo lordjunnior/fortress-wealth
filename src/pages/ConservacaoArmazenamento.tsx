@@ -536,7 +536,7 @@ export default function ConservacaoArmazenamento() {
         icon={Package}
         accentColor="amber"
         backLink="/projeto-autonomo"
-        backLabel="Projeto Autônomo"
+        backLabel="Soberania Orgânica"
       />
 
       <div className="relative z-10 max-w-5xl mx-auto px-6 md:px-10 pt-12">
@@ -861,7 +861,7 @@ export default function ConservacaoArmazenamento() {
                   to="/projeto-autonomo"
                   className="inline-flex items-center gap-2 px-8 py-4 bg-amber-500 text-stone-900 font-bold text-xs uppercase tracking-widest rounded-lg hover:bg-amber-400 transition-colors"
                 >
-                  <ArrowLeft size={14} /> Voltar ao Projeto Autônomo
+                  <ArrowLeft size={14} /> Voltar ao Soberania Orgânica
                 </Link>
                 <Link
                   to="/projeto-autonomo/horta-urbana"

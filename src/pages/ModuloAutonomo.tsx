@@ -251,7 +251,7 @@ export default function ModuloAutonomo() {
         <div className="text-center">
           <p className="text-stone-400 text-sm mb-4">Módulo não encontrado</p>
           <Link to="/projeto-autonomo" className="text-emerald-600 text-sm font-semibold hover:underline">
-            Voltar ao Projeto Autônomo
+            Voltar ao Soberania Orgânica
           </Link>
         </div>
       </div>
@@ -269,10 +269,10 @@ export default function ModuloAutonomo() {
   return (
     <>
       <Helmet>
-        <title>{`${mod.title}: Módulo do Projeto Autônomo — Fase ${mod.phase} | Lord Junnior`}</title>
-        <meta name="description" content={`${mod.description} Parte da Fase ${mod.phase} (${mod.phaseLabel}) do Projeto Autônomo de soberania e resiliência.`} />
+        <title>{`${mod.title}: Módulo do Soberania Orgânica — Fase ${mod.phase} | Lord Junnior`}</title>
+        <meta name="description" content={`${mod.description} Parte da Fase ${mod.phase} (${mod.phaseLabel}) do Soberania Orgânica de soberania e resiliência.`} />
         <link rel="canonical" href={`https://lordjunnior.com.br/projeto-autonomo/modulo/${slug}`} />
-        <meta property="og:title" content={`${mod.title} — Projeto Autônomo`} />
+        <meta property="og:title" content={`${mod.title} — Soberania Orgânica`} />
         <meta property="og:description" content={mod.description} />
         <meta property="og:url" content={`https://lordjunnior.com.br/projeto-autonomo/modulo/${slug}`} />
       </Helmet>
@@ -284,7 +284,7 @@ export default function ModuloAutonomo() {
           to="/projeto-autonomo"
           className="inline-flex items-center gap-2 text-stone-400 hover:text-stone-700 text-xs font-semibold uppercase tracking-[0.2em] transition-colors mb-12"
         >
-          <ArrowLeft size={14} /> Projeto Autônomo
+          <ArrowLeft size={14} /> Soberania Orgânica
         </Link>
 
         {/* ══ BLOCO 1: IDENTIDADE DO MÓDULO ══ */}
@@ -408,7 +408,7 @@ export default function ModuloAutonomo() {
           transition={{ duration: 0.6, delay: 0.7 }}
         >
           <p className="text-stone-400 text-xs leading-relaxed max-w-md mx-auto">
-            Este módulo faz parte da expansão da Biblioteca Técnica do Projeto Autônomo.
+            Este módulo faz parte da expansão da Biblioteca Técnica do Soberania Orgânica.
             O conteúdo está sendo desenvolvido com base em fontes validadas e protocolos documentados.
           </p>
         </motion.div>

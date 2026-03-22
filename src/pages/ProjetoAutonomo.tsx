@@ -20,7 +20,7 @@ import { PainelTaticoFisiologico } from '@/components/PainelTaticoFisiologico';
 import VersionBadge from '@/components/VersionBadge';
 
 /* ─── SEO: meta keywords target ───
-   projeto autônomo, base 72 horas, autonomia biológica, soberania alimentar,
+   soberania orgânica, base 72 horas, autonomia biológica, soberania alimentar,
    sobrevivência urbana, horta urbana, plantas medicinais, primeiros socorros,
    autossuficiência alimentar, kit emergência 72h, preparação desastres brasil,
    conservação alimentos, proteína sustentável, fitoterapia, gestão de risco pessoal
@@ -144,8 +144,8 @@ export default function ProjetoAutonomo() {
   return (
     <>
       <Helmet>
-        <title>Projeto Autônomo — Sobrevivência, Saúde e Autossuficiência | Lord Junnior</title>
-        <meta name="description" content="Guia completo de autonomia: kit 72h, purificação de água, primeiros socorros, horta urbana, fitoterapia e protocolos de emergência para sobrevivência real." />
+        <title>Soberania Orgânica — Manual da Terra: Curar, Alimentar e Proteger | Lord Junnior</title>
+        <meta name="description" content="Soberania Orgânica: o Manual da Terra definitivo. 5 fases progressivas para decifrar o código da natureza — curar, alimentar e proteger sua linhagem sem cadeias de suprimentos colapsáveis." />
         <link rel="canonical" href="https://lordjunnior.com.br/projeto-autonomo" />
       </Helmet>
 
@@ -227,7 +227,7 @@ export default function ProjetoAutonomo() {
         <nav className="absolute top-6 left-6 md:left-16 flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em]">
           <Link to="/" className="text-stone-600 hover:text-emerald-400 transition-colors">Início</Link>
           <span className="text-stone-700">/</span>
-          <span className="text-emerald-400">Projeto Autônomo</span>
+          <span className="text-emerald-400">Soberania Orgânica</span>
         </nav>
 
         {/* Version — top right */}
@@ -245,7 +245,7 @@ export default function ProjetoAutonomo() {
           >
             <Compass className="text-emerald-400" size={16} />
             <span className="text-emerald-300/90 text-[10px] md:text-xs font-semibold">
-              Guia completo de autossuficiência: sobrevivência, saúde natural, produção de alimento e discernimento
+              Manual da Terra: decifre o código da natureza para curar, alimentar e proteger sua linhagem
             </span>
           </motion.div>
 
@@ -270,12 +270,12 @@ export default function ProjetoAutonomo() {
               initial={{ opacity: 0, y: 60, filter: 'blur(12px)' }}
               animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
               transition={{ duration: 1, ease: APPLE_EASE, delay: 0.1 }}
-            >PROJETO</motion.span>
+            >SOBERANIA</motion.span>
             <motion.span className="block text-5xl md:text-[6rem] lg:text-[8rem] font-black tracking-tighter text-emerald-400"
               initial={{ opacity: 0, y: 60, filter: 'blur(12px)' }}
               animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
               transition={{ duration: 1, ease: APPLE_EASE, delay: 0.3 }}
-            >AUTÔNOMO</motion.span>
+            >ORGÂNICA</motion.span>
           </h1>
 
           <motion.div
@@ -285,15 +285,15 @@ export default function ProjetoAutonomo() {
             transition={{ duration: 0.8, delay: 0.6 }}
           >
             <p className="text-stone-300 text-sm md:text-base leading-relaxed mb-3 font-medium">
-              O Projeto Autônomo é um manual prático de <span className="text-emerald-400 font-bold">independência real</span> — dividido em 5 fases progressivas que ensinam você a sobreviver, cuidar da saúde, produzir alimento, recuperar conhecimento perdido e eliminar dependências invisíveis.
+              A Soberania Orgânica é o seu <span className="text-emerald-400 font-bold">Manual da Terra definitivo</span>. Um resgate da nossa herança nativa dividido em 5 fases progressivas. Este protocolo ensina você a decifrar o código da natureza para curar, alimentar e proteger sua linhagem sem depender de cadeias de suprimentos colapsáveis.
             </p>
             <p className="text-stone-400 text-sm leading-relaxed mb-2">
-              Você terceiriza sua <span className="text-emerald-400 font-bold">comida</span> para uma indústria que lucra com a sua doença.
-              Terceiriza sua <span className="text-emerald-400 font-bold">saúde</span> para um sistema que lucra com a sua dependência.
-              E terceiriza sua <span className="text-emerald-400 font-bold">segurança</span> para um Estado que lucra com o seu medo.
+              Você terceiriza sua <span className="text-emerald-400 font-bold">nutrição</span> para uma indústria que desenha alimentos para viciar.
+              Terceiriza sua <span className="text-emerald-400 font-bold">cura</span> para um sistema que gerencia sintomas, mas nunca elimina causas.
+              E terceiriza seu <span className="text-emerald-400 font-bold">conhecimento</span> para algoritmos que escondem o que realmente importa.
             </p>
             <p className="text-stone-600 text-xs leading-relaxed">
-              Cinco fases. Uma progressão lógica. A construção metódica da sua <span className="font-semibold text-stone-300">independência real</span>.
+              Cinco camadas. Uma blindagem. A construção metódica da sua <span className="font-semibold text-stone-300">independência física</span>.
               <SimboloOculto id="folha" className="ml-2 align-middle" />
             </p>
           </motion.div>
@@ -316,7 +316,7 @@ export default function ProjetoAutonomo() {
           initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1 }}
         >
           <div className="w-px h-20 bg-gradient-to-b from-transparent via-emerald-500/30 to-transparent" />
-          <span className="text-emerald-500/30 text-[9px] font-bold tracking-[0.3em] uppercase [writing-mode:vertical-lr]">4 Fases</span>
+          <span className="text-emerald-500/30 text-[9px] font-bold tracking-[0.3em] uppercase [writing-mode:vertical-lr]">5 Fases</span>
           <div className="w-px h-20 bg-gradient-to-b from-transparent via-emerald-500/30 to-transparent" />
         </motion.div>
       </section>
