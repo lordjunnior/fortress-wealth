@@ -223,16 +223,16 @@ export default function ProjetoAutonomo() {
           <VersionBadge version="v2.0" date="Mar 2026" />
         </div>
 
-        <div className="max-w-5xl">
-          {/* — WHAT IS THIS — Clear intro block */}
+        <div className="max-w-5xl relative z-10">
+          {/* Badge */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: APPLE_EASE }}
-            className="mb-8 inline-flex items-center gap-3 bg-emerald-500/10 border border-emerald-500/20 px-5 py-3 rounded-xl backdrop-blur-sm"
+            className="mb-5 inline-flex items-center gap-3 bg-emerald-500/10 border border-emerald-500/20 px-4 py-2 rounded-xl backdrop-blur-sm"
           >
-            <Compass className="text-emerald-400" size={18} />
-            <span className="text-emerald-300/90 text-xs md:text-sm font-semibold">
+            <Compass className="text-emerald-400" size={16} />
+            <span className="text-emerald-300/90 text-[10px] md:text-xs font-semibold">
               Guia completo de autossuficiência: sobrevivência, saúde natural, produção de alimento e discernimento
             </span>
           </motion.div>
@@ -240,28 +240,26 @@ export default function ProjetoAutonomo() {
           <motion.div
             initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: APPLE_EASE }}
-            className="mb-6"
+            className="mb-3 flex items-center gap-3"
           >
-            <div className="flex items-center gap-3 mb-6">
-              <motion.div
-                className="p-3.5 bg-emerald-500/10 border border-emerald-500/20 rounded-2xl"
-                whileHover={{ scale: 1.1, rotate: 5 }}
-              >
-                <Shield className="text-emerald-400" size={24} />
-              </motion.div>
-              <span className="text-emerald-500/60 text-[10px] font-bold uppercase tracking-[0.5em]">
-                Engenharia de Resiliência Pessoal
-              </span>
-            </div>
+            <motion.div
+              className="p-2.5 bg-emerald-500/10 border border-emerald-500/20 rounded-xl"
+              whileHover={{ scale: 1.1, rotate: 5 }}
+            >
+              <Shield className="text-emerald-400" size={20} />
+            </motion.div>
+            <span className="text-emerald-500/60 text-[10px] font-bold uppercase tracking-[0.5em]">
+              Engenharia de Resiliência Pessoal
+            </span>
           </motion.div>
 
-          <h1 className="leading-[0.85] mb-8" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-            <motion.span className="block text-6xl md:text-[8rem] lg:text-[10rem] font-black tracking-tighter text-white"
+          <h1 className="leading-[0.85] mb-5" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+            <motion.span className="block text-5xl md:text-[6rem] lg:text-[8rem] font-black tracking-tighter text-white"
               initial={{ opacity: 0, y: 60, filter: 'blur(12px)' }}
               animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
               transition={{ duration: 1, ease: APPLE_EASE, delay: 0.1 }}
             >PROJETO</motion.span>
-            <motion.span className="block text-6xl md:text-[8rem] lg:text-[10rem] font-black tracking-tighter text-emerald-400"
+            <motion.span className="block text-5xl md:text-[6rem] lg:text-[8rem] font-black tracking-tighter text-emerald-400"
               initial={{ opacity: 0, y: 60, filter: 'blur(12px)' }}
               animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
               transition={{ duration: 1, ease: APPLE_EASE, delay: 0.3 }}
@@ -274,15 +272,15 @@ export default function ProjetoAutonomo() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            <p className="text-stone-300 text-lg md:text-xl leading-relaxed mb-4 font-medium">
+            <p className="text-stone-300 text-sm md:text-base leading-relaxed mb-3 font-medium">
               O Projeto Autônomo é um manual prático de <span className="text-emerald-400 font-bold">independência real</span> — dividido em 5 fases progressivas que ensinam você a sobreviver, cuidar da saúde, produzir alimento, recuperar conhecimento perdido e eliminar dependências invisíveis.
             </p>
-            <p className="text-stone-400 text-base leading-relaxed mb-4">
+            <p className="text-stone-400 text-sm leading-relaxed mb-2">
               Você terceiriza sua <span className="text-emerald-400 font-bold">comida</span> para uma indústria que lucra com a sua doença.
               Terceiriza sua <span className="text-emerald-400 font-bold">saúde</span> para um sistema que lucra com a sua dependência.
               E terceiriza sua <span className="text-emerald-400 font-bold">segurança</span> para um Estado que lucra com o seu medo.
             </p>
-            <p className="text-stone-600 text-sm leading-relaxed">
+            <p className="text-stone-600 text-xs leading-relaxed">
               Cinco fases. Uma progressão lógica. A construção metódica da sua <span className="font-semibold text-stone-300">independência real</span>.
               <SimboloOculto id="folha" className="ml-2 align-middle" />
             </p>
