@@ -87,7 +87,7 @@ export default function OQueEBitcoin() {
         </div>
 
         {/* Floating TOC (Desktop) */}
-        <nav className="hidden xl:flex fixed right-6 top-1/2 -translate-y-1/2 z-50 flex-col gap-1">
+        <nav className="hidden xl:flex 2xl:hidden fixed right-6 top-1/2 -translate-y-1/2 z-50 flex-col gap-1">
           <div className="bg-card/80 backdrop-blur-xl border border-border/50 rounded-lg p-3 space-y-1 shadow-2xl">
             <div className="flex items-center gap-2 mb-3 pb-2 border-b border-border/50">
               <Coins className="text-orange-500" size={14} />

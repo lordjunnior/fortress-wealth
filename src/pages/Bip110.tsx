@@ -147,7 +147,7 @@ const FloatingToc = () => {
           {/* Desktop */}
           <motion.nav initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 20 }}
             transition={{ duration: 0.35, ease: APPLE_EASE }}
-            className="fixed right-6 top-1/2 -translate-y-1/2 z-[55] hidden xl:flex flex-col gap-3" aria-label="Sumário">
+            className="fixed right-6 top-1/2 -translate-y-1/2 z-[55] hidden xl:flex 2xl:hidden flex-col gap-3" aria-label="Sumário">
             {CHAPTERS.map((c) => (
               <a key={c.id} href={`#${c.id}`}
                 className={`group flex items-center gap-3 transition-all duration-300 ${active === c.id ? 'opacity-100' : 'opacity-30 hover:opacity-65'}`}>

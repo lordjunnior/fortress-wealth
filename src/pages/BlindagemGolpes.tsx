@@ -282,7 +282,7 @@ export default function BlindagemGolpes() {
       </div>
 
       {/* ─── FLOATING TOC ─── */}
-      <nav className="hidden xl:flex fixed right-6 top-1/2 -translate-y-1/2 z-40 flex-col gap-1">
+      <nav className="hidden xl:flex 2xl:hidden fixed right-6 top-1/2 -translate-y-1/2 z-40 flex-col gap-1">
         {NAV_ITEMS.map((item) => (
           <button key={item.id} onClick={() => scrollTo(item.id)}
             className={`text-right px-3 py-2 rounded-lg text-[9px] font-bold uppercase tracking-[0.2em] transition-all duration-300 ${

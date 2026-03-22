@@ -303,7 +303,7 @@ export default function DolarVirtual() {
         </div>
 
         {/* ── FLOATING TOC (Desktop) ── */}
-        <nav className="hidden xl:block fixed right-8 top-1/2 -translate-y-1/2 z-40 space-y-2 max-w-[200px]">
+        <nav className="hidden xl:block 2xl:hidden fixed right-8 top-1/2 -translate-y-1/2 z-40 space-y-2 max-w-[200px]">
           {chapters.map((ch) => (
             <a key={ch.id} href={`#${ch.id}`} className="block text-[10px] font-mono text-muted-foreground/60 hover:text-primary transition-colors truncate tracking-wider uppercase">
               {ch.title}
