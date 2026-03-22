@@ -328,7 +328,7 @@ export default function DolarVirtual() {
         </nav>
 
         {/* ── CONTENT ── */}
-        <div className="px-5 md:px-10 lg:px-14 pb-20 space-y-12 md:space-y-16 max-w-4xl">
+        <div className="px-5 md:px-10 lg:px-14 pb-20 space-y-12 md:space-y-16 max-w-7xl">
 
           {/* ── SNIPPET BAIT ── */}
           <SnippetBait
