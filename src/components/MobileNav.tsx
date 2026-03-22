@@ -1,30 +1,28 @@
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { Menu, X, LayoutGrid, BookOpen, Headphones, Wrench, QrCode, Zap, Library, ShieldAlert, Shield, Globe, Compass, Search } from "lucide-react";
+import { Menu, X, ChevronDown, Zap, Search } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import { useReadingProgress } from "@/hooks/useReadingProgress";
 import GlobalSearch from "@/components/GlobalSearch";
-
-const menuItems = [
-  { icon: Compass, label: "Por onde começar?", route: "/por-onde-comecar" },
-  { icon: ShieldAlert, label: "Protocolo Inicial", route: "/protocolo-inicial", alert: true },
-  { icon: LayoutGrid, label: "Manifesto", targetId: "manifesto" },
-  { icon: BookOpen, label: "Educação", route: "/educacao" },
-  { icon: Headphones, label: "Audioteca", route: "/audiobooks" },
-  { icon: Library, label: "E-books", route: "/ebooks" },
-  { icon: Wrench, label: "Ferramentas", route: "/ferramentas" },
-  { icon: QrCode, label: "PIX Crypto", route: "/pix-cripto" },
-  { icon: Shield, label: "Soberania Orgânica", route: "/soberania-organica" },
-  { icon: Globe, label: "Soberania Financeira", route: "/soberania-financeira" },
-  { icon: BookOpen, label: "Alfabeto Cripto", route: "/dicionario-cripto" },
-];
+import { topNavItems, navGroups, type NavItem } from "@/lib/sidebarNavigation";
 
 const MobileNav = () => {
   const [open, setOpen] = useState(false);
+  const [openGroups, setOpenGroups] = useState<Set<string>>(new Set());
   const navigate = useNavigate();
   const location = useLocation();
   const { level, label, percent } = useReadingProgress();
 
-  const handleNav = (item: { route?: string; targetId?: string }) => {
+  const toggleGroup = (groupLabel: string) => {
+    setOpenGroups(prev => {
+      const next = new Set(prev);
+      if (next.has(groupLabel)) next.delete(groupLabel);
+      else next.add(groupLabel);
+      return next;
+    });
+  };
+
+  const handleNav = (item: NavItem) => {
     setOpen(false);
     if (item.route) {
       navigate(item.route);
@@ -40,6 +38,8 @@ const MobileNav = () => {
     }
   };
 
+  const isActive = (route?: string) => route && location.pathname === route;
+
   return (
     <div className="lg:hidden fixed top-[46px] left-4 z-50">
       <button
@@ -54,20 +54,98 @@ const MobileNav = () => {
         <GlobalSearch />
       </div>
 
-      {open && (
-        <div className="absolute top-12 left-0 w-56 bg-card/95 backdrop-blur-xl border border-border rounded-lg p-3 space-y-1 shadow-2xl max-h-[70vh] overflow-y-auto">
-          {menuItems.map((item) => (
-            <button
-              key={item.label}
-              onClick={() => handleNav(item)}
-              className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-all"
-            >
-              <item.icon className="w-4 h-4" />
-              <span className="text-sm">{item.label}</span>
-            </button>
-          ))}
-          <div className="pt-1 border-t border-border mt-1">
-            {/* Reading level */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2 }}
+            className="absolute top-12 left-0 w-72 bg-card/95 backdrop-blur-xl border border-border rounded-lg p-3 shadow-2xl max-h-[75vh] overflow-y-auto"
+          >
+            {/* Top items */}
+            {topNavItems.map((item) => (
+              <button
+                key={item.label}
+                onClick={() => handleNav(item)}
+                className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all text-sm ${
+                  isActive(item.route)
+                    ? "bg-primary/10 text-primary font-medium"
+                    : "text-muted-foreground hover:text-foreground hover:bg-secondary/50"
+                }`}
+              >
+                {item.icon && (
+                  <div className="relative">
+                    <item.icon className={`w-4 h-4 ${item.alert ? "text-destructive" : ""}`} />
+                    {item.alert && (
+                      <span className="absolute -top-1 -right-1 flex h-2 w-2">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-destructive/60 opacity-75" />
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-destructive" />
+                      </span>
+                    )}
+                  </div>
+                )}
+                <span>{item.label}</span>
+              </button>
+            ))}
+
+            <div className="h-px bg-border/30 my-2" />
+
+            {/* Accordion Groups */}
+            {navGroups.map((group) => {
+              const isGroupOpen = openGroups.has(group.label);
+
+              return (
+                <div key={group.label} className="mb-0.5">
+                  <button
+                    onClick={() => toggleGroup(group.label)}
+                    className="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary/30 transition-all text-sm font-medium"
+                  >
+                    <group.icon className={`w-4 h-4 ${group.color || ""} flex-shrink-0`} />
+                    <span className="flex-1 text-left truncate">{group.label}</span>
+                    <span className="font-mono text-[9px] text-muted-foreground/50 mr-1">{group.items.length}</span>
+                    <ChevronDown className={`w-3.5 h-3.5 text-muted-foreground/50 transition-transform duration-200 ${isGroupOpen ? "rotate-180" : ""}`} />
+                  </button>
+
+                  <AnimatePresence initial={false}>
+                    {isGroupOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                        className="overflow-hidden"
+                      >
+                        <div className="ml-4 pl-3 border-l border-border/30 py-1 space-y-0.5">
+                          {group.items.map((item) => (
+                            <button
+                              key={item.label}
+                              onClick={() => handleNav(item)}
+                              className={`w-full text-left px-2.5 py-1.5 rounded-md transition-all text-[13px] ${
+                                isActive(item.route)
+                                  ? "bg-primary/10 text-primary font-medium"
+                                  : "text-muted-foreground/80 hover:text-foreground hover:bg-secondary/30"
+                              }`}
+                            >
+                              {item.label}
+                              {item.badge && (
+                                <span className="ml-2 text-[9px] font-mono px-1.5 py-0.5 rounded bg-primary/15 text-primary">
+                                  {item.badge}
+                                </span>
+                              )}
+                            </button>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              );
+            })}
+
+            <div className="h-px bg-border/30 my-2" />
+
+            {/* Reading level + Apoio */}
             <div className="px-3 py-2">
               <div className="flex items-center justify-between mb-1">
                 <span className="font-mono text-[8px] tracking-wider text-muted-foreground">NÍVEL {level}</span>
@@ -79,15 +157,15 @@ const MobileNav = () => {
               </div>
             </div>
             <button
-              onClick={() => handleNav({ targetId: "apoio" })}
+              onClick={() => handleNav({ targetId: "apoio", label: "Apoio" })}
               className="w-full flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg border border-gold-dim/50 text-gold text-sm font-semibold"
             >
               <Zap className="w-4 h-4" />
               Apoio
             </button>
-          </div>
-        </div>
-      )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
