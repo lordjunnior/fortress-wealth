@@ -1,8 +1,9 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ChevronDown, Shield, AlertTriangle } from "lucide-react";
 import { ease } from "@/lib/motion";
 const HERO_VIDEO_URL = "/__l5e/assets-v1/849f33e2-3478-48d7-8c09-9aacfa1998b9/hero-loop.mp4";
+const HERO_POSTER_URL = "/heroes/hero-poster.webp";
 
 const HeroSection = () => {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
