@@ -543,6 +543,12 @@ export default function ProjetoAutonomo() {
          (was: same card grid, now: hero + 2-column split + interactive map)
       ═══════════════════════════════════════════════════════════ */}
       <section id="fase-02" className="relative z-10 scroll-mt-20 py-20 md:py-32">
+        {/* Ambient background image */}
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <img src={bgFase02} alt="" className="absolute inset-0 w-full h-full object-cover opacity-[0.07]" style={{ filter: 'saturate(0.5)' }} />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#050808] via-transparent to-[#050808]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#050808] via-transparent to-[#050808]" />
+        </div>
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           {/* Split Hero — Image right, content left */}
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={scaleIn} custom={0}
