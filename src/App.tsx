@@ -233,6 +233,7 @@ const App = () => (
           <Route path="/projeto-autonomo/toxicos-ocultos/dependencia-tecnologica" element={<DependenciaTecnologica />} />
           <Route path="/projeto-autonomo/toxicos-ocultos/toxinas-ambientais" element={<ToxinasAmbientais />} />
           <Route path="/projeto-autonomo/:slug" element={<ModuloAutonomo />} />
+          <Route path="/soberania-organica/oleo-ricino-biohacker" element={<OleoRicinoBiohacker />} />
           <Route path="/mapa-da-soberania" element={<MapaDaSoberania />} />
           <Route path="/por-onde-comecar" element={<PorOndeComecar />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
