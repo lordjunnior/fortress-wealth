@@ -330,7 +330,7 @@ export default function ProjetoAutonomo() {
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="mb-16">
             <span className="text-emerald-500/50 text-[10px] font-bold uppercase tracking-[0.5em] block mb-3">Progressão Estrutural</span>
             <h2 className="text-3xl md:text-5xl font-black tracking-tight text-white" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-              Quatro camadas. <span className="text-emerald-400">Uma blindagem.</span>
+              Cinco camadas. <span className="text-emerald-400">Uma blindagem.</span>
             </h2>
           </motion.div>
 
