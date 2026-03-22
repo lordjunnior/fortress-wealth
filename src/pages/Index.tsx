@@ -273,7 +273,7 @@ const Index = () => {
       <MobileNav />
 
       {/* Main content with sidebar offset on desktop */}
-      <div className="relative z-10 lg:ml-[260px] pb-10">
+      <div className="relative z-10 lg:ml-[280px] pb-10">
         <HeroSection />
 
         <NobelSection className="section-divider px-5 md:px-8" delay={0.05}>

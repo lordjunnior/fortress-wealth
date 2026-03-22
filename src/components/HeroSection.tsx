@@ -111,8 +111,9 @@ const HeroSection = () => {
       {/* ── Main Content — Full Width Layout ── */}
       <motion.div
         style={{ y: textY, opacity: opacityFade }}
-        className="relative z-10 w-full px-6 md:px-12 lg:px-20 xl:px-28"
+        className="relative z-10 w-full px-6 md:px-12 lg:px-16 xl:px-24 2xl:px-32 flex items-start"
       >
+        <div className="flex-1 max-w-5xl">
         {/* ─── CAMADA 1: Anzol / Filtro de Audiência ─── */}
         <motion.div
           initial={{ opacity: 0, x: -40 }}
