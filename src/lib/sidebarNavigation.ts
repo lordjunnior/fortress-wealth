@@ -68,7 +68,7 @@ export const navGroups: NavGroup[] = [
   {
     label: "Economia & Filosofia",
     icon: TrendingUp,
-    color: "text-blue-400",
+    color: undefined,
     items: [
       { label: "Economia", route: "/economia" },
       { label: "Bitcoin vs Fiat", route: "/bitcoin-vs-fiat" },
