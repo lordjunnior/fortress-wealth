@@ -8,6 +8,7 @@ import { NAV_ITEMS, ERAS, TIMELINE_ITEMS, CONSEQUENCIAS, FAQ_ITEMS } from '@/lib
 import CinematicHero from '@/components/CinematicHero';
 import ScrollToTop from '@/components/ScrollToTop';
 import NoiseBackground from '@/components/NoiseBackground';
+import BackToHome from '@/components/BackToHome';
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -131,6 +132,9 @@ export default function HistoriaDoDinheiro() {
       <PageFloatingToc items={TOC_ITEMS} accentColor="amber" />
 
       <ScrollToTop />
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
       <NoiseBackground />
 
       {/* ─── READING PROGRESS BAR ─── */}

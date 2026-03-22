@@ -14,6 +14,7 @@ import NobelVFX from '@/components/NobelVFX';
 import SovereignDisclaimer from '@/components/SovereignDisclaimer';
 import heroImg from '@/assets/neobankless-hero.jpg';
 import appImg from '@/assets/neobankless-app.jpg';
+import BackToHome from '@/components/BackToHome';
 
 /* ═══════════════════════════════════════════════════════════
    MOTION SYSTEM — Netflix/BBC Scroll Storytelling
@@ -201,6 +202,9 @@ export default function Neobankless() {
         <script type="application/ld+json">{JSON.stringify({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: FAQ_DATA.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) })}</script>
       </Helmet>
       <ScrollToTop />
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
       <ReadingProgressBar />
       <FloatingToc />
 

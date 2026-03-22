@@ -11,6 +11,7 @@ import blockchainLivroImg from '@/assets/blockchain-livro-razao.jpg';
 import blockchainRedeImg from '@/assets/blockchain-rede-global.jpg';
 import blockchainCadeiaImg from '@/assets/blockchain-cadeia-blocos.jpg';
 import blockchainImutabilidadeImg from '@/assets/blockchain-imutabilidade.jpg';
+import BackToHome from '@/components/BackToHome';
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 const fadeUp = {
@@ -121,6 +122,9 @@ export default function Blockchain() {
       </Helmet>
 
       <ScrollToTop />
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
 
       {/* Progress */}
       <motion.div className="fixed top-0 left-0 right-0 h-[2px] z-50 origin-left" style={{ width: pw, background: 'linear-gradient(90deg, #38bdf8, #06b6d4)' }} />

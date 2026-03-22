@@ -5,6 +5,7 @@ import { Search, BookOpen, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import CinematicHero from '@/components/CinematicHero';
 import ScrollToTop from '@/components/ScrollToTop';
+import BackToHome from '@/components/BackToHome';
 
 const TERMS = [
   { term: "Justiça Social", real: "Redistribuição forçada de riqueza produzida por terceiros, sem consentimento, sob ameaça de violência estatal." },
@@ -117,6 +118,9 @@ const Novilingua: React.FC = () => {
         <meta name="description" content="Dicionário completo de Novilíngua: traduções reais de 80+ termos usados pelo Estado e pela mídia para manipular a percepção pública. Justiça Social, Regulação, Inflação..." />
       </Helmet>
       <ScrollToTop />
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
 
       <div className="fixed top-0 left-0 right-0 z-50 h-[3px]">
         <div className="h-full transition-all duration-150 ease-out" style={{ width: `${scrollProgress}%`, background: 'linear-gradient(90deg, #dc2626, #f59e0b)' }} />

@@ -10,6 +10,7 @@ import {
 import CinematicHero from '@/components/CinematicHero';
 import ScrollToTop from '@/components/ScrollToTop';
 import qrCodeImage from '@/assets/qrcode-lightning.jpeg';
+import BackToHome from '@/components/BackToHome';
 
 /* ─── CONSTANTS ─── */
 const LIGHTNING_ADDRESS = "securecorn53@walletofsatoshi.com";
@@ -490,6 +491,9 @@ const DicionarioCripto = () => {
       </Helmet>
 
       <ScrollToTop />
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
       <CryptoParticles />
 
       {/* ─── FILM GRAIN + LIGHT BEAMS ─── */}

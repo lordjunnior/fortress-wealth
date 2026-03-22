@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import CinematicHero from '@/components/CinematicHero';
 import ScrollToTop from '@/components/ScrollToTop';
 import { NAV_ITEMS, CBDC_GLOBAL, COMO_FUNCIONA_ETAPAS, COMPARACAO, RISCOS, FERRAMENTAS, TIMELINE_ITEMS, FAQ_ITEMS } from '@/lib/cbdcBrasilData';
+import BackToHome from '@/components/BackToHome';
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 const fadeUp = {
@@ -33,6 +34,9 @@ export default function CbdcBrasil() {
         <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>
       </Helmet>
       <ScrollToTop />
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
 
       {/* VFX STACK */}
       <div className="fixed inset-0 pointer-events-none z-0">

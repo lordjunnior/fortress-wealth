@@ -14,6 +14,7 @@ import {
 import CinematicHero from '@/components/CinematicHero';
 import ScrollToTop from '@/components/ScrollToTop';
 import qrCodeImage from '@/assets/qrcode-lightning.jpeg';
+import BackToHome from '@/components/BackToHome';
 
 /* ─── CONSTANTS ─── */
 const LIGHTNING_ADDRESS = "securecorn53@walletofsatoshi.com";
@@ -348,6 +349,9 @@ export default function Lightning() {
       </Helmet>
 
       <ScrollToTop />
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
 
       {/* ─── READING PROGRESS BAR ─── */}
       <div className="fixed top-0 left-0 right-0 z-50 h-[3px]">

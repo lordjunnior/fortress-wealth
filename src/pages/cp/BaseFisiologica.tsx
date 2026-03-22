@@ -13,6 +13,7 @@ import imgPlantas from '@/assets/cp-plantas-pratica.jpg';
 import { DIGESTIVO, RESPIRATORIO, NERVOSO, IMUNE, MUSCULAR } from '@/components/conhecimento-perdido/PlantData';
 import { SistemaSection } from '@/components/conhecimento-perdido/SistemaSection';
 import { MatrizComparativa } from '@/components/conhecimento-perdido/MatrizComparativa';
+import BackToHome from '@/components/BackToHome';
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 const fadeUp = {
@@ -51,6 +52,9 @@ export default function BaseFisiologica() {
       style={{ background: '#050808' }}
     >
       <ScrollToTop />
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
       <CinematicHero
         image="/heroes/cp-base-fisiologica.webp"
         phase="Bloco 02 · Conhecimento Perdido"

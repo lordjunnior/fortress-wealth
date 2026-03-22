@@ -19,6 +19,7 @@ import NobelVFX from '@/components/NobelVFX';
 import heroImg from '@/assets/optima-hero.jpg';
 import telegramImg from '@/assets/optima-telegram.jpg';
 import brasilParaguaiImg from '@/assets/offshore-brasil-paraguai.jpg';
+import BackToHome from '@/components/BackToHome';
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 const staggerContainer = { hidden: {}, visible: { transition: { staggerChildren: 0.12 } } };
@@ -171,6 +172,9 @@ export default function OptimaExchange() {
 
       <PageFloatingToc items={TOC_ITEMS} accentColor="amber" />
       <ScrollToTop />
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
       <LeadCaptureModal isOpen={leadModalOpen} onClose={() => setLeadModalOpen(false)} interesse="assessoria-cedula-paraguaia-optima" />
 
       <div className="min-h-screen" style={{ background: '#050808' }}>

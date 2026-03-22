@@ -19,6 +19,7 @@ import chapterContasImg from '@/assets/abertura-chapter-contas.jpg';
 import chapterErrosImg from '@/assets/abertura-chapter-erros.jpg';
 import chapterFaqImg from '@/assets/abertura-chapter-faq.jpg';
 import brasilParaguaiImg from '@/assets/offshore-brasil-paraguai.jpg';
+import BackToHome from '@/components/BackToHome';
 
 /* ═══════════════════════════════════════════════════════════
    MOTION SYSTEM — Netflix/BBC Scroll Storytelling
@@ -326,6 +327,9 @@ const AberturaRemota = () => {
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       </Helmet>
       <ScrollToTop />
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
       <ReadingProgressBar />
       <FloatingToc />
 
