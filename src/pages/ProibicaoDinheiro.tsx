@@ -260,7 +260,7 @@ export default function ProibicaoDinheiro() {
       </div>
 
       {/* ═══════ MAIN ═══════ */}
-      <div className="relative z-10 lg:ml-[280px]">
+      <div className="relative z-10 lg:ml-[280px] 2xl:mr-[340px]">
 
         {/* ══════ HERO ══════ */}
         <section ref={heroRef} id="hero" className="relative w-full h-[80vh] md:h-[90vh] overflow-hidden scroll-mt-24">

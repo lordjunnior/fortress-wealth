@@ -284,8 +284,9 @@ export default function ComprarBitcoinAnonimo() {
       <ScrollToTop />
       <AppSidebar />
       <MobileNav />
+      <RightSidebar />
 
-      <div className="lg:ml-[280px]">
+      <div className="lg:ml-[280px] 2xl:mr-[340px]">
         {/* ════════ HERO ════════ */}
         <header ref={heroRef} className="relative h-[85vh] min-h-[600px] overflow-hidden flex items-end">
           <motion.div className="absolute inset-0 z-0" style={{ y: heroY }}>
