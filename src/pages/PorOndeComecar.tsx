@@ -6,6 +6,7 @@ import { ArrowLeft, ArrowRight, RotateCcw, Compass, Shield, Coins, Globe, BookOp
 import NoiseBackground from "@/components/NoiseBackground";
 import AppSidebar from "@/components/AppSidebar";
 import MobileNav from "@/components/MobileNav";
+import RightSidebar from "@/components/RightSidebar";
 import NetworkTicker from "@/components/NetworkTicker";
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
@@ -166,8 +167,9 @@ export default function PorOndeComecar() {
         <NoiseBackground />
         <AppSidebar />
         <MobileNav />
+        <RightSidebar />
 
-        <div className="relative z-10 lg:ml-[280px] pb-10 min-h-screen flex flex-col">
+        <div className="relative z-10 lg:ml-[280px] 2xl:mr-[340px] pb-10 min-h-screen flex flex-col">
           {/* Back */}
           <div className="px-5 md:px-8 pt-6">
             <Link to="/" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors group">

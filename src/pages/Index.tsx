@@ -7,6 +7,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import NoiseBackground from "@/components/NoiseBackground";
 import AppSidebar from "@/components/AppSidebar";
+import RightSidebar from "@/components/RightSidebar";
 import MobileNav from "@/components/MobileNav";
 import HeroSection from "@/components/HeroSection";
 import ManifestoSection from "@/components/ManifestoSection";
@@ -271,9 +272,10 @@ const Index = () => {
       `}</style>
       <AppSidebar />
       <MobileNav />
+      <RightSidebar />
 
-      {/* Main content with sidebar offset on desktop */}
-      <div className="relative z-10 lg:ml-[280px] pb-10">
+      {/* Main content with sidebar offset on desktop, right sidebar on 2xl+ */}
+      <div className="relative z-10 lg:ml-[280px] 2xl:mr-[340px] pb-10">
         <HeroSection />
 
         <NobelSection className="section-divider px-5 md:px-8" delay={0.05}>

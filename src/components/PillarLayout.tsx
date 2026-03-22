@@ -5,6 +5,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import NoiseBackground from "@/components/NoiseBackground";
 import AppSidebar from "@/components/AppSidebar";
 import MobileNav from "@/components/MobileNav";
+import RightSidebar from "@/components/RightSidebar";
 import NetworkTicker from "@/components/NetworkTicker";
 import type { Pillar } from "@/lib/pillars";
 import SimboloOculto from '@/components/SimboloOculto';
@@ -47,8 +48,9 @@ const PillarLayout = ({ pillar }: { pillar: Pillar }) => {
       <NoiseBackground />
       <AppSidebar />
       <MobileNav />
+      <RightSidebar />
 
-      <div className="relative z-10 lg:ml-[280px] pb-10">
+      <div className="relative z-10 lg:ml-[280px] 2xl:mr-[340px] pb-10">
         {/* Back button */}
         <div className="section-padding pt-6 pb-0">
           <motion.button
