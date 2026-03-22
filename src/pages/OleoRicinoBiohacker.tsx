@@ -514,7 +514,12 @@ export default function OleoRicinoBiohacker() {
         {/* ═══════════════════════════════════════════════════════════
            SEÇÃO 6: PROTOCOLO DE SEGURANÇA
         ═══════════════════════════════════════════════════════════ */}
-        <section id="protocolo" className="relative z-10 py-20 md:py-32 border-t border-amber-500/10">
+        <section id="protocolo" className="relative z-10 py-20 md:py-32">
+          {/* Section background */}
+          <div className="absolute inset-0 z-0 overflow-hidden">
+            <img src="/heroes/ricino-protocolo-bg.webp" alt="" className="absolute inset-0 w-full h-full object-cover" style={{ filter: 'brightness(0.12) saturate(0.5)' }} />
+            <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(8,6,4,1) 0%, transparent 20%, transparent 80%, rgba(8,6,4,1) 100%)' }} />
+          </div>
           <div className="max-w-7xl mx-auto px-6 md:px-10">
             <motion.div {...fade(0)} className="mb-16">
               <span className="text-red-500/50 text-[10px] font-bold uppercase tracking-[0.5em] block mb-3" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
