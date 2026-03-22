@@ -71,7 +71,7 @@ export default function InflacaoImpostoOculto() {
         backLabel="Início"
       />
 
-      <div className="relative z-10 max-w-5xl mx-auto px-6 md:px-10 pt-12 pb-32">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 pt-12 pb-32">
 
         {/* O QUE É */}
         <motion.section initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="mb-28">
