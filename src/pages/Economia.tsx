@@ -179,7 +179,7 @@ const Economia = () => {
         </section>
 
         {/* ── Quote ── */}
-        <section className="relative z-10 px-6 md:px-12 lg:px-20 py-16 max-w-5xl mx-auto">
+        <section className="relative z-10 px-6 md:px-12 lg:px-20 py-16 max-w-7xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
             className="border-l-2 border-destructive/40 pl-6 py-2">
             <p className="text-foreground font-medium leading-relaxed text-sm md:text-base italic">
@@ -190,7 +190,7 @@ const Economia = () => {
 
         {/* ── Devaluation Chart ── */}
         <section className="relative z-10 px-6 md:px-12 lg:px-20 py-12">
-          <div className="max-w-5xl mx-auto">
+          <div className="max-w-7xl mx-auto">
             <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
               className="p-6 md:p-8 rounded-2xl bg-white/[0.03] border border-border/30 backdrop-blur-sm">
               <div className="flex items-center gap-3 mb-6">
@@ -234,7 +234,7 @@ const Economia = () => {
 
         {/* ── Arsenal Disponível ── */}
         <section className="relative z-10 px-6 md:px-12 lg:px-20 py-12">
-          <div className="max-w-5xl mx-auto">
+          <div className="max-w-7xl mx-auto">
             <div className="flex items-center gap-4 mb-10">
               <div className="h-px flex-1 bg-gradient-to-r from-transparent via-border/50 to-transparent" />
               <span className="font-mono text-[10px] tracking-[0.3em] text-muted-foreground">ARSENAL DISPONÍVEL</span>

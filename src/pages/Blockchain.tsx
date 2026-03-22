@@ -69,7 +69,7 @@ const AnimCounter: React.FC<{ value: string; label: string; delay?: number }> = 
 
 /* ══ Section Glow Divider ══ */
 const SectionGlow = () => (
-  <div className="relative z-10 h-px max-w-5xl mx-auto">
+  <div className="relative z-10 h-px max-w-7xl mx-auto">
     <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, transparent, rgba(56,189,248,0.15), transparent)' }} />
   </div>
 );
@@ -285,7 +285,7 @@ export default function Blockchain() {
       {/* ══ CAP 04 — Como a Transação é Validada ══ */}
       {/* ═══════════════════════════════════════════════════════════════ */}
       <section className="relative z-10 py-24 md:py-32" style={{ background: '#070b0b' }}>
-        <div className="max-w-5xl mx-auto px-6 md:px-10">
+        <div className="max-w-7xl mx-auto px-6 md:px-10">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="mb-16 text-center">
             <span className="text-stone-700 text-[10px] font-bold uppercase tracking-[0.5em] block mb-2">Capítulo 04</span>
             <h2 className="text-3xl md:text-5xl font-black tracking-tight text-white mb-5" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
@@ -463,7 +463,7 @@ export default function Blockchain() {
       {/* ══ A REDE EM NÚMEROS ══ */}
       {/* ═══════════════════════════════════════════════════════════════ */}
       <section className="relative z-10 py-20 md:py-28" style={{ background: '#070b0b' }}>
-        <div className="max-w-5xl mx-auto px-6 md:px-10">
+        <div className="max-w-7xl mx-auto px-6 md:px-10">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="mb-12 text-center">
             <Layers className="mx-auto text-cyan-500/40 mb-5" size={24} />
             <h2 className="text-2xl md:text-4xl font-black tracking-tight text-white" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>

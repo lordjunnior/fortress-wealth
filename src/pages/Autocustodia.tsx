@@ -242,7 +242,7 @@ export default function Autocustodia() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(220,38,38,0.06),_transparent_60%)]" />
 
         <div className="absolute bottom-0 left-0 right-0 z-10 px-6 md:px-12 lg:px-20 pb-12 md:pb-20">
-          <div className="max-w-5xl mx-auto">
+            <div className="max-w-7xl mx-auto">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={heroInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.8, ease: APPLE_EASE }}>
               <Link to="/arsenal" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground mb-8 text-[10px] font-bold uppercase tracking-[0.3em] transition-colors">
                 <ArrowLeft size={14} /> Voltar à Central
@@ -274,7 +274,7 @@ export default function Autocustodia() {
 
       {/* ══════════════ CONTENT ══════════════ */}
       <div className="relative z-10 px-6 md:px-12 lg:px-20 pb-32">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-7xl mx-auto">
 
           <SnippetBait
             text="Você pode proteger seus ativos contra fogo, água e roubo. Mas se eles estiverem numa corretora, basta uma canetada para perdê-los. Autocustódia não é paranoia — é matemática aplicada à sobrevivência patrimonial."
