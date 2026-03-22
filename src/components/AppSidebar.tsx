@@ -90,7 +90,7 @@ const AppSidebar = () => {
   const isActive = (route?: string) => route && location.pathname === route;
 
   return (
-    <aside className="hidden lg:flex fixed left-0 top-0 bottom-0 w-[280px] z-50 flex-col border-r border-border/30 bg-[#060810]/95 backdrop-blur-2xl">
+    <aside className="hidden lg:flex fixed left-0 top-[36px] bottom-0 w-[280px] z-50 flex-col border-r border-border/30 bg-[#060810]/95 backdrop-blur-2xl">
       {/* ── Identity Header ── */}
       <div className="flex items-center gap-3 px-4 py-3 border-b border-border/30">
         <img
