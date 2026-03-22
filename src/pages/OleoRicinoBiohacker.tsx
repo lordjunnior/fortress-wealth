@@ -9,6 +9,15 @@ import {
 } from 'lucide-react';
 import PageFloatingToc from '@/components/PageFloatingToc';
 
+import avatarBruna from '@/assets/avatar-bruna.jpg';
+import avatarEba from '@/assets/avatar-eba.jpg';
+import avatarAnaCarol from '@/assets/avatar-anacarol.jpg';
+import avatarRenata from '@/assets/avatar-renata.jpg';
+import avatarCarlos from '@/assets/avatar-carlos.jpg';
+import avatarPatricia from '@/assets/avatar-patricia.jpg';
+import avatarDiego from '@/assets/avatar-diego.jpg';
+import avatarMarcia from '@/assets/avatar-marcia.jpg';
+
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 const fade = (delay = 0) => ({
   initial: { opacity: 0, y: 24 },
@@ -117,14 +126,14 @@ const APPLICATIONS = [
 ];
 
 const TESTIMONIALS = [
-  { name: "Bruna Chufulim", platform: "Instagram", text: "Uma dermatologista me disse que mancharia minha pupila e causaria cegueira. Pura demonização. Hoje uso nos cílios e sobrancelhas para fortalecimento natural. Não abro mão.", badge: "Fortalecimento capilar" },
-  { name: "M.A.A. Eba", platform: "Instagram", text: "Este óleo é magnífico. Desfaz até esporão de calcâneo e catarata. É impressionante o poder que ele tem.", badge: "Dissolução de calcificações" },
-  { name: "Ana Carol Madsoo", platform: "Instagram", text: "Vi uma matéria falando que é excelente passar no pescoço para regular a tireoide. Incrível como escondem isso.", badge: "Regulação tireoidiana" },
-  { name: "Renata Oliveira", platform: "Instagram", text: "Minha avó usava cataplasma de mamona no fígado toda semana. Viveu até os 97 anos sem tomar nenhum remédio de farmácia. A sabedoria ancestral funciona.", badge: "Desintoxicação hepática" },
-  { name: "Carlos Machado", platform: "Instagram", text: "Passei meses gastando com anti-inflamatórios caros para dor no joelho. Comecei a aplicar óleo de rícino com flanela aquecida e em 3 semanas a inflamação cedeu completamente.", badge: "Anti-inflamatório natural" },
-  { name: "Patrícia Lemos", platform: "Instagram", text: "Uso há 2 anos nas sobrancelhas que eu destruí com pinça na adolescência. Voltaram a crescer de forma natural. Nenhum sérum de R$200 fez isso.", badge: "Regeneração folicular" },
-  { name: "Diego Santana", platform: "Instagram", text: "Meu filho de 4 anos tinha constipação crônica. A pediatra queria prescrever laxante industrial. Comecei a massagear o abdômen dele com óleo de rícino morno e em uma semana normalizou.", badge: "Regulação intestinal" },
-  { name: "Márcia Bonfim", platform: "Instagram", text: "Tenho fibromialgia e o único alívio real que encontrei foi compressa de rícino nas áreas de dor. Não é cura milagrosa, é bioquímica pura funcionando.", badge: "Controle de fibromialgia" },
+  { name: "Bruna Chufulim", platform: "Instagram", text: "Uma dermatologista me disse que mancharia minha pupila e causaria cegueira. Pura demonização. Hoje uso nos cílios e sobrancelhas para fortalecimento natural. Não abro mão.", badge: "Fortalecimento capilar", avatar: avatarBruna },
+  { name: "M.A.A. Eba", platform: "Instagram", text: "Este óleo é magnífico. Desfaz até esporão de calcâneo e catarata. É impressionante o poder que ele tem.", badge: "Dissolução de calcificações", avatar: avatarEba },
+  { name: "Ana Carol Madsoo", platform: "Instagram", text: "Vi uma matéria falando que é excelente passar no pescoço para regular a tireoide. Incrível como escondem isso.", badge: "Regulação tireoidiana", avatar: avatarAnaCarol },
+  { name: "Renata Oliveira", platform: "Instagram", text: "Minha avó usava cataplasma de mamona no fígado toda semana. Viveu até os 97 anos sem tomar nenhum remédio de farmácia. A sabedoria ancestral funciona.", badge: "Desintoxicação hepática", avatar: avatarRenata },
+  { name: "Carlos Machado", platform: "Instagram", text: "Passei meses gastando com anti-inflamatórios caros para dor no joelho. Comecei a aplicar óleo de rícino com flanela aquecida e em 3 semanas a inflamação cedeu completamente.", badge: "Anti-inflamatório natural", avatar: avatarCarlos },
+  { name: "Patrícia Lemos", platform: "Instagram", text: "Uso há 2 anos nas sobrancelhas que eu destruí com pinça na adolescência. Voltaram a crescer de forma natural. Nenhum sérum de R$200 fez isso.", badge: "Regeneração folicular", avatar: avatarPatricia },
+  { name: "Diego Santana", platform: "Instagram", text: "Meu filho de 4 anos tinha constipação crônica. A pediatra queria prescrever laxante industrial. Comecei a massagear o abdômen dele com óleo de rícino morno e em uma semana normalizou.", badge: "Regulação intestinal", avatar: avatarDiego },
+  { name: "Márcia Bonfim", platform: "Instagram", text: "Tenho fibromialgia e o único alívio real que encontrei foi compressa de rícino nas áreas de dor. Não é cura milagrosa, é bioquímica pura funcionando.", badge: "Controle de fibromialgia", avatar: avatarMarcia },
 ];
 
 const FAQ_DATA = [
@@ -263,18 +272,18 @@ export default function OleoRicinoBiohacker() {
               </span>
             </motion.div>
 
-            <h1 className="leading-[0.88] mb-6" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-              <motion.span className="block text-4xl md:text-[5rem] lg:text-[7rem] font-black tracking-tighter text-white"
+            <h1 className="mb-8 space-y-2 md:space-y-3" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+              <motion.span className="block text-4xl md:text-[5rem] lg:text-[7rem] font-black tracking-tighter leading-[0.95] text-white"
                 initial={{ opacity: 0, y: 60, filter: 'blur(12px)' }}
                 animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
                 transition={{ duration: 1, ease: APPLE_EASE, delay: 0.1 }}
               >ÓLEO DE RÍCINO:</motion.span>
-              <motion.span className="block text-3xl md:text-[3.5rem] lg:text-[5rem] font-black tracking-tighter text-amber-400"
+              <motion.span className="block text-3xl md:text-[3.5rem] lg:text-[5rem] font-black tracking-tighter leading-[1.05] text-amber-400"
                 initial={{ opacity: 0, y: 60, filter: 'blur(12px)' }}
                 animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
                 transition={{ duration: 1, ease: APPLE_EASE, delay: 0.3 }}
               >O Biohacker de R$10</motion.span>
-              <motion.span className="block text-3xl md:text-[3.5rem] lg:text-[5rem] font-black tracking-tighter text-amber-600/60"
+              <motion.span className="block text-3xl md:text-[3.5rem] lg:text-[5rem] font-black tracking-tighter leading-[1.05] text-amber-600/60"
                 initial={{ opacity: 0, y: 60, filter: 'blur(12px)' }}
                 animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
                 transition={{ duration: 1, ease: APPLE_EASE, delay: 0.5 }}
@@ -494,7 +503,7 @@ export default function OleoRicinoBiohacker() {
                     "{t.text}"
                   </blockquote>
                   <div className="flex items-center gap-3 pt-3 border-t border-stone-800/40">
-                    <Avatar nome={t.name} idx={i} />
+                    <img src={t.avatar} alt={t.name} className="w-10 h-10 rounded-full object-cover flex-shrink-0" />
                     <div className="min-w-0">
                       <figcaption className="text-white text-xs font-semibold truncate">{t.name}</figcaption>
                       <p className="text-stone-500 text-[10px]">{t.platform}</p>
