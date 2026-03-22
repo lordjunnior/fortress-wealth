@@ -522,10 +522,10 @@ export default function ConservacaoArmazenamento() {
       <Helmet>
         <title>Conservação e Armazenamento de Alimentos: Estoque Estratégico de Sobrevivência | Lord Junnior</title>
         <meta name="description" content="Guia completo de conservação de alimentos para autossuficiência. 10 alimentos essenciais, 18 métodos de preservação validados, desidratação, fermentação e estoque estratégico familiar." />
-        <link rel="canonical" href="https://lordjunnior.com.br/projeto-autonomo/conservacao-armazenamento" />
+        <link rel="canonical" href="https://lordjunnior.com.br/soberania-organica/conservacao-armazenamento" />
         <meta property="og:title" content="Conservação de Alimentos: Estoque Estratégico Familiar" />
         <meta property="og:description" content="10 alimentos essenciais + 18 métodos de conservação. Construa um estoque que dura décadas." />
-        <meta property="og:url" content="https://lordjunnior.com.br/projeto-autonomo/conservacao-armazenamento" />
+        <meta property="og:url" content="https://lordjunnior.com.br/soberania-organica/conservacao-armazenamento" />
       </Helmet>
     <div className="min-h-screen text-stone-100 font-sans selection:bg-amber-300/50 pb-32 relative overflow-hidden" style={{ background: '#050808' }}>
       <CinematicHero
@@ -535,7 +535,7 @@ export default function ConservacaoArmazenamento() {
         subtitle="Quem controla a conservação dos seus alimentos não depende da cadeia de frio industrial. Este módulo reúne os 10 alimentos essenciais, 20 métodos validados de preservação e o arsenal auxiliar completo."
         icon={Package}
         accentColor="amber"
-        backLink="/projeto-autonomo"
+        backLink="/soberania-organica"
         backLabel="Soberania Orgânica"
       />
 
@@ -858,13 +858,13 @@ export default function ConservacaoArmazenamento() {
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <Link
-                  to="/projeto-autonomo"
+                  to="/soberania-organica"
                   className="inline-flex items-center gap-2 px-8 py-4 bg-amber-500 text-stone-900 font-bold text-xs uppercase tracking-widest rounded-lg hover:bg-amber-400 transition-colors"
                 >
                   <ArrowLeft size={14} /> Voltar ao Soberania Orgânica
                 </Link>
                 <Link
-                  to="/projeto-autonomo/horta-urbana"
+                  to="/soberania-organica/horta-urbana"
                   className="inline-flex items-center gap-2 px-8 py-4 border border-stone-600 text-stone-300 font-bold text-xs uppercase tracking-widest rounded-lg hover:border-amber-500 hover:text-amber-400 transition-colors"
                 >
                   Módulo: Horta Urbana <ArrowRight size={14} />

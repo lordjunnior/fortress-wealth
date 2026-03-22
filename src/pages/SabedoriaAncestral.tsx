@@ -21,7 +21,7 @@ const MODULOS_SAUDE = [
     icon: Leaf,
     title: 'Suporte Fitoterápico',
     desc: '12 plantas essenciais. Dosagens conservadoras, contraindicações e métodos de preparo documentados.',
-    link: '/projeto-autonomo/autonomia-biologica',
+    link: '/soberania-organica/autonomia-biologica',
     tag: 'Publicado',
     numero: '01',
   },
@@ -29,7 +29,7 @@ const MODULOS_SAUDE = [
     icon: Sprout,
     title: 'Fitoterapia Aplicada',
     desc: 'Protocolos combinados por sistema corporal. Sinergia entre plantas, ciclos de uso e critérios de interrupção.',
-    link: '/projeto-autonomo/fitoterapia-aplicada',
+    link: '/soberania-organica/fitoterapia-aplicada',
     tag: 'Publicado',
     numero: '02',
   },
@@ -37,7 +37,7 @@ const MODULOS_SAUDE = [
     icon: Sun,
     title: 'Saúde Preventiva',
     desc: 'Exposição solar, sono, movimento e alimentação anti-inflamatória como base de fortalecimento.',
-    link: '/projeto-autonomo/saude-preventiva',
+    link: '/soberania-organica/saude-preventiva',
     tag: 'Publicado',
     numero: '03',
   },
@@ -45,7 +45,7 @@ const MODULOS_SAUDE = [
     icon: Cross,
     title: 'Primeiros Socorros',
     desc: 'Contenção de sangramento, imobilização e queimaduras. Kit funcional para ambiente remoto.',
-    link: '/projeto-autonomo/primeiros-socorros',
+    link: '/soberania-organica/primeiros-socorros',
     tag: 'Publicado',
     numero: '04',
   },
@@ -53,7 +53,7 @@ const MODULOS_SAUDE = [
     icon: Thermometer,
     title: 'Avaliação de Sinais',
     desc: 'Interpretar febre, desidratação e sinais vitais com recursos mínimos e critérios objetivos.',
-    link: '/projeto-autonomo/avaliacao-sinais',
+    link: '/soberania-organica/avaliacao-sinais',
     tag: 'Publicado',
     numero: '05',
   },
@@ -61,7 +61,7 @@ const MODULOS_SAUDE = [
     icon: Bug,
     title: 'Controle de Vetores',
     desc: 'Repelentes naturais, eliminação de criadouros, barreiras físicas e plantas repelentes.',
-    link: '/projeto-autonomo/controle-vetores',
+    link: '/soberania-organica/controle-vetores',
     tag: 'Publicado',
     numero: '06',
   },
@@ -73,7 +73,7 @@ const MODULOS_ALIMENTACAO = [
     icon: Sprout,
     title: 'Horta Urbana',
     desc: 'Transforme varandas e janelas em fonte de alimento. Vasos autoirrigáveis, cultivo vertical e espécies para iniciantes.',
-    link: '/projeto-autonomo/horta-urbana',
+    link: '/soberania-organica/horta-urbana',
     tag: 'Publicado',
     numero: '01',
   },
@@ -81,7 +81,7 @@ const MODULOS_ALIMENTACAO = [
     icon: Layers,
     title: 'Produção em Pequenos Espaços',
     desc: '4m² bem planejados produzem alimento. Consórcio de culturas, rotação e microclimas urbanos.',
-    link: '/projeto-autonomo/producao-pequenos-espacos',
+    link: '/soberania-organica/producao-pequenos-espacos',
     tag: 'Em desenvolvimento',
     numero: '02',
   },
@@ -89,7 +89,7 @@ const MODULOS_ALIMENTACAO = [
     icon: Flame,
     title: 'Conservação e Armazenamento',
     desc: '10 alimentos essenciais + 18 métodos de conservação validados. Estoque estratégico familiar.',
-    link: '/projeto-autonomo/conservacao-armazenamento',
+    link: '/soberania-organica/conservacao-armazenamento',
     tag: 'Publicado',
     numero: '03',
   },
@@ -97,7 +97,7 @@ const MODULOS_ALIMENTACAO = [
     icon: Egg,
     title: 'Proteína Sustentável',
     desc: 'Galinhas, codornas, peixes e sistemas compactos. Proteína de qualidade em espaços reduzidos.',
-    link: '/projeto-autonomo/proteina-sustentavel',
+    link: '/soberania-organica/proteina-sustentavel',
     tag: 'Em desenvolvimento',
     numero: '04',
   },
@@ -105,7 +105,7 @@ const MODULOS_ALIMENTACAO = [
     icon: Shovel,
     title: 'Solo e Fertilidade',
     desc: 'Compostagem, bokashi, húmus de minhoca. A base que sustenta tudo que cresce.',
-    link: '/projeto-autonomo/solo-fertilidade',
+    link: '/soberania-organica/solo-fertilidade',
     tag: 'Publicado',
     numero: '05',
   },
@@ -169,10 +169,10 @@ export default function SabedoriaAncestral() {
       <Helmet>
         <title>Sabedoria Ancestral: Conhecimentos Perdidos de Saúde, Solo e Sobrevivência | Lord Junnior</title>
         <meta name="description" content="Hub completo de conhecimentos ancestrais de sobrevivência. Plantas medicinais, saúde natural, soberania alimentar e técnicas antigas validadas pela ciência moderna. O que não é transmitido morre." />
-        <link rel="canonical" href="https://lordjunnior.com.br/projeto-autonomo/sabedoria-ancestral" />
+        <link rel="canonical" href="https://lordjunnior.com.br/soberania-organica/sabedoria-ancestral" />
         <meta property="og:title" content="Sabedoria Ancestral: Conhecimentos que o Sistema Apagou" />
         <meta property="og:description" content="Plantas medicinais, produção de alimentos e saúde natural. O conhecimento que suas avós tinham e você precisa recuperar." />
-        <meta property="og:url" content="https://lordjunnior.com.br/projeto-autonomo/sabedoria-ancestral" />
+        <meta property="og:url" content="https://lordjunnior.com.br/soberania-organica/sabedoria-ancestral" />
       </Helmet>
 
       <PageFloatingToc items={TOC_ITEMS} accentColor="emerald" />
@@ -188,7 +188,7 @@ export default function SabedoriaAncestral() {
         subtitle="Conhecimento que alimentou famílias por séculos. Preservado aqui como ferramenta de soberania."
         icon={Leaf}
         accentColor="amber"
-        backLink="/projeto-autonomo"
+        backLink="/soberania-organica"
         backLabel="Soberania Orgânica"
       />
 
@@ -198,7 +198,7 @@ export default function SabedoriaAncestral() {
         "@type": "CollectionPage",
         "name": "Sabedoria Ancestral — Soberania Orgânica",
         "description": "Hub de conhecimento ancestral sobre plantas medicinais, saúde natural e soberania alimentar.",
-        "url": "https://verificabr.com/projeto-autonomo/sabedoria-ancestral",
+        "url": "https://verificabr.com/soberania-organica/sabedoria-ancestral",
         "mainEntity": {
           "@type": "ItemList",
           "numberOfItems": MODULOS_SAUDE.length + MODULOS_ALIMENTACAO.length,
@@ -555,7 +555,7 @@ export default function SabedoriaAncestral() {
         <section className="relative py-20 px-6 md:px-16 lg:px-24 gsap-reveal" aria-label="Módulo Especial: Conhecimento Perdido">
           <div className="max-w-5xl mx-auto">
             <motion.div whileHover={{ scale: 1.01, y: -4 }} transition={{ duration: 0.5, ease: APPLE_EASE }}>
-              <Link to="/projeto-autonomo/conhecimento-perdido"
+              <Link to="/soberania-organica/conhecimento-perdido"
                 className="group relative flex items-center gap-8 overflow-hidden rounded-3xl border border-amber-600/15 p-10 md:p-14 transition-all duration-500 hover:border-amber-500/30"
                 style={{ background: 'linear-gradient(135deg, rgba(40,30,15,0.5), rgba(25,20,12,0.6))', backdropFilter: 'blur(8px)' }}>
 
@@ -588,7 +588,7 @@ export default function SabedoriaAncestral() {
         {/* ─── CTA FINAL ─── */}
         <div className="relative py-20 px-6 md:px-16 lg:px-24 gsap-reveal">
           <div className="text-center">
-            <Link to="/projeto-autonomo"
+            <Link to="/soberania-organica"
               className="inline-flex items-center gap-3 text-stone-600 hover:text-amber-400 text-xs font-bold uppercase tracking-[0.2em] transition-colors duration-300 focus:outline-none focus:ring-1 focus:ring-amber-500/50 rounded px-3 py-2"
               aria-label="Voltar ao Soberania Orgânica">
               <ArrowLeft size={14} aria-hidden="true" /> Voltar ao Soberania Orgânica

@@ -31,16 +31,16 @@ export default function BaseFisiologica() {
       <Helmet>
         <title>Base Fisiológica: Sistemas Corporais e Mecanismos Bioquímicos das Plantas | Lord Junnior</title>
         <meta name="description" content="Organização técnica por sistemas corporais. Flavonoides, alcaloides, terpenos e compostos fenólicos aplicados ao corpo humano. Entenda como as plantas agem em cada sistema." />
-        <link rel="canonical" href="https://lordjunnior.com.br/projeto-autonomo/conhecimento-perdido/base-fisiologica" />
+        <link rel="canonical" href="https://lordjunnior.com.br/soberania-organica/conhecimento-perdido/base-fisiologica" />
         <meta property="og:title" content="Base Fisiológica: Como as Plantas Agem no Corpo" />
         <meta property="og:description" content="Digestivo, respiratório, nervoso, imune e muscular. Compostos bioativos e mecanismos de ação documentados." />
-        <meta property="og:url" content="https://lordjunnior.com.br/projeto-autonomo/conhecimento-perdido/base-fisiologica" />
+        <meta property="og:url" content="https://lordjunnior.com.br/soberania-organica/conhecimento-perdido/base-fisiologica" />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
           "@type": "MedicalWebPage",
           "name": "Base Fisiológica: Mecanismos Bioquímicos das Plantas Medicinais",
           "description": "Organização técnica por sistemas corporais e compostos bioativos.",
-          "url": "https://lordjunnior.com.br/projeto-autonomo/conhecimento-perdido/base-fisiologica",
+          "url": "https://lordjunnior.com.br/soberania-organica/conhecimento-perdido/base-fisiologica",
           "author": { "@type": "Person", "name": "Lord Junnior" },
           "medicalAudience": { "@type": "MedicalAudience", "audienceType": "Patient" },
           "lastReviewed": "2026-03-01",
@@ -58,7 +58,7 @@ export default function BaseFisiologica() {
         subtitle="Organização técnica por sistemas corporais, mecanismos bioquímicos e resposta adaptativa do organismo. Flavonoides, alcaloides, terpenos e compostos fenólicos aplicados."
         icon={Brain}
         accentColor="blue"
-        backLink="/projeto-autonomo/conhecimento-perdido"
+        backLink="/soberania-organica/conhecimento-perdido"
         backLabel="Conhecimento Perdido"
       />
 

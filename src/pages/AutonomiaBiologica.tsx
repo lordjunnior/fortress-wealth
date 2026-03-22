@@ -116,12 +116,12 @@ export default function AutonomiaBiologica() {
   return (
     <>
       <Helmet>
-        <title>Autonomia Biológica: 12 Plantas Medicinais com Fichas Técnicas Completas | Lord Junnior</title>
-        <meta name="description" content="Biblioteca técnica de 12 plantas medicinais essenciais com dosagens, contraindicações, métodos de preparo e mecanismos de ação. Biohacking e saúde soberana documentados com rigor farmacológico." />
-        <link rel="canonical" href="https://lordjunnior.com.br/projeto-autonomo/autonomia-biologica" />
+        <title>Autonomia Biológica: 14 Plantas e Compostos Medicinais com Fichas Técnicas Completas | Lord Junnior</title>
+        <meta name="description" content="Biblioteca técnica de 14 plantas e compostos medicinais essenciais com dosagens, contraindicações, métodos de preparo e mecanismos de ação. Biohacking e saúde soberana documentados com rigor farmacológico." />
+        <link rel="canonical" href="https://lordjunnior.com.br/soberania-organica/autonomia-biologica" />
         <meta property="og:title" content="Autonomia Biológica: Protocolos de Biohacking e Saúde Soberana" />
-        <meta property="og:description" content="12 plantas medicinais documentadas com rigor farmacológico. Fichas técnicas, dosagens seguras e métodos de preparo validados." />
-        <meta property="og:url" content="https://lordjunnior.com.br/projeto-autonomo/autonomia-biologica" />
+        <meta property="og:description" content="14 plantas e compostos medicinais documentados com rigor farmacológico. Fichas técnicas, dosagens seguras e métodos de preparo validados." />
+        <meta property="og:url" content="https://lordjunnior.com.br/soberania-organica/autonomia-biologica" />
       </Helmet>
     <div ref={containerRef} className="min-h-screen text-stone-100 font-sans selection:bg-emerald-300/30"
       style={{ background: 'linear-gradient(180deg, #050808 0%, #060806 6%, #0a0f0a 15%, #0d150d 30%, #0a0f0a 60%, #060806 85%, #050808 100%)' }}>
@@ -130,10 +130,10 @@ export default function AutonomiaBiologica() {
         image="/heroes/suporte-fitoterapico.webp"
         phase="Fase 02 · Autonomia Biológica"
         title="Suporte Fitoterápico"
-        subtitle="Biblioteca técnica de 12 plantas medicinais documentadas com rigor farmacológico. Cada planta possui sua própria ficha completa."
+        subtitle="Biblioteca técnica de 14 plantas e compostos medicinais documentados com rigor farmacológico. Cada ficha inclui dosagens, contraindicações e mecanismos de ação."
         icon={Leaf}
         accentColor="emerald"
-        backLink="/projeto-autonomo"
+        backLink="/soberania-organica"
         backLabel="Soberania Orgânica"
       />
 
@@ -184,17 +184,23 @@ export default function AutonomiaBiologica() {
             <span className="text-emerald-500/40 text-[10px] font-bold tracking-[0.4em] uppercase block mb-2">Catálogo</span>
             <h2 className="text-3xl md:text-4xl font-extrabold text-white uppercase tracking-wide"
               style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-              12 Plantas Essenciais
+              Plantas & Compostos Essenciais
             </h2>
-            <p className="text-stone-500 text-sm mt-2">Clique em cada planta para acessar a ficha técnica completa.</p>
+            <p className="text-stone-500 text-sm mt-2">14 fichas técnicas completas. Clique para acessar dosagens, contraindicações e protocolos.</p>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {PLANTAS.map((p, i) => (
+            {PLANTAS.map((p, i) => {
+              const dedicatedPages: Record<string, string> = {
+                'babosa-acemannan': '/soberania-organica/babosa-acemannan',
+                'oleo-ricino-biohacker': '/soberania-organica/oleo-ricino-biohacker',
+              };
+              const linkTo = dedicatedPages[p.slug] || `/soberania-organica/planta/${p.slug}`;
+              return (
               <Link
                 key={p.slug}
                 ref={(el) => { cardsRef.current[i] = el; }}
-                to={`/projeto-autonomo/planta/${p.slug}`}
+                to={linkTo}
                 className="group relative overflow-hidden rounded-2xl border border-white/5 hover:border-white/15 transition-all duration-700 block"
                 style={{ perspective: '800px' }}
               >
@@ -203,25 +209,22 @@ export default function AutonomiaBiologica() {
                   <img src={p.imagem} alt={`${p.nome} — ${p.cientifico}`}
                     className="parallax-img absolute inset-0 w-full h-[130%] object-cover transition-transform duration-700 group-hover:scale-110" />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#060806] via-[#060806]/40 to-transparent" />
-
-                  {/* Hover overlay */}
                   <div className="absolute inset-0 bg-emerald-500/0 group-hover:bg-emerald-500/5 transition-colors duration-700" />
-
-                  {/* Number badge */}
                   <div className="absolute top-3 right-3 bg-black/40 backdrop-blur-sm rounded-full w-8 h-8 flex items-center justify-center">
                     <span className="text-[10px] font-bold text-stone-400">{String(i + 1).padStart(2, '0')}</span>
                   </div>
+                  {dedicatedPages[p.slug] && (
+                    <div className="absolute top-3 left-3 px-2 py-0.5 rounded-full bg-amber-500/20 border border-amber-500/30">
+                      <span className="text-amber-300 text-[9px] font-bold tracking-[0.15em] uppercase">Dossiê</span>
+                    </div>
+                  )}
                 </div>
-
-                {/* Content */}
                 <div className="p-5 bg-[#060806]">
                   <h3 className={`text-xl font-bold ${p.accent} mb-0.5 group-hover:translate-x-1 transition-transform duration-500`}>
                     {p.nome}
                   </h3>
                   <p className="text-stone-600 text-xs italic mb-3">{p.cientifico}</p>
                   <p className="text-stone-500 text-xs leading-relaxed line-clamp-2 mb-4">{p.resumo}</p>
-
-                  {/* Tags */}
                   <div className="flex flex-wrap gap-1.5 mb-4">
                     {p.melhora.slice(0, 3).map((m) => (
                       <span key={m} className={`text-[10px] ${p.accentBg} ${p.accent} border ${p.accentBorder} px-2 py-0.5 rounded-full`}>
@@ -234,75 +237,18 @@ export default function AutonomiaBiologica() {
                       </span>
                     )}
                   </div>
-
-                  {/* CTA */}
                   <div className="flex items-center gap-2 text-emerald-400 text-xs font-bold uppercase tracking-wider group-hover:gap-3 transition-all duration-500">
                     <span>Ver ficha completa</span>
                     <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform duration-500" />
                   </div>
                 </div>
               </Link>
-            ))}
+              );
+            })}
           </div>
         </section>
 
-        {/* ═══ DESTAQUE: BABOSA & ACEMANNAN ═══ */}
-        <section className="mb-28">
-          <Link
-            to="/projeto-autonomo/babosa-acemannan"
-            className="group relative block rounded-2xl border border-emerald-500/20 bg-gradient-to-br from-emerald-500/[0.08] to-emerald-600/[0.03] p-8 md:p-10 lg:p-12 hover:border-emerald-500/40 hover:from-emerald-500/[0.12] transition-all duration-700 overflow-hidden"
-          >
-            <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/20">
-              <span className="text-emerald-400 text-[10px] font-bold tracking-[0.2em] uppercase">Investigação</span>
-            </div>
-            <div className="flex items-start gap-5">
-              <div className="w-14 h-14 rounded-xl bg-emerald-500/10 flex items-center justify-center shrink-0 group-hover:bg-emerald-500/20 transition-colors duration-500">
-                <Leaf size={28} className="text-emerald-400" />
-              </div>
-              <div className="flex-1">
-                <h3 className="text-2xl md:text-3xl font-black text-stone-100 mb-3 group-hover:text-emerald-300 transition-colors duration-500" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                  Babosa & Acemannan
-                </h3>
-                <p className="text-stone-400 text-sm md:text-base leading-relaxed mb-4 max-w-3xl">
-                  A molécula imunomoduladora que recebeu status de medicamento órfão pela FDA em 1995 e depois desapareceu da pesquisa pública. Investigação completa com {20} relatos reais, composição técnica e a história que a indústria farmacêutica silenciou.
-                </p>
-                <div className="flex items-center gap-2 text-emerald-400 text-sm font-bold uppercase tracking-wider group-hover:gap-3 transition-all duration-500">
-                  <span>Ler investigação completa</span>
-                  <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform duration-500" />
-                </div>
-              </div>
-            </div>
-          </Link>
-        </section>
 
-        {/* ═══ DESTAQUE: ÓLEO DE RÍCINO ═══ */}
-        <section className="mb-28">
-          <Link
-            to="/soberania-organica/oleo-ricino-biohacker"
-            className="group relative block rounded-2xl border border-amber-500/20 bg-gradient-to-br from-amber-500/[0.08] to-amber-600/[0.03] p-8 md:p-10 lg:p-12 hover:border-amber-500/40 hover:from-amber-500/[0.12] transition-all duration-700 overflow-hidden"
-          >
-            <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-amber-500/15 border border-amber-500/20">
-              <span className="text-amber-400 text-[10px] font-bold tracking-[0.2em] uppercase">Dossiê</span>
-            </div>
-            <div className="flex items-start gap-5">
-              <div className="w-14 h-14 rounded-xl bg-amber-500/10 flex items-center justify-center shrink-0 group-hover:bg-amber-500/20 transition-colors duration-500">
-                <Droplets size={28} className="text-amber-400" />
-              </div>
-              <div className="flex-1">
-                <h3 className="text-2xl md:text-3xl font-black text-stone-100 mb-3 group-hover:text-amber-300 transition-colors duration-500" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                  Óleo de Rícino: O Biohacker de R$10
-                </h3>
-                <p className="text-stone-400 text-sm md:text-base leading-relaxed mb-4 max-w-3xl">
-                  O ácido ricinoleico é uma ferramenta de penetração transdérmica que dissolve inflamações sistêmicas. 4 estudos científicos, 8 relatos reais, protocolo de cataplasma hepática e o dossiê completo sobre o biohacking de baixo custo que a Big Pharma odeia.
-                </p>
-                <div className="flex items-center gap-2 text-amber-400 text-sm font-bold uppercase tracking-wider group-hover:gap-3 transition-all duration-500">
-                  <span>Ler dossiê completo</span>
-                  <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform duration-500" />
-                </div>
-              </div>
-            </div>
-          </Link>
-        </section>
 
         {/* ═══ MÉTODOS DE PREPARO ═══ */}
         <section ref={(el) => { sectionsRef.current[0] = el; }} className="mb-28">
@@ -441,12 +387,12 @@ export default function AutonomiaBiologica() {
 
         {/* ═══ NAV FOOTER ═══ */}
         <div className="flex flex-col sm:flex-row gap-4 pt-8 border-t border-white/5">
-          <Link to="/projeto-autonomo"
+          <Link to="/soberania-organica"
             className="flex-1 flex items-center justify-center gap-2 bg-white/3 border border-white/8 rounded-xl px-6 py-4 text-stone-400 text-sm font-bold hover:bg-white/5 hover:text-emerald-400 transition-all duration-500">
             <ArrowLeft size={16} />
             Soberania Orgânica
           </Link>
-          <Link to="/projeto-autonomo/fitoterapia-aplicada"
+          <Link to="/soberania-organica/fitoterapia-aplicada"
             className="flex-1 flex items-center justify-center gap-2 bg-emerald-500/8 border border-emerald-500/20 rounded-xl px-6 py-4 text-emerald-400 text-sm font-bold hover:bg-emerald-500/15 transition-all duration-500 group">
             Fitoterapia Aplicada
             <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform duration-500" />

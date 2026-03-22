@@ -57,7 +57,7 @@ export default function ToxinasAmbientais() {
   const claimReviewSchema = {
     "@context": "https://schema.org",
     "@type": "ClaimReview",
-    "url": "https://lordjunnior.com.br/projeto-autonomo/toxicos-ocultos/toxinas-ambientais",
+    "url": "https://lordjunnior.com.br/soberania-organica/toxicos-ocultos/toxinas-ambientais",
     "claimReviewed": "O ar dentro de casa é mais limpo que o ar externo por estar protegido da poluição urbana",
     "author": { "@type": "Person", "name": "Lord Junnior" },
     "reviewRating": {
@@ -80,7 +80,7 @@ export default function ToxinasAmbientais() {
         <meta name="description" content="Plásticos, produtos de limpeza, qualidade do ar interno e cosméticos. Identifique contaminantes domésticos que atravessam pele e pulmões diariamente." />
         <meta property="og:title" content="Toxinas Ambientais — O que contamina seu espaço sem você ver" />
         <meta property="og:image" content="https://lordjunnior.com.br/heroes/toxinas-ambientais.webp" />
-        <link rel="canonical" href="https://lordjunnior.com.br/projeto-autonomo/toxicos-ocultos/toxinas-ambientais" />
+        <link rel="canonical" href="https://lordjunnior.com.br/soberania-organica/toxicos-ocultos/toxinas-ambientais" />
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(claimReviewSchema)}</script>
       </Helmet>
@@ -94,7 +94,7 @@ export default function ToxinasAmbientais() {
         subtitle="Contaminantes domésticos, materiais sintéticos, qualidade do ar interno e produtos químicos que atravessam a pele e os pulmões diariamente."
         icon={Leaf}
         accentColor="green"
-        backLink="/projeto-autonomo/toxicos-ocultos"
+        backLink="/soberania-organica/toxicos-ocultos"
         backLabel="Tóxicos Ocultos"
       />
 
@@ -216,7 +216,7 @@ export default function ToxinasAmbientais() {
               Corpo, mente, comportamento e ambiente. Cada módulo investigou um vetor diferente de influência invisível.
               O próximo passo é continuar construindo autonomia real dentro do Soberania Orgânica.
             </p>
-            <Link to="/projeto-autonomo/toxicos-ocultos"
+            <Link to="/soberania-organica/toxicos-ocultos"
               className="inline-flex items-center gap-3 bg-red-500 text-white px-10 py-5 font-bold text-sm tracking-wide rounded-xl hover:bg-red-400 hover:shadow-2xl hover:shadow-red-500/20 hover:scale-[1.03] transition-all duration-500 group"
             >
               <Shield size={18} className="group-hover:rotate-12 transition-transform duration-500" /> Voltar ao Laboratório

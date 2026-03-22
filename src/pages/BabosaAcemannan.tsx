@@ -223,10 +223,10 @@ const schemaArticle = {
   "description": "Investigação completa sobre o acemannan da Aloe Vera: a molécula que recebeu status de medicamento órfão pela FDA em 1995 e depois desapareceu da pesquisa pública.",
   "author": { "@type": "Person", "name": "Lord Junnior", "url": "https://lordjunnior.com.br" },
   "publisher": { "@type": "Organization", "name": "Lord Junnior", "url": "https://lordjunnior.com.br" },
-  "url": "https://lordjunnior.com.br/projeto-autonomo/babosa-acemannan",
+  "url": "https://lordjunnior.com.br/soberania-organica/babosa-acemannan",
   "datePublished": "2026-03-22",
   "dateModified": "2026-03-22",
-  "mainEntityOfPage": "https://lordjunnior.com.br/projeto-autonomo/babosa-acemannan",
+  "mainEntityOfPage": "https://lordjunnior.com.br/soberania-organica/babosa-acemannan",
   "image": "https://lordjunnior.com.br/assets/babosa-hero.jpg",
 };
 
@@ -281,12 +281,12 @@ const schemaSiteNav = {
   "@context": "https://schema.org",
   "@type": "SiteNavigationElement",
   "name": "Babosa e Acemannan",
-  "url": "https://lordjunnior.com.br/projeto-autonomo/babosa-acemannan",
+  "url": "https://lordjunnior.com.br/soberania-organica/babosa-acemannan",
   "hasPart": [
-    { "@type": "WebPage", "name": "Fitoterapia Aplicada", "url": "https://lordjunnior.com.br/projeto-autonomo/fitoterapia-aplicada" },
-    { "@type": "WebPage", "name": "Autonomia Biológica", "url": "https://lordjunnior.com.br/projeto-autonomo/autonomia-biologica" },
-    { "@type": "WebPage", "name": "Sabedoria Ancestral", "url": "https://lordjunnior.com.br/projeto-autonomo/sabedoria-ancestral" },
-    { "@type": "WebPage", "name": "Soberania Orgânica", "url": "https://lordjunnior.com.br/projeto-autonomo" },
+    { "@type": "WebPage", "name": "Fitoterapia Aplicada", "url": "https://lordjunnior.com.br/soberania-organica/fitoterapia-aplicada" },
+    { "@type": "WebPage", "name": "Autonomia Biológica", "url": "https://lordjunnior.com.br/soberania-organica/autonomia-biologica" },
+    { "@type": "WebPage", "name": "Sabedoria Ancestral", "url": "https://lordjunnior.com.br/soberania-organica/sabedoria-ancestral" },
+    { "@type": "WebPage", "name": "Soberania Orgânica", "url": "https://lordjunnior.com.br/soberania-organica" },
   ],
 };
 
@@ -295,9 +295,9 @@ const schemaBreadcrumb = {
   "@type": "BreadcrumbList",
   "itemListElement": [
     { "@type": "ListItem", "position": 1, "name": "Início", "item": "https://lordjunnior.com.br" },
-    { "@type": "ListItem", "position": 2, "name": "Soberania Orgânica", "item": "https://lordjunnior.com.br/projeto-autonomo" },
-    { "@type": "ListItem", "position": 3, "name": "Autonomia Biológica", "item": "https://lordjunnior.com.br/projeto-autonomo/autonomia-biologica" },
-    { "@type": "ListItem", "position": 4, "name": "Babosa e Acemannan", "item": "https://lordjunnior.com.br/projeto-autonomo/babosa-acemannan" },
+    { "@type": "ListItem", "position": 2, "name": "Soberania Orgânica", "item": "https://lordjunnior.com.br/soberania-organica" },
+    { "@type": "ListItem", "position": 3, "name": "Autonomia Biológica", "item": "https://lordjunnior.com.br/soberania-organica/autonomia-biologica" },
+    { "@type": "ListItem", "position": 4, "name": "Babosa e Acemannan", "item": "https://lordjunnior.com.br/soberania-organica/babosa-acemannan" },
   ],
 };
 
@@ -327,10 +327,10 @@ export default function BabosaAcemannan() {
       <Helmet>
         <title>Babosa e Acemannan: A Molécula que a Indústria Farmacêutica Silenciou | Lord Junnior</title>
         <meta name="description" content="O acemannan da babosa recebeu status de medicamento órfão pela FDA em 1995 por imunomodulação em pacientes com HIV. A pesquisa desapareceu. A planta continua viva no seu quintal." />
-        <link rel="canonical" href="https://lordjunnior.com.br/projeto-autonomo/babosa-acemannan" />
+        <link rel="canonical" href="https://lordjunnior.com.br/soberania-organica/babosa-acemannan" />
         <meta property="og:title" content="Babosa e Acemannan: A Molécula Imunomoduladora Silenciada" />
         <meta property="og:description" content="Em 1995 a FDA reconheceu o acemannan como medicamento órfão. Depois, o silêncio. Investigação completa com relatos reais e ciência documentada." />
-        <meta property="og:url" content="https://lordjunnior.com.br/projeto-autonomo/babosa-acemannan" />
+        <meta property="og:url" content="https://lordjunnior.com.br/soberania-organica/babosa-acemannan" />
         <meta property="og:type" content="article" />
         <script type="application/ld+json">{JSON.stringify(schemaArticle)}</script>
         <script type="application/ld+json">{JSON.stringify(schemaFaq)}</script>
@@ -352,7 +352,7 @@ export default function BabosaAcemannan() {
           subtitle="A molécula imunomoduladora que recebeu status de medicamento órfão pela FDA em 1995 e depois desapareceu da pesquisa pública. Sob a casca verde existe um composto que a indústria prefere que você ignore."
           icon={Leaf}
           accentColor="emerald"
-          backLink="/projeto-autonomo/autonomia-biologica"
+          backLink="/soberania-organica/autonomia-biologica"
           backLabel="Autonomia Biológica"
         />
 
@@ -366,7 +366,7 @@ export default function BabosaAcemannan() {
 
         {/* ─── NAV ─── */}
         <nav className="relative z-10 max-w-7xl mx-auto px-5 md:px-8 lg:px-12 pt-8" aria-label="Breadcrumb">
-          <Link to="/projeto-autonomo/autonomia-biologica" className="inline-flex items-center gap-2 text-emerald-500/80 hover:text-emerald-400 text-xs font-semibold uppercase tracking-[0.2em] transition-colors">
+          <Link to="/soberania-organica/autonomia-biologica" className="inline-flex items-center gap-2 text-emerald-500/80 hover:text-emerald-400 text-xs font-semibold uppercase tracking-[0.2em] transition-colors">
             <ArrowLeft size={14} /> Autonomia Biológica
           </Link>
         </nav>
@@ -720,7 +720,7 @@ export default function BabosaAcemannan() {
             {/* CTAs */}
             <motion.div {...fade(0.2)} className="space-y-4">
               <Link
-                to="/projeto-autonomo/fitoterapia-aplicada"
+                to="/soberania-organica/fitoterapia-aplicada"
                 className="flex items-center gap-4 p-5 rounded-xl bg-emerald-600/15 border border-emerald-500/25 hover:bg-emerald-600/25 transition-all duration-500 group"
               >
                 <Leaf size={22} className="text-emerald-400 shrink-0" />
@@ -731,7 +731,7 @@ export default function BabosaAcemannan() {
                 <ChevronRight size={18} className="text-emerald-400 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
-                to="/projeto-autonomo/autonomia-biologica"
+                to="/soberania-organica/autonomia-biologica"
                 className="flex items-center gap-4 p-5 rounded-xl border border-emerald-500/15 hover:bg-emerald-500/5 transition-all duration-500 group"
               >
                 <Shield size={22} className="text-emerald-400 shrink-0" />
@@ -742,7 +742,7 @@ export default function BabosaAcemannan() {
                 <ChevronRight size={18} className="text-stone-600 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
-                to="/projeto-autonomo/sabedoria-ancestral"
+                to="/soberania-organica/sabedoria-ancestral"
                 className="flex items-center gap-4 p-5 rounded-xl border border-stone-800 hover:bg-stone-800/50 transition-all duration-500 group"
               >
                 <BookOpen size={22} className="text-stone-500 shrink-0" />
@@ -767,7 +767,7 @@ export default function BabosaAcemannan() {
         {/* ─── FOOTER NAVIGATION ─── */}
         <footer className="relative z-10 max-w-7xl mx-auto px-5 md:px-8 lg:px-12 pb-20 pt-8">
           <div className="flex flex-wrap justify-center gap-6">
-            <Link to="/projeto-autonomo" className="inline-flex items-center gap-2 text-stone-600 hover:text-stone-300 text-xs font-semibold uppercase tracking-[0.2em] transition-colors">
+            <Link to="/soberania-organica" className="inline-flex items-center gap-2 text-stone-600 hover:text-stone-300 text-xs font-semibold uppercase tracking-[0.2em] transition-colors">
               <Zap size={14} /> Soberania Orgânica
             </Link>
             <Link to="/" className="inline-flex items-center gap-2 text-stone-600 hover:text-stone-300 text-xs font-semibold uppercase tracking-[0.2em] transition-colors">

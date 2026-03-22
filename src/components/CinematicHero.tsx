@@ -23,7 +23,7 @@ const CinematicHero: React.FC<CinematicHeroProps> = ({
   subtitle,
   icon: Icon,
   accentColor = 'rose',
-  backLink = '/projeto-autonomo',
+  backLink = '/soberania-organica',
   backLabel = 'Soberania Orgânica',
 }) => {
   const sectionRef = useRef<HTMLElement>(null);

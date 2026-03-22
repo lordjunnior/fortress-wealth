@@ -13,7 +13,7 @@ const menuItems = [
   { icon: Library, label: "E-books", route: "/ebooks" },
   { icon: Wrench, label: "Ferramentas", route: "/ferramentas" },
   { icon: QrCode, label: "PIX Crypto", route: "/pix-cripto" },
-  { icon: Shield, label: "Soberania Orgânica", route: "/projeto-autonomo" },
+  { icon: Shield, label: "Soberania Orgânica", route: "/soberania-organica" },
   { icon: Globe, label: "Soberania Financeira", route: "/soberania-financeira" },
   { icon: BookOpen, label: "Alfabeto Cripto", route: "/dicionario-cripto" },
 ];

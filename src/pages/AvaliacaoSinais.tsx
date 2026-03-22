@@ -22,10 +22,10 @@ const AvaliacaoSinais = () => {
       <Helmet>
         <title>Avaliação de Sinais Vitais: Interpretação Clínica com Recursos Mínimos | Lord Junnior</title>
         <meta name="description" content="Como avaliar sinais vitais sem equipamento hospitalar. Temperatura, pulso, perfusão, desidratação e escala AVPU. Faixas numéricas e critérios de decisão para cenários de crise." />
-        <link rel="canonical" href="https://lordjunnior.com.br/projeto-autonomo/avaliacao-sinais" />
+        <link rel="canonical" href="https://lordjunnior.com.br/soberania-organica/avaliacao-sinais" />
         <meta property="og:title" content="Avaliação de Sinais Vitais: Diagnóstico Essencial de Campo" />
         <meta property="og:description" content="6 pilares de avaliação funcional com faixas numéricas. Saiba quando agir e quando buscar ajuda profissional." />
-        <meta property="og:url" content="https://lordjunnior.com.br/projeto-autonomo/avaliacao-sinais" />
+        <meta property="og:url" content="https://lordjunnior.com.br/soberania-organica/avaliacao-sinais" />
       </Helmet>
     <div className="min-h-screen text-stone-100" style={{ background: 'linear-gradient(180deg, #050808 0%, #0a0d0a 8%, #0d120d 20%, #0a0d0a 60%, #050808 100%)' }}>
       <CinematicHero
@@ -35,7 +35,7 @@ const AvaliacaoSinais = () => {
         subtitle="Interpretação Clínica Essencial com Recursos Mínimos"
         icon={Activity}
         accentColor="blue"
-        backLink="/projeto-autonomo"
+        backLink="/soberania-organica"
         backLabel="Soberania Orgânica"
       />
 
@@ -497,11 +497,11 @@ const AvaliacaoSinais = () => {
 
         {/* ─── NAV FOOTER ─── */}
         <div className="flex items-center justify-between pt-8 border-t border-white/[0.06]">
-          <Link to="/projeto-autonomo" className="text-stone-500 hover:text-emerald-400 transition-colors text-sm font-mono flex items-center gap-2">
+          <Link to="/soberania-organica" className="text-stone-500 hover:text-emerald-400 transition-colors text-sm font-mono flex items-center gap-2">
             <ArrowLeft size={14} />
             Soberania Orgânica
           </Link>
-          <Link to="/projeto-autonomo/primeiros-socorros" className="text-stone-500 hover:text-emerald-400 transition-colors text-sm font-mono flex items-center gap-2">
+          <Link to="/soberania-organica/primeiros-socorros" className="text-stone-500 hover:text-emerald-400 transition-colors text-sm font-mono flex items-center gap-2">
             Primeiros Socorros
             <ArrowLeft size={14} className="rotate-180" />
           </Link>

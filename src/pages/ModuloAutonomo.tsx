@@ -195,52 +195,52 @@ export default function ModuloAutonomo() {
   
   // Redirect to dedicated pages for published modules
   if (slug === 'conservacao-armazenamento') {
-    return <Navigate to="/projeto-autonomo/conservacao-armazenamento" replace />;
+    return <Navigate to="/soberania-organica/conservacao-armazenamento" replace />;
   }
   if (slug === 'kit-72h') {
-    return <Navigate to="/projeto-autonomo/kit-72h" replace />;
+    return <Navigate to="/soberania-organica/kit-72h" replace />;
   }
   if (slug === 'purificacao-agua') {
-    return <Navigate to="/projeto-autonomo/purificacao-agua" replace />;
+    return <Navigate to="/soberania-organica/purificacao-agua" replace />;
   }
   if (slug === 'protocolos-apagao') {
-    return <Navigate to="/projeto-autonomo/protocolos-apagao" replace />;
+    return <Navigate to="/soberania-organica/protocolos-apagao" replace />;
   }
   if (slug === 'abrigo-emergencia') {
-    return <Navigate to="/projeto-autonomo/abrigo-emergencia" replace />;
+    return <Navigate to="/soberania-organica/abrigo-emergencia" replace />;
   }
   if (slug === 'comunicacao-offline') {
-    return <Navigate to="/projeto-autonomo/comunicacao-offline" replace />;
+    return <Navigate to="/soberania-organica/comunicacao-offline" replace />;
   }
   if (slug === 'navegacao-primaria') {
-    return <Navigate to="/projeto-autonomo/navegacao-primaria" replace />;
+    return <Navigate to="/soberania-organica/navegacao-primaria" replace />;
   }
   if (slug === 'producao-pequenos-espacos') {
-    return <Navigate to="/projeto-autonomo/producao-pequenos-espacos" replace />;
+    return <Navigate to="/soberania-organica/producao-pequenos-espacos" replace />;
   }
   if (slug === 'proteina-sustentavel') {
-    return <Navigate to="/projeto-autonomo/proteina-sustentavel" replace />;
+    return <Navigate to="/soberania-organica/proteina-sustentavel" replace />;
   }
   if (slug === 'solo-fertilidade') {
-    return <Navigate to="/projeto-autonomo/solo-fertilidade" replace />;
+    return <Navigate to="/soberania-organica/solo-fertilidade" replace />;
   }
   if (slug === 'horta-urbana') {
-    return <Navigate to="/projeto-autonomo/horta-urbana" replace />;
+    return <Navigate to="/soberania-organica/horta-urbana" replace />;
   }
   if (slug === 'primeiros-socorros') {
-    return <Navigate to="/projeto-autonomo/primeiros-socorros" replace />;
+    return <Navigate to="/soberania-organica/primeiros-socorros" replace />;
   }
   if (slug === 'sinais-vitais') {
-    return <Navigate to="/projeto-autonomo/avaliacao-sinais" replace />;
+    return <Navigate to="/soberania-organica/avaliacao-sinais" replace />;
   }
   if (slug === 'saude-preventiva') {
-    return <Navigate to="/projeto-autonomo/saude-preventiva" replace />;
+    return <Navigate to="/soberania-organica/saude-preventiva" replace />;
   }
   if (slug === 'fitoterapia-aplicada') {
-    return <Navigate to="/projeto-autonomo/fitoterapia-aplicada" replace />;
+    return <Navigate to="/soberania-organica/fitoterapia-aplicada" replace />;
   }
   if (slug === 'controle-vetores') {
-    return <Navigate to="/projeto-autonomo/controle-vetores" replace />;
+    return <Navigate to="/soberania-organica/controle-vetores" replace />;
   }
   
   const mod = slug ? MODULES[slug] : null;
@@ -250,7 +250,7 @@ export default function ModuloAutonomo() {
       <div className="min-h-screen bg-stone-50 flex items-center justify-center">
         <div className="text-center">
           <p className="text-stone-400 text-sm mb-4">Módulo não encontrado</p>
-          <Link to="/projeto-autonomo" className="text-emerald-600 text-sm font-semibold hover:underline">
+          <Link to="/soberania-organica" className="text-emerald-600 text-sm font-semibold hover:underline">
             Voltar ao Soberania Orgânica
           </Link>
         </div>
@@ -271,17 +271,17 @@ export default function ModuloAutonomo() {
       <Helmet>
         <title>{`${mod.title}: Módulo do Soberania Orgânica — Fase ${mod.phase} | Lord Junnior`}</title>
         <meta name="description" content={`${mod.description} Parte da Fase ${mod.phase} (${mod.phaseLabel}) do Soberania Orgânica de soberania e resiliência.`} />
-        <link rel="canonical" href={`https://lordjunnior.com.br/projeto-autonomo/modulo/${slug}`} />
+        <link rel="canonical" href={`https://lordjunnior.com.br/soberania-organica/modulo/${slug}`} />
         <meta property="og:title" content={`${mod.title} — Soberania Orgânica`} />
         <meta property="og:description" content={mod.description} />
-        <meta property="og:url" content={`https://lordjunnior.com.br/projeto-autonomo/modulo/${slug}`} />
+        <meta property="og:url" content={`https://lordjunnior.com.br/soberania-organica/modulo/${slug}`} />
       </Helmet>
     <div className="min-h-screen selection:bg-emerald-200" style={{ background: phaseGradient }}>
       <div className="max-w-3xl mx-auto px-5 md:px-6 pt-20 pb-32">
 
         {/* Back */}
         <Link
-          to="/projeto-autonomo"
+          to="/soberania-organica"
           className="inline-flex items-center gap-2 text-stone-400 hover:text-stone-700 text-xs font-semibold uppercase tracking-[0.2em] transition-colors mb-12"
         >
           <ArrowLeft size={14} /> Soberania Orgânica

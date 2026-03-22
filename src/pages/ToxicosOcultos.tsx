@@ -59,7 +59,7 @@ export default function ToxicosOcultos() {
     "@type": "CollectionPage",
     "name": "Removendo Tóxicos Ocultos — Laboratório de Discernimento",
     "description": "Módulo investigativo sobre dependências invisíveis: toxinas alimentares, manipulação informacional, dependência tecnológica e toxinas ambientais.",
-    "url": "https://lordjunnior.com.br/projeto-autonomo/toxicos-ocultos",
+    "url": "https://lordjunnior.com.br/soberania-organica/toxicos-ocultos",
   };
 
   return (
@@ -70,7 +70,7 @@ export default function ToxicosOcultos() {
         <meta property="og:title" content="Removendo Tóxicos Ocultos — Laboratório de Discernimento" />
         <meta property="og:description" content="Corpo, mente, comportamento e ambiente. Quatro dimensões de autonomia pessoal." />
         <meta property="og:image" content="https://lordjunnior.com.br/heroes/toxicos-ocultos.webp" />
-        <link rel="canonical" href="https://lordjunnior.com.br/projeto-autonomo/toxicos-ocultos" />
+        <link rel="canonical" href="https://lordjunnior.com.br/soberania-organica/toxicos-ocultos" />
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       </Helmet>
 
@@ -122,7 +122,7 @@ export default function ToxicosOcultos() {
         subtitle="Corpo, mente, comportamento e ambiente. Quatro dimensões de investigação sobre influências invisíveis que reduzem clareza, saúde e liberdade de escolha."
         icon={Microscope}
         accentColor="red"
-        backLink="/projeto-autonomo"
+        backLink="/soberania-organica"
         backLabel="Soberania Orgânica"
       />
 
@@ -275,7 +275,7 @@ export default function ToxicosOcultos() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
             {SPOKES.map((spoke, i) => (
               <motion.div key={spoke.slug} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i * 0.15}>
-                <Link to={`/projeto-autonomo/toxicos-ocultos/${spoke.slug}`}
+                <Link to={`/soberania-organica/toxicos-ocultos/${spoke.slug}`}
                   className="group block h-full relative overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.05] transition-all duration-500 hover:-translate-y-1 p-8 md:p-10"
                   style={{ ['--spoke-accent' as string]: spoke.accent }}>
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
@@ -327,7 +327,7 @@ export default function ToxicosOcultos() {
               Cada módulo deste laboratório investiga um vetor diferente. Corpo, mente, comportamento e ambiente formam a quadratura completa do discernimento.
               Identificar o que entra silenciosamente na vida cotidiana é o primeiro passo para recuperar consciência e autonomia.
             </p>
-            <Link to="/projeto-autonomo"
+            <Link to="/soberania-organica"
               className="inline-flex items-center gap-3 bg-red-500 text-white px-10 py-5 font-bold text-sm tracking-wide rounded-xl hover:bg-red-400 hover:shadow-2xl hover:shadow-red-500/20 hover:scale-[1.03] hover:-translate-y-1 transition-all duration-500 group">
               <Shield size={18} className="group-hover:rotate-12 transition-transform duration-500" /> Voltar ao Soberania Orgânica
             </Link>

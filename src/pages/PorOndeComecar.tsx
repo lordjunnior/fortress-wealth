@@ -101,8 +101,8 @@ function getRecommendations(answers: Record<string, string>): Recommendation[] {
     );
   } else if (objetivo === "autonomy") {
     recs.push(
-      { title: "Soberania Orgânica", description: "Alimento, saúde, energia e sobrevivência", path: "/projeto-autonomo", icon: Target, tag: "PRÁTICA" },
-      { title: "Kit 72h", description: "Seu kit de emergência essencial", path: "/projeto-autonomo/kit-72h", icon: Zap, tag: "PRIORITÁRIO" },
+      { title: "Soberania Orgânica", description: "Alimento, saúde, energia e sobrevivência", path: "/soberania-organica", icon: Target, tag: "PRÁTICA" },
+      { title: "Kit 72h", description: "Seu kit de emergência essencial", path: "/soberania-organica/kit-72h", icon: Zap, tag: "PRIORITÁRIO" },
     );
   } else if (objetivo === "all") {
     recs.push(

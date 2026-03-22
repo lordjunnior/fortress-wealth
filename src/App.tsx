@@ -200,40 +200,43 @@ const App = () => (
           <Route path="/protocolo-bitcoin/bip-110" element={<Navigate to="/bitcoin/bip-110-guerra-espaco-bloco" replace />} />
           <Route path="/bip-110" element={<Navigate to="/bitcoin/bip-110-guerra-espaco-bloco" replace />} />
           <Route path="/mobilidade-de-chaves" element={<MobilidadeDeChaves />} />
-          <Route path="/projeto-autonomo" element={<ProjetoAutonomo />} />
-          <Route path="/projeto-autonomo/conservacao-armazenamento" element={<ConservacaoArmazenamento />} />
-          <Route path="/projeto-autonomo/producao-pequenos-espacos" element={<ProducaoPequenosEspacos />} />
-          <Route path="/projeto-autonomo/proteina-sustentavel" element={<ProteinaSustentavel />} />
-          <Route path="/projeto-autonomo/solo-fertilidade" element={<SoloFertilidade />} />
-          <Route path="/projeto-autonomo/horta-urbana" element={<HortaUrbana />} />
-          <Route path="/projeto-autonomo/autonomia-biologica" element={<AutonomiaBiologica />} />
-          <Route path="/projeto-autonomo/planta/:slug" element={<PlantaDetalhe />} />
-          <Route path="/projeto-autonomo/primeiros-socorros" element={<PrimeirosSocorros />} />
-          <Route path="/projeto-autonomo/avaliacao-sinais" element={<AvaliacaoSinais />} />
-          <Route path="/projeto-autonomo/saude-preventiva" element={<SaudePreventiva />} />
-          <Route path="/projeto-autonomo/fitoterapia-aplicada" element={<FitoterapiaAplicada />} />
-          <Route path="/projeto-autonomo/controle-vetores" element={<ControleVetores />} />
-          <Route path="/projeto-autonomo/sabedoria-ancestral" element={<SabedoriaAncestral />} />
-          <Route path="/projeto-autonomo/babosa-acemannan" element={<BabosaAcemannan />} />
-          <Route path="/projeto-autonomo/kit-72h" element={<Kit72h />} />
-          <Route path="/projeto-autonomo/purificacao-agua" element={<PurificacaoAgua />} />
-          <Route path="/projeto-autonomo/protocolos-apagao" element={<ProtocolosApagao />} />
-          <Route path="/projeto-autonomo/abrigo-emergencia" element={<AbrigoEmergencia />} />
-          <Route path="/projeto-autonomo/comunicacao-offline" element={<ComunicacaoOffline />} />
-          <Route path="/projeto-autonomo/navegacao-primaria" element={<NavegacaoPrimaria />} />
-          <Route path="/projeto-autonomo/conhecimento-perdido" element={<ConhecimentoPerdido />} />
+          <Route path="/soberania-organica" element={<ProjetoAutonomo />} />
+          <Route path="/soberania-organica/conservacao-armazenamento" element={<ConservacaoArmazenamento />} />
+          <Route path="/soberania-organica/producao-pequenos-espacos" element={<ProducaoPequenosEspacos />} />
+          <Route path="/soberania-organica/proteina-sustentavel" element={<ProteinaSustentavel />} />
+          <Route path="/soberania-organica/solo-fertilidade" element={<SoloFertilidade />} />
+          <Route path="/soberania-organica/horta-urbana" element={<HortaUrbana />} />
+          <Route path="/soberania-organica/autonomia-biologica" element={<AutonomiaBiologica />} />
+          <Route path="/soberania-organica/planta/:slug" element={<PlantaDetalhe />} />
+          <Route path="/soberania-organica/primeiros-socorros" element={<PrimeirosSocorros />} />
+          <Route path="/soberania-organica/avaliacao-sinais" element={<AvaliacaoSinais />} />
+          <Route path="/soberania-organica/saude-preventiva" element={<SaudePreventiva />} />
+          <Route path="/soberania-organica/fitoterapia-aplicada" element={<FitoterapiaAplicada />} />
+          <Route path="/soberania-organica/controle-vetores" element={<ControleVetores />} />
+          <Route path="/soberania-organica/sabedoria-ancestral" element={<SabedoriaAncestral />} />
+          <Route path="/soberania-organica/babosa-acemannan" element={<BabosaAcemannan />} />
+          <Route path="/soberania-organica/kit-72h" element={<Kit72h />} />
+          <Route path="/soberania-organica/purificacao-agua" element={<PurificacaoAgua />} />
+          <Route path="/soberania-organica/protocolos-apagao" element={<ProtocolosApagao />} />
+          <Route path="/soberania-organica/abrigo-emergencia" element={<AbrigoEmergencia />} />
+          <Route path="/soberania-organica/comunicacao-offline" element={<ComunicacaoOffline />} />
+          <Route path="/soberania-organica/navegacao-primaria" element={<NavegacaoPrimaria />} />
+          <Route path="/soberania-organica/conhecimento-perdido" element={<ConhecimentoPerdido />} />
           <Route path="/conhecimento-perdido/contexto-historico" element={<CpContextoHistorico />} />
           <Route path="/conhecimento-perdido/base-fisiologica" element={<CpBaseFisiologica />} />
           <Route path="/conhecimento-perdido/seguranca-e-limites" element={<CpSegurancaLimites />} />
           <Route path="/conhecimento-perdido/aplicacao-pratica" element={<CpAplicacaoPratica />} />
           <Route path="/conhecimento-perdido/continuidade-familiar" element={<CpContinuidadeFamiliar />} />
-          <Route path="/projeto-autonomo/toxicos-ocultos" element={<ToxicosOcultos />} />
-          <Route path="/projeto-autonomo/toxicos-ocultos/toxinas-alimentares" element={<ToxinasAlimentares />} />
-          <Route path="/projeto-autonomo/toxicos-ocultos/manipulacao-informacional" element={<ManipulacaoInformacional />} />
-          <Route path="/projeto-autonomo/toxicos-ocultos/dependencia-tecnologica" element={<DependenciaTecnologica />} />
-          <Route path="/projeto-autonomo/toxicos-ocultos/toxinas-ambientais" element={<ToxinasAmbientais />} />
-          <Route path="/projeto-autonomo/:slug" element={<ModuloAutonomo />} />
+          <Route path="/soberania-organica/toxicos-ocultos" element={<ToxicosOcultos />} />
+          <Route path="/soberania-organica/toxicos-ocultos/toxinas-alimentares" element={<ToxinasAlimentares />} />
+          <Route path="/soberania-organica/toxicos-ocultos/manipulacao-informacional" element={<ManipulacaoInformacional />} />
+          <Route path="/soberania-organica/toxicos-ocultos/dependencia-tecnologica" element={<DependenciaTecnologica />} />
+          <Route path="/soberania-organica/toxicos-ocultos/toxinas-ambientais" element={<ToxinasAmbientais />} />
           <Route path="/soberania-organica/oleo-ricino-biohacker" element={<OleoRicinoBiohacker />} />
+          <Route path="/soberania-organica/:slug" element={<ModuloAutonomo />} />
+          {/* Redirects from old projeto-autonomo URLs */}
+          <Route path="/projeto-autonomo" element={<Navigate to="/soberania-organica" replace />} />
+          <Route path="/projeto-autonomo/*" element={<Navigate to="/soberania-organica" replace />} />
           <Route path="/mapa-da-soberania" element={<MapaDaSoberania />} />
           <Route path="/por-onde-comecar" element={<PorOndeComecar />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

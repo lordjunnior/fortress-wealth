@@ -10,6 +10,8 @@ import imgCalendula from '@/assets/planta-calendula.jpg';
 import imgCapimLimao from '@/assets/planta-capim-limao.jpg';
 import imgGuaco from '@/assets/planta-guaco.jpg';
 import imgTanchagem from '@/assets/planta-tanchagem.jpg';
+import imgBabosaCard from '@/assets/planta-babosa-card.jpg';
+import imgOleoRicino from '@/assets/planta-oleo-ricino.jpg';
 
 export interface PlantaData {
   slug: string;
@@ -418,6 +420,71 @@ export const PLANTAS: PlantaData[] = [
     accent: 'text-emerald-300',
     accentBg: 'bg-emerald-500/10',
     accentBorder: 'border-emerald-400/25',
+  },
+  {
+    slug: 'babosa-acemannan',
+    nome: 'Babosa & Acemannan',
+    cientifico: 'Aloe barbadensis Miller',
+    sistema: 'Multisistêmico · Imunológico',
+    resumo: 'A molécula imunomoduladora acemannan recebeu status de medicamento órfão pela FDA em 1995 e desapareceu da pesquisa pública. Investigação completa com relatos reais e evidências científicas.',
+    melhora: ['Imunomodulação', 'Regeneração celular', 'Cicatrização', 'Anti-inflamatório', 'Hidratação profunda'],
+    ativos: [
+      { nome: 'Acemannan', funcao: 'Imunomodulador, ativa macrófagos e células NK' },
+      { nome: 'Polissacarídeos', funcao: 'Cicatrizantes e regeneradores celulares' },
+      { nome: 'Vitaminas A, C, E, B12', funcao: 'Antioxidantes e nutricionais' },
+    ],
+    mecanismo: 'O acemannan ativa diretamente os macrófagos e células NK do sistema imunológico, promovendo resposta imune sem superestimulação. Os polissacarídeos estimulam fibroblastos e produção de colágeno.',
+    preparo: [
+      { metodo: 'Gel fresco', instrucao: 'Cortar folha, remover casca com cuidado, extrair gel transparente interno (sem aloína).' },
+      { metodo: 'Suco processado', instrucao: '20ml do gel processado (sem aloína) misturado em água ou suco.' },
+    ],
+    dose: 'Tópico: gel fresco 2-3x ao dia. Interno: 20ml do gel processado (sem aloína) 1x ao dia.',
+    limiteUso: 'Uso tópico sem limite. Uso oral consultar profissional.',
+    contra: [
+      'Gravidez, a aloína pode estimular contrações uterinas',
+      'Doença intestinal inflamatória',
+      'Nunca ingerir a casca (contém aloína irritante)',
+    ],
+    interacoes: [
+      'Diuréticos, risco de hipocalemia se uso oral prolongado',
+      'Medicamentos cardíacos, alteração de eletrólitos',
+    ],
+    imagem: imgBabosaCard,
+    accent: 'text-emerald-400',
+    accentBg: 'bg-emerald-500/10',
+    accentBorder: 'border-emerald-500/25',
+  },
+  {
+    slug: 'oleo-ricino-biohacker',
+    nome: 'Óleo de Rícino',
+    cientifico: 'Ricinus communis',
+    sistema: 'Anti-inflamatório · Linfático',
+    resumo: 'O ácido ricinoleico possui capacidade única de penetração transdérmica que dissolve inflamações sistêmicas. Uma ferramenta de biohacking de baixo custo que a indústria farmacêutica silencia.',
+    melhora: ['Inflamação sistêmica', 'Drenagem linfática', 'Dor articular', 'Regeneração capilar', 'Desintoxicação hepática'],
+    ativos: [
+      { nome: 'Ácido ricinoleico (90%)', funcao: 'Anti-inflamatório transdérmico, atua nos receptores EP3' },
+      { nome: 'Ácido oleico', funcao: 'Emoliente e veículo de penetração cutânea' },
+      { nome: 'Ácido linoleico', funcao: 'Regenerador de barreira cutânea' },
+    ],
+    mecanismo: 'O ácido ricinoleico atua nos receptores EP3 de prostaglandina, drenando o sistema linfático com eficácia superior a cremes sintéticos. A molécula atravessa a barreira cutânea e atinge tecidos profundos.',
+    preparo: [
+      { metodo: 'Cataplasma hepática', instrucao: 'Saturar flanela com óleo, aplicar sobre o fígado, cobrir com plástico e bolsa térmica por 45-60 min.' },
+      { metodo: 'Uso tópico direto', instrucao: 'Aplicar óleo puro na região inflamada com massagem circular por 5 min.' },
+    ],
+    dose: 'Uso tópico: 1-2 aplicações ao dia. Cataplasma: 3-4x por semana.',
+    limiteUso: 'Uso tópico contínuo seguro. Uso oral NÃO recomendado sem orientação.',
+    contra: [
+      'Gravidez, pode estimular contrações',
+      'Uso oral sem orientação (laxante agressivo)',
+      'Pele com feridas abertas profundas',
+    ],
+    interacoes: [
+      'Medicamentos tópicos, pode aumentar absorção transdérmica',
+    ],
+    imagem: imgOleoRicino,
+    accent: 'text-amber-400',
+    accentBg: 'bg-amber-500/10',
+    accentBorder: 'border-amber-500/25',
   },
 ];
 

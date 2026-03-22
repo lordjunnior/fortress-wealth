@@ -128,10 +128,10 @@ export default function ProteinaSustentavel() {
       <Helmet>
         <title>Proteína Sustentável: Galinhas, Codornas e Aquaponia em Espaços Urbanos | Lord Junnior</title>
         <meta name="description" content="Como produzir proteína animal em espaços reduzidos. Galinheiro móvel, criação vertical de codornas, aquaponia com tilápia e manejo sanitário. Alta densidade proteica por m²." />
-        <link rel="canonical" href="https://lordjunnior.com.br/projeto-autonomo/proteina-sustentavel" />
+        <link rel="canonical" href="https://lordjunnior.com.br/soberania-organica/proteina-sustentavel" />
         <meta property="og:title" content="Proteína Sustentável: Produção Animal Urbana Compacta" />
         <meta property="og:description" content="Galinhas, codornas e tilápias em sistemas compactos. Proteína de qualidade com autonomia total." />
-        <meta property="og:url" content="https://lordjunnior.com.br/projeto-autonomo/proteina-sustentavel" />
+        <meta property="og:url" content="https://lordjunnior.com.br/soberania-organica/proteina-sustentavel" />
       </Helmet>
     <div className="min-h-screen text-stone-100 font-sans selection:bg-amber-300/50 pb-32 relative overflow-hidden" style={{ background: '#050808' }}>
       <CinematicHero
@@ -141,7 +141,7 @@ export default function ProteinaSustentavel() {
         subtitle="Produção Animal Compacta com Eficiência Máxima. Vegetais fornecem base energética. Proteína fornece densidade nutricional, saciedade prolongada e equilíbrio metabólico."
         icon={Egg}
         accentColor="amber"
-        backLink="/projeto-autonomo"
+        backLink="/soberania-organica"
         backLabel="Soberania Orgânica"
       />
 
@@ -356,7 +356,7 @@ export default function ProteinaSustentavel() {
         {/* ═══ NAVIGATION ═══ */}
         <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.3 }}
           className="flex flex-col sm:flex-row gap-4 justify-between">
-          <Link to="/projeto-autonomo/conservacao-armazenamento"
+          <Link to="/soberania-organica/conservacao-armazenamento"
             className="flex items-center gap-3 bg-white/[0.04] border border-white/[0.08] rounded-2xl px-6 py-4 hover:bg-white/[0.08] transition-all duration-300 group">
             <ArrowLeft size={16} className="text-stone-500 group-hover:text-amber-400 transition-colors" />
             <div>
@@ -364,7 +364,7 @@ export default function ProteinaSustentavel() {
               <p className="text-stone-300 text-sm font-semibold">Conservação e Armazenamento</p>
             </div>
           </Link>
-          <Link to="/projeto-autonomo/solo-fertilidade"
+          <Link to="/soberania-organica/solo-fertilidade"
             className="flex items-center gap-3 bg-white/[0.04] border border-white/[0.08] rounded-2xl px-6 py-4 hover:bg-white/[0.08] transition-all duration-300 group justify-end">
             <div className="text-right">
               <span className="text-stone-500 text-[9px] font-bold uppercase tracking-wider">Próximo</span>

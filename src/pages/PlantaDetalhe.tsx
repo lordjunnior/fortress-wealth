@@ -65,7 +65,7 @@ export default function PlantaDetalhe() {
     return () => ctx.revert();
   }, [planta, slug]);
 
-  if (!planta) return <Navigate to="/projeto-autonomo/autonomia-biologica" replace />;
+  if (!planta) return <Navigate to="/soberania-organica/autonomia-biologica" replace />;
 
   const setRef = (i: number) => (el: HTMLElement | null) => {
     sectionsRef.current[i] = el;
@@ -76,10 +76,10 @@ export default function PlantaDetalhe() {
       <Helmet>
         <title>{`${planta.nome} (${planta.cientifico}): Ficha Técnica Completa — Dosagem, Preparo e Contraindicações | Lord Junnior`}</title>
         <meta name="description" content={`Ficha técnica completa de ${planta.nome} (${planta.cientifico}). ${planta.resumo} Dosagem segura, métodos de preparo, contraindicações e mecanismo de ação documentados.`} />
-        <link rel="canonical" href={`https://lordjunnior.com.br/projeto-autonomo/planta/${planta.slug}`} />
+        <link rel="canonical" href={`https://lordjunnior.com.br/soberania-organica/planta/${planta.slug}`} />
         <meta property="og:title" content={`${planta.nome}: Guia Completo de Fitoterapia`} />
         <meta property="og:description" content={`${planta.resumo} Ficha técnica com dosagem, preparo e segurança.`} />
-        <meta property="og:url" content={`https://lordjunnior.com.br/projeto-autonomo/planta/${planta.slug}`} />
+        <meta property="og:url" content={`https://lordjunnior.com.br/soberania-organica/planta/${planta.slug}`} />
       </Helmet>
     <div ref={containerRef} className="min-h-screen text-stone-100 font-sans selection:bg-emerald-300/30"
       style={{ background: 'linear-gradient(180deg, #060806 0%, #0a0f0a 6%, #0d150d 15%, #101a10 30%, #0d150d 60%, #0a0f0a 85%, #060806 100%)' }}>
@@ -88,7 +88,7 @@ export default function PlantaDetalhe() {
       <header className="sticky top-0 z-50 backdrop-blur-xl border-b border-white/5"
         style={{ background: 'rgba(6,8,6,0.85)' }}>
         <div className="max-w-6xl mx-auto px-4 md:px-8 py-3 flex items-center justify-between">
-          <Link to="/projeto-autonomo/autonomia-biologica"
+          <Link to="/soberania-organica/autonomia-biologica"
             className="flex items-center gap-2 text-stone-500 hover:text-emerald-400 transition-colors text-sm">
             <ArrowLeft size={16} />
             <span className="hidden sm:inline">Suporte Fitoterápico</span>
@@ -304,7 +304,7 @@ export default function PlantaDetalhe() {
         {/* ═══ NAVEGAÇÃO ENTRE PLANTAS ═══ */}
         <nav className="flex flex-col sm:flex-row gap-4 pt-8 border-t border-white/5">
           {prevPlanta ? (
-            <Link to={`/projeto-autonomo/planta/${prevPlanta.slug}`}
+            <Link to={`/soberania-organica/planta/${prevPlanta.slug}`}
               className="flex-1 flex items-center gap-3 bg-white/3 border border-white/8 rounded-xl px-5 py-4 hover:bg-white/5 hover:border-white/15 transition-all duration-500 group">
               <ChevronLeft size={18} className="text-stone-600 group-hover:text-emerald-400 transition-colors" />
               <div>
@@ -314,14 +314,14 @@ export default function PlantaDetalhe() {
             </Link>
           ) : <div className="flex-1" />}
 
-          <Link to="/projeto-autonomo/autonomia-biologica"
+          <Link to="/soberania-organica/autonomia-biologica"
             className="flex items-center justify-center gap-2 bg-emerald-500/8 border border-emerald-500/20 rounded-xl px-6 py-4 text-emerald-400 text-sm font-bold hover:bg-emerald-500/15 transition-all duration-500">
             <Leaf size={16} />
             Catálogo
           </Link>
 
           {nextPlanta ? (
-            <Link to={`/projeto-autonomo/planta/${nextPlanta.slug}`}
+            <Link to={`/soberania-organica/planta/${nextPlanta.slug}`}
               className="flex-1 flex items-center justify-end gap-3 bg-white/3 border border-white/8 rounded-xl px-5 py-4 hover:bg-white/5 hover:border-white/15 transition-all duration-500 group">
               <div className="text-right">
                 <span className="text-[10px] text-stone-600 uppercase tracking-widest block">Próxima</span>

@@ -50,16 +50,16 @@ export default function ContinuidadeFamiliar() {
       <Helmet>
         <title>Continuidade Familiar: Educação Botânica e Autonomia Biológica para Gerações | Lord Junnior</title>
         <meta name="description" content="Como transmitir conhecimento ancestral de plantas medicinais para as próximas gerações. Educação botânica aplicada, identificação segura e construção progressiva de autonomia biológica familiar." />
-        <link rel="canonical" href="https://lordjunnior.com.br/projeto-autonomo/conhecimento-perdido/continuidade-familiar" />
+        <link rel="canonical" href="https://lordjunnior.com.br/soberania-organica/conhecimento-perdido/continuidade-familiar" />
         <meta property="og:title" content="Continuidade Familiar: O Conhecimento que Não Pode Morrer" />
         <meta property="og:description" content="Educação botânica para crianças e famílias. Transmita autonomia biológica antes que o conhecimento desapareça." />
-        <meta property="og:url" content="https://lordjunnior.com.br/projeto-autonomo/conhecimento-perdido/continuidade-familiar" />
+        <meta property="og:url" content="https://lordjunnior.com.br/soberania-organica/conhecimento-perdido/continuidade-familiar" />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
           "@type": "MedicalWebPage",
           "name": "Continuidade Familiar: Educação Botânica para Gerações",
           "description": "Transmissão de conhecimento ancestral de plantas medicinais para famílias.",
-          "url": "https://lordjunnior.com.br/projeto-autonomo/conhecimento-perdido/continuidade-familiar",
+          "url": "https://lordjunnior.com.br/soberania-organica/conhecimento-perdido/continuidade-familiar",
           "author": { "@type": "Person", "name": "Lord Junnior" },
           "medicalAudience": { "@type": "MedicalAudience", "audienceType": "Patient" },
           "lastReviewed": "2026-03-01",
@@ -77,7 +77,7 @@ export default function ContinuidadeFamiliar() {
         subtitle="Educação botânica aplicada, identificação segura e construção progressiva de autonomia biológica. O conhecimento que não é transmitido morre em uma geração."
         icon={Users}
         accentColor="teal"
-        backLink="/projeto-autonomo/conhecimento-perdido"
+        backLink="/soberania-organica/conhecimento-perdido"
         backLabel="Conhecimento Perdido"
       />
 
@@ -124,7 +124,7 @@ export default function ContinuidadeFamiliar() {
             <ChevronRight size={16} className="rotate-180 group-hover:-translate-x-1 transition-transform" />
             Aplicação Prática
           </Link>
-          <Link to="/projeto-autonomo/conhecimento-perdido"
+          <Link to="/soberania-organica/conhecimento-perdido"
             className="flex-1 group flex items-center justify-center gap-2 bg-purple-500/10 border border-purple-500/20 rounded-2xl px-6 py-5 text-purple-400 text-sm font-bold hover:bg-purple-500/15 hover:border-purple-400/30 transition-all duration-300">
             Voltar ao Hub
             <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform" />

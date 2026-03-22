@@ -64,16 +64,16 @@ export default function AplicacaoPratica() {
       <Helmet>
         <title>Aplicação Prática: Fichas Técnicas de Plantas Medicinais com Dosagem e Segurança | Lord Junnior</title>
         <meta name="description" content="Fichas técnicas completas de plantas medicinais com compostos ativos, mecanismo de ação, dosagem segura, contraindicações e sinergias. Conhecimento perdido documentado com rigor." />
-        <link rel="canonical" href="https://lordjunnior.com.br/projeto-autonomo/conhecimento-perdido/aplicacao-pratica" />
+        <link rel="canonical" href="https://lordjunnior.com.br/soberania-organica/conhecimento-perdido/aplicacao-pratica" />
         <meta property="og:title" content="Aplicação Prática: Fichas Técnicas de Plantas Medicinais" />
         <meta property="og:description" content="Cada planta com ficha completa: compostos, dosagem, preparo, contraindicações e sinergias documentadas." />
-        <meta property="og:url" content="https://lordjunnior.com.br/projeto-autonomo/conhecimento-perdido/aplicacao-pratica" />
+        <meta property="og:url" content="https://lordjunnior.com.br/soberania-organica/conhecimento-perdido/aplicacao-pratica" />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
           "@type": "MedicalWebPage",
           "name": "Aplicação Prática: Fichas Técnicas de Plantas Medicinais",
           "description": "Fichas técnicas com compostos ativos, dosagem, preparo e contraindicações.",
-          "url": "https://lordjunnior.com.br/projeto-autonomo/conhecimento-perdido/aplicacao-pratica",
+          "url": "https://lordjunnior.com.br/soberania-organica/conhecimento-perdido/aplicacao-pratica",
           "author": { "@type": "Person", "name": "Lord Junnior" },
           "medicalAudience": { "@type": "MedicalAudience", "audienceType": "Patient" },
           "lastReviewed": "2026-03-01",
@@ -91,7 +91,7 @@ export default function AplicacaoPratica() {
         subtitle="Protocolos domésticos estruturados, preparo correto, conservação e uso racional. A diferença entre informação e formação é a estrutura — e aqui, cada detalhe tem padrão técnico fixo."
         icon={FlaskConical}
         accentColor="emerald"
-        backLink="/projeto-autonomo/conhecimento-perdido"
+        backLink="/soberania-organica/conhecimento-perdido"
         backLabel="Conhecimento Perdido"
       />
 

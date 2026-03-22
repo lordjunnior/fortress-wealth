@@ -95,10 +95,10 @@ const FitoterapiaAplicada = () => {
       <Helmet>
         <title>Fitoterapia Aplicada: Protocolos Combinados por Sistema Corporal | Lord Junnior</title>
         <meta name="description" content="Protocolos fitoterápicos estratégicos organizados por sistema corporal. Sinergia entre plantas, ciclos de uso, ajuste por idade e critérios de interrupção documentados." />
-        <link rel="canonical" href="https://lordjunnior.com.br/projeto-autonomo/fitoterapia-aplicada" />
+        <link rel="canonical" href="https://lordjunnior.com.br/soberania-organica/fitoterapia-aplicada" />
         <meta property="og:title" content="Fitoterapia Aplicada: Protocolos Terapêuticos Combinados" />
         <meta property="og:description" content="Combinação estratégica de plantas medicinais por condição. Ciclos de uso, dosagem por idade e critérios de segurança." />
-        <meta property="og:url" content="https://lordjunnior.com.br/projeto-autonomo/fitoterapia-aplicada" />
+        <meta property="og:url" content="https://lordjunnior.com.br/soberania-organica/fitoterapia-aplicada" />
       </Helmet>
     <div className="min-h-screen text-stone-100" style={{ background: 'linear-gradient(180deg, #050808 0%, #0a0d0a 8%, #0d120d 20%, #0a0d0a 60%, #050808 100%)' }}>
       <CinematicHero
@@ -108,7 +108,7 @@ const FitoterapiaAplicada = () => {
         subtitle="Estratégia terapêutica organizada — protocolos combinados por sistema corporal"
         icon={Leaf}
         accentColor="emerald"
-        backLink="/projeto-autonomo"
+        backLink="/soberania-organica"
         backLabel="Soberania Orgânica"
       />
 
@@ -124,7 +124,7 @@ const FitoterapiaAplicada = () => {
               <div className="bg-green-500/10 border border-green-500/20 p-4 rounded-xl">
                 <p className="text-xs font-mono text-green-400/70 uppercase tracking-wider mb-2">Suporte Fitoterápico</p>
                 <p className="text-sm text-stone-300">Biblioteca técnica de plantas individuais. Uso isolado, dosagem conservadora, segurança.</p>
-                <Link to="/projeto-autonomo/autonomia-biologica" className="text-xs text-green-400 hover:underline mt-2 block">Ver módulo →</Link>
+                <Link to="/soberania-organica/autonomia-biologica" className="text-xs text-green-400 hover:underline mt-2 block">Ver módulo →</Link>
               </div>
               <div className="bg-purple-500/10 border border-purple-500/20 p-4 rounded-xl">
                 <p className="text-xs font-mono text-purple-400/70 uppercase tracking-wider mb-2">Fitoterapia Aplicada</p>
@@ -303,11 +303,11 @@ const FitoterapiaAplicada = () => {
 
         {/* ─── NAV FOOTER ─── */}
         <div className="flex items-center justify-between pt-8 border-t border-white/[0.06]">
-          <Link to="/projeto-autonomo" className="text-stone-500 hover:text-emerald-400 transition-colors text-sm font-mono flex items-center gap-2">
+          <Link to="/soberania-organica" className="text-stone-500 hover:text-emerald-400 transition-colors text-sm font-mono flex items-center gap-2">
             <ArrowLeft size={14} />
             Soberania Orgânica
           </Link>
-          <Link to="/projeto-autonomo/autonomia-biologica" className="text-stone-500 hover:text-emerald-400 transition-colors text-sm font-mono flex items-center gap-2">
+          <Link to="/soberania-organica/autonomia-biologica" className="text-stone-500 hover:text-emerald-400 transition-colors text-sm font-mono flex items-center gap-2">
             Suporte Fitoterápico →
           </Link>
         </div>

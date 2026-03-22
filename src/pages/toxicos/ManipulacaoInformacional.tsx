@@ -54,7 +54,7 @@ export default function ManipulacaoInformacional() {
   const claimReviewSchema = {
     "@context": "https://schema.org",
     "@type": "ClaimReview",
-    "url": "https://lordjunnior.com.br/projeto-autonomo/toxicos-ocultos/manipulacao-informacional",
+    "url": "https://lordjunnior.com.br/soberania-organica/toxicos-ocultos/manipulacao-informacional",
     "claimReviewed": "Algoritmos de redes sociais não influenciam significativamente opiniões políticas e comportamento",
     "author": { "@type": "Person", "name": "Lord Junnior" },
     "reviewRating": {
@@ -77,7 +77,7 @@ export default function ManipulacaoInformacional() {
         <meta name="description" content="Identifique técnicas de propaganda moderna, enquadramento narrativo, manipulação semântica e filtros algorítmicos. Higiene informacional para autonomia mental." />
         <meta property="og:title" content="Manipulação Informacional — O que molda suas crenças sem você perceber" />
         <meta property="og:image" content="https://lordjunnior.com.br/heroes/manipulacao-informacional.webp" />
-        <link rel="canonical" href="https://lordjunnior.com.br/projeto-autonomo/toxicos-ocultos/manipulacao-informacional" />
+        <link rel="canonical" href="https://lordjunnior.com.br/soberania-organica/toxicos-ocultos/manipulacao-informacional" />
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(claimReviewSchema)}</script>
       </Helmet>
@@ -91,7 +91,7 @@ export default function ManipulacaoInformacional() {
         subtitle="Da propaganda estatal ao filtro algorítmico, camadas de manipulação projetadas para moldar percepções e crenças sem que você perceba."
         icon={Brain}
         accentColor="violet"
-        backLink="/projeto-autonomo/toxicos-ocultos"
+        backLink="/soberania-organica/toxicos-ocultos"
         backLabel="Tóxicos Ocultos"
       />
 
@@ -202,7 +202,7 @@ export default function ManipulacaoInformacional() {
         <div className="max-w-4xl mx-auto px-6 text-center">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}>
             <p className="text-stone-700 text-xs font-medium uppercase tracking-[0.4em] mb-6">Próximo vetor</p>
-            <Link to="/projeto-autonomo/toxicos-ocultos/dependencia-tecnologica"
+            <Link to="/soberania-organica/toxicos-ocultos/dependencia-tecnologica"
               className="inline-flex items-center gap-3 bg-cyan-500 text-white px-10 py-5 font-bold text-sm tracking-wide rounded-xl hover:bg-cyan-400 hover:shadow-2xl hover:shadow-cyan-500/20 hover:scale-[1.03] transition-all duration-500 group"
             >
               Dependência Tecnológica <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />

@@ -56,7 +56,7 @@ export default function ToxinasAlimentares() {
   const claimReviewSchema = {
     "@context": "https://schema.org",
     "@type": "ClaimReview",
-    "url": "https://lordjunnior.com.br/projeto-autonomo/toxicos-ocultos/toxinas-alimentares",
+    "url": "https://lordjunnior.com.br/soberania-organica/toxicos-ocultos/toxinas-alimentares",
     "claimReviewed": "Aditivos alimentares industriais como MSG, HFCS e Nitrito de Sódio são seguros para consumo diário",
     "author": { "@type": "Person", "name": "Lord Junnior" },
     "reviewRating": {
@@ -80,7 +80,7 @@ export default function ToxinasAlimentares() {
         <meta property="og:title" content="Toxinas Alimentares — O que a indústria alimentar esconde" />
         <meta property="og:description" content="Aditivos, ultraprocessados, agrotóxicos e açúcar oculto. Investigue o que realmente entra na sua dieta." />
         <meta property="og:image" content="https://lordjunnior.com.br/heroes/toxinas-alimentares.webp" />
-        <link rel="canonical" href="https://lordjunnior.com.br/projeto-autonomo/toxicos-ocultos/toxinas-alimentares" />
+        <link rel="canonical" href="https://lordjunnior.com.br/soberania-organica/toxicos-ocultos/toxinas-alimentares" />
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(claimReviewSchema)}</script>
       </Helmet>
@@ -94,7 +94,7 @@ export default function ToxinasAlimentares() {
         subtitle="O que a indústria alimentar adiciona silenciosamente à sua dieta. Aditivos, ultraprocessados, açúcar disfarçado e resíduos de pesticidas."
         icon={Apple}
         accentColor="amber"
-        backLink="/projeto-autonomo/toxicos-ocultos"
+        backLink="/soberania-organica/toxicos-ocultos"
         backLabel="Tóxicos Ocultos"
       />
 
@@ -255,7 +255,7 @@ export default function ToxinasAlimentares() {
         <div className="max-w-4xl mx-auto px-6 text-center">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}>
             <p className="text-stone-700 text-xs font-medium uppercase tracking-[0.4em] mb-6">Próximo vetor</p>
-            <Link to="/projeto-autonomo/toxicos-ocultos/manipulacao-informacional"
+            <Link to="/soberania-organica/toxicos-ocultos/manipulacao-informacional"
               className="inline-flex items-center gap-3 bg-violet-500 text-white px-10 py-5 font-bold text-sm tracking-wide rounded-xl hover:bg-violet-400 hover:shadow-2xl hover:shadow-violet-500/20 hover:scale-[1.03] transition-all duration-500 group"
             >
               Manipulação Informacional <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
