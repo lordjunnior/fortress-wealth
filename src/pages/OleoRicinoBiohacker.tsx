@@ -493,24 +493,19 @@ export default function OleoRicinoBiohacker() {
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
               {TESTIMONIALS.map((t, i) => (
-                <motion.figure key={t.name} {...fade(i * 0.06)}
-                  className="border border-stone-800/50 rounded-2xl p-5 bg-stone-900/20 hover:bg-stone-900/40 hover:border-amber-500/15 transition-all duration-500 flex flex-col"
-                >
-                  <Quote size={16} className="text-amber-500/30 mb-3 flex-shrink-0" />
-                  <blockquote className="text-stone-300 text-sm leading-relaxed mb-4 flex-1">
-                    "{t.text}"
-                  </blockquote>
-                  <div className="flex items-center gap-3 pt-3 border-t border-stone-800/40">
-                    <img src={t.avatar} alt={t.name} className="w-10 h-10 rounded-full object-cover flex-shrink-0" />
-                    <div className="min-w-0">
-                      <figcaption className="text-white text-xs font-semibold truncate">{t.name}</figcaption>
-                      <p className="text-stone-500 text-[10px]">{t.platform}</p>
-                    </div>
-                  </div>
-                  <span className="mt-3 inline-block text-[10px] font-bold uppercase tracking-wider text-amber-400/60 bg-amber-500/8 border border-amber-500/10 px-2 py-1 rounded-lg self-start">
-                    {t.badge}
-                  </span>
-                </motion.figure>
+                <RealTestimonial
+                  key={t.name}
+                  testimonial={{
+                    name: t.name,
+                    username: t.username,
+                    platform: 'instagram',
+                    text: t.text,
+                    badge: t.badge,
+                    avatar: t.avatar,
+                  }}
+                  index={i}
+                  accentColor="amber"
+                />
               ))}
             </div>
           </div>
