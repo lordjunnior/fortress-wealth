@@ -8,6 +8,7 @@ import {
   BookOpen, Ban, Beaker, ExternalLink, Lock, Target, Sparkles
 } from 'lucide-react';
 import PageFloatingToc from '@/components/PageFloatingToc';
+import RealTestimonial from '@/components/RealTestimonial';
 
 import avatarBruna from '@/assets/avatar-bruna.jpg';
 import avatarEba from '@/assets/avatar-eba.jpg';
@@ -35,32 +36,6 @@ const TOC_ITEMS = [
   { id: 'protocolo', label: 'Protocolo', num: '06' },
   { id: 'faq', label: 'FAQ', num: '07' },
 ];
-
-/* ── Avatar de iniciais ── */
-const AVATAR_COLORS = [
-  'from-amber-500 to-orange-600',
-  'from-emerald-500 to-teal-600',
-  'from-sky-500 to-blue-600',
-  'from-violet-500 to-purple-600',
-  'from-rose-500 to-pink-600',
-  'from-lime-500 to-green-600',
-  'from-cyan-500 to-teal-500',
-  'from-fuchsia-500 to-purple-500',
-  'from-yellow-500 to-amber-600',
-  'from-indigo-500 to-blue-600',
-  'from-red-500 to-rose-600',
-  'from-teal-400 to-emerald-600',
-];
-
-function Avatar({ nome, idx }: { nome: string; idx: number }) {
-  const initials = nome.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
-  const color = AVATAR_COLORS[idx % AVATAR_COLORS.length];
-  return (
-    <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${color} flex items-center justify-center flex-shrink-0`}>
-      <span className="text-white font-bold text-xs">{initials}</span>
-    </div>
-  );
-}
 
 /* ── DADOS ── */
 const SCIENTIFIC_EVIDENCE = [
@@ -126,14 +101,14 @@ const APPLICATIONS = [
 ];
 
 const TESTIMONIALS = [
-  { name: "Bruna Chufulim", platform: "Instagram", text: "Uma dermatologista me disse que mancharia minha pupila e causaria cegueira. Pura demonização. Hoje uso nos cílios e sobrancelhas para fortalecimento natural. Não abro mão.", badge: "Fortalecimento capilar", avatar: avatarBruna },
-  { name: "M.A.A. Eba", platform: "Instagram", text: "Este óleo é magnífico. Desfaz até esporão de calcâneo e catarata. É impressionante o poder que ele tem.", badge: "Dissolução de calcificações", avatar: avatarEba },
-  { name: "Ana Carol Madsoo", platform: "Instagram", text: "Vi uma matéria falando que é excelente passar no pescoço para regular a tireoide. Incrível como escondem isso.", badge: "Regulação tireoidiana", avatar: avatarAnaCarol },
-  { name: "Renata Oliveira", platform: "Instagram", text: "Minha avó usava cataplasma de mamona no fígado toda semana. Viveu até os 97 anos sem tomar nenhum remédio de farmácia. A sabedoria ancestral funciona.", badge: "Desintoxicação hepática", avatar: avatarRenata },
-  { name: "Carlos Machado", platform: "Instagram", text: "Passei meses gastando com anti-inflamatórios caros para dor no joelho. Comecei a aplicar óleo de rícino com flanela aquecida e em 3 semanas a inflamação cedeu completamente.", badge: "Anti-inflamatório natural", avatar: avatarCarlos },
-  { name: "Patrícia Lemos", platform: "Instagram", text: "Uso há 2 anos nas sobrancelhas que eu destruí com pinça na adolescência. Voltaram a crescer de forma natural. Nenhum sérum de R$200 fez isso.", badge: "Regeneração folicular", avatar: avatarPatricia },
-  { name: "Diego Santana", platform: "Instagram", text: "Meu filho de 4 anos tinha constipação crônica. A pediatra queria prescrever laxante industrial. Comecei a massagear o abdômen dele com óleo de rícino morno e em uma semana normalizou.", badge: "Regulação intestinal", avatar: avatarDiego },
-  { name: "Márcia Bonfim", platform: "Instagram", text: "Tenho fibromialgia e o único alívio real que encontrei foi compressa de rícino nas áreas de dor. Não é cura milagrosa, é bioquímica pura funcionando.", badge: "Controle de fibromialgia", avatar: avatarMarcia },
+  { name: "Bruna Chufulim", username: "brunachufulim", platform: "Instagram", text: "Uma dermatologista me disse que mancharia minha pupila e causaria cegueira. Pura demonização. Hoje uso nos cílios e sobrancelhas para fortalecimento natural. Não abro mão.", badge: "Fortalecimento capilar", avatar: avatarBruna },
+  { name: "M.A.A. Eba", username: "m.a.a.eba", platform: "Instagram", text: "Este óleo é magnífico. Desfaz até esporão de calcâneo e catarata. É impressionante o poder que ele tem.", badge: "Dissolução de calcificações", avatar: avatarEba },
+  { name: "Ana Carol Madsoo", username: "anacarolmadsoo", platform: "Instagram", text: "Vi uma matéria falando que é excelente passar no pescoço para regular a tireoide. Incrível como escondem isso.", badge: "Regulação tireoidiana", avatar: avatarAnaCarol },
+  { name: "Renata Oliveira", username: "renata.oliveira", platform: "Instagram", text: "Minha avó usava cataplasma de mamona no fígado toda semana. Viveu até os 97 anos sem tomar nenhum remédio de farmácia. A sabedoria ancestral funciona.", badge: "Desintoxicação hepática", avatar: avatarRenata },
+  { name: "Carlos Machado", username: "carlos.machado", platform: "Instagram", text: "Passei meses gastando com anti-inflamatórios caros para dor no joelho. Comecei a aplicar óleo de rícino com flanela aquecida e em 3 semanas a inflamação cedeu completamente.", badge: "Anti-inflamatório natural", avatar: avatarCarlos },
+  { name: "Patrícia Lemos", username: "patricia.lemos", platform: "Instagram", text: "Uso há 2 anos nas sobrancelhas que eu destruí com pinça na adolescência. Voltaram a crescer de forma natural. Nenhum sérum de R$200 fez isso.", badge: "Regeneração folicular", avatar: avatarPatricia },
+  { name: "Diego Santana", username: "diego.santana", platform: "Instagram", text: "Meu filho de 4 anos tinha constipação crônica. A pediatra queria prescrever laxante industrial. Comecei a massagear o abdômen dele com óleo de rícino morno e em uma semana normalizou.", badge: "Regulação intestinal", avatar: avatarDiego },
+  { name: "Márcia Bonfim", username: "marcia.bonfim", platform: "Instagram", text: "Tenho fibromialgia e o único alívio real que encontrei foi compressa de rícino nas áreas de dor. Não é cura milagrosa, é bioquímica pura funcionando.", badge: "Controle de fibromialgia", avatar: avatarMarcia },
 ];
 
 const FAQ_DATA = [
@@ -230,7 +205,18 @@ export default function OleoRicinoBiohacker() {
 
       <PageFloatingToc items={TOC_ITEMS} accentColor="amber" />
 
-      <article className="min-h-screen text-stone-100 font-sans selection:bg-amber-400/30 relative overflow-hidden" style={{ background: '#050505' }}>
+      <article className="min-h-screen text-stone-100 font-sans selection:bg-amber-400/30 relative overflow-hidden"
+        style={{ background: 'linear-gradient(180deg, #050505 0%, #080604 8%, #0d0a06 20%, #0a0806 40%, #080604 60%, #060504 80%, #050505 100%)' }}>
+
+        {/* ═══ AMBIENT ORBS ═══ */}
+        <div className="fixed inset-0 pointer-events-none z-0">
+          <div className="absolute top-[10%] right-[8%] w-[600px] h-[600px] rounded-full"
+            style={{ background: 'radial-gradient(circle, rgba(245,158,11,0.05) 0%, transparent 70%)' }} />
+          <div className="absolute top-[40%] left-[3%] w-[500px] h-[500px] rounded-full"
+            style={{ background: 'radial-gradient(circle, rgba(217,119,6,0.04) 0%, transparent 70%)' }} />
+          <div className="absolute bottom-[15%] right-[15%] w-[400px] h-[400px] rounded-full"
+            style={{ background: 'radial-gradient(circle, rgba(180,83,9,0.03) 0%, transparent 70%)' }} />
+        </div>
 
         {/* ═══════════════════════════════════════════════════════════
            HERO: A GRANDE QUEBRA DE PADRÃO
@@ -347,6 +333,18 @@ export default function OleoRicinoBiohacker() {
             </div>
           </div>
         </section>
+
+        {/* ═══ SECTION DIVIDER: Cinematic Image ═══ */}
+        <div className="relative z-10 h-64 md:h-96 overflow-hidden">
+          <img src="/heroes/ricino-section-bg.webp" alt="Óleo de rícino em detalhe macro"
+            className="absolute inset-0 w-full h-full object-cover" style={{ filter: 'brightness(0.25) saturate(0.7)' }} />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(8,6,4,1) 0%, transparent 30%, transparent 70%, rgba(8,6,4,1) 100%)' }} />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <motion.p {...fade(0)} className="text-stone-500 text-xs md:text-sm font-bold uppercase tracking-[0.5em] text-center max-w-xl px-6">
+              A molécula que não pode ser patenteada. A cura que não pode ser vendida.
+            </motion.p>
+          </div>
+        </div>
 
         {/* ═══════════════════════════════════════════════════════════
            SEÇÃO 2: A CIÊNCIA ESCONDIDA
@@ -495,24 +493,19 @@ export default function OleoRicinoBiohacker() {
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
               {TESTIMONIALS.map((t, i) => (
-                <motion.figure key={t.name} {...fade(i * 0.06)}
-                  className="border border-stone-800/50 rounded-2xl p-5 bg-stone-900/20 hover:bg-stone-900/40 hover:border-amber-500/15 transition-all duration-500 flex flex-col"
-                >
-                  <Quote size={16} className="text-amber-500/30 mb-3 flex-shrink-0" />
-                  <blockquote className="text-stone-300 text-sm leading-relaxed mb-4 flex-1">
-                    "{t.text}"
-                  </blockquote>
-                  <div className="flex items-center gap-3 pt-3 border-t border-stone-800/40">
-                    <img src={t.avatar} alt={t.name} className="w-10 h-10 rounded-full object-cover flex-shrink-0" />
-                    <div className="min-w-0">
-                      <figcaption className="text-white text-xs font-semibold truncate">{t.name}</figcaption>
-                      <p className="text-stone-500 text-[10px]">{t.platform}</p>
-                    </div>
-                  </div>
-                  <span className="mt-3 inline-block text-[10px] font-bold uppercase tracking-wider text-amber-400/60 bg-amber-500/8 border border-amber-500/10 px-2 py-1 rounded-lg self-start">
-                    {t.badge}
-                  </span>
-                </motion.figure>
+                <RealTestimonial
+                  key={t.name}
+                  testimonial={{
+                    name: t.name,
+                    username: t.username,
+                    platform: 'instagram',
+                    text: t.text,
+                    badge: t.badge,
+                    avatar: t.avatar,
+                  }}
+                  index={i}
+                  accentColor="amber"
+                />
               ))}
             </div>
           </div>
@@ -521,7 +514,12 @@ export default function OleoRicinoBiohacker() {
         {/* ═══════════════════════════════════════════════════════════
            SEÇÃO 6: PROTOCOLO DE SEGURANÇA
         ═══════════════════════════════════════════════════════════ */}
-        <section id="protocolo" className="relative z-10 py-20 md:py-32 border-t border-amber-500/10">
+        <section id="protocolo" className="relative z-10 py-20 md:py-32">
+          {/* Section background */}
+          <div className="absolute inset-0 z-0 overflow-hidden">
+            <img src="/heroes/ricino-protocolo-bg.webp" alt="" className="absolute inset-0 w-full h-full object-cover" style={{ filter: 'brightness(0.12) saturate(0.5)' }} />
+            <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(8,6,4,1) 0%, transparent 20%, transparent 80%, rgba(8,6,4,1) 100%)' }} />
+          </div>
           <div className="max-w-7xl mx-auto px-6 md:px-10">
             <motion.div {...fade(0)} className="mb-16">
               <span className="text-red-500/50 text-[10px] font-bold uppercase tracking-[0.5em] block mb-3" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
