@@ -190,11 +190,17 @@ export default function AutonomiaBiologica() {
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {PLANTAS.map((p, i) => (
+            {PLANTAS.map((p, i) => {
+              const dedicatedPages: Record<string, string> = {
+                'babosa-acemannan': '/soberania-organica/babosa-acemannan',
+                'oleo-ricino-biohacker': '/soberania-organica/oleo-ricino-biohacker',
+              };
+              const linkTo = dedicatedPages[p.slug] || `/soberania-organica/planta/${p.slug}`;
+              return (
               <Link
                 key={p.slug}
                 ref={(el) => { cardsRef.current[i] = el; }}
-                to={`/soberania-organica/planta/${p.slug}`}
+                to={linkTo}
                 className="group relative overflow-hidden rounded-2xl border border-white/5 hover:border-white/15 transition-all duration-700 block"
                 style={{ perspective: '800px' }}
               >
@@ -203,25 +209,22 @@ export default function AutonomiaBiologica() {
                   <img src={p.imagem} alt={`${p.nome} — ${p.cientifico}`}
                     className="parallax-img absolute inset-0 w-full h-[130%] object-cover transition-transform duration-700 group-hover:scale-110" />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#060806] via-[#060806]/40 to-transparent" />
-
-                  {/* Hover overlay */}
                   <div className="absolute inset-0 bg-emerald-500/0 group-hover:bg-emerald-500/5 transition-colors duration-700" />
-
-                  {/* Number badge */}
                   <div className="absolute top-3 right-3 bg-black/40 backdrop-blur-sm rounded-full w-8 h-8 flex items-center justify-center">
                     <span className="text-[10px] font-bold text-stone-400">{String(i + 1).padStart(2, '0')}</span>
                   </div>
+                  {dedicatedPages[p.slug] && (
+                    <div className="absolute top-3 left-3 px-2 py-0.5 rounded-full bg-amber-500/20 border border-amber-500/30">
+                      <span className="text-amber-300 text-[9px] font-bold tracking-[0.15em] uppercase">Dossiê</span>
+                    </div>
+                  )}
                 </div>
-
-                {/* Content */}
                 <div className="p-5 bg-[#060806]">
                   <h3 className={`text-xl font-bold ${p.accent} mb-0.5 group-hover:translate-x-1 transition-transform duration-500`}>
                     {p.nome}
                   </h3>
                   <p className="text-stone-600 text-xs italic mb-3">{p.cientifico}</p>
                   <p className="text-stone-500 text-xs leading-relaxed line-clamp-2 mb-4">{p.resumo}</p>
-
-                  {/* Tags */}
                   <div className="flex flex-wrap gap-1.5 mb-4">
                     {p.melhora.slice(0, 3).map((m) => (
                       <span key={m} className={`text-[10px] ${p.accentBg} ${p.accent} border ${p.accentBorder} px-2 py-0.5 rounded-full`}>
@@ -234,15 +237,14 @@ export default function AutonomiaBiologica() {
                       </span>
                     )}
                   </div>
-
-                  {/* CTA */}
                   <div className="flex items-center gap-2 text-emerald-400 text-xs font-bold uppercase tracking-wider group-hover:gap-3 transition-all duration-500">
                     <span>Ver ficha completa</span>
                     <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform duration-500" />
                   </div>
                 </div>
               </Link>
-            ))}
+              );
+            })}
           </div>
         </section>
 

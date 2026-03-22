@@ -55,7 +55,7 @@ const BASE72_ITEMS = [
 ];
 
 const BIO_ITEMS = [
-  { icon: Leaf, label: 'Suporte Fitoterápico', desc: 'Biblioteca técnica de 12 plantas essenciais. Dosagens conservadoras, contraindicações e métodos de preparo.', slug: 'autonomia-biologica' },
+  { icon: Leaf, label: 'Suporte Fitoterápico', desc: 'Biblioteca técnica de 14 plantas e compostos essenciais. Dosagens, contraindicações e métodos de preparo.', slug: 'autonomia-biologica' },
   { icon: Cross, label: 'Primeiros Socorros', desc: 'Contenção de sangramento, imobilização, tratamento de queimaduras em ambiente remoto.', slug: 'primeiros-socorros' },
   { icon: Thermometer, label: 'Avaliação Básica de Sinais', desc: 'Interpretar febre, desidratação e sinais vitais com recursos mínimos.', slug: 'sinais-vitais' },
   { icon: Sun, label: 'Saúde Preventiva', desc: 'Exposição solar, qualidade do sono, movimento e alimentação consciente como base preventiva.', slug: 'saude-preventiva' },
