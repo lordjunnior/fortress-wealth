@@ -6,6 +6,7 @@ import { ArrowLeft, ArrowRight, RotateCcw, Compass, Shield, Coins, Globe, BookOp
 import NoiseBackground from "@/components/NoiseBackground";
 import AppSidebar from "@/components/AppSidebar";
 import MobileNav from "@/components/MobileNav";
+import RightSidebar from "@/components/RightSidebar";
 import NetworkTicker from "@/components/NetworkTicker";
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
