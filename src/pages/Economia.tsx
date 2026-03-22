@@ -191,6 +191,21 @@ const Economia = () => {
           </motion.div>
         </section>
 
+        {/* ── Cinematic Break: Correntes ── */}
+        <section className="relative z-10 py-8 md:py-14">
+          <div className="max-w-7xl mx-auto px-4 md:px-10">
+            <motion.div initial={{ opacity: 0, y: 40, scale: 0.97 }} whileInView={{ opacity: 1, y: 0, scale: 1 }} viewport={{ once: true, margin: '-60px' }} transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+              className="relative rounded-2xl overflow-hidden border border-white/[0.06] group">
+              <img src={imgCorrentesImpostos} alt="Mãos acorrentadas a uma calculadora — escravidão tributária" className="w-full h-56 md:h-[420px] object-cover transition-transform duration-[1.5s] group-hover:scale-[1.03]" style={{ filter: 'brightness(0.65) saturate(0.85)' }} loading="lazy" />
+              <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, transparent 20%, rgba(5,8,8,0.7) 70%, rgba(5,8,8,0.95) 100%)' }} />
+              <div className="absolute bottom-5 left-6 right-6 flex items-end justify-between">
+                <p className="text-stone-400 text-[11px] font-mono uppercase tracking-[0.2em] leading-relaxed max-w-lg">42% do seu dia de trabalho pertence ao Estado. As correntes são invisíveis, mas reais.</p>
+                <div className="hidden md:block w-12 h-px bg-gradient-to-r from-red-500/40 to-transparent" />
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
         {/* ── Devaluation Chart ── */}
         <section className="relative z-10 px-6 md:px-12 lg:px-20 py-12">
           <div className="max-w-7xl mx-auto">
