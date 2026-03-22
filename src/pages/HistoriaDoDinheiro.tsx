@@ -1,3 +1,4 @@
+import PageFloatingToc from "@/components/PageFloatingToc";
 import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
@@ -88,6 +89,14 @@ const TAMBEM_ACONTECEU: Record<string, { ano: string; fato: string }[]> = {
   ],
 };
 
+
+const TOC_ITEMS = [
+  { id: "timeline", label: "Cronologia" },
+  { id: "consequencias", label: "Diagnóstico" },
+  { id: "bitcoin-saida", label: "Bitcoin: A Saída" },
+  { id: "faq", label: "FAQ" },
+];
+
 export default function HistoriaDoDinheiro() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -118,6 +127,8 @@ export default function HistoriaDoDinheiro() {
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>
       </Helmet>
+
+      <PageFloatingToc items={TOC_ITEMS} accentColor="amber" />
 
       <ScrollToTop />
       <NoiseBackground />

@@ -1,3 +1,4 @@
+import PageFloatingToc from "@/components/PageFloatingToc";
 import { useState, useMemo, useEffect, useRef } from "react";
 import { Helmet } from "react-helmet-async";
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -71,6 +72,12 @@ const articleSchema = {
 };
 
 // Film Grain
+
+const TOC_ITEMS = [
+  { id: "chama", label: "Arsenal" },
+  { id: "verdade-salarial", label: "Verdade Salarial" },
+];
+
 const FilmGrain = () => (
   <div className="pointer-events-none fixed inset-0 z-50 opacity-[0.035]">
     <svg className="w-full h-full">
@@ -128,6 +135,8 @@ const Economia = () => {
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>
       </Helmet>
+
+      <PageFloatingToc items={TOC_ITEMS} accentColor="red" />
 
       <div className="min-h-screen bg-[#050808] text-foreground font-sans selection:bg-destructive selection:text-destructive-foreground relative overflow-hidden">
         <FilmGrain />

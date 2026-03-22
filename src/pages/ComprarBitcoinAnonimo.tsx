@@ -1,3 +1,4 @@
+import PageFloatingToc from "@/components/PageFloatingToc";
 import { motion, useScroll, useTransform } from "framer-motion";
 import DonationCTA from "@/components/DonationCTA";
 import { useRef, useState } from "react";
@@ -242,6 +243,17 @@ const FaqItem = ({ q, a }: { q: string; a: string }) => {
 };
 
 /* ══════════════════════ MAIN PAGE ══════════════════════ */
+
+const TOC_ITEMS = [
+  { id: "por-que", label: "Por Que Privacidade?" },
+  { id: "o-que-e-robosats", label: "O Que é RoboSats?" },
+  { id: "pre-requisitos", label: "Pré-Requisitos" },
+  { id: "passo-a-passo", label: "Passo a Passo" },
+  { id: "escrow", label: "Sistema de Escrow" },
+  { id: "cuidados", label: "Cuidados e Riscos" },
+  { id: "faq", label: "FAQ" },
+];
+
 export default function ComprarBitcoinAnonimo() {
   const heroRef = useRef(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
@@ -263,6 +275,8 @@ export default function ComprarBitcoinAnonimo() {
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
       </Helmet>
+
+      <PageFloatingToc items={TOC_ITEMS} accentColor="orange" />
 
       <ScrollProgressBar />
       

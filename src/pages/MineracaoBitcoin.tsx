@@ -1,3 +1,4 @@
+import PageFloatingToc from "@/components/PageFloatingToc";
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
@@ -24,6 +25,18 @@ const NAV_ITEMS = [
   { id: 'pools', label: 'Pools de Mineração' },
   { id: 'legal', label: 'Legalidade e Impostos' },
   { id: 'conclusao', label: 'Comece a Operar' },
+];
+
+
+const TOC_ITEMS = [
+  { id: "intro", label: "Introdução" },
+  { id: "impacto", label: "Impacto" },
+  { id: "pilares", label: "Rentabilidade" },
+  { id: "preco", label: "Preço e Timing" },
+  { id: "estrategia", label: "Estratégia" },
+  { id: "pools", label: "Pools" },
+  { id: "legal", label: "Legalidade" },
+  { id: "conclusao", label: "Conclusão" },
 ];
 
 export default function MineracaoBitcoin() {
@@ -59,6 +72,8 @@ export default function MineracaoBitcoin() {
         <meta name="description" content="Mineração de Bitcoin é lucrativa? Análise completa: hardware ASIC, custo de eletricidade, pools, halving, estratégias bull vs bear e legalidade." />
         <meta name="keywords" content="mineração bitcoin, mining bitcoin, ASIC, pool mineração, halving, proof of work, rentabilidade mineração" />
       </Helmet>
+
+      <PageFloatingToc items={TOC_ITEMS} accentColor="orange" />
 
       <div className="min-h-screen bg-background text-foreground font-sans selection:bg-amber-600/30 overflow-x-hidden">
         {/* Ambient VFX */}

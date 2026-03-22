@@ -1,3 +1,4 @@
+import PageFloatingToc from "@/components/PageFloatingToc";
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
@@ -120,6 +121,15 @@ const PILARES = [
 /* ══════════════════════════════════════════════════════════════
    COMPONENT
 ══════════════════════════════════════════════════════════════ */
+
+const TOC_ITEMS = [
+  { id: "narrativa-heading", label: "A Narrativa" },
+  { id: "pilares-heading", label: "Os Pilares" },
+  { id: "eixo01-heading", label: "Saúde & Autonomia" },
+  { id: "eixo02-heading", label: "Soberania" },
+  { id: "manifesto-heading", label: "Por Que Importa" },
+];
+
 export default function SabedoriaAncestral() {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -164,6 +174,8 @@ export default function SabedoriaAncestral() {
         <meta property="og:description" content="Plantas medicinais, produção de alimentos e saúde natural. O conhecimento que suas avós tinham e você precisa recuperar." />
         <meta property="og:url" content="https://lordjunnior.com.br/projeto-autonomo/sabedoria-ancestral" />
       </Helmet>
+
+      <PageFloatingToc items={TOC_ITEMS} accentColor="emerald" />
     <div ref={containerRef} className="min-h-screen font-sans selection:bg-amber-300/30 relative overflow-hidden"
       style={{ background: '#050808' }}
     >

@@ -1,3 +1,4 @@
+import PageFloatingToc from "@/components/PageFloatingToc";
 import { useState, useEffect, useRef } from "react";
 import { Helmet } from "react-helmet-async";
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -56,6 +57,14 @@ const articleSchema = {
   url: "https://lordjunnior.com.br/bitcoin"
 };
 
+
+const TOC_ITEMS = [
+  { id: "autocustodia", label: "Autocustódia" },
+  { id: "semente", label: "Hardware Wallets" },
+  { id: "node", label: "Node Soberano" },
+  { id: "btc-vs-imovel", label: "Bitcoin vs Imóvel" },
+];
+
 const FilmGrain = () => (
   <div className="pointer-events-none fixed inset-0 z-50 opacity-[0.035]">
     <svg className="w-full h-full"><filter id="grain-btc"><feTurbulence baseFrequency="0.9" numOctaves="4" stitchTiles="stitch" /><feColorMatrix type="saturate" values="0" /></filter><rect width="100%" height="100%" filter="url(#grain-btc)" /></svg>
@@ -109,6 +118,8 @@ const Bitcoin = () => {
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>
       </Helmet>
+
+      <PageFloatingToc items={TOC_ITEMS} accentColor="orange" />
 
       <div className="min-h-screen bg-[#050808] text-foreground font-sans selection:bg-amber-600 selection:text-white relative overflow-hidden">
         <FilmGrain />

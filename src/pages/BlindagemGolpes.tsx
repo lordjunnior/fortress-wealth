@@ -1,3 +1,4 @@
+import PageFloatingToc from "@/components/PageFloatingToc";
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useMotionValue, useSpring, AnimatePresence, useInView } from 'framer-motion';
@@ -84,6 +85,18 @@ const AnimatedSection = ({ children, className = '', id = '' }: { children: Reac
 };
 
 /* ─── SECTION DIVIDER ─── */
+
+const TOC_ITEMS = [
+  { id: "impacto", label: "Impacto" },
+  { id: "timeline", label: "Timeline" },
+  { id: "vetores", label: "Vetores de Ataque" },
+  { id: "anatomia", label: "Anatomia do Golpe" },
+  { id: "defesa", label: "Defesa" },
+  { id: "codigo", label: "Código de Conduta" },
+  { id: "checklist", label: "Checklist" },
+  { id: "conclusao", label: "Conclusão" },
+];
+
 const SectionDivider = () => (
   <div className="relative my-20 lg:my-28">
     <div className="w-full h-px bg-gradient-to-r from-transparent via-red-500/20 to-transparent" />
@@ -253,6 +266,8 @@ export default function BlindagemGolpes() {
         <meta name="keywords" content="blindagem golpes bitcoin, segurança bitcoin, phishing cripto, scam bitcoin, deepfake bitcoin, ponzi cripto, sim swap, rug pull, engenharia social, opsec cripto" />
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       </Helmet>
+
+      <PageFloatingToc items={TOC_ITEMS} accentColor="red" />
 
       <ScrollToTop />
 

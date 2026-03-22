@@ -1,3 +1,4 @@
+import PageFloatingToc from "@/components/PageFloatingToc";
 import { useRef, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
@@ -101,6 +102,16 @@ const FAQ_DATA = [
 ];
 
 /* ═══ COMPONENT ═══ */
+
+const TOC_ITEMS = [
+  { id: "depix", label: "O Que é o DePix" },
+  { id: "timeline", label: "Timeline" },
+  { id: "riscos", label: "Os 3 Riscos" },
+  { id: "alternativas", label: "Alternativas" },
+  { id: "cedula", label: "Cédula Paraguaia" },
+  { id: "faq", label: "FAQ" },
+];
+
 export default function DepixReporte() {
   const [scrolled, setScrolled] = useState(false);
   const [leadModalOpen, setLeadModalOpen] = useState(false);
@@ -144,6 +155,8 @@ export default function DepixReporte() {
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>
       </Helmet>
+
+      <PageFloatingToc items={TOC_ITEMS} accentColor="amber" />
       <ScrollToTop />
       <LeadCaptureModal isOpen={leadModalOpen} onClose={() => setLeadModalOpen(false)} interesse="assessoria-cedula-paraguaia-depix" />
 
