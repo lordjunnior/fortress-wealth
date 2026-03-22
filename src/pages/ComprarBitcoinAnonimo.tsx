@@ -17,6 +17,7 @@ import SnippetBait from "@/components/SnippetBait";
 import RiskBlock from "@/components/RiskBlock";
 import AppSidebar from "@/components/AppSidebar";
 import MobileNav from "@/components/MobileNav";
+import RightSidebar from "@/components/RightSidebar";
 
 import heroImg from "@/assets/robosats-hero.jpg";
 import anonimatoImg from "@/assets/robosats-anonimato.jpg";
