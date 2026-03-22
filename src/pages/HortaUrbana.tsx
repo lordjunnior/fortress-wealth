@@ -164,7 +164,7 @@ export default function HortaUrbana() {
         icon={Sprout}
         accentColor="emerald"
         backLink="/projeto-autonomo"
-        backLabel="Projeto Autônomo"
+        backLabel="Soberania Orgânica"
       />
 
       <div className="relative z-10 max-w-3xl mx-auto px-5 md:px-6 pt-12 pb-32">

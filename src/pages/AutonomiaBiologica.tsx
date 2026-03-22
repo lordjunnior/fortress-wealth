@@ -134,7 +134,7 @@ export default function AutonomiaBiologica() {
         icon={Leaf}
         accentColor="emerald"
         backLink="/projeto-autonomo"
-        backLabel="Projeto Autônomo"
+        backLabel="Soberania Orgânica"
       />
 
       {/* Fixed ambient orbs */}
@@ -415,7 +415,7 @@ export default function AutonomiaBiologica() {
           <Link to="/projeto-autonomo"
             className="flex-1 flex items-center justify-center gap-2 bg-white/3 border border-white/8 rounded-xl px-6 py-4 text-stone-400 text-sm font-bold hover:bg-white/5 hover:text-emerald-400 transition-all duration-500">
             <ArrowLeft size={16} />
-            Projeto Autônomo
+            Soberania Orgânica
           </Link>
           <Link to="/projeto-autonomo/fitoterapia-aplicada"
             className="flex-1 flex items-center justify-center gap-2 bg-emerald-500/8 border border-emerald-500/20 rounded-xl px-6 py-4 text-emerald-400 text-sm font-bold hover:bg-emerald-500/15 transition-all duration-500 group">

@@ -392,7 +392,7 @@ export default function ComunicacaoOffline() {
         {/* Back bottom */}
         <div className="text-center pt-8">
           <Link to="/projeto-autonomo" className="inline-flex items-center gap-2 text-stone-500 hover:text-white text-xs font-semibold uppercase tracking-[0.2em] transition-colors">
-            <ArrowLeft size={14} /> Voltar ao Projeto Autônomo
+            <ArrowLeft size={14} /> Voltar ao Soberania Orgânica
           </Link>
         </div>
       </div>

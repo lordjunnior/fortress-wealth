@@ -139,7 +139,7 @@ export default function SoloFertilidade() {
         icon={Shovel}
         accentColor="amber"
         backLink="/projeto-autonomo"
-        backLabel="Projeto Autônomo"
+        backLabel="Soberania Orgânica"
       />
 
       <div className="relative z-10 max-w-4xl mx-auto px-5 md:px-8 pt-12">
@@ -674,7 +674,7 @@ export default function SoloFertilidade() {
             className="flex items-center gap-3 bg-white/[0.03] border border-white/[0.06] rounded-2xl px-6 py-4 hover:bg-white/[0.06] hover:border-white/[0.1] transition-all duration-300 group justify-end">
             <div className="text-right">
               <span className="text-stone-600 text-[9px] font-bold uppercase tracking-wider">Voltar</span>
-              <p className="text-stone-300 text-sm font-semibold">Projeto Autônomo</p>
+              <p className="text-stone-300 text-sm font-semibold">Soberania Orgânica</p>
             </div>
             <ArrowRight size={16} className="text-stone-500 group-hover:text-amber-400 transition-colors" />
           </Link>
@@ -685,7 +685,7 @@ export default function SoloFertilidade() {
         {/* Footer */}
         <motion.div className="mt-12 text-center" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.5 }}>
           <p className="text-stone-600 text-xs leading-relaxed max-w-md mx-auto">
-            Este módulo faz parte da Fase 03 — Soberania Alimentar do Projeto Autônomo.
+            Este módulo faz parte da Fase 03 — Soberania Alimentar do Soberania Orgânica.
             Conteúdo baseado em técnicas validadas de fertilidade orgânica e manejo sustentável de solo.
           </p>
         </motion.div>

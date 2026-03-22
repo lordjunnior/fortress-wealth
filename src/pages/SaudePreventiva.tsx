@@ -68,7 +68,7 @@ const SaudePreventiva = () => {
         icon={Heart}
         accentColor="emerald"
         backLink="/projeto-autonomo"
-        backLabel="Projeto Autônomo"
+        backLabel="Soberania Orgânica"
       />
 
       {/* ─── READING PROGRESS ─── */}
@@ -506,7 +506,7 @@ const SaudePreventiva = () => {
           <Link to="/projeto-autonomo"
             className="flex-1 group flex items-center justify-center gap-2 bg-white/[0.03] border border-white/[0.08] rounded-2xl px-6 py-5 text-stone-400 text-sm font-bold hover:bg-emerald-500/10 hover:border-emerald-500/20 hover:text-emerald-400 transition-all duration-300">
             <ChevronRight size={16} className="rotate-180 group-hover:-translate-x-1 transition-transform" />
-            Projeto Autônomo
+            Soberania Orgânica
           </Link>
           <Link to="/projeto-autonomo/avaliacao-sinais"
             className="flex-1 group flex items-center justify-center gap-2 bg-emerald-500/10 border border-emerald-500/20 rounded-2xl px-6 py-5 text-emerald-400 text-sm font-bold hover:bg-emerald-500/15 hover:border-emerald-400/30 transition-all duration-300">

@@ -20,7 +20,7 @@ import { PainelTaticoFisiologico } from '@/components/PainelTaticoFisiologico';
 import VersionBadge from '@/components/VersionBadge';
 
 /* ─── SEO: meta keywords target ───
-   projeto autônomo, base 72 horas, autonomia biológica, soberania alimentar,
+   soberania orgânica, base 72 horas, autonomia biológica, soberania alimentar,
    sobrevivência urbana, horta urbana, plantas medicinais, primeiros socorros,
    autossuficiência alimentar, kit emergência 72h, preparação desastres brasil,
    conservação alimentos, proteína sustentável, fitoterapia, gestão de risco pessoal
@@ -144,7 +144,7 @@ export default function ProjetoAutonomo() {
   return (
     <>
       <Helmet>
-        <title>Projeto Autônomo — Sobrevivência, Saúde e Autossuficiência | Lord Junnior</title>
+        <title>Soberania Orgânica — Sobrevivência, Saúde e Autossuficiência | Lord Junnior</title>
         <meta name="description" content="Guia completo de autonomia: kit 72h, purificação de água, primeiros socorros, horta urbana, fitoterapia e protocolos de emergência para sobrevivência real." />
         <link rel="canonical" href="https://lordjunnior.com.br/projeto-autonomo" />
       </Helmet>
@@ -227,7 +227,7 @@ export default function ProjetoAutonomo() {
         <nav className="absolute top-6 left-6 md:left-16 flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em]">
           <Link to="/" className="text-stone-600 hover:text-emerald-400 transition-colors">Início</Link>
           <span className="text-stone-700">/</span>
-          <span className="text-emerald-400">Projeto Autônomo</span>
+          <span className="text-emerald-400">Soberania Orgânica</span>
         </nav>
 
         {/* Version — top right */}
@@ -285,7 +285,7 @@ export default function ProjetoAutonomo() {
             transition={{ duration: 0.8, delay: 0.6 }}
           >
             <p className="text-stone-300 text-sm md:text-base leading-relaxed mb-3 font-medium">
-              O Projeto Autônomo é um manual prático de <span className="text-emerald-400 font-bold">independência real</span> — dividido em 5 fases progressivas que ensinam você a sobreviver, cuidar da saúde, produzir alimento, recuperar conhecimento perdido e eliminar dependências invisíveis.
+              O Soberania Orgânica é um manual prático de <span className="text-emerald-400 font-bold">independência real</span> — dividido em 5 fases progressivas que ensinam você a sobreviver, cuidar da saúde, produzir alimento, recuperar conhecimento perdido e eliminar dependências invisíveis.
             </p>
             <p className="text-stone-400 text-sm leading-relaxed mb-2">
               Você terceiriza sua <span className="text-emerald-400 font-bold">comida</span> para uma indústria que lucra com a sua doença.

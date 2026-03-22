@@ -130,7 +130,7 @@ export default function ProducaoPequenosEspacos() {
         icon={Layers}
         accentColor="amber"
         backLink="/projeto-autonomo"
-        backLabel="Projeto Autônomo"
+        backLabel="Soberania Orgânica"
       />
 
       <div className="relative z-10 max-w-4xl mx-auto px-5 md:px-8 pt-12">
@@ -307,7 +307,7 @@ export default function ProducaoPequenosEspacos() {
         {/* Footer */}
         <motion.div className="mt-12 text-center" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.5 }}>
           <p className="text-stone-600 text-xs leading-relaxed max-w-md mx-auto">
-            Este módulo faz parte da Fase 03 — Soberania Alimentar do Projeto Autônomo.
+            Este módulo faz parte da Fase 03 — Soberania Alimentar do Soberania Orgânica.
             Conteúdo baseado em técnicas validadas de agricultura urbana e permacultura.
           </p>
         </motion.div>

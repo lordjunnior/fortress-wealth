@@ -123,7 +123,7 @@ export default function ToxicosOcultos() {
         icon={Microscope}
         accentColor="red"
         backLink="/projeto-autonomo"
-        backLabel="Projeto Autônomo"
+        backLabel="Soberania Orgânica"
       />
 
       {/* ═══════════════════════════════════════════════════ */}
@@ -329,7 +329,7 @@ export default function ToxicosOcultos() {
             </p>
             <Link to="/projeto-autonomo"
               className="inline-flex items-center gap-3 bg-red-500 text-white px-10 py-5 font-bold text-sm tracking-wide rounded-xl hover:bg-red-400 hover:shadow-2xl hover:shadow-red-500/20 hover:scale-[1.03] hover:-translate-y-1 transition-all duration-500 group">
-              <Shield size={18} className="group-hover:rotate-12 transition-transform duration-500" /> Voltar ao Projeto Autônomo
+              <Shield size={18} className="group-hover:rotate-12 transition-transform duration-500" /> Voltar ao Soberania Orgânica
             </Link>
           </motion.div>
         </div>
