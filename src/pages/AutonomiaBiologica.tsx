@@ -249,11 +249,6 @@ export default function AutonomiaBiologica() {
         </section>
 
 
-
-            className="group relative block rounded-2xl border border-emerald-500/20 bg-gradient-to-br from-emerald-500/[0.08] to-emerald-600/[0.03] p-8 md:p-10 lg:p-12 hover:border-emerald-500/40 hover:from-emerald-500/[0.12] transition-all duration-700 overflow-hidden"
-          >
-            <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/20">
-              <span className="text-emerald-400 text-[10px] font-bold tracking-[0.2em] uppercase">Investigação</span>
             </div>
             <div className="flex items-start gap-5">
               <div className="w-14 h-14 rounded-xl bg-emerald-500/10 flex items-center justify-center shrink-0 group-hover:bg-emerald-500/20 transition-colors duration-500">
