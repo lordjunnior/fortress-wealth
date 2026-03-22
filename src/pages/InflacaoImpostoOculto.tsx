@@ -76,18 +76,27 @@ export default function InflacaoImpostoOculto() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 pt-12 pb-32">
 
-        {/* O QUE É */}
+        {/* O QUE É — Alternating Grid with Image */}
         <motion.section initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="mb-28">
           <div className="flex items-center gap-3 mb-10">
             <div className="p-2.5 rounded-xl bg-red-500/10 border border-red-500/20"><Percent className="text-red-400" size={20} /></div>
             <h2 className="text-xl font-bold text-stone-200 uppercase tracking-wider" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>O Que É Inflação, De Verdade</h2>
           </div>
-          <div className="bg-white/[0.02] border border-white/[0.06] rounded-2xl p-8 md:p-12">
-            <div className="space-y-5 text-stone-400 leading-relaxed">
-              <p className="text-base">A definição oficial diz que inflação é o <strong className="text-stone-100">"aumento generalizado dos preços"</strong>. Isso é tecnicamente correto, mas profundamente enganoso. É como dizer que a febre é "o aumento da temperatura do corpo" sem mencionar a infecção que a causou.</p>
-              <p className="text-base">A inflação real, a causa e não o sintoma, é a <strong className="text-red-400">expansão da oferta monetária</strong>. Quando o banco central cria dinheiro novo, cada real que já existe perde um pouco de valor.</p>
-              <p className="text-base">O economista Milton Friedman resumiu: <em className="text-stone-100">"A inflação é sempre e em todo lugar um fenômeno monetário."</em> É causada por uma coisa e apenas uma coisa: <strong className="text-stone-100">impressão de dinheiro</strong>.</p>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+            <div className="bg-white/[0.02] border border-white/[0.06] rounded-2xl p-8 md:p-12">
+              <div className="space-y-5 text-stone-400 leading-8">
+                <p className="text-base">A definição oficial diz que inflação é o <strong className="text-stone-100">"aumento generalizado dos preços"</strong>. Isso é tecnicamente correto, mas profundamente enganoso. É como dizer que a febre é "o aumento da temperatura do corpo" sem mencionar a infecção que a causou.</p>
+                <p className="text-base">A inflação real, a causa e não o sintoma, é a <strong className="text-red-400">expansão da oferta monetária</strong>. Quando o banco central cria dinheiro novo, cada real que já existe perde um pouco de valor.</p>
+                <p className="text-base">O economista Milton Friedman resumiu: <em className="text-stone-100">"A inflação é sempre e em todo lugar um fenômeno monetário."</em> É causada por uma coisa e apenas uma coisa: <strong className="text-stone-100">impressão de dinheiro</strong>.</p>
+              </div>
             </div>
+            <motion.div variants={fadeUp} custom={1} className="relative rounded-2xl overflow-hidden border border-white/[0.06] group">
+              <img src={imgNotasDestruidas} alt="Notas sendo destruídas — a realidade da inflação" className="w-full h-[380px] object-cover transition-transform duration-[1.5s] group-hover:scale-[1.03]" style={{ filter: 'brightness(0.7) saturate(0.85)' }} loading="lazy" />
+              <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, transparent 30%, rgba(5,8,8,0.8) 80%, rgba(5,8,8,0.95) 100%)' }} />
+              <div className="absolute bottom-5 left-6 right-6">
+                <p className="text-stone-400 text-[11px] font-mono uppercase tracking-[0.2em] leading-relaxed">A inflação não destrói o papel — destrói o poder de compra que ele representa.</p>
+              </div>
+            </motion.div>
           </div>
         </motion.section>
 
