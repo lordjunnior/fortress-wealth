@@ -114,7 +114,7 @@ const breadcrumbSchema = {
   ],
 };
 
-/* ── Chapter Block Component ── */
+/* ── Chapter Block Component — Alternating 50/50 Grid ── */
 const ChapterBlock = ({
   id, phase, title, icon: Icon, image, imageAlt, children, index,
 }: {
@@ -122,6 +122,8 @@ const ChapterBlock = ({
   image: string; imageAlt: string; children: React.ReactNode; index: number;
 }) => {
   const ref = useRef(null);
+  const isEven = index % 2 === 0;
+
   return (
     <motion.section
       ref={ref}
@@ -129,28 +131,42 @@ const ChapterBlock = ({
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-60px" }}
-      className="relative"
+      className="relative rounded-2xl border border-border/30 bg-card/40 backdrop-blur-sm overflow-hidden"
     >
-      <div className="relative w-full h-56 md:h-72 overflow-hidden rounded-t-sm">
-        <img src={image} alt={imageAlt} className="w-full h-full object-cover" loading="lazy" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background" />
-        <div className="absolute inset-0 bg-gradient-to-r from-background/60 to-transparent" />
-        <motion.div custom={0} variants={fadeUp} className="absolute top-6 left-6">
-          <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-sm bg-primary/20 backdrop-blur-md border border-primary/30 text-primary font-mono text-[10px] tracking-[0.2em] uppercase font-bold">
-            <Icon className="w-3.5 h-3.5" />
-            {phase}
-          </span>
-        </motion.div>
+      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-primary/30 to-transparent z-10" />
+
+      <div className="grid grid-cols-1 lg:grid-cols-2">
+        {/* IMAGE — alternates left/right based on index */}
+        <div className={`relative min-h-[280px] lg:min-h-[400px] ${isEven ? 'order-1 lg:order-none' : 'order-1 lg:order-2'}`}>
+          <img src={image} alt={imageAlt} className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+          <div className={`absolute inset-0 hidden lg:block ${isEven
+            ? 'bg-gradient-to-l from-card/90 via-card/40 to-transparent'
+            : 'bg-gradient-to-r from-card/90 via-card/40 to-transparent'
+          }`} />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-card/80 lg:hidden" />
+          <motion.div custom={0} variants={fadeUp} className="absolute top-5 left-5 z-10">
+            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-primary/20 backdrop-blur-md border border-primary/30 text-primary font-mono text-[9px] tracking-[0.3em] uppercase font-bold">
+              <Icon className="w-3.5 h-3.5" />
+              {phase}
+            </span>
+          </motion.div>
+        </div>
+
+        {/* TEXT — generous padding, elite typography */}
+        <div className={`relative p-8 md:p-10 lg:p-14 flex flex-col justify-center ${isEven ? '' : 'order-none lg:order-1'}`}>
+          <motion.h3 custom={1} variants={fadeUp}
+            className="text-2xl md:text-3xl lg:text-[2.2rem] font-bold tracking-tight leading-[1.3] text-foreground mb-6 uppercase"
+            style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+          >
+            {title}
+          </motion.h3>
+          <motion.div custom={2} variants={fadeUp} className="space-y-4 text-muted-foreground text-base leading-8">
+            {children}
+          </motion.div>
+        </div>
       </div>
 
-      <div className="p-8 md:p-10 bg-card/60 backdrop-blur-sm border border-border/30 rounded-b-sm">
-        <motion.h3 custom={1} variants={fadeUp} className="text-2xl md:text-3xl font-bold tracking-tight text-foreground mb-6 uppercase" style={{ fontFamily: "'Poppins', sans-serif" }}>
-          {title}
-        </motion.h3>
-        <motion.div custom={2} variants={fadeUp} className="space-y-4 text-muted-foreground leading-relaxed">
-          {children}
-        </motion.div>
-      </div>
+      <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-primary/20 to-transparent z-10" />
     </motion.section>
   );
 };
@@ -272,7 +288,7 @@ export default function DolarVirtual() {
             <div className="absolute inset-0 bg-gradient-to-r from-background/80 to-transparent" />
           </motion.div>
 
-          <motion.div style={{ opacity: heroOpacity }} className="relative z-10 h-full flex flex-col justify-end px-6 md:px-12 pb-10 md:pb-16 max-w-4xl">
+          <motion.div style={{ opacity: heroOpacity }} className="relative z-10 h-full flex flex-col justify-end px-6 md:px-12 pb-10 md:pb-16 max-w-5xl">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease: APPLE_EASE }}>
               <Link to="/bitcoin" className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary text-xs font-mono tracking-wider mb-4 transition-colors">
                 <ArrowLeft className="w-3 h-3" /> BITCOIN
@@ -312,7 +328,7 @@ export default function DolarVirtual() {
         </nav>
 
         {/* ── CONTENT ── */}
-        <div className="px-5 md:px-10 lg:px-14 pb-20 space-y-12 md:space-y-16 max-w-4xl">
+        <div className="px-5 md:px-10 lg:px-14 pb-20 space-y-12 md:space-y-16 max-w-7xl">
 
           {/* ── SNIPPET BAIT ── */}
           <SnippetBait
