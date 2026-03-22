@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import CinematicHero from '@/components/CinematicHero';
 import ScrollToTop from '@/components/ScrollToTop';
 import SovereignDisclaimer from '@/components/SovereignDisclaimer';
+import BackToHome from '@/components/BackToHome';
 
 const APPLE_EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
@@ -91,6 +92,9 @@ const Gateway = () => {
       </Helmet>
 
       <ScrollToTop />
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
 
       {/* Scroll Progress */}
       <motion.div

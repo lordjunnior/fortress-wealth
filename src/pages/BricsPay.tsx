@@ -17,6 +17,7 @@ import SovereignDisclaimer from '@/components/SovereignDisclaimer';
 import heroImg from '@/assets/bricspay-hero.jpg';
 import vigilanciaImg from '@/assets/bricspay-vigilancia.jpg';
 import brasilParaguaiImg from '@/assets/offshore-brasil-paraguai.jpg';
+import BackToHome from '@/components/BackToHome';
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 const staggerContainer = { hidden: {}, visible: { transition: { staggerChildren: 0.12 } } };
@@ -153,6 +154,9 @@ export default function BricsPay() {
 
       <PageFloatingToc items={TOC_ITEMS} accentColor="amber" />
       <ScrollToTop />
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
       <LeadCaptureModal isOpen={leadModalOpen} onClose={() => setLeadModalOpen(false)} interesse="assessoria-cedula-paraguaia-bricspay" />
 
       <div className="min-h-screen" style={{ background: '#050808' }}>

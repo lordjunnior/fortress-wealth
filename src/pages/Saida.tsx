@@ -9,6 +9,7 @@ import {
 import EmergencyManual from "@/components/EmergencyManual";
 import CinematicHero from '@/components/CinematicHero';
 import ScrollToTop from '@/components/ScrollToTop';
+import BackToHome from '@/components/BackToHome';
 
 const APPLE_EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
@@ -110,6 +111,9 @@ const Saida = () => {
         <FilmGrain />
         <LightBeams />
         <ScrollToTop />
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
 
         {/* ── Cinematic Hero ── */}
         <CinematicHero

@@ -8,6 +8,7 @@ import ScrollToTop from '@/components/ScrollToTop';
 import MicroCtaResistencia from '@/components/MicroCtaResistencia';
 
 import { CriteriosUso } from '@/components/conhecimento-perdido/CriteriosUso';
+import BackToHome from '@/components/BackToHome';
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 const fadeUp = {
@@ -46,6 +47,9 @@ export default function SegurancaLimites() {
       style={{ background: '#050808' }}
     >
       <ScrollToTop />
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
       <CinematicHero
         image="/heroes/cp-seguranca-limites.webp"
         phase="Bloco 03 · Conhecimento Perdido"

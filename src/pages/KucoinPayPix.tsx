@@ -17,6 +17,7 @@ import kucoinSupermercado from '@/assets/kucoin-supermercado.jpg';
 import kucoinPosto from '@/assets/kucoin-posto.jpg';
 import kucoinCafe from '@/assets/kucoin-cafe.jpg';
 import kucoinFarmacia from '@/assets/kucoin-farmacia.jpg';
+import BackToHome from '@/components/BackToHome';
 
 const AFFILIATE_LINK = 'https://www.kucoin.com/r/rf/QBAPZG6X';
 
@@ -173,6 +174,9 @@ export default function KucoinPayPix() {
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>
       </Helmet>
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
 
       <NobelVFX accentColor="emerald" />
 

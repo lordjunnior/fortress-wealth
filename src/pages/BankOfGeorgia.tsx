@@ -15,6 +15,7 @@ import SovereignDisclaimer from '@/components/SovereignDisclaimer';
 import LeadCaptureModal from '@/components/LeadCaptureModal';
 import heroImg from '@/assets/bank-georgia-hero.jpg';
 import appImg from '@/assets/bank-georgia-app.jpg';
+import BackToHome from '@/components/BackToHome';
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 const staggerContainer = { hidden: {}, visible: { transition: { staggerChildren: 0.12 } } };
@@ -192,6 +193,9 @@ export default function BankOfGeorgia() {
         <script type="application/ld+json">{JSON.stringify({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: FAQ_DATA.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) })}</script>
       </Helmet>
       <ScrollToTop />
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
       <ReadingProgressBar />
       <FloatingToc />
 

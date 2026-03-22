@@ -8,6 +8,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import ScrollToTop from '@/components/ScrollToTop';
 import MicroCtaResistencia from '@/components/MicroCtaResistencia';
 import CinematicHero from '@/components/CinematicHero';
+import BackToHome from '@/components/BackToHome';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -84,6 +85,9 @@ export default function AplicacaoPratica() {
       style={{ background: '#050808' }}
     >
       <ScrollToTop />
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
       <CinematicHero
         image="/heroes/cp-aplicacao-pratica.webp"
         phase="Bloco 04 · Conhecimento Perdido"

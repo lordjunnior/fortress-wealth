@@ -8,6 +8,7 @@ import {
 } from 'lucide-react';
 import CinematicHero from '@/components/CinematicHero';
 import ScrollToTop from '@/components/ScrollToTop';
+import BackToHome from '@/components/BackToHome';
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 const fadeUp = {
@@ -49,6 +50,9 @@ export default function Infraestrutura() {
         <meta name="description" content="Aprenda a montar seu próprio Node Bitcoin: hardware, software, validação soberana. Se você não roda seu próprio node, está confiando no computador de outra pessoa." />
       </Helmet>
       <ScrollToTop />
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
 
       <div className="fixed top-0 left-0 right-0 z-50 h-[3px]">
         <div className="h-full transition-all duration-150 ease-out" style={{ width: `${scrollProgress}%`, background: 'linear-gradient(90deg, #a855f7, #7c3aed)' }} />

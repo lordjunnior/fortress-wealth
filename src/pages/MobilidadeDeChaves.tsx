@@ -11,6 +11,7 @@ import {
 import CinematicHero from '@/components/CinematicHero';
 import NoiseBackground from '@/components/NoiseBackground';
 import DonationCTA from '@/components/DonationCTA';
+import BackToHome from '@/components/BackToHome';
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 const fadeUp = {
@@ -311,6 +312,9 @@ export default function MobilidadeDeChaves() {
         <script type="application/ld+json">{JSON.stringify(howToSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>
       </Helmet>
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
 
       {/* Progress bar */}
       <motion.div className="fixed top-0 left-0 right-0 h-[2px] z-50 origin-left"

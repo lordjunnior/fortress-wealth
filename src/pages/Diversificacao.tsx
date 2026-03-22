@@ -9,6 +9,7 @@ import diversificacaoFalaciaImg from '@/assets/diversificacao-falacia.jpg';
 import diversificacaoBalancaImg from '@/assets/diversificacao-balanca.jpg';
 import diversificacaoCisneImg from '@/assets/diversificacao-cisne-negro.jpg';
 import diversificacaoPortfolioImg from '@/assets/diversificacao-portfolio.jpg';
+import BackToHome from '@/components/BackToHome';
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 const fadeUp = {
@@ -102,6 +103,9 @@ export default function Diversificacao() {
       </Helmet>
 
       <ScrollToTop />
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
 
       <motion.div className="fixed top-0 left-0 right-0 h-[2px] z-50 origin-left" style={{ width: pw, background: 'linear-gradient(90deg, #d4af37, #f59e0b)' }} />
 

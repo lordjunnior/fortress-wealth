@@ -7,6 +7,7 @@ import {
 } from 'lucide-react';
 import CinematicHero from '@/components/CinematicHero';
 import ScrollToTop from '@/components/ScrollToTop';
+import BackToHome from '@/components/BackToHome';
 
 const BIP39_MOCK = [
   "abandon", "ability", "able", "about", "above", "absent", "absorb", "abstract", "absurd", "abuse",
@@ -110,6 +111,9 @@ const GeradorEntropy: React.FC = () => {
         })}</script>
       </Helmet>
       <ScrollToTop />
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
 
       {/* Film Grain */}
       <div className="fixed inset-0 pointer-events-none z-[1]">
