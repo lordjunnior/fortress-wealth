@@ -8,10 +8,10 @@ import { navGroups } from "@/lib/sidebarNavigation";
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
 const authorityIndicators = [
-  { label: "Páginas Técnicas", value: "90+", icon: Activity, color: "text-amber-500" },
-  { label: "Dossiês de Autoridade", value: "14", icon: Shield, color: "text-emerald-400" },
-  { label: "Inflação Acumulada (2020–2026)", value: "42.7%", icon: TrendingDown, color: "text-destructive" },
-  { label: "Bitcoin Halvings Restantes", value: "~28", icon: Flame, color: "text-amber-400" },
+  { label: "Páginas Técnicas", value: "90+", icon: Activity },
+  { label: "Dossiês de Autoridade", value: "14", icon: Shield },
+  { label: "Inflação Acumulada (2020–2026)", value: "42.7%", icon: TrendingDown },
+  { label: "Bitcoin Halvings Restantes", value: "~28", icon: Flame },
 ];
 
 const RightSidebar = () => {
