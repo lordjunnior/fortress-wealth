@@ -280,8 +280,8 @@ const Index = () => {
       <div className="relative z-10 lg:ml-[280px] 2xl:mr-[340px] pb-10">
         <HeroSection />
 
-        <NobelSection className="section-divider px-5 md:px-8" delay={0.05}>
-          <div className="max-w-4xl mx-auto lg:ml-0">
+        <NobelSection className="section-divider px-5 md:px-10 lg:px-14" delay={0.05}>
+          <div className="max-w-6xl mx-auto">
             <SnippetBait
               text="Enquanto você lê este parágrafo, o Real perdeu mais poder de compra. A diferença entre quem preserva patrimônio e quem financia a própria ruína é uma decisão: aprender a blindar o que é seu."
               cta="Comece pela autocustódia →"
