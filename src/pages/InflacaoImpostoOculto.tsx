@@ -6,6 +6,9 @@ import { motion } from 'framer-motion';
 import CinematicHero from '@/components/CinematicHero';
 import ScrollToTop from '@/components/ScrollToTop';
 import { NAV_ITEMS, MECANISMO, CANTILLON_NIVEIS, NUMEROS_REAIS, MENTIRAS, FERRAMENTAS, TIMELINE_ITEMS, FAQ_ITEMS } from '@/lib/inflacaoData';
+import imgNotasDestruidas from '@/assets/inflacao-notas-destruidas.jpg';
+import imgBalancaCantillon from '@/assets/inflacao-balanca-cantillon.jpg';
+import imgImpressoraDinheiro from '@/assets/inflacao-impressora-dinheiro.jpg';
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 const fadeUp = {
@@ -73,18 +76,27 @@ export default function InflacaoImpostoOculto() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 pt-12 pb-32">
 
-        {/* O QUE É */}
+        {/* O QUE É — Alternating Grid with Image */}
         <motion.section initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="mb-28">
           <div className="flex items-center gap-3 mb-10">
             <div className="p-2.5 rounded-xl bg-red-500/10 border border-red-500/20"><Percent className="text-red-400" size={20} /></div>
             <h2 className="text-xl font-bold text-stone-200 uppercase tracking-wider" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>O Que É Inflação, De Verdade</h2>
           </div>
-          <div className="bg-white/[0.02] border border-white/[0.06] rounded-2xl p-8 md:p-12">
-            <div className="space-y-5 text-stone-400 leading-relaxed">
-              <p className="text-base">A definição oficial diz que inflação é o <strong className="text-stone-100">"aumento generalizado dos preços"</strong>. Isso é tecnicamente correto, mas profundamente enganoso. É como dizer que a febre é "o aumento da temperatura do corpo" sem mencionar a infecção que a causou.</p>
-              <p className="text-base">A inflação real, a causa e não o sintoma, é a <strong className="text-red-400">expansão da oferta monetária</strong>. Quando o banco central cria dinheiro novo, cada real que já existe perde um pouco de valor.</p>
-              <p className="text-base">O economista Milton Friedman resumiu: <em className="text-stone-100">"A inflação é sempre e em todo lugar um fenômeno monetário."</em> É causada por uma coisa e apenas uma coisa: <strong className="text-stone-100">impressão de dinheiro</strong>.</p>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+            <div className="bg-white/[0.02] border border-white/[0.06] rounded-2xl p-8 md:p-12">
+              <div className="space-y-5 text-stone-400 leading-8">
+                <p className="text-base">A definição oficial diz que inflação é o <strong className="text-stone-100">"aumento generalizado dos preços"</strong>. Isso é tecnicamente correto, mas profundamente enganoso. É como dizer que a febre é "o aumento da temperatura do corpo" sem mencionar a infecção que a causou.</p>
+                <p className="text-base">A inflação real, a causa e não o sintoma, é a <strong className="text-red-400">expansão da oferta monetária</strong>. Quando o banco central cria dinheiro novo, cada real que já existe perde um pouco de valor.</p>
+                <p className="text-base">O economista Milton Friedman resumiu: <em className="text-stone-100">"A inflação é sempre e em todo lugar um fenômeno monetário."</em> É causada por uma coisa e apenas uma coisa: <strong className="text-stone-100">impressão de dinheiro</strong>.</p>
+              </div>
             </div>
+            <motion.div variants={fadeUp} custom={1} className="relative rounded-2xl overflow-hidden border border-white/[0.06] group">
+              <img src={imgNotasDestruidas} alt="Notas sendo destruídas — a realidade da inflação" className="w-full h-[380px] object-cover transition-transform duration-[1.5s] group-hover:scale-[1.03]" style={{ filter: 'brightness(0.7) saturate(0.85)' }} loading="lazy" />
+              <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, transparent 30%, rgba(5,8,8,0.8) 80%, rgba(5,8,8,0.95) 100%)' }} />
+              <div className="absolute bottom-5 left-6 right-6">
+                <p className="text-stone-400 text-[11px] font-mono uppercase tracking-[0.2em] leading-relaxed">A inflação não destrói o papel — destrói o poder de compra que ele representa.</p>
+              </div>
+            </motion.div>
           </div>
         </motion.section>
 
@@ -127,43 +139,63 @@ export default function InflacaoImpostoOculto() {
           </div>
         </motion.section>
 
-        {/* COMO FUNCIONA */}
+        {/* COMO FUNCIONA — Image Left, Content Right */}
         <motion.section initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="mb-28">
           <div className="flex items-center gap-3 mb-10">
             <div className="p-2.5 rounded-xl bg-red-500/10 border border-red-500/20"><Landmark className="text-red-400" size={20} /></div>
             <h2 className="text-xl font-bold text-stone-200 uppercase tracking-wider" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Como a Inflação Funciona</h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {MECANISMO.map((item, i) => (
-              <motion.div key={i} variants={fadeUp} custom={i + 1} className="bg-white/[0.02] border border-red-500/10 rounded-2xl p-8 hover:-translate-y-1 transition-transform duration-300">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-10 h-10 rounded-full bg-red-500/10 border border-red-500/20 flex items-center justify-center"><item.icon className="text-red-400" size={18} /></div>
-                  <div><span className="text-red-500/60 font-bold text-[10px] tracking-wider">ETAPA {i + 1}</span><h3 className="text-stone-200 font-bold uppercase text-sm tracking-tight italic">{item.titulo}</h3></div>
-                </div>
-                <p className="text-stone-400 text-xs leading-relaxed">{item.descricao}</p>
-              </motion.div>
-            ))}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start mb-10">
+            <motion.div variants={fadeUp} custom={1} className="relative rounded-2xl overflow-hidden border border-white/[0.06] group">
+              <img src={imgImpressoraDinheiro} alt="Impressora de dinheiro do banco central" className="w-full h-[380px] object-cover transition-transform duration-[1.5s] group-hover:scale-[1.03]" style={{ filter: 'brightness(0.6) saturate(0.85)' }} loading="lazy" />
+              <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, transparent 30%, rgba(5,8,8,0.8) 80%, rgba(5,8,8,0.95) 100%)' }} />
+              <div className="absolute bottom-5 left-6 right-6">
+                <p className="text-stone-400 text-[11px] font-mono uppercase tracking-[0.2em] leading-relaxed">A máquina de impressão não descansa. Seu poder de compra, sim.</p>
+              </div>
+            </motion.div>
+            <div className="space-y-4">
+              {MECANISMO.map((item, i) => (
+                <motion.div key={i} variants={fadeUp} custom={i + 1} className="bg-white/[0.02] border border-red-500/10 rounded-2xl p-6 hover:-translate-y-1 transition-transform duration-300">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 rounded-full bg-red-500/10 border border-red-500/20 flex items-center justify-center"><item.icon className="text-red-400" size={18} /></div>
+                    <div><span className="text-red-500/60 font-bold text-[10px] tracking-wider">ETAPA {i + 1}</span><h3 className="text-stone-200 font-bold uppercase text-sm tracking-tight italic">{item.titulo}</h3></div>
+                  </div>
+                  <p className="text-stone-400 text-sm leading-8">{item.descricao}</p>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </motion.section>
 
-        {/* EFEITO CANTILLON */}
+        {/* EFEITO CANTILLON — Content Left, Image Right */}
         <motion.section initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="mb-28">
           <div className="flex items-center gap-3 mb-10">
             <div className="p-2.5 rounded-xl bg-red-500/10 border border-red-500/20"><Scale className="text-red-400" size={20} /></div>
             <h2 className="text-xl font-bold text-stone-200 uppercase tracking-wider" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Efeito Cantillon</h2>
           </div>
-          <p className="text-stone-400 text-base leading-relaxed mb-10 max-w-3xl">O dinheiro novo não aparece igualmente para todos. Ele segue uma <strong className="text-stone-100">hierarquia de acesso</strong>, e você está no final da fila:</p>
-          <div className="bg-white/[0.02] border border-white/[0.06] rounded-2xl overflow-hidden">
-            {CANTILLON_NIVEIS.map((n, i) => (
-              <div key={i} className={`grid grid-cols-[60px_1fr_1fr_1fr] group hover:bg-red-500/[0.03] transition-colors ${i < CANTILLON_NIVEIS.length - 1 ? 'border-b border-white/5' : ''}`}>
-                <div className="p-4 flex items-center justify-center"><span className={`font-bold text-sm font-mono ${i >= 3 ? 'text-red-400' : 'text-emerald-500/60'}`}>{n.nivel}</span></div>
-                <div className="p-4"><span className="text-stone-200 font-bold text-xs">{n.quem}</span></div>
-                <div className="p-4"><span className="text-stone-400 text-xs">{n.efeito}</span></div>
-                <div className="p-4"><span className={`text-xs font-bold ${i >= 3 ? 'text-red-400' : 'text-emerald-400/60'}`}>{n.resultado}</span></div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start mb-6">
+            <div>
+              <p className="text-stone-400 text-base leading-8 mb-8">O dinheiro novo não aparece igualmente para todos. Ele segue uma <strong className="text-stone-100">hierarquia de acesso</strong>, e você está no final da fila:</p>
+              <div className="bg-white/[0.02] border border-white/[0.06] rounded-2xl overflow-hidden">
+                {CANTILLON_NIVEIS.map((n, i) => (
+                  <div key={i} className={`grid grid-cols-[60px_1fr_1fr_1fr] group hover:bg-red-500/[0.03] transition-colors ${i < CANTILLON_NIVEIS.length - 1 ? 'border-b border-white/5' : ''}`}>
+                    <div className="p-4 flex items-center justify-center"><span className={`font-bold text-sm font-mono ${i >= 3 ? 'text-red-400' : 'text-emerald-500/60'}`}>{n.nivel}</span></div>
+                    <div className="p-4"><span className="text-stone-200 font-bold text-xs">{n.quem}</span></div>
+                    <div className="p-4"><span className="text-stone-400 text-xs">{n.efeito}</span></div>
+                    <div className="p-4"><span className={`text-xs font-bold ${i >= 3 ? 'text-red-400' : 'text-emerald-400/60'}`}>{n.resultado}</span></div>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
+            <motion.div variants={fadeUp} custom={1} className="relative rounded-2xl overflow-hidden border border-white/[0.06] group">
+              <img src={imgBalancaCantillon} alt="Balança desequilibrada — Efeito Cantillon" className="w-full h-[420px] object-cover transition-transform duration-[1.5s] group-hover:scale-[1.03]" style={{ filter: 'brightness(0.65) saturate(0.85)' }} loading="lazy" />
+              <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, transparent 30%, rgba(5,8,8,0.8) 80%, rgba(5,8,8,0.95) 100%)' }} />
+              <div className="absolute bottom-5 left-6 right-6">
+                <p className="text-stone-400 text-[11px] font-mono uppercase tracking-[0.2em] leading-relaxed">Quem imprime fica rico. Quem poupa empobrece. A balança nunca esteve equilibrada.</p>
+              </div>
+            </motion.div>
           </div>
-          <div className="bg-red-950/20 border border-red-500/20 rounded-2xl p-6 mt-6">
+          <div className="bg-red-950/20 border border-red-500/20 rounded-2xl p-6">
             <p className="text-red-400 text-[10px] font-bold uppercase tracking-wider mb-2">A Verdade Brutal</p>
             <p className="text-stone-100 font-bold text-base leading-tight uppercase italic">A inflação é a maior máquina de transferência de riqueza da história: dos pobres para os ricos, dos poupadores para os impressores.</p>
           </div>
