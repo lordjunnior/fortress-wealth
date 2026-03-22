@@ -245,7 +245,7 @@ export default function ProjetoAutonomo() {
           >
             <Compass className="text-emerald-400" size={16} />
             <span className="text-emerald-300/90 text-[10px] md:text-xs font-semibold">
-              Guia completo de autossuficiência: sobrevivência, saúde natural, produção de alimento e discernimento
+              Manual da Terra: decifre o código da natureza para curar, alimentar e proteger sua linhagem
             </span>
           </motion.div>
 
