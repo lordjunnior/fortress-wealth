@@ -14,6 +14,9 @@ import {
 import CinematicHero from '@/components/CinematicHero';
 import ScrollToTop from '@/components/ScrollToTop';
 import qrCodeImage from '@/assets/qrcode-lightning.jpeg';
+import lightningCircuitImg from '@/assets/lightning-bolt-circuit.jpg';
+import lightningMobileImg from '@/assets/lightning-pagamento-mobile.jpg';
+import lightningRedeImg from '@/assets/lightning-rede-global.jpg';
 import BackToHome from '@/components/BackToHome';
 
 /* ─── CONSTANTS ─── */
