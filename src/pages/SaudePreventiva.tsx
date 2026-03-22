@@ -94,24 +94,50 @@ const SaudePreventiva = () => {
       <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-8 lg:px-12 pt-12 pb-32">
 
         {/* Hero context */}
-        <motion.div initial="hidden" animate="visible" variants={fadeUp} custom={1} className="mb-28 max-w-3xl space-y-4 text-stone-300 leading-relaxed">
-          <p className="text-sm">Saúde preventiva é a manutenção da <span className="text-stone-100 font-medium">homeostase.</span></p>
-          <p className="text-sm">Homeostase é a capacidade do corpo de manter equilíbrio interno mesmo sob estresse.</p>
-          <p className="text-sm text-stone-100 font-medium">Quando esse equilíbrio falha, surge:</p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mt-2">
-            {['Inflamação crônica', 'Resistência à insulina', 'Disfunção hormonal', 'Fadiga persistente', 'Vulnerabilidade imunológica'].map((s) => (
-              <div key={s} className="flex items-center gap-2 text-xs bg-red-950/30 border border-red-800/15 rounded-xl px-3 py-2">
-                <AlertTriangle size={11} className="text-red-400 shrink-0" />
-                <span className="text-stone-300">{s}</span>
+        <div className="grid lg:grid-cols-3 gap-10 mb-28">
+          <motion.div initial="hidden" animate="visible" variants={fadeUp} custom={1} className="lg:col-span-2 space-y-4 text-stone-300 leading-relaxed">
+            <p className="text-sm">Saúde preventiva é a manutenção da <span className="text-stone-100 font-medium">homeostase.</span></p>
+            <p className="text-sm">Homeostase é a capacidade do corpo de manter equilíbrio interno mesmo sob estresse.</p>
+            <p className="text-sm text-stone-100 font-medium">Quando esse equilíbrio falha, surge:</p>
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mt-2">
+              {['Inflamação crônica', 'Resistência à insulina', 'Disfunção hormonal', 'Fadiga persistente', 'Vulnerabilidade imunológica'].map((s) => (
+                <div key={s} className="flex items-center gap-2 text-xs bg-red-950/30 border border-red-800/15 rounded-xl px-3 py-2">
+                  <AlertTriangle size={11} className="text-red-400 shrink-0" />
+                  <span className="text-stone-300">{s}</span>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Sidebar sticky de dados */}
+          <motion.div initial="hidden" animate="visible" variants={fadeUp} custom={2} className="lg:sticky lg:top-24 self-start">
+            <div className="rounded-2xl border border-emerald-500/15 bg-emerald-500/[0.04] p-6">
+              <span className="text-emerald-400 font-mono text-[10px] font-bold tracking-[0.3em] uppercase block mb-3">Status de Blindagem</span>
+              <div className="space-y-3 mb-4">
+                {[
+                  { label: 'Exposição Solar', status: 'Pilar 01' },
+                  { label: 'Sono Reparador', status: 'Pilar 02' },
+                  { label: 'Movimento', status: 'Pilar 03' },
+                  { label: 'Alimentação', status: 'Pilar 04' },
+                  { label: 'Controle Cortisol', status: 'Pilar 05' },
+                ].map((p) => (
+                  <div key={p.label} className="flex items-center justify-between text-xs">
+                    <span className="text-stone-400">{p.label}</span>
+                    <span className="text-emerald-400 font-mono font-bold">{p.status}</span>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-        </motion.div>
+              <div className="border-t border-white/5 pt-3">
+                <p className="text-[10px] text-stone-600 uppercase tracking-wider">Conhecimento Verificado · Março 2026</p>
+              </div>
+            </div>
+          </motion.div>
+        </div>
 
         {/* Module integration */}
-        <motion.div initial="hidden" animate="visible" variants={fadeUp} custom={2} className="mt-10 mb-28 max-w-3xl">
+        <motion.div initial="hidden" animate="visible" variants={fadeUp} custom={2} className="mt-10 mb-28">
           <p className="text-stone-200 font-bold text-sm mb-4">Este módulo integra:</p>
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-3">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
             {[
               { label: 'Exposição solar', icon: Sun, color: 'text-amber-400' },
               { label: 'Sono', icon: Moon, color: 'text-indigo-400' },
