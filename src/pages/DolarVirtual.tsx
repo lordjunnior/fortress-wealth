@@ -261,7 +261,7 @@ export default function DolarVirtual() {
       <AppSidebar />
       <MobileNav />
 
-      <div className="relative z-10 lg:ml-[260px]">
+      <div className="relative z-10 lg:ml-[280px]">
         {/* ── HERO ── */}
         <div ref={heroRef} className="relative h-[60vh] md:h-[70vh] overflow-hidden">
           <motion.div style={{ y: heroY }} className="absolute inset-0">
