@@ -316,7 +316,7 @@ export default function ProjetoAutonomo() {
           initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1 }}
         >
           <div className="w-px h-20 bg-gradient-to-b from-transparent via-emerald-500/30 to-transparent" />
-          <span className="text-emerald-500/30 text-[9px] font-bold tracking-[0.3em] uppercase [writing-mode:vertical-lr]">4 Fases</span>
+          <span className="text-emerald-500/30 text-[9px] font-bold tracking-[0.3em] uppercase [writing-mode:vertical-lr]">5 Fases</span>
           <div className="w-px h-20 bg-gradient-to-b from-transparent via-emerald-500/30 to-transparent" />
         </motion.div>
       </section>
