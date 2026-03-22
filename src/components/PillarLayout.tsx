@@ -5,6 +5,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import NoiseBackground from "@/components/NoiseBackground";
 import AppSidebar from "@/components/AppSidebar";
 import MobileNav from "@/components/MobileNav";
+import RightSidebar from "@/components/RightSidebar";
 import NetworkTicker from "@/components/NetworkTicker";
 import type { Pillar } from "@/lib/pillars";
 import SimboloOculto from '@/components/SimboloOculto';
