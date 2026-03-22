@@ -244,7 +244,7 @@ function AnimatedDivider() {
 /* ─── FLOATING TOC ─── */
 function FloatingTOC({ activeChapter }: { activeChapter: string }) {
   return (
-    <div className="fixed right-6 top-1/2 -translate-y-1/2 z-40 hidden lg:block">
+    <div className="fixed right-6 top-1/2 -translate-y-1/2 z-40 hidden lg:block 2xl:hidden">
       <div className="flex flex-col items-end gap-1.5">
         {chapters.map((ch) => (
           <a key={ch.id} href={`#${ch.id}`}

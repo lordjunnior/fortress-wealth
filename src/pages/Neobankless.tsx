@@ -112,7 +112,7 @@ const FloatingToc = () => {
     <AnimatePresence>
       {show && (
         <motion.nav initial={{ opacity: 0, x: 24 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 24 }}
-          transition={{ duration: 0.5, ease: EASE }} className="fixed right-6 top-1/2 -translate-y-1/2 z-[55] hidden xl:flex flex-col gap-4">
+          transition={{ duration: 0.5, ease: EASE }} className="fixed right-6 top-1/2 -translate-y-1/2 z-[55] hidden xl:flex 2xl:hidden flex-col gap-4">
           {CHAPTERS.map(c => (
             <a key={c.id} href={`#${c.id}`}
               className={`group flex items-center gap-3 transition-all duration-400 ${active === c.id ? 'opacity-100' : 'opacity-25 hover:opacity-60'}`}>
