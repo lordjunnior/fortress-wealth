@@ -212,7 +212,7 @@ const Confisco1990 = () => {
             <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-transparent to-background/80" />
           </div>
 
-          <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
+          <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -246,7 +246,7 @@ const Confisco1990 = () => {
         </section>
 
         {/* SnippetBait */}
-        <div className="max-w-4xl mx-auto px-6">
+        <div className="max-w-7xl mx-auto px-6">
           <SnippetBait
             text="Em 1990, bastou uma assinatura para confiscar 80% do dinheiro da população. O mecanismo legal ainda existe. A diferença é que hoje existe um ativo que nenhum decreto pode bloquear."
             cta="Aprenda autocustódia Bitcoin →"
@@ -255,7 +255,7 @@ const Confisco1990 = () => {
         </div>
 
         {/* Impact Stats */}
-        <section className="max-w-4xl mx-auto px-6 -mt-8 relative z-20">
+        <section className="max-w-7xl mx-auto px-6 -mt-8 relative z-20">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -290,12 +290,12 @@ const Confisco1990 = () => {
         </section>
 
         {/* Connector */}
-        <div className="relative max-w-4xl mx-auto">
+        <div className="relative max-w-7xl mx-auto">
           <div className="absolute left-1/2 -translate-x-1/2 top-0 w-px h-32 bg-gradient-to-b from-destructive/20 to-transparent" />
         </div>
 
         {/* Chapters */}
-        <div className="max-w-3xl mx-auto px-6 py-16 space-y-24">
+        <div className="max-w-7xl mx-auto px-6 py-16 space-y-24">
           <Link
             to="/"
             className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
