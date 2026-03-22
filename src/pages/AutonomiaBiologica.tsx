@@ -116,8 +116,8 @@ export default function AutonomiaBiologica() {
   return (
     <>
       <Helmet>
-        <title>Autonomia Biológica: 12 Plantas Medicinais com Fichas Técnicas Completas | Lord Junnior</title>
-        <meta name="description" content="Biblioteca técnica de 12 plantas medicinais essenciais com dosagens, contraindicações, métodos de preparo e mecanismos de ação. Biohacking e saúde soberana documentados com rigor farmacológico." />
+        <title>Autonomia Biológica: 14 Plantas e Compostos Medicinais com Fichas Técnicas Completas | Lord Junnior</title>
+        <meta name="description" content="Biblioteca técnica de 14 plantas e compostos medicinais essenciais com dosagens, contraindicações, métodos de preparo e mecanismos de ação. Biohacking e saúde soberana documentados com rigor farmacológico." />
         <link rel="canonical" href="https://lordjunnior.com.br/soberania-organica/autonomia-biologica" />
         <meta property="og:title" content="Autonomia Biológica: Protocolos de Biohacking e Saúde Soberana" />
         <meta property="og:description" content="12 plantas medicinais documentadas com rigor farmacológico. Fichas técnicas, dosagens seguras e métodos de preparo validados." />
