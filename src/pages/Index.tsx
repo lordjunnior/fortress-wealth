@@ -291,8 +291,8 @@ const Index = () => {
         </NobelSection>
 
         {/* ── ACTION CARDS — IMAGE + TEXT BALANCED GRID ── */}
-        <NobelSection className="section-divider px-5 md:px-8" delay={0.05}>
-          <div className="max-w-5xl mx-auto lg:ml-0 space-y-5">
+        <NobelSection className="section-divider px-5 md:px-10 lg:px-14" delay={0.05}>
+          <div className="max-w-6xl mx-auto space-y-8">
 
             {/* BITCOIN ANÔNIMO — text left, image right */}
             <motion.div
@@ -303,33 +303,33 @@ const Index = () => {
             >
               <Link
                 to="/comprar-bitcoin-anonimo"
-                className="group relative block rounded-xl border border-primary/15 bg-card/40 backdrop-blur-sm overflow-hidden hover:border-primary/35 transition-all duration-500"
+                className="group relative block rounded-2xl border border-primary/15 bg-card/40 backdrop-blur-sm overflow-hidden hover:border-primary/35 transition-all duration-500"
               >
                 <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-primary/40 to-transparent z-10" />
 
                 <div className="grid grid-cols-1 md:grid-cols-2">
-                  {/* TEXT */}
-                  <div className="relative p-6 md:p-8 lg:p-10 flex flex-col justify-center">
-                    <div className="absolute -top-12 -left-12 w-40 h-40 rounded-full bg-primary/8 blur-3xl pointer-events-none" />
-                    <div className="relative">
-                      <p className="font-mono text-[9px] tracking-[0.3em] text-destructive/70 uppercase mb-3">[ALERTA DE PRIVACIDADE]</p>
-                      <h3 className="text-foreground font-bold text-xl md:text-2xl mb-3 tracking-tight leading-tight" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+                  {/* TEXT — generous padding, proper leading */}
+                  <div className="relative p-8 md:p-10 lg:p-14 flex flex-col justify-center">
+                    <div className="absolute -top-12 -left-12 w-48 h-48 rounded-full bg-primary/8 blur-3xl pointer-events-none" />
+                    <div className="relative space-y-4">
+                      <p className="font-mono text-[9px] tracking-[0.3em] text-destructive/70 uppercase">[ALERTA DE PRIVACIDADE]</p>
+                      <h3 className="text-foreground font-bold text-2xl md:text-3xl lg:text-[2.2rem] tracking-tight leading-[1.3]" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
                         QUER COMPRAR R$10 EM BTC?
                       </h3>
-                      <p className="text-sm md:text-base text-muted-foreground leading-relaxed mb-5">
+                      <p className="text-base text-muted-foreground leading-8">
                         Use a <span className="text-primary font-semibold">Wallet of Satoshi</span> e o protocolo <span className="text-primary font-semibold">RoboSats</span> para ficar fora do radar. Sem KYC, sem rastro.
                       </p>
-                      <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-primary/10 border border-primary/25 text-primary text-xs font-bold tracking-[0.15em] uppercase transition-all duration-500 group-hover:bg-primary/20">
+                      <span className="inline-flex items-center gap-2.5 px-6 py-3 rounded-lg bg-primary/10 border border-primary/25 text-primary text-xs font-bold tracking-[0.15em] uppercase transition-all duration-500 group-hover:bg-primary/20">
                         ACESSAR TUTORIAL
-                        <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
+                        <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                       </span>
                     </div>
                   </div>
 
-                  {/* IMAGE */}
-                  <div className="relative min-h-[200px] md:min-h-0">
+                  {/* IMAGE — full bleed, proper min-height */}
+                  <div className="relative min-h-[240px] md:min-h-[320px]">
                     <img src={cardBtcAnonimo} alt="Transação Lightning Bitcoin" className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
-                    <div className="absolute inset-0 bg-gradient-to-r from-card/80 via-card/20 to-transparent hidden md:block" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-card/80 via-card/30 to-transparent hidden md:block" />
                     <div className="absolute inset-0 bg-gradient-to-b from-card/60 via-transparent to-transparent md:hidden" />
                   </div>
                 </div>
@@ -338,7 +338,7 @@ const Index = () => {
               </Link>
             </motion.div>
 
-            {/* DÓLAR VIRTUAL — image left, text right (alternating) */}
+            {/* DÓLAR VIRTUAL — image left, text right (alternating rhythm) */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -347,32 +347,32 @@ const Index = () => {
             >
               <Link
                 to="/dolar-virtual"
-                className="group relative block rounded-xl border border-chart-green/15 bg-card/40 backdrop-blur-sm overflow-hidden hover:border-chart-green/35 transition-all duration-500"
+                className="group relative block rounded-2xl border border-chart-green/15 bg-card/40 backdrop-blur-sm overflow-hidden hover:border-chart-green/35 transition-all duration-500"
               >
                 <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-chart-green/40 to-transparent z-10" />
 
                 <div className="grid grid-cols-1 md:grid-cols-2">
                   {/* IMAGE (left on desktop) */}
-                  <div className="relative min-h-[200px] md:min-h-0 order-1 md:order-none">
+                  <div className="relative min-h-[240px] md:min-h-[320px] order-1 md:order-none">
                     <img src={cardDolarVirtual} alt="Hardware wallet com LED verde" className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
-                    <div className="absolute inset-0 bg-gradient-to-l from-card/80 via-card/20 to-transparent hidden md:block" />
+                    <div className="absolute inset-0 bg-gradient-to-l from-card/80 via-card/30 to-transparent hidden md:block" />
                     <div className="absolute inset-0 bg-gradient-to-b from-card/60 via-transparent to-transparent md:hidden" />
                   </div>
 
                   {/* TEXT (right on desktop) */}
-                  <div className="relative p-6 md:p-8 lg:p-10 flex flex-col justify-center order-none md:order-1">
-                    <div className="absolute -top-12 -right-12 w-40 h-40 rounded-full bg-chart-green/8 blur-3xl pointer-events-none" />
-                    <div className="relative">
-                      <p className="font-mono text-[9px] tracking-[0.3em] text-chart-green/70 uppercase mb-3">[NOVO GUIA PRÁTICO]</p>
-                      <h3 className="text-foreground font-bold text-xl md:text-2xl mb-3 tracking-tight leading-tight" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+                  <div className="relative p-8 md:p-10 lg:p-14 flex flex-col justify-center order-none md:order-1">
+                    <div className="absolute -top-12 -right-12 w-48 h-48 rounded-full bg-chart-green/8 blur-3xl pointer-events-none" />
+                    <div className="relative space-y-4">
+                      <p className="font-mono text-[9px] tracking-[0.3em] text-chart-green/70 uppercase">[NOVO GUIA PRÁTICO]</p>
+                      <h3 className="text-foreground font-bold text-2xl md:text-3xl lg:text-[2.2rem] tracking-tight leading-[1.3]" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
                         COMO COMPRAR DÓLAR VIRTUAL (USDT)
                       </h3>
-                      <p className="text-sm md:text-base text-muted-foreground leading-relaxed mb-5">
+                      <p className="text-base text-muted-foreground leading-8">
                         <span className="text-chart-green font-semibold">Jade Wallet</span> + <span className="text-chart-green font-semibold">AlfredP2P</span> + Rede Liquid. Sem corretora, sem KYC, com hardware wallet.
                       </p>
-                      <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-chart-green/10 border border-chart-green/25 text-chart-green text-xs font-bold tracking-[0.15em] uppercase transition-all duration-500 group-hover:bg-chart-green/20">
+                      <span className="inline-flex items-center gap-2.5 px-6 py-3 rounded-lg bg-chart-green/10 border border-chart-green/25 text-chart-green text-xs font-bold tracking-[0.15em] uppercase transition-all duration-500 group-hover:bg-chart-green/20">
                         ACESSAR TUTORIAL
-                        <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
+                        <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                       </span>
                     </div>
                   </div>
