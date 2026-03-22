@@ -63,7 +63,7 @@ const HeroSection = () => {
           loop
           muted
           playsInline
-          poster={HERO_POSTER_URL}
+          preload="auto"
           className="absolute inset-0 w-full h-full object-cover scale-110"
           style={{ filter: "brightness(0.3) saturate(0.7)" }}
         >
