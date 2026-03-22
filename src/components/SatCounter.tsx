@@ -9,7 +9,7 @@ const GLITCH_INTERVAL = 40;
 const LAUNCH_DATE = new Date("2025-01-15T00:00:00Z").getTime();
 const BASE_SATS = 753;
 // ~50 sats/hora média = ~1200 sats/dia = crescimento orgânico plausível
-const SATS_PER_MS = 50 / 3_600_000;
+const SATS_PER_MS = 50 / (2 * 3_600_000);
 
 const getTimeSats = () => {
   const elapsed = Date.now() - LAUNCH_DATE;
