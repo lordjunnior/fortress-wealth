@@ -109,7 +109,7 @@ export const navGroups: NavGroup[] = [
   {
     label: "Soberania Orgânica",
     icon: Leaf,
-    color: "text-green-500",
+    color: undefined,
     items: [
       { label: "Hub Soberania Orgânica", route: "/soberania-organica" },
       { label: "Saúde Preventiva", route: "/soberania-organica/saude-preventiva" },
