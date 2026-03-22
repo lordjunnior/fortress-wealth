@@ -604,32 +604,21 @@ export default function BabosaAcemannan() {
             </p>
           </motion.div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
             {DEPOIMENTOS.map((d, i) => (
-              <motion.div
+              <RealTestimonial
                 key={d.nome}
-                {...fade(i * 0.03)}
-                className="rounded-2xl border border-emerald-500/10 bg-emerald-500/[0.03] p-5 hover:border-emerald-500/25 hover:bg-emerald-500/[0.06] transition-all duration-500 flex flex-col"
-              >
-                {/* Header com avatar de iniciais */}
-                <div className="flex items-center gap-3 mb-4">
-                  <Avatar nome={d.nome} idx={i} />
-                  <div className="min-w-0">
-                    <p className="text-stone-200 font-bold text-sm truncate">{d.nome}</p>
-                    <p className="text-stone-600 text-[11px]">{d.local}</p>
-                  </div>
-                  <Quote size={14} className="text-emerald-500/20 ml-auto shrink-0" />
-                </div>
-
-                {/* Badge destaque */}
-                <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/15 mb-3 self-start">
-                  <Leaf size={10} className="text-emerald-400" />
-                  <span className="text-emerald-400 text-[10px] font-bold uppercase tracking-wider">{d.destaque}</span>
-                </div>
-
-                {/* Texto */}
-                <p className="text-stone-400 text-sm leading-relaxed flex-1">"{d.texto}"</p>
-              </motion.div>
+                testimonial={{
+                  name: d.nome,
+                  location: d.local,
+                  platform: 'direct',
+                  text: d.texto,
+                  badge: d.destaque,
+                  avatar: AVATAR_MAP[d.nome],
+                }}
+                index={i}
+                accentColor="emerald"
+              />
             ))}
           </div>
 
