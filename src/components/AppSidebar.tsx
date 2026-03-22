@@ -97,6 +97,14 @@ const AppSidebar = () => {
           src={profilePhoto}
           alt="Lord Junnior"
           className="w-10 h-10 rounded-full object-cover ring-2 ring-gold/30 flex-shrink-0"
+          onError={(e) => {
+            const target = e.currentTarget;
+            target.style.display = 'none';
+            const fallback = document.createElement('div');
+            fallback.className = 'w-10 h-10 rounded-full bg-gold/20 ring-2 ring-gold/30 flex-shrink-0 flex items-center justify-center text-gold font-bold text-sm';
+            fallback.textContent = 'LJ';
+            target.parentNode?.insertBefore(fallback, target);
+          }}
         />
         <div className="flex-1 min-w-0">
           <h2 className="font-bold text-[11px] tracking-[0.15em] text-foreground">LORD JUNNIOR</h2>

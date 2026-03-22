@@ -56,6 +56,14 @@ const HeroSection = () => {
         style={{ y: bgY }}
         className="absolute inset-0 z-0"
       >
+        {/* Poster fallback for iframe/preview environments that block autoplay */}
+        <img
+          src="/heroes/hero-poster.webp"
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover scale-110"
+          style={{ filter: "brightness(0.3) saturate(0.7)" }}
+        />
         <video
           ref={videoRef}
           autoPlay
@@ -63,6 +71,7 @@ const HeroSection = () => {
           muted
           playsInline
           preload="auto"
+          poster="/heroes/hero-poster.webp"
           className="absolute inset-0 w-full h-full object-cover scale-110"
           style={{ filter: "brightness(0.3) saturate(0.7)" }}
         >
