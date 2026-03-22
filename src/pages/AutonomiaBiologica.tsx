@@ -184,9 +184,9 @@ export default function AutonomiaBiologica() {
             <span className="text-emerald-500/40 text-[10px] font-bold tracking-[0.4em] uppercase block mb-2">Catálogo</span>
             <h2 className="text-3xl md:text-4xl font-extrabold text-white uppercase tracking-wide"
               style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-              12 Plantas Essenciais
+              Plantas & Compostos Essenciais
             </h2>
-            <p className="text-stone-500 text-sm mt-2">Clique em cada planta para acessar a ficha técnica completa.</p>
+            <p className="text-stone-500 text-sm mt-2">14 fichas técnicas completas. Clique para acessar dosagens, contraindicações e protocolos.</p>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
