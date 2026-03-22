@@ -130,7 +130,7 @@ export default function AutonomiaBiologica() {
         image="/heroes/suporte-fitoterapico.webp"
         phase="Fase 02 · Autonomia Biológica"
         title="Suporte Fitoterápico"
-        subtitle="Biblioteca técnica de 12 plantas medicinais documentadas com rigor farmacológico. Cada planta possui sua própria ficha completa."
+        subtitle="Biblioteca técnica de 14 plantas e compostos medicinais documentados com rigor farmacológico. Cada ficha inclui dosagens, contraindicações e mecanismos de ação."
         icon={Leaf}
         accentColor="emerald"
         backLink="/soberania-organica"
