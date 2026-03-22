@@ -16,6 +16,7 @@ import ShareButtons from "@/components/ShareButtons";
 import ReadingTime from "@/components/ReadingTime";
 import AppSidebar from "@/components/AppSidebar";
 import MobileNav from "@/components/MobileNav";
+import RightSidebar from "@/components/RightSidebar";
 import SovereignDisclaimer from "@/components/SovereignDisclaimer";
 
 import heroImg from "@/assets/dolar-virtual-hero.jpg";
