@@ -121,7 +121,6 @@ const AppSidebar = () => {
               >
                 <social.icon className="w-3.5 h-3.5" />
               </a>
-              </a>
             ))}
           </div>
         </div>
