@@ -288,7 +288,7 @@ export default function DolarVirtual() {
             <div className="absolute inset-0 bg-gradient-to-r from-background/80 to-transparent" />
           </motion.div>
 
-          <motion.div style={{ opacity: heroOpacity }} className="relative z-10 h-full flex flex-col justify-end px-6 md:px-12 pb-10 md:pb-16 max-w-4xl">
+          <motion.div style={{ opacity: heroOpacity }} className="relative z-10 h-full flex flex-col justify-end px-6 md:px-12 pb-10 md:pb-16 max-w-5xl">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease: APPLE_EASE }}>
               <Link to="/bitcoin" className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary text-xs font-mono tracking-wider mb-4 transition-colors">
                 <ArrowLeft className="w-3 h-3" /> BITCOIN
