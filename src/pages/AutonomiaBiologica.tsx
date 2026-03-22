@@ -248,10 +248,8 @@ export default function AutonomiaBiologica() {
           </div>
         </section>
 
-        {/* ═══ DESTAQUE: BABOSA & ACEMANNAN ═══ */}
-        <section className="mb-28">
-          <Link
-            to="/soberania-organica/babosa-acemannan"
+
+
             className="group relative block rounded-2xl border border-emerald-500/20 bg-gradient-to-br from-emerald-500/[0.08] to-emerald-600/[0.03] p-8 md:p-10 lg:p-12 hover:border-emerald-500/40 hover:from-emerald-500/[0.12] transition-all duration-700 overflow-hidden"
           >
             <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/20">
