@@ -6,6 +6,9 @@ import { motion } from 'framer-motion';
 import CinematicHero from '@/components/CinematicHero';
 import ScrollToTop from '@/components/ScrollToTop';
 import { NAV_ITEMS, MECANISMO, CANTILLON_NIVEIS, NUMEROS_REAIS, MENTIRAS, FERRAMENTAS, TIMELINE_ITEMS, FAQ_ITEMS } from '@/lib/inflacaoData';
+import imgNotasDestruidas from '@/assets/inflacao-notas-destruidas.jpg';
+import imgBalancaCantillon from '@/assets/inflacao-balanca-cantillon.jpg';
+import imgImpressoraDinheiro from '@/assets/inflacao-impressora-dinheiro.jpg';
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 const fadeUp = {
