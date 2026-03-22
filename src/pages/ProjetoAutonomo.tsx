@@ -183,7 +183,7 @@ export default function ProjetoAutonomo() {
       {/* ═══════════════════════════════════════════════════════════
          SECTION 1 — FULL-VIEWPORT CINEMATIC HERO
       ═══════════════════════════════════════════════════════════ */}
-      <section className="relative z-10 min-h-screen flex flex-col justify-center px-6 md:px-16 lg:px-24">
+      <section className="relative z-10 min-h-screen flex flex-col justify-center px-6 md:px-16 lg:px-24 py-20">
         {/* Hero background image with parallax */}
         <motion.div
           className="absolute inset-0 z-0"
