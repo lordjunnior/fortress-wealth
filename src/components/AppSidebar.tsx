@@ -1,20 +1,13 @@
 import { useState, useEffect } from "react";
-import { Instagram, Youtube, Twitter, Github, ChevronRight, Zap } from "lucide-react";
+import { ChevronRight, Zap } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
-import profilePhoto from "@/assets/profile-photo.jpg";
+import { AnimatePresence } from "framer-motion";
+import SovereignHeader from "@/components/Sidebar/SovereignHeader";
 import ReadingLevelIndicator from "@/components/ReadingLevelIndicator";
 import GlobalSearch from "@/components/GlobalSearch";
 import JourneyMap from "@/components/JourneyMap";
 import { topNavItems, navGroups, type NavItem } from "@/lib/sidebarNavigation";
 import { useSiloProgress } from "@/hooks/useSiloProgress";
-
-const socialLinks = [
-  { icon: Instagram, url: "https://instagram.com/lordjunnior", label: "Instagram" },
-  { icon: Youtube, url: "https://youtube.com/@lordjunnior", label: "Youtube" },
-  { icon: Twitter, url: "https://x.com/lordjunnior", label: "X" },
-  { icon: Github, url: "https://github.com/lordjunnior", label: "Github" },
-];
 
 const SIDEBAR_STATE_KEY = "bp_sidebar_open_groups";
 
