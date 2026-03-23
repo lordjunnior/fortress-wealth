@@ -84,52 +84,8 @@ const AppSidebar = () => {
 
   return (
     <aside className="hidden lg:flex fixed left-0 top-[36px] bottom-0 w-[280px] z-50 flex-col border-r border-border/30 bg-[#060810]/95 backdrop-blur-2xl">
-      {/* ── Identity Header — Leadership Presence ── */}
-      <div className="px-4 pt-6 pb-5 border-b border-border/30">
-        <div className="flex flex-col items-center text-center gap-4">
-          <div className="relative flex items-center justify-center">
-            {/* Pulsing gradient border */}
-            <div className="absolute inset-0 rounded-full animate-pulse opacity-60"
-              style={{
-                width: '224px',
-                height: '224px',
-                left: '50%',
-                top: '50%',
-                transform: 'translate(-50%, -50%)',
-                background: 'conic-gradient(from 0deg, hsl(var(--gold)), hsl(170 60% 30%), hsl(var(--gold)))',
-                filter: 'blur(3px)',
-              }}
-            />
-            <img
-              src={profilePhoto}
-              alt="Lord Junnior"
-              className="relative z-10 rounded-full object-cover shadow-[0_0_60px_-10px_hsl(var(--gold)/0.5)]"
-              style={{ width: '220px', height: '220px', border: '2px solid transparent', backgroundClip: 'padding-box' }}
-              onError={(e) => {
-                const target = e.currentTarget;
-                target.style.display = 'none';
-              }}
-            />
-          </div>
-          <div>
-            <h2 className="font-bold text-sm tracking-[0.2em] text-foreground uppercase">LORD JUNNIOR</h2>
-            <p className="font-mono text-[9px] tracking-[0.15em] text-muted-foreground/60 mt-0.5">SOBERANIA INDIVIDUAL</p>
-          </div>
-          <div className="flex items-center gap-3">
-            {socialLinks.map((social) => (
-              <a
-                key={social.label}
-                href={social.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-gold transition-colors"
-              >
-                <social.icon className="w-3.5 h-3.5" />
-              </a>
-            ))}
-          </div>
-        </div>
-      </div>
+      {/* ── Identity Header — Sovereign Presence ── */}
+      <SovereignHeader />
 
       {/* ── Search ── */}
       <div className="px-3 py-2 border-b border-border/30">
