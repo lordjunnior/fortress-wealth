@@ -98,7 +98,7 @@ const AppSidebar = () => {
             <img
               src={profilePhoto}
               alt="Lord Junnior"
-              className="w-20 h-20 rounded-full object-cover ring-2 ring-gold/40 shadow-[0_0_30px_-5px_hsl(var(--gold)/0.3)]"
+              className="w-24 h-24 rounded-full object-cover ring-2 ring-gold/40 shadow-[0_0_40px_-5px_hsl(var(--gold)/0.4)]"
               onError={(e) => {
                 const target = e.currentTarget;
                 target.style.display = 'none';
