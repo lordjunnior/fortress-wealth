@@ -92,25 +92,37 @@ const AppSidebar = () => {
   return (
     <aside className="hidden lg:flex fixed left-0 top-[36px] bottom-0 w-[280px] z-50 flex-col border-r border-border/30 bg-[#060810]/95 backdrop-blur-2xl">
       {/* ── Identity Header — Leadership Presence ── */}
-      <div className="px-4 pt-5 pb-4 border-b border-border/30">
-        <div className="flex flex-col items-center text-center gap-3">
-          <div className="relative">
+      <div className="px-4 pt-6 pb-5 border-b border-border/30">
+        <div className="flex flex-col items-center text-center gap-4">
+          <div className="relative flex items-center justify-center">
+            {/* Pulsing gradient border */}
+            <div className="absolute inset-0 rounded-full animate-pulse opacity-60"
+              style={{
+                width: '224px',
+                height: '224px',
+                left: '50%',
+                top: '50%',
+                transform: 'translate(-50%, -50%)',
+                background: 'conic-gradient(from 0deg, hsl(var(--gold)), hsl(170 60% 30%), hsl(var(--gold)))',
+                filter: 'blur(3px)',
+              }}
+            />
             <img
               src={profilePhoto}
               alt="Lord Junnior"
-              className="w-28 h-28 rounded-full object-cover ring-2 ring-gold/40 shadow-[0_0_45px_-8px_hsl(var(--gold)/0.45)]"
+              className="relative z-10 rounded-full object-cover shadow-[0_0_60px_-10px_hsl(var(--gold)/0.5)]"
+              style={{ width: '220px', height: '220px', border: '2px solid transparent', backgroundClip: 'padding-box' }}
               onError={(e) => {
                 const target = e.currentTarget;
                 target.style.display = 'none';
               }}
             />
-            <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-emerald-500 border-2 border-background" />
           </div>
           <div>
-            <h2 className="font-bold text-xs tracking-[0.2em] text-foreground uppercase">LORD JUNNIOR</h2>
+            <h2 className="font-bold text-sm tracking-[0.2em] text-foreground uppercase">LORD JUNNIOR</h2>
             <p className="font-mono text-[9px] tracking-[0.15em] text-muted-foreground/60 mt-0.5">SOBERANIA INDIVIDUAL</p>
           </div>
-          <div className="flex items-center gap-3 mt-1">
+          <div className="flex items-center gap-3">
             {socialLinks.map((social) => (
               <a
                 key={social.label}
