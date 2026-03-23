@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { ChevronRight, Zap } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import SovereignHeader from "@/components/Sidebar/SovereignHeader";
 import ReadingLevelIndicator from "@/components/ReadingLevelIndicator";
 import GlobalSearch from "@/components/GlobalSearch";
