@@ -208,7 +208,7 @@ const Confisco1990 = () => {
             <img
               src={presidenteImg}
               alt="Presidente com faixa presidencial, 1990"
-              className="w-full h-full object-cover object-[center_45%] opacity-40"
+              className="w-full h-full object-contain object-center opacity-45 scale-[0.92]"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/70 to-background" />
             <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-transparent to-background/80" />
