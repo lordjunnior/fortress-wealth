@@ -112,6 +112,7 @@ import MapaDaSoberania from "./pages/MapaDaSoberania";
 import BabosaAcemannan from "./pages/BabosaAcemannan";
 import PorOndeComecar from "./pages/PorOndeComecar";
 import OleoRicinoBiohacker from "./pages/OleoRicinoBiohacker";
+import VazamentoDados from "./pages/VazamentoDados";
 import ExitIntentLeadMagnet from "./components/ExitIntentLeadMagnet";
 const queryClient = new QueryClient();
 
@@ -239,6 +240,7 @@ const App = () => (
           <Route path="/projeto-autonomo/*" element={<Navigate to="/soberania-organica" replace />} />
           <Route path="/mapa-da-soberania" element={<MapaDaSoberania />} />
           <Route path="/por-onde-comecar" element={<PorOndeComecar />} />
+          <Route path="/vazamento-dados" element={<VazamentoDados />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
