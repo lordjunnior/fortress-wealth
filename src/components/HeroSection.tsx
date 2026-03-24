@@ -1,15 +1,100 @@
-import { useState, useEffect, useRef, useCallback } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useState, useEffect, useRef, useCallback, useMemo } from "react";
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { ChevronDown, Shield, AlertTriangle } from "lucide-react";
 import { ease } from "@/lib/motion";
+
 const HERO_VIDEO_URL = "/heroes/hero-loop-optimized.mp4";
+
+/* ── Thanos Disintegration Effect for "DERRETENDO." ── */
+const ThanosText = ({ text, delay = 0.5 }: { text: string; delay?: number }) => {
+  const letters = text.split("");
+
+  return (
+    <span className="relative inline-block">
+      {letters.map((char, i) => (
+        <ThanosLetter key={i} char={char} index={i} total={letters.length} delay={delay} />
+      ))}
+    </span>
+  );
+};
+
+const ThanosLetter = ({
+  char,
+  index,
+  total,
+  delay,
+}: {
+  char: string;
+  index: number;
+  total: number;
+  delay: number;
+}) => {
+  const particles = useMemo(() => {
+    return Array.from({ length: 6 }, (_, i) => ({
+      id: i,
+      x: (Math.random() - 0.5) * 80,
+      y: -(Math.random() * 120 + 30),
+      rotation: (Math.random() - 0.5) * 360,
+      scale: Math.random() * 0.6 + 0.2,
+      duration: Math.random() * 1.5 + 1.5,
+      delay: Math.random() * 0.5,
+    }));
+  }, []);
+
+  const letterDelay = delay + 2.5 + (index / total) * 0.8;
+
+  return (
+    <span className="relative inline-block">
+      {/* Solid letter that fades */}
+      <motion.span
+        className="inline-block text-white"
+        initial={{ opacity: 1 }}
+        animate={{ opacity: [1, 1, 0.7, 1] }}
+        transition={{
+          duration: 3,
+          delay: letterDelay,
+          repeat: Infinity,
+          repeatDelay: 5,
+          ease: "easeInOut",
+        }}
+      >
+        {char === " " ? "\u00A0" : char}
+      </motion.span>
+
+      {/* Floating particles */}
+      {particles.map((p) => (
+        <motion.span
+          key={p.id}
+          className="absolute top-0 left-0 w-[3px] h-[3px] rounded-[1px] pointer-events-none"
+          style={{
+            backgroundColor: p.id % 2 === 0 ? "#FFFFFF" : "#F4F4F5",
+          }}
+          initial={{ opacity: 0, x: 0, y: 0, scale: 0 }}
+          animate={{
+            opacity: [0, 0.9, 0.6, 0],
+            x: p.x,
+            y: p.y,
+            scale: [0, p.scale, p.scale * 0.5, 0],
+            rotate: p.rotation,
+          }}
+          transition={{
+            duration: p.duration,
+            delay: letterDelay + p.delay,
+            repeat: Infinity,
+            repeatDelay: 6 + Math.random() * 2,
+            ease: "easeOut",
+          }}
+        />
+      ))}
+    </span>
+  );
+};
 
 const HeroSection = () => {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const videoRef = useRef<HTMLVideoElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
 
-  // Fallback: try to play video on first user interaction (Instagram in-app browser blocks autoplay)
   const tryPlayVideo = useCallback(() => {
     const vid = videoRef.current;
     if (vid && vid.paused) {
@@ -27,13 +112,11 @@ const HeroSection = () => {
     return () => events.forEach(e => document.removeEventListener(e, handler));
   }, [tryPlayVideo]);
 
-  // Parallax on scroll
   const { scrollY } = useScroll();
   const bgY = useTransform(scrollY, [0, 800], [0, 200]);
   const textY = useTransform(scrollY, [0, 800], [0, -60]);
   const opacityFade = useTransform(scrollY, [0, 600], [1, 0]);
 
-  // Mouse parallax for depth layers
   useEffect(() => {
     const handleMouse = (e: MouseEvent) => {
       const x = (e.clientX / window.innerWidth - 0.5) * 2;
@@ -43,7 +126,6 @@ const HeroSection = () => {
     window.addEventListener("mousemove", handleMouse);
     return () => window.removeEventListener("mousemove", handleMouse);
   }, []);
-
 
   return (
     <section
@@ -56,7 +138,6 @@ const HeroSection = () => {
         style={{ y: bgY }}
         className="absolute inset-0 z-0"
       >
-        {/* Poster fallback for iframe/preview environments that block autoplay */}
         <img
           src="/heroes/hero-poster.webp"
           alt=""
@@ -78,7 +159,7 @@ const HeroSection = () => {
           <source src={HERO_VIDEO_URL} type="video/mp4" />
         </video>
 
-        {/* Dark overlay for text legibility */}
+        {/* Dark overlay */}
         <div
           className="absolute inset-0"
           style={{
@@ -86,32 +167,23 @@ const HeroSection = () => {
           }}
         />
 
-        {/* Radial glow — deep red */}
+        {/* Subtle white radial glow */}
         <div
-          className="absolute top-1/4 -left-[20%] w-[70vw] h-[70vw] rounded-full opacity-[0.07]"
+          className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[80vw] h-[60vw] rounded-full opacity-[0.04]"
           style={{
-            background: "radial-gradient(circle, hsl(var(--chart-red)) 0%, transparent 70%)",
-            filter: "blur(80px)",
-            transform: `translate(${mousePos.x * -15}px, ${mousePos.y * -10}px)`,
-            transition: "transform 0.8s cubic-bezier(0.22,1,0.36,1)",
-          }}
-        />
-        {/* Radial glow — gold */}
-        <div
-          className="absolute bottom-1/4 -right-[15%] w-[60vw] h-[60vw] rounded-full opacity-[0.06]"
-          style={{
-            background: "radial-gradient(circle, hsl(var(--gold)) 0%, transparent 70%)",
+            background: "radial-gradient(circle, #FFFFFF 0%, transparent 70%)",
             filter: "blur(100px)",
-            transform: `translate(${mousePos.x * 20}px, ${mousePos.y * 15}px)`,
+            transform: `translate(calc(-50% + ${mousePos.x * -15}px), ${mousePos.y * -10}px)`,
             transition: "transform 0.8s cubic-bezier(0.22,1,0.36,1)",
           }}
         />
+
         {/* Grid overlay */}
         <div
-          className="absolute inset-0 opacity-[0.03]"
+          className="absolute inset-0 opacity-[0.02]"
           style={{
             backgroundImage:
-              "linear-gradient(hsl(var(--gold) / 0.3) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--gold) / 0.3) 1px, transparent 1px)",
+              "linear-gradient(rgba(255,255,255,0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.2) 1px, transparent 1px)",
             backgroundSize: "80px 80px",
             transform: `translate(${mousePos.x * 8}px, ${mousePos.y * 8}px)`,
             transition: "transform 1.2s cubic-bezier(0.22,1,0.36,1)",
@@ -119,20 +191,8 @@ const HeroSection = () => {
         />
       </motion.div>
 
-      {/* ── Shimmer keyframes ── */}
+      {/* ── Scanline ── */}
       <style>{`
-        @keyframes shimmer {
-          0%   { background-position: 200% center; }
-          100% { background-position: -200% center; }
-        }
-        .hero-shimmer {
-          background: linear-gradient(90deg, hsl(var(--gold)) 0%, hsl(40 80% 70%) 40%, hsl(0 0% 100%) 50%, hsl(40 80% 70%) 60%, hsl(var(--gold)) 100%);
-          background-size: 250% 100%;
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-          animation: shimmer 3s linear infinite;
-        }
         @keyframes scanline {
           0% { transform: translateY(-100%); }
           100% { transform: translateY(100vh); }
@@ -140,180 +200,163 @@ const HeroSection = () => {
         .hero-scanline {
           position: absolute;
           left: 0; width: 100%; height: 2px;
-          background: linear-gradient(90deg, transparent, hsl(var(--gold) / 0.15), transparent);
+          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
           animation: scanline 8s linear infinite;
           pointer-events: none;
         }
-        @keyframes typeReveal {
-          from { max-width: 0; }
-          to { max-width: 100%; }
-        }
-        .type-reveal {
-          overflow: hidden;
-          white-space: nowrap;
-          animation: typeReveal 1.2s cubic-bezier(0.22,1,0.36,1) forwards;
-        }
       `}</style>
-
-      {/* Scanline effect */}
       <div className="hero-scanline z-[1]" />
 
-      {/* ── Main Content — Full Width Layout ── */}
+      {/* ── Main Content — Full Width Centered Layout for 2K ── */}
       <motion.div
         style={{ y: textY, opacity: opacityFade }}
-        className="relative z-10 w-full px-6 md:px-12 lg:px-16 xl:px-24 2xl:px-32 flex items-start"
+        className="relative z-10 w-full flex justify-center"
       >
-        <div className="flex-1 max-w-5xl">
-        {/* ─── CAMADA 1: Anzol / Filtro de Audiência ─── */}
-        <motion.div
-          initial={{ opacity: 0, x: -40 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: ease.sovereign }}
-          className="mb-8"
-        >
-          <div className="inline-flex items-center gap-3 border border-chart-red/40 px-5 py-2.5 rounded-sm bg-chart-red/5 backdrop-blur-sm">
-            <AlertTriangle className="w-4 h-4 text-chart-red animate-pulse" />
-            <span className="font-mono text-[11px] md:text-xs tracking-[0.2em] uppercase text-chart-red/80 font-semibold">
-              Enquanto você lê isto, seu patrimônio está sendo confiscado
-            </span>
-          </div>
-        </motion.div>
+        <div className="w-full max-w-[1600px] px-6 md:px-12 lg:px-16 xl:px-24 2xl:px-32 flex flex-col items-center md:items-end text-center md:text-right">
 
-        {/* ─── CAMADA 2: Título Principal — Wide & Cinematic ─── */}
-        <div className="mb-8" style={{ fontFamily: "'Bebas Neue', sans-serif", letterSpacing: "0.03em" }}>
-          <div className="leading-[0.92]">
-            <motion.span
-              initial={{ opacity: 0, y: 50, filter: "blur(8px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              transition={{ duration: 0.7, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              className="block text-[clamp(2.4rem,8vw,8.5rem)] text-ice-white"
-            >
-              SEU DINHEIRO ESTÁ
-            </motion.span>
-            <motion.span
-              initial={{ opacity: 0, y: 50, filter: "blur(8px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              transition={{ duration: 0.7, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-              className="block text-[clamp(2.4rem,8vw,8.5rem)] text-chart-red"
-              style={{ textShadow: "0 0 40px hsl(0 72% 51% / 0.6), 0 0 80px hsl(0 72% 51% / 0.2)" }}
-            >
-              DERRETENDO.
-            </motion.span>
-            <motion.span
-              initial={{ opacity: 0, y: 50, filter: "blur(8px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              transition={{ duration: 0.7, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
-              className="block text-[clamp(2.4rem,8vw,8.5rem)] text-ice-white"
-            >
-              A CULPA NÃO É DO
-            </motion.span>
-            <motion.span
-              initial={{ opacity: 0, y: 50, filter: "blur(8px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              transition={{ duration: 0.7, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
-              className="block text-[clamp(2.4rem,8vw,8.5rem)] hero-shimmer"
-            >
-              ACASO.
-            </motion.span>
-          </div>
-        </div>
-
-        {/* ─── CAMADA 3: Choque Cognitivo ─── */}
-        <motion.div
-          initial={{ opacity: 0, scaleX: 0.8 }}
-          animate={{ opacity: 1, scaleX: 1 }}
-          transition={{ duration: 0.8, delay: 1.2, ease: ease.sovereign }}
-          className="mb-10 max-w-3xl"
-        >
-          <div className="relative pl-5 border-l-2 border-chart-red/40">
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1.4, duration: 0.6 }}
-              className="font-display text-lg md:text-xl text-foreground/90 font-semibold leading-relaxed"
-            >
-              Você não possui dinheiro no banco.
-            </motion.p>
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 0.7 }}
-              transition={{ delay: 1.6, duration: 0.6 }}
-              className="font-display text-base md:text-lg text-muted-foreground leading-relaxed"
-            >
-              Você possui <span className="text-gold font-bold">permissão temporária</span> para utilizá-lo.
-            </motion.p>
-          </div>
-        </motion.div>
-
-        {/* Divider */}
-        <motion.div
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: 1 }}
-          transition={{ duration: 1, delay: 1.8, ease: ease.smooth }}
-          className="w-32 h-px mb-8 origin-left"
-          style={{ background: "linear-gradient(90deg, hsl(var(--gold) / 0.6), transparent)" }}
-        />
-
-        {/* ─── Subtitle / Mission ─── */}
-        {/* ─── CAMADA 4: Subtítulo PNL + CTA ─── */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 2.0, ease: ease.sovereign }}
-          className="font-display text-base md:text-lg text-foreground/70 max-w-2xl leading-relaxed mb-10"
-        >
-          O manual que o sistema não quer que você leia.{" "}
-          <span className="text-foreground/90 font-semibold">
-            Alfabetização monetária, autocustódia e estratégias de saída
-          </span>{" "}
-          — a infraestrutura para quem decidiu parar de financiar o próprio roubo.
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 2.2, ease: ease.sovereign }}
-          className="flex flex-wrap items-center gap-4 mb-14"
-        >
-          <motion.button
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
-            onClick={() => {
-              const manifesto = document.getElementById('manifesto');
-              if (manifesto) manifesto.scrollIntoView({ behavior: 'smooth' });
-            }}
-            className="group relative inline-flex items-center gap-3 px-8 py-4 rounded-sm font-display font-bold text-sm md:text-base tracking-wide uppercase overflow-hidden transition-all duration-300"
-            style={{
-              background: "linear-gradient(135deg, hsl(var(--gold)), hsl(40 80% 45%))",
-              color: "hsl(var(--background))",
-              boxShadow: "0 0 30px hsl(var(--gold) / 0.3), 0 4px 20px hsl(var(--gold) / 0.2)",
-            }}
+          {/* ─── CAMADA 1: Anzol ─── */}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: ease.sovereign }}
+            className="mb-8"
           >
-            <Shield className="w-5 h-5" />
-            <span>Comece pelo Despertar</span>
-            <div className="absolute inset-0 bg-white/10 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 skew-x-[-20deg]" />
-          </motion.button>
+            <div className="inline-flex items-center gap-3 border border-white/20 px-5 py-2.5 rounded-sm bg-white/[0.03] backdrop-blur-sm">
+              <AlertTriangle className="w-4 h-4 text-white/70 animate-pulse" />
+              <span className="font-mono text-[11px] md:text-xs tracking-[0.2em] uppercase text-white/60 font-semibold">
+                Enquanto você lê isto, seu patrimônio está sendo confiscado
+              </span>
+            </div>
+          </motion.div>
 
-          <motion.button
-            onClick={() => {
-              const heroEl = document.getElementById('hero-section');
-              const target = heroEl?.nextElementSibling;
-              if (target) target.scrollIntoView({ behavior: 'smooth' });
-              else window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
-            }}
-            className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors group cursor-pointer"
+          {/* ─── CAMADA 2: Título Principal — Inter Tight Black ─── */}
+          <div className="mb-8" style={{ fontFamily: "'Inter Tight', sans-serif", fontWeight: 900 }}>
+            <div className="leading-[0.95]">
+              <motion.span
+                initial={{ opacity: 0, y: 50, filter: "blur(8px)" }}
+                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                transition={{ duration: 0.7, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                className="block text-[clamp(2.4rem,7.5vw,7rem)] text-white uppercase"
+              >
+                SEU DINHEIRO ESTÁ
+              </motion.span>
+              <motion.span
+                initial={{ opacity: 0, y: 50, filter: "blur(8px)" }}
+                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                transition={{ duration: 0.7, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                className="block text-[clamp(2.4rem,7.5vw,7rem)] text-white uppercase"
+              >
+                <ThanosText text="DERRETENDO." delay={0.5} />
+              </motion.span>
+            </div>
+          </div>
+
+          {/* ─── "A CULPA NÃO É DO ACASO." — Menor, abaixo ─── */}
+          <motion.p
+            initial={{ opacity: 0, y: 30, filter: "blur(6px)" }}
+            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            transition={{ duration: 0.7, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="text-[clamp(1.1rem,2.5vw,2rem)] text-white/80 uppercase tracking-[0.15em] mb-10"
+            style={{ fontFamily: "'Inter Tight', sans-serif", fontWeight: 700 }}
           >
-            <motion.div
-              animate={{ y: [0, 6, 0] }}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            A CULPA NÃO É DO ACASO.
+          </motion.p>
+
+          {/* ─── CAMADA 3: Choque Cognitivo ─── */}
+          <motion.div
+            initial={{ opacity: 0, scaleX: 0.8 }}
+            animate={{ opacity: 1, scaleX: 1 }}
+            transition={{ duration: 0.8, delay: 1.2, ease: ease.sovereign }}
+            className="mb-10 max-w-3xl"
+          >
+            <div className="relative pl-5 border-l-2 border-white/20">
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.4, duration: 0.6 }}
+                className="font-display text-lg md:text-xl text-white/90 font-semibold leading-relaxed"
+              >
+                Você não possui dinheiro no banco.
+              </motion.p>
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 0.7 }}
+                transition={{ delay: 1.6, duration: 0.6 }}
+                className="font-display text-base md:text-lg text-white/50 leading-relaxed"
+              >
+                Você possui <span className="text-white font-bold">permissão temporária</span> para utilizá-lo.
+              </motion.p>
+            </div>
+          </motion.div>
+
+          {/* Divider */}
+          <motion.div
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ duration: 1, delay: 1.8, ease: ease.smooth }}
+            className="w-32 h-px mb-8 origin-right"
+            style={{ background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.4))" }}
+          />
+
+          {/* ─── CAMADA 4: Subtítulo + CTA ─── */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 2.0, ease: ease.sovereign }}
+            className="font-display text-base md:text-lg text-white/50 max-w-2xl leading-relaxed mb-10"
+          >
+            O manual que o sistema não quer que você leia.{" "}
+            <span className="text-white/80 font-semibold">
+              Alfabetização monetária, autocustódia e estratégias de saída
+            </span>{" "}
+            — a infraestrutura para quem decidiu parar de financiar o próprio roubo.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 2.2, ease: ease.sovereign }}
+            className="flex flex-wrap items-center justify-center md:justify-end gap-4 mb-14"
+          >
+            {/* ── Botão Preto Fosco ── */}
+            <motion.button
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+              onClick={() => {
+                const manifesto = document.getElementById('manifesto');
+                if (manifesto) manifesto.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="group relative inline-flex items-center gap-3 px-8 py-4 rounded-sm font-display font-bold text-sm md:text-base tracking-wide uppercase overflow-hidden transition-all duration-300 border border-white/10"
+              style={{
+                background: "#0a0a0a",
+                color: "#FFFFFF",
+              }}
             >
-              <ChevronDown size={16} className="text-muted-foreground group-hover:text-gold transition-colors" />
-            </motion.div>
-            <span className="text-[10px] font-bold tracking-[0.3em] uppercase opacity-60 group-hover:opacity-100 transition-opacity">
-              Ou explore o arsenal
-            </span>
-          </motion.button>
-        </motion.div>
+              <Shield className="w-5 h-5" />
+              <span>Comece pelo Despertar</span>
+              <div className="absolute inset-0 bg-white/5 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 skew-x-[-20deg]" />
+            </motion.button>
+
+            <motion.button
+              onClick={() => {
+                const heroEl = document.getElementById('hero-section');
+                const target = heroEl?.nextElementSibling;
+                if (target) target.scrollIntoView({ behavior: 'smooth' });
+                else window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+              }}
+              className="flex items-center gap-2 text-white/40 hover:text-white transition-colors group cursor-pointer"
+            >
+              <motion.div
+                animate={{ y: [0, 6, 0] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <ChevronDown size={16} className="text-white/40 group-hover:text-white transition-colors" />
+              </motion.div>
+              <span className="text-[10px] font-bold tracking-[0.3em] uppercase opacity-60 group-hover:opacity-100 transition-opacity">
+                Ou explore o arsenal
+              </span>
+            </motion.button>
+          </motion.div>
         </div>
       </motion.div>
 
@@ -324,7 +367,7 @@ const HeroSection = () => {
         transition={{ delay: 3, duration: 1 }}
         className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10"
       >
-        <ChevronDown className="w-5 h-5 text-muted-foreground animate-bounce" />
+        <ChevronDown className="w-5 h-5 text-white/40 animate-bounce" />
       </motion.div>
     </section>
   );
