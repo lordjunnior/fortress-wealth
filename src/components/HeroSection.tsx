@@ -102,12 +102,12 @@ const HeroSection = () => {
       `}</style>
       <div className="hero-scanline z-[1]" />
 
-      {/* ── 2-Column Grid Content ── */}
+      {/* ── Content Container — Centralized ── */}
       <motion.div style={{ y: textY, opacity: opacityFade }} className="relative z-10 w-full flex justify-center px-6 md:px-12 lg:px-16 xl:px-20">
-        <div className="w-full max-w-[1700px] grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <div className="w-full max-w-[1700px] flex flex-col items-center justify-center text-center mx-auto">
 
-          {/* ═══ LEFT COLUMN — Text ═══ */}
-          <div className="flex flex-col justify-center">
+          {/* ═══ Main Column ═══ */}
+          <div className="flex flex-col items-center justify-center">
             {/* Alert tag */}
             <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, ease: ease.sovereign }} className="mb-8">
               <div className="inline-flex items-center gap-3 border border-white/15 px-5 py-2.5 rounded-sm bg-white/[0.03] backdrop-blur-sm">
@@ -164,7 +164,7 @@ const HeroSection = () => {
             </motion.div>
 
             {/* Divider */}
-            <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 1, delay: 1.8, ease: ease.smooth }} className="w-32 h-px mb-8 origin-left" style={{ background: "linear-gradient(90deg, rgba(245,158,11,0.4), transparent)" }} />
+            <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 1, delay: 1.8, ease: ease.smooth }} className="w-32 h-px mb-8" style={{ background: "linear-gradient(90deg, rgba(245,158,11,0.4), transparent)" }} />
 
             {/* Mission text */}
             <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 2.0, ease: ease.sovereign }} className="font-display text-base md:text-lg text-white/45 max-w-xl leading-relaxed mb-10">
@@ -174,7 +174,7 @@ const HeroSection = () => {
             </motion.p>
 
             {/* CTA — Matte Black */}
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 2.2, ease: ease.sovereign }} className="flex flex-wrap items-center gap-4 mb-10">
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 2.2, ease: ease.sovereign }} className="flex flex-wrap items-center justify-center gap-4 mb-10">
               <motion.button
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
@@ -198,42 +198,6 @@ const HeroSection = () => {
               </motion.button>
             </motion.div>
           </div>
-
-          {/* ═══ RIGHT COLUMN — Cinematic Cédulas Queimando ═══ */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.2, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="hidden lg:flex items-center justify-center relative"
-          >
-            {/* Atmospheric amber glow behind */}
-            <div className="absolute inset-0 rounded-2xl opacity-30" style={{ background: "radial-gradient(circle at 50% 50%, rgba(245,158,11,0.1) 0%, transparent 70%)", filter: "blur(60px)" }} />
-
-            {/* Image container */}
-            <div className="relative w-full max-w-[680px] aspect-[4/5] rounded-2xl overflow-hidden border border-white/[0.06]">
-              <img
-                src="/heroes/manifesto-cedulas.jpg"
-                alt="Cédulas de Real se desintegrando em cinzas — símbolo da destruição do poder de compra"
-                className="absolute inset-0 w-full h-full object-cover"
-                style={{ filter: "brightness(0.55) saturate(0.8) contrast(1.1)" }}
-                fetchPriority="high"
-              />
-              {/* Gradient overlay */}
-              <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(5,8,8,0.6) 0%, transparent 40%, rgba(5,8,8,0.4) 100%)" }} />
-              <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, transparent 60%, rgba(5,8,8,0.9) 100%)" }} />
-
-              {/* Data overlay on image */}
-              <div className="absolute bottom-6 left-6 right-6">
-                <div className="flex items-center gap-2 mb-2">
-                  <div className="w-2 h-2 rounded-full bg-destructive animate-pulse" />
-                  <span className="font-mono text-[10px] tracking-[0.3em] uppercase text-white/50">DADOS EM TEMPO REAL</span>
-                </div>
-                <p className="font-mono text-white/70 text-sm leading-relaxed">
-                  Poder de compra do Real: <span className="text-white font-bold">-92%</span> desde 1994
-                </p>
-              </div>
-            </div>
-          </motion.div>
         </div>
       </motion.div>
 
@@ -242,7 +206,3 @@ const HeroSection = () => {
         <ChevronDown className="w-5 h-5 text-white/40 animate-bounce" />
       </motion.div>
     </section>
-  );
-};
-
-export default HeroSection;
