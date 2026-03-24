@@ -118,13 +118,14 @@ const HeroSection = () => {
               </div>
             </motion.div>
 
-            {/* Title block — Inter Tight 900 */}
+            {/* Title block — Inter Tight 900 + Amber Glow */}
             <div className="mb-6" style={{ fontFamily: "'Inter Tight', sans-serif", fontWeight: 900, lineHeight: 1.1 }}>
               <motion.span
                 initial={{ opacity: 0, y: 50, filter: "blur(8px)" }}
                 animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                 transition={{ duration: 0.7, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                className="block text-5xl md:text-7xl xl:text-8xl text-white uppercase"
+                className="block text-5xl md:text-7xl xl:text-8xl uppercase"
+                style={{ color: "#FFFFFF", textShadow: "0 0 40px rgba(245,158,11,0.15), 0 0 80px rgba(245,158,11,0.08)" }}
               >
                 SEU DINHEIRO ESTÁ
               </motion.span>
@@ -132,13 +133,14 @@ const HeroSection = () => {
                 initial={{ opacity: 0, y: 50, filter: "blur(8px)" }}
                 animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                 transition={{ duration: 0.7, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                className="block text-5xl md:text-7xl xl:text-8xl text-white uppercase"
+                className="block text-5xl md:text-7xl xl:text-8xl uppercase"
+                style={{ color: "#FFFFFF", textShadow: "0 0 50px rgba(245,158,11,0.25), 0 0 100px rgba(245,158,11,0.12)" }}
               >
                 <ThanosText text="DERRETENDO." delay={0.5} />
               </motion.span>
             </div>
 
-            {/* Subtitle — smaller */}
+            {/* Subtitle */}
             <motion.p
               initial={{ opacity: 0, y: 30, filter: "blur(6px)" }}
               animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -162,7 +164,7 @@ const HeroSection = () => {
             </motion.div>
 
             {/* Divider */}
-            <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 1, delay: 1.8, ease: ease.smooth }} className="w-32 h-px mb-8 origin-left" style={{ background: "linear-gradient(90deg, rgba(255,255,255,0.3), transparent)" }} />
+            <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 1, delay: 1.8, ease: ease.smooth }} className="w-32 h-px mb-8 origin-left" style={{ background: "linear-gradient(90deg, rgba(245,158,11,0.4), transparent)" }} />
 
             {/* Mission text */}
             <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 2.0, ease: ease.sovereign }} className="font-display text-base md:text-lg text-white/45 max-w-xl leading-relaxed mb-10">
@@ -197,32 +199,33 @@ const HeroSection = () => {
             </motion.div>
           </div>
 
-          {/* ═══ RIGHT COLUMN — Cinematic image fills the void ═══ */}
+          {/* ═══ RIGHT COLUMN — Cinematic Cédulas Queimando ═══ */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.2, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
             className="hidden lg:flex items-center justify-center relative"
           >
-            {/* Atmospheric glow behind */}
-            <div className="absolute inset-0 rounded-2xl opacity-30" style={{ background: "radial-gradient(circle at 50% 50%, rgba(255,255,255,0.06) 0%, transparent 70%)", filter: "blur(60px)" }} />
+            {/* Atmospheric amber glow behind */}
+            <div className="absolute inset-0 rounded-2xl opacity-30" style={{ background: "radial-gradient(circle at 50% 50%, rgba(245,158,11,0.1) 0%, transparent 70%)", filter: "blur(60px)" }} />
 
             {/* Image container */}
             <div className="relative w-full max-w-[680px] aspect-[4/5] rounded-2xl overflow-hidden border border-white/[0.06]">
               <img
-                src="/heroes/hero-poster.webp"
-                alt="Cédulas de Real se desintegrando — símbolo da destruição do poder de compra"
+                src="/heroes/manifesto-cedulas.jpg"
+                alt="Cédulas de Real se desintegrando em cinzas — símbolo da destruição do poder de compra"
                 className="absolute inset-0 w-full h-full object-cover"
                 style={{ filter: "brightness(0.55) saturate(0.8) contrast(1.1)" }}
+                fetchPriority="high"
               />
-              {/* Gradient overlay for integration */}
+              {/* Gradient overlay */}
               <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(5,8,8,0.6) 0%, transparent 40%, rgba(5,8,8,0.4) 100%)" }} />
               <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, transparent 60%, rgba(5,8,8,0.9) 100%)" }} />
 
               {/* Data overlay on image */}
               <div className="absolute bottom-6 left-6 right-6">
                 <div className="flex items-center gap-2 mb-2">
-                  <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+                  <div className="w-2 h-2 rounded-full bg-destructive animate-pulse" />
                   <span className="font-mono text-[10px] tracking-[0.3em] uppercase text-white/50">DADOS EM TEMPO REAL</span>
                 </div>
                 <p className="font-mono text-white/70 text-sm leading-relaxed">
