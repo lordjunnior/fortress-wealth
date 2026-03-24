@@ -112,6 +112,7 @@ import MapaDaSoberania from "./pages/MapaDaSoberania";
 import BabosaAcemannan from "./pages/BabosaAcemannan";
 import PorOndeComecar from "./pages/PorOndeComecar";
 import OleoRicinoBiohacker from "./pages/OleoRicinoBiohacker";
+import VazamentoDados from "./pages/VazamentoDados";
 import ExitIntentLeadMagnet from "./components/ExitIntentLeadMagnet";
 const queryClient = new QueryClient();
 
