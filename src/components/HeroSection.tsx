@@ -206,3 +206,7 @@ const HeroSection = () => {
         <ChevronDown className="w-5 h-5 text-white/40 animate-bounce" />
       </motion.div>
     </section>
+  );
+};
+
+export default HeroSection;
