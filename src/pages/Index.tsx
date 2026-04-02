@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import cardBtcAnonimo from "@/assets/card-btc-anonimo.jpg";
 import cardDolarVirtual from "@/assets/card-dolar-virtual.jpg";
+import cardPixSemBanco from "@/assets/card-pix-sem-banco.jpg";
 import { Helmet } from "react-helmet-async";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { gsap } from "gsap";
@@ -246,6 +247,7 @@ const Index = () => {
       </motion.div>
 
       <style>{`
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
         @keyframes driftHome {
           from { transform: translateY(0) translateX(0); }
           to { transform: translateY(-1000px) translateX(100px); }
@@ -379,6 +381,65 @@ const Index = () => {
                 </div>
 
                 <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-chart-green/20 to-transparent z-10" />
+              </Link>
+            </motion.div>
+
+            {/* PIX SEM BANCO — PREMIUM HIGHLIGHT CARD */}
+            <motion.div
+              initial={{ opacity: 0, y: 20, scale: 0.98 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <Link
+                to="/soberania-financeira/pix-sem-banco"
+                className="group relative block rounded-2xl overflow-hidden transition-all duration-500"
+              >
+                {/* Animated gradient border */}
+                <div className="absolute -inset-[1px] rounded-2xl z-0 opacity-70 group-hover:opacity-100 transition-opacity duration-500"
+                  style={{
+                    background: 'conic-gradient(from 0deg, hsl(var(--gold)), hsl(var(--chart-green)), hsl(var(--primary)), hsl(var(--gold)))',
+                    animation: 'spin 4s linear infinite',
+                  }}
+                />
+
+                {/* Inner card */}
+                <div className="relative z-10 rounded-2xl bg-card/95 backdrop-blur-md">
+                  {/* Pulsing glow overlay */}
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-chart-green/10 via-transparent to-gold/10 animate-pulse pointer-events-none" />
+
+                  <div className="grid grid-cols-1 md:grid-cols-2">
+                    {/* TEXT */}
+                    <div className="relative p-8 md:p-10 lg:p-14 flex flex-col justify-center">
+                      <div className="absolute -top-16 -left-16 w-56 h-56 rounded-full bg-chart-green/10 blur-3xl pointer-events-none" />
+                      <div className="absolute -bottom-12 -right-12 w-40 h-40 rounded-full bg-gold/8 blur-3xl pointer-events-none" />
+                      <div className="relative space-y-5">
+                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-destructive/15 border border-destructive/30">
+                          <span className="w-2 h-2 rounded-full bg-destructive animate-pulse" />
+                          <p className="font-mono text-[9px] tracking-[0.3em] text-destructive uppercase">ALERTA URGENTE</p>
+                        </div>
+                        <h3 className="text-foreground font-bold text-2xl md:text-3xl lg:text-[2.5rem] tracking-tight leading-[1.2]" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+                          RECEBA PIX SEM BANCO — <br className="hidden md:block" />
+                          <span className="text-chart-green">SEU DINHEIRO, SUAS REGRAS</span>
+                        </h3>
+                        <p className="text-base text-muted-foreground leading-8">
+                          Você ainda depende de banco para receber Pix? Existe um método que transforma qualquer pessoa em <span className="text-chart-green font-semibold">seu próprio banco</span>. Sem bloqueios, sem limites, sem vigilância.
+                        </p>
+                        <span className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-lg bg-gradient-to-r from-chart-green/20 to-gold/15 border border-chart-green/30 text-chart-green text-xs font-bold tracking-[0.15em] uppercase transition-all duration-500 group-hover:from-chart-green/30 group-hover:to-gold/25 group-hover:border-chart-green/50 group-hover:shadow-[0_0_30px_-5px_hsl(var(--chart-green)/0.3)]">
+                          VER PROTOCOLO COMPLETO
+                          <ArrowRight size={14} className="group-hover:translate-x-1.5 transition-transform" />
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* IMAGE */}
+                    <div className="relative min-h-[260px] md:min-h-[360px]">
+                      <img src={cardPixSemBanco} alt="QR Code Pix descentralizado sobre cédulas brasileiras" className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+                      <div className="absolute inset-0 bg-gradient-to-r from-card/90 via-card/40 to-transparent hidden md:block" />
+                      <div className="absolute inset-0 bg-gradient-to-b from-card/70 via-transparent to-transparent md:hidden" />
+                    </div>
+                  </div>
+                </div>
               </Link>
             </motion.div>
 
