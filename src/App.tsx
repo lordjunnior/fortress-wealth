@@ -113,6 +113,7 @@ import BabosaAcemannan from "./pages/BabosaAcemannan";
 import PorOndeComecar from "./pages/PorOndeComecar";
 import OleoRicinoBiohacker from "./pages/OleoRicinoBiohacker";
 import VazamentoDados from "./pages/VazamentoDados";
+import PixSemBanco from "./pages/PixSemBanco";
 import ExitIntentLeadMagnet from "./components/ExitIntentLeadMagnet";
 const queryClient = new QueryClient();
 
@@ -178,6 +179,7 @@ const App = () => (
           <Route path="/soberania-financeira/exchanges-sem-kyc/pegasus-swap" element={<PegasusSwap />} />
           <Route path="/soberania-financeira/brics-pay" element={<BricsPay />} />
           <Route path="/soberania-financeira/kucoin-pay-pix" element={<KucoinPayPix />} />
+          <Route path="/soberania-financeira/pix-sem-banco" element={<PixSemBanco />} />
           <Route path="/21-milhoes" element={<HardCap21 />} />
           <Route path="/bitcoin-seguro" element={<BitcoinSeguro />} />
           <Route path="/chaves" element={<ChavesPage />} />
