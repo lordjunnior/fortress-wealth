@@ -247,6 +247,7 @@ const Index = () => {
       </motion.div>
 
       <style>{`
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
         @keyframes driftHome {
           from { transform: translateY(0) translateX(0); }
           to { transform: translateY(-1000px) translateX(100px); }
