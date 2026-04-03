@@ -151,6 +151,7 @@ export const navGroups: NavGroup[] = [
       { label: "CBDC Brasil", route: "/alertas/cbdc-brasil" },
       { label: "Fim do Dinheiro Vivo", route: "/alertas/fim-do-dinheiro-vivo" },
       { label: "DEPIX Reporte 2026", route: "/alertas/depix-reporte-2026" },
+      { label: "Confisco de Bitcoin", route: "/alertas/governo-tomar-bitcoins", alert: true },
       { label: "Tóxicos Ocultos", route: "/soberania-organica/toxicos-ocultos" },
       { label: "Toxinas Alimentares", route: "/soberania-organica/toxicos-ocultos/toxinas-alimentares" },
       { label: "Toxinas Ambientais", route: "/soberania-organica/toxicos-ocultos/toxinas-ambientais" },

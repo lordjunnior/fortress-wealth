@@ -158,6 +158,7 @@ const App = () => (
           <Route path="/alertas/cbdc-brasil" element={<CbdcBrasil />} />
           <Route path="/alertas/fim-do-dinheiro-vivo" element={<ProibicaoDinheiro />} />
           <Route path="/alertas/depix-reporte-2026" element={<DepixReporte />} />
+          <Route path="/alertas/governo-tomar-bitcoins" element={<ConfiscoBitcoin />} />
           <Route path="/historia-do-dinheiro" element={<HistoriaDoDinheiro />} />
           <Route path="/inflacao-imposto-oculto" element={<InflacaoImpostoOculto />} />
           <Route path="/bitcoin-vs-fiat" element={<BitcoinVsFiat />} />
