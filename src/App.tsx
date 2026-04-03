@@ -114,6 +114,7 @@ import PorOndeComecar from "./pages/PorOndeComecar";
 import OleoRicinoBiohacker from "./pages/OleoRicinoBiohacker";
 import VazamentoDados from "./pages/VazamentoDados";
 import PixSemBanco from "./pages/PixSemBanco";
+import ConfiscoBitcoin from "./pages/ConfiscoBitcoin";
 import ExitIntentLeadMagnet from "./components/ExitIntentLeadMagnet";
 const queryClient = new QueryClient();
 
