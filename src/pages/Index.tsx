@@ -1,9 +1,10 @@
 import { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ShieldAlert, Skull } from "lucide-react";
 import cardBtcAnonimo from "@/assets/card-btc-anonimo.jpg";
 import cardDolarVirtual from "@/assets/card-dolar-virtual.jpg";
 import cardPixSemBanco from "@/assets/card-pix-sem-banco.jpg";
+import cardConfiscoBtc from "@/assets/card-confisco-bitcoin.jpg";
 import { Helmet } from "react-helmet-async";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { gsap } from "gsap";
