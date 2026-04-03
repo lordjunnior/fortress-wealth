@@ -249,6 +249,7 @@ const Index = () => {
 
       <style>{`
         @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        @keyframes confiscoCardPulse { 0%,100%{box-shadow:0 0 0 rgba(220,38,38,0)} 50%{box-shadow:0 0 20px rgba(220,38,38,0.15)} }
         @keyframes driftHome {
           from { transform: translateY(0) translateX(0); }
           to { transform: translateY(-1000px) translateX(100px); }
