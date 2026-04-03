@@ -444,6 +444,71 @@ const Index = () => {
               </Link>
             </motion.div>
 
+            {/* CONFISCO BITCOIN — CARD DE IMPACTO MÁXIMO */}
+            <motion.div
+              initial={{ opacity: 0, y: 20, scale: 0.98 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <Link
+                to="/alertas/governo-tomar-bitcoins"
+                className="group relative block rounded-2xl overflow-hidden transition-all duration-500"
+              >
+                {/* Animated RED gradient border */}
+                <div className="absolute -inset-[1px] rounded-2xl z-0 opacity-80 group-hover:opacity-100 transition-opacity duration-500"
+                  style={{
+                    background: 'conic-gradient(from 0deg, hsl(0 72% 50%), hsl(30 90% 50%), hsl(0 72% 50%), hsl(350 80% 40%), hsl(0 72% 50%))',
+                    animation: 'spin 3s linear infinite',
+                  }}
+                />
+
+                {/* Inner card */}
+                <div className="relative z-10 rounded-2xl bg-card/95 backdrop-blur-md">
+                  {/* Screaming red glow */}
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-destructive/10 via-transparent to-destructive/5 pointer-events-none" />
+                  <div className="absolute inset-0 rounded-2xl animate-pulse bg-[radial-gradient(ellipse_at_top_left,_rgba(220,38,38,0.08),_transparent_60%)] pointer-events-none" />
+
+                  <div className="grid grid-cols-1 md:grid-cols-2">
+                    {/* IMAGE (left) */}
+                    <div className="relative min-h-[260px] md:min-h-[380px] order-1 md:order-none">
+                      <img src={cardConfiscoBtc} alt="Bitcoin hardware wallet sendo confiscada" className="absolute inset-0 w-full h-full object-cover" loading="lazy" width={1024} height={768} />
+                      <div className="absolute inset-0 bg-gradient-to-l from-card/90 via-card/40 to-transparent hidden md:block" />
+                      <div className="absolute inset-0 bg-gradient-to-b from-card/70 via-transparent to-transparent md:hidden" />
+                      {/* Red scanline effect */}
+                      <div className="absolute inset-0 opacity-20 pointer-events-none" style={{
+                        background: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(220,38,38,0.03) 2px, rgba(220,38,38,0.03) 4px)',
+                      }} />
+                    </div>
+
+                    {/* TEXT (right) */}
+                    <div className="relative p-8 md:p-10 lg:p-14 flex flex-col justify-center order-none md:order-1">
+                      <div className="absolute -top-16 -right-16 w-56 h-56 rounded-full bg-destructive/8 blur-3xl pointer-events-none" />
+                      <div className="relative space-y-5">
+                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-destructive/15 border border-destructive/30" style={{ animation: 'confiscoCardPulse 2s ease-in-out infinite' }}>
+                          <Skull className="w-3.5 h-3.5 text-destructive" />
+                          <p className="font-mono text-[9px] tracking-[0.3em] text-destructive uppercase font-bold">CONFISCO DIGITAL · ALERTA GLOBAL</p>
+                        </div>
+                        <h3 className="text-foreground font-bold text-2xl md:text-3xl lg:text-[2.5rem] tracking-tight leading-[1.15]" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+                          NOVA LEI PERMITE GOVERNO{" "}
+                          <span className="text-destructive">TOMAR</span> BITCOINS
+                        </h3>
+                        <p className="text-base text-muted-foreground leading-8">
+                          Hong Kong criminalizou a recusa em entregar chaves privadas. O Brasil aperta o cerco com IOF e reporte diário.{" "}
+                          <span className="text-foreground font-semibold">Veja como se proteger agora.</span>
+                        </p>
+                        <span className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-lg bg-destructive/10 border border-destructive/30 text-destructive text-xs font-bold tracking-[0.15em] uppercase transition-all duration-500 group-hover:bg-destructive/20 group-hover:border-destructive/50 group-hover:shadow-[0_0_30px_-5px_rgba(220,38,38,0.3)]">
+                          <ShieldAlert className="w-4 h-4" />
+                          VER PROTOCOLO DE PROTEÇÃO
+                          <ArrowRight size={14} className="group-hover:translate-x-1.5 transition-transform" />
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            </motion.div>
+
           </div>
         </NobelSection>
 
