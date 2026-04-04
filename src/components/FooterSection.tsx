@@ -62,7 +62,11 @@ const FooterSection = () => {
 
   return (
     <footer ref={ref}>
-      <section className="section-padding bg-card/50 border-t border-border">
+      <section className="section-padding border-t border-border relative overflow-hidden">
+        <HlsVideoBackground
+          src="https://stream.mux.com/Aa02T7oM1wH5Mk5EEVDYhbZ1ChcdhRsS2m1NYyx4Ua1g.m3u8"
+          overlayOpacity={0.85}
+        />
         <div className="max-w-4xl mx-auto">
 
           {/* 1. CABEÇALHO E CONTEXTO */}
