@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import qrCodeImage from "@/assets/qrcode-lightning.jpeg";
 import SatCounter from "@/components/SatCounter";
 import SimboloOculto from '@/components/SimboloOculto';
+import HlsVideoBackground from "@/components/HlsVideoBackground";
 
 const LIGHTNING_ADDRESS = "securecorn53@walletofsatoshi.com";
 
