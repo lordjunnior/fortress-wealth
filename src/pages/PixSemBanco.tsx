@@ -1,10 +1,11 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 import {
   Wallet, ShieldCheck, QrCode, Zap, ArrowRight,
   AlertTriangle, Smartphone, Lock, Eye, Ban,
-  CheckCircle2, ChevronRight
+  CheckCircle2, ExternalLink, Download, Copy, Shield,
+  ArrowDownUp, Globe, Fingerprint
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import {
@@ -39,68 +40,46 @@ const BG_ALT = "#070b0b";
 
 const tocItems = [
   { id: "problema", label: "O Problema" },
-  { id: "carteira", label: "Passo 1: Carteira" },
-  { id: "ponte", label: "Passo 2: A Ponte" },
-  { id: "qrcode", label: "Passo 3: QR Code" },
+  { id: "metodo", label: "O Método" },
+  { id: "passo1", label: "1. Blockstream Wallet" },
+  { id: "passo2", label: "2. SpikeTuSpike" },
+  { id: "passo3", label: "3. Executar Compra" },
+  { id: "passo4", label: "4. Liquid → On-Chain" },
   { id: "comparativo", label: "Comparativo" },
   { id: "faq", label: "FAQ" },
 ];
 
-const steps = [
-  {
-    number: "01",
-    icon: Wallet,
-    title: "Crie sua carteira descentralizada",
-    desc: "Funciona como sua conta bancária, só que sem banco. Crie em poucos minutos usando MetaMask ou qualquer carteira non-custodial. Você controla o dinheiro através de uma chave privada que precisa ser guardada com máxima segurança.",
-    highlight: "Sair de um sistema onde você pede permissão para um sistema onde você tem soberania total",
-  },
-  {
-    number: "02",
-    icon: QrCode,
-    title: "Conecte à plataforma de ponte",
-    desc: "Crie uma conta em uma plataforma que faz a ponte entre o sistema descentralizado e o PIX. Ela transforma sua carteira internacional em algo funcional dentro do Brasil.",
-    highlight: "A conexão entre o mundo descentralizado e o sistema financeiro local",
-  },
-  {
-    number: "03",
-    icon: Zap,
-    title: "Gere seu QR Code e receba",
-    desc: "Conecte sua carteira à plataforma e gere um QR Code. Qualquer pessoa te paga via PIX e o valor recebido é convertido automaticamente em dólar digital dentro da sua carteira.",
-    highlight: "Elimina intermediários, reduz dependência e coloca o controle totalmente nas suas mãos",
-  },
-];
-
 const problems = [
-  { icon: Ban, label: "Contas bloqueadas sem aviso" },
-  { icon: Eye, label: "Cada centavo monitorado" },
-  { icon: Lock, label: "Limites impostos por terceiros" },
-  { icon: AlertTriangle, label: "Fundos congelados judicialmente" },
+  { icon: Ban, label: "Contas bloqueadas sem aviso prévio" },
+  { icon: Eye, label: "Cada centavo monitorado pelo Banco Central" },
+  { icon: Lock, label: "Limites impostos por terceiros sobre SEU dinheiro" },
+  { icon: AlertTriangle, label: "Fundos congelados por ordem judicial em segundos" },
 ];
 
 const faqData = [
   {
-    q: "Como receber PIX sem conta bancária passo a passo?",
-    a: "Você cria uma carteira descentralizada (como MetaMask), conecta a uma plataforma de ponte (como DepixOnline) e gera um QR Code. Qualquer pessoa te paga via PIX e o valor é convertido automaticamente em dólar digital na sua carteira.",
+    q: "Preciso de conta em banco para usar SpikeTuSpike?",
+    a: "Não para receber Bitcoin. Para enviar o PIX de pagamento, você usa qualquer conta bancária (pode ser de terceiro, familiar, etc). O Bitcoin cai direto na sua Blockstream Wallet sem vínculo com banco nenhum.",
   },
   {
-    q: "É legal receber PIX sem banco no Brasil?",
-    a: "Sim. Utilizar carteiras descentralizadas e plataformas de conversão é uma prática permitida. Você está usando ferramentas de código aberto para gerenciar seus próprios ativos digitais.",
+    q: "É legal comprar Bitcoin via P2P sem KYC no Brasil?",
+    a: "Sim. A legislação brasileira não proíbe transações P2P de criptomoedas. O que existe são obrigações de reporte para exchanges centralizadas. Plataformas P2P como SpikeTuSpike operam na camada de comunicação entre compradores e vendedores.",
   },
   {
-    q: "Qual a diferença entre PIX via banco e PIX via carteira descentralizada?",
-    a: "No banco, seus fundos podem ser bloqueados, monitorados e limitados por terceiros. Na carteira descentralizada, apenas você controla o saldo através da sua chave privada. O PIX funciona como mecanismo de entrada, não como custódia.",
+    q: "O que é a rede Liquid e por que usar ela?",
+    a: "Liquid é uma sidechain do Bitcoin desenvolvida pela Blockstream. Ela oferece transações confidenciais (ninguém vê o valor nem o ativo transacionado), taxas mais baratas e confirmações mais rápidas. Ideal para acumular antes de converter para a camada principal.",
   },
   {
-    q: "Preciso de documentos ou KYC para receber PIX assim?",
-    a: "A carteira descentralizada não exige documentos. Algumas plataformas de ponte podem ter verificações mínimas, mas existem alternativas P2P que operam sem KYC.",
+    q: "Qual o valor mínimo para comprar na SpikeTuSpike?",
+    a: "Via DPIX automático (pelo celular), você pode comprar a partir de R$ 10 até R$ 500 na primeira ordem. Após 24h, o limite sobe para R$ 6.000 por ordem. Para boleto e TED, são necessárias 3 ordens prévias de até R$ 2.000.",
   },
   {
-    q: "O valor recebido fica em dólar digital?",
-    a: "Sim. O valor em BRL recebido via PIX é convertido automaticamente em stablecoins (como USDT ou USDC) dentro da sua carteira. Isso protege seu poder de compra da inflação do real.",
+    q: "Posso converter Liquid Bitcoin para Bitcoin on-chain?",
+    a: "Sim. Dentro da própria Blockstream Wallet, use a função 'Swap' para converter L-BTC para BTC on-chain. O mínimo é 0.0025 BTC (aproximadamente R$ 1.700 na cotação atual).",
   },
   {
-    q: "Posso usar esse saldo para fazer pagamentos depois?",
-    a: "Sim. Você pode enviar novos pagamentos, converter para outras criptomoedas ou gerar novos QR Codes para receber mais valores. A autonomia é total.",
+    q: "E se meu canal ou conta for censurada, como acompanho?",
+    a: "Mantenha backup em grupos de Telegram e WhatsApp do projeto. Links estão na descrição dos vídeos e na página principal do site.",
   },
 ];
 
@@ -110,24 +89,33 @@ const PixSemBanco = () => {
   return (
     <div className="min-h-screen text-stone-100 font-sans selection:bg-amber-400/30 relative overflow-hidden" style={{ background: BG_DARK }}>
       <Helmet>
-        <title>Como Receber PIX Sem Banco | Método Descentralizado 2026</title>
-        <meta name="description" content="Aprenda como receber PIX sem conta bancária usando carteira descentralizada. Método passo a passo, sem KYC, sem bloqueio. Controle total do seu dinheiro." />
-        <meta name="keywords" content="pix sem banco, receber pix sem conta bancária, carteira descentralizada pix, pix via cripto, pix metamask, dólar digital pix" />
-        <meta property="og:title" content="Como Receber PIX Sem Banco | Ninguém Te Mostra Isso" />
-        <meta property="og:description" content="O método que transforma qualquer pessoa em seu próprio banco. Receba PIX direto na carteira descentralizada." />
+        <title>Como Receber PIX Sem Banco | Tutorial Completo com SpikeTuSpike + Blockstream 2026</title>
+        <meta name="description" content="Tutorial passo a passo: compre Bitcoin com PIX via SpikeTuSpike sem KYC, receba na Blockstream Wallet via rede Liquid. Sem conta bancária, sem documentos." />
+        <meta name="keywords" content="pix sem banco, spiketuspike tutorial, blockstream wallet, bitcoin liquid, comprar bitcoin sem kyc, pix para bitcoin, bitcoin privado brasil" />
+        <meta property="og:title" content="PIX → Bitcoin Privado: Tutorial Completo 2026" />
+        <meta property="og:description" content="Compre Bitcoin com PIX a partir de R$10, sem KYC, sem exchange. SpikeTuSpike + Blockstream Wallet + Rede Liquid." />
         <meta property="og:type" content="article" />
         <link rel="canonical" href="https://lordjunnior.com.br/soberania-financeira/pix-sem-banco" />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
           "@type": "HowTo",
-          "name": "Como Receber PIX Sem Banco",
-          "description": "Método passo a passo para receber PIX usando carteira descentralizada, sem conta bancária tradicional.",
-          "step": steps.map((s, i) => ({
-            "@type": "HowToStep",
-            "position": i + 1,
-            "name": s.title,
-            "text": s.desc,
-          })),
+          "name": "Como Comprar Bitcoin com PIX sem KYC usando SpikeTuSpike",
+          "description": "Tutorial completo para comprar Bitcoin de forma privada usando PIX, SpikeTuSpike e Blockstream Wallet na rede Liquid.",
+          "totalTime": "PT15M",
+          "supply": [
+            { "@type": "HowToSupply", "name": "Smartphone com acesso à internet" },
+            { "@type": "HowToSupply", "name": "PIX (qualquer banco)" },
+          ],
+          "tool": [
+            { "@type": "HowToTool", "name": "Blockstream Green Wallet" },
+            { "@type": "HowToTool", "name": "SpikeTuSpike.com" },
+          ],
+          "step": [
+            { "@type": "HowToStep", "position": 1, "name": "Baixar Blockstream Wallet", "text": "Instale o app Blockstream Green na Play Store ou App Store. Crie sua carteira e anote as 12 palavras de recuperação." },
+            { "@type": "HowToStep", "position": 2, "name": "Criar conta no SpikeTuSpike", "text": "Acesse spiketuspike.com, gere sua chave privada (sem e-mail, sem CPF) e guarde-a com segurança." },
+            { "@type": "HowToStep", "position": 3, "name": "Executar primeira compra", "text": "Selecione Bitcoin, rede Liquid, valor a partir de R$10. Cole seu endereço Liquid da Blockstream e pague o PIX gerado." },
+            { "@type": "HowToStep", "position": 4, "name": "Converter Liquid para On-Chain", "text": "Na Blockstream Wallet, use Swap para converter L-BTC para BTC on-chain quando acumular 0.0025 BTC." },
+          ],
         })}</script>
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
@@ -157,17 +145,31 @@ const PixSemBanco = () => {
       <CinematicHero
         image="/heroes/economia-paralela.webp"
         phase="Soberania Financeira"
-        title={<>Como Receber PIX <span style={{ color: "#f59e0b" }}>Sem Banco</span></>}
-        subtitle="O método que ninguém está te mostrando. Receba pagamentos PIX direto na sua carteira descentralizada, sem conta bancária, sem KYC, sem pedir permissão."
+        title={<>PIX → Bitcoin Privado: <span style={{ color: "#f59e0b" }}>Tutorial Completo</span></>}
+        subtitle="Compre Bitcoin com PIX a partir de R$ 10, sem KYC, sem exchange, sem documento. SpikeTuSpike + Blockstream Wallet + Rede Liquid. Tudo que você precisa, passo a passo."
         icon={Wallet}
         accentColor="amber"
         backLink="/soberania-financeira"
         backLabel="Soberania Financeira"
       />
 
-      {/* ═══ DISCLAIMER ═══ */}
-      <div className="relative z-10 px-6 md:px-16 lg:px-24">
-        <SovereignDisclaimer variant="payment" />
+      {/* ═══ ALERTA PIX ═══ */}
+      <div className="relative z-10 px-6 md:px-16 lg:px-24 py-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="rounded-xl border-2 border-destructive/40 p-6" style={{ background: "rgba(239,68,68,0.06)" }}>
+            <div className="flex items-start gap-4">
+              <AlertTriangle className="w-6 h-6 text-red-400 flex-shrink-0 mt-0.5" />
+              <div>
+                <p className="text-red-400 font-bold text-sm uppercase tracking-wider mb-2">⚠️ PIX NÃO É PRIVADO</p>
+                <p className="text-stone-400 text-sm leading-relaxed">
+                  O PIX é apenas o <strong className="text-white">mecanismo de entrada</strong>. Cada transação PIX é 100% rastreada pelo Banco Central. 
+                  Este guia existe para quem aceita esse nível inicial de exposição e quer converter rapidamente para um ativo soberano (Bitcoin na rede Liquid, com transações confidenciais). 
+                  A privacidade real começa <strong className="text-white">depois</strong> que o valor sai do sistema bancário.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* ═══ O PROBLEMA ═══ */}
@@ -176,13 +178,16 @@ const PixSemBanco = () => {
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}>
             <p className="font-mono text-[11px] tracking-[0.3em] text-amber-400/70 uppercase mb-4">O problema real</p>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-[1.1] mb-6" style={{ fontFamily: "'Inter Tight', sans-serif" }}>
-              Você ainda acha que precisa de banco para receber dinheiro?
+              Hong Kong já criminalizou quem se recusa a entregar chaves privadas
             </h2>
-            <p className="text-base md:text-lg text-stone-400 leading-relaxed mb-8">
-              Enquanto a maioria das pessoas continua presa em contas que podem ser bloqueadas, limitadas ou monitoradas, existe um caminho alternativo que poucos conhecem e menos ainda utilizam. Aqui, você não depende de aprovação, não pede autorização e não corre o risco de ter seus fundos congelados.
+            <p className="text-base md:text-lg text-stone-400 leading-relaxed mb-4">
+              Pena: <strong className="text-white">1 ano de prisão + multa de HK$ 100.000</strong> (R$ 67.000). A lei vale para estrangeiros em trânsito — até no aeroporto.
+            </p>
+            <p className="text-base md:text-lg text-stone-400 leading-relaxed mb-4">
+              No Brasil: IOF sobre stablecoins, reporte diário de saldos ao Banco Central, e o governo já discute o fim do limite de R$ 36.000 de isenção.
             </p>
             <p className="text-base md:text-lg text-white font-medium leading-relaxed">
-              Tudo isso funciona hoje, de forma prática, acessível e replicável.
+              A pergunta não é "se" vai apertar. É: <span className="text-amber-400">você já protegeu o seu?</span>
             </p>
           </motion.div>
 
@@ -202,67 +207,368 @@ const PixSemBanco = () => {
         </div>
       </section>
 
-      {/* ═══ PASSO A PASSO ═══ */}
-      {steps.map((step, i) => (
-        <section
-          key={step.number}
-          id={i === 0 ? "carteira" : i === 1 ? "ponte" : "qrcode"}
-          className="relative z-10 py-20 px-6 md:px-16 lg:px-24"
-          style={{ background: i % 2 === 0 ? BG_DARK : BG_ALT }}
-        >
-          <div className={`max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center ${i % 2 !== 0 ? "lg:direction-rtl" : ""}`}>
-            <motion.div
-              initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}
-              className={i % 2 !== 0 ? "lg:order-2" : ""}
-            >
-              <div className="flex items-center gap-3 mb-6">
-                <span className="font-mono text-5xl font-black text-amber-400/20">{step.number}</span>
-                <p className="font-mono text-[11px] tracking-[0.3em] text-amber-400/70 uppercase">Passo {step.number}</p>
-              </div>
-              <h2 className="text-3xl md:text-4xl font-bold text-white leading-[1.1] mb-6" style={{ fontFamily: "'Inter Tight', sans-serif" }}>
-                {step.title}
-              </h2>
-              <p className="text-base md:text-lg text-stone-400 leading-relaxed mb-6">
-                {step.desc}
-              </p>
-              <div className="rounded-xl border border-amber-500/15 p-5" style={{ background: "rgba(245,158,11,0.04)" }}>
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-amber-400 mt-0.5 flex-shrink-0" />
-                  <p className="text-sm text-amber-200/80 leading-relaxed">{step.highlight}</p>
-                </div>
-              </div>
-            </motion.div>
+      {/* ═══ O MÉTODO ═══ */}
+      <section id="metodo" className="relative z-10 py-20 px-6 md:px-16 lg:px-24" style={{ background: BG_DARK }}>
+        <div className="max-w-7xl mx-auto">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="text-center mb-16">
+            <p className="font-mono text-[11px] tracking-[0.3em] text-amber-400/70 uppercase mb-4">O método completo</p>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-[1.1] mb-6" style={{ fontFamily: "'Inter Tight', sans-serif" }}>
+              PIX → Bitcoin Privado em 4 Passos
+            </h2>
+            <p className="text-base md:text-lg text-stone-400 max-w-3xl mx-auto leading-relaxed">
+              Ferramentas reais, nomes reais, links reais. Sem enrolação. Sem "baixe uma carteira qualquer". 
+              Este é o protocolo exato que funciona hoje no Brasil.
+            </p>
+          </motion.div>
 
-            <motion.div
-              initial="hidden" whileInView="visible" viewport={{ once: true }} variants={scaleIn} custom={1}
-              className={`flex justify-center ${i % 2 !== 0 ? "lg:order-1" : ""}`}
-            >
-              <div className="w-full max-w-sm rounded-2xl border border-white/[0.06] p-8 flex flex-col items-center gap-6" style={{ background: "rgba(255,255,255,0.02)" }}>
-                <div className="w-20 h-20 rounded-2xl flex items-center justify-center border border-amber-500/20" style={{ background: "rgba(245,158,11,0.08)" }}>
-                  <step.icon className="w-10 h-10 text-amber-400" />
+          {/* Visual pipeline */}
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={scaleIn} custom={1}
+            className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+            {[
+              { num: "01", label: "Blockstream Wallet", sub: "Sua carteira", icon: Download },
+              { num: "02", label: "SpikeTuSpike", sub: "Mercado P2P", icon: Globe },
+              { num: "03", label: "PIX → L-BTC", sub: "Compra privada", icon: ArrowDownUp },
+              { num: "04", label: "Liquid → On-Chain", sub: "Consolidação", icon: Shield },
+            ].map((s, i) => (
+              <motion.div key={i} variants={fadeUp} custom={i}
+                className="rounded-xl border border-amber-500/10 p-5 text-center flex flex-col items-center gap-3"
+                style={{ background: "rgba(245,158,11,0.03)" }}>
+                <span className="font-mono text-3xl font-black text-amber-400/30">{s.num}</span>
+                <s.icon className="w-6 h-6 text-amber-400" />
+                <p className="text-sm font-semibold text-white">{s.label}</p>
+                <p className="text-xs text-stone-500">{s.sub}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ═══ PASSO 1: BLOCKSTREAM WALLET ═══ */}
+      <section id="passo1" className="relative z-10 py-20 px-6 md:px-16 lg:px-24" style={{ background: BG_ALT }}>
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}>
+            <div className="flex items-center gap-3 mb-6">
+              <span className="font-mono text-5xl font-black text-amber-400/20">01</span>
+              <p className="font-mono text-[11px] tracking-[0.3em] text-amber-400/70 uppercase">Passo 01</p>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-white leading-[1.1] mb-6" style={{ fontFamily: "'Inter Tight', sans-serif" }}>
+              Baixe a <span className="text-amber-400">Blockstream Green Wallet</span>
+            </h2>
+            <p className="text-base md:text-lg text-stone-400 leading-relaxed mb-6">
+              A Blockstream Green é uma carteira non-custodial com suporte nativo à <strong className="text-white">rede Liquid</strong> — 
+              a sidechain do Bitcoin que oferece transações confidenciais (ninguém vê valor nem ativo transacionado).
+            </p>
+
+            <div className="space-y-4 mb-8">
+              {[
+                "Baixe o app na Play Store ou App Store (busque 'Blockstream Green')",
+                "Crie uma nova carteira e aceite os termos",
+                "ANOTE AS 12 PALAVRAS DE RECUPERAÇÃO em papel físico — nunca em print ou nuvem",
+                "Vá em Segurança para verificar suas chaves privadas",
+                "Ative a rede Liquid: toque em 'Adicionar Conta' → selecione 'Liquid'",
+              ].map((step, i) => (
+                <div key={i} className="flex items-start gap-3">
+                  <div className="w-7 h-7 rounded-lg flex items-center justify-center bg-amber-500/10 border border-amber-500/20 flex-shrink-0 mt-0.5">
+                    <span className="text-xs font-bold text-amber-400">{i + 1}</span>
+                  </div>
+                  <p className="text-sm text-stone-300 leading-relaxed">{step}</p>
                 </div>
-                <div className="text-center">
-                  <p className="font-mono text-[10px] tracking-widest text-stone-600 uppercase mb-2">Etapa {step.number}</p>
-                  <p className="text-lg font-semibold text-white">{step.title}</p>
+              ))}
+            </div>
+
+            <div className="rounded-xl border border-amber-500/15 p-5" style={{ background: "rgba(245,158,11,0.04)" }}>
+              <div className="flex items-start gap-3">
+                <ShieldCheck className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" />
+                <p className="text-sm text-amber-200/80 leading-relaxed">
+                  <strong className="text-white">Por que Blockstream?</strong> É a empresa que criou a rede Liquid. Carteira open-source, 
+                  sem KYC, suporte a multisig, e a única que integra Liquid nativamente no mobile.
+                </p>
+              </div>
+            </div>
+          </motion.div>
+
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={scaleIn} custom={1}
+            className="flex justify-center">
+            <div className="w-full max-w-sm rounded-2xl border border-white/[0.06] overflow-hidden" style={{ background: "rgba(255,255,255,0.02)" }}>
+              {/* Phone mockup */}
+              <div className="p-6 border-b border-white/[0.06] text-center">
+                <div className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 border border-emerald-500/20" style={{ background: "rgba(16,185,129,0.08)" }}>
+                  <Wallet className="w-8 h-8 text-emerald-400" />
                 </div>
-                <div className="w-full h-px bg-gradient-to-r from-transparent via-amber-500/20 to-transparent" />
-                <div className="flex items-center gap-2 text-stone-500 text-xs font-mono">
-                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-                  <span>Controle total, sem intermediários</span>
+                <p className="text-lg font-semibold text-white mb-1">Blockstream Green</p>
+                <p className="text-xs text-stone-500 font-mono">Non-Custodial · Open Source · Liquid</p>
+              </div>
+              <div className="p-6 space-y-3">
+                <a href="https://play.google.com/store/apps/details?id=com.greenaddress.greenbits_android_wallet" target="_blank" rel="noopener noreferrer"
+                  className="flex items-center justify-between p-3 rounded-lg border border-white/[0.06] hover:border-emerald-500/30 transition-colors group"
+                  style={{ background: "rgba(255,255,255,0.02)" }}>
+                  <div className="flex items-center gap-3">
+                    <Download className="w-4 h-4 text-emerald-400" />
+                    <span className="text-sm text-white">Android (Play Store)</span>
+                  </div>
+                  <ExternalLink className="w-3.5 h-3.5 text-stone-600 group-hover:text-emerald-400 transition-colors" />
+                </a>
+                <a href="https://apps.apple.com/app/green-bitcoin-wallet/id1402243590" target="_blank" rel="noopener noreferrer"
+                  className="flex items-center justify-between p-3 rounded-lg border border-white/[0.06] hover:border-emerald-500/30 transition-colors group"
+                  style={{ background: "rgba(255,255,255,0.02)" }}>
+                  <div className="flex items-center gap-3">
+                    <Download className="w-4 h-4 text-emerald-400" />
+                    <span className="text-sm text-white">iOS (App Store)</span>
+                  </div>
+                  <ExternalLink className="w-3.5 h-3.5 text-stone-600 group-hover:text-emerald-400 transition-colors" />
+                </a>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ═══ PASSO 2: SPIKETUSPIKE ═══ */}
+      <section id="passo2" className="relative z-10 py-20 px-6 md:px-16 lg:px-24" style={{ background: BG_DARK }}>
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={scaleIn} custom={1}
+            className="flex justify-center lg:order-1">
+            <div className="w-full max-w-sm rounded-2xl border border-white/[0.06] overflow-hidden" style={{ background: "rgba(255,255,255,0.02)" }}>
+              <div className="p-6 border-b border-white/[0.06] text-center">
+                <div className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 border border-amber-500/20" style={{ background: "rgba(245,158,11,0.08)" }}>
+                  <Fingerprint className="w-8 h-8 text-amber-400" />
+                </div>
+                <p className="text-lg font-semibold text-white mb-1">SpikeTuSpike</p>
+                <p className="text-xs text-stone-500 font-mono">P2P · Sem KYC · Sem E-mail · DPIX</p>
+              </div>
+              <div className="p-6 space-y-4">
+                <div className="rounded-lg border border-amber-500/10 p-4" style={{ background: "rgba(245,158,11,0.03)" }}>
+                  <p className="text-xs text-stone-500 font-mono uppercase mb-2">Limites de compra</p>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex justify-between">
+                      <span className="text-stone-400">1ª ordem (DPIX)</span>
+                      <span className="text-white font-medium">R$ 10 – R$ 500</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-stone-400">Após 24h (DPIX)</span>
+                      <span className="text-white font-medium">até R$ 6.000</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-stone-400">Boleto/TED (desktop)</span>
+                      <span className="text-white font-medium">após 3 ordens</span>
+                    </div>
+                  </div>
+                </div>
+                <a href="https://spiketuspike.com" target="_blank" rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 p-3 rounded-lg text-sm font-semibold text-stone-900 transition-all hover:scale-[1.02]"
+                  style={{ background: "linear-gradient(135deg, #f59e0b, #d97706)" }}>
+                  <Globe className="w-4 h-4" />
+                  Acessar SpikeTuSpike.com
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+              </div>
+            </div>
+          </motion.div>
+
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}
+            className="lg:order-2">
+            <div className="flex items-center gap-3 mb-6">
+              <span className="font-mono text-5xl font-black text-amber-400/20">02</span>
+              <p className="font-mono text-[11px] tracking-[0.3em] text-amber-400/70 uppercase">Passo 02</p>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-white leading-[1.1] mb-6" style={{ fontFamily: "'Inter Tight', sans-serif" }}>
+              Crie sua conta no <span className="text-amber-400">SpikeTuSpike</span>
+            </h2>
+            <p className="text-base md:text-lg text-stone-400 leading-relaxed mb-6">
+              SpikeTuSpike é uma rede social P2P que permite comprar e vender Bitcoin de forma privada. 
+              <strong className="text-white"> Sem e-mail, sem CPF, sem selfie.</strong> Sua identidade é uma chave privada.
+            </p>
+
+            <div className="space-y-4 mb-8">
+              {[
+                "Acesse spiketuspike.com no navegador do celular",
+                "Menu ☰ → Trade → Criar conta",
+                "Escolha login por chave privada (não precisa de e-mail)",
+                "Gere sua chave privada e ANOTE EM PAPEL — é seu login permanente",
+                "Se já tem chave, cole no campo e clique em 'Prosseguir'",
+              ].map((step, i) => (
+                <div key={i} className="flex items-start gap-3">
+                  <div className="w-7 h-7 rounded-lg flex items-center justify-center bg-amber-500/10 border border-amber-500/20 flex-shrink-0 mt-0.5">
+                    <span className="text-xs font-bold text-amber-400">{i + 1}</span>
+                  </div>
+                  <p className="text-sm text-stone-300 leading-relaxed">{step}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="rounded-xl border border-red-500/15 p-5" style={{ background: "rgba(239,68,68,0.04)" }}>
+              <div className="flex items-start gap-3">
+                <AlertTriangle className="w-5 h-5 text-red-400 mt-0.5 flex-shrink-0" />
+                <p className="text-sm text-red-200/80 leading-relaxed">
+                  <strong className="text-white">ATENÇÃO:</strong> Se você não guardar sua chave privada, 
+                  perderá acesso à conta, reputação e limites de negociação. Sem chave = sem conta.
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ═══ PASSO 3: EXECUTAR COMPRA ═══ */}
+      <section id="passo3" className="relative z-10 py-20 px-6 md:px-16 lg:px-24" style={{ background: BG_ALT }}>
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}>
+            <div className="flex items-center gap-3 mb-6">
+              <span className="font-mono text-5xl font-black text-amber-400/20">03</span>
+              <p className="font-mono text-[11px] tracking-[0.3em] text-amber-400/70 uppercase">Passo 03 — Execução</p>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-white leading-[1.1] mb-6" style={{ fontFamily: "'Inter Tight', sans-serif" }}>
+              Execute sua primeira <span className="text-amber-400">compra privada</span>
+            </h2>
+            <p className="text-base md:text-lg text-stone-400 leading-relaxed mb-6">
+              Agora vem a parte prática. Você vai conectar a Blockstream Wallet ao SpikeTuSpike 
+              e executar sua primeira compra de Bitcoin via PIX — tudo automático, processado pelo robô SpikeBorg.
+            </p>
+
+            <div className="space-y-4 mb-8">
+              {[
+                { text: "No SpikeTuSpike, selecione: Crypto = Bitcoin, Fiat = BRL", highlight: false },
+                { text: "Escolha o valor (mínimo R$ 10 na primeira ordem)", highlight: false },
+                { text: "Selecione a rede: LIQUID (obrigatório para DPIX automático)", highlight: true },
+                { text: "Clique em 'Prosseguir' — o SpikeBorg (robô) vai solicitar seu endereço Liquid", highlight: false },
+                { text: "Vá na Blockstream Wallet → Bitcoin Liquid → Receive → copie o endereço", highlight: true },
+                { text: "Cole o endereço Liquid no chat do SpikeBorg", highlight: false },
+                { text: "O SpikeBorg gera um QR Code PIX — pague com qualquer banco", highlight: false },
+                { text: "Após pagamento, clique em 'Confirmar Pagamento'", highlight: false },
+                { text: "Bitcoin chega na sua Blockstream Wallet em ~4 segundos", highlight: true },
+              ].map((step, i) => (
+                <div key={i} className={`flex items-start gap-3 ${step.highlight ? "bg-amber-500/5 rounded-lg p-3 -mx-3 border border-amber-500/10" : ""}`}>
+                  <div className={`w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5 ${step.highlight ? "bg-amber-500/20 border border-amber-500/30" : "bg-amber-500/10 border border-amber-500/20"}`}>
+                    <span className={`text-xs font-bold ${step.highlight ? "text-amber-300" : "text-amber-400"}`}>{i + 1}</span>
+                  </div>
+                  <p className={`text-sm leading-relaxed ${step.highlight ? "text-white font-medium" : "text-stone-300"}`}>{step.text}</p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={scaleIn} custom={1}
+            className="flex justify-center">
+            {/* Simulated flow */}
+            <div className="w-full max-w-sm space-y-4">
+              {[
+                { label: "Rede", value: "Liquid (Confidencial)", color: "emerald" },
+                { label: "Valor", value: "R$ 10,00 (mínimo)", color: "amber" },
+                { label: "Atendente", value: "SpikeBorg (robô automático)", color: "blue" },
+                { label: "Método", value: "DPIX (Pix descentralizado)", color: "amber" },
+                { label: "Tempo médio", value: "~4 segundos após pagamento", color: "emerald" },
+                { label: "Dados exigidos", value: "Nenhum (sem e-mail, sem CPF)", color: "emerald" },
+              ].map((item, i) => (
+                <motion.div key={i} variants={fadeUp} custom={i * 0.5}
+                  className="rounded-xl border border-white/[0.06] p-4 flex items-center justify-between"
+                  style={{ background: "rgba(255,255,255,0.02)" }}>
+                  <span className="text-xs text-stone-500 font-mono uppercase">{item.label}</span>
+                  <span className={`text-sm font-medium ${item.color === "emerald" ? "text-emerald-400" : item.color === "blue" ? "text-blue-400" : "text-amber-400"}`}>
+                    {item.value}
+                  </span>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ═══ PASSO 4: LIQUID → ON-CHAIN ═══ */}
+      <section id="passo4" className="relative z-10 py-20 px-6 md:px-16 lg:px-24" style={{ background: BG_DARK }}>
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={scaleIn} custom={1}
+            className="flex justify-center lg:order-1">
+            <div className="w-full max-w-sm rounded-2xl border border-white/[0.06] p-8" style={{ background: "rgba(255,255,255,0.02)" }}>
+              <div className="text-center mb-6">
+                <p className="font-mono text-[10px] tracking-widest text-stone-600 uppercase mb-3">Conversão</p>
+                <div className="flex items-center justify-center gap-4">
+                  <div className="text-center">
+                    <div className="w-14 h-14 rounded-xl flex items-center justify-center border border-blue-500/20 mx-auto mb-2" style={{ background: "rgba(59,130,246,0.08)" }}>
+                      <span className="text-lg font-bold text-blue-400">L</span>
+                    </div>
+                    <p className="text-xs text-stone-500">Liquid</p>
+                  </div>
+                  <ArrowRight className="w-5 h-5 text-amber-400" />
+                  <div className="text-center">
+                    <div className="w-14 h-14 rounded-xl flex items-center justify-center border border-amber-500/20 mx-auto mb-2" style={{ background: "rgba(245,158,11,0.08)" }}>
+                      <span className="text-lg font-bold text-amber-400">₿</span>
+                    </div>
+                    <p className="text-xs text-stone-500">On-Chain</p>
+                  </div>
                 </div>
               </div>
-            </motion.div>
-          </div>
-        </section>
-      ))}
+              <div className="space-y-3 border-t border-white/[0.06] pt-6">
+                <div className="flex justify-between text-sm">
+                  <span className="text-stone-500">Mínimo para swap</span>
+                  <span className="text-white font-mono">0.0025 BTC</span>
+                </div>
+                <div className="flex justify-between text-sm">
+                  <span className="text-stone-500">≈ em BRL</span>
+                  <span className="text-amber-400 font-mono">~R$ 1.700</span>
+                </div>
+                <div className="flex justify-between text-sm">
+                  <span className="text-stone-500">Onde fazer</span>
+                  <span className="text-emerald-400 font-mono">Blockstream Wallet</span>
+                </div>
+                <div className="flex justify-between text-sm">
+                  <span className="text-stone-500">Função</span>
+                  <span className="text-white font-mono">Swap (L-BTC → BTC)</span>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}
+            className="lg:order-2">
+            <div className="flex items-center gap-3 mb-6">
+              <span className="font-mono text-5xl font-black text-amber-400/20">04</span>
+              <p className="font-mono text-[11px] tracking-[0.3em] text-amber-400/70 uppercase">Passo 04 — Consolidação</p>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-white leading-[1.1] mb-6" style={{ fontFamily: "'Inter Tight', sans-serif" }}>
+              Converta <span className="text-amber-400">Liquid → On-Chain</span>
+            </h2>
+            <p className="text-base md:text-lg text-stone-400 leading-relaxed mb-6">
+              Depois de acumular Bitcoin na rede Liquid, você pode consolidar para a camada principal (on-chain) 
+              quando atingir o mínimo de <strong className="text-white">0.0025 BTC (~R$ 1.700)</strong>.
+            </p>
+
+            <div className="space-y-4 mb-8">
+              {[
+                "Na Blockstream Wallet, toque no saldo Liquid",
+                "Clique em 'Swap'",
+                "Insira a quantia (mínimo 0.0025 BTC)",
+                "Confirme a conversão L-BTC → BTC",
+                "O saldo aparece na camada principal em poucos minutos",
+              ].map((step, i) => (
+                <div key={i} className="flex items-start gap-3">
+                  <div className="w-7 h-7 rounded-lg flex items-center justify-center bg-amber-500/10 border border-amber-500/20 flex-shrink-0 mt-0.5">
+                    <span className="text-xs font-bold text-amber-400">{i + 1}</span>
+                  </div>
+                  <p className="text-sm text-stone-300 leading-relaxed">{step}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="rounded-xl border border-emerald-500/15 p-5" style={{ background: "rgba(16,185,129,0.04)" }}>
+              <div className="flex items-start gap-3">
+                <CheckCircle2 className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" />
+                <p className="text-sm text-emerald-200/80 leading-relaxed">
+                  <strong className="text-white">Resultado:</strong> Você agora tem Bitcoin real, na camada principal, 
+                  comprado com PIX, sem ter passado um único documento. Seu banco não sabe. A exchange não sabe. Ninguém sabe.
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
 
       {/* ═══ COMPARATIVO ═══ */}
       <section id="comparativo" className="relative z-10 py-20 px-6 md:px-16 lg:px-24" style={{ background: BG_ALT }}>
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="text-center mb-12">
             <p className="font-mono text-[11px] tracking-[0.3em] text-amber-400/70 uppercase mb-4">Comparativo direto</p>
             <h2 className="text-3xl md:text-4xl font-bold text-white leading-[1.1]" style={{ fontFamily: "'Inter Tight', sans-serif" }}>
-              Banco Tradicional vs. Carteira Descentralizada
+              Exchange com KYC vs. Compra Privada (SpikeTuSpike)
             </h2>
           </motion.div>
 
@@ -273,28 +579,29 @@ const PixSemBanco = () => {
                 <p className="font-mono text-[10px] tracking-widest text-stone-600 uppercase">Critério</p>
               </div>
               <div className="p-4 md:p-6 border-b border-r border-white/[0.06] text-center">
-                <p className="font-mono text-[10px] tracking-widest text-red-400 uppercase">Banco</p>
+                <p className="font-mono text-[10px] tracking-widest text-red-400 uppercase">Exchange (Binance, etc.)</p>
               </div>
               <div className="p-4 md:p-6 border-b border-white/[0.06] text-center">
-                <p className="font-mono text-[10px] tracking-widest text-emerald-400 uppercase">Descentralizado</p>
+                <p className="font-mono text-[10px] tracking-widest text-emerald-400 uppercase">SpikeTuSpike + Liquid</p>
               </div>
               {[
-                ["Bloqueio de conta", "Pode bloquear a qualquer momento", "Impossível bloquear"],
-                ["Monitoramento", "Cada centavo rastreado", "Privacidade total"],
-                ["Limites", "Limites diários e mensais", "Sem limites"],
-                ["Horário", "Dias úteis, horário comercial", "24/7, sem pausa"],
-                ["Documentos", "CPF, selfie, comprovante", "Nenhum documento"],
-                ["Custódia", "Banco controla seus fundos", "Apenas você controla"],
-              ].map(([criterio, banco, desc], i) => (
+                ["Documentos exigidos", "CPF, selfie, comprovante de residência", "Nenhum — chave privada como login"],
+                ["Reporte ao governo", "Saldos reportados diariamente ao BC", "Sem reporte — P2P descentralizado"],
+                ["Risco de bloqueio", "Pode bloquear saques a qualquer momento", "Impossível — Bitcoin na sua carteira"],
+                ["Privacidade", "Histórico completo rastreável", "Transações confidenciais (Liquid)"],
+                ["IOF / Impostos", "IOF sobre stablecoins, ganhos tributados", "Sem IOF — compra direta P2P"],
+                ["Velocidade", "Depende de aprovação + limite de saque", "~4 segundos após pagamento PIX"],
+                ["Valor mínimo", "Varia por exchange", "R$ 10 (DPIX automático)"],
+              ].map(([criterio, exchange, spike], i) => (
                 <div key={i} className="contents">
                   <div className="p-4 md:p-6 border-b border-r border-white/[0.06]">
                     <p className="text-sm text-white font-medium">{criterio}</p>
                   </div>
                   <div className="p-4 md:p-6 border-b border-r border-white/[0.06] text-center">
-                    <p className="text-sm text-stone-500">{banco}</p>
+                    <p className="text-sm text-stone-500">{exchange}</p>
                   </div>
                   <div className="p-4 md:p-6 border-b border-white/[0.06] text-center">
-                    <p className="text-sm text-emerald-400 font-medium">{desc}</p>
+                    <p className="text-sm text-emerald-400 font-medium">{spike}</p>
                   </div>
                 </div>
               ))}
@@ -303,33 +610,37 @@ const PixSemBanco = () => {
         </div>
       </section>
 
-      {/* ═══ CTA CENTRAL ═══ */}
+      {/* ═══ CTA ═══ */}
       <section className="relative z-10 py-20 px-6 md:px-16 lg:px-24" style={{ background: BG_DARK }}>
         <div className="max-w-3xl mx-auto text-center">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}>
             <p className="font-mono text-[11px] tracking-[0.3em] text-amber-400/70 uppercase mb-4">Próximo passo</p>
             <h2 className="text-3xl md:text-4xl font-bold text-white leading-[1.1] mb-6" style={{ fontFamily: "'Inter Tight', sans-serif" }}>
-              O controle do seu dinheiro começa agora
+              Enquanto eles querem tomar o seu, proteja o que é seu
             </h2>
             <p className="text-base md:text-lg text-stone-400 leading-relaxed mb-10">
-              Não é teoria. É aplicação direta. Veja o tutorial completo com o passo a passo prático para configurar sua primeira carteira e receber seu primeiro PIX sem banco.
+              Você acabou de ver o método completo. Não é teoria. Não é promessa. É um protocolo que funciona hoje, 
+              com R$ 10, sem pedir permissão a ninguém. A diferença entre quem protege e quem perde 
+              é uma única decisão.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link
-                to="/pix-cripto"
+              <a
+                href="https://spiketuspike.com"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="px-8 py-4 rounded-lg text-sm font-semibold tracking-wide flex items-center gap-3 text-stone-900 transition-all hover:scale-[1.02]"
                 style={{ background: "linear-gradient(135deg, #f59e0b, #d97706)" }}
               >
                 <Zap className="w-4 h-4" />
-                EXECUTAR PRIMEIRA OPERAÇÃO
-                <ArrowRight className="w-4 h-4" />
-              </Link>
+                EXECUTAR PRIMEIRA COMPRA PRIVADA
+                <ExternalLink className="w-4 h-4" />
+              </a>
               <Link
-                to="/saida/gateway"
-                className="px-8 py-4 rounded-lg text-sm font-semibold tracking-wide flex items-center gap-3 text-white border border-white/10 hover:border-amber-500/30 transition-all"
+                to="/alertas/governo-tomar-bitcoins"
+                className="px-8 py-4 rounded-lg text-sm font-semibold tracking-wide flex items-center gap-3 text-white border border-white/10 hover:border-red-500/30 transition-all"
               >
-                <Smartphone className="w-4 h-4" />
-                SIMULAR GATEWAY
+                <AlertTriangle className="w-4 h-4 text-red-400" />
+                VER ALERTA DE CONFISCO
               </Link>
             </div>
           </motion.div>
