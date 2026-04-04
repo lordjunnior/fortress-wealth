@@ -67,7 +67,7 @@ const FooterSection = () => {
           src="https://stream.mux.com/Aa02T7oM1wH5Mk5EEVDYhbZ1ChcdhRsS2m1NYyx4Ua1g.m3u8"
           overlayOpacity={0.85}
         />
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-4xl mx-auto relative z-10">
 
           {/* 1. CABEÇALHO E CONTEXTO */}
           <motion.div {...fadeUp()} className="text-center mb-16">
