@@ -457,12 +457,8 @@ const KruxPassphraseBluewallet = () => {
           backLabel="Hardware Wallet DIY"
         />
 
-        {/* ═══ BACK LINK ═══ */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-10 pt-8">
-          <Link to="/autocustodia/hardware-wallet-diy-bitcoin" className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors text-sm">
-            <ArrowLeft className="w-4 h-4" /> Voltar para Hardware Wallet DIY
-          </Link>
-        </div>
+
+
 
         {/* ═══ INTRO: O QUE VOCÊ VAI APRENDER ═══ */}
         <NobelSection className="relative z-10 py-16 md:py-24" id="intro">
