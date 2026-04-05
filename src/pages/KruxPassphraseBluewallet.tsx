@@ -450,7 +450,7 @@ const KruxPassphraseBluewallet = () => {
         <CinematicHero
           title="Krux + Passphrase + BlueWallet"
           subtitle="Setup completo de autocustódia air-gapped: carteira fria amnésica com senha BIP-39 e observação mobile. Versão Krux 26.03.0 | BlueWallet v7.2.6"
-          imageSrc={imgDispositivo}
+          image={imgDispositivo}
           breadcrumbs={[
             { label: 'Início', to: '/' },
             { label: 'Autocustódia', to: '/autocustodia' },
