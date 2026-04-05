@@ -96,6 +96,7 @@ import DolarVirtual from "./pages/DolarVirtual";
 import Bip110 from "./pages/Bip110";
 import MobilidadeDeChaves from "./pages/MobilidadeDeChaves";
 import HardwareWalletDiy from "./pages/HardwareWalletDiy";
+import KruxPassphraseBluewallet from "./pages/KruxPassphraseBluewallet";
 import CpContextoHistorico from "./pages/cp/ContextoHistorico";
 import CpBaseFisiologica from "./pages/cp/BaseFisiologica";
 import CpSegurancaLimites from "./pages/cp/SegurancaLimites";
