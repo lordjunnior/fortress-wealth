@@ -96,6 +96,7 @@ import DolarVirtual from "./pages/DolarVirtual";
 import Bip110 from "./pages/Bip110";
 import MobilidadeDeChaves from "./pages/MobilidadeDeChaves";
 import HardwareWalletDiy from "./pages/HardwareWalletDiy";
+import KruxPassphraseBluewallet from "./pages/KruxPassphraseBluewallet";
 import CpContextoHistorico from "./pages/cp/ContextoHistorico";
 import CpBaseFisiologica from "./pages/cp/BaseFisiologica";
 import CpSegurancaLimites from "./pages/cp/SegurancaLimites";
@@ -143,6 +144,7 @@ const App = () => (
           <Route path="/entenda-bitcoin" element={<Navigate to="/o-que-e-bitcoin" replace />} />
           <Route path="/autocustodia" element={<Autocustodia />} />
           <Route path="/autocustodia/hardware-wallet-diy-bitcoin" element={<HardwareWalletDiy />} />
+          <Route path="/autocustodia/krux-passphrase-bluewallet" element={<KruxPassphraseBluewallet />} />
           <Route path="/economia-paralela" element={<EconomiaParalela />} />
           <Route path="/infraestrutura" element={<Infraestrutura />} />
           <Route path="/lightning" element={<LightningPage />} />
