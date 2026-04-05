@@ -451,12 +451,10 @@ const KruxPassphraseBluewallet = () => {
           title="Krux + Passphrase + BlueWallet"
           subtitle="Setup completo de autocustódia air-gapped: carteira fria amnésica com senha BIP-39 e observação mobile. Versão Krux 26.03.0 | BlueWallet v7.2.6"
           image={imgDispositivo}
-          breadcrumbs={[
-            { label: 'Início', to: '/' },
-            { label: 'Autocustódia', to: '/autocustodia' },
-            { label: 'Hardware Wallet DIY', to: '/autocustodia/hardware-wallet-diy-bitcoin' },
-            { label: 'Krux + Passphrase', to: '/autocustodia/krux-passphrase-bluewallet' },
-          ]}
+          phase="Autocustódia Avançada"
+          icon={Shield}
+          backLink="/autocustodia/hardware-wallet-diy-bitcoin"
+          backLabel="Hardware Wallet DIY"
         />
 
         {/* ═══ BACK LINK ═══ */}
