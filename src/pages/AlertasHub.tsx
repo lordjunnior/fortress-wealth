@@ -1,341 +1,733 @@
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { motion, useInView } from 'framer-motion';
+import { motion, useScroll, useTransform, useInView } from 'framer-motion';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import {
   ArrowLeft, AlertTriangle, Shield, ChevronRight, Zap,
   Eye, Lock, Landmark, TrendingDown, HelpCircle,
-  ChevronDown, ExternalLink,
+  ExternalLink, Skull, Fingerprint, Ban, Scale,
+  ShieldAlert, Radio, Target, Crosshair, Banknote,
+  KeyRound, Globe, CreditCard, MapPin,
 } from 'lucide-react';
 import {
   Accordion, AccordionContent, AccordionItem, AccordionTrigger,
 } from '@/components/ui/accordion';
 import ScrollToTop from '@/components/ScrollToTop';
+import FooterSection from '@/components/FooterSection';
 
-/* ── Alertas ativos ── */
+import imgVigilancia from '@/assets/alertas-vigilancia-estatal.jpg';
+import imgConfisco from '@/assets/alertas-confisco-digital.jpg';
+import imgSaida from '@/assets/alertas-saida-soberana.jpg';
+import imgHipocrisia from '@/assets/alertas-hipocrisia-estado.jpg';
+import imgMorteDinheiro from '@/assets/alertas-morte-dinheiro.jpg';
+import imgTimeline from '@/assets/alertas-timeline-confisco.jpg';
+
+gsap.registerPlugin(ScrollTrigger);
+
+/* ══════════════════════════════════════════════════════════
+   DATA — HIPOCRISIA DO ESTADO
+══════════════════════════════════════════════════════════ */
+const HIPOCRISIA = [
+  {
+    crime: 'Cassino',
+    lei: 'Loteria',
+    frase: 'Cassino é proibido. Mas se o dono for o governo e chamar de loteria, pode.',
+    icon: Ban,
+  },
+  {
+    crime: 'Pirâmide',
+    lei: 'INSS',
+    frase: 'Pirâmide é crime. Mas se o nome for INSS, é previdência.',
+    icon: TrendingDown,
+  },
+  {
+    crime: 'Agiotagem',
+    lei: 'FGTS',
+    frase: 'Agiotagem é proibida. Mas se o governo te emprestar o seu próprio FGTS a juros absurdos, é programa social.',
+    icon: Banknote,
+  },
+  {
+    crime: 'Extorsão',
+    lei: 'Imposto',
+    frase: 'Extorsão é crime. Mas se for via imposto, é cidadania.',
+    icon: Scale,
+  },
+];
+
+/* ══════════════════════════════════════════════════════════
+   DATA — ALERTAS ATIVOS
+══════════════════════════════════════════════════════════ */
 const ALERTAS = [
   {
     slug: 'fim-do-dinheiro-vivo',
-    titulo: 'O Governo Pode Limitar o Dinheiro Vivo no Brasil',
-    subtitulo: 'PL 3.951/2019 · CCJ · Precedente Aberto',
-    descricao: 'Entenda o PL 3.951, veja os limites ao dinheiro em espécie na Europa e descubra ferramentas legais para proteger sua privacidade financeira.',
+    titulo: 'O Governo Vai Abolir o Dinheiro Vivo',
+    subtitulo: 'PL 3.951/2019 · CCJ · Confisco Legalizado',
+    descricao: 'O PL 3.951 cria o mecanismo legal para que o CMN defina limites ao dinheiro em espécie. Hoje R$10.000. Amanhã R$1.000. Depois? R$0. A Europa já está neste caminho.',
     tag: 'LEGISLATIVO',
     status: 'ATIVO',
     icon: Landmark,
-    accent: 'from-red-600/20 to-red-900/10',
-    borderAccent: 'hover:border-red-600/30',
+    accent: 'border-destructive/30',
+    gradient: 'from-red-900/30 via-red-950/20 to-transparent',
   },
   {
     slug: 'cbdc-brasil',
-    titulo: 'DREX: A Moeda Digital Programável do Governo',
+    titulo: 'DREX: Seu Dinheiro Com Prazo de Validade',
     subtitulo: 'CBDC · Real Digital · Controle Programável',
-    descricao: 'Entenda o DREX, a moeda digital do Banco Central que dá ao governo controle total sobre o seu dinheiro. Veja os riscos e como se proteger.',
+    descricao: 'O DREX não é "inovação". É uma coleira digital. O governo define onde, quando e como você gasta. Seu dinheiro pode expirar. Pode ser bloqueado. Pode simplesmente desaparecer.',
     tag: 'MONETÁRIO',
     status: 'ATIVO',
     icon: Eye,
-    accent: 'from-amber-600/20 to-amber-900/10',
-    borderAccent: 'hover:border-amber-600/30',
+    accent: 'border-amber-600/30',
+    gradient: 'from-amber-900/20 via-amber-950/10 to-transparent',
   },
   {
     slug: 'depix-reporte-2026',
-    titulo: 'DePix Vai Reportar Transações em 2026',
-    subtitulo: 'Banco Central · Reporte Obrigatório · Junho 2026',
-    descricao: 'Plataformas DePix serão obrigadas a reportar transações a partir de junho de 2026. Entenda os riscos, o IOF aprovado e as alternativas com privacidade real.',
+    titulo: 'DePix Será Vigiado a Partir de 2026',
+    subtitulo: 'Banco Central · Reporte Obrigatório · IOF Aprovado',
+    descricao: 'Toda plataforma DePix será obrigada a reportar transações. O IOF sobre cripto já foi aprovado. O cerco está fechando. Quem não se moveu, vai ficar preso dentro.',
     tag: 'REGULATÓRIO',
     status: 'ATIVO',
-    icon: TrendingDown,
-    accent: 'from-rose-600/20 to-rose-900/10',
-    borderAccent: 'hover:border-rose-600/30',
+    icon: Fingerprint,
+    accent: 'border-rose-600/30',
+    gradient: 'from-rose-900/20 via-rose-950/10 to-transparent',
+  },
+  {
+    slug: 'governo-tomar-bitcoins',
+    titulo: 'Nova Lei Permite Governo TOMAR Seus Bitcoins',
+    subtitulo: 'Hong Kong · Segurança Nacional · Apreensão de Seeds',
+    descricao: 'Hong Kong criminalizou a recusa de entregar senhas e chaves. O Brasil monitora transações cripto diariamente via IOF. Se você acha que Bitcoin é confisco-proof sem OpSec, está enganado.',
+    tag: 'CONFISCO',
+    status: 'ATIVO',
+    icon: Skull,
+    accent: 'border-red-500/40',
+    gradient: 'from-red-800/30 via-red-950/20 to-transparent',
   },
 ];
 
-/* ── Próximos alertas ── */
-const ALERTAS_PROXIMOS = [
+/* ══════════════════════════════════════════════════════════
+   DATA — LINHA DO TEMPO DA OPRESSÃO
+══════════════════════════════════════════════════════════ */
+const TIMELINE_OPRESSAO = [
+  { ano: '1933', evento: 'EUA confiscam ouro', desc: 'Roosevelt assina Executive Order 6102. Posse de ouro acima de 5oz vira crime. Cidadãos são obrigados a entregar ouro ao governo a US$20.67/oz. Logo depois, o governo reprecia para US$35/oz. Roubo legalizado.' },
+  { ano: '1990', evento: 'Brasil congela poupanças', desc: 'Plano Collor confisca 80% de todos os depósitos bancários. Famílias inteiras perdem economias de uma vida. Alguns morrem sem recuperar. Zero consequências para os responsáveis.' },
+  { ano: '2013', evento: 'Chipre confisca depósitos', desc: 'Bail-in sem precedentes. Depósitos acima de €100.000 são confiscados para "salvar" bancos falidos. O modelo vira referência para futuros confiscos globais.' },
+  { ano: '2016', evento: 'Índia elimina 86% das cédulas', desc: 'Modi anuncia desmonetização de notas de 500 e 1000 rupias. 86% do dinheiro em circulação vira papel sem valor em 4 horas. Filas quilométricas, mortes, caos.' },
+  { ano: '2020', evento: 'PIX lançado no Brasil', desc: 'Infraestrutura de pagamentos instantâneos "gratuita" e totalmente rastreável. O primeiro passo para eliminar o dinheiro físico. Adoção massiva = vigilância massiva.' },
+  { ano: '2022', evento: 'DREX anunciado', desc: 'Real Digital programável. O governo pode definir prazo de validade, restrições de uso e bloqueio remoto do SEU dinheiro. Não é inovação. É controle total.' },
+  { ano: '2025', evento: 'PL 3.951 aprovado na CCJ', desc: 'O mecanismo legal para limitar transações em dinheiro vivo é aprovado. O CMN agora pode definir limites a qualquer momento. Sem nova votação. Sem consulta pública.' },
+  { ano: '2025', evento: 'Hong Kong criminaliza recusa de entregar senhas', desc: 'Emenda à Lei de Segurança Nacional transforma em crime a recusa em entregar chaves de criptografia. Seeds, senhas e acesso a wallets viram alvo legal.' },
+  { ano: '2026+', evento: 'O cerco se fecha', desc: 'DePix reportado. IOF sobre cripto. Limites ao dinheiro vivo. DREX operacional. Quem não construiu sua soberania financeira antes, estará preso dentro do sistema.' },
+];
+
+/* ══════════════════════════════════════════════════════════
+   DATA — ARSENAL DE SAÍDA
+══════════════════════════════════════════════════════════ */
+const ARSENAL_SAIDA = [
   {
-    titulo: 'Imposto Global Sobre Patrimônio',
-    subtitulo: 'OCDE · Tributação Internacional · Confisco Legalizado',
-    tag: 'TRIBUTÁRIO',
-    icon: TrendingDown,
+    icon: KeyRound,
+    titulo: 'Autocustódia de Bitcoin',
+    desc: 'Seus bitcoins numa wallet que só você controla. Sem exchange. Sem banco. Sem intermediários. Não há governo no planeta que possa acessar uma seed bem guardada.',
+    link: '/autocustodia',
+    cta: 'PROTOCOLO DE AUTOCUSTÓDIA',
   },
   {
-    titulo: 'Rastreamento Financeiro Total',
-    subtitulo: 'COAF · Open Banking · Vigilância Patrimonial',
-    tag: 'VIGILÂNCIA',
-    icon: Lock,
+    icon: Shield,
+    titulo: 'Compra P2P Sem KYC',
+    desc: 'Plataformas como Bisq, SpikeTuSpike e RoboSats permitem comprar Bitcoin sem entregar documentos. Sem KYC = sem registro permanente vinculado à sua identidade.',
+    link: '/soberania-financeira/comprar-bitcoin-anonimo',
+    cta: 'COMPRAR SEM RASTRO',
+  },
+  {
+    icon: MapPin,
+    titulo: 'Teoria das Bandeiras',
+    desc: 'Distribua sua existência financeira entre múltiplas jurisdições. Quanto mais bandeiras, menor o risco de um único governo destruir tudo.',
+    link: '/soberania-financeira/teoria-das-bandeiras',
+    cta: 'DIVERSIFICAR JURISDIÇÕES',
+  },
+  {
+    icon: Globe,
+    titulo: 'Contas Internacionais',
+    desc: 'Com documentação estrangeira, você abre contas em 10+ jurisdições. Cada conta é uma camada de proteção contra bloqueios e confiscos arbitrários.',
+    link: '/soberania-financeira/contas-offshore',
+    cta: 'ABRIR CONTAS FORA',
+  },
+  {
+    icon: CreditCard,
+    titulo: 'PIX Sem Banco',
+    desc: 'Receba PIX usando Bitcoin como base, sem conta bancária, sem CPF vinculado a um banco centralizado. O ciclo completo de privacidade.',
+    link: '/soberania-financeira/pix-sem-banco',
+    cta: 'PIX PRIVADO',
+  },
+  {
+    icon: Radio,
+    titulo: 'Krux + Passphrase + BlueWallet',
+    desc: 'Monte um setup air-gapped completo. Hardware DIY. Passphrase BIP-39. Wallet de observação. Assinatura por QR Code. Zero conexão com a internet.',
+    link: '/autocustodia/krux-passphrase-bluewallet',
+    cta: 'MONTAR SETUP AIR-GAP',
   },
 ];
 
-/* ── FAQ otimizado para SEO de alto volume ── */
+/* ══════════════════════════════════════════════════════════
+   DATA — FAQ (SEO de alto volume)
+══════════════════════════════════════════════════════════ */
 const FAQ_DATA = [
   {
     q: 'O governo pode proibir o dinheiro em espécie no Brasil?',
-    a: 'Sim. O PL 3.951/2019 já está em tramitação na CCJ e propõe limites ao uso de cédulas. Na Europa, países como França e Itália já impõem tetos de pagamento em dinheiro vivo. A tendência global é restringir o papel-moeda para aumentar o controle fiscal.',
+    a: 'Sim. O PL 3.951/2019 já foi aprovado na CCJ e cria o mecanismo legal para que o Conselho Monetário Nacional defina limites a qualquer momento, sem nova votação. Na Europa, países como França (€1.000) e Grécia (€500) já têm limites extremamente baixos. A tendência é global e irreversível.',
   },
   {
     q: 'O que é o DREX e por que ele é perigoso?',
-    a: 'O DREX é a moeda digital do Banco Central do Brasil (CBDC). Diferente do PIX, o DREX é programável: o governo pode definir onde, quando e como você gasta. Isso significa que seu dinheiro pode ter prazo de validade, restrições de uso e ser bloqueado sem ordem judicial.',
-  },
-  {
-    q: 'Qual a diferença entre PIX e DREX?',
-    a: 'O PIX é um sistema de transferência que move reais entre contas bancárias. O DREX substitui o próprio real por uma moeda digital controlada diretamente pelo Banco Central, com capacidade de programação, rastreamento total e bloqueio remoto.',
-  },
-  {
-    q: 'Como proteger meu patrimônio de confisco?',
-    a: 'Diversificação jurisdicional, autocustódia de Bitcoin, ativos fora do sistema bancário tradicional e conhecimento sobre proteção patrimonial legal. O primeiro passo é entender que dinheiro no banco não é seu: é um crédito que o banco te deve.',
+    a: 'O DREX é a moeda digital programável do Banco Central. Diferente do PIX, o DREX substitui o próprio Real por uma moeda que o governo controla diretamente. Pode ter prazo de validade, restrições de uso, bloqueio remoto e rastreamento total de cada centavo. É a ferramenta definitiva de controle financeiro.',
   },
   {
     q: 'Bitcoin pode ser confiscado pelo governo?',
-    a: 'Se você pratica autocustódia correta (hardware wallet com seed phrase segura), nenhum governo pode confiscar seus bitcoins. Diferente de contas bancárias, imóveis ou veículos, o Bitcoin não depende de intermediários e não pode ser apreendido fisicamente.',
+    a: 'Se pratica autocustódia correta (hardware wallet + seed + passphrase BIP-39), nenhum governo pode confiscar seus bitcoins. Porém, se estão em exchange ou se o governo obriga a entrega de chaves (como Hong Kong fez), estão vulneráveis. A proteção depende da SUA infraestrutura, não do protocolo.',
+  },
+  {
+    q: 'Qual a diferença entre PIX e DREX?',
+    a: 'O PIX é um sistema de transferência que move reais entre contas bancárias existentes. O DREX substitui o próprio Real por uma moeda digital controlada diretamente pelo Banco Central. Com DREX, o governo pode programar restrições no SEU dinheiro: onde gastar, quando gastar, e se pode gastar.',
+  },
+  {
+    q: 'Como proteger meu patrimônio de confisco?',
+    a: 'Autocustódia de Bitcoin (hardware wallet com passphrase), diversificação jurisdicional (Teoria das Bandeiras), contas internacionais, e eliminação de dependência do sistema bancário centralizado. O primeiro passo é entender que dinheiro no banco NÃO é seu: é um crédito que o banco te deve — e pode decidir não pagar.',
   },
   {
     q: 'O que aconteceu no confisco de 1990 no Brasil?',
-    a: 'Em março de 1990, o governo Collor congelou 80% de todos os depósitos bancários e aplicações financeiras do país. De um dia para o outro, milhões de brasileiros perderam acesso ao próprio dinheiro. Alguns morreram sem recuperar os valores.',
+    a: 'Em março de 1990, o governo Collor congelou 80% de TODOS os depósitos bancários e aplicações financeiras do país. De um dia para o outro, milhões de brasileiros perderam acesso ao próprio dinheiro. Pessoas morreram sem recuperar os valores. Zero responsáveis foram punidos. E o mecanismo legal para fazer isso de novo NUNCA foi revogado.',
   },
   {
-    q: 'É legal comprar e usar Bitcoin no Brasil?',
-    a: 'Sim. O Marco Legal das Criptomoedas (Lei 14.478/2022) regulamentou o uso de criptoativos no Brasil. Comprar, vender, guardar e transacionar Bitcoin é completamente legal. A obrigação é declarar no Imposto de Renda.',
+    q: 'É legal comprar Bitcoin sem KYC no Brasil?',
+    a: 'Comprar Bitcoin P2P (pessoa a pessoa) é completamente legal no Brasil. O Marco Legal das Criptomoedas (Lei 14.478/2022) não proíbe transações diretas. A diferença é que plataformas P2P como Bisq e RoboSats não exigem verificação de identidade (KYC), o que preserva sua privacidade financeira.',
+  },
+  {
+    q: 'Privacidade financeira é crime?',
+    a: 'Não. Privacidade é um direito fundamental garantido pela Constituição (Art. 5º, X e XII). Utilizar ferramentas legais para proteger sua privacidade financeira — como exchanges P2P, cartões sem KYC ou contas internacionais — é completamente legal. O que muda é o nível de informação que você VOLUNTARIAMENTE entrega ao Estado.',
   },
   {
     q: 'O que é autocustódia e por que ela é essencial?',
-    a: 'Autocustódia significa guardar seus próprios bitcoins em uma carteira que só você controla, sem depender de corretoras ou bancos. "Not your keys, not your coins": se outra pessoa guarda seu Bitcoin, ela decide se você pode acessá-lo.',
+    a: '"Not your keys, not your coins." Se outra pessoa guarda seu Bitcoin — exchange, banco, custodiante — ela decide se você pode acessá-lo. Autocustódia significa que VOCÊ controla as chaves privadas. Nenhum governo, banco ou plataforma pode congelar, confiscar ou bloquear seus fundos. É a soberania financeira real.',
+  },
+  {
+    q: 'O governo pode rastrear minhas transações de Bitcoin?',
+    a: 'Transações em exchanges centralizadas (com KYC) são 100% rastreáveis. O governo sabe quem comprou, quanto e quando. Porém, Bitcoin adquirido via P2P sem KYC, usando técnicas de privacidade (CoinJoin, Liquid Network), torna o rastreamento exponencialmente mais difícil. A privacidade não é automática — precisa ser construída.',
   },
 ];
 
-/* ── Animação ── */
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: (i: number) => ({
-    opacity: 1, y: 0,
-    transition: { duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] as const },
-  }),
+/* ══════════════════════════════════════════════════════════
+   DATA — PRÓXIMOS ALERTAS
+══════════════════════════════════════════════════════════ */
+const ALERTAS_PROXIMOS = [
+  { titulo: 'Imposto Global Sobre Patrimônio', subtitulo: 'OCDE · Tributação Internacional · Confisco Legalizado', tag: 'TRIBUTÁRIO', icon: TrendingDown },
+  { titulo: 'Rastreamento Financeiro Total', subtitulo: 'COAF · Open Banking · Vigilância Patrimonial', tag: 'VIGILÂNCIA', icon: Lock },
+  { titulo: 'Identidade Digital Obrigatória', subtitulo: 'Gov.br · Biometria · Score Social', tag: 'BIOMÉTRICO', icon: Fingerprint },
+];
+
+/* ══════════════════════════════════════════════════════════
+   GSAP SECTION WRAPPER
+══════════════════════════════════════════════════════════ */
+const GsapSection = ({ children, className = '', id }: { children: React.ReactNode; className?: string; id?: string }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (!ref.current) return;
+    gsap.fromTo(ref.current,
+      { opacity: 0, y: 50, filter: 'blur(8px)' },
+      { opacity: 1, y: 0, filter: 'blur(0px)', duration: 1, ease: 'power3.out',
+        scrollTrigger: { trigger: ref.current, start: 'top 85%', toggleActions: 'play none none none' } }
+    );
+    return () => { ScrollTrigger.getAll().forEach(t => { if (t.trigger === ref.current) t.kill(); }); };
+  }, []);
+  return <div ref={ref} id={id} className={className}>{children}</div>;
 };
 
+/* ══════════════════════════════════════════════════════════
+   PAGE COMPONENT
+══════════════════════════════════════════════════════════ */
 export default function AlertasHub() {
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
-  const heroRef = useRef(null);
-  const heroInView = useInView(heroRef, { once: true, margin: '-80px' });
-  const alertRef = useRef(null);
-  const alertInView = useInView(alertRef, { once: true, margin: '-60px' });
-  const faqRef = useRef(null);
-  const faqInView = useInView(faqRef, { once: true, margin: '-60px' });
+  const { scrollYProgress } = useScroll();
+  const progressWidth = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
 
   return (
     <div className="min-h-screen bg-[#050808] text-foreground font-sans overflow-x-hidden">
       <ScrollToTop />
       <Helmet>
-        <title>Alertas de Soberania: Ameaças à Liberdade Financeira no Brasil | Lord Junnior</title>
-        <meta name="description" content="Monitoramento de ameaças à sua liberdade financeira: DREX, fim do dinheiro vivo, impostos globais e rastreamento total. Entenda os riscos e proteja seu patrimônio." />
+        <title>Alertas de Soberania: O Estado Está Vindo Pelo Seu Dinheiro | Lord Junnior</title>
+        <meta name="description" content="Central de monitoramento de ameaças à sua liberdade financeira: confisco, DREX, fim do dinheiro vivo, vigilância total. Entenda a hipocrisia do Estado e proteja seu patrimônio antes que seja tarde." />
         <link rel="canonical" href="https://lordjunnior.com.br/alertas" />
         <script type="application/ld+json">{JSON.stringify({
-          '@context': 'https://schema.org',
-          '@type': 'FAQPage',
-          mainEntity: FAQ_DATA.map(f => ({
-            '@type': 'Question', name: f.q,
-            acceptedAnswer: { '@type': 'Answer', text: f.a },
-          })),
+          '@context': 'https://schema.org', '@type': 'FAQPage',
+          mainEntity: FAQ_DATA.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
         })}</script>
         <script type="application/ld+json">{JSON.stringify({
-          '@context': 'https://schema.org',
-          '@type': 'CollectionPage',
-          name: 'Alertas de Soberania',
-          description: 'Central de monitoramento de ameaças à liberdade financeira no Brasil.',
+          '@context': 'https://schema.org', '@type': 'Article',
+          headline: 'Alertas de Soberania: O Estado Está Vindo Pelo Seu Dinheiro',
+          author: { '@type': 'Person', name: 'Lord Junnior' },
+          publisher: { '@type': 'Organization', name: 'Universidade Satoshi' },
           url: 'https://lordjunnior.com.br/alertas',
+          datePublished: '2025-01-15', dateModified: '2026-04-07',
         })}</script>
       </Helmet>
 
-      {/* ── Film Grain ── */}
-      <div className="fixed inset-0 pointer-events-none z-0 opacity-[0.03]"
-        style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'n\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23n)\'/%3E%3C/svg%3E")', backgroundRepeat: 'repeat' }}
-      />
+      {/* ── Progress Bar ── */}
+      <motion.div className="fixed top-0 left-0 right-0 h-[2px] bg-destructive z-50 origin-left" style={{ width: progressWidth }} />
+
+      {/* ── Atmospheric Layers ── */}
+      <div className="fixed inset-0 pointer-events-none z-0">
+        <div className="absolute inset-0 bg-[#050808]" />
+        <div className="absolute inset-0 opacity-20" style={{ background: 'radial-gradient(ellipse 80% 50% at 30% 20%, hsl(0 60% 10%) 0%, transparent 70%), radial-gradient(ellipse 60% 40% at 80% 70%, hsl(38 60% 8%) 0%, transparent 60%)' }} />
+        <div className="absolute inset-0 opacity-[0.035]" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'n\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23n)\'/%3E%3C/svg%3E")', backgroundRepeat: 'repeat' }} />
+      </div>
 
       <div className="relative z-10">
 
-        {/* ══════════════════════════════════════════════
-            SEÇÃO 1: HERO — CURIOSIDADE
-        ══════════════════════════════════════════════ */}
-        <section ref={heroRef} className="max-w-5xl mx-auto px-6 pt-28 pb-20">
-          <Link to="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground mb-16 text-[10px] font-bold uppercase tracking-[0.4em] font-mono transition-colors">
-            <ArrowLeft size={14} /> Voltar ao Início
-          </Link>
+        {/* ══════════════════════════════════════════════════════
+            SEÇÃO 1: HERO CINEMATOGRÁFICO
+        ══════════════════════════════════════════════════════ */}
+        <section className="relative min-h-[90vh] flex items-center overflow-hidden">
+          <div className="absolute inset-0">
+            <img src={imgVigilancia} alt="Sala de vigilância estatal monitorando contas bancárias" className="w-full h-full object-cover" width={1344} height={768} />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#050808] via-[#050808]/90 to-[#050808]/60" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#050808] via-transparent to-[#050808]/40" />
+          </div>
 
-          <motion.div
-            initial="hidden" animate={heroInView ? 'visible' : 'hidden'}
-            variants={fadeUp} custom={0}
-          >
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-sm border border-destructive/20 bg-destructive/5 flex items-center justify-center">
-                <AlertTriangle className="w-5 h-5 text-destructive" />
+          <div className="relative max-w-7xl mx-auto px-6 py-28">
+            <Link to="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground mb-16 text-[10px] font-bold uppercase tracking-[0.4em] font-mono transition-colors">
+              <ArrowLeft size={14} /> Voltar ao Início
+            </Link>
+
+            <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 rounded-sm border border-destructive/30 bg-destructive/10 flex items-center justify-center">
+                  <Skull className="w-5 h-5 text-destructive" />
+                </div>
+                <span className="text-destructive font-black uppercase tracking-[0.4em] text-[9px] font-mono">Central de Alertas · Nível Crítico</span>
               </div>
-              <span className="text-destructive font-black uppercase tracking-[0.4em] text-[9px] font-mono">Central de Alertas</span>
-            </div>
-          </motion.div>
+            </motion.div>
 
-          <motion.h1
-            initial="hidden" animate={heroInView ? 'visible' : 'hidden'}
-            variants={fadeUp} custom={1}
-            className="font-['Bebas_Neue'] text-6xl md:text-8xl tracking-tight uppercase mb-6 leading-[0.9]"
-          >
-            Alertas de<br />
-            <span className="text-destructive">Soberania</span>
-          </motion.h1>
+            <motion.h1
+              initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+              className="font-['Inter_Tight'] font-black text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight leading-[0.9] mb-8 max-w-4xl"
+            >
+              O Estado Está Vindo<br />
+              Pelo Seu{' '}
+              <span className="text-destructive relative">
+                Dinheiro
+                <motion.span
+                  className="absolute bottom-0 left-0 h-[3px] bg-destructive"
+                  initial={{ width: 0 }} animate={{ width: '100%' }}
+                  transition={{ duration: 1.2, delay: 1, ease: [0.22, 1, 0.36, 1] }}
+                />
+              </span>
+            </motion.h1>
 
-          <motion.p
-            initial="hidden" animate={heroInView ? 'visible' : 'hidden'}
-            variants={fadeUp} custom={2}
-            className="text-lg text-muted-foreground leading-relaxed max-w-2xl font-['Space_Grotesk']"
-          >
-            Análises aprofundadas sobre ameaças reais à sua liberdade financeira.
-            Cada alerta é uma página dedicada com contexto, dados internacionais e ferramentas práticas de proteção.
-          </motion.p>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl font-['Inter_Tight'] font-medium mb-10"
+            >
+              Confisco, vigilância, moeda programável, fim do dinheiro vivo.
+              Não é teoria da conspiração. É legislação aprovada, infraestrutura construída
+              e precedente histórico repetido.{' '}
+              <span className="text-foreground font-bold">Esta página é o seu mapa de ameaças — e o caminho de saída.</span>
+            </motion.p>
 
-          {/* Stat bar — prova social */}
-          <motion.div
-            initial="hidden" animate={heroInView ? 'visible' : 'hidden'}
-            variants={fadeUp} custom={3}
-            className="flex flex-wrap gap-8 mt-10 pt-8 border-t border-border/30"
-          >
-            {[
-              { label: 'Alertas ativos', value: String(ALERTAS.length).padStart(2, '0') },
-              { label: 'Em produção', value: '02' },
-              { label: 'Países monitorados', value: '12+' },
-            ].map((s, i) => (
-              <div key={i}>
-                <p className="font-['Bebas_Neue'] text-3xl text-foreground">{s.value}</p>
-                <p className="text-[10px] font-mono uppercase tracking-[0.3em] text-muted-foreground">{s.label}</p>
-              </div>
-            ))}
-          </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="flex flex-wrap gap-8 pt-8 border-t border-border/20"
+            >
+              {[
+                { label: 'Alertas ativos', value: '04' },
+                { label: 'Confiscos documentados', value: '09+' },
+                { label: 'Países monitorados', value: '15+' },
+                { label: 'Ferramentas de saída', value: '06' },
+              ].map((s, i) => (
+                <div key={i}>
+                  <p className="font-['Bebas_Neue'] text-4xl text-foreground">{s.value}</p>
+                  <p className="text-[10px] font-mono uppercase tracking-[0.3em] text-muted-foreground">{s.label}</p>
+                </div>
+              ))}
+            </motion.div>
+          </div>
         </section>
 
-        {/* ══════════════════════════════════════════════
-            SEÇÃO 2: ALERTAS ATIVOS — MEDO RACIONAL
-        ══════════════════════════════════════════════ */}
-        <section ref={alertRef} className="max-w-5xl mx-auto px-6 pb-20">
-          <motion.div
-            initial="hidden" animate={alertInView ? 'visible' : 'hidden'}
-            variants={fadeUp} custom={0}
-            className="mb-8"
-          >
-            <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-destructive/60 mb-2">Ameaças identificadas</p>
-            <h2 className="font-['Bebas_Neue'] text-3xl md:text-4xl tracking-tight uppercase">
-              Alertas <span className="text-destructive">Ativos</span>
-            </h2>
-          </motion.div>
+        {/* ══════════════════════════════════════════════════════
+            SEÇÃO 2: A HIPOCRISIA DO ESTADO — PNL AVANÇADA
+        ══════════════════════════════════════════════════════ */}
+        <GsapSection id="hipocrisia" className="max-w-7xl mx-auto px-6 py-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Imagem */}
+            <div className="relative rounded-sm overflow-hidden group">
+              <img src={imgHipocrisia} alt="Hipocrisia do Estado: roleta de cassino em frente ao governo" className="w-full h-full object-cover aspect-[16/10]" loading="lazy" width={1344} height={768} />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#050808] via-transparent to-transparent" />
+              <div className="absolute bottom-6 left-6 right-6">
+                <p className="font-mono text-[9px] tracking-[0.3em] uppercase text-destructive/80 mb-2">Contradição documentada</p>
+                <p className="text-foreground/90 text-sm font-['Inter_Tight'] font-semibold italic leading-relaxed">
+                  "Quando o Estado faz, é 'lei'. Quando você faz, é 'crime'."
+                </p>
+              </div>
+            </div>
 
-          <div className="space-y-4">
+            {/* Copy PNL */}
+            <div>
+              <p className="font-mono text-[9px] tracking-[0.3em] uppercase text-destructive/70 mb-4">Desaprendizagem obrigatória</p>
+              <h2 className="font-['Bebas_Neue'] text-4xl md:text-5xl tracking-tight uppercase mb-6 leading-[1.05]">
+                O Crime Que Só É Crime<br />
+                <span className="text-destructive">Quando Você Comete</span>
+              </h2>
+
+              <div className="space-y-4 mb-8">
+                {HIPOCRISIA.map((item, i) => {
+                  const Icon = item.icon;
+                  return (
+                    <motion.div
+                      key={i}
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: i * 0.1 }}
+                      className="relative bg-white/[0.02] border border-border/30 rounded-sm p-5 hover:border-destructive/30 transition-colors group/card"
+                    >
+                      <div className="flex items-start gap-4">
+                        <div className="w-10 h-10 rounded-sm bg-destructive/10 flex items-center justify-center shrink-0">
+                          <Icon className="w-4 h-4 text-destructive" />
+                        </div>
+                        <div className="flex-1">
+                          <div className="flex items-center gap-3 mb-2">
+                            <span className="text-[8px] font-black uppercase tracking-[0.3em] text-destructive/60 font-mono bg-destructive/5 px-2 py-0.5 rounded-sm">
+                              {item.crime} → {item.lei}
+                            </span>
+                          </div>
+                          <p className="text-foreground/90 text-sm font-['Inter_Tight'] font-medium leading-relaxed">
+                            {item.frase}
+                          </p>
+                        </div>
+                      </div>
+                    </motion.div>
+                  );
+                })}
+              </div>
+
+              <div className="bg-white/[0.03] border border-primary/20 rounded-sm p-6">
+                <p className="text-foreground font-['Inter_Tight'] font-bold text-base leading-relaxed mb-2">
+                  Engraçado, não é?
+                </p>
+                <p className="text-muted-foreground text-sm leading-relaxed font-['Inter_Tight']">
+                  Quando o Estado faz, é "lei". Quando você faz, é "crime". E o pior: você foi treinado desde criança para achar isso <span className="text-primary font-bold">normal</span>.
+                  Esta página existe para quebrar esse condicionamento.
+                </p>
+              </div>
+            </div>
+          </div>
+        </GsapSection>
+
+        {/* ── Separator: Cinematic Break ── */}
+        <div className="relative h-64 overflow-hidden">
+          <img src={imgMorteDinheiro} alt="Cédula de Real em chamas — morte do dinheiro físico" className="w-full h-full object-cover" loading="lazy" width={1344} height={768} />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#050808] via-[#050808]/40 to-[#050808]" />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <p className="font-['Bebas_Neue'] text-3xl md:text-5xl tracking-tight uppercase text-foreground/80 text-center px-6">
+              Seu dinheiro está <span className="text-destructive">queimando</span>. Você só não vê as chamas.
+            </p>
+          </div>
+        </div>
+
+        {/* ══════════════════════════════════════════════════════
+            SEÇÃO 3: ALERTAS ATIVOS — MEDO RACIONAL
+        ══════════════════════════════════════════════════════ */}
+        <GsapSection id="alertas" className="max-w-7xl mx-auto px-6 py-20">
+          <div className="flex items-center gap-4 mb-4">
+            <div className="w-3 h-3 relative">
+              <span className="absolute inset-0 rounded-full bg-destructive animate-ping opacity-40" />
+              <span className="relative block w-3 h-3 rounded-full bg-destructive" />
+            </div>
+            <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-destructive/80">Ameaças ativas · Monitoramento em tempo real</p>
+          </div>
+          <h2 className="font-['Bebas_Neue'] text-4xl md:text-6xl tracking-tight uppercase mb-3 leading-[0.95]">
+            Dossiê de <span className="text-destructive">Ameaças</span>
+          </h2>
+          <p className="text-muted-foreground text-base leading-relaxed max-w-2xl font-['Inter_Tight'] mb-12">
+            Cada alerta é uma página dedicada com contexto histórico, dados internacionais, análise jurídica
+            e ferramentas práticas de proteção. Não é opinião — é documentação.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {ALERTAS.map((alerta, i) => {
               const Icon = alerta.icon;
               return (
                 <motion.div
                   key={alerta.slug}
-                  initial="hidden" animate={alertInView ? 'visible' : 'hidden'}
-                  variants={fadeUp} custom={i + 1}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-40px' }}
+                  transition={{ duration: 0.6, delay: i * 0.1 }}
                 >
                   <Link
                     to={`/alertas/${alerta.slug}`}
-                    className={`block bg-white/[0.02] border border-border/40 rounded-sm p-8 ${alerta.borderAccent} hover:bg-white/[0.04] transition-all duration-300 group relative overflow-hidden`}
+                    className={`block h-full bg-white/[0.02] border ${alerta.accent} rounded-sm overflow-hidden hover:bg-white/[0.04] transition-all duration-300 group relative`}
                   >
-                    {/* Gradient accent */}
-                    <div className={`absolute inset-0 bg-gradient-to-r ${alerta.accent} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
-
-                    <div className="relative flex items-start justify-between gap-4">
-                      <div className="flex gap-5 flex-1">
+                    <div className={`absolute inset-0 bg-gradient-to-br ${alerta.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+                    <div className="relative p-7 md:p-8">
+                      <div className="flex items-center gap-3 mb-5">
+                        <span className="text-[8px] font-black uppercase tracking-[0.3em] text-destructive font-mono bg-destructive/10 px-2.5 py-1 rounded-sm">{alerta.tag}</span>
+                        <span className="inline-flex items-center gap-1.5 text-[8px] font-black uppercase tracking-[0.3em] text-amber-500 font-mono">
+                          <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />
+                          {alerta.status}
+                        </span>
+                      </div>
+                      <div className="flex items-start gap-4">
                         <div className="w-12 h-12 rounded-sm border border-border/40 bg-white/[0.03] flex items-center justify-center shrink-0">
                           <Icon className="w-5 h-5 text-muted-foreground group-hover:text-destructive transition-colors" />
                         </div>
                         <div className="flex-1">
-                          <div className="flex items-center gap-3 mb-3">
-                            <span className="text-[8px] font-black uppercase tracking-[0.3em] text-destructive font-mono bg-destructive/10 px-2.5 py-1 rounded-sm">{alerta.tag}</span>
-                            <span className="inline-flex items-center gap-1.5 text-[8px] font-black uppercase tracking-[0.3em] text-amber-500 font-mono">
-                              <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />
-                              {alerta.status}
-                            </span>
-                          </div>
-                          <h3 className="text-foreground font-bold text-xl md:text-2xl tracking-tight mb-2 group-hover:text-destructive transition-colors font-['Space_Grotesk']">
+                          <h3 className="text-foreground font-bold text-lg md:text-xl tracking-tight mb-2 group-hover:text-destructive transition-colors font-['Inter_Tight']">
                             {alerta.titulo}
                           </h3>
-                          <p className="text-muted-foreground/60 text-xs font-bold uppercase tracking-wider font-mono mb-3">{alerta.subtitulo}</p>
-                          <p className="text-muted-foreground text-sm leading-relaxed font-['Space_Grotesk']">{alerta.descricao}</p>
+                          <p className="text-muted-foreground/50 text-[10px] font-bold uppercase tracking-wider font-mono mb-3">{alerta.subtitulo}</p>
+                          <p className="text-muted-foreground text-sm leading-relaxed font-['Inter_Tight']">{alerta.descricao}</p>
                         </div>
                       </div>
-                      <ChevronRight className="text-muted-foreground/30 group-hover:text-destructive transition-colors shrink-0 mt-3" size={24} />
+                      <div className="flex items-center gap-2 mt-5 text-primary text-xs font-bold uppercase tracking-wider font-mono group-hover:gap-3 transition-all">
+                        <span>Acessar dossiê completo</span>
+                        <ChevronRight size={14} />
+                      </div>
                     </div>
                   </Link>
                 </motion.div>
               );
             })}
           </div>
-        </section>
+        </GsapSection>
 
-        {/* ══════════════════════════════════════════════
-            SEÇÃO 3: CTA PREMIUM — SOLUÇÃO
-        ══════════════════════════════════════════════ */}
-        <section className="max-w-5xl mx-auto px-6 pb-20">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.97 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="relative overflow-hidden rounded-sm border border-primary/20 bg-gradient-to-br from-primary/[0.06] via-white/[0.01] to-transparent p-10 md:p-14"
-          >
-            {/* Pulse ring */}
-            <div className="absolute top-6 right-6 w-3 h-3">
-              <span className="absolute inset-0 rounded-full bg-primary animate-ping opacity-40" />
-              <span className="relative block w-3 h-3 rounded-full bg-primary" />
-            </div>
+        {/* ══════════════════════════════════════════════════════
+            SEÇÃO 4: CONFISCO DIGITAL — IMAGEM + COPY
+        ══════════════════════════════════════════════════════ */}
+        <GsapSection className="max-w-7xl mx-auto px-6 py-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <p className="font-mono text-[9px] tracking-[0.3em] uppercase text-destructive/70 mb-4">Precedente histórico</p>
+              <h2 className="font-['Bebas_Neue'] text-4xl md:text-5xl tracking-tight uppercase mb-6 leading-[1.05]">
+                Eles Já Fizeram Isso<br />
+                <span className="text-destructive">Antes</span>
+              </h2>
+              <p className="text-muted-foreground text-base leading-8 font-['Inter_Tight'] mb-6">
+                Em 1990, o governo brasileiro <span className="text-foreground font-bold">congelou 80% de todos os depósitos bancários</span> do país.
+                De um dia para o outro. Sem aviso. Sem consulta.
+                Famílias inteiras perderam as economias de uma vida.
+                Pessoas morreram sem recuperar seus valores.
+              </p>
+              <p className="text-muted-foreground text-base leading-8 font-['Inter_Tight'] mb-6">
+                Em 2013, Chipre fez a mesma coisa. Em 2016, a Índia eliminou 86% das cédulas em circulação.
+                Em 2025, Hong Kong criminalizou a recusa de entregar senhas e chaves de criptografia.
+              </p>
+              <p className="text-foreground text-base leading-8 font-['Inter_Tight'] font-bold mb-8">
+                Isto não é história antiga. É o manual de operações que está sendo executado agora, neste momento, contra você.
+              </p>
 
-            <div className="flex items-center gap-3 mb-4">
-              <Shield className="w-5 h-5 text-primary" />
-              <span className="font-mono text-[10px] tracking-[0.3em] uppercase text-primary/80">Protocolo de proteção</span>
-            </div>
-
-            <h2 className="font-['Bebas_Neue'] text-3xl md:text-5xl tracking-tight uppercase mb-4 leading-[0.95]">
-              Não espere o próximo<br />confisco para agir
-            </h2>
-
-            <p className="text-muted-foreground text-base leading-relaxed max-w-xl mb-8 font-['Space_Grotesk']">
-              Cada alerta inclui ferramentas práticas de proteção. Comece pela autocustódia de Bitcoin
-              e construa sua soberania financeira antes que a janela se feche.
-            </p>
-
-            <div className="flex flex-wrap gap-4">
-              <Link
-                to="/bitcoin"
-                className="group relative inline-flex items-center gap-2 bg-primary text-primary-foreground font-bold text-sm uppercase tracking-wider px-7 py-3.5 rounded-sm overflow-hidden transition-all hover:shadow-[0_0_30px_hsl(var(--primary)/0.3)]"
-              >
-                <span className="absolute inset-0 bg-white/10 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
-                <span className="relative">Iniciar protocolo</span>
-                <ExternalLink size={14} className="relative" />
-              </Link>
               <Link
                 to="/confisco-1990"
-                className="inline-flex items-center gap-2 border border-border/50 text-muted-foreground font-bold text-sm uppercase tracking-wider px-7 py-3.5 rounded-sm hover:border-foreground/30 hover:text-foreground transition-colors"
+                className="inline-flex items-center gap-2 bg-destructive/10 border border-destructive/30 text-destructive font-bold text-sm uppercase tracking-wider px-6 py-3 rounded-sm hover:bg-destructive/20 transition-colors"
               >
-                Entenda o confisco de 1990
+                <Skull size={16} />
+                <span>Ver dossiê completo do confisco de 1990</span>
               </Link>
             </div>
-          </motion.div>
-        </section>
 
-        {/* ══════════════════════════════════════════════
-            SEÇÃO 4: PRÓXIMOS ALERTAS — EM PRODUÇÃO
-        ══════════════════════════════════════════════ */}
-        <section className="max-w-5xl mx-auto px-6 pb-20">
+            <div className="relative rounded-sm overflow-hidden">
+              <img src={imgConfisco} alt="Mãos acorrentadas segurando celular com conta bancária bloqueada" className="w-full h-full object-cover aspect-[16/10]" loading="lazy" width={1344} height={768} />
+              <div className="absolute inset-0 bg-gradient-to-l from-transparent to-[#050808]/30" />
+            </div>
+          </div>
+        </GsapSection>
+
+        {/* ══════════════════════════════════════════════════════
+            SEÇÃO 5: LINHA DO TEMPO DA OPRESSÃO FINANCEIRA
+        ══════════════════════════════════════════════════════ */}
+        <GsapSection id="timeline" className="py-20 relative">
+          {/* Background image */}
+          <div className="absolute inset-0 opacity-10">
+            <img src={imgTimeline} alt="" className="w-full h-full object-cover" loading="lazy" width={1344} height={768} />
+          </div>
+          <div className="absolute inset-0 bg-gradient-to-b from-[#050808] via-[#050808]/95 to-[#050808]" />
+
+          <div className="relative max-w-5xl mx-auto px-6">
+            <p className="font-mono text-[9px] tracking-[0.3em] uppercase text-destructive/70 mb-4">Cronologia da opressão</p>
+            <h2 className="font-['Bebas_Neue'] text-4xl md:text-6xl tracking-tight uppercase mb-4 leading-[0.95]">
+              Linha do Tempo:<br />
+              <span className="text-destructive">O Cerco Se Fecha</span>
+            </h2>
+            <p className="text-muted-foreground text-base font-['Inter_Tight'] leading-relaxed max-w-2xl mb-14">
+              Cada evento não é isolado. É um degrau calculado numa escada de controle que começou há quase 100 anos
+              e está acelerando exponencialmente.
+            </p>
+
+            <div className="relative">
+              {/* Vertical line */}
+              <div className="absolute left-4 md:left-8 top-0 bottom-0 w-px bg-gradient-to-b from-destructive/50 via-destructive/20 to-transparent" />
+
+              <div className="space-y-8">
+                {TIMELINE_OPRESSAO.map((item, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, margin: '-40px' }}
+                    transition={{ duration: 0.5, delay: i * 0.06 }}
+                    className="relative pl-12 md:pl-20"
+                  >
+                    {/* Dot */}
+                    <div className="absolute left-2.5 md:left-6.5 top-2 w-3 h-3 rounded-full bg-destructive/60 border-2 border-[#050808]" />
+
+                    <div className="bg-white/[0.02] border border-border/30 rounded-sm p-6 hover:border-destructive/20 transition-colors">
+                      <div className="flex items-center gap-3 mb-2">
+                        <span className="font-['Bebas_Neue'] text-2xl text-destructive">{item.ano}</span>
+                        <span className="text-foreground font-['Inter_Tight'] font-bold text-sm">{item.evento}</span>
+                      </div>
+                      <p className="text-muted-foreground text-sm leading-relaxed font-['Inter_Tight']">{item.desc}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </GsapSection>
+
+        {/* ══════════════════════════════════════════════════════
+            SEÇÃO 6: O ANTÍDOTO — ARSENAL DE SAÍDA
+        ══════════════════════════════════════════════════════ */}
+        <GsapSection id="arsenal" className="max-w-7xl mx-auto px-6 py-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-14">
+            <div>
+              <p className="font-mono text-[9px] tracking-[0.3em] uppercase text-primary/70 mb-4">O antídoto</p>
+              <h2 className="font-['Bebas_Neue'] text-4xl md:text-6xl tracking-tight uppercase mb-6 leading-[0.95]">
+                Arsenal de<br />
+                <span className="text-primary">Saída Soberana</span>
+              </h2>
+              <p className="text-muted-foreground text-base leading-8 font-['Inter_Tight'] mb-6">
+                O medo sem ação é paralisante. O medo com <span className="text-foreground font-bold">ferramentas</span> é libertador.
+                Cada item abaixo é uma rota de escape testada, documentada e implementável hoje.
+              </p>
+              <p className="text-foreground text-sm leading-relaxed font-['Inter_Tight'] font-bold italic border-l-2 border-primary/50 pl-4">
+                "Não espere o confisco para construir sua fortaleza. O melhor momento foi ontem. O segundo melhor é agora."
+              </p>
+            </div>
+            <div className="relative rounded-sm overflow-hidden">
+              <img src={imgSaida} alt="Pessoa caminhando em direção ao Bitcoin — saída soberana" className="w-full h-full object-cover aspect-[16/10]" loading="lazy" width={1344} height={768} />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#050808] via-transparent to-transparent" />
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {ARSENAL_SAIDA.map((tool, i) => {
+              const Icon = tool.icon;
+              return (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.08 }}
+                >
+                  <Link
+                    to={tool.link}
+                    className="block h-full bg-white/[0.02] border border-border/30 rounded-sm p-7 hover:border-primary/30 hover:bg-white/[0.04] transition-all duration-300 group"
+                  >
+                    <div className="w-11 h-11 rounded-sm bg-primary/10 border border-primary/20 flex items-center justify-center mb-5">
+                      <Icon className="w-5 h-5 text-primary" />
+                    </div>
+                    <h3 className="text-foreground font-bold text-lg tracking-tight mb-3 font-['Inter_Tight'] group-hover:text-primary transition-colors">
+                      {tool.titulo}
+                    </h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed font-['Inter_Tight'] mb-5">{tool.desc}</p>
+                    <span className="inline-flex items-center gap-2 text-primary text-[10px] font-black uppercase tracking-[0.2em] font-mono group-hover:gap-3 transition-all">
+                      {tool.cta} <ChevronRight size={12} />
+                    </span>
+                  </Link>
+                </motion.div>
+              );
+            })}
+          </div>
+        </GsapSection>
+
+        {/* ══════════════════════════════════════════════════════
+            SEÇÃO 7: CTA PREMIUM — CONVERSÃO
+        ══════════════════════════════════════════════════════ */}
+        <GsapSection className="max-w-7xl mx-auto px-6 py-20">
+          <div className="relative overflow-hidden rounded-sm border border-primary/20 bg-gradient-to-br from-primary/[0.08] via-white/[0.02] to-transparent">
+            {/* Animated border */}
+            <div className="absolute inset-0 rounded-sm" style={{ background: 'conic-gradient(from var(--angle, 0deg), transparent, hsl(var(--primary) / 0.15), transparent)', animation: 'spin 8s linear infinite' }} />
+
+            <div className="relative p-10 md:p-16">
+              <div className="absolute top-8 right-8 w-4 h-4">
+                <span className="absolute inset-0 rounded-full bg-primary animate-ping opacity-30" />
+                <span className="relative block w-4 h-4 rounded-full bg-primary" />
+              </div>
+
+              <div className="max-w-3xl">
+                <div className="flex items-center gap-3 mb-6">
+                  <Shield className="w-6 h-6 text-primary" />
+                  <span className="font-mono text-[10px] tracking-[0.3em] uppercase text-primary/80">Protocolo de blindagem patrimonial</span>
+                </div>
+
+                <h2 className="font-['Bebas_Neue'] text-4xl md:text-6xl tracking-tight uppercase mb-6 leading-[0.95]">
+                  O Confisco Não Avisa.<br />
+                  <span className="text-primary">A Preparação Sim.</span>
+                </h2>
+
+                <p className="text-muted-foreground text-base md:text-lg leading-relaxed font-['Inter_Tight'] mb-4">
+                  Em 1990, ninguém foi avisado. Os que sobreviveram financeiramente foram os que tinham ouro, dólar e ativos fora do sistema.
+                  Hoje, o equivalente é <span className="text-foreground font-bold">Bitcoin em autocustódia</span>,
+                  <span className="text-foreground font-bold"> contas em múltiplas jurisdições</span> e
+                  <span className="text-foreground font-bold"> infraestrutura de privacidade</span>.
+                </p>
+                <p className="text-foreground font-bold text-base md:text-lg font-['Inter_Tight'] mb-10">
+                  O erro que quase todos cometem: acreditar que "comigo não vai acontecer".
+                </p>
+
+                <div className="flex flex-wrap gap-4">
+                  <Link
+                    to="/bitcoin"
+                    className="group relative inline-flex items-center gap-2 bg-primary text-primary-foreground font-bold text-sm uppercase tracking-wider px-8 py-4 rounded-sm overflow-hidden transition-all hover:shadow-[0_0_40px_hsl(var(--primary)/0.3)]"
+                  >
+                    <span className="absolute inset-0 bg-white/10 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+                    <span className="relative">BLINDAR MEU PATRIMÔNIO</span>
+                    <ExternalLink size={14} className="relative" />
+                  </Link>
+                  <Link
+                    to="/autocustodia"
+                    className="inline-flex items-center gap-2 border border-primary/30 text-primary font-bold text-sm uppercase tracking-wider px-8 py-4 rounded-sm hover:bg-primary/10 transition-colors"
+                  >
+                    PROTOCOLO DE AUTOCUSTÓDIA
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </GsapSection>
+
+        {/* ══════════════════════════════════════════════════════
+            SEÇÃO 8: PRÓXIMOS ALERTAS — EM PRODUÇÃO
+        ══════════════════════════════════════════════════════ */}
+        <GsapSection className="max-w-7xl mx-auto px-6 pb-20">
           <div className="flex items-center gap-3 mb-8">
             <Zap className="text-amber-500" size={16} />
-            <span className="text-amber-500 font-black uppercase tracking-[0.3em] text-[9px] font-mono">Próximos Alertas</span>
+            <span className="text-amber-500 font-black uppercase tracking-[0.3em] text-[9px] font-mono">Próximos alertas · Em produção</span>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {ALERTAS_PROXIMOS.map((alerta, i) => {
               const Icon = alerta.icon;
               return (
                 <motion.div
                   key={i}
-                  initial="hidden" whileInView="visible"
-                  viewport={{ once: true, margin: '-40px' }}
-                  variants={fadeUp} custom={i}
-                  className="border border-dashed border-border/30 rounded-sm p-7 hover:border-border/60 transition-colors group"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                  className="border border-dashed border-border/30 rounded-sm p-7 hover:border-border/60 transition-colors"
                 >
                   <div className="flex items-start gap-4">
                     <div className="w-10 h-10 rounded-sm border border-border/30 bg-white/[0.02] flex items-center justify-center shrink-0">
@@ -343,7 +735,7 @@ export default function AlertasHub() {
                     </div>
                     <div>
                       <span className="text-[8px] font-black uppercase tracking-[0.3em] text-muted-foreground/40 font-mono">{alerta.tag}</span>
-                      <h3 className="text-foreground/60 font-bold uppercase text-sm tracking-tight mt-2 mb-1 font-['Space_Grotesk']">{alerta.titulo}</h3>
+                      <h3 className="text-foreground/60 font-bold uppercase text-sm tracking-tight mt-2 mb-1 font-['Inter_Tight']">{alerta.titulo}</h3>
                       <p className="text-muted-foreground/30 text-[10px] font-bold uppercase tracking-wider font-mono">{alerta.subtitulo}</p>
                       <div className="flex items-center gap-1.5 mt-3">
                         <span className="w-1.5 h-1.5 rounded-full bg-amber-500/50 animate-pulse" />
@@ -355,63 +747,82 @@ export default function AlertasHub() {
               );
             })}
           </div>
-        </section>
+        </GsapSection>
 
-        {/* ══════════════════════════════════════════════
-            SEÇÃO 5: FAQ — CONVERSÃO
-        ══════════════════════════════════════════════ */}
-        <section ref={faqRef} className="max-w-3xl mx-auto px-6 pb-32">
-          <motion.div
-            initial="hidden" animate={faqInView ? 'visible' : 'hidden'}
-            variants={fadeUp} custom={0}
-            className="mb-10"
-          >
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-sm border border-primary/20 bg-primary/5 flex items-center justify-center">
-                <HelpCircle className="w-5 h-5 text-primary" />
-              </div>
-              <div>
-                <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-primary/60">Perguntas frequentes</p>
-                <h2 className="font-['Bebas_Neue'] text-2xl md:text-3xl tracking-tight uppercase">
-                  O que você precisa saber
-                </h2>
-              </div>
+        {/* ══════════════════════════════════════════════════════
+            SEÇÃO 9: FAQ — SEO + CONVERSÃO
+        ══════════════════════════════════════════════════════ */}
+        <GsapSection id="faq" className="max-w-5xl mx-auto px-6 pb-20">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-10 h-10 rounded-sm border border-primary/20 bg-primary/5 flex items-center justify-center">
+              <HelpCircle className="w-5 h-5 text-primary" />
             </div>
-            <div className="h-px bg-gradient-to-r from-primary/30 via-border/50 to-transparent" />
-          </motion.div>
+            <div>
+              <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-primary/60">Perguntas frequentes</p>
+              <h2 className="font-['Bebas_Neue'] text-3xl md:text-4xl tracking-tight uppercase">
+                O Que Você Precisa Saber
+              </h2>
+            </div>
+          </div>
+          <div className="h-px bg-gradient-to-r from-primary/30 via-border/50 to-transparent mb-8" />
 
-          <motion.div
-            initial="hidden" animate={faqInView ? 'visible' : 'hidden'}
-            variants={fadeUp} custom={1}
-          >
-            <Accordion type="single" collapsible className="space-y-3">
-              {FAQ_DATA.map((faq, i) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-3">
+            {FAQ_DATA.map((faq, i) => (
+              <Accordion key={i} type="single" collapsible>
                 <AccordionItem
-                  key={i}
                   value={`faq-${i}`}
-                  className="border border-border/30 rounded-sm bg-white/[0.02] px-6 data-[state=open]:border-primary/20 transition-colors duration-300"
+                  className="border border-border/30 rounded-sm bg-white/[0.02] px-5 data-[state=open]:border-primary/20 transition-colors"
                 >
-                  <AccordionTrigger className="text-left text-sm md:text-base font-semibold hover:no-underline py-5 text-foreground/90 font-['Space_Grotesk']">
+                  <AccordionTrigger className="text-left text-sm font-semibold hover:no-underline py-4 text-foreground/90 font-['Inter_Tight']">
                     {faq.q}
                   </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground text-sm md:text-base leading-relaxed pb-6 font-['Space_Grotesk']">
+                  <AccordionContent className="text-muted-foreground text-sm leading-relaxed pb-5 font-['Inter_Tight']">
                     {faq.a}
                   </AccordionContent>
                 </AccordionItem>
-              ))}
-            </Accordion>
-          </motion.div>
-        </section>
+              </Accordion>
+            ))}
+          </div>
+        </GsapSection>
+
+        {/* ══════════════════════════════════════════════════════
+            SEÇÃO 10: MANIFESTO DE ENCERRAMENTO
+        ══════════════════════════════════════════════════════ */}
+        <GsapSection className="max-w-4xl mx-auto px-6 pb-20 text-center">
+          <div className="h-px bg-gradient-to-r from-transparent via-destructive/30 to-transparent mb-16" />
+
+          <p className="font-mono text-[9px] tracking-[0.4em] uppercase text-destructive/60 mb-6">Manifesto final</p>
+          <h2 className="font-['Bebas_Neue'] text-3xl md:text-5xl tracking-tight uppercase mb-8 leading-[1.05]">
+            O Sistema Não Está Quebrado.<br />
+            <span className="text-destructive">Está Funcionando Exatamente Como Planejado.</span>
+          </h2>
+          <p className="text-muted-foreground text-base md:text-lg leading-relaxed font-['Inter_Tight'] max-w-2xl mx-auto mb-6">
+            Cada imposto, cada restrição, cada lei de "segurança" é um degrau numa escada de controle
+            construída ao longo de décadas. O objetivo nunca foi te proteger.
+            Foi te domesticar financeiramente.
+          </p>
+          <p className="text-foreground text-base md:text-lg leading-relaxed font-['Inter_Tight'] font-bold max-w-2xl mx-auto mb-12">
+            A única pergunta que importa: você vai continuar pedindo permissão para usar o seu próprio dinheiro?
+          </p>
+
+          <div className="flex flex-wrap justify-center gap-4 mb-16">
+            <Link
+              to="/bitcoin"
+              className="group relative inline-flex items-center gap-2 bg-foreground text-background font-bold text-sm uppercase tracking-wider px-8 py-4 rounded-sm overflow-hidden"
+            >
+              <span className="absolute inset-0 bg-primary/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+              <span className="relative">REIVINDICAR MINHA SOBERANIA</span>
+              <ExternalLink size={14} className="relative" />
+            </Link>
+          </div>
+
+          <p className="text-muted-foreground/30 text-[9px] font-black tracking-[0.5em] uppercase font-mono">
+            EXIT_BRAZIL // PROTOCOLO_LIBERDADE // LORD_JUNNIOR
+          </p>
+        </GsapSection>
 
         {/* ── Footer ── */}
-        <footer className="max-w-5xl mx-auto px-6 pb-16">
-          <div className="pt-12 border-t border-border/20 text-center">
-            <p className="text-muted-foreground/30 text-[9px] font-black tracking-[0.5em] uppercase font-mono">
-              Pensar ainda é permitido · Lord Junnior © 2026
-            </p>
-          </div>
-        </footer>
-
+        <FooterSection />
       </div>
     </div>
   );
