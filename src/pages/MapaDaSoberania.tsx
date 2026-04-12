@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { Shield, Bitcoin, Sprout, BookOpen, AlertTriangle, Zap, Globe, Wallet, Lock, Radio, Heart, Flame, Map } from 'lucide-react';
+import SeoHead from '@/components/SeoHead';
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 const fade = (delay = 0) => ({
@@ -200,34 +200,12 @@ const SILOS: Silo[] = [
   },
 ];
 
-const schemaJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "CollectionPage",
-  "name": "Mapa da Soberania — Arsenal Completo",
-  "description": "Índice mestre com todas as páginas do ecossistema de soberania: Bitcoin, autocustódia, autonomia biológica, soberania alimentar e conhecimento ancestral.",
-  "url": "https://lordjunnior.com.br/mapa-da-soberania",
-  "publisher": {
-    "@type": "Organization",
-    "name": "Lord Junnior",
-    "url": "https://lordjunnior.com.br"
-  }
-};
-
 export default function MapaDaSoberania() {
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
   return (
     <>
-      <Helmet>
-        <title>Mapa da Soberania: O Arsenal Completo de Conhecimento Proibido | Lord Junnior</title>
-        <meta name="description" content="Acesse o índice mestre de todo o ecossistema soberanista: Bitcoin, autocustódia, autonomia biológica, soberania alimentar e sabedoria ancestral. 97+ páginas de conhecimento blindado." />
-        <link rel="canonical" href="https://lordjunnior.com.br/mapa-da-soberania" />
-        <meta property="og:title" content="Mapa da Soberania: Todo o Conhecimento Proibido em Um Só Lugar" />
-        <meta property="og:description" content="97+ páginas organizadas em silos estratégicos. O maior arsenal de soberania individual da internet em português." />
-        <meta property="og:url" content="https://lordjunnior.com.br/mapa-da-soberania" />
-        <meta property="og:type" content="website" />
-        <script type="application/ld+json">{JSON.stringify(schemaJsonLd)}</script>
-      </Helmet>
+      <SeoHead path="/mapa-da-soberania" />
 
       <div className="min-h-screen" style={{ background: '#050808' }}>
         {/* VFX */}
