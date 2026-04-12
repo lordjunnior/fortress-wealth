@@ -116,6 +116,7 @@ import OleoRicinoBiohacker from "./pages/OleoRicinoBiohacker";
 import VazamentoDados from "./pages/VazamentoDados";
 import PixSemBanco from "./pages/PixSemBanco";
 import ConfiscoBitcoin from "./pages/ConfiscoBitcoin";
+import BitparkCartao from "./pages/BitparkCartao";
 import ExitIntentLeadMagnet from "./components/ExitIntentLeadMagnet";
 const queryClient = new QueryClient();
 
@@ -184,6 +185,7 @@ const App = () => (
           <Route path="/soberania-financeira/brics-pay" element={<BricsPay />} />
           <Route path="/soberania-financeira/kucoin-pay-pix" element={<KucoinPayPix />} />
           <Route path="/soberania-financeira/pix-sem-banco" element={<PixSemBanco />} />
+          <Route path="/bitpark-cartao-bitcoin" element={<BitparkCartao />} />
           <Route path="/21-milhoes" element={<HardCap21 />} />
           <Route path="/bitcoin-seguro" element={<BitcoinSeguro />} />
           <Route path="/chaves" element={<ChavesPage />} />
