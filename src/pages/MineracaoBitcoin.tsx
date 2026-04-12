@@ -5,6 +5,7 @@ import { Helmet } from 'react-helmet-async';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import { ArrowLeft, Pickaxe, Zap, Cpu, ShieldCheck, ShieldAlert, Clock, Users, TrendingUp, TrendingDown, Thermometer, Server, Wifi, Factory, Scale, Landmark, FileCheck, HardDrive, Building2, Gauge } from 'lucide-react';
 import { fadeUp, viewportOnce } from '@/lib/motion';
+import BackToHome from '@/components/BackToHome';
 
 function AnimSection({ children, className = '' }: { children: React.ReactNode; className?: string }) {
   const ref = useRef(null);
@@ -67,6 +68,10 @@ export default function MineracaoBitcoin() {
 
   return (
     <>
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+
       <Helmet>
         <title>Mineração de Bitcoin — Guia Completo de Rentabilidade | Lord Junnior</title>
         <meta name="description" content="Mineração de Bitcoin é lucrativa? Análise completa: hardware ASIC, custo de eletricidade, pools, halving, estratégias bull vs bear e legalidade." />

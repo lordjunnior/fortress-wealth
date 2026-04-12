@@ -7,6 +7,7 @@ import { ArrowLeft, Clock, TrendingUp, Shield, Coins, Target, Eye, ChevronDown }
 import CinematicHero from '@/components/CinematicHero';
 import halvingHero from '@/assets/halving-hero.png';
 import halvingImpacto from '@/assets/halving-impacto.png';
+import BackToHome from '@/components/BackToHome';
 
 const APPLE_EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
@@ -42,6 +43,10 @@ const HalvingBitcoin = () => {
 
   return (
     <div className="min-h-screen text-stone-100 font-sans selection:bg-amber-400/30 relative overflow-hidden" style={{ background: '#050808' }}>
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+
       <Helmet>
         <title>Halving do Bitcoin | O Que É, Quando Será e Como Impacta o Preço</title>
         <meta name="description" content="Entenda o halving do Bitcoin: o que é, quando será o próximo em 2028, como afeta o preço e o que acontece quando todos os 21 milhões forem minerados." />

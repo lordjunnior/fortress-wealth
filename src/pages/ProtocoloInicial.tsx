@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { ArrowLeft, Download, ShieldCheck, ArrowRight, Zap, Lock, Globe, Coins, ShieldAlert, AlertTriangle, Key, Pickaxe, Scale, Database, HelpCircle, BookOpen, Shield, Send, Hourglass, Activity, TrendingUp } from 'lucide-react';
 import coverSilencioQueda from '@/assets/cover-silencio-queda.jpg';
+import BackToHome from '@/components/BackToHome';
 
 const NAV_ITEMS = [
   { id: 'estagio-01', label: 'Estágio 01: O Fim da Ilusão' },
@@ -49,6 +50,10 @@ export default function ProtocoloInicial() {
 
   return (
     <>
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+
       <Helmet>
         <title>Protocolo Inicial — Guia Bitcoin do Zero ao Avançado | Lord Junnior</title>
         <meta name="description" content="Trilha completa de aprendizado Bitcoin: do conceito à autocustódia. 6 estágios progressivos para dominar o protocolo e proteger seu patrimônio." />

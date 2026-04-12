@@ -11,6 +11,7 @@ import CinematicHero from '@/components/CinematicHero';
 
 import imgMicrobiota from '@/assets/saude-microbiota.jpg';
 import imgCortisol from '@/assets/saude-cortisol.jpg';
+import BackToHome from '@/components/BackToHome';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -49,6 +50,10 @@ const SaudePreventiva = () => {
 
   return (
     <>
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+
       <Helmet>
         <title>Saúde Preventiva: Blindagem Imunológica Sem Dependência do Sistema | Lord Junnior</title>
         <meta name="description" content="Estratégias anti-inflamatórias avançadas, exposição solar segura, higiene do sono e alimentação funcional. Longevidade e saúde fora do sistema convencional." />

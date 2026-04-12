@@ -9,6 +9,7 @@ import {
 import CinematicHero from '@/components/CinematicHero';
 import ScrollToTop from '@/components/ScrollToTop';
 import DonationCTA from '@/components/DonationCTA';
+import BackToHome from '@/components/BackToHome';
 
 /* ─── SEO: meta keywords target ───
    economia paralela bitcoin, P2P bitcoin sem KYC, bisq exchange,
@@ -70,6 +71,10 @@ export default function EconomiaParalela() {
   return (
     <div className="min-h-screen text-stone-100 font-sans selection:bg-red-400/50 relative overflow-hidden"
       style={{ background: '#050808' }}>
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+
 
       <Helmet>
         <title>Economia Paralela — Soberania P2P sem Intermediários | Lord Junnior</title>

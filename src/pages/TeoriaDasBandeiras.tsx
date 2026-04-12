@@ -7,6 +7,7 @@ import { motion } from 'framer-motion';
 import { NAV_ITEMS, BANDEIRAS, POR_QUE_AGORA, CASO_BRASIL, PRIMEIROS_PASSOS, FERRAMENTAS, FAQ_ITEMS } from '@/lib/teoriaBandeirasData';
 import CinematicHero from '@/components/CinematicHero';
 import ScrollToTop from '@/components/ScrollToTop';
+import BackToHome from '@/components/BackToHome';
 
 const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": FAQ_ITEMS.map(item => ({ "@type": "Question", "name": item.pergunta, "acceptedAnswer": { "@type": "Answer", "text": item.resposta } })) };
 const articleSchema = { "@context": "https://schema.org", "@type": "Article", "headline": "Teoria das Bandeiras: Diversificação Jurisdicional para Soberania Pessoal", "description": "A Teoria das Bandeiras (Flag Theory) é a estratégia de distribuir sua vida financeira e jurídica entre múltiplas jurisdições.", "author": { "@type": "Person", "name": "Lord Junnior" }, "publisher": { "@type": "Organization", "name": "Lord Junnior", "url": "https://lordjunnior.com.br" }, "datePublished": "2026-03-07", "url": "https://lordjunnior.com.br/teoria-das-bandeiras", "keywords": "teoria das bandeiras, flag theory, diversificação jurisdicional, offshore" };
@@ -39,6 +40,10 @@ export default function TeoriaDasBandeiras() {
 
   return (
     <div className="min-h-screen text-stone-100 font-sans selection:bg-emerald-400/30 relative overflow-hidden" style={{ background: '#050808' }}>
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+
       <Helmet>
         <title>Teoria das Bandeiras: Diversificação Jurisdicional | Lord Junnior</title>
         <meta name="description" content="A Teoria das Bandeiras (Flag Theory) é a estratégia de distribuir cidadania, contas, empresas e patrimônio entre múltiplas jurisdições. Entenda as 5 bandeiras e como aplicar no Brasil." />

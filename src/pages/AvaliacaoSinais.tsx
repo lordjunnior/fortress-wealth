@@ -13,12 +13,17 @@ import imgPerfusao from '@/assets/sinais-perfusao.jpg';
 import imgDesidratacao from '@/assets/sinais-desidratacao.jpg';
 import imgAvpu from '@/assets/sinais-avpu.jpg';
 import imgFicha from '@/assets/sinais-ficha.jpg';
+import BackToHome from '@/components/BackToHome';
 
 const AvaliacaoSinais = () => {
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
   return (
     <>
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+
       <Helmet>
         <title>Avaliação de Sinais Vitais: Interpretação Clínica com Recursos Mínimos | Lord Junnior</title>
         <meta name="description" content="Como avaliar sinais vitais sem equipamento hospitalar. Temperatura, pulso, perfusão, desidratação e escala AVPU. Faixas numéricas e critérios de decisão para cenários de crise." />

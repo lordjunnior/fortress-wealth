@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import { ArrowLeft, Key, Lock, Unlock, Send, ShieldCheck, Eye, EyeOff, Fingerprint, HardDrive, Smartphone, ArrowRight, AlertTriangle } from 'lucide-react';
+import BackToHome from '@/components/BackToHome';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -67,6 +68,10 @@ export default function ChavesPage() {
 
   return (
     <>
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+
       <Helmet>
         <title>Chaves Públicas & Privadas — Criptografia Bitcoin | Lord Junnior</title>
         <meta name="description" content="Entenda chaves públicas e privadas do Bitcoin: como são geradas, assinaturas digitais, cold storage vs hot wallet e as regras de autocustódia." />

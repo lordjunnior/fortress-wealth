@@ -14,6 +14,7 @@ import contasIntlImg from '@/assets/soberania-contas-intl.jpg';
 import offshoreImg from '@/assets/soberania-offshore.jpg';
 import nokycImg from '@/assets/soberania-nokyc.jpg';
 import sistemasImg from '@/assets/soberania-sistemas.jpg';
+import BackToHome from '@/components/BackToHome';
 
 /* ── Motion ── */
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
@@ -151,6 +152,10 @@ const CategoryCard = ({ cat, idx }: { cat: typeof CATEGORIES[0]; idx: number }) 
       <div className={`relative rounded-3xl border ${colors.border} overflow-hidden transition-all duration-700 hover:border-opacity-60 hover:shadow-2xl`}
         style={{ boxShadow: `0 0 80px -20px ${colors.glow}` }}
       >
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+
         {/* Image header */}
         <div className="relative h-48 md:h-56 overflow-hidden">
           <motion.div

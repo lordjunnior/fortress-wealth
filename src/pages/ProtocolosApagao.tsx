@@ -11,6 +11,7 @@ import imgCoccao from '@/assets/apagao-coccao.jpg';
 import imgConservacao from '@/assets/apagao-conservacao.jpg';
 import imgTermico from '@/assets/apagao-termico.jpg';
 import imgEnergia from '@/assets/apagao-energia.jpg';
+import BackToHome from '@/components/BackToHome';
 
 const IMPACTOS_4H = [
   'Geladeiras começam a perder temperatura segura',
@@ -70,6 +71,10 @@ export default function ProtocolosApagao() {
 
   return (
     <>
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+
       <Helmet>
         <title>Como Sobreviver a um Apagão Sistêmico: Guia de Protocolos | Lord Junnior</title>
         <meta name="description" content="Protocolos de sobrevivência para apagões prolongados: iluminação alternativa, cocção sem gás, conservação de alimentos e energia off-grid. Prepare-se antes que a rede caia." />

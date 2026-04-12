@@ -22,6 +22,7 @@ import imgPapelMoeda from '@/assets/historia-papel-moeda.jpg';
 import imgBancoCentral from '@/assets/historia-banco-central.jpg';
 import imgNixonShock from '@/assets/historia-nixon-shock.jpg';
 import imgBitcoinSaida from '@/assets/historia-bitcoin-saida.jpg';
+import BackToHome from '@/components/BackToHome';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -52,7 +53,11 @@ const NobelSection = ({ children, className = '', id, delay = 0 }: {
     );
     return () => { ScrollTrigger.getAll().forEach(t => { if (t.trigger === ref.current) t.kill(); }); };
   }, [delay]);
-  return <div ref={ref} id={id} className={className} style={{ opacity: 0 }}>{children}</div>;
+  return <div ref={ref} id={id} className={className} style={{ opacity: 0 }}>
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+{children}</div>;
 };
 
 /* ── Cinematic Break ── */

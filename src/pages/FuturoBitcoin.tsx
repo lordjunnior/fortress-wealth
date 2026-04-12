@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform, useMotionValue, useSpring, useInView } from 'framer-motion';
 import { ArrowLeft, ArrowRight, Hourglass, ShieldCheck, Zap, Cpu, Lock, TrendingUp, Layers, Timer, Flame, Gauge, Activity, CircuitBoard, ChevronDown } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
+import BackToHome from '@/components/BackToHome';
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 const fadeUp = {
@@ -21,6 +22,10 @@ function useMouseParallax(s = 15) {
 /* ══ Section Glow Divider ══ */
 const SectionGlow = ({ color = 'rgba(245,158,11,0.15)' }: { color?: string }) => (
   <div className="relative z-10 h-px max-w-5xl mx-auto my-16 md:my-24">
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+
     <div className="absolute inset-0" style={{ background: `linear-gradient(to right, transparent, ${color}, transparent)` }} />
   </div>
 );

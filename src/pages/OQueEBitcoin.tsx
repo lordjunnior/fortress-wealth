@@ -13,6 +13,7 @@ import walletImg from "@/assets/bitcoin-hardware-wallet.jpg";
 import fiatImg from "@/assets/bitcoin-fiat-burning.jpg";
 import vaultImg from "@/assets/bitcoin-vault-scarcity.jpg";
 import globeImg from "@/assets/bitcoin-decentralized-globe.jpg";
+import BackToHome from '@/components/BackToHome';
 
 function AnimSection({ children, className = '' }: { children: React.ReactNode; className?: string }) {
   const ref = useRef(null);
@@ -42,6 +43,10 @@ export default function OQueEBitcoin() {
 
   return (
     <>
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+
       <Helmet>
         <title>O que é Bitcoin? — Fundamento Zero | Lord Junnior</title>
         <meta name="description" content="Entenda o que é Bitcoin: protocolo descentralizado, escassez absoluta de 21 milhões, blockchain imutável e soberania financeira individual." />

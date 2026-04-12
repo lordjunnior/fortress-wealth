@@ -11,6 +11,7 @@ import imgLayout from '@/assets/producao-layout-canteiros.jpg';
 import imgConsorcio from '@/assets/producao-consorcio-culturas.jpg';
 import imgRotacao from '@/assets/producao-rotacao-sazonal.jpg';
 import imgMicroclimas from '@/assets/producao-microclimas.jpg';
+import BackToHome from '@/components/BackToHome';
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -113,6 +114,10 @@ export default function ProducaoPequenosEspacos() {
 
   return (
     <>
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+
       <Helmet>
         <title>Produção em Pequenos Espaços: Soberania Alimentar em 4m² | Lord Junnior</title>
         <meta name="description" content="Como produzir alimento em espaços mínimos. Layout de canteiros, consórcio de culturas, rotação sazonal e microclimas urbanos. Transforme metros quadrados em fonte de alimento." />

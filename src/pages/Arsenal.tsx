@@ -7,6 +7,7 @@ import {
   ShieldCheck, AlertTriangle, Crosshair, Skull, Eye, Fingerprint,
   ChevronDown, Target, Swords, Shield, Radar
 } from 'lucide-react';
+import BackToHome from '@/components/BackToHome';
 
 /* ─── SEO: meta keywords target ───
    torre de controle bitcoin, autocustódia bitcoin,
@@ -140,6 +141,10 @@ export default function Arsenal() {
       className="min-h-screen text-stone-100 font-sans selection:bg-red-400/30 relative overflow-hidden"
       style={{ background: '#050808' }}
     >
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+
       <Helmet>
         <title>Arsenal de Blindagem | Segurança e Privacidade Bitcoin</title>
         <meta name="description" content="Arsenal tático de segurança Bitcoin: blindagem contra golpes, identificação de ameaças e protocolos de proteção de patrimônio digital." />

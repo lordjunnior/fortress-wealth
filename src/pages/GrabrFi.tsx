@@ -19,6 +19,7 @@ import SovereignDisclaimer from '@/components/SovereignDisclaimer';
 import heroImg from '@/assets/grabrfi-hero.jpg';
 import appImg from '@/assets/grabrfi-app.jpg';
 import brasilParaguaiImg from '@/assets/offshore-brasil-paraguai.jpg';
+import BackToHome from '@/components/BackToHome';
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 const staggerContainer = { hidden: {}, visible: { transition: { staggerChildren: 0.12 } } };
@@ -33,6 +34,10 @@ const ChapterKickoff = ({ number, title, image, id, isOdd }: { number: string; t
   const imgScale = useTransform(scrollYProgress, [0, 0.5, 1], [1.02, 1.05, 1.02]);
   return (
     <div ref={ref} id={id} className="relative overflow-hidden" style={{ background: isOdd ? '#050808' : '#070b0b' }}>
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+
       <div className="relative h-[65vh] min-h-[450px] max-h-[700px] overflow-hidden">
         <motion.div className="absolute inset-0" style={{ y: imgY, scale: imgScale }}>
           <img src={image} alt="" className="w-full h-full object-cover" style={{ filter: 'brightness(0.35) saturate(0.75)' }} loading="lazy" />

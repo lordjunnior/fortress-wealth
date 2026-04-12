@@ -12,6 +12,7 @@ import SimboloOculto from '@/components/SimboloOculto';
 import imgCorrentesImpostos from '@/assets/economia-correntes-impostos.jpg';
 import imgAmpulhetaTempo from '@/assets/economia-ampulheta-tempo.jpg';
 import imgCarrinhoInflacao from '@/assets/economia-carrinho-inflacao.jpg';
+import BackToHome from '@/components/BackToHome';
 
 const APPLE_EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
@@ -126,6 +127,10 @@ const Economia = () => {
 
   return (
     <>
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+
       <Helmet>
         <title>A Lógica da Pilhagem — Despertar Monetário | Autonomia do Indivíduo</title>
         <meta name="description" content="Entenda como o sistema fiduciário rouba o tempo do indivíduo através da inflação, o imposto silencioso. Calculadora da Verdade Salarial e gráfico de derretimento do Real." />

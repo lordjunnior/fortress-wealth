@@ -30,6 +30,7 @@ import avatarKelly from '@/assets/avatar-babosa-kelly.jpg';
 import avatarRodrigo from '@/assets/avatar-babosa-rodrigo.jpg';
 import avatarCecilia from '@/assets/avatar-babosa-cecilia.jpg';
 import avatarDiegoF from '@/assets/avatar-babosa-diegof.jpg';
+import BackToHome from '@/components/BackToHome';
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 const fade = (delay = 0) => ({
@@ -332,6 +333,10 @@ export default function BabosaAcemannan() {
 
   return (
     <>
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+
       <Helmet>
         <title>Babosa e Acemannan: A Molécula que a Indústria Farmacêutica Silenciou | Lord Junnior</title>
         <meta name="description" content="O acemannan da babosa recebeu status de medicamento órfão pela FDA em 1995 por imunomodulação em pacientes com HIV. A pesquisa desapareceu. A planta continua viva no seu quintal." />

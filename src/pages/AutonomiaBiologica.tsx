@@ -10,6 +10,7 @@ import MicroCtaResistencia from '@/components/MicroCtaResistencia';
 
 import imgMetodosPreparo from '@/assets/bio-metodos-preparo.jpg';
 import imgArmazenamento from '@/assets/bio-armazenamento.jpg';
+import BackToHome from '@/components/BackToHome';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -115,6 +116,10 @@ export default function AutonomiaBiologica() {
 
   return (
     <>
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+
       <Helmet>
         <title>Autonomia Biológica: 14 Plantas e Compostos Medicinais com Fichas Técnicas Completas | Lord Junnior</title>
         <meta name="description" content="Biblioteca técnica de 14 plantas e compostos medicinais essenciais com dosagens, contraindicações, métodos de preparo e mecanismos de ação. Biohacking e saúde soberana documentados com rigor farmacológico." />

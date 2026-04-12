@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 import { Activity, Flame, BarChart3, TrendingUp, TrendingDown, Zap, Shield, Scale, Eye, ArrowRight, BookOpen } from 'lucide-react';
 import CinematicHero from '@/components/CinematicHero';
+import BackToHome from '@/components/BackToHome';
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -90,6 +91,10 @@ export default function VolatilidadeBitcoin() {
 
   return (
     <>
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+
       <Helmet>
         <title>Volatilidade do Bitcoin — O Preço da Soberania | Despertar Soberano</title>
         <meta name="description" content="Por que o Bitcoin oscila? Entenda a volatilidade como sinal de saúde de um ativo livre, sem controle estatal. Dados reais, comparações com o Real e projeções de longo prazo." />

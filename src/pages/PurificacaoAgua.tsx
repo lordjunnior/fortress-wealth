@@ -10,6 +10,7 @@ import imgFervura from '@/assets/agua-fervura.jpg';
 import imgCloracao from '@/assets/agua-cloracao.jpg';
 import imgFiltro from '@/assets/agua-filtro.jpg';
 import imgArmazenamento from '@/assets/agua-armazenamento.jpg';
+import BackToHome from '@/components/BackToHome';
 
 const RISCOS_SANITARIOS = [
   'Diarreia infecciosa',
@@ -63,6 +64,10 @@ export default function PurificacaoAgua() {
 
   return (
     <>
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+
       <Helmet>
         <title>Purificação de Água — 4 Métodos de Emergência | Lord Junnior</title>
         <meta name="description" content="Aprenda a purificar água em emergências: fervura, cloração, filtração e destilação solar. Guia prático de sobrevivência para tornar qualquer água potável." />

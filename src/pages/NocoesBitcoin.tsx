@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion, useScroll, useTransform, useInView, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, ArrowRight, ShieldAlert, BookOpen, Coins, Lock, Globe, Zap, Eye, Users, Scale, Pickaxe, Hash, HelpCircle, AlertTriangle } from 'lucide-react';
+import BackToHome from '@/components/BackToHome';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -62,6 +63,10 @@ export default function NocoesBitcoin() {
 
   return (
     <>
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+
       <Helmet>
         <title>Noções Básicas sobre Bitcoin — Guia Completo para Iniciantes | Lord Junnior</title>
         <meta name="description" content="Tudo sobre Bitcoin para iniciantes: o que é, como comprar, chaves públicas e privadas, segurança, escalabilidade, comparação com ouro e moeda fiduciária." />

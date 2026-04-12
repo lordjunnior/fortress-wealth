@@ -10,6 +10,7 @@ import imgSombra from '@/assets/nav-metodo-sombra.jpg';
 import imgBussola from '@/assets/nav-bussola.jpg';
 import imgUrbana from '@/assets/nav-referencia-urbana.jpg';
 import imgNoturna from '@/assets/nav-noturna.jpg';
+import BackToHome from '@/components/BackToHome';
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 const fade = (delay = 0) => ({
@@ -45,6 +46,10 @@ export default function NavegacaoPrimaria() {
 
   return (
     <>
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+
       <Helmet>
         <title>Navegação Primária: Orientação por Bússola, Sol e Terreno Sem GPS | Lord Junnior</title>
         <meta name="description" content="Como se orientar sem GPS. Método da sombra, bússola improvisada, navegação noturna por estrelas e referências urbanas. Deslocamento seguro sem dependência digital." />

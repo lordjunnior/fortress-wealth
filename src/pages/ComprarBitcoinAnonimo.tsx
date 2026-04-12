@@ -28,6 +28,7 @@ import escrowImg from "@/assets/robosats-escrow.jpg";
 import segurancaImg from "@/assets/robosats-seguranca.jpg";
 import infograficoImg from "@/assets/robosats-infografico.jpg";
 import sucessoImg from "@/assets/robosats-sucesso.jpg";
+import BackToHome from '@/components/BackToHome';
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -139,6 +140,10 @@ const ChapterBlock = ({
       className="relative"
     >
       <div className="relative w-full h-56 md:h-72 overflow-hidden rounded-t-sm">
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+
         <img src={image} alt={imageAlt} className="w-full h-full object-cover" loading="lazy" />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background" />
         <div className="absolute inset-0 bg-gradient-to-r from-background/60 to-transparent" />

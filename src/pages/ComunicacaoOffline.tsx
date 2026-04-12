@@ -10,6 +10,7 @@ import imgRadio from '@/assets/comms-radio-amfm.jpg';
 import imgMapa from '@/assets/comms-mapa-encontro.jpg';
 import imgSinal from '@/assets/comms-sinal-visual.jpg';
 import imgRecado from '@/assets/comms-recado-escrito.jpg';
+import BackToHome from '@/components/BackToHome';
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 const fade = (delay = 0) => ({
@@ -45,6 +46,10 @@ export default function ComunicacaoOffline() {
 
   return (
     <>
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+
       <Helmet>
         <title>Comunicação Offline: Redes Mesh, Rádio e Protocolos no Apagão | Lord Junnior</title>
         <meta name="description" content="Como se comunicar sem internet e sem rede celular. Rádio AM/FM, sinais visuais, pontos de encontro e mensagens escritas. Coordenação familiar em cenários de colapso digital." />

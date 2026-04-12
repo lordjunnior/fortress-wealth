@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import { ArrowLeft, ArrowRight, Send, Wallet, FileText, Coins, Cpu, Clock, Shield, AlertTriangle, Zap } from 'lucide-react';
+import BackToHome from '@/components/BackToHome';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -67,6 +68,10 @@ export default function TransacoesBitcoin() {
 
   return (
     <>
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+
       <Helmet>
         <title>Como Funcionam as Transações Bitcoin — Mecânica de Valor | Lord Junnior</title>
         <meta name="description" content="Entenda transações Bitcoin: inputs, outputs, taxas, mempool, confirmações e regras de ouro para transferir valor sem intermediários." />

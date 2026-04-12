@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 
 import imgHero from '@/assets/cp-hero-conhecimento.jpg';
 import LinhaDoTempoOculta from '@/components/LinhaDoTempoOculta';
+import BackToHome from '@/components/BackToHome';
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -103,6 +104,10 @@ export default function ConhecimentoPerdido() {
 
   return (
     <>
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+
       <Helmet>
         <title>Conhecimento Perdido: O Resgate da Autonomia Biológica | Lord Junnior</title>
         <meta name="description" content="Recupere o saber ancestral suprimido. Protocolos técnicos de fitoterapia, fisiologia e saúde preventiva fora do sistema industrial. 5 módulos, 16+ espécies documentadas." />

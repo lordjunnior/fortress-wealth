@@ -10,6 +10,7 @@ import { Helmet } from 'react-helmet-async';
 import CinematicHero from '@/components/CinematicHero';
 import NoiseBackground from '@/components/NoiseBackground';
 import ScrollToTop from '@/components/ScrollToTop';
+import BackToHome from '@/components/BackToHome';
 
 type Period = 3 | 5 | 10;
 
@@ -113,6 +114,10 @@ const BitcoinVsImovel: React.FC = () => {
 
   return (
     <div className="min-h-screen text-stone-100 font-sans selection:bg-amber-400/30 relative overflow-hidden" style={{ background: '#050808' }}>
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+
       <Helmet>
         <title>Bitcoin vs Imóvel: Simulador de Patrimônio | Lord Junnior</title>
         <meta name="description" content="Compare o rendimento de Bitcoin vs Imóvel em 3, 5 ou 10 anos. Simulador visual com gráficos e dados reais. Veja quanto você deixou de ganhar." />
