@@ -49,6 +49,7 @@ export const navGroups: NavGroup[] = [
       { label: "Lastro", route: "/lastro" },
       { label: "Futuro do Bitcoin", route: "/futuro-bitcoin" },
       { label: "BIP-110", route: "/bitcoin/bip-110-guerra-espaco-bloco" },
+      { label: "Polymarket IA + BTC", route: "/polymarket-rede-neural-btc", badge: "Novo" },
     ],
   },
   {
