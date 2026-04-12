@@ -1,10 +1,11 @@
 import { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, ShieldAlert, Skull } from "lucide-react";
+import { ArrowRight, ShieldAlert, Skull, QrCode } from "lucide-react";
 import cardBtcAnonimo from "@/assets/card-btc-anonimo.jpg";
 import cardDolarVirtual from "@/assets/card-dolar-virtual.jpg";
 import cardPixSemBanco from "@/assets/card-pix-sem-banco.jpg";
 import cardConfiscoBtc from "@/assets/card-confisco-bitcoin.jpg";
+import cardPixAnonimo from "@/assets/card-pix-anonimo.jpg";
 import { Helmet } from "react-helmet-async";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { gsap } from "gsap";
@@ -510,6 +511,68 @@ const Index = () => {
               </Link>
             </motion.div>
 
+            {/* PIX ANÔNIMO — CARD DE PRIVACIDADE */}
+            <motion.div
+              initial={{ opacity: 0, y: 20, scale: 0.98 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <Link
+                to="/pix-anonimo"
+                className="group relative block rounded-2xl overflow-hidden transition-all duration-500"
+              >
+                <div className="absolute -inset-[1px] rounded-2xl z-0 opacity-70 group-hover:opacity-100 transition-opacity duration-500"
+                  style={{
+                    background: 'conic-gradient(from 0deg, hsl(var(--chart-green)), hsl(var(--primary)), hsl(var(--gold)), hsl(var(--chart-green)))',
+                    animation: 'spin 4s linear infinite',
+                  }}
+                />
+
+                <div className="relative z-10 rounded-2xl bg-card/95 backdrop-blur-md">
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-chart-green/8 via-transparent to-primary/5 pointer-events-none" />
+
+                  <div className="grid grid-cols-1 md:grid-cols-2">
+                    {/* IMAGE (left) */}
+                    <div className="relative min-h-[260px] md:min-h-[360px]">
+                      <img src={cardPixAnonimo} alt="Terminal de pagamento com QR Code PIX protegido" className="absolute inset-0 w-full h-full object-cover" loading="lazy" width={1024} height={768} />
+                      <div className="absolute inset-0 bg-gradient-to-l from-card/90 via-card/40 to-transparent hidden md:block" />
+                      <div className="absolute inset-0 bg-gradient-to-b from-card/70 via-transparent to-transparent md:hidden" />
+                    </div>
+
+                    {/* TEXT (right) */}
+                    <div className="relative p-8 md:p-10 lg:p-14 flex flex-col justify-center">
+                      <div className="absolute -top-16 -right-16 w-56 h-56 rounded-full bg-chart-green/8 blur-3xl pointer-events-none" />
+                      <div className="relative space-y-5">
+                        <div className="flex items-center gap-2">
+                          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-chart-green/15 border border-chart-green/30">
+                            <span className="w-2 h-2 rounded-full bg-chart-green animate-pulse" />
+                            <p className="font-mono text-[9px] tracking-[0.3em] text-chart-green uppercase font-bold">Privacidade Ativa</p>
+                          </div>
+                          <span className="px-2.5 py-1 rounded-full bg-amber-500/15 border border-amber-500/25 text-amber-400 font-mono text-[9px] tracking-[0.3em] uppercase font-bold">
+                            Novo
+                          </span>
+                        </div>
+                        <h3 className="text-foreground font-bold text-2xl md:text-3xl lg:text-[2.5rem] tracking-tight leading-[1.15]" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+                          RECEBA PIX SEM{" "}
+                          <span className="text-chart-green">MOSTRAR SEUS DADOS</span>
+                        </h3>
+                        <p className="text-base text-muted-foreground leading-8">
+                          Seu nome, CPF e banco aparecem toda vez que alguem te paga via PIX.
+                          Existe um metodo tecnico com script PHP e API de pagamento que oculta seus dados do pagador.{" "}
+                          <span className="text-foreground font-semibold">Aprenda a configurar do zero.</span>
+                        </p>
+                        <span className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-lg bg-chart-green/10 border border-chart-green/30 text-chart-green text-xs font-bold tracking-[0.15em] uppercase transition-all duration-500 group-hover:bg-chart-green/20 group-hover:border-chart-green/50 group-hover:shadow-[0_0_30px_-5px_hsl(var(--chart-green)/0.3)]">
+                          <QrCode className="w-4 h-4" />
+                          VER METODO COMPLETO
+                          <ArrowRight size={14} className="group-hover:translate-x-1.5 transition-transform" />
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            </motion.div>
           </div>
         </NobelSection>
 
