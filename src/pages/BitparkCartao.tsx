@@ -173,89 +173,84 @@ export default function BitparkCartao() {
           <div className="absolute w-[400px] h-[400px] rounded-full bg-orange-500/[0.03] blur-[120px] bottom-[20%] right-[5%] animate-pulse" style={{ animationDuration: '12s' }} />
         </div>
 
-        {/* ═══ HERO ═══ */}
-        <section className="relative z-10 pt-8 pb-0">
-          <div className="max-w-7xl mx-auto px-5 md:px-8">
-            {/* Back link */}
-            <motion.div {...fadeUp}>
-              <Link to="/soberania-financeira" className="inline-flex items-center gap-2 text-stone-500 hover:text-amber-400 text-xs font-semibold uppercase tracking-[0.2em] transition-colors mb-8">
-                <ArrowLeft size={14} /> Soberania Financeira
-              </Link>
-            </motion.div>
+        {/* ═══ HERO — FULL BLEED ═══ */}
+        <section className="relative z-10">
+          {/* Full-width cinematic image */}
+          <div className="relative w-full h-[60vh] md:h-[75vh] lg:h-[85vh] overflow-hidden">
+            <img
+              src={imgHero}
+              alt="Cartão Bipa Bitcoin — cartão premium com símbolo Bitcoin em dourado flutuando sobre grade tecnológica"
+              className="absolute inset-0 w-full h-full object-cover"
+              fetchPriority="high"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#050808] via-[#050808]/40 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-b from-[#050808]/60 via-transparent to-transparent" />
 
-            <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center min-h-[70vh]">
-              {/* Text */}
-              <motion.div {...fadeUp}>
-                <div className="flex items-center gap-3 mb-6">
-                  <span className="px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 font-mono text-[10px] tracking-[0.3em] uppercase font-bold">
-                    NOVO — QUARTETO DO PODER
-                  </span>
-                  <span className="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-mono text-[10px] tracking-[0.3em] uppercase font-bold">
-                    VIRAL NO YOUTUBE
-                  </span>
-                </div>
+            {/* Content overlay */}
+            <div className="absolute inset-0 flex items-end pb-12 md:pb-20">
+              <div className="max-w-7xl mx-auto px-5 md:px-8 w-full">
+                <motion.div {...fadeUp}>
+                  <Link to="/soberania-financeira" className="inline-flex items-center gap-2 text-stone-400 hover:text-amber-400 text-xs font-semibold uppercase tracking-[0.2em] transition-colors mb-6">
+                    <ArrowLeft size={14} /> Soberania Financeira
+                  </Link>
 
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-stone-100 mb-6" style={{ fontFamily: "'Bebas Neue', sans-serif", letterSpacing: '0.03em', lineHeight: 1.1 }}>
-                  DINHEIRO PARADO<br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-400 to-amber-500">
-                    GERA BITCOIN.
-                  </span>
-                </h1>
-
-                <p className="text-lg md:text-xl text-stone-300 leading-relaxed mb-4 max-w-xl" style={{ fontFamily: "'Inter Tight', sans-serif" }}>
-                  Enquanto o banco te paga em <strong className="text-blue-300">cubos de gelo</strong> que derretem com a inflação, o cartão da Bipa converte <strong className="text-amber-300">100% do CDI em Bitcoin</strong> — todo dia útil, sem taxa, direto na sua carteira.
-                </p>
-
-                <p className="text-base text-stone-500 leading-relaxed mb-8 max-w-xl">
-                  R$ 10.000 parados = <strong className="text-stone-200">R$ 5,81/dia</strong> convertidos em satoshis. São <strong className="text-amber-400">R$ 1.465/ano em Bitcoin</strong> que você ganharia do nada.
-                </p>
-
-                {/* Live counter */}
-                <div className="flex items-center gap-6 mb-8">
-                  <div className="flex flex-col items-center px-6 py-4 rounded-xl bg-amber-500/5 border border-amber-500/15">
-                    <span className="font-mono text-3xl md:text-4xl font-black text-amber-400">{satsCount.toLocaleString()}</span>
-                    <span className="text-[10px] tracking-[0.2em] uppercase text-stone-500 mt-1">sats/dia (R$ 10k)</span>
-                  </div>
-                  <div className="flex flex-col items-center px-6 py-4 rounded-xl bg-emerald-500/5 border border-emerald-500/15">
-                    <span className="font-mono text-3xl md:text-4xl font-black text-emerald-400">0%</span>
-                    <span className="text-[10px] tracking-[0.2em] uppercase text-stone-500 mt-1">taxa conversão</span>
-                  </div>
-                </div>
-
-                {/* CTA */}
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <a
-                    href="https://bfrens.bipa.app/lordjunnior"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl font-bold text-base tracking-wide overflow-hidden transition-all duration-500 hover:scale-[1.02]"
-                    style={{ background: 'linear-gradient(135deg, #f59e0b, #d97706)' }}
-                  >
-                    <span className="relative z-10 text-black flex items-center gap-2">
-                      <Bitcoin size={18} />
-                      ATIVAR MEU CARTÃO BIPA
-                      <ExternalLink size={14} />
+                  <div className="flex items-center gap-3 mb-5">
+                    <span className="px-3 py-1 rounded-full bg-amber-500/15 border border-amber-500/25 text-amber-400 font-mono text-[10px] tracking-[0.3em] uppercase font-bold backdrop-blur-sm">
+                      NOVO — QUARTETO DO PODER
                     </span>
-                    <div className="absolute inset-0 bg-gradient-to-r from-amber-300 to-orange-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  </a>
-                </div>
-              </motion.div>
+                    <span className="px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/25 text-emerald-400 font-mono text-[10px] tracking-[0.3em] uppercase font-bold backdrop-blur-sm">
+                      VIRAL NO YOUTUBE
+                    </span>
+                  </div>
 
-              {/* Hero Image */}
-              <motion.div {...fadeUpDelay(0.2)} className="relative">
-                <div className="relative rounded-2xl overflow-hidden">
-                  <img
-                    src={imgHero}
-                    alt="Cartão Bipa Bitcoin — cartão premium com símbolo Bitcoin em dourado flutuando sobre grade tecnológica"
-                    className="w-full h-auto"
-                    fetchPriority="high"
-                    width={1344}
-                    height={768}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#050808] via-transparent to-transparent" />
-                </div>
-              </motion.div>
+                  <h1 className="text-5xl md:text-6xl lg:text-8xl font-black text-white mb-4" style={{ fontFamily: "'Bebas Neue', sans-serif", letterSpacing: '0.03em', lineHeight: 1.05 }}>
+                    DINHEIRO PARADO<br />
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-400 to-amber-500">
+                      GERA BITCOIN.
+                    </span>
+                  </h1>
+
+                  <p className="text-lg md:text-xl text-stone-300 leading-relaxed max-w-2xl" style={{ fontFamily: "'Inter Tight', sans-serif" }}>
+                    Enquanto o banco te paga em <strong className="text-blue-300">cubos de gelo</strong> que derretem com a inflação, o cartão da Bipa converte <strong className="text-amber-300">100% do CDI em Bitcoin</strong> — todo dia útil, sem taxa.
+                  </p>
+                </motion.div>
+              </div>
             </div>
+          </div>
+
+          {/* Stats + CTA strip below hero */}
+          <div className="max-w-7xl mx-auto px-5 md:px-8 -mt-6 relative z-20">
+            <motion.div {...fadeUpDelay(0.2)} className="flex flex-col md:flex-row items-center gap-6 py-8">
+              <div className="flex items-center gap-6">
+                <div className="flex flex-col items-center px-6 py-4 rounded-xl bg-amber-500/5 border border-amber-500/15 backdrop-blur-sm">
+                  <span className="font-mono text-3xl md:text-4xl font-black text-amber-400">{satsCount.toLocaleString()}</span>
+                  <span className="text-[10px] tracking-[0.2em] uppercase text-stone-500 mt-1">sats/dia (R$ 10k)</span>
+                </div>
+                <div className="flex flex-col items-center px-6 py-4 rounded-xl bg-emerald-500/5 border border-emerald-500/15 backdrop-blur-sm">
+                  <span className="font-mono text-3xl md:text-4xl font-black text-emerald-400">0%</span>
+                  <span className="text-[10px] tracking-[0.2em] uppercase text-stone-500 mt-1">taxa conversão</span>
+                </div>
+              </div>
+
+              <p className="text-sm text-stone-500 max-w-sm">
+                R$ 10.000 parados = <strong className="text-stone-200">R$ 5,81/dia</strong> → <strong className="text-amber-400">R$ 1.465/ano em Bitcoin</strong>
+              </p>
+
+              <a
+                href="https://bfrens.bipa.app/lordjunnior"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl font-bold text-base tracking-wide overflow-hidden transition-all duration-500 hover:scale-[1.02] ml-auto"
+                style={{ background: 'linear-gradient(135deg, #f59e0b, #d97706)' }}
+              >
+                <span className="relative z-10 text-black flex items-center gap-2">
+                  <Bitcoin size={18} />
+                  ATIVAR MEU CARTÃO BIPA
+                  <ExternalLink size={14} />
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-amber-300 to-orange-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              </a>
+            </motion.div>
           </div>
         </section>
 
