@@ -131,6 +131,7 @@ export const navGroups: NavGroup[] = [
       { label: "Sabedoria Ancestral", route: "/soberania-organica/sabedoria-ancestral" },
       { label: "Conhecimento Perdido", route: "/soberania-organica/conhecimento-perdido" },
     ],
+  },
   {
     label: "Sobrevivência & Resiliência",
     icon: Shield,
