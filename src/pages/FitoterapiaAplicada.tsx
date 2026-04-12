@@ -7,6 +7,7 @@ import { fadeUp, stagger, staggerChild, viewportOnce } from '@/lib/motion';
 import CinematicHero from '@/components/CinematicHero';
 import ScrollToTop from '@/components/ScrollToTop';
 import MicroCtaResistencia from '@/components/MicroCtaResistencia';
+import BackToHome from '@/components/BackToHome';
 
 /* ═══════════════════════════════════════════════════════════════
    PROTOCOLOS POR SISTEMA CORPORAL
@@ -92,6 +93,10 @@ const FitoterapiaAplicada = () => {
 
   return (
     <>
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+
       <Helmet>
         <title>Fitoterapia Aplicada: Protocolos Combinados por Sistema Corporal | Lord Junnior</title>
         <meta name="description" content="Protocolos fitoterápicos estratégicos organizados por sistema corporal. Sinergia entre plantas, ciclos de uso, ajuste por idade e critérios de interrupção documentados." />

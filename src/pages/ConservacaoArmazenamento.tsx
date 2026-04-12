@@ -12,6 +12,7 @@ import imgAlimentosEssenciais from '@/assets/conserva-alimentos-essenciais.jpg';
 import imgMetodosPreservacao from '@/assets/conserva-metodos-preservacao.jpg';
 import imgAlimentosDuradouros from '@/assets/conserva-alimentos-duradouros.jpg';
 import imgArsenalAuxiliar from '@/assets/conserva-arsenal-auxiliar.jpg';
+import BackToHome from '@/components/BackToHome';
 
 /* ─── SEO: meta keywords target ───
    conservação de alimentos, armazenamento de alimentos, estoque de sobrevivência,
@@ -379,6 +380,10 @@ function AlimentoCard({ item, index }: { item: Alimento; index: number }) {
         className="w-full text-left p-6 md:p-8 flex items-start gap-4 group cursor-pointer"
       >
         <div className="p-3 bg-amber-500/[0.12] rounded-xl shrink-0 mt-0.5">
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+
           <Icon className="text-amber-400" size={20} />
         </div>
         <div className="flex-1 min-w-0">

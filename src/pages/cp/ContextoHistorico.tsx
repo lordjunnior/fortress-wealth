@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import CinematicHero from '@/components/CinematicHero';
 import ScrollToTop from '@/components/ScrollToTop';
 import MicroCtaResistencia from '@/components/MicroCtaResistencia';
+import BackToHome from '@/components/BackToHome';
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 const fadeUp = {
@@ -21,6 +22,10 @@ export default function ContextoHistorico() {
 
   return (
     <>
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+
       <Helmet>
         <title>Contexto Histórico: Como a Medicina Moderna Apagou o Conhecimento Ancestral | Lord Junnior</title>
         <meta name="description" content="Mapeamento documentado da transição entre práticas tradicionais e institucionalização médica. Linha temporal, agentes envolvidos e impactos na autonomia biológica das famílias." />

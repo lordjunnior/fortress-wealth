@@ -12,6 +12,7 @@ import imgRepelentes from '@/assets/vetores-repelentes.jpg';
 import imgCiclo from '@/assets/vetores-ciclo-mosquito.jpg';
 import imgBarreiras from '@/assets/vetores-barreiras.jpg';
 import imgJardim from '@/assets/vetores-jardim-repelente.jpg';
+import BackToHome from '@/components/BackToHome';
 
 const OLEOS = [
   { nome: 'Citronela', mecanismo: 'Mascara odores corporais (CO₂, ácido lático) que atraem mosquitos.', duracao: '1–2 horas', uso: 'Corporal e ambiental', cor: 'text-yellow-400', bg: 'bg-yellow-500/10 border-yellow-500/15' },
@@ -43,6 +44,10 @@ const ControleVetores = () => {
 
   return (
     <>
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+
       <Helmet>
         <title>Controle de Vetores: Repelentes Naturais e Barreiras Físicas Contra Pragas | Lord Junnior</title>
         <meta name="description" content="Estratégia sanitária de baixo impacto ambiental. Óleos essenciais repelentes, eliminação de criadouros de mosquitos, barreiras físicas e plantas que afastam insetos naturalmente." />

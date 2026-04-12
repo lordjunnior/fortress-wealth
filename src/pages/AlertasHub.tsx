@@ -23,6 +23,7 @@ import imgSaida from '@/assets/alertas-saida-soberana.jpg';
 import imgHipocrisia from '@/assets/alertas-hipocrisia-estado.jpg';
 import imgMorteDinheiro from '@/assets/alertas-morte-dinheiro.jpg';
 import imgTimeline from '@/assets/alertas-timeline-confisco.jpg';
+import BackToHome from '@/components/BackToHome';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -238,7 +239,11 @@ const GsapSection = ({ children, className = '', id }: { children: React.ReactNo
     );
     return () => { ScrollTrigger.getAll().forEach(t => { if (t.trigger === ref.current) t.kill(); }); };
   }, []);
-  return <div ref={ref} id={id} className={className}>{children}</div>;
+  return <div ref={ref} id={id} className={className}>
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+{children}</div>;
 };
 
 /* ══════════════════════════════════════════════════════════

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Shield, Bitcoin, Sprout, BookOpen, AlertTriangle, Zap, Globe, Wallet, Lock, Radio, Heart, Flame, Map } from 'lucide-react';
 import SeoHead from '@/components/SeoHead';
+import BackToHome from '@/components/BackToHome';
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 const fade = (delay = 0) => ({
@@ -205,6 +206,10 @@ export default function MapaDaSoberania() {
 
   return (
     <>
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+
       <SeoHead path="/mapa-da-soberania" />
 
       <div className="min-h-screen" style={{ background: '#050808' }}>

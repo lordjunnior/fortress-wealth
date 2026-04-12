@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowLeft, ArrowRight, Smartphone, Bell, Eye, Lock, Clock, Wifi, Shield, BellOff, Timer, Monitor } from 'lucide-react';
 import CinematicHero from '@/components/CinematicHero';
+import BackToHome from '@/components/BackToHome';
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 const fadeUp = {
@@ -71,6 +72,10 @@ export default function DependenciaTecnologica() {
 
   return (
     <div className="min-h-screen text-stone-100 font-sans selection:bg-cyan-400/30 relative overflow-hidden" style={{ background: '#050808' }}>
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+
       <Helmet>
         <title>Dependência Tecnológica — Design Comportamental e Autonomia Digital | Lord Junnior</title>
         <meta name="description" content="Design comportamental, ciclos de dopamina digital, coleta de dados e obsolescência programada. Recupere controle sobre seu tempo e decisões." />

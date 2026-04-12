@@ -6,6 +6,7 @@ import {
   ArrowLeft, ArrowRight, ShieldCheck, Globe, Server, Zap, BookOpen,
   AlertTriangle, ChevronDown, Crosshair, Shield, Swords, Target, Radar
 } from 'lucide-react';
+import BackToHome from '@/components/BackToHome';
 
 /* ─── SEO: meta keywords target ───
    arsenal técnico bitcoin, autocustódia bitcoin, economia paralela cripto,
@@ -113,6 +114,10 @@ export default function Educacao() {
       className="min-h-screen text-stone-100 font-sans selection:bg-yellow-400/30 relative overflow-hidden"
       style={{ background: '#050808' }}
     >
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+
       <Helmet>
         <title>Arsenal Técnico | Manuais de Operação Bitcoin</title>
         <meta name="description" content="Manuais técnicos de operação para autocustódia, economia paralela, validação de rede e Lightning Network. Para quem decidiu assumir a responsabilidade total sobre seu patrimônio." />

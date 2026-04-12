@@ -124,6 +124,11 @@ export default function PolymarketRedeNeural() {
       {/* ─── Progress Bar ─── */}
       <motion.div className="fixed top-0 left-0 right-0 h-1 bg-cyan-500 origin-left z-50" style={{ scaleX }} />
 
+      {/* BackToHome */}
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+
       {/* ─── HERO ─── */}
       <section className="relative min-h-[90vh] flex items-center overflow-hidden">
         <div className="absolute inset-0">
@@ -636,7 +641,6 @@ export default function PolymarketRedeNeural() {
         </div>
       </section>
 
-      <BackToHome />
     </div>
   );
 }

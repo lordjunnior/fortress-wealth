@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import { ArrowLeft, Shield, ShieldCheck, Lock, Key, AlertTriangle, Smartphone, Monitor, Server, Eye, EyeOff, UserX, Bug, Fingerprint, HardDrive, Cpu } from 'lucide-react';
+import BackToHome from '@/components/BackToHome';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -60,6 +61,10 @@ export default function BitcoinSeguro() {
 
   return (
     <>
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+
       <Helmet>
         <title>O Bitcoin É Seguro? — Análise de Segurança Operacional | Lord Junnior</title>
         <meta name="description" content="Análise completa sobre a segurança do Bitcoin: blockchain inquebrável, vetores de ataque ao indivíduo, código de conduta e autocustódia como proteção definitiva." />

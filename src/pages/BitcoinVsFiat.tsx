@@ -7,6 +7,7 @@ import { motion } from 'framer-motion';
 import { NAV_ITEMS, COMPARACAO, PROBLEMAS_FIAT, VANTAGENS_BITCOIN, OBJECOES, NUMEROS, FERRAMENTAS, FAQ_ITEMS } from '@/lib/bitcoinVsFiatData';
 import CinematicHero from '@/components/CinematicHero';
 import ScrollToTop from '@/components/ScrollToTop';
+import BackToHome from '@/components/BackToHome';
 
 const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": FAQ_ITEMS.map(item => ({ "@type": "Question", "name": item.pergunta, "acceptedAnswer": { "@type": "Answer", "text": item.resposta } })) };
 const articleSchema = { "@context": "https://schema.org", "@type": "Article", "headline": "Bitcoin vs Dinheiro Fiat: A Comparação Definitiva", "description": "Compare Bitcoin e moedas fiduciárias em 14 aspectos fundamentais.", "author": { "@type": "Person", "name": "Lord Junnior" }, "publisher": { "@type": "Organization", "name": "Lord Junnior", "url": "https://lordjunnior.com.br" }, "datePublished": "2026-03-07", "url": "https://lordjunnior.com.br/bitcoin-vs-fiat", "keywords": "bitcoin vs real, bitcoin vs dinheiro, bitcoin vs fiat, vantagens do bitcoin" };
@@ -41,6 +42,10 @@ export default function BitcoinVsFiat() {
 
   return (
     <div className="min-h-screen text-stone-100 font-sans selection:bg-orange-400/30 relative overflow-hidden" style={{ background: '#050808' }}>
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+
       <Helmet>
         <title>Bitcoin vs Real: Por Que o Seu Dinheiro Está Morrendo? | Lord Junnior</title>
         <meta name="description" content="Descubra por que o Real perde valor todo dia enquanto o Bitcoin se fortalece. 14 comparações brutais entre moeda estatal e dinheiro soberano. Dados verificáveis." />

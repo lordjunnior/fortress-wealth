@@ -12,12 +12,17 @@ import imgHemostasia from '@/assets/ps-hemostasia.jpg';
 import imgImobilizacao from '@/assets/ps-imobilizacao.jpg';
 import imgQueimaduras from '@/assets/ps-queimaduras.jpg';
 import imgKit from '@/assets/ps-kit.jpg';
+import BackToHome from '@/components/BackToHome';
 
 const PrimeirosSocorros = () => {
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
   return (
     <>
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+
       <Helmet>
         <title>Primeiros Socorros: Estabilização de Emergência com Recursos Mínimos | Lord Junnior</title>
         <meta name="description" content="Guia de primeiros socorros para cenários de crise. Hemostasia, imobilização, queimaduras e kit mínimo. Estabilize vítimas até a chegada de suporte especializado." />

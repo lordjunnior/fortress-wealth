@@ -9,6 +9,7 @@ import { NAV_ITEMS, MECANISMO, CANTILLON_NIVEIS, NUMEROS_REAIS, MENTIRAS, FERRAM
 import imgNotasDestruidas from '@/assets/inflacao-notas-destruidas.jpg';
 import imgBalancaCantillon from '@/assets/inflacao-balanca-cantillon.jpg';
 import imgImpressoraDinheiro from '@/assets/inflacao-impressora-dinheiro.jpg';
+import BackToHome from '@/components/BackToHome';
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 const fadeUp = {
@@ -44,6 +45,10 @@ export default function InflacaoImpostoOculto() {
 
   return (
     <div className="min-h-screen text-stone-100 font-sans selection:bg-red-300/50 relative overflow-hidden" style={{ background: '#050808' }}>
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+
       <Helmet>
         <title>Inflação: O Imposto Oculto. Como Seu Dinheiro Está Derretendo | Lord Junnior</title>
         <meta name="description" content="Entenda como a inflação funciona, por que ela é um imposto invisível que rouba seu poder de compra todos os dias e como proteger seu patrimônio com Bitcoin e diversificação." />

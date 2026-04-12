@@ -6,6 +6,7 @@ import {
   Check, X, Minus, AlertTriangle, ChevronRight,
 } from 'lucide-react';
 import ScrollToTop from '@/components/ScrollToTop';
+import BackToHome from '@/components/BackToHome';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -105,6 +106,10 @@ const schemaLD = {
 const IndiceSoberaniaFinanceira = () => {
   return (
     <>
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+
       <Helmet>
         <title>Índice de Soberania Financeira — Ranking de Privacidade por Plataforma</title>
         <meta name="description" content="Ranking comparativo de plataformas financeiras por nível de privacidade, status de reporte e jurisdição. Compare contas internacionais, offshore e exchanges sem KYC." />

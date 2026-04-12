@@ -3,6 +3,7 @@ import { Link, useParams, Navigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { ArrowLeft, Clock, Package, Flame, Droplets, Tent, Siren, Wind, Leaf, Cross, Thermometer, Sun, Sprout, Bug, Layers, Egg, Shovel } from 'lucide-react';
 import { motion } from 'framer-motion';
+import BackToHome from '@/components/BackToHome';
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -248,6 +249,10 @@ export default function ModuloAutonomo() {
   if (!mod) {
     return (
       <div className="min-h-screen bg-stone-50 flex items-center justify-center">
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+
         <div className="text-center">
           <p className="text-stone-400 text-sm mb-4">Módulo não encontrado</p>
           <Link to="/soberania-organica" className="text-emerald-600 text-sm font-semibold hover:underline">

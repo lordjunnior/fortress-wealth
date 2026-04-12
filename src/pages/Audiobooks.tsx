@@ -12,6 +12,7 @@ import coverPadraoBitcoin from '@/assets/cover-padrao-bitcoin.jpg';
 import coverEticaLiberdade from '@/assets/cover-etica-liberdade.jpg';
 import coverAnatomiaEstado from '@/assets/cover-anatomia-estado.jpg';
 import coverRiquezaNacoes from '@/assets/cover-riqueza-nacoes.jpg';
+import BackToHome from '@/components/BackToHome';
 
 const APPLE_EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
@@ -212,6 +213,10 @@ const Audiobooks: React.FC<AudiobooksProps> = ({ onPlay }) => {
 
   return (
     <>
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+
       <Helmet>
         <title>Audioteca Soberana | Audiobooks para Mentes Livres</title>
         <meta name="description" content="Acervo de audiobooks sobre Bitcoin, economia austríaca e filosofia da liberdade. Conhecimento enquanto você vive." />

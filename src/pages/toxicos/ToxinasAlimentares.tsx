@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowLeft, Apple, AlertTriangle, ShieldAlert, Eye, Search, Beaker, List, CheckCircle, BookOpen, ArrowRight } from 'lucide-react';
 import CinematicHero from '@/components/CinematicHero';
+import BackToHome from '@/components/BackToHome';
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 const fadeUp = {
@@ -74,6 +75,10 @@ export default function ToxinasAlimentares() {
 
   return (
     <div className="min-h-screen text-stone-100 font-sans selection:bg-amber-400/30 relative overflow-hidden" style={{ background: '#050808' }}>
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+
       <Helmet>
         <title>Toxinas Alimentares — Aditivos Ocultos nos Alimentos | Lord Junnior</title>
         <meta name="description" content="Dissecando ingredientes ocultos, ultraprocessados, açúcar disfarçado e pesticidas. Aprenda a ler rótulos e retomar controle sobre o que entra no seu corpo." />

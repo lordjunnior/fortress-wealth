@@ -11,6 +11,7 @@ import imgAlimento from '@/assets/kit72h-alimento.jpg';
 import imgDocumentos from '@/assets/kit72h-documentos.jpg';
 import imgRadio from '@/assets/kit72h-radio.jpg';
 import imgMedicamentos from '@/assets/kit72h-medicamentos.jpg';
+import BackToHome from '@/components/BackToHome';
 
 const PILARES = [
   {
@@ -111,6 +112,10 @@ export default function Kit72h() {
 
   return (
     <>
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+
       <Helmet>
         <title>Kit de Sobrevivência 72h: O Guia de Prontidão Crítica | Lord Junnior</title>
         <meta name="description" content="Monte seu kit tático de 72 horas com checklist completo: água, alimento, medicamentos, documentos e comunicação. Esteja pronto antes que o caos chegue." />

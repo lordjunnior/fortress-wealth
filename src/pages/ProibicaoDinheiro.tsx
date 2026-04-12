@@ -16,6 +16,7 @@ import RiskBlock from '@/components/RiskBlock';
 import heroImg from '@/assets/proibicao-dinheiro-hero.jpg';
 import agendaImg from '@/assets/proibicao-agenda-global.jpg';
 import arsenalImg from '@/assets/proibicao-arsenal.jpg';
+import BackToHome from '@/components/BackToHome';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -46,7 +47,11 @@ const NobelSection = ({ children, className = '', id, delay = 0 }: {
     );
     return () => { ScrollTrigger.getAll().forEach(t => { if (t.trigger === ref.current) t.kill(); }); };
   }, [delay]);
-  return <div ref={ref} id={id} className={className} style={{ opacity: 0 }}>{children}</div>;
+  return <div ref={ref} id={id} className={className} style={{ opacity: 0 }}>
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+{children}</div>;
 };
 
 /* ── Chapter Kickoff ── */

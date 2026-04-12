@@ -11,6 +11,7 @@ import imgGalinheiro from '@/assets/proteina-galinheiro-movel.jpg';
 import imgCodornas from '@/assets/proteina-codornas-vertical.jpg';
 import imgAquaponia from '@/assets/proteina-aquaponia-tilapia.jpg';
 import imgManejo from '@/assets/proteina-manejo-sanitario.jpg';
+import BackToHome from '@/components/BackToHome';
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -125,6 +126,10 @@ export default function ProteinaSustentavel() {
 
   return (
     <>
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+
       <Helmet>
         <title>Proteína Sustentável: Galinhas, Codornas e Aquaponia em Espaços Urbanos | Lord Junnior</title>
         <meta name="description" content="Como produzir proteína animal em espaços reduzidos. Galinheiro móvel, criação vertical de codornas, aquaponia com tilápia e manejo sanitário. Alta densidade proteica por m²." />

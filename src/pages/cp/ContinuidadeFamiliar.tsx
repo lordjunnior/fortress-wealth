@@ -9,6 +9,7 @@ import ScrollToTop from '@/components/ScrollToTop';
 import MicroCtaResistencia from '@/components/MicroCtaResistencia';
 import CinematicHero from '@/components/CinematicHero';
 import { EducacaoBotanica } from '@/components/conhecimento-perdido/EducacaoBotanica';
+import BackToHome from '@/components/BackToHome';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -47,6 +48,10 @@ export default function ContinuidadeFamiliar() {
 
   return (
     <>
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+
       <Helmet>
         <title>Continuidade Familiar: Educação Botânica e Autonomia Biológica para Gerações | Lord Junnior</title>
         <meta name="description" content="Como transmitir conhecimento ancestral de plantas medicinais para as próximas gerações. Educação botânica aplicada, identificação segura e construção progressiva de autonomia biológica familiar." />

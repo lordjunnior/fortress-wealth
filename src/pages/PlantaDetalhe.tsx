@@ -6,6 +6,7 @@ import gsap from 'gsap';
 import MicroCtaResistencia from '@/components/MicroCtaResistencia';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { PLANTAS, getPlantaBySlug } from '@/lib/plantData';
+import BackToHome from '@/components/BackToHome';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -73,6 +74,10 @@ export default function PlantaDetalhe() {
 
   return (
     <>
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+
       <Helmet>
         <title>{`${planta.nome} (${planta.cientifico}): Ficha Técnica Completa — Dosagem, Preparo e Contraindicações | Lord Junnior`}</title>
         <meta name="description" content={`Ficha técnica completa de ${planta.nome} (${planta.cientifico}). ${planta.resumo} Dosagem segura, métodos de preparo, contraindicações e mecanismo de ação documentados.`} />

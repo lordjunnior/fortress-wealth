@@ -16,6 +16,7 @@ import hwWalletsImg from "@/assets/btc-hardware-wallets.jpg";
 import nodeImg from "@/assets/btc-node-raspberry.jpg";
 import chartImg from "@/assets/btc-vs-imovel-chart.jpg";
 import seedImg from "@/assets/btc-seed-backup.jpg";
+import BackToHome from '@/components/BackToHome';
 
 const APPLE_EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
@@ -110,6 +111,10 @@ const Bitcoin = () => {
 
   return (
     <>
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+
       <Helmet>
         <title>Blindagem Operacional — Soberania Bitcoin | Autonomia do Indivíduo</title>
         <meta name="description" content="Guia completo de autocustódia Bitcoin: hardware wallets (Ledger, Trezor, Coldcard), como rodar seu próprio node e simulador BTC vs Imóveis." />

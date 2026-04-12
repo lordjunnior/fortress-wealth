@@ -14,6 +14,7 @@ import TaxaDeFuga from './TaxaDeFuga';
 import Novilingua from './Novilingua';
 import GeradorEntropy from './GeradorEntropy';
 import SupplyShock from './SupplyShock';
+import BackToHome from '@/components/BackToHome';
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -219,6 +220,10 @@ const ToolCard: React.FC<{
       {/* Cover image if exists */}
       {hasCover && (
         <div className="w-full h-44 overflow-hidden relative">
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+
           <img
             src={(tool as any).cover}
             alt={tool.title}

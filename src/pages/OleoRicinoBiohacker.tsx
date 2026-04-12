@@ -18,6 +18,7 @@ import avatarCarlos from '@/assets/avatar-carlos.jpg';
 import avatarPatricia from '@/assets/avatar-patricia.jpg';
 import avatarDiego from '@/assets/avatar-diego.jpg';
 import avatarMarcia from '@/assets/avatar-marcia.jpg';
+import BackToHome from '@/components/BackToHome';
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 const fade = (delay = 0) => ({
@@ -142,6 +143,10 @@ export default function OleoRicinoBiohacker() {
 
   return (
     <>
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+
       <Helmet>
         <title>Óleo de Rícino: O Biohacker de R$10 que a Big Pharma Odeia | Lord Junnior</title>
         <meta name="description" content="Dossiê de desconstrução: a ciência escondida do ácido ricinoleico. Anti-inflamatório transdérmico, drenagem linfática e regeneração celular. O biohacking de baixo custo que a indústria farmacêutica silencia." />

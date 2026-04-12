@@ -6,6 +6,7 @@ import { Scale, BookOpen, ArrowRight, Shield, Heart, Lightbulb } from 'lucide-re
 import CinematicHero from '@/components/CinematicHero';
 import ScrollToTop from '@/components/ScrollToTop';
 import { pillars } from '@/lib/pillars';
+import BackToHome from '@/components/BackToHome';
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 const fadeUp = {
@@ -59,6 +60,10 @@ const Filosofia = () => {
   return (
     <div className="min-h-screen text-stone-100 font-sans selection:bg-amber-300/50 relative overflow-hidden"
       style={{ background: '#050808' }}>
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+
       <Helmet>
         <title>Filosofia — Ética, Propriedade e Discernimento | Lord Junnior</title>
         <meta name="description" content="Os fundamentos morais da soberania individual: ética da não-agressão, propriedade privada, mordomia cristã e a verdadeira riqueza além do gráfico de preço." />

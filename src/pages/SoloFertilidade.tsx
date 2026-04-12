@@ -13,6 +13,7 @@ import imgPhTeste from '@/assets/solo-ph-teste.jpg';
 import imgTiposTerra from '@/assets/solo-tipos-terra.jpg';
 import imgFertilizantes from '@/assets/solo-fertilizantes.jpg';
 import imgSubstrato from '@/assets/solo-substrato-ideal.jpg';
+import BackToHome from '@/components/BackToHome';
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -31,6 +32,10 @@ const fadeUp = {
 function SectionDivider({ label }: { label: string }) {
   return (
     <div className="flex items-center gap-3 my-10 px-2">
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+
       <div className="flex-1 h-px bg-amber-600 opacity-20" />
       <span className="text-stone-500 text-[9px] font-bold tracking-[0.4em] uppercase">{label}</span>
       <div className="flex-1 h-px bg-amber-600 opacity-20" />

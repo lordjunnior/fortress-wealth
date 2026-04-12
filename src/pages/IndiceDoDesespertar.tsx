@@ -8,6 +8,7 @@ import {
 } from 'lucide-react';
 import CinematicHero from '@/components/CinematicHero';
 import ScrollToTop from '@/components/ScrollToTop';
+import BackToHome from '@/components/BackToHome';
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -105,6 +106,10 @@ export default function IndiceDoDesespertar() {
   return (
     <div className="min-h-screen text-stone-100 font-sans selection:bg-amber-400/50 relative overflow-hidden"
       style={{ background: '#050808' }}>
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+
 
       <Helmet>
         <title>Índice do Despertar — Guia da Soberania Financeira | Lord Junnior</title>

@@ -25,6 +25,7 @@ import carteiraImg from "@/assets/dolar-virtual-carteira.jpg";
 import seedImg from "@/assets/dolar-virtual-seed.jpg";
 import alfredImg from "@/assets/dolar-virtual-alfred.jpg";
 import segurancaImg from "@/assets/dolar-virtual-seguranca.jpg";
+import BackToHome from '@/components/BackToHome';
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -134,6 +135,10 @@ const ChapterBlock = ({
       className="relative rounded-2xl border border-border/30 bg-card/40 backdrop-blur-sm overflow-hidden"
     >
       <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-primary/30 to-transparent z-10" />
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+
 
       <div className="grid grid-cols-1 lg:grid-cols-2">
         {/* IMAGE — alternates left/right based on index */}

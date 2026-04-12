@@ -16,6 +16,7 @@ import SovereignDisclaimer from '@/components/SovereignDisclaimer';
 import qrCodeLightning from '@/assets/qrcode-lightning.jpeg';
 import pixCritoHero from '@/assets/pix-cripto-hero.jpg';
 import pixCritoTutorial from '@/assets/pix-cripto-tutorial.jpg';
+import BackToHome from '@/components/BackToHome';
 
 /* ─── CONSTANTS ─── */
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
@@ -102,6 +103,10 @@ const PixCripto: React.FC = () => {
   return (
     <div className="min-h-screen text-stone-100 font-sans selection:bg-amber-400/50 relative overflow-hidden"
       style={{ background: BG_DARK }}>
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+
 
       <Helmet>
         <title>PIX via Bitcoin — Guia Completo de Conversão Cripto→PIX | Lord Junnior</title>

@@ -13,6 +13,7 @@ import NobelVFX from '@/components/NobelVFX';
 import SovereignDisclaimer from '@/components/SovereignDisclaimer';
 import { useState } from 'react';
 import heroImg from '@/assets/exchanges-nokyc-hero.jpg';
+import BackToHome from '@/components/BackToHome';
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 const fadeUp = {
@@ -112,6 +113,10 @@ const ExchangesSemKyc = () => {
 
   return (
     <>
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+
       <LeadCaptureModal isOpen={leadOpen} onClose={() => setLeadOpen(false)} interesse="exchanges-sem-kyc" />
       <Helmet>
         <title>Plataformas sem KYC — Exchanges e Serviços Privados</title>

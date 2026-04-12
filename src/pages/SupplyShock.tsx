@@ -12,6 +12,7 @@ import { motion, useMotionValue, useSpring } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 import CinematicHero from '@/components/CinematicHero';
 import ScrollToTop from '@/components/ScrollToTop';
+import BackToHome from '@/components/BackToHome';
 
 /* ─── SEO: meta keywords target ───
    supply shock bitcoin, escassez bitcoin, 21 milhões bitcoin,
@@ -85,6 +86,10 @@ export default function SupplyShock() {
   return (
     <div className="min-h-screen text-stone-100 font-sans selection:bg-amber-300/50 relative overflow-hidden"
       style={{ background: '#050808' }}>
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+
 
       <Helmet>
         <title>Supply Shock — Escassez Absoluta do Bitcoin em Tempo Real | Lord Junnior</title>

@@ -15,6 +15,7 @@ import {
 import SeoHead from '@/components/SeoHead';
 import ScrollToTop from '@/components/ScrollToTop';
 import FooterSection from '@/components/FooterSection';
+import BackToHome from '@/components/BackToHome';
 
 import imgHero from '@/assets/bitpark-card-hero.jpg';
 import imgCuboGelo from '@/assets/bitpark-cubo-gelo.jpg';
@@ -171,6 +172,11 @@ export default function BitparkCartao() {
         <div className="fixed inset-0 pointer-events-none z-0">
           <div className="absolute w-[600px] h-[600px] rounded-full bg-amber-500/[0.04] blur-[160px] top-[5%] left-[10%] animate-pulse" style={{ animationDuration: '8s' }} />
           <div className="absolute w-[400px] h-[400px] rounded-full bg-orange-500/[0.03] blur-[120px] bottom-[20%] right-[5%] animate-pulse" style={{ animationDuration: '12s' }} />
+        </div>
+
+        {/* BackToHome */}
+        <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+          <BackToHome />
         </div>
 
         {/* ═══ HERO — FULL BLEED ═══ */}

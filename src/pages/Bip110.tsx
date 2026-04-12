@@ -50,6 +50,7 @@ import blockchainBlocos from '@/assets/blockchain-blocos.jpg';
 import blockchainLivroRazao from '@/assets/blockchain-livro-razao.jpg';
 import blockchainRedeGlobal from '@/assets/blockchain-rede-global.jpg';
 import qrCodeImage from '@/assets/qrcode-lightning.jpeg';
+import BackToHome from '@/components/BackToHome';
 
 /* ═══ CONSTANTS ═══ */
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
@@ -118,6 +119,10 @@ const ReadingProgressBar = () => {
   const scaleX = useSpring(scrollYProgress, { stiffness: 120, damping: 28, restDelta: 0.001 });
   return (
     <div className="fixed top-0 left-0 right-0 z-[60] h-[3px] bg-border/30">
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+
       <motion.div className="h-full origin-left bg-gradient-to-r from-primary via-primary to-accent" style={{ scaleX }} />
     </div>
   );

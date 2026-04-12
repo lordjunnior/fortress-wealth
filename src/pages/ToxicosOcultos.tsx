@@ -7,6 +7,7 @@ import CinematicHero from '@/components/CinematicHero';
 import LiquidText from '@/components/LiquidText';
 import DossieRealidade from '@/components/toxicos/DossieRealidade';
 import TimelineDia from '@/components/toxicos/TimelineDia';
+import BackToHome from '@/components/BackToHome';
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 const fadeUp = {
@@ -64,6 +65,10 @@ export default function ToxicosOcultos() {
 
   return (
     <div className="min-h-screen text-stone-100 font-sans selection:bg-red-400/30 relative overflow-hidden" style={{ background: '#050808' }}>
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+
       <Helmet>
         <title>Removendo Tóxicos Ocultos — Laboratório de Discernimento | Lord Junnior</title>
         <meta name="description" content="Identifique e remova dependências invisíveis: toxinas alimentares, manipulação informacional, dependência tecnológica e contaminantes ambientais." />

@@ -18,6 +18,7 @@ import SimboloOculto from '@/components/SimboloOculto';
 import RiskBlock from '@/components/RiskBlock';
 import { PainelTaticoFisiologico } from '@/components/PainelTaticoFisiologico';
 import VersionBadge from '@/components/VersionBadge';
+import BackToHome from '@/components/BackToHome';
 
 /* ─── SEO: meta keywords target ───
    soberania orgânica, base 72 horas, autonomia biológica, soberania alimentar,
@@ -143,6 +144,10 @@ export default function ProjetoAutonomo() {
 
   return (
     <>
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+
       <Helmet>
         <title>Soberania Orgânica — Manual da Terra: Curar, Alimentar e Proteger | Lord Junnior</title>
         <meta name="description" content="Soberania Orgânica: o Manual da Terra definitivo. 5 fases progressivas para decifrar o código da natureza — curar, alimentar e proteger sua linhagem sem cadeias de suprimentos colapsáveis." />

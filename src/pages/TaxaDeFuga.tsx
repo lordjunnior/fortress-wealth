@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { PlaneTakeoff, Globe, ShieldAlert, Landmark, Zap, Activity, ArrowLeft } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
+import BackToHome from '@/components/BackToHome';
 
 const DESTINATIONS = [
   { id: 'us', name: 'Estados Unidos', flight: 4000, visa: 25000, rent: 12000, tax: '10-37%' },
@@ -43,6 +44,10 @@ const TaxaDeFuga: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground font-mono">
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+
       {/* Scanlines effect */}
       <div className="fixed inset-0 pointer-events-none z-50 opacity-[0.03]"
         style={{ backgroundImage: 'repeating-linear-gradient(0deg, #fff, #fff 1px, transparent 1px, transparent 2px)', backgroundSize: '100% 3px' }} />

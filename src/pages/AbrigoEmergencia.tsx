@@ -14,6 +14,7 @@ import imgResfriamentoPassivo from '@/assets/abrigo-resfriamento-passivo.jpg';
 import imgAFrame from '@/assets/abrigo-a-frame.jpg';
 import imgOrganizacao from '@/assets/abrigo-organizacao.jpg';
 import imgAquecedorVela from '@/assets/abrigo-aquecedor-vela.jpg';
+import BackToHome from '@/components/BackToHome';
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 const fade = (delay = 0) => ({
@@ -49,6 +50,10 @@ export default function AbrigoEmergencia() {
 
   return (
     <>
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+
       <Helmet>
         <title>Abrigo de Emergência: Proteção e Blindagem em Cenários Críticos | Lord Junnior</title>
         <meta name="description" content="Guia técnico para construção e adaptação de abrigos de emergência. Isolamento térmico, reforço estrutural, banheiro improvisado e ventilação passiva. Proteja sua família com protocolos de soberania física." />
