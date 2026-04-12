@@ -106,6 +106,7 @@ export const navGroups: NavGroup[] = [
       { label: "KuCoin Pay PIX", route: "/soberania-financeira/kucoin-pay-pix" },
       { label: "Dólar Virtual", route: "/dolar-virtual" },
       { label: "Cartão Bipa Bitcoin", route: "/bitpark-cartao-bitcoin", badge: "Novo" },
+      { label: "PIX Sem Expor Dados", route: "/pix-anonimo", badge: "Novo" },
       { label: "Teoria das Bandeiras", route: "/teoria-das-bandeiras" },
     ],
   },

@@ -202,7 +202,7 @@ export default function BitparkCartao() {
 
                   <div className="flex items-center gap-3 mb-5">
                     <span className="px-3 py-1 rounded-full bg-amber-500/15 border border-amber-500/25 text-amber-400 font-mono text-[10px] tracking-[0.3em] uppercase font-bold backdrop-blur-sm">
-                      NOVO — QUARTETO DO PODER
+                      NOVO — EXCLUSIVO
                     </span>
                     <span className="px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/25 text-emerald-400 font-mono text-[10px] tracking-[0.3em] uppercase font-bold backdrop-blur-sm">
                       VIRAL NO YOUTUBE
