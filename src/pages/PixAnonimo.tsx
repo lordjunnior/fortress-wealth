@@ -6,10 +6,11 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Link } from 'react-router-dom';
 import {
   AlertTriangle, ArrowRight, Shield, Lock, Eye,
-  Server, Code, QrCode, Terminal, Download,
+  Server, Code, QrCode, Terminal,
   CheckCircle2, XCircle, Fingerprint, Globe,
-  ChevronRight, ShieldAlert, Zap, Copy, ExternalLink,
-  Ban, FileCode2, HardDrive, KeyRound,
+  ChevronRight, ShieldAlert, Zap, ExternalLink,
+  Ban, FileCode2, HardDrive, KeyRound, Clock,
+  Rocket, Gift, MousePointerClick, Sparkles,
 } from 'lucide-react';
 import {
   Accordion, AccordionContent, AccordionItem, AccordionTrigger,
@@ -23,11 +24,14 @@ import imgHero from '@/assets/pix-anonimo-hero.jpg';
 import imgCodigo from '@/assets/pix-anonimo-codigo.jpg';
 import imgQrcode from '@/assets/pix-anonimo-qrcode.jpg';
 import imgServidor from '@/assets/pix-anonimo-servidor.jpg';
+import imgPronto from '@/assets/pix-anonimo-pronto.jpg';
+import imgPost from '@/assets/pix-anonimo-post.jpg';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const APPLE_EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 const BG = '#050808';
+const LIVE_URL = 'https://receba-pix.vercel.app/';
 
 /* ── GSAP Section ── */
 const GS = ({ children, className = '', id }: { children: React.ReactNode; className?: string; id?: string }) => {
@@ -55,36 +59,36 @@ const FAQ = [
     a: 'No PIX comum, quando alguem te paga, ele ve seu nome completo, CPF parcial e banco. Com este metodo, o pagador escaneia um QR Code gerado por uma API de pagamento. Ele ve apenas os dados do gateway (como "Pagamento Processado por [Nome do Gateway]"). Seus dados pessoais ficam completamente ocultos da outra parte. O dinheiro cai na conta vinculada ao gateway, que voce controla.',
   },
   {
-    q: 'Por que nao posso hospedar em plataformas como Netlify ou Vercel?',
-    a: 'Porque o script que gera o QR Code utiliza PHP com execucao server-side. Plataformas como Netlify, Vercel e GitHub Pages sao feitas para hospedagem de sites estaticos (HTML, CSS, JavaScript puro). Elas NAO executam PHP. O script precisa de um servidor com suporte a PHP 7.4+ e cURL habilitado. Isso significa VPS (DigitalOcean, Contabo, Hetzner) ou hospedagem compartilhada que suporte PHP (como Hostinger ou InfinityFree).',
+    q: 'Por que o site ja esta pronto e nao preciso programar nada?',
+    a: 'Porque Lord Junnior desenvolveu toda a infraestrutura de ponta a ponta: o script PHP, a integracao com a API do gateway, a hospedagem, o certificado SSL e a interface do usuario. O site em receba-pix.vercel.app ja esta funcional, com QR Code dinamico e copia-e-cola do PIX. Voce nao precisa tocar em uma unica linha de codigo — so precisa acessar, configurar sua chave de API e comecar a receber.',
+  },
+  {
+    q: 'Nao entendo de programacao. Consigo usar mesmo assim?',
+    a: 'Sim, esse e exatamente o ponto. A maioria das pessoas que quer privacidade no PIX nao sabe programar — e nao precisa saber. A plataforma que Lord Junnior construiu e plug-and-play: voce acessa o site, ele gera o QR Code automaticamente. Nao existe terminal, nao existe linha de comando, nao existe configuracao de servidor. Esta tudo pronto.',
+  },
+  {
+    q: 'Por que nao posso hospedar em plataformas como Netlify ou GitHub Pages?',
+    a: 'Porque o script que gera o QR Code utiliza PHP com execucao server-side. Plataformas como Netlify e GitHub Pages sao feitas para hospedagem de sites estaticos (HTML, CSS, JavaScript puro). Elas NAO executam PHP. Esse e um dos erros fatais mais comuns — e um dos motivos pelos quais Lord Junnior ja resolveu essa questao hospedando o sistema em infraestrutura compativel.',
   },
   {
     q: 'Quais APIs de pagamento posso usar?',
-    a: 'Existem diversas opcoes no mercado brasileiro: Mercado Pago, PagSeguro, Asaas, Pagar.me, entre outras. Cada uma tem seu processo de cadastro e taxas. A logica do script e a mesma para todas: voce faz uma requisicao POST com o valor desejado, recebe um payload PIX (o "copia e cola") e um QR Code. A diferenca esta nos headers de autenticacao e no endpoint da API.',
+    a: 'Existem diversas opcoes no mercado brasileiro: Mercado Pago, PagSeguro, Asaas, Pagar.me, entre outras. Cada uma tem seu processo de cadastro e taxas. A logica do script e a mesma para todas: voce faz uma requisicao POST com o valor desejado, recebe um payload PIX (o "copia e cola") e um QR Code.',
   },
   {
     q: 'Como funciona a autenticacao com a API?',
-    a: 'Cada gateway fornece uma chave de API (API Key ou Access Token) apos o cadastro. No script PHP, essa chave e enviada no header Authorization de cada requisicao. NUNCA exponha essa chave no frontend (JavaScript do navegador). O script PHP roda no servidor, mantendo a chave invisivel para o usuario final. Este e o motivo pelo qual PHP server-side e necessario.',
+    a: 'Cada gateway fornece uma chave de API (API Key ou Access Token) apos o cadastro. No script PHP, essa chave e enviada no header Authorization de cada requisicao. NUNCA exponha essa chave no frontend (JavaScript do navegador). O script PHP roda no servidor, mantendo a chave invisivel para o usuario final.',
   },
   {
     q: 'Posso usar este metodo para vender produtos online?',
-    a: 'Sim. Este e exatamente o uso principal. Voce pode criar uma pagina de vendas com um botao "Pagar com PIX", que ao ser clicado, chama o script PHP no backend. O script gera o QR Code dinamicamente com o valor do produto. O cliente paga, e voce recebe uma notificacao via webhook do gateway confirmando o pagamento. Tudo automatizado.',
+    a: 'Sim. Este e exatamente o uso principal. Voce pode integrar o sistema em uma pagina de vendas com um botao "Pagar com PIX", que gera o QR Code dinamicamente com o valor do produto. O cliente paga, e voce recebe uma notificacao via webhook do gateway confirmando o pagamento. Tudo automatizado.',
   },
   {
     q: 'Preciso declarar os valores recebidos?',
-    a: 'Sim. Independente do metodo utilizado para receber pagamentos, a legislacao tributaria brasileira exige declaracao de renda. Este metodo protege sua privacidade perante TERCEIROS (o pagador nao ve seus dados), mas nao substitui obrigacoes fiscais. O gateway de pagamento reporta movimentacoes ao COAF conforme os mesmos criterios de qualquer instituicao financeira.',
+    a: 'Sim. Independente do metodo utilizado para receber pagamentos, a legislacao tributaria brasileira exige declaracao de renda. Este metodo protege sua privacidade perante TERCEIROS (o pagador nao ve seus dados), mas nao substitui obrigacoes fiscais.',
   },
   {
-    q: 'Como recebo notificacao quando alguem paga?',
-    a: 'Atraves de webhooks. Voce configura uma URL no painel do gateway que sera chamada automaticamente quando um pagamento for confirmado. O gateway envia um POST para essa URL com os dados da transacao (valor, status, ID). Seu script PHP recebe esses dados e pode atualizar um banco de dados, enviar um email, ou executar qualquer logica de negocios.',
-  },
-  {
-    q: 'E seguro hospedar em VPS barata?',
-    a: 'Sim, desde que voce tome precaucoes basicas: use HTTPS (certificado SSL gratuito via Lets Encrypt), mantenha o PHP atualizado, nunca exponha credenciais no codigo publico, e configure firewall (UFW no Ubuntu). VPS de R$20-30/mes em provedores como Contabo ou Hetzner sao mais do que suficientes para este tipo de aplicacao.',
-  },
-  {
-    q: 'Qual o custo para montar esta infraestrutura?',
-    a: 'VPS basica: R$15-40/mes. Dominio: R$40-60/ano. Taxa do gateway por transacao: 1% a 3.5% dependendo do provedor. Certificado SSL: gratuito (Lets Encrypt). Total mensal fixo: menos de R$50. O investimento e minimo comparado a privacidade que voce ganha.',
+    q: 'Qual o custo para montar esta infraestrutura do zero?',
+    a: 'VPS basica: R$15-40/mes. Dominio: R$40-60/ano. Taxa do gateway por transacao: 1% a 3.5%. Certificado SSL: gratuito (Lets Encrypt). Total: menos de R$50/mes. Mas como Lord Junnior ja construiu o sistema funcional, voce pode comecar sem gastar nada com infraestrutura.',
   },
 ];
 
@@ -93,59 +97,37 @@ const ERROS_FATAIS = [
   {
     icon: Server,
     titulo: 'Hospedar em plataforma estatica',
-    desc: 'Netlify, Vercel, GitHub Pages NAO executam PHP. Seu script simplesmente nao funciona. O QR Code nunca sera gerado. E voce nao recebe nenhum erro claro — apenas uma pagina em branco ou um erro 500.',
-    solucao: 'Use VPS com PHP 7.4+ (DigitalOcean, Contabo, Hetzner) ou hospedagem compartilhada com suporte PHP.',
+    desc: 'Netlify, GitHub Pages e plataformas estaticas NAO executam PHP. O QR Code nunca sera gerado. Voce ve uma pagina em branco ou um erro 500 sem explicacao.',
+    solucao: 'O sistema pronto ja esta hospedado em infraestrutura compativel. Voce nao precisa se preocupar com isso.',
   },
   {
     icon: KeyRound,
     titulo: 'Expor a API Key no frontend',
-    desc: 'Se voce colocar sua chave de API no JavaScript do navegador, QUALQUER pessoa pode inspecionar o codigo e usar sua chave para gerar cobranças em seu nome. Isso e uma vulnerabilidade critica.',
-    solucao: 'Mantenha a API Key APENAS no backend (PHP). Nunca no HTML, CSS ou JavaScript publico.',
+    desc: 'Se a chave da API ficar no JavaScript do navegador, qualquer pessoa pode inspecionar o codigo e usar sua chave para gerar cobrancas em seu nome.',
+    solucao: 'A arquitetura pronta mantem a API Key exclusivamente no backend PHP, invisivel para o usuario final.',
   },
   {
     icon: Lock,
     titulo: 'Nao usar HTTPS',
-    desc: 'Sem SSL, os dados trafegam em texto puro. Qualquer intermediario na rede (ISP, WiFi publico, atacante) pode interceptar a comunicacao entre seu servidor e a API do gateway, incluindo tokens de autenticacao.',
-    solucao: 'Instale certificado SSL gratuito via Lets Encrypt. Em VPS Ubuntu: sudo certbot --apache ou --nginx.',
+    desc: 'Sem SSL, os dados trafegam em texto puro. Qualquer intermediario na rede pode interceptar tokens de autenticacao.',
+    solucao: 'O sistema ja opera com certificado SSL ativo. Todas as conexoes sao criptografadas por padrao.',
   },
   {
     icon: FileCode2,
     titulo: 'Content-Type incorreto na requisicao',
-    desc: 'Se o header Content-Type nao estiver configurado como application/json, a API rejeita a requisicao silenciosamente. Voce recebe um erro generico ou uma resposta vazia sem entender o motivo.',
-    solucao: 'Adicione explicitamente: Content-Type: application/json no header da requisicao cURL do PHP.',
+    desc: 'Se o header Content-Type nao estiver como application/json, a API rejeita a requisicao silenciosamente. Voce recebe erro generico sem entender o motivo.',
+    solucao: 'Os headers ja estao configurados corretamente no script. Nenhuma intervencao necessaria.',
   },
 ];
 
-/* ── PASSOS ── */
-const PASSOS = [
-  {
-    num: '01',
-    titulo: 'Criar Conta no Gateway de Pagamento',
-    desc: 'Cadastre-se em uma API de pagamento (Mercado Pago, PagSeguro, Asaas, entre outras). Apos a aprovacao, voce recebera uma API Key (chave de acesso) que sera usada para autenticar as requisicoes do seu script PHP. Guarde essa chave com seguranca absoluta.',
-    detalhe: 'O cadastro geralmente exige CNPJ ou CPF. Algumas plataformas permitem pessoa fisica. O processo leva de 5 minutos a 48 horas para aprovacao. Apos aprovado, acesse a area de "Integracao" ou "Desenvolvedores" para obter sua chave.',
-    img: imgQrcode,
-  },
-  {
-    num: '02',
-    titulo: 'Provisionar um Servidor com PHP',
-    desc: 'Contrate uma VPS (Virtual Private Server) com suporte a PHP 7.4 ou superior e extensao cURL habilitada. Provedores recomendados: DigitalOcean (US$4/mes), Contabo (a partir de 4 euros/mes), Hetzner (3.29 euros/mes). Instale Apache ou Nginx + PHP.',
-    detalhe: 'Comandos basicos para Ubuntu 22.04: sudo apt update && sudo apt install apache2 php php-curl php-json -y. Apos instalacao, crie um diretorio para seu projeto em /var/www/html/pagamento/ e coloque seu script PHP la.',
-    img: imgServidor,
-  },
-  {
-    num: '03',
-    titulo: 'Implementar o Script PHP',
-    desc: 'O script PHP e simples: recebe o valor via POST (ou query string), monta o payload JSON com os dados da cobranca, envia para o endpoint da API via cURL, e retorna o QR Code e o codigo "copia e cola" do PIX. Tudo acontece no servidor — o usuario final nunca ve a API Key.',
-    detalhe: 'A logica principal em pseudocodigo: 1) Receber valor do formulario; 2) Montar array com dados da cobranca (valor, descricao, expiracao); 3) Converter para JSON; 4) Enviar via cURL POST para o endpoint /v1/payments ou equivalente; 5) Decodificar a resposta JSON; 6) Extrair o campo qr_code e qr_code_base64; 7) Renderizar na pagina.',
-    img: imgCodigo,
-  },
-  {
-    num: '04',
-    titulo: 'Configurar SSL e Webhook',
-    desc: 'Instale certificado HTTPS via Lets Encrypt (gratuito) e configure o webhook no painel do gateway. O webhook e a URL que o gateway chama automaticamente quando um pagamento e confirmado. Isso permite automacao total: confirmar pedidos, liberar downloads, enviar emails.',
-    detalhe: 'Para SSL: sudo apt install certbot python3-certbot-apache -y && sudo certbot --apache. Para webhook: no painel do gateway, va em Configuracoes > Notificacoes > Webhooks. Insira a URL do seu script de callback (ex: https://seudominio.com/webhook.php).',
-    img: imgQrcode,
-  },
+/* ── O QUE FOI CONSTRUIDO ── */
+const CONSTRUIDO = [
+  { icon: Code, titulo: 'Script PHP Completo', desc: 'Backend server-side com cURL, autenticacao via Bearer Token, tratamento de erros e logging. Pronto para producao.' },
+  { icon: QrCode, titulo: 'Geracao Automatica de QR Code', desc: 'O sistema gera QR Codes dinamicos com valores personalizados em tempo real. Inclui funcao copia-e-cola do payload PIX.' },
+  { icon: Lock, titulo: 'Certificado SSL Ativo', desc: 'Todas as conexoes sao criptografadas via HTTPS. Dados de autenticacao trafegam em canal seguro.' },
+  { icon: Shield, titulo: 'API Key Protegida', desc: 'A chave de acesso ao gateway fica exclusivamente no backend. Nenhum visitante do site consegue acessa-la.' },
+  { icon: Globe, titulo: 'Hospedagem Compativel', desc: 'Servidor com suporte a PHP 7.4+ e extensao cURL. Nada de Netlify, nada de GitHub Pages, nada de erro 500.' },
+  { icon: Fingerprint, titulo: 'Dados do Recebedor Ocultos', desc: 'O pagador ve apenas as informacoes do gateway de pagamento. Seu nome, CPF e banco nunca aparecem na tela do pagador.' },
 ];
 
 /* ── COMPARATIVO ── */
@@ -158,6 +140,14 @@ const COMPARATIVO = [
   { feature: 'Webhook de confirmacao', pix: false, metodo: true },
   { feature: 'Integravel com e-commerce', pix: false, metodo: true },
   { feature: 'Funciona sem conta bancaria pessoal', pix: false, metodo: true },
+  { feature: 'Sistema pronto para usar', pix: false, metodo: true },
+  { feature: 'Zero conhecimento tecnico exigido', pix: true, metodo: true },
+];
+
+/* ── TEMPO COMPARATIVO ── */
+const TEMPO = [
+  { caminho: 'Fazer sozinho', tempo: '8-40 horas', itens: ['Aprender PHP', 'Configurar VPS', 'Instalar Apache/Nginx', 'Configurar SSL', 'Integrar API', 'Debugar erros', 'Testar em producao'] },
+  { caminho: 'Com o sistema pronto', tempo: '2 minutos', itens: ['Acessar o site', 'Usar'] },
 ];
 
 export default function PixAnonimo() {
@@ -172,31 +162,34 @@ export default function PixAnonimo() {
   const howToSchema = {
     '@context': 'https://schema.org', '@type': 'HowTo',
     name: 'Como Receber PIX Sem Mostrar Seus Dados Pessoais',
-    description: 'Guia tecnico completo para configurar um sistema de recebimento de PIX via gateway de pagamento, ocultando dados pessoais do pagador.',
-    totalTime: 'PT2H',
-    step: PASSOS.map((p, i) => ({ '@type': 'HowToStep', position: i + 1, name: p.titulo, text: p.desc })),
+    description: 'Sistema pronto para receber PIX anonimo com QR Code dinamico. Criado por Lord Junnior — sem necessidade de programacao.',
+    totalTime: 'PT2M',
+    step: [
+      { '@type': 'HowToStep', position: 1, name: 'Acessar o sistema', text: 'Acesse receba-pix.vercel.app — o sistema ja esta funcional e pronto para uso.' },
+      { '@type': 'HowToStep', position: 2, name: 'Gerar QR Code', text: 'O site gera automaticamente um QR Code PIX dinamico. O pagador nao ve seus dados pessoais.' },
+    ],
   };
   const articleSchema = {
     '@context': 'https://schema.org', '@type': 'TechArticle',
-    headline: 'PIX Anonimo: Como Receber Pagamentos Sem Expor Dados Pessoais',
+    headline: 'PIX Anonimo: Sistema Pronto Para Receber Pagamentos Sem Expor Dados Pessoais',
     author: { '@type': 'Person', name: 'Lord Junnior' },
     publisher: { '@type': 'Organization', name: 'Universidade Satoshi' },
     url: 'https://lordjunnior.com.br/pix-anonimo',
     datePublished: '2026-04-12', dateModified: '2026-04-12',
-    proficiencyLevel: 'Intermediate',
-    dependencies: 'PHP 7.4+, VPS, API de Pagamento, Certificado SSL',
+    proficiencyLevel: 'Beginner',
+    dependencies: 'Nenhuma — sistema ja construido e hospedado.',
   };
 
   return (
     <div className="min-h-screen text-foreground font-sans overflow-x-hidden" style={{ background: BG }}>
       <ScrollToTop />
       <Helmet>
-        <title>PIX Sem Mostrar Dados: Receba Pagamentos Com Privacidade Total | Lord Junnior</title>
-        <meta name="description" content="Aprenda a receber PIX sem expor CPF, nome ou banco. Guia tecnico com script PHP, API de pagamento e QR Code dinamico. Proteja sua identidade em cada transacao." />
+        <title>PIX Sem Mostrar Dados: Sistema Pronto Para Receber Anonimamente | Lord Junnior</title>
+        <meta name="description" content="Sistema pronto para receber PIX sem expor CPF, nome ou banco. Sem programacao, sem configuracao. Lord Junnior ja construiu tudo — acesse e use agora." />
         <link rel="canonical" href="https://lordjunnior.com.br/pix-anonimo" />
-        <meta name="keywords" content="pix anonimo, receber pix sem mostrar dados, pix privado, pix sem cpf, qr code pix automatico, gateway pagamento pix, pix php script, pix api, receber pix sem banco, pix sem expor identidade, pagamento privado brasil, pix descentralizado, privacidade financeira pix, como esconder dados pix, pix sem nome aparecendo, anonymous pix brazil, receive pix privately, pix payment gateway, hide personal data pix, pix qr code generator" />
-        <meta property="og:title" content="O Metodo Para Receber PIX Sem Mostrar Seus Dados" />
-        <meta property="og:description" content="Seu nome, CPF e banco aparecem toda vez que alguem te paga via PIX. Existe um metodo tecnico para mudar isso." />
+        <meta name="keywords" content="pix anonimo, receber pix sem mostrar dados, pix privado, pix sem cpf, qr code pix automatico, gateway pagamento pix, pix php script, pix api, receber pix sem banco, pix sem expor identidade, pagamento privado brasil, pix descentralizado, privacidade financeira pix, como esconder dados pix, pix sem nome aparecendo, anonymous pix brazil, receive pix privately, pix payment gateway, hide personal data pix, pix qr code generator, receber pix anonimo sistema pronto, pix sem programacao, gerar qr code pix automatico gratis, receba pix privado, pix oculto dados, анонимный пикс бразилия, ピクス匿名受取, pago pix anónimo, pix anonymous empfangen" />
+        <meta property="og:title" content="PIX Sem Mostrar Dados — Sistema Pronto por Lord Junnior" />
+        <meta property="og:description" content="Eu ja construi o sistema inteiro. Voce so precisa acessar e usar. Sem programacao, sem VPS, sem dor de cabeca." />
         <meta property="og:url" content="https://lordjunnior.com.br/pix-anonimo" />
         <meta property="og:type" content="article" />
         <html lang="pt-BR" />
@@ -210,7 +203,7 @@ export default function PixAnonimo() {
 
       {/* ══ HERO FULL-BLEED ══ */}
       <section className="relative h-[90vh] min-h-[600px] flex items-end overflow-hidden">
-        <img src={imgHero} alt="QR Code PIX gerado automaticamente via script PHP em tela de terminal" className="absolute inset-0 w-full h-full object-cover" width={1920} height={1080} />
+        <img src={imgHero} alt="Sistema de recebimento PIX anonimo com QR Code dinamico" className="absolute inset-0 w-full h-full object-cover" width={1920} height={1080} />
         <div className="absolute inset-0 bg-gradient-to-t from-[#050808] via-[#050808]/70 to-[#050808]/30" />
         <div className="absolute inset-0 bg-gradient-to-r from-[#050808]/80 via-transparent to-transparent" />
 
@@ -223,10 +216,10 @@ export default function PixAnonimo() {
             <div className="flex items-center gap-3 mb-6">
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-sm bg-chart-green/10 border border-chart-green/30">
                 <span className="w-2 h-2 rounded-full bg-chart-green animate-pulse" />
-                <span className="text-chart-green font-black uppercase tracking-[0.4em] text-[8px] font-mono">Privacidade Ativa</span>
+                <span className="text-chart-green font-black uppercase tracking-[0.4em] text-[8px] font-mono">Sistema Ativo</span>
               </div>
               <span className="px-3 py-1.5 rounded-sm bg-amber-500/10 border border-amber-500/25 text-amber-400 font-mono text-[8px] tracking-[0.3em] uppercase font-bold">
-                Novo
+                Pronto Para Usar
               </span>
             </div>
           </motion.div>
@@ -234,10 +227,10 @@ export default function PixAnonimo() {
           <motion.h1
             initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.15, ease: APPLE_EASE }}
-            className="font-['Bebas_Neue'] text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight leading-[0.9] mb-6 max-w-4xl"
+            className="font-['Bebas_Neue'] text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight leading-[0.9] mb-6 max-w-5xl"
           >
-            Receba PIX Sem Mostrar{' '}
-            <span className="text-chart-green">Seus Dados</span>
+            Eu Ja Construi o Sistema.{' '}
+            <span className="text-chart-green">Voce So Precisa Usar.</span>
           </motion.h1>
 
           <motion.p
@@ -245,21 +238,38 @@ export default function PixAnonimo() {
             transition={{ duration: 0.8, delay: 0.35 }}
             className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl font-['Inter_Tight'] font-medium mb-10"
           >
-            Toda vez que alguem te paga via PIX, seu nome completo, CPF parcial e banco ficam expostos.
-            Este guia tecnico ensina como configurar um sistema onde o pagador ve apenas o gateway de pagamento.
-            <span className="text-foreground font-bold"> Sua identidade real permanece oculta.</span>
+            Toda vez que alguem te paga via PIX, seu nome completo, CPF e banco ficam expostos.
+            Voce precisaria aprender PHP, configurar servidor, integrar API, instalar SSL.
+            <span className="text-foreground font-bold"> Eu ja fiz tudo isso por voce. O site esta pronto e funcionando.</span>
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
+            className="flex flex-wrap gap-4 mb-10"
+          >
+            <a
+              href={LIVE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 px-8 py-4 bg-chart-green text-[#050808] rounded-sm font-bold text-sm uppercase tracking-wider hover:bg-chart-green/90 transition-all group"
+            >
+              <Rocket className="w-5 h-5" />
+              Acessar o Sistema Agora
+              <ExternalLink className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </a>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
             className="flex flex-wrap gap-8 pt-8 border-t border-border/20"
           >
             {[
-              { label: 'Dados expostos por PIX', value: '04' },
-              { label: 'Erros fatais documentados', value: '04' },
-              { label: 'Custo mensal', value: 'R$50' },
-              { label: 'Tempo de setup', value: '2h' },
+              { label: 'Dados que o PIX expoe', value: '04' },
+              { label: 'Horas que voce economiza', value: '40h' },
+              { label: 'Linhas de codigo escritas', value: '0' },
+              { label: 'Tempo para comecar', value: '2min' },
             ].map((s, i) => (
               <div key={i}>
                 <p className="font-['Bebas_Neue'] text-4xl text-foreground">{s.value}</p>
@@ -285,7 +295,7 @@ export default function PixAnonimo() {
               <div className="space-y-4 mb-8">
                 {[
                   { dado: 'Nome Completo', desc: 'Seu nome civil completo aparece para quem paga. Qualquer pessoa que faz um PIX para voce sabe exatamente quem voce e.' },
-                  { dado: 'CPF Parcial', desc: 'Os primeiros e ultimos digitos do seu CPF ficam visiveis. Com tecnicas de OSINT basicas, e possivel reconstruir o CPF completo a partir de bases de dados publicas.' },
+                  { dado: 'CPF Parcial', desc: 'Os primeiros e ultimos digitos do seu CPF ficam visiveis. Com tecnicas de OSINT basicas, e possivel reconstruir o CPF completo a partir de bases publicas.' },
                   { dado: 'Instituicao Bancaria', desc: 'O nome do banco ou fintech onde voce tem conta fica exposto. Isso revela informacoes sobre seu perfil financeiro e cria vetores de engenharia social.' },
                   { dado: 'Tipo de Chave PIX', desc: 'Se sua chave for CPF, email ou telefone, o pagador tem um dado pessoal adicional sobre voce. Mesmo chaves aleatorias revelam o banco.' },
                 ].map((item, i) => (
@@ -326,10 +336,10 @@ export default function PixAnonimo() {
             </div>
 
             <div className="relative rounded-sm overflow-hidden">
-              <img src={imgQrcode} alt="QR Code PIX gerando dados de pagamento anonimamente" className="w-full h-full object-cover aspect-[16/10]" loading="lazy" width={1344} height={768} />
+              <img src={imgPost} alt="Post original sobre metodo de PIX anonimo por Lord Junnior" className="w-full h-full object-cover aspect-[4/5] object-top" loading="lazy" width={1080} height={1350} />
               <div className="absolute inset-0 bg-gradient-to-t from-[#050808] via-transparent to-transparent" />
               <div className="absolute bottom-6 left-6 right-6">
-                <p className="font-mono text-[9px] tracking-[0.3em] uppercase text-chart-green/80 mb-2">Protocolo ativo</p>
+                <p className="font-mono text-[9px] tracking-[0.3em] uppercase text-chart-green/80 mb-2">Publicacao original</p>
                 <p className="text-foreground/90 text-sm font-['Inter_Tight'] font-semibold italic leading-relaxed">
                   "O que o pagador ve: dados do gateway. O que ele NAO ve: voce."
                 </p>
@@ -344,30 +354,130 @@ export default function PixAnonimo() {
           <div className="absolute inset-0 bg-gradient-to-b from-[#050808] via-[#050808]/40 to-[#050808]" />
           <div className="absolute inset-0 flex items-center justify-center">
             <p className="font-['Bebas_Neue'] text-2xl md:text-4xl tracking-tight uppercase text-foreground/80 text-center px-6">
-              Um script PHP. Uma API. <span className="text-chart-green">Privacidade total.</span>
+              40 horas de trabalho. Zero para voce. <span className="text-chart-green">Eu ja fiz.</span>
             </p>
           </div>
         </div>
 
-        {/* ══ SEÇÃO 2: COMO FUNCIONA — ARQUITETURA ══ */}
+        {/* ══ SEÇÃO 2: JA ESTA PRONTO ══ */}
+        <GS id="pronto" className="max-w-7xl mx-auto px-6 py-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <p className="font-mono text-[9px] tracking-[0.3em] uppercase text-chart-green/70 mb-4">Infraestrutura entregue</p>
+              <h2 className="font-['Bebas_Neue'] text-4xl md:text-6xl tracking-tight uppercase mb-4 leading-[0.95]">
+                Voce Nao Precisa Construir <span className="text-chart-green">Nada</span>
+              </h2>
+              <p className="text-muted-foreground text-base leading-relaxed font-['Inter_Tight'] mb-6">
+                A maioria dos guias na internet te ensina a montar o sistema do zero.
+                Te mandam aprender PHP, configurar VPS, instalar Apache, obter certificado SSL,
+                integrar API e debugar erros por horas. Voce gasta dias para ter algo funcionando.
+              </p>
+              <p className="text-foreground text-base leading-relaxed font-['Inter_Tight'] font-semibold mb-8">
+                Eu ja passei por todo esse processo. Escrevi o script, testei as APIs,
+                configurei a hospedagem, ativei o SSL e coloquei tudo no ar.
+                O sistema ja esta funcional em producao. Voce so precisa acessar e usar.
+              </p>
+
+              {/* Comparacao de tempo */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                {TEMPO.map((t, i) => (
+                  <div key={i} className={`p-6 rounded-sm border ${i === 0 ? 'bg-destructive/5 border-destructive/20' : 'bg-chart-green/5 border-chart-green/20'}`}>
+                    <div className="flex items-center gap-2 mb-3">
+                      <Clock className={`w-4 h-4 ${i === 0 ? 'text-destructive' : 'text-chart-green'}`} />
+                      <span className={`text-[9px] font-mono uppercase tracking-[0.3em] font-bold ${i === 0 ? 'text-destructive' : 'text-chart-green'}`}>{t.caminho}</span>
+                    </div>
+                    <p className={`font-['Bebas_Neue'] text-3xl mb-4 ${i === 0 ? 'text-destructive' : 'text-chart-green'}`}>{t.tempo}</p>
+                    <ul className="space-y-1.5">
+                      {t.itens.map((item, j) => (
+                        <li key={j} className="flex items-center gap-2 text-xs text-muted-foreground font-['Inter_Tight']">
+                          {i === 0 ? <XCircle className="w-3 h-3 text-destructive/50 shrink-0" /> : <CheckCircle2 className="w-3 h-3 text-chart-green/50 shrink-0" />}
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+
+              <a
+                href={LIVE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 px-8 py-4 bg-chart-green text-[#050808] rounded-sm font-bold text-sm uppercase tracking-wider hover:bg-chart-green/90 transition-all group"
+              >
+                <Rocket className="w-5 h-5" />
+                Acessar Agora — Zero Configuracao
+                <ExternalLink className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </a>
+            </div>
+
+            <div className="relative rounded-sm overflow-hidden">
+              <img src={imgPronto} alt="Sistema de PIX anonimo ja construido e funcional em producao" className="w-full h-full object-cover aspect-[16/10]" loading="lazy" width={1920} height={1080} />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#050808]/80 via-transparent to-transparent" />
+              <div className="absolute bottom-6 left-6 right-6">
+                <p className="font-mono text-[9px] tracking-[0.3em] uppercase text-chart-green/80 mb-2">Sistema em producao</p>
+                <p className="text-foreground/90 text-sm font-['Inter_Tight'] font-semibold leading-relaxed">
+                  Script PHP, API integrada, SSL ativo, QR Code dinamico. Tudo funcionando.
+                </p>
+              </div>
+            </div>
+          </div>
+        </GS>
+
+        {/* ══ SEÇÃO 3: O QUE FOI CONSTRUIDO ══ */}
+        <GS id="construido" className="py-20">
+          <div className="max-w-7xl mx-auto px-6">
+            <p className="font-mono text-[9px] tracking-[0.3em] uppercase text-primary/70 mb-4">Detalhamento tecnico</p>
+            <h2 className="font-['Bebas_Neue'] text-4xl md:text-6xl tracking-tight uppercase mb-4 leading-[0.95]">
+              O Que Eu <span className="text-primary">Construi</span> Para Voce
+            </h2>
+            <p className="text-muted-foreground text-base leading-relaxed max-w-3xl font-['Inter_Tight'] mb-12">
+              Cada componente abaixo exigiria horas de trabalho se voce fosse montar sozinho.
+              Servidor, script, autenticacao, criptografia — tudo ja esta implementado e testado.
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+              {CONSTRUIDO.map((item, i) => {
+                const Icon = item.icon;
+                return (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: i * 0.08 }}
+                    className="bg-white/[0.02] border border-border/20 rounded-sm p-6 hover:border-chart-green/30 transition-colors group"
+                  >
+                    <div className="w-12 h-12 rounded-sm bg-chart-green/10 flex items-center justify-center mb-4 group-hover:bg-chart-green/15 transition-colors">
+                      <Icon className="w-5 h-5 text-chart-green" />
+                    </div>
+                    <h3 className="font-['Inter_Tight'] font-bold text-base text-foreground mb-2">{item.titulo}</h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed font-['Inter_Tight']">{item.desc}</p>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
+        </GS>
+
+        {/* ══ COMO FUNCIONA — FLUXO VISUAL ══ */}
         <GS id="arquitetura" className="max-w-7xl mx-auto px-6 py-20">
-          <p className="font-mono text-[9px] tracking-[0.3em] uppercase text-chart-green/70 mb-4">Infraestrutura tecnica</p>
+          <p className="font-mono text-[9px] tracking-[0.3em] uppercase text-chart-green/70 mb-4">Arquitetura por tras do sistema</p>
           <h2 className="font-['Bebas_Neue'] text-4xl md:text-6xl tracking-tight uppercase mb-4 leading-[0.95]">
             Como o Sistema <span className="text-chart-green">Funciona</span>
           </h2>
           <p className="text-muted-foreground text-base leading-relaxed max-w-3xl font-['Inter_Tight'] mb-12">
-            A logica e direta: em vez de vincular o PIX a sua conta bancaria pessoal,
-            voce utiliza uma API de pagamento como intermediaria. O pagador interage com o gateway.
-            O gateway processa o pagamento. Voce recebe o dinheiro. Seus dados pessoais nunca aparecem.
+            Voce nao precisa entender cada detalhe. Mas para quem quer saber o que esta rodando por baixo,
+            aqui esta a arquitetura completa — a mesma que seria necessaria se voce fosse construir do zero.
           </p>
 
           {/* Fluxo Visual */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-16">
             {[
-              { icon: Globe, label: 'Pagador', desc: 'Acessa sua pagina de pagamento e insere o valor' },
-              { icon: Code, label: 'Script PHP', desc: 'Recebe o valor e faz POST para API do gateway' },
-              { icon: QrCode, label: 'QR Code', desc: 'API retorna payload PIX + QR Code dinamico' },
-              { icon: Shield, label: 'Privacidade', desc: 'Pagador ve dados do GATEWAY, nao os seus' },
+              { icon: MousePointerClick, label: 'Voce Acessa', desc: 'Entra no sistema pronto e informa o valor que deseja receber' },
+              { icon: Code, label: 'Backend PHP', desc: 'O script faz POST automatico para a API do gateway com autenticacao segura' },
+              { icon: QrCode, label: 'QR Code Gerado', desc: 'A API retorna o payload PIX e o QR Code dinamico em tempo real' },
+              { icon: Shield, label: 'Identidade Oculta', desc: 'Pagador ve dados do GATEWAY. Seus dados pessoais nunca aparecem.' },
             ].map((step, i) => {
               const Icon = step.icon;
               return (
@@ -392,11 +502,14 @@ export default function PixAnonimo() {
             })}
           </div>
 
-          {/* Pseudo-código */}
+          {/* Pseudo-codigo — EDUCACIONAL */}
           <div className="bg-[#0a0f0f] border border-chart-green/15 rounded-sm overflow-hidden">
-            <div className="flex items-center gap-2 px-5 py-3 bg-chart-green/5 border-b border-chart-green/10">
-              <Terminal className="w-4 h-4 text-chart-green" />
-              <span className="text-chart-green font-mono text-[11px] font-bold tracking-wider">gerar-pix.php — Pseudocodigo Simplificado</span>
+            <div className="flex items-center justify-between px-5 py-3 bg-chart-green/5 border-b border-chart-green/10">
+              <div className="flex items-center gap-2">
+                <Terminal className="w-4 h-4 text-chart-green" />
+                <span className="text-chart-green font-mono text-[11px] font-bold tracking-wider">gerar-pix.php — O que roda no backend (voce NAO precisa escrever isso)</span>
+              </div>
+              <span className="text-[8px] font-mono uppercase tracking-[0.3em] text-chart-green/50">Ja implementado</span>
             </div>
             <pre className="p-6 text-sm font-mono text-muted-foreground overflow-x-auto leading-7">
 {`// 1. Receber valor do formulario
@@ -433,62 +546,35 @@ $qr_code_base64 = $response->point_of_interaction
 echo '<img src="data:image/png;base64,' . $qr_code_base64 . '">';
 echo '<p>Copia e Cola: ' . $qr_code . '</p>';`}
             </pre>
+            <div className="px-5 py-3 bg-chart-green/5 border-t border-chart-green/10">
+              <p className="text-chart-green/60 font-mono text-[10px] tracking-wider">
+                Este codigo ja esta rodando no sistema. Voce nao precisa copiar, instalar ou configurar nada.
+              </p>
+            </div>
           </div>
         </GS>
 
-        {/* ══ SEÇÃO 3: PASSO A PASSO ══ */}
-        <GS id="tutorial" className="max-w-7xl mx-auto px-6 py-20">
-          <p className="font-mono text-[9px] tracking-[0.3em] uppercase text-primary/70 mb-4">Implementacao completa</p>
-          <h2 className="font-['Bebas_Neue'] text-4xl md:text-6xl tracking-tight uppercase mb-4 leading-[0.95]">
-            Passo a Passo <span className="text-primary">Tecnico</span>
-          </h2>
-          <p className="text-muted-foreground text-base leading-relaxed max-w-3xl font-['Inter_Tight'] mb-16">
-            Do zero ao QR Code funcionando. Sem atalhos, sem omissoes, sem amadorismo.
-            Cada passo inclui os comandos, as configuracoes e os erros mais comuns.
-          </p>
-
-          <div className="space-y-16">
-            {PASSOS.map((passo, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-60px' }}
-                transition={{ duration: 0.7, ease: APPLE_EASE }}
-              >
-                <div className={`grid grid-cols-1 lg:grid-cols-2 gap-10 items-center ${i % 2 === 1 ? 'lg:direction-rtl' : ''}`}>
-                  <div className={i % 2 === 1 ? 'lg:order-2' : ''}>
-                    <div className="flex items-center gap-4 mb-4">
-                      <span className="font-['Bebas_Neue'] text-5xl text-chart-green/20">{passo.num}</span>
-                      <div className="h-px flex-1 bg-gradient-to-r from-chart-green/20 to-transparent" />
-                    </div>
-                    <h3 className="font-['Inter_Tight'] font-bold text-xl md:text-2xl mb-4 text-foreground">{passo.titulo}</h3>
-                    <p className="text-muted-foreground text-sm leading-7 font-['Inter_Tight'] mb-4">{passo.desc}</p>
-                    <div className="bg-white/[0.02] border border-border/20 rounded-sm p-5">
-                      <p className="text-[9px] font-mono uppercase tracking-[0.3em] text-chart-green/60 mb-2">Detalhes tecnicos</p>
-                      <p className="text-muted-foreground text-xs leading-6 font-['Inter_Tight']">{passo.detalhe}</p>
-                    </div>
-                  </div>
-                  <div className={`relative rounded-sm overflow-hidden ${i % 2 === 1 ? 'lg:order-1' : ''}`}>
-                    <img src={passo.img} alt={passo.titulo} className="w-full aspect-[16/10] object-cover" loading="lazy" width={1344} height={768} />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#050808]/80 via-transparent to-transparent" />
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+        {/* ── Cinematic Break 2 ── */}
+        <div className="relative h-64 overflow-hidden">
+          <img src={imgServidor} alt="Infraestrutura de servidor processando pagamentos PIX anonimos" className="w-full h-full object-cover" loading="lazy" width={1344} height={768} />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#050808] via-[#050808]/40 to-[#050808]" />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <p className="font-['Bebas_Neue'] text-2xl md:text-4xl tracking-tight uppercase text-foreground/80 text-center px-6">
+              Nem todo mundo tem tempo. Nem todo mundo sabe programar. <span className="text-chart-green">Por isso eu ja fiz.</span>
+            </p>
           </div>
-        </GS>
+        </div>
 
-        {/* ══ SEÇÃO 4: ERROS FATAIS ══ */}
-        <GS id="erros" className="py-20" >
+        {/* ══ SEÇÃO 4: ERROS FATAIS (que voce evita) ══ */}
+        <GS id="erros" className="py-20">
           <div className="max-w-7xl mx-auto px-6">
-            <p className="font-mono text-[9px] tracking-[0.3em] uppercase text-destructive/70 mb-4">Armadilhas tecnicas</p>
+            <p className="font-mono text-[9px] tracking-[0.3em] uppercase text-destructive/70 mb-4">Armadilhas que voce nunca vai enfrentar</p>
             <h2 className="font-['Bebas_Neue'] text-4xl md:text-6xl tracking-tight uppercase mb-4 leading-[0.95]">
-              Erros Que <span className="text-destructive">Destroem</span> Seu Setup
+              Erros Que <span className="text-destructive">Destroem</span> Quem Tenta Sozinho
             </h2>
             <p className="text-muted-foreground text-base leading-relaxed max-w-3xl font-['Inter_Tight'] mb-12">
-              Estes sao os erros mais comuns que fazem o sistema falhar silenciosamente.
-              Cada um deles ja custou horas de debug para quem tentou sem este guia.
+              Estes sao os 4 erros mais comuns que fazem pessoas desistirem de montar o sistema.
+              Cada um ja foi resolvido na infraestrutura pronta — voce nao precisa lidar com nenhum deles.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -520,7 +606,7 @@ echo '<p>Copia e Cola: ' . $qr_code . '</p>';`}
                       <div className="bg-chart-green/5 border border-chart-green/15 rounded-sm p-4">
                         <div className="flex items-center gap-2 mb-1">
                           <CheckCircle2 className="w-3 h-3 text-chart-green" />
-                          <span className="text-chart-green text-[8px] font-black uppercase tracking-[0.3em] font-mono">Correcao</span>
+                          <span className="text-chart-green text-[8px] font-black uppercase tracking-[0.3em] font-mono">Ja Resolvido</span>
                         </div>
                         <p className="text-muted-foreground text-xs leading-relaxed font-['Inter_Tight']">{erro.solucao}</p>
                       </div>
@@ -532,29 +618,18 @@ echo '<p>Copia e Cola: ' . $qr_code . '</p>';`}
           </div>
         </GS>
 
-        {/* ── Cinematic Break 2 ── */}
-        <div className="relative h-64 overflow-hidden">
-          <img src={imgServidor} alt="Servidor VPS com LEDs verdes processando pagamentos PIX" className="w-full h-full object-cover" loading="lazy" width={1344} height={768} />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#050808] via-[#050808]/40 to-[#050808]" />
-          <div className="absolute inset-0 flex items-center justify-center">
-            <p className="font-['Bebas_Neue'] text-2xl md:text-4xl tracking-tight uppercase text-foreground/80 text-center px-6">
-              Seu servidor. Suas regras. <span className="text-chart-green">Seus dados protegidos.</span>
-            </p>
-          </div>
-        </div>
-
         {/* ══ SEÇÃO 5: COMPARATIVO ══ */}
         <GS id="comparativo" className="max-w-7xl mx-auto px-6 py-20">
           <p className="font-mono text-[9px] tracking-[0.3em] uppercase text-primary/70 mb-4">Analise comparativa</p>
           <h2 className="font-['Bebas_Neue'] text-4xl md:text-5xl tracking-tight uppercase mb-8 leading-[1.05]">
-            PIX Comum vs. <span className="text-chart-green">PIX Via Gateway</span>
+            PIX Comum vs. <span className="text-chart-green">Sistema Pronto</span>
           </h2>
 
           <div className="bg-white/[0.02] border border-border/30 rounded-sm overflow-hidden">
             <div className="grid grid-cols-3 bg-white/[0.03] border-b border-border/20">
               <div className="p-4 text-[10px] font-mono uppercase tracking-[0.3em] text-muted-foreground">Caracteristica</div>
               <div className="p-4 text-[10px] font-mono uppercase tracking-[0.3em] text-destructive text-center">PIX Comum</div>
-              <div className="p-4 text-[10px] font-mono uppercase tracking-[0.3em] text-chart-green text-center">Via Gateway</div>
+              <div className="p-4 text-[10px] font-mono uppercase tracking-[0.3em] text-chart-green text-center">Sistema Pronto</div>
             </div>
             {COMPARATIVO.map((row, i) => (
               <div key={i} className="grid grid-cols-3 border-b border-border/10 hover:bg-white/[0.01] transition-colors">
@@ -594,7 +669,7 @@ echo '<p>Copia e Cola: ' . $qr_code . '</p>';`}
                 </p>
                 <p className="text-muted-foreground text-sm leading-7 font-['Inter_Tight']">
                   Para privacidade financeira TOTAL, o caminho e a autocustodia de Bitcoin via rede Lightning,
-                  com aquisicao P2P sem KYC. Este guia resolve o problema imediato de exposicao de dados em transacoes PIX,
+                  com aquisicao P2P sem KYC. Este sistema resolve o problema imediato de exposicao de dados em transacoes PIX,
                   mas nao substitui uma infraestrutura soberana completa.
                 </p>
                 <Link
@@ -640,28 +715,33 @@ echo '<p>Copia e Cola: ' . $qr_code . '</p>';`}
             <div className="relative">
               <Shield className="w-12 h-12 text-chart-green mx-auto mb-6" />
               <h2 className="font-['Bebas_Neue'] text-3xl md:text-5xl tracking-tight uppercase mb-4">
-                Proteja Sua Identidade<br /><span className="text-chart-green">Em Cada Transacao</span>
+                O Sistema Ja Existe.<br /><span className="text-chart-green">Voce So Precisa Acessar.</span>
               </h2>
-              <p className="text-muted-foreground text-base leading-relaxed max-w-2xl mx-auto font-['Inter_Tight'] mb-8">
-                Voce nao precisa expor nome, CPF e banco toda vez que alguem te paga.
-                A infraestrutura existe. O conhecimento esta aqui. A decisao e sua.
+              <p className="text-muted-foreground text-base leading-relaxed max-w-2xl mx-auto font-['Inter_Tight'] mb-4">
+                Enquanto outros gastam semanas tentando montar do zero, voce acessa em 2 minutos
+                um sistema que ja resolve o problema. Sem programacao. Sem servidor. Sem dor de cabeca.
+              </p>
+              <p className="text-foreground/60 text-sm font-['Inter_Tight'] mb-8">
+                Lord Junnior construiu. Voce usa. Simples assim.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <a
+                  href={LIVE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 px-10 py-5 bg-chart-green text-[#050808] rounded-sm font-bold text-sm uppercase tracking-wider hover:bg-chart-green/90 transition-all group"
+                >
+                  <Rocket className="w-5 h-5" />
+                  Acessar o Sistema Agora
+                  <ExternalLink className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </a>
                 <Link
                   to="/autocustodia"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-chart-green/10 border border-chart-green/30 rounded-sm text-chart-green text-xs font-bold uppercase tracking-wider hover:bg-chart-green/20 transition-all"
+                  className="inline-flex items-center gap-2 px-8 py-5 bg-primary/10 border border-primary/30 rounded-sm text-primary text-xs font-bold uppercase tracking-wider hover:bg-primary/20 transition-all"
                 >
                   <KeyRound className="w-4 h-4" />
                   Protocolo de Autocustodia
-                  <ArrowRight size={14} />
-                </Link>
-                <Link
-                  to="/soberania-financeira/pix-sem-banco"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-primary/10 border border-primary/30 rounded-sm text-primary text-xs font-bold uppercase tracking-wider hover:bg-primary/20 transition-all"
-                >
-                  <Zap className="w-4 h-4" />
-                  PIX Sem Banco
                   <ArrowRight size={14} />
                 </Link>
               </div>
