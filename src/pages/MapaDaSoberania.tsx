@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { Shield, Bitcoin, Sprout, BookOpen, AlertTriangle, Zap, Globe, Wallet, Lock, Radio, Heart, Flame, Map } from 'lucide-react';
+import SeoHead from '@/components/SeoHead';
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 const fade = (delay = 0) => ({
