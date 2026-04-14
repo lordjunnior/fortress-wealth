@@ -64,6 +64,7 @@ export const navGroups: NavGroup[] = [
       { label: "Mobilidade de Chaves", route: "/mobilidade-de-chaves" },
       { label: "Hardware Wallet DIY", route: "/autocustodia/hardware-wallet-diy-bitcoin" },
       { label: "Krux + Passphrase", route: "/autocustodia/krux-passphrase-bluewallet", badge: "Novo" },
+      { label: "Multisig Bitcoin", route: "/multisig-bitcoin", badge: "Novo" },
       { label: "Comprar BTC Anônimo", route: "/comprar-bitcoin-anonimo" },
     ],
   },
