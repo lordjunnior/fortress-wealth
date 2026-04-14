@@ -1,11 +1,12 @@
 import { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, ShieldAlert, Skull, QrCode } from "lucide-react";
+import { ArrowRight, ShieldAlert, Skull, QrCode, Shield } from "lucide-react";
 import cardBtcAnonimo from "@/assets/card-btc-anonimo.jpg";
 import cardDolarVirtual from "@/assets/card-dolar-virtual.jpg";
 import cardPixSemBanco from "@/assets/card-pix-sem-banco.jpg";
 import cardConfiscoBtc from "@/assets/card-confisco-bitcoin.jpg";
 import cardPixAnonimo from "@/assets/card-pix-anonimo.jpg";
+import cardMultisig from "@/assets/card-multisig.jpg";
 import { Helmet } from "react-helmet-async";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { gsap } from "gsap";
@@ -565,6 +566,67 @@ const Index = () => {
                         <span className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-lg bg-chart-green/10 border border-chart-green/30 text-chart-green text-xs font-bold tracking-[0.15em] uppercase transition-all duration-500 group-hover:bg-chart-green/20 group-hover:border-chart-green/50 group-hover:shadow-[0_0_30px_-5px_hsl(var(--chart-green)/0.3)]">
                           <QrCode className="w-4 h-4" />
                           VER METODO COMPLETO
+                          <ArrowRight size={14} className="group-hover:translate-x-1.5 transition-transform" />
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            </motion.div>
+
+            {/* MULTISIG BITCOIN — CARD DE SEGURANCA */}
+            <motion.div
+              initial={{ opacity: 0, y: 20, scale: 0.98 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <Link
+                to="/multisig-bitcoin"
+                className="group relative block rounded-2xl overflow-hidden transition-all duration-500"
+              >
+                <div className="absolute -inset-[1px] rounded-2xl z-0 opacity-70 group-hover:opacity-100 transition-opacity duration-500"
+                  style={{
+                    background: 'conic-gradient(from 0deg, hsl(var(--gold)), hsl(var(--primary)), hsl(var(--gold)))',
+                    animation: 'spin 4s linear infinite',
+                  }}
+                />
+
+                <div className="relative z-10 rounded-2xl bg-card/95 backdrop-blur-md">
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-gold/8 via-transparent to-primary/5 pointer-events-none" />
+
+                  <div className="grid grid-cols-1 md:grid-cols-2">
+                    {/* IMAGE (left) */}
+                    <div className="relative min-h-[260px] md:min-h-[360px] order-1 md:order-none">
+                      <img src={cardMultisig} alt="Hardware wallets conectadas em formacao Multisig" className="absolute inset-0 w-full h-full object-cover" loading="lazy" width={1024} height={768} />
+                      <div className="absolute inset-0 bg-gradient-to-l from-card/90 via-card/40 to-transparent hidden md:block" />
+                      <div className="absolute inset-0 bg-gradient-to-b from-card/70 via-transparent to-transparent md:hidden" />
+                    </div>
+
+                    {/* TEXT (right) */}
+                    <div className="relative p-8 md:p-10 lg:p-14 flex flex-col justify-center order-none md:order-1">
+                      <div className="absolute -top-16 -right-16 w-56 h-56 rounded-full bg-gold/8 blur-3xl pointer-events-none" />
+                      <div className="relative space-y-5">
+                        <div className="flex items-center gap-2">
+                          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gold/15 border border-gold/30">
+                            <Shield className="w-3.5 h-3.5 text-gold" />
+                            <p className="font-mono text-[9px] tracking-[0.3em] text-gold uppercase font-bold">Autocustodia Avancada</p>
+                          </div>
+                          <span className="px-2.5 py-1 rounded-full bg-amber-500/15 border border-amber-500/25 text-amber-400 font-mono text-[9px] tracking-[0.3em] uppercase font-bold">
+                            Novo
+                          </span>
+                        </div>
+                        <h3 className="text-foreground font-bold text-2xl md:text-3xl lg:text-[2.5rem] tracking-tight leading-[1.15]" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+                          UMA UNICA SEED PHRASE E UM{" "}
+                          <span className="text-gold">PONTO UNICO DE FALHA</span>
+                        </h3>
+                        <p className="text-base text-muted-foreground leading-8">
+                          Se sua casa pega fogo, se alguem te ameaca, se voce esquece onde guardou: com Single-Sig, acabou.{" "}
+                          <span className="text-foreground font-semibold">Multisig elimina esse risco com multiplas chaves independentes.</span>
+                        </p>
+                        <span className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-lg bg-gold/10 border border-gold/30 text-gold text-xs font-bold tracking-[0.15em] uppercase transition-all duration-500 group-hover:bg-gold/20 group-hover:border-gold/50 group-hover:shadow-[0_0_30px_-5px_hsl(var(--gold)/0.3)]">
+                          ENTENDER MULTISIG
                           <ArrowRight size={14} className="group-hover:translate-x-1.5 transition-transform" />
                         </span>
                       </div>

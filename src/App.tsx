@@ -119,6 +119,7 @@ import ConfiscoBitcoin from "./pages/ConfiscoBitcoin";
 import BitparkCartao from "./pages/BitparkCartao";
 import PolymarketRedeNeural from "./pages/PolymarketRedeNeural";
 import PixAnonimo from "./pages/PixAnonimo";
+import MultisigBitcoin from "./pages/MultisigBitcoin";
 import ExitIntentLeadMagnet from "./components/ExitIntentLeadMagnet";
 const queryClient = new QueryClient();
 
@@ -253,7 +254,8 @@ const App = () => (
           <Route path="/vazamento-dados" element={<VazamentoDados />} />
           <Route path="/polymarket-rede-neural-btc" element={<PolymarketRedeNeural />} />
           <Route path="/pix-anonimo" element={<PixAnonimo />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="/multisig-bitcoin" element={<MultisigBitcoin />} />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
