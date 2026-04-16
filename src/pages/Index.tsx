@@ -1,12 +1,13 @@
 import { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, ShieldAlert, Skull, QrCode, Shield } from "lucide-react";
+import { ArrowRight, ShieldAlert, Skull, QrCode, Shield, AlertTriangle } from "lucide-react";
 import cardBtcAnonimo from "@/assets/card-btc-anonimo.jpg";
 import cardDolarVirtual from "@/assets/card-dolar-virtual.jpg";
 import cardPixSemBanco from "@/assets/card-pix-sem-banco.jpg";
 import cardConfiscoBtc from "@/assets/card-confisco-bitcoin.jpg";
 import cardPixAnonimo from "@/assets/card-pix-anonimo.jpg";
 import cardMultisig from "@/assets/card-multisig.jpg";
+import cardLeiConta from "@/assets/card-lei-conta.jpg";
 import { Helmet } from "react-helmet-async";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { gsap } from "gsap";
@@ -635,7 +636,69 @@ const Index = () => {
                 </div>
               </Link>
             </motion.div>
+
+            {/* CARD — Nova Lei da Conta Corrente */}
+            <motion.div
+              initial={{ opacity: 0, y: 20, scale: 0.98 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <Link
+                to="/nova-lei-conta-corrente"
+                className="group relative block rounded-2xl overflow-hidden transition-all duration-500"
+              >
+                <div className="absolute -inset-[1px] rounded-2xl z-0 opacity-70 group-hover:opacity-100 transition-opacity duration-500"
+                  style={{
+                    background: 'conic-gradient(from 0deg, hsl(0 72% 50%), hsl(30 90% 55%), hsl(45 90% 55%), hsl(0 72% 50%))',
+                    animation: 'spin 5s linear infinite',
+                  }}
+                />
+
+                <div className="relative z-10 rounded-2xl bg-card/95 backdrop-blur-md">
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-destructive/8 via-transparent to-gold/5 pointer-events-none" />
+
+                  <div className="grid grid-cols-1 md:grid-cols-2">
+                    {/* TEXT (left) */}
+                    <div className="relative p-8 md:p-10 lg:p-14 flex flex-col justify-center">
+                      <div className="absolute -top-16 -left-16 w-56 h-56 rounded-full bg-destructive/8 blur-3xl pointer-events-none" />
+                      <div className="relative space-y-5">
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-destructive/15 border border-destructive/30" style={{ animation: 'confiscoCardPulse 2s ease-in-out infinite' }}>
+                            <AlertTriangle className="w-3.5 h-3.5 text-destructive" />
+                            <p className="font-mono text-[9px] tracking-[0.3em] text-destructive uppercase font-bold">Alerta Patrimonial &middot; Maio 2026</p>
+                          </div>
+                          <span className="px-2.5 py-1 rounded-full bg-amber-500/15 border border-amber-500/25 text-amber-400 font-mono text-[9px] tracking-[0.3em] uppercase font-bold">
+                            Novo
+                          </span>
+                        </div>
+                        <h3 className="text-foreground font-bold text-2xl md:text-3xl lg:text-[2.5rem] tracking-tight leading-[1.15]" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+                          NOVA LEI DA CONTA CORRENTE:{" "}
+                          <span className="text-gold">SEU DINHEIRO ESTA EM RISCO</span>
+                        </h3>
+                        <p className="text-base text-muted-foreground leading-8">
+                          A maior reorganizacao bancaria da decada entra em vigor em maio.{" "}
+                          <span className="text-foreground font-semibold">A midia nao falou. Quatro mudancas silenciosas reescrevem regras de penhora, sigilo e credito.</span>
+                        </p>
+                        <span className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-lg bg-destructive/10 border border-destructive/30 text-destructive text-xs font-bold tracking-[0.15em] uppercase transition-all duration-500 group-hover:bg-destructive/20 group-hover:border-destructive/50 group-hover:shadow-[0_0_30px_-5px_hsl(var(--destructive)/0.3)]">
+                          ENTENDER A AMEACA
+                          <ArrowRight size={14} className="group-hover:translate-x-1.5 transition-transform" />
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* IMAGE (right) */}
+                    <div className="relative min-h-[260px] md:min-h-[360px] order-first md:order-last">
+                      <img src={cardLeiConta} alt="Torre bancaria com farol vermelho de alerta e contrato em chamas" className="absolute inset-0 w-full h-full object-cover" loading="lazy" width={1280} height={800} />
+                      <div className="absolute inset-0 bg-gradient-to-r from-card/90 via-card/40 to-transparent hidden md:block" />
+                      <div className="absolute inset-0 bg-gradient-to-b from-card/70 via-transparent to-transparent md:hidden" />
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            </motion.div>
           </div>
+
         </NobelSection>
 
         <NobelSection className="section-divider" delay={0.05}>

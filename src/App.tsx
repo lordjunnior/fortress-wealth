@@ -120,6 +120,7 @@ import BitparkCartao from "./pages/BitparkCartao";
 import PolymarketRedeNeural from "./pages/PolymarketRedeNeural";
 import PixAnonimo from "./pages/PixAnonimo";
 import MultisigBitcoin from "./pages/MultisigBitcoin";
+import NovaLeiContaCorrente from "./pages/NovaLeiContaCorrente";
 import ExitIntentLeadMagnet from "./components/ExitIntentLeadMagnet";
 const queryClient = new QueryClient();
 
@@ -255,6 +256,8 @@ const App = () => (
           <Route path="/polymarket-rede-neural-btc" element={<PolymarketRedeNeural />} />
           <Route path="/pix-anonimo" element={<PixAnonimo />} />
             <Route path="/multisig-bitcoin" element={<MultisigBitcoin />} />
+            <Route path="/nova-lei-conta-corrente" element={<NovaLeiContaCorrente />} />
+            <Route path="/alertas/nova-lei-conta-corrente" element={<NovaLeiContaCorrente />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
