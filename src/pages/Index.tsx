@@ -697,6 +697,7 @@ const Index = () => {
                 </div>
               </Link>
             </motion.div>
+          </div>
 
         </NobelSection>
 

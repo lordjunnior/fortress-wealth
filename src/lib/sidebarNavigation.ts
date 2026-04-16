@@ -153,6 +153,7 @@ export const navGroups: NavGroup[] = [
     color: undefined,
     items: [
       { label: "Hub de Alertas", route: "/alertas" },
+      { label: "Nova Lei Conta Corrente", route: "/nova-lei-conta-corrente", badge: "Novo", alert: true },
       { label: "CBDC Brasil", route: "/alertas/cbdc-brasil" },
       { label: "Fim do Dinheiro Vivo", route: "/alertas/fim-do-dinheiro-vivo" },
       { label: "DEPIX Reporte 2026", route: "/alertas/depix-reporte-2026" },
