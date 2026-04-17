@@ -20,14 +20,14 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import ScrollToTop from "@/components/ScrollToTop";
 import BackToHome from "@/components/BackToHome";
 
-import heroImg from "@/assets/palau-v2-hero.jpg";
+import heroImg from "@/assets/palau-v3-hero.jpg";
 import clarityImg from "@/assets/palau-v2-clarity.jpg";
 import exchangesImg from "@/assets/palau-v2-exchanges.jpg";
 import neobanksImg from "@/assets/palau-v2-neobanks.jpg";
 import errorImg from "@/assets/palau-v2-error.jpg";
 import bankImg from "@/assets/palau-v2-bank.jpg";
 import roadmapImg from "@/assets/palau-v2-roadmap.jpg";
-import ctaImg from "@/assets/palau-v2-cta.jpg";
+import ctaImg from "@/assets/palau-v3-cta.jpg";
 
 // ─── Editorial Light Theme (locked to this page) ─────────────────────────
 const theme: React.CSSProperties = {
