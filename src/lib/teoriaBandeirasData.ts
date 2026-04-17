@@ -167,35 +167,43 @@ export const FERRAMENTAS = [
 /* ───────────── FAQ ───────────── */
 export const FAQ_ITEMS = [
   {
-    pergunta: 'O que é a Teoria das Bandeiras?',
-    resposta: 'A Teoria das Bandeiras (Flag Theory) é uma estratégia de diversificação internacional que consiste em distribuir sua vida financeira, jurídica e patrimonial entre múltiplas jurisdições (países). Cada "bandeira" representa uma área: cidadania, contas bancárias, domicílio fiscal, negócios e patrimônio. O objetivo é reduzir o risco de um único governo controlar toda a sua vida.',
+    pergunta: 'Como abrir conta internacional sendo brasileiro',
+    resposta: 'Brasileiros podem abrir conta internacional de forma 100% remota em fintechs como Wise (multimoedas, sem mensalidade) e Payoneer, ou presencialmente em jurisdições amigáveis como Geórgia (Bank of Georgia, abertura em 1 dia com passaporte), Uruguai e Portugal. Os requisitos básicos são passaporte válido, comprovante de residência e, em alguns casos, comprovante de origem de fundos. A conta internacional protege contra bloqueios judiciais no Brasil, congelamento do PIX e fornece liquidez em moeda forte (USD ou EUR).',
   },
   {
-    pergunta: 'A Teoria das Bandeiras é legal?',
-    resposta: 'Absolutamente. Diversificação internacional é completamente legal. Multinacionais fazem isso rotineiramente. O que é exigido é a declaração correta de ativos e rendimentos no exterior para a Receita Federal brasileira (enquanto você mantém domicílio fiscal no Brasil). A estratégia é sobre otimização legal, não sobre evasão.',
+    pergunta: 'Vale a pena ter segunda residência no exterior',
+    resposta: 'Sim, e para a maioria dos brasileiros é um dos melhores investimentos de soberania que existe. Uma segunda residência permite abrir contas bancárias locais, ter um endereço fiscal alternativo, operar empresas em outras jurisdições e funciona como saída de emergência caso a situação política ou econômica do Brasil se deteriore. O Paraguai oferece o programa mais acessível para brasileiros (cerca de US$ 3.000–5.000), com Cédula em poucas semanas. Portugal, Panamá e Uruguai também têm programas competitivos.',
   },
   {
-    pergunta: 'Preciso sair do Brasil para aplicar a teoria?',
-    resposta: 'Não necessariamente. Muitas "bandeiras" podem ser implementadas sem sair do Brasil: Bitcoin com autocustódia, conta bancária internacional (pode ser aberta remotamente em alguns países), e empresa offshore. A mudança física é o passo final, não o primeiro.',
+    pergunta: 'Como proteger patrimônio fora do Brasil de forma legal',
+    resposta: 'A proteção patrimonial internacional é totalmente legal desde que declarada corretamente. As principais camadas são: (1) Bitcoin com autocustódia em hardware wallet, (2) contas bancárias internacionais em USD/EUR, (3) investimentos via corretoras internacionais (Interactive Brokers, Charles Schwab International), (4) imóveis em jurisdições estáveis e (5) empresas offshore para operação internacional. Enquanto você mantiver residência fiscal no Brasil, declare tudo na DIRPF e DCBE conforme exigido pela Receita Federal.',
   },
   {
-    pergunta: 'Quanto custa aplicar a Teoria das Bandeiras?',
-    resposta: 'O custo varia muito. Bitcoin com autocustódia custa apenas o preço de uma hardware wallet (~R$ 500). Residência no Paraguai pode custar ~US$ 3.000-5.000. Conta internacional pode ser gratuita (Wise) ou custar US$ 500+. Empresa offshore varia de US$ 1.500 a US$ 10.000. Comece com o que cabe no orçamento.',
+    pergunta: 'O que é residência fiscal e como mudar',
+    resposta: 'Residência fiscal é o país que tributa sua renda mundial. No Brasil, você é considerado residente fiscal se permanecer mais de 183 dias por ano no país ou tiver vínculo permanente. Para mudar a residência fiscal, é necessário entregar a Declaração de Saída Definitiva do País à Receita Federal e estabelecer residência efetiva em outra jurisdição. Países com tributação territorial (Paraguai, Panamá, Costa Rica) ou regimes especiais (Portugal NHR, Emirados Árabes 0% IR) são os destinos mais procurados por brasileiros.',
   },
   {
-    pergunta: 'Qual o primeiro passo?',
-    resposta: 'Bitcoin com autocustódia. É o passo mais acessível, mais rápido e mais impactante. Com uma hardware wallet e suas 12 palavras, você já tem patrimônio fora do alcance de qualquer governo. A partir daí, os próximos passos (conta internacional, residência secundária) se tornam mais fáceis.',
+    pergunta: 'Como funciona identidade digital internacional',
+    resposta: 'A identidade digital internacional é uma nova camada de soberania emitida por uma nação soberana, permitindo acesso a serviços financeiros, exchanges e plataformas globais sem depender exclusivamente do CPF. O programa de Palau (Palau Digital Residency) é hoje o mais acessível: emite uma ID válida internacionalmente, reconhecida em centenas de instituições financeiras e exchanges, com processo 100% online. Não substitui passaporte nem residência física, mas adiciona uma camada de redundância documental e flexibilidade operacional muito relevante.',
   },
   {
-    pergunta: 'O que é a Cédula Paraguaia?',
-    resposta: 'A Cédula Paraguaia é o documento de identidade emitido pelo Paraguai para residentes. Brasileiros podem obter residência temporária e permanente no Paraguai com relativa facilidade. Isso permite abrir contas bancárias paraguaias, operar em exchanges internacionais e ter uma segunda jurisdição legal.',
+    pergunta: 'A Teoria das Bandeiras é legal no Brasil',
+    resposta: 'Sim, é totalmente legal. Diversificação internacional é prática comum entre empresas e indivíduos em todo o mundo. O ponto crítico é declarar corretamente: enquanto for residente fiscal no Brasil, você precisa informar bens e direitos no exterior na DIRPF e, acima de US$ 1 milhão, fazer a Declaração de Capitais Brasileiros no Exterior (DCBE) ao Banco Central. Estratégia bem aplicada é otimização legal; não declarar é que configura ilegalidade.',
   },
   {
-    pergunta: 'Teoria das Bandeiras funciona para quem ganha pouco?',
-    resposta: 'Sim. A Bandeira Zero (Bitcoin com autocustódia) funciona para qualquer orçamento. A diversificação não exige ser rico, exige ser estratégico. Comece com Bitcoin, depois uma conta Wise (gratuita), e progressivamente adicione bandeiras conforme sua capacidade financeira cresce.',
+    pergunta: 'Quanto custa começar a aplicar a Teoria das Bandeiras',
+    resposta: 'O custo de entrada é muito menor do que parece. Bitcoin com autocustódia: R$ 500–800 (hardware wallet). Conta internacional Wise: gratuita. Residência no Paraguai: US$ 3.000–5.000 incluindo despachante. Empresa LLC em Wyoming: US$ 1.500–2.500 no primeiro ano. Identidade digital de Palau: cerca de US$ 248 por ano. É possível começar com menos de R$ 1.000 e progredir conforme orçamento e necessidade.',
   },
   {
-    pergunta: 'Qual a relação entre Teoria das Bandeiras e Bitcoin?',
-    resposta: 'O Bitcoin é a tecnologia que tornou a Teoria das Bandeiras acessível a qualquer pessoa. Antes, diversificação internacional era coisa de milionários. Com Bitcoin, qualquer pessoa pode ter patrimônio fora do alcance governamental. Bitcoin é a "Bandeira Zero", a base sobre a qual todas as outras bandeiras se constroem.',
+    pergunta: 'Qual o primeiro passo prático para começar hoje',
+    resposta: 'Bitcoin com autocustódia em hardware wallet. Esse é, isoladamente, o passo de maior impacto e menor fricção: você não precisa de visto, passaporte, advogado ou despachante. Em poucos dias, você já tem patrimônio armazenado fora do alcance de qualquer governo, em qualquer jurisdição. Em seguida: abrir uma conta Wise (gratuita, 100% online) para ter acesso a USD/EUR. Esses dois movimentos sozinhos já elevam dramaticamente sua resiliência financeira.',
+  },
+  {
+    pergunta: 'O que acontece se eu mantiver tudo só no Brasil',
+    resposta: 'Você fica 100% exposto a qualquer decisão tomada por uma única jurisdição. Historicamente, isso já significou: confisco de poupança (Plano Collor, 1990), múltiplas trocas de moeda em menos de uma década, hiperinflação destruindo poder de compra, bloqueios judiciais sem aviso prévio, mudanças retroativas de regras tributárias e, agora, o avanço do DREX como dinheiro programável. Concentração não é prudência; é exposição máxima a um único ponto de falha.',
+  },
+  {
+    pergunta: 'Bitcoin substitui as outras bandeiras da estratégia',
+    resposta: 'Não. Bitcoin é a Bandeira Zero, a base sobre a qual as outras se constroem, mas não substitui as demais. Você precisa de contas internacionais para receber renda em moeda fiat, residência alternativa para mobilidade jurídica, estrutura empresarial para operar globalmente e domicílio fiscal otimizado para eficiência tributária. Bitcoin protege patrimônio; as outras bandeiras protegem operação, mobilidade e estrutura jurídica. As camadas se complementam.',
   },
 ];

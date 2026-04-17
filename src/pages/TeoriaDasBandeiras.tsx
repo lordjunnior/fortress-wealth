@@ -342,6 +342,13 @@ export default function TeoriaDasBandeiras() {
                 Como construir uma vida que não dependa de um único governo
               </h1>
 
+              <p
+                className="mt-7 max-w-3xl text-2xl sm:text-3xl lg:text-[2.1rem] leading-[1.35] font-bold"
+                style={{ ...bodyStyle, color: 'hsl(var(--page-primary-strong))' }}
+              >
+                Você não precisa pedir permissão para organizar sua vida fora de um único sistema.
+              </p>
+
               <div className="mt-6 max-w-3xl space-y-5">
                 <p
                   className="text-xl sm:text-2xl lg:text-[1.7rem] leading-[1.7]"
@@ -358,10 +365,34 @@ export default function TeoriaDasBandeiras() {
                 </p>
               </div>
 
+              {/* Micro-prova imediata (Ajuste 2) */}
+              <div className="mt-7 flex flex-wrap gap-3">
+                {[
+                  'Estratégia usada há décadas',
+                  'Aplicável para brasileiros',
+                  'Pode começar com baixo custo',
+                ].map((proof) => (
+                  <div
+                    key={proof}
+                    className="inline-flex items-center gap-2 rounded-full px-4 py-2.5"
+                    style={{
+                      backgroundColor: 'hsl(var(--page-surface) / 0.92)',
+                      border: '1px solid hsl(var(--page-secondary) / 0.4)',
+                      boxShadow: '0 10px 30px -22px hsl(var(--page-shadow) / 0.3)',
+                    }}
+                  >
+                    <CheckCircle2 size={16} style={{ color: 'hsl(var(--page-secondary))' }} />
+                    <span className="text-sm sm:text-base font-bold" style={{ ...bodyStyle, color: 'hsl(var(--page-ink))' }}>
+                      {proof}
+                    </span>
+                  </div>
+                ))}
+              </div>
+
               <div className="mt-8 flex flex-wrap gap-4">
-                <CTAButton href="#bandeiras">Ver a estratégia completa</CTAButton>
+                <CTAButton href="#bandeiras">Ver exatamente como funciona</CTAButton>
                 <CTAButton href="#primeiros-passos" secondary>
-                  Começar pelo primeiro passo
+                  Começar pelo passo 1 (5 minutos)
                 </CTAButton>
               </div>
 
@@ -497,6 +528,20 @@ export default function TeoriaDasBandeiras() {
                 </p>
                 <p className="mt-4 text-lg sm:text-xl lg:text-[1.32rem] leading-[1.75]" style={{ ...bodyStyle, color: 'hsl(var(--page-surface) / 0.88)' }}>
                   E padrões podem ser reconfigurados com método, redundância e estratégia.
+                </p>
+              </div>
+
+              {/* Loop de curiosidade — prepara Palau */}
+              <div
+                className="mt-6 flex items-start gap-4 rounded-[1.5rem] p-5 sm:p-6"
+                style={{
+                  border: '1px dashed hsl(var(--page-gold) / 0.7)',
+                  backgroundColor: 'hsl(var(--page-gold) / 0.08)',
+                }}
+              >
+                <Sparkles size={22} style={{ color: 'hsl(var(--page-gold))' }} className="shrink-0 mt-1" />
+                <p className="text-xl sm:text-2xl lg:text-[1.55rem] leading-[1.55] font-bold" style={{ ...bodyStyle, color: 'hsl(var(--page-ink))' }}>
+                  Mas existe uma camada que quase ninguém considera.
                 </p>
               </div>
             </div>
@@ -689,7 +734,7 @@ export default function TeoriaDasBandeiras() {
 
                     <div className={`p-7 sm:p-10 lg:p-12 ${index % 2 === 1 && index !== 4 ? 'lg:order-1' : ''}`}>
                       <p className="text-sm font-black uppercase tracking-[0.32em]" style={{ ...bodyStyle, color: 'hsl(var(--page-primary))' }}>
-                        Estrutura global
+                        Função estratégica: {item.subtitulo.toLowerCase()}
                       </p>
                       <h3 className="mt-3 text-5xl sm:text-6xl" style={{ ...titleStyle, color: 'hsl(var(--page-ink))' }}>
                         {item.titulo}
@@ -843,9 +888,18 @@ export default function TeoriaDasBandeiras() {
                   </motion.article>
                 ))}
               </div>
-              <div className="mt-8 rounded-[2rem] p-7 sm:p-8" style={{ backgroundColor: 'hsl(var(--page-surface-strong) / 0.8)' }}>
-                <p className="text-lg sm:text-xl lg:text-[1.2rem] leading-[1.75]" style={{ ...bodyStyle, color: 'hsl(var(--page-ink))' }}>
-                  {PRIMEIROS_PASSOS.length > 0 && 'Proteção não nasce de esperança; nasce de estrutura. O Brasil é a prova de que centralização patrimonial cobra seu preço quando o cenário muda.'}
+              <div
+                className="mt-8 rounded-[2rem] p-7 sm:p-9"
+                style={{
+                  background: 'linear-gradient(135deg, hsl(var(--page-danger) / 0.08) 0%, hsl(var(--page-surface-strong) / 0.85) 100%)',
+                  border: '1px solid hsl(var(--page-danger) / 0.35)',
+                }}
+              >
+                <p className="text-3xl sm:text-4xl lg:text-5xl" style={{ ...titleStyle, color: 'hsl(var(--page-danger))' }}>
+                  Isso já aconteceu antes. E pode acontecer de novo.
+                </p>
+                <p className="mt-4 text-lg sm:text-xl lg:text-[1.22rem] leading-[1.75]" style={{ ...bodyStyle, color: 'hsl(var(--page-ink))' }}>
+                  Proteção não nasce de esperança; nasce de estrutura. O Brasil é a prova de que centralização patrimonial cobra seu preço quando o cenário muda.
                 </p>
               </div>
             </div>
@@ -1042,6 +1096,15 @@ export default function TeoriaDasBandeiras() {
               <p className="text-sm sm:text-base font-black uppercase tracking-[0.34em]" style={{ ...bodyStyle, color: 'hsl(var(--page-gold))' }}>
                 Bloco 09
               </p>
+
+              {/* Pré-frase de redução de fricção */}
+              <p
+                className="mt-4 text-2xl sm:text-3xl lg:text-[2rem] leading-[1.35] font-bold"
+                style={{ ...bodyStyle, color: 'hsl(var(--page-gold))' }}
+              >
+                Você não precisa mudar de país para começar.
+              </p>
+
               <h2 className="mt-4 text-[4rem] leading-none sm:text-[5.5rem] lg:text-[7.6rem]" style={{ ...titleStyle, color: 'hsl(var(--page-surface))' }}>
                 Refúgio final: Palau
               </h2>
@@ -1054,6 +1117,17 @@ export default function TeoriaDasBandeiras() {
                 </p>
                 <p className="text-lg sm:text-xl lg:text-[1.32rem] leading-[1.8]" style={{ ...bodyStyle, color: 'hsl(var(--page-surface) / 0.92)' }}>
                   Para quem busca redundância documental, acesso internacional e flexibilidade operacional, isso representa uma nova camada estratégica.
+                </p>
+                {/* Redução de objeção */}
+                <p
+                  className="text-xl sm:text-2xl lg:text-[1.5rem] leading-[1.55] font-bold border-l-4 pl-5 py-2"
+                  style={{
+                    ...bodyStyle,
+                    color: 'hsl(var(--page-surface))',
+                    borderColor: 'hsl(var(--page-gold))',
+                  }}
+                >
+                  Isso não substitui as outras bandeiras. Mas adiciona uma nova camada de liberdade.
                 </p>
               </div>
               <div className="mt-8 flex flex-wrap gap-4">
@@ -1171,6 +1245,21 @@ export default function TeoriaDasBandeiras() {
                   <p className="text-lg sm:text-xl lg:text-[1.3rem] leading-[1.78]" style={{ ...bodyStyle, color: 'hsl(var(--page-muted))' }}>
                     A próxima camada dessa estratégia é identidade internacional digital. E é exatamente aí que Palau entra.
                   </p>
+                  {/* Frase de fechamento — alta intensidade */}
+                  <div
+                    className="mt-4 rounded-[1.5rem] p-6 sm:p-7"
+                    style={{
+                      background: 'linear-gradient(135deg, hsl(var(--page-primary-strong)) 0%, hsl(var(--page-secondary)) 100%)',
+                      boxShadow: '0 24px 60px -32px hsl(var(--page-primary) / 0.5)',
+                    }}
+                  >
+                    <p className="text-2xl sm:text-3xl lg:text-[2rem] leading-[1.4] font-black" style={{ ...bodyStyle, color: 'hsl(var(--page-surface))' }}>
+                      Se você não fizer nada, nada muda.
+                    </p>
+                    <p className="mt-2 text-2xl sm:text-3xl lg:text-[2rem] leading-[1.4]" style={{ ...bodyStyle, color: 'hsl(var(--page-gold))' }}>
+                      Se começar hoje, você ganha tempo.
+                    </p>
+                  </div>
                 </div>
               </div>
 
