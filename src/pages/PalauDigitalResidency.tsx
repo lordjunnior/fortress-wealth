@@ -754,11 +754,11 @@ export default function PalauDigitalResidency() {
 
                 <blockquote
                   className="border-l-2 pl-6 py-4 italic"
-                  style={{ borderColor: "var(--gold)", fontFamily: "Cormorant Garamond, serif" }}
+                  style={{ borderColor: "var(--gold)", fontFamily: "Fraunces, serif" }}
                 >
-                  <p className="text-[24px] sm:text-[28px] leading-[1.5] text-[color:var(--ink)]">
-                    O report fiscal não se baseia apenas no documento. Em geral, depende da residência informada e da política da
-                    instituição.
+                  <p className="text-[24px] sm:text-[30px] leading-[1.5] text-[color:var(--ink)]">
+                    <span className="palau-highlight">O report fiscal não se baseia apenas no documento.</span> Em geral, depende
+                    da residência informada e da política da instituição.
                   </p>
                 </blockquote>
               </motion.div>
@@ -884,12 +884,9 @@ export default function PalauDigitalResidency() {
               </div>
 
               <div className="mt-16 text-center">
-                <a
-                  href="#how-to"
-                  className="palau-cta-ghost inline-flex items-center gap-3 px-8 py-5 text-base font-semibold rounded-sm"
-                >
-                  Ver o passo a passo
-                  <ArrowRight className="h-4 w-4" />
+                <a href="#how-to" className="palau-btn palau-btn-ghost">
+                  <span>Ver o passo a passo</span>
+                  <ArrowRight className="h-4 w-4 relative z-[3]" />
                 </a>
               </div>
             </div>
@@ -935,10 +932,10 @@ export default function PalauDigitalResidency() {
                       className="relative pl-20 sm:pl-32"
                     >
                       <div
-                        className="absolute left-0 top-2 w-14 sm:w-20 h-14 sm:h-20 rounded-full flex items-center justify-center"
-                        style={{ background: "var(--surface)", border: "1px solid var(--line)" }}
+                        className="absolute left-0 top-2 w-16 sm:w-24 h-16 sm:h-24 rounded-full flex items-center justify-center"
+                        style={{ background: "var(--surface)", border: "1px solid var(--line)", boxShadow: "0 18px 40px -22px rgba(31,53,96,.2)" }}
                       >
-                        <span className="palau-step-num text-[42px] sm:text-[56px]">
+                        <span className="palau-step-num" style={{ fontSize: "clamp(40px, 4vw, 60px)" }}>
                           {String(i + 1).padStart(2, "0")}
                         </span>
                       </div>
@@ -1013,12 +1010,12 @@ export default function PalauDigitalResidency() {
                   className="serif italic border-l-2 pl-6 py-2"
                   style={{
                     borderColor: "var(--gold)",
-                    fontSize: "clamp(22px, 2vw, 30px)",
+                    fontSize: "clamp(22px, 2vw, 32px)",
                     color: "var(--ink)",
                     lineHeight: 1.45,
                   }}
                 >
-                  Sozinho, ele é limitado. Dentro de uma arquitetura maior, ele muda de patamar.
+                  <span className="palau-highlight">Sozinho, ele é limitado.</span> Dentro de uma arquitetura maior, ele muda de patamar.
                 </p>
               </motion.div>
 
@@ -1064,18 +1061,12 @@ export default function PalauDigitalResidency() {
                 redundância internacional.
               </p>
               <div className="flex flex-wrap justify-center gap-4">
-                <a
-                  href="/teoria-das-bandeiras"
-                  className="palau-cta-primary inline-flex items-center gap-3 px-10 py-5 text-base font-semibold rounded-sm"
-                >
-                  Ver a estratégia completa
-                  <ArrowUpRight className="h-4 w-4" />
+                <a href="/teoria-das-bandeiras" className="palau-btn palau-btn-primary">
+                  <span>Ver a estratégia completa</span>
+                  <ArrowUpRight className="h-4 w-4 relative z-[3]" />
                 </a>
-                <a
-                  href="#faq"
-                  className="palau-cta-ghost inline-flex items-center gap-3 px-10 py-5 text-base font-semibold rounded-sm"
-                >
-                  Entender onde ele se encaixa
+                <a href="#faq" className="palau-btn palau-btn-ghost">
+                  <span>Entender onde ele se encaixa</span>
                 </a>
               </div>
             </motion.div>
@@ -1110,7 +1101,7 @@ export default function PalauDigitalResidency() {
                   >
                     <AccordionTrigger
                       className="px-6 sm:px-8 py-6 hover:no-underline text-left group"
-                      style={{ fontFamily: "Cormorant Garamond, serif" }}
+                      style={{ fontFamily: "Fraunces, serif" }}
                     >
                       <span
                         className="font-medium text-[color:var(--ink)] pr-6"
@@ -1133,7 +1124,7 @@ export default function PalauDigitalResidency() {
             <div className="absolute inset-0">
               <img
                 src={ctaImg}
-                alt="Mesa premium com identidade, caderno de couro, caneta tinteiro, mapa e xícara de café à luz natural"
+                alt="Mesa premium com identidade, caderno de couro, caneta tinteiro, mapa-múndi e luz natural"
                 className="h-full w-full object-cover"
                 loading="lazy"
                 width={1920}
@@ -1143,7 +1134,7 @@ export default function PalauDigitalResidency() {
                 className="absolute inset-0"
                 style={{
                   background:
-                    "linear-gradient(90deg, rgba(245,239,228,0.97) 0%, rgba(245,239,228,0.85) 50%, rgba(245,239,228,0.55) 100%)",
+                    "linear-gradient(90deg, rgba(245,239,228,0.97) 0%, rgba(245,239,228,0.86) 45%, rgba(245,239,228,0.4) 100%)",
                 }}
               />
             </div>
