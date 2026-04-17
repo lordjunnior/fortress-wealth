@@ -1245,6 +1245,21 @@ export default function TeoriaDasBandeiras() {
                   <p className="text-lg sm:text-xl lg:text-[1.3rem] leading-[1.78]" style={{ ...bodyStyle, color: 'hsl(var(--page-muted))' }}>
                     A próxima camada dessa estratégia é identidade internacional digital. E é exatamente aí que Palau entra.
                   </p>
+                  {/* Frase de fechamento — alta intensidade */}
+                  <div
+                    className="mt-4 rounded-[1.5rem] p-6 sm:p-7"
+                    style={{
+                      background: 'linear-gradient(135deg, hsl(var(--page-primary-strong)) 0%, hsl(var(--page-secondary)) 100%)',
+                      boxShadow: '0 24px 60px -32px hsl(var(--page-primary) / 0.5)',
+                    }}
+                  >
+                    <p className="text-2xl sm:text-3xl lg:text-[2rem] leading-[1.4] font-black" style={{ ...bodyStyle, color: 'hsl(var(--page-surface))' }}>
+                      Se você não fizer nada, nada muda.
+                    </p>
+                    <p className="mt-2 text-2xl sm:text-3xl lg:text-[2rem] leading-[1.4]" style={{ ...bodyStyle, color: 'hsl(var(--page-gold))' }}>
+                      Se começar hoje, você ganha tempo.
+                    </p>
+                  </div>
                 </div>
               </div>
 
