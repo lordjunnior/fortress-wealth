@@ -530,6 +530,20 @@ export default function TeoriaDasBandeiras() {
                   E padrões podem ser reconfigurados com método, redundância e estratégia.
                 </p>
               </div>
+
+              {/* Loop de curiosidade — prepara Palau */}
+              <div
+                className="mt-6 flex items-start gap-4 rounded-[1.5rem] p-5 sm:p-6"
+                style={{
+                  border: '1px dashed hsl(var(--page-gold) / 0.7)',
+                  backgroundColor: 'hsl(var(--page-gold) / 0.08)',
+                }}
+              >
+                <Sparkles size={22} style={{ color: 'hsl(var(--page-gold))' }} className="shrink-0 mt-1" />
+                <p className="text-xl sm:text-2xl lg:text-[1.55rem] leading-[1.55] font-bold" style={{ ...bodyStyle, color: 'hsl(var(--page-ink))' }}>
+                  Mas existe uma camada que quase ninguém considera.
+                </p>
+              </div>
             </div>
 
             <motion.div
