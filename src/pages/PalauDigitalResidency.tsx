@@ -147,6 +147,26 @@ export default function PalauDigitalResidency() {
   });
   const palauY = useTransform(palauProgress, [0, 1], reduce ? ["0%", "0%"] : ["-15%", "18%"]);
 
+  // Highlight reveal observer (PNL phrases)
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const elements = document.querySelectorAll(".palau-highlight");
+    if (!elements.length) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("is-active");
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.6 }
+    );
+    elements.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
+
   return (
     <div
       style={theme}
