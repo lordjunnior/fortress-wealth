@@ -1096,6 +1096,15 @@ export default function TeoriaDasBandeiras() {
               <p className="text-sm sm:text-base font-black uppercase tracking-[0.34em]" style={{ ...bodyStyle, color: 'hsl(var(--page-gold))' }}>
                 Bloco 09
               </p>
+
+              {/* Pré-frase de redução de fricção */}
+              <p
+                className="mt-4 text-2xl sm:text-3xl lg:text-[2rem] leading-[1.35] font-bold"
+                style={{ ...bodyStyle, color: 'hsl(var(--page-gold))' }}
+              >
+                Você não precisa mudar de país para começar.
+              </p>
+
               <h2 className="mt-4 text-[4rem] leading-none sm:text-[5.5rem] lg:text-[7.6rem]" style={{ ...titleStyle, color: 'hsl(var(--page-surface))' }}>
                 Refúgio final: Palau
               </h2>
@@ -1108,6 +1117,17 @@ export default function TeoriaDasBandeiras() {
                 </p>
                 <p className="text-lg sm:text-xl lg:text-[1.32rem] leading-[1.8]" style={{ ...bodyStyle, color: 'hsl(var(--page-surface) / 0.92)' }}>
                   Para quem busca redundância documental, acesso internacional e flexibilidade operacional, isso representa uma nova camada estratégica.
+                </p>
+                {/* Redução de objeção */}
+                <p
+                  className="text-xl sm:text-2xl lg:text-[1.5rem] leading-[1.55] font-bold border-l-4 pl-5 py-2"
+                  style={{
+                    ...bodyStyle,
+                    color: 'hsl(var(--page-surface))',
+                    borderColor: 'hsl(var(--page-gold))',
+                  }}
+                >
+                  Isso não substitui as outras bandeiras. Mas adiciona uma nova camada de liberdade.
                 </p>
               </div>
               <div className="mt-8 flex flex-wrap gap-4">
