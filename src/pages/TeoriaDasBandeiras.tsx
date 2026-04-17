@@ -342,6 +342,13 @@ export default function TeoriaDasBandeiras() {
                 Como construir uma vida que não dependa de um único governo
               </h1>
 
+              <p
+                className="mt-7 max-w-3xl text-2xl sm:text-3xl lg:text-[2.1rem] leading-[1.35] font-bold"
+                style={{ ...bodyStyle, color: 'hsl(var(--page-primary-strong))' }}
+              >
+                Você não precisa pedir permissão para organizar sua vida fora de um único sistema.
+              </p>
+
               <div className="mt-6 max-w-3xl space-y-5">
                 <p
                   className="text-xl sm:text-2xl lg:text-[1.7rem] leading-[1.7]"
@@ -358,10 +365,34 @@ export default function TeoriaDasBandeiras() {
                 </p>
               </div>
 
+              {/* Micro-prova imediata (Ajuste 2) */}
+              <div className="mt-7 flex flex-wrap gap-3">
+                {[
+                  'Estratégia usada há décadas',
+                  'Aplicável para brasileiros',
+                  'Pode começar com baixo custo',
+                ].map((proof) => (
+                  <div
+                    key={proof}
+                    className="inline-flex items-center gap-2 rounded-full px-4 py-2.5"
+                    style={{
+                      backgroundColor: 'hsl(var(--page-surface) / 0.92)',
+                      border: '1px solid hsl(var(--page-secondary) / 0.4)',
+                      boxShadow: '0 10px 30px -22px hsl(var(--page-shadow) / 0.3)',
+                    }}
+                  >
+                    <CheckCircle2 size={16} style={{ color: 'hsl(var(--page-secondary))' }} />
+                    <span className="text-sm sm:text-base font-bold" style={{ ...bodyStyle, color: 'hsl(var(--page-ink))' }}>
+                      {proof}
+                    </span>
+                  </div>
+                ))}
+              </div>
+
               <div className="mt-8 flex flex-wrap gap-4">
-                <CTAButton href="#bandeiras">Ver a estratégia completa</CTAButton>
+                <CTAButton href="#bandeiras">Ver exatamente como funciona</CTAButton>
                 <CTAButton href="#primeiros-passos" secondary>
-                  Começar pelo primeiro passo
+                  Começar pelo passo 1 (5 minutos)
                 </CTAButton>
               </div>
 
