@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { Helmet } from "react-helmet-async";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import {
