@@ -888,9 +888,18 @@ export default function TeoriaDasBandeiras() {
                   </motion.article>
                 ))}
               </div>
-              <div className="mt-8 rounded-[2rem] p-7 sm:p-8" style={{ backgroundColor: 'hsl(var(--page-surface-strong) / 0.8)' }}>
-                <p className="text-lg sm:text-xl lg:text-[1.2rem] leading-[1.75]" style={{ ...bodyStyle, color: 'hsl(var(--page-ink))' }}>
-                  {PRIMEIROS_PASSOS.length > 0 && 'Proteção não nasce de esperança; nasce de estrutura. O Brasil é a prova de que centralização patrimonial cobra seu preço quando o cenário muda.'}
+              <div
+                className="mt-8 rounded-[2rem] p-7 sm:p-9"
+                style={{
+                  background: 'linear-gradient(135deg, hsl(var(--page-danger) / 0.08) 0%, hsl(var(--page-surface-strong) / 0.85) 100%)',
+                  border: '1px solid hsl(var(--page-danger) / 0.35)',
+                }}
+              >
+                <p className="text-3xl sm:text-4xl lg:text-5xl" style={{ ...titleStyle, color: 'hsl(var(--page-danger))' }}>
+                  Isso já aconteceu antes. E pode acontecer de novo.
+                </p>
+                <p className="mt-4 text-lg sm:text-xl lg:text-[1.22rem] leading-[1.75]" style={{ ...bodyStyle, color: 'hsl(var(--page-ink))' }}>
+                  Proteção não nasce de esperança; nasce de estrutura. O Brasil é a prova de que centralização patrimonial cobra seu preço quando o cenário muda.
                 </p>
               </div>
             </div>
