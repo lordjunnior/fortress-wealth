@@ -145,7 +145,7 @@ export default function PalauDigitalResidency() {
     target: palauRef,
     offset: ["start end", "end start"],
   });
-  const palauY = useTransform(palauProgress, [0, 1], reduce ? ["0%", "0%"] : ["-10%", "10%"]);
+  const palauY = useTransform(palauProgress, [0, 1], reduce ? ["0%", "0%"] : ["-15%", "18%"]);
 
   return (
     <div
