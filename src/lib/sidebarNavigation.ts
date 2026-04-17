@@ -109,6 +109,7 @@ export const navGroups: NavGroup[] = [
       { label: "Cartão Bipa Bitcoin", route: "/bitpark-cartao-bitcoin", badge: "Novo" },
       { label: "PIX Sem Expor Dados", route: "/pix-anonimo", badge: "Novo" },
       { label: "Teoria das Bandeiras", route: "/teoria-das-bandeiras" },
+      { label: "Palau Digital Residency", route: "/palau-digital-residency", badge: "Novo" },
     ],
   },
   {

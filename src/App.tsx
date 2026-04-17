@@ -34,6 +34,7 @@ import HistoriaDoDinheiro from "./pages/HistoriaDoDinheiro";
 import InflacaoImpostoOculto from "./pages/InflacaoImpostoOculto";
 import BitcoinVsFiat from "./pages/BitcoinVsFiat";
 import TeoriaDasBandeiras from "./pages/TeoriaDasBandeiras";
+import PalauDigitalResidency from "./pages/PalauDigitalResidency";
 import IndiceDoDesespertar from "./pages/IndiceDoDesespertar";
 import HardCap21 from "./pages/HardCap21";
 import BitcoinSeguro from "./pages/BitcoinSeguro";
@@ -170,6 +171,7 @@ const App = () => (
           <Route path="/inflacao-imposto-oculto" element={<InflacaoImpostoOculto />} />
           <Route path="/bitcoin-vs-fiat" element={<BitcoinVsFiat />} />
           <Route path="/teoria-das-bandeiras" element={<TeoriaDasBandeiras />} />
+          <Route path="/palau-digital-residency" element={<PalauDigitalResidency />} />
           <Route path="/indice-do-despertar" element={<IndiceDoDesespertar />} />
           <Route path="/confisco-1990" element={<Confisco1990 />} />
           <Route path="/soberania-financeira" element={<SoberaniaFinanceira />} />
