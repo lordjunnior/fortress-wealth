@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { Helmet } from "react-helmet-async";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import {
@@ -20,14 +20,14 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import ScrollToTop from "@/components/ScrollToTop";
 import BackToHome from "@/components/BackToHome";
 
-import heroImg from "@/assets/palau-v2-hero.jpg";
+import heroImg from "@/assets/palau-v3-hero.jpg";
 import clarityImg from "@/assets/palau-v2-clarity.jpg";
 import exchangesImg from "@/assets/palau-v2-exchanges.jpg";
 import neobanksImg from "@/assets/palau-v2-neobanks.jpg";
 import errorImg from "@/assets/palau-v2-error.jpg";
 import bankImg from "@/assets/palau-v2-bank.jpg";
 import roadmapImg from "@/assets/palau-v2-roadmap.jpg";
-import ctaImg from "@/assets/palau-v2-cta.jpg";
+import ctaImg from "@/assets/palau-v3-cta.jpg";
 
 // ─── Editorial Light Theme (locked to this page) ─────────────────────────
 const theme: React.CSSProperties = {
@@ -145,7 +145,27 @@ export default function PalauDigitalResidency() {
     target: palauRef,
     offset: ["start end", "end start"],
   });
-  const palauY = useTransform(palauProgress, [0, 1], reduce ? ["0%", "0%"] : ["-10%", "10%"]);
+  const palauY = useTransform(palauProgress, [0, 1], reduce ? ["0%", "0%"] : ["-15%", "18%"]);
+
+  // Highlight reveal observer (PNL phrases)
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const elements = document.querySelectorAll(".palau-highlight");
+    if (!elements.length) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("is-active");
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.6 }
+    );
+    elements.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
 
   return (
     <div
@@ -204,22 +224,23 @@ export default function PalauDigitalResidency() {
 
       {/* Local typography + atmosphere */}
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,500;1,9..144,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap');
         .palau-page { background: var(--bg); }
         .palau-page h1, .palau-page h2, .palau-page h3, .palau-page .serif {
-          font-family: 'Cormorant Garamond', Georgia, serif;
-          letter-spacing: -0.01em;
+          font-family: 'Fraunces', 'Times New Roman', serif;
+          font-variation-settings: "opsz" 144, "SOFT" 50;
+          letter-spacing: -0.02em;
         }
         .palau-page, .palau-page p, .palau-page li, .palau-page button, .palau-page a, .palau-page span {
-          font-family: 'Inter', system-ui, sans-serif;
+          font-family: 'DM Sans', system-ui, sans-serif;
         }
         .palau-page p { line-height: 1.75; }
-        .palau-body { font-size: clamp(18px, 1.1vw + 14px, 22px); }
+        .palau-body { font-size: clamp(18px, 1.05vw + 14px, 22px); }
         .palau-eyebrow {
-          font-family: 'Inter', sans-serif;
-          font-size: 12px;
+          font-family: 'DM Sans', sans-serif;
+          font-size: 11px;
           font-weight: 600;
-          letter-spacing: 0.22em;
+          letter-spacing: 0.28em;
           text-transform: uppercase;
         }
         .palau-divider {
@@ -228,59 +249,132 @@ export default function PalauDigitalResidency() {
         }
         .palau-grain {
           background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.12 0 0 0 0 0.14 0 0 0 0 0.18 0 0 0 0.5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-          opacity: .07;
+          opacity: .06;
         }
-        .palau-cta-primary {
-          background: var(--blue);
-          color: #FAF7F1;
-          transition: all .35s ease;
+
+        /* ── Premium Buttons (Diagonal Swipe + Glow) ── */
+        .palau-btn {
           position: relative;
+          display: inline-flex;
+          align-items: center;
+          gap: 12px;
+          padding: 20px 36px;
+          font-size: 14px;
+          font-weight: 600;
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          border-radius: 2px;
           overflow: hidden;
+          isolation: isolate;
+          transition: transform .5s cubic-bezier(.22,1,.36,1), color .35s ease, box-shadow .5s ease;
+          will-change: transform;
         }
-        .palau-cta-primary::before {
+        .palau-btn > * { position: relative; z-index: 2; }
+        .palau-btn::before {
           content: '';
           position: absolute; inset: 0;
-          background: linear-gradient(120deg, transparent 30%, rgba(176,138,74,.35) 50%, transparent 70%);
-          transform: translateX(-100%);
-          transition: transform .7s ease;
+          z-index: 1;
+          transform: translate(-101%, -101%) skewX(-12deg);
+          transition: transform .55s cubic-bezier(.22,1,.36,1);
         }
-        .palau-cta-primary:hover::before { transform: translateX(100%); }
-        .palau-cta-primary:hover { background: #16284A; transform: translateY(-2px); box-shadow: 0 18px 40px -18px rgba(31,53,96,.45); }
-        .palau-cta-ghost {
-          border: 1px solid var(--line);
+        .palau-btn:hover { transform: translateY(-3px); }
+        .palau-btn:hover::before { transform: translate(0, 0) skewX(-12deg); }
+
+        .palau-btn-primary {
+          background: var(--blue);
+          color: #FAF7F1;
+          box-shadow: 0 12px 32px -16px rgba(31,53,96,.5);
+        }
+        .palau-btn-primary::before { background: #16284A; }
+        .palau-btn-primary:hover {
+          color: #FAF7F1;
+          box-shadow: 0 22px 48px -18px rgba(31,53,96,.65), 0 0 0 1px rgba(176,138,74,.4);
+        }
+        .palau-btn-primary::after {
+          content: '';
+          position: absolute; inset: 0;
+          z-index: 3;
+          background: linear-gradient(120deg, transparent 35%, rgba(176,138,74,.55) 50%, transparent 65%);
+          transform: translateX(-120%);
+          transition: transform .9s cubic-bezier(.22,1,.36,1);
+          pointer-events: none;
+        }
+        .palau-btn-primary:hover::after { transform: translateX(120%); }
+
+        .palau-btn-ghost {
           color: var(--ink);
+          border: 1px solid var(--line);
           background: transparent;
-          transition: all .35s ease;
         }
-        .palau-cta-ghost:hover {
-          border-color: var(--blue);
-          background: var(--surface);
-          transform: translateY(-2px);
+        .palau-btn-ghost::before { background: var(--ink); }
+        .palau-btn-ghost:hover { color: #FAF7F1; border-color: var(--ink); }
+
+        .palau-btn-light {
+          color: var(--ink);
+          border: 1px solid rgba(250,247,241,.7);
+          background: rgba(250,247,241,.85);
+          backdrop-filter: blur(10px);
         }
+        .palau-btn-light::before { background: var(--ink); }
+        .palau-btn-light:hover { color: #FAF7F1; border-color: var(--ink); }
+
+        /* ── Cards ── */
         .palau-card {
           background: var(--surface);
           border: 1px solid var(--line);
-          transition: all .5s cubic-bezier(.22,1,.36,1);
+          transition: all .55s cubic-bezier(.22,1,.36,1);
         }
         .palau-card:hover {
-          transform: translateY(-6px);
-          box-shadow: 0 32px 60px -30px rgba(31,53,96,.25);
-          border-color: rgba(176,138,74,.4);
+          transform: translateY(-8px);
+          box-shadow: 0 36px 70px -32px rgba(31,53,96,.28);
+          border-color: rgba(176,138,74,.45);
         }
-        .palau-card .palau-img { transition: transform .8s cubic-bezier(.22,1,.36,1); }
-        .palau-card:hover .palau-img { transform: scale(1.06); }
-        .palau-badge-float { animation: palauFloat 5s ease-in-out infinite; }
+        .palau-card .palau-img { transition: transform .9s cubic-bezier(.22,1,.36,1); }
+        .palau-card:hover .palau-img { transform: scale(1.07); }
+        .palau-card-overlay {
+          position: absolute; inset: 0;
+          background: linear-gradient(180deg, transparent 50%, rgba(31,36,48,0.18) 100%);
+          opacity: 0;
+          transition: opacity .55s ease;
+          pointer-events: none;
+        }
+        .palau-card:hover .palau-card-overlay { opacity: 1; }
+
+        /* ── Floating badges ── */
+        .palau-badge-float { animation: palauFloat 5.5s ease-in-out infinite; }
         @keyframes palauFloat {
           0%,100% { transform: translateY(0); }
-          50% { transform: translateY(-6px); }
+          50% { transform: translateY(-7px); }
         }
+
+        /* ── Highlight reveal (PNL phrases) ── */
+        .palau-highlight {
+          position: relative;
+          display: inline;
+          background-image: linear-gradient(120deg, rgba(176,138,74,0.28) 0%, rgba(176,138,74,0.28) 100%);
+          background-repeat: no-repeat;
+          background-size: 0% 100%;
+          background-position: 0 88%;
+          transition: background-size 1.2s cubic-bezier(.22,1,.36,1);
+          padding: 0 4px;
+        }
+        .palau-highlight.is-active { background-size: 100% 100%; }
+
+        /* ── Step numbers ── */
         .palau-step-num {
-          font-family: 'Cormorant Garamond', serif;
-          font-size: clamp(64px, 8vw, 110px);
-          font-weight: 500;
+          font-family: 'Fraunces', serif;
+          font-style: italic;
+          font-weight: 400;
           color: var(--gold);
           line-height: 1;
+        }
+
+        /* ── Hero ── */
+        .palau-hero-headline em {
           font-style: italic;
+          font-weight: 300;
+          color: var(--gold);
+          font-variation-settings: "opsz" 144, "SOFT" 100;
         }
       `}</style>
 
@@ -298,132 +392,150 @@ export default function PalauDigitalResidency() {
         </div>
 
         <div className="relative z-10">
-          {/* ═══════════════════ 1. HERO FULL-BLEED ═══════════════════ */}
-          <section ref={heroRef} className="relative w-full overflow-hidden">
-            <div className="grid w-full lg:grid-cols-12 lg:min-h-[100vh]">
-              {/* LEFT - Text */}
-              <div className="lg:col-span-6 flex items-center px-6 sm:px-10 lg:pl-16 lg:pr-12 py-20 lg:py-0">
-                <motion.div
-                  initial="hidden"
-                  animate="visible"
-                  variants={{ visible: { transition: { staggerChildren: 0.12 } } }}
-                  className="w-full max-w-xl"
-                >
-                  <motion.div variants={fadeUp} className="palau-eyebrow text-[color:var(--gold)] mb-6">
-                    Nova Camada de Soberania
-                  </motion.div>
+          {/* ═══════════════════ 1. HERO FULL-BLEED 100vh ═══════════════════ */}
+          <section ref={heroRef} className="relative w-full overflow-hidden" style={{ height: "100vh", minHeight: "720px" }}>
+            {/* Background image - full bleed */}
+            <motion.div
+              className="absolute inset-0"
+              style={{ y: heroImgY, scale: heroImgScale }}
+            >
+              <img
+                src={heroImg}
+                alt="Mão segurando o cartão de identidade de Palau sobre uma mesa premium com mapa, passaporte e luz natural"
+                className="h-full w-full object-cover"
+                fetchPriority="high"
+                width={1920}
+                height={1280}
+              />
+            </motion.div>
 
-                  <motion.h1
-                    variants={fadeUp}
-                    className="font-medium leading-[0.95] mb-8"
-                    style={{ fontSize: "clamp(56px, 8vw, 128px)", color: "var(--ink)" }}
-                  >
-                    ID de <em className="italic font-normal text-[color:var(--blue)]">Palau</em>
-                  </motion.h1>
+            {/* Editorial overlay - readable left, image visible right */}
+            <div
+              className="absolute inset-0"
+              style={{
+                background:
+                  "linear-gradient(90deg, rgba(245,239,228,0.96) 0%, rgba(245,239,228,0.88) 30%, rgba(245,239,228,0.45) 60%, transparent 100%)",
+              }}
+            />
+            <div
+              className="absolute inset-0"
+              style={{
+                background:
+                  "linear-gradient(180deg, transparent 60%, rgba(31,36,48,0.12) 100%)",
+              }}
+            />
 
-                  <motion.h2
-                    variants={fadeUp}
-                    className="font-normal mb-8"
-                    style={{
-                      fontSize: "clamp(22px, 1.8vw + 10px, 32px)",
-                      color: "var(--ink-2)",
-                      lineHeight: 1.4,
-                    }}
-                  >
-                    Uma identidade internacional fora da sua jurisdição principal.
-                  </motion.h2>
-
-                  <motion.p variants={fadeUp} className="palau-body mb-10 text-[color:var(--ink-2)]">
-                    A maioria das pessoas entende cidadania, residência e passaporte. Poucas entendem o papel de uma identidade
-                    internacional emitida por um Estado soberano. Esta página mostra, de forma clara e prática, onde o ID de Palau se
-                    encaixa, onde ele funciona e onde ele não resolve o problema.
-                  </motion.p>
-
-                  <motion.div variants={fadeUp} className="flex flex-wrap gap-4">
-                    <a
-                      href="#clareza"
-                      className="palau-cta-primary inline-flex items-center gap-3 px-8 py-5 text-base font-semibold tracking-wide rounded-sm"
-                    >
-                      Entender como funciona
-                      <ArrowRight className="h-4 w-4" />
-                    </a>
-                    <a
-                      href="#onde"
-                      className="palau-cta-ghost inline-flex items-center gap-3 px-8 py-5 text-base font-semibold tracking-wide rounded-sm"
-                    >
-                      Ver onde pode ser usado
-                    </a>
-                  </motion.div>
-                </motion.div>
-              </div>
-
-              {/* RIGHT - Image */}
-              <div className="relative lg:col-span-6 min-h-[60vh] lg:min-h-[100vh] overflow-hidden">
-                <motion.div
-                  className="absolute inset-0"
-                  style={{ y: heroImgY, scale: heroImgScale }}
-                >
-                  <img
-                    src={heroImg}
-                    alt="Mão segurando o cartão de identidade de Palau sobre uma mesa premium com mapa, passaporte e luz natural"
-                    className="h-full w-full object-cover"
-                    fetchPriority="high"
-                    width={1920}
-                    height={1280}
-                  />
-                </motion.div>
-                <div
-                  className="absolute inset-0"
-                  style={{
-                    background:
-                      "linear-gradient(90deg, var(--bg) 0%, transparent 18%), linear-gradient(0deg, rgba(31,36,48,0.18), transparent 50%)",
-                  }}
-                />
-
-                {/* Floating Badges */}
-                <div className="hidden lg:flex absolute top-12 right-10 flex-col gap-4 max-w-[260px]">
-                  {[
-                    { icon: ShieldCheck, label: "Emitido por governo soberano" },
-                    { icon: Globe, label: "Processo 100% online" },
-                  ].map((b, i) => (
-                    <motion.div
-                      key={i}
-                      initial={{ opacity: 0, x: 30 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.6 + i * 0.15, duration: 0.7, ease: EASE }}
-                      className="palau-badge-float"
-                      style={{ animationDelay: `${i * 0.6}s` }}
-                    >
-                      <div className="flex items-center gap-3 backdrop-blur-md bg-[color:var(--surface)]/85 border border-[color:var(--line)] px-5 py-3 rounded-sm shadow-xl">
-                        <b.icon className="h-4 w-4 text-[color:var(--gold)]" />
-                        <span className="text-sm font-medium text-[color:var(--ink)]">{b.label}</span>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-
-                <div className="hidden lg:flex absolute bottom-12 right-10 flex-col gap-4 max-w-[260px]">
-                  {[
-                    { icon: CheckCircle2, label: "Aceito em algumas plataformas" },
-                    { icon: Sparkles, label: "Baixo custo inicial" },
-                  ].map((b, i) => (
-                    <motion.div
-                      key={i}
-                      initial={{ opacity: 0, x: 30 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.9 + i * 0.15, duration: 0.7, ease: EASE }}
-                      className="palau-badge-float"
-                      style={{ animationDelay: `${(i + 2) * 0.6}s` }}
-                    >
-                      <div className="flex items-center gap-3 backdrop-blur-md bg-[color:var(--surface)]/85 border border-[color:var(--line)] px-5 py-3 rounded-sm shadow-xl">
-                        <b.icon className="h-4 w-4 text-[color:var(--green)]" />
-                        <span className="text-sm font-medium text-[color:var(--ink)]">{b.label}</span>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
+            {/* Top eyebrow strip */}
+            <div className="absolute top-0 left-0 right-0 z-20 px-6 sm:px-10 lg:px-16 pt-8 lg:pt-10 flex items-center justify-between">
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: EASE }}
+                className="palau-eyebrow text-[color:var(--blue)]"
+              >
+                Lord Junnior · Soberania Internacional
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.4, duration: 0.8 }}
+                className="hidden md:block palau-eyebrow text-[color:var(--ink-2)]"
+              >
+                Edição · 2025
+              </motion.div>
             </div>
+
+            {/* Headline */}
+            <div className="absolute inset-0 z-10 flex items-center px-6 sm:px-10 lg:px-16">
+              <motion.div
+                initial="hidden"
+                animate="visible"
+                variants={{ visible: { transition: { staggerChildren: 0.12, delayChildren: 0.15 } } }}
+                className="w-full max-w-4xl"
+              >
+                <motion.div variants={fadeUp} className="palau-eyebrow text-[color:var(--gold)] mb-8">
+                  ◆ Nova Camada de Soberania
+                </motion.div>
+
+                <motion.h1
+                  variants={fadeUp}
+                  className="palau-hero-headline font-light leading-[0.92] mb-10"
+                  style={{ fontSize: "clamp(64px, 11vw, 180px)", color: "var(--ink)" }}
+                >
+                  ID de <em>Palau</em>
+                </motion.h1>
+
+                <motion.h2
+                  variants={fadeUp}
+                  className="font-light mb-10 max-w-2xl serif italic"
+                  style={{
+                    fontSize: "clamp(22px, 2vw + 8px, 38px)",
+                    color: "var(--ink)",
+                    lineHeight: 1.35,
+                  }}
+                >
+                  Uma identidade internacional fora da sua jurisdição principal.
+                </motion.h2>
+
+                <motion.p
+                  variants={fadeUp}
+                  className="palau-body mb-12 text-[color:var(--ink-2)] max-w-2xl"
+                >
+                  A maioria das pessoas entende cidadania, residência e passaporte. Poucas entendem o papel de uma identidade
+                  internacional emitida por um Estado soberano. Esta página mostra, com clareza, onde ele se encaixa, onde funciona
+                  — e onde não resolve.
+                </motion.p>
+
+                <motion.div variants={fadeUp} className="flex flex-wrap gap-4">
+                  <a href="#clareza" className="palau-btn palau-btn-primary">
+                    <span>Entender como funciona</span>
+                    <ArrowRight className="h-4 w-4 relative z-[3]" />
+                  </a>
+                  <a href="#onde" className="palau-btn palau-btn-ghost">
+                    <span>Ver onde pode ser usado</span>
+                  </a>
+                </motion.div>
+              </motion.div>
+            </div>
+
+            {/* Floating Badges - bottom right */}
+            <div className="hidden lg:flex absolute bottom-12 right-10 z-20 flex-col gap-3 max-w-[300px]">
+              {[
+                { icon: ShieldCheck, label: "Emitido por governo soberano", color: "var(--gold)" },
+                { icon: Globe, label: "Processo 100% online", color: "var(--blue)" },
+                { icon: CheckCircle2, label: "Aceito em algumas plataformas", color: "var(--green)" },
+                { icon: Sparkles, label: "Baixo custo inicial", color: "var(--gold)" },
+              ].map((b, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, x: 30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.6 + i * 0.13, duration: 0.7, ease: EASE }}
+                  className="palau-badge-float"
+                  style={{ animationDelay: `${i * 0.5}s` }}
+                >
+                  <div className="flex items-center gap-3 backdrop-blur-md bg-[color:var(--surface)]/85 border border-[color:var(--line)] px-5 py-3 rounded-sm shadow-xl">
+                    <b.icon className="h-4 w-4 shrink-0" style={{ color: b.color }} />
+                    <span className="text-[13px] font-medium text-[color:var(--ink)]">{b.label}</span>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Scroll cue */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.6, duration: 1 }}
+              className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-3"
+            >
+              <span className="palau-eyebrow text-[color:var(--ink-2)]">Role para ler</span>
+              <motion.div
+                animate={{ y: [0, 8, 0] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                className="h-8 w-px bg-[color:var(--ink-2)]/40"
+              />
+            </motion.div>
           </section>
 
           {/* ═══════════════════ 2. CLAREZA INICIAL ═══════════════════ */}
@@ -662,11 +774,11 @@ export default function PalauDigitalResidency() {
 
                 <blockquote
                   className="border-l-2 pl-6 py-4 italic"
-                  style={{ borderColor: "var(--gold)", fontFamily: "Cormorant Garamond, serif" }}
+                  style={{ borderColor: "var(--gold)", fontFamily: "Fraunces, serif" }}
                 >
-                  <p className="text-[24px] sm:text-[28px] leading-[1.5] text-[color:var(--ink)]">
-                    O report fiscal não se baseia apenas no documento. Em geral, depende da residência informada e da política da
-                    instituição.
+                  <p className="text-[24px] sm:text-[30px] leading-[1.5] text-[color:var(--ink)]">
+                    <span className="palau-highlight">O report fiscal não se baseia apenas no documento.</span> Em geral, depende
+                    da residência informada e da política da instituição.
                   </p>
                 </blockquote>
               </motion.div>
@@ -792,12 +904,9 @@ export default function PalauDigitalResidency() {
               </div>
 
               <div className="mt-16 text-center">
-                <a
-                  href="#how-to"
-                  className="palau-cta-ghost inline-flex items-center gap-3 px-8 py-5 text-base font-semibold rounded-sm"
-                >
-                  Ver o passo a passo
-                  <ArrowRight className="h-4 w-4" />
+                <a href="#how-to" className="palau-btn palau-btn-ghost">
+                  <span>Ver o passo a passo</span>
+                  <ArrowRight className="h-4 w-4 relative z-[3]" />
                 </a>
               </div>
             </div>
@@ -843,10 +952,10 @@ export default function PalauDigitalResidency() {
                       className="relative pl-20 sm:pl-32"
                     >
                       <div
-                        className="absolute left-0 top-2 w-14 sm:w-20 h-14 sm:h-20 rounded-full flex items-center justify-center"
-                        style={{ background: "var(--surface)", border: "1px solid var(--line)" }}
+                        className="absolute left-0 top-2 w-16 sm:w-24 h-16 sm:h-24 rounded-full flex items-center justify-center"
+                        style={{ background: "var(--surface)", border: "1px solid var(--line)", boxShadow: "0 18px 40px -22px rgba(31,53,96,.2)" }}
                       >
-                        <span className="palau-step-num text-[42px] sm:text-[56px]">
+                        <span className="palau-step-num" style={{ fontSize: "clamp(40px, 4vw, 60px)" }}>
                           {String(i + 1).padStart(2, "0")}
                         </span>
                       </div>
@@ -921,12 +1030,12 @@ export default function PalauDigitalResidency() {
                   className="serif italic border-l-2 pl-6 py-2"
                   style={{
                     borderColor: "var(--gold)",
-                    fontSize: "clamp(22px, 2vw, 30px)",
+                    fontSize: "clamp(22px, 2vw, 32px)",
                     color: "var(--ink)",
                     lineHeight: 1.45,
                   }}
                 >
-                  Sozinho, ele é limitado. Dentro de uma arquitetura maior, ele muda de patamar.
+                  <span className="palau-highlight">Sozinho, ele é limitado.</span> Dentro de uma arquitetura maior, ele muda de patamar.
                 </p>
               </motion.div>
 
@@ -972,18 +1081,12 @@ export default function PalauDigitalResidency() {
                 redundância internacional.
               </p>
               <div className="flex flex-wrap justify-center gap-4">
-                <a
-                  href="/teoria-das-bandeiras"
-                  className="palau-cta-primary inline-flex items-center gap-3 px-10 py-5 text-base font-semibold rounded-sm"
-                >
-                  Ver a estratégia completa
-                  <ArrowUpRight className="h-4 w-4" />
+                <a href="/teoria-das-bandeiras" className="palau-btn palau-btn-primary">
+                  <span>Ver a estratégia completa</span>
+                  <ArrowUpRight className="h-4 w-4 relative z-[3]" />
                 </a>
-                <a
-                  href="#faq"
-                  className="palau-cta-ghost inline-flex items-center gap-3 px-10 py-5 text-base font-semibold rounded-sm"
-                >
-                  Entender onde ele se encaixa
+                <a href="#faq" className="palau-btn palau-btn-ghost">
+                  <span>Entender onde ele se encaixa</span>
                 </a>
               </div>
             </motion.div>
@@ -1018,7 +1121,7 @@ export default function PalauDigitalResidency() {
                   >
                     <AccordionTrigger
                       className="px-6 sm:px-8 py-6 hover:no-underline text-left group"
-                      style={{ fontFamily: "Cormorant Garamond, serif" }}
+                      style={{ fontFamily: "Fraunces, serif" }}
                     >
                       <span
                         className="font-medium text-[color:var(--ink)] pr-6"
@@ -1041,7 +1144,7 @@ export default function PalauDigitalResidency() {
             <div className="absolute inset-0">
               <img
                 src={ctaImg}
-                alt="Mesa premium com identidade, caderno de couro, caneta tinteiro, mapa e xícara de café à luz natural"
+                alt="Mesa premium com identidade, caderno de couro, caneta tinteiro, mapa-múndi e luz natural"
                 className="h-full w-full object-cover"
                 loading="lazy"
                 width={1920}
@@ -1051,7 +1154,7 @@ export default function PalauDigitalResidency() {
                 className="absolute inset-0"
                 style={{
                   background:
-                    "linear-gradient(90deg, rgba(245,239,228,0.97) 0%, rgba(245,239,228,0.85) 50%, rgba(245,239,228,0.55) 100%)",
+                    "linear-gradient(90deg, rgba(245,239,228,0.97) 0%, rgba(245,239,228,0.86) 45%, rgba(245,239,228,0.4) 100%)",
                 }}
               />
             </div>
@@ -1077,21 +1180,18 @@ export default function PalauDigitalResidency() {
                 </p>
 
                 <div className="flex flex-wrap gap-4">
-                  <a
-                    href="/teoria-das-bandeiras"
-                    className="palau-cta-primary inline-flex items-center gap-3 px-10 py-6 text-base font-semibold rounded-sm"
-                  >
-                    Ver como ele se encaixa na estratégia
-                    <ArrowRight className="h-4 w-4" />
+                  <a href="/teoria-das-bandeiras" className="palau-btn palau-btn-primary">
+                    <span>Ver como ele se encaixa na estratégia</span>
+                    <ArrowRight className="h-4 w-4 relative z-[3]" />
                   </a>
                   <a
                     href="https://rns.id/?rc_by=UaXUiIDb"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="palau-cta-ghost inline-flex items-center gap-3 px-10 py-6 text-base font-semibold rounded-sm"
+                    className="palau-btn palau-btn-light"
                   >
-                    Continuar para o próximo passo
-                    <ArrowUpRight className="h-4 w-4" />
+                    <span>Continuar para o próximo passo</span>
+                    <ArrowUpRight className="h-4 w-4 relative z-[3]" />
                   </a>
                 </div>
               </motion.div>
