@@ -1160,21 +1160,18 @@ export default function PalauDigitalResidency() {
                 </p>
 
                 <div className="flex flex-wrap gap-4">
-                  <a
-                    href="/teoria-das-bandeiras"
-                    className="palau-cta-primary inline-flex items-center gap-3 px-10 py-6 text-base font-semibold rounded-sm"
-                  >
-                    Ver como ele se encaixa na estratégia
-                    <ArrowRight className="h-4 w-4" />
+                  <a href="/teoria-das-bandeiras" className="palau-btn palau-btn-primary">
+                    <span>Ver como ele se encaixa na estratégia</span>
+                    <ArrowRight className="h-4 w-4 relative z-[3]" />
                   </a>
                   <a
                     href="https://rns.id/?rc_by=UaXUiIDb"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="palau-cta-ghost inline-flex items-center gap-3 px-10 py-6 text-base font-semibold rounded-sm"
+                    className="palau-btn palau-btn-light"
                   >
-                    Continuar para o próximo passo
-                    <ArrowUpRight className="h-4 w-4" />
+                    <span>Continuar para o próximo passo</span>
+                    <ArrowUpRight className="h-4 w-4 relative z-[3]" />
                   </a>
                 </div>
               </motion.div>
