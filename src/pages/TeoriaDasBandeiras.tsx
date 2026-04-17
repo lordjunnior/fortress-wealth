@@ -734,7 +734,7 @@ export default function TeoriaDasBandeiras() {
 
                     <div className={`p-7 sm:p-10 lg:p-12 ${index % 2 === 1 && index !== 4 ? 'lg:order-1' : ''}`}>
                       <p className="text-sm font-black uppercase tracking-[0.32em]" style={{ ...bodyStyle, color: 'hsl(var(--page-primary))' }}>
-                        Estrutura global
+                        Função estratégica: {item.subtitulo.toLowerCase()}
                       </p>
                       <h3 className="mt-3 text-5xl sm:text-6xl" style={{ ...titleStyle, color: 'hsl(var(--page-ink))' }}>
                         {item.titulo}
