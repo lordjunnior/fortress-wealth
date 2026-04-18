@@ -1,6 +1,6 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
   ArrowUpRight,
@@ -10,11 +10,12 @@ import {
   Sparkles,
   Wallet,
   Globe2,
-  Building2,
   KeyRound,
   CheckCircle2,
   XCircle,
   ChevronDown,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 import BackToHome from "@/components/BackToHome";
 
@@ -25,19 +26,57 @@ import neobankImg from "@/assets/palau-v5-neobank.jpg";
 import islandImg from "@/assets/palau-v5-island.jpg";
 import bankImg from "@/assets/palau-v5-bank.jpg";
 import ctaImg from "@/assets/palau-v5-cta.jpg";
+import carousel1 from "@/assets/palau-v6-carousel-1.jpg";
+import carousel2 from "@/assets/palau-v6-carousel-2.jpg";
+import carousel3 from "@/assets/palau-v6-carousel-3.jpg";
+import carousel4 from "@/assets/palau-v6-carousel-4.jpg";
+import textureBg from "@/assets/palau-v6-texture.jpg";
+import mapImg from "@/assets/palau-v6-map.jpg";
 
 /* ────────────────────────────────────────────────
-   PALAU — EDITORIAL EDITION (v5)
-   Paleta: Cream / Terracotta / Navy / Clay / Ink
-   Type: Fraunces (display) + Inter Tight (body)
+   PALAU — EDITORIAL EDITION (v6)
+   Backgrounds trabalhados + carrossel + hovers cinema
    ──────────────────────────────────────────────── */
 
 const EASE = [0.22, 1, 0.36, 1] as const;
+
+const carouselSlides = [
+  {
+    img: carousel1,
+    eyebrow: "Documento Soberano",
+    title: "Identidade emitida por Estado",
+    text: "Cartão físico oficial, emitido pela República de Palau — reconhecida como Estado soberano no sistema internacional.",
+    accent: "Documento Oficial",
+  },
+  {
+    img: carousel2,
+    eyebrow: "Mercado Cripto",
+    title: "Onboarding em exchanges globais",
+    text: "Coinbase, Bitget, Gate.io, KuCoin, CEX.IO, MEXC — utilidade real em verificação internacional sujeita a compliance.",
+    accent: "6+ Plataformas",
+  },
+  {
+    img: carousel3,
+    eyebrow: "Serviços Financeiros",
+    title: "Neobanks & fintechs internacionais",
+    text: "Kingdom Bank, Vexel, Ultimopay, Blackcatcard — alternativas para operação financeira sem dependência exclusiva da jurisdição de origem.",
+    accent: "Acesso Global",
+  },
+  {
+    img: carousel4,
+    eyebrow: "Refúgio Estratégico",
+    title: "Palau no Pacífico",
+    text: "Estado soberano com estrutura jurídica própria, reconhecimento internacional e processo digital de emissão.",
+    accent: "Estado Independente",
+  },
+];
 
 const PalauDigitalResidency = () => {
   const heroRef = useRef<HTMLElement>(null);
   const islandRef = useRef<HTMLElement>(null);
   const ctaRef = useRef<HTMLElement>(null);
+  const [carouselIndex, setCarouselIndex] = useState(0);
+  const [carouselDir, setCarouselDir] = useState(0);
 
   const { scrollYProgress: heroScroll } = useScroll({
     target: heroRef,
@@ -73,6 +112,20 @@ const PalauDigitalResidency = () => {
     return () => io.disconnect();
   }, []);
 
+  // Auto-advance carousel
+  useEffect(() => {
+    const t = setInterval(() => {
+      setCarouselDir(1);
+      setCarouselIndex((i) => (i + 1) % carouselSlides.length);
+    }, 6500);
+    return () => clearInterval(t);
+  }, []);
+
+  const goCarousel = (dir: number) => {
+    setCarouselDir(dir);
+    setCarouselIndex((i) => (i + dir + carouselSlides.length) % carouselSlides.length);
+  };
+
   return (
     <>
       <Helmet>
@@ -90,10 +143,11 @@ const PalauDigitalResidency = () => {
       </Helmet>
 
       <style>{`
-        .palau-v5 {
+        .palau-v6 {
           --cream: #F4EEE2;
           --cream-soft: #EFE7D6;
           --cream-deep: #E5DAC4;
+          --cream-warm: #F8F1E4;
           --terracotta: #B8593A;
           --terracotta-soft: #D17A5B;
           --clay: #C89671;
@@ -105,28 +159,72 @@ const PalauDigitalResidency = () => {
           --line: rgba(26, 22, 20, 0.08);
           --line-strong: rgba(26, 22, 20, 0.16);
         }
-        .palau-v5 {
+        .palau-v6 {
           background: var(--cream);
           color: var(--ink);
           font-family: 'Inter Tight', system-ui, sans-serif;
           font-weight: 400;
           letter-spacing: -0.005em;
         }
-        .palau-v5 .display { font-family: 'Fraunces', serif; font-optical-sizing: auto; letter-spacing: -0.025em; line-height: 0.95; }
-        .palau-v5 .display-italic { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; letter-spacing: -0.02em; }
-        .palau-v5 .eyebrow { font-family: 'Inter Tight', sans-serif; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.32em; text-transform: uppercase; }
-        .palau-v5 .body-lg { font-size: clamp(1.05rem, 1.4vw, 1.35rem); line-height: 1.65; font-weight: 300; color: var(--ink-soft); }
-        .palau-v5 .body { font-size: 1rem; line-height: 1.75; font-weight: 400; color: var(--ink-soft); }
-        .palau-v5 .body-sm { font-size: 0.9rem; line-height: 1.7; font-weight: 400; color: var(--ink-soft); }
+        .palau-v6 .display { font-family: 'Fraunces', serif; font-optical-sizing: auto; letter-spacing: -0.025em; line-height: 0.95; }
+        .palau-v6 .display-italic { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; letter-spacing: -0.02em; }
+        .palau-v6 .eyebrow { font-family: 'Inter Tight', sans-serif; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.32em; text-transform: uppercase; }
+        .palau-v6 .body-lg { font-size: clamp(1.05rem, 1.4vw, 1.35rem); line-height: 1.65; font-weight: 300; color: var(--ink-soft); }
+        .palau-v6 .body { font-size: 1rem; line-height: 1.75; font-weight: 400; color: var(--ink-soft); }
+        .palau-v6 .body-sm { font-size: 0.9rem; line-height: 1.7; font-weight: 400; color: var(--ink-soft); }
 
-        .palau-v5 .reveal { opacity: 0; transform: translateY(36px); transition: opacity 1s cubic-bezier(0.22,1,0.36,1), transform 1s cubic-bezier(0.22,1,0.36,1); }
-        .palau-v5 .reveal.is-in { opacity: 1; transform: none; }
-        .palau-v5 .reveal.delay-1 { transition-delay: 0.12s; }
-        .palau-v5 .reveal.delay-2 { transition-delay: 0.24s; }
-        .palau-v5 .reveal.delay-3 { transition-delay: 0.36s; }
+        /* ═══ BACKGROUNDS TRABALHADOS ═══ */
+        /* Grain noise overlay */
+        .palau-v6 .grain::before {
+          content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 1;
+          background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+          background-size: 220px 220px;
+          opacity: 0.15;
+          mix-blend-mode: multiply;
+        }
+        /* Cream texture base */
+        .palau-v6 .bg-cream-tex {
+          position: relative;
+          background:
+            radial-gradient(ellipse 90% 60% at 80% 10%, rgba(184,89,58,0.07) 0%, transparent 55%),
+            radial-gradient(ellipse 70% 50% at 10% 100%, rgba(27,40,69,0.05) 0%, transparent 60%),
+            linear-gradient(180deg, var(--cream-warm) 0%, var(--cream) 50%, var(--cream-soft) 100%);
+        }
+        .palau-v6 .bg-cream-deep {
+          position: relative;
+          background:
+            radial-gradient(ellipse 80% 70% at 20% 20%, rgba(184,89,58,0.08) 0%, transparent 60%),
+            radial-gradient(ellipse 60% 60% at 100% 100%, rgba(200,150,113,0.10) 0%, transparent 55%),
+            linear-gradient(135deg, var(--cream-soft) 0%, var(--cream-deep) 100%);
+        }
+        .palau-v6 .bg-navy-tex {
+          position: relative;
+          background:
+            radial-gradient(ellipse 80% 60% at 30% 30%, rgba(184,89,58,0.18) 0%, transparent 55%),
+            radial-gradient(ellipse 70% 50% at 90% 90%, rgba(200,150,113,0.12) 0%, transparent 50%),
+            linear-gradient(160deg, #16223A 0%, var(--navy) 50%, #131C30 100%);
+        }
+        .palau-v6 .bg-paper {
+          position: relative;
+          background-image: url(${textureBg});
+          background-size: cover;
+          background-position: center;
+        }
+        .palau-v6 .bg-paper::after {
+          content: ''; position: absolute; inset: 0; pointer-events: none;
+          background:
+            radial-gradient(ellipse 80% 70% at 50% 0%, rgba(184,89,58,0.10) 0%, transparent 60%),
+            linear-gradient(180deg, rgba(244,238,226,0.4) 0%, rgba(244,238,226,0.2) 50%, rgba(229,218,196,0.55) 100%);
+        }
+
+        .palau-v6 .reveal { opacity: 0; transform: translateY(36px); transition: opacity 1s cubic-bezier(0.22,1,0.36,1), transform 1s cubic-bezier(0.22,1,0.36,1); }
+        .palau-v6 .reveal.is-in { opacity: 1; transform: none; }
+        .palau-v6 .reveal.delay-1 { transition-delay: 0.12s; }
+        .palau-v6 .reveal.delay-2 { transition-delay: 0.24s; }
+        .palau-v6 .reveal.delay-3 { transition-delay: 0.36s; }
 
         /* Premium button */
-        .palau-v5 .btn-primary {
+        .palau-v6 .btn-primary {
           position: relative; overflow: hidden; isolation: isolate;
           display: inline-flex; align-items: center; gap: 0.85rem;
           padding: 1.15rem 2.4rem;
@@ -137,16 +235,16 @@ const PalauDigitalResidency = () => {
           border-radius: 999px;
           transition: transform 0.4s cubic-bezier(0.22,1,0.36,1);
         }
-        .palau-v5 .btn-primary::before {
+        .palau-v6 .btn-primary::before {
           content: ''; position: absolute; inset: 0; z-index: -1;
           background: var(--terracotta);
           transform: translateY(101%);
           transition: transform 0.5s cubic-bezier(0.65,0,0.35,1);
         }
-        .palau-v5 .btn-primary:hover { transform: translateY(-3px); }
-        .palau-v5 .btn-primary:hover::before { transform: translateY(0); }
+        .palau-v6 .btn-primary:hover { transform: translateY(-3px); }
+        .palau-v6 .btn-primary:hover::before { transform: translateY(0); }
 
-        .palau-v5 .btn-ghost {
+        .palau-v6 .btn-ghost {
           position: relative; overflow: hidden; isolation: isolate;
           display: inline-flex; align-items: center; gap: 0.85rem;
           padding: 1.15rem 2.4rem;
@@ -158,20 +256,44 @@ const PalauDigitalResidency = () => {
           border-radius: 999px;
           transition: all 0.4s cubic-bezier(0.22,1,0.36,1);
         }
-        .palau-v5 .btn-ghost:hover { background: var(--ink); color: var(--cream); border-color: var(--ink); transform: translateY(-3px); }
+        .palau-v6 .btn-ghost:hover { background: var(--ink); color: var(--cream); border-color: var(--ink); transform: translateY(-3px); }
 
         /* Marquee */
         @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-        .palau-v5 .marquee-track { animation: marquee 38s linear infinite; }
+        .palau-v6 .marquee-track { animation: marquee 38s linear infinite; }
 
-        /* Card hover */
-        .palau-v5 .card-app { transition: transform 0.5s cubic-bezier(0.22,1,0.36,1), box-shadow 0.5s; }
-        .palau-v5 .card-app:hover { transform: translateY(-8px); box-shadow: 0 30px 60px -20px rgba(26,22,20,0.18); }
-        .palau-v5 .card-app .card-img { transition: transform 0.8s cubic-bezier(0.22,1,0.36,1); }
-        .palau-v5 .card-app:hover .card-img { transform: scale(1.06); }
+        /* ═══ HOVER CINEMATOGRÁFICO ═══ */
+        .palau-v6 .card-app {
+          transition: transform 0.6s cubic-bezier(0.22,1,0.36,1), box-shadow 0.6s;
+          will-change: transform;
+        }
+        .palau-v6 .card-app:hover { transform: translateY(-10px); box-shadow: 0 40px 80px -25px rgba(26,22,20,0.28); }
+        .palau-v6 .card-app .card-img { transition: transform 1.1s cubic-bezier(0.22,1,0.36,1), filter 0.6s; }
+        .palau-v6 .card-app:hover .card-img { transform: scale(1.08); filter: brightness(1.05) saturate(1.05); }
+        .palau-v6 .card-app .reveal-line {
+          position: absolute; bottom: 0; left: 0; height: 3px; width: 0;
+          background: var(--terracotta);
+          transition: width 0.6s cubic-bezier(0.22,1,0.36,1);
+          z-index: 4;
+        }
+        .palau-v6 .card-app:hover .reveal-line { width: 100%; }
+
+        /* ═══ TILT/REVEAL CARDS ═══ */
+        .palau-v6 .tilt-card {
+          position: relative; overflow: hidden;
+          transition: transform 0.5s cubic-bezier(0.22,1,0.36,1);
+        }
+        .palau-v6 .tilt-card:hover { transform: translateY(-6px) rotate(-0.4deg); }
+        .palau-v6 .tilt-card .corner-mark {
+          position: absolute; top: 0.9rem; right: 0.9rem;
+          width: 28px; height: 28px; border-top: 1px solid var(--terracotta); border-right: 1px solid var(--terracotta);
+          opacity: 0; transform: translate(-6px, 6px);
+          transition: all 0.5s cubic-bezier(0.22,1,0.36,1);
+        }
+        .palau-v6 .tilt-card:hover .corner-mark { opacity: 1; transform: translate(0,0); }
 
         /* Number ticker */
-        .palau-v5 .num-mega {
+        .palau-v6 .num-mega {
           font-family: 'Fraunces', serif;
           font-size: clamp(8rem, 22vw, 22rem);
           font-weight: 300; line-height: 0.85;
@@ -179,25 +301,40 @@ const PalauDigitalResidency = () => {
         }
 
         /* FAQ */
-        .palau-v5 details { border-bottom: 1px solid var(--line); }
-        .palau-v5 details summary { list-style: none; cursor: pointer; padding: 1.6rem 0; display: flex; justify-content: space-between; align-items: center; gap: 2rem; }
-        .palau-v5 details summary::-webkit-details-marker { display: none; }
-        .palau-v5 details[open] .faq-icon { transform: rotate(180deg); background: var(--terracotta); border-color: var(--terracotta); color: var(--cream); }
-        .palau-v5 .faq-icon { transition: all 0.35s cubic-bezier(0.22,1,0.36,1); }
+        .palau-v6 details { border-bottom: 1px solid var(--line); transition: background 0.3s; }
+        .palau-v6 details:hover { background: rgba(184,89,58,0.025); }
+        .palau-v6 details summary { list-style: none; cursor: pointer; padding: 1.6rem 1rem; display: flex; justify-content: space-between; align-items: center; gap: 2rem; }
+        .palau-v6 details summary::-webkit-details-marker { display: none; }
+        .palau-v6 details[open] .faq-icon { transform: rotate(180deg); background: var(--terracotta); border-color: var(--terracotta); color: var(--cream); }
+        .palau-v6 .faq-icon { transition: all 0.35s cubic-bezier(0.22,1,0.36,1); }
 
-        /* Step underline */
-        .palau-v5 .step-line { background: linear-gradient(to bottom, var(--terracotta) 0%, var(--clay) 100%); }
+        /* Carousel */
+        .palau-v6 .carousel-shell {
+          position: relative; overflow: hidden; border-radius: 4px;
+          box-shadow: 0 40px 100px -30px rgba(26,22,20,0.35);
+        }
+        .palau-v6 .carousel-dot {
+          width: 36px; height: 2px; background: rgba(244,238,226,0.25);
+          transition: all 0.4s cubic-bezier(0.22,1,0.36,1); cursor: pointer;
+        }
+        .palau-v6 .carousel-dot.active { background: var(--terracotta); width: 64px; }
+
+        /* Stack visual */
+        .palau-v6 .stack-img {
+          transition: transform 0.7s cubic-bezier(0.22,1,0.36,1), box-shadow 0.7s;
+        }
+        .palau-v6 .stack-group:hover .stack-img-1 { transform: rotate(-6deg) translate(-12px, -8px); }
+        .palau-v6 .stack-group:hover .stack-img-2 { transform: rotate(2deg) translate(8px, 4px); }
+        .palau-v6 .stack-group:hover .stack-img-3 { transform: rotate(8deg) translate(20px, 10px); }
       `}</style>
 
-      <main className="palau-v5 min-h-screen">
+      <main className="palau-v6 min-h-screen">
         {/* ════════ HERO — FULL BLEED EDITORIAL ════════ */}
         <section ref={heroRef} className="relative h-[100vh] min-h-[720px] overflow-hidden">
-          {/* Background image with parallax */}
           <motion.div className="absolute inset-0 z-0" style={{ y: heroImgY }}>
             <img src={heroImg} alt="ID de Palau sobre mapa do Pacífico" className="w-full h-full object-cover" style={{ transform: "scale(1.15)" }} fetchPriority="high" />
           </motion.div>
 
-          {/* Cream warm overlay */}
           <motion.div
             className="absolute inset-0 z-[1]"
             style={{
@@ -207,7 +344,11 @@ const PalauDigitalResidency = () => {
             }}
           />
 
-          {/* Top nav strip */}
+          {/* Grain overlay on hero */}
+          <div className="absolute inset-0 z-[2] pointer-events-none opacity-[0.18] mix-blend-multiply"
+            style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E")`, backgroundSize: '220px 220px' }}
+          />
+
           <div className="absolute top-0 left-0 right-0 z-20 px-6 md:px-12 lg:px-16 py-7 flex items-center justify-between">
             <Link to="/" className="eyebrow text-[var(--ink)] hover:text-[var(--terracotta)] transition-colors">
               Lord Junnior · Soberania
@@ -219,14 +360,12 @@ const PalauDigitalResidency = () => {
             </div>
           </div>
 
-          {/* Hero content */}
           <motion.div
             className="absolute inset-0 z-10 flex flex-col justify-end px-6 md:px-12 lg:px-16 pb-16 md:pb-24"
             style={{ y: heroTitleY }}
           >
             <div className="max-w-[1500px] mx-auto w-full">
               <div className="grid grid-cols-12 gap-6 items-end">
-                {/* Side meta */}
                 <div className="col-span-12 lg:col-span-3 order-2 lg:order-1">
                   <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.9, delay: 0.6, ease: EASE }}>
                     <div className="eyebrow text-[var(--terracotta)] mb-3">Edição Especial</div>
@@ -243,7 +382,6 @@ const PalauDigitalResidency = () => {
                   </motion.div>
                 </div>
 
-                {/* Title */}
                 <div className="col-span-12 lg:col-span-9 order-1 lg:order-2">
                   <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: EASE }}>
                     <div className="eyebrow text-[var(--terracotta)] mb-5">Estratégia Avançada · Soberania</div>
@@ -271,7 +409,6 @@ const PalauDigitalResidency = () => {
             </div>
           </motion.div>
 
-          {/* Scroll cue */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -302,8 +439,8 @@ const PalauDigitalResidency = () => {
         </section>
 
         {/* ════════ CHAPTER 01 — CLAREZA ════════ */}
-        <section className="relative px-6 md:px-12 lg:px-16 py-24 md:py-36">
-          <div className="max-w-[1500px] mx-auto">
+        <section className="bg-cream-tex grain relative px-6 md:px-12 lg:px-16 py-24 md:py-36 overflow-hidden">
+          <div className="max-w-[1500px] mx-auto relative z-10">
             <div className="grid grid-cols-12 gap-6 lg:gap-12 mb-20">
               <div className="col-span-12 lg:col-span-5 reveal">
                 <div className="eyebrow text-[var(--terracotta)] mb-5">Capítulo 01 · Clareza</div>
@@ -319,23 +456,31 @@ const PalauDigitalResidency = () => {
               </div>
             </div>
 
-            {/* Image + lists */}
+            {/* STACK GROUP — 3 imagens sobrepostas que se abrem no hover */}
             <div className="grid grid-cols-12 gap-6 lg:gap-10">
-              {/* Image */}
-              <div className="col-span-12 lg:col-span-5 reveal">
-                <div className="relative aspect-[4/5] overflow-hidden rounded-sm">
-                  <img src={clarityImg} alt="Documentos de viagem e mapa de Palau" loading="lazy" className="w-full h-full object-cover" />
-                  <div className="absolute bottom-5 left-5 right-5 bg-[var(--cream)]/95 backdrop-blur p-5 border-l-2 border-[var(--terracotta)]">
-                    <div className="eyebrow text-[var(--terracotta)] mb-1.5">Princípio</div>
-                    <div className="display-italic text-[var(--ink)] text-lg leading-snug">Ferramenta não é estratégia. Documento não é arquitetura.</div>
+              <div className="col-span-12 lg:col-span-5 reveal stack-group relative h-[520px] md:h-[620px]">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="relative w-full max-w-[420px] h-[520px]">
+                    <div className="stack-img stack-img-3 absolute inset-0 rounded-sm overflow-hidden shadow-2xl" style={{ transform: 'rotate(4deg) translate(10px, 6px)' }}>
+                      <img src={mapImg} alt="Mapa do Pacífico" loading="lazy" className="w-full h-full object-cover" />
+                    </div>
+                    <div className="stack-img stack-img-2 absolute inset-0 rounded-sm overflow-hidden shadow-2xl" style={{ transform: 'rotate(-2deg)' }}>
+                      <img src={carousel1} alt="Documentos sobre mapa" loading="lazy" className="w-full h-full object-cover" />
+                    </div>
+                    <div className="stack-img stack-img-1 absolute inset-0 rounded-sm overflow-hidden shadow-2xl" style={{ transform: 'rotate(-6deg) translate(-8px, -4px)' }}>
+                      <img src={clarityImg} alt="ID de Palau detalhe" loading="lazy" className="w-full h-full object-cover" />
+                      <div className="absolute bottom-5 left-5 right-5 bg-[var(--cream)]/95 backdrop-blur p-4 border-l-2 border-[var(--terracotta)]">
+                        <div className="eyebrow text-[var(--terracotta)] mb-1">Princípio</div>
+                        <div className="display-italic text-[var(--ink)] text-base leading-snug">Documento não é arquitetura.</div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
 
-              {/* Lists */}
               <div className="col-span-12 lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-8">
-                {/* Não é */}
-                <div className="reveal delay-1">
+                <div className="reveal delay-1 tilt-card bg-[var(--cream-warm)] p-7 rounded-sm border border-[var(--line)]">
+                  <span className="corner-mark" />
                   <div className="flex items-center gap-3 mb-6 pb-4 border-b border-[var(--line)]">
                     <div className="w-8 h-8 rounded-full bg-[var(--terracotta)]/10 flex items-center justify-center">
                       <XCircle size={16} className="text-[var(--terracotta)]" />
@@ -350,15 +495,15 @@ const PalauDigitalResidency = () => {
                       "Acesso universal a bancos e serviços",
                       "Solução isolada para estruturas financeiras",
                     ].map((t, i) => (
-                      <li key={i} className="display text-[var(--ink)] text-[1.05rem] leading-snug pl-4 border-l border-[var(--terracotta)]/30" style={{ fontWeight: 400 }}>
+                      <li key={i} className="display text-[var(--ink)] text-[1.05rem] leading-snug pl-4 border-l border-[var(--terracotta)]/30 transition-all hover:pl-5 hover:border-[var(--terracotta)]" style={{ fontWeight: 400 }}>
                         {t}
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                {/* É */}
-                <div className="reveal delay-2">
+                <div className="reveal delay-2 tilt-card bg-[var(--cream-warm)] p-7 rounded-sm border border-[var(--line)]">
+                  <span className="corner-mark" style={{ borderColor: 'var(--navy)' }} />
                   <div className="flex items-center gap-3 mb-6 pb-4 border-b border-[var(--line)]">
                     <div className="w-8 h-8 rounded-full bg-[var(--navy)]/10 flex items-center justify-center">
                       <CheckCircle2 size={16} className="text-[var(--navy)]" />
@@ -373,7 +518,7 @@ const PalauDigitalResidency = () => {
                       "Camada adicional com baixo custo de entrada",
                       "Ferramenta real dentro da estratégia correta",
                     ].map((t, i) => (
-                      <li key={i} className="display text-[var(--ink)] text-[1.05rem] leading-snug pl-4 border-l border-[var(--navy)]/40" style={{ fontWeight: 400 }}>
+                      <li key={i} className="display text-[var(--ink)] text-[1.05rem] leading-snug pl-4 border-l border-[var(--navy)]/40 transition-all hover:pl-5 hover:border-[var(--navy)]" style={{ fontWeight: 400 }}>
                         {t}
                       </li>
                     ))}
@@ -384,9 +529,9 @@ const PalauDigitalResidency = () => {
           </div>
         </section>
 
-        {/* ════════ CHAPTER 02 — APLICAÇÃO PRÁTICA (BENTO) ════════ */}
-        <section className="relative bg-[var(--cream-soft)] px-6 md:px-12 lg:px-16 py-24 md:py-36 border-y border-[var(--line)]">
-          <div className="max-w-[1500px] mx-auto">
+        {/* ════════ CHAPTER 02 — CARROSSEL DE APLICAÇÃO ════════ */}
+        <section className="bg-cream-deep grain relative px-6 md:px-12 lg:px-16 py-24 md:py-36 border-y border-[var(--line)] overflow-hidden">
+          <div className="max-w-[1500px] mx-auto relative z-10">
             <div className="grid grid-cols-12 gap-6 mb-16 items-end">
               <div className="col-span-12 lg:col-span-7 reveal">
                 <div className="eyebrow text-[var(--terracotta)] mb-5">Capítulo 02 · Aplicação Prática</div>
@@ -402,100 +547,102 @@ const PalauDigitalResidency = () => {
               </div>
             </div>
 
-            {/* Bento grid */}
-            <div className="grid grid-cols-12 gap-3 md:gap-4">
-              {/* Card 1 — large left */}
-              <article className="card-app col-span-12 lg:col-span-7 lg:row-span-2 relative overflow-hidden rounded-sm bg-[var(--cream)] reveal min-h-[480px] lg:min-h-[640px]">
-                <div className="absolute inset-0">
-                  <img src={exchangeImg} alt="Exchange internacional no celular" loading="lazy" className="card-img w-full h-full object-cover" />
-                  <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(26,22,20,0.05) 0%, rgba(26,22,20,0.45) 60%, rgba(26,22,20,0.92) 100%)" }} />
+            {/* CARROSSEL CINEMATOGRÁFICO */}
+            <div className="reveal grid grid-cols-12 gap-6 lg:gap-10 items-stretch">
+              <div className="col-span-12 lg:col-span-8 carousel-shell relative h-[520px] md:h-[640px]">
+                <AnimatePresence mode="wait" custom={carouselDir}>
+                  <motion.div
+                    key={carouselIndex}
+                    custom={carouselDir}
+                    initial={{ opacity: 0, scale: 1.05 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.98 }}
+                    transition={{ duration: 0.9, ease: EASE }}
+                    className="absolute inset-0"
+                  >
+                    <img src={carouselSlides[carouselIndex].img} alt={carouselSlides[carouselIndex].title} className="w-full h-full object-cover" />
+                    <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(26,22,20,0.05) 0%, rgba(26,22,20,0.3) 50%, rgba(26,22,20,0.92) 100%)' }} />
+                    <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 text-[var(--cream)]">
+                      <motion.div initial={{ y: 30, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.7, delay: 0.2, ease: EASE }}>
+                        <div className="eyebrow text-[var(--clay)] mb-3">{carouselSlides[carouselIndex].eyebrow}</div>
+                        <h3 className="display mb-4" style={{ fontSize: 'clamp(1.8rem, 3.5vw, 3rem)' }}>
+                          {carouselSlides[carouselIndex].title}
+                        </h3>
+                        <p className="body-lg text-[var(--cream)]/80 max-w-2xl">{carouselSlides[carouselIndex].text}</p>
+                      </motion.div>
+                    </div>
+                    <div className="absolute top-6 right-6">
+                      <span className="eyebrow text-[var(--cream)]/60 px-3 py-1.5 border border-[var(--cream)]/20 rounded-full backdrop-blur-sm bg-[var(--ink)]/30">
+                        {carouselSlides[carouselIndex].accent}
+                      </span>
+                    </div>
+                  </motion.div>
+                </AnimatePresence>
+
+                {/* Controls */}
+                <div className="absolute top-6 left-6 z-10 flex items-center gap-3">
+                  <button onClick={() => goCarousel(-1)} aria-label="Anterior" className="w-11 h-11 rounded-full bg-[var(--cream)]/90 backdrop-blur flex items-center justify-center hover:bg-[var(--terracotta)] hover:text-[var(--cream)] text-[var(--ink)] transition-all">
+                    <ChevronLeft size={18} />
+                  </button>
+                  <button onClick={() => goCarousel(1)} aria-label="Próximo" className="w-11 h-11 rounded-full bg-[var(--cream)]/90 backdrop-blur flex items-center justify-center hover:bg-[var(--terracotta)] hover:text-[var(--cream)] text-[var(--ink)] transition-all">
+                    <ChevronRight size={18} />
+                  </button>
                 </div>
-                <div className="relative h-full flex flex-col justify-end p-7 md:p-10 text-[var(--cream)]">
-                  <div className="eyebrow text-[var(--cream)]/70 mb-3">Mercado Cripto</div>
-                  <h3 className="display text-[var(--cream)] mb-6" style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)" }}>
-                    Exchanges<br /><span className="display-italic" style={{ color: "var(--clay)" }}>internacionais</span>
-                  </h3>
-                  <div className="grid grid-cols-2 gap-x-6 gap-y-2 mb-5 max-w-md">
-                    {["Coinbase", "Bitget", "Gate.io", "KuCoin", "CEX.IO", "MEXC"].map((n, i) => (
-                      <div key={i} className="flex items-center justify-between border-b border-[var(--cream)]/15 py-2">
-                        <span className="text-[var(--cream)]/85 text-sm">{n}</span>
-                        <ArrowUpRight size={14} className="text-[var(--clay)]" />
+
+                <div className="absolute top-1/2 right-6 -translate-y-1/2 z-10 flex flex-col items-center gap-3">
+                  {carouselSlides.map((_, i) => (
+                    <button key={i} onClick={() => { setCarouselDir(i > carouselIndex ? 1 : -1); setCarouselIndex(i); }} className={`carousel-dot ${i === carouselIndex ? 'active' : ''}`} aria-label={`Slide ${i + 1}`} style={{ writingMode: 'vertical-rl' }} />
+                  ))}
+                </div>
+              </div>
+
+              {/* Side list — sincronizada com carrossel */}
+              <div className="col-span-12 lg:col-span-4 flex flex-col">
+                <div className="eyebrow text-[var(--ink-soft)] mb-5">Casos de uso</div>
+                <div className="space-y-1 flex-1">
+                  {carouselSlides.map((s, i) => (
+                    <button
+                      key={i}
+                      onClick={() => { setCarouselDir(i > carouselIndex ? 1 : -1); setCarouselIndex(i); }}
+                      className={`w-full text-left p-5 border-l-2 transition-all duration-500 ${i === carouselIndex ? 'border-[var(--terracotta)] bg-[var(--cream-warm)]' : 'border-[var(--line)] hover:border-[var(--terracotta)]/40 hover:bg-[var(--cream-warm)]/50'}`}
+                    >
+                      <div className="flex items-baseline gap-3 mb-1">
+                        <span className="display-italic text-[var(--terracotta)]" style={{ fontSize: '1.1rem' }}>{String(i + 1).padStart(2, '0')}</span>
+                        <span className="display text-[var(--ink)]" style={{ fontSize: '1.15rem', fontWeight: 500 }}>{s.title}</span>
                       </div>
-                    ))}
-                  </div>
-                  <div className="text-xs italic text-[var(--cream)]/55 max-w-md">
-                    Sujeito a mudanças de compliance. Verificar política atual em cada plataforma.
-                  </div>
+                      <div className="eyebrow text-[var(--ink-soft)]/70 pl-7">{s.eyebrow}</div>
+                    </button>
+                  ))}
                 </div>
-              </article>
+              </div>
+            </div>
 
-              {/* Card 2 — neobank */}
-              <article className="card-app col-span-12 md:col-span-6 lg:col-span-5 relative overflow-hidden rounded-sm bg-[var(--cream)] reveal delay-1 min-h-[300px]">
-                <div className="absolute inset-0">
-                  <img src={neobankImg} alt="Cartão neobank" loading="lazy" className="card-img w-full h-full object-cover" />
-                  <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(244,238,226,0.4) 0%, rgba(244,238,226,0.92) 80%)" }} />
-                </div>
-                <div className="relative h-full flex flex-col justify-end p-7 md:p-9">
-                  <Wallet size={22} className="text-[var(--terracotta)] mb-4" />
-                  <div className="eyebrow text-[var(--terracotta)] mb-2">Serviços Financeiros</div>
-                  <h3 className="display text-[var(--ink)] mb-4" style={{ fontSize: "clamp(1.6rem, 2.5vw, 2.2rem)" }}>
-                    Neobanks & <span className="display-italic">fintechs</span>
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {["Kingdom Bank", "Vexel", "Ultimopay", "Blackcatcard"].map((n) => (
-                      <span key={n} className="text-xs px-3 py-1.5 bg-[var(--ink)]/5 text-[var(--ink)] rounded-full">{n}</span>
-                    ))}
+            {/* Mini-cards complementares */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-10">
+              {[
+                { icon: Globe2, eyebrow: "Operacional", title: "Onboarding Internacional", text: "Camada documental adicional para verificação em plataformas globais." },
+                { icon: Compass, eyebrow: "Estratégico", title: "Mobilidade Patrimonial", text: "Integração a estruturas internacionais de patrimônio e mobilidade." },
+                { icon: KeyRound, eyebrow: "Documental", title: "Redundância Soberana", text: "Documento de respaldo em arquiteturas de soberania pessoal." },
+              ].map((b, i) => {
+                const Ic = b.icon;
+                return (
+                  <div key={i} className="tilt-card reveal bg-[var(--cream-warm)] p-7 md:p-8 border border-[var(--line)] rounded-sm relative">
+                    <span className="corner-mark" />
+                    <Ic size={22} className="text-[var(--terracotta)] mb-4" />
+                    <div className="eyebrow text-[var(--terracotta)] mb-2">{b.eyebrow}</div>
+                    <h4 className="display text-[var(--ink)] mb-2.5" style={{ fontSize: "1.45rem" }}>{b.title}</h4>
+                    <p className="body-sm">{b.text}</p>
                   </div>
-                </div>
-              </article>
-
-              {/* Card 3 — privacy */}
-              <article className="card-app col-span-12 md:col-span-6 lg:col-span-5 relative overflow-hidden rounded-sm reveal delay-2 min-h-[300px]" style={{ background: "var(--navy)" }}>
-                <div className="relative h-full flex flex-col justify-between p-7 md:p-9 text-[var(--cream)]">
-                  <div>
-                    <ShieldCheck size={22} className="text-[var(--clay)] mb-4" />
-                    <div className="eyebrow text-[var(--clay)] mb-2">Privacidade Operacional</div>
-                    <h3 className="display text-[var(--cream)]" style={{ fontSize: "clamp(1.6rem, 2.5vw, 2.2rem)" }}>
-                      Jurisdição <span className="display-italic">paralela</span>
-                    </h3>
-                  </div>
-                  <p className="body-sm text-[var(--cream)]/65 mt-6">
-                    Menor exposição direta da jurisdição de origem em contextos operacionais e de verificação internacional.
-                  </p>
-                </div>
-              </article>
-
-              {/* Card 4 — operational (full width small) */}
-              <article className="card-app col-span-12 lg:col-span-12 relative overflow-hidden rounded-sm reveal delay-3 min-h-[200px]" style={{ background: "var(--cream)" }}>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-0 h-full">
-                  {[
-                    { icon: Globe2, eyebrow: "Operacional", title: "Onboarding Internacional", text: "Camada documental adicional para verificação em plataformas globais." },
-                    { icon: Compass, eyebrow: "Estratégico", title: "Mobilidade Patrimonial", text: "Integração a estruturas internacionais de patrimônio e mobilidade." },
-                    { icon: KeyRound, eyebrow: "Documental", title: "Redundância Soberana", text: "Documento de respaldo em arquiteturas de soberania pessoal." },
-                  ].map((b, i) => {
-                    const Ic = b.icon;
-                    return (
-                      <div key={i} className="p-7 md:p-9 border-r last:border-r-0 border-[var(--line)] flex flex-col justify-between">
-                        <Ic size={22} className="text-[var(--terracotta)] mb-4" />
-                        <div>
-                          <div className="eyebrow text-[var(--terracotta)] mb-2">{b.eyebrow}</div>
-                          <h4 className="display text-[var(--ink)] mb-2.5" style={{ fontSize: "1.45rem" }}>{b.title}</h4>
-                          <p className="body-sm">{b.text}</p>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </article>
+                );
+              })}
             </div>
           </div>
         </section>
 
         {/* ════════ CHAPTER 03 — QUEBRA DE CRENÇA (99%) ════════ */}
-        <section className="relative px-6 md:px-12 lg:px-16 py-24 md:py-36 overflow-hidden bg-[var(--cream)]">
-          <div className="max-w-[1500px] mx-auto relative">
+        <section className="bg-paper grain relative px-6 md:px-12 lg:px-16 py-24 md:py-36 overflow-hidden">
+          <div className="max-w-[1500px] mx-auto relative z-10">
             <div className="grid grid-cols-12 gap-6 lg:gap-12 items-center">
-              {/* Left: Mega 99% */}
               <div className="col-span-12 lg:col-span-6 reveal relative">
                 <div className="eyebrow text-[var(--terracotta)] mb-4">Capítulo 03 · Quebra de Crença</div>
                 <div className="num-mega leading-none">
@@ -506,7 +653,6 @@ const PalauDigitalResidency = () => {
                 </p>
               </div>
 
-              {/* Right: Content */}
               <div className="col-span-12 lg:col-span-6 reveal delay-1">
                 <h2 className="display text-[var(--ink)] mb-7" style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)" }}>
                   O erro não é <span className="display-italic" style={{ color: "var(--terracotta)" }}>comprar</span> o ID.<br />
@@ -524,9 +670,9 @@ const PalauDigitalResidency = () => {
                     { n: "04", t: "Alinhamento residência × identidade", d: "Report fiscal depende da residência informada e da política da instituição." },
                     { n: "05", t: "Estratégia estruturada", d: "Sem arquitetura clara, o documento é uma ferramenta sem contexto." },
                   ].map((item) => (
-                    <div key={item.n} className="grid grid-cols-12 gap-4 py-5 border-b border-[var(--line)] group">
+                    <div key={item.n} className="grid grid-cols-12 gap-4 py-5 border-b border-[var(--line)] group transition-all hover:bg-[var(--cream-warm)]/50 hover:px-3 -mx-3">
                       <div className="col-span-2 md:col-span-1">
-                        <span className="display-italic text-[var(--terracotta)]" style={{ fontSize: "1.15rem" }}>{item.n}</span>
+                        <span className="display-italic text-[var(--terracotta)] transition-all group-hover:scale-110 inline-block" style={{ fontSize: "1.15rem" }}>{item.n}</span>
                       </div>
                       <div className="col-span-10 md:col-span-11">
                         <h4 className="display text-[var(--ink)] mb-1.5" style={{ fontSize: "1.15rem", fontWeight: 500 }}>{item.t}</h4>
@@ -540,13 +686,12 @@ const PalauDigitalResidency = () => {
           </div>
         </section>
 
-        {/* ════════ CHAPTER 04 — LIMITAÇÕES (split image+text) ════════ */}
-        <section className="relative bg-[var(--navy)] text-[var(--cream)] overflow-hidden">
-          <div className="grid grid-cols-12 min-h-[100vh]">
-            {/* Image left */}
-            <div className="col-span-12 lg:col-span-5 relative min-h-[400px] lg:min-h-[100vh]">
-              <img src={bankImg} alt="Banco tradicional clássico" loading="lazy" className="absolute inset-0 w-full h-full object-cover" />
-              <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(27,40,69,0.2) 0%, rgba(27,40,69,0.8) 100%)" }} />
+        {/* ════════ CHAPTER 04 — LIMITAÇÕES ════════ */}
+        <section className="bg-navy-tex grain relative text-[var(--cream)] overflow-hidden">
+          <div className="grid grid-cols-12 min-h-[100vh] relative z-10">
+            <div className="col-span-12 lg:col-span-5 relative min-h-[400px] lg:min-h-[100vh] overflow-hidden group">
+              <img src={bankImg} alt="Banco tradicional clássico" loading="lazy" className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1500ms] group-hover:scale-105" />
+              <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(27,40,69,0.2) 0%, rgba(27,40,69,0.85) 100%)" }} />
               <div className="absolute bottom-8 left-8 right-8">
                 <div className="eyebrow text-[var(--clay)] mb-2">Limite Real</div>
                 <h3 className="display text-[var(--cream)]" style={{ fontSize: "clamp(2rem, 3.5vw, 3rem)" }}>
@@ -555,7 +700,6 @@ const PalauDigitalResidency = () => {
               </div>
             </div>
 
-            {/* Content right */}
             <div className="col-span-12 lg:col-span-7 px-6 md:px-12 lg:px-16 py-20 lg:py-28 flex flex-col justify-center">
               <div className="max-w-3xl">
                 <div className="eyebrow text-[var(--clay)] mb-5 reveal">Capítulo 04 · Honestidade Estratégica</div>
@@ -566,14 +710,14 @@ const PalauDigitalResidency = () => {
                   Clareza antes de qualquer decisão. Vender ilusão é o jogo dos amadores. Vender ferramenta dentro de estratégia é o jogo de quem entrega resultado real.
                 </p>
 
-                <div className="space-y-7 reveal delay-3">
+                <div className="space-y-3 reveal delay-3">
                   {[
                     { tag: "Não aceito", title: "Bancos tradicionais clássicos", text: "Bancos convencionais não aceitam apenas um ID local. Passaporte e comprovante robusto continuam padrão." },
                     { tag: "Insuficiente", title: "Comprovação de residência", text: "Não substitui comprovante de endereço. Muitas instituições exigem evidência de residência física." },
                     { tag: "Não aplicável", title: "Substituição de passaporte", text: "Não é passaporte. Não permite viagens internacionais nem substitui o documento principal nacional." },
                     { tag: "Limitado", title: "Planejamento fiscal isolado", text: "Report fiscal depende da residência declarada. Sem estrutura completa, é ferramenta sem contexto." },
                   ].map((l, i) => (
-                    <div key={i} className="grid grid-cols-12 gap-4 pb-7 border-b border-[var(--cream)]/10">
+                    <div key={i} className="grid grid-cols-12 gap-4 p-5 border border-[var(--cream)]/8 rounded-sm hover:border-[var(--clay)]/40 hover:bg-[var(--cream)]/5 transition-all duration-500">
                       <div className="col-span-12 md:col-span-3">
                         <span className="eyebrow text-[var(--clay)]">{l.tag}</span>
                       </div>
@@ -589,9 +733,9 @@ const PalauDigitalResidency = () => {
           </div>
         </section>
 
-        {/* ════════ CHAPTER 05 — VALOR (Pull quote) ════════ */}
-        <section className="relative bg-[var(--cream)] px-6 md:px-12 lg:px-16 py-28 md:py-40">
-          <div className="max-w-[1500px] mx-auto">
+        {/* ════════ CHAPTER 05 — VALOR ════════ */}
+        <section className="bg-cream-tex grain relative px-6 md:px-12 lg:px-16 py-28 md:py-40 overflow-hidden">
+          <div className="max-w-[1500px] mx-auto relative z-10">
             <div className="reveal max-w-5xl">
               <div className="eyebrow text-[var(--terracotta)] mb-6">Capítulo 05 · Por que importa</div>
               <blockquote className="display text-[var(--ink)]" style={{ fontSize: "clamp(2rem, 5vw, 5rem)", lineHeight: 1.1, fontWeight: 400 }}>
@@ -601,7 +745,7 @@ const PalauDigitalResidency = () => {
               </blockquote>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mt-20 pt-12 border-t border-[var(--line)]">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-20 pt-12 border-t border-[var(--line)]">
               {[
                 { ic: ShieldCheck, t: "Privacidade Operacional", d: "Menor exposição direta da jurisdição de origem em verificações internacionais." },
                 { ic: Globe2, t: "Acesso Internacional", d: "Utilidade em plataformas globais, sujeito ao compliance de cada serviço." },
@@ -610,7 +754,8 @@ const PalauDigitalResidency = () => {
               ].map((v, i) => {
                 const Ic = v.ic;
                 return (
-                  <div key={i} className="reveal" style={{ transitionDelay: `${i * 0.1}s` }}>
+                  <div key={i} className="reveal tilt-card bg-[var(--cream-warm)] p-7 border border-[var(--line)] rounded-sm relative" style={{ transitionDelay: `${i * 0.1}s` }}>
+                    <span className="corner-mark" />
                     <Ic size={28} className="text-[var(--terracotta)] mb-5" />
                     <h4 className="display text-[var(--ink)] mb-3" style={{ fontSize: "1.3rem", fontWeight: 500 }}>{v.t}</h4>
                     <p className="body-sm">{v.d}</p>
@@ -621,9 +766,9 @@ const PalauDigitalResidency = () => {
           </div>
         </section>
 
-        {/* ════════ CHAPTER 06 — JORNADA (Steps) ════════ */}
-        <section className="relative bg-[var(--cream-soft)] px-6 md:px-12 lg:px-16 py-24 md:py-36 border-y border-[var(--line)]">
-          <div className="max-w-[1500px] mx-auto">
+        {/* ════════ CHAPTER 06 — JORNADA ════════ */}
+        <section className="bg-cream-deep grain relative px-6 md:px-12 lg:px-16 py-24 md:py-36 border-y border-[var(--line)] overflow-hidden">
+          <div className="max-w-[1500px] mx-auto relative z-10">
             <div className="grid grid-cols-12 gap-6 mb-16">
               <div className="col-span-12 lg:col-span-7 reveal">
                 <div className="eyebrow text-[var(--terracotta)] mb-5">Capítulo 06 · Jornada</div>
@@ -635,7 +780,6 @@ const PalauDigitalResidency = () => {
             </div>
 
             <div className="relative">
-              {/* Vertical line */}
               <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-px bg-[var(--line-strong)] -translate-x-px md:-translate-x-1/2" />
 
               {[
@@ -645,25 +789,23 @@ const PalauDigitalResidency = () => {
                 { n: "04", t: "Entrega Física", d: "Cartão físico enviado para qualquer lugar do mundo onde você estiver.", side: "right" },
                 { n: "05", t: "Configuração Estratégica", d: "Avalie documentação complementar para integrar à sua estrutura específica.", side: "left" },
               ].map((s, i) => (
-                <div key={i} className={`relative grid grid-cols-12 gap-4 mb-12 reveal`} style={{ transitionDelay: `${i * 0.08}s` }}>
-                  {/* Mobile: all left | Desktop: alternate */}
+                <div key={i} className={`relative grid grid-cols-12 gap-4 mb-12 reveal group`} style={{ transitionDelay: `${i * 0.08}s` }}>
                   <div className={`col-span-12 md:col-span-6 ${s.side === "right" ? "md:col-start-7" : ""} pl-16 md:pl-0 ${s.side === "right" ? "md:pl-16" : "md:pr-16 md:text-right"}`}>
                     <div className={`flex items-center gap-4 mb-3 ${s.side === "right" ? "md:flex-row" : "md:flex-row-reverse"}`}>
-                      <span className="display-italic text-[var(--terracotta)]" style={{ fontSize: "2.5rem" }}>{s.n}</span>
-                      <div className="h-px flex-1 bg-[var(--line-strong)]" />
+                      <span className="display-italic text-[var(--terracotta)] transition-transform group-hover:scale-110" style={{ fontSize: "2.5rem" }}>{s.n}</span>
+                      <div className="h-px flex-1 bg-[var(--line-strong)] group-hover:bg-[var(--terracotta)] transition-colors" />
                     </div>
                     <h3 className="display text-[var(--ink)] mb-3" style={{ fontSize: "clamp(1.6rem, 2.5vw, 2.2rem)" }}>{s.t}</h3>
                     <p className="body">{s.d}</p>
                   </div>
-                  {/* Center dot */}
-                  <div className="absolute left-6 md:left-1/2 top-3 w-3 h-3 rounded-full bg-[var(--terracotta)] -translate-x-[5px] md:-translate-x-1/2 ring-4 ring-[var(--cream-soft)]" />
+                  <div className="absolute left-6 md:left-1/2 top-3 w-3 h-3 rounded-full bg-[var(--terracotta)] -translate-x-[5px] md:-translate-x-1/2 ring-4 ring-[var(--cream-deep)] group-hover:ring-[var(--terracotta)]/20 group-hover:scale-150 transition-all duration-500" />
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* ════════ CHAPTER 07 — PALAU (CINEMATIC PARALLAX) ════════ */}
+        {/* ════════ CHAPTER 07 — PALAU CINEMATIC ════════ */}
         <section ref={islandRef} className="relative h-[100vh] min-h-[700px] overflow-hidden">
           <motion.div className="absolute inset-0" style={{ y: islandY }}>
             <img src={islandImg} alt="Ilhas de Palau ao amanhecer" loading="lazy" className="w-full h-full object-cover" style={{ transform: "scale(1.25)" }} />
@@ -705,8 +847,8 @@ const PalauDigitalResidency = () => {
         </section>
 
         {/* ════════ CHAPTER 08 — FAQ ════════ */}
-        <section className="bg-[var(--cream)] px-6 md:px-12 lg:px-16 py-24 md:py-36">
-          <div className="max-w-4xl mx-auto">
+        <section className="bg-cream-tex grain relative px-6 md:px-12 lg:px-16 py-24 md:py-36 overflow-hidden">
+          <div className="max-w-4xl mx-auto relative z-10">
             <div className="text-center mb-16 reveal">
               <div className="eyebrow text-[var(--terracotta)] mb-5">Capítulo 08 · Perguntas Frequentes</div>
               <h2 className="display text-[var(--ink)]" style={{ fontSize: "clamp(2.5rem, 6vw, 5.5rem)" }}>
@@ -733,7 +875,7 @@ const PalauDigitalResidency = () => {
                       <ChevronDown size={16} />
                     </span>
                   </summary>
-                  <div className="pb-7 pr-12">
+                  <div className="pb-7 px-1 pr-12">
                     <p className="body">{f.a}</p>
                   </div>
                 </details>
@@ -770,7 +912,6 @@ const PalauDigitalResidency = () => {
           </div>
         </section>
 
-        {/* Footer */}
         <footer className="bg-[var(--ink)] text-[var(--cream)]/70 px-6 md:px-12 lg:px-16 py-10">
           <div className="max-w-[1500px] mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="eyebrow text-[var(--cream)]/55">Lord Junnior · Soberania Internacional</div>
