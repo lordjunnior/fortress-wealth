@@ -137,38 +137,51 @@ const PalauDigitalResidency = () => {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,500&family=Inter+Tight:wght@300;400;500;600;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Familjen+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
           rel="stylesheet"
         />
       </Helmet>
 
       <style>{`
         .palau-v6 {
-          --cream: #F4EEE2;
-          --cream-soft: #EFE7D6;
-          --cream-deep: #E5DAC4;
-          --cream-warm: #F8F1E4;
-          --terracotta: #B8593A;
-          --terracotta-soft: #D17A5B;
-          --clay: #C89671;
-          --navy: #1B2845;
-          --navy-soft: #2D3E5F;
-          --ink: #1A1614;
-          --ink-soft: #4A413B;
-          --gold: #B8923D;
-          --line: rgba(26, 22, 20, 0.08);
-          --line-strong: rgba(26, 22, 20, 0.16);
+          /* ─── Nova paleta solicitada ─── */
+          --yellow: #F3E308;          /* acento principal — substitui terracotta */
+          --yellow-soft: #FFF06A;
+          --mist: #B8BFC1;            /* cinza-claro — fundo principal */
+          --mist-soft: #CFD4D6;
+          --mist-deep: #A2AAAD;
+          --mist-warm: #C7CDCF;
+          --steel: #6C8494;           /* azul-acinzentado — tons médios */
+          --steel-soft: #8A9DAA;
+          --abyss: #2C4C5C;           /* azul-escuro — tinta principal */
+          --abyss-deep: #1F3845;
+
+          /* ─── Aliases para manter compatibilidade com a estrutura existente ─── */
+          --cream: var(--mist);
+          --cream-soft: var(--mist-soft);
+          --cream-deep: var(--mist-deep);
+          --cream-warm: var(--mist-warm);
+          --terracotta: var(--yellow);
+          --terracotta-soft: var(--yellow-soft);
+          --clay: var(--steel-soft);
+          --navy: var(--abyss);
+          --navy-soft: var(--steel);
+          --ink: var(--abyss);
+          --ink-soft: var(--steel);
+          --gold: var(--yellow);
+          --line: rgba(44, 76, 92, 0.14);
+          --line-strong: rgba(44, 76, 92, 0.28);
         }
         .palau-v6 {
-          background: var(--cream);
-          color: var(--ink);
-          font-family: 'Inter Tight', system-ui, sans-serif;
+          background: var(--mist);
+          color: var(--abyss);
+          font-family: 'Familjen Grotesk', system-ui, sans-serif;
           font-weight: 400;
           letter-spacing: -0.005em;
         }
-        .palau-v6 .display { font-family: 'Fraunces', serif; font-optical-sizing: auto; letter-spacing: -0.025em; line-height: 0.95; }
-        .palau-v6 .display-italic { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; letter-spacing: -0.02em; }
-        .palau-v6 .eyebrow { font-family: 'Inter Tight', sans-serif; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.32em; text-transform: uppercase; }
+        .palau-v6 .display { font-family: 'Instrument Serif', serif; font-weight: 400; letter-spacing: -0.015em; line-height: 0.96; }
+        .palau-v6 .display-italic { font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; letter-spacing: -0.01em; }
+        .palau-v6 .eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase; }
         .palau-v6 .body-lg { font-size: clamp(1.05rem, 1.4vw, 1.35rem); line-height: 1.65; font-weight: 300; color: var(--ink-soft); }
         .palau-v6 .body { font-size: 1rem; line-height: 1.75; font-weight: 400; color: var(--ink-soft); }
         .palau-v6 .body-sm { font-size: 0.9rem; line-height: 1.7; font-weight: 400; color: var(--ink-soft); }
