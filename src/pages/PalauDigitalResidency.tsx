@@ -195,39 +195,43 @@ const PalauDigitalResidency = () => {
           opacity: 0.15;
           mix-blend-mode: multiply;
         }
-        /* Cream texture base */
+        /* Mist (cinza-claro) texture base */
         .palau-v6 .bg-cream-tex {
           position: relative;
           background:
-            radial-gradient(ellipse 90% 60% at 80% 10%, rgba(184,89,58,0.07) 0%, transparent 55%),
-            radial-gradient(ellipse 70% 50% at 10% 100%, rgba(27,40,69,0.05) 0%, transparent 60%),
-            linear-gradient(180deg, var(--cream-warm) 0%, var(--cream) 50%, var(--cream-soft) 100%);
+            radial-gradient(ellipse 90% 60% at 80% 10%, rgba(243,227,8,0.20) 0%, transparent 55%),
+            radial-gradient(ellipse 70% 50% at 10% 100%, rgba(44,76,92,0.14) 0%, transparent 60%),
+            radial-gradient(ellipse 60% 40% at 50% 50%, rgba(108,132,148,0.10) 0%, transparent 70%),
+            linear-gradient(180deg, var(--mist-warm) 0%, var(--mist) 50%, var(--mist-soft) 100%);
         }
         .palau-v6 .bg-cream-deep {
           position: relative;
           background:
-            radial-gradient(ellipse 80% 70% at 20% 20%, rgba(184,89,58,0.08) 0%, transparent 60%),
-            radial-gradient(ellipse 60% 60% at 100% 100%, rgba(200,150,113,0.10) 0%, transparent 55%),
-            linear-gradient(135deg, var(--cream-soft) 0%, var(--cream-deep) 100%);
+            radial-gradient(ellipse 80% 70% at 20% 20%, rgba(243,227,8,0.16) 0%, transparent 60%),
+            radial-gradient(ellipse 60% 60% at 100% 100%, rgba(44,76,92,0.20) 0%, transparent 55%),
+            linear-gradient(135deg, var(--mist-soft) 0%, var(--mist-deep) 100%);
         }
         .palau-v6 .bg-navy-tex {
           position: relative;
           background:
-            radial-gradient(ellipse 80% 60% at 30% 30%, rgba(184,89,58,0.18) 0%, transparent 55%),
-            radial-gradient(ellipse 70% 50% at 90% 90%, rgba(200,150,113,0.12) 0%, transparent 50%),
-            linear-gradient(160deg, #16223A 0%, var(--navy) 50%, #131C30 100%);
+            radial-gradient(ellipse 80% 60% at 30% 30%, rgba(243,227,8,0.18) 0%, transparent 55%),
+            radial-gradient(ellipse 70% 50% at 90% 90%, rgba(108,132,148,0.24) 0%, transparent 50%),
+            linear-gradient(160deg, #1F3845 0%, var(--abyss) 50%, #16323F 100%);
         }
         .palau-v6 .bg-paper {
           position: relative;
-          background-image: url(${textureBg});
+          background:
+            radial-gradient(ellipse 100% 80% at 50% 0%, rgba(243,227,8,0.12) 0%, transparent 60%),
+            radial-gradient(ellipse 60% 60% at 0% 100%, rgba(44,76,92,0.14) 0%, transparent 55%),
+            linear-gradient(135deg, var(--mist-warm) 0%, var(--mist) 60%, var(--mist-soft) 100%);
           background-size: cover;
           background-position: center;
         }
         .palau-v6 .bg-paper::after {
           content: ''; position: absolute; inset: 0; pointer-events: none;
           background:
-            radial-gradient(ellipse 80% 70% at 50% 0%, rgba(184,89,58,0.10) 0%, transparent 60%),
-            linear-gradient(180deg, rgba(244,238,226,0.4) 0%, rgba(244,238,226,0.2) 50%, rgba(229,218,196,0.55) 100%);
+            radial-gradient(ellipse 80% 70% at 50% 0%, rgba(243,227,8,0.10) 0%, transparent 60%),
+            linear-gradient(180deg, rgba(184,191,193,0.20) 0%, rgba(184,191,193,0.0) 50%, rgba(162,170,173,0.28) 100%);
         }
 
         .palau-v6 .reveal { opacity: 0; transform: translateY(36px); transition: opacity 1s cubic-bezier(0.22,1,0.36,1), transform 1s cubic-bezier(0.22,1,0.36,1); }
