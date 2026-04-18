@@ -137,38 +137,51 @@ const PalauDigitalResidency = () => {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,500&family=Inter+Tight:wght@300;400;500;600;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Familjen+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
           rel="stylesheet"
         />
       </Helmet>
 
       <style>{`
         .palau-v6 {
-          --cream: #F4EEE2;
-          --cream-soft: #EFE7D6;
-          --cream-deep: #E5DAC4;
-          --cream-warm: #F8F1E4;
-          --terracotta: #B8593A;
-          --terracotta-soft: #D17A5B;
-          --clay: #C89671;
-          --navy: #1B2845;
-          --navy-soft: #2D3E5F;
-          --ink: #1A1614;
-          --ink-soft: #4A413B;
-          --gold: #B8923D;
-          --line: rgba(26, 22, 20, 0.08);
-          --line-strong: rgba(26, 22, 20, 0.16);
+          /* ─── Nova paleta solicitada ─── */
+          --yellow: #F3E308;          /* acento principal — substitui terracotta */
+          --yellow-soft: #FFF06A;
+          --mist: #B8BFC1;            /* cinza-claro — fundo principal */
+          --mist-soft: #CFD4D6;
+          --mist-deep: #A2AAAD;
+          --mist-warm: #C7CDCF;
+          --steel: #6C8494;           /* azul-acinzentado — tons médios */
+          --steel-soft: #8A9DAA;
+          --abyss: #2C4C5C;           /* azul-escuro — tinta principal */
+          --abyss-deep: #1F3845;
+
+          /* ─── Aliases para manter compatibilidade com a estrutura existente ─── */
+          --cream: var(--mist);
+          --cream-soft: var(--mist-soft);
+          --cream-deep: var(--mist-deep);
+          --cream-warm: var(--mist-warm);
+          --terracotta: var(--yellow);
+          --terracotta-soft: var(--yellow-soft);
+          --clay: var(--steel-soft);
+          --navy: var(--abyss);
+          --navy-soft: var(--steel);
+          --ink: var(--abyss);
+          --ink-soft: var(--steel);
+          --gold: var(--yellow);
+          --line: rgba(44, 76, 92, 0.14);
+          --line-strong: rgba(44, 76, 92, 0.28);
         }
         .palau-v6 {
-          background: var(--cream);
-          color: var(--ink);
-          font-family: 'Inter Tight', system-ui, sans-serif;
+          background: var(--mist);
+          color: var(--abyss);
+          font-family: 'Familjen Grotesk', system-ui, sans-serif;
           font-weight: 400;
           letter-spacing: -0.005em;
         }
-        .palau-v6 .display { font-family: 'Fraunces', serif; font-optical-sizing: auto; letter-spacing: -0.025em; line-height: 0.95; }
-        .palau-v6 .display-italic { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; letter-spacing: -0.02em; }
-        .palau-v6 .eyebrow { font-family: 'Inter Tight', sans-serif; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.32em; text-transform: uppercase; }
+        .palau-v6 .display { font-family: 'Instrument Serif', serif; font-weight: 400; letter-spacing: -0.015em; line-height: 0.96; }
+        .palau-v6 .display-italic { font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; letter-spacing: -0.01em; }
+        .palau-v6 .eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase; }
         .palau-v6 .body-lg { font-size: clamp(1.05rem, 1.4vw, 1.35rem); line-height: 1.65; font-weight: 300; color: var(--ink-soft); }
         .palau-v6 .body { font-size: 1rem; line-height: 1.75; font-weight: 400; color: var(--ink-soft); }
         .palau-v6 .body-sm { font-size: 0.9rem; line-height: 1.7; font-weight: 400; color: var(--ink-soft); }
@@ -182,39 +195,43 @@ const PalauDigitalResidency = () => {
           opacity: 0.15;
           mix-blend-mode: multiply;
         }
-        /* Cream texture base */
+        /* Mist (cinza-claro) texture base */
         .palau-v6 .bg-cream-tex {
           position: relative;
           background:
-            radial-gradient(ellipse 90% 60% at 80% 10%, rgba(184,89,58,0.07) 0%, transparent 55%),
-            radial-gradient(ellipse 70% 50% at 10% 100%, rgba(27,40,69,0.05) 0%, transparent 60%),
-            linear-gradient(180deg, var(--cream-warm) 0%, var(--cream) 50%, var(--cream-soft) 100%);
+            radial-gradient(ellipse 90% 60% at 80% 10%, rgba(243,227,8,0.20) 0%, transparent 55%),
+            radial-gradient(ellipse 70% 50% at 10% 100%, rgba(44,76,92,0.14) 0%, transparent 60%),
+            radial-gradient(ellipse 60% 40% at 50% 50%, rgba(108,132,148,0.10) 0%, transparent 70%),
+            linear-gradient(180deg, var(--mist-warm) 0%, var(--mist) 50%, var(--mist-soft) 100%);
         }
         .palau-v6 .bg-cream-deep {
           position: relative;
           background:
-            radial-gradient(ellipse 80% 70% at 20% 20%, rgba(184,89,58,0.08) 0%, transparent 60%),
-            radial-gradient(ellipse 60% 60% at 100% 100%, rgba(200,150,113,0.10) 0%, transparent 55%),
-            linear-gradient(135deg, var(--cream-soft) 0%, var(--cream-deep) 100%);
+            radial-gradient(ellipse 80% 70% at 20% 20%, rgba(243,227,8,0.16) 0%, transparent 60%),
+            radial-gradient(ellipse 60% 60% at 100% 100%, rgba(44,76,92,0.20) 0%, transparent 55%),
+            linear-gradient(135deg, var(--mist-soft) 0%, var(--mist-deep) 100%);
         }
         .palau-v6 .bg-navy-tex {
           position: relative;
           background:
-            radial-gradient(ellipse 80% 60% at 30% 30%, rgba(184,89,58,0.18) 0%, transparent 55%),
-            radial-gradient(ellipse 70% 50% at 90% 90%, rgba(200,150,113,0.12) 0%, transparent 50%),
-            linear-gradient(160deg, #16223A 0%, var(--navy) 50%, #131C30 100%);
+            radial-gradient(ellipse 80% 60% at 30% 30%, rgba(243,227,8,0.18) 0%, transparent 55%),
+            radial-gradient(ellipse 70% 50% at 90% 90%, rgba(108,132,148,0.24) 0%, transparent 50%),
+            linear-gradient(160deg, #1F3845 0%, var(--abyss) 50%, #16323F 100%);
         }
         .palau-v6 .bg-paper {
           position: relative;
-          background-image: url(${textureBg});
+          background:
+            radial-gradient(ellipse 100% 80% at 50% 0%, rgba(243,227,8,0.12) 0%, transparent 60%),
+            radial-gradient(ellipse 60% 60% at 0% 100%, rgba(44,76,92,0.14) 0%, transparent 55%),
+            linear-gradient(135deg, var(--mist-warm) 0%, var(--mist) 60%, var(--mist-soft) 100%);
           background-size: cover;
           background-position: center;
         }
         .palau-v6 .bg-paper::after {
           content: ''; position: absolute; inset: 0; pointer-events: none;
           background:
-            radial-gradient(ellipse 80% 70% at 50% 0%, rgba(184,89,58,0.10) 0%, transparent 60%),
-            linear-gradient(180deg, rgba(244,238,226,0.4) 0%, rgba(244,238,226,0.2) 50%, rgba(229,218,196,0.55) 100%);
+            radial-gradient(ellipse 80% 70% at 50% 0%, rgba(243,227,8,0.10) 0%, transparent 60%),
+            linear-gradient(180deg, rgba(184,191,193,0.20) 0%, rgba(184,191,193,0.0) 50%, rgba(162,170,173,0.28) 100%);
         }
 
         .palau-v6 .reveal { opacity: 0; transform: translateY(36px); transition: opacity 1s cubic-bezier(0.22,1,0.36,1), transform 1s cubic-bezier(0.22,1,0.36,1); }
