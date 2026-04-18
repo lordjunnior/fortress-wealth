@@ -1,582 +1,588 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { Helmet } from "react-helmet-async";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { ChevronDown, Plus, Minus } from "lucide-react";
-import BackToHome from "@/components/BackToHome";
 
-import heroImg from "@/assets/palau-v4-hero.jpg";
-import clarityImg from "@/assets/palau-v4-clarity.jpg";
-import exchangeImg from "@/assets/palau-v4-exchange.jpg";
-import neobankImg from "@/assets/palau-v4-neobank.jpg";
-import structureImg from "@/assets/palau-v4-structure.jpg";
-import errorImg from "@/assets/palau-v4-error.jpg";
-import bankImg from "@/assets/palau-v4-bank.jpg";
-import islandImg from "@/assets/palau-v4-island.jpg";
-import transitionImg from "@/assets/palau-v4-transition.jpg";
-import ctaImg from "@/assets/palau-v4-cta.jpg";
-
-const C = {
-  base: "#F5EFE4",
-  base2: "#EFE6D6",
-  ink: "#1F2430",
-  ink2: "#5F6673",
-  blue: "#1F3560",
-  green: "#2E5A4F",
-  gold: "#B08A4A",
-  white: "#FAF7F1",
-};
-
-const SERIF = "'Fraunces', 'Cormorant Garamond', Georgia, serif";
-const SANS = "'Inter Tight', 'DM Sans', Inter, system-ui, sans-serif";
-
-const FAQS = [
-  { q: "O ID de Palau é cidadania?", a: "Não. Não equivale a uma cidadania completa nem concede, por si só, os direitos típicos de um passaporte ou de uma naturalização formal." },
-  { q: "O ID de Palau é residência?", a: "Não exatamente. Não funciona como residência tradicional com direitos de permanência. É um documento emitido por um governo soberano, com usos específicos." },
-  { q: "Posso usar o ID de Palau em exchanges?", a: "Algumas exchanges aceitam o documento em verificação, mas as regras mudam com frequência. Cada plataforma deve ser consultada no momento do onboarding." },
-  { q: "Posso abrir conta em qualquer banco usando o ID de Palau?", a: "Não. A maioria dos bancos tradicionais exige passaporte e comprovantes adicionais. O ID tende a ser mais útil em neobanks e plataformas digitais." },
-  { q: "Preciso de comprovante de endereço?", a: "Em muitos casos, sim. Dependendo da instituição, só o documento não basta. Endereço e outros elementos de verificação podem ser exigidos." },
-  { q: "O ID de Palau substitui passaporte?", a: "Não. Não substitui passaporte em processos que exijam documento de viagem ou prova formal de nacionalidade." },
-  { q: "Resolve minha vida financeira internacional?", a: "Não sozinho. Pode ser útil em situações específicas, mas funciona melhor como parte de uma estrutura internacional mais ampla." },
-  { q: "Quanto custa o ID de Palau?", a: "Os planos variam conforme prazo de validade e taxas aplicáveis. Valores e regras podem mudar ao longo do tempo." },
-  { q: "O ID de Palau é legal?", a: "Sim, quando obtido e utilizado dentro das regras da plataforma emissora e das exigências das instituições envolvidas." },
-  { q: "Vale a pena fazer o ID de Palau?", a: "Depende do objetivo. Para algumas pessoas, é peça útil de uma estratégia de privacidade e redundância documental. Isoladamente, pode não fazer sentido." },
-];
-
-type SceneProps = {
-  image: string;
-  align?: "left" | "right" | "center";
-  overlay?: string;
-  children: React.ReactNode;
-  height?: string;
-  parallaxStrength?: number;
-  id?: string;
-};
-
-const SceneFullBleed: React.FC<SceneProps> = ({
-  image, align = "left", overlay, children, height = "min-h-[100vh]", parallaxStrength = 0.15, id,
-}) => {
-  const ref = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
-  const y = useTransform(scrollYProgress, [0, 1], [`-${parallaxStrength * 100}%`, `${parallaxStrength * 100}%`]);
-  const justify = align === "left" ? "justify-start" : align === "right" ? "justify-end" : "justify-center";
-  const textAlign = align === "center" ? "text-center" : "text-left";
-
-  return (
-    <section ref={ref} id={id} className={`relative ${height} w-full overflow-hidden flex items-center ${justify}`}>
-      <motion.div className="absolute inset-0 z-0" style={{ y }}>
-        <img src={image} alt="" className="w-full h-[120%] object-cover" loading="lazy" />
-      </motion.div>
-      <div
-        className="absolute inset-0 z-10 pointer-events-none"
-        style={{
-          background: overlay || (
-            align === "left"
-              ? "linear-gradient(90deg, rgba(31,36,48,0.82) 0%, rgba(31,36,48,0.55) 38%, rgba(31,36,48,0.15) 68%, rgba(31,36,48,0) 100%)"
-              : align === "right"
-              ? "linear-gradient(270deg, rgba(31,36,48,0.82) 0%, rgba(31,36,48,0.55) 38%, rgba(31,36,48,0.15) 68%, rgba(31,36,48,0) 100%)"
-              : "linear-gradient(180deg, rgba(31,36,48,0.55) 0%, rgba(31,36,48,0.4) 50%, rgba(31,36,48,0.7) 100%)"
-          ),
-        }}
-      />
-      <div className={`relative z-20 w-full max-w-[1600px] mx-auto px-6 md:px-16 py-24 ${textAlign}`}>
-        {children}
-      </div>
-    </section>
-  );
-};
-
-const Divider: React.FC = () => (
-  <div className="w-full flex justify-center py-2" style={{ background: C.base }}>
-    <motion.div
-      initial={{ scaleX: 0 }}
-      whileInView={{ scaleX: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
-      className="h-px w-[60%] origin-left"
-      style={{ background: `linear-gradient(90deg, transparent, ${C.gold}, transparent)` }}
-    />
-  </div>
-);
-
-const PremiumBtn: React.FC<{ children: React.ReactNode; variant?: "primary" | "ghost"; href?: string }> = ({
-  children, variant = "primary", href,
-}) => {
-  const styles = variant === "primary"
-    ? { background: C.white, color: C.ink, border: `1px solid ${C.white}` }
-    : { background: "transparent", color: C.white, border: `1px solid rgba(250,247,241,0.45)` };
-
-  const content = (
-    <>
-      <span
-        aria-hidden
-        className="absolute inset-0 -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-[cubic-bezier(0.7,0,0.2,1)] -skew-x-12"
-        style={{ background: variant === "primary" ? C.gold : C.white, width: "140%", left: "-20%" }}
-      />
-      <span className="relative z-10 group-hover:text-[#1F2430] transition-colors duration-500" style={{ fontFamily: SANS }}>
-        {children}
-      </span>
-    </>
-  );
-
-  return (
-    <a
-      href={href}
-      className="group relative inline-flex items-center justify-center overflow-hidden px-9 py-5 text-[13px] uppercase tracking-[0.28em] font-semibold transition-all duration-500 cursor-pointer"
-      style={styles}
-    >
-      {content}
-    </a>
-  );
-};
-
-const FloatBadge: React.FC<{ label: string }> = ({ label }) => (
-  <div className="px-5 py-3 backdrop-blur-md rounded-sm border"
-    style={{ background: "rgba(250,247,241,0.12)", borderColor: "rgba(250,247,241,0.25)" }}>
-    <p className="text-[11px] uppercase tracking-[0.25em] text-white/95" style={{ fontFamily: SANS, fontWeight: 500 }}>{label}</p>
-  </div>
-);
-
-const PalauDigitalResidency: React.FC = () => {
-  const [open, setOpen] = useState<number | null>(0);
-  const heroRef = useRef<HTMLElement>(null);
-  const { scrollYProgress: hp } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
-  const heroY = useTransform(hp, [0, 1], ["0%", "20%"]);
-  const heroOpacity = useTransform(hp, [0, 0.7], [1, 0]);
-
-  const islandRef = useRef<HTMLElement>(null);
-  const { scrollYProgress: ip } = useScroll({ target: islandRef, offset: ["start end", "end start"] });
-  const islandY = useTransform(ip, [0, 1], ["-20%", "25%"]);
-
-  const journeyRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress: jp } = useScroll({ target: journeyRef, offset: ["start 0.7", "end 0.3"] });
-  const lineH = useTransform(jp, [0, 1], ["0%", "100%"]);
+const PalauDigitalResidency = () => {
+  const progRef = useRef<HTMLDivElement>(null);
+  const curDotRef = useRef<HTMLDivElement>(null);
+  const curRingRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    document.body.style.background = C.base;
-    document.body.style.color = C.ink;
-    return () => { document.body.style.background = ""; document.body.style.color = ""; };
+    const onScroll = () => {
+      const h = document.documentElement;
+      const pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+      if (progRef.current) progRef.current.style.width = pct + "%";
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    const onMove = (e: MouseEvent) => {
+      if (curDotRef.current) {
+        curDotRef.current.style.left = e.clientX + "px";
+        curDotRef.current.style.top = e.clientY + "px";
+      }
+      if (curRingRef.current) {
+        curRingRef.current.style.left = e.clientX + "px";
+        curRingRef.current.style.top = e.clientY + "px";
+      }
+    };
+    window.addEventListener("mousemove", onMove);
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((en) => {
+          if (en.isIntersecting) en.target.classList.add("in");
+        });
+      },
+      { threshold: 0.12 }
+    );
+    document.querySelectorAll(".rv").forEach((el) => io.observe(el));
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("mousemove", onMove);
+      io.disconnect();
+    };
   }, []);
 
   return (
     <>
       <Helmet>
-        <title>ID de Palau: o que é, onde funciona e como usar com estratégia</title>
-        <meta name="description" content="Entenda o ID de Palau: o que é, onde pode ser usado, suas limitações e como ele se encaixa em uma estratégia internacional de soberania pessoal." />
-        <link rel="canonical" href="https://lordjunnior.com/palau-digital-residency" />
-        <link rel="preload" as="image" href={heroImg} />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter+Tight:wght@300;400;500;600;700&display=swap" />
-        <script type="application/ld+json">{JSON.stringify({
-          "@context": "https://schema.org", "@type": "TechArticle",
-          headline: "ID de Palau: o que é, onde funciona e como usar com estratégia",
-          description: "Guia editorial sobre o ID de Palau, suas aplicações, limitações e papel em uma estratégia maior de soberania pessoal.",
-          author: { "@type": "Person", name: "Lord Junnior" },
-          publisher: { "@type": "Organization", name: "Lord Junnior" },
-          mainEntityOfPage: { "@type": "WebPage", "@id": "https://lordjunnior.com/palau-digital-residency" },
-        })}</script>
-        <script type="application/ld+json">{JSON.stringify({
-          "@context": "https://schema.org", "@type": "HowTo", name: "Como obter o ID de Palau",
-          step: [
-            { "@type": "HowToStep", name: "Solicitação", text: "Inicie o pedido pela plataforma responsável." },
-            { "@type": "HowToStep", name: "Verificação", text: "Passe pelo processo de validação exigido." },
-            { "@type": "HowToStep", name: "Emissão", text: "Aguarde a aprovação e a emissão do documento." },
-            { "@type": "HowToStep", name: "Entrega", text: "Receba o cartão físico." },
-            { "@type": "HowToStep", name: "Uso estratégico", text: "Avalie documentação complementar para usos específicos." },
-          ],
-        })}</script>
-        <script type="application/ld+json">{JSON.stringify({
-          "@context": "https://schema.org", "@type": "FAQPage",
-          mainEntity: FAQS.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
-        })}</script>
+        <title>ID de Palau — Lord Junnior</title>
+        <meta
+          name="description"
+          content="Entenda o que é o ID de Palau, onde ele pode ser usado, suas limitações e como ele se encaixa em uma estratégia internacional de soberania pessoal."
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Anton&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap"
+          rel="stylesheet"
+        />
       </Helmet>
 
       <style>{`
-        .palau-page { font-family: ${SANS}; background: ${C.base}; color: ${C.ink}; }
-        .palau-page h1, .palau-page h2, .palau-page h3 { font-family: ${SERIF}; font-weight: 400; letter-spacing: -0.01em; }
-        .palau-page p { line-height: 1.75; }
-        .float-y { animation: floaty 6s ease-in-out infinite; }
-        @keyframes floaty { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-6px) } }
+.palau-root *,.palau-root *::before,.palau-root *::after{box-sizing:border-box;margin:0;padding:0}
+.palau-root{
+  --ink:#0D0C0A;
+  --cream:#F2EDE4;
+  --cream2:#E8E0D4;
+  --gold:#C9A84C;
+  --gold2:#E8C96A;
+  --stone:#9A9288;
+  --white:#FAFAF8;
+  font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden;cursor:none;
+}
+
+#cur-dot{width:8px;height:8px;background:var(--cream);border-radius:50%;position:fixed;transform:translate(-50%,-50%);transition:transform .1s;pointer-events:none;z-index:9999;mix-blend-mode:difference}
+#cur-ring{width:36px;height:36px;border:1px solid rgba(242,237,228,.4);border-radius:50%;position:fixed;transform:translate(-50%,-50%);transition:width .25s,height .25s;pointer-events:none;z-index:9999;mix-blend-mode:difference}
+
+.palau-root nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:2rem 3.5rem;pointer-events:none}
+.palau-root .nav-brand{pointer-events:all;font-family:'DM Sans',sans-serif;font-size:.65rem;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--cream);text-decoration:none}
+.palau-root .nav-year{font-family:'DM Sans',sans-serif;font-size:.6rem;letter-spacing:.2em;color:rgba(242,237,228,.4)}
+
+#prog{position:fixed;top:0;left:0;height:1px;background:var(--gold);z-index:200;width:0;transition:width .08s linear}
+
+.palau-root .hero{height:100vh;min-height:700px;position:relative;overflow:hidden;background:#0D0C0A;display:flex;align-items:flex-end}
+.palau-root .hero-atm{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse 80% 60% at 65% 40%, rgba(201,168,76,.07) 0%, transparent 60%),radial-gradient(ellipse 50% 80% at 20% 80%, rgba(201,168,76,.04) 0%, transparent 50%),#141210}
+.palau-root .hero-grain{position:absolute;inset:0;z-index:2;opacity:.35;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");pointer-events:none}
+.palau-root .hero-photo{position:absolute;inset:0;z-index:1;background:linear-gradient(to bottom, rgba(13,12,10,.15) 0%, rgba(13,12,10,.0) 30%, rgba(13,12,10,.5) 70%, rgba(13,12,10,.92) 100%),linear-gradient(to right, rgba(13,12,10,.4) 0%, transparent 60%)}
+.palau-root .hero-content{position:relative;z-index:3;padding:0 3.5rem 4.5rem;width:100%}
+.palau-root .hero-tag{font-family:'DM Sans',sans-serif;font-size:.6rem;font-weight:500;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;opacity:0;animation:palauFadeUp .7s .3s forwards}
+.palau-root .hero-huge{font-family:'Anton',sans-serif;font-size:clamp(5rem,17vw,17rem);line-height:.88;letter-spacing:-.02em;color:var(--cream);opacity:0;animation:palauFadeUp .9s .15s forwards}
+.palau-root .hero-huge em{font-style:normal;-webkit-text-stroke:1px var(--gold);color:transparent}
+.palau-root .hero-row{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;margin-top:1rem;opacity:0;animation:palauFadeUp .7s .5s forwards}
+.palau-root .hero-sub{font-family:'Playfair Display',serif;font-size:clamp(.9rem,1.6vw,1.3rem);font-weight:400;font-style:italic;color:rgba(242,237,228,.55);max-width:460px;line-height:1.7}
+.palau-root .hero-meta{text-align:right;flex-shrink:0}
+.palau-root .hero-meta div{display:block;margin-bottom:.6rem}
+.palau-root .hero-meta span{display:block;font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(242,237,228,.28);margin-bottom:.3rem}
+.palau-root .hero-meta strong{display:block;font-size:.72rem;font-weight:500;color:rgba(242,237,228,.65);letter-spacing:.1em}
+.palau-root .hero-scroll-hint{position:absolute;bottom:4.5rem;right:3.5rem;z-index:3;display:flex;flex-direction:column;align-items:center;gap:.5rem;opacity:0;animation:palauFadeUp .6s 1s forwards}
+.palau-root .hero-scroll-hint span{font-size:.5rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(242,237,228,.25);writing-mode:vertical-rl}
+.palau-root .scroll-bar{width:1px;height:50px;background:linear-gradient(var(--gold),transparent);animation:palauScrollAnim 2s ease-in-out 1.5s infinite}
+
+@keyframes palauScrollAnim{0%{transform:scaleY(0);transform-origin:top}49%{transform:scaleY(1);transform-origin:top}50%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+@keyframes palauFadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+
+.palau-root .s-clareza{background:var(--cream);padding:10rem 3.5rem 8rem;position:relative;overflow:hidden}
+.palau-root .s-clareza::before{content:'01';font-family:'Anton',sans-serif;font-size:28vw;line-height:1;color:rgba(13,12,10,.04);position:absolute;top:-4rem;left:-2rem;pointer-events:none;user-select:none;z-index:0}
+.palau-root .clareza-inner{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:6rem;max-width:1300px;margin:0 auto;align-items:start}
+.palau-root .cl-label{font-family:'DM Sans',sans-serif;font-size:.58rem;font-weight:500;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem}
+.palau-root .cl-title{font-family:'Anton',sans-serif;font-size:clamp(3rem,6vw,6.5rem);line-height:.92;letter-spacing:-.01em;margin-bottom:2rem}
+.palau-root .cl-title em{font-style:normal;-webkit-text-stroke:1.5px var(--stone);color:transparent;display:block}
+.palau-root .cl-body{font-size:.95rem;font-weight:300;line-height:1.85;color:var(--stone);max-width:380px}
+.palau-root .cl-lists{padding-top:2rem}
+.palau-root .cl-block{margin-bottom:2.5rem}
+.palau-root .cl-block-head{display:flex;align-items:center;gap:.75rem;margin-bottom:1rem;padding-bottom:.75rem;border-bottom:1px solid rgba(13,12,10,.08)}
+.palau-root .cl-block-head svg{flex-shrink:0}
+.palau-root .cl-block-head-text{font-family:'DM Sans',sans-serif;font-size:.6rem;font-weight:500;letter-spacing:.25em;text-transform:uppercase}
+.palau-root .cl-block-head-text.neg{color:#B04040}
+.palau-root .cl-block-head-text.pos{color:var(--gold)}
+.palau-root .cl-list{list-style:none}
+.palau-root .cl-list li{font-size:.88rem;font-weight:300;line-height:1.7;color:var(--ink);padding:.6rem 0 .6rem 1.5rem;border-bottom:1px solid rgba(13,12,10,.05);position:relative}
+.palau-root .neg-list li::before{content:'';position:absolute;left:0;top:50%;width:.75rem;height:1px;background:#B04040}
+.palau-root .pos-list li::before{content:'\\25C6';position:absolute;left:0;top:.7rem;font-size:.4rem;color:var(--gold)}
+
+.palau-root .s-aplica{background:#0D0C0A;padding:8rem 0 0;overflow:hidden}
+.palau-root .aplica-head{padding:0 3.5rem 5rem;display:flex;justify-content:space-between;align-items:flex-end;max-width:1300px;margin:0 auto}
+.palau-root .al-label{font-size:.58rem;font-weight:500;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+.palau-root .aplica-head-left h2{font-family:'Anton',sans-serif;font-size:clamp(3.5rem,7vw,8rem);line-height:.9;letter-spacing:-.02em;color:var(--cream)}
+.palau-root .aplica-head-left h2 em{font-style:normal;-webkit-text-stroke:1.5px rgba(242,237,228,.25);color:transparent;display:block}
+.palau-root .aplica-head-right{max-width:320px;text-align:right;font-size:.83rem;font-weight:300;line-height:1.8;color:rgba(242,237,228,.35);padding-bottom:.5rem}
+.palau-root .aplica-grid{display:grid;grid-template-columns:2fr 1.2fr 1fr;grid-template-rows:420px 320px;gap:2px}
+.palau-root .ag-card{position:relative;overflow:hidden;cursor:pointer}
+.palau-root .ag-card::before{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(to top, rgba(13,12,10,.9) 0%, rgba(13,12,10,.2) 60%, transparent 100%);transition:opacity .4s ease}
+.palau-root .ag-card:hover::before{opacity:.65}
+.palau-root .ag-bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .6s ease}
+.palau-root .ag-card:hover .ag-bg{transform:scale(1.05)}
+.palau-root .ag-bg-1{background:linear-gradient(135deg,#1a2a1a 0%,#0d1a0d 40%,#0a1510 100%)}
+.palau-root .ag-bg-2{background:linear-gradient(160deg,#0d1520 0%,#050d18 50%,#020810 100%)}
+.palau-root .ag-bg-3{background:linear-gradient(140deg,#1a1008 0%,#0d0a04 60%,#050402 100%)}
+.palau-root .ag-bg-4{background:linear-gradient(150deg,#0a1218 0%,#060c12 50%,#03060a 100%)}
+.palau-root .ag-bg-5{background:linear-gradient(130deg,#140d0a 0%,#0d0806 50%,#080504 100%)}
+.palau-root .ag-card:nth-child(1){grid-column:1;grid-row:1/3}
+.palau-root .ag-card:nth-child(2){grid-column:2;grid-row:1}
+.palau-root .ag-card:nth-child(3){grid-column:3;grid-row:1}
+.palau-root .ag-card:nth-child(4){grid-column:2;grid-row:2}
+.palau-root .ag-card:nth-child(5){grid-column:3;grid-row:2}
+.palau-root .ag-content{position:absolute;bottom:0;left:0;right:0;z-index:2;padding:2rem 1.75rem}
+.palau-root .ag-cat{font-size:.55rem;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem}
+.palau-root .ag-title{font-family:'Anton',sans-serif;font-size:clamp(1.4rem,3vw,2.2rem);line-height:.95;letter-spacing:-.01em;color:var(--cream);margin-bottom:1rem}
+.palau-root .ag-card:nth-child(1) .ag-title{font-size:clamp(2rem,4vw,3.5rem)}
+.palau-root .ag-card:nth-child(1) .ag-content{padding:3rem}
+.palau-root .ag-items{list-style:none}
+.palau-root .ag-items li{font-size:.75rem;font-weight:300;color:rgba(242,237,228,.38);padding:.35rem 0;border-bottom:1px solid rgba(242,237,228,.06);display:flex;justify-content:space-between;align-items:center;transition:color .2s}
+.palau-root .ag-card:hover .ag-items li{color:rgba(242,237,228,.65)}
+.palau-root .ag-items li::after{content:'\\2192';font-size:.6rem;color:var(--gold);opacity:0;transform:translateX(-6px);transition:all .2s}
+.palau-root .ag-card:hover .ag-items li::after{opacity:1;transform:translateX(0)}
+.palau-root .ag-note{margin-top:.75rem;font-size:.65rem;font-style:italic;color:rgba(242,237,228,.2);line-height:1.5}
+.palau-root .ag-cols{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+
+.palau-root .s-quebra{background:var(--ink);padding:9rem 3.5rem;position:relative;overflow:hidden}
+.palau-root .quebra-pct{position:absolute;font-family:'Anton',sans-serif;font-size:clamp(20rem,42vw,48rem);line-height:.8;color:rgba(242,237,228,.03);top:-4rem;left:-3rem;pointer-events:none;user-select:none;letter-spacing:-.04em}
+.palau-root .quebra-inner{position:relative;z-index:1;max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:8rem;align-items:center}
+.palau-root .qb-label{font-size:.58rem;font-weight:500;letter-spacing:.35em;text-transform:uppercase;color:#B04040;margin-bottom:1.25rem}
+.palau-root .qb-title{font-family:'Anton',sans-serif;font-size:clamp(3rem,5.5vw,6rem);line-height:.9;letter-spacing:-.01em;color:var(--cream);margin-bottom:2rem}
+.palau-root .qb-title em{font-style:italic;font-family:'Playfair Display',serif;font-size:clamp(2.5rem,4.5vw,5rem);color:rgba(242,237,228,.4);display:block;font-weight:400;letter-spacing:0}
+.palau-root .qb-text{font-size:.93rem;font-weight:300;line-height:1.9;color:rgba(242,237,228,.4)}
+.palau-root .qb-list{list-style:none;counter-reset:qb}
+.palau-root .qb-list li{counter-increment:qb;display:flex;gap:1.5rem;padding:1.5rem 0;border-bottom:1px solid rgba(242,237,228,.06);transition:border-color .3s}
+.palau-root .qb-list li:hover{border-color:rgba(201,168,76,.2)}
+.palau-root .qb-list li::before{content:counter(qb,decimal-leading-zero);font-family:'Playfair Display',serif;font-size:1.2rem;font-style:italic;color:rgba(242,237,228,.15);flex-shrink:0;line-height:1.4}
+.palau-root .qb-item strong{display:block;font-family:'DM Sans',sans-serif;font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(242,237,228,.65);margin-bottom:.4rem}
+.palau-root .qb-item p{font-size:.82rem;font-weight:300;line-height:1.75;color:rgba(242,237,228,.3)}
+
+.palau-root .s-limit{background:var(--cream2);padding:8rem 3.5rem}
+.palau-root .limit-head{max-width:1300px;margin:0 auto 4rem;display:flex;justify-content:space-between;align-items:flex-end}
+.palau-root .lt-title{font-family:'Anton',sans-serif;font-size:clamp(3rem,6vw,6.5rem);line-height:.9;letter-spacing:-.015em}
+.palau-root .lt-title span{display:block;font-family:'Playfair Display',serif;font-size:clamp(1.2rem,2.5vw,2.5rem);font-weight:400;font-style:italic;color:var(--stone);letter-spacing:0;line-height:1.4}
+.palau-root .lt-note{max-width:300px;text-align:right;font-size:.83rem;font-weight:300;line-height:1.8;color:var(--stone);border-left:2px solid rgba(201,168,76,.3);padding-left:1.25rem}
+.palau-root .limit-grid{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr;grid-template-rows:auto auto;gap:1.5px}
+.palau-root .lc{background:var(--cream);padding:2.5rem;position:relative;overflow:hidden;transition:background .3s}
+.palau-root .lc:hover{background:#fff}
+.palau-root .lc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:transparent;transition:background .3s}
+.palau-root .lc:hover::before{background:var(--gold)}
+.palau-root .lc:nth-child(1){grid-column:1;grid-row:1/3}
+.palau-root .lc:nth-child(4){grid-column:2/4;grid-row:2}
+.palau-root .lc-badge{display:inline-block;font-family:'DM Sans',sans-serif;font-size:.55rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:#B04040;padding:.25rem .7rem;border:1px solid rgba(176,64,64,.2);margin-bottom:1.25rem}
+.palau-root .lc-title{font-family:'Playfair Display',serif;font-size:clamp(1.2rem,2vw,1.7rem);font-weight:700;line-height:1.2;margin-bottom:1rem}
+.palau-root .lc:nth-child(1) .lc-title{font-size:clamp(1.8rem,3vw,2.8rem)}
+.palau-root .lc-text{font-size:.86rem;font-weight:300;line-height:1.8;color:var(--stone)}
+
+.palau-root .s-valor{background:var(--ink);padding:8rem 3.5rem;position:relative;overflow:hidden}
+.palau-root .valor-quote{max-width:1300px;margin:0 auto 6rem;position:relative}
+.palau-root .valor-quote::before{content:'\\201C';font-family:'Playfair Display',serif;font-size:clamp(12rem,22vw,20rem);line-height:.7;color:rgba(201,168,76,.07);position:absolute;top:-3rem;left:-2rem;pointer-events:none}
+.palau-root .valor-quote-text{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,3.5rem);font-weight:400;font-style:italic;line-height:1.3;color:var(--cream);position:relative;z-index:1;max-width:900px}
+.palau-root .valor-quote-text em{font-style:normal;color:var(--gold)}
+.palau-root .valor-source{margin-top:1.5rem;font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(242,237,228,.25)}
+.palau-root .valor-cols{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(242,237,228,.06)}
+.palau-root .vc{padding:2.5rem 2rem 2.5rem 0;border-right:1px solid rgba(242,237,228,.06);transition:padding-left .3s}
+.palau-root .vc:last-child{border-right:none}
+.palau-root .vc:hover{padding-left:.75rem}
+.palau-root .vc-sym{font-size:1.2rem;color:var(--gold);margin-bottom:1.25rem;display:block;line-height:1}
+.palau-root .vc-title{font-family:'DM Sans',sans-serif;font-size:.68rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:rgba(242,237,228,.55);margin-bottom:.75rem}
+.palau-root .vc-text{font-size:.82rem;font-weight:300;line-height:1.75;color:rgba(242,237,228,.25);transition:color .3s}
+.palau-root .vc:hover .vc-text{color:rgba(242,237,228,.5)}
+
+.palau-root .s-exec{min-height:70vh;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;background:#08100d}
+.palau-root .exec-bg{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(8,16,13,0) 0%,rgba(8,16,13,.4) 50%,rgba(8,16,13,.95) 100%),#0a1510}
+.palau-root .exec-content{position:relative;z-index:1;padding:0 3.5rem 5rem}
+.palau-root .ex-label{font-size:.58rem;font-weight:500;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+.palau-root .ex-title{font-family:'Anton',sans-serif;font-size:clamp(3rem,6vw,7rem);line-height:.88;letter-spacing:-.015em;color:var(--cream);margin-bottom:4rem}
+.palau-root .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border-top:1px solid rgba(242,237,228,.08);position:relative}
+.palau-root .step{padding:2rem 1.5rem 0 0;position:relative;cursor:default}
+.palau-root .step::after{content:'';position:absolute;top:-1px;left:0;width:0;height:2px;background:var(--gold);transition:width .4s ease}
+.palau-root .step.active::after,.palau-root .step:hover::after{width:100%}
+.palau-root .step-n{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:400;font-style:italic;color:rgba(242,237,228,.1);line-height:1;margin-bottom:1rem;transition:color .3s}
+.palau-root .step.active .step-n,.palau-root .step:hover .step-n{color:var(--gold)}
+.palau-root .step-title{font-family:'DM Sans',sans-serif;font-size:.65rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:rgba(242,237,228,.35);margin-bottom:.6rem;transition:color .3s}
+.palau-root .step.active .step-title,.palau-root .step:hover .step-title{color:rgba(242,237,228,.8)}
+.palau-root .step-desc{font-size:.75rem;font-weight:300;line-height:1.65;color:rgba(242,237,228,.18);transition:color .3s}
+.palau-root .step.active .step-desc,.palau-root .step:hover .step-desc{color:rgba(242,237,228,.45)}
+
+.palau-root .s-strat{background:var(--cream);padding:0;display:grid;grid-template-columns:1fr 1fr;min-height:80vh}
+.palau-root .strat-visual{position:relative;overflow:hidden;background:#0D0C0A;display:flex;align-items:center;justify-content:center}
+.palau-root .strat-vis-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 70% at 50% 50%,rgba(201,168,76,.06),transparent 65%),#0D0C0A}
+.palau-root .rings{position:relative;width:340px;height:340px;display:flex;align-items:center;justify-content:center}
+.palau-root .ring{position:absolute;border-radius:50%;border:1px solid rgba(201,168,76,.12);animation:palauRingPulse 4s ease-in-out infinite}
+.palau-root .ring:nth-child(1){width:340px;height:340px;animation-delay:0s}
+.palau-root .ring:nth-child(2){width:270px;height:270px;animation-delay:.5s;border-color:rgba(201,168,76,.18)}
+.palau-root .ring:nth-child(3){width:200px;height:200px;animation-delay:1s;border-color:rgba(201,168,76,.25)}
+@keyframes palauRingPulse{0%,100%{opacity:.6;transform:scale(1)}50%{opacity:1;transform:scale(1.02)}}
+.palau-root .ring-center{width:100px;height:100px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.25rem;z-index:1}
+.palau-root .ring-center svg{width:44px;height:44px}
+.palau-root .ring-center span{font-family:'DM Sans',sans-serif;font-size:.45rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--ink)}
+.palau-root .strat-content{padding:6rem 4.5rem;display:flex;flex-direction:column;justify-content:center}
+.palau-root .st-label{font-size:.58rem;font-weight:500;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem}
+.palau-root .st-title{font-family:'Anton',sans-serif;font-size:clamp(2.5rem,5vw,5.5rem);line-height:.9;letter-spacing:-.015em;margin-bottom:.75rem}
+.palau-root .st-sub{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:400;font-style:italic;color:var(--stone);margin-bottom:3rem;line-height:1.6}
+.palau-root .st-specs{list-style:none;margin-bottom:3rem}
+.palau-root .st-specs li{display:flex;justify-content:space-between;align-items:center;padding:1rem 0;border-bottom:1px solid rgba(13,12,10,.07);font-size:.85rem}
+.palau-root .sp-key{font-size:.6rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--stone)}
+.palau-root .sp-val{font-weight:400;color:var(--ink)}
+.palau-root .sp-val.g{color:var(--gold);font-weight:500}
+
+.palau-root .s-faq{background:var(--ink);padding:8rem 3.5rem}
+.palau-root .faq-inner{max-width:900px;margin:0 auto}
+.palau-root .faq-label{font-size:.58rem;font-weight:500;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;text-align:center}
+.palau-root .faq-title{font-family:'Anton',sans-serif;font-size:clamp(2.5rem,5vw,6rem);line-height:.9;letter-spacing:-.015em;color:var(--cream);text-align:center;margin-bottom:5rem}
+.palau-root .faq-title em{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1.8rem,3.5vw,4rem);color:rgba(242,237,228,.35);display:block;font-weight:400;letter-spacing:0;line-height:1.3}
+.palau-root details{border-top:1px solid rgba(242,237,228,.07)}
+.palau-root details:last-of-type{border-bottom:1px solid rgba(242,237,228,.07)}
+.palau-root details summary{display:flex;justify-content:space-between;align-items:center;padding:1.6rem 0;cursor:pointer;gap:2rem;list-style:none}
+.palau-root details summary::-webkit-details-marker{display:none}
+.palau-root .faq-q{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:400;color:rgba(242,237,228,.65);line-height:1.5;transition:color .2s}
+.palau-root details[open] .faq-q{color:var(--gold)}
+.palau-root .faq-ico{width:26px;height:26px;flex-shrink:0;border-radius:50%;border:1px solid rgba(242,237,228,.15);display:flex;align-items:center;justify-content:center;transition:all .25s}
+.palau-root details[open] .faq-ico{background:var(--gold);border-color:var(--gold);transform:rotate(45deg)}
+.palau-root .faq-ico svg{width:9px;height:9px;fill:none;stroke:rgba(242,237,228,.5);stroke-width:1.5;transition:stroke .25s}
+.palau-root details[open] .faq-ico svg{stroke:var(--ink)}
+.palau-root .faq-a{padding:0 0 1.75rem;font-size:.88rem;font-weight:300;line-height:1.9;color:rgba(242,237,228,.35);max-width:700px}
+
+.palau-root .s-cta{background:var(--ink);padding:10rem 3.5rem 8rem;position:relative;overflow:hidden;text-align:center;border-top:1px solid rgba(242,237,228,.04)}
+.palau-root .cta-noise{position:absolute;inset:0;opacity:.2;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");pointer-events:none}
+.palau-root .cta-glow{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,.06) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
+.palau-root .cta-inner{position:relative;z-index:1}
+.palau-root .cta-eyebrow{font-size:.58rem;font-weight:500;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem}
+.palau-root .cta-big{font-family:'Anton',sans-serif;font-size:clamp(4rem,10vw,12rem);line-height:.85;letter-spacing:-.02em;color:var(--cream);margin-bottom:.5rem}
+.palau-root .cta-big span{display:block;-webkit-text-stroke:1px rgba(201,168,76,.4);color:transparent}
+.palau-root .cta-sub{font-family:'Playfair Display',serif;font-size:clamp(.9rem,1.5vw,1.3rem);font-weight:400;font-style:italic;color:rgba(242,237,228,.3);max-width:500px;margin:1.5rem auto 3.5rem;line-height:1.7}
+.palau-root .cta-btns{display:flex;gap:1.25rem;justify-content:center;flex-wrap:wrap}
+.palau-root .btn-a{display:inline-flex;align-items:center;gap:.85rem;padding:1.1rem 2.75rem;background:var(--gold);color:var(--ink);font-family:'DM Sans',sans-serif;font-size:.65rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;border-radius:100px;position:relative;overflow:hidden;transition:transform .25s,box-shadow .25s}
+.palau-root .btn-a::before{content:'';position:absolute;width:200%;height:200%;background:radial-gradient(circle,rgba(255,255,255,.2) 0%,transparent 60%);top:50%;left:50%;transform:translate(-50%,-50%) scale(0);transition:transform .5s ease;border-radius:inherit}
+.palau-root .btn-a:hover::before{transform:translate(-50%,-50%) scale(1)}
+.palau-root .btn-a:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(201,168,76,.25)}
+.palau-root .btn-b{display:inline-flex;align-items:center;gap:.85rem;padding:1.1rem 2.75rem;background:transparent;color:rgba(242,237,228,.5);border:1px solid rgba(242,237,228,.12);font-family:'DM Sans',sans-serif;font-size:.65rem;font-weight:400;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;border-radius:100px;transition:border-color .25s,color .25s,transform .25s}
+.palau-root .btn-b:hover{border-color:rgba(242,237,228,.35);color:rgba(242,237,228,.85);transform:translateY(-3px)}
+
+.palau-root footer{background:var(--ink);padding:2.5rem 3.5rem;border-top:1px solid rgba(242,237,228,.05);display:flex;justify-content:space-between;align-items:center}
+.palau-root .ft-brand{font-family:'DM Sans',sans-serif;font-size:.6rem;font-weight:500;letter-spacing:.25em;text-transform:uppercase;color:rgba(242,237,228,.25)}
+.palau-root .ft-cr{font-size:.55rem;letter-spacing:.15em;color:rgba(242,237,228,.15)}
+
+.palau-root .rv{opacity:0;transform:translateY(32px);transition:opacity .85s ease,transform .85s ease}
+.palau-root .rv.in{opacity:1;transform:none}
+.palau-root .rv.d1{transition-delay:.1s}.palau-root .rv.d2{transition-delay:.2s}.palau-root .rv.d3{transition-delay:.3s}
+
+@media(max-width:1024px){
+  .palau-root .clareza-inner,.palau-root .quebra-inner,.palau-root .s-strat{grid-template-columns:1fr}
+  .palau-root .aplica-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+  .palau-root .ag-card:nth-child(1){grid-column:1/3;grid-row:1}
+  .palau-root .ag-card:nth-child(n+2){grid-column:auto;grid-row:auto}
+  .palau-root .steps,.palau-root .valor-cols{grid-template-columns:1fr 1fr}
+  .palau-root .limit-grid{grid-template-columns:1fr 1fr}
+  .palau-root .lc:nth-child(1){grid-column:1/3;grid-row:1}
+  .palau-root .lc:nth-child(4){grid-column:1/3}
+  .palau-root nav{padding:1.5rem 2rem}
+  .palau-root .hero-row{flex-direction:column;gap:1rem}
+  .palau-root .hero-meta{text-align:left}
+}
       `}</style>
 
-      <div className="palau-page" style={{ background: C.base }}>
-        <BackToHome />
+      <div className="palau-root">
+        <div ref={curDotRef} id="cur-dot" />
+        <div ref={curRingRef} id="cur-ring" />
+        <div ref={progRef} id="prog" />
 
-        {/* HERO */}
-        <section ref={heroRef} className="relative min-h-screen w-full overflow-hidden">
-          <motion.div className="absolute inset-0 z-0" style={{ y: heroY }}>
-            <img src={heroImg} alt="ID de Palau sobre mapa-múndi e passaporte" className="w-full h-[115%] object-cover" fetchPriority="high" />
-          </motion.div>
-          <div className="absolute inset-0 z-10"
-            style={{ background: "linear-gradient(95deg, rgba(31,36,48,0.85) 0%, rgba(31,36,48,0.6) 38%, rgba(31,36,48,0.15) 65%, rgba(31,36,48,0) 90%)" }} />
+        <nav>
+          <a href="/" className="nav-brand">Lord Junnior</a>
+          <span className="nav-year">2025</span>
+        </nav>
 
-          <motion.div style={{ opacity: heroOpacity }}
-            className="relative z-20 max-w-[1600px] mx-auto px-6 md:px-16 pt-32 md:pt-44 pb-24 grid md:grid-cols-12 gap-10 items-center min-h-screen">
-            <div className="md:col-span-7 lg:col-span-6">
-              <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }}
-                className="text-[11px] md:text-[12px] uppercase tracking-[0.4em] mb-8"
-                style={{ color: C.gold, fontFamily: SANS, fontWeight: 600 }}>
-                Estratégia Avançada de Soberania
-              </motion.p>
-
-              <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
-                className="text-white leading-[0.92]"
-                style={{ fontFamily: SERIF, fontSize: "clamp(64px, 11vw, 180px)", fontWeight: 300 }}>
-                ID de <em style={{ color: C.gold, fontStyle: "italic", fontWeight: 400 }}>Palau</em>
-              </motion.h1>
-
-              <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 1.2, delay: 0.7 }}
-                className="h-px w-32 my-10 origin-left" style={{ background: C.gold }} />
-
-              <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.5 }}
-                className="text-white/85 max-w-xl mb-6"
-                style={{ fontFamily: SERIF, fontSize: "clamp(22px, 2.2vw, 30px)", lineHeight: 1.4 }}>
-                Uma identidade fora da sua jurisdição principal.
-              </motion.p>
-
-              <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.7 }}
-                className="text-white/65 max-w-lg mb-12" style={{ fontSize: "clamp(17px, 1.2vw, 19px)", lineHeight: 1.7 }}>
-                Nem tudo exige cidadania. Mas tudo exige estratégia. Esta página mostra,
-                de forma clara e prática, onde o ID de Palau funciona — e onde não.
-              </motion.p>
-
-              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.9 }}
-                className="flex flex-wrap gap-4">
-                <PremiumBtn href="#onde-funciona" variant="primary">Começar agora</PremiumBtn>
-                <PremiumBtn href="#como-obter" variant="ghost">Onde funciona</PremiumBtn>
-              </motion.div>
+        <section className="hero">
+          <div className="hero-atm" />
+          <div className="hero-photo" />
+          <div className="hero-grain" />
+          <div className="hero-content">
+            <div className="hero-tag">Soberania Internacional · ID de Palau</div>
+            <h1 className="hero-huge">ID de<br /><em>Palau</em></h1>
+            <div className="hero-row">
+              <p className="hero-sub">
+                Uma identidade emitida por um governo soberano, fora da sua jurisdição principal. A ferramenta que poucos entendem — e menos ainda usam corretamente.
+              </p>
+              <div className="hero-meta">
+                <div><span>Emitido por</span><strong>República de Palau</strong></div>
+                <div><span>Processo</span><strong>100% Online</strong></div>
+                <div><span>Camada</span><strong>Complementar</strong></div>
+              </div>
             </div>
-
-            <div className="hidden md:block md:col-span-5 lg:col-span-6 relative h-full">
-              <div className="absolute top-[18%] right-[8%] float-y"><FloatBadge label="Emitido por Estado soberano" /></div>
-              <div className="absolute top-[42%] right-[22%] float-y" style={{ animationDelay: "1s" }}><FloatBadge label="Processo 100% online" /></div>
-              <div className="absolute top-[66%] right-[6%] float-y" style={{ animationDelay: "2s" }}><FloatBadge label="Aplicação internacional" /></div>
-            </div>
-          </motion.div>
-
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 0.6 }} transition={{ delay: 1.6 }}
-            className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-3">
-            <span className="text-[10px] uppercase tracking-[0.4em] text-white/70" style={{ fontFamily: SANS, fontWeight: 500 }}>Role para entender</span>
-            <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 2, repeat: Infinity }}>
-              <ChevronDown size={18} className="text-white/70" />
-            </motion.div>
-          </motion.div>
+          </div>
+          <div className="hero-scroll-hint">
+            <span>scroll</span>
+            <div className="scroll-bar" />
+          </div>
         </section>
 
-        {/* CENA 02 — O QUE NÃO É */}
-        <SceneFullBleed image={clarityImg} align="left" parallaxStrength={0.12}>
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-15%" }}
-            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }} className="max-w-2xl">
-            <p className="text-[11px] uppercase tracking-[0.4em] mb-6" style={{ color: C.gold, fontWeight: 600 }}>Cena 01 — Clareza</p>
-            <h2 className="text-white mb-12" style={{ fontSize: "clamp(44px, 6.5vw, 96px)", lineHeight: 1.02 }}>
-              O que o ID<br />de Palau <em style={{ color: C.gold }}>não é</em>.
-            </h2>
-            <div className="space-y-5 mb-14">
-              {["Não é cidadania completa", "Não é residência tradicional", "Não é passaporte", "Não resolve tudo sozinho"].map((t, i) => (
-                <motion.div key={t} initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.1 + i * 0.1 }}
-                  className="flex items-center gap-5 text-white/90"
-                  style={{ fontSize: "clamp(20px, 1.6vw, 24px)", fontFamily: SERIF, fontWeight: 300 }}>
-                  <span className="h-px w-10" style={{ background: C.gold }} />
-                  <span>{t}</span>
-                </motion.div>
-              ))}
-            </div>
-            <div className="border-l-2 pl-7" style={{ borderColor: C.gold }}>
-              <p className="text-[11px] uppercase tracking-[0.4em] mb-4" style={{ color: C.gold, fontWeight: 600 }}>O que ele é</p>
-              <p className="text-white/85" style={{ fontSize: "clamp(20px, 1.5vw, 24px)", lineHeight: 1.55, fontFamily: SERIF }}>
-                Um documento emitido por um Estado soberano, com utilidade específica em contextos internacionais —
-                quando inserido em uma estratégia maior.
+        <section className="s-clareza">
+          <div className="clareza-inner">
+            <div className="rv">
+              <div className="cl-label">01 · Clareza</div>
+              <h2 className="cl-title">O que<br /><em>não é</em><br />o que é</h2>
+              <p className="cl-body">
+                A maioria erra porque não entende o documento antes de obtê-lo. Clareza primeiro — estrutura depois. Esse é o único caminho para extrair valor real.
               </p>
             </div>
-          </motion.div>
-        </SceneFullBleed>
-
-        <Divider />
-
-        {/* CENA 03 — ONDE FUNCIONA */}
-        <section id="onde-funciona" className="relative py-32 md:py-40" style={{ background: C.base }}>
-          <div className="max-w-[1600px] mx-auto px-6 md:px-16 mb-20 md:mb-28 text-center">
-            <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-              className="text-[11px] uppercase tracking-[0.4em] mb-6" style={{ color: C.gold, fontWeight: 600 }}>
-              Cena 02 — Aplicação
-            </motion.p>
-            <motion.h2 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.9 }}
-              style={{ fontSize: "clamp(44px, 6vw, 88px)", lineHeight: 1.05, color: C.ink }}>
-              Onde o ID de Palau<br /><em style={{ color: C.green }}>funciona na prática</em>.
-            </motion.h2>
-            <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.3 }}
-              className="max-w-2xl mx-auto mt-8" style={{ fontSize: 20, color: C.ink2, fontFamily: SERIF }}>
-              Nem toda utilidade é universal. O valor está em casos específicos.
-            </motion.p>
+            <div className="cl-lists rv d1">
+              <div className="cl-block">
+                <div className="cl-block-head">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 3L11 11M11 3L3 11" stroke="#B04040" strokeWidth="1.5"/></svg>
+                  <span className="cl-block-head-text neg">Não é</span>
+                </div>
+                <ul className="cl-list neg-list">
+                  <li>Cidadania completa de Palau</li>
+                  <li>Residência tradicional ou fiscal</li>
+                  <li>Passaporte para viagens internacionais</li>
+                  <li>Acesso universal a bancos e serviços</li>
+                  <li>Solução isolada para estruturas financeiras</li>
+                </ul>
+              </div>
+              <div className="cl-block">
+                <div className="cl-block-head">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7L6 11L12 3" stroke="#C9A84C" strokeWidth="1.5"/></svg>
+                  <span className="cl-block-head-text pos">É</span>
+                </div>
+                <ul className="cl-list pos-list">
+                  <li>Identidade emitida por governo soberano reconhecido</li>
+                  <li>Utilidade prática em verificação e onboarding internacional</li>
+                  <li>Peça complementar de uma estrutura maior de soberania</li>
+                  <li>Camada adicional com baixo custo de entrada</li>
+                  <li>Ferramenta real dentro da estratégia correta</li>
+                </ul>
+              </div>
+            </div>
           </div>
+        </section>
 
-          <div className="grid md:grid-cols-3 gap-px" style={{ background: C.base2 }}>
+        <section className="s-aplica">
+          <div className="aplica-head">
+            <div className="aplica-head-left rv">
+              <div className="al-label">02 · Onde Funciona</div>
+              <h2>Aplicação<br /><em>Prática</em></h2>
+            </div>
+            <div className="aplica-head-right rv d1">
+              Nem toda utilidade é universal. O valor está em casos específicos — entender esses casos é o que diferencia o uso inteligente do ingênuo.
+            </div>
+          </div>
+          <div className="aplica-grid">
+            <div className="ag-card">
+              <div className="ag-bg ag-bg-1" />
+              <div className="ag-content">
+                <div className="ag-cat">Mercado Cripto</div>
+                <div className="ag-title">Exchanges<br />Internacionais</div>
+                <div className="ag-cols">
+                  <ul className="ag-items"><li><span>Coinbase</span></li><li><span>Bitget</span></li><li><span>Gate.io</span></li></ul>
+                  <ul className="ag-items"><li><span>KuCoin</span></li><li><span>CEX.IO</span></li><li><span>MEXC</span></li></ul>
+                </div>
+                <div className="ag-note">Sujeito a mudanças de compliance. Verificar política atual.</div>
+              </div>
+            </div>
+            <div className="ag-card">
+              <div className="ag-bg ag-bg-2" />
+              <div className="ag-content">
+                <div className="ag-cat">Serviços</div>
+                <div className="ag-title">Neobanks &amp; Fintechs</div>
+                <ul className="ag-items">
+                  <li><span>Kingdom Bank</span></li><li><span>Vexel</span></li><li><span>Ultimopay</span></li><li><span>Blackcatcard</span></li>
+                </ul>
+              </div>
+            </div>
+            <div className="ag-card">
+              <div className="ag-bg ag-bg-3" />
+              <div className="ag-content">
+                <div className="ag-cat">Operacional</div>
+                <div className="ag-title">Camada Internacional</div>
+                <ul className="ag-items"><li><span>Onboarding</span></li><li><span>Redundância documental</span></li></ul>
+              </div>
+            </div>
+            <div className="ag-card">
+              <div className="ag-bg ag-bg-4" />
+              <div className="ag-content">
+                <div className="ag-cat">Estratégico</div>
+                <div className="ag-title">Patrimônio Global</div>
+                <ul className="ag-items"><li><span>Estruturas patrimoniais</span></li><li><span>Mobilidade</span></li></ul>
+              </div>
+            </div>
+            <div className="ag-card">
+              <div className="ag-bg ag-bg-5" />
+              <div className="ag-content">
+                <div className="ag-cat">Privacidade</div>
+                <div className="ag-title">Jurisdição Paralela</div>
+                <ul className="ag-items"><li><span>Menor exposição</span></li><li><span>Soberania pessoal</span></li></ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="s-quebra">
+          <div className="quebra-pct">99%</div>
+          <div className="quebra-inner">
+            <div className="rv">
+              <div className="qb-label">03 · Quebra de Crença</div>
+              <h2 className="qb-title">O erro<br /><em>que</em><br />quase todos cometem</h2>
+              <p className="qb-text">
+                Comprar o ID e imaginar que ele sozinho resolve tudo. É o erro de quem comprou uma peça e achou que tinha o tabuleiro completo.
+              </p>
+            </div>
+            <ul className="qb-list rv d1">
+              <li><div className="qb-item"><strong>Comprovante de endereço</strong><p>Muitas plataformas exigem comprovante de residência válido, independente do documento de identidade.</p></div></li>
+              <li><div className="qb-item"><strong>Número de telefone local</strong><p>Em alguns casos, as plataformas exigem verificação por número local da jurisdição declarada.</p></div></li>
+              <li><div className="qb-item"><strong>Documentação complementar</strong><p>O ID de Palau raramente opera sozinho — ele precisa de documentos de suporte para ativação completa.</p></div></li>
+              <li><div className="qb-item"><strong>Alinhamento identidade × residência</strong><p>O report fiscal depende da residência informada e da política da instituição, não apenas do documento.</p></div></li>
+              <li><div className="qb-item"><strong>Estratégia estruturada</strong><p>Sem uma arquitetura de soberania clara, o documento é uma ferramenta sem contexto — inútil na prática.</p></div></li>
+            </ul>
+          </div>
+        </section>
+
+        <section className="s-limit">
+          <div className="limit-head">
+            <h2 className="lt-title rv">Onde não<br /><span>resolve o problema.</span></h2>
+            <p className="lt-note rv d1">Clareza antes de qualquer decisão. Um documento útil não é um documento total.</p>
+          </div>
+          <div className="limit-grid">
+            <div className="lc">
+              <div className="lc-badge">Não aceito</div>
+              <h3 className="lc-title">Bancos Tradicionais &amp; Instituições Clássicas</h3>
+              <p className="lc-text">A maioria dos bancos tradicionais não aceita apenas um ID local. Passaporte e comprovante de residência robusto continuam sendo os documentos padrão. Esta é a limitação mais importante do documento.</p>
+            </div>
+            <div className="lc">
+              <div className="lc-badge">Insuficiente</div>
+              <h3 className="lc-title">Comprovação de Residência</h3>
+              <p className="lc-text">O ID de Palau não substitui comprovante de endereço. Muitas instituições exigem evidência de residência física — contas, contratos, extratos locais.</p>
+            </div>
+            <div className="lc">
+              <div className="lc-badge">Não aplicável</div>
+              <h3 className="lc-title">Substituição de Passaporte</h3>
+              <p className="lc-text">Este não é um passaporte. Não permite viagens internacionais nem substitui o documento principal nacional para propósitos legais.</p>
+            </div>
+            <div className="lc">
+              <div className="lc-badge">Limitado</div>
+              <h3 className="lc-title">Planejamento Fiscal &amp; Solução Total</h3>
+              <p className="lc-text">Report fiscal depende da residência declarada, não apenas do documento. Sem uma estrutura completa, o ID de Palau é uma ferramenta sem contexto.</p>
+            </div>
+          </div>
+        </section>
+
+        <section className="s-valor">
+          <div className="valor-quote rv">
+            <p className="valor-quote-text">
+              Sozinho, ele é limitado. <em>Dentro de uma arquitetura maior, ele muda de patamar.</em>
+            </p>
+            <div className="valor-source">05 · Por que ainda importa</div>
+          </div>
+          <div className="valor-cols">
+            <div className="vc rv"><span className="vc-sym">◈</span><div className="vc-title">Privacidade Operacional</div><p className="vc-text">Menor exposição direta da jurisdição de origem em contextos operacionais e de verificação internacional.</p></div>
+            <div className="vc rv d1"><span className="vc-sym">◉</span><div className="vc-title">Acesso Internacional</div><p className="vc-text">Possível utilidade em plataformas globais, sujeito a critérios de compliance de cada serviço.</p></div>
+            <div className="vc rv d2"><span className="vc-sym">◇</span><div className="vc-title">Baixo Custo de Entrada</div><p className="vc-text">Opção acessível em comparação com passaportes adicionais ou residências formais em outros países.</p></div>
+            <div className="vc rv d3"><span className="vc-sym">◎</span><div className="vc-title">Processo Online</div><p className="vc-text">Solicitação digital com emissão e envio físico para qualquer lugar do mundo.</p></div>
+          </div>
+        </section>
+
+        <section className="s-exec">
+          <div className="exec-bg" />
+          <div className="exec-content">
+            <div className="ex-label rv">06 · Como Obter</div>
+            <h2 className="ex-title rv d1">Como obter<br />o ID de Palau</h2>
+            <div className="steps">
+              <div className="step active"><div className="step-n">01</div><div className="step-title">Solicitação</div><p className="step-desc">Inicie pela plataforma responsável pela emissão</p></div>
+              <div className="step"><div className="step-n">02</div><div className="step-title">Verificação</div><p className="step-desc">Processo de validação de identidade exigido pelo governo</p></div>
+              <div className="step"><div className="step-n">03</div><div className="step-title">Emissão</div><p className="step-desc">Aprovação e emissão oficial pelo Estado soberano</p></div>
+              <div className="step"><div className="step-n">04</div><div className="step-title">Entrega</div><p className="step-desc">Cartão físico enviado para onde você estiver no mundo</p></div>
+              <div className="step"><div className="step-n">05</div><div className="step-title">Configuração</div><p className="step-desc">Avalie documentação complementar para sua estrutura específica</p></div>
+            </div>
+          </div>
+        </section>
+
+        <section className="s-strat">
+          <div className="strat-visual">
+            <div className="strat-vis-bg" />
+            <div className="rings">
+              <div className="ring" />
+              <div className="ring" />
+              <div className="ring" />
+              <div className="ring-center">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M12 2L4 6v6c0 5 3.5 9.5 8 10 4.5-.5 8-5 8-10V6l-8-4z" stroke="#0D0C0A" strokeWidth="1.5"/></svg>
+                <span>Palau</span>
+              </div>
+            </div>
+          </div>
+          <div className="strat-content">
+            <div className="st-label rv">07 · Visão Estratégica</div>
+            <h2 className="st-title rv d1">Uma camada<br />que cresce</h2>
+            <p className="st-sub rv d2">O potencial do ID aumenta quando inserido em uma estratégia mais ampla de soberania pessoal.</p>
+            <ul className="st-specs rv d3">
+              <li><span className="sp-key">Tipo</span><span className="sp-val">Identidade soberana internacional</span></li>
+              <li><span className="sp-key">Emissão</span><span className="sp-val">República de Palau</span></li>
+              <li><span className="sp-key">Formato</span><span className="sp-val">Cartão físico + digital</span></li>
+              <li><span className="sp-key">Processo</span><span className="sp-val">100% online</span></li>
+              <li><span className="sp-key">Potencial isolado</span><span className="sp-val">Limitado</span></li>
+              <li><span className="sp-key">Potencial em estrutura</span><span className="sp-val g">Alto</span></li>
+            </ul>
+          </div>
+        </section>
+
+        <section className="s-faq">
+          <div className="faq-inner">
+            <div className="faq-label">08 · Perguntas Frequentes</div>
+            <h2 className="faq-title">As dúvidas<br /><em>mais importantes</em></h2>
             {[
-              { img: exchangeImg, tag: "01 — Exchanges", title: "Onboarding internacional", copy: "Algumas exchanges aceitam o ID em verificação. Compliance varia.", list: ["Coinbase", "KuCoin", "Gate.io", "MEXC", "Bitget", "CEX.IO"] },
-              { img: neobankImg, tag: "02 — Neobanks", title: "Operação global simplificada", copy: "Plataformas digitais podem aceitar o documento. Reputação deve ser verificada caso a caso.", list: ["The Kingdom Bank", "Vexel", "Ultimopay", "Blackcatcard"] },
-              { img: structureImg, tag: "03 — Estrutura", title: "Camada operacional", copy: "Peça complementar de uma arquitetura internacional de documentação e redundância.", list: ["Documentação", "Redundância", "Mobilidade", "Acesso global"] },
-            ].map((card, i) => (
-              <motion.div key={card.tag} initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-10%" }} transition={{ duration: 0.8, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] }}
-                whileHover={{ y: -8 }} className="group relative overflow-hidden cursor-pointer"
-                style={{ background: C.white, minHeight: "70vh" }}>
-                <div className="relative h-[55vh] overflow-hidden">
-                  <motion.img src={card.img} alt={card.title} loading="lazy"
-                    className="w-full h-full object-cover" whileHover={{ scale: 1.06 }}
-                    transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }} />
-                  <div className="absolute inset-0 transition-opacity duration-500 group-hover:opacity-90"
-                    style={{ background: "linear-gradient(180deg, rgba(31,36,48,0) 40%, rgba(31,36,48,0.85) 100%)" }} />
-                  <div className="absolute bottom-7 left-7 right-7">
-                    <p className="text-[11px] uppercase tracking-[0.35em] mb-3" style={{ color: C.gold, fontWeight: 600 }}>{card.tag}</p>
-                    <h3 className="text-white" style={{ fontSize: "clamp(28px, 2.4vw, 38px)", lineHeight: 1.1 }}>{card.title}</h3>
-                  </div>
-                </div>
-                <div className="p-9">
-                  <p style={{ fontSize: 18, color: C.ink2, lineHeight: 1.7, marginBottom: 24 }}>{card.copy}</p>
-                  <ul className="space-y-2.5">
-                    {card.list.map((item) => (
-                      <li key={item} className="flex items-center gap-3 text-[15px]" style={{ color: C.ink, fontWeight: 500 }}>
-                        <span className="h-px w-5" style={{ background: C.gold }} />{item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </motion.div>
+              ["O ID de Palau é cidadania?", "Não. É uma identidade digital emitida pelo governo, não uma cidadania. Cidadania envolve direitos legais extensos, passaporte e proteção consular — nada disso está incluído."],
+              ["O ID de Palau é residência?", "Não. Não configura residência legal, não muda sua situação fiscal e não substitui visto ou permissão de residência em qualquer jurisdição."],
+              ["Posso usar o ID de Palau em exchanges?", "Em algumas sim — Coinbase, Bitget, Gate.io, KuCoin, CEX.IO e MEXC são exemplos. Mas as políticas de compliance mudam. Sempre verifique a política atual antes de depender disso."],
+              ["Posso abrir conta em qualquer banco?", "Não. Bancos tradicionais exigem passaporte e comprovante de residência robusto. O ID de Palau pode funcionar em neobanks e fintechs específicas, não em instituições bancárias convencionais."],
+              ["Preciso de comprovante de endereço?", "Na maioria dos casos, sim. O ID de Palau raramente opera como documento único — ele faz parte de um conjunto de documentação."],
+              ["O ID de Palau substitui passaporte?", "Não. Não pode ser usado para viagens internacionais. Seu passaporte nacional continua sendo o documento principal para viagem e propósitos legais."],
+              ["Resolve minha vida financeira internacional?", "Não. É uma ferramenta dentro de uma estrutura maior. Sozinho tem utilidade limitada. Dentro de uma arquitetura de soberania pessoal bem construída, ele contribui significativamente."],
+              ["O ID de Palau é legal?", "Sim. É emitido por um governo soberano reconhecido internacionalmente. O que varia é a aceitação de cada plataforma — uma decisão privada de compliance, não de legalidade do documento."],
+              ["Vale a pena fazer o ID de Palau?", "Depende do seu objetivo. Se você entende onde ele funciona, tem documentação complementar e insere ele em uma estratégia maior — pode valer muito. Se você espera que resolva tudo sozinho — não vale. A decisão inteligente começa com clareza."],
+            ].map(([q, a], i) => (
+              <details key={i}>
+                <summary>
+                  <span className="faq-q">{q}</span>
+                  <span className="faq-ico">
+                    <svg viewBox="0 0 9 9"><path d="M4.5 0v9M0 4.5h9"/></svg>
+                  </span>
+                </summary>
+                <p className="faq-a">{a}</p>
+              </details>
             ))}
           </div>
         </section>
 
-        {/* CENA 04 — ERRO 99% */}
-        <SceneFullBleed image={errorImg} align="center" height="min-h-[90vh]"
-          overlay="linear-gradient(180deg, rgba(15,18,25,0.85) 0%, rgba(15,18,25,0.7) 50%, rgba(15,18,25,0.9) 100%)">
-          <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-10%" }}
-            transition={{ duration: 1.2 }} className="max-w-5xl mx-auto">
-            <p className="text-[11px] uppercase tracking-[0.4em] mb-8" style={{ color: C.gold, fontWeight: 600 }}>Cena 03 — Verdade</p>
-            <h2 className="text-white mb-10" style={{ fontSize: "clamp(48px, 8vw, 130px)", lineHeight: 0.98 }}>
-              O erro não é<br /><em style={{ color: C.gold }}>comprar</em> o ID.
-            </h2>
-            <h2 className="text-white/80" style={{ fontSize: "clamp(36px, 5vw, 80px)", lineHeight: 1.05 }}>
-              É não saber <em style={{ color: C.gold }}>usar</em>.
-            </h2>
-            <div className="h-px w-32 mx-auto my-12" style={{ background: C.gold }} />
-            <p className="text-white/75 max-w-2xl mx-auto" style={{ fontSize: "clamp(20px, 1.4vw, 24px)", lineHeight: 1.6, fontFamily: SERIF }}>
-              O documento sozinho não resolve. Sem estrutura — comprovante de endereço, alinhamento jurisdicional,
-              planejamento real — ele perde valor.
-            </p>
-          </motion.div>
-        </SceneFullBleed>
-
-        {/* CENA 05 — LIMITAÇÃO */}
-        <SceneFullBleed image={bankImg} align="right" parallaxStrength={0.1}>
-          <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-15%" }}
-            transition={{ duration: 1 }} className="max-w-xl ml-auto">
-            <p className="text-[11px] uppercase tracking-[0.4em] mb-6" style={{ color: C.gold, fontWeight: 600 }}>Cena 04 — Limites</p>
-            <h2 className="text-white mb-10" style={{ fontSize: "clamp(40px, 5.5vw, 80px)", lineHeight: 1.02 }}>
-              Onde <em style={{ color: C.gold }}>não</em> resolve.
-            </h2>
-            <ul className="space-y-6 mb-12">
-              {[
-                "Bancos tradicionais costumam exigir passaporte",
-                "Comprovante de residência robusto é frequente",
-                "ID local não define residência fiscal",
-                "Não substitui uma estrutura internacional completa",
-              ].map((t, i) => (
-                <motion.li key={t} initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
-                  transition={{ delay: 0.1 + i * 0.1 }} className="text-white/85 flex gap-5"
-                  style={{ fontSize: "clamp(18px, 1.3vw, 22px)", lineHeight: 1.5, fontFamily: SERIF }}>
-                  <span className="text-white/40 mt-1" style={{ fontSize: 14, fontFamily: SANS }}>0{i + 1}</span>
-                  <span>{t}</span>
-                </motion.li>
-              ))}
-            </ul>
-            <p className="border-l-2 pl-6 text-white/95"
-              style={{ borderColor: C.gold, fontFamily: SERIF, fontSize: "clamp(24px, 2vw, 32px)", lineHeight: 1.3, fontStyle: "italic" }}>
-              Ferramenta não é estratégia.
-            </p>
-          </motion.div>
-        </SceneFullBleed>
-
-        <Divider />
-
-        {/* CENA 06 — VANTAGENS */}
-        <section className="relative py-32 md:py-44" style={{ background: C.base2 }}>
-          <div className="max-w-[1600px] mx-auto px-6 md:px-16">
-            <div className="mb-20 md:mb-28 max-w-3xl">
-              <p className="text-[11px] uppercase tracking-[0.4em] mb-6" style={{ color: C.gold, fontWeight: 600 }}>Cena 05 — Por quê</p>
-              <h2 style={{ fontSize: "clamp(40px, 5.5vw, 80px)", lineHeight: 1.05, color: C.ink }}>
-                Por que tantas pessoas se interessam<br />pelo <em style={{ color: C.green }}>ID de Palau</em>.
-              </h2>
-            </div>
-            <div className="grid md:grid-cols-2 gap-px" style={{ background: C.base }}>
-              {[
-                { n: "01", t: "Privacidade operacional", c: "Menor exposição direta da jurisdição de origem em alguns contextos." },
-                { n: "02", t: "Acesso internacional", c: "Possível utilidade em plataformas globais, sujeito a critérios de compliance." },
-                { n: "03", t: "Baixo custo de entrada", c: "Opção relativamente acessível em comparação com outras estruturas internacionais." },
-                { n: "04", t: "Processo online", c: "Solicitação digital, com emissão e envio físico do documento." },
-              ].map((v, i) => (
-                <motion.div key={v.n} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-10%" }} transition={{ duration: 0.7, delay: i * 0.08 }}
-                  whileHover={{ y: -6 }}
-                  className="p-12 md:p-16 transition-shadow duration-500 hover:shadow-[0_30px_60px_-30px_rgba(31,36,48,0.25)]"
-                  style={{ background: C.base2 }}>
-                  <div className="flex items-baseline gap-6 mb-7">
-                    <span style={{ fontFamily: SERIF, fontSize: 56, color: C.gold, fontWeight: 300 }}>{v.n}</span>
-                    <div className="h-px flex-1" style={{ background: C.ink + "20" }} />
-                  </div>
-                  <h3 className="mb-5" style={{ fontSize: "clamp(28px, 2.5vw, 40px)", color: C.ink, lineHeight: 1.15 }}>{v.t}</h3>
-                  <p style={{ fontSize: 19, color: C.ink2, lineHeight: 1.7 }}>{v.c}</p>
-                </motion.div>
-              ))}
+        <section className="s-cta">
+          <div className="cta-noise" />
+          <div className="cta-glow" />
+          <div className="cta-inner">
+            <div className="cta-eyebrow">09 · Decisão Consciente</div>
+            <h2 className="cta-big">Clareza<br /><span>primeiro.</span></h2>
+            <p className="cta-sub">O valor do ID de Palau não está no hype. Está no uso correto. Quando você entende o que ele é, a decisão fica inteligente.</p>
+            <div className="cta-btns">
+              <a href="/teoria-das-bandeiras" className="btn-a">Ver a estratégia completa →</a>
+              <a href="#" className="btn-b">Como obter o ID</a>
             </div>
           </div>
         </section>
 
-        {/* CENA 07 — JORNADA */}
-        <section id="como-obter" className="relative py-32 md:py-44" style={{ background: C.base }}>
-          <div className="max-w-[1100px] mx-auto px-6 md:px-16">
-            <div className="mb-24 text-center">
-              <p className="text-[11px] uppercase tracking-[0.4em] mb-6" style={{ color: C.gold, fontWeight: 600 }}>Cena 06 — Caminho</p>
-              <h2 style={{ fontSize: "clamp(40px, 5.5vw, 80px)", lineHeight: 1.05, color: C.ink }}>
-                Como <em style={{ color: C.green }}>obter</em>.
-              </h2>
-            </div>
-            <div ref={journeyRef} className="relative pl-20 md:pl-28">
-              <div className="absolute left-7 md:left-10 top-0 bottom-0 w-px" style={{ background: C.ink + "15" }} />
-              <motion.div className="absolute left-7 md:left-10 top-0 w-[2px] origin-top"
-                style={{ height: lineH, background: C.gold }} />
-              {[
-                { n: "01", t: "Solicitação", d: "Inicie o pedido pela plataforma responsável pela emissão do documento." },
-                { n: "02", t: "Verificação", d: "Passe pelo processo de validação exigido — KYC e checagem de identidade." },
-                { n: "03", t: "Emissão", d: "Aguarde a aprovação e a emissão oficial pelo governo soberano." },
-                { n: "04", t: "Entrega", d: "Receba o cartão físico no endereço informado, em qualquer lugar do mundo." },
-                { n: "05", t: "Uso estratégico", d: "Avalie documentação complementar (endereço, telefone) para casos específicos." },
-              ].map((s, i) => (
-                <motion.div key={s.n} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-15%" }} transition={{ duration: 0.7, delay: i * 0.1 }}
-                  className="relative pb-20 last:pb-0">
-                  <div className="absolute -left-[60px] md:-left-[80px] top-2 w-4 h-4 rounded-full border-2 bg-[#F5EFE4] z-10"
-                    style={{ borderColor: C.gold }} />
-                  <p className="text-[11px] uppercase tracking-[0.35em] mb-3" style={{ color: C.gold, fontWeight: 600 }}>Passo {s.n}</p>
-                  <h3 style={{ fontSize: "clamp(32px, 3.5vw, 52px)", color: C.ink, lineHeight: 1.1, marginBottom: 14 }}>{s.t}</h3>
-                  <p style={{ fontSize: 20, color: C.ink2, lineHeight: 1.7, maxWidth: 600 }}>{s.d}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* CENA 08 — TRANSIÇÃO */}
-        <SceneFullBleed image={transitionImg} align="center" parallaxStrength={0.18}>
-          <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-15%" }}
-            transition={{ duration: 1.2 }} className="max-w-4xl mx-auto">
-            <p className="text-[11px] uppercase tracking-[0.4em] mb-8" style={{ color: C.gold, fontWeight: 600 }}>Cena 07 — Estratégia</p>
-            <h2 className="text-white mb-8" style={{ fontSize: "clamp(40px, 6vw, 96px)", lineHeight: 1.02 }}>
-              Não é o <em style={{ color: C.gold }}>começo</em>.
-            </h2>
-            <h2 className="text-white/80 mb-12" style={{ fontSize: "clamp(32px, 4.5vw, 70px)", lineHeight: 1.05 }}>
-              É uma <em style={{ color: C.gold }}>peça</em>.
-            </h2>
-            <p className="text-white/80 max-w-2xl mx-auto" style={{ fontSize: "clamp(20px, 1.5vw, 26px)", lineHeight: 1.55, fontFamily: SERIF }}>
-              Sozinho, é limitado. Dentro de uma arquitetura maior — soberania pessoal, redundância documental,
-              presença internacional — muda de patamar.
-            </p>
-          </motion.div>
-        </SceneFullBleed>
-
-        {/* CENA 09 — PALAU */}
-        <section ref={islandRef} className="relative min-h-screen w-full overflow-hidden flex items-center">
-          <motion.div className="absolute inset-0 z-0" style={{ y: islandY }}>
-            <img src={islandImg} alt="Palau, ilhas tropicais" loading="lazy" className="w-full h-[140%] object-cover" />
-          </motion.div>
-          <div className="absolute inset-0 z-10"
-            style={{ background: "linear-gradient(180deg, rgba(31,53,96,0.35) 0%, rgba(31,53,96,0.5) 60%, rgba(15,18,25,0.85) 100%)" }} />
-          <div className="relative z-20 w-full max-w-[1600px] mx-auto px-6 md:px-16 py-32">
-            <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-15%" }} transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
-              className="max-w-3xl">
-              <p className="text-[11px] uppercase tracking-[0.4em] mb-8" style={{ color: C.gold, fontWeight: 600 }}>Refúgio Digital</p>
-              <h2 className="text-white mb-12" style={{ fontSize: "clamp(72px, 12vw, 220px)", lineHeight: 0.9, fontWeight: 300 }}>Palau.</h2>
-              <div className="h-px w-32 mb-12" style={{ background: C.gold }} />
-              <p className="text-white/90 mb-12 max-w-xl" style={{ fontSize: "clamp(22px, 1.8vw, 30px)", lineHeight: 1.45, fontFamily: SERIF }}>
-                Uma identidade emitida por um Estado soberano, com aplicação real no sistema global.
-              </p>
-              <ul className="space-y-4 mb-14">
-                {["Documento oficial", "Processo online", "Potencial crescente"].map((t) => (
-                  <li key={t} className="flex items-center gap-5 text-white/85" style={{ fontSize: 20, fontFamily: SERIF }}>
-                    <span className="h-px w-10" style={{ background: C.gold }} />{t}
-                  </li>
-                ))}
-              </ul>
-              <PremiumBtn href="#cta-final" variant="primary">Ver como usar corretamente</PremiumBtn>
-            </motion.div>
-          </div>
-        </section>
-
-        <Divider />
-
-        {/* CENA 10 — FAQ */}
-        <section className="relative py-32 md:py-44" style={{ background: C.base }}>
-          <div className="max-w-[1100px] mx-auto px-6 md:px-16">
-            <div className="mb-20 text-center">
-              <p className="text-[11px] uppercase tracking-[0.4em] mb-6" style={{ color: C.gold, fontWeight: 600 }}>Cena 08 — Esclarecimentos</p>
-              <h2 style={{ fontSize: "clamp(40px, 5.5vw, 80px)", lineHeight: 1.05, color: C.ink }}>
-                Perguntas <em style={{ color: C.green }}>frequentes</em>.
-              </h2>
-            </div>
-            <div>
-              {FAQS.map((f, i) => {
-                const isOpen = open === i;
-                return (
-                  <div key={i} className="border-t" style={{ borderColor: C.ink + "15" }}>
-                    <button onClick={() => setOpen(isOpen ? null : i)}
-                      className="w-full flex items-center justify-between gap-8 py-8 md:py-10 text-left transition-colors group">
-                      <h3 className="transition-colors duration-300"
-                        style={{ fontSize: "clamp(22px, 2vw, 30px)", color: isOpen ? C.green : C.ink, lineHeight: 1.25, fontWeight: 400 }}>
-                        {f.q}
-                      </h3>
-                      <motion.div animate={{ rotate: isOpen ? 180 : 0 }} transition={{ duration: 0.4 }}
-                        className="shrink-0 w-12 h-12 rounded-full flex items-center justify-center border"
-                        style={{ borderColor: isOpen ? C.gold : C.ink + "30", color: isOpen ? C.gold : C.ink }}>
-                        {isOpen ? <Minus size={18} /> : <Plus size={18} />}
-                      </motion.div>
-                    </button>
-                    <motion.div initial={false} animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
-                      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }} className="overflow-hidden">
-                      <p className="pb-10 pr-4 md:pr-20 max-w-3xl" style={{ fontSize: 20, color: C.ink2, lineHeight: 1.7 }}>{f.a}</p>
-                    </motion.div>
-                  </div>
-                );
-              })}
-              <div className="border-t" style={{ borderColor: C.ink + "15" }} />
-            </div>
-          </div>
-        </section>
-
-        {/* CENA 11 — CTA FINAL */}
-        <SceneFullBleed image={ctaImg} align="left" height="min-h-[95vh]" parallaxStrength={0.1}
-          overlay="linear-gradient(95deg, rgba(31,53,96,0.92) 0%, rgba(31,53,96,0.7) 40%, rgba(31,53,96,0.25) 75%, rgba(31,53,96,0) 100%)">
-          <div id="cta-final" />
-          <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-15%" }} transition={{ duration: 1.2 }} className="max-w-2xl">
-            <p className="text-[11px] uppercase tracking-[0.4em] mb-8" style={{ color: C.gold, fontWeight: 600 }}>Cena Final — Decisão</p>
-            <h2 className="text-white mb-6" style={{ fontSize: "clamp(48px, 7vw, 110px)", lineHeight: 0.98 }}>
-              <em style={{ color: C.gold }}>Clareza</em><br />primeiro.
-            </h2>
-            <h2 className="text-white/80 mb-12" style={{ fontSize: "clamp(36px, 5vw, 72px)", lineHeight: 1.05 }}>Estrutura depois.</h2>
-            <div className="h-px w-32 mb-10" style={{ background: C.gold }} />
-            <p className="text-white/85 mb-14 max-w-xl" style={{ fontSize: "clamp(20px, 1.4vw, 24px)", lineHeight: 1.6, fontFamily: SERIF }}>
-              Você não precisa fazer tudo hoje. Mas precisa começar certo.
-              O valor do ID de Palau não está no hype — está no uso correto.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <PremiumBtn href="https://rns.id/?rc_by=UaXUiIDb" variant="primary">Começar com o ID</PremiumBtn>
-              <PremiumBtn href="/teoria-das-bandeiras" variant="ghost">Ver estratégia completa</PremiumBtn>
-            </div>
-          </motion.div>
-        </SceneFullBleed>
-
-        <div className="py-12 text-center" style={{ background: C.base, color: C.ink2, fontSize: 13 }}>
-          <p>Conteúdo educacional. Verifique sempre as regras vigentes de cada plataforma.</p>
-        </div>
+        <footer>
+          <span className="ft-brand">Lord Junnior · Soberania Internacional</span>
+          <span className="ft-cr">© 2026 · lordjunnior.com.br</span>
+        </footer>
       </div>
     </>
   );
