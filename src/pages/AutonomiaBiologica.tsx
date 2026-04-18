@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { ArrowLeft, Leaf, Shield, AlertTriangle, Droplets, Flame, FlaskConical, Package, Activity, XCircle, ChevronRight, Heart, Thermometer, Sun, Clock } from 'lucide-react';
+import { ArrowLeft, Leaf, Shield, AlertTriangle, Droplets, Flame, FlaskConical, Package, Activity, XCircle, ChevronRight, Heart, Thermometer, Sun, Clock, EyeOff, Apple, Brain, Smartphone, Microscope, ArrowRight } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { PLANTAS } from '@/lib/plantData';
@@ -181,6 +181,79 @@ export default function AutonomiaBiologica() {
               </div>
             </div>
           </div>
+        </section>
+
+        {/* ═══ TRANSIÇÃO PNL → TÓXICOS OCULTOS (macro-pilar) ═══ */}
+        <section className="mb-28">
+          <Link
+            to="/soberania-organica/toxicos-ocultos"
+            className="group block relative overflow-hidden rounded-2xl border border-red-500/15 bg-gradient-to-br from-red-950/20 via-stone-950/40 to-stone-950/60 hover:border-red-400/40 transition-all duration-500"
+          >
+            {/* Atmospheric layers */}
+            <div className="absolute inset-0 opacity-[0.04] pointer-events-none"
+              style={{
+                backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
+              }}
+            />
+            <div className="absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full opacity-40 group-hover:opacity-60 transition-opacity duration-700"
+              style={{ background: 'radial-gradient(circle, rgba(239,68,68,0.18), transparent 70%)' }}
+            />
+
+            <div className="relative z-10 p-8 md:p-14">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-[1px] bg-red-500/40" />
+                <EyeOff size={14} className="text-red-400" />
+                <span className="text-red-400/70 text-[10px] font-bold tracking-[0.5em] uppercase">
+                  Vetor paralelo · Defesa anterior à cura
+                </span>
+              </div>
+
+              <h2 className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tight text-white mb-6 leading-[1.05]"
+                style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                Nem toda ameaça é visível.
+                <br />
+                <span className="text-red-400">As mais perigosas operam sem percepção.</span>
+              </h2>
+
+              <p className="text-stone-300 text-base md:text-lg leading-relaxed max-w-3xl mb-4">
+                Antes de curar com plantas, é necessário <span className="text-stone-100 font-semibold">interromper a contaminação contínua</span>.
+                Quatro vetores invisíveis operam 24 horas por dia sobre seu corpo, sua mente, seu comportamento e seu ambiente.
+              </p>
+              <p className="text-stone-500 text-sm md:text-base leading-relaxed max-w-3xl mb-10">
+                Este é o módulo que abre o jogo: o que está dentro dos rótulos, das telas, das casas e das narrativas que você
+                consome todos os dias sem perceber.
+              </p>
+
+              {/* 4 vetores compactos */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-10">
+                {[
+                  { icon: Apple, label: 'Toxinas Alimentares', sub: 'Corpo', dot: 'bg-amber-400', text: 'text-amber-400' },
+                  { icon: Brain, label: 'Manipulação Informacional', sub: 'Mente', dot: 'bg-violet-400', text: 'text-violet-400' },
+                  { icon: Smartphone, label: 'Dependência Tecnológica', sub: 'Comportamento', dot: 'bg-cyan-400', text: 'text-cyan-400' },
+                  { icon: Leaf, label: 'Toxinas Ambientais', sub: 'Ambiente', dot: 'bg-emerald-400', text: 'text-emerald-400' },
+                ].map((v) => (
+                  <div key={v.label}
+                    className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-4 transition-all duration-300 group-hover:border-white/10 group-hover:bg-white/[0.04]"
+                  >
+                    <div className="flex items-center gap-2 mb-3">
+                      <div className={`w-1.5 h-1.5 rounded-full ${v.dot}`} />
+                      <span className={`text-[9px] font-bold uppercase tracking-[0.3em] ${v.text}`}>{v.sub}</span>
+                    </div>
+                    <v.icon size={18} className="text-stone-400 mb-2" />
+                    <p className="text-stone-200 text-xs md:text-[13px] font-semibold leading-snug">
+                      {v.label}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="inline-flex items-center gap-3 text-sm font-bold text-red-300 group-hover:text-red-200 transition-colors">
+                <Microscope size={16} />
+                <span className="tracking-wide uppercase">Entrar no laboratório de discernimento</span>
+                <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
+              </div>
+            </div>
+          </Link>
         </section>
 
         {/* ═══ CATÁLOGO DE PLANTAS ═══ */}

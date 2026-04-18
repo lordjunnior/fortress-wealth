@@ -132,6 +132,44 @@ export default function ToxicosOcultos() {
       />
 
       {/* ═══════════════════════════════════════════════════ */}
+      {/* FAIXA DE TRANSIÇÃO PNL — preparação cognitiva      */}
+      {/* ═══════════════════════════════════════════════════ */}
+      <section className="relative z-10 pt-16 md:pt-24">
+        <div className="max-w-5xl mx-auto px-6 md:px-10">
+          <motion.div
+            initial={{ opacity: 0, y: 24, filter: 'blur(8px)' }}
+            whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.9, ease: APPLE_EASE }}
+            className="relative overflow-hidden rounded-2xl border border-red-500/15 bg-gradient-to-br from-red-950/15 via-stone-950/30 to-transparent px-8 md:px-14 py-10 md:py-14"
+          >
+            <div className="absolute -top-24 -left-16 w-[400px] h-[400px] rounded-full pointer-events-none"
+              style={{ background: 'radial-gradient(circle, rgba(239,68,68,0.12), transparent 70%)' }} />
+            <div className="relative z-10">
+              <div className="flex items-center gap-3 mb-5">
+                <div className="w-8 h-[1px] bg-red-500/40" />
+                <FileWarning size={13} className="text-red-400" />
+                <span className="text-red-400/70 text-[10px] font-bold tracking-[0.5em] uppercase">
+                  Antes de continuar
+                </span>
+              </div>
+              <p className="text-2xl md:text-4xl font-black tracking-tight text-stone-100 leading-[1.15] mb-4"
+                style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                Nem toda ameaça é visível.
+                <br />
+                <span className="text-red-400">As mais perigosas operam sem percepção.</span>
+              </p>
+              <p className="text-stone-400 text-sm md:text-base leading-relaxed max-w-3xl">
+                Você está prestes a ver, em quatro vetores simultâneos, o que entra no seu corpo, na sua mente,
+                no seu comportamento e no seu ambiente todos os dias — sem aviso, sem rótulo de alerta,
+                sem permissão consciente. Respire. Este é um relatório, não um ataque.
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════ */}
       {/* ABERTURA CONCEITUAL — O gancho que fura a bolha    */}
       {/* ═══════════════════════════════════════════════════ */}
       <section className="relative z-10 py-20 md:py-32">
