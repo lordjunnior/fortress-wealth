@@ -64,7 +64,7 @@ export default function ToxicosOcultos() {
   };
 
   return (
-    <div className="min-h-screen text-stone-100 font-sans selection:bg-red-400/30 relative overflow-hidden" style={{ background: '#050808' }}>
+    <div className="min-h-screen text-stone-100 font-sans selection:bg-red-400/30 relative overflow-hidden text-[17px] md:text-[18px] lg:text-[19px] leading-relaxed [&_p]:text-[1.05em] [&_p]:leading-[1.75]" style={{ background: '#050808' }}>
       <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
         <BackToHome />
       </div>
