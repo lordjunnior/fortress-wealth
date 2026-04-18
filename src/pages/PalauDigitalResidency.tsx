@@ -137,7 +137,7 @@ const PalauDigitalResidency = () => {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Familjen+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap"
           rel="stylesheet"
         />
       </Helmet>
@@ -175,12 +175,12 @@ const PalauDigitalResidency = () => {
         .palau-v6 {
           background: var(--mist);
           color: var(--abyss);
-          font-family: 'Familjen Grotesk', system-ui, sans-serif;
+          font-family: 'Inter', system-ui, sans-serif;
           font-weight: 400;
           letter-spacing: -0.005em;
         }
-        .palau-v6 .display { font-family: 'Instrument Serif', serif; font-weight: 400; letter-spacing: -0.015em; line-height: 0.96; }
-        .palau-v6 .display-italic { font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; letter-spacing: -0.01em; }
+        .palau-v6 .display { font-family: 'Space Grotesk', sans-serif; font-weight: 700; letter-spacing: -0.025em; line-height: 0.92; }
+        .palau-v6 .display-italic { font-family: 'Space Grotesk', sans-serif; font-style: italic; font-weight: 500; letter-spacing: -0.015em; }
         .palau-v6 .eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase; }
         .palau-v6 .body-lg { font-size: clamp(1.05rem, 1.4vw, 1.35rem); line-height: 1.65; font-weight: 300; color: var(--ink-soft); }
         .palau-v6 .body { font-size: 1rem; line-height: 1.75; font-weight: 400; color: var(--ink-soft); }
@@ -246,7 +246,7 @@ const PalauDigitalResidency = () => {
           display: inline-flex; align-items: center; gap: 0.85rem;
           padding: 1.15rem 2.4rem;
           background: var(--ink); color: var(--cream);
-          font-family: 'Inter Tight', sans-serif;
+          font-family: 'Inter', sans-serif;
           font-size: 0.78rem; font-weight: 500;
           letter-spacing: 0.22em; text-transform: uppercase;
           border-radius: 999px;
@@ -267,7 +267,7 @@ const PalauDigitalResidency = () => {
           padding: 1.15rem 2.4rem;
           background: transparent; color: var(--ink);
           border: 1px solid var(--line-strong);
-          font-family: 'Inter Tight', sans-serif;
+          font-family: 'Inter', sans-serif;
           font-size: 0.78rem; font-weight: 500;
           letter-spacing: 0.22em; text-transform: uppercase;
           border-radius: 999px;
@@ -311,7 +311,7 @@ const PalauDigitalResidency = () => {
 
         /* Number ticker */
         .palau-v6 .num-mega {
-          font-family: 'Fraunces', serif;
+          font-family: 'Space Grotesk', sans-serif;
           font-size: clamp(8rem, 22vw, 22rem);
           font-weight: 300; line-height: 0.85;
           color: var(--terracotta); letter-spacing: -0.04em;
