@@ -246,7 +246,7 @@ const PalauDigitalResidency = () => {
           display: inline-flex; align-items: center; gap: 0.85rem;
           padding: 1.15rem 2.4rem;
           background: var(--ink); color: var(--cream);
-          font-family: 'Inter Tight', sans-serif;
+          font-family: 'Inter', sans-serif;
           font-size: 0.78rem; font-weight: 500;
           letter-spacing: 0.22em; text-transform: uppercase;
           border-radius: 999px;
@@ -267,7 +267,7 @@ const PalauDigitalResidency = () => {
           padding: 1.15rem 2.4rem;
           background: transparent; color: var(--ink);
           border: 1px solid var(--line-strong);
-          font-family: 'Inter Tight', sans-serif;
+          font-family: 'Inter', sans-serif;
           font-size: 0.78rem; font-weight: 500;
           letter-spacing: 0.22em; text-transform: uppercase;
           border-radius: 999px;
@@ -311,7 +311,7 @@ const PalauDigitalResidency = () => {
 
         /* Number ticker */
         .palau-v6 .num-mega {
-          font-family: 'Fraunces', serif;
+          font-family: 'Space Grotesk', sans-serif;
           font-size: clamp(8rem, 22vw, 22rem);
           font-weight: 300; line-height: 0.85;
           color: var(--terracotta); letter-spacing: -0.04em;
