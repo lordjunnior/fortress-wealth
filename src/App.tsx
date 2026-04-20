@@ -141,6 +141,7 @@ import Propolis from "./pages/Propolis";
 import SegundoPassaporte from "./pages/saida/SegundoPassaporte";
 import ResidenciaFiscal from "./pages/saida/ResidenciaFiscal";
 import JurisdicoesAmigaveis from "./pages/saida/JurisdicoesAmigaveis";
+import PrimeirosSocorrosTaticos from "./pages/soberania-organica/PrimeirosSocorrosTaticos";
 const queryClient = new QueryClient();
 
 const App = () => (
