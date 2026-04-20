@@ -143,37 +143,37 @@ export default function ProjetoAutonomo() {
   const phases = [
     {
       num: '01', title: 'Base 72', sub: 'Protege o corpo', accent: '#f43f5e',
-      sectionId: 'fase-01', icon: Clock, image: tlBase72, height: 'tall',
+      sectionId: 'fase-01', icon: Clock, image: tlBase72, size: 'mega',
       desc: 'Autonomia mínima nas primeiras 72 horas. Abrigo, água potável, comunicação resiliente, deslocamento e kit tático essencial para o intervalo crítico de qualquer ruptura urbana.',
       tag: 'Sobrevivência tática',
     },
     {
       num: '02', title: 'Autonomia Biológica', sub: 'Fortalece o corpo', accent: '#10b981',
-      sectionId: 'fase-02', icon: Heart, image: tlAutonomia, height: 'short',
+      sectionId: 'fase-02', icon: Heart, image: tlAutonomia, size: 'short',
       desc: 'Saúde preventiva, primeiros socorros e fitoterapia aplicada como primeira linha de defesa. O corpo deixa de depender de respostas externas para questões cotidianas.',
       tag: 'Defesa interna',
     },
     {
       num: '03', title: 'Soberania Alimentar', sub: 'Alimenta o corpo', accent: '#f59e0b',
-      sectionId: 'fase-03', icon: Wheat, image: tlAlimentar, height: 'tall',
+      sectionId: 'fase-03', icon: Wheat, image: tlAlimentar, size: 'tall',
       desc: 'Produção própria de alimento. Horta urbana, solo vivo, conservação sem refrigeração, proteína sustentável e domínio da cadeia que alimenta sua família.',
       tag: 'Produção real',
     },
     {
       num: '04', title: 'Conhecimento Perdido', sub: 'Ensina a entender o corpo', accent: '#14b8a6',
-      sectionId: 'fase-04', icon: BookOpen, image: tlConhecimento, height: 'short',
+      sectionId: 'fase-04', icon: BookOpen, image: tlConhecimento, size: 'short',
       desc: 'Formação bioquímica e botânica. 12 plantas, 5 sistemas fisiológicos, 9 seções técnicas por ficha. Recupera o que três gerações foram condicionadas a esquecer.',
       tag: 'Formação técnica',
     },
     {
       num: '05', title: 'Tóxicos Ocultos', sub: 'Revela o que adoece o corpo', accent: '#ef4444',
-      sectionId: 'fase-05', icon: Eye, image: bgFase05, height: 'tall',
+      sectionId: 'fase-05', icon: Eye, image: bgFase05, size: 'tall',
       desc: 'Laboratório de discernimento sobre toxinas alimentares, ambientais, manipulação informacional e dependência tecnológica. Quatro vetores invisíveis que reduzem clareza, saúde e liberdade de escolha.',
       tag: 'Laboratório de discernimento',
     },
     {
       num: '06', title: 'Mente Blindada', sub: 'Protege a soberania cognitiva', accent: '#a855f7',
-      sectionId: 'fase-06', icon: Brain, image: tlMente, height: 'short',
+      sectionId: 'fase-06', icon: Brain, image: tlMente, size: 'pico',
       desc: 'Protocolos contra manipulação informacional, desintoxicação digital, leitura crítica de mídia e fortalecimento da soberania cognitiva. Sem mente livre, nenhuma das fases anteriores se sustenta.',
       tag: 'Defesa cognitiva',
     },
