@@ -139,6 +139,7 @@ import ExitIntentLeadMagnet from "./components/ExitIntentLeadMagnet";
 import Novilingua from "./pages/Novilingua";
 import Propolis from "./pages/Propolis";
 import SegundoPassaporte from "./pages/saida/SegundoPassaporte";
+import ResidenciaFiscal from "./pages/saida/ResidenciaFiscal";
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -293,6 +294,7 @@ const App = () => (
             <Route path="/soberania-organica/propolis" element={<Propolis />} />
             <Route path="/propolis" element={<Propolis />} />
             <Route path="/saida/segundo-passaporte" element={<SegundoPassaporte />} />
+            <Route path="/saida/residencia-fiscal" element={<ResidenciaFiscal />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

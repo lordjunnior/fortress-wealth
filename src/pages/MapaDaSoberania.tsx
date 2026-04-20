@@ -274,6 +274,7 @@ const SILOS: Silo[] = [
       { title: 'Estratégias de Saída (Hub)', href: '/saida' },
       { title: 'Gateway PIX → Bitcoin', href: '/saida/gateway' },
       { title: 'Segundo Passaporte: O Guia', href: '/saida/segundo-passaporte' },
+      { title: 'Residência Fiscal: Saída do Brasil', href: '/saida/residencia-fiscal' },
       { title: 'Infraestrutura', href: '/infraestrutura' },
       { title: 'Economia Paralela', href: '/economia-paralela' },
     ],
