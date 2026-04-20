@@ -18,7 +18,11 @@ import imgPaje from "@/assets/rape/hero-pajé-kuripe.jpg";
 import imgFrasco from "@/assets/rape/po-frasco-kuripe.jpg";
 import imgVago from "@/assets/rape/nervo-vago-anatomia.jpg";
 import imgCerimonia from "@/assets/rape/cerimonia-noturna.jpg";
-import imgComercial from "@/assets/rape/sequestro-comercial.jpg";
+import imgComercial from "@/assets/rape/vitrine-comercial-frascos.jpg";
+import imgCoentro from "@/assets/quelantes/plantas/coentro.jpg";
+import imgChlorella from "@/assets/quelantes/plantas/chlorella.jpg";
+import imgIpe from "@/assets/quelantes/plantas/ipe-roxo.jpg";
+import imgSucupira from "@/assets/quelantes/plantas/sucupira.jpg";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -85,7 +89,7 @@ export default function RapeDossie() {
   return (
     <div ref={containerRef} className="relative min-h-screen text-foreground overflow-x-hidden">
       <Helmet>
-        <title>Rapé: Dossiê Técnico — Modulação Biológica Ancestral | Lord Junnior</title>
+        <title>Rapé: Dossiê Técnico de Modulação Biológica Ancestral | Lord Junnior</title>
         <meta
           name="description"
           content="Não é um produto. É uma ferramenta de modulação vagal sequestrada pela indústria do bem-estar. Bioquímica, protocolo e sinergia com quelantes brasileiros."
@@ -193,7 +197,7 @@ export default function RapeDossie() {
         </div>
       </section>
 
-      {/* IMAGEM EDITORIAL DE ABERTURA — pajé com kuripe */}
+      {/* IMAGEM EDITORIAL DE ABERTURA, pajé com kuripe */}
       <section className="relative z-10 px-6 md:px-12 lg:px-20 mb-20">
         <div className="max-w-7xl mx-auto">
           <motion.div
