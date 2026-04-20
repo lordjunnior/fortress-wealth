@@ -2,23 +2,30 @@ import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { FlaskConical, AlertTriangle, ArrowLeft, Leaf } from "lucide-react";
+import { FlaskConical, AlertTriangle, ArrowLeft, Leaf, ChevronDown } from "lucide-react";
 import BackToHome from "@/components/BackToHome";
 import FixedThematicBackground from "@/components/backgrounds/FixedThematicBackground";
 import ScrollToTop from "@/components/ScrollToTop";
 import bgQuelantes from "@/assets/backgrounds/bg-quelantes.jpg";
+import imgLab from "@/assets/quelantes/fichas-laboratorio.jpg";
+import imgCoentro from "@/assets/quelantes/coentro-chlorella.jpg";
+import imgIpe from "@/assets/quelantes/ipe-sucupira.jpg";
+import imgCardo from "@/assets/quelantes/cardo-mariano.jpg";
+import imgCarvao from "@/assets/quelantes/carvao-renais.jpg";
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 
 interface Planta {
   nome: string;
   cientifico: string;
-  alvo: string;       // metal/toxina alvo
-  ativos: string;     // compostos ativos
-  uso: string;        // posologia
+  alvo: string;
+  ativos: string;
+  uso: string;
   ciclo: string;
   contra: string;
   sinergia: string;
+  imagem?: string;
+  legenda?: string;
 }
 
 const PLANTAS: Planta[] = [
@@ -27,18 +34,20 @@ const PLANTAS: Planta[] = [
     cientifico: "Coriandrum sativum",
     alvo: "Mercúrio, alumínio (sistema nervoso central)",
     ativos: "Linalol, dodecanal, ácido caféico, quercetina",
-    uso: "30-50g de folhas frescas/dia trituradas em sucos verdes ou pesto",
-    ciclo: "21 dias on / 7 dias off — repetir 3 ciclos",
-    contra: "Hipotensão severa, anticoagulantes (warfarina) — interação",
-    sinergia: "OBRIGATÓRIO pareado com Chlorella — coentro mobiliza, chlorella sequestra",
+    uso: "30 a 50g de folhas frescas por dia, trituradas em sucos verdes ou pesto",
+    ciclo: "21 dias on, 7 dias off, repetir 3 ciclos",
+    contra: "Hipotensão severa, anticoagulantes (warfarina), interação documentada",
+    sinergia: "OBRIGATÓRIO pareado com Chlorella. Coentro mobiliza, chlorella sequestra",
+    imagem: imgCoentro,
+    legenda: "Coentro fresco e chlorella em pó: a dupla obrigatória de mobilização e sequestro de metais",
   },
   {
     nome: "Chlorella",
     cientifico: "Chlorella vulgaris / pyrenoidosa",
     alvo: "Mercúrio, chumbo, cádmio, dioxinas",
     ativos: "Parede celular de esporopolenina, clorofila, CGF",
-    uso: "2-3g/dia (em pó ou comprimidos), longe de refeições com cobre/zinco",
-    ciclo: "Concomitante ao coentro — mesma duração",
+    uso: "2 a 3g por dia (pó ou comprimidos), longe de refeições com cobre ou zinco",
+    ciclo: "Concomitante ao coentro, mesma duração",
     contra: "Alergia a iodo, doença autoimune ativa, anticoagulantes",
     sinergia: "Coentro (essencial), espirulina (potencializa)",
   },
@@ -47,18 +56,20 @@ const PLANTAS: Planta[] = [
     cientifico: "Handroanthus impetiginosus",
     alvo: "Carga inflamatória sistêmica, suporte hepático na fase 2",
     ativos: "Lapachol, beta-lapachona, naftoquinonas",
-    uso: "Decocção de 5g de casca em 500ml — 200ml 2x/dia",
-    ciclo: "14 dias on / 14 dias off",
+    uso: "Decocção de 5g de casca em 500ml. 200ml duas vezes ao dia",
+    ciclo: "14 dias on, 14 dias off",
     contra: "Gestação (categoria X), distúrbios de coagulação",
     sinergia: "Sucupira (potencializa anti-inflamatório), cardo-mariano (proteção hepática)",
+    imagem: imgIpe,
+    legenda: "Casca de ipê-roxo e vagens de sucupira: o eixo anti-inflamatório nativo brasileiro",
   },
   {
     nome: "Sucupira",
     cientifico: "Pterodon emarginatus",
     alvo: "Detoxificação articular e linfática, anti-inflamatório",
     ativos: "Diterpenos furânicos, isoflavonas",
-    uso: "Tintura 1:5 — 20-30 gotas em água, 2x/dia",
-    ciclo: "21 dias on / 14 dias off",
+    uso: "Tintura 1:5. 20 a 30 gotas em água, duas vezes ao dia",
+    ciclo: "21 dias on, 14 dias off",
     contra: "Gestação, hipotensos, uso prolongado sem pausa",
     sinergia: "Ipê-roxo (anti-inflamatório), unha-de-gato (modulação imune)",
   },
@@ -67,17 +78,19 @@ const PLANTAS: Planta[] = [
     cientifico: "Silybum marianum",
     alvo: "Proteção e regeneração hepática durante quelação",
     ativos: "Silimarina (silibina, silidianina, silicristina)",
-    uso: "200-400mg de extrato padronizado (70-80% silimarina)/dia",
+    uso: "200 a 400mg de extrato padronizado (70 a 80% silimarina) por dia",
     ciclo: "Contínuo durante todo protocolo de quelação",
     contra: "Alergia a Asteraceae, doença biliar obstrutiva",
-    sinergia: "Suporte universal — usar com TODOS os outros quelantes",
+    sinergia: "Suporte universal. Usar com TODOS os outros quelantes",
+    imagem: imgCardo,
+    legenda: "Cardo-mariano: o escudo hepático obrigatório em qualquer protocolo sério de quelação",
   },
   {
     nome: "Espirulina",
     cientifico: "Arthrospira platensis",
     alvo: "Arsênico, cádmio, suporte nutricional",
     ativos: "Ficocianina, clorofila, ácido gama-linolênico",
-    uso: "3-5g/dia em ciclos, longe de café/chá (taninos)",
+    uso: "3 a 5g por dia em ciclos, longe de café ou chá (taninos)",
     ciclo: "Contínuo, com pausa de 7 dias a cada 60",
     contra: "Fenilcetonúria, doença autoimune, gota",
     sinergia: "Chlorella (sinergia em metais), suporte energético geral",
@@ -87,18 +100,18 @@ const PLANTAS: Planta[] = [
     cientifico: "Uncaria tomentosa",
     alvo: "Modulação imune, suporte sistêmico durante quelação",
     ativos: "Alcaloides oxindólicos, glicosídeos do ácido quinóvico",
-    uso: "Decocção 3g de casca em 500ml — 150ml 2x/dia",
-    ciclo: "30 dias on / 15 dias off",
+    uso: "Decocção 3g de casca em 500ml. 150ml duas vezes ao dia",
+    ciclo: "30 dias on, 15 dias off",
     contra: "Gestação, transplantados (imunossupressão), autoimunes ativos",
     sinergia: "Sucupira, ipê-roxo (eixo anti-inflamatório completo)",
   },
   {
     nome: "Quebra-pedra",
     cientifico: "Phyllanthus niruri",
-    alvo: "Suporte renal — via de excreção de quelantes ligados",
+    alvo: "Suporte renal, via de excreção de quelantes ligados",
     ativos: "Filantina, hipofilantina, lignanas",
-    uso: "Infusão 1 colher de sopa/xícara — 2-3x/dia",
-    ciclo: "21 dias on / 7 dias off",
+    uso: "Infusão 1 colher de sopa por xícara, 2 a 3 vezes ao dia",
+    ciclo: "21 dias on, 7 dias off",
     contra: "Gestação, hipoglicemia, diuréticos prescritos",
     sinergia: "Cavalinha (ambos renais), sempre durante mobilização de metais",
   },
@@ -107,8 +120,8 @@ const PLANTAS: Planta[] = [
     cientifico: "Equisetum arvense",
     alvo: "Suporte mineral durante quelação (sílica, cálcio, magnésio)",
     ativos: "Sílica orgânica, flavonoides, ácidos fenólicos",
-    uso: "Infusão 5g/500ml — 250ml 2x/dia",
-    ciclo: "14 dias on / 14 dias off",
+    uso: "Infusão 5g em 500ml, 250ml duas vezes ao dia",
+    ciclo: "14 dias on, 14 dias off",
     contra: "Cardiopatas, deficiência de tiamina, uso prolongado",
     sinergia: "Quebra-pedra (suporte renal duplo)",
   },
@@ -117,10 +130,35 @@ const PLANTAS: Planta[] = [
     cientifico: "Carbonis activatus",
     alvo: "Sequestro intestinal de toxinas mobilizadas",
     ativos: "Estrutura microporosa de adsorção",
-    uso: "1-2g em água, 2h longe de refeições e medicamentos",
-    ciclo: "Pontual — máximo 3-5 dias seguidos",
+    uso: "1 a 2g em água, 2h longe de refeições e medicamentos",
+    ciclo: "Pontual, máximo 3 a 5 dias seguidos",
     contra: "TODOS os medicamentos (adsorve fármacos), constipação",
     sinergia: "Uso emergencial em fase de mobilização agressiva",
+    imagem: imgCarvao,
+    legenda: "Carvão ativado, quebra-pedra e cavalinha: o eixo de excreção e suporte renal",
+  },
+];
+
+const FAQ = [
+  {
+    q: "Posso fazer este protocolo sem acompanhamento médico?",
+    a: "Não. Quelação mobiliza metais armazenados em tecidos profundos. Sem suporte hepático e renal monitorado e exames de carga corporal, o risco de redistribuição é real. Este conteúdo é educacional, não substitui avaliação clínica.",
+  },
+  {
+    q: "Por que coentro e chlorella precisam ser usados juntos?",
+    a: "Coentro tem capacidade rara de mobilizar mercúrio armazenado no tecido nervoso central. Sem um sequestrante intestinal, esses metais recirculam pela bile e podem ser reabsorvidos. Chlorella faz o sequestro no lúmen intestinal, fechando o ciclo.",
+  },
+  {
+    q: "Quanto tempo dura o protocolo completo?",
+    a: "Um ciclo conservador dura entre 9 e 12 semanas, com janelas de pausa para recuperação enzimática hepática. Cargas tóxicas pesadas exigem múltiplos ciclos espaçados ao longo de 12 a 18 meses.",
+  },
+  {
+    q: "Existe risco de quelação descontrolada?",
+    a: "Sim. Se você mobilizar metais sem garantir excreção renal e intestinal adequada, eles redistribuem para tecidos sensíveis como cérebro e rins. Por isso quebra-pedra, cavalinha e cardo-mariano são obrigatórios durante toda a janela ativa.",
+  },
+  {
+    q: "Posso combinar com medicamentos contínuos?",
+    a: "Várias dessas plantas têm interação documentada com anticoagulantes, hipotensores, imunossupressores e antidiabéticos. Avaliação médica individual é mandatória antes de iniciar.",
   },
 ];
 
@@ -129,148 +167,302 @@ export default function ProtocoloQuelantes() {
 
   const schema = {
     "@context": "https://schema.org",
-    "@type": "MedicalWebPage",
-    "name": "Protocolo de Quelantes Brasileiros — Fichas Técnicas",
-    "url": "https://lordjunnior.com.br/soberania-organica/conhecimento-perdido/protocolo-quelantes-brasileiros",
-    "description": "10 plantas brasileiras quelantes com fichas técnicas completas: alvo tóxico, compostos ativos, posologia, contraindicações e sinergias.",
-    "lastReviewed": "2026-04-20",
+    "@graph": [
+      {
+        "@type": "MedicalWebPage",
+        "name": "Protocolo de Quelantes Brasileiros: 10 Plantas com Fichas Técnicas",
+        "url": "https://lordjunnior.com.br/soberania-organica/conhecimento-perdido/protocolo-quelantes-brasileiros",
+        "description": "10 plantas brasileiras quelantes com fichas técnicas completas: alvo tóxico, compostos ativos, posologia, contraindicações e sinergias.",
+        "lastReviewed": "2026-04-20",
+        "medicalAudience": "Patients",
+        "about": [
+          { "@type": "Thing", "name": "Quelação de metais pesados" },
+          { "@type": "Thing", "name": "Fitoterapia brasileira" },
+        ],
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": FAQ.map(f => ({
+          "@type": "Question",
+          "name": f.q,
+          "acceptedAnswer": { "@type": "Answer", "text": f.a },
+        })),
+      },
+    ],
   };
 
   return (
     <div className="relative min-h-screen text-foreground overflow-x-hidden">
       <Helmet>
-        <title>Protocolo de Quelantes Brasileiros: 10 Plantas | Lord Junnior</title>
-        <meta name="description" content="Fichas técnicas de 10 plantas brasileiras quelantes: coentro, chlorella, ipê-roxo, sucupira, cardo-mariano e mais. Posologia, ciclos, contraindicações." />
+        <title>Protocolo de Quelantes Brasileiros: 10 Plantas Quelantes Naturais | Lord Junnior</title>
+        <meta name="description" content="Fichas técnicas completas de 10 plantas brasileiras quelantes: coentro, chlorella, ipê-roxo, sucupira, cardo-mariano, espirulina, unha-de-gato, quebra-pedra, cavalinha e carvão ativado. Posologia, ciclos, contraindicações e sinergias." />
         <link rel="canonical" href="https://lordjunnior.com.br/soberania-organica/conhecimento-perdido/protocolo-quelantes-brasileiros" />
+        <meta property="og:title" content="Protocolo de Quelantes Brasileiros: 10 Plantas Nativas" />
+        <meta property="og:description" content="Fichas técnicas de 10 plantas quelantes: posologia, ciclos, contraindicações e sinergias documentadas." />
+        <meta property="og:image" content="https://lordjunnior.com.br/og-quelantes.jpg" />
         <script type="application/ld+json">{JSON.stringify(schema)}</script>
       </Helmet>
 
       <FixedThematicBackground image={bgQuelantes} intensity="heavy" />
 
-      <div className="relative z-10 px-6 md:px-12 lg:px-20 pt-[52px]">
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
         <BackToHome />
       </div>
 
-      <section className="relative z-10 px-6 md:px-12 lg:px-20 pt-12 pb-16">
-        <div className="max-w-5xl">
+      {/* HERO FULL-SCREEN APPLE-LIKE */}
+      <section className="relative z-10 min-h-[90vh] flex items-center px-6 md:px-12 lg:px-20 pt-12 pb-20">
+        <div className="w-full max-w-7xl mx-auto">
           <Link
             to="/soberania-organica/conhecimento-perdido/rape"
-            className="inline-flex items-center gap-2 text-xs font-mono tracking-widest uppercase text-emerald-400 mb-8 hover:gap-3 transition-all"
+            className="inline-flex items-center gap-2 text-xs font-mono tracking-widest uppercase text-emerald-400 mb-10 hover:gap-3 transition-all"
           >
             <ArrowLeft size={12} /> Voltar ao Dossiê do Rapé
           </Link>
 
-          <p className="font-mono text-[10px] md:text-xs tracking-[0.4em] text-emerald-400/80 uppercase mb-6">
-            [ FICHAS TÉCNICAS · DETOXIFICAÇÃO ASSISTIDA ]
+          <p className="font-mono text-[10px] md:text-xs tracking-[0.4em] text-emerald-400/80 uppercase mb-8">
+            FICHAS TÉCNICAS · DETOXIFICAÇÃO ASSISTIDA · 10 PLANTAS NATIVAS
           </p>
 
           <motion.h1
             initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ duration: 1.1, ease: APPLE_EASE }}
-            className="text-foreground font-bold leading-[0.95] tracking-tight mb-8"
+            className="text-foreground font-bold leading-[0.92] tracking-tight mb-10"
             style={{
               fontFamily: "'Bebas Neue', sans-serif",
-              fontSize: "clamp(2.5rem, 7.5vw, 6rem)",
+              fontSize: "clamp(3rem, 9vw, 8rem)",
               letterSpacing: "0.01em",
             }}
           >
             PROTOCOLO DE <br />
-            <span className="text-emerald-400/90 italic font-light" style={{ fontFamily: "'Instrument Serif', serif" }}>
+            <span className="text-emerald-400/95 italic font-light" style={{ fontFamily: "'Instrument Serif', serif" }}>
               quelantes brasileiros
             </span>
           </motion.h1>
 
-          <p className="text-muted-foreground text-lg md:text-xl leading-relaxed max-w-3xl">
-            Dez plantas medicinais nativas e adotadas pela tradição brasileira que mobilizam, sequestram e excretam
-            metais pesados e toxinas acumuladas. Cada ficha contém posologia, ciclos, contraindicações e sinergias —
-            sem espaço para amadorismo.
-          </p>
-        </div>
-      </section>
-
-      {/* AVISO YMYL */}
-      <section className="relative z-10 px-6 md:px-12 lg:px-20 pb-12">
-        <div className="max-w-5xl">
-          <div className="rounded-xl border border-destructive/30 bg-destructive/5 backdrop-blur p-6 flex gap-4 items-start">
-            <AlertTriangle className="text-destructive shrink-0 mt-1" size={22} />
-            <p className="text-sm text-foreground/85 leading-7">
-              <strong>Aviso técnico:</strong> a quelação mobiliza metais armazenados — fase mais perigosa que o estado
-              estacionário. Sempre executar com suporte hepático (cardo-mariano) e renal (quebra-pedra/cavalinha).
-              Acompanhamento médico obrigatório em portadores de doença crônica, gestantes e usuários de medicação contínua.
+          <div className="grid lg:grid-cols-12 gap-10 items-end">
+            <p className="lg:col-span-7 text-muted-foreground text-lg md:text-2xl leading-relaxed">
+              Dez plantas medicinais nativas e adotadas pela tradição brasileira que mobilizam, sequestram
+              e excretam metais pesados acumulados. Cada ficha contém posologia, ciclos, contraindicações
+              e sinergias. Sem espaço para amadorismo.
             </p>
+
+            <div className="lg:col-span-5 grid grid-cols-3 gap-3">
+              {[
+                { n: "10", l: "Plantas catalogadas" },
+                { n: "21d", l: "Ciclo padrão" },
+                { n: "9", l: "Semanas mínimas" },
+              ].map(s => (
+                <div key={s.l} className="rounded-2xl border border-emerald-900/30 bg-card/40 backdrop-blur-md p-5 text-center hover:-translate-y-1 hover:shadow-[0_20px_40px_-15px_rgba(16,185,129,0.4)] transition-all">
+                  <p className="text-3xl md:text-4xl font-bold text-emerald-400" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>{s.n}</p>
+                  <p className="text-[10px] uppercase tracking-widest text-muted-foreground mt-2">{s.l}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-16 flex items-center gap-3 text-emerald-500/60">
+            <ChevronDown size={14} className="animate-bounce" />
+            <span className="text-[10px] font-mono tracking-[0.3em] uppercase">Role para a abertura editorial</span>
           </div>
         </div>
       </section>
 
-      {/* FICHAS */}
-      <section className="relative z-10 px-6 md:px-12 lg:px-20 py-12">
-        <div className="max-w-5xl space-y-6">
-          {PLANTAS.map((p, i) => (
-            <motion.article
-              key={p.nome}
-              initial={{ opacity: 0, y: 30, filter: "blur(6px)" }}
-              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.7, delay: (i % 4) * 0.05, ease: APPLE_EASE }}
-              className="rounded-2xl border border-emerald-900/30 bg-card/40 backdrop-blur-md overflow-hidden"
-            >
-              <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-emerald-500/40 to-transparent" />
+      {/* IMAGEM EDITORIAL DE ABERTURA */}
+      <section className="relative z-10 px-6 md:px-12 lg:px-20 mb-20">
+        <div className="max-w-7xl mx-auto">
+          <div className="relative rounded-3xl overflow-hidden border border-emerald-900/30 group">
+            <img
+              src={imgLab}
+              alt="Balança de laboratório com ervas brasileiras quelantes pesadas para protocolo de detoxificação"
+              className="w-full h-[55vh] md:h-[70vh] object-cover transition-transform duration-1000 group-hover:scale-[1.02]"
+              loading="eager"
+              width={1920}
+              height={1080}
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 p-8 md:p-14">
+              <p className="text-[10px] font-mono tracking-[0.4em] uppercase text-emerald-400/80 mb-3">
+                ABERTURA EDITORIAL
+              </p>
+              <h2
+                className="text-foreground text-3xl md:text-5xl lg:text-6xl font-bold leading-tight max-w-3xl"
+                style={{ fontFamily: "'Bebas Neue', sans-serif", letterSpacing: "0.01em" }}
+              >
+                Pesar a planta certa é metade do protocolo.
+              </h2>
+              <p className="text-muted-foreground text-sm md:text-base mt-4 max-w-2xl">
+                A outra metade é entender o que ela faz, em qual janela e contra qual veneno específico.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-              <div className="p-6 md:p-8">
-                <div className="flex items-start gap-4 mb-6 pb-6 border-b border-border/20">
-                  <div className="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/25 shrink-0">
-                    <Leaf className="text-emerald-400" size={22} />
-                  </div>
-                  <div>
-                    <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-emerald-400/70 mb-1">
-                      Ficha {String(i + 1).padStart(2, "0")} de {PLANTAS.length}
-                    </p>
-                    <h2
-                      className="text-foreground font-bold text-3xl md:text-4xl tracking-tight"
-                      style={{ fontFamily: "'Bebas Neue', sans-serif", letterSpacing: "0.02em" }}
-                    >
-                      {p.nome}
-                    </h2>
-                    <p className="italic text-muted-foreground text-sm mt-1">{p.cientifico}</p>
-                  </div>
-                </div>
+      {/* AVISO YMYL */}
+      <section className="relative z-10 px-6 md:px-12 lg:px-20 mb-20">
+        <div className="max-w-7xl mx-auto">
+          <div className="rounded-2xl border border-destructive/30 bg-destructive/5 backdrop-blur-md p-7 md:p-9 flex gap-5 items-start hover:border-destructive/50 transition-all">
+            <AlertTriangle className="text-destructive shrink-0 mt-1" size={26} />
+            <div>
+              <p className="text-xs font-mono tracking-[0.3em] uppercase text-destructive/90 mb-3">
+                AVISO TÉCNICO MANDATÓRIO
+              </p>
+              <p className="text-base md:text-lg text-foreground/90 leading-8">
+                A quelação mobiliza metais armazenados, fase mais perigosa que o estado estacionário.
+                Sempre executar com suporte hepático (cardo-mariano) e renal (quebra-pedra ou cavalinha).
+                Acompanhamento médico obrigatório em portadores de doença crônica, gestantes e usuários
+                de medicação contínua.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-                <div className="grid md:grid-cols-2 gap-x-8 gap-y-5 text-sm md:text-base">
-                  <Field label="Alvo" v={p.alvo} />
-                  <Field label="Compostos ativos" v={p.ativos} />
-                  <Field label="Posologia" v={p.uso} />
-                  <Field label="Ciclo" v={p.ciclo} />
-                  <Field label="Contraindicações" v={p.contra} danger />
-                  <Field label="Sinergia" v={p.sinergia} accent />
-                </div>
+      {/* FICHAS COM IMAGENS INTERCALADAS */}
+      <section className="relative z-10 px-6 md:px-12 lg:px-20 pb-20">
+        <div className="max-w-7xl mx-auto">
+          <p className="font-mono text-[10px] md:text-xs tracking-[0.4em] text-emerald-400/80 uppercase mb-4">
+            DEZ FICHAS TÉCNICAS
+          </p>
+          <h2
+            className="text-foreground font-bold mb-16 leading-[0.95]"
+            style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(2.5rem, 6vw, 5rem)" }}
+          >
+            CADA PLANTA, UM <span className="italic font-light text-emerald-400/95" style={{ fontFamily: "'Instrument Serif', serif" }}>vetor preciso</span>
+          </h2>
+
+          <div className="space-y-8">
+            {PLANTAS.map((p, i) => (
+              <div key={p.nome}>
+                {p.imagem && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ duration: 0.9, ease: APPLE_EASE }}
+                    className="mb-8 rounded-3xl overflow-hidden border border-emerald-900/30 group"
+                  >
+                    <div className="relative">
+                      <img
+                        src={p.imagem}
+                        alt={p.legenda || p.nome}
+                        className="w-full h-[40vh] md:h-[55vh] object-cover transition-transform duration-1000 group-hover:scale-[1.03]"
+                        loading="lazy"
+                        width={1600}
+                        height={1000}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/30 to-transparent" />
+                      {p.legenda && (
+                        <p className="absolute bottom-6 left-6 right-6 md:left-10 md:right-10 text-foreground/90 text-sm md:text-base italic max-w-3xl">
+                          {p.legenda}
+                        </p>
+                      )}
+                    </div>
+                  </motion.div>
+                )}
+
+                <motion.article
+                  initial={{ opacity: 0, y: 30, filter: "blur(6px)" }}
+                  whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.7, delay: (i % 4) * 0.05, ease: APPLE_EASE }}
+                  className="relative rounded-3xl border border-emerald-900/30 bg-card/40 backdrop-blur-md overflow-hidden hover:-translate-y-1 hover:border-emerald-700/50 hover:shadow-[0_30px_60px_-20px_rgba(16,185,129,0.35)] transition-all duration-500"
+                >
+                  <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-emerald-500/40 to-transparent" />
+
+                  <div className="p-7 md:p-10 lg:p-12">
+                    <div className="flex items-start gap-5 mb-8 pb-7 border-b border-border/20">
+                      <div className="p-3.5 rounded-2xl bg-emerald-500/10 border border-emerald-500/25 shrink-0">
+                        <Leaf className="text-emerald-400" size={26} />
+                      </div>
+                      <div>
+                        <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-emerald-400/70 mb-1.5">
+                          Ficha {String(i + 1).padStart(2, "0")} de {PLANTAS.length}
+                        </p>
+                        <h3
+                          className="text-foreground font-bold text-3xl md:text-5xl tracking-tight leading-none"
+                          style={{ fontFamily: "'Bebas Neue', sans-serif", letterSpacing: "0.02em" }}
+                        >
+                          {p.nome}
+                        </h3>
+                        <p className="italic text-muted-foreground text-sm md:text-base mt-2">{p.cientifico}</p>
+                      </div>
+                    </div>
+
+                    <div className="grid md:grid-cols-2 gap-x-10 gap-y-6 text-sm md:text-base">
+                      <Field label="Alvo tóxico" v={p.alvo} />
+                      <Field label="Compostos ativos" v={p.ativos} />
+                      <Field label="Posologia" v={p.uso} />
+                      <Field label="Ciclo de uso" v={p.ciclo} />
+                      <Field label="Contraindicações" v={p.contra} danger />
+                      <Field label="Sinergia obrigatória" v={p.sinergia} accent />
+                    </div>
+                  </div>
+                </motion.article>
               </div>
-            </motion.article>
-          ))}
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="relative z-10 px-6 md:px-12 lg:px-20 py-24">
+        <div className="max-w-7xl mx-auto">
+          <p className="font-mono text-[10px] md:text-xs tracking-[0.4em] text-emerald-400/80 uppercase mb-4">
+            DÚVIDAS LEGÍTIMAS
+          </p>
+          <h2
+            className="text-foreground font-bold mb-14 leading-[0.95]"
+            style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(2.5rem, 6vw, 5rem)" }}
+          >
+            PERGUNTAS QUE SALVAM <span className="italic font-light text-emerald-400/95" style={{ fontFamily: "'Instrument Serif', serif" }}>fígados</span>
+          </h2>
+
+          <div className="grid lg:grid-cols-2 gap-5">
+            {FAQ.map((f, i) => (
+              <motion.div
+                key={f.q}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.08, ease: APPLE_EASE }}
+                className="rounded-2xl border border-emerald-900/30 bg-card/40 backdrop-blur-md p-7 md:p-8 hover:-translate-y-1 hover:border-emerald-700/50 hover:shadow-[0_20px_40px_-15px_rgba(16,185,129,0.3)] transition-all"
+              >
+                <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-emerald-400/70 mb-3">
+                  {String(i + 1).padStart(2, "0")}
+                </p>
+                <h3 className="text-foreground font-bold text-xl md:text-2xl mb-4 leading-tight" style={{ fontFamily: "'Bebas Neue', sans-serif", letterSpacing: "0.02em" }}>
+                  {f.q}
+                </h3>
+                <p className="text-muted-foreground leading-7 text-sm md:text-base">{f.a}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* CTA RETORNO */}
       <section className="relative z-10 px-6 md:px-12 lg:px-20 py-20">
-        <div className="max-w-5xl">
-          <div className="rounded-2xl border border-emerald-500/25 bg-gradient-to-br from-emerald-950/30 to-card/40 backdrop-blur p-8 md:p-12">
-            <div className="flex items-center gap-3 mb-4">
-              <FlaskConical className="text-emerald-400" size={20} />
-              <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-emerald-400/80">[ COMPLETE O CICLO ]</p>
+        <div className="max-w-7xl mx-auto">
+          <div className="rounded-3xl border border-emerald-500/25 bg-gradient-to-br from-emerald-950/40 to-card/50 backdrop-blur-md p-10 md:p-16 hover:border-emerald-400/40 transition-all">
+            <div className="flex items-center gap-3 mb-5">
+              <FlaskConical className="text-emerald-400" size={22} />
+              <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-emerald-400/80">COMPLETE O CICLO</p>
             </div>
             <h3
-              className="text-foreground font-bold text-3xl md:text-5xl tracking-tight mb-5"
+              className="text-foreground font-bold text-4xl md:text-6xl tracking-tight mb-6 leading-[0.95]"
               style={{ fontFamily: "'Bebas Neue', sans-serif" }}
             >
-              VOLTE AO DOSSIÊ DO RAPÉ
+              VOLTE AO DOSSIÊ DO <span className="italic font-light text-emerald-400/95" style={{ fontFamily: "'Instrument Serif', serif" }}>rapé</span>
             </h3>
-            <p className="text-muted-foreground leading-8 mb-6 max-w-2xl">
-              Quelantes sem o protocolo de modulação vagal são meia-estratégia. Volte e leia a integração completa
-              com respiração, eixo HPA e rotina de blindagem.
+            <p className="text-muted-foreground leading-8 mb-8 max-w-2xl text-base md:text-lg">
+              Quelantes sem o protocolo de modulação vagal são meia estratégia. Volte e leia a integração
+              completa com respiração, eixo HPA e rotina de blindagem.
             </p>
             <Link
               to="/soberania-organica/conhecimento-perdido/rape"
-              className="inline-flex items-center gap-2.5 px-6 py-3 rounded-lg bg-emerald-500/15 border border-emerald-500/40 text-emerald-300 text-xs font-bold tracking-[0.18em] uppercase hover:bg-emerald-500/25 transition-all"
+              className="inline-flex items-center gap-2.5 px-7 py-4 rounded-xl bg-emerald-500/15 border border-emerald-500/40 text-emerald-300 text-xs font-bold tracking-[0.18em] uppercase hover:bg-emerald-500/25 hover:-translate-y-0.5 hover:shadow-[0_15px_30px_-10px_rgba(16,185,129,0.5)] transition-all"
             >
               <ArrowLeft size={14} /> Acessar o Dossiê do Rapé
             </Link>
@@ -287,8 +479,8 @@ function Field({ label, v, danger, accent }: { label: string; v: string; danger?
   const color = danger ? "text-destructive/90" : accent ? "text-emerald-400/90" : "text-muted-foreground";
   return (
     <div>
-      <p className={`font-mono text-[10px] tracking-[0.3em] uppercase mb-1.5 ${color}`}>{label}</p>
-      <p className="text-foreground/85 leading-7">{v}</p>
+      <p className={`font-mono text-[10px] tracking-[0.3em] uppercase mb-2 ${color}`}>{label}</p>
+      <p className="text-foreground/90 leading-7 text-sm md:text-base">{v}</p>
     </div>
   );
 }
