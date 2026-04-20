@@ -13,7 +13,7 @@ const COPY: Record<string, { titulo: string; corpo: string; cta: string; link: s
     link: '/autocustodia',
   },
   alimentar: {
-    titulo: 'Soberania Alimentar + Financeira',
+    titulo: 'Autonomia Alimentar + Financeira',
     corpo: 'Cultivar sua própria comida é o primeiro passo. O segundo é garantir que ninguém possa confiscar o capital que financia sua autonomia.',
     cta: 'Proteger meu patrimônio →',
     link: '/autocustodia',

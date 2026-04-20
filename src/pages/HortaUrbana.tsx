@@ -139,7 +139,7 @@ export default function HortaUrbana() {
   return (
     <>
       <Helmet>
-        <title>Horta Urbana: Soberania Alimentar em Varandas e Pequenos Espaços | Lord Junnior</title>
+        <title>Horta Urbana: Autonomia Alimentar em Varandas e Pequenos Espaços | Lord Junnior</title>
         <meta name="description" content="Guia completo de cultivo urbano em varandas, janelas e telhados. Vaso autoirrigável DIY, cultivo vertical, calendário de plantio por região e espécies ideais para iniciantes." />
         <link rel="canonical" href="https://lordjunnior.com.br/soberania-organica/horta-urbana" />
         <meta property="og:title" content="Horta Urbana: Produza Alimento em Qualquer Espaço" />
@@ -163,7 +163,7 @@ export default function HortaUrbana() {
     <div className="min-h-screen text-stone-100 font-sans selection:bg-emerald-300/50 relative overflow-hidden" style={{ background: '#050808' }}>
       <CinematicHero
         image="/heroes/horta-urbana.webp"
-        phase="Fase 03 · Soberania Alimentar"
+        phase="Fase 03 · Autonomia Alimentar"
         title="Horta Urbana"
         subtitle="Varandas, janelas e telhados. Espaço mínimo, colheita consistente. Guia técnico completo de cultivo em ambientes urbanos reduzidos."
         icon={Sprout}
