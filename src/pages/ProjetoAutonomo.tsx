@@ -174,8 +174,24 @@ export default function ProjetoAutonomo() {
     {
       num: '06', title: 'Mente Blindada', sub: 'Protege a soberania cognitiva', accent: '#a855f7',
       sectionId: 'fase-06', icon: Brain, image: tlMente, size: 'pico',
-      desc: 'Protocolos contra manipulação informacional, desintoxicação digital, leitura crítica de mídia e fortalecimento da soberania cognitiva. Sem mente livre, nenhuma das fases anteriores se sustenta.',
+      desc: 'Se a mente é manipulável, nenhuma autonomia é real. Você pode ter alimento, saúde e conhecimento, mas se sua percepção for controlada, tudo desmorona.',
       tag: 'Defesa cognitiva',
+      hook: 'Defesa cognitiva não é sobre informação. É sobre interpretação.',
+      blocos: [
+        {
+          titulo: 'Defesa Cognitiva',
+          texto: 'Protocolos para filtrar ruído informacional, identificar manipulação narrativa, reduzir dependência digital e desenvolver leitura crítica real.',
+        },
+        {
+          titulo: 'O Problema Invisível',
+          texto: 'Hoje o controle não precisa ser físico. Ele é algorítmico, repetitivo e emocional. Funciona porque passa despercebido.',
+        },
+        {
+          titulo: 'O Objetivo da Fase',
+          texto: 'Restaurar clareza mental, autonomia de pensamento e capacidade de análise. Sem isso, todas as outras fases viram execução automática.',
+        },
+      ],
+      fechamento: 'Sem mente livre, nenhuma soberania se sustenta.',
     },
   ];
 
@@ -529,6 +545,37 @@ export default function ProjetoAutonomo() {
                           <p className={`text-stone-300 ${isPico ? 'text-base md:text-xl' : isMega ? 'text-base md:text-lg' : 'text-sm md:text-base'} leading-relaxed group-hover:text-stone-200 transition-colors duration-500`}>
                             {phase.desc}
                           </p>
+                          {isPico && (phase as any).blocos && (
+                            <div className="mt-10 space-y-8">
+                              {(phase as any).hook && (
+                                <p className="text-xl md:text-2xl lg:text-3xl text-purple-200 leading-snug font-light"
+                                  style={{ fontFamily: "'Instrument Serif', serif", fontStyle: 'italic' }}>
+                                  {(phase as any).hook}
+                                </p>
+                              )}
+                              <div className="grid md:grid-cols-3 gap-6 md:gap-8 pt-2">
+                                {((phase as any).blocos as { titulo: string; texto: string }[]).map((b, idx) => (
+                                  <div key={idx} className="relative pl-5 border-l-2 transition-all duration-500 hover:pl-6"
+                                    style={{ borderColor: `${phase.accent}50` }}>
+                                    <p className="text-purple-300 text-[10px] font-bold uppercase tracking-[0.35em] mb-3">
+                                      0{idx + 1} , {b.titulo}
+                                    </p>
+                                    <p className="text-stone-300 text-sm md:text-base leading-relaxed">
+                                      {b.texto}
+                                    </p>
+                                  </div>
+                                ))}
+                              </div>
+                              {(phase as any).fechamento && (
+                                <div className="pt-6 mt-2 border-t border-purple-400/15">
+                                  <p className="text-2xl md:text-3xl lg:text-4xl text-white font-black leading-tight tracking-tight"
+                                    style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                                    {(phase as any).fechamento}
+                                  </p>
+                                </div>
+                              )}
+                            </div>
+                          )}
                           {isPico ? (
                             <div className="mt-10 inline-flex items-center gap-3 px-6 py-4 rounded-full border-2 font-bold tracking-[0.25em] uppercase transition-all duration-500 group-hover:gap-5"
                               style={{ borderColor: `${phase.accent}80`, color: phase.accent, background: `${phase.accent}10` }}>
