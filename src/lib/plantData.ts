@@ -489,6 +489,7 @@ export const PLANTAS: PlantaData[] = [
   },
 ];
 
+
 export function getPlantaBySlug(slug: string): PlantaData | undefined {
   return PLANTAS.find(p => p.slug === slug);
 }
