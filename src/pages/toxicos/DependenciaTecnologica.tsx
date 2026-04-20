@@ -13,7 +13,7 @@ import imgDados from '@/assets/toxicos/dep-dados.jpg';
 import imgObsolescencia from '@/assets/toxicos/dep-obsolescencia.jpg';
 import imgEcosistema from '@/assets/toxicos/dep-ecosistema.jpg';
 
-const APPLE_EASE = [0.22, 1, 0.36, 1];
+const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 const fadeUp = {
   hidden: { opacity: 0, y: 30, filter: 'blur(6px)' },
   visible: (i) => ({

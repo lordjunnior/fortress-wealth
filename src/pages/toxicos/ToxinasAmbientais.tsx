@@ -13,7 +13,7 @@ import imgAr from '@/assets/toxicos/amb-ar.jpg';
 import imgMobiliario from '@/assets/toxicos/amb-mobiliario.jpg';
 import imgCosmeticos from '@/assets/toxicos/amb-cosmeticos.jpg';
 
-const APPLE_EASE = [0.22, 1, 0.36, 1];
+const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 const fadeUp = {
   hidden: { opacity: 0, y: 30, filter: 'blur(6px)' },
   visible: (i) => ({

@@ -14,7 +14,7 @@ import imgBernays from '@/assets/toxicos/manip-bernays.jpg';
 import imgMedo from '@/assets/toxicos/manip-medo.jpg';
 import imgAstroturfing from '@/assets/toxicos/manip-astroturfing.jpg';
 
-const APPLE_EASE = [0.22, 1, 0.36, 1];
+const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 const fadeUp = {
   hidden: { opacity: 0, y: 30, filter: 'blur(6px)' },
   visible: (i) => ({
