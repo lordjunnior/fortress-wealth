@@ -1,591 +1,510 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { ArrowLeft, AlertTriangle, Sun, Moon, Activity, Salad, Brain, Flame, Droplets, CheckCircle2, Heart, Shield, Dna, Wind, ChevronRight } from 'lucide-react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ArrowLeft, AlertTriangle, ChevronDown, ChevronRight } from 'lucide-react';
+import { motion } from 'framer-motion';
 import ScrollToTop from '@/components/ScrollToTop';
 import MicroCtaResistencia from '@/components/MicroCtaResistencia';
-import CinematicHero from '@/components/CinematicHero';
 import RapeHookCard from '@/components/RapeHookCard';
-
-import imgMicrobiota from '@/assets/saude-microbiota.jpg';
-import imgCortisol from '@/assets/saude-cortisol.jpg';
 import BackToHome from '@/components/BackToHome';
+import FixedThematicBackground from '@/components/backgrounds/FixedThematicBackground';
 
-gsap.registerPlugin(ScrollTrigger);
+import bgHero from '@/assets/saude/bg-saude-hero.jpg';
+import imgSol from '@/assets/saude/hero-sol.jpg';
+import imgSono from '@/assets/saude/hero-sono.jpg';
+import imgMovimento from '@/assets/saude/hero-movimento.jpg';
+import imgAlimentacao from '@/assets/saude/hero-alimentacao.jpg';
+import imgCortisol from '@/assets/saude/hero-cortisol.jpg';
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
-const fadeUp = {
-  hidden: { opacity: 0, y: 32, filter: 'blur(8px)' },
-  visible: (i: number) => ({
-    opacity: 1, y: 0, filter: 'blur(0px)',
-    transition: { duration: 0.8, ease: APPLE_EASE, delay: i * 0.12 },
-  }),
-};
+
+interface Pilar {
+  numero: string;
+  titulo: string;
+  destaque: string;
+  imagem: string;
+  legenda: string;
+  abertura: string;
+  beneficios: string[];
+  riscos: string[];
+  fechamento?: string;
+}
+
+const PILARES: Pilar[] = [
+  {
+    numero: "01",
+    titulo: "Exposição Solar",
+    destaque: "imune",
+    imagem: imgSol,
+    legenda: "Quinze minutos de sol direto pela manhã regulam mais sistemas que qualquer suplemento isolado",
+    abertura: "A vitamina D não é um nutriente. É um hormônio esteroide que regula a expressão de mais de 1.000 genes ligados a imunidade, humor e metabolismo ósseo.",
+    beneficios: [
+      "Reduz citocinas inflamatórias circulantes",
+      "Melhora resposta antiviral inata",
+      "Regula expressão genética imunológica",
+      "Sincroniza ritmo circadiano e produção de melatonina",
+    ],
+    riscos: [
+      "Infecções recorrentes",
+      "Estados depressivos persistentes",
+      "Osteopenia e perda mineral",
+      "Fadiga crônica sem causa aparente",
+    ],
+    fechamento: "Filtro solar nos primeiros 15 minutos de exposição matinal anula praticamente toda a síntese cutânea. Pele exposta, sem química, durante a janela solar baixa.",
+  },
+  {
+    numero: "02",
+    titulo: "Sono Reparador",
+    destaque: "homeostase",
+    imagem: imgSono,
+    legenda: "Sem sono profundo, nenhuma estratégia anti-inflamatória se sustenta. Esta é a base inegociável.",
+    abertura: "Durante o sono profundo (N3) o sistema glinfático cerebral expulsa proteínas neurotóxicas acumuladas no dia. Sem essa janela, o cérebro acumula resíduos.",
+    beneficios: [
+      "Liberação de hormônio do crescimento",
+      "Reparação celular sistêmica",
+      "Regulação completa do eixo HPA",
+      "Consolidação de memória e plasticidade neural",
+    ],
+    riscos: [
+      "IL-6 cronicamente elevada",
+      "Cortisol matinal alterado",
+      "PCR ultrasensível em ascenção",
+      "Resistência à insulina acelerada",
+    ],
+    fechamento: "Quarto absolutamente escuro, temperatura entre 18 e 20 graus, zero exposição a luz azul nas duas horas anteriores ao deitar. Higiene de sono é estrutural, não comportamental.",
+  },
+  {
+    numero: "03",
+    titulo: "Movimento Estruturado",
+    destaque: "anti-inflamatório",
+    imagem: imgMovimento,
+    legenda: "Movimento moderado e consistente vence treinos heroicos sem recuperação",
+    abertura: "Exercício moderado libera mioquinas pelas fibras musculares. Essas moléculas funcionam como anti-inflamatórios sistêmicos endógenos, sem efeito colateral.",
+    beneficios: [
+      "Redução documentada de TNF-alfa",
+      "Sensibilidade à insulina restaurada",
+      "Biogênese mitocondrial aumentada",
+      "Redução de gordura visceral inflamatória",
+    ],
+    riscos: [
+      "Excesso sem recuperação eleva inflamação",
+      "Overtraining suprime função imune",
+      "Cardio crônico sem força perde músculo",
+      "Falta de movimento acelera senescência",
+    ],
+    fechamento: "Caminhada diária mais dois blocos de força semanais batem qualquer plano de academia genérico. Constância vence intensidade.",
+  },
+  {
+    numero: "04",
+    titulo: "Alimentação Funcional",
+    destaque: "metabolismo",
+    imagem: imgAlimentacao,
+    legenda: "70% do sistema imune está ligado ao intestino. Ali se decide a inflamação basal do corpo inteiro.",
+    abertura: "Picos glicêmicos pós-refeição geram estresse oxidativo cumulativo. Cada pico repetido empurra o corpo para resistência insulínica e inflamação de baixo grau.",
+    beneficios: [
+      "Proteína antes do carboidrato achata picos",
+      "Fibras solúveis nutrem microbiota",
+      "Caminhada de 10 minutos pós-refeição",
+      "Fermentados naturais regulam disbiose",
+    ],
+    riscos: [
+      "Carboidrato isolado dispara glicose",
+      "Ultraprocessados destroem microbiota",
+      "Adoçantes artificiais desregulam saciedade",
+      "Jejum mal aplicado piora cortisol",
+    ],
+    fechamento: "Magnésio, zinco, ômega 3, vitamina C e curcumina formam o piso de micronutrição anti-inflamatória. Sempre dentro de faixa segura, sem megadoses cegas.",
+  },
+  {
+    numero: "05",
+    titulo: "Controle de Cortisol",
+    destaque: "vagal",
+    imagem: imgCortisol,
+    legenda: "Cortisol cronicamente elevado sabota toda estratégia. Sem regulação vagal, o corpo permanece em alerta.",
+    abertura: "O eixo HPA regula a resposta ao estresse. Quando ativado de forma crônica, o cortisol elevado dissolve massa muscular, acumula gordura visceral e suprime imunidade adquirida.",
+    beneficios: [
+      "Respiração nasal lenta a 4 a 6 ciclos por minuto",
+      "Caminhada matinal ao ar livre",
+      "Exposição solar matinal regulando ritmo",
+      "Sono regular com horário consistente",
+    ],
+    riscos: [
+      "Resistência à insulina progressiva",
+      "Catabolismo muscular acelerado",
+      "Gordura abdominal hormonal",
+      "Supressão imune adquirida",
+    ],
+    fechamento: "Estimulação vagal via respiração diafragmática lenta é o atalho mais subestimado. Dois blocos de cinco minutos por dia alteram a variabilidade da frequência cardíaca em poucas semanas.",
+  },
+];
+
+const FAQ = [
+  {
+    q: "Por onde começar se eu nunca cuidei de nada disso?",
+    a: "Sono e exposição solar matinal. Esses dois pilares destravam todos os outros. Sem sono, não há recuperação muscular. Sem sol matinal, o ritmo circadiano fica desregulado e o sono nunca aprofunda.",
+  },
+  {
+    q: "Suplementação substitui essa rotina?",
+    a: "Não. Suplemento é complemento. Vitamina D em cápsula sem exposição solar real entrega o nutriente isolado, sem o sinal hormonal completo que o corpo lê quando a pele recebe UVB direto.",
+  },
+  {
+    q: "Quanto tempo até notar mudança real?",
+    a: "Marcadores subjetivos como energia, humor e qualidade do sono mudam em duas a quatro semanas. Marcadores laboratoriais como PCR, glicemia e perfil lipídico levam de 8 a 12 semanas de consistência.",
+  },
+  {
+    q: "Posso aplicar tudo isso com doença crônica diagnosticada?",
+    a: "Cada pilar exige adaptação individual. Diabéticos, autoimunes, cardiopatas e gestantes precisam de orientação médica antes de modificar exposição solar prolongada, jejum, suplementação ou intensidade de exercício.",
+  },
+  {
+    q: "Existe um marcador único que indica blindagem?",
+    a: "Não existe métrica única. PCR ultrasensível abaixo de 1, HOMA-IR abaixo de 1.5, vitamina D entre 50 e 80 ng/ml, variabilidade de frequência cardíaca dentro da faixa de idade e sono profundo acima de 90 minutos por noite formam o painel mínimo.",
+  },
+];
 
 const SaudePreventiva = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll();
-  const progressWidth = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
+  useEffect(() => { window.scrollTo(0, 0); }, []);
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-
-    const ctx = gsap.context(() => {
-      gsap.utils.toArray<HTMLElement>('.gsap-reveal').forEach((el) => {
-        gsap.fromTo(el,
-          { y: 60, opacity: 0, filter: 'blur(8px)' },
-          {
-            y: 0, opacity: 1, filter: 'blur(0px)', duration: 1.2,
-            ease: 'power3.out',
-            scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' },
-          }
-        );
-      });
-    }, containerRef);
-
-    return () => ctx.revert();
-  }, []);
+  const schema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "MedicalWebPage",
+        "name": "Saúde Preventiva: Blindagem Imunológica e Anti-Inflamatória",
+        "url": "https://lordjunnior.com.br/soberania-organica/saude-preventiva",
+        "description": "Cinco pilares de soberania biológica: sol, sono, movimento, alimentação e cortisol. Protocolo técnico contra inflamação crônica.",
+        "lastReviewed": "2026-04-20",
+        "medicalAudience": "Patients",
+        "about": [
+          { "@type": "Thing", "name": "Inflamação crônica" },
+          { "@type": "Thing", "name": "Saúde preventiva" },
+          { "@type": "Thing", "name": "Eixo HPA e cortisol" },
+        ],
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": FAQ.map(f => ({
+          "@type": "Question",
+          "name": f.q,
+          "acceptedAnswer": { "@type": "Answer", "text": f.a },
+        })),
+      },
+    ],
+  };
 
   return (
-    <>
+    <div className="relative min-h-screen text-foreground overflow-x-hidden">
+      <Helmet>
+        <title>Saúde Preventiva: 5 Pilares de Blindagem Imunológica | Lord Junnior</title>
+        <meta name="description" content="Sol, sono, movimento, alimentação e cortisol: protocolo técnico de saúde preventiva contra inflamação crônica. Sem dependência do sistema convencional." />
+        <link rel="canonical" href="https://lordjunnior.com.br/soberania-organica/saude-preventiva" />
+        <meta property="og:title" content="Saúde Preventiva: 5 Pilares de Blindagem Imunológica" />
+        <meta property="og:description" content="Cinco pilares biológicos validados contra inflamação crônica e disfunção metabólica." />
+        <script type="application/ld+json">{JSON.stringify(schema)}</script>
+      </Helmet>
+
+      <FixedThematicBackground image={bgHero} intensity="heavy" />
+
       <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
         <BackToHome />
       </div>
 
-      <Helmet>
-        <title>Saúde Preventiva: Blindagem Imunológica Sem Dependência do Sistema | Lord Junnior</title>
-        <meta name="description" content="Estratégias anti-inflamatórias avançadas, exposição solar segura, higiene do sono e alimentação funcional. Longevidade e saúde fora do sistema convencional." />
-        <link rel="canonical" href="https://lordjunnior.com.br/soberania-organica/saude-preventiva" />
-        <meta property="og:title" content="Saúde Preventiva: Protocolo de Blindagem Imunológica" />
-        <meta property="og:description" content="Fortaleça seu sistema imunológico com protocolos validados. Sol, sono, movimento e alimentação anti-inflamatória." />
-        <meta property="og:url" content="https://lordjunnior.com.br/soberania-organica/saude-preventiva" />
-        <script type="application/ld+json">{JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "MedicalWebPage",
-          "headline": "Saúde Preventiva: Dossiê de Soberania Orgânica contra Inflamação",
-          "description": "Protocolo técnico de autossuficiência biológica para desintoxicação e blindagem do corpo contra inflamações sistêmicas.",
-          "url": "https://lordjunnior.com.br/soberania-organica/saude-preventiva",
-          "image": "https://lordjunnior.com.br/heroes/saude-preventiva.webp",
-          "author": { "@type": "Person", "name": "Lord Junnior", "url": "https://lordjunnior.com.br" },
-          "medicalAudience": "Patients",
-          "relevantSpecialty": { "@type": "MedicalSpecialty", "name": "Preventive Medicine" },
-          "about": [
-            { "@type": "Thing", "name": "Inflamação Crônica", "sameAs": "https://pt.wikipedia.org/wiki/Inflama%C3%A7%C3%A3o_cr%C3%B4nica" },
-            { "@type": "Thing", "name": "Saúde Preventiva", "sameAs": "https://pt.wikipedia.org/wiki/Medicina_preventiva" }
-          ],
-          "datePublished": "2026-03-01",
-          "dateModified": "2026-03-22"
-        })}</script>
-      </Helmet>
-    <div ref={containerRef} className="min-h-screen text-stone-100 font-sans selection:bg-emerald-300/50 relative overflow-hidden"
-      style={{ background: 'linear-gradient(180deg, #050808 0%, #0a0d08 8%, #0f1a0f 20%, #142214 40%, #111f11 70%, #0f1a0f 90%, #0a0d08 100%)' }}
-    >
-      <CinematicHero
-        image="/heroes/saude-preventiva.webp"
-        phase="Fase 02 · Autonomia Biológica"
-        title="Saúde Preventiva"
-        subtitle="Base Biológica e Estratégias Anti-Inflamatórias Avançadas"
-        icon={Heart}
-        accentColor="emerald"
-        backLink="/soberania-organica"
-        backLabel="Soberania Orgânica"
-      />
+      {/* HERO FULL-SCREEN APPLE-LIKE */}
+      <section className="relative z-10 min-h-[90vh] flex items-center px-6 md:px-12 lg:px-20 pt-12 pb-20">
+        <div className="w-full max-w-7xl mx-auto">
+          <Link
+            to="/soberania-organica"
+            className="inline-flex items-center gap-2 text-xs font-mono tracking-widest uppercase text-emerald-400 mb-10 hover:gap-3 transition-all"
+          >
+            <ArrowLeft size={12} /> Soberania Orgânica
+          </Link>
 
-      {/* ─── READING PROGRESS ─── */}
-      <motion.div className="fixed top-0 left-0 right-0 h-[2px] z-50 origin-left bg-emerald-500" style={{ width: progressWidth }} />
+          <p className="font-mono text-[10px] md:text-xs tracking-[0.4em] text-emerald-400/80 uppercase mb-8">
+            FASE 02 · AUTONOMIA BIOLÓGICA · CINCO PILARES
+          </p>
 
-      {/* ─── ATMOSPHERIC ─── */}
-      <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="absolute top-[10%] right-[10%] w-[600px] h-[600px] rounded-full"
-          style={{ background: 'radial-gradient(circle, rgba(16,185,129,0.08) 0%, transparent 70%)' }} />
-        <div className="absolute bottom-[25%] left-[5%] w-[500px] h-[500px] rounded-full"
-          style={{ background: 'radial-gradient(circle, rgba(16,185,129,0.05) 0%, transparent 70%)' }} />
-        <div className="absolute inset-0 opacity-[0.03]"
-          style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'n\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.85\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23n)\' opacity=\'0.5\'/%3E%3C/svg%3E")' }} />
-        {[...Array(10)].map((_, i) => (
-          <div key={i} className="absolute w-1 h-1 rounded-full bg-emerald-400/20"
+          <motion.h1
+            initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
+            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            transition={{ duration: 1.1, ease: APPLE_EASE }}
+            className="text-foreground font-bold leading-[0.92] tracking-tight mb-10"
             style={{
-              left: `${10 + Math.random() * 80}%`, top: `${10 + Math.random() * 80}%`,
-              animation: `float ${8 + Math.random() * 12}s ease-in-out infinite ${Math.random() * 5}s`,
-            }} />
-        ))}
-      </div>
+              fontFamily: "'Bebas Neue', sans-serif",
+              fontSize: "clamp(3rem, 9vw, 8rem)",
+              letterSpacing: "0.01em",
+            }}
+          >
+            SAÚDE <br />
+            <span className="text-emerald-400/95 italic font-light" style={{ fontFamily: "'Instrument Serif', serif" }}>
+              preventiva
+            </span>
+          </motion.h1>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-8 lg:px-12 pt-12 pb-32">
+          <div className="grid lg:grid-cols-12 gap-10 items-end">
+            <p className="lg:col-span-7 text-muted-foreground text-lg md:text-2xl leading-relaxed">
+              Saúde preventiva não é ausência de doença. É a capacidade do corpo de manter homeostase
+              sob estresse, sem precisar de medicação contínua para isso. Cinco pilares biológicos sustentam
+              esse estado. Quando qualquer um desmorona, o corpo entra em inflamação de baixo grau.
+            </p>
 
-        {/* Hero context */}
-        <div className="grid lg:grid-cols-3 gap-10 mb-28">
-          <motion.div initial="hidden" animate="visible" variants={fadeUp} custom={1} className="lg:col-span-2 space-y-4 text-stone-300 leading-relaxed">
-            <p className="text-sm">Saúde preventiva é a manutenção da <span className="text-stone-100 font-medium">homeostase.</span></p>
-            <p className="text-sm">Homeostase é a capacidade do corpo de manter equilíbrio interno mesmo sob estresse.</p>
-            <p className="text-sm text-stone-100 font-medium">Quando esse equilíbrio falha, surge:</p>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mt-2">
-              {['Inflamação crônica', 'Resistência à insulina', 'Disfunção hormonal', 'Fadiga persistente', 'Vulnerabilidade imunológica'].map((s) => (
-                <div key={s} className="flex items-center gap-2 text-xs bg-red-950/30 border border-red-800/15 rounded-xl px-3 py-2">
-                  <AlertTriangle size={11} className="text-red-400 shrink-0" />
-                  <span className="text-stone-300">{s}</span>
+            <div className="lg:col-span-5 grid grid-cols-3 gap-3">
+              {[
+                { n: "5", l: "Pilares biológicos" },
+                { n: "70%", l: "Imunidade no intestino" },
+                { n: "12s", l: "Janela de marcadores" },
+              ].map(s => (
+                <div key={s.l} className="rounded-2xl border border-emerald-900/30 bg-card/40 backdrop-blur-md p-5 text-center hover:-translate-y-1 hover:shadow-[0_20px_40px_-15px_rgba(16,185,129,0.4)] transition-all">
+                  <p className="text-3xl md:text-4xl font-bold text-emerald-400" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>{s.n}</p>
+                  <p className="text-[10px] uppercase tracking-widest text-muted-foreground mt-2">{s.l}</p>
                 </div>
               ))}
             </div>
-          </motion.div>
+          </div>
 
-          {/* Sidebar sticky de dados */}
-          <motion.div initial="hidden" animate="visible" variants={fadeUp} custom={2} className="lg:sticky lg:top-24 self-start">
-            <div className="rounded-2xl border border-emerald-500/15 bg-emerald-500/[0.04] p-6">
-              <span className="text-emerald-400 font-mono text-[10px] font-bold tracking-[0.3em] uppercase block mb-3">Status de Blindagem</span>
-              <div className="space-y-3 mb-4">
-                {[
-                  { label: 'Exposição Solar', status: 'Pilar 01' },
-                  { label: 'Sono Reparador', status: 'Pilar 02' },
-                  { label: 'Movimento', status: 'Pilar 03' },
-                  { label: 'Alimentação', status: 'Pilar 04' },
-                  { label: 'Controle Cortisol', status: 'Pilar 05' },
-                ].map((p) => (
-                  <div key={p.label} className="flex items-center justify-between text-xs">
-                    <span className="text-stone-400">{p.label}</span>
-                    <span className="text-emerald-400 font-mono font-bold">{p.status}</span>
-                  </div>
-                ))}
+          <div className="mt-16 flex items-center gap-3 text-emerald-500/60">
+            <ChevronDown size={14} className="animate-bounce" />
+            <span className="text-[10px] font-mono tracking-[0.3em] uppercase">Role para a base biológica</span>
+          </div>
+        </div>
+      </section>
+
+      {/* ABERTURA: INFLAMAÇÃO CRÔNICA */}
+      <section className="relative z-10 px-6 md:px-12 lg:px-20 mb-24">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-12 gap-10 items-start">
+            <div className="lg:col-span-5">
+              <p className="font-mono text-[10px] tracking-[0.4em] uppercase text-destructive/80 mb-4">
+                BASE
+              </p>
+              <h2
+                className="text-foreground font-bold leading-[0.95] mb-6"
+                style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(2.5rem, 5vw, 4.5rem)" }}
+              >
+                INFLAMAÇÃO <span className="italic font-light text-destructive/90" style={{ fontFamily: "'Instrument Serif', serif" }}>crônica</span>
+              </h2>
+              <p className="text-muted-foreground leading-8 text-base md:text-lg mb-6">
+                Inflamação aguda é protetora. Inflamação crônica é destrutiva. Ela ocorre quando o sistema
+                imune permanece ativado de forma leve e constante, sem janela de descanso.
+              </p>
+              <p className="text-muted-foreground leading-8 text-base md:text-lg">
+                O objetivo preventivo é reduzir a inflamação basal sem bloquear o sistema imune.
+              </p>
+            </div>
+
+            <div className="lg:col-span-7 grid sm:grid-cols-2 gap-4">
+              <div className="rounded-2xl border border-destructive/20 bg-destructive/5 backdrop-blur-md p-6 hover:-translate-y-1 hover:border-destructive/40 transition-all">
+                <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-destructive/70 mb-3">Marcadores envolvidos</p>
+                <ul className="space-y-3 text-foreground/85 text-base">
+                  <li>IL-6 elevada</li>
+                  <li>TNF-alfa em ascenção</li>
+                  <li>PCR ultrasensível alta</li>
+                  <li>Cortisol cronicamente elevado</li>
+                </ul>
               </div>
-              <div className="border-t border-white/5 pt-3">
-                <p className="text-[10px] text-stone-600 uppercase tracking-wider">Conhecimento Verificado · Março 2026</p>
+              <div className="rounded-2xl border border-amber-500/20 bg-amber-500/5 backdrop-blur-md p-6 hover:-translate-y-1 hover:border-amber-500/40 transition-all">
+                <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-amber-400/80 mb-3">Consequências sistêmicas</p>
+                <ul className="space-y-3 text-foreground/85 text-base">
+                  <li>Danos vasculares</li>
+                  <li>Rigidez arterial</li>
+                  <li>Disfunção metabólica</li>
+                  <li>Alteração de humor e fadiga</li>
+                </ul>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
+      </section>
 
-        {/* Module integration */}
-        <motion.div initial="hidden" animate="visible" variants={fadeUp} custom={2} className="mt-10 mb-28">
-          <p className="text-stone-200 font-bold text-sm mb-4">Este módulo integra:</p>
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
+      {/* CINCO PILARES COM IMAGENS GRANDES */}
+      {PILARES.map((p, i) => (
+        <section key={p.numero} className="relative z-10 px-6 md:px-12 lg:px-20 mb-24">
+          <div className="max-w-7xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.9, ease: APPLE_EASE }}
+              className="mb-10 rounded-3xl overflow-hidden border border-emerald-900/30 group"
+            >
+              <div className="relative">
+                <img
+                  src={p.imagem}
+                  alt={p.legenda}
+                  className="w-full h-[55vh] md:h-[75vh] object-cover transition-transform duration-1000 group-hover:scale-[1.03]"
+                  loading={i === 0 ? "eager" : "lazy"}
+                  width={1920}
+                  height={1080}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-8 md:p-14">
+                  <p className="text-[10px] font-mono tracking-[0.4em] uppercase text-emerald-400/80 mb-3">
+                    PILAR {p.numero} DE 05
+                  </p>
+                  <h2
+                    className="text-foreground font-bold leading-[0.95] max-w-4xl"
+                    style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(2.5rem, 7vw, 6rem)", letterSpacing: "0.01em" }}
+                  >
+                    {p.titulo.toUpperCase()} <br />
+                    <span className="italic font-light text-emerald-400/95" style={{ fontFamily: "'Instrument Serif', serif" }}>
+                      como {p.destaque}
+                    </span>
+                  </h2>
+                </div>
+              </div>
+            </motion.div>
+
+            <p className="text-muted-foreground/80 italic text-sm md:text-base mb-10 max-w-3xl">
+              {p.legenda}
+            </p>
+
+            <div className="grid lg:grid-cols-12 gap-8">
+              <div className="lg:col-span-7">
+                <p className="text-foreground/90 leading-8 text-lg md:text-xl mb-8">
+                  {p.abertura}
+                </p>
+                {p.fechamento && (
+                  <div className="rounded-2xl border border-emerald-900/30 bg-card/40 backdrop-blur-md p-7 hover:-translate-y-1 hover:border-emerald-700/50 hover:shadow-[0_20px_40px_-15px_rgba(16,185,129,0.3)] transition-all">
+                    <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-emerald-400/70 mb-3">Aplicação prática</p>
+                    <p className="text-foreground/90 leading-7 text-base md:text-lg">{p.fechamento}</p>
+                  </div>
+                )}
+              </div>
+              <div className="lg:col-span-5 space-y-4">
+                <div className="rounded-2xl border border-emerald-500/20 bg-emerald-500/5 backdrop-blur-md p-6 hover:-translate-y-1 hover:border-emerald-500/40 transition-all">
+                  <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-emerald-400/80 mb-4">Benefícios documentados</p>
+                  <ul className="space-y-3 text-foreground/90 text-base">
+                    {p.beneficios.map(b => <li key={b} className="leading-snug">{b}</li>)}
+                  </ul>
+                </div>
+                <div className="rounded-2xl border border-destructive/20 bg-destructive/5 backdrop-blur-md p-6 hover:-translate-y-1 hover:border-destructive/40 transition-all">
+                  <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-destructive/80 mb-4">Sinais de falha do pilar</p>
+                  <ul className="space-y-3 text-foreground/90 text-base">
+                    {p.riscos.map(r => <li key={r} className="leading-snug">{r}</li>)}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      ))}
+
+      {/* PROTOCOLO DIÁRIO */}
+      <section className="relative z-10 px-6 md:px-12 lg:px-20 py-24">
+        <div className="max-w-7xl mx-auto">
+          <p className="font-mono text-[10px] md:text-xs tracking-[0.4em] text-emerald-400/80 uppercase mb-4">
+            PROTOCOLO DIÁRIO
+          </p>
+          <h2
+            className="text-foreground font-bold mb-14 leading-[0.95]"
+            style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(2.5rem, 6vw, 5rem)" }}
+          >
+            BASE OPERACIONAL <span className="italic font-light text-emerald-400/95" style={{ fontFamily: "'Instrument Serif', serif" }}>diária</span>
+          </h2>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {[
-              { label: 'Exposição solar', icon: Sun, color: 'text-amber-400' },
-              { label: 'Sono', icon: Moon, color: 'text-indigo-400' },
-              { label: 'Movimento', icon: Activity, color: 'text-green-400' },
-              { label: 'Alimentação', icon: Salad, color: 'text-emerald-400' },
-              { label: 'Estratégias anti-inflamatórias', icon: Dna, color: 'text-purple-400' },
-            ].map((p) => {
-              const Icon = p.icon;
-              return (
-                <div key={p.label} className="group flex items-center gap-3 bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 hover:bg-emerald-500/10 hover:border-emerald-500/20 transition-all duration-300">
-                  <Icon size={16} className={`${p.color} shrink-0`} />
-                  <span className="text-sm text-stone-300">{p.label}</span>
-                </div>
-              );
-            })}
-          </div>
-        </motion.div>
-
-        {/* ═══ INFLAMAÇÃO CRÔNICA ═══ */}
-        <div className="gsap-reveal mb-28">
-          <div className="relative rounded-3xl overflow-hidden">
-            <div className="absolute inset-0 bg-red-950/20 border border-red-800/15 rounded-3xl" />
-            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-red-500/40 to-transparent" />
-            <div className="relative p-8 md:p-14">
-              <span className="text-red-500/50 text-[10px] font-bold tracking-[0.5em] uppercase">Base</span>
-              <h2 className="text-2xl md:text-3xl font-extrabold text-white mb-8 tracking-tight" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                Entendendo a Inflamação Crônica
-              </h2>
-
-              <div className="mb-8">
-                <p className="text-sm text-stone-300 mb-2">Inflamação aguda é <span className="text-green-400 font-bold">protetora.</span></p>
-                <p className="text-sm text-stone-300">Inflamação crônica é <span className="text-red-400 font-bold">destrutiva.</span></p>
-                <p className="text-sm text-stone-400 mt-3">Ela ocorre quando o sistema imune permanece ativado de forma leve e constante.</p>
+              { l: "Sol direto", v: "15 a 30 minutos pela manhã sem filtro" },
+              { l: "Movimento", v: "20 a 30 minutos diários, força duas vezes na semana" },
+              { l: "Alimentação", v: "Proteína antes do carboidrato, fibras, fermentados" },
+              { l: "Sono", v: "7 a 9 horas, quarto escuro a 18 a 20 graus" },
+              { l: "Hidratação", v: "30ml por kg de peso, com sais minerais" },
+              { l: "Regulação vagal", v: "Dois blocos de 5 minutos de respiração lenta" },
+            ].map(item => (
+              <div key={item.l} className="rounded-2xl border border-emerald-900/30 bg-card/40 backdrop-blur-md p-7 hover:-translate-y-1 hover:border-emerald-700/50 hover:shadow-[0_20px_40px_-15px_rgba(16,185,129,0.3)] transition-all">
+                <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-emerald-400/70 mb-3">{item.l}</p>
+                <p className="text-foreground/90 leading-7 text-base md:text-lg">{item.v}</p>
               </div>
-
-              <h4 className="text-[10px] font-bold tracking-[0.3em] uppercase text-stone-500 mb-4">Marcadores envolvidos</h4>
-              <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-3 mb-8">
-                {['IL-6', 'TNF-alpha', 'PCR ultrasensível', 'Cortisol elevado'].map((m) => (
-                  <div key={m} className="bg-red-500/10 border border-red-500/15 rounded-xl p-4 text-center hover:bg-red-500/15 transition-colors">
-                    <span className="text-sm font-bold text-red-400 font-mono">{m}</span>
-                  </div>
-                ))}
-              </div>
-
-              <h4 className="text-[10px] font-bold tracking-[0.3em] uppercase text-stone-500 mb-4">Consequências</h4>
-              <div className="grid sm:grid-cols-2 gap-3">
-                {['Danos vasculares', 'Rigidez arterial', 'Disfunção metabólica', 'Alteração do humor', 'Fadiga'].map((c) => (
-                  <div key={c} className="flex items-center gap-3 text-sm text-stone-300">
-                    <Flame size={13} className="text-red-400 shrink-0" />
-                    {c}
-                  </div>
-                ))}
-              </div>
-
-              <p className="text-xs text-stone-500 mt-8 border-t border-white/5 pt-4 italic">
-                O objetivo preventivo é reduzir inflamação basal sem bloquear o sistema imune.
-              </p>
-            </div>
+            ))}
           </div>
         </div>
+      </section>
 
-        {/* ═══ EXPOSIÇÃO SOLAR ═══ */}
-        <div className="gsap-reveal mb-28">
-          <div className="relative rounded-3xl overflow-hidden">
-            <div className="absolute inset-0 bg-amber-950/20 border border-amber-800/15 rounded-3xl" />
-            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-amber-500/40 to-transparent" />
-            <div className="relative p-8 md:p-14">
-              <span className="text-amber-500/50 text-[10px] font-bold tracking-[0.5em] uppercase">Pilar 01</span>
-              <h2 className="text-2xl md:text-3xl font-extrabold text-white mb-8 tracking-tight" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                Exposição Solar e Modulação Imune
-              </h2>
+      {/* FAQ */}
+      <section className="relative z-10 px-6 md:px-12 lg:px-20 py-24">
+        <div className="max-w-7xl mx-auto">
+          <p className="font-mono text-[10px] md:text-xs tracking-[0.4em] text-emerald-400/80 uppercase mb-4">
+            DÚVIDAS LEGÍTIMAS
+          </p>
+          <h2
+            className="text-foreground font-bold mb-14 leading-[0.95]"
+            style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(2.5rem, 6vw, 5rem)" }}
+          >
+            PERGUNTAS QUE BLINDAM <span className="italic font-light text-emerald-400/95" style={{ fontFamily: "'Instrument Serif', serif" }}>rotinas</span>
+          </h2>
 
-              <p className="text-sm text-stone-300 mb-6">A vitamina D atua como <span className="text-amber-400 font-semibold">reguladora imunológica.</span></p>
-
-              <h4 className="text-[10px] font-bold tracking-[0.3em] uppercase text-stone-500 mb-4">Ela:</h4>
-              <div className="space-y-2 mb-8">
-                {['Reduz citocinas inflamatórias', 'Melhora resposta antiviral', 'Regula expressão genética'].map((item) => (
-                  <div key={item} className="flex items-center gap-3 text-sm text-stone-300">
-                    <Sun size={13} className="text-amber-400 shrink-0" />
-                    {item}
-                  </div>
-                ))}
-              </div>
-
-              <h4 className="text-[10px] font-bold tracking-[0.3em] uppercase text-stone-500 mb-4">Baixos níveis estão associados a:</h4>
-              <div className="grid sm:grid-cols-2 gap-3">
-                {['Infecções recorrentes', 'Depressão', 'Osteopenia', 'Fadiga crônica'].map((item) => (
-                  <div key={item} className="flex items-center gap-3 text-sm bg-amber-500/10 border border-amber-500/15 rounded-xl p-4 hover:bg-amber-500/15 transition-colors">
-                    <AlertTriangle size={13} className="text-amber-400 shrink-0" />
-                    <span className="text-stone-300">{item}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* ═══ SONO ═══ */}
-        <div className="gsap-reveal mb-28">
-          <div className="relative rounded-3xl overflow-hidden">
-            <div className="absolute inset-0 bg-indigo-950/20 border border-indigo-800/15 rounded-3xl" />
-            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-500/40 to-transparent" />
-            <div className="relative p-8 md:p-14">
-              <span className="text-indigo-500/50 text-[10px] font-bold tracking-[0.5em] uppercase">Pilar 02</span>
-              <h2 className="text-2xl md:text-3xl font-extrabold text-white mb-8 tracking-tight" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                Sono e Reparo Inflamatório
-              </h2>
-
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <h4 className="text-[10px] font-bold tracking-[0.3em] uppercase text-stone-500 mb-4">Privação de sono aumenta:</h4>
-                  <div className="space-y-3">
-                    {['IL-6', 'PCR', 'Cortisol'].map((item) => (
-                      <div key={item} className="flex items-center gap-3 text-sm bg-red-500/10 border border-red-500/15 rounded-xl p-4">
-                        <AlertTriangle size={13} className="text-red-400 shrink-0" />
-                        <span className="text-stone-300">{item}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                <div>
-                  <h4 className="text-[10px] font-bold tracking-[0.3em] uppercase text-stone-500 mb-4">Durante sono profundo ocorre:</h4>
-                  <div className="space-y-3">
-                    {['Liberação de hormônio do crescimento', 'Reparação celular', 'Regulação do eixo HPA'].map((item) => (
-                      <div key={item} className="flex items-center gap-3 text-sm bg-indigo-500/10 border border-indigo-500/15 rounded-xl p-4">
-                        <Moon size={13} className="text-indigo-400 shrink-0" />
-                        <span className="text-stone-300">{item}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-8 bg-amber-500/10 border border-amber-500/15 rounded-xl p-5">
-                <p className="text-sm text-stone-300 font-semibold">Sem sono adequado, <span className="text-amber-400">nenhuma estratégia anti-inflamatória se sustenta.</span></p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* ═══ MOVIMENTO ═══ */}
-        <div className="gsap-reveal mb-28">
-          <div className="relative rounded-3xl overflow-hidden">
-            <div className="absolute inset-0 bg-green-950/20 border border-green-800/15 rounded-3xl" />
-            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-green-500/40 to-transparent" />
-            <div className="relative p-8 md:p-14">
-              <span className="text-green-500/50 text-[10px] font-bold tracking-[0.5em] uppercase">Pilar 03</span>
-              <h2 className="text-2xl md:text-3xl font-extrabold text-white mb-8 tracking-tight" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                Movimento como Anti-Inflamatório Natural
-              </h2>
-
-              <h4 className="text-[10px] font-bold tracking-[0.3em] uppercase text-stone-500 mb-4">Exercício moderado:</h4>
-              <div className="grid sm:grid-cols-2 gap-3 mb-8">
-                {['Reduz TNF-alpha', 'Melhora sensibilidade à insulina', 'Aumenta mitocôndrias', 'Diminui gordura visceral'].map((item) => (
-                  <div key={item} className="flex items-center gap-3 text-sm bg-green-500/10 border border-green-500/15 rounded-xl p-4 hover:bg-green-500/15 transition-colors">
-                    <Activity size={13} className="text-green-400 shrink-0" />
-                    <span className="text-stone-300">{item}</span>
-                  </div>
-                ))}
-              </div>
-              <div className="bg-amber-500/10 border border-amber-500/15 rounded-xl p-5">
-                <p className="text-sm text-stone-300">Exercício excessivo sem recuperação pode <span className="text-amber-400 font-semibold">aumentar inflamação.</span> Equilíbrio é essencial.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* ═══ ALIMENTAÇÃO ═══ */}
-        <div className="gsap-reveal mb-28">
-          <div className="relative rounded-3xl overflow-hidden">
-            <div className="absolute inset-0 bg-amber-950/15 border border-amber-800/10 rounded-3xl" />
-            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-amber-500/30 to-transparent" />
-            <div className="relative p-8 md:p-14">
-              <span className="text-amber-500/50 text-[10px] font-bold tracking-[0.5em] uppercase">Pilar 04</span>
-              <h2 className="text-2xl md:text-3xl font-extrabold text-white mb-2 tracking-tight" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                Alimentação Anti-Inflamatória
-              </h2>
-              <p className="text-stone-500 text-sm mb-10">Camada Avançada</p>
-
-              {/* Sub 1: Controle Glicêmico */}
-              <div className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-7 mb-5">
-                <h3 className="text-lg font-bold text-white mb-3" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>1. Controle de Pico Glicêmico</h3>
-                <p className="text-sm text-stone-400 mb-5">Picos de glicose aumentam estresse oxidativo.</p>
-                <h4 className="text-[10px] font-bold tracking-[0.3em] uppercase text-stone-500 mb-4">Estratégias:</h4>
-                <div className="space-y-2 mb-5">
-                  {[
-                    'Consumir proteína antes do carboidrato',
-                    'Incluir fibras solúveis',
-                    'Evitar carboidrato isolado',
-                    'Caminhar 10 minutos após refeição',
-                  ].map((step, i) => (
-                    <div key={i} className="flex items-start gap-3 text-sm text-stone-300">
-                      <span className="text-[10px] font-mono text-amber-400 w-5 shrink-0 mt-0.5">{String(i + 1).padStart(2, '0')}</span>
-                      {step}
-                    </div>
-                  ))}
-                </div>
-                <p className="text-xs text-emerald-400 font-semibold">Impacto: Reduz resistência à insulina.</p>
-              </div>
-
-              {/* Sub 2: Microbiota */}
-              <div className="rounded-2xl overflow-hidden relative mb-5">
-                <img src={imgMicrobiota} alt="Microbiota saudável vs disbiose" className="w-full h-64 md:h-80 object-cover" loading="lazy" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0d08] via-[#0a0d08]/40 to-transparent" />
-                <div className="absolute bottom-4 left-6 right-6">
-                  <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-emerald-400/70">Equilíbrio · Disbiose · Microbiota</span>
-                </div>
-              </div>
-              <div className="bg-emerald-950/25 border border-emerald-700/15 rounded-2xl p-7 mb-5">
-                <h3 className="text-lg font-bold text-white mb-3" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>2. Microbiota Intestinal</h3>
-                <p className="text-sm text-stone-300 mb-5">70% do sistema imune está ligado ao intestino.</p>
-
-                <h4 className="text-[10px] font-bold tracking-[0.3em] uppercase text-stone-500 mb-4">Disbiose gera:</h4>
-                <div className="grid sm:grid-cols-3 gap-3 mb-6">
-                  {['Inflamação sistêmica', 'Distensão abdominal', 'Alteração de humor'].map((item) => (
-                    <div key={item} className="flex items-center gap-2 text-sm bg-red-500/10 border border-red-500/15 rounded-xl p-3">
-                      <AlertTriangle size={12} className="text-red-400 shrink-0" />
-                      <span className="text-stone-300">{item}</span>
-                    </div>
-                  ))}
-                </div>
-
-                <h4 className="text-[10px] font-bold tracking-[0.3em] uppercase text-stone-500 mb-4">Estratégias:</h4>
-                <div className="grid sm:grid-cols-2 gap-3">
-                  {['Fermentados naturais', 'Fibras prebióticas', 'Variedade vegetal', 'Redução de ultraprocessados'].map((item) => (
-                    <div key={item} className="flex items-center gap-2 text-sm bg-emerald-500/10 border border-emerald-500/15 rounded-xl p-3 hover:bg-emerald-500/15 transition-colors">
-                      <CheckCircle2 size={12} className="text-emerald-400 shrink-0" />
-                      <span className="text-stone-300">{item}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Sub 3: Micronutrientes */}
-              <div className="bg-purple-950/20 border border-purple-800/15 rounded-2xl p-7">
-                <h3 className="text-lg font-bold text-white mb-5" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>3. Micronutrientes Anti-Inflamatórios</h3>
-                <div className="space-y-3">
-                  {[
-                    { nome: 'Magnésio', funcao: 'Relaxamento muscular e redução de estresse', color: 'text-blue-400' },
-                    { nome: 'Zinco', funcao: 'Função imunológica', color: 'text-sky-400' },
-                    { nome: 'Ômega 3', funcao: 'Redução de citocinas inflamatórias', color: 'text-cyan-400' },
-                    { nome: 'Vitamina C', funcao: 'Antioxidante celular', color: 'text-orange-400' },
-                    { nome: 'Curcumina', funcao: 'Modulação inflamatória', color: 'text-amber-400' },
-                  ].map((n) => (
-                    <div key={n.nome} className="flex items-center gap-4 bg-white/[0.04] border border-white/[0.08] rounded-xl p-4 hover:bg-white/[0.06] transition-colors">
-                      <span className={`text-sm font-bold ${n.color} min-w-[100px] font-mono`}>{n.nome}</span>
-                      <span className="text-stone-600">→</span>
-                      <span className="text-sm text-stone-300">{n.funcao}</span>
-                    </div>
-                  ))}
-                </div>
-                <p className="text-xs text-stone-500 mt-5 border-t border-white/5 pt-4 italic">
-                  Sempre dentro de faixa segura. Evitar megadoses sem orientação.
+          <div className="grid lg:grid-cols-2 gap-5">
+            {FAQ.map((f, i) => (
+              <motion.div
+                key={f.q}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.08, ease: APPLE_EASE }}
+                className="rounded-2xl border border-emerald-900/30 bg-card/40 backdrop-blur-md p-7 md:p-8 hover:-translate-y-1 hover:border-emerald-700/50 hover:shadow-[0_20px_40px_-15px_rgba(16,185,129,0.3)] transition-all"
+              >
+                <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-emerald-400/70 mb-3">
+                  {String(i + 1).padStart(2, "0")}
                 </p>
-              </div>
-            </div>
+                <h3 className="text-foreground font-bold text-xl md:text-2xl mb-4 leading-tight" style={{ fontFamily: "'Bebas Neue', sans-serif", letterSpacing: "0.02em" }}>
+                  {f.q}
+                </h3>
+                <p className="text-muted-foreground leading-7 text-sm md:text-base">{f.a}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
+      </section>
 
-        {/* ═══ CONTROLE DE ESTRESSE ═══ */}
-        <div className="gsap-reveal mb-28">
-          <div className="rounded-2xl overflow-hidden relative mb-5">
-            <img src={imgCortisol} alt="Regulação do cortisol" className="w-full h-64 md:h-80 object-cover" loading="lazy" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0a0d08] via-[#0a0d08]/40 to-transparent" />
-          </div>
-
-          <div className="relative rounded-3xl overflow-hidden">
-            <div className="absolute inset-0 bg-red-950/15 border border-red-800/10 rounded-3xl" />
-            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-red-500/30 to-transparent" />
-            <div className="relative p-8 md:p-14">
-              <span className="text-red-500/50 text-[10px] font-bold tracking-[0.5em] uppercase">Pilar 05</span>
-              <h2 className="text-2xl md:text-3xl font-extrabold text-white mb-8 tracking-tight" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                Controle de Estresse e Cortisol
-              </h2>
-
-              <p className="text-sm text-stone-300 mb-5">Estresse crônico mantém cortisol elevado.</p>
-
-              <h4 className="text-[10px] font-bold tracking-[0.3em] uppercase text-stone-500 mb-4">Cortisol alto por tempo prolongado causa:</h4>
-              <div className="grid sm:grid-cols-2 gap-3 mb-8">
-                {['Resistência à insulina', 'Perda muscular', 'Aumento de gordura abdominal', 'Supressão imune'].map((item) => (
-                  <div key={item} className="flex items-center gap-3 text-sm bg-red-500/10 border border-red-500/15 rounded-xl p-4">
-                    <AlertTriangle size={13} className="text-red-400 shrink-0" />
-                    <span className="text-stone-300">{item}</span>
-                  </div>
-                ))}
-              </div>
-
-              <h4 className="text-[10px] font-bold tracking-[0.3em] uppercase text-stone-500 mb-4">Estratégias práticas:</h4>
-              <div className="grid sm:grid-cols-2 gap-3">
-                {[
-                  { label: 'Respiração nasal lenta (4-6 ciclos/minuto)', icon: Wind },
-                  { label: 'Caminhada ao ar livre', icon: Activity },
-                  { label: 'Exposição solar matinal', icon: Sun },
-                  { label: 'Sono regular', icon: Moon },
-                ].map((item) => {
-                  const Icon = item.icon;
-                  return (
-                    <div key={item.label} className="flex items-center gap-3 text-sm bg-green-500/10 border border-green-500/15 rounded-xl p-4 hover:bg-green-500/15 transition-colors">
-                      <Icon size={14} className="text-green-400 shrink-0" />
-                      <span className="text-stone-300">{item.label}</span>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* ═══ PROTOCOLO INTEGRADO ═══ */}
-        <div className="gsap-reveal mb-28">
-          <div className="relative rounded-3xl overflow-hidden">
-            <div className="absolute inset-0 bg-emerald-950/25 border border-emerald-700/15 rounded-3xl" />
-            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-emerald-500/40 to-transparent" />
-            <div className="relative p-8 md:p-14">
-              <span className="text-emerald-500/50 text-[10px] font-bold tracking-[0.5em] uppercase">Protocolo</span>
-              <h2 className="text-2xl md:text-3xl font-extrabold text-white mb-8 tracking-tight" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                Protocolo Integrado Anti-Inflamatório
-              </h2>
-
-              <h3 className="text-sm font-bold text-stone-300 mb-5">Base diária:</h3>
-              <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-3 mb-10">
-                {[
-                  { label: '15-30 min de sol', icon: Sun, color: 'text-amber-400', bg: 'bg-amber-500/10', border: 'border-amber-500/15' },
-                  { label: '20-30 min de movimento', icon: Activity, color: 'text-green-400', bg: 'bg-green-500/10', border: 'border-green-500/15' },
-                  { label: 'Fibras e proteína adequada', icon: Salad, color: 'text-emerald-400', bg: 'bg-emerald-500/10', border: 'border-emerald-500/15' },
-                  { label: '7-9h de sono', icon: Moon, color: 'text-indigo-400', bg: 'bg-indigo-500/10', border: 'border-indigo-500/15' },
-                  { label: 'Hidratação consistente', icon: Droplets, color: 'text-blue-400', bg: 'bg-blue-500/10', border: 'border-blue-500/15' },
-                  { label: 'Regulação emocional', icon: Brain, color: 'text-purple-400', bg: 'bg-purple-500/10', border: 'border-purple-500/15' },
-                ].map((item) => {
-                  const Icon = item.icon;
-                  return (
-                    <div key={item.label} className={`flex items-center gap-3 ${item.bg} border ${item.border} rounded-xl p-4 hover:scale-[1.02] transition-transform duration-300`}>
-                      <Icon size={18} className={`${item.color} shrink-0`} />
-                      <span className="text-sm text-stone-300">{item.label}</span>
-                    </div>
-                  );
-                })}
-              </div>
-
-              <h3 className="text-sm font-bold text-stone-300 mb-5">Sinais de Redução de Inflamação</h3>
-              <div className="grid sm:grid-cols-2 gap-3">
-                {['Energia estável', 'Sono profundo', 'Menos dores articulares', 'Melhor digestão', 'Humor mais estável'].map((s) => (
-                  <div key={s} className="flex items-center gap-3 text-sm bg-green-500/10 border border-green-500/15 rounded-xl p-4">
-                    <CheckCircle2 size={14} className="text-green-400 shrink-0" />
-                    <span className="text-stone-300">{s}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* ─── CONCLUSÃO ─── */}
-        <div className="gsap-reveal mb-8">
-          <div className="relative rounded-3xl overflow-hidden">
-            <div className="absolute inset-0 bg-emerald-950/30 border border-emerald-500/15 rounded-3xl" />
-            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent" />
-            <div className="relative p-8 md:p-12">
-              <p className="text-sm text-stone-300 leading-relaxed mb-3">
-                Saúde preventiva não é ausência de doença. É a capacidade de <span className="text-emerald-400 font-semibold">adaptação fisiológica.</span>
+      {/* DISCLAIMER */}
+      <section className="relative z-10 px-6 md:px-12 lg:px-20 mb-16">
+        <div className="max-w-7xl mx-auto">
+          <div className="rounded-2xl border border-amber-500/20 bg-amber-500/5 backdrop-blur-md p-7 md:p-9 flex gap-5 items-start hover:border-amber-500/40 transition-all">
+            <AlertTriangle className="text-amber-400 shrink-0 mt-1" size={26} />
+            <div>
+              <p className="text-xs font-mono tracking-[0.3em] uppercase text-amber-400/90 mb-3">AVISO LEGAL</p>
+              <p className="text-base md:text-lg text-foreground/85 leading-8">
+                Este conteúdo é educacional e informativo. Não substitui avaliação médica profissional,
+                diagnóstico ou tratamento. Consulte sempre um profissional de saúde antes de modificar
+                sua rotina, especialmente se possui condições pré-existentes.
               </p>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-4">
-                {['Inflamação controlada', 'Metabolismo eficiente', 'Hormônios regulados', 'Sistema imune equilibrado'].map((item) => (
-                  <div key={item} className="text-xs text-center bg-white/[0.04] border border-white/[0.08] rounded-xl p-3 text-stone-400">{item}</div>
-                ))}
-              </div>
-              <p className="text-sm text-stone-300 mt-5">
-                Quando os pilares básicos são aplicados e as estratégias avançadas são integradas, o corpo retorna ao estado de <span className="text-green-400 font-bold">autorregulação.</span>
-              </p>
-              <p className="text-xs text-stone-500 mt-3 italic">Isso é base biológica real.</p>
             </div>
           </div>
         </div>
+      </section>
 
-        {/* ─── DISCLAIMER ─── */}
-        <div className="gsap-reveal mb-12">
-          <div className="bg-amber-950/20 border border-amber-800/20 rounded-2xl p-6">
-            <div className="flex items-start gap-3">
-              <AlertTriangle size={20} className="text-amber-400 shrink-0 mt-0.5" />
-              <div>
-                <p className="text-sm font-bold text-amber-300 mb-1">Aviso Legal</p>
-                <p className="text-xs text-stone-400 leading-relaxed">
-                  Este conteúdo é de caráter educativo e informativo. Não substitui avaliação médica profissional, diagnóstico ou tratamento. Consulte sempre um profissional de saúde antes de modificar sua rotina, especialmente se possui condições pré-existentes.
-                </p>
-              </div>
-            </div>
-          </div>
+      {/* RAPÉ HOOK */}
+      <section className="relative z-10 px-6 md:px-12 lg:px-20 mb-16">
+        <div className="max-w-7xl mx-auto">
+          <RapeHookCard
+            variant="saude"
+            title="RAPÉ: Modulação Vagal Ancestral"
+            hook="Antes da meditação virar app, povos amazônicos já regulavam o eixo HPA com um pó cerimonial. Não é misticismo, é bioquímica do nervo vago documentada em literatura técnica. O dossiê está aqui."
+          />
         </div>
+      </section>
 
-        {/* ─── NAV FOOTER ─── */}
-        <div className="gsap-reveal flex flex-col sm:flex-row gap-4">
-          <Link to="/soberania-organica"
-            className="flex-1 group flex items-center justify-center gap-2 bg-white/[0.03] border border-white/[0.08] rounded-2xl px-6 py-5 text-stone-400 text-sm font-bold hover:bg-emerald-500/10 hover:border-emerald-500/20 hover:text-emerald-400 transition-all duration-300">
+      {/* NAV FOOTER */}
+      <section className="relative z-10 px-6 md:px-12 lg:px-20 pb-24">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row gap-4">
+          <Link
+            to="/soberania-organica"
+            className="flex-1 group flex items-center justify-center gap-2 rounded-2xl border border-emerald-900/30 bg-card/40 backdrop-blur-md px-7 py-6 text-muted-foreground text-sm font-bold tracking-[0.18em] uppercase hover:-translate-y-0.5 hover:border-emerald-700/50 hover:text-emerald-400 transition-all"
+          >
             <ChevronRight size={16} className="rotate-180 group-hover:-translate-x-1 transition-transform" />
             Soberania Orgânica
           </Link>
-          <Link to="/soberania-organica/avaliacao-sinais"
-            className="flex-1 group flex items-center justify-center gap-2 bg-emerald-500/10 border border-emerald-500/20 rounded-2xl px-6 py-5 text-emerald-400 text-sm font-bold hover:bg-emerald-500/15 hover:border-emerald-400/30 transition-all duration-300">
+          <Link
+            to="/soberania-organica/avaliacao-sinais"
+            className="flex-1 group flex items-center justify-center gap-2 rounded-2xl border border-emerald-500/40 bg-emerald-500/15 backdrop-blur-md px-7 py-6 text-emerald-300 text-sm font-bold tracking-[0.18em] uppercase hover:-translate-y-0.5 hover:bg-emerald-500/25 hover:shadow-[0_15px_30px_-10px_rgba(16,185,129,0.5)] transition-all"
+          >
             Avaliação de Sinais
             <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
-      </div>
+      </section>
 
       <MicroCtaResistencia variant="saude" />
-
-      <div className="px-6 md:px-12 lg:px-20 max-w-6xl mx-auto w-full">
-        <RapeHookCard
-          variant="saude"
-          title="RAPÉ: Modulação Vagal Ancestral"
-          hook="Antes da meditação virar app, povos amazônicos já regulavam o eixo HPA com um pó cerimonial. Não é misticismo — é bioquímica do nervo vago documentada em literatura técnica. O dossiê está aqui."
-        />
-      </div>
-
       <ScrollToTop />
-
-      <style>{`
-        @keyframes float {
-          0%, 100% { transform: translateY(0px) translateX(0px); opacity: 0.2; }
-          33% { transform: translateY(-20px) translateX(10px); opacity: 0.4; }
-          66% { transform: translateY(-10px) translateX(-8px); opacity: 0.15; }
-        }
-      `}</style>
     </div>
-    </>
   );
 };
 
