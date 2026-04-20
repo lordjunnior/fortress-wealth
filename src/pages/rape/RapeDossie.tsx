@@ -14,6 +14,11 @@ import FixedThematicBackground from "@/components/backgrounds/FixedThematicBackg
 import PageFloatingToc from "@/components/PageFloatingToc";
 import ScrollToTop from "@/components/ScrollToTop";
 import bgRape from "@/assets/backgrounds/bg-rape-hero.jpg";
+import imgPaje from "@/assets/rape/hero-pajé-kuripe.jpg";
+import imgFrasco from "@/assets/rape/po-frasco-kuripe.jpg";
+import imgVago from "@/assets/rape/nervo-vago-anatomia.jpg";
+import imgCerimonia from "@/assets/rape/cerimonia-noturna.jpg";
+import imgComercial from "@/assets/rape/sequestro-comercial.jpg";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -103,13 +108,15 @@ export default function RapeDossie() {
 
       <PageFloatingToc items={tocItems} />
 
-      <div className="relative z-10 px-6 md:px-12 lg:px-20 pt-[52px]">
-        <BackToHome />
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <div className="max-w-7xl mx-auto">
+          <BackToHome />
+        </div>
       </div>
 
-      {/* ── HERO ── */}
-      <section className="relative z-10 px-6 md:px-12 lg:px-20 pt-12 pb-24 md:pb-32">
-        <div className="max-w-5xl">
+      {/* ── HERO FULL-SCREEN APPLE-LIKE ── */}
+      <section className="relative z-10 min-h-[90vh] flex items-center px-6 md:px-12 lg:px-20 pt-12 pb-20">
+        <div className="w-full max-w-7xl mx-auto">
           <motion.p
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
@@ -123,35 +130,55 @@ export default function RapeDossie() {
             initial={{ opacity: 0, y: 24, filter: "blur(10px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ duration: 1.2, ease: APPLE_EASE }}
-            className="text-foreground font-bold leading-[0.95] tracking-tight mb-8"
+            className="text-foreground font-bold leading-[0.92] tracking-tight mb-10"
             style={{
               fontFamily: "'Bebas Neue', sans-serif",
-              fontSize: "clamp(3rem, 9vw, 7.5rem)",
+              fontSize: "clamp(3rem, 9vw, 8rem)",
               letterSpacing: "0.01em",
             }}
           >
             RAPÉ <br />
-            <span className="text-emerald-400/90 italic font-light" style={{ fontFamily: "'Instrument Serif', serif" }}>
+            <span className="text-emerald-400/95 italic font-light" style={{ fontFamily: "'Instrument Serif', serif" }}>
               não é um produto.
             </span>
           </motion.h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.3, ease: APPLE_EASE }}
-            className="text-muted-foreground text-lg md:text-2xl leading-relaxed max-w-3xl"
-          >
-            É uma <span className="text-foreground font-semibold">ferramenta ancestral de modulação biológica</span> —
-            sequestrada pela indústria do bem-estar, banalizada pelo homem moderno, ignorada pela medicina oficial.
-            Este dossiê reconstitui sua função real e o protocolo técnico de uso responsável.
-          </motion.p>
+          <div className="grid lg:grid-cols-12 gap-10 items-end">
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.3, ease: APPLE_EASE }}
+              className="lg:col-span-7 text-muted-foreground text-lg md:text-2xl leading-relaxed"
+            >
+              É uma <span className="text-foreground font-semibold">ferramenta ancestral de modulação biológica</span>,
+              sequestrada pela indústria do bem-estar, banalizada pelo homem moderno, ignorada pela medicina oficial.
+              Este dossiê reconstitui sua função real e o protocolo técnico de uso responsável.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.45, ease: APPLE_EASE }}
+              className="lg:col-span-5 grid grid-cols-3 gap-3"
+            >
+              {[
+                { n: "06", l: "Atos do dossiê" },
+                { n: "10", l: "Quelantes ligados" },
+                { n: "Vagal", l: "Eixo central" },
+              ].map(s => (
+                <div key={s.l} className="rounded-2xl border border-emerald-900/30 bg-card/40 backdrop-blur-md p-5 text-center hover:-translate-y-1 hover:shadow-[0_20px_40px_-15px_rgba(16,185,129,0.4)] transition-all">
+                  <p className="text-2xl md:text-3xl font-bold text-emerald-400" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>{s.n}</p>
+                  <p className="text-[9px] md:text-[10px] uppercase tracking-widest text-muted-foreground mt-2">{s.l}</p>
+                </div>
+              ))}
+            </motion.div>
+          </div>
 
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.5, ease: APPLE_EASE }}
-            className="mt-12 flex flex-wrap gap-3"
+            className="mt-14 flex flex-wrap gap-3"
           >
             {ATOS.map((a) => (
               <a
@@ -166,9 +193,46 @@ export default function RapeDossie() {
         </div>
       </section>
 
+      {/* IMAGEM EDITORIAL DE ABERTURA — pajé com kuripe */}
+      <section className="relative z-10 px-6 md:px-12 lg:px-20 mb-20">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 1, ease: APPLE_EASE }}
+            className="relative rounded-3xl overflow-hidden border border-emerald-900/30 group"
+          >
+            <img
+              src={imgPaje}
+              alt="Aplicação ritual de rapé com kuripe de bambu por pajé indígena amazônico ao entardecer"
+              className="w-full h-[55vh] md:h-[75vh] object-cover transition-transform duration-1000 group-hover:scale-[1.02]"
+              loading="eager"
+              width={1920}
+              height={1080}
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 p-8 md:p-14">
+              <p className="text-[10px] font-mono tracking-[0.4em] uppercase text-emerald-400/80 mb-3">
+                ABERTURA EDITORIAL
+              </p>
+              <h2
+                className="text-foreground text-3xl md:text-5xl lg:text-6xl font-bold leading-tight max-w-3xl"
+                style={{ fontFamily: "'Bebas Neue', sans-serif", letterSpacing: "0.01em" }}
+              >
+                Antes de virar mercadoria, foi tecnologia de pajé.
+              </h2>
+              <p className="text-muted-foreground text-sm md:text-base mt-4 max-w-2xl">
+                A floresta entendia o nervo vago séculos antes da neurofisiologia moderna nomear o circuito.
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* ── ALERTA YMYL ── */}
-      <section className="relative z-10 px-6 md:px-12 lg:px-20 pb-16">
-        <div className="max-w-5xl">
+      <section className="relative z-10 px-6 md:px-12 lg:px-20 pb-20">
+        <div className="max-w-7xl mx-auto">
           <div className="rounded-xl border border-destructive/30 bg-destructive/5 backdrop-blur-sm p-6 md:p-8 flex gap-5 items-start">
             <AlertTriangle className="text-destructive shrink-0 mt-1" size={22} />
             <div>
@@ -228,6 +292,25 @@ export default function RapeDossie() {
         </p>
       </Section>
 
+      {/* IMAGEM INTERCALADA — sequestro comercial */}
+      <section className="relative z-10 px-6 md:px-12 lg:px-20 py-12">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.9, ease: APPLE_EASE }}
+            className="relative rounded-3xl overflow-hidden border border-rose-900/30 group"
+          >
+            <img src={imgComercial} alt="Vitrine comercial moderna exibindo frascos de rapé reembalado" className="w-full h-[40vh] md:h-[55vh] object-cover transition-transform duration-1000 group-hover:scale-[1.03]" loading="lazy" width={1920} height={1080} />
+            <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/40 to-transparent" />
+            <p className="absolute bottom-6 left-6 right-6 md:left-10 md:right-10 text-foreground/95 italic text-sm md:text-base max-w-2xl">
+              A vitrine substituiu a maloca. O markup substituiu o ritual. O frasco escandinavo substituiu a cuia da floresta.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
       {/* ── ATO 03: BIOQUÍMICA ── */}
       <Section id="ato-3-bioquimica" num="03" titulo="A Bioquímica do Vagal" icon={Brain} accent="cyan">
         <p>
@@ -254,6 +337,25 @@ export default function RapeDossie() {
           refratária de horas. <strong>São farmacocinéticas opostas.</strong>
         </p>
       </Section>
+
+      {/* IMAGEM INTERCALADA — nervo vago */}
+      <section className="relative z-10 px-6 md:px-12 lg:px-20 py-12">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.9, ease: APPLE_EASE }}
+            className="relative rounded-3xl overflow-hidden border border-cyan-900/30 group"
+          >
+            <img src={imgVago} alt="Visualização anatômica do nervo vago humano em luz azul" className="w-full h-[40vh] md:h-[55vh] object-cover transition-transform duration-1000 group-hover:scale-[1.03]" loading="lazy" width={1920} height={1080} />
+            <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/40 to-transparent" />
+            <p className="absolute bottom-6 left-6 right-6 md:left-10 md:right-10 text-foreground/95 italic text-sm md:text-base max-w-2xl">
+              O nervo vago: rodovia parassimpática que conecta tronco cerebral, coração, pulmão e intestino em um só circuito.
+            </p>
+          </motion.div>
+        </div>
+      </section>
 
       {/* ── ATO 04: PROTOCOLO ── */}
       <Section id="ato-4-protocolo" num="04" titulo="Protocolo de Aplicação Responsável" icon={ShieldCheck} accent="amber">
@@ -362,7 +464,7 @@ export default function RapeDossie() {
 
       {/* ── CTAs FINAIS ── */}
       <section className="relative z-10 px-6 md:px-12 lg:px-20 py-20">
-        <div className="max-w-5xl">
+        <div className="max-w-7xl mx-auto">
           <p className="font-mono text-[10px] tracking-[0.3em] text-emerald-400/80 uppercase mb-4">[ CONTINUE A IMERSÃO ]</p>
           <div className="grid md:grid-cols-3 gap-4">
             <NextCard to="/soberania-organica/conhecimento-perdido/protocolo-quelantes-brasileiros" titulo="Protocolo de Quelantes" desc="10 plantas brasileiras com fichas técnicas completas." />
@@ -386,7 +488,7 @@ function Section({
 }) {
   return (
     <section id={id} className="relative z-10 px-6 md:px-12 lg:px-20 py-20 md:py-28 gsap-reveal">
-      <div className="max-w-4xl">
+      <div className="max-w-7xl mx-auto">
         <div className="flex items-center gap-4 mb-8">
           <div className={`p-3 rounded-xl bg-${accent}-500/10 border border-${accent}-500/25`}>
             <Icon className={`text-${accent}-400`} size={22} />

@@ -8,10 +8,16 @@ import FixedThematicBackground from "@/components/backgrounds/FixedThematicBackg
 import ScrollToTop from "@/components/ScrollToTop";
 import bgQuelantes from "@/assets/backgrounds/bg-quelantes.jpg";
 import imgLab from "@/assets/quelantes/fichas-laboratorio.jpg";
-import imgCoentro from "@/assets/quelantes/coentro-chlorella.jpg";
-import imgIpe from "@/assets/quelantes/ipe-sucupira.jpg";
-import imgCardo from "@/assets/quelantes/cardo-mariano.jpg";
-import imgCarvao from "@/assets/quelantes/carvao-renais.jpg";
+import imgCoentro from "@/assets/quelantes/plantas/coentro.jpg";
+import imgChlorella from "@/assets/quelantes/plantas/chlorella.jpg";
+import imgIpe from "@/assets/quelantes/plantas/ipe-roxo.jpg";
+import imgSucupira from "@/assets/quelantes/plantas/sucupira.jpg";
+import imgCardo from "@/assets/quelantes/plantas/cardo-mariano.jpg";
+import imgEspirulina from "@/assets/quelantes/plantas/espirulina.jpg";
+import imgUnha from "@/assets/quelantes/plantas/unha-de-gato.jpg";
+import imgQuebra from "@/assets/quelantes/plantas/quebra-pedra.jpg";
+import imgCavalinha from "@/assets/quelantes/plantas/cavalinha.jpg";
+import imgCarvao from "@/assets/quelantes/plantas/carvao-ativado.jpg";
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -39,7 +45,7 @@ const PLANTAS: Planta[] = [
     contra: "Hipotensão severa, anticoagulantes (warfarina), interação documentada",
     sinergia: "OBRIGATÓRIO pareado com Chlorella. Coentro mobiliza, chlorella sequestra",
     imagem: imgCoentro,
-    legenda: "Coentro fresco e chlorella em pó: a dupla obrigatória de mobilização e sequestro de metais",
+    legenda: "Folha fresca de coentro: aroma cítrico inconfundível, presente em qualquer feira brasileira.",
   },
   {
     nome: "Chlorella",
@@ -50,6 +56,8 @@ const PLANTAS: Planta[] = [
     ciclo: "Concomitante ao coentro, mesma duração",
     contra: "Alergia a iodo, doença autoimune ativa, anticoagulantes",
     sinergia: "Coentro (essencial), espirulina (potencializa)",
+    imagem: imgChlorella,
+    legenda: "Microalga Chlorella: cor verde-esmeralda intensa, vendida como pó ou comprimidos prensados.",
   },
   {
     nome: "Ipê-roxo",
@@ -61,7 +69,7 @@ const PLANTAS: Planta[] = [
     contra: "Gestação (categoria X), distúrbios de coagulação",
     sinergia: "Sucupira (potencializa anti-inflamatório), cardo-mariano (proteção hepática)",
     imagem: imgIpe,
-    legenda: "Casca de ipê-roxo e vagens de sucupira: o eixo anti-inflamatório nativo brasileiro",
+    legenda: "Casca interna avermelhada do ipê-roxo (pau d'arco): o anti-inflamatório nativo do cerrado.",
   },
   {
     nome: "Sucupira",
@@ -72,6 +80,8 @@ const PLANTAS: Planta[] = [
     ciclo: "21 dias on, 14 dias off",
     contra: "Gestação, hipotensos, uso prolongado sem pausa",
     sinergia: "Ipê-roxo (anti-inflamatório), unha-de-gato (modulação imune)",
+    imagem: imgSucupira,
+    legenda: "Sementes ovaladas de sucupira: tradicionalmente maceradas em álcool de cereais para tintura.",
   },
   {
     nome: "Cardo-mariano",
@@ -83,7 +93,7 @@ const PLANTAS: Planta[] = [
     contra: "Alergia a Asteraceae, doença biliar obstrutiva",
     sinergia: "Suporte universal. Usar com TODOS os outros quelantes",
     imagem: imgCardo,
-    legenda: "Cardo-mariano: o escudo hepático obrigatório em qualquer protocolo sério de quelação",
+    legenda: "Flor roxa espinhosa do cardo-mariano: muitos têm no quintal sem saber a função hepática.",
   },
   {
     nome: "Espirulina",
@@ -94,6 +104,8 @@ const PLANTAS: Planta[] = [
     ciclo: "Contínuo, com pausa de 7 dias a cada 60",
     contra: "Fenilcetonúria, doença autoimune, gota",
     sinergia: "Chlorella (sinergia em metais), suporte energético geral",
+    imagem: imgEspirulina,
+    legenda: "Espirulina: cianobactéria de cor verde-azulada intensa, comercializada em pó ou cápsulas.",
   },
   {
     nome: "Unha-de-gato",
@@ -104,6 +116,8 @@ const PLANTAS: Planta[] = [
     ciclo: "30 dias on, 15 dias off",
     contra: "Gestação, transplantados (imunossupressão), autoimunes ativos",
     sinergia: "Sucupira, ipê-roxo (eixo anti-inflamatório completo)",
+    imagem: imgUnha,
+    legenda: "Unha-de-gato amazônica: cipó com espinhos curvos que parecem garras, daí o nome popular.",
   },
   {
     nome: "Quebra-pedra",
@@ -114,6 +128,8 @@ const PLANTAS: Planta[] = [
     ciclo: "21 dias on, 7 dias off",
     contra: "Gestação, hipoglicemia, diuréticos prescritos",
     sinergia: "Cavalinha (ambos renais), sempre durante mobilização de metais",
+    imagem: imgQuebra,
+    legenda: "Quebra-pedra: erva rasteira com frutos minúsculos pendurados sob as folhas. Cresce em qualquer quintal.",
   },
   {
     nome: "Cavalinha",
@@ -124,6 +140,8 @@ const PLANTAS: Planta[] = [
     ciclo: "14 dias on, 14 dias off",
     contra: "Cardiopatas, deficiência de tiamina, uso prolongado",
     sinergia: "Quebra-pedra (suporte renal duplo)",
+    imagem: imgCavalinha,
+    legenda: "Cavalinha: caules verdes segmentados que lembram um rabo de cavalo, daí o nome popular.",
   },
   {
     nome: "Carvão ativado vegetal",
@@ -135,7 +153,7 @@ const PLANTAS: Planta[] = [
     contra: "TODOS os medicamentos (adsorve fármacos), constipação",
     sinergia: "Uso emergencial em fase de mobilização agressiva",
     imagem: imgCarvao,
-    legenda: "Carvão ativado, quebra-pedra e cavalinha: o eixo de excreção e suporte renal",
+    legenda: "Carvão ativado vegetal: pó preto profundo de adsorção. Sempre 2h longe de qualquer remédio.",
   },
 ];
 
@@ -334,44 +352,39 @@ export default function ProtocoloQuelantes() {
 
           <div className="space-y-8">
             {PLANTAS.map((p, i) => (
-              <div key={p.nome}>
-                {p.imagem && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-50px" }}
-                    transition={{ duration: 0.9, ease: APPLE_EASE }}
-                    className="mb-8 rounded-3xl overflow-hidden border border-emerald-900/30 group"
-                  >
-                    <div className="relative">
+              <motion.article
+                key={p.nome}
+                initial={{ opacity: 0, y: 40, filter: "blur(6px)" }}
+                whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.85, delay: (i % 3) * 0.05, ease: APPLE_EASE }}
+                className="relative rounded-3xl border border-emerald-900/30 bg-card/40 backdrop-blur-md overflow-hidden hover:-translate-y-1 hover:border-emerald-700/50 hover:shadow-[0_30px_60px_-20px_rgba(16,185,129,0.35)] transition-all duration-500"
+              >
+                <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-emerald-500/40 to-transparent z-10" />
+
+                <div className={`grid lg:grid-cols-12 gap-0 ${i % 2 === 0 ? "" : "lg:[direction:rtl]"}`}>
+                  {/* IMAGEM REAL DA PLANTA — reconhecimento visual */}
+                  {p.imagem && (
+                    <div className="lg:col-span-5 relative overflow-hidden lg:[direction:ltr] group/img min-h-[280px] md:min-h-[360px] lg:min-h-[480px]">
                       <img
                         src={p.imagem}
-                        alt={p.legenda || p.nome}
-                        className="w-full h-[40vh] md:h-[55vh] object-cover transition-transform duration-1000 group-hover:scale-[1.03]"
+                        alt={`${p.nome} (${p.cientifico}): ${p.legenda || "imagem botânica de referência"}`}
+                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1400ms] group-hover/img:scale-[1.04]"
                         loading="lazy"
                         width={1600}
-                        height={1000}
+                        height={1024}
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/30 to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-background/85 via-background/20 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-background/60" />
                       {p.legenda && (
-                        <p className="absolute bottom-6 left-6 right-6 md:left-10 md:right-10 text-foreground/90 text-sm md:text-base italic max-w-3xl">
+                        <p className="absolute bottom-5 left-5 right-5 md:bottom-7 md:left-7 md:right-7 text-foreground/95 text-xs md:text-sm leading-relaxed italic">
                           {p.legenda}
                         </p>
                       )}
                     </div>
-                  </motion.div>
-                )}
+                  )}
 
-                <motion.article
-                  initial={{ opacity: 0, y: 30, filter: "blur(6px)" }}
-                  whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.7, delay: (i % 4) * 0.05, ease: APPLE_EASE }}
-                  className="relative rounded-3xl border border-emerald-900/30 bg-card/40 backdrop-blur-md overflow-hidden hover:-translate-y-1 hover:border-emerald-700/50 hover:shadow-[0_30px_60px_-20px_rgba(16,185,129,0.35)] transition-all duration-500"
-                >
-                  <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-emerald-500/40 to-transparent" />
-
-                  <div className="p-7 md:p-10 lg:p-12">
+                  {/* DADOS DA FICHA */}
+                  <div className={`${p.imagem ? "lg:col-span-7" : "lg:col-span-12"} p-7 md:p-10 lg:p-12 lg:[direction:ltr]`}>
                     <div className="flex items-start gap-5 mb-8 pb-7 border-b border-border/20">
                       <div className="p-3.5 rounded-2xl bg-emerald-500/10 border border-emerald-500/25 shrink-0">
                         <Leaf className="text-emerald-400" size={26} />
@@ -399,8 +412,8 @@ export default function ProtocoloQuelantes() {
                       <Field label="Sinergia obrigatória" v={p.sinergia} accent />
                     </div>
                   </div>
-                </motion.article>
-              </div>
+                </div>
+              </motion.article>
             ))}
           </div>
         </div>
