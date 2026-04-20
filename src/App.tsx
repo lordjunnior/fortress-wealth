@@ -137,6 +137,7 @@ import MultisigBitcoin from "./pages/MultisigBitcoin";
 import NovaLeiContaCorrente from "./pages/NovaLeiContaCorrente";
 import ExitIntentLeadMagnet from "./components/ExitIntentLeadMagnet";
 import Novilingua from "./pages/Novilingua";
+import Propolis from "./pages/Propolis";
 const queryClient = new QueryClient();
 
 const App = () => (
