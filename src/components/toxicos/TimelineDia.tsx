@@ -1,6 +1,11 @@
 import { motion } from 'framer-motion';
 import { Clock, Sun, Coffee, Utensils, MonitorSmartphone, Moon, AlertTriangle, ChevronRight } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
+import imgDespertar from '@/assets/toxicos/momento-despertar.jpg';
+import imgCafe from '@/assets/toxicos/momento-cafe.jpg';
+import imgAlmoco from '@/assets/toxicos/momento-almoco.jpg';
+import imgExpediente from '@/assets/toxicos/momento-expediente.jpg';
+import imgDormir from '@/assets/toxicos/momento-dormir.jpg';
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -14,12 +19,16 @@ interface Momento {
   icon: LucideIcon;
   accentFrom: string;
   accentTo: string;
+  image: string;
+  imageAlt: string;
 }
 
 const MOMENTOS: Momento[] = [
   {
     hora: '06:30', titulo: 'Despertar', icon: Sun,
     accentFrom: 'rgba(245,158,11,0.15)', accentTo: 'rgba(245,158,11,0.03)',
+    image: imgDespertar,
+    imageAlt: 'Pasta de dente e smartphone com notificações sobre bancada de banheiro ao amanhecer',
     corpo: 'Pasta de dente com triclosan (disruptor endócrino banido na UE em 2017, ainda vendido no Brasil). Desodorante com alumínio que atravessa a pele em 26 segundos.',
     mente: 'Primeiro reflexo: pegar o celular. Cortisol matinal é sequestrado por notificações projetadas para gerar urgência artificial.',
     comportamento: 'O algoritmo do feed já decidiu quais emoções você vai sentir nos próximos 20 minutos. Não é acaso. É A/B testing em escala.',
@@ -28,6 +37,8 @@ const MOMENTOS: Momento[] = [
   {
     hora: '08:00', titulo: 'Café da manhã', icon: Coffee,
     accentFrom: 'rgba(239,68,68,0.12)', accentTo: 'rgba(239,68,68,0.02)',
+    image: imgCafe,
+    imageAlt: 'Pão industrializado, margarina, suco de caixa e celular com notificação vermelha em mesa de café',
     corpo: 'Pão industrializado: propionato de cálcio + bromato de potássio (carcinógeno classe 2B). Margarina: gordura interesterificada que o fígado não reconhece. Suco de caixa: 14g de açúcar oculto por copo, rotulado como "sem adição".',
     mente: 'Telejornal de fundo: 73% das pautas são negativas (Media Tenor Institute). Design editorial calculado para manter estado de alerta e passividade.',
     comportamento: 'WhatsApp: 23 notificações acumuladas. Cada uma dispara micro-dose de dopamina. O cérebro já está fragmentado antes de começar a produzir.',
@@ -36,6 +47,8 @@ const MOMENTOS: Momento[] = [
   {
     hora: '12:30', titulo: 'Almoço', icon: Utensils,
     accentFrom: 'rgba(168,85,247,0.12)', accentTo: 'rgba(168,85,247,0.02)',
+    image: imgAlmoco,
+    imageAlt: 'Marmita de isopor, refrigerante, celular com feed social e maquininha de cartão sob luz fluorescente',
     corpo: 'Restaurante por quilo: 78% dos pratos contêm glutamato monossódico (excitotoxina que supera a saciedade natural). Refrigerante: ácido fosfórico que dissolve cálcio ósseo em pH 2.5.',
     mente: 'Scroll de redes durante refeição: conteúdo é curado para maximizar tempo de tela, não para informar. O algoritmo recompensa indignação porque gera mais engajamento.',
     comportamento: 'Pagamento por aproximação: zero atrito cognitivo. O cérebro não registra a dor da perda financeira. Gasto 12-18% maior que com dinheiro físico (MIT Sloan).',
@@ -44,6 +57,8 @@ const MOMENTOS: Momento[] = [
   {
     hora: '18:00', titulo: 'Fim do expediente', icon: MonitorSmartphone,
     accentFrom: 'rgba(6,182,212,0.12)', accentTo: 'rgba(6,182,212,0.02)',
+    image: imgExpediente,
+    imageAlt: 'Escritório vazio ao entardecer com múltiplos monitores brilhando em luz azul fria',
     corpo: 'Cortisol cronicamente elevado: 8+ horas sentado. Sistema linfático estagnado. Dor lombar que virou "normal". Visão deteriorando por exposição contínua a luz azul sem compensação.',
     mente: 'Fadiga decisória: após ~35.000 microdecisões diárias, o cérebro entra em modo automático. É exatamente quando propagandas e conteúdo persuasivo são mais eficazes.',
     comportamento: 'Netflix/streaming: autoplay projetado para eliminar o momento de decisão. A interface remove propositalmente o ponto de saída. Cada episódio termina com cliffhanger calibrado.',
@@ -52,6 +67,8 @@ const MOMENTOS: Momento[] = [
   {
     hora: '23:00', titulo: 'Antes de dormir', icon: Moon,
     accentFrom: 'rgba(34,197,94,0.12)', accentTo: 'rgba(34,197,94,0.02)',
+    image: imgDormir,
+    imageAlt: 'Smartphone aceso sobre criado-mudo ao lado de cama em quarto à meia-noite',
     corpo: 'Corpo processou ~2kg de aditivos químicos no ano (FDA estimate). Fígado trabalhou em dobro para metabolizar o que não deveria ter entrado. Microbiota intestinal alterada por emulsificantes que corroem o muco protetor.',
     mente: 'Última coisa na tela: conteúdo otimizado para reter atenção, não para informar. O cérebro ainda está processando estímulos 40 minutos depois de desligar a tela.',
     comportamento: 'Alarme programado para 6h30. O ciclo recomeça. Mas agora o sono é interrompido por notificações (63% dos adultos dormem com o celular a menos de 1 metro da cabeça — Deloitte).',
@@ -111,7 +128,7 @@ export default function TimelineDia() {
                 initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: '-60px' }}
                 transition={{ duration: 0.7, ease: APPLE_EASE, delay: idx * 0.08 }}
-                className="relative pl-16 md:pl-24"
+                className="group relative pl-16 md:pl-24"
               >
                 {/* Time marker */}
                 <div className="absolute left-0 top-0 flex items-center gap-2">
@@ -125,6 +142,24 @@ export default function TimelineDia() {
 
                 <div className="rounded-2xl border border-white/[0.06] overflow-hidden"
                   style={{ background: `linear-gradient(135deg, ${m.accentFrom}, ${m.accentTo})` }}>
+                  {/* Cinematic image */}
+                  <div className="relative w-full h-44 md:h-56 overflow-hidden">
+                    <img
+                      src={m.image}
+                      alt={m.imageAlt}
+                      loading="lazy"
+                      width={1280}
+                      height={720}
+                      className="w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-stone-950/90" />
+                    <div className="absolute bottom-3 left-4 flex items-center gap-2">
+                      <span className="text-stone-300 text-[10px] font-bold uppercase tracking-[0.3em] bg-black/50 backdrop-blur-sm px-3 py-1 rounded-full border border-white/10">
+                        {m.hora}
+                      </span>
+                    </div>
+                  </div>
+
                   {/* Card header */}
                   <div className="px-6 md:px-8 pt-6 pb-4 border-b border-white/[0.04]">
                     <div className="flex items-center gap-3">
