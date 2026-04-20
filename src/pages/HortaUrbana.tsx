@@ -48,13 +48,13 @@ function ImageCard({ src, alt, children }: { src: string; alt: string; children:
   return (
     <motion.div
       initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-60px' }} variants={fadeUp} custom={0}
-      className="bg-white/[0.03] backdrop-blur-sm border border-white/[0.06] rounded-3xl overflow-hidden hover:border-white/[0.1] transition-all duration-500"
+      className="group bg-white/[0.03] backdrop-blur-sm border border-white/[0.06] rounded-3xl overflow-hidden hover:border-emerald-500/30 hover:shadow-[0_30px_80px_-20px_rgba(16,185,129,0.25)] transition-all duration-500 h-full flex flex-col"
     >
-      <div className="relative h-56 md:h-72 overflow-hidden">
-        <img src={src} alt={alt} className="w-full h-full object-cover" loading="lazy" />
+      <div className="relative h-64 md:h-96 lg:h-[420px] overflow-hidden">
+        <img src={src} alt={alt} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#050808] via-transparent to-transparent" />
       </div>
-      <div className="p-6 md:p-10">{children}</div>
+      <div className="p-8 md:p-12 lg:p-14 flex-1">{children}</div>
     </motion.div>
   );
 }
@@ -172,7 +172,7 @@ export default function HortaUrbana() {
         backLabel="Soberania Orgânica"
       />
 
-      <div className="relative z-10 max-w-3xl mx-auto px-5 md:px-6 pt-12 pb-32">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 lg:px-20 pt-16 pb-32 space-y-6">
 
         {/* Intro */}
         <motion.div initial="hidden" animate="visible" variants={fadeUp} custom={0}
@@ -251,6 +251,7 @@ export default function HortaUrbana() {
         {/* ══ BLOCO 02 — VASO AUTOIRRIGÁVEL DIY ══ */}
         <SectionDivider label="Bloco 02 · Irrigação Inteligente" />
 
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <ImageCard src={imgVasoAutoirrigavel} alt="Vaso autoirrigável em corte transversal">
           <div className="flex items-center gap-2 mb-4">
             <Droplets className="text-sky-400" size={20} />
@@ -286,9 +287,6 @@ export default function HortaUrbana() {
           </div>
         </ImageCard>
 
-        {/* ══ BLOCO 03 — CULTIVO VERTICAL ══ */}
-        <SectionDivider label="Bloco 03 · Multiplicação de Área" />
-
         <ImageCard src={imgVertical} alt="Horta vertical em varanda urbana">
           <div className="flex items-center gap-2 mb-4">
             <Layers className="text-emerald-400" size={20} />
@@ -319,6 +317,7 @@ export default function HortaUrbana() {
             </InfoCard>
           </div>
         </ImageCard>
+        </div>
 
         {/* ══ BLOCO 04 — CALENDÁRIO DE PLANTIO ══ */}
         <SectionDivider label="Bloco 04 · Planejamento Regional" />
@@ -368,6 +367,7 @@ export default function HortaUrbana() {
         {/* ══ BLOCO 05 — ESPÉCIES PARA INICIANTES ══ */}
         <SectionDivider label="Bloco 05 · Primeiras Espécies" />
 
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <ImageCard src={imgEspecies} alt="Hortaliças para iniciantes em varanda urbana">
           <div className="flex items-center gap-2 mb-4">
             <Sprout className="text-emerald-400" size={20} />
@@ -404,9 +404,6 @@ export default function HortaUrbana() {
           </div>
         </ImageCard>
 
-        {/* ══ BLOCO 06 — SUBSTRATO IDEAL ══ */}
-        <SectionDivider label="Bloco 06 · Base Produtiva" />
-
         <ImageCard src={imgSubstrato} alt="Mistura de substrato ideal para horta urbana">
           <div className="flex items-center gap-2 mb-4">
             <Beaker className="text-amber-400" size={20} />
@@ -432,6 +429,7 @@ export default function HortaUrbana() {
             <p className="text-stone-500 text-xs mt-1">Teste: regar → infiltrar rápido → sem poça.</p>
           </div>
         </ImageCard>
+        </div>
 
         {/* ══ BLOCO 07 — IRRIGAÇÃO CORRETA ══ */}
         <SectionDivider label="Bloco 07 · Irrigação" />
