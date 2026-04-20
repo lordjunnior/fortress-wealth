@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
   Bitcoin, Sprout, BookOpen, AlertTriangle, Globe, Lock, Heart, Flame,
-  Map, Search, ArrowRight, Compass, Shield, Eye, Zap, Library
+  Map, Search, ArrowRight, Compass, Shield, Eye, Zap, Library, Plane
 } from 'lucide-react';
 import SeoHead from '@/components/SeoHead';
 import BackToHome from '@/components/BackToHome';
