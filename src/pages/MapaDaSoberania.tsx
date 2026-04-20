@@ -197,6 +197,7 @@ const SILOS: Silo[] = [
       { title: 'Kit Tático 72h', href: '/soberania-organica/kit-72h' },
       { title: 'EDC: O Que Carregar Todo Dia', href: '/soberania-organica/edc' },
       { title: 'Primeiros Socorros Táticos', href: '/soberania-organica/primeiros-socorros-taticos' },
+      { title: 'Protocolo de Fogo: Ignição, Úmido, Discreto', href: '/soberania-organica/protocolo-fogo' },
       { title: 'Purificação de Água', href: '/soberania-organica/purificacao-agua' },
       { title: 'Protocolos de Apagão', href: '/soberania-organica/protocolos-apagao' },
       { title: 'Abrigo de Emergência', href: '/soberania-organica/abrigo-emergencia' },
