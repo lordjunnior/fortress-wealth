@@ -115,6 +115,7 @@ const BitcoinVsImovel: React.FC = () => {
 
   return (
     <div className="min-h-screen text-stone-100 font-sans selection:bg-amber-400/30 relative overflow-hidden" style={{ background: '#050808' }}>
+      <FixedThematicBackground image={bgBtcVsImovel} intensity="medium" />
       <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
         <BackToHome />
       </div>
