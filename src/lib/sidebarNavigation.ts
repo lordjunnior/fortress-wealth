@@ -132,6 +132,7 @@ export const navGroups: NavGroup[] = [
       { label: "Proteína Sustentável", route: "/soberania-organica/proteina-sustentavel" },
       { label: "Conservação", route: "/soberania-organica/conservacao-armazenamento" },
       { label: "Primeiros Socorros", route: "/soberania-organica/primeiros-socorros" },
+      { label: "Primeiros Socorros Táticos", route: "/soberania-organica/primeiros-socorros-taticos", badge: "Novo" },
       { label: "Avaliação de Sinais", route: "/soberania-organica/avaliacao-sinais" },
       { label: "Controle de Vetores", route: "/soberania-organica/controle-vetores" },
       { label: "Sabedoria Ancestral", route: "/soberania-organica/sabedoria-ancestral" },
@@ -147,6 +148,7 @@ export const navGroups: NavGroup[] = [
     items: [
       { label: "Kit 72h", route: "/soberania-organica/kit-72h" },
       { label: "Purificação de Água", route: "/soberania-organica/purificacao-agua" },
+      { label: "Primeiros Socorros Táticos", route: "/soberania-organica/primeiros-socorros-taticos", badge: "Novo" },
       { label: "Protocolos de Apagão", route: "/soberania-organica/protocolos-apagao" },
       { label: "Abrigo Emergência", route: "/soberania-organica/abrigo-emergencia" },
       { label: "Comunicação Offline", route: "/soberania-organica/comunicacao-offline" },

@@ -195,6 +195,7 @@ const SILOS: Silo[] = [
     links: [
       { title: 'Hub Resiliência', href: '/soberania-organica' },
       { title: 'Kit Tático 72h', href: '/soberania-organica/kit-72h' },
+      { title: 'Primeiros Socorros Táticos', href: '/soberania-organica/primeiros-socorros-taticos' },
       { title: 'Purificação de Água', href: '/soberania-organica/purificacao-agua' },
       { title: 'Protocolos de Apagão', href: '/soberania-organica/protocolos-apagao' },
       { title: 'Abrigo de Emergência', href: '/soberania-organica/abrigo-emergencia' },
@@ -223,6 +224,7 @@ const SILOS: Silo[] = [
     links: [
       { title: 'Hub Autonomia Biológica', href: '/soberania-organica/autonomia-biologica' },
       { title: 'Primeiros Socorros', href: '/soberania-organica/primeiros-socorros' },
+      { title: 'Primeiros Socorros Táticos: MARCH + IFAK', href: '/soberania-organica/primeiros-socorros-taticos' },
       { title: 'Avaliação de Sinais Vitais', href: '/soberania-organica/avaliacao-sinais' },
       { title: 'Saúde Preventiva', href: '/soberania-organica/saude-preventiva' },
       { title: 'Fitoterapia Aplicada', href: '/soberania-organica/fitoterapia-aplicada' },
