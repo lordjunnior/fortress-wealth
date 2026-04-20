@@ -8,7 +8,8 @@ import { ArrowRight, Building2, TrendingUp, Calculator } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import CinematicHero from '@/components/CinematicHero';
-import NoiseBackground from '@/components/NoiseBackground';
+import FixedThematicBackground from '@/components/backgrounds/FixedThematicBackground';
+import bgBtcVsImovel from '@/assets/backgrounds/bg-btc-vs-imovel.jpg';
 import ScrollToTop from '@/components/ScrollToTop';
 import BackToHome from '@/components/BackToHome';
 
