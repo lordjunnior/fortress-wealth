@@ -45,7 +45,7 @@ const PLANTAS: Planta[] = [
     contra: "Hipotensão severa, anticoagulantes (warfarina), interação documentada",
     sinergia: "OBRIGATÓRIO pareado com Chlorella. Coentro mobiliza, chlorella sequestra",
     imagem: imgCoentro,
-    legenda: "Coentro fresco e chlorella em pó: a dupla obrigatória de mobilização e sequestro de metais",
+    legenda: "Folha fresca de coentro: aroma cítrico inconfundível, presente em qualquer feira brasileira.",
   },
   {
     nome: "Chlorella",
@@ -56,6 +56,8 @@ const PLANTAS: Planta[] = [
     ciclo: "Concomitante ao coentro, mesma duração",
     contra: "Alergia a iodo, doença autoimune ativa, anticoagulantes",
     sinergia: "Coentro (essencial), espirulina (potencializa)",
+    imagem: imgChlorella,
+    legenda: "Microalga Chlorella: cor verde-esmeralda intensa, vendida como pó ou comprimidos prensados.",
   },
   {
     nome: "Ipê-roxo",
@@ -67,7 +69,7 @@ const PLANTAS: Planta[] = [
     contra: "Gestação (categoria X), distúrbios de coagulação",
     sinergia: "Sucupira (potencializa anti-inflamatório), cardo-mariano (proteção hepática)",
     imagem: imgIpe,
-    legenda: "Casca de ipê-roxo e vagens de sucupira: o eixo anti-inflamatório nativo brasileiro",
+    legenda: "Casca interna avermelhada do ipê-roxo (pau d'arco): o anti-inflamatório nativo do cerrado.",
   },
   {
     nome: "Sucupira",
@@ -78,6 +80,8 @@ const PLANTAS: Planta[] = [
     ciclo: "21 dias on, 14 dias off",
     contra: "Gestação, hipotensos, uso prolongado sem pausa",
     sinergia: "Ipê-roxo (anti-inflamatório), unha-de-gato (modulação imune)",
+    imagem: imgSucupira,
+    legenda: "Sementes ovaladas de sucupira: tradicionalmente maceradas em álcool de cereais para tintura.",
   },
   {
     nome: "Cardo-mariano",
@@ -89,7 +93,7 @@ const PLANTAS: Planta[] = [
     contra: "Alergia a Asteraceae, doença biliar obstrutiva",
     sinergia: "Suporte universal. Usar com TODOS os outros quelantes",
     imagem: imgCardo,
-    legenda: "Cardo-mariano: o escudo hepático obrigatório em qualquer protocolo sério de quelação",
+    legenda: "Flor roxa espinhosa do cardo-mariano: muitos têm no quintal sem saber a função hepática.",
   },
   {
     nome: "Espirulina",
@@ -100,6 +104,8 @@ const PLANTAS: Planta[] = [
     ciclo: "Contínuo, com pausa de 7 dias a cada 60",
     contra: "Fenilcetonúria, doença autoimune, gota",
     sinergia: "Chlorella (sinergia em metais), suporte energético geral",
+    imagem: imgEspirulina,
+    legenda: "Espirulina: cianobactéria de cor verde-azulada intensa, comercializada em pó ou cápsulas.",
   },
   {
     nome: "Unha-de-gato",
@@ -110,6 +116,8 @@ const PLANTAS: Planta[] = [
     ciclo: "30 dias on, 15 dias off",
     contra: "Gestação, transplantados (imunossupressão), autoimunes ativos",
     sinergia: "Sucupira, ipê-roxo (eixo anti-inflamatório completo)",
+    imagem: imgUnha,
+    legenda: "Unha-de-gato amazônica: cipó com espinhos curvos que parecem garras, daí o nome popular.",
   },
   {
     nome: "Quebra-pedra",
@@ -120,6 +128,8 @@ const PLANTAS: Planta[] = [
     ciclo: "21 dias on, 7 dias off",
     contra: "Gestação, hipoglicemia, diuréticos prescritos",
     sinergia: "Cavalinha (ambos renais), sempre durante mobilização de metais",
+    imagem: imgQuebra,
+    legenda: "Quebra-pedra: erva rasteira com frutos minúsculos pendurados sob as folhas. Cresce em qualquer quintal.",
   },
   {
     nome: "Cavalinha",
@@ -130,6 +140,8 @@ const PLANTAS: Planta[] = [
     ciclo: "14 dias on, 14 dias off",
     contra: "Cardiopatas, deficiência de tiamina, uso prolongado",
     sinergia: "Quebra-pedra (suporte renal duplo)",
+    imagem: imgCavalinha,
+    legenda: "Cavalinha: caules verdes segmentados que lembram um rabo de cavalo, daí o nome popular.",
   },
   {
     nome: "Carvão ativado vegetal",
@@ -141,7 +153,7 @@ const PLANTAS: Planta[] = [
     contra: "TODOS os medicamentos (adsorve fármacos), constipação",
     sinergia: "Uso emergencial em fase de mobilização agressiva",
     imagem: imgCarvao,
-    legenda: "Carvão ativado, quebra-pedra e cavalinha: o eixo de excreção e suporte renal",
+    legenda: "Carvão ativado vegetal: pó preto profundo de adsorção. Sempre 2h longe de qualquer remédio.",
   },
 ];
 
