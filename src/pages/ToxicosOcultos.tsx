@@ -7,6 +7,7 @@ import CinematicHero from '@/components/CinematicHero';
 import LiquidText from '@/components/LiquidText';
 import DossieRealidade from '@/components/toxicos/DossieRealidade';
 import TimelineDia from '@/components/toxicos/TimelineDia';
+import SmokeBackground from '@/components/toxicos/SmokeBackground';
 import BackToHome from '@/components/BackToHome';
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
@@ -80,6 +81,7 @@ export default function ToxicosOcultos() {
       </Helmet>
 
       {/* === VFX LAYER === */}
+      <SmokeBackground />
       <div className="fixed inset-0 pointer-events-none z-[1]">
         {/* Film grain */}
         <div className="absolute inset-0 opacity-[0.035]" style={{
@@ -220,18 +222,41 @@ export default function ToxicosOcultos() {
               <motion.div key={stat.num}
                 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.1 + i * 0.1 }}
-                className={`relative overflow-hidden rounded-xl border p-5 md:p-6 text-center
+                whileHover={{ y: -6, transition: { duration: 0.4, ease: APPLE_EASE } }}
+                className={`group relative overflow-hidden rounded-xl border p-5 md:p-6 text-center cursor-default transition-all duration-500
                   ${stat.color === 'amber' ? 'border-amber-500/10 bg-amber-500/[0.03]' :
                     stat.color === 'cyan' ? 'border-cyan-500/10 bg-cyan-500/[0.03]' :
                     stat.color === 'green' ? 'border-green-500/10 bg-green-500/[0.03]' :
-                    'border-violet-500/10 bg-violet-500/[0.03]'}`}
+                    'border-violet-500/10 bg-violet-500/[0.03]'}
+                  ${stat.color === 'amber' ? 'hover:border-amber-500/40 hover:bg-amber-500/[0.07] hover:shadow-[0_20px_60px_-15px_rgba(245,158,11,0.35)]' :
+                    stat.color === 'cyan' ? 'hover:border-cyan-500/40 hover:bg-cyan-500/[0.07] hover:shadow-[0_20px_60px_-15px_rgba(6,182,212,0.35)]' :
+                    stat.color === 'green' ? 'hover:border-green-500/40 hover:bg-green-500/[0.07] hover:shadow-[0_20px_60px_-15px_rgba(34,197,94,0.35)]' :
+                    'hover:border-violet-500/40 hover:bg-violet-500/[0.07] hover:shadow-[0_20px_60px_-15px_rgba(168,85,247,0.35)]'}`}
               >
-                <stat.icon size={16} className={`mx-auto mb-3 
+                {/* Top accent line on hover */}
+                <div className={`absolute top-0 left-0 right-0 h-[2px] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-700
+                  ${stat.color === 'amber' ? 'bg-gradient-to-r from-amber-500 via-amber-400 to-transparent' :
+                    stat.color === 'cyan' ? 'bg-gradient-to-r from-cyan-500 via-cyan-400 to-transparent' :
+                    stat.color === 'green' ? 'bg-gradient-to-r from-green-500 via-green-400 to-transparent' :
+                    'bg-gradient-to-r from-violet-500 via-violet-400 to-transparent'}`} />
+                {/* Pulsing glow behind icon */}
+                <motion.div
+                  className="absolute top-3 left-1/2 -translate-x-1/2 w-10 h-10 rounded-full blur-xl"
+                  animate={{ opacity: [0.2, 0.5, 0.2], scale: [1, 1.15, 1] }}
+                  transition={{ duration: 3 + i * 0.4, repeat: Infinity, ease: 'easeInOut', delay: i * 0.3 }}
+                  style={{
+                    background: stat.color === 'amber' ? 'rgba(245,158,11,0.4)' :
+                      stat.color === 'cyan' ? 'rgba(6,182,212,0.4)' :
+                      stat.color === 'green' ? 'rgba(34,197,94,0.4)' :
+                      'rgba(168,85,247,0.4)',
+                  }}
+                />
+                <stat.icon size={16} className={`relative mx-auto mb-3 transition-transform duration-500 group-hover:scale-125
                   ${stat.color === 'amber' ? 'text-amber-400/60' :
                     stat.color === 'cyan' ? 'text-cyan-400/60' :
                     stat.color === 'green' ? 'text-green-400/60' :
                     'text-violet-400/60'}`} />
-                <p className={`text-2xl md:text-3xl font-black tabular-nums mb-2
+                <p className={`relative text-2xl md:text-3xl font-black tabular-nums mb-2 transition-colors duration-500
                   ${stat.color === 'amber' ? 'text-amber-400' :
                     stat.color === 'cyan' ? 'text-cyan-400' :
                     stat.color === 'green' ? 'text-green-400' :
@@ -239,7 +264,7 @@ export default function ToxicosOcultos() {
                   style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                   {stat.num}
                 </p>
-                <p className="text-stone-500 text-[10px] md:text-xs leading-snug">{stat.label}</p>
+                <p className="relative text-stone-500 text-[10px] md:text-xs leading-snug group-hover:text-stone-300 transition-colors duration-500">{stat.label}</p>
               </motion.div>
             ))}
           </motion.div>
