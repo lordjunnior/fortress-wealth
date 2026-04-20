@@ -12,6 +12,7 @@ import imgGuaco from '@/assets/planta-guaco.jpg';
 import imgTanchagem from '@/assets/planta-tanchagem.jpg';
 import imgBabosaCard from '@/assets/planta-babosa-card.jpg';
 import imgOleoRicino from '@/assets/planta-oleo-ricino.jpg';
+import imgPropolis from '@/assets/propolis-colmeia.jpg';
 
 export interface PlantaData {
   slug: string;
