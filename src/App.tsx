@@ -108,6 +108,8 @@ import ToxinasAlimentares from "./pages/toxicos/ToxinasAlimentares";
 import ManipulacaoInformacional from "./pages/toxicos/ManipulacaoInformacional";
 import DependenciaTecnologica from "./pages/toxicos/DependenciaTecnologica";
 import ToxinasAmbientais from "./pages/toxicos/ToxinasAmbientais";
+import RapeDossie from "./pages/rape/RapeDossie";
+import ProtocoloQuelantes from "./pages/rape/ProtocoloQuelantes";
 import CodigoAutonomiaModal from "./components/CodigoAutonomiaModal";
 import ScrollToTop from "./components/ScrollToTop";
 import MapaDaSoberania from "./pages/MapaDaSoberania";
@@ -237,6 +239,8 @@ const App = () => (
           <Route path="/soberania-organica/comunicacao-offline" element={<ComunicacaoOffline />} />
           <Route path="/soberania-organica/navegacao-primaria" element={<NavegacaoPrimaria />} />
           <Route path="/soberania-organica/conhecimento-perdido" element={<ConhecimentoPerdido />} />
+          <Route path="/soberania-organica/conhecimento-perdido/rape" element={<RapeDossie />} />
+          <Route path="/soberania-organica/conhecimento-perdido/protocolo-quelantes-brasileiros" element={<ProtocoloQuelantes />} />
           <Route path="/conhecimento-perdido/contexto-historico" element={<CpContextoHistorico />} />
           <Route path="/conhecimento-perdido/base-fisiologica" element={<CpBaseFisiologica />} />
           <Route path="/conhecimento-perdido/seguranca-e-limites" element={<CpSegurancaLimites />} />
