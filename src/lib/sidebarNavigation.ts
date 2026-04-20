@@ -147,6 +147,7 @@ export const navGroups: NavGroup[] = [
     color: undefined,
     items: [
       { label: "Kit 72h", route: "/soberania-organica/kit-72h" },
+      { label: "EDC: O Que Carregar", route: "/soberania-organica/edc", badge: "Novo" },
       { label: "Purificação de Água", route: "/soberania-organica/purificacao-agua" },
       { label: "Primeiros Socorros Táticos", route: "/soberania-organica/primeiros-socorros-taticos", badge: "Novo" },
       { label: "Protocolos de Apagão", route: "/soberania-organica/protocolos-apagao" },
