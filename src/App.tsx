@@ -289,6 +289,7 @@ const App = () => (
             <Route path="/nova-lei-conta-corrente" element={<NovaLeiContaCorrente />} />
             <Route path="/alertas/nova-lei-conta-corrente" element={<NovaLeiContaCorrente />} />
             <Route path="/novilingua" element={<Novilingua />} />
+            <Route path="/propolis" element={<Propolis />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
