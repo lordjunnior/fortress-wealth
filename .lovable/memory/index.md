@@ -9,6 +9,7 @@ Never summarize technical content; only add depth/parameters.
 NEVER use emojis. NEVER write "Quarteto do Poder" or "Trio da Blindagem" in user UI.
 NEVER use em-dash (—) anywhere in user-facing text. Use comma, period, colon or parentheses.
 Remove 'Arena Bitcoin' brand from all content.
+NEVER use "soberano/soberania" as casual adjective in new copy (only as fixed silo names). Use "autônomo/independente/próprio/tático".
 Dark theme (#07080c). Full-width layout. Bebas Neue for titles, Inter Tight for body.
 Use real tactical macro photography (hardware). No amateur generic icons.
 Mandatory "PIX NÃO É PRIVADO" warning on PIX guides.
@@ -18,6 +19,7 @@ HEAVY PAGES: hero full-screen apple-like, max-w-7xl centralizado, FixedThematicB
 ## Memories
 - [Pagina Pesada Padrão](mem://design/padrao-pagina-pesada) — Padrão obrigatório completo para páginas pesadas
 - [Proibido Travessão Longo](mem://constraints/content/proibido-travessao-longo) — Banimento absoluto do em-dash em UI
+- [Proibido Soberano](mem://constraints/content/proibido-soberano) — Banimento de "soberano/soberania" como adjetivo casual
 - [Gateway Simulator](mem://features/gateway-simulator/conversion-logic) — Formula for BRL to Sats conversion and APIs
 - [Resilience Mantra](mem://content/philosophy/resilience-mantra) — Brand philosophy and risk engineering tone of voice
 - [Content Integrity](mem://constraints/content-integrity-rule) — Rule forbidding simplification of technical content
