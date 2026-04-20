@@ -272,6 +272,7 @@ export default function AutonomiaBiologica() {
               const dedicatedPages: Record<string, string> = {
                 'babosa-acemannan': '/soberania-organica/babosa-acemannan',
                 'oleo-ricino-biohacker': '/soberania-organica/oleo-ricino-biohacker',
+                'propolis': '/soberania-organica/propolis',
               };
               const linkTo = dedicatedPages[p.slug] || `/soberania-organica/planta/${p.slug}`;
               return (
