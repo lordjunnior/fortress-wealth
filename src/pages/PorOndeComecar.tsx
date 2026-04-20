@@ -31,7 +31,7 @@ const QUIZ_STEPS: QuizStep[] = [
   {
     id: "bitcoin",
     question: "Você já tem Bitcoin?",
-    subtitle: "Não se preocupe — toda jornada começa aqui.",
+    subtitle: "Não se preocupe. Toda jornada começa aqui.",
     options: [
       { label: "Nunca comprei", icon: BookOpen, description: "Preciso entender o que é Bitcoin primeiro", value: "never" },
       { label: "Tenho em corretora", icon: Coins, description: "Comprei mas está numa exchange", value: "exchange" },
@@ -77,12 +77,12 @@ function getRecommendations(answers: Record<string, string>): Recommendation[] {
   // Bitcoin level routing
   if (bitcoin === "never") {
     recs.push(
-      { title: "O que é Bitcoin?", description: "Fundamento zero — entenda antes de comprar", path: "/o-que-e-bitcoin", icon: BookOpen, tag: "ESSENCIAL" },
+      { title: "O que é Bitcoin?", description: "Fundamento zero. Entenda antes de comprar", path: "/o-que-e-bitcoin", icon: BookOpen, tag: "ESSENCIAL" },
       { title: "Protocolo Inicial", description: "Seu primeiro passo concreto na soberania", path: "/protocolo-inicial", icon: Target, tag: "COMEÇAR AQUI" },
     );
   } else if (bitcoin === "exchange") {
     recs.push(
-      { title: "Autocustódia", description: "Tire da corretora — suas chaves, suas moedas", path: "/autocustodia", icon: Shield, tag: "URGENTE" },
+      { title: "Autocustódia", description: "Tire da corretora. Suas chaves, suas moedas", path: "/autocustodia", icon: Shield, tag: "URGENTE" },
       { title: "Blindagem contra Golpes", description: "Proteja-se antes de mover fundos", path: "/blindagem-golpes", icon: Shield, tag: "SEGURANÇA" },
     );
   } else if (bitcoin === "self-custody") {
@@ -165,12 +165,12 @@ export default function PorOndeComecar() {
       </div>
 
       <Helmet>
-        <title>Por Onde Começar? — Encontre sua trilha | Lord Junnior</title>
+        <title>Por Onde Começar? Encontre sua trilha | Lord Junnior</title>
         <meta name="description" content="Descubra por onde começar sua jornada de soberania individual. Um quiz rápido que direciona para o conteúdo certo pro seu nível." />
       </Helmet>
 
       <div className="min-h-screen text-foreground">
-        <FixedThematicBackground image={bgPorOndeComecar} intensity="medium" />
+        <FixedThematicBackground image={bgPorOndeComecar} intensity="heavy" />
         <AppSidebar />
         <MobileNav />
         <RightSidebar />
@@ -183,6 +183,30 @@ export default function PorOndeComecar() {
               <span className="font-mono tracking-wider text-xs">VOLTAR</span>
             </Link>
           </div>
+
+          {/* HERO CINEMATOGRÁFICO */}
+          {!showResults && step === 0 && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: EASE }}
+              className="px-5 md:px-8 pt-10 pb-6 max-w-4xl mx-auto w-full text-center"
+            >
+              <p className="font-mono text-[10px] tracking-[0.4em] text-primary uppercase mb-5">Diagnóstico Operacional</p>
+              <h1 className="text-[clamp(2.5rem,6vw,5rem)] font-black uppercase leading-[0.92] tracking-tighter text-foreground mb-6" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+                Toda jornada começa<br />
+                <span className="italic font-serif text-primary normal-case tracking-tight">com a pergunta certa.</span>
+              </h1>
+              <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto font-light">
+                Você não precisa ler 97 páginas pra começar. Responda 3 perguntas e o sistema constrói uma trilha cirúrgica para o seu nível, seu objetivo e o seu tempo de reação.
+              </p>
+              <div className="flex items-center justify-center gap-6 mt-8 text-[10px] font-mono uppercase tracking-[0.25em] text-muted-foreground/60">
+                <span className="flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-primary animate-pulse" /> 60 segundos</span>
+                <span className="flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-primary animate-pulse" /> 3 perguntas</span>
+                <span className="flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-primary animate-pulse" /> Trilha cirúrgica</span>
+              </div>
+            </motion.div>
+          )}
 
           {/* Content */}
           <div className="flex-1 flex items-center justify-center px-5 md:px-8 py-12">
