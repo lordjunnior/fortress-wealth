@@ -37,6 +37,7 @@ import StrategicSignature from "@/components/StrategicSignature";
 import RiskBlock from "@/components/RiskBlock";
 import AlertBanner from "@/components/AlertBanner";
 import SnippetBait from "@/components/SnippetBait";
+import RapeHookCard from "@/components/RapeHookCard";
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
@@ -737,6 +738,12 @@ const Index = () => {
 
         <NobelSection id="faq" className="section-alt section-divider" delay={0.1}>
           <FaqSection />
+        </NobelSection>
+
+        <NobelSection className="section-divider px-5 md:px-10 lg:px-14" delay={0.1}>
+          <div className="max-w-6xl mx-auto">
+            <RapeHookCard variant="home" />
+          </div>
         </NobelSection>
 
         <NobelSection className="section-divider" delay={0.1}>

@@ -9,6 +9,7 @@ import DossieRealidade from '@/components/toxicos/DossieRealidade';
 import TimelineDia from '@/components/toxicos/TimelineDia';
 import BackToHome from '@/components/BackToHome';
 import bgToxic from '@/assets/toxicos/bg-toxic-atmosphere.jpg';
+import RapeHookCard from '@/components/RapeHookCard';
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 const fadeUp = {
@@ -402,6 +403,13 @@ export default function ToxicosOcultos() {
       {/* MANIFESTO                                         */}
       {/* ═══════════════════════════════════════════════════ */}
       <section className="relative z-10 py-20 md:py-32 border-t border-white/[0.04]">
+        <div className="max-w-5xl mx-auto px-6 md:px-10 mb-20">
+          <RapeHookCard
+            variant="toxicos"
+            title="O Antídoto Sequestrado: Rapé Amazônico"
+            hook="Enquanto a indústria envenena com aditivos, plásticos e dopamina algorítmica, povos da floresta guardavam uma ferramenta de modulação biológica que limpa o eixo HPA em 90 segundos. Foi banalizada. O dossiê técnico restaura sua função real."
+          />
+        </div>
         <div className="max-w-4xl mx-auto px-6 md:px-10 text-center">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}>
             <p className="text-stone-700 text-xs font-medium uppercase tracking-[0.4em] mb-8">Princípio Operacional</p>
