@@ -497,9 +497,20 @@ export default function MapaDaSoberania() {
                   <motion.div
                     key={silo.title}
                     {...fade(idx * 0.04)}
-                    className={`group rounded-sm border ${accent.border} bg-stone-950/50 p-6 transition-all hover:-translate-y-1 hover:shadow-xl ${accent.glow} hover:bg-stone-950/80`}
+                    className={`group relative overflow-hidden rounded-sm border ${accent.border} bg-stone-950/50 p-6 transition-all duration-500 hover:-translate-y-1 hover:shadow-xl ${accent.glow} hover:bg-stone-950/80`}
                   >
-                    <div className="flex items-start gap-3 mb-3">
+                    {/* Linha dourada no topo — aparece no hover */}
+                    <span
+                      aria-hidden
+                      className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-amber-400 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-700 ease-out origin-center"
+                    />
+                    {/* Glow sutil interno no hover */}
+                    <span
+                      aria-hidden
+                      className="absolute -top-px left-1/2 -translate-x-1/2 w-32 h-8 bg-amber-400/20 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+                    />
+
+                    <div className="relative flex items-start gap-3 mb-3">
                       <div className={`p-2 rounded ${accent.bg} ${accent.border} border`}>
                         <silo.icon size={18} className={accent.text} />
                       </div>
@@ -508,8 +519,8 @@ export default function MapaDaSoberania() {
                         <span className={`text-[10px] font-mono ${accent.text} uppercase tracking-widest`}>{silo.links.length} {silo.links.length === 1 ? 'página' : 'páginas'}</span>
                       </div>
                     </div>
-                    <p className="text-stone-400 text-xs leading-relaxed mb-5 italic font-light">{silo.description}</p>
-                    <div className="space-y-0.5 max-h-[280px] overflow-y-auto pr-2 -mr-2">
+                    <p className="relative text-stone-400 text-xs leading-relaxed mb-5 italic font-light">{silo.description}</p>
+                    <div className="relative space-y-0.5 max-h-[280px] overflow-y-auto pr-2 -mr-2">
                       {silo.links.map((link) => (
                         <Link
                           key={link.href}
