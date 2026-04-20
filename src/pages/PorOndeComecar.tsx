@@ -31,7 +31,7 @@ const QUIZ_STEPS: QuizStep[] = [
   {
     id: "bitcoin",
     question: "Você já tem Bitcoin?",
-    subtitle: "Não se preocupe — toda jornada começa aqui.",
+    subtitle: "Não se preocupe. Toda jornada começa aqui.",
     options: [
       { label: "Nunca comprei", icon: BookOpen, description: "Preciso entender o que é Bitcoin primeiro", value: "never" },
       { label: "Tenho em corretora", icon: Coins, description: "Comprei mas está numa exchange", value: "exchange" },
@@ -77,12 +77,12 @@ function getRecommendations(answers: Record<string, string>): Recommendation[] {
   // Bitcoin level routing
   if (bitcoin === "never") {
     recs.push(
-      { title: "O que é Bitcoin?", description: "Fundamento zero — entenda antes de comprar", path: "/o-que-e-bitcoin", icon: BookOpen, tag: "ESSENCIAL" },
+      { title: "O que é Bitcoin?", description: "Fundamento zero. Entenda antes de comprar", path: "/o-que-e-bitcoin", icon: BookOpen, tag: "ESSENCIAL" },
       { title: "Protocolo Inicial", description: "Seu primeiro passo concreto na soberania", path: "/protocolo-inicial", icon: Target, tag: "COMEÇAR AQUI" },
     );
   } else if (bitcoin === "exchange") {
     recs.push(
-      { title: "Autocustódia", description: "Tire da corretora — suas chaves, suas moedas", path: "/autocustodia", icon: Shield, tag: "URGENTE" },
+      { title: "Autocustódia", description: "Tire da corretora. Suas chaves, suas moedas", path: "/autocustodia", icon: Shield, tag: "URGENTE" },
       { title: "Blindagem contra Golpes", description: "Proteja-se antes de mover fundos", path: "/blindagem-golpes", icon: Shield, tag: "SEGURANÇA" },
     );
   } else if (bitcoin === "self-custody") {
@@ -165,12 +165,12 @@ export default function PorOndeComecar() {
       </div>
 
       <Helmet>
-        <title>Por Onde Começar? — Encontre sua trilha | Lord Junnior</title>
+        <title>Por Onde Começar? Encontre sua trilha | Lord Junnior</title>
         <meta name="description" content="Descubra por onde começar sua jornada de soberania individual. Um quiz rápido que direciona para o conteúdo certo pro seu nível." />
       </Helmet>
 
       <div className="min-h-screen text-foreground">
-        <FixedThematicBackground image={bgPorOndeComecar} intensity="medium" />
+        <FixedThematicBackground image={bgPorOndeComecar} intensity="heavy" />
         <AppSidebar />
         <MobileNav />
         <RightSidebar />
