@@ -48,13 +48,13 @@ function ImageCard({ src, alt, children }: { src: string; alt: string; children:
   return (
     <motion.div
       initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-60px' }} variants={fadeUp} custom={0}
-      className="bg-white/[0.03] backdrop-blur-sm border border-white/[0.06] rounded-3xl overflow-hidden hover:border-white/[0.1] transition-all duration-500"
+      className="group bg-white/[0.03] backdrop-blur-sm border border-white/[0.06] rounded-3xl overflow-hidden hover:border-emerald-500/30 hover:shadow-[0_30px_80px_-20px_rgba(16,185,129,0.25)] transition-all duration-500 h-full flex flex-col"
     >
-      <div className="relative h-56 md:h-72 overflow-hidden">
-        <img src={src} alt={alt} className="w-full h-full object-cover" loading="lazy" />
+      <div className="relative h-64 md:h-96 lg:h-[420px] overflow-hidden">
+        <img src={src} alt={alt} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#050808] via-transparent to-transparent" />
       </div>
-      <div className="p-6 md:p-10">{children}</div>
+      <div className="p-8 md:p-12 lg:p-14 flex-1">{children}</div>
     </motion.div>
   );
 }
