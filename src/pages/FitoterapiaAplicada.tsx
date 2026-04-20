@@ -17,6 +17,19 @@ import imgNervoso from '@/assets/fito-nervoso.jpg';
 import imgMusculo from '@/assets/fito-musculo.jpg';
 import imgImunologico from '@/assets/fito-imunologico.jpg';
 import imgCriancaGarganta from '@/assets/fito-crianca-garganta.jpg';
+import imgTosseProdutiva from '@/assets/fito-tosse-produtiva.jpg';
+import imgCongestaoNasal from '@/assets/fito-congestao-nasal.jpg';
+import imgMaDigestao from '@/assets/fito-ma-digestao.jpg';
+import imgGases from '@/assets/fito-gases.jpg';
+import imgConstipacao from '@/assets/fito-constipacao.jpg';
+import imgInsonia from '@/assets/fito-insonia.jpg';
+import imgAnsiedade from '@/assets/fito-ansiedade.jpg';
+import imgFadigaMental from '@/assets/fito-fadiga-mental.jpg';
+import imgDorMuscular from '@/assets/fito-dor-muscular.jpg';
+import imgArticulacao from '@/assets/fito-articulacao.jpg';
+import imgResfriado from '@/assets/fito-resfriado.jpg';
+import imgImunePreventivo from '@/assets/fito-imune-preventivo.jpg';
+import imgRecuperacao from '@/assets/fito-recuperacao.jpg';
 
 interface Protocolo {
   condicao: string;
