@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
-  Backpack, Key, Wallet, Smartphone, Flashlight, Knife, Pen, Watch,
+  Backpack, Key, Wallet, Smartphone, Flashlight, Scissors, Pen, Watch,
   Wrench, ChevronDown, ArrowRight, Shield, MapPin, Layers, AlertTriangle,
   Eye, Briefcase, Mountain, Building2, Plane
 } from 'lucide-react';
@@ -107,7 +107,7 @@ interface Categoria {
 }
 
 const CATEGORIAS: Categoria[] = [
-  { nome: 'Cortar', icon: Knife, descricao: 'Canivete ou faca. Resolve embalagem, alimento, emergência médica improvisada e autodefesa.', cor: 'amber' },
+  { nome: 'Cortar', icon: Scissors, descricao: 'Canivete ou faca. Resolve embalagem, alimento, emergência médica improvisada e autodefesa.', cor: 'amber' },
   { nome: 'Iluminar', icon: Flashlight, descricao: 'Lanterna pessoal. Apagão dura minutos ou semanas. Smartphone como lanterna mata bateria.', cor: 'amber' },
   { nome: 'Pagar', icon: Wallet, descricao: 'Cash, cartão, cripto. Três camadas de redundância financeira para qualquer cenário.', cor: 'amber' },
   { nome: 'Comunicar', icon: Smartphone, descricao: 'Smartphone primário, faraday pouch, e em colapso, rádio HAM ou GMRS.', cor: 'amber' },
