@@ -363,7 +363,7 @@ export default function ProtocoloQuelantes() {
                 <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-emerald-500/40 to-transparent z-10" />
 
                 <div className={`grid lg:grid-cols-12 gap-0 ${i % 2 === 0 ? "" : "lg:[direction:rtl]"}`}>
-                  {/* IMAGEM REAL DA PLANTA — reconhecimento visual */}
+                  {/* IMAGEM REAL DA PLANTA, reconhecimento visual */}
                   {p.imagem && (
                     <div className="lg:col-span-5 relative overflow-hidden lg:[direction:ltr] group/img min-h-[280px] md:min-h-[360px] lg:min-h-[480px]">
                       <img

@@ -18,7 +18,11 @@ import imgPaje from "@/assets/rape/hero-pajé-kuripe.jpg";
 import imgFrasco from "@/assets/rape/po-frasco-kuripe.jpg";
 import imgVago from "@/assets/rape/nervo-vago-anatomia.jpg";
 import imgCerimonia from "@/assets/rape/cerimonia-noturna.jpg";
-import imgComercial from "@/assets/rape/sequestro-comercial.jpg";
+import imgComercial from "@/assets/rape/vitrine-comercial-frascos.jpg";
+import imgCoentro from "@/assets/quelantes/plantas/coentro.jpg";
+import imgChlorella from "@/assets/quelantes/plantas/chlorella.jpg";
+import imgIpe from "@/assets/quelantes/plantas/ipe-roxo.jpg";
+import imgSucupira from "@/assets/quelantes/plantas/sucupira.jpg";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -85,7 +89,7 @@ export default function RapeDossie() {
   return (
     <div ref={containerRef} className="relative min-h-screen text-foreground overflow-x-hidden">
       <Helmet>
-        <title>Rapé: Dossiê Técnico — Modulação Biológica Ancestral | Lord Junnior</title>
+        <title>Rapé: Dossiê Técnico de Modulação Biológica Ancestral | Lord Junnior</title>
         <meta
           name="description"
           content="Não é um produto. É uma ferramenta de modulação vagal sequestrada pela indústria do bem-estar. Bioquímica, protocolo e sinergia com quelantes brasileiros."
@@ -193,7 +197,7 @@ export default function RapeDossie() {
         </div>
       </section>
 
-      {/* IMAGEM EDITORIAL DE ABERTURA — pajé com kuripe */}
+      {/* IMAGEM EDITORIAL DE ABERTURA, pajé com kuripe */}
       <section className="relative z-10 px-6 md:px-12 lg:px-20 mb-20">
         <div className="max-w-7xl mx-auto">
           <motion.div
@@ -251,7 +255,7 @@ export default function RapeDossie() {
       {/* ── ATO 01: ORIGEM ── */}
       <Section id="ato-1-origem" num="01" titulo="Origem e Função Real" icon={BookOpen}>
         <p>
-          O rapé — <em>nũ-nũ</em>, <em>hapé</em>, <em>rapeh</em> conforme a etnia — é um pó cerimonial composto por
+          O rapé (<em>nũ-nũ</em>, <em>hapé</em>, <em>rapeh</em>, conforme a etnia) é um pó cerimonial composto por
           tabaco amazônico (<em>Nicotiana rustica</em>, espécie distinta do tabaco industrial) finamente moído com
           cinzas alcalinas de cascas vegetais sagradas como a <em>tsunu</em> (<em>Platycyamus regnellii</em>),
           <em> murici</em> ou <em>parika</em>. A combinação não é arbitrária: a alcalinidade das cinzas modula o pH
@@ -260,12 +264,12 @@ export default function RapeDossie() {
         <p>
           Para os Yawanawá, Huni Kuin, Katukina e Nukini, o rapé é instrumento de <strong>centralização de foco</strong>,
           <strong> alinhamento corpo-mente</strong> antes de decisões críticas, <strong>limpeza de campo energético</strong> e
-          <strong> ferramenta diagnóstica</strong> — o pajé observa a reação física como um médico ocidental observa exames.
+          <strong> ferramenta diagnóstica</strong>: o pajé observa a reação física como um médico ocidental observa exames.
           Não é recreativo. Não é místico decorativo. É <strong>tecnologia biocultural</strong> com função operacional.
         </p>
         <p>
           Etnobotânicos como Plotkin (1993) e Schultes &amp; Raffauf (1990) documentaram seu uso ritual há séculos.
-          O homem moderno conheceu a substância pelo Instagram — não pela floresta.
+          O homem moderno conheceu a substância pelo Instagram, não pela floresta.
         </p>
       </Section>
 
@@ -279,7 +283,7 @@ export default function RapeDossie() {
         <p>
           Pior: instrutores sem formação aplicam altas dosagens em iniciantes despreparados, ignoram contraindicações
           cardiovasculares e tratam reações adversas (vertigem, vômito, taquicardia severa) como
-          <em> "limpeza emocional"</em>. O resultado é previsível — internações silenciosas, traumas, e em casos
+          <em> "limpeza emocional"</em>. O resultado é previsível: internações silenciosas, traumas e, em casos
           documentados, óbitos.
         </p>
         <p>
@@ -292,7 +296,7 @@ export default function RapeDossie() {
         </p>
       </Section>
 
-      {/* IMAGEM INTERCALADA — sequestro comercial */}
+      {/* IMAGEM INTERCALADA, vitrine comercial */}
       <section className="relative z-10 px-6 md:px-12 lg:px-20 py-12">
         <div className="max-w-7xl mx-auto">
           <motion.div
@@ -320,11 +324,11 @@ export default function RapeDossie() {
         <ul className="list-none space-y-4 my-6">
           <Bullet
             t="1. Estimulação do trigêmeo nasal"
-            d="A mucosa nasal possui terminações do nervo trigêmeo (V par craniano) que, quando estimuladas, disparam reflexo de centralização postural — explica o efeito de 'ancoragem' relatado universalmente."
+            d="A mucosa nasal possui terminações do nervo trigêmeo (V par craniano) que, quando estimuladas, disparam reflexo de centralização postural, explicando o efeito de 'ancoragem' relatado universalmente."
           />
           <Bullet
             t="2. Ativação do nervo vago (X par craniano)"
-            d="A descarga simpática inicial dispara, em 60-90 segundos, contra-resposta vagal: queda de frequência cardíaca, ativação parassimpática, tônus vagal elevado. É o mesmo eixo modulado por respiração diafragmática profunda — em escala mais intensa."
+            d="A descarga simpática inicial dispara, em 60 a 90 segundos, contra-resposta vagal: queda de frequência cardíaca, ativação parassimpática, tônus vagal elevado. É o mesmo eixo modulado por respiração diafragmática profunda, em escala mais intensa."
           />
           <Bullet
             t="3. Modulação do eixo HPA (Hipotálamo-Hipófise-Adrenal)"
@@ -338,7 +342,7 @@ export default function RapeDossie() {
         </p>
       </Section>
 
-      {/* IMAGEM INTERCALADA — nervo vago */}
+      {/* IMAGEM INTERCALADA, nervo vago */}
       <section className="relative z-10 px-6 md:px-12 lg:px-20 py-12">
         <div className="max-w-7xl mx-auto">
           <motion.div
@@ -369,7 +373,7 @@ export default function RapeDossie() {
           titulo="Preparação"
           itens={[
             "Jejum mínimo de 60 min (estômago vazio reduz náusea reflexa).",
-            "Postura sentada estável — nunca em pé. Risco de síncope vagal nos primeiros usos.",
+            "Postura sentada estável, nunca em pé. Risco de síncope vagal nos primeiros usos.",
             "Hidratação prévia (200-300ml de água sem gás).",
             "Ambiente silencioso, ventilado, sem estímulo visual excessivo.",
           ]}
@@ -380,7 +384,7 @@ export default function RapeDossie() {
           itens={[
             "Iniciante absoluto: dose menor que um grão de arroz por narina.",
             "Aplicação bilateral: narina esquerda primeiro (lado emocional na tradição), depois direita.",
-            "Inalação não é necessária — a absorção é por contato com mucosa nasal.",
+            "Inalação não é necessária. A absorção é por contato com mucosa nasal.",
             "Aguardar 90-180 segundos imobilizado antes de qualquer movimento.",
           ]}
         />
@@ -390,7 +394,7 @@ export default function RapeDossie() {
           itens={[
             "Pressão arterial sistólica > 140 mmHg em qualquer momento.",
             "Frequência cardíaca > 110 bpm sustentada após 5 min.",
-            "Vertigem prolongada além de 10 min — interromper sequência imediatamente.",
+            "Vertigem prolongada além de 10 min: interromper sequência imediatamente.",
             "Qualquer histórico de arritmia, gestação, lactação, transtorno bipolar não-controlado.",
           ]}
         />
@@ -400,22 +404,78 @@ export default function RapeDossie() {
       <Section id="ato-5-quelantes" num="05" titulo="Sinergia com Quelantes Brasileiros" icon={FlaskConical} accent="emerald">
         <p>
           O uso ancestral do rapé sempre veio acompanhado de <strong>protocolo de limpeza orgânica</strong>. A floresta
-          oferece quelantes naturais para metais pesados e toxinas acumuladas — vetores que a vida urbana injeta
+          oferece quelantes naturais para metais pesados e toxinas acumuladas, vetores que a vida urbana injeta
           diariamente no corpo: alumínio (panelas, antitranspirantes), mercúrio (peixes contaminados, amálgamas),
           chumbo (canos antigos, tinta), cádmio (ar industrial).
         </p>
-        <div className="grid md:grid-cols-2 gap-4 my-6">
+        <div className="grid md:grid-cols-2 gap-5 my-10 not-prose">
           {[
-            { n: "Coentro", a: "Coriandrum sativum", q: "Mobiliza mercúrio e alumínio do tecido nervoso. Uso: 30-50g de folha fresca/dia em ciclo de 3 semanas." },
-            { n: "Chlorella", a: "Chlorella vulgaris", q: "Captura metais mobilizados pelo coentro. Uso pareado obrigatório: 2-3g/dia em ciclo conjunto." },
-            { n: "Ipê-roxo", a: "Handroanthus impetiginosus", q: "Anti-inflamatório sistêmico, suporte hepático. Decocção da casca, 200ml 2x/dia, ciclos de 14 dias." },
-            { n: "Sucupira", a: "Pterodon emarginatus", q: "Detoxificação articular e linfática. Tintura 20-30 gotas 2x/dia, ciclo de 21 dias." },
+            {
+              n: "Coentro",
+              a: "Coriandrum sativum",
+              hook: "A folha de feira que atravessa a barreira hematoencefálica.",
+              q: "Mobiliza mercúrio e alumínio armazenados no tecido nervoso central. Posologia: 30 a 50g de folha fresca por dia em ciclo de 3 semanas. Sempre pareado com chlorella.",
+              img: imgCoentro,
+            },
+            {
+              n: "Chlorella",
+              a: "Chlorella vulgaris",
+              hook: "A microalga que sequestra o que o coentro solta.",
+              q: "Captura, no lúmen intestinal, os metais mobilizados pelo coentro e impede a recirculação enterro-hepática. Posologia: 2 a 3g por dia em ciclo conjunto.",
+              img: imgChlorella,
+            },
+            {
+              n: "Ipê-roxo",
+              a: "Handroanthus impetiginosus",
+              hook: "A casca do cerrado que age onde o anti-inflamatório de farmácia falha.",
+              q: "Lapachol e beta-lapachona modulam carga inflamatória sistêmica e dão suporte hepático na fase 2. Decocção da casca, 200ml duas vezes ao dia em ciclos de 14 dias.",
+              img: imgIpe,
+            },
+            {
+              n: "Sucupira",
+              a: "Pterodon emarginatus",
+              hook: "A semente que limpa articulação por dentro, sem ibuprofeno.",
+              q: "Diterpenos furânicos com ação anti-inflamatória articular e linfática documentada. Tintura 1:5, 20 a 30 gotas duas vezes ao dia em ciclo de 21 dias.",
+              img: imgSucupira,
+            },
           ].map((p) => (
-            <div key={p.n} className="rounded-xl border border-emerald-900/30 bg-card/30 backdrop-blur p-5">
-              <p className="text-emerald-400 font-bold text-sm tracking-wider">{p.n}</p>
-              <p className="text-xs italic text-muted-foreground mb-2">{p.a}</p>
-              <p className="text-sm text-foreground/85 leading-7">{p.q}</p>
-            </div>
+            <article
+              key={p.n}
+              className="group relative rounded-2xl overflow-hidden border border-emerald-900/40 bg-card/40 backdrop-blur-md hover:-translate-y-1 hover:border-emerald-500/50 hover:shadow-[0_30px_60px_-20px_rgba(16,185,129,0.45)] transition-all duration-500"
+            >
+              <div className="relative h-56 md:h-64 overflow-hidden">
+                <img
+                  src={p.img}
+                  alt={`${p.n} (${p.a}): planta quelante brasileira`}
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1400ms] group-hover:scale-105"
+                  loading="lazy"
+                  width={1600}
+                  height={1024}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-card via-card/40 to-transparent" />
+                <div className="absolute top-4 left-4">
+                  <span className="font-mono text-[9px] tracking-[0.3em] uppercase text-emerald-300/90 px-2.5 py-1 rounded-full border border-emerald-500/40 bg-background/40 backdrop-blur">
+                    Quelante
+                  </span>
+                </div>
+              </div>
+              <div className="p-6 md:p-7">
+                <h4
+                  className="text-foreground text-2xl md:text-3xl leading-none mb-1.5"
+                  style={{ fontFamily: "'Bebas Neue', sans-serif", letterSpacing: "0.02em" }}
+                >
+                  {p.n}
+                </h4>
+                <p className="italic text-muted-foreground text-xs md:text-sm mb-4">{p.a}</p>
+                <p
+                  className="text-emerald-200/95 text-base md:text-lg leading-snug mb-4"
+                  style={{ fontFamily: "'Instrument Serif', serif" }}
+                >
+                  {p.hook}
+                </p>
+                <p className="text-foreground/85 text-sm md:text-base leading-7">{p.q}</p>
+              </div>
+            </article>
           ))}
         </div>
         <div className="mt-8 rounded-xl border border-emerald-500/30 bg-emerald-950/20 backdrop-blur p-6">
@@ -444,7 +504,7 @@ export default function RapeDossie() {
           <Bullet t="Manhã" d="Exposição solar direta 10-15 min sem filtro. Respiração diafragmática 4-7-8 por 5 ciclos. Hidratação com sal mineral (não refinado)." />
           <Bullet t="Meio-dia" d="Janela alimentar com proteína animal de pasto + folhas verdes. Coentro fresco no preparo. Pausa de 90 min sem telas." />
           <Bullet t="Tarde" d="Movimento de carga: agachamento, suspensão, caminhada com peso. Protocolo de quelantes conforme ciclo (coentro+chlorella ou ipê)." />
-          <Bullet t="Noite" d="Bloqueio de luz azul 2h antes de dormir. Quarto a 18-20°C, blackout total. Microdose de rapé apenas em contexto cerimonial específico — nunca rotineiro." />
+          <Bullet t="Noite" d="Bloqueio de luz azul 2h antes de dormir. Quarto a 18-20°C, blackout total. Microdose de rapé apenas em contexto cerimonial específico, nunca rotineiro." />
           <Bullet t="Ciclo semanal" d="1 dia de jejum hídrico de 16-18h. 1 sessão de sauna ou banho frio para choque vasomotor. Reavaliação do protocolo a cada 21 dias." />
         </ul>
 
@@ -453,11 +513,11 @@ export default function RapeDossie() {
             className="text-foreground text-xl md:text-2xl leading-relaxed"
             style={{ fontFamily: "'Instrument Serif', serif" }}
           >
-            "Autonomia não é isolamento. É redução inteligente de dependência —
+            "Autonomia não é isolamento. É redução inteligente de dependência,
             inclusive da indústria do bem-estar que vende ancestralidade em frasco."
           </p>
           <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-emerald-400/70 mt-6">
-            — Lord Junnior · Estrategista de Soberania Individual
+            Lord Junnior · Estrategista de Soberania Individual
           </p>
         </div>
       </Section>
