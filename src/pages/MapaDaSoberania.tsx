@@ -275,6 +275,7 @@ const SILOS: Silo[] = [
       { title: 'Gateway PIX → Bitcoin', href: '/saida/gateway' },
       { title: 'Segundo Passaporte: O Guia', href: '/saida/segundo-passaporte' },
       { title: 'Residência Fiscal: Saída do Brasil', href: '/saida/residencia-fiscal' },
+      { title: 'Jurisdições Amigáveis: Ranking 2026', href: '/saida/jurisdicoes-amigaveis' },
       { title: 'Infraestrutura', href: '/infraestrutura' },
       { title: 'Economia Paralela', href: '/economia-paralela' },
     ],
