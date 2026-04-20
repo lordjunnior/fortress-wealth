@@ -475,6 +475,11 @@ export default function AutonomiaBiologica() {
             Fitoterapia Aplicada
             <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform duration-500" />
           </Link>
+          <Link to="/soberania-organica/plantas-subutilizadas"
+            className="flex-1 flex items-center justify-center gap-2 bg-emerald-500/12 border border-emerald-500/30 rounded-xl px-6 py-4 text-emerald-300 text-sm font-bold hover:bg-emerald-500/20 transition-all duration-500 group">
+            Plantas Subutilizadas
+            <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform duration-500" />
+          </Link>
         </div>
       </main>
     </div>
