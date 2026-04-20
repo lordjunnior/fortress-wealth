@@ -127,6 +127,7 @@ const TOC_ITEMS = [
   { id: "fase-03", label: "Fase 03: Alimento" },
   { id: "fase-04", label: "Fase 04: Conhecimento" },
   { id: "fase-05", label: "Fase 05: Discernimento" },
+  { id: "fase-06", label: "Fase 06: Mente Blindada" },
 ];
 
 export default function ProjetoAutonomo() {
@@ -165,8 +166,14 @@ export default function ProjetoAutonomo() {
       tag: 'Formação técnica',
     },
     {
-      num: '05', title: 'Mente Blindada', sub: 'Protege a soberania cognitiva', accent: '#a855f7',
-      sectionId: 'fase-05-mente', icon: Brain, image: tlMente, height: 'tall',
+      num: '05', title: 'Tóxicos Ocultos', sub: 'Revela o que adoece o corpo', accent: '#ef4444',
+      sectionId: 'fase-05', icon: Eye, image: bgFase05, height: 'tall',
+      desc: 'Laboratório de discernimento sobre toxinas alimentares, ambientais, manipulação informacional e dependência tecnológica. Quatro vetores invisíveis que reduzem clareza, saúde e liberdade de escolha.',
+      tag: 'Laboratório de discernimento',
+    },
+    {
+      num: '06', title: 'Mente Blindada', sub: 'Protege a soberania cognitiva', accent: '#a855f7',
+      sectionId: 'fase-06', icon: Brain, image: tlMente, height: 'short',
       desc: 'Protocolos contra manipulação informacional, desintoxicação digital, leitura crítica de mídia e fortalecimento da soberania cognitiva. Sem mente livre, nenhuma das fases anteriores se sustenta.',
       tag: 'Defesa cognitiva',
     },
@@ -1207,6 +1214,75 @@ export default function ProjetoAutonomo() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
+         FASE 06 — MENTE BLINDADA — DEFESA COGNITIVA
+      ═══════════════════════════════════════════════════════════ */}
+      <section id="fase-06" className="relative z-10 scroll-mt-20 py-20 md:py-32">
+        {/* Ambient background image */}
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <img src={tlMente} alt="" className="absolute inset-0 w-full h-full object-cover opacity-[0.10]" style={{ filter: 'saturate(0.5)' }} />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#050808] via-transparent to-[#050808]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#050808] via-transparent to-[#050808]" />
+        </div>
+        <div className="max-w-7xl mx-auto px-6 md:px-10">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={scaleIn} custom={0}
+            className="relative rounded-3xl overflow-hidden mb-16 md:mb-20 h-72 md:h-[450px]"
+          >
+            <motion.img src={tlMente} alt="Mente Blindada" className="absolute inset-0 w-full h-full object-cover"
+              whileInView={{ scale: [1.1, 1] }} viewport={{ once: true }} transition={{ duration: 1.5, ease: APPLE_EASE }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#050808] via-black/55 to-black/30" />
+            <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-14">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-8 h-[2px] bg-violet-500 rounded-full" />
+                <span className="text-violet-300 text-[10px] font-bold tracking-[0.5em] uppercase">Fase 06</span>
+              </div>
+              <h2 className="text-4xl md:text-7xl font-black tracking-tight text-white mb-3" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                MENTE <span className="text-violet-300">BLINDADA</span>
+              </h2>
+              <p className="text-stone-300 text-sm md:text-base leading-relaxed max-w-2xl">
+                Defesa cognitiva contra manipulação informacional, dependência digital e ruído algorítmico.
+                A camada final que protege o discernimento que sustenta todas as fases anteriores.
+              </p>
+            </div>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
+            {[
+              { icon: Brain, label: 'Manipulação Informacional', desc: 'Propaganda, novilíngua, viés algorítmico e engenharia de consentimento.', link: '/soberania-organica/toxicos-ocultos/manipulacao-informacional' },
+              { icon: Compass, label: 'Dependência Tecnológica', desc: 'Design comportamental, dopamina digital, rastreamento e obsolescência programada.', link: '/soberania-organica/toxicos-ocultos/dependencia-tecnologica' },
+              { icon: Eye, label: 'Leitura Crítica de Mídia', desc: 'Identificar enquadramento, omissões e gatilhos emocionais na narrativa diária.', link: '/novilingua' },
+              { icon: Shield, label: 'Soberania Cognitiva', desc: 'Higiene mental, foco profundo e protocolos de desintoxicação informacional.', link: '/silencio-queda' },
+            ].map((item, i) => (
+              <motion.div key={item.label} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i * 0.15}>
+                <Link to={item.link}
+                  className="group block h-full relative overflow-hidden rounded-xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.05] hover:border-violet-500/20 transition-all duration-500 hover:-translate-y-1 p-6"
+                >
+                  <div className="absolute top-0 left-0 w-full h-[2px] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-700 bg-gradient-to-r from-violet-500 to-transparent" />
+                  <div className="flex items-start gap-4">
+                    <div className="p-2 rounded-lg bg-violet-500/8 border border-violet-500/15 shrink-0 group-hover:scale-110 transition-transform duration-500">
+                      <item.icon size={18} className="text-violet-300/80" />
+                    </div>
+                    <div>
+                      <h4 className="text-sm font-bold text-stone-200 mb-1 group-hover:text-white transition-colors">{item.label}</h4>
+                      <p className="text-stone-600 text-xs leading-relaxed group-hover:text-stone-500 transition-colors">{item.desc}</p>
+                    </div>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}>
+            <Link to="/silencio-queda"
+              className="inline-flex items-center justify-center gap-3 bg-violet-500 text-white px-8 py-4 font-semibold text-sm tracking-wide rounded-xl hover:bg-violet-400 hover:shadow-xl hover:shadow-violet-500/25 hover:scale-[1.02] transition-all duration-500 group"
+            >
+              <Brain size={18} className="group-hover:rotate-12 transition-transform duration-500" /> Iniciar protocolo de defesa cognitiva
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════
          FOOTER — COMPLETELY NEW LAYOUT
       ═══════════════════════════════════════════════════════════ */}
       <section className="relative z-10 border-t border-white/[0.04]">
@@ -1219,6 +1295,7 @@ export default function ProjetoAutonomo() {
               { phase: 'Soberania Alimentar', accent: '#f59e0b' },
               { phase: 'Conhecimento Perdido', accent: '#14b8a6' },
               { phase: 'Tóxicos Ocultos', accent: '#ef4444' },
+              { phase: 'Mente Blindada', accent: '#a855f7' },
             ].map((s) => (
               <div key={s.phase} className="flex items-center gap-2 border border-white/[0.06] bg-white/[0.02] px-4 py-2 rounded-full">
                 <div className="w-2 h-2 rounded-full" style={{ background: s.accent }} />
