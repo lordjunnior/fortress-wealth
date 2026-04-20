@@ -1,11 +1,26 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import {
-  Backpack, Key, Wallet, Smartphone, Flashlight, Scissors, Pen, Watch,
-  Wrench, ChevronDown, ArrowRight, Shield, MapPin, Layers, AlertTriangle,
-  Eye, Briefcase, Mountain, Building2, Plane
-} from 'lucide-react';
+import { Backpack } from 'lucide-react';
+import { Key } from 'lucide-react';
+import { Wallet } from 'lucide-react';
+import { Smartphone } from 'lucide-react';
+import { Flashlight } from 'lucide-react';
+import { Scissors } from 'lucide-react';
+import { Pen } from 'lucide-react';
+import { Watch } from 'lucide-react';
+import { Wrench } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
+import { Shield } from 'lucide-react';
+import { MapPin } from 'lucide-react';
+import { Layers } from 'lucide-react';
+import { AlertTriangle } from 'lucide-react';
+import { Eye } from 'lucide-react';
+import { Briefcase } from 'lucide-react';
+import { Mountain } from 'lucide-react';
+import { Building2 } from 'lucide-react';
+import { Plane } from 'lucide-react';
 import SeoHead from '@/components/SeoHead';
 import BackToHome from '@/components/BackToHome';
 import FixedThematicBackground from '@/components/backgrounds/FixedThematicBackground';
