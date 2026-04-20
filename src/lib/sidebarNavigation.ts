@@ -121,6 +121,7 @@ export const navGroups: NavGroup[] = [
       { label: "Saúde Preventiva", route: "/soberania-organica/saude-preventiva" },
       { label: "Babosa & Acemannan", route: "/soberania-organica/babosa-acemannan", badge: "Dossiê" },
       { label: "Óleo de Rícino", route: "/soberania-organica/oleo-ricino-biohacker", badge: "Dossiê" },
+      { label: "Própolis", route: "/soberania-organica/propolis", badge: "Dossiê" },
       { label: "Autonomia Biológica", route: "/soberania-organica/autonomia-biologica" },
       { label: "Fitoterapia Aplicada", route: "/soberania-organica/fitoterapia-aplicada" },
       { label: "Plantas Subutilizadas", route: "/soberania-organica/plantas-subutilizadas", badge: "Novo" },
