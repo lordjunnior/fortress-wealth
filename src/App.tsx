@@ -110,6 +110,7 @@ import DependenciaTecnologica from "./pages/toxicos/DependenciaTecnologica";
 import ToxinasAmbientais from "./pages/toxicos/ToxinasAmbientais";
 import RapeDossie from "./pages/rape/RapeDossie";
 import ProtocoloQuelantes from "./pages/rape/ProtocoloQuelantes";
+import PlantasSubutilizadas from "./pages/PlantasSubutilizadas";
 import CodigoAutonomiaModal from "./components/CodigoAutonomiaModal";
 import ScrollToTop from "./components/ScrollToTop";
 import MapaDaSoberania from "./pages/MapaDaSoberania";
@@ -241,6 +242,7 @@ const App = () => (
           <Route path="/soberania-organica/conhecimento-perdido" element={<ConhecimentoPerdido />} />
           <Route path="/soberania-organica/conhecimento-perdido/rape" element={<RapeDossie />} />
           <Route path="/soberania-organica/conhecimento-perdido/protocolo-quelantes-brasileiros" element={<ProtocoloQuelantes />} />
+          <Route path="/soberania-organica/plantas-subutilizadas" element={<PlantasSubutilizadas />} />
           <Route path="/conhecimento-perdido/contexto-historico" element={<CpContextoHistorico />} />
           <Route path="/conhecimento-perdido/base-fisiologica" element={<CpBaseFisiologica />} />
           <Route path="/conhecimento-perdido/seguranca-e-limites" element={<CpSegurancaLimites />} />
