@@ -360,44 +360,72 @@ export default function ProjetoAutonomo() {
          SECTION 2 — HORIZONTAL PHASE TIMELINE
          (Completely new layout — replaces the old 4-card grid)
       ═══════════════════════════════════════════════════════════ */}
-      <section className="relative z-10 py-20 md:py-32">
-        <div className="max-w-6xl mx-auto px-6 md:px-10">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="mb-16">
-            <span className="text-emerald-500/50 text-[10px] font-bold uppercase tracking-[0.5em] block mb-3">Progressão Estrutural</span>
-            <h2 className="text-3xl md:text-5xl font-black tracking-tight text-white" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-              Cinco camadas. <span className="text-emerald-400">Uma blindagem.</span>
+      <section className="relative z-10 py-24 md:py-40 overflow-hidden">
+        {/* Atmospheric layered background */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 left-1/4 w-[600px] h-[600px] rounded-full bg-emerald-500/[0.04] blur-[120px]" />
+          <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] rounded-full bg-rose-500/[0.03] blur-[120px]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-amber-500/[0.02] blur-[160px]" />
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-6 md:px-10 lg:px-16">
+          {/* Header */}
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="mb-20 md:mb-28 max-w-4xl">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-12 h-px bg-emerald-500/40" />
+              <span className="text-emerald-500/70 text-[10px] font-bold uppercase tracking-[0.5em]">Progressão Estrutural</span>
+            </div>
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight text-white leading-[1.05]" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+              Cinco camadas. <br className="hidden md:block" />
+              <span className="bg-gradient-to-r from-emerald-400 via-emerald-300 to-teal-400 bg-clip-text text-transparent">Uma blindagem.</span>
             </h2>
+            <p className="mt-8 text-stone-400 text-lg md:text-xl leading-relaxed max-w-2xl">
+              Cada fase ergue uma camada de defesa real. Construídas em ordem, formam um sistema completo de soberania pessoal sobre corpo, comida, conhecimento e mente.
+            </p>
           </motion.div>
 
-          {/* Timeline — Vertical journey layout with alternating sides */}
+          {/* Organic timeline */}
           <div className="relative">
-            {/* Central vertical line */}
-            <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-rose-500/30 via-emerald-500/20 via-amber-500/20 to-teal-500/30 hidden md:block" />
-            <div className="absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-rose-500/30 via-emerald-500/20 via-amber-500/20 to-teal-500/30 md:hidden" />
+            {/* Central spine — thick, glowing, alive */}
+            <div className="absolute left-8 md:left-1/2 top-0 bottom-0 -translate-x-1/2 w-[2px] hidden md:block">
+              <div className="absolute inset-0 bg-gradient-to-b from-rose-500/0 via-emerald-500/40 to-purple-500/0" />
+              <div className="absolute inset-0 blur-[6px] bg-gradient-to-b from-rose-500/0 via-emerald-500/30 to-purple-500/0" />
+            </div>
+            <div className="absolute left-8 top-0 bottom-0 -translate-x-1/2 w-[2px] md:hidden">
+              <div className="absolute inset-0 bg-gradient-to-b from-rose-500/40 via-emerald-500/30 to-purple-500/40" />
+              <div className="absolute inset-0 blur-[6px] bg-gradient-to-b from-rose-500/30 via-emerald-500/20 to-purple-500/30" />
+            </div>
 
             {phases.map((phase, i) => {
               const isLeft = i % 2 === 0;
               const Icon = phase.icon;
+              const isTall = phase.height === 'tall';
               return (
                 <motion.div
                   key={phase.num}
-                  initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-60px" }} variants={fadeUp} custom={i * 0.5}
-                  className={`relative flex items-start gap-6 md:gap-0 mb-16 md:mb-24 last:mb-0 ${isLeft ? 'md:flex-row' : 'md:flex-row-reverse'}`}
+                  initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }} variants={fadeUp} custom={i * 0.4}
+                  className={`relative mb-20 md:mb-32 last:mb-0 flex ${isLeft ? 'md:justify-start' : 'md:justify-end'}`}
                 >
-                  {/* Dot on timeline */}
-                  <div className="absolute left-6 md:left-1/2 -translate-x-1/2 z-20 flex items-center justify-center">
-                    <div className="w-12 h-12 rounded-full flex items-center justify-center border-2"
-                      style={{ borderColor: phase.accent, background: `${phase.accent}15` }}
-                    >
-                      <Icon size={18} style={{ color: phase.accent }} />
+                  {/* Pulsing node on spine */}
+                  <div className="absolute left-8 md:left-1/2 -translate-x-1/2 z-20 top-8 md:top-12">
+                    <div className="relative">
+                      <div className="absolute inset-0 rounded-full blur-md animate-pulse"
+                        style={{ background: phase.accent, opacity: 0.4 }} />
+                      <div className="relative w-14 h-14 rounded-full flex items-center justify-center border-2 backdrop-blur-sm"
+                        style={{
+                          borderColor: phase.accent,
+                          background: `radial-gradient(circle, ${phase.accent}25, ${phase.accent}08)`,
+                        }}
+                      >
+                        <Icon size={20} style={{ color: phase.accent }} strokeWidth={2.2} />
+                      </div>
                     </div>
                   </div>
 
-                  {/* Content card */}
-                  <div className={`ml-16 md:ml-0 ${isLeft ? 'md:w-[45%] md:pr-16' : 'md:w-[45%] md:pl-16'} ${isLeft ? '' : 'md:ml-auto'}`}>
-                    <div
-                      className="group cursor-pointer rounded-2xl border border-white/[0.06] p-6 md:p-8 transition-all duration-500 hover:-translate-y-1 hover:border-white/[0.12] relative overflow-hidden"
-                      style={{ background: `linear-gradient(135deg, ${phase.accent}08, transparent 60%)` }}
+                  {/* Content block — large, organic, varied heights */}
+                  <div className={`pl-24 md:pl-0 w-full ${isLeft ? 'md:w-[46%] md:pr-20' : 'md:w-[46%] md:pl-20 md:ml-auto'}`}>
+                    <button
+                      type="button"
                       onClick={() => {
                         if (phase.num === '04') {
                           window.location.href = '/soberania-organica/conhecimento-perdido';
@@ -405,29 +433,71 @@ export default function ProjetoAutonomo() {
                           document.getElementById(phase.sectionId)?.scrollIntoView({ behavior: 'smooth' });
                         }
                       }}
+                      className="group block w-full text-left rounded-3xl border border-white/[0.07] overflow-hidden
+                                 transition-all duration-700 ease-out
+                                 hover:-translate-y-2 hover:border-white/[0.18] hover:shadow-[0_30px_80px_-20px_rgba(0,0,0,0.7)]
+                                 relative bg-[#0a0d0c]/60 backdrop-blur-md"
+                      style={{
+                        boxShadow: `0 0 0 1px ${phase.accent}10, 0 20px 60px -30px ${phase.accent}30`,
+                      }}
                     >
-                      {/* Glow */}
-                      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
-                        style={{ background: `radial-gradient(ellipse at top left, ${phase.accent}12, transparent 60%)` }}
-                      />
-                      <div className="relative z-10">
-                        <div className="flex items-center justify-between mb-4">
-                          <span className="text-[10px] font-bold tracking-[0.5em] uppercase" style={{ color: phase.accent }}>
+                      {/* Cinematic image — varied heights */}
+                      <div className={`relative w-full overflow-hidden ${isTall ? 'h-72 md:h-96' : 'h-56 md:h-72'}`}>
+                        <img
+                          src={phase.image}
+                          alt={`${phase.title} — ${phase.sub}`}
+                          loading="lazy"
+                          width={1280}
+                          height={1600}
+                          className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-110"
+                        />
+                        {/* Gradient overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0d0c] via-[#0a0d0c]/60 to-transparent" />
+                        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+                          style={{ background: `radial-gradient(ellipse at center, ${phase.accent}20, transparent 70%)` }} />
+                        {/* Phase tag floating */}
+                        <div className="absolute top-5 left-5 flex items-center gap-2">
+                          <div className="px-3 py-1.5 rounded-full backdrop-blur-md border text-[9px] font-bold tracking-[0.35em] uppercase"
+                            style={{
+                              background: `${phase.accent}18`,
+                              borderColor: `${phase.accent}40`,
+                              color: phase.accent,
+                            }}
+                          >
                             Fase {phase.num}
-                          </span>
-                          <ArrowRight size={14} className="opacity-0 group-hover:opacity-50 transition-all duration-500 group-hover:translate-x-1" style={{ color: phase.accent }} />
+                          </div>
+                          <div className="px-3 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-[9px] font-bold tracking-[0.25em] uppercase text-stone-300">
+                            {phase.tag}
+                          </div>
                         </div>
-                        <h3 className="text-xl md:text-2xl font-bold tracking-tight text-white mb-1">{phase.title}</h3>
-                        <p className="text-xs font-semibold uppercase tracking-wider mb-3 opacity-70" style={{ color: phase.accent }}>{phase.sub}</p>
-                        <div className="w-12 h-[2px] rounded-full mb-4" style={{ background: phase.accent + '40' }} />
-                        <p className="text-stone-500 text-sm leading-relaxed group-hover:text-stone-400 transition-colors">
-                          {i === 0 && 'Autonomia mínima nas primeiras 72 horas. Abrigo, água, comunicação e deslocamento.'}
-                          {i === 1 && 'Saúde preventiva, primeiros socorros e fitoterapia como primeira linha de defesa.'}
-                          {i === 2 && 'Produção própria de alimento. Horta, solo, conservação e proteína sustentável.'}
-                          {i === 3 && 'Formação bioquímica e botânica. 12 plantas, 5 sistemas, 9 seções técnicas por ficha.'}
-                        </p>
                       </div>
-                    </div>
+
+                      {/* Text block */}
+                      <div className="p-7 md:p-10 relative">
+                        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+                          style={{ background: `linear-gradient(135deg, ${phase.accent}06, transparent 60%)` }} />
+                        <div className="relative z-10">
+                          <h3 className="text-2xl md:text-3xl lg:text-4xl font-black tracking-tight text-white mb-2 leading-tight"
+                            style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                            {phase.title}
+                          </h3>
+                          <p className="text-xs md:text-sm font-bold uppercase tracking-[0.3em] mb-5"
+                            style={{ color: phase.accent }}>
+                            {phase.sub}
+                          </p>
+                          <div className="w-16 h-[2px] rounded-full mb-6"
+                            style={{ background: `linear-gradient(90deg, ${phase.accent}, ${phase.accent}00)` }} />
+                          <p className="text-stone-400 text-sm md:text-base leading-relaxed group-hover:text-stone-300 transition-colors duration-500">
+                            {phase.desc}
+                          </p>
+                          <div className="mt-7 flex items-center gap-2 text-[11px] font-bold tracking-[0.25em] uppercase opacity-60 group-hover:opacity-100 transition-opacity duration-500"
+                            style={{ color: phase.accent }}>
+                            <span>Acessar fase</span>
+                            <ArrowRight size={14} className="transition-transform duration-500 group-hover:translate-x-2" />
+                          </div>
+                        </div>
+                      </div>
+                    </button>
                   </div>
                 </motion.div>
               );
@@ -435,10 +505,10 @@ export default function ProjetoAutonomo() {
           </div>
 
           {/* Expansion badge */}
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="flex justify-center mt-16">
-            <div className="inline-flex items-center gap-2 bg-white/[0.03] border border-white/[0.06] px-5 py-2.5 rounded-full backdrop-blur-sm">
-              <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-              <span className="text-stone-600 text-[10px] font-bold uppercase tracking-[0.4em]">Conteúdo em expansão contínua</span>
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="flex justify-center mt-20">
+            <div className="inline-flex items-center gap-3 bg-white/[0.03] border border-white/[0.08] px-6 py-3 rounded-full backdrop-blur-md">
+              <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_12px_rgba(52,211,153,0.6)]" />
+              <span className="text-stone-500 text-[10px] font-bold uppercase tracking-[0.4em]">Conteúdo em expansão contínua</span>
             </div>
           </motion.div>
         </div>
