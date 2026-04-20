@@ -111,6 +111,10 @@ import ToxinasAmbientais from "./pages/toxicos/ToxinasAmbientais";
 import RapeDossie from "./pages/rape/RapeDossie";
 import ProtocoloQuelantes from "./pages/rape/ProtocoloQuelantes";
 import PlantasSubutilizadas from "./pages/PlantasSubutilizadas";
+import Jurubeba from "./pages/plantas/Jurubeba";
+import QuebraPedra from "./pages/plantas/QuebraPedra";
+import EspinheiraSanta from "./pages/plantas/EspinheiraSanta";
+import Guaco from "./pages/plantas/Guaco";
 import CodigoAutonomiaModal from "./components/CodigoAutonomiaModal";
 import ScrollToTop from "./components/ScrollToTop";
 import MapaDaSoberania from "./pages/MapaDaSoberania";
@@ -243,6 +247,10 @@ const App = () => (
           <Route path="/soberania-organica/conhecimento-perdido/rape" element={<RapeDossie />} />
           <Route path="/soberania-organica/conhecimento-perdido/protocolo-quelantes-brasileiros" element={<ProtocoloQuelantes />} />
           <Route path="/soberania-organica/plantas-subutilizadas" element={<PlantasSubutilizadas />} />
+          <Route path="/soberania-organica/plantas-subutilizadas/jurubeba" element={<Jurubeba />} />
+          <Route path="/soberania-organica/plantas-subutilizadas/quebra-pedra" element={<QuebraPedra />} />
+          <Route path="/soberania-organica/plantas-subutilizadas/espinheira-santa" element={<EspinheiraSanta />} />
+          <Route path="/soberania-organica/plantas-subutilizadas/guaco" element={<Guaco />} />
           <Route path="/conhecimento-perdido/contexto-historico" element={<CpContextoHistorico />} />
           <Route path="/conhecimento-perdido/base-fisiologica" element={<CpBaseFisiologica />} />
           <Route path="/conhecimento-perdido/seguranca-e-limites" element={<CpSegurancaLimites />} />

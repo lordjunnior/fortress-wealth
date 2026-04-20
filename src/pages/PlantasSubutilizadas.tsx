@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
-import { ArrowLeft, ChevronRight, AlertTriangle, Leaf, Droplets, Wind, Shield, Skull, Clock, BookOpen, ChevronDown } from 'lucide-react';
+import { ArrowLeft, ChevronRight, AlertTriangle, Leaf, Droplets, Wind, Shield, Skull, Clock, BookOpen, ChevronDown, ArrowUpRight } from 'lucide-react';
 import BackToHome from '@/components/BackToHome';
 import ScrollToTop from '@/components/ScrollToTop';
 import MicroCtaResistencia from '@/components/MicroCtaResistencia';
@@ -219,6 +219,8 @@ const SISTEMAS_COR: Record<string, string> = {
   'Toxicidade': 'text-red-300 border-red-500/40 bg-red-500/10',
   'Pulmonar': 'text-blue-300 border-blue-500/30 bg-blue-500/5',
 };
+
+const PAGINAS_INDIVIDUAIS = new Set(['jurubeba', 'quebra-pedra', 'espinheira-santa', 'guaco']);
 
 export default function PlantasSubutilizadas() {
   const heroRef = useRef<HTMLElement>(null);
@@ -510,6 +512,16 @@ export default function PlantasSubutilizadas() {
                           <p className="text-sm text-stone-400 mt-1">{p.erro}</p>
                         </div>
                       </div>
+
+                      {PAGINAS_INDIVIDUAIS.has(p.slug) && (
+                        <Link
+                          to={`/soberania-organica/plantas-subutilizadas/${p.slug}`}
+                          className="mt-6 inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 text-sm font-bold uppercase tracking-[0.2em] transition-colors group/cta"
+                        >
+                          Abrir ficha técnica completa
+                          <ArrowUpRight size={14} className="transition-transform group-hover/cta:translate-x-0.5 group-hover/cta:-translate-y-0.5" />
+                        </Link>
+                      )}
                     </div>
                   </motion.article>
                 );
