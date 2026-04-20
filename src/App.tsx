@@ -136,6 +136,7 @@ import PixAnonimo from "./pages/PixAnonimo";
 import MultisigBitcoin from "./pages/MultisigBitcoin";
 import NovaLeiContaCorrente from "./pages/NovaLeiContaCorrente";
 import ExitIntentLeadMagnet from "./components/ExitIntentLeadMagnet";
+import Novilingua from "./pages/Novilingua";
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -286,6 +287,7 @@ const App = () => (
             <Route path="/multisig-bitcoin" element={<MultisigBitcoin />} />
             <Route path="/nova-lei-conta-corrente" element={<NovaLeiContaCorrente />} />
             <Route path="/alertas/nova-lei-conta-corrente" element={<NovaLeiContaCorrente />} />
+            <Route path="/novilingua" element={<Novilingua />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
