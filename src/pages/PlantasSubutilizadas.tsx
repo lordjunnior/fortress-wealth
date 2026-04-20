@@ -220,7 +220,16 @@ const SISTEMAS_COR: Record<string, string> = {
   'Pulmonar': 'text-blue-300 border-blue-500/30 bg-blue-500/5',
 };
 
-const PAGINAS_INDIVIDUAIS = new Set(['jurubeba', 'quebra-pedra', 'espinheira-santa', 'guaco']);
+const PAGINAS_INDIVIDUAIS = new Set([
+  'jurubeba',
+  'quebra-pedra',
+  'espinheira-santa',
+  'guaco',
+  'tanchagem',
+  'pariparoba',
+  'chapeu-de-couro',
+  'umburana',
+]);
 
 export default function PlantasSubutilizadas() {
   const heroRef = useRef<HTMLElement>(null);

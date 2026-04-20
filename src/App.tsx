@@ -115,6 +115,10 @@ import Jurubeba from "./pages/plantas/Jurubeba";
 import QuebraPedra from "./pages/plantas/QuebraPedra";
 import EspinheiraSanta from "./pages/plantas/EspinheiraSanta";
 import Guaco from "./pages/plantas/Guaco";
+import Tanchagem from "./pages/plantas/Tanchagem";
+import Pariparoba from "./pages/plantas/Pariparoba";
+import ChapeuDeCouro from "./pages/plantas/ChapeuDeCouro";
+import Umburana from "./pages/plantas/Umburana";
 import CodigoAutonomiaModal from "./components/CodigoAutonomiaModal";
 import ScrollToTop from "./components/ScrollToTop";
 import MapaDaSoberania from "./pages/MapaDaSoberania";
@@ -251,6 +255,10 @@ const App = () => (
           <Route path="/soberania-organica/plantas-subutilizadas/quebra-pedra" element={<QuebraPedra />} />
           <Route path="/soberania-organica/plantas-subutilizadas/espinheira-santa" element={<EspinheiraSanta />} />
           <Route path="/soberania-organica/plantas-subutilizadas/guaco" element={<Guaco />} />
+          <Route path="/soberania-organica/plantas-subutilizadas/tanchagem" element={<Tanchagem />} />
+          <Route path="/soberania-organica/plantas-subutilizadas/pariparoba" element={<Pariparoba />} />
+          <Route path="/soberania-organica/plantas-subutilizadas/chapeu-de-couro" element={<ChapeuDeCouro />} />
+          <Route path="/soberania-organica/plantas-subutilizadas/umburana" element={<Umburana />} />
           <Route path="/conhecimento-perdido/contexto-historico" element={<CpContextoHistorico />} />
           <Route path="/conhecimento-perdido/base-fisiologica" element={<CpBaseFisiologica />} />
           <Route path="/conhecimento-perdido/seguranca-e-limites" element={<CpSegurancaLimites />} />
