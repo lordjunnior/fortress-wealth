@@ -292,6 +292,25 @@ export default function RapeDossie() {
         </p>
       </Section>
 
+      {/* IMAGEM INTERCALADA — sequestro comercial */}
+      <section className="relative z-10 px-6 md:px-12 lg:px-20 py-12">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.9, ease: APPLE_EASE }}
+            className="relative rounded-3xl overflow-hidden border border-rose-900/30 group"
+          >
+            <img src={imgComercial} alt="Vitrine comercial moderna exibindo frascos de rapé reembalado" className="w-full h-[40vh] md:h-[55vh] object-cover transition-transform duration-1000 group-hover:scale-[1.03]" loading="lazy" width={1920} height={1080} />
+            <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/40 to-transparent" />
+            <p className="absolute bottom-6 left-6 right-6 md:left-10 md:right-10 text-foreground/95 italic text-sm md:text-base max-w-2xl">
+              A vitrine substituiu a maloca. O markup substituiu o ritual. O frasco escandinavo substituiu a cuia da floresta.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
       {/* ── ATO 03: BIOQUÍMICA ── */}
       <Section id="ato-3-bioquimica" num="03" titulo="A Bioquímica do Vagal" icon={Brain} accent="cyan">
         <p>
@@ -318,6 +337,25 @@ export default function RapeDossie() {
           refratária de horas. <strong>São farmacocinéticas opostas.</strong>
         </p>
       </Section>
+
+      {/* IMAGEM INTERCALADA — nervo vago */}
+      <section className="relative z-10 px-6 md:px-12 lg:px-20 py-12">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.9, ease: APPLE_EASE }}
+            className="relative rounded-3xl overflow-hidden border border-cyan-900/30 group"
+          >
+            <img src={imgVago} alt="Visualização anatômica do nervo vago humano em luz azul" className="w-full h-[40vh] md:h-[55vh] object-cover transition-transform duration-1000 group-hover:scale-[1.03]" loading="lazy" width={1920} height={1080} />
+            <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/40 to-transparent" />
+            <p className="absolute bottom-6 left-6 right-6 md:left-10 md:right-10 text-foreground/95 italic text-sm md:text-base max-w-2xl">
+              O nervo vago: rodovia parassimpática que conecta tronco cerebral, coração, pulmão e intestino em um só circuito.
+            </p>
+          </motion.div>
+        </div>
+      </section>
 
       {/* ── ATO 04: PROTOCOLO ── */}
       <Section id="ato-4-protocolo" num="04" titulo="Protocolo de Aplicação Responsável" icon={ShieldCheck} accent="amber">
