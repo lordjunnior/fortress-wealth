@@ -127,6 +127,7 @@ const TOC_ITEMS = [
   { id: "fase-03", label: "Fase 03: Alimento" },
   { id: "fase-04", label: "Fase 04: Conhecimento" },
   { id: "fase-05", label: "Fase 05: Discernimento" },
+  { id: "fase-06", label: "Fase 06: Mente Blindada" },
 ];
 
 export default function ProjetoAutonomo() {
@@ -165,8 +166,14 @@ export default function ProjetoAutonomo() {
       tag: 'Formação técnica',
     },
     {
-      num: '05', title: 'Mente Blindada', sub: 'Protege a soberania cognitiva', accent: '#a855f7',
-      sectionId: 'fase-05-mente', icon: Brain, image: tlMente, height: 'tall',
+      num: '05', title: 'Tóxicos Ocultos', sub: 'Revela o que adoece o corpo', accent: '#ef4444',
+      sectionId: 'fase-05', icon: Eye, image: bgFase05, height: 'tall',
+      desc: 'Laboratório de discernimento sobre toxinas alimentares, ambientais, manipulação informacional e dependência tecnológica. Quatro vetores invisíveis que reduzem clareza, saúde e liberdade de escolha.',
+      tag: 'Laboratório de discernimento',
+    },
+    {
+      num: '06', title: 'Mente Blindada', sub: 'Protege a soberania cognitiva', accent: '#a855f7',
+      sectionId: 'fase-06', icon: Brain, image: tlMente, height: 'short',
       desc: 'Protocolos contra manipulação informacional, desintoxicação digital, leitura crítica de mídia e fortalecimento da soberania cognitiva. Sem mente livre, nenhuma das fases anteriores se sustenta.',
       tag: 'Defesa cognitiva',
     },
@@ -1219,6 +1226,7 @@ export default function ProjetoAutonomo() {
               { phase: 'Soberania Alimentar', accent: '#f59e0b' },
               { phase: 'Conhecimento Perdido', accent: '#14b8a6' },
               { phase: 'Tóxicos Ocultos', accent: '#ef4444' },
+              { phase: 'Mente Blindada', accent: '#a855f7' },
             ].map((s) => (
               <div key={s.phase} className="flex items-center gap-2 border border-white/[0.06] bg-white/[0.02] px-4 py-2 rounded-full">
                 <div className="w-2 h-2 rounded-full" style={{ background: s.accent }} />
