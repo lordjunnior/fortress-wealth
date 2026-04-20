@@ -8,10 +8,16 @@ import FixedThematicBackground from "@/components/backgrounds/FixedThematicBackg
 import ScrollToTop from "@/components/ScrollToTop";
 import bgQuelantes from "@/assets/backgrounds/bg-quelantes.jpg";
 import imgLab from "@/assets/quelantes/fichas-laboratorio.jpg";
-import imgCoentro from "@/assets/quelantes/coentro-chlorella.jpg";
-import imgIpe from "@/assets/quelantes/ipe-sucupira.jpg";
-import imgCardo from "@/assets/quelantes/cardo-mariano.jpg";
-import imgCarvao from "@/assets/quelantes/carvao-renais.jpg";
+import imgCoentro from "@/assets/quelantes/plantas/coentro.jpg";
+import imgChlorella from "@/assets/quelantes/plantas/chlorella.jpg";
+import imgIpe from "@/assets/quelantes/plantas/ipe-roxo.jpg";
+import imgSucupira from "@/assets/quelantes/plantas/sucupira.jpg";
+import imgCardo from "@/assets/quelantes/plantas/cardo-mariano.jpg";
+import imgEspirulina from "@/assets/quelantes/plantas/espirulina.jpg";
+import imgUnha from "@/assets/quelantes/plantas/unha-de-gato.jpg";
+import imgQuebra from "@/assets/quelantes/plantas/quebra-pedra.jpg";
+import imgCavalinha from "@/assets/quelantes/plantas/cavalinha.jpg";
+import imgCarvao from "@/assets/quelantes/plantas/carvao-ativado.jpg";
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 
