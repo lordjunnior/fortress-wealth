@@ -288,17 +288,17 @@ export default function Propolis() {
           name="keywords"
           content="própolis verde, própolis vermelho, própolis brasileiro, artepilin C, isoflavonoide própolis, protocolo própolis, dose própolis, extrato de própolis caseiro, própolis para imunidade, própolis para gastrite, H pylori, soberania biológica"
         />
-        <link rel="canonical" href="https://lordjunnior.com.br/propolis" />
+        <link rel="canonical" href="https://lordjunnior.com.br/soberania-organica/propolis" />
         <meta property="og:title" content="Própolis: Manual Completo de Variações e Protocolos" />
         <meta property="og:description" content="Verde, vermelho, marrom, preto e amarelo. Doses, ciclos, contraindicações e preparo caseiro. Resina ancestral, ciência atual." />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://lordjunnior.com.br/propolis" />
+        <meta property="og:url" content="https://lordjunnior.com.br/soberania-organica/propolis" />
         <meta name="twitter:card" content="summary_large_image" />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
           "@type": "MedicalWebPage",
           name: "Própolis: Variações, Protocolos e Indicações Terapêuticas",
-          url: "https://lordjunnior.com.br/propolis",
+          url: "https://lordjunnior.com.br/soberania-organica/propolis",
           inLanguage: "pt-BR",
           about: {
             "@type": "Drug",
