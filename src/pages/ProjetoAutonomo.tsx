@@ -174,8 +174,24 @@ export default function ProjetoAutonomo() {
     {
       num: '06', title: 'Mente Blindada', sub: 'Protege a soberania cognitiva', accent: '#a855f7',
       sectionId: 'fase-06', icon: Brain, image: tlMente, size: 'pico',
-      desc: 'Protocolos contra manipulação informacional, desintoxicação digital, leitura crítica de mídia e fortalecimento da soberania cognitiva. Sem mente livre, nenhuma das fases anteriores se sustenta.',
+      desc: 'Se a mente é manipulável, nenhuma autonomia é real. Você pode ter alimento, saúde e conhecimento, mas se sua percepção for controlada, tudo desmorona.',
       tag: 'Defesa cognitiva',
+      hook: 'Defesa cognitiva não é sobre informação. É sobre interpretação.',
+      blocos: [
+        {
+          titulo: 'Defesa Cognitiva',
+          texto: 'Protocolos para filtrar ruído informacional, identificar manipulação narrativa, reduzir dependência digital e desenvolver leitura crítica real.',
+        },
+        {
+          titulo: 'O Problema Invisível',
+          texto: 'Hoje o controle não precisa ser físico. Ele é algorítmico, repetitivo e emocional. Funciona porque passa despercebido.',
+        },
+        {
+          titulo: 'O Objetivo da Fase',
+          texto: 'Restaurar clareza mental, autonomia de pensamento e capacidade de análise. Sem isso, todas as outras fases viram execução automática.',
+        },
+      ],
+      fechamento: 'Sem mente livre, nenhuma soberania se sustenta.',
     },
   ];
 
