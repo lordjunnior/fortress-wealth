@@ -407,17 +407,17 @@ export default function MapaDaSoberania() {
         </section>
 
         {/* ═══════════ DIVISOR DRAMÁTICO ═══════════ */}
-        <section className="relative z-10 overflow-hidden py-32 md:py-40">
-          {/* Watermark gigante de fundo */}
+        <section className="relative z-10 overflow-hidden py-40 md:py-56">
+          {/* Watermark gigante de fundo (atrás do conteúdo, sem colidir) */}
           <div
             aria-hidden
-            className="absolute inset-0 flex items-center justify-center pointer-events-none select-none"
+            className="absolute inset-x-0 top-0 bottom-0 flex items-start justify-center pointer-events-none select-none pt-4 md:pt-2"
           >
             <span
-              className="font-black uppercase text-amber-500/[0.04] whitespace-nowrap leading-none"
+              className="font-black uppercase text-amber-500/[0.035] whitespace-nowrap leading-none"
               style={{
                 fontFamily: "'Bebas Neue', sans-serif",
-                fontSize: 'clamp(10rem, 28vw, 26rem)',
+                fontSize: 'clamp(7rem, 20vw, 18rem)',
                 letterSpacing: '-0.04em',
               }}
             >
@@ -429,7 +429,7 @@ export default function MapaDaSoberania() {
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-24 bg-gradient-to-b from-transparent via-amber-500/40 to-transparent" />
           <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-px h-24 bg-gradient-to-b from-amber-500/40 via-amber-500/10 to-transparent" />
 
-          <motion.div {...fade(0)} className="relative max-w-5xl mx-auto px-5 md:px-8 text-center">
+          <motion.div {...fade(0)} className="relative z-10 max-w-5xl mx-auto px-5 md:px-8 text-center mt-32 md:mt-44">
             <div className="inline-flex items-center gap-3 mb-8">
               <div className="h-px w-16 bg-gradient-to-r from-transparent to-amber-500/50" />
               <Compass size={20} className="text-amber-400" />
