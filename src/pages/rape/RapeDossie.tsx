@@ -426,7 +426,7 @@ export default function RapeDossie() {
 
       {/* ── CTAs FINAIS ── */}
       <section className="relative z-10 px-6 md:px-12 lg:px-20 py-20">
-        <div className="max-w-5xl">
+        <div className="max-w-7xl mx-auto">
           <p className="font-mono text-[10px] tracking-[0.3em] text-emerald-400/80 uppercase mb-4">[ CONTINUE A IMERSÃO ]</p>
           <div className="grid md:grid-cols-3 gap-4">
             <NextCard to="/soberania-organica/conhecimento-perdido/protocolo-quelantes-brasileiros" titulo="Protocolo de Quelantes" desc="10 plantas brasileiras com fichas técnicas completas." />
@@ -450,7 +450,7 @@ function Section({
 }) {
   return (
     <section id={id} className="relative z-10 px-6 md:px-12 lg:px-20 py-20 md:py-28 gsap-reveal">
-      <div className="max-w-4xl">
+      <div className="max-w-7xl mx-auto">
         <div className="flex items-center gap-4 mb-8">
           <div className={`p-3 rounded-xl bg-${accent}-500/10 border border-${accent}-500/25`}>
             <Icon className={`text-${accent}-400`} size={22} />
