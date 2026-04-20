@@ -5,6 +5,13 @@ import { Helmet } from 'react-helmet-async';
 import { ArrowLeft, Download, ShieldCheck, ArrowRight, Zap, Lock, Globe, Coins, ShieldAlert, AlertTriangle, Key, Pickaxe, Scale, Database, HelpCircle, BookOpen, Shield, Send, Hourglass, Activity, TrendingUp } from 'lucide-react';
 import coverSilencioQueda from '@/assets/cover-silencio-queda.jpg';
 import BackToHome from '@/components/BackToHome';
+import FixedThematicBackground from '@/components/backgrounds/FixedThematicBackground';
+import bgProtocoloInicial from '@/assets/backgrounds/bg-protocolo-inicial.jpg';
+import imgFimIlusao from '@/assets/proto-fim-ilusao.jpg';
+import imgEscassez from '@/assets/proto-escassez.jpg';
+import imgMecanica from '@/assets/proto-mecanica.jpg';
+import imgFortaleza from '@/assets/proto-fortaleza.jpg';
+import imgBlindagemMental from '@/assets/proto-blindagem-mental.jpg';
 
 const NAV_ITEMS = [
   { id: 'estagio-01', label: 'Estágio 01: O Fim da Ilusão' },
@@ -55,13 +62,14 @@ export default function ProtocoloInicial() {
       </div>
 
       <Helmet>
-        <title>Protocolo Inicial — Guia Bitcoin do Zero ao Avançado | Lord Junnior</title>
+        <title>Protocolo Inicial · Guia Bitcoin do Zero ao Avançado | Lord Junnior</title>
         <meta name="description" content="Trilha completa de aprendizado Bitcoin: do conceito à autocustódia. 6 estágios progressivos para dominar o protocolo e proteger seu patrimônio." />
         <link rel="canonical" href="https://lordjunnior.com.br/protocolo-inicial" />
       </Helmet>
 
       <PageFloatingToc items={TOC_ITEMS} accentColor="orange" />
-    <div className="min-h-screen bg-[#070A12] text-white font-sans selection:bg-red-600 overflow-x-hidden">
+    <div className="min-h-screen text-white font-sans selection:bg-red-600 overflow-x-hidden">
+      <FixedThematicBackground image={bgProtocoloInicial} intensity="heavy" />
       {/* Particles */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-30">
         <div className="dust-layer-home"></div>
@@ -218,7 +226,7 @@ export default function ProtocoloInicial() {
             </div>
           </header>
 
-          {/* GRID DE PROPRIEDADES — 3 Cards */}
+          {/* GRID DE PROPRIEDADES · 3 Cards */}
           <section className="mb-28">
             <h3 className="text-slate-600 font-black uppercase tracking-[0.4em] text-[9px] mb-6 font-mono">Conceito</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
@@ -296,7 +304,7 @@ export default function ProtocoloInicial() {
                 </div>
                 {/* Mini Halving Chart */}
                 <div className="mt-6">
-                  <p className="text-[8px] text-amber-500/50 uppercase font-black tracking-[0.2em] font-mono mb-3">Recompensa por Bloco (BTC) — Halvings</p>
+                  <p className="text-[8px] text-amber-500/50 uppercase font-black tracking-[0.2em] font-mono mb-3">Recompensa por Bloco (BTC) · Halvings</p>
                   <div className="h-36 flex items-end justify-between gap-3 border-b border-l border-amber-500/20 p-2">
                     {[
                       { h: 100, label: '50', year: '2009' },
@@ -367,7 +375,7 @@ export default function ProtocoloInicial() {
               </div>
             </div>
 
-            {/* Chaves — layout assimétrico */}
+            {/* Chaves · layout assimétrico */}
             <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
               <div className="md:col-span-3 rounded-sm p-10 space-y-4 relative overflow-hidden" style={{ background: 'linear-gradient(160deg, rgba(6,182,212,0.05) 0%, rgba(11,15,25,0.9) 40%)', border: '1px solid rgba(6,182,212,0.12)' }}>
                 <div className="absolute -top-10 -right-10 w-40 h-40 rounded-full opacity-[0.04]" style={{ background: 'radial-gradient(circle, #22d3ee, transparent 70%)' }} />
@@ -473,7 +481,7 @@ export default function ProtocoloInicial() {
               ))}
             </div>
 
-            {/* Blindagem contra Golpes — Terminal */}
+            {/* Blindagem contra Golpes · Terminal */}
             <div className="border-2 border-red-600 bg-[#0a0a0a] p-10 md:p-12 relative overflow-hidden rounded-sm border-glow-pulse">
               <ShieldAlert className="absolute top-0 right-0 text-red-600/5 -mr-14 -mt-14" size={280} />
               <div className="relative z-10">
