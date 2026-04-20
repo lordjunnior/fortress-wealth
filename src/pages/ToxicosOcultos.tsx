@@ -7,8 +7,8 @@ import CinematicHero from '@/components/CinematicHero';
 import LiquidText from '@/components/LiquidText';
 import DossieRealidade from '@/components/toxicos/DossieRealidade';
 import TimelineDia from '@/components/toxicos/TimelineDia';
-import SmokeBackground from '@/components/toxicos/SmokeBackground';
 import BackToHome from '@/components/BackToHome';
+import bgToxic from '@/assets/toxicos/bg-toxic-atmosphere.jpg';
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 const fadeUp = {
@@ -66,6 +66,27 @@ export default function ToxicosOcultos() {
 
   return (
     <div className="min-h-screen text-stone-100 font-sans selection:bg-red-400/30 relative overflow-hidden text-[17px] md:text-[18px] lg:text-[19px] leading-relaxed [&_p]:text-[1.05em] [&_p]:leading-[1.75]" style={{ background: '#050808' }}>
+      {/* === FIXED FULL-PAGE BACKGROUND IMAGE === */}
+      <div
+        aria-hidden="true"
+        className="fixed inset-0 z-0 pointer-events-none"
+        style={{
+          backgroundImage: `url(${bgToxic})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed',
+          backgroundRepeat: 'no-repeat',
+        }}
+      />
+      {/* Dark overlay for readability */}
+      <div
+        aria-hidden="true"
+        className="fixed inset-0 z-0 pointer-events-none"
+        style={{
+          background:
+            'linear-gradient(180deg, rgba(5,8,8,0.88) 0%, rgba(5,8,8,0.78) 40%, rgba(5,8,8,0.85) 70%, rgba(5,8,8,0.95) 100%)',
+        }}
+      />
       <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
         <BackToHome />
       </div>
@@ -81,7 +102,6 @@ export default function ToxicosOcultos() {
       </Helmet>
 
       {/* === VFX LAYER === */}
-      <SmokeBackground />
       <div className="fixed inset-0 pointer-events-none z-[1]">
         {/* Film grain */}
         <div className="absolute inset-0 opacity-[0.035]" style={{
