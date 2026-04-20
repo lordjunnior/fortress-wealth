@@ -404,22 +404,78 @@ export default function RapeDossie() {
       <Section id="ato-5-quelantes" num="05" titulo="Sinergia com Quelantes Brasileiros" icon={FlaskConical} accent="emerald">
         <p>
           O uso ancestral do rapé sempre veio acompanhado de <strong>protocolo de limpeza orgânica</strong>. A floresta
-          oferece quelantes naturais para metais pesados e toxinas acumuladas — vetores que a vida urbana injeta
+          oferece quelantes naturais para metais pesados e toxinas acumuladas, vetores que a vida urbana injeta
           diariamente no corpo: alumínio (panelas, antitranspirantes), mercúrio (peixes contaminados, amálgamas),
           chumbo (canos antigos, tinta), cádmio (ar industrial).
         </p>
-        <div className="grid md:grid-cols-2 gap-4 my-6">
+        <div className="grid md:grid-cols-2 gap-5 my-10 not-prose">
           {[
-            { n: "Coentro", a: "Coriandrum sativum", q: "Mobiliza mercúrio e alumínio do tecido nervoso. Uso: 30-50g de folha fresca/dia em ciclo de 3 semanas." },
-            { n: "Chlorella", a: "Chlorella vulgaris", q: "Captura metais mobilizados pelo coentro. Uso pareado obrigatório: 2-3g/dia em ciclo conjunto." },
-            { n: "Ipê-roxo", a: "Handroanthus impetiginosus", q: "Anti-inflamatório sistêmico, suporte hepático. Decocção da casca, 200ml 2x/dia, ciclos de 14 dias." },
-            { n: "Sucupira", a: "Pterodon emarginatus", q: "Detoxificação articular e linfática. Tintura 20-30 gotas 2x/dia, ciclo de 21 dias." },
+            {
+              n: "Coentro",
+              a: "Coriandrum sativum",
+              hook: "A folha de feira que atravessa a barreira hematoencefálica.",
+              q: "Mobiliza mercúrio e alumínio armazenados no tecido nervoso central. Posologia: 30 a 50g de folha fresca por dia em ciclo de 3 semanas. Sempre pareado com chlorella.",
+              img: imgCoentro,
+            },
+            {
+              n: "Chlorella",
+              a: "Chlorella vulgaris",
+              hook: "A microalga que sequestra o que o coentro solta.",
+              q: "Captura, no lúmen intestinal, os metais mobilizados pelo coentro e impede a recirculação enterro-hepática. Posologia: 2 a 3g por dia em ciclo conjunto.",
+              img: imgChlorella,
+            },
+            {
+              n: "Ipê-roxo",
+              a: "Handroanthus impetiginosus",
+              hook: "A casca do cerrado que age onde o anti-inflamatório de farmácia falha.",
+              q: "Lapachol e beta-lapachona modulam carga inflamatória sistêmica e dão suporte hepático na fase 2. Decocção da casca, 200ml duas vezes ao dia em ciclos de 14 dias.",
+              img: imgIpe,
+            },
+            {
+              n: "Sucupira",
+              a: "Pterodon emarginatus",
+              hook: "A semente que limpa articulação por dentro, sem ibuprofeno.",
+              q: "Diterpenos furânicos com ação anti-inflamatória articular e linfática documentada. Tintura 1:5, 20 a 30 gotas duas vezes ao dia em ciclo de 21 dias.",
+              img: imgSucupira,
+            },
           ].map((p) => (
-            <div key={p.n} className="rounded-xl border border-emerald-900/30 bg-card/30 backdrop-blur p-5">
-              <p className="text-emerald-400 font-bold text-sm tracking-wider">{p.n}</p>
-              <p className="text-xs italic text-muted-foreground mb-2">{p.a}</p>
-              <p className="text-sm text-foreground/85 leading-7">{p.q}</p>
-            </div>
+            <article
+              key={p.n}
+              className="group relative rounded-2xl overflow-hidden border border-emerald-900/40 bg-card/40 backdrop-blur-md hover:-translate-y-1 hover:border-emerald-500/50 hover:shadow-[0_30px_60px_-20px_rgba(16,185,129,0.45)] transition-all duration-500"
+            >
+              <div className="relative h-56 md:h-64 overflow-hidden">
+                <img
+                  src={p.img}
+                  alt={`${p.n} (${p.a}): planta quelante brasileira`}
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1400ms] group-hover:scale-105"
+                  loading="lazy"
+                  width={1600}
+                  height={1024}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-card via-card/40 to-transparent" />
+                <div className="absolute top-4 left-4">
+                  <span className="font-mono text-[9px] tracking-[0.3em] uppercase text-emerald-300/90 px-2.5 py-1 rounded-full border border-emerald-500/40 bg-background/40 backdrop-blur">
+                    Quelante
+                  </span>
+                </div>
+              </div>
+              <div className="p-6 md:p-7">
+                <h4
+                  className="text-foreground text-2xl md:text-3xl leading-none mb-1.5"
+                  style={{ fontFamily: "'Bebas Neue', sans-serif", letterSpacing: "0.02em" }}
+                >
+                  {p.n}
+                </h4>
+                <p className="italic text-muted-foreground text-xs md:text-sm mb-4">{p.a}</p>
+                <p
+                  className="text-emerald-200/95 text-base md:text-lg leading-snug mb-4"
+                  style={{ fontFamily: "'Instrument Serif', serif" }}
+                >
+                  {p.hook}
+                </p>
+                <p className="text-foreground/85 text-sm md:text-base leading-7">{p.q}</p>
+              </div>
+            </article>
           ))}
         </div>
         <div className="mt-8 rounded-xl border border-emerald-500/30 bg-emerald-950/20 backdrop-blur p-6">
@@ -448,7 +504,7 @@ export default function RapeDossie() {
           <Bullet t="Manhã" d="Exposição solar direta 10-15 min sem filtro. Respiração diafragmática 4-7-8 por 5 ciclos. Hidratação com sal mineral (não refinado)." />
           <Bullet t="Meio-dia" d="Janela alimentar com proteína animal de pasto + folhas verdes. Coentro fresco no preparo. Pausa de 90 min sem telas." />
           <Bullet t="Tarde" d="Movimento de carga: agachamento, suspensão, caminhada com peso. Protocolo de quelantes conforme ciclo (coentro+chlorella ou ipê)." />
-          <Bullet t="Noite" d="Bloqueio de luz azul 2h antes de dormir. Quarto a 18-20°C, blackout total. Microdose de rapé apenas em contexto cerimonial específico — nunca rotineiro." />
+          <Bullet t="Noite" d="Bloqueio de luz azul 2h antes de dormir. Quarto a 18-20°C, blackout total. Microdose de rapé apenas em contexto cerimonial específico, nunca rotineiro." />
           <Bullet t="Ciclo semanal" d="1 dia de jejum hídrico de 16-18h. 1 sessão de sauna ou banho frio para choque vasomotor. Reavaliação do protocolo a cada 21 dias." />
         </ul>
 
@@ -457,11 +513,11 @@ export default function RapeDossie() {
             className="text-foreground text-xl md:text-2xl leading-relaxed"
             style={{ fontFamily: "'Instrument Serif', serif" }}
           >
-            "Autonomia não é isolamento. É redução inteligente de dependência —
+            "Autonomia não é isolamento. É redução inteligente de dependência,
             inclusive da indústria do bem-estar que vende ancestralidade em frasco."
           </p>
           <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-emerald-400/70 mt-6">
-            — Lord Junnior · Estrategista de Soberania Individual
+            Lord Junnior · Estrategista de Soberania Individual
           </p>
         </div>
       </Section>
