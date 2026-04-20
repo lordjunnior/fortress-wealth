@@ -128,6 +128,7 @@ import BabosaAcemannan from "./pages/BabosaAcemannan";
 import PorOndeComecar from "./pages/PorOndeComecar";
 import OleoRicinoBiohacker from "./pages/OleoRicinoBiohacker";
 import VazamentoDados from "./pages/VazamentoDados";
+import CobreGuacoMelPropolis from "./pages/protocolos/CobreGuacoMelPropolis";
 import PixSemBanco from "./pages/PixSemBanco";
 import ConfiscoBitcoin from "./pages/ConfiscoBitcoin";
 import BitparkCartao from "./pages/BitparkCartao";
