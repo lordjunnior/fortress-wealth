@@ -12,6 +12,7 @@ import imgGuaco from '@/assets/planta-guaco.jpg';
 import imgTanchagem from '@/assets/planta-tanchagem.jpg';
 import imgBabosaCard from '@/assets/planta-babosa-card.jpg';
 import imgOleoRicino from '@/assets/planta-oleo-ricino.jpg';
+import imgPropolis from '@/assets/propolis-colmeia.jpg';
 
 export interface PlantaData {
   slug: string;
@@ -486,7 +487,42 @@ export const PLANTAS: PlantaData[] = [
     accentBg: 'bg-amber-500/10',
     accentBorder: 'border-amber-500/25',
   },
+  {
+    slug: 'propolis',
+    nome: 'Própolis',
+    cientifico: 'Resina apícola (Apis mellifera)',
+    sistema: 'Imunidade · Antimicrobiano · Cicatrização',
+    resumo: 'Resina coletada e biotransformada pelas abelhas. Antibacteriano, antiviral, antifúngico e imunomodulador natural com Artepilin C, CAPE e flavonoides bioativos.',
+    melhora: ['Imunidade', 'Garganta inflamada', 'Gastrite e H. pylori', 'Cicatrização', 'Saúde bucal'],
+    ativos: [
+      { nome: 'Artepilin C', funcao: 'Marcador exclusivo da própolis verde brasileira, antitumoral e anti inflamatório' },
+      { nome: 'CAPE (Éster fenetil do ácido caféico)', funcao: 'Imunomodulador, inibe NF kB' },
+      { nome: 'Flavonoides (galangina, pinocembrina)', funcao: 'Antioxidante e antiviral de amplo espectro' },
+      { nome: 'Isoflavonoides', funcao: 'Marcadores da própolis vermelha, ação hormonal e antibacteriana' },
+    ],
+    mecanismo: 'Inibe síntese de RNA bacteriano, bloqueia adesão viral em células e modula resposta imune via NF kB e citocinas. Atravessa biofilmes que antibióticos sintéticos não alcançam.',
+    preparo: [
+      { metodo: 'Extrato alcoólico 30%', instrucao: '30g de própolis bruta moída em 100ml de álcool de cereais 70%, maceração 14 dias ao abrigo da luz, agitação diária.' },
+      { metodo: 'Spray de garganta', instrucao: 'Diluir extrato 30% em água destilada na proporção 1:3 com glicerina vegetal.' },
+    ],
+    dose: 'Extrato 30%: 20 a 30 gotas em água, 2 a 3x ao dia. Pastilhas: 1 a 2x ao dia em quadros agudos.',
+    limiteUso: 'Uso contínuo seguro em ciclos de 30 dias com pausa de 7 dias.',
+    contra: [
+      'Alergia a produtos apícolas (mel, geleia real)',
+      'Crianças menores de 1 ano (risco de botulismo)',
+      'Asma alérgica não controlada',
+    ],
+    interacoes: [
+      'Anticoagulantes (potencializa efeito)',
+      'Imunossupressores (antagonismo)',
+    ],
+    imagem: imgPropolis,
+    accent: 'text-amber-300',
+    accentBg: 'bg-amber-500/10',
+    accentBorder: 'border-amber-500/30',
+  },
 ];
+
 
 export function getPlantaBySlug(slug: string): PlantaData | undefined {
   return PLANTAS.find(p => p.slug === slug);
