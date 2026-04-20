@@ -184,6 +184,30 @@ export default function PorOndeComecar() {
             </Link>
           </div>
 
+          {/* HERO CINEMATOGRÁFICO */}
+          {!showResults && step === 0 && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: EASE }}
+              className="px-5 md:px-8 pt-10 pb-6 max-w-4xl mx-auto w-full text-center"
+            >
+              <p className="font-mono text-[10px] tracking-[0.4em] text-primary uppercase mb-5">Diagnóstico Operacional</p>
+              <h1 className="text-[clamp(2.5rem,6vw,5rem)] font-black uppercase leading-[0.92] tracking-tighter text-foreground mb-6" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+                Toda jornada começa<br />
+                <span className="italic font-serif text-primary normal-case tracking-tight">com a pergunta certa.</span>
+              </h1>
+              <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto font-light">
+                Você não precisa ler 97 páginas pra começar. Responda 3 perguntas e o sistema constrói uma trilha cirúrgica para o seu nível, seu objetivo e o seu tempo de reação.
+              </p>
+              <div className="flex items-center justify-center gap-6 mt-8 text-[10px] font-mono uppercase tracking-[0.25em] text-muted-foreground/60">
+                <span className="flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-primary animate-pulse" /> 60 segundos</span>
+                <span className="flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-primary animate-pulse" /> 3 perguntas</span>
+                <span className="flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-primary animate-pulse" /> Trilha cirúrgica</span>
+              </div>
+            </motion.div>
+          )}
+
           {/* Content */}
           <div className="flex-1 flex items-center justify-center px-5 md:px-8 py-12">
             <div className="w-full max-w-2xl">
