@@ -123,6 +123,7 @@ export const navGroups: NavGroup[] = [
       { label: "Óleo de Rícino", route: "/soberania-organica/oleo-ricino-biohacker", badge: "Dossiê" },
       { label: "Autonomia Biológica", route: "/soberania-organica/autonomia-biologica" },
       { label: "Fitoterapia Aplicada", route: "/soberania-organica/fitoterapia-aplicada" },
+      { label: "Plantas Subutilizadas", route: "/soberania-organica/plantas-subutilizadas", badge: "Novo" },
       { label: "Horta Urbana", route: "/soberania-organica/horta-urbana" },
       { label: "Solo & Fertilidade", route: "/soberania-organica/solo-fertilidade" },
       { label: "Produção Pequenos Espaços", route: "/soberania-organica/producao-pequenos-espacos" },
