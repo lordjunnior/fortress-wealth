@@ -1,6 +1,14 @@
 import { motion } from 'framer-motion';
 import { FileWarning, ExternalLink, BookOpen, Beaker, Scale, TrendingUp, Factory, ShieldAlert, Quote } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
+import imgGlifosato from '@/assets/toxicos/dossie-glifosato.jpg';
+import imgUltra from '@/assets/toxicos/dossie-ultraprocessados.jpg';
+import imgAlgoritmo from '@/assets/toxicos/dossie-algoritmo.jpg';
+import imgBernays from '@/assets/toxicos/dossie-bernays.jpg';
+import imgAtencao from '@/assets/toxicos/dossie-atencao.jpg';
+import imgDarkPatterns from '@/assets/toxicos/dossie-darkpatterns.jpg';
+import imgMicroplasticos from '@/assets/toxicos/dossie-microplasticos.jpg';
+import imgArInterno from '@/assets/toxicos/dossie-arinterno.jpg';
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -11,11 +19,14 @@ interface Evidencia {
   fonte: string;
   impacto: string;
   icon: LucideIcon;
+  image: string;
+  imageAlt: string;
 }
 
 const EVIDENCIAS: Evidencia[] = [
   {
     vetor: 'corpo', icon: Beaker,
+    image: imgGlifosato, imageAlt: 'Mamadeira de leite ao lado de borrifador químico em laboratório com plantação de milho ao fundo',
     titulo: 'Glifosato no leite materno',
     fato: 'Estudo publicado na Environmental Health (2014) detectou glifosato no leite materno de mulheres americanas em concentrações até 1.600× acima do permitido na água potável europeia. O herbicida mais vendido do mundo atravessa a cadeia alimentar inteira e chega ao primeiro alimento de um recém-nascido.',
     fonte: 'Honeycutt & Rowlands, Environmental Health 2014; IARC Monograph 112 (OMS)',
@@ -23,6 +34,7 @@ const EVIDENCIAS: Evidencia[] = [
   },
   {
     vetor: 'corpo', icon: Factory,
+    image: imgUltra, imageAlt: 'Pilha de embalagens coloridas de alimentos ultraprocessados sob luz dramática lateral em fundo escuro',
     titulo: 'Ultraprocessados e mortalidade',
     fato: 'Coorte NHANES com 44.551 adultos acompanhados por 19 anos (JAMA Internal Medicine, 2024): cada 10% de aumento no consumo de ultraprocessados eleva em 14% o risco de morte por todas as causas. Brasil tem 20% das calorias vindas de ultraprocessados — e subindo.',
     fonte: 'Wang et al., JAMA Internal Medicine, Feb 2024; IBGE POF 2018',
@@ -30,6 +42,7 @@ const EVIDENCIAS: Evidencia[] = [
   },
   {
     vetor: 'mente', icon: Scale,
+    image: imgAlgoritmo, imageAlt: 'Smartphone com feed de redes sociais glitchado em tons de violeta e vermelho',
     titulo: 'A máquina de consenso algorítmico',
     fato: 'Pesquisa do MIT (Science, 2018): notícias falsas se espalham 6× mais rápido que notícias verdadeiras no Twitter. Não por bots — por humanos. O algoritmo amplifica conteúdo com alta carga emocional porque gera mais engajamento. A verdade é estruturalmente menos viral que a mentira.',
     fonte: 'Vosoughi, Roy & Aral, Science 359(6380), 2018',
@@ -37,6 +50,7 @@ const EVIDENCIAS: Evidencia[] = [
   },
   {
     vetor: 'mente', icon: TrendingUp,
+    image: imgBernays, imageAlt: 'Prensa tipográfica antiga com pilhas de jornais e cartazes de propaganda em tons sépia',
     titulo: 'Engenharia de consentimento: 100 anos de ciência',
     fato: 'Edward Bernays, sobrinho de Freud, publicou "Propaganda" em 1928 e criou as relações públicas modernas. Ele fez mulheres americanas fumarem usando marchas feministas — cada cigarro era uma "tocha da liberdade". O mesmo framework é usado hoje por governos e corporações para moldar percepções coletivas.',
     fonte: 'Bernays, E. "Propaganda" (1928); Tye, L. "The Father of Spin" (1998)',
@@ -44,6 +58,7 @@ const EVIDENCIAS: Evidencia[] = [
   },
   {
     vetor: 'comportamento', icon: ShieldAlert,
+    image: imgAtencao, imageAlt: 'Smartphone sobre mesa de madeira ao lado de caderno fechado com sombra em forma de cérebro',
     titulo: 'O experimento de atenção roubada',
     fato: 'Estudo da University of Texas (2017): a mera presença do smartphone sobre a mesa — mesmo desligado — reduz a capacidade cognitiva. Chamaram de "brain drain". Pessoas com o celular em outra sala tiveram desempenho significativamente superior em memória de trabalho e raciocínio fluido.',
     fonte: 'Ward, Duke, Gneezy & Bos, Journal of the Association for Consumer Research, 2017',
@@ -51,6 +66,7 @@ const EVIDENCIAS: Evidencia[] = [
   },
   {
     vetor: 'comportamento', icon: BookOpen,
+    image: imgDarkPatterns, imageAlt: 'Tela de monitor com interface de checkout glitchada e contagem regressiva falsa em ambiente escuro',
     titulo: 'Dark patterns: manipulação de interface certificada',
     fato: 'Pesquisa de Princeton (2019) analisou 11.000 sites de e-commerce e encontrou dark patterns em 11,1% deles: botões que confundem, contagens regressivas falsas, itens adicionados ao carrinho sem consentimento. A FTC (EUA) começou a multar empresas por isso em 2022. No Brasil, zero regulação específica.',
     fonte: 'Mathur et al., Proceedings of ACM CSCW, 2019; FTC Enforcement Actions 2022-2024',
@@ -58,6 +74,7 @@ const EVIDENCIAS: Evidencia[] = [
   },
   {
     vetor: 'ambiente', icon: Beaker,
+    image: imgMicroplasticos, imageAlt: 'Tubo de ensaio com sangue vermelho contendo micropartículas de plástico flutuando',
     titulo: 'Microplásticos no sangue humano',
     fato: 'Estudo publicado na Environment International (2022): microplásticos foram encontrados no sangue de 77% das pessoas testadas. PET, polietileno e poliestireno circulando dentro do corpo humano. Em 2023, foram encontrados em placentas, pulmões e até no cérebro.',
     fonte: 'Leslie et al., Environment International 163, 2022; Jenner et al., Science of the Total Environment, 2022',
@@ -65,6 +82,7 @@ const EVIDENCIAS: Evidencia[] = [
   },
   {
     vetor: 'ambiente', icon: Factory,
+    image: imgArInterno, imageAlt: 'Sala de estar moderna com partículas de poeira visíveis em feixe de luz através da janela',
     titulo: 'O ar da sua casa é mais tóxico que o da rua',
     fato: 'A EPA (Environmental Protection Agency, EUA) estima que o ar interno é 2 a 5× mais poluído que o externo. Em alguns casos, até 100× pior. Fontes: formaldeído de móveis, VOCs de tintas e vernizes, retardantes de chamas de eletrônicos e estofados, partículas de produtos de limpeza.',
     fonte: 'US EPA, "Indoor Air Quality" (updated 2023); WHO Guidelines for Indoor Air Quality, 2010',
@@ -132,13 +150,30 @@ export default function DossieRealidade() {
                 initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-40px' }}
                 transition={{ duration: 0.6, ease: APPLE_EASE, delay: idx * 0.05 }}
-                className={`rounded-2xl border ${cfg.border} ${cfg.bg} overflow-hidden`}
+                className={`group rounded-2xl border ${cfg.border} ${cfg.bg} overflow-hidden hover:border-white/20 transition-colors duration-500`}
               >
-                <div className="p-6 md:p-8">
-                  {/* Vetor tag */}
-                  <div className="flex items-center gap-3 mb-5">
+                {/* Cinematic image */}
+                <div className="relative w-full h-48 md:h-64 overflow-hidden">
+                  <img
+                    src={ev.image}
+                    alt={ev.imageAlt}
+                    loading="lazy"
+                    width={1280}
+                    height={720}
+                    className="w-full h-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.05]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-stone-950/95" />
+                  <div className="absolute top-4 left-4 flex items-center gap-2">
                     <div className={`w-1.5 h-1.5 rounded-full ${cfg.dot}`} />
-                    <span className={`text-[9px] font-bold uppercase tracking-[0.4em] ${cfg.color}`}>{cfg.label}</span>
+                    <span className={`text-[9px] font-bold uppercase tracking-[0.4em] ${cfg.color} bg-black/50 backdrop-blur-sm px-3 py-1 rounded-full border border-white/10`}>
+                      {cfg.label}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="p-6 md:p-8">
+                  {/* Icon */}
+                  <div className="flex items-center gap-3 mb-5">
                     <div className="ml-auto p-2 rounded-lg bg-white/[0.03] border border-white/[0.04]">
                       <ev.icon size={14} className="text-stone-500" />
                     </div>
