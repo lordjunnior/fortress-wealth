@@ -119,6 +119,8 @@ import Tanchagem from "./pages/plantas/Tanchagem";
 import Pariparoba from "./pages/plantas/Pariparoba";
 import ChapeuDeCouro from "./pages/plantas/ChapeuDeCouro";
 import Umburana from "./pages/plantas/Umburana";
+import Artemisia from "./pages/plantas/Artemisia";
+import AristolochiaAlerta from "./pages/plantas/AristolochiaAlerta";
 import CodigoAutonomiaModal from "./components/CodigoAutonomiaModal";
 import ScrollToTop from "./components/ScrollToTop";
 import MapaDaSoberania from "./pages/MapaDaSoberania";
@@ -259,6 +261,8 @@ const App = () => (
           <Route path="/soberania-organica/plantas-subutilizadas/pariparoba" element={<Pariparoba />} />
           <Route path="/soberania-organica/plantas-subutilizadas/chapeu-de-couro" element={<ChapeuDeCouro />} />
           <Route path="/soberania-organica/plantas-subutilizadas/umburana" element={<Umburana />} />
+          <Route path="/soberania-organica/plantas-subutilizadas/artemisia" element={<Artemisia />} />
+          <Route path="/soberania-organica/plantas-subutilizadas/aristolochia-alerta" element={<AristolochiaAlerta />} />
           <Route path="/conhecimento-perdido/contexto-historico" element={<CpContextoHistorico />} />
           <Route path="/conhecimento-perdido/base-fisiologica" element={<CpBaseFisiologica />} />
           <Route path="/conhecimento-perdido/seguranca-e-limites" element={<CpSegurancaLimites />} />
