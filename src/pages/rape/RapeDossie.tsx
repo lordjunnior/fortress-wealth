@@ -255,7 +255,7 @@ export default function RapeDossie() {
       {/* ── ATO 01: ORIGEM ── */}
       <Section id="ato-1-origem" num="01" titulo="Origem e Função Real" icon={BookOpen}>
         <p>
-          O rapé — <em>nũ-nũ</em>, <em>hapé</em>, <em>rapeh</em> conforme a etnia — é um pó cerimonial composto por
+          O rapé (<em>nũ-nũ</em>, <em>hapé</em>, <em>rapeh</em>, conforme a etnia) é um pó cerimonial composto por
           tabaco amazônico (<em>Nicotiana rustica</em>, espécie distinta do tabaco industrial) finamente moído com
           cinzas alcalinas de cascas vegetais sagradas como a <em>tsunu</em> (<em>Platycyamus regnellii</em>),
           <em> murici</em> ou <em>parika</em>. A combinação não é arbitrária: a alcalinidade das cinzas modula o pH
@@ -264,12 +264,12 @@ export default function RapeDossie() {
         <p>
           Para os Yawanawá, Huni Kuin, Katukina e Nukini, o rapé é instrumento de <strong>centralização de foco</strong>,
           <strong> alinhamento corpo-mente</strong> antes de decisões críticas, <strong>limpeza de campo energético</strong> e
-          <strong> ferramenta diagnóstica</strong> — o pajé observa a reação física como um médico ocidental observa exames.
+          <strong> ferramenta diagnóstica</strong>: o pajé observa a reação física como um médico ocidental observa exames.
           Não é recreativo. Não é místico decorativo. É <strong>tecnologia biocultural</strong> com função operacional.
         </p>
         <p>
           Etnobotânicos como Plotkin (1993) e Schultes &amp; Raffauf (1990) documentaram seu uso ritual há séculos.
-          O homem moderno conheceu a substância pelo Instagram — não pela floresta.
+          O homem moderno conheceu a substância pelo Instagram, não pela floresta.
         </p>
       </Section>
 
@@ -283,7 +283,7 @@ export default function RapeDossie() {
         <p>
           Pior: instrutores sem formação aplicam altas dosagens em iniciantes despreparados, ignoram contraindicações
           cardiovasculares e tratam reações adversas (vertigem, vômito, taquicardia severa) como
-          <em> "limpeza emocional"</em>. O resultado é previsível — internações silenciosas, traumas, e em casos
+          <em> "limpeza emocional"</em>. O resultado é previsível: internações silenciosas, traumas e, em casos
           documentados, óbitos.
         </p>
         <p>
@@ -296,7 +296,7 @@ export default function RapeDossie() {
         </p>
       </Section>
 
-      {/* IMAGEM INTERCALADA — sequestro comercial */}
+      {/* IMAGEM INTERCALADA, vitrine comercial */}
       <section className="relative z-10 px-6 md:px-12 lg:px-20 py-12">
         <div className="max-w-7xl mx-auto">
           <motion.div
@@ -324,11 +324,11 @@ export default function RapeDossie() {
         <ul className="list-none space-y-4 my-6">
           <Bullet
             t="1. Estimulação do trigêmeo nasal"
-            d="A mucosa nasal possui terminações do nervo trigêmeo (V par craniano) que, quando estimuladas, disparam reflexo de centralização postural — explica o efeito de 'ancoragem' relatado universalmente."
+            d="A mucosa nasal possui terminações do nervo trigêmeo (V par craniano) que, quando estimuladas, disparam reflexo de centralização postural, explicando o efeito de 'ancoragem' relatado universalmente."
           />
           <Bullet
             t="2. Ativação do nervo vago (X par craniano)"
-            d="A descarga simpática inicial dispara, em 60-90 segundos, contra-resposta vagal: queda de frequência cardíaca, ativação parassimpática, tônus vagal elevado. É o mesmo eixo modulado por respiração diafragmática profunda — em escala mais intensa."
+            d="A descarga simpática inicial dispara, em 60 a 90 segundos, contra-resposta vagal: queda de frequência cardíaca, ativação parassimpática, tônus vagal elevado. É o mesmo eixo modulado por respiração diafragmática profunda, em escala mais intensa."
           />
           <Bullet
             t="3. Modulação do eixo HPA (Hipotálamo-Hipófise-Adrenal)"
@@ -342,7 +342,7 @@ export default function RapeDossie() {
         </p>
       </Section>
 
-      {/* IMAGEM INTERCALADA — nervo vago */}
+      {/* IMAGEM INTERCALADA, nervo vago */}
       <section className="relative z-10 px-6 md:px-12 lg:px-20 py-12">
         <div className="max-w-7xl mx-auto">
           <motion.div
@@ -373,7 +373,7 @@ export default function RapeDossie() {
           titulo="Preparação"
           itens={[
             "Jejum mínimo de 60 min (estômago vazio reduz náusea reflexa).",
-            "Postura sentada estável — nunca em pé. Risco de síncope vagal nos primeiros usos.",
+            "Postura sentada estável, nunca em pé. Risco de síncope vagal nos primeiros usos.",
             "Hidratação prévia (200-300ml de água sem gás).",
             "Ambiente silencioso, ventilado, sem estímulo visual excessivo.",
           ]}
@@ -384,7 +384,7 @@ export default function RapeDossie() {
           itens={[
             "Iniciante absoluto: dose menor que um grão de arroz por narina.",
             "Aplicação bilateral: narina esquerda primeiro (lado emocional na tradição), depois direita.",
-            "Inalação não é necessária — a absorção é por contato com mucosa nasal.",
+            "Inalação não é necessária. A absorção é por contato com mucosa nasal.",
             "Aguardar 90-180 segundos imobilizado antes de qualquer movimento.",
           ]}
         />
@@ -394,7 +394,7 @@ export default function RapeDossie() {
           itens={[
             "Pressão arterial sistólica > 140 mmHg em qualquer momento.",
             "Frequência cardíaca > 110 bpm sustentada após 5 min.",
-            "Vertigem prolongada além de 10 min — interromper sequência imediatamente.",
+            "Vertigem prolongada além de 10 min: interromper sequência imediatamente.",
             "Qualquer histórico de arritmia, gestação, lactação, transtorno bipolar não-controlado.",
           ]}
         />
