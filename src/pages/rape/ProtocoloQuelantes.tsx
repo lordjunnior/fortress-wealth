@@ -352,44 +352,39 @@ export default function ProtocoloQuelantes() {
 
           <div className="space-y-8">
             {PLANTAS.map((p, i) => (
-              <div key={p.nome}>
-                {p.imagem && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-50px" }}
-                    transition={{ duration: 0.9, ease: APPLE_EASE }}
-                    className="mb-8 rounded-3xl overflow-hidden border border-emerald-900/30 group"
-                  >
-                    <div className="relative">
+              <motion.article
+                key={p.nome}
+                initial={{ opacity: 0, y: 40, filter: "blur(6px)" }}
+                whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.85, delay: (i % 3) * 0.05, ease: APPLE_EASE }}
+                className="relative rounded-3xl border border-emerald-900/30 bg-card/40 backdrop-blur-md overflow-hidden hover:-translate-y-1 hover:border-emerald-700/50 hover:shadow-[0_30px_60px_-20px_rgba(16,185,129,0.35)] transition-all duration-500"
+              >
+                <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-emerald-500/40 to-transparent z-10" />
+
+                <div className={`grid lg:grid-cols-12 gap-0 ${i % 2 === 0 ? "" : "lg:[direction:rtl]"}`}>
+                  {/* IMAGEM REAL DA PLANTA — reconhecimento visual */}
+                  {p.imagem && (
+                    <div className="lg:col-span-5 relative overflow-hidden lg:[direction:ltr] group/img min-h-[280px] md:min-h-[360px] lg:min-h-[480px]">
                       <img
                         src={p.imagem}
-                        alt={p.legenda || p.nome}
-                        className="w-full h-[40vh] md:h-[55vh] object-cover transition-transform duration-1000 group-hover:scale-[1.03]"
+                        alt={`${p.nome} (${p.cientifico}): ${p.legenda || "imagem botânica de referência"}`}
+                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1400ms] group-hover/img:scale-[1.04]"
                         loading="lazy"
                         width={1600}
-                        height={1000}
+                        height={1024}
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/30 to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-background/85 via-background/20 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-background/60" />
                       {p.legenda && (
-                        <p className="absolute bottom-6 left-6 right-6 md:left-10 md:right-10 text-foreground/90 text-sm md:text-base italic max-w-3xl">
+                        <p className="absolute bottom-5 left-5 right-5 md:bottom-7 md:left-7 md:right-7 text-foreground/95 text-xs md:text-sm leading-relaxed italic">
                           {p.legenda}
                         </p>
                       )}
                     </div>
-                  </motion.div>
-                )}
+                  )}
 
-                <motion.article
-                  initial={{ opacity: 0, y: 30, filter: "blur(6px)" }}
-                  whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.7, delay: (i % 4) * 0.05, ease: APPLE_EASE }}
-                  className="relative rounded-3xl border border-emerald-900/30 bg-card/40 backdrop-blur-md overflow-hidden hover:-translate-y-1 hover:border-emerald-700/50 hover:shadow-[0_30px_60px_-20px_rgba(16,185,129,0.35)] transition-all duration-500"
-                >
-                  <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-emerald-500/40 to-transparent" />
-
-                  <div className="p-7 md:p-10 lg:p-12">
+                  {/* DADOS DA FICHA */}
+                  <div className={`${p.imagem ? "lg:col-span-7" : "lg:col-span-12"} p-7 md:p-10 lg:p-12 lg:[direction:ltr]`}>
                     <div className="flex items-start gap-5 mb-8 pb-7 border-b border-border/20">
                       <div className="p-3.5 rounded-2xl bg-emerald-500/10 border border-emerald-500/25 shrink-0">
                         <Leaf className="text-emerald-400" size={26} />
@@ -417,8 +412,8 @@ export default function ProtocoloQuelantes() {
                       <Field label="Sinergia obrigatória" v={p.sinergia} accent />
                     </div>
                   </div>
-                </motion.article>
-              </div>
+                </div>
+              </motion.article>
             ))}
           </div>
         </div>
