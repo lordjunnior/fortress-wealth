@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
   Bitcoin, Sprout, BookOpen, AlertTriangle, Globe, Lock, Heart, Flame,
-  Map, Search, ArrowRight, Compass, Shield, Eye, Zap, Library
+  Map, Search, ArrowRight, Compass, Shield, Eye, Zap, Library, Plane
 } from 'lucide-react';
 import SeoHead from '@/components/SeoHead';
 import BackToHome from '@/components/BackToHome';
@@ -263,6 +263,19 @@ const SILOS: Silo[] = [
       { title: 'Índice do Despertar', href: '/indice-do-despertar' },
       { title: 'Protocolo Inicial', href: '/protocolo-inicial' },
       { title: 'Arsenal Completo', href: '/arsenal' },
+    ],
+  },
+  {
+    title: 'Saída & Infraestrutura',
+    description: 'Bandeiras de mobilidade física: passaportes, residência fiscal, jurisdições amigáveis e infraestrutura de saída.',
+    icon: Plane,
+    accent: 'amber',
+    links: [
+      { title: 'Estratégias de Saída (Hub)', href: '/saida' },
+      { title: 'Gateway PIX → Bitcoin', href: '/saida/gateway' },
+      { title: 'Segundo Passaporte: O Guia', href: '/saida/segundo-passaporte' },
+      { title: 'Infraestrutura', href: '/infraestrutura' },
+      { title: 'Economia Paralela', href: '/economia-paralela' },
     ],
   },
 ];

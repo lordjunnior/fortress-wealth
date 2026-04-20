@@ -179,6 +179,7 @@ export const navGroups: NavGroup[] = [
     items: [
       { label: "Estratégias de Saída", route: "/saida" },
       { label: "Gateway", route: "/saida/gateway" },
+      { label: "Segundo Passaporte", route: "/saida/segundo-passaporte", badge: "Novo" },
       { label: "PIX Cripto", route: "/pix-cripto" },
       { label: "Infraestrutura", route: "/infraestrutura" },
       { label: "Economia Paralela", route: "/economia-paralela" },
