@@ -126,10 +126,10 @@ export default function SoloFertilidade() {
   return (
     <>
       <Helmet>
-        <title>Solo e Fertilidade: Compostagem, Bokashi e Húmus para Soberania Alimentar | Lord Junnior</title>
+        <title>Solo e Fertilidade: Compostagem, Bokashi e Húmus para Autonomia Alimentar | Lord Junnior</title>
         <meta name="description" content="Guia técnico de fertilidade do solo. Composteira doméstica, bokashi, minhocário, teste de pH e substrato ideal. A base que sustenta tudo que cresce na sua produção autônoma." />
         <link rel="canonical" href="https://lordjunnior.com.br/soberania-organica/solo-fertilidade" />
-        <meta property="og:title" content="Solo e Fertilidade: A Base da Soberania Alimentar" />
+        <meta property="og:title" content="Solo e Fertilidade: A Base da Autonomia Alimentar" />
         <meta property="og:description" content="Compostagem, bokashi e húmus de minhoca. Sem solo fértil, nada cresce. Aprenda a construir a base." />
         <meta property="og:url" content="https://lordjunnior.com.br/soberania-organica/solo-fertilidade" />
       </Helmet>
@@ -138,7 +138,7 @@ export default function SoloFertilidade() {
 
       <CinematicHero
         image="/heroes/solo-fertilidade.webp"
-        phase="Fase 03 · Soberania Alimentar"
+        phase="Fase 03 · Autonomia Alimentar"
         title="Solo e Fertilidade"
         subtitle="Solo fértil não é apenas 'terra escura'. Solo fértil é um ecossistema — microrganismos, fungos benéficos, matéria orgânica em decomposição, minerais disponíveis e umidade equilibrada."
         icon={Shovel}
@@ -690,7 +690,7 @@ export default function SoloFertilidade() {
         {/* Footer */}
         <motion.div className="mt-12 text-center" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.5 }}>
           <p className="text-stone-600 text-xs leading-relaxed max-w-md mx-auto">
-            Este módulo faz parte da Fase 03 — Soberania Alimentar do Soberania Orgânica.
+            Este módulo faz parte da Fase 03 — Autonomia Alimentar do Soberania Orgânica.
             Conteúdo baseado em técnicas validadas de fertilidade orgânica e manejo sustentável de solo.
           </p>
         </motion.div>
