@@ -142,6 +142,7 @@ import SegundoPassaporte from "./pages/saida/SegundoPassaporte";
 import ResidenciaFiscal from "./pages/saida/ResidenciaFiscal";
 import JurisdicoesAmigaveis from "./pages/saida/JurisdicoesAmigaveis";
 import PrimeirosSocorrosTaticos from "./pages/soberania-organica/PrimeirosSocorrosTaticos";
+import EDC from "./pages/soberania-organica/EDC";
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -299,6 +300,7 @@ const App = () => (
             <Route path="/saida/residencia-fiscal" element={<ResidenciaFiscal />} />
             <Route path="/saida/jurisdicoes-amigaveis" element={<JurisdicoesAmigaveis />} />
             <Route path="/soberania-organica/primeiros-socorros-taticos" element={<PrimeirosSocorrosTaticos />} />
+            <Route path="/soberania-organica/edc" element={<EDC />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
