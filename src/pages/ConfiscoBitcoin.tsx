@@ -8,7 +8,8 @@ import {
   ChevronRight, Scale, Zap, Bitcoin
 } from "lucide-react";
 import BackToHome from "@/components/BackToHome";
-import NoiseBackground from "@/components/NoiseBackground";
+import FixedThematicBackground from "@/components/backgrounds/FixedThematicBackground";
+import bgConfisco from "@/assets/backgrounds/bg-confisco.jpg";
 import AppSidebar from "@/components/AppSidebar";
 import MobileNav from "@/components/MobileNav";
 import FooterSection from "@/components/FooterSection";
@@ -166,7 +167,7 @@ export default function ConfiscoBitcoin() {
         <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>
       </Helmet>
 
-      <NoiseBackground />
+      <FixedThematicBackground image={bgConfisco} intensity="heavy" />
       <AppSidebar />
       <MobileNav />
 

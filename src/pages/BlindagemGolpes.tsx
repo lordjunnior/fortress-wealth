@@ -14,6 +14,8 @@ import {
 } from 'lucide-react';
 import CinematicHero from '@/components/CinematicHero';
 import ScrollToTop from '@/components/ScrollToTop';
+import FixedThematicBackground from '@/components/backgrounds/FixedThematicBackground';
+import bgBlindagem from '@/assets/backgrounds/bg-blindagem.jpg';
 import qrCodeImage from '@/assets/qrcode-lightning.jpeg';
 import BackToHome from '@/components/BackToHome';
 
@@ -260,7 +262,7 @@ export default function BlindagemGolpes() {
   return (
     <div className="min-h-screen text-stone-100 font-sans selection:bg-red-400/50 relative overflow-hidden"
       style={{ background: BG_DARK }}>
-
+      <FixedThematicBackground image={bgBlindagem} intensity="medium" />
       <Helmet>
         <title>Blindagem contra Golpes — Segurança Operacional Bitcoin | Lord Junnior</title>
         <meta name="description" content="Guia completo de proteção contra golpes em Bitcoin e criptomoedas. Phishing, deepfakes, Ponzi, SIM Swap, rug pulls e engenharia social. Histórico de fraudes e arsenal de defesa." />

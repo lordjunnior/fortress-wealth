@@ -9,7 +9,8 @@ import {
   CircleDot, Package, Wrench, Terminal, Copy, FileCheck, Layers, Zap
 } from 'lucide-react';
 import CinematicHero from '@/components/CinematicHero';
-import NoiseBackground from '@/components/NoiseBackground';
+import FixedThematicBackground from '@/components/backgrounds/FixedThematicBackground';
+import bgMobilidade from '@/assets/backgrounds/bg-mobilidade-chaves.jpg';
 import DonationCTA from '@/components/DonationCTA';
 import BackToHome from '@/components/BackToHome';
 
@@ -261,8 +262,8 @@ export default function MobilidadeDeChaves() {
   return (
     <div className="min-h-screen bg-background text-foreground font-sans selection:bg-primary/30 relative overflow-hidden">
 
-      {/* ─── NOISE BACKGROUND (depth + texture) ─── */}
-      <NoiseBackground />
+      {/* ─── CINEMATIC FIXED BACKGROUND ─── */}
+      <FixedThematicBackground image={bgMobilidade} intensity="medium" />
 
       {/* ─── ADDITIONAL LIGHT BEAMS ─── */}
       <div className="fixed inset-0 pointer-events-none z-[1]">
