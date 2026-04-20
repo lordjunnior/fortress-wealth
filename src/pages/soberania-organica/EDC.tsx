@@ -101,7 +101,7 @@ const TIERS: Tier[] = [
 
 interface Categoria {
   nome: string;
-  icon: typeof Knife;
+  icon: typeof Scissors;
   descricao: string;
   cor: string;
 }
