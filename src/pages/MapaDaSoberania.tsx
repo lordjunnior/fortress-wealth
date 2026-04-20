@@ -406,16 +406,61 @@ export default function MapaDaSoberania() {
           </div>
         </section>
 
-        {/* ═══════════ DIVISOR ═══════════ */}
-        <section className="relative z-10 max-w-5xl mx-auto px-5 md:px-8 py-20">
-          <motion.div {...fade(0)} className="text-center border-t border-stone-800 pt-20">
-            <Compass size={32} className="text-amber-400 mx-auto mb-6 opacity-60" />
-            <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter text-stone-100 mb-4" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
-              Índice Completo
+        {/* ═══════════ DIVISOR DRAMÁTICO ═══════════ */}
+        <section className="relative z-10 overflow-hidden py-32 md:py-40">
+          {/* Watermark gigante de fundo */}
+          <div
+            aria-hidden
+            className="absolute inset-0 flex items-center justify-center pointer-events-none select-none"
+          >
+            <span
+              className="font-black uppercase text-amber-500/[0.04] whitespace-nowrap leading-none"
+              style={{
+                fontFamily: "'Bebas Neue', sans-serif",
+                fontSize: 'clamp(10rem, 28vw, 26rem)',
+                letterSpacing: '-0.04em',
+              }}
+            >
+              ÍNDICE
+            </span>
+          </div>
+
+          {/* Linhas decorativas */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-24 bg-gradient-to-b from-transparent via-amber-500/40 to-transparent" />
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-px h-24 bg-gradient-to-b from-amber-500/40 via-amber-500/10 to-transparent" />
+
+          <motion.div {...fade(0)} className="relative max-w-5xl mx-auto px-5 md:px-8 text-center">
+            <div className="inline-flex items-center gap-3 mb-8">
+              <div className="h-px w-16 bg-gradient-to-r from-transparent to-amber-500/50" />
+              <Compass size={20} className="text-amber-400" />
+              <span className="font-mono text-[10px] tracking-[0.45em] uppercase text-amber-400 font-bold">
+                Atalho Cirúrgico
+              </span>
+              <Compass size={20} className="text-amber-400" />
+              <div className="h-px w-16 bg-gradient-to-l from-transparent to-amber-500/50" />
+            </div>
+
+            <h2
+              className="font-black uppercase tracking-tighter text-stone-100 mb-6 leading-[0.85]"
+              style={{
+                fontFamily: "'Bebas Neue', sans-serif",
+                fontSize: 'clamp(3.5rem, 10vw, 9rem)',
+              }}
+            >
+              Índice <span className="italic font-serif text-amber-400 font-light normal-case tracking-tight">completo</span>
             </h2>
-            <p className="text-stone-400 max-w-xl mx-auto text-base">
-              Todas as {totalPages} páginas, organizadas em {SILOS.length} silos. Para quem já conhece o terreno e quer atalho cirúrgico.
+
+            <p className="text-stone-300 max-w-2xl mx-auto text-base md:text-lg font-light leading-relaxed">
+              Todas as <strong className="text-amber-400 font-semibold">{totalPages} páginas</strong>, organizadas em {SILOS.length} silos estratégicos.
+              <br className="hidden md:block" />
+              Para quem já conhece o terreno e quer atalho cirúrgico.
             </p>
+
+            <div className="flex items-center justify-center gap-2 mt-10">
+              <span className="h-1 w-1 rounded-full bg-amber-500/60" />
+              <span className="h-1 w-12 rounded-full bg-amber-500/40" />
+              <span className="h-1 w-1 rounded-full bg-amber-500/60" />
+            </div>
           </motion.div>
         </section>
 
