@@ -367,6 +367,7 @@ export default function HortaUrbana() {
         {/* ══ BLOCO 05 — ESPÉCIES PARA INICIANTES ══ */}
         <SectionDivider label="Bloco 05 · Primeiras Espécies" />
 
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <ImageCard src={imgEspecies} alt="Hortaliças para iniciantes em varanda urbana">
           <div className="flex items-center gap-2 mb-4">
             <Sprout className="text-emerald-400" size={20} />
@@ -403,9 +404,6 @@ export default function HortaUrbana() {
           </div>
         </ImageCard>
 
-        {/* ══ BLOCO 06 — SUBSTRATO IDEAL ══ */}
-        <SectionDivider label="Bloco 06 · Base Produtiva" />
-
         <ImageCard src={imgSubstrato} alt="Mistura de substrato ideal para horta urbana">
           <div className="flex items-center gap-2 mb-4">
             <Beaker className="text-amber-400" size={20} />
@@ -431,6 +429,7 @@ export default function HortaUrbana() {
             <p className="text-stone-500 text-xs mt-1">Teste: regar → infiltrar rápido → sem poça.</p>
           </div>
         </ImageCard>
+        </div>
 
         {/* ══ BLOCO 07 — IRRIGAÇÃO CORRETA ══ */}
         <SectionDivider label="Bloco 07 · Irrigação" />
