@@ -14,6 +14,11 @@ import FixedThematicBackground from "@/components/backgrounds/FixedThematicBackg
 import PageFloatingToc from "@/components/PageFloatingToc";
 import ScrollToTop from "@/components/ScrollToTop";
 import bgRape from "@/assets/backgrounds/bg-rape-hero.jpg";
+import imgPaje from "@/assets/rape/hero-pajé-kuripe.jpg";
+import imgFrasco from "@/assets/rape/po-frasco-kuripe.jpg";
+import imgVago from "@/assets/rape/nervo-vago-anatomia.jpg";
+import imgCerimonia from "@/assets/rape/cerimonia-noturna.jpg";
+import imgComercial from "@/assets/rape/sequestro-comercial.jpg";
 
 gsap.registerPlugin(ScrollTrigger);
 
