@@ -7,6 +7,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import CinematicHero from '@/components/CinematicHero';
 import ScrollToTop from '@/components/ScrollToTop';
 import MicroCtaResistencia from '@/components/MicroCtaResistencia';
+import RapeHookCard from '@/components/RapeHookCard';
 
 /* ─── GSAP ─── */
 import gsap from 'gsap';
@@ -589,6 +590,14 @@ export default function SabedoriaAncestral() {
         </section>
 
         <MicroCtaResistencia variant="conhecimento" />
+
+        <div className="px-6 md:px-16 lg:px-24">
+          <RapeHookCard
+            variant="ancestral"
+            title="RAPÉ: A Tecnologia Biocultural Sequestrada"
+            hook="Os xamãs amazônicos guardam um pó cerimonial que modula o nervo vago em 90 segundos. A indústria do bem-estar transformou em moda. A medicina oficial fingiu que não existia. O dossiê técnico está aqui."
+          />
+        </div>
 
         {/* ─── CTA FINAL ─── */}
         <div className="relative py-20 px-6 md:px-16 lg:px-24 gsap-reveal">

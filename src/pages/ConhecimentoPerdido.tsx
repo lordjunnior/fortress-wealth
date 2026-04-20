@@ -7,6 +7,7 @@ import { motion } from 'framer-motion';
 import imgHero from '@/assets/cp-hero-conhecimento.jpg';
 import LinhaDoTempoOculta from '@/components/LinhaDoTempoOculta';
 import BackToHome from '@/components/BackToHome';
+import RapeHookCard from '@/components/RapeHookCard';
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -445,6 +446,8 @@ export default function ConhecimentoPerdido() {
             </div>
           </div>
         </motion.section>
+
+        <RapeHookCard variant="perdido" />
 
         {/* ─── Disclaimer ─── */}
         <div className="text-center flex items-center justify-center gap-3">

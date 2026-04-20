@@ -8,6 +8,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import ScrollToTop from '@/components/ScrollToTop';
 import MicroCtaResistencia from '@/components/MicroCtaResistencia';
 import CinematicHero from '@/components/CinematicHero';
+import RapeHookCard from '@/components/RapeHookCard';
 
 import imgMicrobiota from '@/assets/saude-microbiota.jpg';
 import imgCortisol from '@/assets/saude-cortisol.jpg';
@@ -565,6 +566,14 @@ const SaudePreventiva = () => {
       </div>
 
       <MicroCtaResistencia variant="saude" />
+
+      <div className="px-6 md:px-12 lg:px-20 max-w-6xl mx-auto w-full">
+        <RapeHookCard
+          variant="saude"
+          title="RAPÉ: Modulação Vagal Ancestral"
+          hook="Antes da meditação virar app, povos amazônicos já regulavam o eixo HPA com um pó cerimonial. Não é misticismo — é bioquímica do nervo vago documentada em literatura técnica. O dossiê está aqui."
+        />
+      </div>
 
       <ScrollToTop />
 

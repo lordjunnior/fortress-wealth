@@ -133,6 +133,8 @@ export const navGroups: NavGroup[] = [
       { label: "Controle de Vetores", route: "/soberania-organica/controle-vetores" },
       { label: "Sabedoria Ancestral", route: "/soberania-organica/sabedoria-ancestral" },
       { label: "Conhecimento Perdido", route: "/soberania-organica/conhecimento-perdido" },
+      { label: "Rapé (Dossiê)", route: "/soberania-organica/conhecimento-perdido/rape", badge: "Novo" },
+      { label: "Quelantes Brasileiros", route: "/soberania-organica/conhecimento-perdido/protocolo-quelantes-brasileiros", badge: "Novo" },
     ],
   },
   {
