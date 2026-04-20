@@ -251,6 +251,14 @@ export default function ProtocoloInicial() {
               <Coins size={20} />
               <h2 className="text-xl font-black uppercase tracking-[0.15em] font-mono">Estágio 01: O Fim da Ilusão</h2>
             </div>
+            <div className="relative w-full h-[280px] md:h-[380px] rounded-sm overflow-hidden mb-10 group">
+              <img src={imgFimIlusao} alt="Notas de papel-moeda em chamas representando o fim da ilusão fiduciária" loading="lazy" width={1600} height={900} className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1500ms] group-hover:scale-105" />
+              <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, transparent 0%, rgba(7,10,18,0.4) 60%, rgba(7,10,18,0.95) 100%)' }} />
+              <div className="absolute bottom-0 left-0 p-8 md:p-10">
+                <p className="text-red-500 font-mono font-black text-[9px] uppercase tracking-[0.4em] mb-2">Capítulo 01</p>
+                <p className="text-white font-black text-2xl md:text-3xl uppercase italic tracking-tight max-w-xl leading-tight">O dinheiro que você usa morre todos os dias.</p>
+              </div>
+            </div>
             <div className="bg-[#0B0F19]/60 border border-white/5 rounded-sm p-10 md:p-14 space-y-6 text-slate-400 text-base leading-relaxed">
               <p>
                 O Bitcoin não é apenas um "ativo digital". É a primeira vez na história que a humanidade descobriu a <strong className="text-white">escassez absoluta</strong>. Enquanto governos imprimem papel para roubar seu tempo, o Bitcoin garante que seu esforço será preservado em 21 milhões de unidades imutáveis.
@@ -274,6 +282,14 @@ export default function ProtocoloInicial() {
             <div className="flex items-center gap-3 text-red-600 mb-10">
               <Lock size={20} />
               <h2 className="text-xl font-black uppercase tracking-[0.15em] font-mono">Estágio 02: A Escassez Absoluta</h2>
+            </div>
+            <div className="relative w-full h-[280px] md:h-[380px] rounded-sm overflow-hidden mb-10 group">
+              <img src={imgEscassez} alt="Bitcoin físico isolado sob feixe de luz, simbolizando escassez absoluta" loading="lazy" width={1600} height={900} className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1500ms] group-hover:scale-105" />
+              <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, transparent 0%, rgba(7,10,18,0.4) 60%, rgba(7,10,18,0.95) 100%)' }} />
+              <div className="absolute bottom-0 left-0 p-8 md:p-10">
+                <p className="text-amber-500 font-mono font-black text-[9px] uppercase tracking-[0.4em] mb-2">Capítulo 02</p>
+                <p className="text-white font-black text-2xl md:text-3xl uppercase italic tracking-tight max-w-xl leading-tight">21 milhões. Para sempre. Sem exceção.</p>
+              </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* O Mito do Lastro */}
@@ -350,6 +366,15 @@ export default function ProtocoloInicial() {
             </div>
             <p className="text-slate-500 text-sm mb-10 max-w-2xl">Entenda como o Bitcoin se move: de onde sai, para onde vai, e por que suas chaves são a única coisa que importa.</p>
 
+            <div className="relative w-full h-[280px] md:h-[380px] rounded-sm overflow-hidden mb-10 group">
+              <img src={imgMecanica} alt="Placa metálica de backup de seed phrase ao lado de hardware wallet em superfície escura" loading="lazy" width={1600} height={900} className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1500ms] group-hover:scale-105" />
+              <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, transparent 0%, rgba(7,10,18,0.4) 60%, rgba(7,10,18,0.95) 100%)' }} />
+              <div className="absolute bottom-0 left-0 p-8 md:p-10">
+                <p className="text-cyan-400 font-mono font-black text-[9px] uppercase tracking-[0.4em] mb-2">Capítulo 03</p>
+                <p className="text-white font-black text-2xl md:text-3xl uppercase italic tracking-tight max-w-xl leading-tight">Suas chaves são suas moedas.</p>
+              </div>
+            </div>
+
             {/* Fluxo visual: Input → Output → Taxa */}
             <div className="relative mb-8">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
@@ -402,6 +427,15 @@ export default function ProtocoloInicial() {
             <div className="flex items-center gap-3 text-red-600 mb-4">
               <ShieldCheck size={20} />
               <h2 className="text-xl font-black uppercase tracking-[0.15em] font-mono">Estágio 04: A Fortaleza</h2>
+            </div>
+
+            <div className="relative w-full h-[280px] md:h-[380px] rounded-sm overflow-hidden mb-10 group">
+              <img src={imgFortaleza} alt="Cofre blindado entreaberto revelando luz dourada, simbolizando autocustódia" loading="lazy" width={1600} height={900} className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1500ms] group-hover:scale-105" />
+              <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, transparent 0%, rgba(7,10,18,0.4) 60%, rgba(7,10,18,0.95) 100%)' }} />
+              <div className="absolute bottom-0 left-0 p-8 md:p-10">
+                <p className="text-amber-500 font-mono font-black text-[9px] uppercase tracking-[0.4em] mb-2">Capítulo 04</p>
+                <p className="text-white font-black text-2xl md:text-3xl uppercase italic tracking-tight max-w-xl leading-tight">Você é o banco. O cofre é o seu.</p>
+              </div>
             </div>
 
             {/* Intro com borda lateral */}
@@ -461,6 +495,14 @@ export default function ProtocoloInicial() {
             <div className="flex items-center gap-3 text-red-600 mb-10">
               <AlertTriangle size={20} />
               <h2 className="text-xl font-black uppercase tracking-[0.15em] font-mono">Estágio 05: Blindagem Mental</h2>
+            </div>
+            <div className="relative w-full h-[280px] md:h-[380px] rounded-sm overflow-hidden mb-10 group">
+              <img src={imgBlindagemMental} alt="Peça de xadrez sob luz vermelha em tabuleiro escuro, simbolizando blindagem estratégica" loading="lazy" width={1600} height={900} className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1500ms] group-hover:scale-105" />
+              <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, transparent 0%, rgba(7,10,18,0.4) 60%, rgba(7,10,18,0.95) 100%)' }} />
+              <div className="absolute bottom-0 left-0 p-8 md:p-10">
+                <p className="text-red-500 font-mono font-black text-[9px] uppercase tracking-[0.4em] mb-2">Capítulo 05</p>
+                <p className="text-white font-black text-2xl md:text-3xl uppercase italic tracking-tight max-w-xl leading-tight">A última camada é mental.</p>
+              </div>
             </div>
             {/* Mitos com Shimmer */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-8">
