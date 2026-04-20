@@ -251,6 +251,7 @@ export default function HortaUrbana() {
         {/* ══ BLOCO 02 — VASO AUTOIRRIGÁVEL DIY ══ */}
         <SectionDivider label="Bloco 02 · Irrigação Inteligente" />
 
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <ImageCard src={imgVasoAutoirrigavel} alt="Vaso autoirrigável em corte transversal">
           <div className="flex items-center gap-2 mb-4">
             <Droplets className="text-sky-400" size={20} />
@@ -286,9 +287,6 @@ export default function HortaUrbana() {
           </div>
         </ImageCard>
 
-        {/* ══ BLOCO 03 — CULTIVO VERTICAL ══ */}
-        <SectionDivider label="Bloco 03 · Multiplicação de Área" />
-
         <ImageCard src={imgVertical} alt="Horta vertical em varanda urbana">
           <div className="flex items-center gap-2 mb-4">
             <Layers className="text-emerald-400" size={20} />
@@ -319,6 +317,7 @@ export default function HortaUrbana() {
             </InfoCard>
           </div>
         </ImageCard>
+        </div>
 
         {/* ══ BLOCO 04 — CALENDÁRIO DE PLANTIO ══ */}
         <SectionDivider label="Bloco 04 · Planejamento Regional" />
