@@ -18,6 +18,8 @@ import AppSidebar from "@/components/AppSidebar";
 import MobileNav from "@/components/MobileNav";
 import RightSidebar from "@/components/RightSidebar";
 import SovereignDisclaimer from "@/components/SovereignDisclaimer";
+import FixedThematicBackground from "@/components/backgrounds/FixedThematicBackground";
+import bgDolarVirtual from "@/assets/backgrounds/bg-dolar-virtual.jpg";
 
 import heroImg from "@/assets/dolar-virtual-hero.jpg";
 import stablecoinImg from "@/assets/dolar-virtual-stablecoin.jpg";
@@ -262,6 +264,7 @@ export default function DolarVirtual() {
 
   return (
     <div className="min-h-screen text-foreground pt-[62px]">
+      <FixedThematicBackground image={bgDolarVirtual} intensity="medium" />
       <Helmet>
         <title>Como Comprar Dólar Virtual (USDT) | Jade Wallet + AlfredP2P</title>
         <meta name="description" content="Guia prático para comprar USDT (stablecoin dólar) com Jade hardware wallet e AlfredP2P. Setup completo, rede Liquid e segurança. Sem corretora, sem KYC." />

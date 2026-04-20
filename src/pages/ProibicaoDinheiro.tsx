@@ -13,6 +13,8 @@ import {
 } from 'lucide-react';
 import { NAV_ITEMS, LIMITES_INTERNACIONAIS, FERRAMENTAS, CONSEQUENCIAS, FAQ_ITEMS, ESCADA_RESTRICAO, TIMELINE_ITEMS, PL_NAO_FAZ, PL_MAS_FAZ } from '@/lib/proibicaoDinheiroData';
 import RiskBlock from '@/components/RiskBlock';
+import FixedThematicBackground from '@/components/backgrounds/FixedThematicBackground';
+import bgProibicao from '@/assets/backgrounds/bg-proibicao.jpg';
 import heroImg from '@/assets/proibicao-dinheiro-hero.jpg';
 import agendaImg from '@/assets/proibicao-agenda-global.jpg';
 import arsenalImg from '@/assets/proibicao-arsenal.jpg';
@@ -162,6 +164,7 @@ export default function ProibicaoDinheiro() {
 
   return (
     <div className="min-h-screen bg-background text-foreground relative overflow-x-hidden">
+      <FixedThematicBackground image={bgProibicao} intensity="medium" />
       {/* ── SEO ── */}
       <Helmet>
         <title>Governo Limita Dinheiro Vivo no Brasil — PL 3951 | Lord Junnior</title>

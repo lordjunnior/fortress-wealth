@@ -13,6 +13,8 @@ import {
 } from 'lucide-react';
 import CinematicHero from '@/components/CinematicHero';
 import ScrollToTop from '@/components/ScrollToTop';
+import FixedThematicBackground from '@/components/backgrounds/FixedThematicBackground';
+import bgLightning from '@/assets/backgrounds/bg-lightning.jpg';
 import qrCodeImage from '@/assets/qrcode-lightning.jpeg';
 import lightningCircuitImg from '@/assets/lightning-bolt-circuit.jpg';
 import lightningMobileImg from '@/assets/lightning-pagamento-mobile.jpg';
@@ -338,6 +340,7 @@ export default function Lightning() {
 
   return (
     <div className="min-h-screen text-stone-100 font-sans selection:bg-yellow-300/50 relative overflow-hidden" style={{ background: BG_DARK }}>
+      <FixedThematicBackground image={bgLightning} intensity="medium" />
       <Helmet>
         <title>Lightning Network: O Que É, Como Funciona e Como Usar — Guia Definitivo | Lord Junnior</title>
         <meta name="description" content="Guia definitivo da Lightning Network do Bitcoin: o que é, como funciona a layer-2, carteiras non-custodiais (Phoenix, Zeus), casos de uso reais, criadores e como começar hoje. Soberania instantânea." />

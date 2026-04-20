@@ -10,6 +10,8 @@ import {
 import ScrollToTop from '@/components/ScrollToTop';
 import LeadCaptureModal from '@/components/LeadCaptureModal';
 import SovereignDisclaimer from '@/components/SovereignDisclaimer';
+import FixedThematicBackground from '@/components/backgrounds/FixedThematicBackground';
+import bgOffshore from '@/assets/backgrounds/bg-offshore.jpg';
 
 import heroImg from '@/assets/offshore-hero.jpg';
 import cardsImg from '@/assets/offshore-cards.jpg';
@@ -413,6 +415,7 @@ const ContasOffshore = () => {
       <FloatingToc />
 
       <div className="min-h-screen bg-[#050808] text-stone-200">
+        <FixedThematicBackground image={bgOffshore} intensity="medium" />
 
         {/* ═══ FILM GRAIN ═══ */}
         <div className="fixed inset-0 z-50 pointer-events-none opacity-[0.035]">

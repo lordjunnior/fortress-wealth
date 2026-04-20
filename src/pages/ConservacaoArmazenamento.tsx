@@ -6,6 +6,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import CinematicHero from '@/components/CinematicHero';
 import ScrollToTop from '@/components/ScrollToTop';
 import MicroCtaResistencia from '@/components/MicroCtaResistencia';
+import FixedThematicBackground from '@/components/backgrounds/FixedThematicBackground';
+import bgConservacao from '@/assets/backgrounds/bg-conservacao.jpg';
 
 import imgHeroEstoque from '@/assets/conserva-hero-estoque.jpg';
 import imgAlimentosEssenciais from '@/assets/conserva-alimentos-essenciais.jpg';
@@ -533,6 +535,7 @@ export default function ConservacaoArmazenamento() {
         <meta property="og:url" content="https://lordjunnior.com.br/soberania-organica/conservacao-armazenamento" />
       </Helmet>
     <div className="min-h-screen text-stone-100 font-sans selection:bg-amber-300/50 pb-32 relative overflow-hidden" style={{ background: '#050808' }}>
+      <FixedThematicBackground image={bgConservacao} intensity="medium" />
       <CinematicHero
         image="/heroes/conservacao-armazenamento.webp"
         phase="Fase 03 · Soberania Alimentar"

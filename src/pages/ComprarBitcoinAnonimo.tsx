@@ -18,6 +18,8 @@ import RiskBlock from "@/components/RiskBlock";
 import AppSidebar from "@/components/AppSidebar";
 import MobileNav from "@/components/MobileNav";
 import RightSidebar from "@/components/RightSidebar";
+import FixedThematicBackground from "@/components/backgrounds/FixedThematicBackground";
+import bgComprarAnonimo from "@/assets/backgrounds/bg-comprar-anonimo.jpg";
 
 import heroImg from "@/assets/robosats-hero.jpg";
 import anonimatoImg from "@/assets/robosats-anonimato.jpg";
@@ -268,6 +270,7 @@ export default function ComprarBitcoinAnonimo() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <FixedThematicBackground image={bgComprarAnonimo} intensity="medium" />
       <Helmet>
         <title>Seu Primeiro Contato com Bitcoin na Prática por R$10 | Guia RoboSats 2026</title>
         <meta name="description" content="Guia prático para seu primeiro contato com Bitcoin a partir de R$10 usando RoboSats e Lightning Network. Tutorial passo a passo para iniciantes absolutos. Transparência total sobre privacidade e exposição." />

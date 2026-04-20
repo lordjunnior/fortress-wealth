@@ -18,6 +18,8 @@ import { BANDEIRAS, POR_QUE_AGORA, PRIMEIROS_PASSOS, FAQ_ITEMS } from '@/lib/teo
 import ScrollToTop from '@/components/ScrollToTop';
 import BackToHome from '@/components/BackToHome';
 import PageFloatingToc from '@/components/PageFloatingToc';
+import FixedThematicBackground from '@/components/backgrounds/FixedThematicBackground';
+import bgBandeiras from '@/assets/backgrounds/bg-bandeiras.jpg';
 
 import heroImg from '@/assets/bandeiras-hero-flatlay.jpg';
 import palauImg from '@/assets/bandeiras-palau-island.jpg';
@@ -249,6 +251,7 @@ export default function TeoriaDasBandeiras() {
         color: 'hsl(var(--page-ink))',
       }}
     >
+      <FixedThematicBackground image={bgBandeiras} intensity="heavy" />
       <Helmet>
         <title>Teoria das Bandeiras: Estratégia Avançada de Soberania | Lord Junnior</title>
         <meta
