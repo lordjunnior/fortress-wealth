@@ -128,7 +128,6 @@ import BabosaAcemannan from "./pages/BabosaAcemannan";
 import PorOndeComecar from "./pages/PorOndeComecar";
 import OleoRicinoBiohacker from "./pages/OleoRicinoBiohacker";
 import VazamentoDados from "./pages/VazamentoDados";
-import CobreGuacoMelPropolis from "./pages/protocolos/CobreGuacoMelPropolis";
 import PixSemBanco from "./pages/PixSemBanco";
 import ConfiscoBitcoin from "./pages/ConfiscoBitcoin";
 import BitparkCartao from "./pages/BitparkCartao";
@@ -275,7 +274,6 @@ const App = () => (
           <Route path="/soberania-organica/toxicos-ocultos/dependencia-tecnologica" element={<DependenciaTecnologica />} />
           <Route path="/soberania-organica/toxicos-ocultos/toxinas-ambientais" element={<ToxinasAmbientais />} />
           <Route path="/soberania-organica/oleo-ricino-biohacker" element={<OleoRicinoBiohacker />} />
-          <Route path="/soberania-organica/cobre-guaco-mel-propolis-beneficios" element={<CobreGuacoMelPropolis />} />
           <Route path="/soberania-organica/:slug" element={<ModuloAutonomo />} />
           {/* Redirects from old projeto-autonomo URLs */}
           <Route path="/projeto-autonomo" element={<Navigate to="/soberania-organica" replace />} />
