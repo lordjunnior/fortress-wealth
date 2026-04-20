@@ -172,7 +172,7 @@ export default function HortaUrbana() {
         backLabel="Soberania Orgânica"
       />
 
-      <div className="relative z-10 max-w-3xl mx-auto px-5 md:px-6 pt-12 pb-32">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 lg:px-20 pt-16 pb-32 space-y-6">
 
         {/* Intro */}
         <motion.div initial="hidden" animate="visible" variants={fadeUp} custom={0}
