@@ -265,6 +265,19 @@ const SILOS: Silo[] = [
       { title: 'Arsenal Completo', href: '/arsenal' },
     ],
   },
+  {
+    title: 'Saída & Infraestrutura',
+    description: 'Bandeiras de mobilidade física: passaportes, residência fiscal, jurisdições amigáveis e infraestrutura de saída.',
+    icon: Plane,
+    accent: 'amber',
+    links: [
+      { title: 'Estratégias de Saída (Hub)', href: '/saida' },
+      { title: 'Gateway PIX → Bitcoin', href: '/saida/gateway' },
+      { title: 'Segundo Passaporte: O Guia', href: '/saida/segundo-passaporte' },
+      { title: 'Infraestrutura', href: '/infraestrutura' },
+      { title: 'Economia Paralela', href: '/economia-paralela' },
+    ],
+  },
 ];
 
 // Map accent to actual tailwind classes (avoid runtime composition)
