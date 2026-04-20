@@ -14,6 +14,11 @@ import bgFase02 from '@/assets/bg-fase02-autonomia.jpg';
 import bgFase03 from '@/assets/bg-fase03-alimentar.jpg';
 import bgFase04 from '@/assets/bg-fase04-conhecimento.jpg';
 import bgFase05 from '@/assets/bg-fase05-toxicos.jpg';
+import tlBase72 from '@/assets/timeline/fase-base72.jpg';
+import tlAutonomia from '@/assets/timeline/fase-autonomia-biologica.jpg';
+import tlAlimentar from '@/assets/timeline/fase-soberania-alimentar.jpg';
+import tlConhecimento from '@/assets/timeline/fase-conhecimento-perdido.jpg';
+import tlMente from '@/assets/timeline/fase-mente-blindada.jpg';
 import SimboloOculto from '@/components/SimboloOculto';
 import RiskBlock from '@/components/RiskBlock';
 import { PainelTaticoFisiologico } from '@/components/PainelTaticoFisiologico';
@@ -135,11 +140,36 @@ export default function ProjetoAutonomo() {
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
   const phases = [
-    { num: '01', title: 'Base 72', sub: 'Protege o corpo', accent: '#f43f5e', sectionId: 'fase-01', icon: Clock },
-    { num: '02', title: 'Autonomia Biológica', sub: 'Fortalece o corpo', accent: '#10b981', sectionId: 'fase-02', icon: Heart },
-    { num: '03', title: 'Soberania Alimentar', sub: 'Alimenta o corpo', accent: '#f59e0b', sectionId: 'fase-03', icon: Wheat },
-    { num: '04', title: 'Conhecimento Perdido', sub: 'Ensina a entender o corpo', accent: '#14b8a6', sectionId: 'fase-04', icon: BookOpen },
-    { num: '05', title: 'Tóxicos Ocultos', sub: 'Remove dependências invisíveis', accent: '#ef4444', sectionId: 'fase-05', icon: Eye },
+    {
+      num: '01', title: 'Base 72', sub: 'Protege o corpo', accent: '#f43f5e',
+      sectionId: 'fase-01', icon: Clock, image: tlBase72, height: 'tall',
+      desc: 'Autonomia mínima nas primeiras 72 horas. Abrigo, água potável, comunicação resiliente, deslocamento e kit tático essencial para o intervalo crítico de qualquer ruptura urbana.',
+      tag: 'Sobrevivência tática',
+    },
+    {
+      num: '02', title: 'Autonomia Biológica', sub: 'Fortalece o corpo', accent: '#10b981',
+      sectionId: 'fase-02', icon: Heart, image: tlAutonomia, height: 'short',
+      desc: 'Saúde preventiva, primeiros socorros e fitoterapia aplicada como primeira linha de defesa. O corpo deixa de depender de respostas externas para questões cotidianas.',
+      tag: 'Defesa interna',
+    },
+    {
+      num: '03', title: 'Soberania Alimentar', sub: 'Alimenta o corpo', accent: '#f59e0b',
+      sectionId: 'fase-03', icon: Wheat, image: tlAlimentar, height: 'tall',
+      desc: 'Produção própria de alimento. Horta urbana, solo vivo, conservação sem refrigeração, proteína sustentável e domínio da cadeia que alimenta sua família.',
+      tag: 'Produção real',
+    },
+    {
+      num: '04', title: 'Conhecimento Perdido', sub: 'Ensina a entender o corpo', accent: '#14b8a6',
+      sectionId: 'fase-04', icon: BookOpen, image: tlConhecimento, height: 'short',
+      desc: 'Formação bioquímica e botânica. 12 plantas, 5 sistemas fisiológicos, 9 seções técnicas por ficha. Recupera o que três gerações foram condicionadas a esquecer.',
+      tag: 'Formação técnica',
+    },
+    {
+      num: '05', title: 'Mente Blindada', sub: 'Protege a soberania cognitiva', accent: '#a855f7',
+      sectionId: 'fase-05-mente', icon: Brain, image: tlMente, height: 'tall',
+      desc: 'Protocolos contra manipulação informacional, desintoxicação digital, leitura crítica de mídia e fortalecimento da soberania cognitiva. Sem mente livre, nenhuma das fases anteriores se sustenta.',
+      tag: 'Defesa cognitiva',
+    },
   ];
 
   return (
