@@ -229,6 +229,8 @@ const PAGINAS_INDIVIDUAIS = new Set([
   'pariparoba',
   'chapeu-de-couro',
   'umburana',
+  'artemisia',
+  'aristolochia-alerta',
 ]);
 
 export default function PlantasSubutilizadas() {
