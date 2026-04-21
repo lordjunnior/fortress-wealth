@@ -159,6 +159,7 @@ export const navGroups: NavGroup[] = [
       { label: "Defesa Digital Pessoal", route: "/soberania-organica/defesa-digital", badge: "Novo" },
       { label: "Comunicação Segura", route: "/soberania-organica/comunicacao-segura", badge: "Novo" },
       { label: "Autonomia Energética", route: "/soberania-organica/autonomia-energetica", badge: "Novo" },
+      { label: "Refúgio Rural Tático", route: "/soberania-organica/refugio-rural", badge: "Novo" },
       { label: "Protocolos de Apagão", route: "/soberania-organica/protocolos-apagao" },
       { label: "Abrigo Emergência", route: "/soberania-organica/abrigo-emergencia" },
       { label: "Comunicação Offline", route: "/soberania-organica/comunicacao-offline" },
