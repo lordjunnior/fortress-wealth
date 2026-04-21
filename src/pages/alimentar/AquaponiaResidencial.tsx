@@ -301,16 +301,7 @@ export default function AquaponiaResidencial() {
             fetchPriority="high"
             className="w-full h-full object-cover"
           />
-          <div
-            className="absolute inset-0"
-            style={{
-              background: `linear-gradient(180deg,
-                rgba(20,12,6,0.30) 0%,
-                rgba(20,12,6,0.15) 35%,
-                rgba(20,12,6,0.55) 70%,
-                ${C.page} 100%)`,
-            }}
-          />
+          <div className="absolute inset-0" style={{ backgroundColor: 'rgba(20,12,6,0.38)' }} />
         </div>
 
         <div className="relative max-w-[1500px] mx-auto px-6 md:px-16 pb-20 md:pb-32 w-full">
@@ -333,10 +324,10 @@ export default function AquaponiaResidencial() {
               textShadow: '0 4px 24px rgba(0,0,0,0.7)',
             }}
           >
-            Peixe que aduba.<br />
+            Comida viva no quintal,<br />
             <em style={{ fontFamily: '"Playfair Display", serif', fontStyle: 'italic', fontWeight: 700, color: C.waterSoft, textShadow: '0 0 40px hsl(198 52% 38% / 0.6), 0 4px 24px rgba(0,0,0,0.8)' }}>
-              Planta que filtra
-            </em>.
+              sem rótulo nem agrotóxico.
+            </em>
           </motion.h1>
 
           <motion.p
@@ -344,9 +335,11 @@ export default function AquaponiaResidencial() {
             className="text-lg md:text-2xl max-w-3xl leading-relaxed"
             style={{ color: '#e8dcc6', textShadow: '0 2px 12px rgba(0,0,0,0.6)' }}
           >
-            Salada fresca toda semana e proteína a cada seis meses, num sistema fechado de
-            mil litros que cabe no quintal. Para quem nunca plantou nada e quer comer comida
-            verdadeira ainda este ano.
+            Cada alface de supermercado carrega o resíduo de seis a doze agrotóxicos
+            diferentes, autorizados pela mesma lógica regulatória que aprova o remédio
+            que vai tratar a doença causada por eles. Aquaponia é a saída: peixe que
+            aduba, planta que filtra, ciclo fechado dentro de casa, comida real que
+            nasce sem pedir licença a ninguém.
           </motion.p>
 
           <motion.div
@@ -366,7 +359,7 @@ export default function AquaponiaResidencial() {
           <motion.div {...fade()} className="grid md:grid-cols-12 gap-12 items-center">
             <div className="md:col-span-7">
               <p className="font-mono text-xs tracking-[0.4em] uppercase mb-8" style={{ color: C.water }}>
-                A pergunta que muda tudo
+                Manifesto · Comida sem custódia
               </p>
               <h2
                 className="font-black leading-[0.95] mb-10"
@@ -377,18 +370,27 @@ export default function AquaponiaResidencial() {
                   color: C.ink,
                 }}
               >
-                Você compra alface{' '}
+                Você terceiriza{' '}
                 <em style={{ fontFamily: '"Playfair Display", serif', fontWeight: 700, fontStyle: 'italic', color: C.water }}>
-                  toda semana
+                  a comida da sua família
                 </em>
-                . E se ela nascesse sozinha, ali no quintal?
+                {' '}para quem te quer doente.
               </h2>
-              <p className="text-xl md:text-2xl leading-relaxed" style={{ color: C.body }}>
-                Aquaponia é a única forma comprovada de produzir folha verde, fruto e
-                proteína animal, em ciclo fechado, sem terra, sem adubo comprado, sem
-                agrotóxico, em qualquer quintal urbano. Foi desenvolvida em monastérios
-                medievais, escalada pela NASA, e hoje qualquer iniciante monta a versão
-                familiar em um fim de semana.
+              <p className="text-xl md:text-2xl leading-relaxed mb-6" style={{ color: C.body }}>
+                O Brasil é o maior consumidor de agrotóxico do planeta. Mais de quinhentos
+                ingredientes ativos liberados, vários proibidos na Europa, todos passando
+                diariamente pela alface, pelo tomate, pelo morango, pela mamadeira do
+                bebê. A mesma indústria química que vende o veneno na lavoura vende a
+                quimioterapia no hospital. Mesma matriz acionária, lucro nas duas pontas.
+              </p>
+              <p className="text-xl md:text-2xl leading-relaxed mb-6" style={{ color: C.body }}>
+                Aquaponia é o equivalente ao Bitcoin minerado em casa: você produz a sua
+                própria comida, no seu próprio nó, sem intermediário, sem rótulo, sem
+                pacto com o cartel químico-farmacêutico. Mil litros de água, três metros
+                quadrados, salada toda semana, proteína a cada semestre.
+              </p>
+              <p className="text-xl md:text-2xl leading-relaxed font-semibold" style={{ color: C.ink }}>
+                Quem planta o que come deixa de financiar quem o adoece.
               </p>
             </div>
             <div className="md:col-span-5">

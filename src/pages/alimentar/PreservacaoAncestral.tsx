@@ -303,16 +303,7 @@ export default function PreservacaoAncestral() {
             fetchPriority="high"
             className="w-full h-full object-cover"
           />
-          <div
-            className="absolute inset-0"
-            style={{
-              background: `linear-gradient(180deg,
-                rgba(20,12,6,0.30) 0%,
-                rgba(20,12,6,0.15) 35%,
-                rgba(20,12,6,0.55) 70%,
-                ${C.page} 100%)`,
-            }}
-          />
+          <div className="absolute inset-0" style={{ backgroundColor: 'rgba(20,12,6,0.38)' }} />
         </div>
 
         <div className="relative max-w-[1500px] mx-auto px-6 md:px-16 pb-20 md:pb-32 w-full">
@@ -335,10 +326,10 @@ export default function PreservacaoAncestral() {
               textShadow: '0 4px 24px rgba(0,0,0,0.7)',
             }}
           >
-            Comida que dura<br />
+            Sua bisavó conservava<br />
             <em style={{ fontFamily: '"Playfair Display", serif', fontStyle: 'italic', fontWeight: 700, color: C.emberSoft, textShadow: '0 0 40px hsl(18 62% 42% / 0.6), 0 4px 24px rgba(0,0,0,0.8)' }}>
-              sem eletricidade
-            </em>.
+              sem rótulo e sem indústria.
+            </em>
           </motion.h1>
 
           <motion.p
@@ -346,9 +337,10 @@ export default function PreservacaoAncestral() {
             className="text-lg md:text-2xl max-w-3xl leading-relaxed"
             style={{ color: '#e8dcc6', textShadow: '0 2px 12px rgba(0,0,0,0.6)' }}
           >
-            Oito métodos ancestrais que a humanidade usou por dez mil anos antes da
-            geladeira existir. Sua despensa autônoma da rede elétrica, da safra ao apagão,
-            para quem nunca conservou nada e quer comida real.
+            Sal, fumaça, sol, salmoura, mel, banha, cinza, gelo de inverno. Oito métodos
+            que sustentaram a humanidade por dez mil anos antes de existir geladeira,
+            código de barras ou conservante químico. Reconquistar essa técnica é tirar
+            a despensa da custódia da indústria alimentícia.
           </motion.p>
 
           <motion.div
@@ -368,7 +360,7 @@ export default function PreservacaoAncestral() {
           <motion.div {...fade()} className="grid md:grid-cols-12 gap-12 items-center">
             <div className="md:col-span-7">
               <p className="font-mono text-xs tracking-[0.4em] uppercase mb-8" style={{ color: C.ember }}>
-                A pergunta que muda tudo
+                Manifesto · Despensa fora do sistema
               </p>
               <h2
                 className="font-black leading-[0.95] mb-10"
@@ -379,18 +371,27 @@ export default function PreservacaoAncestral() {
                   color: C.ink,
                 }}
               >
-                Quanto da sua comida{' '}
+                Conservante industrial{' '}
                 <em style={{ fontFamily: '"Playfair Display", serif', fontWeight: 700, fontStyle: 'italic', color: C.ember }}>
-                  morre se a luz cair
+                  preserva o lucro,
                 </em>
-                {' '}por três dias?
+                {' '}não a sua saúde.
               </h2>
-              <p className="text-xl md:text-2xl leading-relaxed" style={{ color: C.body }}>
-                Para a maioria das casas urbanas, a resposta é assustadora: praticamente
-                tudo. Geladeira, freezer, despensa moderna, são totalmente dependentes da
-                rede elétrica e de cadeia de frio constante. Os métodos ancestrais de
-                preservação resolvem isso há dez mil anos, e voltam a fazer sentido total
-                no momento em que a infraestrutura mostra fragilidade.
+              <p className="text-xl md:text-2xl leading-relaxed mb-6" style={{ color: C.body }}>
+                Nitrito industrial, BHA, BHT, glutamato, sorbato, benzoato. A lista de
+                aditivos do salame de supermercado é maior que a receita inteira de um
+                presunto curado em casa. Cada nome impronunciável é um passo a mais na
+                escada que termina na bula do remédio. Indústria alimentícia formula a
+                doença, indústria farmacêutica vende o tratamento contínuo.
+              </p>
+              <p className="text-xl md:text-2xl leading-relaxed mb-6" style={{ color: C.body }}>
+                Sal, fumaça, sol, mel e tempo conservam há milênios sem nenhum desses
+                venenos. Curar a própria carne, secar a própria fruta, salgar o próprio
+                peixe é o gesto mais antigo de auto-custódia: a despensa que ninguém
+                fabrica, ninguém recolhe, ninguém pode envenenar pelas suas costas.
+              </p>
+              <p className="text-xl md:text-2xl leading-relaxed font-semibold" style={{ color: C.ink }}>
+                Comida ancestral é remédio que sua bisavó já sabia preparar.
               </p>
             </div>
             <div className="md:col-span-5">

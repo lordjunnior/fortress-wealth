@@ -268,16 +268,7 @@ export default function SementesCrioulas() {
             fetchPriority="high"
             className="w-full h-full object-cover"
           />
-          <div
-            className="absolute inset-0"
-            style={{
-              background: `linear-gradient(180deg,
-                rgba(20,12,6,0.30) 0%,
-                rgba(20,12,6,0.15) 35%,
-                rgba(20,12,6,0.55) 70%,
-                ${C.page} 100%)`,
-            }}
-          />
+          <div className="absolute inset-0" style={{ backgroundColor: 'rgba(20,12,6,0.38)' }} />
         </div>
 
         <div className="relative max-w-[1500px] mx-auto px-6 md:px-16 pb-20 md:pb-32 w-full">
@@ -300,11 +291,10 @@ export default function SementesCrioulas() {
               textShadow: '0 4px 24px rgba(0,0,0,0.7)',
             }}
           >
-            Semente<br />
+            Quem guarda a semente,<br />
             <em style={{ fontFamily: '"Playfair Display", serif', fontStyle: 'italic', fontWeight: 700, color: C.earthSoft, textShadow: '0 0 40px hsl(22 52% 38% / 0.6), 0 4px 24px rgba(0,0,0,0.8)' }}>
-              que volta
-            </em><br />
-            todo ano.
+              guarda a próxima safra
+            </em>{' '}da família.
           </motion.h1>
 
           <motion.p
@@ -312,8 +302,10 @@ export default function SementesCrioulas() {
             className="text-lg md:text-2xl max-w-3xl leading-relaxed"
             style={{ color: '#e8dcc6', textShadow: '0 2px 12px rgba(0,0,0,0.6)' }}
           >
-            Quem guarda a própria semente nunca mais depende de balcão de agropecuário.
-            Banco pessoal, troca entre vizinhos, soberania alimentar que atravessa gerações.
+            Semente híbrida é assinatura de aluguel da sua comida. Você compra, planta,
+            colhe, e a planta nasce estéril, te obrigando a comprar tudo de novo no ano
+            seguinte. Crioula é seed phrase comestível: gera filha igual à mãe, atravessa
+            gerações, não pede permissão para germinar.
           </motion.p>
 
           <motion.div
@@ -333,7 +325,7 @@ export default function SementesCrioulas() {
           <motion.div {...fade()} className="grid md:grid-cols-12 gap-12 items-center">
             <div className="md:col-span-7">
               <p className="font-mono text-xs tracking-[0.4em] uppercase mb-8" style={{ color: C.earth }}>
-                A pergunta que ninguém quer fazer
+                Manifesto · Auto-custódia genética
               </p>
               <h2
                 className="font-black leading-[0.95] mb-10"
@@ -344,17 +336,25 @@ export default function SementesCrioulas() {
                   color: C.ink,
                 }}
               >
-                Se o agropecuário{' '}
+                Quatro empresas controlam{' '}
                 <em style={{ fontFamily: '"Playfair Display", serif', fontWeight: 700, fontStyle: 'italic', color: C.earth }}>
-                  fechasse amanhã
+                  o que o mundo come.
                 </em>
-                , de onde viria sua próxima safra?
               </h2>
-              <p className="text-xl md:text-2xl leading-relaxed" style={{ color: C.body }}>
-                Para a maioria absoluta dos agricultores e quintaleiros modernos, a resposta honesta é: não viria.
-                Toda safra é dependente de comprar semente nova, de uma cadeia industrial controlada por meia
-                dúzia de empresas globais. O banco pessoal de crioulas resolve isso silenciosamente, com a mesma
-                técnica que sustentou a humanidade por dez mil anos.
+              <p className="text-xl md:text-2xl leading-relaxed mb-6" style={{ color: C.body }}>
+                Bayer, Corteva, Syngenta e BASF detêm mais de 60% do mercado global de
+                sementes. Vendem o pacote completo: semente híbrida que não regenera,
+                fertilizante que ela exige, agrotóxico que mata o mato sem matar a planta
+                geneticamente blindada para resistir. Você compra a comida, compra o veneno,
+                compra a doença, e depois compra o remédio.
+              </p>
+              <p className="text-xl md:text-2xl leading-relaxed mb-6" style={{ color: C.body }}>
+                Crioula quebra esse ciclo. É a versão biológica da auto-custódia: planta
+                que produz a própria descendência, alimento que alimenta sem envenenar,
+                independência que se replica sozinha a cada estação.
+              </p>
+              <p className="text-xl md:text-2xl leading-relaxed font-semibold" style={{ color: C.ink }}>
+                Toda semente guardada é um voto silencioso contra o cartel das primas.
               </p>
             </div>
             <div className="md:col-span-5">
