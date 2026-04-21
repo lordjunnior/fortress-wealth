@@ -301,16 +301,8 @@ export default function GestaoAguaMicro() {
             fetchPriority="high"
             className="w-full h-full object-cover"
           />
-          <div
-            className="absolute inset-0"
-            style={{
-              background: `linear-gradient(180deg,
-                rgba(8,16,24,0.32) 0%,
-                rgba(8,16,24,0.18) 35%,
-                rgba(8,16,24,0.55) 70%,
-                ${C.page} 100%)`,
-            }}
-          />
+          {/* Apenas darken plano para legibilidade. Sem fade artístico. */}
+          <div className="absolute inset-0" style={{ backgroundColor: 'rgba(8,16,24,0.38)' }} />
         </div>
 
         <div className="relative max-w-[1500px] mx-auto px-6 md:px-16 pb-20 md:pb-32 w-full">
