@@ -140,6 +140,7 @@ const SILOS: Silo[] = [
     links: [
       { title: 'Autocustódia de Elite', href: '/autocustodia' },
       { title: 'Hardware Wallet DIY', href: '/autocustodia/hardware-wallet-diy-bitcoin' },
+      { title: 'Seed Phrase em Aço', href: '/autocustodia/seed-phrase-em-aco' },
       { title: 'Mobilidade de Chaves', href: '/mobilidade-de-chaves' },
       { title: 'Blindagem contra Golpes', href: '/blindagem-golpes' },
       { title: 'Gerador de Entropia', href: '/ferramentas' },
