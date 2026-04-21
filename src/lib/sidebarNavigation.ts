@@ -130,6 +130,7 @@ export const navGroups: NavGroup[] = [
       { label: "Solo & Fertilidade", route: "/soberania-organica/solo-fertilidade" },
       { label: "Produção Pequenos Espaços", route: "/soberania-organica/producao-pequenos-espacos" },
       { label: "Proteína Sustentável", route: "/soberania-organica/proteina-sustentavel" },
+      { label: "Sementes Crioulas", route: "/soberania-organica/sementes-crioulas", badge: "Novo" },
       { label: "Conservação", route: "/soberania-organica/conservacao-armazenamento" },
       { label: "Primeiros Socorros", route: "/soberania-organica/primeiros-socorros" },
       { label: "Primeiros Socorros Táticos", route: "/soberania-organica/primeiros-socorros-taticos", badge: "Novo" },
