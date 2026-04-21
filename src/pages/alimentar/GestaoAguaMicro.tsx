@@ -325,10 +325,10 @@ export default function GestaoAguaMicro() {
               textShadow: '0 4px 24px rgba(0,0,0,0.7)',
             }}
           >
-            Água que cai do céu<br />
+            Água da chuva é sua.<br />
             <em style={{ fontFamily: '"Playfair Display", serif', fontStyle: 'italic', fontWeight: 700, color: C.oceanSoft, textShadow: '0 0 40px hsl(198 70% 38% / 0.6), 0 4px 24px rgba(0,0,0,0.8)' }}>
-              é sua, não da concessionária
-            </em>.
+              A concessionária só cobra
+            </em>{' '}o que você esquece de captar.
           </motion.h1>
 
           <motion.p
@@ -336,9 +336,10 @@ export default function GestaoAguaMicro() {
             className="text-lg md:text-2xl max-w-3xl leading-relaxed"
             style={{ color: '#d9e6f0', textShadow: '0 2px 12px rgba(0,0,0,0.6)' }}
           >
-            Captação de chuva, filtro biológico, reuso de águas cinzas e desinfecção solar.
-            Sistema completo para reduzir 50% a 90% da dependência da rede e operar 90 dias
-            sem energia. Para quem vive na cidade hoje e pensa no campo amanhã.
+            A mesma lógica do Bitcoin aplicada ao recurso mais essencial: tirar da custódia,
+            guardar em casa, depender de ninguém. Captação de chuva, filtro biológico, reuso
+            de cinzas e desinfecção solar. Reduz 50 a 90% da conta, opera 90 dias sem energia,
+            sobrevive a qualquer racionamento decretado por concessionária ou Estado.
           </motion.p>
 
           <motion.div
@@ -358,7 +359,7 @@ export default function GestaoAguaMicro() {
           <motion.div {...fade()} className="grid md:grid-cols-12 gap-12 items-center">
             <div className="md:col-span-7">
               <p className="font-mono text-xs tracking-[0.4em] uppercase mb-8" style={{ color: C.ocean }}>
-                A pergunta que muda tudo
+                Manifesto · Auto-custódia hídrica
               </p>
               <h2
                 className="font-black leading-[0.95] mb-10"
@@ -369,17 +370,24 @@ export default function GestaoAguaMicro() {
                   color: C.ink,
                 }}
               >
-                Quantos dias sua família{' '}
+                Quem controla sua torneira{' '}
                 <em style={{ fontFamily: '"Playfair Display", serif', fontWeight: 700, fontStyle: 'italic', color: C.ocean }}>
-                  sobrevive sem água
+                  controla sua família.
                 </em>
-                {' '}da rede?
               </h2>
-              <p className="text-xl md:text-2xl leading-relaxed" style={{ color: C.body }}>
-                Para a maioria das casas urbanas a resposta é dois dias, no máximo três.
-                Reservatório da caixa d\'água é o único colchão entre você e a sede absoluta.
-                A captação de chuva, o filtro biológico e o reuso de cinzas resolvem isso
-                de forma estrutural — e a obra cabe em um fim de semana.
+              <p className="text-xl md:text-2xl leading-relaxed mb-6" style={{ color: C.body }}>
+                Caixa d\'água da maioria das casas urbanas dura dois dias. Quarenta e oito
+                horas é todo o colchão entre você e a sede absoluta. Concessionária faz
+                manutenção sem aviso, racionamento vira política pública, escassez vira
+                preço, e o cidadão obediente espera com balde na mão.
+              </p>
+              <p className="text-xl md:text-2xl leading-relaxed mb-6" style={{ color: C.body }}>
+                Captar chuva é o equivalente hídrico de tirar Bitcoin da exchange. Você
+                deixa de pedir permissão para beber, deixa de pagar pela mesma água que
+                cai de graça do céu, e blinda a família contra qualquer interrupção.
+              </p>
+              <p className="text-xl md:text-2xl leading-relaxed font-semibold" style={{ color: C.ink }}>
+                Soberania não é luxo: é não depender de quem pode te cortar.
               </p>
             </div>
             <div className="md:col-span-5">

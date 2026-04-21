@@ -268,16 +268,7 @@ export default function ConservasFermentadas() {
             fetchPriority="high"
             className="w-full h-full object-cover"
           />
-          <div
-            className="absolute inset-0"
-            style={{
-              background: `linear-gradient(180deg,
-                rgba(20,12,8,0.30) 0%,
-                rgba(20,12,8,0.15) 35%,
-                rgba(20,12,8,0.55) 70%,
-                ${C.page} 100%)`,
-            }}
-          />
+          <div className="absolute inset-0" style={{ backgroundColor: 'rgba(20,12,8,0.38)' }} />
         </div>
 
         <div className="relative max-w-[1500px] mx-auto px-6 md:px-16 pb-20 md:pb-32 w-full">
@@ -300,11 +291,10 @@ export default function ConservasFermentadas() {
               textShadow: '0 4px 24px rgba(0,0,0,0.7)',
             }}
           >
-            Despensa<br />
+            A bactéria certa<br />
             <em style={{ fontFamily: '"Playfair Display", serif', fontStyle: 'italic', fontWeight: 700, color: C.copperSoft, textShadow: '0 0 40px hsl(20 60% 46% / 0.6), 0 4px 24px rgba(0,0,0,0.8)' }}>
-              que respira
-            </em><br />
-            sem geladeira.
+              te livra do remédio
+            </em>{' '}da próxima década.
           </motion.h1>
 
           <motion.p
@@ -312,8 +302,10 @@ export default function ConservasFermentadas() {
             className="text-lg md:text-2xl max-w-3xl leading-relaxed"
             style={{ color: '#e8dcc6', textShadow: '0 2px 12px rgba(0,0,0,0.6)' }}
           >
-            Fermentar é a tecnologia mais antiga de soberania alimentar. Comida viva,
-            estável por meses, independente de energia, supermercado ou cadeia logística.
+            Toda doença crônica moderna passa pelo intestino arrasado por ultraprocessado
+            e antibiótico. Fermentado vivo é o oposto: microbioma reconstruído, imunidade
+            restaurada, comida que cura sem rótulo, sem indústria, sem prescrição.
+            Soberania alimentar e biológica no mesmo pote de vidro.
           </motion.p>
 
           <motion.div
@@ -333,7 +325,7 @@ export default function ConservasFermentadas() {
           <motion.div {...fade()} className="grid md:grid-cols-12 gap-12 items-center">
             <div className="md:col-span-7">
               <p className="font-mono text-xs tracking-[0.4em] uppercase mb-8" style={{ color: C.copper }}>
-                A pergunta que ninguém quer fazer
+                Manifesto · Microbioma é soberania
               </p>
               <h2
                 className="font-black leading-[0.95] mb-10"
@@ -344,16 +336,26 @@ export default function ConservasFermentadas() {
                   color: C.ink,
                 }}
               >
-                Se faltar luz por{' '}
+                Probiótico de farmácia{' '}
                 <em style={{ fontFamily: '"Playfair Display", serif', fontWeight: 700, fontStyle: 'italic', color: C.copper }}>
-                  uma semana
+                  custa caro porque é remédio.
                 </em>
-                , o que sobra dentro da sua casa para comer?
               </h2>
-              <p className="text-xl md:text-2xl leading-relaxed" style={{ color: C.body }}>
-                Para a maioria absoluta das famílias urbanas, a resposta honesta é: três dias, talvez quatro.
-                A geladeira esquenta, o congelador descongela, a comida apodrece. A despensa fermentada
-                resolve isso silenciosamente, sem alarde tecnológico, com técnica que sua bisavó dominava.
+              <p className="text-xl md:text-2xl leading-relaxed mb-6" style={{ color: C.body }}>
+                A indústria farmacêutica vende cápsula de Lactobacillus a cento e cinquenta
+                reais o frasco. A indústria alimentícia destrói a flora intestinal com
+                emulsificante, conservante e açúcar refinado, garantindo que você precise
+                comprar a cápsula. As duas primas trabalham juntas, e o consumidor paga
+                duas vezes pelo mesmo problema.
+              </p>
+              <p className="text-xl md:text-2xl leading-relaxed mb-6" style={{ color: C.body }}>
+                Um pote de chucrute fermentado em casa contém mais cepas vivas, em
+                concentração maior, do que qualquer suplemento de prateleira. Custa o preço
+                de um repolho. Restaura microbioma, blinda imunidade, regula humor e
+                inflamação sistêmica. É comida e medicina no mesmo gesto.
+              </p>
+              <p className="text-xl md:text-2xl leading-relaxed font-semibold" style={{ color: C.ink }}>
+                Fermentar em casa é tirar o intestino da custódia da indústria.
               </p>
             </div>
             <div className="md:col-span-5">
