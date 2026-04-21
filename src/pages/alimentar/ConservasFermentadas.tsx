@@ -249,9 +249,11 @@ export default function ConservasFermentadas() {
   return (
     <div className="min-h-screen" style={{ backgroundColor: C.page }}>
       <SeoHead
-        title="Conservas Fermentadas: Despensa Viva | Autonomia Alimentar"
-        description="Manual completo de fermentação lacto: chucrute, kimchi, kombucha e picles que duram meses sem energia. Soberania alimentar real, técnica milenar."
-        canonical="https://soberania.app/soberania-organica/conservas-fermentadas"
+        custom={{
+          title: "Conservas Fermentadas: Despensa Viva | Autonomia Alimentar",
+          description: "Manual completo de fermentação lacto: chucrute, kimchi, kombucha e picles que duram meses sem energia. Soberania alimentar real, técnica milenar.",
+          canonical: "https://soberania.app/soberania-organica/conservas-fermentadas",
+        }}
       />
       <BackToHome />
 
