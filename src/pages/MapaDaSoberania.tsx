@@ -226,6 +226,7 @@ const SILOS: Silo[] = [
       { title: 'Produção em Pequenos Espaços', href: '/soberania-organica/producao-pequenos-espacos' },
       { title: 'Proteína Sustentável', href: '/soberania-organica/proteina-sustentavel' },
       { title: 'Sementes Crioulas: Banco Pessoal', href: '/soberania-organica/sementes-crioulas' },
+      { title: 'Conservas Fermentadas: Despensa Viva', href: '/soberania-organica/conservas-fermentadas' },
     ],
   },
   {
