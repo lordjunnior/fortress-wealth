@@ -66,6 +66,7 @@ export const navGroups: NavGroup[] = [
       { label: "Hardware Wallet DIY", route: "/autocustodia/hardware-wallet-diy-bitcoin" },
       { label: "Seed Phrase em Aço", route: "/autocustodia/seed-phrase-em-aco", badge: "Novo" },
       { label: "CoinJoin & Privacidade", route: "/autocustodia/coinjoin-privacidade", badge: "Novo" },
+      { label: "Herança Bitcoin", route: "/autocustodia/heranca-bitcoin", badge: "Novo" },
       { label: "Krux + Passphrase", route: "/autocustodia/krux-passphrase-bluewallet", badge: "Novo" },
       { label: "Multisig Bitcoin", route: "/multisig-bitcoin", badge: "Novo" },
       { label: "Comprar BTC Anônimo", route: "/comprar-bitcoin-anonimo" },

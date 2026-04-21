@@ -145,6 +145,7 @@ import SementesCrioulas from "./pages/alimentar/SementesCrioulas";
 import ConservasFermentadas from "./pages/alimentar/ConservasFermentadas";
 import SeedPhraseAco from "./pages/autocustodia/SeedPhraseAco";
 import CoinjoinPrivacidade from "./pages/autocustodia/CoinjoinPrivacidade";
+import HerancaBitcoin from "./pages/autocustodia/HerancaBitcoin";
 import PrimeirosSocorrosTaticos from "./pages/soberania-organica/PrimeirosSocorrosTaticos";
 import EDC from "./pages/soberania-organica/EDC";
 import ProtocoloFogo from "./pages/soberania-organica/ProtocoloFogo";
@@ -186,6 +187,7 @@ const App = () => (
           <Route path="/autocustodia/hardware-wallet-diy-bitcoin" element={<HardwareWalletDiy />} />
           <Route path="/autocustodia/seed-phrase-em-aco" element={<SeedPhraseAco />} />
           <Route path="/autocustodia/coinjoin-privacidade" element={<CoinjoinPrivacidade />} />
+          <Route path="/autocustodia/heranca-bitcoin" element={<HerancaBitcoin />} />
           <Route path="/autocustodia/krux-passphrase-bluewallet" element={<KruxPassphraseBluewallet />} />
           <Route path="/economia-paralela" element={<EconomiaParalela />} />
           <Route path="/infraestrutura" element={<Infraestrutura />} />
