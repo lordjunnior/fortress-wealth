@@ -205,6 +205,7 @@ const SILOS: Silo[] = [
       { title: 'Navegação Primária', href: '/soberania-organica/navegacao-primaria' },
       { title: 'Conservação e Armazenamento', href: '/soberania-organica/conservacao-armazenamento' },
       { title: 'Conservação de Alimentos: Fermentação, Cura, Conservas', href: '/soberania-organica/conservacao-alimentos' },
+      { title: 'Defesa Pessoal Básica: Postura, Distância, Fuga', href: '/soberania-organica/defesa-pessoal' },
     ],
   },
   {
