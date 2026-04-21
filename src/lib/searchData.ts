@@ -10,6 +10,10 @@ export interface SearchEntry {
 export const SEARCH_ENTRIES: SearchEntry[] = [
   // Bitcoin fundamentals
   { title: "O que é Bitcoin?", description: "Fundamento zero — entenda o protocolo descentralizado", path: "/o-que-e-bitcoin", tags: ["bitcoin", "iniciante", "protocolo", "blockchain"], category: "Bitcoin" },
+  // Autonomia Alimentar
+  { title: "Sementes Crioulas", description: "Banco de sementes caseiro: extração, secagem, armazenamento e troca", path: "/soberania-organica/sementes-crioulas", tags: ["sementes", "crioulas", "alimentar", "autonomia", "horta", "banco de sementes", "germinação"], category: "Autonomia Alimentar" },
+  { title: "Conservas Fermentadas", description: "Preservação ancestral sem eletricidade: fermentação, salga e cura", path: "/soberania-organica/conservas-fermentadas", tags: ["conservas", "fermentação", "alimentar", "chucrute", "kimchi", "preservação", "salga"], category: "Autonomia Alimentar" },
+  { title: "Aquaponia Residencial", description: "Produção de proteína e vegetais em ciclo fechado em casa", path: "/soberania-organica/aquaponia-residencial", tags: ["aquaponia", "alimentar", "tilápia", "peixes", "vegetais", "ciclo fechado", "autonomia", "proteína"], category: "Autonomia Alimentar" },
   { title: "Noções de Bitcoin", description: "Conceitos essenciais para começar", path: "/nocoes-bitcoin", tags: ["bitcoin", "iniciante", "conceitos"], category: "Bitcoin" },
   { title: "Chaves Privadas", description: "Entenda chaves, endereços e propriedade digital", path: "/chaves", tags: ["chaves", "privadas", "segurança", "endereço"], category: "Bitcoin" },
   { title: "Transações Bitcoin", description: "Como funcionam as transações na rede", path: "/transacoes", tags: ["transações", "bitcoin", "rede", "confirmação"], category: "Bitcoin" },
