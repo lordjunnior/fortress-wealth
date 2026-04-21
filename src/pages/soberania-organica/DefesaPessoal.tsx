@@ -223,44 +223,46 @@ const DefesaPessoal = () => {
   const [openIdx, setOpenIdx] = useState<number | null>(null);
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@graph': [
-      {
-        '@type': 'Article',
-        headline: 'Defesa Pessoal Básica · Postura, Distância, Alvos, Fuga e Contexto Urbano Brasileiro',
-        description: 'Manual completo de defesa pessoal para o cenário brasileiro: postura de combate, gestão de distância, alvos anatômicos decisivos, defesa contra agressor armado, fuga tática, defesa para mulheres e contexto urbano.',
-        author: { '@type': 'Person', name: 'Lord Junnior' },
-        datePublished: '2026-04-21',
-      },
-      {
-        '@type': 'FAQPage',
-        mainEntity: FAQ.map((f) => ({
-          '@type': 'Question',
-          name: f.q,
-          acceptedAnswer: { '@type': 'Answer', text: f.a },
-        })),
-      },
-    ],
-  };
-
   return (
-    <div className="min-h-screen bg-background text-foreground relative">
+    <>
       <SeoHead
-        title="Defesa Pessoal Básica · Manual Tático para o Brasil"
-        description="Postura, distância, alvos anatômicos, defesa contra arma, fuga tática, defesa feminina e contexto urbano brasileiro. Treinamento mensal estruturado."
-        canonical="https://lordjunnior.com/soberania-organica/defesa-pessoal"
-        jsonLd={jsonLd}
+        path="/soberania-organica/defesa-pessoal"
+        custom={{
+          title: 'Defesa Pessoal Básica: Postura, Distância, Alvos e Fuga Tática no Brasil',
+          description: 'Manual completo de defesa pessoal para o cenário brasileiro: postura de combate, gestão de distância, alvos anatômicos decisivos, defesa contra agressor armado, fuga tática, defesa feminina e contexto urbano.',
+          canonical: 'https://lordjunnior.com.br/soberania-organica/defesa-pessoal',
+          primaryKeyword: 'defesa pessoal básica',
+          lsiKeywords: ['postura de combate', 'alvos anatômicos', 'defesa contra faca', 'defesa contra arma de fogo', 'fuga tática', 'defesa feminina', 'krav maga brasileiro'],
+          longTailKeywords: ['como se defender em assalto no Brasil', 'defesa pessoal para mulheres', 'o que fazer em sequestro relâmpago', 'defesa contra agressor armado em rua', 'treinamento de defesa pessoal em casa'],
+          breadcrumbs: [
+            { name: 'Início', url: '/' },
+            { name: 'Soberania Orgânica', url: '/soberania-organica' },
+            { name: 'Defesa Pessoal Básica', url: '/soberania-organica/defesa-pessoal' },
+          ],
+          schemaType: 'Article',
+          articleSection: 'Soberania Orgânica',
+          relatedPages: ['/soberania-organica/edc', '/soberania-organica/primeiros-socorros-taticos', '/soberania-organica/kit-72h', '/soberania-organica/protocolo-fogo'],
+        }}
+        faqItems={FAQ.map((f) => ({ question: f.q, answer: f.a }))}
       />
-      <FixedThematicBackground image={heroImg} intensity="heavy" />
-      <BackToHome />
 
-      <div className="relative z-10">
+      <FixedThematicBackground image={heroImg} intensity="heavy" />
+
+      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
+        <BackToHome />
+      </div>
+
+      <div className="min-h-screen text-stone-100 relative z-10">
         <CinematicHero
-          title="Defesa Pessoal Básica"
-          subtitle="Não existe luta justa em rua. Existe técnica, distância e fuga tática."
           image={heroImg}
-          height="min-h-screen"
+          phase="Soberania Orgânica · Resiliência Tática"
+          title={
+            <>
+              Defesa Pessoal Básica:{' '}
+              <span className="italic font-serif text-amber-400 font-light tracking-tight">não existe luta justa em rua, existe técnica, distância e fuga</span>
+            </>
+          }
+          subtitle="O Brasil registra mais de 50 mil mortes violentas por ano. 80% dos confrontos urbanos terminam em segundos. A diferença entre quem volta para casa e quem fica no asfalto não é força ou tamanho, é leitura ambiental, treinamento mental e domínio de 7 alvos anatômicos."
         />
 
         <section className="py-24 md:py-32 px-6 md:px-12">
@@ -468,7 +470,7 @@ const DefesaPessoal = () => {
           </div>
         </section>
       </div>
-    </div>
+    </>
   );
 };
 
