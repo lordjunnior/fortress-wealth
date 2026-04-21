@@ -208,6 +208,7 @@ const SILOS: Silo[] = [
       { title: 'Defesa Pessoal Básica: Postura, Distância, Fuga', href: '/soberania-organica/defesa-pessoal' },
       { title: 'Defesa Domiciliar: Blindagem, Perímetro, Quarto Seguro', href: '/soberania-organica/defesa-domiciliar' },
       { title: 'Higiene Mental: Sono, Detox, Meditação, Anti-Ansiedade', href: '/soberania-organica/higiene-mental' },
+      { title: 'Soberania Veicular: Blindagem, Kit, Antiassalto, Antirrastreamento', href: '/soberania-organica/soberania-veicular' },
     ],
   },
   {
