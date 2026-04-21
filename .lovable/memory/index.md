@@ -79,3 +79,4 @@ HEAVY PAGES: hero full-screen apple-like, max-w-7xl centralizado, FixedThematicB
 - [Quarteto do Poder Principles](mem://design/content-patterns/quarteto-do-poder) — SEO/CTA/CTR/PNL rules
 - [Navigation Badges](mem://design/ux/navigation-new-badges) — 'Novo' badge usage
 - [Prohibited Elements](mem://constraints/content/prohibited-elements) — Forbidding emojis and framework names
+- [Padrão Aprovado Jurisdições](mem://design/padrao-aprovado-jurisdicoes) — REFERÊNCIA OURO: hero 88vh, paleta temática própria por página, Inter Tight 900 + Playfair italic com glow, alternância claro/escuro, fontes grandes, sempre mais imagens
