@@ -334,11 +334,11 @@ export default function ConservacaoAlimentos() {
               textShadow: '0 4px 28px rgba(0,0,0,0.65)',
             }}
           >
-            Sua despensa{' '}
+            Tire sua comida{' '}
             <em style={{ fontFamily: '"Playfair Display", serif', fontStyle: 'italic', fontWeight: 700, color: 'hsl(32 80% 72%)', textShadow: '0 0 40px hsl(28 60% 30% / 0.7), 0 4px 24px rgba(0,0,0,0.8)' }}>
-              é seu orçamento real
+              da custódia
             </em>{' '}
-            de autonomia.
+            do supermercado.
           </motion.h1>
 
           <motion.p
@@ -346,8 +346,10 @@ export default function ConservacaoAlimentos() {
             className="text-lg md:text-2xl max-w-3xl leading-relaxed"
             style={{ color: '#f0e4d4', textShadow: '0 2px 12px rgba(0,0,0,0.6)' }}
           >
-            Oito métodos para guardar comida sem geladeira, sem supermercado, sem dependência da rede.
-            Para a família que pensa em sair da cidade ou para quem quer estar pronto se a cidade parar.
+            Toda lata de conserva industrial é uma exchange custodiando seu próximo prato.
+            Toda prateleira de ultraprocessado é o combustível que paga a indústria farmacêutica
+            depois. Aqui você aprende oito métodos para guardar comida em casa, sem geladeira,
+            sem rótulo, sem dependência das duas primas que mandam no mundo.
           </motion.p>
 
           <motion.div
