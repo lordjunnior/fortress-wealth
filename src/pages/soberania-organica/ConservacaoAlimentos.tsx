@@ -1,37 +1,70 @@
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Archive } from 'lucide-react';
-import { FlaskConical } from 'lucide-react';
-import { Sun } from 'lucide-react';
-import { Wind } from 'lucide-react';
-import { Snowflake } from 'lucide-react';
-import { Flame } from 'lucide-react';
-import { Package } from 'lucide-react';
-import { Droplet } from 'lucide-react';
-import { ChevronDown } from 'lucide-react';
-import { ArrowRight } from 'lucide-react';
-import { AlertTriangle } from 'lucide-react';
-import { CheckCircle2 } from 'lucide-react';
+import { ChevronDown, AlertTriangle, ShieldCheck, Archive } from 'lucide-react';
 import SeoHead from '@/components/SeoHead';
 import BackToHome from '@/components/BackToHome';
-import FixedThematicBackground from '@/components/backgrounds/FixedThematicBackground';
-import CinematicHero from '@/components/CinematicHero';
-import heroImg from '@/assets/saida/conservacao-hero.jpg';
-import imgDesidratacao from '@/assets/saida/conservacao-desidratacao.jpg';
-import imgPressurizada from '@/assets/saida/conservacao-pressurizada.jpg';
+import RelatedHooks from '@/components/RelatedHooks';
+import heroImg from '@/assets/conservacao/conservacao-hero.jpg';
+import imgFermentacao from '@/assets/conservacao/conservacao-fermentacao.jpg';
+import imgSolar from '@/assets/conservacao/conservacao-solar.jpg';
+import imgEletrica from '@/assets/conservacao/conservacao-eletrica.jpg';
+import imgCura from '@/assets/conservacao/conservacao-cura.jpg';
+import imgDefumacao from '@/assets/conservacao/conservacao-defumacao.jpg';
+import imgCanning from '@/assets/conservacao/conservacao-canning.jpg';
+import imgVacuo from '@/assets/conservacao/conservacao-vacuo.jpg';
+import imgCongelamento from '@/assets/conservacao/conservacao-congelamento.jpg';
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
 const fade = (delay = 0) => ({
-  initial: { opacity: 0, y: 24 },
+  initial: { opacity: 0, y: 28 },
   whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, margin: '-60px' },
-  transition: { duration: 0.7, ease: APPLE_EASE, delay },
+  viewport: { once: true, margin: '-80px' },
+  transition: { duration: 0.8, ease: APPLE_EASE, delay },
 });
+
+// Paleta sand + amber + clay (clara, padrão Jurisdições aprovado)
+const C = {
+  sand: 'hsl(36 32% 92%)',
+  sandDeep: 'hsl(34 26% 86%)',
+  cream: 'hsl(38 36% 96%)',
+  ink: 'hsl(28 34% 14%)',
+  body: 'hsl(28 18% 30%)',
+  muted: 'hsl(28 12% 46%)',
+  amber: 'hsl(28 72% 42%)',
+  amberSoft: 'hsl(32 60% 64%)',
+  ember: 'hsl(18 64% 40%)',
+  line: 'hsl(28 14% 76%)',
+};
+
+const noiseSvg = `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.30  0 0 0 0 0.22  0 0 0 0 0.14  0 0 0 0 0.45 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`;
+
+const sectionBg = {
+  sand: {
+    backgroundColor: C.sand,
+    backgroundImage: [
+      'radial-gradient(ellipse 65% 55% at 6% 14%, hsl(34 50% 84% / 0.7), transparent 55%)',
+      'radial-gradient(ellipse 55% 45% at 92% 86%, hsl(28 60% 70% / 0.22), transparent 55%)',
+      noiseSvg,
+      'linear-gradient(165deg, hsl(36 32% 93%), hsl(34 26% 86%))',
+    ].join(','),
+    backgroundSize: 'auto, auto, 200px 200px, auto',
+  },
+  cream: {
+    backgroundColor: C.cream,
+    backgroundImage: [
+      'radial-gradient(ellipse 70% 55% at 14% 22%, hsl(38 60% 92% / 0.8), transparent 50%)',
+      'radial-gradient(ellipse 60% 50% at 88% 78%, hsl(28 60% 72% / 0.18), transparent 55%)',
+      noiseSvg,
+      'linear-gradient(180deg, hsl(38 36% 96%), hsl(36 30% 90%))',
+    ].join(','),
+    backgroundSize: 'auto, auto, 200px 200px, auto',
+  },
+};
 
 interface Metodo {
   num: string;
   nome: string;
+  imagem: string;
   contexto: string;
   validade: string;
   custo: string;
@@ -39,20 +72,19 @@ interface Metodo {
   passos: string[];
   alimentos: string;
   riscos: string;
-  icon: typeof FlaskConical;
 }
 
 const METODOS: Metodo[] = [
   {
     num: '01',
     nome: 'Fermentação Láctica',
-    contexto: 'Conservação ancestral por bactérias do gênero Lactobacillus em ambiente anaeróbico salgado. Não exige energia elétrica, não exige cocção. Aumenta biodisponibilidade de nutrientes, gera probióticos vivos, preserva enzimas.',
+    imagem: imgFermentacao,
+    contexto: 'Conservação ancestral por bactérias do gênero Lactobacillus em ambiente anaeróbico salgado. Não exige energia elétrica nem cocção. Aumenta biodisponibilidade de nutrientes, gera probióticos vivos, preserva enzimas.',
     validade: '6 a 24 meses em ambiente fresco e escuro. Após aberto, 2 a 6 meses sob refrigeração.',
     custo: 'USD 0,30 a 0,80 por litro produzido. Pote de vidro reutilizável + sal grosso + vegetal.',
     energia: 'Zero. Apenas temperatura ambiente entre 18 e 24 °C nos primeiros 7 a 14 dias.',
-    icon: FlaskConical,
     passos: [
-      'Selecione vegetais firmes e frescos: repolho, cenoura, beterraba, pepino, rabanete, pimentão, gengibre, alho. Lave bem mas não esterilize. As bactérias selvagens da casca são parte do processo.',
+      'Selecione vegetais firmes e frescos: repolho, cenoura, beterraba, pepino, rabanete, pimentão, gengibre, alho. Lave bem mas não esterilize, as bactérias selvagens da casca são parte do processo.',
       'Calcule a salmoura: 2 a 3 % de sal sobre o peso total do vegetal. Para 1 kg de repolho, use 20 a 30 g de sal grosso sem iodo (sal refinado iodado inibe a fermentação).',
       'Macere ou triture o vegetal misturado ao sal por 10 a 15 minutos. Para vegetais inteiros, prepare salmoura líquida na mesma proporção: 30 g de sal por litro de água filtrada.',
       'Empacote firme em pote de vidro de boca larga, eliminando bolhas de ar. Pressione até o líquido cobrir totalmente. Use peso (pedra esterilizada, saquinho de água, disco de fermentação) para manter submerso.',
@@ -60,16 +92,16 @@ const METODOS: Metodo[] = [
       'Após o gosto desejado (azedo limpo, crocância preservada), transfira para refrigerador ou despensa fresca. Fermentação não para, apenas desacelera dramaticamente.',
     ],
     alimentos: 'Repolho (chucrute, kimchi), pepino (picles fermentados), beterraba, cenoura, rabanete, alho preto, pimenta (molho fermentado), missô, kombuchá, kefir, iogurte tradicional.',
-    riscos: 'Mofo branco na superfície é parte do processo (kahm yeast), retire e prossiga. Mofo colorido (verde, preto, rosa, azul) ou cheiro pútrido descarte tudo. Salmoura insuficiente (abaixo de 1,5 %) gera proliferação de Clostridium botulinum em vegetais não ácidos. Nunca abaixe de 2 % por excesso de cuidado calórico.',
+    riscos: 'Mofo branco na superfície é parte do processo (kahm yeast), retire e prossiga. Mofo colorido (verde, preto, rosa, azul) ou cheiro pútrido descarte tudo. Salmoura insuficiente (abaixo de 1,5 %) gera proliferação de Clostridium botulinum em vegetais não ácidos. Nunca abaixe de 2 %.',
   },
   {
     num: '02',
     nome: 'Desidratação Solar',
+    imagem: imgSolar,
     contexto: 'Método mais antigo registrado, usado por povos indígenas, beduínos e andinos. Energia solar gratuita, zero infraestrutura elétrica. Funciona em climas quentes, secos e ventilados. Depende de luz e ausência de chuva.',
     validade: '6 meses a 2 anos em recipientes vedados ao abrigo de luz e umidade.',
     custo: 'USD 30 a 80 para construir secador solar caseiro com madeira, vidro e tela mosquiteira inox.',
     energia: 'Zero elétrica. Sol direto por 5 a 8 horas/dia durante 2 a 5 dias.',
-    icon: Sun,
     passos: [
       'Construa o secador solar: caixa de madeira (60 x 40 x 15 cm), pintada de preto fosco interno, tampa de vidro inclinada 30°, telas de mosquiteiro inox empilhadas em 2 a 3 níveis com espaçamento de 4 cm. Aberturas inferior (entrada de ar) e superior (saída de vapor).',
       'Selecione alimentos maduros e firmes. Lave, descasque se necessário e fatie em espessura uniforme: frutas em 4 a 6 mm, vegetais em 3 a 5 mm, carne em tiras finas de 4 a 6 mm.',
@@ -78,21 +110,21 @@ const METODOS: Metodo[] = [
       'Verifique progressivamente: frutas devem ficar coriáceas e flexíveis (sem umidade ao apertar). Vegetais quebradiços. Carne (jerky) seca, dobrável sem rachar. Tempo: 2 a 5 dias dependendo de umidade ambiente.',
       'Armazene em vidro vedado com sachê absorvente (ou um grão de arroz) ao abrigo de luz. Para conservação máxima, embale a vácuo após estabilização de 24 h em ambiente fechado.',
     ],
-    alimentos: 'Frutas (banana, manga, abacaxi, uva, maçã), vegetais (tomate, cebola, pimentão, abobrinha, ervas), carne magra (jerky bovino, peixe, frango). Evite alimentos gordurosos, gordura ranção rapidamente.',
-    riscos: 'Umidade residual >10 % gera mofo. Insetos: tela mosquiteiro fina é obrigatória. Carne mal seca proporciona crescimento de Salmonella e E. coli, alcance temperatura interna mínima de 71 °C antes de iniciar secagem (defume rápido ou aqueça em forno por 10 min como pré-tratamento).',
+    alimentos: 'Frutas (banana, manga, abacaxi, uva, maçã), vegetais (tomate, cebola, pimentão, abobrinha, ervas), carne magra (jerky bovino, peixe, frango). Evite alimentos gordurosos, gordura ranço rapidamente.',
+    riscos: 'Umidade residual acima de 10 % gera mofo. Insetos: tela mosquiteiro fina é obrigatória. Carne mal seca proporciona crescimento de Salmonella e E. coli, alcance temperatura interna mínima de 71 °C antes de iniciar secagem.',
   },
   {
     num: '03',
     nome: 'Desidratação Elétrica',
+    imagem: imgEletrica,
     contexto: 'Versão controlada com temperatura constante e ventilação forçada. Reduz tempo de 5 dias para 6 a 24 horas. Independência de clima. Custo elétrico baixo.',
     validade: '1 a 3 anos em embalagem vedada com absorvente de oxigênio.',
     custo: 'USD 80 a 350 (desidratador 5 a 10 bandejas). Operação: USD 0,15 a 0,40 por kg processado.',
     energia: 'Elétrica. Consumo: 300 a 800 W por 6 a 12 h em ciclo típico.',
-    icon: Wind,
     passos: [
       'Equipamento recomendado: desidratador com ventilação horizontal forçada (Excalibur, Cosori), termostato regulável de 35 a 75 °C e timer.',
       'Temperatura por categoria: ervas (35 a 40 °C), frutas (55 a 60 °C), vegetais (50 a 55 °C), carne (60 a 70 °C). Temperaturas mais altas selam a superfície e impedem a saída de umidade interna.',
-      'Espessura uniforme é crítica. Use mandolin ou faca afiada. Variação >2 mm gera diferença de tempo de secagem e produto inconsistente.',
+      'Espessura uniforme é crítica. Use mandolin ou faca afiada. Variação acima de 2 mm gera diferença de tempo de secagem e produto inconsistente.',
       'Não sobreponha. Espaço de 3 a 5 mm entre fatias para circulação do ar. Rode bandejas a cada 2 a 3 h em desidratadores com ventilação vertical.',
       'Teste de finalização: frutas devem dobrar sem quebrar, vegetais quebradiços, carne quebradiça mas elástica. Resfrie em ambiente fechado por 24 h antes de embalar para igualar umidade.',
       'Armazene em sacos plásticos foil (mylar) com absorvente de oxigênio (oxygen absorber) e sachê de sílica. Vida útil: 3 a 5 anos para grãos e leguminosas em preparação, 1 a 2 anos para frutas e vegetais.',
@@ -103,34 +135,34 @@ const METODOS: Metodo[] = [
   {
     num: '04',
     nome: 'Salga e Cura',
+    imagem: imgCura,
     contexto: 'Método milenar de remoção de água por osmose. O sal puro inibe a maioria dos microrganismos. Curas com nitrato e nitrito (sal de cura rosa #1 e #2) eliminam Clostridium botulinum em embutidos e presuntos.',
     validade: '6 meses a vários anos. Bacalhau seco salgado: 1 a 2 anos. Presunto cru tipo Parma: 18 a 36 meses.',
     custo: 'USD 0,50 a 2 por kg processado. Sal grosso, sal de cura, especiarias. Câmara de cura é opcional.',
     energia: 'Zero a baixa. Câmara de cura controlada: 50 W contínuos.',
-    icon: Droplet,
     passos: [
       'Salga seca: cubra completamente o alimento (peixe, carne, vegetal) com sal grosso sem iodo. Proporção: 30 a 50 % do peso do alimento. Empilhe em recipiente perfurado para drenagem do líquido extraído.',
       'Salga úmida (salmoura): mergulhe em solução de 18 a 25 % de sal por 6 a 48 h dependendo da espessura. Acelera o processo, gera produto mais uniforme.',
-      'Cura curta (5 a 10 dias): bacon, salmão gravlax, peito de pato (magret). Use sal de cura #1 (cloreto de sódio + nitrito de sódio 6,25 %) na proporção exata de 2,5 g por kg de carne. Mistura com especiarias.',
+      'Cura curta (5 a 10 dias): bacon, salmão gravlax, peito de pato (magret). Use sal de cura #1 (cloreto de sódio + nitrito de sódio 6,25 %) na proporção exata de 2,5 g por kg de carne.',
       'Cura longa (semanas a meses): presunto cru, copa, lombo curado. Sal de cura #2 (cloreto + nitrito + nitrato) em proporção 2,5 g/kg. Câmara controlada: 12 a 16 °C, 70 a 85 % UR, ventilação suave.',
       'Lavagem e secagem: após cura, lave em água fria, seque com pano. Pendure em ambiente fresco e ventilado para perda de água adicional (30 a 40 % do peso original) durante 2 a 12 meses.',
       'Armazene fatiado a vácuo ou inteiro envolto em pano de algodão em despensa fresca. Bacon defumado/curado: 6 meses refrigerado, 1 a 2 anos congelado. Presunto cru inteiro: indefinido em ambiente correto.',
     ],
     alimentos: 'Bacalhau (cura por 7 a 30 dias), carne seca brasileira (charque), bacon, presunto cru (Parma, Serrano, prosciutto), copa, peito de pato, salmão gravlax, anchovas em sal, ovos curados em gema.',
-    riscos: 'Subdosagem de nitrito em embutido fechado: risco extremo de botulismo (Clostridium botulinum, toxina mortal em 1 mcg). Use balança de precisão 0,1 g e siga proporções exatas. Nunca improvise sal de cura. Compre em fornecedor especializado (não substitui por sal rosa do Himalaia ou refinado iodado).',
+    riscos: 'Subdosagem de nitrito em embutido fechado: risco extremo de botulismo (Clostridium botulinum, toxina mortal em 1 mcg). Use balança de precisão 0,1 g e siga proporções exatas. Nunca improvise sal de cura. Compre em fornecedor especializado.',
   },
   {
     num: '05',
     nome: 'Defumação',
+    imagem: imgDefumacao,
     contexto: 'Combinação de calor controlado, fumaça antibacteriana (compostos fenólicos) e desidratação parcial. Defumação a frio (15 a 30 °C) preserva, defumação a quente (60 a 90 °C) cozinha e preserva.',
     validade: 'Defumação a frio (após cura): 2 a 6 meses refrigerado, 1 a 2 anos congelado. Defumação a quente: 1 a 2 semanas refrigerado.',
     custo: 'USD 100 a 600 (defumador caseiro). Lenha de qualidade: USD 5 a 20 por kg.',
     energia: 'Madeira/serragem como combustível principal. Termômetro digital para controle.',
-    icon: Flame,
     passos: [
       'Pré-cura obrigatória para defumação a frio: salga seca ou salmoura por 8 a 48 h conforme tipo. Sem cura prévia, alimento estraga durante o processo.',
       'Tipos de madeira: nogueira (pecan, hickory) para carnes vermelhas, macieira/cerejeira para aves e peixes brancos, carvalho neutro para tudo, ipê para sabor brasileiro intenso. Evite madeiras resinosas (pinus, eucalipto cru) que geram fumaça tóxica.',
-      'Defumação a frio (15 a 30 °C): gerador de fumaça externo conectado por duto, separando fonte de calor da câmara. Tempo: 6 a 24 h, em ciclos de 4 a 6 h por dia, com pausa para evitar acúmulo excessivo de fenóis. Produto sai cru, exige refrigeração ou cura adicional.',
+      'Defumação a frio (15 a 30 °C): gerador de fumaça externo conectado por duto, separando fonte de calor da câmara. Tempo: 6 a 24 h, em ciclos de 4 a 6 h por dia, com pausa para evitar acúmulo excessivo de fenóis.',
       'Defumação a quente (60 a 90 °C): caixa única com fonte de calor e madeira na base. Termômetro de sonda no centro da peça. Tempo: 3 a 8 h até alcançar temperatura interna segura: 71 °C frango, 63 °C carne, 71 °C porco moído, 60 °C peixe.',
       'Resfriamento controlado: deixe descansar em ambiente fresco por 12 a 24 h após defumação para estabilizar sabor e textura. Não corte quente, perde umidade.',
       'Armazene a vácuo refrigerado ou congelado. Defumação não é conservação completa em alimentos frescos, é etapa adicional após cura.',
@@ -141,30 +173,30 @@ const METODOS: Metodo[] = [
   {
     num: '06',
     nome: 'Conservas Pressurizadas (Canning)',
+    imagem: imgCanning,
     contexto: 'Esterilização térmica em recipientes vedados sob pressão. Único método doméstico que destrói esporos de Clostridium botulinum em alimentos pouco ácidos (carne, vegetais, sopas).',
     validade: '1 a 5 anos em local fresco, escuro e seco. Carne: 2 a 5 anos. Vegetais: 1 a 3 anos.',
     custo: 'USD 200 a 500 (panela de pressão para canning de boca larga). Frascos Mason: USD 1 a 3/unidade reutilizáveis.',
     energia: 'Elétrica/gás. Operação intensa por 60 a 90 min por ciclo.',
-    icon: Package,
     passos: [
       'Equipamento essencial: panela de pressão calibrada para canning (não pressão comum), frascos Mason de boca larga ou estreita, tampas de duas peças (anel + disco com selo), pinça para frascos quentes, funil largo, manômetro calibrado anualmente.',
       'Esterilize frascos: ferver por 10 min ou ciclo completo no lava-louças com calor alto. Mantenha quentes até preencher.',
-      'Preparação do alimento: cozinhe parcialmente carne ou vegetal. Encha frasco quente deixando 2 a 3 cm de espaço livre na borda. Adicione sal não iodado se desejado (1 colher de chá por litro). Limpe a borda com pano úmido (qualquer resíduo impede selagem).',
+      'Preparação do alimento: cozinhe parcialmente carne ou vegetal. Encha frasco quente deixando 2 a 3 cm de espaço livre na borda. Adicione sal não iodado se desejado (1 colher de chá por litro). Limpe a borda com pano úmido.',
       'Posicione tampa e anel sem apertar excessivamente (apenas firmeza de dedos). Coloque frascos na panela com 2 a 3 cm de água no fundo + grade de apoio. Não submerja frascos.',
       'Pressurize: 11 PSI para altitudes <300 m (10 lb), 12 PSI 300 a 600 m, 13 PSI 600 a 900 m. Tempo: vegetais 25 a 90 min, carne 75 a 90 min, sopas 60 a 75 min. Consulte tabelas USDA específicas por alimento.',
       'Resfriamento natural: deixe a pressão cair sozinha (45 a 60 min). Nunca abra panela ainda quente. Após retirar frascos, descanse por 24 h em pano. Verifique selagem: tampa côncava firme e sem flexibilidade ao apertar.',
     ],
     alimentos: 'Carne bovina e suína em cubos, frango desossado, ensopados, sopas (sem laticínios e sem amido), feijão cozido, milho, ervilha, cenoura, batata, cogumelos, caldo de osso, pasta de tomate concentrada.',
-    riscos: 'Botulismo é a ameaça #1. Sintomas surgem 12 a 36 h após ingestão: visão turva, dificuldade de fala, paralisia descendente, morte por insuficiência respiratória. Frasco com tampa abaulada, líquido turvo, gás ao abrir, cheiro estranho: descarte sem provar. Nunca use banho-maria comum (água fervente <100 °C) para alimentos pouco ácidos. Apenas pressão atinge 116 a 121 °C necessários para destruir esporos.',
+    riscos: 'Botulismo é a ameaça #1. Sintomas surgem 12 a 36 h após ingestão: visão turva, dificuldade de fala, paralisia descendente, morte por insuficiência respiratória. Frasco com tampa abaulada, líquido turvo, gás ao abrir, cheiro estranho: descarte sem provar. Nunca use banho-maria comum para alimentos pouco ácidos.',
   },
   {
     num: '07',
     nome: 'Embalagem a Vácuo',
+    imagem: imgVacuo,
     contexto: 'Remoção de oxigênio em embalagem vedada. Não é conservação por si só, é multiplicador de validade dos outros métodos. Reduz oxidação, queimaduras de freezer e proliferação de bactérias aeróbicas.',
     validade: 'Multiplica em 3 a 5x a validade do método base. Carne fresca refrigerada: 5 a 7 dias vs 2 dias. Carne congelada: 2 a 3 anos vs 6 meses. Café em grão: 12 meses vs 3 meses.',
     custo: 'USD 80 a 400 (seladora doméstica). Sacos texturizados: USD 0,15 a 0,40/unidade.',
     energia: 'Baixíssima. 200 a 500 W por 30 a 60 segundos por ciclo.',
-    icon: Package,
     passos: [
       'Selecione seladora a vácuo: modelos externos (FoodSaver, Anova) para uso doméstico, modelos de câmara (chamber sealer) para grandes volumes ou líquidos.',
       'Saco compatível: texturizado (canais permitem aspiração), espessura mínima 90 microns. Sacos lisos comuns não funcionam em seladoras externas.',
@@ -173,17 +205,17 @@ const METODOS: Metodo[] = [
       'Acione vácuo + selo. Verifique selagem com inspeção visual: linha de selo contínua e firme, sem dobras ou bolhas.',
       'Combine com refrigeração ou congelamento para máxima validade. A vácuo em temperatura ambiente: apenas para alimentos secos (cereais, café, ervas, jerky, biscoitos).',
     ],
-    alimentos: 'Carne, peixe, queijo curado, café, café verde, ervas secas, jerky, frutas desidratadas, sementes, cereais, refeições preparadas (sous vide), tabaco, hardware sensível (chips, cabos).',
+    alimentos: 'Carne, peixe, queijo curado, café, café verde, ervas secas, jerky, frutas desidratadas, sementes, cereais, refeições preparadas (sous vide), tabaco, hardware sensível.',
     riscos: 'Falsa segurança: vácuo não esteriliza nem mata bactérias anaeróbicas (Clostridium, Listeria). Em alimentos úmidos não cozidos a vácuo refrigerado, pode acelerar produção de toxinas. Combine sempre com cura, cozimento, congelamento ou desidratação.',
   },
   {
     num: '08',
     nome: 'Congelamento Estratégico',
+    imagem: imgCongelamento,
     contexto: 'Congelamento abaixo de -18 °C para a maioria dos alimentos, -25 °C para conservação prolongada. Não destrói bactérias, apenas paralisa multiplicação. Após descongelar, contagem retoma.',
     validade: 'Carne vermelha: 6 a 12 meses (até 24 meses a vácuo). Aves: 4 a 9 meses. Peixe gordo: 2 a 3 meses (oxida rápido). Vegetais branqueados: 8 a 12 meses. Pão: 1 a 3 meses.',
     custo: 'Freezer vertical 200 L: USD 400 a 800. Operação: USD 4 a 12/mês de eletricidade.',
     energia: 'Contínua. 100 a 250 W médios em ciclo. Backup com gerador ou solar é estratégia avançada.',
-    icon: Snowflake,
     passos: [
       'Branqueamento de vegetais: ferva por 1 a 5 min (depende do tamanho), choque térmico em água com gelo por igual tempo, escorra. Sem branqueamento, enzimas continuam ativas no freezer e degradam textura, cor e nutrientes.',
       'Embale por porção de uso individual. Saquinhos ziplock + extração manual de ar, ou embalagem a vácuo. Etiquete com nome e data (caneta permanente). Use FIFO (primeiro a entrar, primeiro a sair).',
@@ -193,27 +225,17 @@ const METODOS: Metodo[] = [
       'Plano de queda de energia: freezer fechado mantém temperatura por 24 a 48 h. Tenha gerador a gasolina (3 a 5 kW), inversor solar com bateria de 100 Ah, ou plano de cozimento emergencial dos alimentos prioritários.',
     ],
     alimentos: 'Carne, peixe, aves, frutas (banana descascada, frutas vermelhas), vegetais branqueados, ervas em cubo de azeite, ensopados, pão fatiado, manteiga, queijos duros, gelo, água potável armazenada.',
-    riscos: 'Recongelar alimento descongelado dobra a carga bacteriana. Apenas recongele se ainda contém cristais de gelo (parcialmente descongelado). Queimadura de freezer: oxidação superficial por contato com ar, indica embalagem inadequada. Falha elétrica >48 h: descongele e cozinhe imediatamente, ou descarte.',
+    riscos: 'Recongelar alimento descongelado dobra a carga bacteriana. Apenas recongele se ainda contém cristais de gelo (parcialmente descongelado). Queimadura de freezer: oxidação superficial por contato com ar, indica embalagem inadequada. Falha elétrica acima de 48 h: descongele e cozinhe imediatamente, ou descarte.',
   },
 ];
 
-const COMPARATIVO = [
-  ['Critério', 'Fermentação', 'Desidratação', 'Salga/Cura', 'Defumação', 'Conserva', 'Vácuo', 'Congelamento'],
-  ['Energia', 'Zero', 'Sol ou baixa', 'Zero', 'Madeira', 'Alta', 'Mínima', 'Contínua'],
-  ['Validade', '6 a 24 m', '1 a 3 anos', '6 m a 3 anos', '6 m a 2 anos', '1 a 5 anos', 'Multiplica 3x', '6 a 24 m'],
-  ['Custo inicial', 'USD 10', 'USD 80 a 350', 'USD 50', 'USD 100 a 600', 'USD 200 a 500', 'USD 80 a 400', 'USD 400 a 800'],
-  ['Risco técnico', 'Baixo', 'Médio (carne)', 'Alto (cura)', 'Alto', 'Crítico', 'Médio', 'Baixo'],
-  ['Independência elétrica', 'Total', 'Solar: total', 'Total', 'Total', 'Não', 'Não', 'Não'],
-  ['Escala doméstica', '1 a 50 L', '5 a 50 kg', '10 a 100 kg', '5 a 30 kg', '20 a 200 frascos', 'Ilimitada', '100 a 400 L'],
-];
-
 const ERROS = [
-  'Usar sal iodado em fermentação: o iodo inibe os Lactobacillus e mata o processo. Use somente sal grosso, marinho ou rocha sem iodo.',
-  'Banho-maria em alimento pouco ácido (carne, vegetal sem vinagre): risco crítico de botulismo. Apenas pressão a 116 °C garante destruição dos esporos.',
-  'Improvisar sal de cura para presunto/embutido sem balança de precisão: subdose mata. Pese com 0,1 g de exatidão.',
-  'Defumar carne crua sem cura prévia em defumação a frio: ambiente perfeito para Listeria, Salmonella e Clostridium.',
-  'Recongelar carne descongelada acima de 4 °C por mais de 2 horas: a contagem bacteriana dobra a cada 20 min entre 4 e 60 °C.',
-  'Armazenar conserva caseira em armário quente próximo a fogão: temperaturas acima de 25 °C aceleram degradação e podem reativar esporos sobreviventes.',
+  { titulo: 'Sal iodado em fermentação', desc: 'O iodo inibe os Lactobacillus e mata o processo. Use somente sal grosso, marinho ou rocha sem iodo.' },
+  { titulo: 'Banho-maria em alimento pouco ácido', desc: 'Carne ou vegetal sem vinagre em banho-maria comum: risco crítico de botulismo. Apenas pressão a 116 °C garante destruição dos esporos.' },
+  { titulo: 'Sal de cura sem balança de precisão', desc: 'Improvisar nitrito para presunto/embutido sem pesar com 0,1 g de exatidão: subdose mata e sobredose intoxica.' },
+  { titulo: 'Defumar carne crua sem pré-cura', desc: 'Defumação a frio em alimento sem salga prévia: ambiente perfeito para Listeria, Salmonella e Clostridium.' },
+  { titulo: 'Recongelar carne descongelada', desc: 'A contagem bacteriana dobra a cada 20 min entre 4 e 60 °C. Apenas recongele se ainda houver cristais de gelo.' },
+  { titulo: 'Conserva caseira em armário quente', desc: 'Temperaturas acima de 25 °C aceleram degradação e podem reativar esporos sobreviventes. Despensa fresca é mandatória.' },
 ];
 
 const FAQ = [
@@ -223,7 +245,7 @@ const FAQ = [
   },
   {
     q: 'Posso fazer conserva de carne em panela de pressão comum?',
-    a: 'Não. Panela de pressão comum atinge ~110 °C com tampa fechada, mas não mantém pressão constante por 75 a 90 min, e não tem manômetro calibrado. Para canning de carne é obrigatório usar panela específica (Presto, All American), com capacidade para frascos de 1 L em pé e manômetro testado anualmente. Investimento: USD 200 a 500 vs risco de botulismo letal.',
+    a: 'Não. Panela de pressão comum atinge cerca de 110 °C com tampa fechada, mas não mantém pressão constante por 75 a 90 min, e não tem manômetro calibrado. Para canning de carne é obrigatório usar panela específica (Presto, All American), com capacidade para frascos de 1 L em pé e manômetro testado anualmente. Investimento: USD 200 a 500 vs risco de botulismo letal.',
   },
   {
     q: 'Como saber se um vegetal fermentado estragou?',
@@ -239,10 +261,10 @@ const FAQ = [
   },
   {
     q: 'Existe risco de botulismo em alimento fermentado?',
-    a: 'Em vegetais fermentados (chucrute, kimchi) com sal correto (≥2 %): praticamente zero. O ambiente ácido gerado por Lactobacillus (pH <4,6) inibe Clostridium botulinum. Em fermentações de baixa acidez (peixe fermentado tradicional, carne crua, alho cru em óleo): risco real. Evite alho cru em óleo sem refrigeração ou acidificação prévia (vinagre).',
+    a: 'Em vegetais fermentados (chucrute, kimchi) com sal correto (acima de 2 %): praticamente zero. O ambiente ácido gerado por Lactobacillus (pH abaixo de 4,6) inibe Clostridium botulinum. Em fermentações de baixa acidez (peixe fermentado tradicional, carne crua, alho cru em óleo): risco real. Evite alho cru em óleo sem refrigeração ou acidificação prévia (vinagre).',
   },
   {
-    q: 'Vale a pena ter freezer em casa em zona com queda elétrica frequente?',
+    q: 'Vale a pena ter freezer em zona com queda elétrica frequente?',
     a: 'Sim, mas com plano de redundância. Freezer fechado mantém temperatura segura por 24 a 48 h. Plano completo: gerador a gasolina (USD 600 a 1500), inversor solar com 200 a 400 W painel + bateria 100 Ah (USD 1500 a 3000), ou estratégia mista de congelamento + desidratação + fermentação para diversificar dependência. Em zona de mais de 4 quedas/mês acima de 6 h, priorize fermentação e desidratação como primários.',
   },
   {
@@ -251,25 +273,11 @@ const FAQ = [
   },
 ];
 
-const CHECKLIST = [
-  'Dia 1-3: Inventário do que você consome e descarta. Liste itens que vencem antes de serem usados. Esses são os primeiros candidatos à conservação.',
-  'Dia 4-7: Compre kit base de fermentação. 6 potes Mason 1 L, 2 kg sal grosso sem iodo, balança digital 0,1 g, 1 kg repolho, 500 g cenoura. Faça primeiro chucrute.',
-  'Dia 8-14: Acompanhe a fermentação diariamente. Anote temperatura ambiente, dia em que começou a borbulhar, dia da degustação (entre 7 e 14). Refrigere após pronto.',
-  'Dia 15-21: Inicie desidratação solar de frutas (banana, manga). Construa secador caseiro ou use forno em 60 °C por 6 a 8 h com porta entreaberta. Armazene em vidro com absorvente.',
-  'Dia 22-30: Compre seladora a vácuo básica. Selar e congelar 2 kg de carne em porções de uso. Selar 1 kg de café em grão para conservar aroma.',
-  'Mês 2: Adicione conserva ácida (picles em vinagre, geleia, conserva de tomate em banho-maria por ser ácido). Não tente carne ou vegetal pouco ácido até ter pressão calibrada.',
-  'Mês 3-4: Teste salga e cura simples: bacalhau seco caseiro (10 dias), bacon curado (7 dias com sal de cura #1), salmão gravlax (48 h).',
-  'Mês 5-6: Construa defumador caseiro com bombona ou tijolo. Treine defumação a quente de costela, peito de peru e pimentões.',
-  'Mês 7-12: Adquira panela de pressão para canning. Comece com sopas e ensopados em frascos de 500 ml. Avance para carne em cubos após 3 lotes consecutivos perfeitos.',
-  'Anual: Recalibre manômetro de canning, troque selos de frascos Mason, faça inventário FIFO de toda a despensa, descarte itens fora da validade.',
-];
-
 export default function ConservacaoAlimentos() {
-  useEffect(() => { window.scrollTo(0, 0); }, []);
-  const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   return (
-    <>
+    <div className="min-h-screen" style={{ backgroundColor: C.sand }}>
       <SeoHead
         path="/soberania-organica/conservacao-alimentos"
         custom={{
@@ -286,325 +294,421 @@ export default function ConservacaoAlimentos() {
           ],
           schemaType: 'Article',
           articleSection: 'Soberania Orgânica',
-          relatedPages: ['/soberania-organica/protocolo-fogo', '/soberania-organica/horta-urbana', '/soberania-organica/conservacao-armazenamento', '/soberania-organica/kit-72h'],
         }}
         faqItems={FAQ.map((f) => ({ question: f.q, answer: f.a }))}
       />
+      <BackToHome />
 
-      <FixedThematicBackground image={heroImg} intensity="heavy" />
+      {/* HERO GIGANTE FULL-BLEED */}
+      <section className="relative min-h-[92vh] flex items-end overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src={heroImg}
+            alt="Despensa rústica de soberania alimentar com conservas em vidro, ervas penduradas e carnes curadas ao entardecer"
+            width={1920}
+            height={1280}
+            fetchPriority="high"
+            className="w-full h-full object-cover"
+          />
+          {/* Apenas darken sutil para legibilidade do texto, SEM fade artístico */}
+          <div className="absolute inset-0" style={{ backgroundColor: 'rgba(20,12,4,0.32)' }} />
+        </div>
 
-      <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
-        <BackToHome />
-      </div>
+        <div className="relative max-w-[1500px] mx-auto px-6 md:px-16 pb-20 md:pb-32 w-full">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: APPLE_EASE }}
+            className="font-mono text-xs tracking-[0.4em] uppercase mb-8"
+            style={{ color: 'hsl(36 50% 84%)' }}
+          >
+            Sobrevivência & Resiliência · Manual completo
+          </motion.p>
 
-      <div className="min-h-screen text-stone-100 relative z-10">
-        <CinematicHero
-          image={heroImg}
-          phase="Soberania Orgânica · Autonomia Alimentar"
-          title={
-            <>
-              Conservação de Alimentos:{' '}
-              <span className="italic font-serif text-amber-400 font-light tracking-tight">o que sua despensa guarda quando o supermercado para</span>
-            </>
-          }
-          subtitle="Conservação não é hobby de avó nem fetiche zero waste. É infraestrutura. Quem domina fermentação, desidratação, cura, defumação e conserva pressurizada tem 6 a 36 meses de autonomia alimentar. Quem depende de geladeira moderna tem 48 horas em apagão."
-          icon={Archive}
-          accentColor="amber"
-          backLink="/soberania-organica"
-          backLabel="Soberania Orgânica"
-        />
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, ease: APPLE_EASE, delay: 0.2 }}
+            className="font-black leading-[0.9] mb-10 max-w-5xl"
+            style={{
+              fontFamily: '"Inter Tight", sans-serif',
+              fontWeight: 900,
+              fontSize: 'clamp(2.75rem, 8.5vw, 7.5rem)',
+              color: '#fbf3e8',
+              textShadow: '0 4px 28px rgba(0,0,0,0.65)',
+            }}
+          >
+            Sua despensa{' '}
+            <em style={{ fontFamily: '"Playfair Display", serif', fontStyle: 'italic', fontWeight: 700, color: 'hsl(32 80% 72%)', textShadow: '0 0 40px hsl(28 60% 30% / 0.7), 0 4px 24px rgba(0,0,0,0.8)' }}>
+              é seu orçamento real
+            </em>{' '}
+            de autonomia.
+          </motion.h1>
 
-        {/* CAPÍTULO 1 */}
-        <section className="relative max-w-5xl mx-auto px-5 md:px-8 py-24 md:py-32">
-          <motion.div {...fade(0)}>
-            <span className="font-mono text-[10px] tracking-[0.4em] uppercase text-amber-400 font-bold block mb-5">Capítulo 01</span>
-            <h2 className="text-5xl md:text-7xl xl:text-8xl font-black uppercase text-stone-100 leading-[1.05] mb-8" style={{ fontFamily: "'Inter Tight', sans-serif", letterSpacing: '-0.02em', textShadow: '0 0 40px rgba(245,158,11,0.15), 0 0 80px rgba(245,158,11,0.08)' }}>
-              A despensa é o orçamento real{' '}
-              <span className="italic font-serif text-amber-400 font-light normal-case tracking-tight">da sua autonomia.</span>
-            </h2>
-            <div className="space-y-6 text-stone-300 text-lg leading-relaxed font-light max-w-3xl">
-              <p>
-                A geladeira moderna criou a ilusão de despensa infinita. Você compra para a semana, descarta o que vence, repõe na sexta. Em colapso de cadeia (greve de caminhoneiros, queda elétrica regional, sanção econômica, escassez de combustível), a fila no mercado começa em 6 horas e acaba em 48. Quem não tem despensa real come o que acumulou ou negocia com vizinhos.
+          <motion.p
+            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, ease: APPLE_EASE, delay: 0.4 }}
+            className="text-lg md:text-2xl max-w-3xl leading-relaxed"
+            style={{ color: '#f0e4d4', textShadow: '0 2px 12px rgba(0,0,0,0.6)' }}
+          >
+            Oito métodos para guardar comida sem geladeira, sem supermercado, sem dependência da rede.
+            Para a família que pensa em sair da cidade ou para quem quer estar pronto se a cidade parar.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1.2, delay: 1 }}
+            className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+            style={{ color: 'hsl(32 80% 72%)' }}
+          >
+            <span className="font-mono text-[10px] tracking-[0.3em] uppercase">Role para começar</span>
+            <ChevronDown className="w-5 h-5 animate-bounce" />
+          </motion.div>
+        </div>
+      </section>
+
+      {/* PROVOCAÇÃO */}
+      <section className="relative py-28 md:py-40 px-6 md:px-16 overflow-hidden" style={sectionBg.cream}>
+        <div className="max-w-[1400px] mx-auto relative">
+          <motion.div {...fade()} className="grid md:grid-cols-12 gap-12 items-center">
+            <div className="md:col-span-7">
+              <p className="font-mono text-xs tracking-[0.4em] uppercase mb-8" style={{ color: C.amber }}>
+                A pergunta que muda tudo
               </p>
-              <p>
-                Conservação alimentar é a ponte entre a fartura sazonal e a escassez programada. A safra de tomate de janeiro vira conserva pressurizada de molho até dezembro. O excedente de repolho de inverno vira chucrute de 18 meses. A picanha em promoção vira charque desidratado. O bacalhau em oferta de Natal vira reserva proteica do ano inteiro. Não é nostalgia, é matemática operacional.
-              </p>
-              <p className="text-stone-100 italic font-serif text-xl border-l-2 border-amber-500/40 pl-6">
-                Despensa cheia é dinheiro convertido em comida que não se desvaloriza. Em economia inflacionária, é hedge térmico contra papel impresso.
+              <h2
+                className="font-black leading-[0.95] mb-10"
+                style={{
+                  fontFamily: '"Inter Tight", sans-serif',
+                  fontWeight: 900,
+                  fontSize: 'clamp(2rem, 5.5vw, 4.75rem)',
+                  color: C.ink,
+                }}
+              >
+                Quantos dias sua família{' '}
+                <em style={{ fontFamily: '"Playfair Display", serif', fontWeight: 700, fontStyle: 'italic', color: C.amber }}>
+                  come bem
+                </em>{' '}
+                sem ir ao mercado?
+              </h2>
+              <p className="text-xl md:text-2xl leading-relaxed" style={{ color: C.body }}>
+                Para a maioria das casas urbanas a resposta é três a cinco dias.
+                Geladeira é a ilusão moderna de despensa infinita.
+                Em greve de caminhoneiros, apagão prolongado ou crise de logística,
+                a fila no mercado começa em seis horas e acaba em quarenta e oito.
+                Quem domina conservação tem seis a trinta e seis meses de autonomia.
               </p>
             </div>
+            <div className="md:col-span-5">
+              <motion.div {...fade(0.15)} className="relative">
+                <img
+                  src={imgFermentacao}
+                  alt="Conservas fermentadas de chucrute e cenoura em potes de vidro com sal grosso"
+                  width={1600} height={1100}
+                  loading="lazy"
+                  className="w-full h-auto rounded-sm"
+                  style={{ boxShadow: '0 40px 80px -20px hsl(28 34% 14% / 0.45)' }}
+                />
+              </motion.div>
+            </div>
           </motion.div>
-        </section>
+        </div>
+      </section>
 
-        {/* CAPÍTULO 2 — 8 MÉTODOS */}
-        <section className="relative max-w-7xl mx-auto px-5 md:px-8 py-24 md:py-32">
-          <motion.div {...fade(0)} className="mb-16">
-            <span className="font-mono text-[10px] tracking-[0.4em] uppercase text-amber-400 font-bold block mb-4">Capítulo 02</span>
-            <h2 className="text-5xl md:text-7xl xl:text-8xl font-black uppercase text-stone-100 leading-[1.05] mb-6" style={{ fontFamily: "'Inter Tight', sans-serif", letterSpacing: '-0.02em', textShadow: '0 0 40px rgba(245,158,11,0.15), 0 0 80px rgba(245,158,11,0.08)' }}>
-              Oito métodos,{' '}
-              <span className="italic font-serif text-amber-400 font-light normal-case tracking-tight">cada um para um tipo de alimento e cenário.</span>
-            </h2>
-            <p className="text-stone-400 max-w-3xl text-base leading-relaxed font-light">
-              Não existe método único superior. Cada técnica resolve uma classe de problema: energia disponível, tipo de alimento, validade alvo, espaço, tolerância a risco. Combine.
-            </p>
-          </motion.div>
+      {/* MÉTODOS — 8 blocos 50/50 alternados, imagem GIGANTE em cada um */}
+      {METODOS.map((m, i) => {
+        const bg = i % 2 === 0 ? sectionBg.sand : sectionBg.cream;
+        const reverse = i % 2 === 1;
+        return (
+          <section key={m.num} className="relative py-28 md:py-40 px-6 md:px-16 overflow-hidden" style={bg}>
+            <div className="max-w-[1500px] mx-auto relative">
+              <div className={`grid md:grid-cols-12 gap-12 md:gap-20 items-start ${reverse ? 'md:[direction:rtl]' : ''}`}>
+                <motion.div {...fade()} className="md:col-span-6 md:[direction:ltr]">
+                  <img
+                    src={m.imagem}
+                    alt={`${m.nome} — ${m.contexto.slice(0, 80)}`}
+                    width={1600} height={1100}
+                    loading="lazy"
+                    className="w-full h-auto rounded-sm sticky top-24"
+                    style={{ boxShadow: '0 40px 80px -20px hsl(28 34% 14% / 0.45)' }}
+                  />
+                </motion.div>
 
-          <div className="space-y-10">
-            {METODOS.map((m, i) => (
-              <motion.div
-                key={m.num}
-                {...fade(i * 0.04)}
-                className="rounded-sm border border-stone-800 bg-stone-950/60 p-6 md:p-10 hover:border-amber-500/30 transition-all duration-500"
-              >
-                <div className="grid md:grid-cols-12 gap-6 mb-8 pb-8 border-b border-stone-800">
-                  <div className="md:col-span-3 flex md:flex-col items-center md:items-start gap-4 md:gap-3">
-                    <span className="text-7xl md:text-8xl font-black text-amber-400/90 leading-none" style={{ fontFamily: "'Inter Tight', sans-serif", letterSpacing: '-0.02em', textShadow: '0 0 40px rgba(245,158,11,0.15), 0 0 80px rgba(245,158,11,0.08)' }}>
+                <motion.div {...fade(0.15)} className="md:col-span-6 md:[direction:ltr]">
+                  <div className="flex items-baseline gap-6 mb-8">
+                    <span className="font-mono text-7xl md:text-8xl font-black leading-none" style={{ color: C.amber, opacity: 0.85 }}>
                       {m.num}
                     </span>
-                    <div className="p-2.5 rounded bg-amber-500/[0.08] border border-amber-500/20 inline-flex">
-                      <m.icon size={20} className="text-amber-400" />
-                    </div>
+                    <span className="font-mono text-xs tracking-[0.4em] uppercase" style={{ color: C.amber }}>
+                      Método
+                    </span>
                   </div>
-                  <div className="md:col-span-9 space-y-3">
-                    <h3 className="text-3xl md:text-5xl font-black uppercase text-stone-100 leading-[1.1]" style={{ fontFamily: "'Inter Tight', sans-serif", letterSpacing: '-0.02em', textShadow: '0 0 40px rgba(245,158,11,0.15), 0 0 80px rgba(245,158,11,0.08)' }}>
-                      {m.nome}
-                    </h3>
-                    <p className="text-stone-300 text-sm leading-relaxed font-light italic">{m.contexto}</p>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
-                      <div>
-                        <p className="text-[10px] font-mono uppercase tracking-[0.3em] text-stone-500 mb-1">Validade</p>
-                        <p className="text-amber-400 text-xs font-bold font-mono leading-snug">{m.validade}</p>
-                      </div>
-                      <div>
-                        <p className="text-[10px] font-mono uppercase tracking-[0.3em] text-stone-500 mb-1">Custo</p>
-                        <p className="text-amber-400 text-xs font-bold font-mono leading-snug">{m.custo}</p>
-                      </div>
-                      <div>
-                        <p className="text-[10px] font-mono uppercase tracking-[0.3em] text-stone-500 mb-1">Energia</p>
-                        <p className="text-amber-400 text-xs font-bold font-mono leading-snug">{m.energia}</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
 
-                <div className="grid md:grid-cols-12 gap-6">
-                  <div className="md:col-span-7">
-                    <p className="text-[10px] font-mono uppercase tracking-[0.3em] text-amber-400 mb-4">Sequência operacional</p>
-                    <ol className="space-y-3">
+                  <h3
+                    className="font-black leading-[0.95] mb-6"
+                    style={{
+                      fontFamily: '"Inter Tight", sans-serif',
+                      fontWeight: 900,
+                      fontSize: 'clamp(1.875rem, 4.5vw, 3.75rem)',
+                      color: C.ink,
+                    }}
+                  >
+                    {m.nome}
+                  </h3>
+
+                  <p
+                    className="mb-10 italic"
+                    style={{
+                      fontFamily: '"Playfair Display", serif',
+                      fontWeight: 700,
+                      fontSize: 'clamp(1.15rem, 1.9vw, 1.5rem)',
+                      color: C.ember,
+                      lineHeight: 1.45,
+                    }}
+                  >
+                    {m.contexto}
+                  </p>
+
+                  {/* Stats */}
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10 p-6 rounded-sm" style={{ backgroundColor: 'hsl(36 30% 96% / 0.7)', border: `1px solid ${C.line}` }}>
+                    <div>
+                      <p className="text-[10px] font-mono uppercase tracking-[0.3em] mb-2" style={{ color: C.muted }}>Validade</p>
+                      <p className="text-sm font-bold leading-snug" style={{ color: C.ink }}>{m.validade}</p>
+                    </div>
+                    <div>
+                      <p className="text-[10px] font-mono uppercase tracking-[0.3em] mb-2" style={{ color: C.muted }}>Custo</p>
+                      <p className="text-sm font-bold leading-snug" style={{ color: C.ink }}>{m.custo}</p>
+                    </div>
+                    <div>
+                      <p className="text-[10px] font-mono uppercase tracking-[0.3em] mb-2" style={{ color: C.muted }}>Energia</p>
+                      <p className="text-sm font-bold leading-snug" style={{ color: C.ink }}>{m.energia}</p>
+                    </div>
+                  </div>
+
+                  <div className="border-l-2 pl-6 mb-8" style={{ borderColor: C.amber }}>
+                    <p className="font-mono text-[11px] tracking-[0.3em] uppercase mb-5" style={{ color: C.amber }}>
+                      Sequência operacional
+                    </p>
+                    <ol className="space-y-4">
                       {m.passos.map((p, idx) => (
-                        <li key={idx} className="flex gap-3 text-stone-300 text-sm leading-relaxed font-light">
-                          <span className="text-amber-400 font-mono text-xs font-bold pt-0.5 flex-shrink-0">{String(idx + 1).padStart(2, '0')}</span>
+                        <li key={idx} className="flex gap-4 text-base md:text-lg leading-relaxed" style={{ color: C.body }}>
+                          <span className="font-mono text-xs font-bold pt-1 flex-shrink-0" style={{ color: C.amber }}>
+                            {String(idx + 1).padStart(2, '0')}
+                          </span>
                           <span>{p}</span>
                         </li>
                       ))}
                     </ol>
                   </div>
-                  <div className="md:col-span-5 space-y-5">
-                    <div>
-                      <p className="text-[10px] font-mono uppercase tracking-[0.3em] text-stone-500 mb-2">Alimentos compatíveis</p>
-                      <p className="text-stone-300 text-xs leading-relaxed font-light">{m.alimentos}</p>
-                    </div>
-                    <div className="p-4 rounded-sm bg-red-950/20 border border-red-900/40">
-                      <p className="text-[10px] font-mono uppercase tracking-[0.3em] text-red-400 mb-2">Riscos críticos</p>
-                      <p className="text-stone-300 text-xs leading-relaxed font-light">{m.riscos}</p>
-                    </div>
+
+                  <div className="mb-6">
+                    <p className="text-[10px] font-mono uppercase tracking-[0.3em] mb-3" style={{ color: C.muted }}>Alimentos compatíveis</p>
+                    <p className="text-base leading-relaxed" style={{ color: C.body }}>{m.alimentos}</p>
                   </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </section>
 
-        {/* IMAGEM DESIDRATAÇÃO */}
-        <section className="relative max-w-7xl mx-auto px-5 md:px-8 py-12">
-          <motion.figure {...fade(0)} className="relative rounded-sm overflow-hidden h-[480px] md:h-[620px] border border-stone-900">
-            <img
-              src={imgDesidratacao}
-              alt="Bandejas de desidratador empilhadas com tiras de jerky bovino, fatias de manga e tomate, ao lado de cristais de sal grosso e timer analógico vintage, fotografia cinematográfica documental em tons quentes."
-              loading="lazy"
-              width={1920}
-              height={1080}
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-            <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, transparent 0%, rgba(5,8,8,0.2) 50%, rgba(5,8,8,0.92) 100%)' }} />
-            <figcaption className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
-              <span className="font-mono text-[10px] tracking-[0.4em] uppercase text-amber-400 font-bold block mb-2">Métodos 02 e 03 · Desidratação</span>
-              <p className="text-stone-100 text-2xl md:text-4xl font-black uppercase italic max-w-2xl leading-[1.2]" style={{ fontFamily: "'Inter Tight', sans-serif", letterSpacing: '-0.02em', textShadow: '0 0 40px rgba(245,158,11,0.15), 0 0 80px rgba(245,158,11,0.08)' }}>
-                Remover água é remover o tempo da decomposição.
-              </p>
-            </figcaption>
-          </motion.figure>
-        </section>
+                  <div className="p-5 rounded-sm" style={{ backgroundColor: 'hsl(8 50% 94%)', border: '1px solid hsl(8 50% 78%)' }}>
+                    <div className="flex items-center gap-2 mb-3">
+                      <AlertTriangle size={16} style={{ color: 'hsl(8 70% 38%)' }} />
+                      <p className="text-[10px] font-mono uppercase tracking-[0.3em] font-bold" style={{ color: 'hsl(8 70% 38%)' }}>Riscos críticos</p>
+                    </div>
+                    <p className="text-sm md:text-base leading-relaxed" style={{ color: 'hsl(8 40% 22%)' }}>{m.riscos}</p>
+                  </div>
+                </motion.div>
+              </div>
+            </div>
+          </section>
+        );
+      })}
 
-        {/* CAPÍTULO 3 — TABELA COMPARATIVA */}
-        <section className="relative max-w-7xl mx-auto px-5 md:px-8 py-24 md:py-32">
-          <motion.div {...fade(0)} className="mb-12">
-            <span className="font-mono text-[10px] tracking-[0.4em] uppercase text-amber-400 font-bold block mb-4">Capítulo 03</span>
-            <h2 className="text-5xl md:text-7xl xl:text-8xl font-black uppercase text-stone-100 leading-[1.05] mb-6" style={{ fontFamily: "'Inter Tight', sans-serif", letterSpacing: '-0.02em', textShadow: '0 0 40px rgba(245,158,11,0.15), 0 0 80px rgba(245,158,11,0.08)' }}>
-              Comparativo objetivo{' '}
-              <span className="italic font-serif text-amber-400 font-light normal-case tracking-tight">dos oito métodos.</span>
-            </h2>
-            <p className="text-stone-400 max-w-3xl text-base leading-relaxed font-light">
-              Use a tabela para definir prioridade de investimento e combinação ideal para sua realidade de espaço, energia e tolerância a risco.
+      {/* ARMADILHAS */}
+      <section className="relative py-28 md:py-40 px-6 md:px-16 overflow-hidden" style={sectionBg.cream}>
+        <div className="max-w-[1500px] mx-auto relative">
+          <motion.div {...fade()} className="text-center max-w-4xl mx-auto mb-20">
+            <p className="font-mono text-xs tracking-[0.4em] uppercase mb-6" style={{ color: 'hsl(8 70% 38%)' }}>
+              <AlertTriangle className="inline w-4 h-4 mr-2 -mt-1" />
+              Erros que matam mais que comida estragada
             </p>
+            <h2
+              className="font-black leading-[0.95]"
+              style={{
+                fontFamily: '"Inter Tight", sans-serif',
+                fontWeight: 900,
+                fontSize: 'clamp(2.25rem, 6vw, 5rem)',
+                color: C.ink,
+              }}
+            >
+              Seis armadilhas{' '}
+              <em style={{ fontFamily: '"Playfair Display", serif', fontWeight: 700, fontStyle: 'italic', color: C.amber }}>
+                fatais
+              </em>{' '}
+              que comprometem tudo.
+            </h2>
           </motion.div>
 
-          <div className="overflow-x-auto rounded-sm border border-stone-800">
-            <table className="w-full text-xs md:text-sm">
-              <thead>
-                <tr className="bg-stone-950 border-b border-stone-800">
-                  {COMPARATIVO[0].map((h, i) => (
-                    <th key={i} className="text-left p-3 md:p-4 text-amber-400 font-mono text-[10px] md:text-[11px] uppercase tracking-[0.2em]">
-                      {h}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {COMPARATIVO.slice(1).map((row, i) => (
-                  <tr key={i} className="border-b border-stone-800/60 hover:bg-stone-900/30 transition-colors">
-                    {row.map((cell, j) => (
-                      <td key={j} className={`p-3 md:p-4 ${j === 0 ? 'text-stone-100 font-bold' : 'text-stone-300 font-light'}`}>
-                        {cell}
-                      </td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </section>
-
-        {/* IMAGEM PRESSURIZADA */}
-        <section className="relative max-w-7xl mx-auto px-5 md:px-8 py-12">
-          <motion.figure {...fade(0)} className="relative rounded-sm overflow-hidden h-[480px] md:h-[620px] border border-stone-900">
-            <img
-              src={imgPressurizada}
-              alt="Panela de pressão para canning com manômetro vintage sobre fogão, frascos Mason de molho de tomate, picles e tomates inteiros enfileirados em bancada de slate, fotografia documental cinematográfica."
-              loading="lazy"
-              width={1920}
-              height={1080}
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-            <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, transparent 0%, rgba(5,8,8,0.2) 50%, rgba(5,8,8,0.92) 100%)' }} />
-            <figcaption className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
-              <span className="font-mono text-[10px] tracking-[0.4em] uppercase text-amber-400 font-bold block mb-2">Método 06 · Conservas Pressurizadas</span>
-              <p className="text-stone-100 text-2xl md:text-4xl font-black uppercase italic max-w-2xl leading-[1.2]" style={{ fontFamily: "'Inter Tight', sans-serif", letterSpacing: '-0.02em', textShadow: '0 0 40px rgba(245,158,11,0.15), 0 0 80px rgba(245,158,11,0.08)' }}>
-                A linha entre 100 °C e 121 °C separa segurança alimentar de botulismo.
-              </p>
-            </figcaption>
-          </motion.figure>
-        </section>
-
-        {/* CAPÍTULO 4 — ERROS FATAIS */}
-        <section className="relative max-w-5xl mx-auto px-5 md:px-8 py-24 md:py-32">
-          <motion.div {...fade(0)} className="mb-12">
-            <span className="font-mono text-[10px] tracking-[0.4em] uppercase text-red-400 font-bold block mb-4">Capítulo 04</span>
-            <h2 className="text-5xl md:text-7xl xl:text-8xl font-black uppercase text-stone-100 leading-[1.05] mb-6" style={{ fontFamily: "'Inter Tight', sans-serif", letterSpacing: '-0.02em', textShadow: '0 0 40px rgba(245,158,11,0.15), 0 0 80px rgba(245,158,11,0.08)' }}>
-              Seis erros fatais{' '}
-              <span className="italic font-serif text-red-400 font-light normal-case tracking-tight">que matam mais que falta de comida.</span>
-            </h2>
-            <p className="text-stone-400 max-w-3xl text-base leading-relaxed font-light">
-              Conservação mal executada é mais perigosa que comida estragada visível. Patógenos invisíveis (Clostridium, Listeria, Salmonella) não alteram aparência nem cheiro. Mate o erro antes que ele te mate.
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 gap-4">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {ERROS.map((e, i) => (
               <motion.div
                 key={i}
+                {...fade(i * 0.05)}
+                className="p-10 rounded-sm transition-all duration-500 hover:-translate-y-2"
+                style={{
+                  backgroundColor: 'hsl(38 36% 96% / 0.92)',
+                  border: `1px solid ${C.line}`,
+                  boxShadow: '0 20px 50px -20px hsl(28 34% 14% / 0.3)',
+                  backdropFilter: 'blur(8px)',
+                }}
+              >
+                <span className="font-mono text-sm font-bold" style={{ color: 'hsl(8 70% 38%)' }}>0{i + 1}</span>
+                <h3
+                  className="text-2xl md:text-3xl font-black mt-3 mb-5 leading-tight"
+                  style={{ fontFamily: '"Inter Tight", sans-serif', fontWeight: 900, color: C.ink }}
+                >
+                  {e.titulo}
+                </h3>
+                <p className="text-base leading-relaxed" style={{ color: C.body }}>
+                  {e.desc}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="relative py-28 md:py-40 px-6 md:px-16 overflow-hidden" style={sectionBg.sand}>
+        <div className="max-w-5xl mx-auto relative">
+          <motion.div {...fade()} className="text-center mb-20">
+            <p className="font-mono text-xs tracking-[0.4em] uppercase mb-6" style={{ color: C.amber }}>
+              <Archive className="inline w-4 h-4 mr-2 -mt-1" />
+              Perguntas honestas, respostas diretas
+            </p>
+            <h2
+              className="font-black leading-[0.95]"
+              style={{
+                fontFamily: '"Inter Tight", sans-serif',
+                fontWeight: 900,
+                fontSize: 'clamp(2.25rem, 6vw, 5rem)',
+                color: C.ink,
+              }}
+            >
+              O que todo iniciante{' '}
+              <em style={{ fontFamily: '"Playfair Display", serif', fontWeight: 700, fontStyle: 'italic', color: C.amber }}>
+                pergunta primeiro
+              </em>.
+            </h2>
+          </motion.div>
+
+          <div className="space-y-4">
+            {FAQ.map((item, i) => (
+              <motion.div
+                key={i}
                 {...fade(i * 0.04)}
-                className="flex gap-4 p-5 rounded-sm bg-red-950/15 border border-red-900/40 hover:border-red-700/60 transition-all duration-500"
-              >
-                <AlertTriangle size={20} className="text-red-400 flex-shrink-0 mt-0.5" />
-                <p className="text-stone-300 text-sm leading-relaxed font-light">{e}</p>
-              </motion.div>
-            ))}
-          </div>
-        </section>
-
-        {/* CAPÍTULO 5 — CHECKLIST */}
-        <section className="relative max-w-5xl mx-auto px-5 md:px-8 py-24 md:py-32">
-          <motion.div {...fade(0)} className="mb-12">
-            <span className="font-mono text-[10px] tracking-[0.4em] uppercase text-amber-400 font-bold block mb-4">Capítulo 05</span>
-            <h2 className="text-5xl md:text-7xl xl:text-8xl font-black uppercase text-stone-100 leading-[1.05] mb-6" style={{ fontFamily: "'Inter Tight', sans-serif", letterSpacing: '-0.02em', textShadow: '0 0 40px rgba(245,158,11,0.15), 0 0 80px rgba(245,158,11,0.08)' }}>
-              Checklist 12 meses{' '}
-              <span className="italic font-serif text-amber-400 font-light normal-case tracking-tight">para construir uma despensa real.</span>
-            </h2>
-          </motion.div>
-
-          <div className="space-y-3">
-            {CHECKLIST.map((c, i) => (
-              <motion.div
-                key={i}
-                {...fade(i * 0.03)}
-                className="flex gap-4 p-5 rounded-sm bg-stone-950/60 border border-stone-800 hover:border-amber-500/30 transition-all duration-500"
-              >
-                <CheckCircle2 size={18} className="text-amber-400 flex-shrink-0 mt-0.5" />
-                <p className="text-stone-300 text-sm leading-relaxed font-light">{c}</p>
-              </motion.div>
-            ))}
-          </div>
-        </section>
-
-        {/* FAQ */}
-        <section className="relative max-w-4xl mx-auto px-5 md:px-8 py-24 md:py-32">
-          <motion.div {...fade(0)} className="mb-12 text-center">
-            <span className="font-mono text-[10px] tracking-[0.4em] uppercase text-amber-400 font-bold block mb-4">Dúvidas Operacionais</span>
-            <h2 className="text-5xl md:text-7xl xl:text-8xl font-black uppercase text-stone-100 leading-[1.05]" style={{ fontFamily: "'Inter Tight', sans-serif", letterSpacing: '-0.02em', textShadow: '0 0 40px rgba(245,158,11,0.15), 0 0 80px rgba(245,158,11,0.08)' }}>
-              Perguntas frequentes
-            </h2>
-          </motion.div>
-
-          <div className="space-y-3">
-            {FAQ.map((f, i) => (
-              <motion.div
-                key={i}
-                {...fade(i * 0.03)}
-                className="rounded-sm border border-stone-800 bg-stone-950/60 overflow-hidden"
+                className="rounded-sm overflow-hidden"
+                style={{
+                  border: `1px solid ${C.line}`,
+                  backgroundColor: 'hsl(38 36% 96% / 0.85)',
+                  backdropFilter: 'blur(6px)',
+                }}
               >
                 <button
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                  className="w-full flex items-center justify-between gap-4 p-5 text-left hover:bg-stone-900/60 transition-colors"
+                  className="w-full text-left p-7 md:p-9 flex justify-between items-start gap-6 transition-colors hover:bg-amber-50/40"
                 >
-                  <span className="text-stone-100 text-base font-medium leading-snug">{f.q}</span>
-                  <ChevronDown size={18} className={`text-amber-400 flex-shrink-0 transition-transform ${openFaq === i ? 'rotate-180' : ''}`} />
+                  <span
+                    className="text-lg md:text-xl font-bold leading-snug"
+                    style={{ fontFamily: '"Inter Tight", sans-serif', color: C.ink }}
+                  >
+                    {item.q}
+                  </span>
+                  <ChevronDown
+                    className="w-6 h-6 flex-shrink-0 mt-1 transition-transform duration-500"
+                    style={{
+                      color: C.amber,
+                      transform: openFaq === i ? 'rotate(180deg)' : 'rotate(0)',
+                    }}
+                  />
                 </button>
                 {openFaq === i && (
-                  <div className="px-5 pb-5 pt-1">
-                    <p className="text-stone-300 text-sm leading-relaxed font-light">{f.a}</p>
-                  </div>
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    transition={{ duration: 0.5, ease: APPLE_EASE }}
+                    className="px-7 md:px-9 pb-7 md:pb-9"
+                  >
+                    <p className="text-base md:text-lg leading-relaxed" style={{ color: C.body }}>
+                      {item.a}
+                    </p>
+                  </motion.div>
                 )}
               </motion.div>
             ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* CTA FINAL */}
-        <section className="relative max-w-5xl mx-auto px-5 md:px-8 py-24 md:py-32">
-          <motion.div {...fade(0)} className="rounded-sm border border-amber-500/30 bg-gradient-to-br from-stone-950 via-stone-950 to-amber-950/20 p-8 md:p-14 text-center">
-            <span className="font-mono text-[10px] tracking-[0.4em] uppercase text-amber-400 font-bold block mb-4">Próximo Movimento</span>
-            <h3 className="text-3xl md:text-5xl font-black uppercase text-stone-100 leading-[1.1] mb-5" style={{ fontFamily: "'Inter Tight', sans-serif", letterSpacing: '-0.02em', textShadow: '0 0 40px rgba(245,158,11,0.15), 0 0 80px rgba(245,158,11,0.08)' }}>
-              Conservação fecha o ciclo{' '}
-              <span className="italic font-serif text-amber-400 font-light normal-case tracking-tight">da autonomia alimentar.</span>
-            </h3>
-            <p className="text-stone-400 max-w-2xl mx-auto text-base leading-relaxed font-light mb-8">
-              Combine com horta urbana, protocolo de fogo e armazenamento de longa duração. A despensa cheia é o final lógico da autonomia que começa no quintal.
+      {/* FECHO */}
+      <section className="relative py-32 md:py-44 px-6 md:px-16 overflow-hidden" style={sectionBg.cream}>
+        <div className="max-w-5xl mx-auto text-center relative">
+          <motion.div {...fade()}>
+            <ShieldCheck className="w-12 h-12 mx-auto mb-10" style={{ color: C.amber }} />
+            <p className="font-mono text-xs tracking-[0.4em] uppercase mb-8" style={{ color: C.amber }}>
+              A despensa que atravessa o ano
             </p>
-            <div className="flex flex-wrap items-center justify-center gap-3">
-              <Link to="/soberania-organica/horta-urbana" className="inline-flex items-center gap-2 px-6 py-3 rounded-sm bg-amber-500 text-stone-950 font-bold uppercase tracking-wider text-xs hover:bg-amber-400 transition-colors">
-                Horta Urbana <ArrowRight size={14} />
-              </Link>
-              <Link to="/soberania-organica/protocolo-fogo" className="inline-flex items-center gap-2 px-6 py-3 rounded-sm border border-amber-500/40 text-amber-400 font-bold uppercase tracking-wider text-xs hover:bg-amber-500/10 transition-colors">
-                Protocolo de Fogo <ArrowRight size={14} />
-              </Link>
-              <Link to="/soberania-organica/conservacao-armazenamento" className="inline-flex items-center gap-2 px-6 py-3 rounded-sm border border-stone-700 text-stone-300 font-bold uppercase tracking-wider text-xs hover:border-stone-500 transition-colors">
-                Armazenamento Longo Prazo <ArrowRight size={14} />
-              </Link>
-            </div>
+            <h2
+              className="font-black leading-[0.95] mb-12"
+              style={{
+                fontFamily: '"Inter Tight", sans-serif',
+                fontWeight: 900,
+                fontSize: 'clamp(2.5rem, 7vw, 6rem)',
+                color: C.ink,
+              }}
+            >
+              Geladeira é conveniência.<br />
+              <em style={{ fontFamily: '"Playfair Display", serif', fontWeight: 700, fontStyle: 'italic', color: C.amber }}>
+                Despensa cheia
+              </em>
+              <br />é soberania.
+            </h2>
+            <p className="text-xl md:text-2xl leading-relaxed max-w-3xl mx-auto" style={{ color: C.body }}>
+              Comece pela fermentação nesta semana. No mês que vem adicione desidratação solar.
+              Em três meses você opera com seis meses de despensa real.
+              Em um ano, autonomia alimentar de doze a trinta e seis meses sem nenhuma dependência da rede.
+            </p>
           </motion.div>
-        </section>
-      </div>
-    </>
+        </div>
+      </section>
+
+      <RelatedHooks
+        tema="light"
+        titulo="A trilha completa da sobrevivência"
+        subtitulo="Despensa cheia é a segunda camada. Estes módulos formam o protocolo completo, do kit de 72 horas ao refúgio rural autônomo."
+        hooks={[
+          {
+            titulo: 'Kit 72 Horas',
+            descricao: 'A primeira camada de proteção. Mochila e despensa prontas para 72 horas de autonomia imediata em qualquer crise.',
+            rota: '/soberania-organica/kit-72h',
+            selo: 'Comece aqui',
+          },
+          {
+            titulo: 'Preservação Ancestral',
+            descricao: 'Quais alimentos preservar, por quanto tempo e como usar. A tabela mestra de despensa sem geladeira.',
+            rota: '/soberania-organica/preservacao-ancestral',
+          },
+          {
+            titulo: 'Gestão de Água em Escala Micro',
+            descricao: 'Captação de chuva, filtro biológico e SODIS. A água que cozinha as conservas e hidrata a família por noventa dias sem rede.',
+            rota: '/soberania-organica/gestao-agua-micro',
+          },
+          {
+            titulo: 'Horta Urbana',
+            descricao: 'A safra que vai virar conserva. Fonte primária dos alimentos que você fermenta, desidrata e enlata.',
+            rota: '/soberania-organica/horta-urbana',
+          },
+          {
+            titulo: 'Protocolo de Fogo',
+            descricao: 'Cozinhar e esterilizar sem rede elétrica. Métodos de fogo controlado para preparar e conservar em qualquer cenário.',
+            rota: '/soberania-organica/protocolo-fogo',
+          },
+          {
+            titulo: 'Refúgio Rural Tático',
+            descricao: 'Pensa em sair da cidade? Protocolo de avaliação, escolha e estruturação do refúgio rural com sistemas autônomos completos.',
+            rota: '/soberania-organica/refugio-rural',
+          },
+        ]}
+      />
+    </div>
   );
 }
