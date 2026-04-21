@@ -146,6 +146,7 @@ import EDC from "./pages/soberania-organica/EDC";
 import ProtocoloFogo from "./pages/soberania-organica/ProtocoloFogo";
 import ConservacaoAlimentos from "./pages/soberania-organica/ConservacaoAlimentos";
 import DefesaPessoal from "./pages/soberania-organica/DefesaPessoal";
+import DefesaDomiciliar from "./pages/soberania-organica/DefesaDomiciliar";
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -307,6 +308,7 @@ const App = () => (
             <Route path="/soberania-organica/protocolo-fogo" element={<ProtocoloFogo />} />
             <Route path="/soberania-organica/conservacao-alimentos" element={<ConservacaoAlimentos />} />
             <Route path="/soberania-organica/defesa-pessoal" element={<DefesaPessoal />} />
+            <Route path="/soberania-organica/defesa-domiciliar" element={<DefesaDomiciliar />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
