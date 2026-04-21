@@ -589,7 +589,7 @@ export default function ConservacaoAlimentos() {
               <span className="italic font-serif text-amber-400 font-light normal-case tracking-tight">da autonomia alimentar.</span>
             </h3>
             <p className="text-stone-400 max-w-2xl mx-auto text-base leading-relaxed font-light mb-8">
-              Combine com horta urbana, protocolo de fogo e armazenamento de longa duração. A despensa cheia é o final lógico da soberania que começa no quintal.
+              Combine com horta urbana, protocolo de fogo e armazenamento de longa duração. A despensa cheia é o final lógico da autonomia que começa no quintal.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-3">
               <Link to="/soberania-organica/horta-urbana" className="inline-flex items-center gap-2 px-6 py-3 rounded-sm bg-amber-500 text-stone-950 font-bold uppercase tracking-wider text-xs hover:bg-amber-400 transition-colors">
