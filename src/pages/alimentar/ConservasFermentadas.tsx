@@ -582,29 +582,25 @@ export default function ConservasFermentadas() {
         </div>
       </section>
 
-      {/* FECHO MANIFESTO — com imagem grande final em fade */}
-      <section className="relative overflow-hidden" style={sectionBg.brineWash}>
-        <motion.div {...fade()} className="relative w-full">
-          <div className="relative w-full" style={{ height: 'clamp(380px, 55vh, 640px)' }}>
-            <img
-              src={imgMesa}
-              alt="Mesa familiar com fermentados compartilhados entre gerações"
-              width={1920} height={1280}
-              loading="lazy"
-              className="w-full h-full object-cover"
-            />
-            <div
-              className="absolute inset-x-0 top-0 h-32 md:h-48 pointer-events-none"
-              style={{ background: `linear-gradient(180deg, ${C.page} 0%, transparent 100%)` }}
-            />
-            <div
-              className="absolute inset-x-0 bottom-0 h-40 md:h-64 pointer-events-none"
-              style={{ background: `linear-gradient(0deg, ${C.page} 0%, transparent 100%)` }}
-            />
-          </div>
-        </motion.div>
+      {/* FECHO MANIFESTO */}
+      <section className="relative py-32 md:py-44 px-6 md:px-16 overflow-hidden" style={sectionBg.brineWash}>
+        <div className="max-w-[1400px] mx-auto relative">
+          <motion.div {...fade()} className="grid md:grid-cols-12 gap-12 items-center mb-20">
+            <div className="md:col-span-6">
+              <img
+                src={imgMesa}
+                alt="Mesa familiar com fermentados compartilhados entre gerações"
+                width={1920} height={1280}
+                loading="lazy"
+                className="w-full h-auto rounded-sm"
+                style={{ boxShadow: '0 40px 80px -20px hsl(20 28% 14% / 0.45)' }}
+              />
+            </div>
+            <div className="md:col-span-6"></div>
+          </motion.div>
+        </div>
 
-        <div className="max-w-5xl mx-auto px-6 md:px-16 pb-32 md:pb-44 -mt-8 md:-mt-16 text-center relative">
+        <div className="max-w-5xl mx-auto text-center relative">
           <motion.div {...fade()}>
             <ShieldCheck className="w-12 h-12 mx-auto mb-10" style={{ color: C.copper }} />
             <p className="font-mono text-xs tracking-[0.4em] uppercase mb-8" style={{ color: C.copper }}>
