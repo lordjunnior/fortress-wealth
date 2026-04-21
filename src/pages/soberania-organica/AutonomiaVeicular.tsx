@@ -89,7 +89,7 @@ const PILARES: Pilar[] = [
   {
     num: '04',
     nome: 'Antirrastreamento e Privacidade Veicular',
-    contexto: 'Veículo moderno é dispositivo de vigilância sobre rodas. Sistemas OnStar, Connected Car e telemática transmitem em tempo real localização, velocidade, padrões de uso e até áudio interno (em alguns modelos). Operadoras vendem dados para seguradoras, governo e empresas de marketing. Rastreador instalado por terceiros (cônjuge, perseguidor, criminoso) é detectável em 95% dos casos com varredura técnica adequada. Privacidade veicular é direito básico de soberania pessoal.',
+    contexto: 'Veículo moderno é dispositivo de vigilância sobre rodas. Sistemas OnStar, Connected Car e telemática transmitem em tempo real localização, velocidade, padrões de uso e até áudio interno (em alguns modelos). Operadoras vendem dados para seguradoras, governo e empresas de marketing. Rastreador instalado por terceiros (cônjuge, perseguidor, criminoso) é detectável em 95% dos casos com varredura técnica adequada. Privacidade veicular é direito básico de autonomia pessoal.',
     passos: [
       'Auditoria inicial: contrate empresa especializada em varredura eletrônica veicular (TSCM automotivo). Custo de R$ 800 a R$ 2 mil, identifica rastreadores GPS, microfones e dispositivos GSM clandestinos em 2 a 4 horas de inspeção.',
       'Bloqueio de telemática: desconecte módulos de comunicação (eCall, OnStar, Connected) via software ou desconexão física do módulo TCU. Mantém funcionalidade de navegação local sem transmissão externa.',
@@ -222,25 +222,25 @@ const FAQ = [
   },
 ];
 
-const SoberaniaVeicular = () => {
+const AutonomiaVeicular = () => {
   const [openIdx, setOpenIdx] = useState<number | null>(null);
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
   return (
     <>
       <SeoHead
-        path="/soberania-organica/soberania-veicular"
+        path="/soberania-organica/autonomia-veicular"
         custom={{
-          title: 'Soberania Veicular: Blindagem, Kit de Emergência, Antiassalto e Antirrastreamento',
-          description: 'Manual tático completo de soberania veicular para o brasileiro: blindagem nível IIIA, kit de emergência veicular, fuga em assalto a semáforo, antirrastreamento, manutenção tática, combustível de reserva e inteligência de rota.',
-          canonical: 'https://lordjunnior.com.br/soberania-organica/soberania-veicular',
-          primaryKeyword: 'soberania veicular',
+          title: 'Autonomia Veicular: Blindagem, Kit de Emergência, Antiassalto e Antirrastreamento',
+          description: 'Manual tático completo de autonomia veicular para o brasileiro: blindagem nível IIIA, kit de emergência veicular, fuga em assalto a semáforo, antirrastreamento, manutenção tática, combustível de reserva e inteligência de rota.',
+          canonical: 'https://lordjunnior.com.br/soberania-organica/autonomia-veicular',
+          primaryKeyword: 'autonomia veicular',
           lsiKeywords: ['blindagem leve', 'kit emergência veicular', 'assalto a semáforo', 'antirrastreamento veicular', 'manutenção tática', 'direção defensiva'],
           longTailKeywords: ['como agir em assalto a carro no semáforo', 'kit de emergência veicular completo', 'blindagem nível IIIA preço', 'como desativar telemática do carro', 'estoque de combustível em casa legal'],
           breadcrumbs: [
             { name: 'Início', url: '/' },
             { name: 'Soberania Orgânica', url: '/soberania-organica' },
-            { name: 'Soberania Veicular', url: '/soberania-organica/soberania-veicular' },
+            { name: 'Autonomia Veicular', url: '/soberania-organica/autonomia-veicular' },
           ],
           schemaType: 'Article',
           articleSection: 'Soberania Orgânica',
@@ -262,11 +262,11 @@ const SoberaniaVeicular = () => {
           phase="Soberania Orgânica · Mobilidade Tática"
           title={
             <>
-              Soberania Veicular:{' '}
+              Autonomia Veicular:{' '}
               <span className="italic font-serif text-amber-400 font-light tracking-tight">o veículo é extensão do refúgio, não meio de transporte aleatório</span>
             </>
           }
-          subtitle="312 mil assaltos a veículos em 2024. 38% das panes mecânicas em rodovia ocorrem por falta de manutenção básica. Carros modernos transmitem 24/7 sua localização, voz e padrões de uso. O motorista soberano opera o veículo como sistema integrado de mobilidade, defesa e privacidade, não como objeto passivo entregue ao acaso urbano."
+          subtitle="312 mil assaltos a veículos em 2024. 38% das panes mecânicas em rodovia ocorrem por falta de manutenção básica. Carros modernos transmitem 24/7 sua localização, voz e padrões de uso. O motorista autônomo opera o veículo como sistema integrado de mobilidade, defesa e privacidade, não como objeto passivo entregue ao acaso urbano."
         />
 
         <section className="py-24 md:py-32 px-6 md:px-12">
@@ -276,7 +276,7 @@ const SoberaniaVeicular = () => {
               <h2 className="text-4xl md:text-6xl font-display tracking-tight mb-8 text-foreground">O carro é a maior superfície de exposição do dia a dia urbano</h2>
               <div className="space-y-6 text-lg md:text-xl text-foreground/80 leading-relaxed font-light">
                 <p>O brasileiro adulto passa em média 78 minutos diários dentro do veículo. Isso é mais tempo do que em qualquer outro ambiente único, exceto o quarto de dormir. E é o ambiente onde concentra-se a maior parte do risco urbano real: assalto, acidente, pane mecânica, vigilância eletrônica, perseguição direcionada.</p>
-                <p>Tratar o carro como apenas meio de transporte é abdicar da segunda maior camada de soberania pessoal, depois do próprio corpo. Soberania veicular é doutrina integrada: blindagem física, kit de emergência completo, treinamento de direção defensiva, privacidade contra rastreamento, manutenção tática preventiva, combustível de reserva e inteligência de rota.</p>
+                <p>Tratar o carro como apenas meio de transporte é abdicar da segunda maior camada de autonomia pessoal, depois do próprio corpo. Autonomia veicular é doutrina integrada: blindagem física, kit de emergência completo, treinamento de direção defensiva, privacidade contra rastreamento, manutenção tática preventiva, combustível de reserva e inteligência de rota.</p>
                 <p>Este manual estabelece 8 pilares operacionais, cada um com sequência treinada, base técnica documentada e falhas críticas mapeadas. Implementação progressiva em ciclos de 12 meses, com auditoria semestral. Resultado: redução real de 70 a 90% em probabilidade de incidente crítico, com investimento total entre R$ 5 mil (versão básica) e R$ 100 mil (versão completa com blindagem).</p>
               </div>
             </motion.div>
@@ -287,7 +287,7 @@ const SoberaniaVeicular = () => {
           <div className="max-w-7xl mx-auto">
             <motion.div {...fade(0)} className="mb-20 max-w-4xl">
               <p className="text-xs font-mono uppercase tracking-[0.3em] text-primary mb-6">Capítulo 02 · Pilares operacionais</p>
-              <h2 className="text-4xl md:text-6xl font-display tracking-tight mb-6 text-foreground">8 protocolos da mobilidade soberana</h2>
+              <h2 className="text-4xl md:text-6xl font-display tracking-tight mb-6 text-foreground">8 protocolos da mobilidade autônoma</h2>
               <p className="text-lg text-foreground/70 font-light">Cada protocolo com sequência operacional, base técnica e falhas críticas. Estude um por mês, integre um por trimestre.</p>
             </motion.div>
 
@@ -410,7 +410,7 @@ const SoberaniaVeicular = () => {
             <motion.div {...fade(0)} className="mb-16 max-w-4xl">
               <p className="text-xs font-mono uppercase tracking-[0.3em] text-primary mb-6">Capítulo 06 · Execução anual</p>
               <h2 className="text-4xl md:text-6xl font-display tracking-tight mb-6 text-foreground">Plano de 12 meses</h2>
-              <p className="text-lg text-foreground/70 font-light">Construção progressiva da soberania veicular completa. Sem ego, sem pressa, com auditoria semestral.</p>
+              <p className="text-lg text-foreground/70 font-light">Construção progressiva da autonomia veicular completa. Sem ego, sem pressa, com auditoria semestral.</p>
             </motion.div>
             <div className="grid md:grid-cols-2 gap-4">
               {CHECKLIST.map((c, i) => (
@@ -479,4 +479,4 @@ const SoberaniaVeicular = () => {
   );
 };
 
-export default SoberaniaVeicular;
+export default AutonomiaVeicular;

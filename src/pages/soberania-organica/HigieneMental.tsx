@@ -272,9 +272,9 @@ const HigieneMental = () => {
           <div className="max-w-7xl mx-auto">
             <motion.div {...fade(0)} className="max-w-4xl">
               <p className="text-xs font-mono uppercase tracking-[0.3em] text-primary mb-6">Capítulo 01 · Princípio operacional</p>
-              <h2 className="text-4xl md:text-6xl font-display tracking-tight mb-8 text-foreground">A mente é a infraestrutura de toda outra soberania</h2>
+              <h2 className="text-4xl md:text-6xl font-display tracking-tight mb-8 text-foreground">A mente é a infraestrutura de toda outra autonomia</h2>
               <div className="space-y-6 text-lg md:text-xl text-foreground/80 leading-relaxed font-light">
-                <p>De nada serve cofre blindado, bitcoin em multisig e horta produtiva se a mente entra em colapso na primeira pressão real. A higiene mental não é luxo de quem tem tempo. É infraestrutura cognitiva que sustenta todas as outras decisões de soberania financeira, biológica e familiar.</p>
+                <p>De nada serve cofre blindado, bitcoin em multisig e horta produtiva se a mente entra em colapso na primeira pressão real. A higiene mental não é luxo de quem tem tempo. É infraestrutura cognitiva que sustenta todas as outras decisões financeiras, biológicas e familiares.</p>
                 <p>O cérebro humano não foi desenhado para 6 mil estímulos diários, scroll infinito, jornadas de 12 horas em ambiente artificial e conexão humana mediada por tela. A epidemia silenciosa de ansiedade, depressão e burnout no Brasil contemporâneo não é fraqueza moral, é desadaptação evolutiva entre biologia ancestral e ambiente moderno saturado.</p>
                 <p>Este manual estabelece 8 protocolos integrados, cada um com sequência operacional treinada, base científica documentada e falhas críticas mapeadas. Implemente em ciclos de 12 meses, com auditoria semestral. Resultados subjetivos em 14 dias. Resultados estruturais em 90 dias. Transformação consolidada em 12 meses.</p>
               </div>
@@ -337,7 +337,7 @@ const HigieneMental = () => {
           <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
             <motion.div {...fade(0)}>
               <p className="text-xs font-mono uppercase tracking-[0.3em] text-primary mb-6">Capítulo 03 · Sono profundo</p>
-              <h2 className="text-4xl md:text-5xl font-display tracking-tight mb-6 text-foreground">O quarto é a infraestrutura mais negligenciada da soberania</h2>
+              <h2 className="text-4xl md:text-5xl font-display tracking-tight mb-6 text-foreground">O quarto é a infraestrutura mais negligenciada da autonomia</h2>
               <div className="space-y-5 text-base md:text-lg text-foreground/80 leading-relaxed font-light">
                 <p>O sono brasileiro médio em 2024 caiu para 6h12 minutos, segundo Fundação Oswaldo Cruz. 38% da população adulta dorme menos de 6 horas, gerando epidemia silenciosa de inflamação crônica, desregulação hormonal, queda imunitária e fragilização cognitiva mensurável em testes de atenção sustentada.</p>
                 <p>O quarto deve ser engenharia ambiental dedicada: blackout absoluto, temperatura entre 18 e 20 graus, ausência total de LEDs, eliminação de telas 90 minutos antes de dormir. Cama exclusiva para sono e intimidade, nunca para trabalho ou consumo de mídia.</p>

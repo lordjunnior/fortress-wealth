@@ -390,7 +390,7 @@ export default function PrimeirosSocorrosTaticos() {
                 Esta página não substitui curso presencial. Substitui a ilusão de que band-aid e álcool resolvem trauma. O conteúdo é uma adaptação civil do TCCC (Tactical Combat Casualty Care) e TECC (Tactical Emergency Casualty Care), os protocolos militares e civis usados em medicina de combate desde a Guerra do Iraque, validados em mais de 1 milhão de casos reais e responsáveis pela maior queda de mortalidade evitável da história da medicina pré-hospitalar.
               </p>
               <p className="text-stone-100 italic font-serif text-xl border-l-2 border-rose-500/40 pl-6">
-                Equipamento sem treinamento é peso morto. Treinamento sem equipamento é teoria. Soberania biológica exige os dois.
+                Equipamento sem treinamento é peso morto. Treinamento sem equipamento é teoria. Autonomia biológica exige os dois.
               </p>
             </div>
           </motion.div>
@@ -649,7 +649,7 @@ export default function PrimeirosSocorrosTaticos() {
           <motion.div {...fade(0)} className="rounded-sm border border-rose-500/20 bg-stone-950/70 p-8 md:p-12">
             <span className="font-mono text-[10px] tracking-[0.4em] uppercase text-rose-400 font-bold block mb-4">Plano de execução</span>
             <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tighter text-stone-100 leading-[0.92] mb-5" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
-              Trinta dias para soberania{' '}
+              Trinta dias para autonomia{' '}
               <span className="italic font-serif text-rose-400 font-light normal-case tracking-tight">médica básica.</span>
             </h2>
             <p className="text-stone-400 mb-8 text-base leading-relaxed font-light">
@@ -699,11 +699,11 @@ export default function PrimeirosSocorrosTaticos() {
         <section className="relative max-w-5xl mx-auto px-5 md:px-8 py-24 md:py-32">
           <motion.div {...fade(0)} className="text-center">
             <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-stone-100 leading-[0.92] mb-6" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
-              Soberania médica é a base.{' '}
+              Autonomia médica é a base.{' '}
               <span className="italic font-serif text-rose-400 font-light normal-case tracking-tight">Sem ela, todas as outras caem.</span>
             </h2>
             <p className="text-stone-400 max-w-2xl mx-auto mb-10 text-base leading-relaxed font-light">
-              Continue a trilha de soberania orgânica com kits de 72h, abrigo de emergência e protocolos para apagão. O sistema falha. Você não pode.
+              Continue a trilha autônoma com kits de 72h, abrigo de emergência e protocolos para apagão. O sistema falha. Você não pode.
             </p>
             <div className="flex flex-wrap justify-center gap-3">
               <Link to="/soberania-organica/kit-72h" className="group inline-flex items-center gap-2 px-6 py-3 rounded-sm bg-rose-500 text-stone-950 font-bold uppercase tracking-wider text-xs hover:bg-rose-400 transition-all">
