@@ -143,6 +143,7 @@ import ResidenciaFiscal from "./pages/saida/ResidenciaFiscal";
 import JurisdicoesAmigaveis from "./pages/saida/JurisdicoesAmigaveis";
 import SementesCrioulas from "./pages/alimentar/SementesCrioulas";
 import ConservasFermentadas from "./pages/alimentar/ConservasFermentadas";
+import AquaponiaResidencial from "./pages/alimentar/AquaponiaResidencial";
 import SeedPhraseAco from "./pages/autocustodia/SeedPhraseAco";
 import CoinjoinPrivacidade from "./pages/autocustodia/CoinjoinPrivacidade";
 import HerancaBitcoin from "./pages/autocustodia/HerancaBitcoin";
