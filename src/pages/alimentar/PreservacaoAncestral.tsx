@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { ChevronDown, AlertTriangle, ShieldCheck, Flame } from 'lucide-react';
 import SeoHead from '@/components/SeoHead';
 import BackToHome from '@/components/BackToHome';
+import RelatedHooks from '@/components/RelatedHooks';
 import heroImg from '@/assets/alimentar/preservacao-hero.jpg';
 import imgDesidratacao from '@/assets/alimentar/preservacao-desidratacao.jpg';
 import imgSalga from '@/assets/alimentar/preservacao-salga.jpg';
@@ -650,6 +651,46 @@ export default function PreservacaoAncestral() {
           </motion.div>
         </div>
       </section>
+
+      <RelatedHooks
+        tema="light"
+        titulo="Continue construindo a despensa autônoma"
+        subtitulo="Estes módulos completam o protocolo de soberania alimentar e de água — do kit de 72 horas à colheita do próprio quintal."
+        hooks={[
+          {
+            titulo: 'Kit 72h',
+            descricao: 'O ponto de partida. O que você precisa ter pronto e ao alcance da mão antes de qualquer crise prolongada.',
+            rota: '/soberania-organica/kit-72h',
+            selo: 'Comece aqui',
+          },
+          {
+            titulo: 'Conservação de Alimentos',
+            descricao: 'Princípios complementares de armazenagem segura: embalagem, controle de pragas e rotação da despensa.',
+            rota: '/soberania-organica/conservacao-alimentos',
+          },
+          {
+            titulo: 'Gestão de Água em Escala Micro',
+            descricao: 'Captação de chuva, filtragem biológica e reuso de águas cinzas — a água que vai cozinhar e hidratar suas conservas.',
+            rota: '/soberania-organica/gestao-agua-micro',
+            selo: 'Próximo passo',
+          },
+          {
+            titulo: 'Sementes Crioulas',
+            descricao: 'Banco de sementes próprio para reproduzir a safra ano após ano — a fonte do alimento que vai virar conserva.',
+            rota: '/soberania-organica/sementes-crioulas',
+          },
+          {
+            titulo: 'Conservas Fermentadas',
+            descricao: 'Aprofundamento técnico em fermentação láctica: chucrute, kimchi e picles em escala familiar.',
+            rota: '/soberania-organica/conservas-fermentadas',
+          },
+          {
+            titulo: 'Aquaponia Residencial',
+            descricao: 'Proteína fresca em ciclo fechado para complementar a proteína curada e desidratada da despensa.',
+            rota: '/soberania-organica/aquaponia-residencial',
+          },
+        ]}
+      />
     </div>
   );
 }
