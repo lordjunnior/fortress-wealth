@@ -206,7 +206,7 @@ function Hero() {
           className="text-[clamp(2.75rem,8.5vw,7.5rem)] font-black leading-[0.95] tracking-tight max-w-[18ch]"
           style={{ fontFamily: "'Inter Tight', sans-serif", color: '#f4ede4' }}>
           Dez países.<br/>
-          <span style={{ color: '#e8a36b', fontStyle: 'italic', fontWeight: 300, fontFamily: "'Playfair Display', serif" }}>
+          <span style={{ color: '#ffb37a', fontStyle: 'italic', fontWeight: 400, fontFamily: "'Playfair Display', serif", textShadow: '0 0 40px rgba(255,179,122,0.45), 0 0 80px rgba(255,179,122,0.25)' }}>
             Zero hipocrisia.
           </span>
         </motion.h1>
