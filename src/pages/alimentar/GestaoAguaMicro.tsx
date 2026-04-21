@@ -412,18 +412,18 @@ export default function GestaoAguaMicro() {
         return (
           <section key={p.num} className="relative py-28 md:py-40 px-6 md:px-16 overflow-hidden" style={sectionBgStyle}>
             <div className="max-w-[1500px] mx-auto relative">
-              <div className={`grid md:grid-cols-12 gap-12 md:gap-20 items-center ${reverse ? 'md:[direction:rtl]' : ''}`}>
-                <motion.div {...fade()} className="md:col-span-6 md:[direction:ltr]">
+              <div className={`grid md:grid-cols-12 gap-12 md:gap-20 items-start ${reverse ? 'md:[direction:rtl]' : ''}`}>
+                <motion.div {...fade()} className="md:col-span-7 md:[direction:ltr]">
                   <img
                     src={p.imagem}
                     alt={p.titulo}
                     width={1600} height={1200}
                     loading="lazy"
-                    className="w-full h-auto rounded-sm"
+                    className="w-full h-auto rounded-sm sticky top-24"
                     style={{ boxShadow: isDark ? '0 40px 80px -20px rgba(0,0,0,0.7)' : '0 40px 80px -20px hsl(210 38% 14% / 0.45)' }}
                   />
                 </motion.div>
-                <motion.div {...fade(0.15)} className="md:col-span-6 md:[direction:ltr]">
+                <motion.div {...fade(0.15)} className="md:col-span-5 md:[direction:ltr]">
                   <div className="flex items-baseline gap-6 mb-8">
                     <span className="font-mono text-7xl md:text-8xl font-black leading-none" style={{ color: accentColor, opacity: 0.85 }}>
                       {p.num}
