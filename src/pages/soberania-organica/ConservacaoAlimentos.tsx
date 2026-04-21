@@ -318,7 +318,7 @@ export default function ConservacaoAlimentos() {
         <section className="relative max-w-5xl mx-auto px-5 md:px-8 py-24 md:py-32">
           <motion.div {...fade(0)}>
             <span className="font-mono text-[10px] tracking-[0.4em] uppercase text-amber-400 font-bold block mb-5">Capítulo 01</span>
-            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-stone-100 mb-8 leading-[0.92]" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+            <h2 className="text-5xl md:text-7xl xl:text-8xl font-black uppercase text-stone-100 leading-[1.05] mb-8" style={{ fontFamily: "'Inter Tight', sans-serif", letterSpacing: '-0.02em', textShadow: '0 0 40px rgba(245,158,11,0.15), 0 0 80px rgba(245,158,11,0.08)' }}>
               A despensa é o orçamento real{' '}
               <span className="italic font-serif text-amber-400 font-light normal-case tracking-tight">da sua autonomia.</span>
             </h2>
@@ -340,7 +340,7 @@ export default function ConservacaoAlimentos() {
         <section className="relative max-w-7xl mx-auto px-5 md:px-8 py-24 md:py-32">
           <motion.div {...fade(0)} className="mb-16">
             <span className="font-mono text-[10px] tracking-[0.4em] uppercase text-amber-400 font-bold block mb-4">Capítulo 02</span>
-            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-stone-100 leading-[0.92] mb-5" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+            <h2 className="text-5xl md:text-7xl xl:text-8xl font-black uppercase text-stone-100 leading-[1.05] mb-6" style={{ fontFamily: "'Inter Tight', sans-serif", letterSpacing: '-0.02em', textShadow: '0 0 40px rgba(245,158,11,0.15), 0 0 80px rgba(245,158,11,0.08)' }}>
               Oito métodos,{' '}
               <span className="italic font-serif text-amber-400 font-light normal-case tracking-tight">cada um para um tipo de alimento e cenário.</span>
             </h2>
@@ -358,7 +358,7 @@ export default function ConservacaoAlimentos() {
               >
                 <div className="grid md:grid-cols-12 gap-6 mb-8 pb-8 border-b border-stone-800">
                   <div className="md:col-span-3 flex md:flex-col items-center md:items-start gap-4 md:gap-3">
-                    <span className="text-7xl md:text-8xl font-black text-amber-400/90 leading-none" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+                    <span className="text-7xl md:text-8xl font-black text-amber-400/90 leading-none" style={{ fontFamily: "'Inter Tight', sans-serif", letterSpacing: '-0.02em', textShadow: '0 0 40px rgba(245,158,11,0.15), 0 0 80px rgba(245,158,11,0.08)' }}>
                       {m.num}
                     </span>
                     <div className="p-2.5 rounded bg-amber-500/[0.08] border border-amber-500/20 inline-flex">
@@ -366,7 +366,7 @@ export default function ConservacaoAlimentos() {
                     </div>
                   </div>
                   <div className="md:col-span-9 space-y-3">
-                    <h3 className="text-3xl md:text-4xl font-black uppercase tracking-tight text-stone-100 leading-tight" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+                    <h3 className="text-3xl md:text-5xl font-black uppercase text-stone-100 leading-[1.1]" style={{ fontFamily: "'Inter Tight', sans-serif", letterSpacing: '-0.02em', textShadow: '0 0 40px rgba(245,158,11,0.15), 0 0 80px rgba(245,158,11,0.08)' }}>
                       {m.nome}
                     </h3>
                     <p className="text-stone-300 text-sm leading-relaxed font-light italic">{m.contexto}</p>
@@ -429,7 +429,7 @@ export default function ConservacaoAlimentos() {
             <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, transparent 0%, rgba(5,8,8,0.2) 50%, rgba(5,8,8,0.92) 100%)' }} />
             <figcaption className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
               <span className="font-mono text-[10px] tracking-[0.4em] uppercase text-amber-400 font-bold block mb-2">Métodos 02 e 03 · Desidratação</span>
-              <p className="text-stone-100 text-2xl md:text-4xl font-black uppercase tracking-tight italic max-w-2xl leading-tight" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+              <p className="text-stone-100 text-2xl md:text-4xl font-black uppercase italic max-w-2xl leading-[1.2]" style={{ fontFamily: "'Inter Tight', sans-serif", letterSpacing: '-0.02em', textShadow: '0 0 40px rgba(245,158,11,0.15), 0 0 80px rgba(245,158,11,0.08)' }}>
                 Remover água é remover o tempo da decomposição.
               </p>
             </figcaption>
@@ -440,7 +440,7 @@ export default function ConservacaoAlimentos() {
         <section className="relative max-w-7xl mx-auto px-5 md:px-8 py-24 md:py-32">
           <motion.div {...fade(0)} className="mb-12">
             <span className="font-mono text-[10px] tracking-[0.4em] uppercase text-amber-400 font-bold block mb-4">Capítulo 03</span>
-            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-stone-100 leading-[0.92] mb-5" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+            <h2 className="text-5xl md:text-7xl xl:text-8xl font-black uppercase text-stone-100 leading-[1.05] mb-6" style={{ fontFamily: "'Inter Tight', sans-serif", letterSpacing: '-0.02em', textShadow: '0 0 40px rgba(245,158,11,0.15), 0 0 80px rgba(245,158,11,0.08)' }}>
               Comparativo objetivo{' '}
               <span className="italic font-serif text-amber-400 font-light normal-case tracking-tight">dos oito métodos.</span>
             </h2>
@@ -489,7 +489,7 @@ export default function ConservacaoAlimentos() {
             <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, transparent 0%, rgba(5,8,8,0.2) 50%, rgba(5,8,8,0.92) 100%)' }} />
             <figcaption className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
               <span className="font-mono text-[10px] tracking-[0.4em] uppercase text-amber-400 font-bold block mb-2">Método 06 · Conservas Pressurizadas</span>
-              <p className="text-stone-100 text-2xl md:text-4xl font-black uppercase tracking-tight italic max-w-2xl leading-tight" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+              <p className="text-stone-100 text-2xl md:text-4xl font-black uppercase italic max-w-2xl leading-[1.2]" style={{ fontFamily: "'Inter Tight', sans-serif", letterSpacing: '-0.02em', textShadow: '0 0 40px rgba(245,158,11,0.15), 0 0 80px rgba(245,158,11,0.08)' }}>
                 A linha entre 100 °C e 121 °C separa segurança alimentar de botulismo.
               </p>
             </figcaption>
@@ -500,7 +500,7 @@ export default function ConservacaoAlimentos() {
         <section className="relative max-w-5xl mx-auto px-5 md:px-8 py-24 md:py-32">
           <motion.div {...fade(0)} className="mb-12">
             <span className="font-mono text-[10px] tracking-[0.4em] uppercase text-red-400 font-bold block mb-4">Capítulo 04</span>
-            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-stone-100 leading-[0.92] mb-5" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+            <h2 className="text-5xl md:text-7xl xl:text-8xl font-black uppercase text-stone-100 leading-[1.05] mb-6" style={{ fontFamily: "'Inter Tight', sans-serif", letterSpacing: '-0.02em', textShadow: '0 0 40px rgba(245,158,11,0.15), 0 0 80px rgba(245,158,11,0.08)' }}>
               Seis erros fatais{' '}
               <span className="italic font-serif text-red-400 font-light normal-case tracking-tight">que matam mais que falta de comida.</span>
             </h2>
@@ -527,7 +527,7 @@ export default function ConservacaoAlimentos() {
         <section className="relative max-w-5xl mx-auto px-5 md:px-8 py-24 md:py-32">
           <motion.div {...fade(0)} className="mb-12">
             <span className="font-mono text-[10px] tracking-[0.4em] uppercase text-amber-400 font-bold block mb-4">Capítulo 05</span>
-            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-stone-100 leading-[0.92] mb-5" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+            <h2 className="text-5xl md:text-7xl xl:text-8xl font-black uppercase text-stone-100 leading-[1.05] mb-6" style={{ fontFamily: "'Inter Tight', sans-serif", letterSpacing: '-0.02em', textShadow: '0 0 40px rgba(245,158,11,0.15), 0 0 80px rgba(245,158,11,0.08)' }}>
               Checklist 12 meses{' '}
               <span className="italic font-serif text-amber-400 font-light normal-case tracking-tight">para construir uma despensa real.</span>
             </h2>
@@ -551,7 +551,7 @@ export default function ConservacaoAlimentos() {
         <section className="relative max-w-4xl mx-auto px-5 md:px-8 py-24 md:py-32">
           <motion.div {...fade(0)} className="mb-12 text-center">
             <span className="font-mono text-[10px] tracking-[0.4em] uppercase text-amber-400 font-bold block mb-4">Dúvidas Operacionais</span>
-            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-stone-100 leading-[0.92]" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+            <h2 className="text-5xl md:text-7xl xl:text-8xl font-black uppercase text-stone-100 leading-[1.05]" style={{ fontFamily: "'Inter Tight', sans-serif", letterSpacing: '-0.02em', textShadow: '0 0 40px rgba(245,158,11,0.15), 0 0 80px rgba(245,158,11,0.08)' }}>
               Perguntas frequentes
             </h2>
           </motion.div>
@@ -584,7 +584,7 @@ export default function ConservacaoAlimentos() {
         <section className="relative max-w-5xl mx-auto px-5 md:px-8 py-24 md:py-32">
           <motion.div {...fade(0)} className="rounded-sm border border-amber-500/30 bg-gradient-to-br from-stone-950 via-stone-950 to-amber-950/20 p-8 md:p-14 text-center">
             <span className="font-mono text-[10px] tracking-[0.4em] uppercase text-amber-400 font-bold block mb-4">Próximo Movimento</span>
-            <h3 className="text-3xl md:text-5xl font-black uppercase tracking-tighter text-stone-100 leading-[0.95] mb-5" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+            <h3 className="text-3xl md:text-5xl font-black uppercase text-stone-100 leading-[1.1] mb-5" style={{ fontFamily: "'Inter Tight', sans-serif", letterSpacing: '-0.02em', textShadow: '0 0 40px rgba(245,158,11,0.15), 0 0 80px rgba(245,158,11,0.08)' }}>
               Conservação fecha o ciclo{' '}
               <span className="italic font-serif text-amber-400 font-light normal-case tracking-tight">da autonomia alimentar.</span>
             </h3>
