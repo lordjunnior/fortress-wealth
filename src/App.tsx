@@ -148,6 +148,7 @@ import ConservacaoAlimentos from "./pages/soberania-organica/ConservacaoAlimento
 import DefesaPessoal from "./pages/soberania-organica/DefesaPessoal";
 import DefesaDomiciliar from "./pages/soberania-organica/DefesaDomiciliar";
 import HigieneMental from "./pages/soberania-organica/HigieneMental";
+import SoberaniaVeicular from "./pages/soberania-organica/SoberaniaVeicular";
 const queryClient = new QueryClient();
 
 const App = () => (
