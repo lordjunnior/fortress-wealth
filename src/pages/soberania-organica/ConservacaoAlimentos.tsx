@@ -334,11 +334,11 @@ export default function ConservacaoAlimentos() {
               textShadow: '0 4px 28px rgba(0,0,0,0.65)',
             }}
           >
-            Sua despensa{' '}
+            Tire sua comida{' '}
             <em style={{ fontFamily: '"Playfair Display", serif', fontStyle: 'italic', fontWeight: 700, color: 'hsl(32 80% 72%)', textShadow: '0 0 40px hsl(28 60% 30% / 0.7), 0 4px 24px rgba(0,0,0,0.8)' }}>
-              é seu orçamento real
+              da custódia
             </em>{' '}
-            de autonomia.
+            do supermercado.
           </motion.h1>
 
           <motion.p
@@ -346,8 +346,10 @@ export default function ConservacaoAlimentos() {
             className="text-lg md:text-2xl max-w-3xl leading-relaxed"
             style={{ color: '#f0e4d4', textShadow: '0 2px 12px rgba(0,0,0,0.6)' }}
           >
-            Oito métodos para guardar comida sem geladeira, sem supermercado, sem dependência da rede.
-            Para a família que pensa em sair da cidade ou para quem quer estar pronto se a cidade parar.
+            Toda lata de conserva industrial é uma exchange custodiando seu próximo prato.
+            Toda prateleira de ultraprocessado é o combustível que paga a indústria farmacêutica
+            depois. Aqui você aprende oito métodos para guardar comida em casa, sem geladeira,
+            sem rótulo, sem dependência das duas primas que mandam no mundo.
           </motion.p>
 
           <motion.div
@@ -367,7 +369,7 @@ export default function ConservacaoAlimentos() {
           <motion.div {...fade()} className="grid md:grid-cols-12 gap-12 items-center">
             <div className="md:col-span-7">
               <p className="font-mono text-xs tracking-[0.4em] uppercase mb-8" style={{ color: C.amber }}>
-                A pergunta que muda tudo
+                Manifesto · As duas primas que mandam no mundo
               </p>
               <h2
                 className="font-black leading-[0.95] mb-10"
@@ -378,18 +380,25 @@ export default function ConservacaoAlimentos() {
                   color: C.ink,
                 }}
               >
-                Quantos dias sua família{' '}
+                Uma te adoece pela boca.{' '}
                 <em style={{ fontFamily: '"Playfair Display", serif', fontWeight: 700, fontStyle: 'italic', color: C.amber }}>
-                  come bem
-                </em>{' '}
-                sem ir ao mercado?
+                  A outra te vende a pílula.
+                </em>
               </h2>
-              <p className="text-xl md:text-2xl leading-relaxed" style={{ color: C.body }}>
-                Para a maioria das casas urbanas a resposta é três a cinco dias.
-                Geladeira é a ilusão moderna de despensa infinita.
-                Em greve de caminhoneiros, apagão prolongado ou crise de logística,
-                a fila no mercado começa em seis horas e acaba em quarenta e oito.
-                Quem domina conservação tem seis a trinta e seis meses de autonomia.
+              <p className="text-xl md:text-2xl leading-relaxed mb-6" style={{ color: C.body }}>
+                Refrigerante, embutido, fast food, biscoito recheado, margarina, pão de saco.
+                A indústria alimentícia projeta cada produto para criar a doença que a indústria
+                farmacêutica vai tratar com remédio contínuo. E o remédio do primeiro vira efeito
+                colateral que precisa de um segundo remédio. E assim por diante até o fim da vida.
+              </p>
+              <p className="text-xl md:text-2xl leading-relaxed mb-6" style={{ color: C.body }}>
+                Conservar a própria comida é o equivalente alimentar de tirar Bitcoin da exchange.
+                Você deixa de ser cliente cativo, deixa de ler rótulo de coisa que não devia comer,
+                deixa de pagar pelo marketing do veneno e pelo plano de saúde que vem depois.
+              </p>
+              <p className="text-xl md:text-2xl leading-relaxed font-semibold" style={{ color: C.ink }}>
+                Soberania alimentar não é hobby. É auto-custódia biológica. É a versão comestível
+                da sua seed phrase: ninguém pode confiscar o que está na sua despensa.
               </p>
             </div>
             <div className="md:col-span-5">
