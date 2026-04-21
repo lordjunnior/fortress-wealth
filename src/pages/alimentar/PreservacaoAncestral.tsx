@@ -95,20 +95,22 @@ interface Pilar {
 const pilares: Pilar[] = [
   {
     num: '01',
-    titulo: 'Por que preservar sem geladeira é uma habilidade urgente',
-    subtitulo: 'A geladeira tem 100 anos. A humanidade comeu por 10 mil anos sem ela.',
+    titulo: 'Tabela mestra: qual alimento, qual método, quanto tempo dura',
+    subtitulo: 'Mapa rápido de decisão para escolher o método certo para cada alimento',
     imagem: imgConservas,
     paragrafos: [
-      'Toda comida estraga porque microorganismos invisíveis (bactérias, fungos, leveduras) se alimentam dela. A geladeira só faz uma coisa: resfria a comida para esses bichos trabalharem mais devagar. Se a luz cai por 3 dias, a geladeira vira um caixão para tudo que está dentro.',
-      'Os métodos ancestrais de preservação não dependem de eletricidade nenhuma. Eles fazem outra coisa, mais inteligente: tiram a água da comida (microorganismo precisa de água), ou enchem ela de sal (mata o microorganismo), ou envolvem em fumaça (a fumaça tem antibactericida natural), ou colocam bactérias boas para dominar o espaço antes das ruins entrarem.',
-      'O resultado é comida que dura semanas, meses, ou anos, sem custo de energia, sem dependência de cadeia de frio. Nossos avós no interior tinham despensa cheia o ano inteiro sem nunca terem visto uma geladeira. Esse conhecimento se perdeu em duas gerações. Vamos recuperar.',
+      'Esta é a primeira referência que você consulta antes de começar qualquer preservação. A tabela cruza o alimento com o método mais eficiente, o tempo realista de conservação fora da geladeira e a forma prática de usar depois. Os métodos detalhados aparecem nos blocos seguintes.',
+      'Carnes vermelhas duram 2 a 3 meses em charque (salga + sol), 6 meses em confit (cozidas e seladas em gordura), 30 dias defumadas. Peixes duram 4 meses em bacalhau (salga seca pesada), 30 dias defumados a frio. Frangos duram 4 meses em confit, 15 dias defumados.',
+      'Vegetais folhosos e raízes duram 3 a 6 meses fermentados em salmoura (chucrute, picles, kimchi), 4 a 8 meses em adega de raízes (batata, cebola, abóbora), 1 ano desidratados em flocos. Frutas duram 6 meses desidratadas, 12 a 18 meses em geleia ou compota, 1 ano em frutas secas ao sol.',
+      'Como usar depois: charque hidrata 2h em água antes de cozinhar; bacalhau pede 24h de molho com troca de água a cada 6h; fermentados vão direto na mesa como acompanhamento; confit aquece e serve com pão; geleia abre o vidro e consome em 30 dias na temperatura ambiente.',
     ],
     praticas: [
-      'Os 5 métodos universais: desidratação (tirar água), salga (matar bactéria), fermentação (bactéria boa domina), defumação (fumaça antibactericida), conservação em gordura ou cera (selar o oxigênio).',
-      'Você não precisa de equipamento profissional para nenhum dos 5. Tudo se faz com utensílios que já estão na sua cozinha.',
-      'Comece com 1 método em 1 alimento. Em 3 meses você domina. Em 1 ano sua despensa é independente da rede elétrica.',
+      'Proteína de longo prazo (3+ meses sem energia): foque em charque, bacalhau caseiro e confit. São os 3 que sustentam família por estação inteira.',
+      'Vitamina viva o ano todo (probiótico): foque em chucrute e picles fermentado. Não precisa de cozimento, dura meses, melhora o intestino.',
+      'Carboidrato e calorias do dia a dia: adega de raízes para batata, cebola, abóbora. Compra na safra, paga 1/3 do preço, come 6 meses.',
+      'Fruta da safra o ano todo: geleia (vidros lacrados a quente) e desidratação. 1 tarde de cozinha rende 6 a 12 vidros.',
     ],
-    tempo: '5 min para entender',
+    tempo: 'Consulta rápida',
   },
   {
     num: '02',
