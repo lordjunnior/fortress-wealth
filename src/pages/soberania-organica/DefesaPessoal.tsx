@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Shield } from 'lucide-react';
+import { Shield, ShieldAlert } from 'lucide-react';
 import { Footprints } from 'lucide-react';
 import { Hand } from 'lucide-react';
 import { Target } from 'lucide-react';
@@ -255,6 +255,7 @@ const DefesaPessoal = () => {
       <div className="min-h-screen text-stone-100 relative z-10">
         <CinematicHero
           image={heroImg}
+          icon={ShieldAlert}
           phase="Soberania Orgânica · Resiliência Tática"
           title={
             <>
