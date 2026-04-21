@@ -116,7 +116,7 @@ const pilares: Pilar[] = [
   {
     num: '02',
     titulo: 'Desidratação solar e ao forno: o método mais simples',
-    subtitulo: 'Tomate, ervas, cogumelos, frutas e até carne — tudo dura meses sem geladeira',
+    subtitulo: 'Tomate, ervas, cogumelos, frutas e até carne, tudo dura meses sem geladeira',
     imagem: imgDesidratacao,
     paragrafos: [
       'Desidratar é tirar a água do alimento até sobrar de 10% a 20% da umidade original. Sem água, microorganismo nenhum sobrevive. Funciona com tomate, manjericão, orégano, hortelã, pimenta, cogumelo, banana, maçã, manga, e até carne em tiras finas (charque caseiro).',
@@ -150,7 +150,7 @@ const pilares: Pilar[] = [
   {
     num: '04',
     titulo: 'Fermentação: bactérias boas que protegem o alimento',
-    subtitulo: 'Chucrute, kimchi, picles, kombucha — saúde intestinal e despensa eterna',
+    subtitulo: 'Chucrute, kimchi, picles, kombucha, saúde intestinal e despensa eterna',
     imagem: imgFermentacao,
     paragrafos: [
       'Fermentar é colocar bactérias boas (lactobacilos) para dominarem o alimento antes que as ruins cheguem. Os lactobacilos comem o açúcar do vegetal e produzem ácido lático, que conserva tudo e ainda enriquece a comida com probióticos vivos. É o oposto da pasteurização: você quer os bichos vivos lá dentro.',
@@ -184,7 +184,7 @@ const pilares: Pilar[] = [
   {
     num: '06',
     titulo: 'Conservação em gordura, cera e óleo: selo total contra oxigênio',
-    subtitulo: 'Banha, manteiga clarificada, azeite, cera de abelha — embalagens ancestrais',
+    subtitulo: 'Banha, manteiga clarificada, azeite, cera de abelha, embalagens ancestrais',
     imagem: imgCera,
     paragrafos: [
       'Microorganismo precisa de oxigênio para viver. Se você seliar a comida sob uma camada de gordura, óleo ou cera, o oxigênio não entra, e nada cresce ali dentro. Funciona para queijo, ovo cozido, carne cozida, peixe fritado, conserva de cebola e pimenta. Dura de 2 a 12 meses sem geladeira.',
@@ -218,7 +218,7 @@ const pilares: Pilar[] = [
   {
     num: '08',
     titulo: 'Doces e geleias: açúcar como conservante natural',
-    subtitulo: 'Geleia, compota, marmelada, frutas em calda — fruta da safra o ano todo',
+    subtitulo: 'Geleia, compota, marmelada, frutas em calda, fruta da safra o ano todo',
     imagem: imgConservas,
     paragrafos: [
       'Açúcar em concentração alta (acima de 60%) tem o mesmo efeito do sal: puxa a água do alimento e impede o crescimento microbiano. É o segredo das geleias, doces de fruta, marmelada e frutas em calda, técnicas que fazem fruta da safra durar 1 a 2 anos sem geladeira.',
@@ -656,7 +656,7 @@ export default function PreservacaoAncestral() {
       <RelatedHooks
         tema="light"
         titulo="Continue construindo a despensa autônoma"
-        subtitulo="Estes módulos completam o protocolo de soberania alimentar e de água — do kit de 72 horas à colheita do próprio quintal."
+        subtitulo="Estes módulos completam o protocolo de soberania alimentar e de água, do kit de 72 horas à colheita do próprio quintal."
         hooks={[
           {
             titulo: 'Kit 72h',
@@ -671,13 +671,13 @@ export default function PreservacaoAncestral() {
           },
           {
             titulo: 'Gestão de Água em Escala Micro',
-            descricao: 'Captação de chuva, filtragem biológica e reuso de águas cinzas — a água que vai cozinhar e hidratar suas conservas.',
+            descricao: 'Captação de chuva, filtragem biológica e reuso de águas cinzas, a água que vai cozinhar e hidratar suas conservas.',
             rota: '/soberania-organica/gestao-agua-micro',
             selo: 'Próximo passo',
           },
           {
             titulo: 'Sementes Crioulas',
-            descricao: 'Banco de sementes próprio para reproduzir a safra ano após ano — a fonte do alimento que vai virar conserva.',
+            descricao: 'Banco de sementes próprio para reproduzir a safra ano após ano, a fonte do alimento que vai virar conserva.',
             rota: '/soberania-organica/sementes-crioulas',
           },
           {
