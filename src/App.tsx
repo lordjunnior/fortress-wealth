@@ -143,6 +143,7 @@ import ResidenciaFiscal from "./pages/saida/ResidenciaFiscal";
 import JurisdicoesAmigaveis from "./pages/saida/JurisdicoesAmigaveis";
 import SementesCrioulas from "./pages/alimentar/SementesCrioulas";
 import ConservasFermentadas from "./pages/alimentar/ConservasFermentadas";
+import SeedPhraseAco from "./pages/autocustodia/SeedPhraseAco";
 import PrimeirosSocorrosTaticos from "./pages/soberania-organica/PrimeirosSocorrosTaticos";
 import EDC from "./pages/soberania-organica/EDC";
 import ProtocoloFogo from "./pages/soberania-organica/ProtocoloFogo";
@@ -182,6 +183,7 @@ const App = () => (
           <Route path="/entenda-bitcoin" element={<Navigate to="/o-que-e-bitcoin" replace />} />
           <Route path="/autocustodia" element={<Autocustodia />} />
           <Route path="/autocustodia/hardware-wallet-diy-bitcoin" element={<HardwareWalletDiy />} />
+          <Route path="/autocustodia/seed-phrase-em-aco" element={<SeedPhraseAco />} />
           <Route path="/autocustodia/krux-passphrase-bluewallet" element={<KruxPassphraseBluewallet />} />
           <Route path="/economia-paralela" element={<EconomiaParalela />} />
           <Route path="/infraestrutura" element={<Infraestrutura />} />
