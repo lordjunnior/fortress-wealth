@@ -8,16 +8,16 @@
   :root {
     /* ─── PALETA GRAFITE SOBERANO + ÂMBAR ELEGANTE ─── */
     
-    /* Fundo Absoluto — Grafite Neutro (não mais azul-preto) */
-    --background: 220 12% 9%;
-    --foreground: 210 20% 95%;
+    /* Fundo Absoluto — Grafite Neutro (clareado p/ legibilidade) */
+    --background: 220 10% 13%;
+    --foreground: 210 20% 96%;
 
     /* Superfícies — Contraste visível entre camadas */
-    --card: 220 10% 13%;
-    --card-foreground: 210 20% 95%;
+    --card: 220 9% 17%;
+    --card-foreground: 210 20% 96%;
 
-    --popover: 220 10% 15%;
-    --popover-foreground: 210 20% 93%;
+    --popover: 220 9% 19%;
+    --popover-foreground: 210 20% 95%;
 
     /* Cor de Ação — Âmbar Elegante (menos saturado, mais sofisticado) */
     --primary: 38 72% 52%;
@@ -26,49 +26,49 @@
     --destructive: 0 72% 55%;
     --destructive-foreground: 210 20% 95%;
 
-    --secondary: 220 10% 16%;
-    --secondary-foreground: 210 15% 78%;
+    --secondary: 220 9% 20%;
+    --secondary-foreground: 210 15% 82%;
 
-    --muted: 220 8% 14%;
-    --muted-foreground: 215 10% 50%;
+    --muted: 220 8% 18%;
+    --muted-foreground: 215 12% 60%;
 
     --accent: 38 72% 52%;
     --accent-foreground: 220 12% 9%;
 
-    --border: 220 8% 18%;
-    --input: 220 8% 18%;
+    --border: 220 8% 22%;
+    --input: 220 8% 22%;
     --ring: 38 72% 52%;
 
     /* Bordas suaves */
     --radius: 0.25rem;
 
     /* Sidebar — Contraste melhorado */
-    --sidebar-background: 220 10% 11%;
-    --sidebar-foreground: 210 15% 78%;
+    --sidebar-background: 220 10% 15%;
+    --sidebar-foreground: 210 15% 82%;
     --sidebar-primary: 38 72% 52%;
     --sidebar-primary-foreground: 220 12% 9%;
-    --sidebar-accent: 220 8% 19%;
-    --sidebar-accent-foreground: 210 15% 78%;
-    --sidebar-border: 220 8% 20%;
+    --sidebar-accent: 220 8% 23%;
+    --sidebar-accent-foreground: 210 15% 85%;
+    --sidebar-border: 220 8% 24%;
     --sidebar-ring: 38 72% 52%;
 
     /* Cores Customizadas — Âmbar & Grafite */
     --gold: 38 72% 52%;
     --gold-dim: 38 72% 52% / 0.2;
     --amber: 33 80% 48%;
-    --ice-white: 210 20% 95%;
-    --midnight: 220 12% 9%;
-    --midnight-light: 220 10% 13%;
-    --surface-elevated: 220 10% 16%;
-    --section-alt: 220 10% 12%;
+    --ice-white: 210 20% 96%;
+    --midnight: 220 10% 13%;
+    --midnight-light: 220 9% 17%;
+    --surface-elevated: 220 9% 20%;
+    --section-alt: 220 10% 16%;
     --chart-red: 0 65% 50%;
     --chart-green: 145 60% 42%;
     --mono: 'JetBrains Mono', monospace;
   }
 
   .dark {
-    --background: 220 12% 9%;
-    --foreground: 210 20% 95%;
+    --background: 220 10% 13%;
+    --foreground: 210 20% 96%;
   }
 }
 
