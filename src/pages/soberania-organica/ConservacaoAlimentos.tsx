@@ -369,7 +369,7 @@ export default function ConservacaoAlimentos() {
           <motion.div {...fade()} className="grid md:grid-cols-12 gap-12 items-center">
             <div className="md:col-span-7">
               <p className="font-mono text-xs tracking-[0.4em] uppercase mb-8" style={{ color: C.amber }}>
-                A pergunta que muda tudo
+                Manifesto · As duas primas que mandam no mundo
               </p>
               <h2
                 className="font-black leading-[0.95] mb-10"
@@ -380,18 +380,25 @@ export default function ConservacaoAlimentos() {
                   color: C.ink,
                 }}
               >
-                Quantos dias sua família{' '}
+                Uma te adoece pela boca.{' '}
                 <em style={{ fontFamily: '"Playfair Display", serif', fontWeight: 700, fontStyle: 'italic', color: C.amber }}>
-                  come bem
-                </em>{' '}
-                sem ir ao mercado?
+                  A outra te vende a pílula.
+                </em>
               </h2>
-              <p className="text-xl md:text-2xl leading-relaxed" style={{ color: C.body }}>
-                Para a maioria das casas urbanas a resposta é três a cinco dias.
-                Geladeira é a ilusão moderna de despensa infinita.
-                Em greve de caminhoneiros, apagão prolongado ou crise de logística,
-                a fila no mercado começa em seis horas e acaba em quarenta e oito.
-                Quem domina conservação tem seis a trinta e seis meses de autonomia.
+              <p className="text-xl md:text-2xl leading-relaxed mb-6" style={{ color: C.body }}>
+                Refrigerante, embutido, fast food, biscoito recheado, margarina, pão de saco.
+                A indústria alimentícia projeta cada produto para criar a doença que a indústria
+                farmacêutica vai tratar com remédio contínuo. E o remédio do primeiro vira efeito
+                colateral que precisa de um segundo remédio. E assim por diante até o fim da vida.
+              </p>
+              <p className="text-xl md:text-2xl leading-relaxed mb-6" style={{ color: C.body }}>
+                Conservar a própria comida é o equivalente alimentar de tirar Bitcoin da exchange.
+                Você deixa de ser cliente cativo, deixa de ler rótulo de coisa que não devia comer,
+                deixa de pagar pelo marketing do veneno e pelo plano de saúde que vem depois.
+              </p>
+              <p className="text-xl md:text-2xl leading-relaxed font-semibold" style={{ color: C.ink }}>
+                Soberania alimentar não é hobby. É auto-custódia biológica. É a versão comestível
+                da sua seed phrase: ninguém pode confiscar o que está na sua despensa.
               </p>
             </div>
             <div className="md:col-span-5">
