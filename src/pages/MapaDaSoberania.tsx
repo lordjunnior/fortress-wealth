@@ -211,6 +211,7 @@ const SILOS: Silo[] = [
       { title: 'Autonomia Veicular: Blindagem, Kit, Antiassalto, Antirrastreamento', href: '/soberania-organica/autonomia-veicular' },
       { title: 'Defesa Digital Pessoal: Senhas, 2FA Hardware, VPN, Antiphishing', href: '/soberania-organica/defesa-digital' },
       { title: 'Comunicação Segura: Signal, SimpleX, PGP, Meshtastic, Faraday', href: '/soberania-organica/comunicacao-segura' },
+      { title: 'Autonomia Energética: Solar Off-Grid, LiFePO4, Inversor Híbrido, Gerador', href: '/soberania-organica/autonomia-energetica' },
     ],
   },
   {
