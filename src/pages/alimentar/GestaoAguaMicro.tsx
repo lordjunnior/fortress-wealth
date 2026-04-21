@@ -97,7 +97,7 @@ const pilares: Pilar[] = [
   {
     num: '01',
     titulo: 'Auditoria de água: descubra para onde sua água está indo',
-    subtitulo: 'Antes de captar, filtrar e reutilizar — você precisa saber quanto consome e onde gasta',
+    subtitulo: 'Antes de captar, filtrar e reutilizar, você precisa saber quanto consome e onde gasta',
     imagem: imgAuditoria,
     paragrafos: [
       'Família brasileira de quatro pessoas em casa urbana consome em média 600 a 900 litros de água por dia. Desse total, aproximadamente 35% vai para vaso sanitário, 30% para banho, 15% para lavagem de roupa, 10% para cozinha, 5% para jardim e 5% para outros usos. Sem entender essa distribuição, você não consegue priorizar onde a captação e o reuso vão fazer mais diferença.',
@@ -118,8 +118,8 @@ const pilares: Pilar[] = [
     imagem: imgCaptacao,
     paragrafos: [
       'A fórmula é simples e cabe na cabeça: área do telhado em metros quadrados x precipitação anual em milímetros x 0,8 (eficiência de captação) = litros captáveis por ano. Casa urbana com 100m² de telhado em São Paulo (1400mm/ano de chuva) capta 112 mil litros por ano. Quase metade do consumo da família. Em Salvador (1900mm/ano) o mesmo telhado capta 152 mil litros, mais que o consumo total.',
-      'O sistema mínimo funcional: calhas no perímetro do telhado, condutor vertical descendo até 30cm acima do solo, dispositivo de descarte da primeira água (first-flush — descarta os primeiros 20 litros que vêm sujos com poeira e fezes de pássaro), filtro de tela na entrada da cisterna (retém folhas) e cisterna fechada para evitar mosquito e luz (que faz alga crescer). Investimento total para casa urbana: R$ 800 a R$ 2.500 incluindo cisterna de 1.000 litros.',
-      'A cisterna não precisa ser enterrada nem cara. Caixa d\'água de polietileno de 1.000L (R$ 350 a R$ 500), elevada 50cm do chão sobre quatro tijolos, conectada à calha por PVC marrom de 75mm, é uma cisterna funcional. Para apartamento com varanda coberta de 8m², um único barril de 200L já capta 8.000L por ano em SP — suficiente para regar plantas e lavar varanda o ano inteiro.',
+      'O sistema mínimo funcional: calhas no perímetro do telhado, condutor vertical descendo até 30cm acima do solo, dispositivo de descarte da primeira água (first-flush, que descarta os primeiros 20 litros que vêm sujos com poeira e fezes de pássaro), filtro de tela na entrada da cisterna (retém folhas) e cisterna fechada para evitar mosquito e luz (que faz alga crescer). Investimento total para casa urbana: R$ 800 a R$ 2.500 incluindo cisterna de 1.000 litros.',
+      'A cisterna não precisa ser enterrada nem cara. Caixa d\'água de polietileno de 1.000L (R$ 350 a R$ 500), elevada 50cm do chão sobre quatro tijolos, conectada à calha por PVC marrom de 75mm, é uma cisterna funcional. Para apartamento com varanda coberta de 8m², um único barril de 200L já capta 8.000L por ano em SP, suficiente para regar plantas e lavar varanda o ano inteiro.',
     ],
     praticas: [
       'Cálculo rápido: meça a área do seu telhado em metros quadrados (comprimento x largura da projeção horizontal). Multiplique pela chuva anual da sua cidade em mm. Multiplique por 0,8. Divida por 365. É o que você capta por dia em média.',
@@ -140,7 +140,7 @@ const pilares: Pilar[] = [
     ],
     praticas: [
       'Lave a areia até a água de lavagem sair completamente cristalina. Areia não lavada compromete o filtro inteiro com lama. Use peneira fina e água corrente até o líquido sair limpo após 5 enxágues seguidos.',
-      'Manutenção: a cada 2 a 3 meses, faça o "swirl and dump" — agite delicadamente os 2cm superiores da areia com a mão e tire a água turva. Não desmonte o filtro nunca, isso destrói a colônia biológica e exige 14 dias de re-maturação.',
+      'Manutenção: a cada 2 a 3 meses, faça o "swirl and dump", agite delicadamente os 2cm superiores da areia com a mão e tire a água turva. Não desmonte o filtro nunca, isso destrói a colônia biológica e exige 14 dias de re-maturação.',
       'Para garantia extra contra vírus em situação de emergência: depois do filtro biológico, faça desinfecção solar (próximo módulo) ou fervura por 1 minuto. A combinação filtro + SODIS ou fervura resolve até cólera, hepatite A e rotavírus.',
     ],
     tempo: '1 dia para montar + 14 dias para maturar',
@@ -151,21 +151,21 @@ const pilares: Pilar[] = [
     subtitulo: 'Água do banho, da pia e da máquina pode regar 100% do seu quintal',
     imagem: imgCinzas,
     paragrafos: [
-      'Águas cinzas (greywater) são todas as águas usadas em casa que não passaram pelo vaso sanitário: pia, chuveiro, máquina de lavar, tanque. Representam 50% a 70% do esgoto doméstico, contêm sabão, gordura e fibras, mas zero patógenos fecais. Direcionadas corretamente, regam jardim, pomar e horta sem prejuízo nenhum às plantas — pelo contrário, o sabão biodegradável até serve como adubo nitrogenado leve.',
+      'Águas cinzas (greywater) são todas as águas usadas em casa que não passaram pelo vaso sanitário: pia, chuveiro, máquina de lavar, tanque. Representam 50% a 70% do esgoto doméstico, contêm sabão, gordura e fibras, mas zero patógenos fecais. Direcionadas corretamente, regam jardim, pomar e horta sem prejuízo nenhum às plantas, pelo contrário, o sabão biodegradável até serve como adubo nitrogenado leve.',
       'Sistema mais simples (laundry-to-landscape): tubulação de PVC de 50mm sai direto da máquina de lavar e desce, por gravidade, até uma vala de mulch (galhos triturados ou casca de pinus) plantada com bananeiras, taioba, helicônia ou outras plantas que adoram água. A vala filtra qualquer resíduo, as plantas absorvem nutrientes e água. Sem bomba, sem caixa, sem manutenção. Investimento: R$ 200 em PVC e conexões.',
       'Para água de chuveiro e pia (que tem mais gordura): adicione um filtro de gordura simples (caixa de PVC com tela de aço inox a 45 graus) antes da vala de mulch. Esvazie a tela 1 vez por mês. O resto do sistema é igual. Família de 4 pessoas que reutiliza cinzas reduz consumo da rede em 200 a 400 litros por dia, e mantém um pomar de bananeira, mamoeiro e helicônia florescendo sem esforço.',
     ],
     praticas: [
       'Use APENAS sabão biodegradável (à base de coco, sem sódio em excesso) na máquina e no chuveiro se for reusar. Marca de confiança: Ecover, Bioz, Sabão de coco em barra. Sabão comum salga o solo em 6 meses.',
       'Nunca direcione água cinza para verduras de folha que se comem cruas (alface, rúcula, couve). Direcione sempre para árvores frutíferas, raízes (mandioca, batata-doce) e plantas ornamentais. As frutas e raízes não absorvem o sabão.',
-      'A vala de mulch trabalha sozinha por anos. Reabasteça o mulch (galhos triturados) a cada 12 meses — eles se decompõem e viram húmus, melhorando o solo embaixo. Resultado prático: 2 anos depois você tem 30cm de terra preta riquíssima onde antes era barro.',
+      'A vala de mulch trabalha sozinha por anos. Reabasteça o mulch (galhos triturados) a cada 12 meses, eles se decompõem e viram húmus, melhorando o solo embaixo. Resultado prático: 2 anos depois você tem 30cm de terra preta riquíssima onde antes era barro.',
     ],
     tempo: '1 fim de semana + 50m de PVC',
   },
   {
     num: '05',
     titulo: 'Desinfecção solar (SODIS): água potável com garrafa PET e sol',
-    subtitulo: 'Validado pela OMS — UV-A e calor matam todos os patógenos em 6 horas',
+    subtitulo: 'Validado pela OMS, UV-A e calor matam todos os patógenos em 6 horas',
     imagem: imgSodis,
     paragrafos: [
       'SODIS (Solar Water Disinfection) é o método mais barato e eficaz do mundo para desinfetar água sem energia: encha uma garrafa PET transparente com água filtrada (passou pelo filtro biológico ou por pano + filtro de papel), deite ela na horizontal sobre uma superfície reflexiva (telhado de alumínio, papel-alumínio, chapa metálica) e deixe ao sol forte por 6 horas. Os raios UV-A do sol e o calor combinados matam 99,9% das bactérias, vírus e protozoários patogênicos. Validado pela OMS e usado por 5 milhões de pessoas em mais de 50 países.',
@@ -174,7 +174,7 @@ const pilares: Pilar[] = [
     ],
     praticas: [
       'Marque cada garrafa com a data e horário de exposição com caneta permanente. Após 6h, transfira para garrafa escura ou jarra opaca para consumo (UV degrada a água armazenada se ficar exposta indefinidamente).',
-      'Reaproveite cada garrafa PET por até 6 meses. Após isso o plástico começa a degradar e fica frágil — descarte e reponha. Garrafas riscadas ou opacas reduzem a eficácia, troque imediatamente.',
+      'Reaproveite cada garrafa PET por até 6 meses. Após isso o plástico começa a degradar e fica frágil, descarte e reponha. Garrafas riscadas ou opacas reduzem a eficácia, troque imediatamente.',
       'Combinação ouro: chuva captada → filtro biológico → SODIS → consumo. Você tem água potável segura sem nenhuma dependência de rede elétrica, de cloro, ou de filtro industrial. Família autônoma em água o ano inteiro.',
     ],
     tempo: '6 horas de sol',
@@ -192,7 +192,7 @@ const pilares: Pilar[] = [
     praticas: [
       'A-frame caseiro custa zero: 3 ripas de madeira em forma de "A" com um peso pendurado no vértice. Quando o peso bate no centro do travessão horizontal, os dois pés estão na mesma altura. Caminha pelo terreno marcando a curva.',
       'Espace múltiplos swales paralelos a cada 5 a 15 metros de queda vertical no terreno. Quanto mais íngreme, mais próximos. Em terreno suave (até 10% de inclinação), 1 swale a cada 15m de distância vertical resolve.',
-      'Plante na berm árvores frutíferas e gramíneas perenes na mesma estação que cava a vala. As raízes consolidam a estrutura e impedem erosão, e em 2 anos a infraestrutura desaparece visualmente — vira pomar.',
+      'Plante na berm árvores frutíferas e gramíneas perenes na mesma estação que cava a vala. As raízes consolidam a estrutura e impedem erosão, e em 2 anos a infraestrutura desaparece visualmente, vira pomar.',
     ],
     tempo: '1 fim de semana por 50m de swale',
   },
@@ -202,7 +202,7 @@ const pilares: Pilar[] = [
     subtitulo: 'Cisterna elevada + mangueira gotejadora = horta irrigada sem bomba elétrica',
     imagem: imgIrrigacao,
     paragrafos: [
-      'Cada metro de altura entre a cisterna e a horta gera 0,1 bar de pressão por gravidade. Cisterna elevada 3 metros (em cima de uma estrutura de madeira ou no telhado) gera 0,3 bar — pressão suficiente para alimentar até 50 metros de mangueira gotejadora ou microaspersão sem nenhuma bomba elétrica. É irrigação 100% passiva, funciona durante apagão, e a horta nunca seca enquanto houver água na cisterna.',
+      'Cada metro de altura entre a cisterna e a horta gera 0,1 bar de pressão por gravidade. Cisterna elevada 3 metros (em cima de uma estrutura de madeira ou no telhado) gera 0,3 bar, pressão suficiente para alimentar até 50 metros de mangueira gotejadora ou microaspersão sem nenhuma bomba elétrica. É irrigação 100% passiva, funciona durante apagão, e a horta nunca seca enquanto houver água na cisterna.',
       'Sistema mínimo: cisterna de 500 a 1.000 litros elevada 2 a 3 metros (em palanques de eucalipto, estrutura metálica ou no telhado), tubo de PVC de 25mm descendo até a horta, derivações com registro para cada canteiro, e fitas gotejadoras de 16mm com gotejadores espaçados a cada 30cm. Investimento: R$ 300 a R$ 800 para horta de 30m². Você liga o registro de manhã, ele goteja por 2 horas (regulado pela vazão da fita), regam 3 canteiros, fecha. Sem energia, sem bomba.',
       'Programador de irrigação por gravidade existe e funciona com pilha AA: timer mecânico (R$ 80 a R$ 150) abre o registro nos horários programados e fecha sozinho. Dura 2 anos com 4 pilhas. Sua horta vira sistema autônomo: você programa rega às 6h e às 18h, e a planta recebe água nos horários certos sem você precisar estar em casa. Combinado com captação de chuva, vira ciclo fechado real: chove no telhado, enche a cisterna, gravidade leva à horta, planta cresce, você colhe.',
     ],
@@ -238,7 +238,7 @@ const armadilhas = [
   { titulo: 'Cisterna sem tampa hermética', desc: 'Cisterna aberta vira criadouro de Aedes aegypti em 7 dias. Tampe sempre com tela mosquiteiro fina (1mm) e tampa rígida. Inspeção visual mensal é mandatória.' },
   { titulo: 'Reuso de cinzas com sabão comum', desc: 'Sabão de roupa convencional contém sódio e fosfatos que salinizam o solo em 6 a 12 meses, matando as plantas. Use só sabão biodegradável (coco, ecológico).' },
   { titulo: 'Beber água de filtro biológico sem maturação', desc: 'Filtro novo (menos de 14 dias de uso) ainda não tem a camada biológica formada. Não confie nele para água potável até completar 2 semanas. Use água tratada nesse período.' },
-  { titulo: 'Garrafa PET reutilizada por mais de 6 meses no SODIS', desc: 'Após 6 meses de exposição solar, o PET começa a liberar microplásticos e antimônio na água. Troque as garrafas a cada semestre — custa zero, vidas valem mais.' },
+  { titulo: 'Garrafa PET reutilizada por mais de 6 meses no SODIS', desc: 'Após 6 meses de exposição solar, o PET começa a liberar microplásticos e antimônio na água. Troque as garrafas a cada semestre, custa zero, vidas valem mais.' },
 ];
 
 const faq = [
@@ -248,7 +248,7 @@ const faq = [
   },
   {
     q: 'É legalizado? Posso ter problema com a prefeitura ou companhia de água?',
-    a: 'Captação de chuva é incentivada por lei em SP, Curitiba, Florianópolis, Porto Alegre, Belo Horizonte e dezenas de outras cidades. Algumas oferecem desconto no IPTU. Reuso de águas cinzas é regulamentado pela NBR 13969 e permitido em todo o país. Filtro biológico, SODIS e reserva estratégica são uso doméstico e não requerem autorização nenhuma. Em nenhum cenário você terá problema com a companhia de água — pelo contrário, você reduz a sobrecarga da rede.',
+    a: 'Captação de chuva é incentivada por lei em SP, Curitiba, Florianópolis, Porto Alegre, Belo Horizonte e dezenas de outras cidades. Algumas oferecem desconto no IPTU. Reuso de águas cinzas é regulamentado pela NBR 13969 e permitido em todo o país. Filtro biológico, SODIS e reserva estratégica são uso doméstico e não requerem autorização nenhuma. Em nenhum cenário você terá problema com a companhia de água, pelo contrário, você reduz a sobrecarga da rede.',
   },
   {
     q: 'Quanto custa montar todo o sistema?',
