@@ -151,6 +151,7 @@ import HigieneMental from "./pages/soberania-organica/HigieneMental";
 import AutonomiaVeicular from "./pages/soberania-organica/AutonomiaVeicular";
 import DefesaDigital from "./pages/soberania-organica/DefesaDigital";
 import ComunicacaoSegura from "./pages/soberania-organica/ComunicacaoSegura";
+import AutonomiaEnergetica from "./pages/soberania-organica/AutonomiaEnergetica";
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -318,6 +319,7 @@ const App = () => (
             <Route path="/soberania-organica/soberania-veicular" element={<Navigate to="/soberania-organica/autonomia-veicular" replace />} />
             <Route path="/soberania-organica/defesa-digital" element={<DefesaDigital />} />
             <Route path="/soberania-organica/comunicacao-segura" element={<ComunicacaoSegura />} />
+            <Route path="/soberania-organica/autonomia-energetica" element={<AutonomiaEnergetica />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

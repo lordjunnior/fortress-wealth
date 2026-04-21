@@ -268,7 +268,7 @@ const AutonomiaEnergetica = () => {
         faqItems={FAQ.map((f) => ({ question: f.q, answer: f.a }))}
       />
 
-      <FixedThematicBackground image={heroImg} intensity="light" />
+      <FixedThematicBackground image={heroImg} intensity="soft" />
 
       <div className="relative z-20 px-6 md:px-12 lg:px-20 pt-[52px]">
         <BackToHome />
