@@ -144,6 +144,7 @@ import JurisdicoesAmigaveis from "./pages/saida/JurisdicoesAmigaveis";
 import SementesCrioulas from "./pages/alimentar/SementesCrioulas";
 import ConservasFermentadas from "./pages/alimentar/ConservasFermentadas";
 import AquaponiaResidencial from "./pages/alimentar/AquaponiaResidencial";
+import PreservacaoAncestral from "./pages/alimentar/PreservacaoAncestral";
 import SeedPhraseAco from "./pages/autocustodia/SeedPhraseAco";
 import CoinjoinPrivacidade from "./pages/autocustodia/CoinjoinPrivacidade";
 import HerancaBitcoin from "./pages/autocustodia/HerancaBitcoin";
@@ -321,6 +322,7 @@ const App = () => (
             <Route path="/soberania-organica/sementes-crioulas" element={<SementesCrioulas />} />
             <Route path="/soberania-organica/conservas-fermentadas" element={<ConservasFermentadas />} />
             <Route path="/soberania-organica/aquaponia-residencial" element={<AquaponiaResidencial />} />
+            <Route path="/soberania-organica/preservacao-ancestral" element={<PreservacaoAncestral />} />
             <Route path="/soberania-organica/primeiros-socorros-taticos" element={<PrimeirosSocorrosTaticos />} />
             <Route path="/soberania-organica/edc" element={<EDC />} />
             <Route path="/soberania-organica/protocolo-fogo" element={<ProtocoloFogo />} />
