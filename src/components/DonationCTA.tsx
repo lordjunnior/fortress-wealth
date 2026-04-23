@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Zap, Copy, Check, ArrowRight, Shield, CreditCard } from "lucide-react";
 import { Link } from "react-router-dom";
 import { LIGHTNING_ADDRESS } from "@/lib/constants";
+import DonationPhoneMockup from "@/components/DonationPhoneMockup";
 
 const DonationCTA = () => {
   const [copied, setCopied] = useState(false);
@@ -16,6 +17,8 @@ const DonationCTA = () => {
     <section className="mt-16 mb-8">
       {/* ── BLOCO PRINCIPAL: COMBUSTÍVEL OPERACIONAL ── */}
       <div className="bg-gold/5 border border-gold/20 rounded-xl p-6 md:p-10">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-10 items-start">
+          <div>
         <div className="flex items-center gap-2 mb-4">
           <Shield className="w-5 h-5 text-gold" />
           <h3 className="font-display text-lg md:text-xl font-bold tracking-tight text-foreground uppercase">
@@ -101,7 +104,7 @@ const DonationCTA = () => {
           <p className="text-sm text-muted-foreground leading-relaxed mb-3">
             Se o anonimato não é a sua prioridade no momento, você também pode adquirir
             Bitcoin usando PIX e enviar para o endereço acima. Rápido, simples e funcional
-            — o importante é que o valor chegue{" "}
+            , o importante é que o valor chegue{" "}
             <span className="text-foreground font-medium">sem depender de plataformas centralizadas</span>.
           </p>
           <Link
@@ -111,6 +114,18 @@ const DonationCTA = () => {
             VER TUTORIAL: BITCOIN VIA PIX
             <ArrowRight className="w-4 h-4" />
           </Link>
+        </div>
+          </div>
+
+          {/* Mockup de celular - desktop */}
+          <div className="hidden lg:block lg:sticky lg:top-24">
+            <DonationPhoneMockup />
+          </div>
+        </div>
+
+        {/* Mockup de celular - mobile */}
+        <div className="lg:hidden mt-8">
+          <DonationPhoneMockup />
         </div>
       </div>
     </section>
