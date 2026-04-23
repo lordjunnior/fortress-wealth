@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Zap, Copy, Check, ArrowRight, Shield, CreditCard } from "lucide-react";
 import { Link } from "react-router-dom";
 import { LIGHTNING_ADDRESS } from "@/lib/constants";
+import DonationPhoneMockup from "@/components/DonationPhoneMockup";
 
 const DonationCTA = () => {
   const [copied, setCopied] = useState(false);
@@ -16,6 +17,8 @@ const DonationCTA = () => {
     <section className="mt-16 mb-8">
       {/* ── BLOCO PRINCIPAL: COMBUSTÍVEL OPERACIONAL ── */}
       <div className="bg-gold/5 border border-gold/20 rounded-xl p-6 md:p-10">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-10 items-start">
+          <div>
         <div className="flex items-center gap-2 mb-4">
           <Shield className="w-5 h-5 text-gold" />
           <h3 className="font-display text-lg md:text-xl font-bold tracking-tight text-foreground uppercase">
