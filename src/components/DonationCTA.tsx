@@ -104,7 +104,7 @@ const DonationCTA = () => {
           <p className="text-sm text-muted-foreground leading-relaxed mb-3">
             Se o anonimato não é a sua prioridade no momento, você também pode adquirir
             Bitcoin usando PIX e enviar para o endereço acima. Rápido, simples e funcional
-            — o importante é que o valor chegue{" "}
+            , o importante é que o valor chegue{" "}
             <span className="text-foreground font-medium">sem depender de plataformas centralizadas</span>.
           </p>
           <Link
@@ -114,6 +114,18 @@ const DonationCTA = () => {
             VER TUTORIAL: BITCOIN VIA PIX
             <ArrowRight className="w-4 h-4" />
           </Link>
+        </div>
+          </div>
+
+          {/* Mockup de celular - desktop */}
+          <div className="hidden lg:block lg:sticky lg:top-24">
+            <DonationPhoneMockup />
+          </div>
+        </div>
+
+        {/* Mockup de celular - mobile */}
+        <div className="lg:hidden mt-8">
+          <DonationPhoneMockup />
         </div>
       </div>
     </section>
