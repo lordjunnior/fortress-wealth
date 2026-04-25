@@ -201,7 +201,8 @@ const App = () => (
           <Route path="/ebooks" element={<Ebooks />} />
           <Route path="/silencio-queda" element={<SilencioQueda />} />
           <Route path="/protocolo-inicial" element={<ProtocoloInicial />} />
-          <Route path="/arsenal" element={<Arsenal />} />
+          <Route path="/recursos-e-ferramentas" element={<Arsenal />} />
+          <Route path="/arsenal" element={<LegacyRedirect to="/recursos-e-ferramentas" />} />
           <Route path="/blindagem-golpes" element={<BlindagemGolpes />} />
           <Route path="/proibicao-dinheiro" element={<ProibicaoDinheiro />} />
           <Route path="/alertas" element={<AlertasHub />} />
