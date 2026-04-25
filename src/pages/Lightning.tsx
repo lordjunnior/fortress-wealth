@@ -1310,7 +1310,7 @@ export default function Lightning() {
                                  hover:bg-yellow-500/20 hover:border-yellow-500/40 hover:shadow-[0_0_30px_rgba(234,179,8,0.1)] transition-all duration-500 group">
                       Aprenda Autocustódia <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                     </Link>
-                    <Link to="/o-que-e-bitcoin"
+                    <Link to="/bitcoin/o-que-e"
                       className="inline-flex items-center gap-3 bg-white/[0.03] border border-white/[0.08] rounded-xl px-8 py-4
                                  text-stone-400 text-sm font-bold uppercase tracking-wider
                                  hover:bg-white/[0.06] hover:border-white/[0.15] transition-all duration-500">

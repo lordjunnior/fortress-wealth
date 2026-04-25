@@ -196,7 +196,7 @@ export default function ModuloAutonomo() {
   
   // Redirect to dedicated pages for published modules
   if (slug === 'conservacao-armazenamento') {
-    return <Navigate to="/soberania-organica/conservacao-armazenamento" replace />;
+    return <Navigate to="/soberania-organica/armazenamento-longo-prazo" replace />;
   }
   if (slug === 'kit-72h') {
     return <Navigate to="/soberania-organica/kit-72h" replace />;

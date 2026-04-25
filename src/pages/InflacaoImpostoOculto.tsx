@@ -292,7 +292,7 @@ export default function InflacaoImpostoOculto() {
             ))}
           </div>
           <div className="mt-8 text-center">
-            <Link to="/o-que-e-bitcoin" className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl font-bold uppercase text-xs tracking-[0.2em] bg-amber-500/15 border border-amber-500/25 text-amber-400 hover:bg-amber-500/25 transition-all">₿ O Que é o Bitcoin</Link>
+            <Link to="/bitcoin/o-que-e" className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl font-bold uppercase text-xs tracking-[0.2em] bg-amber-500/15 border border-amber-500/25 text-amber-400 hover:bg-amber-500/25 transition-all">₿ O Que é o Bitcoin</Link>
           </div>
         </motion.section>
 

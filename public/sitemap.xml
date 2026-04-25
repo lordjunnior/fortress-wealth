@@ -10,9 +10,9 @@
 
   <!-- ═══ CLUSTER: BITCOIN & CRIPTOECONOMIA ═══ -->
   <url><loc>https://lordjunnior.com.br/bitcoin</loc><changefreq>weekly</changefreq><priority>0.95</priority></url>
-  <url><loc>https://lordjunnior.com.br/o-que-e-bitcoin</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://lordjunnior.com.br/bitcoin/o-que-e</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://lordjunnior.com.br/blockchain</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://lordjunnior.com.br/nocoes-bitcoin</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://lordjunnior.com.br/bitcoin/nocoes-basicas</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://lordjunnior.com.br/bitcoin-seguro</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://lordjunnior.com.br/chaves</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://lordjunnior.com.br/transacoes</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
@@ -86,7 +86,7 @@
   <url><loc>https://lordjunnior.com.br/soberania-organica/abrigo-emergencia</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
   <url><loc>https://lordjunnior.com.br/soberania-organica/comunicacao-offline</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
   <url><loc>https://lordjunnior.com.br/soberania-organica/navegacao-primaria</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://lordjunnior.com.br/soberania-organica/conservacao-armazenamento</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://lordjunnior.com.br/soberania-organica/armazenamento-longo-prazo</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
 
   <!-- ═══ CLUSTER: SOBERANIA ALIMENTAR ═══ -->
   <url><loc>https://lordjunnior.com.br/soberania-organica/horta-urbana</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>

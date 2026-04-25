@@ -236,7 +236,7 @@ export default function BitcoinVsFiat() {
                 <p className="text-base">Você pode continuar aceitando que seu dinheiro perde valor todos os dias, que governos controlam cada transação, que bancos podem congelar sua conta a qualquer momento.</p>
                 <p className="text-base">Ou você pode escolher <strong className="text-amber-400">soberania</strong>. Escolher um dinheiro que ninguém pode imprimir, confiscar ou censurar.</p>
               </div>
-              <Link to="/o-que-e-bitcoin" className="inline-flex items-center justify-center gap-3 px-10 py-5 rounded-xl bg-amber-500 text-stone-950 font-bold uppercase text-sm tracking-wider hover:brightness-110 transition-all shadow-[0_0_30px_rgba(245,158,11,0.2)]">
+              <Link to="/bitcoin/o-que-e" className="inline-flex items-center justify-center gap-3 px-10 py-5 rounded-xl bg-amber-500 text-stone-950 font-bold uppercase text-sm tracking-wider hover:brightness-110 transition-all shadow-[0_0_30px_rgba(245,158,11,0.2)]">
                 ₿ O Que é o Bitcoin <ChevronRight size={16} />
               </Link>
             </div>

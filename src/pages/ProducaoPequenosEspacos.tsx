@@ -296,7 +296,7 @@ export default function ProducaoPequenosEspacos() {
           </Link>
 
           <Link
-            to="/soberania-organica/conservacao-armazenamento"
+            to="/soberania-organica/armazenamento-longo-prazo"
             className="flex items-center gap-3 bg-white/[0.04] border border-white/[0.08] rounded-2xl px-6 py-4 hover:bg-white/[0.08] transition-all duration-300 group justify-end"
           >
             <div className="text-right">

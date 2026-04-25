@@ -279,18 +279,18 @@ export default function ConservacaoAlimentos() {
   return (
     <div className="min-h-screen" style={{ backgroundColor: C.sand }}>
       <SeoHead
-        path="/soberania-organica/conservacao-alimentos"
+        path="/soberania-organica/conservacao"
         custom={{
           title: 'Conservação de Alimentos: Fermentação, Desidratação, Cura, Defumação e Conservas',
           description: 'Manual completo de conservação alimentar: fermentação láctica, desidratação solar e elétrica, salga, cura, defumação, conservas pressurizadas, vácuo e congelamento estratégico.',
-          canonical: 'https://lordjunnior.com.br/soberania-organica/conservacao-alimentos',
+          canonical: 'https://lordjunnior.com.br/soberania-organica/conservacao',
           primaryKeyword: 'conservação de alimentos',
           lsiKeywords: ['fermentação láctica', 'desidratação solar', 'salga e cura de carne', 'defumação caseira', 'conserva pressurizada', 'embalagem a vácuo', 'congelamento estratégico'],
           longTailKeywords: ['como conservar alimentos sem energia', 'fermentação láctica passo a passo', 'desidratação solar caseira', 'cura de bacon caseiro', 'conserva de carne em panela de pressão', 'como fazer chucrute caseiro'],
           breadcrumbs: [
             { name: 'Início', url: '/' },
             { name: 'Soberania Orgânica', url: '/soberania-organica' },
-            { name: 'Conservação de Alimentos', url: '/soberania-organica/conservacao-alimentos' },
+            { name: 'Conservação de Alimentos', url: '/soberania-organica/conservacao' },
           ],
           schemaType: 'Article',
           articleSection: 'Soberania Orgânica',
