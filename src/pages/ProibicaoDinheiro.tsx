@@ -846,7 +846,7 @@ export default function ProibicaoDinheiro() {
                 {[
                   { to: '/alertas', titulo: 'Central de Alertas', desc: 'Todos os alertas de soberania', tag: 'HUB' },
                   { to: '/economia-paralela', titulo: 'Economia Paralela', desc: 'Como operar fora do sistema bancário', tag: 'ESTRATÉGIA' },
-                  { to: '/o-que-e-bitcoin', titulo: 'O Que é o Bitcoin', desc: 'Do zero à soberania financeira completa', tag: 'FUNDAMENTO' },
+                  { to: '/bitcoin/o-que-e', titulo: 'O Que é o Bitcoin', desc: 'Do zero à soberania financeira completa', tag: 'FUNDAMENTO' },
                 ].map((link, i) => (
                   <Link key={i} to={link.to}
                     className="group rounded-sm border border-border/30 bg-card/30 p-6 hover:border-primary/30 hover:bg-card/50 transition-all">

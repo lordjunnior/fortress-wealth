@@ -5,8 +5,8 @@ const STORAGE_KEY = "bp_reading_progress";
 
 const TRACKED_PAGES = [
   "/economia", "/economia-paralela", "/bitcoin-vs-imovel", "/taxa-de-fuga",
-  "/bitcoin", "/autocustodia", "/o-que-e-bitcoin",
-  "/nocoes-bitcoin", "/chaves", "/transacoes", "/mineracao", "/lightning",
+  "/bitcoin", "/autocustodia", "/bitcoin/o-que-e",
+  "/bitcoin/nocoes-basicas", "/chaves", "/transacoes", "/mineracao", "/lightning",
   "/supply-shock", "/halving-bitcoin", "/volatilidade", "/lastro",
   "/futuro-bitcoin", "/21-milhoes", "/bitcoin-seguro", "/blindagem-golpes",
   "/saida", "/saida/gateway", "/pix-cripto", "/infraestrutura",
@@ -17,7 +17,7 @@ const TRACKED_PAGES = [
   "/soberania-organica/avaliacao-sinais", "/soberania-organica/saude-preventiva",
   "/soberania-organica/fitoterapia-aplicada", "/soberania-organica/controle-vetores",
   "/soberania-organica/horta-urbana", "/soberania-organica/producao-pequenos-espacos",
-  "/soberania-organica/conservacao-armazenamento", "/soberania-organica/proteina-sustentavel",
+  "/soberania-organica/armazenamento-longo-prazo", "/soberania-organica/proteina-sustentavel",
   "/soberania-organica/solo-fertilidade", "/soberania-organica/sabedoria-ancestral",
   "/soberania-organica/conhecimento-perdido",
   "/filosofia", "/educacao", "/protocolo-inicial", "/ebooks", "/audiobooks",

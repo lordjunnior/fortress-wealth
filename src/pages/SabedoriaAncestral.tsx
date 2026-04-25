@@ -91,7 +91,7 @@ const MODULOS_ALIMENTACAO = [
     icon: Flame,
     title: 'Conservação e Armazenamento',
     desc: '10 alimentos essenciais + 18 métodos de conservação validados. Estoque estratégico familiar.',
-    link: '/soberania-organica/conservacao-armazenamento',
+    link: '/soberania-organica/armazenamento-longo-prazo',
     tag: 'Publicado',
     numero: '03',
   },

@@ -784,7 +784,7 @@ const DicionarioCripto = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {[
               { to: '/blockchain', label: 'Entenda a Blockchain', icon: Layers },
-              { to: '/o-que-e-bitcoin', label: 'O Que é o Bitcoin?', icon: Hash },
+              { to: '/bitcoin/o-que-e', label: 'O Que é o Bitcoin?', icon: Hash },
               { to: '/lightning', label: 'Lightning Network', icon: Zap },
               { to: '/blindagem-golpes', label: 'Blindagem contra Golpes', icon: Shield },
             ].map((link, i) => (

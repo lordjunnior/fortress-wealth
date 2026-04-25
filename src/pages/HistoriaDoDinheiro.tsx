@@ -534,7 +534,7 @@ export default function HistoriaDoDinheiro() {
                 </div>
 
                 <div className="mt-10 flex flex-col sm:flex-row gap-4">
-                  <Link to="/o-que-e-bitcoin"
+                  <Link to="/bitcoin/o-que-e"
                     className="inline-flex items-center gap-3 bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 rounded-xl font-bold text-xs uppercase tracking-[0.2em] transition-all duration-500 hover:gap-4 hover:shadow-[0_0_30px_rgba(245,158,11,0.3)]">
                     ₿ O Que é o Bitcoin <ChevronRight size={16} />
                   </Link>
@@ -602,7 +602,7 @@ export default function HistoriaDoDinheiro() {
                   Agora você sabe o que nunca te ensinaram na escola: que o dinheiro foi corrompido, que a inflação é um imposto, que bancos centrais destroem poder de compra. O próximo passo é <strong className="text-primary">agir</strong>.
                 </p>
                 <div className="pt-4 flex flex-col sm:flex-row gap-4 justify-center">
-                  <Link to="/o-que-e-bitcoin"
+                  <Link to="/bitcoin/o-que-e"
                     className="inline-flex items-center gap-3 bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 rounded-xl font-bold text-xs uppercase tracking-[0.2em] transition-all duration-500 hover:gap-4 hover:shadow-[0_0_30px_rgba(245,158,11,0.3)]">
                     ₿ O Que é o Bitcoin <ChevronRight size={16} />
                   </Link>

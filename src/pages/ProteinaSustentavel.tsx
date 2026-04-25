@@ -361,7 +361,7 @@ export default function ProteinaSustentavel() {
         {/* ═══ NAVIGATION ═══ */}
         <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.3 }}
           className="flex flex-col sm:flex-row gap-4 justify-between">
-          <Link to="/soberania-organica/conservacao-armazenamento"
+          <Link to="/soberania-organica/armazenamento-longo-prazo"
             className="flex items-center gap-3 bg-white/[0.04] border border-white/[0.08] rounded-2xl px-6 py-4 hover:bg-white/[0.08] transition-all duration-300 group">
             <ArrowLeft size={16} className="text-stone-500 group-hover:text-amber-400 transition-colors" />
             <div>

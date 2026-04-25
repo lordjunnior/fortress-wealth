@@ -495,7 +495,7 @@ export default function Blockchain() {
               Ela opera independentemente de governos, bancos e corporações. Entender como ela funciona é o primeiro passo para entender por que o Bitcoin é inevitável — e por que ninguém conseguirá pará-lo.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/o-que-e-bitcoin" className="inline-flex items-center gap-3 bg-cyan-500 hover:bg-cyan-400 text-black px-8 py-4 rounded-xl font-bold text-xs uppercase tracking-[0.2em] transition-all duration-500 hover:gap-4 hover:shadow-[0_0_30px_rgba(56,189,248,0.3)]">
+              <Link to="/bitcoin/o-que-e" className="inline-flex items-center gap-3 bg-cyan-500 hover:bg-cyan-400 text-black px-8 py-4 rounded-xl font-bold text-xs uppercase tracking-[0.2em] transition-all duration-500 hover:gap-4 hover:shadow-[0_0_30px_rgba(56,189,248,0.3)]">
                 O Que é Bitcoin <ArrowRight size={16} />
               </Link>
               <Link to="/mineracao" className="inline-flex items-center gap-3 border border-cyan-500/30 hover:border-cyan-500/60 text-cyan-400 px-8 py-4 rounded-xl font-bold text-xs uppercase tracking-[0.2em] transition-all duration-500">

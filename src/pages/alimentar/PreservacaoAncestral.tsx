@@ -667,7 +667,7 @@ export default function PreservacaoAncestral() {
           {
             titulo: 'Conservação de Alimentos',
             descricao: 'Princípios complementares de armazenagem segura: embalagem, controle de pragas e rotação da despensa.',
-            rota: '/soberania-organica/conservacao-alimentos',
+            rota: '/soberania-organica/conservacao',
           },
           {
             titulo: 'Gestão de Água em Escala Micro',

@@ -38,7 +38,7 @@ const BASE = 'https://lordjunnior.com.br';
 
 // ═══════════════════════════════════════════════════════
 // TOPIC CLUSTER 1: BITCOIN & CRIPTOECONOMIA
-// Pilar: /bitcoin | /o-que-e-bitcoin
+// Pilar: /bitcoin | /bitcoin/o-que-e
 // ═══════════════════════════════════════════════════════
 
 export const SEO_DATA: Record<string, SeoPageData> = {
@@ -55,18 +55,18 @@ export const SEO_DATA: Record<string, SeoPageData> = {
   },
 
   // ── Bitcoin Core ──
-  '/o-que-e-bitcoin': {
+  '/bitcoin/o-que-e': {
     title: 'O Que é Bitcoin? Guia Definitivo 2026 — Sem Enrolação',
     description: 'Bitcoin explicado com clareza brutal: como funciona, por que é escasso e como proteger seu patrimônio contra a inflação do estado. Guia técnico completo.',
-    canonical: `${BASE}/o-que-e-bitcoin`,
+    canonical: `${BASE}/bitcoin/o-que-e`,
     primaryKeyword: 'o que é bitcoin',
     lsiKeywords: ['bitcoin como funciona', 'criptomoeda descentralizada', 'moeda digital', 'satoshi nakamoto', 'blockchain bitcoin', 'dinheiro digital', 'bitcoin para iniciantes', 'bitcoin é seguro'],
     longTailKeywords: ['o que é bitcoin e como funciona', 'bitcoin explicado para leigos', 'vale a pena investir em bitcoin 2026', 'bitcoin é seguro para investir'],
-    breadcrumbs: [{ name: 'Início', url: '/' }, { name: 'Bitcoin', url: '/bitcoin' }, { name: 'O Que é Bitcoin', url: '/o-que-e-bitcoin' }],
+    breadcrumbs: [{ name: 'Início', url: '/' }, { name: 'Bitcoin', url: '/bitcoin' }, { name: 'O Que é Bitcoin', url: '/bitcoin/o-que-e' }],
     schemaType: 'Article',
     articleSection: 'Bitcoin',
     clusterParent: '/bitcoin',
-    relatedPages: ['/blockchain', '/nocoes-bitcoin', '/bitcoin-seguro', '/chaves', '/21-milhoes'],
+    relatedPages: ['/blockchain', '/bitcoin/nocoes-basicas', '/bitcoin-seguro', '/chaves', '/21-milhoes'],
   },
   '/bitcoin': {
     title: 'Bitcoin: O Pilar da Soberania Financeira | Hub Completo',
@@ -78,7 +78,7 @@ export const SEO_DATA: Record<string, SeoPageData> = {
     breadcrumbs: [{ name: 'Início', url: '/' }, { name: 'Bitcoin', url: '/bitcoin' }],
     schemaType: 'CollectionPage',
     articleSection: 'Bitcoin',
-    relatedPages: ['/o-que-e-bitcoin', '/blockchain', '/autocustodia', '/lightning'],
+    relatedPages: ['/bitcoin/o-que-e', '/blockchain', '/autocustodia', '/lightning'],
   },
   '/blockchain': {
     title: 'Blockchain: Como Funciona a Tecnologia Por Trás do Bitcoin',
@@ -91,20 +91,20 @@ export const SEO_DATA: Record<string, SeoPageData> = {
     schemaType: 'TechArticle',
     articleSection: 'Bitcoin',
     clusterParent: '/bitcoin',
-    relatedPages: ['/o-que-e-bitcoin', '/mineracao', '/nocoes-bitcoin'],
+    relatedPages: ['/bitcoin/o-que-e', '/mineracao', '/bitcoin/nocoes-basicas'],
   },
-  '/nocoes-bitcoin': {
+  '/bitcoin/nocoes-basicas': {
     title: 'Noções Fundamentais de Bitcoin — O Mínimo que Você PRECISA Saber',
     description: 'As bases técnicas do Bitcoin: UTXO, fees, mempool, confirmações e segurança. Conhecimento que separa o investidor do apostador.',
-    canonical: `${BASE}/nocoes-bitcoin`,
+    canonical: `${BASE}/bitcoin/nocoes-basicas`,
     primaryKeyword: 'noções bitcoin',
     lsiKeywords: ['UTXO', 'mempool', 'taxa bitcoin', 'confirmação transação', 'bloco bitcoin', 'fee rate', 'satoshi', 'nó completo'],
     longTailKeywords: ['como funcionam transações bitcoin', 'o que é UTXO bitcoin', 'como funciona a mempool'],
-    breadcrumbs: [{ name: 'Início', url: '/' }, { name: 'Bitcoin', url: '/bitcoin' }, { name: 'Noções Fundamentais', url: '/nocoes-bitcoin' }],
+    breadcrumbs: [{ name: 'Início', url: '/' }, { name: 'Bitcoin', url: '/bitcoin' }, { name: 'Noções Fundamentais', url: '/bitcoin/nocoes-basicas' }],
     schemaType: 'TechArticle',
     articleSection: 'Bitcoin',
     clusterParent: '/bitcoin',
-    relatedPages: ['/o-que-e-bitcoin', '/transacoes', '/blockchain'],
+    relatedPages: ['/bitcoin/o-que-e', '/transacoes', '/blockchain'],
   },
   '/bitcoin-seguro': {
     title: 'Bitcoin é Seguro? A Verdade Que Bancos Não Querem Que Você Saiba',
@@ -117,7 +117,7 @@ export const SEO_DATA: Record<string, SeoPageData> = {
     schemaType: 'Article',
     articleSection: 'Bitcoin',
     clusterParent: '/bitcoin',
-    relatedPages: ['/o-que-e-bitcoin', '/chaves', '/autocustodia'],
+    relatedPages: ['/bitcoin/o-que-e', '/chaves', '/autocustodia'],
   },
   '/chaves': {
     title: 'Chaves Privadas Bitcoin: Seu Dinheiro Só Existe Se Você Tiver Elas',
@@ -143,7 +143,7 @@ export const SEO_DATA: Record<string, SeoPageData> = {
     schemaType: 'TechArticle',
     articleSection: 'Bitcoin',
     clusterParent: '/bitcoin',
-    relatedPages: ['/nocoes-bitcoin', '/lightning', '/blockchain'],
+    relatedPages: ['/bitcoin/nocoes-basicas', '/lightning', '/blockchain'],
   },
   '/mineracao': {
     title: 'Mineração de Bitcoin: Como Funciona e Por Que é Essencial',
@@ -169,7 +169,7 @@ export const SEO_DATA: Record<string, SeoPageData> = {
     schemaType: 'TechArticle',
     articleSection: 'Bitcoin',
     clusterParent: '/bitcoin',
-    relatedPages: ['/transacoes', '/pix-cripto', '/nocoes-bitcoin'],
+    relatedPages: ['/transacoes', '/pix-cripto', '/bitcoin/nocoes-basicas'],
   },
   '/21-milhoes': {
     title: '21 Milhões: Por Que o Bitcoin é o Ativo Mais Escasso da História',
@@ -234,7 +234,7 @@ export const SEO_DATA: Record<string, SeoPageData> = {
     schemaType: 'Article',
     articleSection: 'Bitcoin',
     clusterParent: '/bitcoin',
-    relatedPages: ['/o-que-e-bitcoin', '/21-milhoes', '/bitcoin-vs-fiat'],
+    relatedPages: ['/bitcoin/o-que-e', '/21-milhoes', '/bitcoin-vs-fiat'],
   },
   '/candlestick': {
     title: 'Candlestick Bitcoin: Leitura de Gráficos Para Soberanos',
@@ -247,7 +247,7 @@ export const SEO_DATA: Record<string, SeoPageData> = {
     schemaType: 'TechArticle',
     articleSection: 'Bitcoin',
     clusterParent: '/bitcoin',
-    relatedPages: ['/nocoes-bitcoin', '/volatilidade', '/supply-shock'],
+    relatedPages: ['/bitcoin/nocoes-basicas', '/volatilidade', '/supply-shock'],
   },
   '/diversificacao': {
     title: 'Diversificação: A Grande Falácia Que Protege os Bancos, Não Você',
@@ -273,7 +273,7 @@ export const SEO_DATA: Record<string, SeoPageData> = {
     schemaType: 'Article',
     articleSection: 'Bitcoin',
     clusterParent: '/bitcoin',
-    relatedPages: ['/diversificacao', '/o-que-e-bitcoin', '/blindagem-golpes'],
+    relatedPages: ['/diversificacao', '/bitcoin/o-que-e', '/blindagem-golpes'],
   },
   '/bitcoin-vs-fiat': {
     title: 'Bitcoin vs Dinheiro Fiat: O Real Já Perdeu 99,7% do Valor',
@@ -325,7 +325,7 @@ export const SEO_DATA: Record<string, SeoPageData> = {
     schemaType: 'WebPage',
     articleSection: 'Bitcoin',
     clusterParent: '/bitcoin',
-    relatedPages: ['/o-que-e-bitcoin', '/nocoes-bitcoin', '/blockchain'],
+    relatedPages: ['/bitcoin/o-que-e', '/bitcoin/nocoes-basicas', '/blockchain'],
   },
   '/bitcoin/bip-110-guerra-espaco-bloco': {
     title: 'BIP-110: A Guerra Pelo Espaço de Bloco do Bitcoin',
@@ -338,7 +338,7 @@ export const SEO_DATA: Record<string, SeoPageData> = {
     schemaType: 'TechArticle',
     articleSection: 'Bitcoin',
     clusterParent: '/bitcoin',
-    relatedPages: ['/mineracao', '/transacoes', '/nocoes-bitcoin'],
+    relatedPages: ['/mineracao', '/transacoes', '/bitcoin/nocoes-basicas'],
   },
 
   // ═══════════════════════════════════════════════════════
@@ -755,7 +755,7 @@ export const SEO_DATA: Record<string, SeoPageData> = {
     breadcrumbs: [{ name: 'Início', url: '/' }, { name: 'Protocolo Inicial', url: '/protocolo-inicial' }],
     schemaType: 'HowTo',
     articleSection: 'Educação',
-    relatedPages: ['/o-que-e-bitcoin', '/autocustodia', '/por-onde-comecar'],
+    relatedPages: ['/bitcoin/o-que-e', '/autocustodia', '/por-onde-comecar'],
   },
   '/vazamento-dados': {
     title: 'Vazamento de Dados: Seu CPF Já Foi Exposto — Verifique Agora',

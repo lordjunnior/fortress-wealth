@@ -135,8 +135,8 @@ export default function ProtocoloInicial() {
               {/* FUNDAMENTOS */}
               <span className="text-[7px] font-black uppercase tracking-[0.3em] text-slate-700 font-mono px-3 block mb-2">Fundamentos</span>
               {[
-                { to: '/o-que-e-bitcoin', label: 'O que é Bitcoin?', Icon: Coins },
-                { to: '/nocoes-bitcoin', label: 'Noções Básicas', Icon: BookOpen },
+                { to: '/bitcoin/o-que-e', label: 'O que é Bitcoin?', Icon: Coins },
+                { to: '/bitcoin/nocoes-basicas', label: 'Noções Básicas', Icon: BookOpen },
                 { to: '/bitcoin-seguro', label: 'Bitcoin é Seguro?', Icon: Shield },
               ].map((mod) => (
                 <Link key={mod.to} to={mod.to} className="w-full flex items-center gap-2 px-3 py-2.5 rounded-sm text-[10px] font-bold uppercase tracking-wider transition-all duration-300 font-mono text-slate-500 hover:text-amber-400 hover:bg-amber-500/[0.05] border-l-2 border-transparent hover:border-amber-500/40">
@@ -546,8 +546,8 @@ export default function ProtocoloInicial() {
             <h3 className="text-slate-600 font-black uppercase tracking-[0.4em] text-[9px] mb-6 font-mono">Módulos de Aprofundamento</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {[
-                { to: '/o-que-e-bitcoin', title: 'O que é Bitcoin?', desc: 'Definição, propriedades, como funciona, Satoshi Nakamoto e por que tem valor. O fundamento zero.', color: 'orange', icon: '₿' },
-                { to: '/nocoes-bitcoin', title: 'Noções Básicas sobre Bitcoin', desc: 'Aprenda o básico: o que é, como comprar, como funciona. 14 tópicos essenciais para iniciantes.', color: 'amber', icon: '📖' },
+                { to: '/bitcoin/o-que-e', title: 'O que é Bitcoin?', desc: 'Definição, propriedades, como funciona, Satoshi Nakamoto e por que tem valor. O fundamento zero.', color: 'orange', icon: '₿' },
+                { to: '/bitcoin/nocoes-basicas', title: 'Noções Básicas sobre Bitcoin', desc: 'Aprenda o básico: o que é, como comprar, como funciona. 14 tópicos essenciais para iniciantes.', color: 'amber', icon: '📖' },
                 { to: '/bitcoin-seguro', title: 'Bitcoin é Seguro?', desc: 'A blockchain nunca foi hackeada. Mas você pode ser o elo fraco. Entenda os riscos reais.', color: 'green', icon: '🛡' },
                 { to: '/chaves', title: 'Chaves Públicas & Privadas', desc: 'Criptografia de chave pública: como funciona a propriedade real no Bitcoin.', color: 'orange', icon: '🔑' },
                 { to: '/transacoes', title: 'Transações Bitcoin', desc: 'Inputs, outputs, taxas e mempool. A mecânica completa de como valor é transferido.', color: 'cyan', icon: '📡' },

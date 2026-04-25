@@ -287,7 +287,7 @@ export default function BitcoinVsAltcoins() {
               Altcoins vêm e vão. O Bitcoin permanece. A descoberta do dinheiro digitalmente escasso acontece uma única vez na história — e já aconteceu.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/o-que-e-bitcoin" className="inline-flex items-center gap-3 bg-yellow-500 hover:bg-yellow-400 text-black px-8 py-4 rounded-xl font-bold text-xs uppercase tracking-[0.2em] transition-all duration-500 hover:gap-4">
+              <Link to="/bitcoin/o-que-e" className="inline-flex items-center gap-3 bg-yellow-500 hover:bg-yellow-400 text-black px-8 py-4 rounded-xl font-bold text-xs uppercase tracking-[0.2em] transition-all duration-500 hover:gap-4">
                 O Que é Bitcoin <ArrowRight size={16} />
               </Link>
               <Link to="/diversificacao" className="inline-flex items-center gap-3 border border-yellow-500/30 hover:border-yellow-500/60 text-yellow-400 px-8 py-4 rounded-xl font-bold text-xs uppercase tracking-[0.2em] transition-all duration-500">

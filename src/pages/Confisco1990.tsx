@@ -557,7 +557,7 @@ const Confisco1990 = () => {
                 { to: "/inflacao-imposto-oculto", label: "Inflação: Imposto Oculto", desc: "Como roubam seu poder de compra" },
                 { to: "/cbdc-brasil", label: "CBDC Brasil: Drex", desc: "O próximo capítulo do controle" },
                 { to: "/fim-do-dinheiro-vivo", label: "Fim do Dinheiro Físico", desc: "A proibição em andamento" },
-                { to: "/o-que-e-bitcoin", label: "O que é Bitcoin?", desc: "A alternativa descentralizada" },
+                { to: "/bitcoin/o-que-e", label: "O que é Bitcoin?", desc: "A alternativa descentralizada" },
               ].map((link) => (
                 <Link
                   key={link.to}

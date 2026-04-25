@@ -77,7 +77,7 @@ function getRecommendations(answers: Record<string, string>): Recommendation[] {
   // Bitcoin level routing
   if (bitcoin === "never") {
     recs.push(
-      { title: "O que é Bitcoin?", description: "Fundamento zero. Entenda antes de comprar", path: "/o-que-e-bitcoin", icon: BookOpen, tag: "ESSENCIAL" },
+      { title: "O que é Bitcoin?", description: "Fundamento zero. Entenda antes de comprar", path: "/bitcoin/o-que-e", icon: BookOpen, tag: "ESSENCIAL" },
       { title: "Protocolo Inicial", description: "Seu primeiro passo concreto na soberania", path: "/protocolo-inicial", icon: Target, tag: "COMEÇAR AQUI" },
     );
   } else if (bitcoin === "exchange") {
