@@ -21,7 +21,7 @@ import BackToHome from '@/components/BackToHome';
 import MicroCtaResistencia from '@/components/MicroCtaResistencia';
 
 import imgHero from '@/assets/pix-privacidade-hero.jpg';
-import imgCodigo from '@/assets/pix-privacidade-codigo.jpg';
+import imgCodigo from '@/assets/pix-anonimo-codigo.jpg';
 import imgQrcode from '@/assets/pix-privacidade-qrcode.jpg';
 import imgServidor from '@/assets/pix-privacidade-servidor.jpg';
 import imgPronto from '@/assets/pix-privacidade-pronto.jpg';
