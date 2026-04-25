@@ -450,7 +450,7 @@ export const SEO_DATA: Record<string, SeoPageData> = {
     schemaType: 'Article',
     articleSection: 'Soberania Financeira',
     clusterParent: '/teoria-das-bandeiras',
-    relatedPages: ['/teoria-das-bandeiras', '/soberania-financeira', '/exchanges-sem-kyc'],
+    relatedPages: ['/teoria-das-bandeiras', '/soberania-financeira', '/soberania-financeira/exchanges-privacidade-e-kyc'],
   },
   '/taxa-de-fuga': {
     title: 'Taxa de Fuga: Quanto Custa Sair do Brasil (Cálculo Real)',
