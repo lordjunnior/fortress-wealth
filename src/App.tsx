@@ -233,10 +233,10 @@ const App = () => (
           <Route path="/soberania-financeira/exchanges-privacidade-e-kyc/kycnot-me" element={<KycNotMe />} />
           <Route path="/soberania-financeira/exchanges-privacidade-e-kyc/optima-exchange" element={<OptimaExchange />} />
           <Route path="/soberania-financeira/exchanges-privacidade-e-kyc/pegasus-swap" element={<PegasusSwap />} />
-          <Route path="/soberania-financeira/exchanges-privacidade-e-kyc" element={<LegacyRedirect to="/soberania-financeira/exchanges-privacidade-e-kyc" />} />
-          <Route path="/soberania-financeira/exchanges-privacidade-e-kyc/kycnot-me" element={<LegacyRedirect to="/soberania-financeira/exchanges-privacidade-e-kyc/kycnot-me" />} />
-          <Route path="/soberania-financeira/exchanges-privacidade-e-kyc/optima-exchange" element={<LegacyRedirect to="/soberania-financeira/exchanges-privacidade-e-kyc/optima-exchange" />} />
-          <Route path="/soberania-financeira/exchanges-privacidade-e-kyc/pegasus-swap" element={<LegacyRedirect to="/soberania-financeira/exchanges-privacidade-e-kyc/pegasus-swap" />} />
+          <Route path="/soberania-financeira/exchanges-sem-kyc" element={<LegacyRedirect to="/soberania-financeira/exchanges-privacidade-e-kyc" />} />
+          <Route path="/soberania-financeira/exchanges-sem-kyc/kycnot-me" element={<LegacyRedirect to="/soberania-financeira/exchanges-privacidade-e-kyc/kycnot-me" />} />
+          <Route path="/soberania-financeira/exchanges-sem-kyc/optima-exchange" element={<LegacyRedirect to="/soberania-financeira/exchanges-privacidade-e-kyc/optima-exchange" />} />
+          <Route path="/soberania-financeira/exchanges-sem-kyc/pegasus-swap" element={<LegacyRedirect to="/soberania-financeira/exchanges-privacidade-e-kyc/pegasus-swap" />} />
           <Route path="/soberania-financeira/brics-pay" element={<BricsPay />} />
           <Route path="/soberania-financeira/kucoin-pay-pix" element={<KucoinPayPix />} />
           <Route path="/soberania-financeira/pix-sem-banco" element={<PixSemBanco />} />
