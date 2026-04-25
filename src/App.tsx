@@ -186,7 +186,7 @@ const App = () => (
           <Route path="/ferramentas" element={<Ferramentas />} />
           <Route path="/ferramentas/:toolId" element={<Ferramentas />} />
           <Route path="/educacao" element={<Educacao />} />
-          <Route path="/entenda-bitcoin" element={<Navigate to="/o-que-e-bitcoin" replace />} />
+          <Route path="/entenda-bitcoin" element={<LegacyRedirect to="/bitcoin/o-que-e" />} />
           <Route path="/autocustodia" element={<Autocustodia />} />
           <Route path="/autocustodia/hardware-wallet-diy-bitcoin" element={<HardwareWalletDiy />} />
           <Route path="/autocustodia/seed-phrase-em-aco" element={<SeedPhraseAco />} />
@@ -245,8 +245,10 @@ const App = () => (
           <Route path="/bitcoin-seguro" element={<BitcoinSeguro />} />
           <Route path="/chaves" element={<ChavesPage />} />
           <Route path="/transacoes" element={<TransacoesBitcoin />} />
-          <Route path="/nocoes-bitcoin" element={<NocoesBitcoin />} />
-          <Route path="/o-que-e-bitcoin" element={<OQueEBitcoin />} />
+          <Route path="/bitcoin/nocoes-basicas" element={<NocoesBitcoin />} />
+          <Route path="/bitcoin/o-que-e" element={<OQueEBitcoin />} />
+          <Route path="/nocoes-bitcoin" element={<LegacyRedirect to="/bitcoin/nocoes-basicas" />} />
+          <Route path="/o-que-e-bitcoin" element={<LegacyRedirect to="/bitcoin/o-que-e" />} />
           <Route path="/mineracao" element={<MineracaoBitcoin />} />
           <Route path="/futuro-bitcoin" element={<FuturoBitcoin />} />
           <Route path="/supply-shock" element={<SupplyShock />} />
