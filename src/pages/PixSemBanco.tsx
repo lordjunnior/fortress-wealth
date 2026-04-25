@@ -636,7 +636,7 @@ const PixSemBanco = () => {
                 <ExternalLink className="w-4 h-4" />
               </a>
               <Link
-                to="/alertas/governo-tomar-bitcoins"
+                to="/alertas/protecao-patrimonial-bitcoin"
                 className="px-8 py-4 rounded-lg text-sm font-semibold tracking-wide flex items-center gap-3 text-white border border-white/10 hover:border-red-500/30 transition-all"
               >
                 <AlertTriangle className="w-4 h-4 text-red-400" />

@@ -49,16 +49,16 @@
   <url><loc>https://lordjunnior.com.br/soberania-financeira/contas-internacionais/grabrfi</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://lordjunnior.com.br/soberania-financeira/contas-offshore/top-10</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
   <url><loc>https://lordjunnior.com.br/soberania-financeira/contas-offshore/abertura-remota</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://lordjunnior.com.br/soberania-financeira/exchanges-sem-kyc</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://lordjunnior.com.br/soberania-financeira/exchanges-sem-kyc/kycnot-me</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://lordjunnior.com.br/soberania-financeira/exchanges-sem-kyc/optima-exchange</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://lordjunnior.com.br/soberania-financeira/exchanges-sem-kyc/pegasus-swap</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://lordjunnior.com.br/soberania-financeira/exchanges-privacidade-e-kyc</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://lordjunnior.com.br/soberania-financeira/exchanges-privacidade-e-kyc/kycnot-me</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://lordjunnior.com.br/soberania-financeira/exchanges-privacidade-e-kyc/optima-exchange</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://lordjunnior.com.br/soberania-financeira/exchanges-privacidade-e-kyc/pegasus-swap</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://lordjunnior.com.br/soberania-financeira/brics-pay</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://lordjunnior.com.br/soberania-financeira/kucoin-pay-pix</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://lordjunnior.com.br/soberania-financeira/pix-sem-banco</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
   <url><loc>https://lordjunnior.com.br/bitpark-cartao-bitcoin</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
   <url><loc>https://lordjunnior.com.br/pix-cripto</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://lordjunnior.com.br/comprar-bitcoin-anonimo</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://lordjunnior.com.br/comprar-bitcoin-com-privacidade</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://lordjunnior.com.br/economia-paralela</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
   <url><loc>https://lordjunnior.com.br/teoria-das-bandeiras</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://lordjunnior.com.br/taxa-de-fuga</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
@@ -69,7 +69,7 @@
   <url><loc>https://lordjunnior.com.br/alertas</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://lordjunnior.com.br/alertas/cbdc-brasil</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
   <url><loc>https://lordjunnior.com.br/alertas/depix-reporte-2026</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
-  <url><loc>https://lordjunnior.com.br/alertas/governo-tomar-bitcoins</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://lordjunnior.com.br/alertas/protecao-patrimonial-bitcoin</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
   <url><loc>https://lordjunnior.com.br/confisco-1990</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://lordjunnior.com.br/inflacao-imposto-oculto</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
   <url><loc>https://lordjunnior.com.br/historia-do-dinheiro</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
@@ -124,8 +124,8 @@
   <url><loc>https://lordjunnior.com.br/ebooks</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
   <url><loc>https://lordjunnior.com.br/protocolo-inicial</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
   <url><loc>https://lordjunnior.com.br/por-onde-comecar</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://lordjunnior.com.br/arsenal</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
-  <url><loc>https://lordjunnior.com.br/indice-do-despertar</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://lordjunnior.com.br/recursos-e-ferramentas</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://lordjunnior.com.br/indice-da-soberania</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://lordjunnior.com.br/novilingua</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
   <!-- ═══ FERRAMENTAS ═══ -->
@@ -143,5 +143,5 @@
   <url><loc>https://lordjunnior.com.br/mapa-da-soberania</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
 
  <url><loc>https://lordjunnior.com.br/polymarket-rede-neural-btc</loc><lastmod>2026-04-12</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
- <url><loc>https://lordjunnior.com.br/pix-anonimo</loc><lastmod>2026-04-12</lastmod><changefreq>weekly</changefreq><priority>0.90</priority></url>
+ <url><loc>https://lordjunnior.com.br/pix-privacidade</loc><lastmod>2026-04-12</lastmod><changefreq>weekly</changefreq><priority>0.90</priority></url>
 </urlset>

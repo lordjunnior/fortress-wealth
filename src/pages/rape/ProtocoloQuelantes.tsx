@@ -189,7 +189,7 @@ export default function ProtocoloQuelantes() {
       {
         "@type": "MedicalWebPage",
         "name": "Protocolo de Quelantes Brasileiros: 10 Plantas com Fichas Técnicas",
-        "url": "https://lordjunnior.com.br/soberania-organica/conhecimento-perdido/protocolo-quelantes-brasileiros",
+        "url": "https://lordjunnior.com.br/soberania-organica/conhecimento-perdido/quelantes-orientacao-segura",
         "description": "10 plantas brasileiras quelantes com fichas técnicas completas: alvo tóxico, compostos ativos, posologia, contraindicações e sinergias.",
         "lastReviewed": "2026-04-20",
         "medicalAudience": "Patients",
@@ -214,7 +214,7 @@ export default function ProtocoloQuelantes() {
       <Helmet>
         <title>Protocolo de Quelantes Brasileiros: 10 Plantas Quelantes Naturais | Lord Junnior</title>
         <meta name="description" content="Fichas técnicas completas de 10 plantas brasileiras quelantes: coentro, chlorella, ipê-roxo, sucupira, cardo-mariano, espirulina, unha-de-gato, quebra-pedra, cavalinha e carvão ativado. Posologia, ciclos, contraindicações e sinergias." />
-        <link rel="canonical" href="https://lordjunnior.com.br/soberania-organica/conhecimento-perdido/protocolo-quelantes-brasileiros" />
+        <link rel="canonical" href="https://lordjunnior.com.br/soberania-organica/conhecimento-perdido/quelantes-orientacao-segura" />
         <meta property="og:title" content="Protocolo de Quelantes Brasileiros: 10 Plantas Nativas" />
         <meta property="og:description" content="Fichas técnicas de 10 plantas quelantes: posologia, ciclos, contraindicações e sinergias documentadas." />
         <meta property="og:image" content="https://lordjunnior.com.br/og-quelantes.jpg" />

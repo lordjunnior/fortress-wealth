@@ -30,19 +30,19 @@ const ACTIVE_REVIEWS = [
     name: 'KYCNot.me',
     desc: 'Diretório que agrega e ranqueia plataformas por nível de privacidade.',
     type: 'Diretório',
-    link: '/soberania-financeira/exchanges-sem-kyc/kycnot-me',
+    link: '/soberania-financeira/exchanges-privacidade-e-kyc/kycnot-me',
   },
   {
     name: 'Optima Exchange',
     desc: 'Troca de cripto por dinheiro vivo via Telegram, sem rastro digital.',
     type: 'P2P / Telegram',
-    link: '/soberania-financeira/exchanges-sem-kyc/optima-exchange',
+    link: '/soberania-financeira/exchanges-privacidade-e-kyc/optima-exchange',
   },
   {
     name: 'PegasusSwap',
     desc: 'Swap instantâneo de 1.000+ criptos sem registro, sem documento, sem KYC oculto.',
     type: 'Swap Instantâneo',
-    link: '/soberania-financeira/exchanges-sem-kyc/pegasus-swap',
+    link: '/soberania-financeira/exchanges-privacidade-e-kyc/pegasus-swap',
   },
 ];
 
@@ -91,7 +91,7 @@ const schemaLD = {
   '@type': 'CollectionPage',
   name: 'Plataformas sem KYC — Exchanges e Serviços Privados',
   description: 'Diretório de plataformas sem verificação KYC: exchanges privadas, swaps e ferramentas para maior privacidade financeira.',
-  url: 'https://lordjunnior.com.br/soberania-financeira/exchanges-sem-kyc',
+  url: 'https://lordjunnior.com.br/soberania-financeira/exchanges-privacidade-e-kyc',
 };
 
 const faqSchema = {
@@ -121,7 +121,7 @@ const ExchangesSemKyc = () => {
       <Helmet>
         <title>Plataformas sem KYC — Exchanges e Serviços Privados</title>
         <meta name="description" content="Descubra plataformas sem verificação KYC: exchanges privadas, swaps e ferramentas para maior privacidade financeira." />
-        <link rel="canonical" href="https://lordjunnior.com.br/soberania-financeira/exchanges-sem-kyc" />
+        <link rel="canonical" href="https://lordjunnior.com.br/soberania-financeira/exchanges-privacidade-e-kyc" />
         <script type="application/ld+json">{JSON.stringify(schemaLD)}</script>
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       </Helmet>

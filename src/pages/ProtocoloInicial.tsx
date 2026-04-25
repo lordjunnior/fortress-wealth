@@ -621,7 +621,7 @@ export default function ProtocoloInicial() {
               <h3 className="font-black uppercase tracking-[0.4em] text-xs text-white mb-1 font-mono">Próximo Nível</h3>
               <p className="text-slate-400 font-bold uppercase text-xs">Estará pronto para a prática.</p>
             </div>
-            <Link to="/arsenal" className="bg-white text-black px-10 py-4 font-black uppercase text-[10px] tracking-widest hover:bg-red-600 hover:text-white transition-all flex items-center gap-3 rounded-sm">
+            <Link to="/recursos-e-ferramentas" className="bg-white text-black px-10 py-4 font-black uppercase text-[10px] tracking-widest hover:bg-red-600 hover:text-white transition-all flex items-center gap-3 rounded-sm">
               Arsenal Técnico <ArrowRight size={16} />
             </Link>
           </div>

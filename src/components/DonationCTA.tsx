@@ -108,7 +108,7 @@ const DonationCTA = () => {
             <span className="text-foreground font-medium">sem depender de plataformas centralizadas</span>.
           </p>
           <Link
-            to="/comprar-bitcoin-anonimo"
+            to="/comprar-bitcoin-com-privacidade"
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-border text-muted-foreground font-medium text-sm hover:border-gold-dim hover:text-foreground transition-all duration-300"
           >
             VER TUTORIAL: BITCOIN VIA PIX

@@ -40,7 +40,7 @@ export const SEARCH_ENTRIES: SearchEntry[] = [
   { title: "Hardware Wallet DIY", description: "Construa sua própria hardware wallet", path: "/autocustodia/hardware-wallet-diy-bitcoin", tags: ["hardware", "wallet", "diy", "construir"], category: "Autocustódia" },
   { title: "Mobilidade de Chaves", description: "Portabilidade e backup seguro de chaves", path: "/mobilidade-de-chaves", tags: ["mobilidade", "backup", "seed", "migração"], category: "Autocustódia" },
   { title: "Blindagem contra Golpes", description: "Proteja-se contra fraudes e engenharia social", path: "/blindagem-golpes", tags: ["golpes", "fraude", "engenharia social", "phishing"], category: "Autocustódia" },
-  { title: "Comprar Bitcoin Anônimo", description: "Métodos P2P sem KYC", path: "/comprar-bitcoin-anonimo", tags: ["anônimo", "p2p", "kyc", "privacidade"], category: "Autocustódia" },
+  { title: "Comprar Bitcoin Anônimo", description: "Métodos P2P sem KYC", path: "/comprar-bitcoin-com-privacidade", tags: ["anônimo", "p2p", "kyc", "privacidade"], category: "Autocustódia" },
   { title: "Dólar Virtual (USDT)", description: "Comprar stablecoins com Jade Wallet e AlfredP2P", path: "/dolar-virtual", tags: ["usdt", "stablecoin", "dólar", "jade", "alfredp2p", "liquid", "tether"], category: "Autocustódia" },
 
   // Economia
@@ -60,10 +60,10 @@ export const SEARCH_ENTRIES: SearchEntry[] = [
   { title: "Wise", description: "Transferências internacionais com Wise", path: "/soberania-financeira/contas-internacionais/wise", tags: ["wise", "transferência", "câmbio", "internacional"], category: "Soberania Financeira" },
   { title: "Payoneer", description: "Receba em dólar com Payoneer", path: "/soberania-financeira/contas-internacionais/payoneer", tags: ["payoneer", "dólar", "receber", "freelancer"], category: "Soberania Financeira" },
   { title: "GrabrFi", description: "Plataforma de banking cripto", path: "/soberania-financeira/contas-internacionais/grabrfi", tags: ["grabrfi", "cripto", "banking", "digital"], category: "Soberania Financeira" },
-  { title: "Exchanges sem KYC", description: "Trocas de cripto sem verificação de identidade", path: "/soberania-financeira/exchanges-sem-kyc", tags: ["exchange", "kyc", "privacidade", "troca"], category: "Soberania Financeira" },
-  { title: "KYCnot.me", description: "Diretório de serviços sem KYC", path: "/soberania-financeira/exchanges-sem-kyc/kycnot-me", tags: ["kycnot", "privacidade", "sem kyc", "diretório"], category: "Soberania Financeira" },
-  { title: "Optima Exchange", description: "Exchange descentralizada", path: "/soberania-financeira/exchanges-sem-kyc/optima-exchange", tags: ["optima", "exchange", "descentralizada", "dex"], category: "Soberania Financeira" },
-  { title: "Pegasus Swap", description: "Swap de criptomoedas", path: "/soberania-financeira/exchanges-sem-kyc/pegasus-swap", tags: ["pegasus", "swap", "cripto", "troca"], category: "Soberania Financeira" },
+  { title: "Exchanges sem KYC", description: "Trocas de cripto sem verificação de identidade", path: "/soberania-financeira/exchanges-privacidade-e-kyc", tags: ["exchange", "kyc", "privacidade", "troca"], category: "Soberania Financeira" },
+  { title: "KYCnot.me", description: "Diretório de serviços sem KYC", path: "/soberania-financeira/exchanges-privacidade-e-kyc/kycnot-me", tags: ["kycnot", "privacidade", "sem kyc", "diretório"], category: "Soberania Financeira" },
+  { title: "Optima Exchange", description: "Exchange descentralizada", path: "/soberania-financeira/exchanges-privacidade-e-kyc/optima-exchange", tags: ["optima", "exchange", "descentralizada", "dex"], category: "Soberania Financeira" },
+  { title: "Pegasus Swap", description: "Swap de criptomoedas", path: "/soberania-financeira/exchanges-privacidade-e-kyc/pegasus-swap", tags: ["pegasus", "swap", "cripto", "troca"], category: "Soberania Financeira" },
   { title: "BRICS Pay", description: "Sistema de pagamento alternativo", path: "/soberania-financeira/brics-pay", tags: ["brics", "pagamento", "alternativo", "desdolarização"], category: "Soberania Financeira" },
   { title: "KuCoin Pay + Pix", description: "Pagamento cripto via Pix", path: "/soberania-financeira/kucoin-pay-pix", tags: ["kucoin", "pix", "pagamento", "cripto"], category: "Soberania Financeira" },
   { title: "Índice de Soberania Financeira", description: "Meça seu nível de independência", path: "/indice-de-soberania-financeira", tags: ["índice", "soberania", "teste", "avaliação"], category: "Soberania Financeira" },
@@ -89,12 +89,12 @@ export const SEARCH_ENTRIES: SearchEntry[] = [
   { title: "E-books", description: "Biblioteca digital de textos", path: "/ebooks", tags: ["ebook", "livro", "digital", "pdf"], category: "Educação" },
   { title: "Dicionário Cripto", description: "Glossário de termos do ecossistema", path: "/dicionario-cripto", tags: ["dicionário", "glossário", "termos", "definições"], category: "Educação" },
   { title: "Ferramentas", description: "Arsenal de ferramentas práticas", path: "/ferramentas", tags: ["ferramentas", "calculadora", "tools", "prática"], category: "Ferramentas" },
-  { title: "Arsenal", description: "Kit completo de soberania", path: "/arsenal", tags: ["arsenal", "kit", "completo", "recursos"], category: "Ferramentas" },
+  { title: "Arsenal", description: "Kit completo de soberania", path: "/recursos-e-ferramentas", tags: ["arsenal", "kit", "completo", "recursos"], category: "Ferramentas" },
   { title: "Mapa da Soberania", description: "Visualize sua jornada completa", path: "/mapa-da-soberania", tags: ["mapa", "jornada", "progresso", "trilha"], category: "Ferramentas" },
 
   // Filosofia
   { title: "Filosofia", description: "Fundamentos filosóficos da soberania", path: "/filosofia", tags: ["filosofia", "liberdade", "indivíduo", "ética"], category: "Filosofia" },
-  { title: "Índice do Despertar", description: "Meça seu nível de consciência soberana", path: "/indice-do-despertar", tags: ["despertar", "consciência", "índice", "teste"], category: "Filosofia" },
+  { title: "Índice do Despertar", description: "Meça seu nível de consciência soberana", path: "/indice-da-soberania", tags: ["despertar", "consciência", "índice", "teste"], category: "Filosofia" },
   { title: "O Silêncio da Queda", description: "Reflexão sobre o colapso silencioso", path: "/silencio-queda", tags: ["silêncio", "queda", "colapso", "reflexão"], category: "Filosofia" },
 
   // Soberania Orgânica

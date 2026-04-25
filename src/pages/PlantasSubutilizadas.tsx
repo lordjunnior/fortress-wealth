@@ -755,7 +755,7 @@ export default function PlantasSubutilizadas() {
               Fitoterapia Aplicada
             </Link>
             <Link
-              to="/soberania-organica/conhecimento-perdido/protocolo-quelantes-brasileiros"
+              to="/soberania-organica/conhecimento-perdido/quelantes-orientacao-segura"
               className="flex-1 flex items-center justify-center gap-2 bg-emerald-500/8 border border-emerald-500/20 rounded-xl px-6 py-4 text-emerald-400 text-sm font-bold hover:bg-emerald-500/15 transition-all duration-500 group"
             >
               Protocolo Quelantes Brasileiros

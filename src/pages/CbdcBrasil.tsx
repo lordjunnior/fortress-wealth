@@ -274,7 +274,7 @@ export default function CbdcBrasil() {
                 <p className="text-base">O DREX é a resposta do governo. O <strong className="text-stone-100">Bitcoin é a resposta do indivíduo</strong>.</p>
                 <p className="text-sm text-stone-400 mt-3">
                   O governo pode programar seu dinheiro, mas não pode programar o que ele não vê.{" "}
-                  <Link to="/comprar-bitcoin-anonimo" className="text-amber-400 font-semibold hover:underline underline-offset-4 transition-colors">
+                  <Link to="/comprar-bitcoin-com-privacidade" className="text-amber-400 font-semibold hover:underline underline-offset-4 transition-colors">
                     Aprenda o Protocolo de Privacidade →
                   </Link>
                 </p>

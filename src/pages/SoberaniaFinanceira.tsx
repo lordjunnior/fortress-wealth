@@ -71,9 +71,9 @@ const CATEGORIES = [
     description: 'Diretórios, P2P e swaps que operam fora do radar — sem selfie, sem documento, sem rastro.',
     image: nokycImg,
     items: [
-      { name: 'KYCNot.me — O mapa da privacidade cripto', status: 'disponível', link: '/soberania-financeira/exchanges-sem-kyc/kycnot-me' },
-      { name: 'Optima — Cripto por dinheiro vivo na sua porta', status: 'disponível', link: '/soberania-financeira/exchanges-sem-kyc/optima-exchange' },
-      { name: 'PegasusSwap — Swap sem KYC oculto', status: 'disponível', link: '/soberania-financeira/exchanges-sem-kyc/pegasus-swap' },
+      { name: 'KYCNot.me — O mapa da privacidade cripto', status: 'disponível', link: '/soberania-financeira/exchanges-privacidade-e-kyc/kycnot-me' },
+      { name: 'Optima — Cripto por dinheiro vivo na sua porta', status: 'disponível', link: '/soberania-financeira/exchanges-privacidade-e-kyc/optima-exchange' },
+      { name: 'PegasusSwap — Swap sem KYC oculto', status: 'disponível', link: '/soberania-financeira/exchanges-privacidade-e-kyc/pegasus-swap' },
     ],
     privacyLevel: 'Muito Alto',
     reviewCount: 2,

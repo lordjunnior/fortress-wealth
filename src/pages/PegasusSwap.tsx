@@ -232,8 +232,8 @@ export default function PegasusSwap() {
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://lordjunnior.com.br/' },
       { '@type': 'ListItem', position: 2, name: 'Soberania Financeira', item: 'https://lordjunnior.com.br/soberania-financeira' },
-      { '@type': 'ListItem', position: 3, name: 'Exchanges sem KYC', item: 'https://lordjunnior.com.br/soberania-financeira/exchanges-sem-kyc' },
-      { '@type': 'ListItem', position: 4, name: 'PegasusSwap', item: 'https://lordjunnior.com.br/soberania-financeira/exchanges-sem-kyc/pegasus-swap' },
+      { '@type': 'ListItem', position: 3, name: 'Exchanges sem KYC', item: 'https://lordjunnior.com.br/soberania-financeira/exchanges-privacidade-e-kyc' },
+      { '@type': 'ListItem', position: 4, name: 'PegasusSwap', item: 'https://lordjunnior.com.br/soberania-financeira/exchanges-privacidade-e-kyc/pegasus-swap' },
     ],
   };
 
@@ -245,7 +245,7 @@ export default function PegasusSwap() {
         <meta property="og:title" content="PegasusSwap — Swap Cripto Instantaneo Sem KYC" />
         <meta property="og:description" content="1.000+ criptomoedas. Sem registro. Sem documentos. Swap em minutos com privacidade real." />
         <meta property="og:type" content="article" />
-        <link rel="canonical" href="https://lordjunnior.com.br/soberania-financeira/exchanges-sem-kyc/pegasus-swap" />
+        <link rel="canonical" href="https://lordjunnior.com.br/soberania-financeira/exchanges-privacidade-e-kyc/pegasus-swap" />
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
@@ -269,7 +269,7 @@ export default function PegasusSwap() {
             <motion.nav initial={{ y: -60, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: -60, opacity: 0 }} transition={{ duration: 0.4, ease: EASE }}
               className="fixed top-1 left-0 right-0 z-50 border-b border-white/[0.06]" style={{ background: 'rgba(5,8,8,0.85)', backdropFilter: 'blur(20px) saturate(1.5)' }}>
               <div className="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
-                <Link to="/soberania-financeira/exchanges-sem-kyc" className="flex items-center gap-2 text-stone-500 hover:text-white transition-colors text-xs font-bold tracking-wider uppercase">
+                <Link to="/soberania-financeira/exchanges-privacidade-e-kyc" className="flex items-center gap-2 text-stone-500 hover:text-white transition-colors text-xs font-bold tracking-wider uppercase">
                   <ChevronRight size={12} className="rotate-180" /> Exchanges sem KYC
                 </Link>
                 <span className="text-[10px] font-black tracking-[0.4em] uppercase text-purple-500/60 font-mono">PegasusSwap</span>
@@ -597,7 +597,7 @@ export default function PegasusSwap() {
                   A PegasusSwap opera exclusivamente <strong className="text-stone-300">crypto-to-crypto</strong>. Se voce precisa comprar Bitcoin com
                   dinheiro vivo (Fiat → BTC), utilize a <Link to="/pix-cripto" className="text-purple-400 underline hover:text-purple-300">Spike to Spike</Link>.
                   Se precisa vender cripto e receber dinheiro fisico na porta, utilize a{' '}
-                  <Link to="/soberania-financeira/exchanges-sem-kyc/optima-exchange" className="text-purple-400 underline hover:text-purple-300">Optima Exchange</Link>.
+                  <Link to="/soberania-financeira/exchanges-privacidade-e-kyc/optima-exchange" className="text-purple-400 underline hover:text-purple-300">Optima Exchange</Link>.
                   Cada ferramenta serve um proposito especifico no arsenal de soberania.
                 </p>
               </div>
@@ -645,7 +645,7 @@ export default function PegasusSwap() {
                   <span className="absolute inset-0 bg-purple-500/10 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
                   <span className="relative">Comecar Agora</span><ExternalLink size={14} className="relative" />
                 </a>
-                <Link to="/soberania-financeira/exchanges-sem-kyc"
+                <Link to="/soberania-financeira/exchanges-privacidade-e-kyc"
                   className="inline-flex items-center justify-center gap-2 border border-white/[0.08] text-stone-400 font-bold text-sm uppercase tracking-wider px-10 py-5 rounded-xl hover:border-white/20 hover:text-white transition-colors">
                   <ChevronRight size={14} className="rotate-180" /> Voltar ao Hub
                 </Link>

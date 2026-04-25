@@ -120,7 +120,7 @@ const breadcrumbSchema = {
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Início", item: "https://lordjunnior.com.br" },
     { "@type": "ListItem", position: 2, name: "Bitcoin", item: "https://lordjunnior.com.br/bitcoin" },
-    { "@type": "ListItem", position: 3, name: "Comprar Bitcoin com Privacidade", item: "https://lordjunnior.com.br/comprar-bitcoin-anonimo" },
+    { "@type": "ListItem", position: 3, name: "Comprar Bitcoin com Privacidade", item: "https://lordjunnior.com.br/comprar-bitcoin-com-privacidade" },
   ],
 };
 
@@ -275,11 +275,11 @@ export default function ComprarBitcoinAnonimo() {
         <title>Seu Primeiro Contato com Bitcoin na Prática por R$10 | Guia RoboSats 2026</title>
         <meta name="description" content="Guia prático para seu primeiro contato com Bitcoin a partir de R$10 usando RoboSats e Lightning Network. Tutorial passo a passo para iniciantes absolutos. Transparência total sobre privacidade e exposição." />
         <meta name="keywords" content="comprar bitcoin, bitcoin sem kyc, robosats tutorial, bitcoin sem documento, comprar bitcoin pix, lightning network, bitcoin privacidade, wallet of satoshi" />
-        <link rel="canonical" href="https://lordjunnior.com.br/comprar-bitcoin-anonimo" />
+        <link rel="canonical" href="https://lordjunnior.com.br/comprar-bitcoin-com-privacidade" />
         <meta property="og:title" content="Seu Primeiro Contato com Bitcoin na Prática por R$10. Transparência Total." />
         <meta property="og:description" content="Guia prático para comprar Bitcoin com R$10 via RoboSats. Sem promessas falsas, com aviso claro sobre exposição." />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://lordjunnior.com.br/comprar-bitcoin-anonimo" />
+        <meta property="og:url" content="https://lordjunnior.com.br/comprar-bitcoin-com-privacidade" />
         <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>

@@ -389,7 +389,7 @@ export default function DepixReporte() {
 
             {/* Internal links */}
             <motion.div variants={staggerChild} className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-4">
-              <Link to="/soberania-financeira/exchanges-sem-kyc/kycnot-me" className="border border-white/[0.06] rounded-xl p-5 hover:border-amber-500/20 transition-colors group flex items-center gap-4" style={{ background: 'rgba(255,255,255,0.02)' }}>
+              <Link to="/soberania-financeira/exchanges-privacidade-e-kyc/kycnot-me" className="border border-white/[0.06] rounded-xl p-5 hover:border-amber-500/20 transition-colors group flex items-center gap-4" style={{ background: 'rgba(255,255,255,0.02)' }}>
                 <Shield size={20} className="text-amber-400/60 shrink-0" />
                 <div>
                   <p className="text-sm font-bold text-stone-300 group-hover:text-amber-300 transition-colors">KYCNot.me — Guia Completo</p>

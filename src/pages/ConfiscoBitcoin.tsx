@@ -144,7 +144,7 @@ const articleSchema = {
     url: "https://lordjunnior.com.br",
   },
   datePublished: "2026-04-03",
-  url: "https://lordjunnior.com.br/alertas/governo-tomar-bitcoins",
+  url: "https://lordjunnior.com.br/alertas/protecao-patrimonial-bitcoin",
   image: "https://lordjunnior.com.br/og-confisco-bitcoin.jpg",
 };
 
@@ -157,10 +157,10 @@ export default function ConfiscoBitcoin() {
       <Helmet>
         <title>Nova Lei Permite Governo Tomar Bitcoins — Proteja-se | Lord Junnior</title>
         <meta name="description" content="Hong Kong criminalizou a recusa em entregar chaves privadas. O Brasil aperta o cerco. Aprenda a comprar Bitcoin de forma privada com Blockstream Wallet e SpikeTuSpike." />
-        <link rel="canonical" href="https://lordjunnior.com.br/alertas/governo-tomar-bitcoins" />
+        <link rel="canonical" href="https://lordjunnior.com.br/alertas/protecao-patrimonial-bitcoin" />
         <meta property="og:title" content="Nova Lei Permite Governo TOMAR Bitcoins — Como Se Proteger" />
         <meta property="og:description" content="O cerco apertou. Aprenda a comprar Bitcoin sem KYC, sem rastro, com privacidade total." />
-        <meta property="og:url" content="https://lordjunnior.com.br/alertas/governo-tomar-bitcoins" />
+        <meta property="og:url" content="https://lordjunnior.com.br/alertas/protecao-patrimonial-bitcoin" />
         <meta property="og:type" content="article" />
         <script type="application/ld+json">{JSON.stringify(howToSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
@@ -419,7 +419,7 @@ export default function ConfiscoBitcoin() {
                   Blindar Meu Patrimônio
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
                 </Link>
-                <Link to="/comprar-bitcoin-anonimo" className="inline-flex items-center gap-2 py-4 px-8 rounded-sm border border-border/30 text-muted-foreground hover:text-foreground text-sm transition-all duration-300">
+                <Link to="/comprar-bitcoin-com-privacidade" className="inline-flex items-center gap-2 py-4 px-8 rounded-sm border border-border/30 text-muted-foreground hover:text-foreground text-sm transition-all duration-300">
                   <Bitcoin className="w-4 h-4" />
                   Comprar BTC Privado
                 </Link>

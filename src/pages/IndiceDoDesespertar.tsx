@@ -114,7 +114,7 @@ export default function IndiceDoDesespertar() {
       <Helmet>
         <title>Índice do Despertar — Guia da Soberania Financeira | Lord Junnior</title>
         <meta name="description" content="O mapa completo para entender o sistema monetário, reconhecer os riscos financeiros e construir soberania pessoal. Do zero à liberdade financeira." />
-        <link rel="canonical" href="https://lordjunnior.com.br/indice-do-despertar" />
+        <link rel="canonical" href="https://lordjunnior.com.br/indice-da-soberania" />
       </Helmet>
 
       <ScrollToTop />

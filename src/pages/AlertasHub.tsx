@@ -137,7 +137,7 @@ const ARSENAL_SAIDA = [
     icon: Shield,
     titulo: 'Compra P2P Sem KYC',
     desc: 'Plataformas como Bisq, SpikeTuSpike e RoboSats permitem comprar Bitcoin sem entregar documentos. Sem KYC = sem registro permanente vinculado à sua identidade.',
-    link: '/soberania-financeira/comprar-bitcoin-anonimo',
+    link: '/soberania-financeira/comprar-bitcoin-com-privacidade',
     cta: 'COMPRAR SEM RASTRO',
   },
   {
