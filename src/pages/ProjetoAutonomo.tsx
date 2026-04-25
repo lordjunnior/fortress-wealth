@@ -1400,7 +1400,7 @@ export default function ProjetoAutonomo() {
             <p className="text-2xl md:text-4xl font-black tracking-tight text-emerald-400 mb-12" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
               É gestão de risco pessoal.
             </p>
-            <Link to="/arsenal"
+            <Link to="/recursos-e-ferramentas"
               className="inline-flex items-center gap-3 bg-emerald-500 text-white px-10 py-5 font-bold text-sm tracking-wide rounded-xl hover:bg-emerald-400 hover:shadow-2xl hover:shadow-emerald-500/20 hover:scale-[1.03] hover:-translate-y-1 transition-all duration-500 group"
             >
               <Shield size={18} className="group-hover:rotate-12 transition-transform duration-500" /> Voltar ao centro de operações

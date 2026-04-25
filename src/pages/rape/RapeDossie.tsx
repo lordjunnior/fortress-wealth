@@ -484,7 +484,7 @@ export default function RapeDossie() {
             ativos, contraindicações e sinergias:
           </p>
           <Link
-            to="/soberania-organica/conhecimento-perdido/protocolo-quelantes-brasileiros"
+            to="/soberania-organica/conhecimento-perdido/quelantes-orientacao-segura"
             className="inline-flex items-center gap-2.5 px-6 py-3 rounded-lg bg-emerald-500/15 border border-emerald-500/40 text-emerald-300 text-xs font-bold tracking-[0.18em] uppercase hover:bg-emerald-500/25 transition-all"
           >
             Acessar Protocolo de Quelantes
@@ -527,7 +527,7 @@ export default function RapeDossie() {
         <div className="max-w-7xl mx-auto">
           <p className="font-mono text-[10px] tracking-[0.3em] text-emerald-400/80 uppercase mb-4">[ CONTINUE A IMERSÃO ]</p>
           <div className="grid md:grid-cols-3 gap-4">
-            <NextCard to="/soberania-organica/conhecimento-perdido/protocolo-quelantes-brasileiros" titulo="Protocolo de Quelantes" desc="10 plantas brasileiras com fichas técnicas completas." />
+            <NextCard to="/soberania-organica/conhecimento-perdido/quelantes-orientacao-segura" titulo="Protocolo de Quelantes" desc="10 plantas brasileiras com fichas técnicas completas." />
             <NextCard to="/soberania-organica/conhecimento-perdido" titulo="Conhecimento Perdido (Hub)" desc="Educação botânica e fitoterapia documentada." />
             <NextCard to="/soberania-organica/saude-preventiva" titulo="Saúde Preventiva" desc="Sono, sol, microbiota e alimentação anti-inflamatória." />
           </div>

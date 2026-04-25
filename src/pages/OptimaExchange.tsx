@@ -166,7 +166,7 @@ export default function OptimaExchange() {
         <meta property="og:title" content="Optima Exchange — Cripto para Dinheiro Vivo na Sua Porta" />
         <meta property="og:description" content="Exchange sem KYC que entrega dinheiro fisico. Venda USDT e receba reais, dolares ou euros na sua porta." />
         <meta property="og:type" content="article" />
-        <link rel="canonical" href="https://lordjunnior.com.br/soberania-financeira/exchanges-sem-kyc/optima-exchange" />
+        <link rel="canonical" href="https://lordjunnior.com.br/soberania-financeira/exchanges-privacidade-e-kyc/optima-exchange" />
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       </Helmet>
 
@@ -449,7 +449,7 @@ export default function OptimaExchange() {
 
             {/* Internal links */}
             <motion.div variants={staggerChild} className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-4">
-              <Link to="/soberania-financeira/exchanges-sem-kyc/kycnot-me" className="border border-white/[0.06] rounded-xl p-5 hover:border-amber-500/20 transition-colors group flex items-center gap-4" style={{ background: 'rgba(255,255,255,0.02)' }}>
+              <Link to="/soberania-financeira/exchanges-privacidade-e-kyc/kycnot-me" className="border border-white/[0.06] rounded-xl p-5 hover:border-amber-500/20 transition-colors group flex items-center gap-4" style={{ background: 'rgba(255,255,255,0.02)' }}>
                 <Shield size={20} className="text-amber-400/60 shrink-0" />
                 <div>
                   <p className="text-sm font-bold text-stone-300 group-hover:text-amber-300 transition-colors">KYCNot.me — Guia Completo</p>
@@ -503,7 +503,7 @@ export default function OptimaExchange() {
             </p>
             <div className="flex justify-center gap-6">
               <Link to="/soberania-financeira" className="text-xs text-stone-600 hover:text-stone-400 transition-colors uppercase tracking-wider font-bold">← Soberania Financeira</Link>
-              <Link to="/soberania-financeira/exchanges-sem-kyc/kycnot-me" className="text-xs text-stone-600 hover:text-stone-400 transition-colors uppercase tracking-wider font-bold">KYCNot.me →</Link>
+              <Link to="/soberania-financeira/exchanges-privacidade-e-kyc/kycnot-me" className="text-xs text-stone-600 hover:text-stone-400 transition-colors uppercase tracking-wider font-bold">KYCNot.me →</Link>
             </div>
           </div>
         </div>

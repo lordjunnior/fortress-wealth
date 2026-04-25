@@ -371,7 +371,7 @@ export default function DolarVirtual() {
                     Este conteúdo foi criado <span className="text-foreground font-medium">a pedido de seguidores no Instagram</span> que querem uma porta de entrada prática no ecossistema cripto. O objetivo aqui é <span className="text-foreground font-medium">educação e estudo</span> — não uma rota de privacidade.
                   </p>
                   <p className="text-xs text-muted-foreground/70 italic">
-                    Para aquisição com privacidade real, consulte nosso guia de <Link to="/comprar-bitcoin-anonimo" className="text-primary hover:underline font-medium">compra de Bitcoin via RoboSats + Tor</Link>.
+                    Para aquisição com privacidade real, consulte nosso guia de <Link to="/comprar-bitcoin-com-privacidade" className="text-primary hover:underline font-medium">compra de Bitcoin via RoboSats + Tor</Link>.
                   </p>
                 </div>
               </div>

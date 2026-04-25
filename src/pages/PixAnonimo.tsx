@@ -20,12 +20,12 @@ import FooterSection from '@/components/FooterSection';
 import BackToHome from '@/components/BackToHome';
 import MicroCtaResistencia from '@/components/MicroCtaResistencia';
 
-import imgHero from '@/assets/pix-anonimo-hero.jpg';
-import imgCodigo from '@/assets/pix-anonimo-codigo.jpg';
-import imgQrcode from '@/assets/pix-anonimo-qrcode.jpg';
-import imgServidor from '@/assets/pix-anonimo-servidor.jpg';
-import imgPronto from '@/assets/pix-anonimo-pronto.jpg';
-import imgPost from '@/assets/pix-anonimo-post.jpg';
+import imgHero from '@/assets/pix-privacidade-hero.jpg';
+import imgCodigo from '@/assets/pix-privacidade-codigo.jpg';
+import imgQrcode from '@/assets/pix-privacidade-qrcode.jpg';
+import imgServidor from '@/assets/pix-privacidade-servidor.jpg';
+import imgPronto from '@/assets/pix-privacidade-pronto.jpg';
+import imgPost from '@/assets/pix-privacidade-post.jpg';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -174,7 +174,7 @@ export default function PixAnonimo() {
     headline: 'PIX Anonimo: Sistema Pronto Para Receber Pagamentos Sem Expor Dados Pessoais',
     author: { '@type': 'Person', name: 'Lord Junnior' },
     publisher: { '@type': 'Organization', name: 'Universidade Satoshi' },
-    url: 'https://lordjunnior.com.br/pix-anonimo',
+    url: 'https://lordjunnior.com.br/pix-privacidade',
     datePublished: '2026-04-12', dateModified: '2026-04-12',
     proficiencyLevel: 'Beginner',
     dependencies: 'Nenhuma — sistema ja construido e hospedado.',
@@ -186,11 +186,11 @@ export default function PixAnonimo() {
       <Helmet>
         <title>PIX Sem Mostrar Dados: Sistema Pronto Para Receber Anonimamente | Lord Junnior</title>
         <meta name="description" content="Sistema pronto para receber PIX sem expor CPF, nome ou banco. Sem programacao, sem configuracao. Lord Junnior ja construiu tudo — acesse e use agora." />
-        <link rel="canonical" href="https://lordjunnior.com.br/pix-anonimo" />
+        <link rel="canonical" href="https://lordjunnior.com.br/pix-privacidade" />
         <meta name="keywords" content="pix anonimo, receber pix sem mostrar dados, pix privado, pix sem cpf, qr code pix automatico, gateway pagamento pix, pix php script, pix api, receber pix sem banco, pix sem expor identidade, pagamento privado brasil, pix descentralizado, privacidade financeira pix, como esconder dados pix, pix sem nome aparecendo, anonymous pix brazil, receive pix privately, pix payment gateway, hide personal data pix, pix qr code generator, receber pix anonimo sistema pronto, pix sem programacao, gerar qr code pix automatico gratis, receba pix privado, pix oculto dados, анонимный пикс бразилия, ピクス匿名受取, pago pix anónimo, pix anonymous empfangen" />
         <meta property="og:title" content="PIX Sem Mostrar Dados — Sistema Pronto por Lord Junnior" />
         <meta property="og:description" content="Eu ja construi o sistema inteiro. Voce so precisa acessar e usar. Sem programacao, sem VPS, sem dor de cabeca." />
-        <meta property="og:url" content="https://lordjunnior.com.br/pix-anonimo" />
+        <meta property="og:url" content="https://lordjunnior.com.br/pix-privacidade" />
         <meta property="og:type" content="article" />
         <html lang="pt-BR" />
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>

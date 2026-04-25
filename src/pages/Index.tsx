@@ -310,7 +310,7 @@ const Index = () => {
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             >
               <Link
-                to="/comprar-bitcoin-anonimo"
+                to="/comprar-bitcoin-com-privacidade"
                 className="group relative block rounded-2xl border border-primary/15 bg-card/40 backdrop-blur-sm overflow-hidden hover:border-primary/35 transition-all duration-500"
               >
                 <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-primary/40 to-transparent z-10" />
@@ -457,7 +457,7 @@ const Index = () => {
               transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
             >
               <Link
-                to="/alertas/governo-tomar-bitcoins"
+                to="/alertas/protecao-patrimonial-bitcoin"
                 className="group relative block rounded-2xl overflow-hidden transition-all duration-500"
               >
                 {/* Animated RED gradient border */}
@@ -522,7 +522,7 @@ const Index = () => {
               transition={{ duration: 0.8, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
             >
               <Link
-                to="/pix-anonimo"
+                to="/pix-privacidade"
                 className="group relative block rounded-2xl overflow-hidden transition-all duration-500"
               >
                 <div className="absolute -inset-[1px] rounded-2xl z-0 opacity-70 group-hover:opacity-100 transition-opacity duration-500"

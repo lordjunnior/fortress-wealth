@@ -117,7 +117,7 @@ function getRecommendations(answers: Record<string, string>): Recommendation[] {
   // Urgency routing
   if (urgencia === "urgent" && bitcoin !== "self-custody") {
     recs.unshift(
-      { title: "Comprar Bitcoin Anônimo", description: "Compre agora, sem KYC, fora do radar", path: "/comprar-bitcoin-anonimo", icon: Zap, tag: "AÇÃO IMEDIATA" },
+      { title: "Comprar Bitcoin Anônimo", description: "Compre agora, sem KYC, fora do radar", path: "/comprar-bitcoin-com-privacidade", icon: Zap, tag: "AÇÃO IMEDIATA" },
     );
   }
 

@@ -210,14 +210,14 @@ const App = () => (
           <Route path="/alertas/fim-do-dinheiro-vivo" element={<ProibicaoDinheiro />} />
           <Route path="/alertas/depix-reporte-2026" element={<DepixReporte />} />
           <Route path="/alertas/protecao-patrimonial-bitcoin" element={<ConfiscoBitcoin />} />
-          <Route path="/alertas/governo-tomar-bitcoins" element={<LegacyRedirect to="/alertas/protecao-patrimonial-bitcoin" />} />
+          <Route path="/alertas/protecao-patrimonial-bitcoin" element={<LegacyRedirect to="/alertas/protecao-patrimonial-bitcoin" />} />
           <Route path="/historia-do-dinheiro" element={<HistoriaDoDinheiro />} />
           <Route path="/inflacao-imposto-oculto" element={<InflacaoImpostoOculto />} />
           <Route path="/bitcoin-vs-fiat" element={<BitcoinVsFiat />} />
           <Route path="/teoria-das-bandeiras" element={<TeoriaDasBandeiras />} />
           <Route path="/palau-digital-residency" element={<PalauDigitalResidency />} />
           <Route path="/indice-da-soberania" element={<IndiceDoDesespertar />} />
-          <Route path="/indice-do-despertar" element={<LegacyRedirect to="/indice-da-soberania" />} />
+          <Route path="/indice-da-soberania" element={<LegacyRedirect to="/indice-da-soberania" />} />
           <Route path="/confisco-1990" element={<Confisco1990 />} />
           <Route path="/soberania-financeira" element={<SoberaniaFinanceira />} />
           <Route path="/soberania-financeira/contas-internacionais/neobankless" element={<Neobankless />} />
@@ -233,10 +233,10 @@ const App = () => (
           <Route path="/soberania-financeira/exchanges-privacidade-e-kyc/kycnot-me" element={<KycNotMe />} />
           <Route path="/soberania-financeira/exchanges-privacidade-e-kyc/optima-exchange" element={<OptimaExchange />} />
           <Route path="/soberania-financeira/exchanges-privacidade-e-kyc/pegasus-swap" element={<PegasusSwap />} />
-          <Route path="/soberania-financeira/exchanges-sem-kyc" element={<LegacyRedirect to="/soberania-financeira/exchanges-privacidade-e-kyc" />} />
-          <Route path="/soberania-financeira/exchanges-sem-kyc/kycnot-me" element={<LegacyRedirect to="/soberania-financeira/exchanges-privacidade-e-kyc/kycnot-me" />} />
-          <Route path="/soberania-financeira/exchanges-sem-kyc/optima-exchange" element={<LegacyRedirect to="/soberania-financeira/exchanges-privacidade-e-kyc/optima-exchange" />} />
-          <Route path="/soberania-financeira/exchanges-sem-kyc/pegasus-swap" element={<LegacyRedirect to="/soberania-financeira/exchanges-privacidade-e-kyc/pegasus-swap" />} />
+          <Route path="/soberania-financeira/exchanges-privacidade-e-kyc" element={<LegacyRedirect to="/soberania-financeira/exchanges-privacidade-e-kyc" />} />
+          <Route path="/soberania-financeira/exchanges-privacidade-e-kyc/kycnot-me" element={<LegacyRedirect to="/soberania-financeira/exchanges-privacidade-e-kyc/kycnot-me" />} />
+          <Route path="/soberania-financeira/exchanges-privacidade-e-kyc/optima-exchange" element={<LegacyRedirect to="/soberania-financeira/exchanges-privacidade-e-kyc/optima-exchange" />} />
+          <Route path="/soberania-financeira/exchanges-privacidade-e-kyc/pegasus-swap" element={<LegacyRedirect to="/soberania-financeira/exchanges-privacidade-e-kyc/pegasus-swap" />} />
           <Route path="/soberania-financeira/brics-pay" element={<BricsPay />} />
           <Route path="/soberania-financeira/kucoin-pay-pix" element={<KucoinPayPix />} />
           <Route path="/soberania-financeira/pix-sem-banco" element={<PixSemBanco />} />
@@ -259,7 +259,7 @@ const App = () => (
           <Route path="/bitcoin-vs-altcoins" element={<BitcoinVsAltcoinsPage />} />
           <Route path="/dicionario-cripto" element={<DicionarioCripto />} />
           <Route path="/comprar-bitcoin-com-privacidade" element={<ComprarBitcoinAnonimo />} />
-          <Route path="/comprar-bitcoin-anonimo" element={<LegacyRedirect to="/comprar-bitcoin-com-privacidade" />} />
+          <Route path="/comprar-bitcoin-com-privacidade" element={<LegacyRedirect to="/comprar-bitcoin-com-privacidade" />} />
           <Route path="/dolar-virtual" element={<DolarVirtual />} />
           <Route path="/bitcoin/bip-110-guerra-espaco-bloco" element={<Bip110 />} />
           <Route path="/protocolo-bitcoin/bip-110" element={<Navigate to="/bitcoin/bip-110-guerra-espaco-bloco" replace />} />
@@ -289,7 +289,7 @@ const App = () => (
           <Route path="/soberania-organica/conhecimento-perdido" element={<ConhecimentoPerdido />} />
           <Route path="/soberania-organica/conhecimento-perdido/rape" element={<RapeDossie />} />
           <Route path="/soberania-organica/conhecimento-perdido/quelantes-orientacao-segura" element={<ProtocoloQuelantes />} />
-          <Route path="/soberania-organica/conhecimento-perdido/protocolo-quelantes-brasileiros" element={<LegacyRedirect to="/soberania-organica/conhecimento-perdido/quelantes-orientacao-segura" />} />
+          <Route path="/soberania-organica/conhecimento-perdido/quelantes-orientacao-segura" element={<LegacyRedirect to="/soberania-organica/conhecimento-perdido/quelantes-orientacao-segura" />} />
           <Route path="/soberania-organica/conhecimento-perdido/protocolo-quelantes" element={<LegacyRedirect to="/soberania-organica/conhecimento-perdido/quelantes-orientacao-segura" />} />
           <Route path="/soberania-organica/plantas-subutilizadas" element={<PlantasSubutilizadas />} />
           <Route path="/soberania-organica/plantas-subutilizadas/jurubeba" element={<Jurubeba />} />
@@ -322,7 +322,7 @@ const App = () => (
           <Route path="/vazamento-dados" element={<VazamentoDados />} />
           <Route path="/polymarket-rede-neural-btc" element={<PolymarketRedeNeural />} />
           <Route path="/pix-privacidade" element={<PixAnonimo />} />
-          <Route path="/pix-anonimo" element={<LegacyRedirect to="/pix-privacidade" />} />
+          <Route path="/pix-privacidade" element={<LegacyRedirect to="/pix-privacidade" />} />
             <Route path="/multisig-bitcoin" element={<MultisigBitcoin />} />
             <Route path="/nova-lei-conta-corrente" element={<NovaLeiContaCorrente />} />
             <Route path="/alertas/nova-lei-conta-corrente" element={<NovaLeiContaCorrente />} />

@@ -935,7 +935,7 @@ const KruxPassphraseBluewallet = () => {
                 <Link to="/autocustodia" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-border/20 text-foreground font-bold text-sm hover:bg-white/5 transition-colors">
                   <Lock className="w-4 h-4" /> Hub de Autocustódia
                 </Link>
-                <Link to="/comprar-bitcoin-anonimo" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-border/20 text-foreground font-bold text-sm hover:bg-white/5 transition-colors">
+                <Link to="/comprar-bitcoin-com-privacidade" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-border/20 text-foreground font-bold text-sm hover:bg-white/5 transition-colors">
                   <ShieldCheck className="w-4 h-4" /> Comprar BTC Anônimo
                 </Link>
               </div>

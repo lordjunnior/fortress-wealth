@@ -116,7 +116,7 @@ const ClosingManifesto = () => {
         {/* CTA */}
         <motion.div {...fadeUp(0.45)} className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
           <Link
-            to="/comprar-bitcoin-anonimo"
+            to="/comprar-bitcoin-com-privacidade"
             className="px-8 py-3.5 rounded-lg gradient-gold text-primary-foreground font-semibold text-sm glow-gold hover:glow-gold-strong transition-all duration-300 flex items-center gap-2"
           >
             COMEÇAR COM R$10

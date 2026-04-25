@@ -338,7 +338,7 @@ export default function EconomiaParalela() {
                              hover:bg-red-500/20 hover:border-red-500/40 hover:shadow-[0_0_30px_rgba(220,38,38,0.1)] transition-all duration-500 group">
                   Autocustódia <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
-                <Link to="/soberania-financeira/exchanges-sem-kyc"
+                <Link to="/soberania-financeira/exchanges-privacidade-e-kyc"
                   className="inline-flex items-center gap-3 bg-amber-500/10 border border-amber-500/25 rounded-xl px-8 py-4
                              text-amber-400 text-sm font-bold uppercase tracking-wider
                              hover:bg-amber-500/20 hover:border-amber-500/40 transition-all duration-500 group">

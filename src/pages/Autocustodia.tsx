@@ -249,7 +249,7 @@ export default function Autocustodia() {
         <div className="absolute bottom-0 left-0 right-0 z-10 px-6 md:px-12 lg:px-20 pb-12 md:pb-20">
             <div className="max-w-7xl mx-auto">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={heroInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.8, ease: APPLE_EASE }}>
-              <Link to="/arsenal" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground mb-8 text-[10px] font-bold uppercase tracking-[0.3em] transition-colors">
+              <Link to="/recursos-e-ferramentas" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground mb-8 text-[10px] font-bold uppercase tracking-[0.3em] transition-colors">
                 <ArrowLeft size={14} /> Voltar à Central
               </Link>
             </motion.div>
@@ -632,7 +632,7 @@ export default function Autocustodia() {
           <NobelSection>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
               <Link
-                to="/arsenal"
+                to="/recursos-e-ferramentas"
                 className="group inline-flex items-center gap-3 py-4 px-10 rounded-sm border border-primary/30 bg-primary/[0.08] hover:bg-primary/[0.15] hover:border-primary/50 text-primary font-semibold tracking-wide text-sm transition-all duration-300"
               >
                 <Shield className="w-4 h-4" />

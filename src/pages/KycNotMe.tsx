@@ -148,7 +148,7 @@ export default function KycNotMe() {
         <meta property="og:title" content="KYCNot.me — Todas as Plataformas Cripto Sem KYC" />
         <meta property="og:description" content="Diretorio completo de servicos sem KYC. Exchanges, VPNs, e-mails, telefones e cartoes cripto sem verificacao." />
         <meta property="og:type" content="article" />
-        <link rel="canonical" href="https://lordjunnior.com.br/soberania-financeira/exchanges-sem-kyc/kycnot-me" />
+        <link rel="canonical" href="https://lordjunnior.com.br/soberania-financeira/exchanges-privacidade-e-kyc/kycnot-me" />
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       </Helmet>
 
