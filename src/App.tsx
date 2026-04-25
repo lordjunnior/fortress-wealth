@@ -136,6 +136,7 @@ import PixAnonimo from "./pages/PixAnonimo";
 import MultisigBitcoin from "./pages/MultisigBitcoin";
 import NovaLeiContaCorrente from "./pages/NovaLeiContaCorrente";
 import ExitIntentLeadMagnet from "./components/ExitIntentLeadMagnet";
+import LegacyRedirect from "./components/LegacyRedirect";
 import Novilingua from "./pages/Novilingua";
 import Propolis from "./pages/Propolis";
 import SegundoPassaporte from "./pages/saida/SegundoPassaporte";
