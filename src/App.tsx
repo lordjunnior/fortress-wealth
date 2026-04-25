@@ -268,7 +268,8 @@ const App = () => (
           <Route path="/bip-110" element={<Navigate to="/bitcoin/bip-110-guerra-espaco-bloco" replace />} />
           <Route path="/mobilidade-de-chaves" element={<MobilidadeDeChaves />} />
           <Route path="/soberania-organica" element={<ProjetoAutonomo />} />
-          <Route path="/soberania-organica/conservacao-armazenamento" element={<ConservacaoArmazenamento />} />
+          <Route path="/soberania-organica/armazenamento-longo-prazo" element={<ConservacaoArmazenamento />} />
+          <Route path="/soberania-organica/conservacao-armazenamento" element={<LegacyRedirect to="/soberania-organica/armazenamento-longo-prazo" />} />
           <Route path="/soberania-organica/producao-pequenos-espacos" element={<ProducaoPequenosEspacos />} />
           <Route path="/soberania-organica/proteina-sustentavel" element={<ProteinaSustentavel />} />
           <Route path="/soberania-organica/solo-fertilidade" element={<SoloFertilidade />} />
@@ -342,7 +343,8 @@ const App = () => (
             <Route path="/soberania-organica/primeiros-socorros-taticos" element={<PrimeirosSocorrosTaticos />} />
             <Route path="/soberania-organica/edc" element={<EDC />} />
             <Route path="/soberania-organica/protocolo-fogo" element={<ProtocoloFogo />} />
-            <Route path="/soberania-organica/conservacao-alimentos" element={<ConservacaoAlimentos />} />
+            <Route path="/soberania-organica/conservacao" element={<ConservacaoAlimentos />} />
+            <Route path="/soberania-organica/conservacao-alimentos" element={<LegacyRedirect to="/soberania-organica/conservacao" />} />
             <Route path="/soberania-organica/defesa-pessoal" element={<DefesaPessoal />} />
             <Route path="/soberania-organica/defesa-domiciliar" element={<DefesaDomiciliar />} />
             <Route path="/soberania-organica/higiene-mental" element={<HigieneMental />} />
