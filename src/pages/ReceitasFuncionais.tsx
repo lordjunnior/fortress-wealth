@@ -94,7 +94,7 @@ const PILARES = [
 
 const FAQ = [
   { q: 'O que é Cozinha Funcional dentro da Soberania Orgânica?',
-    a: 'É a 7ª frente. Aqui resgatamos o conhecimento ancestral da natureza brasileira (indígena, popular, quilombola) para cuidar da saúde com plantas, chás, garrafadas, gelatinas e fórmulas que nossos avós e povos originários já usavam, agora cruzados com evidência científica e com a Política Nacional de Plantas Medicinais e Fitoterápicos do SUS (RENISUS, Farmácias Vivas, desde 2006).' },
+    a: 'É a 7ª frente. Aqui resgatamos o conhecimento ancestral da natureza brasileira (indígena, popular, quilombola) para cuidar da saúde com plantas, chás, lambedores, gelatinas e fórmulas que nossos avós e povos originários já usavam — sempre sem álcool e sem nada que crie dependência, cruzados com evidência científica e com a Política Nacional de Plantas Medicinais e Fitoterápicos do SUS (RENISUS, Farmácias Vivas, desde 2006).' },
   { q: 'É medicina alternativa, esotérica ou anticientífica?',
     a: 'Não. É etnofarmacologia: o estudo científico do que os povos tradicionais já sabiam. Boldo, guaco, aroeira, Passiflora, camomila, sementes de mamão e dezenas de outras plantas usadas aqui constam na RENISUS, a lista oficial de plantas medicinais do SUS. O Brasil tem mais de 600 Farmácias Vivas espalhadas pelo SUS dispensando essas mesmas fórmulas.' },
   { q: 'Substitui medicamento prescrito?',
