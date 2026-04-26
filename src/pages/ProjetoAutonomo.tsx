@@ -9,7 +9,6 @@ import imgSoberaniaAlimentar from '@/assets/fase03-soberania-alimentar.jpg';
 import imgBase72 from '@/assets/fase01-base72.jpg';
 import imgAutonomiaBiologica from '@/assets/fase02-autonomia-biologica.jpg';
 import imgConhecimentoPerdido from '@/assets/cp-hero-conhecimento.jpg';
-import imgEngVicio from '@/assets/eva/hero-lab-engenharia.jpg';
 import bgFase01 from '@/assets/bg-fase01-base72.jpg';
 import bgFase02 from '@/assets/bg-fase02-autonomia.jpg';
 import bgFase03 from '@/assets/bg-fase03-alimentar.jpg';
