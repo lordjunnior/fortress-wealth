@@ -17,7 +17,7 @@ import imgLimao from '@/assets/receitas/ativo-limao-taiti.jpg';
 
 /**
  * /soberania-organica/cozinha-funcional/cha-pressao-hibisco
- * Apoio natural à pressão arterial — Hibisco + Alho + Limão.
+ * Apoio natural à pressão arterial, Hibisco + Alho + Limão.
  * Padrão Light Editorial. Sem álcool. Receita ancestral + RENISUS + Farmácias Vivas.
  */
 
@@ -47,7 +47,7 @@ const editorial = { fontFamily: "'Playfair Display', serif", fontStyle: 'italic'
 const monoStyle = { fontFamily: "'JetBrains Mono', monospace", letterSpacing: '0.3em', textTransform: 'uppercase' as const };
 
 const INGREDIENTES = [
-  { qtd: '30 g', nome: 'Cálices secos de hibisco', detalhe: 'Hibiscus sabdariffa. Cerca de 3 colheres de sopa cheias — dose validada em estudos clínicos para hipertensão leve-moderada.' },
+  { qtd: '30 g', nome: 'Cálices secos de hibisco', detalhe: 'Hibiscus sabdariffa. Cerca de 3 colheres de sopa cheias, dose validada em estudos clínicos para hipertensão leve-moderada.' },
   { qtd: '2 dentes', nome: 'Alho fresco', detalhe: 'Allium sativum. Esmagados ou picados finos imediatamente antes do uso, para máxima liberação de alicina.' },
   { qtd: '2 limões', nome: 'Suco de limão taiti', detalhe: 'Citrus limon. Cerca de 80 a 100 ml de suco fresco. Adicionado depois do calor, para preservar a vitamina C.' },
   { qtd: '1 litro', nome: 'Água filtrada', detalhe: 'Sem cloro, sem alumínio. Base neutra para extração ideal das antocianinas e compostos sulfurados.' },
@@ -56,7 +56,7 @@ const INGREDIENTES = [
 
 const PREPARO = [
   { n: '01', titulo: 'Ferva 1 litro de água filtrada', desc: 'Use panela esmaltada, inox ou de barro. Evite alumínio, que reage com ácidos do hibisco e do limão.' },
-  { n: '02', titulo: 'Apague o fogo e adicione hibisco e alho', desc: 'Coloque os 30 g de cálices de hibisco e os 2 dentes de alho recém-esmagados. Tampe imediatamente. Não ferva o alho — o calor direto destrói a alicina, o composto vasodilatador.' },
+  { n: '02', titulo: 'Apague o fogo e adicione hibisco e alho', desc: 'Coloque os 30 g de cálices de hibisco e os 2 dentes de alho recém-esmagados. Tampe imediatamente. Não ferva o alho, o calor direto destrói a alicina, o composto vasodilatador.' },
   { n: '03', titulo: 'Infusão abafada por 12 a 15 minutos', desc: 'O abafamento concentra antocianinas (que dão a cor vermelho-rubi) e preserva os compostos voláteis sulfurados do alho. A cor passa de rosa para um vermelho profundo.' },
   { n: '04', titulo: 'Coe em pano limpo ou coador fino', desc: 'Use coador de papel para infusão ou pano de algodão limpo. Aperte levemente para extrair tudo.' },
   { n: '05', titulo: 'Acrescente o suco de 2 limões depois de morno', desc: 'Adicione o suco fresco só quando o líquido estiver morno (abaixo de 60 °C). Calor alto destrói vitamina C e parte dos flavonoides cítricos. Mexa bem.' },
@@ -72,7 +72,7 @@ const VARIACOES = [
       'Dose adulta: 250 ml (1 copo) 2x ao dia, manhã em jejum e fim de tarde',
       'Sempre longe das refeições principais (mínimo 30 min antes ou 2 h depois)',
       'Cor vermelho-rubi profundo, sabor ácido equilibrado pelo doce do alho',
-      'Forma mais validada cientificamente — usada nos ensaios clínicos publicados',
+      'Forma mais validada cientificamente, usada nos ensaios clínicos publicados',
     ],
   },
   {
@@ -105,7 +105,7 @@ const ATIVOS = [
     alt: 'Dois bulbos de alho fresco com casca branco-arroxeada e dois dentes descascados sobre toalha de linho cor creme em luz natural',
     tradicao: 'Conhecido como "remédio do coração" desde a colonização. Bulbos crus ou macerados são usados há séculos por indígenas, bandeirantes e sertanejos para "limpar artérias" e prevenir "apoplexia" (derrame). Quilombolas associam ao controle de "pressão do sangue" e à longevidade.',
     sus: 'Reconhecido pela Anvisa como fitoterápico de uso tradicional. Consta em monografias oficiais para apoio cardiovascular.',
-    mecanismo: 'Alicina e compostos sulfurados (formados ao esmagar o dente cru) aumentam a produção endotelial de óxido nítrico — o principal vasodilatador endógeno. Reduzem rigidez arterial, agregação plaquetária e oxidação do LDL. Meta-análises mostram redução de 7 a 16 mmHg sistólica em hipertensos não controlados após 8 a 12 semanas.',
+    mecanismo: 'Alicina e compostos sulfurados (formados ao esmagar o dente cru) aumentam a produção endotelial de óxido nítrico, o principal vasodilatador endógeno. Reduzem rigidez arterial, agregação plaquetária e oxidação do LDL. Meta-análises mostram redução de 7 a 16 mmHg sistólica em hipertensos não controlados após 8 a 12 semanas.',
     estudoAncora: 'Ried, Frank & Stocks (2010), BMC Cardiovascular Disorders',
     achado: 'Meta-análise de 11 ensaios clínicos randomizados (n = 530) confirmou redução média de 8,4 mmHg sistólica e 7,3 mmHg diastólica em hipertensos com uso regular de extrato de alho. Efeito mais robusto em pacientes com pressão acima de 140/90 mmHg basal.',
   },
@@ -123,17 +123,17 @@ const ATIVOS = [
 
 const FONTES = [
   { autor: 'Ministério da Saúde', ano: '2006', titulo: 'Política Nacional de Plantas Medicinais e Fitoterápicos (Decreto nº 5.813)', revista: 'Brasil', tipo: 'Marco regulatório oficial', link: 'https://bvsms.saude.gov.br/bvs/publicacoes/politica_nacional_fitoterapicos.pdf' },
-  { autor: 'Ministério da Saúde', ano: '2009', titulo: 'RENISUS — Relação Nacional de Plantas Medicinais de Interesse ao SUS', revista: 'Brasil', tipo: 'Lista oficial de 71 plantas', link: 'https://www.gov.br/saude/pt-br/composicao/sectics/daf/pnpmf/plantas-medicinais-e-fitoterapicos-no-sus' },
+  { autor: 'Ministério da Saúde', ano: '2009', titulo: 'RENISUS, Relação Nacional de Plantas Medicinais de Interesse ao SUS', revista: 'Brasil', tipo: 'Lista oficial de 71 plantas', link: 'https://www.gov.br/saude/pt-br/composicao/sectics/daf/pnpmf/plantas-medicinais-e-fitoterapicos-no-sus' },
   { autor: 'McKay, D. L.; Chen, C. Y.; Saltzman, E.; Blumberg, J. B.', ano: '2010', titulo: 'Hibiscus sabdariffa L. tea (tisane) lowers blood pressure in prehypertensive and mildly hypertensive adults', revista: 'Journal of Nutrition', tipo: 'Ensaio clínico randomizado (hibisco)', link: 'https://pubmed.ncbi.nlm.nih.gov/19956015/' },
   { autor: 'Ried, K.; Frank, O. R.; Stocks, N. P.', ano: '2010', titulo: 'Aged garlic extract lowers blood pressure in patients with treated but uncontrolled hypertension: a randomised controlled trial', revista: 'BMC Cardiovascular Disorders', tipo: 'Meta-análise (alho)', link: 'https://pubmed.ncbi.nlm.nih.gov/20594781/' },
   { autor: 'Morand, C. et al.', ano: '2011', titulo: 'Hesperidin contributes to the vascular protective effects of orange juice', revista: 'American Journal of Clinical Nutrition', tipo: 'Estudo clínico (cítricos)', link: 'https://pubmed.ncbi.nlm.nih.gov/21068346/' },
   { autor: 'Hopkins, A. L. et al.', ano: '2013', titulo: 'Hibiscus sabdariffa L. in the treatment of hypertension and hyperlipidemia: a comprehensive review', revista: 'Fitoterapia', tipo: 'Revisão sistemática (hibisco)', link: 'https://pubmed.ncbi.nlm.nih.gov/23333908/' },
-  { autor: 'Sociedade Brasileira de Cardiologia', ano: '2020', titulo: 'Diretrizes Brasileiras de Hipertensão Arterial — 2020', revista: 'Arquivos Brasileiros de Cardiologia', tipo: 'Diretriz médica oficial', link: 'http://publicacoes.cardiol.br/portal/abc/portugues/2021/v11603/pdf/11603022.pdf' },
+  { autor: 'Sociedade Brasileira de Cardiologia', ano: '2020', titulo: 'Diretrizes Brasileiras de Hipertensão Arterial, 2020', revista: 'Arquivos Brasileiros de Cardiologia', tipo: 'Diretriz médica oficial', link: 'http://publicacoes.cardiol.br/portal/abc/portugues/2021/v11603/pdf/11603022.pdf' },
 ];
 
 const FAQ = [
   { q: 'Esse chá substitui losartana, hidroclorotiazida ou enalapril?',
-    a: 'Não. É apoio natural com evidência clínica para hipertensão leve-moderada (estágio 1) ou pré-hipertensão, sempre como complemento a mudanças de estilo de vida (sal, peso, exercício, sono). Quem já toma anti-hipertensivo NUNCA deve suspender por conta própria — a queda de pressão pode ser perigosa. Combinar com hibisco e alho potencializa o efeito do remédio, e a dose médica precisa ser reajustada por um profissional, com monitoramento de pressão diária.' },
+    a: 'Não. É apoio natural com evidência clínica para hipertensão leve-moderada (estágio 1) ou pré-hipertensão, sempre como complemento a mudanças de estilo de vida (sal, peso, exercício, sono). Quem já toma anti-hipertensivo NUNCA deve suspender por conta própria, a queda de pressão pode ser perigosa. Combinar com hibisco e alho potencializa o efeito do remédio, e a dose médica precisa ser reajustada por um profissional, com monitoramento de pressão diária.' },
   { q: 'Em quanto tempo a pressão começa a baixar?',
     a: 'Não é imediato. A literatura mostra resultados consistentes entre 2 e 6 semanas de uso contínuo, com efeito mais evidente em pessoas com pressão entre 130/85 e 159/99 mmHg que também adotam mudança de hábitos. Meça pressão 2x ao dia (manhã e noite) nas primeiras 2 semanas e anote em um diário para conversar com seu médico.' },
   { q: 'Quem NÃO pode tomar?',
@@ -143,7 +143,7 @@ const FAQ = [
   { q: 'Por quanto tempo posso tomar sem parar?',
     a: 'Ciclo recomendado: 4 a 6 semanas contínuas, depois pausa de 7 a 10 dias com reavaliação da pressão (medida em casa e idealmente em consulta). Pode-se retomar mais um ciclo, mas sem usar indefinidamente sem reavaliação médica. O objetivo é apoiar a recuperação, não criar dependência crônica de chá nenhum.' },
   { q: 'O alho cru não vai me dar mau hálito o dia todo?',
-    a: 'O alho é infusionado, não engolido inteiro — a maior parte dos compostos voláteis (responsáveis pelo cheiro forte) fica concentrada no caldo, que é diluído em 1 litro. Para minimizar o hálito: tome longe de reuniões importantes, mastigue salsinha fresca depois, ou faça gargarejo com chá verde. Não vale tirar o alho da fórmula — é onde mora boa parte do efeito vasodilatador.' },
+    a: 'O alho é infusionado, não engolido inteiro, a maior parte dos compostos voláteis (responsáveis pelo cheiro forte) fica concentrada no caldo, que é diluído em 1 litro. Para minimizar o hálito: tome longe de reuniões importantes, mastigue salsinha fresca depois, ou faça gargarejo com chá verde. Não vale tirar o alho da fórmula, é onde mora boa parte do efeito vasodilatador.' },
   { q: 'Posso adoçar com açúcar?',
     a: 'Não. Açúcar refinado eleva insulina, gera estresse oxidativo vascular e atrapalha exatamente o que o protocolo está tentando consertar. Se precisar adoçar, use 1 colher de chá de mel cru (preserva enzimas e tem ação anti-inflamatória) ou stevia natural. Evite adoçante artificial em uso crônico.' },
 ];
@@ -206,7 +206,7 @@ function Hero() {
           transition={{ duration: 0.8, delay: 0.5, ease: APPLE_EASE }}
           className="mt-8 max-w-2xl text-lg md:text-2xl leading-relaxed font-light"
           style={{ color: 'rgba(250,246,240,0.95)', fontFamily: "'Inter Tight', sans-serif", textShadow: '0 1px 12px rgba(0,0,0,0.55)' }}>
-          Hibisco, alho fresco e limão taiti. Mesmo mecanismo que inibidores da ECA e vasodilatadores, sem dependência. Apoio natural à hipertensão leve-moderada — três plantas com evidência clínica e dispensação no SUS.
+          Hibisco, alho fresco e limão taiti. Mesmo mecanismo que inibidores da ECA e vasodilatadores, sem dependência. Apoio natural à hipertensão leve-moderada, três plantas com evidência clínica e dispensação no SUS.
         </motion.p>
 
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.7, ease: APPLE_EASE }}
@@ -236,7 +236,7 @@ export default function ChaPressaoHibisco() {
         <title>Chá de Hibisco, Alho e Limão para Pressão Alta (sem álcool) | Lord Junnior</title>
         <meta name="description" content="Receita ancestral brasileira para apoio natural à hipertensão leve-moderada: hibisco, alho fresco e limão taiti. Plantas listadas na RENISUS, com evidência clínica em meta-análises do PubMed." />
         <link rel="canonical" href="https://www.lordjunnior.com.br/soberania-organica/cozinha-funcional/cha-pressao-hibisco" />
-        <meta property="og:title" content="O chá ancestral que apoia a pressão arterial — sem tarja preta" />
+        <meta property="og:title" content="O chá ancestral que apoia a pressão arterial, sem tarja preta" />
         <meta property="og:description" content="Hibisco + alho + limão. Mesmo mecanismo dos inibidores da ECA, sem dependência. Tradição com PubMed do lado." />
         <meta property="og:image" content="https://www.lordjunnior.com.br/og/cha-pressao-hibisco.jpg" />
         <meta property="og:type" content="article" />
@@ -279,7 +279,7 @@ export default function ChaPressaoHibisco() {
 
         <Hero />
 
-        {/* CAPÍTULO 1 — Manifesto / contexto ancestral */}
+        {/* CAPÍTULO 1, Manifesto / contexto ancestral */}
         <section className="relative px-6 md:px-12 lg:px-20 py-24 md:py-36">
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 max-w-[1600px] mx-auto">
             <motion.aside {...fade(0)} className="lg:col-span-4">
@@ -296,7 +296,7 @@ export default function ChaPressaoHibisco() {
               </h2>
               <div className="space-y-7 text-lg md:text-xl leading-[1.7] font-light" style={{ color: C.inkSoft }}>
                 <p>
-                  Pressão alta é a doença crônica mais prevalente do Brasil — atinge mais de <strong style={{ color: C.sage }}>30% dos adultos</strong> e é o principal fator de risco para infarto e AVC. A indústria farmacêutica vende bilhões em <strong style={{ color: C.terracotta }}>losartana, hidroclorotiazida e enalapril</strong> todo ano, e o hipertenso brasileiro é cliente para a vida toda.
+                  Pressão alta é a doença crônica mais prevalente do Brasil, atinge mais de <strong style={{ color: C.sage }}>30% dos adultos</strong> e é o principal fator de risco para infarto e AVC. A indústria farmacêutica vende bilhões em <strong style={{ color: C.terracotta }}>losartana, hidroclorotiazida e enalapril</strong> todo ano, e o hipertenso brasileiro é cliente para a vida toda.
                 </p>
                 <p>
                   Antes desse mercado existir, vovó já tomava chá de hibisco e mastigava dente de alho cru de manhã. Não por ignorância: porque <strong style={{ color: C.sage }}>funciona</strong>. Hibisco inibe a mesma enzima conversora de angiotensina que o captopril ataca. Alho aumenta o óxido nítrico que o sildenafil estimula. Limão protege o endotélio. A diferença é que o conhecimento estava com o povo, não no folheto da Pfizer.
@@ -313,7 +313,7 @@ export default function ChaPressaoHibisco() {
           </div>
         </section>
 
-        {/* CAPÍTULO 2 — RECEITA */}
+        {/* CAPÍTULO 2, RECEITA */}
         <section id="receita" className="relative py-24 md:py-32 px-6 md:px-12 lg:px-20 scroll-mt-20" style={{ backgroundColor: C.sand }}>
           <div className="max-w-[1600px] mx-auto">
             <motion.div {...fade(0)} className="mb-16 md:mb-20">
@@ -371,7 +371,7 @@ export default function ChaPressaoHibisco() {
           </div>
         </section>
 
-        {/* CAPÍTULO 3 — DUAS VERSÕES */}
+        {/* CAPÍTULO 3, DUAS VERSÕES */}
         <section className="relative py-24 md:py-36 px-6 md:px-12 lg:px-20">
           <div className="max-w-[1400px] mx-auto">
             <motion.div {...fade(0)} className="mb-16 max-w-3xl">
@@ -407,7 +407,7 @@ export default function ChaPressaoHibisco() {
           </div>
         </section>
 
-        {/* CAPÍTULO 4 — DOSSIÊ DAS PLANTAS */}
+        {/* CAPÍTULO 4, DOSSIÊ DAS PLANTAS */}
         <section className="relative py-24 md:py-36 px-6 md:px-12 lg:px-20" style={{ backgroundColor: C.sage, color: C.cream }}>
           <div className="max-w-[1600px] mx-auto">
             <motion.div {...fade(0)} className="mb-20 max-w-3xl">
@@ -471,7 +471,7 @@ export default function ChaPressaoHibisco() {
           </div>
         </section>
 
-        {/* CAPÍTULO 5 — PROTOCOLO DE USO */}
+        {/* CAPÍTULO 5, PROTOCOLO DE USO */}
         <section className="relative py-24 md:py-36 px-6 md:px-12 lg:px-20">
           <div className="max-w-[1400px] mx-auto">
             <motion.div {...fade(0)} className="mb-16 max-w-3xl">
@@ -503,16 +503,16 @@ export default function ChaPressaoHibisco() {
                 <ul className="space-y-4 text-lg leading-relaxed font-light" style={{ color: C.inkSoft }}>
                   <li className="flex gap-3"><span style={{ color: '#a64a1f' }}>·</span> Cura de hipertensão estágio 2 ou 3 (acima de 160/100)</li>
                   <li className="flex gap-3"><span style={{ color: '#a64a1f' }}>·</span> Substituir losartana, hidroclorotiazida ou enalapril por conta própria</li>
-                  <li className="flex gap-3"><span style={{ color: '#a64a1f' }}>·</span> Resultado em poucos dias — efeito aparece entre 2 e 6 semanas</li>
+                  <li className="flex gap-3"><span style={{ color: '#a64a1f' }}>·</span> Resultado em poucos dias, efeito aparece entre 2 e 6 semanas</li>
                   <li className="flex gap-3"><span style={{ color: '#a64a1f' }}>·</span> Funcionar tomando esporadicamente sem mudança de hábito</li>
-                  <li className="flex gap-3"><span style={{ color: '#a64a1f' }}>·</span> Resolver causa secundária (renal, endócrina) — investigue com médico</li>
+                  <li className="flex gap-3"><span style={{ color: '#a64a1f' }}>·</span> Resolver causa secundária (renal, endócrina), investigue com médico</li>
                 </ul>
               </motion.div>
             </div>
           </div>
         </section>
 
-        {/* CAPÍTULO 6 — BIBLIOTECA DE FONTES */}
+        {/* CAPÍTULO 6, BIBLIOTECA DE FONTES */}
         <section className="relative py-24 md:py-36 px-6 md:px-12 lg:px-20" style={{ backgroundColor: C.sand }}>
           <div className="max-w-[1600px] mx-auto">
             <motion.div {...fade(0)} className="mb-16 max-w-3xl">

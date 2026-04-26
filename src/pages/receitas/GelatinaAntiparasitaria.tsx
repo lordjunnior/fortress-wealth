@@ -114,7 +114,7 @@ const FONTES = [
   { autor: 'Grzybek, M. et al.', ano: '2016', titulo: 'Evaluation of Anthelmintic Activity and Composition of Pumpkin (Cucurbita pepo L.) Seed Extracts', revista: 'International Journal of Molecular Sciences, 17(9)', tipo: 'Estudo in vivo (modelo animal)', link: 'https://pubmed.ncbi.nlm.nih.gov/27598133/' },
   { autor: 'Pradhan, P. et al.', ano: '2013', titulo: 'Clove (Syzygium aromaticum): A precious spice', revista: 'Asian Pacific Journal of Tropical Biomedicine, 4(2)', tipo: 'Revisão de bioatividade', link: 'https://pubmed.ncbi.nlm.nih.gov/25182278/' },
   { autor: 'Marya, B. et al.', ano: '2012', titulo: 'In vitro anthelmintic activity of eugenol against Haemonchus contortus', revista: 'Journal of Helminthology', tipo: 'Estudo in vitro', link: 'https://pubmed.ncbi.nlm.nih.gov/?term=eugenol+anthelmintic' },
-  { autor: 'WHO', ano: '2023', titulo: 'Soil-transmitted helminth infections — Fact sheet', revista: 'Organização Mundial da Saúde', tipo: 'Diretriz oficial de saúde pública', link: 'https://www.who.int/news-room/fact-sheets/detail/soil-transmitted-helminth-infections' },
+  { autor: 'WHO', ano: '2023', titulo: 'Soil-transmitted helminth infections, Fact sheet', revista: 'Organização Mundial da Saúde', tipo: 'Diretriz oficial de saúde pública', link: 'https://www.who.int/news-room/fact-sheets/detail/soil-transmitted-helminth-infections' },
 ];
 
 const FAQ = [
@@ -269,7 +269,7 @@ export default function GelatinaAntiparasitaria() {
 
         <Hero />
 
-        {/* CAPÍTULO 1 — Manifesto / contexto científico */}
+        {/* CAPÍTULO 1, Manifesto / contexto científico */}
         <section className="relative px-6 md:px-12 lg:px-20 py-24 md:py-36">
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 max-w-[1600px] mx-auto">
             <motion.aside {...fade(0)} className="lg:col-span-4">
@@ -303,7 +303,7 @@ export default function GelatinaAntiparasitaria() {
           </div>
         </section>
 
-        {/* CAPÍTULO 2 — RECEITA */}
+        {/* CAPÍTULO 2, RECEITA */}
         <section id="receita" className="relative py-24 md:py-32 px-6 md:px-12 lg:px-20 scroll-mt-20" style={{ backgroundColor: C.sand }}>
           <div className="max-w-[1600px] mx-auto">
             <motion.div {...fade(0)} className="mb-16 md:mb-20">
@@ -370,7 +370,7 @@ export default function GelatinaAntiparasitaria() {
           </div>
         </section>
 
-        {/* CAPÍTULO 3 — DOSSIÊ DOS ATIVOS */}
+        {/* CAPÍTULO 3, DOSSIÊ DOS ATIVOS */}
         <section className="relative py-24 md:py-36 px-6 md:px-12 lg:px-20" style={{ backgroundColor: C.sage, color: C.cream }}>
           <div className="max-w-[1600px] mx-auto">
             <motion.div {...fade(0)} className="mb-20 max-w-3xl">
@@ -437,7 +437,7 @@ export default function GelatinaAntiparasitaria() {
           </div>
         </section>
 
-        {/* CAPÍTULO 4 — PROTOCOLO DE USO */}
+        {/* CAPÍTULO 4, PROTOCOLO DE USO */}
         <section className="relative py-24 md:py-36 px-6 md:px-12 lg:px-20">
           <div className="max-w-[1400px] mx-auto">
             <motion.div {...fade(0)} className="mb-16 max-w-3xl">
@@ -478,7 +478,7 @@ export default function GelatinaAntiparasitaria() {
           </div>
         </section>
 
-        {/* CAPÍTULO 5 — BIBLIOTECA DE FONTES */}
+        {/* CAPÍTULO 5, BIBLIOTECA DE FONTES */}
         <section className="relative py-24 md:py-36 px-6 md:px-12 lg:px-20" style={{ backgroundColor: C.sand }}>
           <div className="max-w-[1600px] mx-auto">
             <motion.div {...fade(0)} className="mb-16 max-w-3xl">

@@ -18,7 +18,7 @@ import imgGarrafada from '@/assets/receitas/hero-garrafada-ancestral-light.jpg';
 /**
  * /soberania-organica/cozinha-funcional
  * 7ª frente da Soberania Orgânica.
- * Padrão editorial CLARO obrigatório (sand+sage+terracotta) — referência Jurisdições Amigáveis.
+ * Padrão editorial CLARO obrigatório (sand+sage+terracotta), referência Jurisdições Amigáveis.
  */
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
@@ -74,9 +74,9 @@ const RECEITAS = [
   },
   {
     slug: 'garrafada-digestiva-ancestral',
-    titulo: 'Lambedor Ancestral de Boldo, Guaco e Aroeira',
+    titulo: 'Xarope Ancestral de Boldo, Guaco e Aroeira',
     pretitulo: 'Fígado · Digestão · Tosse · Imunidade',
-    resumo: 'Infusão concentrada com mel cru — sem álcool, sem dependência. Fórmula indígena e popular brasileira em duas versões seguras: uso digestivo diário e lambedor para tosse. Boldo, guaco e aroeira constam na RENISUS.',
+    resumo: 'Infusão concentrada com mel cru, sem álcool, sem dependência. Fórmula indígena e popular brasileira em duas versões seguras: uso digestivo diário e xarope para tosse. Boldo, guaco e aroeira constam na RENISUS.',
     img: imgGarrafada,
     tempo: '35 min de preparo',
     porcoes: '500 ml · 7 a 10 dias',
@@ -94,7 +94,7 @@ const PILARES = [
 
 const FAQ = [
   { q: 'O que é Cozinha Funcional dentro da Soberania Orgânica?',
-    a: 'É a 7ª frente. Aqui resgatamos o conhecimento ancestral da natureza brasileira (indígena, popular, quilombola) para cuidar da saúde com plantas, chás, lambedores, gelatinas e fórmulas que nossos avós e povos originários já usavam — sempre sem álcool e sem nada que crie dependência, cruzados com evidência científica e com a Política Nacional de Plantas Medicinais e Fitoterápicos do SUS (RENISUS, Farmácias Vivas, desde 2006).' },
+    a: 'É a 7ª frente. Aqui resgatamos o conhecimento ancestral da natureza brasileira (indígena, popular, quilombola) para cuidar da saúde com plantas, chás, xaropes, gelatinas e fórmulas que nossos avós e povos originários já usavam, sempre sem álcool e sem nada que crie dependência, cruzados com evidência científica e com a Política Nacional de Plantas Medicinais e Fitoterápicos do SUS (RENISUS, Farmácias Vivas, desde 2006).' },
   { q: 'É medicina alternativa, esotérica ou anticientífica?',
     a: 'Não. É etnofarmacologia: o estudo científico do que os povos tradicionais já sabiam. Boldo, guaco, aroeira, Passiflora, camomila, sementes de mamão e dezenas de outras plantas usadas aqui constam na RENISUS, a lista oficial de plantas medicinais do SUS. O Brasil tem mais de 600 Farmácias Vivas espalhadas pelo SUS dispensando essas mesmas fórmulas.' },
   { q: 'Substitui medicamento prescrito?',
@@ -183,7 +183,7 @@ export default function ReceitasFuncionais() {
           {JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'CollectionPage',
-            name: 'Cozinha Funcional — Receitas ancestrais brasileiras validadas pelo SUS',
+            name: 'Cozinha Funcional, Receitas ancestrais brasileiras validadas pelo SUS',
             description: 'Coleção de receitas indígenas, populares e quilombolas para cuidar da saúde sem dependência da indústria farmacêutica. Cruzada com RENISUS, Farmácias Vivas e literatura etnofarmacológica.',
             url: 'https://www.lordjunnior.com.br/soberania-organica/cozinha-funcional',
             isPartOf: { '@type': 'WebSite', name: 'Lord Junnior', url: 'https://www.lordjunnior.com.br' },
@@ -218,7 +218,7 @@ export default function ReceitasFuncionais() {
 
         <Hero />
 
-        {/* CAPÍTULO 1 — Manifesto */}
+        {/* CAPÍTULO 1, Manifesto */}
         <section className="relative px-6 md:px-12 lg:px-20 py-24 md:py-36">
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 max-w-[1600px] mx-auto">
             <motion.aside {...fade(0)} className="lg:col-span-4">
@@ -252,7 +252,7 @@ export default function ReceitasFuncionais() {
           </div>
         </section>
 
-        {/* CAPÍTULO 2 — TRÊS PILARES (faixa sage escura, alto contraste) */}
+        {/* CAPÍTULO 2, TRÊS PILARES (faixa sage escura, alto contraste) */}
         <section className="relative py-24 md:py-32 px-6 md:px-12 lg:px-20" style={{ backgroundColor: C.sage, color: C.cream }}>
           <div className="max-w-[1600px] mx-auto">
             <motion.div {...fade(0)} className="mb-16 max-w-3xl">
@@ -285,7 +285,7 @@ export default function ReceitasFuncionais() {
           </div>
         </section>
 
-        {/* CAPÍTULO 3 — RECEITAS DISPONÍVEIS */}
+        {/* CAPÍTULO 3, RECEITAS DISPONÍVEIS */}
         <section className="relative py-24 md:py-36 px-6 md:px-12 lg:px-20">
           <div className="max-w-[1600px] mx-auto">
             <motion.div {...fade(0)} className="mb-20 flex items-end justify-between flex-wrap gap-8">
@@ -361,7 +361,7 @@ export default function ReceitasFuncionais() {
           </div>
         </section>
 
-        {/* CAPÍTULO 4 — CHECKLIST */}
+        {/* CAPÍTULO 4, CHECKLIST */}
         <section className="relative py-24 md:py-36 px-6 md:px-12 lg:px-20" style={{ backgroundColor: C.sand }}>
           <div className="max-w-[1100px] mx-auto">
             <motion.div {...fade(0)} className="mb-14 max-w-3xl">
