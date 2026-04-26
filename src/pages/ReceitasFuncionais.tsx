@@ -74,15 +74,15 @@ const RECEITAS = [
   },
   {
     slug: 'garrafada-digestiva-ancestral',
-    titulo: 'Garrafada Digestiva e Imunológica Ancestral',
-    pretitulo: 'Fígado · Digestão · Imunidade',
-    resumo: 'Boldo, guaco e aroeira na fórmula ancestral indígena e popular brasileira. Versão tradicional em cachaça e versão sem álcool em água. Boldo e guaco constam na RENISUS, política do SUS de Plantas Medicinais.',
+    titulo: 'Lambedor Ancestral de Boldo, Guaco e Aroeira',
+    pretitulo: 'Fígado · Digestão · Tosse · Imunidade',
+    resumo: 'Infusão concentrada com mel cru — sem álcool, sem dependência. Fórmula indígena e popular brasileira em duas versões seguras: uso digestivo diário e lambedor para tosse. Boldo, guaco e aroeira constam na RENISUS.',
     img: imgGarrafada,
-    tempo: '15 min de preparo',
-    porcoes: '1 garrafa · 1 semana',
+    tempo: '35 min de preparo',
+    porcoes: '500 ml · 7 a 10 dias',
     estudos: 'RENISUS · 6 referências',
     disponivel: true,
-    alt: 'Garrafa de vidro âmbar com tampa de cortiça contendo garrafada de boldo guaco e aroeira ao lado de folhas frescas e pote de mel sobre toalha de linho cor creme',
+    alt: 'Garrafa de vidro âmbar contendo infusão de boldo guaco e aroeira ao lado de folhas frescas e pote de mel cru sobre toalha de linho cor creme',
   },
 ];
 
