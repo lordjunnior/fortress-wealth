@@ -343,6 +343,8 @@ const App = () => (
             <Route path="/soberania-organica/aquaponia-residencial" element={<AquaponiaResidencial />} />
             <Route path="/soberania-organica/preservacao-ancestral" element={<PreservacaoAncestral />} />
             <Route path="/soberania-organica/engenharia-vicio-alimentar" element={<EngenhariaVicioAlimentar />} />
+            <Route path="/receitas-funcionais" element={<ReceitasFuncionais />} />
+            <Route path="/receitas-funcionais/sobremesa-substitui-rivotril" element={<SobremesaSubstituiRivotril />} />
             <Route path="/soberania-organica/gestao-agua-micro" element={<GestaoAguaMicro />} />
             <Route path="/soberania-organica/primeiros-socorros-taticos" element={<PrimeirosSocorrosTaticos />} />
             <Route path="/soberania-organica/edc" element={<EDC />} />
