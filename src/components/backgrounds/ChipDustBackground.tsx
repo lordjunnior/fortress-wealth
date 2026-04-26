@@ -12,9 +12,21 @@ import { motion } from 'framer-motion';
  * por isso usa mix-blend-mode multiply para escurecer no claro e screen para clarear no escuro
  * de forma equilibrada (opacity baixa).
  */
-export default function ChipDustBackground() {
+interface Props {
+  /** 'overlay' positions above sections with multiply blend (works on light/dark sections) */
+  mode?: 'base' | 'overlay';
+}
+
+export default function ChipDustBackground({ mode = 'base' }: Props) {
+  const zClass = mode === 'overlay' ? 'z-[5]' : 'z-0';
+  const blend: React.CSSProperties =
+    mode === 'overlay' ? { mixBlendMode: 'multiply', opacity: 0.55 } : {};
   return (
-    <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden" aria-hidden>
+    <div
+      className={`fixed inset-0 ${zClass} pointer-events-none overflow-hidden`}
+      aria-hidden
+      style={blend}
+    >
       {/* Halos cromáticos Doritos */}
       <div
         className="absolute inset-0"
