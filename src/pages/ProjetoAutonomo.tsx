@@ -9,6 +9,7 @@ import imgSoberaniaAlimentar from '@/assets/fase03-soberania-alimentar.jpg';
 import imgBase72 from '@/assets/fase01-base72.jpg';
 import imgAutonomiaBiologica from '@/assets/fase02-autonomia-biologica.jpg';
 import imgConhecimentoPerdido from '@/assets/cp-hero-conhecimento.jpg';
+import imgEngVicio from '@/assets/eva/hero-lab-engenharia.jpg';
 import bgFase01 from '@/assets/bg-fase01-base72.jpg';
 import bgFase02 from '@/assets/bg-fase02-autonomia.jpg';
 import bgFase03 from '@/assets/bg-fase03-alimentar.jpg';
@@ -1078,6 +1079,46 @@ export default function ProjetoAutonomo() {
               Cada etapa reduz uma camada de dependência.
             </p>
           </div>
+
+          {/* DESTAQUE EDITORIAL — Engenharia do Vício Alimentar */}
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0} className="mb-10">
+            <Link
+              to="/soberania-organica/engenharia-vicio-alimentar"
+              className="group relative block overflow-hidden rounded-2xl border border-amber-500/20 hover:border-amber-400/50 transition-all duration-700"
+            >
+              <div className="grid md:grid-cols-[1.1fr_1fr] gap-0">
+                {/* Imagem */}
+                <div className="relative h-64 md:h-auto overflow-hidden">
+                  <img
+                    src={imgEngVicio}
+                    alt="Laboratório de engenharia de alimentos ultraprocessados"
+                    loading="lazy"
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.06]"
+                    style={{ filter: 'brightness(0.7) saturate(1.1)' }}
+                  />
+                  <div className="absolute inset-0" style={{ background: 'linear-gradient(90deg, transparent 30%, rgba(10,8,6,0.7) 100%)' }} />
+                  <div className="absolute top-4 left-4 flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/50 backdrop-blur border border-amber-400/30">
+                    <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
+                    <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-amber-300">Dossiê Novo</span>
+                  </div>
+                </div>
+                {/* Texto */}
+                <div className="relative p-7 md:p-10 bg-gradient-to-br from-[#1a1410] to-[#0a0908] flex flex-col justify-center">
+                  <span className="text-[10px] font-bold tracking-[0.4em] uppercase text-amber-500/70 mb-3">Investigação Editorial</span>
+                  <h3 className="text-2xl md:text-3xl lg:text-4xl font-black text-white leading-[1.05] mb-4" style={{ fontFamily: "'Inter Tight', sans-serif", letterSpacing: '-0.03em' }}>
+                    A Engenharia do <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-orange-400">Vício Alimentar</span>
+                  </h3>
+                  <p className="text-stone-400 text-sm md:text-base leading-relaxed mb-5">
+                    Por que você não consegue comer só um. Colorimetria, bliss point, crocância acústica e variabilidade randomizada: as quatro alavancas que sequestram seu cérebro nos ultraprocessados.
+                  </p>
+                  <div className="inline-flex items-center gap-2 text-amber-400 text-xs font-bold tracking-[0.2em] uppercase group-hover:gap-4 transition-all duration-500">
+                    Abrir dossiê
+                    <ArrowRight size={14} />
+                  </div>
+                </div>
+              </div>
+            </Link>
+          </motion.div>
 
           <RiskBlock theme="dark" title="Sem esta base, o que acontece?" consequences={[
             "100% do alimento vem da cadeia industrial — qualquer ruptura de abastecimento afeta diretamente a mesa.",
