@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import {
   ArrowRight, ChevronDown, Timer, FlaskConical, Brain, Dices,
   Activity, AlertTriangle, Eye, Volume2, Flame, Sparkles, BookOpen,
+  Library, Newspaper, Mic, ScrollText, CheckCircle2, Quote,
 } from 'lucide-react';
 import BackToHome from '@/components/BackToHome';
 import ScrollToTop from '@/components/ScrollToTop';
@@ -21,6 +22,9 @@ import imgCurva from '@/assets/eva/curva-gaussiana.jpg';
 import imgBliss from '@/assets/eva/bliss-point.jpg';
 import imgComidaReal from '@/assets/eva/comida-real-ancestral.jpg';
 import imgColor from '@/assets/eva/colorimetro-cor.jpg';
+import imgBiblioteca from '@/assets/eva/biblioteca-fontes.jpg';
+import imgInvestigacao from '@/assets/eva/investigacao-recorte.jpg';
+import imgEvidencias from '@/assets/eva/evidencias-knolling.jpg';
 
 /**
  * /soberania-organica/engenharia-vicio-alimentar
@@ -132,6 +136,12 @@ const EngenhariaVicioAlimentar = () => {
         dateModified: '2026-04-26',
         image: 'https://lordjunnior.com.br' + imgHero,
         keywords: 'engenharia alimentar, ultraprocessados, vício alimentar, doritos, bliss point, hand to mouth, dopamina, comida industrial, robb wolf',
+        citation: [
+          { '@type': 'Book', name: 'Wired to Eat', author: { '@type': 'Person', name: 'Robb Wolf' }, datePublished: '2017', isbn: '978-0451498564' },
+          { '@type': 'Book', name: 'The Dorito Effect', author: { '@type': 'Person', name: 'Mark Schatzker' }, datePublished: '2015', isbn: '978-1476724232' },
+          { '@type': 'Book', name: 'Salt Sugar Fat: How the Food Giants Hooked Us', author: { '@type': 'Person', name: 'Michael Moss' }, datePublished: '2013', isbn: '978-0812982190' },
+          { '@type': 'NewsArticle', headline: 'The Extraordinary Science of Addictive Junk Food', author: { '@type': 'Person', name: 'Michael Moss' }, publisher: { '@type': 'Organization', name: 'The New York Times' }, datePublished: '2013-02-20' },
+        ],
       },
       {
         '@type': 'BreadcrumbList',
@@ -638,6 +648,255 @@ const EngenhariaVicioAlimentar = () => {
             <motion.figure {...fade(0.15)} className="mt-24 overflow-hidden rounded-sm max-w-3xl mx-auto">
               <img src={imgChip} alt="Chip triangular amarelo isolado com pó de pimenta vermelha sobre fundo preto" loading="lazy" className="w-full h-[400px] md:h-[520px] object-contain" style={{ background: ONYX }} />
             </motion.figure>
+          </div>
+        </section>
+
+        {/* ═══ § 06.5 · METODOLOGIA / FONTES (BONE) ═══ */}
+        <section className="relative" style={{ background: BONE, color: ONYX }}>
+          <div className="max-w-[1500px] mx-auto px-6 md:px-12 lg:px-20 py-28 md:py-40">
+
+            {/* Cabeçalho editorial */}
+            <div className="grid lg:grid-cols-12 gap-12 items-end">
+              <motion.div {...fade()} className="lg:col-span-7">
+                <span style={{ ...mono, color: RED, fontSize: 11 }}>§ 06.5 · Como cheguei aqui</span>
+                <h2 className="mt-8" style={{ ...display, fontSize: 'clamp(2.6rem, 5.6vw, 5.4rem)', color: ONYX }}>
+                  Não é opinião,
+                  <br />
+                  <span style={{ ...editorial, color: RED }}>é bibliografia.</span>
+                </h2>
+              </motion.div>
+              <motion.div {...fade(0.1)} className="lg:col-span-5">
+                <p className="text-xl leading-relaxed" style={{ color: 'rgba(10,10,10,0.78)', fontFamily: "'Inter Tight', sans-serif" }}>
+                  Antes de afirmar que ultraprocessado é projetado para sequestrar o cérebro, cruzei livros, reportagens investigativas, podcasts e papers da própria indústria. Tudo público. Tudo verificável. Esta página existe para que cético nenhum saia daqui sem fonte para conferir.
+                </p>
+              </motion.div>
+            </div>
+
+            {/* Imagem editorial larga */}
+            <motion.figure {...fade(0.15)} className="mt-16 overflow-hidden rounded-sm">
+              <img
+                src={imgBiblioteca}
+                alt="Três livros empilhados sobre engenharia alimentar e vício industrial sob luz quente de lâmpada de mesa"
+                loading="lazy"
+                width={1920}
+                height={1080}
+                className="w-full h-[420px] md:h-[640px] object-cover"
+              />
+              <figcaption className="mt-4 text-sm" style={{ ...mono, color: 'rgba(10,10,10,0.55)', fontSize: 10 }}>
+                Mesa de trabalho · Biblioteca de referência · Wolf · Schatzker · Moss
+              </figcaption>
+            </motion.figure>
+
+            {/* Bloco "Relato em primeira pessoa" */}
+            <motion.blockquote {...fade(0.1)} className="mt-24 max-w-4xl mx-auto relative">
+              <Quote size={48} style={{ color: ORANGE, opacity: 0.35, position: 'absolute', top: -16, left: -8 }} />
+              <p
+                style={{
+                  ...editorial,
+                  fontSize: 'clamp(1.5rem, 2.4vw, 2.4rem)',
+                  color: ONYX,
+                  lineHeight: 1.35,
+                }}
+                className="pl-8 md:pl-16"
+              >
+                "Eu não cheguei nessa conclusão por palpite. Cheguei cruzando informações públicas e confiáveis: os próprios livros, entrevistas e podcasts dos autores, reportagens investigativas e artigos científicos. Não foi opinião. Foi rastro de papel."
+              </p>
+              <footer className="mt-6 pl-8 md:pl-16" style={{ ...mono, color: ORANGE, fontSize: 11 }}>
+                Lord Junnior · Anotação de pesquisa
+              </footer>
+            </motion.blockquote>
+
+            {/* Sub-cabeçalho: livros principais */}
+            <motion.div {...fade()} className="mt-32 max-w-3xl">
+              <span style={{ ...mono, color: ORANGE, fontSize: 11 }}>Os três livros que sustentam a tese</span>
+              <h3 className="mt-6" style={{ ...display, fontSize: 'clamp(1.8rem, 3vw, 2.8rem)', color: ONYX }}>
+                Leitura obrigatória{' '}
+                <span style={{ ...editorial, color: ORANGE }}>para quem duvida.</span>
+              </h3>
+            </motion.div>
+
+            {/* Cards de livros */}
+            <div className="mt-12 grid lg:grid-cols-3 gap-px" style={{ background: 'rgba(10,10,10,0.12)' }}>
+              {[
+                {
+                  n: '01',
+                  titulo: 'Wired to Eat',
+                  autor: 'Robb Wolf',
+                  ano: '2017',
+                  pt: 'Programado para Comer',
+                  resumo:
+                    'Wolf dedica páginas inteiras ao caso do Doritos Roulette: a variação aleatória de picância (chips suaves, médios, ardidos) cria efeito surpresa, dispara dopamina e impede a fadiga do paladar. Ele chama isso de Buffet Effect, estratégia deliberada para bypassar a saciedade.',
+                  trecho: 'Variedade sensorial é o atalho da indústria para você nunca enjoar.',
+                },
+                {
+                  n: '02',
+                  titulo: 'The Dorito Effect',
+                  autor: 'Mark Schatzker',
+                  ano: '2015',
+                  pt: 'O Efeito Doritos',
+                  resumo:
+                    'Livro inteiro sobre como a indústria substituiu o sabor real por sabor sintético. Os primeiros Doritos eram chips de milho com sal e quase ninguém comprava. Quando entrou o flavor artificial de taco, viraram fenômeno: hiperestimulante, sem o nutriente que o cérebro esperava encontrar.',
+                  trecho: 'O cérebro foi enganado. O paladar foi sequestrado. O apetite ficou sem freio.',
+                },
+                {
+                  n: '03',
+                  titulo: 'Salt Sugar Fat',
+                  autor: 'Michael Moss',
+                  ano: '2013',
+                  pt: 'Sal, Açúcar e Gordura',
+                  resumo:
+                    'Investigação vencedora do Pulitzer. Moss entrou nos laboratórios da Frito-Lay e descreveu máquinas que simulam mordida, medem crocância, mouthfeel e tempo mão-boca. Documenta como o bliss point é calculado em milhões de combinações até achar o ponto matemático ótimo.',
+                  trecho: 'Eles gastam milhões por ano para que você coma mais sem perceber.',
+                },
+              ].map((b, i) => (
+                <motion.article
+                  key={i}
+                  {...fade(i * 0.06)}
+                  style={{ background: BONE_DEEP }}
+                  className="p-8 md:p-10 group hover:bg-[#dccfb8] transition-colors duration-500"
+                >
+                  <div className="flex items-start justify-between">
+                    <span style={{ ...mono, color: RED, fontSize: 11 }}>{b.n}</span>
+                    <Library size={22} style={{ color: ORANGE }} />
+                  </div>
+                  <h4 className="mt-8" style={{ ...display, fontSize: 'clamp(1.6rem, 2vw, 2.1rem)', color: ONYX, lineHeight: 1.05 }}>
+                    {b.titulo}
+                  </h4>
+                  <p className="mt-2" style={{ ...mono, color: 'rgba(10,10,10,0.55)', fontSize: 10 }}>
+                    {b.autor} · {b.ano} · ed. PT: {b.pt}
+                  </p>
+                  <p className="mt-6 text-base leading-relaxed" style={{ color: 'rgba(10,10,10,0.78)', fontFamily: "'Inter Tight', sans-serif" }}>
+                    {b.resumo}
+                  </p>
+                  <div className="mt-8 pt-6 border-t" style={{ borderColor: 'rgba(10,10,10,0.18)' }}>
+                    <p style={{ ...editorial, color: RED, fontSize: 'clamp(1rem, 1.2vw, 1.2rem)', lineHeight: 1.35 }}>
+                      "{b.trecho}"
+                    </p>
+                  </div>
+                </motion.article>
+              ))}
+            </div>
+
+            {/* Reportagens e podcasts */}
+            <div className="mt-32 grid lg:grid-cols-12 gap-12 items-center">
+              <motion.figure {...fade()} className="lg:col-span-6 overflow-hidden rounded-sm order-2 lg:order-1">
+                <img
+                  src={imgInvestigacao}
+                  alt="Recorte de reportagem investigativa do New York Times com trecho marcado em amarelo sobre engenharia alimentar"
+                  loading="lazy"
+                  width={1920}
+                  height={1080}
+                  className="w-full h-[460px] md:h-[620px] object-cover"
+                />
+              </motion.figure>
+              <motion.div {...fade(0.1)} className="lg:col-span-6 order-1 lg:order-2">
+                <span style={{ ...mono, color: ORANGE, fontSize: 11 }}>Reportagens e podcasts que confirmam</span>
+                <h3 className="mt-6" style={{ ...display, fontSize: 'clamp(1.8rem, 3vw, 2.8rem)', color: ONYX }}>
+                  A imprensa séria{' '}
+                  <span style={{ ...editorial, color: ORANGE }}>já documentou tudo.</span>
+                </h3>
+                <ul className="mt-10 space-y-7">
+                  {[
+                    {
+                      icon: Newspaper,
+                      tag: 'New York Times · 2013',
+                      titulo: 'The Extraordinary Science of Addictive Junk Food',
+                      desc: 'Reportagem de Michael Moss revelando o laboratório da Frito-Lay no Texas com 500 cientistas e até US$ 30 milhões por ano só para testar chips. Medem pressão de mordida em libras por polegada quadrada, som da crocância e dynamic contrast (crocante + pó cremoso).',
+                    },
+                    {
+                      icon: Mic,
+                      tag: 'Robb Wolf · 2019 a 2021',
+                      titulo: 'Q&A #30 e Keto Kamp Podcast',
+                      desc: 'Wolf repete o caso do Doritos Roulette em diversos episódios. Fala abertamente da curva de prazer e da randomização como estratégia de vício, ratificando o que escreveu no livro.',
+                    },
+                    {
+                      icon: ScrollText,
+                      tag: 'Literatura científica',
+                      titulo: 'Hand-to-Mouth e Craveability Optimization',
+                      desc: 'Estudos sensoriais publicados sob o termo craveability optimization mostram: quanto mais rápido o alimento vai à boca e mais sensorial ele é, mais se come sem percepção. Métrica de mercado, não teoria.',
+                    },
+                  ].map((r, i) => (
+                    <li key={i} className="flex gap-5">
+                      <div
+                        className="shrink-0 w-12 h-12 rounded-sm flex items-center justify-center"
+                        style={{ background: 'rgba(232,99,28,0.12)', border: '1px solid rgba(232,99,28,0.3)' }}
+                      >
+                        <r.icon size={20} style={{ color: ORANGE }} />
+                      </div>
+                      <div>
+                        <span style={{ ...mono, color: 'rgba(10,10,10,0.5)', fontSize: 10 }}>{r.tag}</span>
+                        <p className="mt-1" style={{ ...display, fontSize: 'clamp(1.15rem, 1.4vw, 1.4rem)', color: ONYX, lineHeight: 1.2 }}>
+                          {r.titulo}
+                        </p>
+                        <p className="mt-2 text-base leading-relaxed" style={{ color: 'rgba(10,10,10,0.72)', fontFamily: "'Inter Tight', sans-serif" }}>
+                          {r.desc}
+                        </p>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            </div>
+
+            {/* Resumo do método de verificação */}
+            <motion.div {...fade()} className="mt-32 grid lg:grid-cols-12 gap-12">
+              <div className="lg:col-span-5">
+                <span style={{ ...mono, color: RED, fontSize: 11 }}>Método de verificação</span>
+                <h3 className="mt-6" style={{ ...display, fontSize: 'clamp(1.8rem, 3vw, 2.8rem)', color: ONYX }}>
+                  Como cruzei{' '}
+                  <span style={{ ...editorial, color: RED }}>cada peça.</span>
+                </h3>
+                <p className="mt-6 text-lg leading-relaxed" style={{ color: 'rgba(10,10,10,0.75)', fontFamily: "'Inter Tight', sans-serif" }}>
+                  O caso brasileiro do Doritos Roleta foi confirmado: a Elma Chips (PepsiCo Brasil) lançou a versão com graus aleatórios de picância, comercializada com a frase "alguns são mega apimentados". O núcleo do relato bate com Wolf, Schatzker e Moss, todos baseados em entrevistas dentro da própria indústria.
+                </p>
+              </div>
+              <ul className="lg:col-span-7 space-y-4">
+                {[
+                  'Li o capítulo sobre Doritos Roulette em Wired to Eat e marquei as passagens.',
+                  'Cruzei com The Dorito Effect para ancorar o argumento histórico do flavor sintético.',
+                  'Verifiquei a reportagem de Michael Moss no New York Times e os capítulos correspondentes em Salt Sugar Fat.',
+                  'Ouvi os podcasts de Robb Wolf (Q&A #30 e Keto Kamp) onde ele repete o exemplo oralmente.',
+                  'Confirmei o lançamento brasileiro do Doritos Roleta pela Elma Chips e a comunicação oficial da marca.',
+                ].map((t, i) => (
+                  <motion.li
+                    key={i}
+                    {...fade(i * 0.05)}
+                    className="flex gap-4 items-start p-5 rounded-sm"
+                    style={{ background: BONE_DEEP, border: '1px solid rgba(10,10,10,0.08)' }}
+                  >
+                    <CheckCircle2 size={20} style={{ color: RED, marginTop: 2, flexShrink: 0 }} />
+                    <p className="text-base leading-relaxed" style={{ color: 'rgba(10,10,10,0.85)', fontFamily: "'Inter Tight', sans-serif" }}>
+                      {t}
+                    </p>
+                  </motion.li>
+                ))}
+              </ul>
+            </motion.div>
+
+            {/* Imagem evidências */}
+            <motion.figure {...fade(0.1)} className="mt-24 overflow-hidden rounded-sm">
+              <img
+                src={imgEvidencias}
+                alt="Knolling de evidências de pesquisa: livros gravador podcast laptop e chip de Doritos sobre papel cor osso"
+                loading="lazy"
+                width={1920}
+                height={1080}
+                className="w-full h-[420px] md:h-[640px] object-cover"
+              />
+              <figcaption className="mt-4 text-sm" style={{ ...mono, color: 'rgba(10,10,10,0.55)', fontSize: 10 }}>
+                Quadro de evidências · Bibliografia + Áudio + Reportagem + Objeto de estudo
+              </figcaption>
+            </motion.figure>
+
+            {/* Linha de fechamento */}
+            <motion.p
+              {...fade()}
+              className="mt-24 max-w-3xl mx-auto text-center"
+              style={{ ...editorial, fontSize: 'clamp(1.4rem, 2.2vw, 2.2rem)', color: ONYX, lineHeight: 1.4 }}
+            >
+              Se você ler um único desses livros, vai perceber que esta página é apenas{' '}
+              <span style={{ color: RED }}>a leitura honesta do que a própria indústria documentou sobre si mesma.</span>
+            </motion.p>
           </div>
         </section>
 
