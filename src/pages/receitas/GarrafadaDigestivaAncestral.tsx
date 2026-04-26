@@ -344,17 +344,17 @@ export default function GarrafadaDigestivaAncestral() {
           </div>
         </section>
 
-        {/* CAPÍTULO 3 — DUAS VERSÕES (cachaça vs água) */}
+        {/* CAPÍTULO 3 — DUAS VERSÕES (infusão diária vs lambedor com mel) */}
         <section className="relative py-24 md:py-36 px-6 md:px-12 lg:px-20">
           <div className="max-w-[1400px] mx-auto">
             <motion.div {...fade(0)} className="mb-16 max-w-3xl">
               <span className="text-xs font-bold block mb-4" style={{ ...monoStyle, color: C.terracotta }}>Capítulo 03 · Duas versões</span>
               <h2 className="text-[clamp(2.25rem,5.5vw,5rem)] leading-[1] tracking-tight" style={{ ...display, color: C.sage }}>
-                Cachaça{' '}
-                <span style={{ ...editorial, color: C.terracotta }}>ou água.</span>
+                Infusão{' '}
+                <span style={{ ...editorial, color: C.terracotta }}>ou lambedor.</span>
               </h2>
               <p className="mt-6 text-lg md:text-xl font-light leading-[1.6]" style={{ color: C.inkSoft }}>
-                A garrafada tradicional do interior é em cachaça. Para gestantes, crianças, abstêmios e quem usa medicação, a versão em água preserva grande parte do efeito digestivo.
+                Duas formas seguras, sem álcool, da mesma fórmula. A infusão é o uso digestivo diário. O lambedor (mais concentrado e adoçado com mel cru) é a forma popular para tosse, garganta e imunidade.
               </p>
             </motion.div>
 
@@ -362,28 +362,28 @@ export default function GarrafadaDigestivaAncestral() {
               <motion.div {...fade(0)} className="p-8 md:p-10 rounded-3xl"
                 style={{ backgroundColor: '#fff8ef', border: `1px solid ${C.borderLight}` }}>
                 <FlaskConical size={32} style={{ color: C.terracotta }} className="mb-6" />
-                <p className="text-xs font-bold mb-3" style={{ ...monoStyle, color: C.terracotta }}>Versão A · tradicional</p>
-                <h3 className="text-2xl md:text-3xl mb-6 font-semibold" style={{ ...display, color: C.sage }}>Em cachaça boa</h3>
+                <p className="text-xs font-bold mb-3" style={{ ...monoStyle, color: C.terracotta }}>Versão A · uso diário</p>
+                <h3 className="text-2xl md:text-3xl mb-6 font-semibold" style={{ ...display, color: C.sage }}>Infusão concentrada</h3>
                 <ul className="space-y-4 text-base md:text-lg leading-relaxed font-light" style={{ color: C.inkSoft }}>
-                  <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span> 500 ml de cachaça artesanal de boa procedência</li>
-                  <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span> Maceração de 7 a 10 dias em local escuro</li>
-                  <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span> Validade após coar: 6 a 12 meses na geladeira</li>
-                  <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span> Dose: 1 colher de sopa diluída em meio copo de água, 2x ao dia</li>
-                  <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span> Extrai melhor os ativos lipossolúveis (forskolina, schinol)</li>
+                  <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span> 500 ml de água filtrada fervida, em infusão abafada por 15 a 20 min</li>
+                  <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span> 2 a 3 colheres de mel cru dissolvidas ainda morno</li>
+                  <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span> Validade: 7 a 10 dias na geladeira (lote pequeno)</li>
+                  <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span> Dose adulta: 1 colher de sopa, 2 a 3x ao dia, após refeição</li>
+                  <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span> Foco digestivo, hepático e imunológico do dia a dia</li>
                 </ul>
               </motion.div>
 
               <motion.div {...fade(0.1)} className="p-8 md:p-10 rounded-3xl"
                 style={{ backgroundColor: C.sand, border: `1px solid ${C.borderLight}` }}>
                 <Sprout size={32} style={{ color: C.sage }} className="mb-6" />
-                <p className="text-xs font-bold mb-3" style={{ ...monoStyle, color: C.sage }}>Versão B · sem álcool</p>
-                <h3 className="text-2xl md:text-3xl mb-6 font-semibold" style={{ ...display, color: C.sage }}>Em água filtrada</h3>
+                <p className="text-xs font-bold mb-3" style={{ ...monoStyle, color: C.sage }}>Versão B · tosse e garganta</p>
+                <h3 className="text-2xl md:text-3xl mb-6 font-semibold" style={{ ...display, color: C.sage }}>Lambedor (xarope ancestral)</h3>
                 <ul className="space-y-4 text-base md:text-lg leading-relaxed font-light" style={{ color: C.inkSoft }}>
-                  <li className="flex gap-3"><span style={{ color: C.sage }}>·</span> 500 ml de água filtrada fervida e fria</li>
-                  <li className="flex gap-3"><span style={{ color: C.sage }}>·</span> Maceração de 24 a 48 h, sempre na geladeira</li>
-                  <li className="flex gap-3"><span style={{ color: C.sage }}>·</span> Validade após coar: 5 a 7 dias na geladeira (faça em lotes pequenos)</li>
-                  <li className="flex gap-3"><span style={{ color: C.sage }}>·</span> Dose: 50 a 80 ml puro, 2x ao dia, em jejum ou após refeição</li>
-                  <li className="flex gap-3"><span style={{ color: C.sage }}>·</span> Indicada para gestantes, crianças, abstêmios e em uso de medicação</li>
+                  <li className="flex gap-3"><span style={{ color: C.sage }}>·</span> Reduzir a infusão coada no fogo baixo até a metade do volume</li>
+                  <li className="flex gap-3"><span style={{ color: C.sage }}>·</span> Acrescentar mel cru na proporção 1:1 fora do fogo, mexer até dissolver</li>
+                  <li className="flex gap-3"><span style={{ color: C.sage }}>·</span> Validade: 20 a 30 dias na geladeira (mel concentrado conserva melhor)</li>
+                  <li className="flex gap-3"><span style={{ color: C.sage }}>·</span> Dose: 1 colher de chá, 3 a 4x ao dia, em crise de tosse seca</li>
+                  <li className="flex gap-3"><span style={{ color: C.sage }}>·</span> Forma popular do interior. Sempre sem álcool, sem cachaça</li>
                 </ul>
               </motion.div>
             </div>
