@@ -198,6 +198,13 @@ export default function ProjetoAutonomo() {
       ],
       fechamento: 'Sem mente livre, nenhuma soberania se sustenta.',
     },
+    {
+      num: '07', title: 'Cozinha Funcional', sub: 'Substitui a big pharma', accent: '#fbbf24',
+      sectionId: 'fase-07', icon: Moon, image: imgCozinhaFuncional, size: 'tall',
+      desc: 'Receitas com ensaio clínico randomizado por trás de cada ingrediente. Glicina para o sono, Passiflora para o cortisol, camomila para a ansiedade. A sobremesa que substitui o Rivotril abre uma coleção que devolve à cozinha o papel terapêutico que a indústria farmacêutica capturou.',
+      tag: 'Bioquímica aplicada',
+      externalRoute: '/soberania-organica/cozinha-funcional',
+    },
   ];
 
   return (
