@@ -24,6 +24,7 @@ import RiskBlock from '@/components/RiskBlock';
 import { PainelTaticoFisiologico } from '@/components/PainelTaticoFisiologico';
 import VersionBadge from '@/components/VersionBadge';
 import BackToHome from '@/components/BackToHome';
+import OrganicLivingBackground from '@/components/backgrounds/OrganicLivingBackground';
 
 /* ─── SEO: meta keywords target ───
    soberania orgânica, base 72 horas, autonomia biológica, soberania alimentar,
@@ -203,15 +204,17 @@ export default function ProjetoAutonomo() {
 
       <Helmet>
         <title>Soberania Orgânica — Manual da Terra: Curar, Alimentar e Proteger | Lord Junnior</title>
-        <meta name="description" content="Soberania Orgânica: o Manual da Terra definitivo. 5 fases progressivas para decifrar o código da natureza — curar, alimentar e proteger sua linhagem sem cadeias de suprimentos colapsáveis." />
+        <meta name="description" content="Soberania Orgânica: o Manual da Terra definitivo. 6 frentes integradas para decifrar o código da natureza, curar, alimentar e proteger sua linhagem sem cadeias de suprimentos colapsáveis." />
         <link rel="canonical" href="https://lordjunnior.com.br/soberania-organica" />
       </Helmet>
 
       <PageFloatingToc items={TOC_ITEMS} accentColor="emerald" />
+    {/* Fundo temático persistente — botânico vivo */}
+    <OrganicLivingBackground />
     <div
       ref={containerRef}
       className="min-h-screen text-stone-100 font-sans selection:bg-emerald-400/30 relative overflow-hidden"
-      style={{ background: '#050808' }}
+      style={{ background: 'transparent' }}
     >
       {/* ── SCROLL PROGRESS ── */}
       <motion.div className="fixed top-0 left-0 right-0 h-[2px] z-50 origin-left"
@@ -343,7 +346,7 @@ export default function ProjetoAutonomo() {
             transition={{ duration: 0.8, delay: 0.6 }}
           >
             <p className="text-stone-300 text-sm md:text-base leading-relaxed mb-3 font-medium">
-              A Soberania Orgânica é o seu <span className="text-emerald-400 font-bold">Manual da Terra definitivo</span>. Um resgate da nossa herança nativa dividido em 5 fases progressivas. Este protocolo ensina você a decifrar o código da natureza para curar, alimentar e proteger sua linhagem sem depender de cadeias de suprimentos colapsáveis.
+              A Soberania Orgânica é o seu <span className="text-emerald-400 font-bold">Manual da Terra definitivo</span>. Um resgate da nossa herança nativa dividido em 6 frentes integradas. Este protocolo ensina você a decifrar o código da natureza para curar, alimentar e proteger sua linhagem sem depender de cadeias de suprimentos colapsáveis.
             </p>
             <p className="text-stone-400 text-sm leading-relaxed mb-2">
               Você terceiriza sua <span className="text-emerald-400 font-bold">nutrição</span> para uma indústria que desenha alimentos para viciar.
@@ -351,7 +354,7 @@ export default function ProjetoAutonomo() {
               E terceiriza seu <span className="text-emerald-400 font-bold">conhecimento</span> para algoritmos que escondem o que realmente importa.
             </p>
             <p className="text-stone-600 text-xs leading-relaxed">
-              Cinco camadas. Uma blindagem. A construção metódica da sua <span className="font-semibold text-stone-300">independência física</span>.
+              Seis frentes. Uma blindagem. A construção metódica da sua <span className="font-semibold text-stone-300">independência física</span>.
               <SimboloOculto id="folha" className="ml-2 align-middle" />
             </p>
           </motion.div>
@@ -374,7 +377,7 @@ export default function ProjetoAutonomo() {
           initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1 }}
         >
           <div className="w-px h-20 bg-gradient-to-b from-transparent via-emerald-500/30 to-transparent" />
-          <span className="text-emerald-500/30 text-[9px] font-bold tracking-[0.3em] uppercase [writing-mode:vertical-lr]">5 Fases</span>
+          <span className="text-emerald-500/30 text-[9px] font-bold tracking-[0.3em] uppercase [writing-mode:vertical-lr]">6 Fases</span>
           <div className="w-px h-20 bg-gradient-to-b from-transparent via-emerald-500/30 to-transparent" />
         </motion.div>
       </section>
@@ -399,7 +402,7 @@ export default function ProjetoAutonomo() {
               <span className="text-emerald-500/70 text-[10px] font-bold uppercase tracking-[0.5em]">Progressão Estrutural</span>
             </div>
             <h2 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight text-white leading-[1.05]" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-              Cinco camadas. <br className="hidden md:block" />
+              Seis frentes. <br className="hidden md:block" />
               <span className="bg-gradient-to-r from-emerald-400 via-emerald-300 to-teal-400 bg-clip-text text-transparent">Uma blindagem.</span>
             </h2>
             <p className="mt-8 text-stone-400 text-lg md:text-xl leading-relaxed max-w-2xl">
