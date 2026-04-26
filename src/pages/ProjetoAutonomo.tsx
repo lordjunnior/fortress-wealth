@@ -19,6 +19,7 @@ import tlAutonomia from '@/assets/timeline/fase-autonomia-biologica.jpg';
 import tlAlimentar from '@/assets/timeline/fase-soberania-alimentar.jpg';
 import tlConhecimento from '@/assets/timeline/fase-conhecimento-perdido.jpg';
 import tlMente from '@/assets/timeline/fase-mente-blindada.jpg';
+import imgEngVicio from '@/assets/eva/hero-lab-engenharia.jpg';
 import SimboloOculto from '@/components/SimboloOculto';
 import RiskBlock from '@/components/RiskBlock';
 import { PainelTaticoFisiologico } from '@/components/PainelTaticoFisiologico';
