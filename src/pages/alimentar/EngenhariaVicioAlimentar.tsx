@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import {
   ArrowRight, ChevronDown, Timer, FlaskConical, Brain, Dices,
   Activity, AlertTriangle, Eye, Volume2, Flame, Sparkles, BookOpen,
+  Library, Newspaper, Mic, ScrollText, CheckCircle2, Quote,
 } from 'lucide-react';
 import BackToHome from '@/components/BackToHome';
 import ScrollToTop from '@/components/ScrollToTop';
@@ -21,6 +22,9 @@ import imgCurva from '@/assets/eva/curva-gaussiana.jpg';
 import imgBliss from '@/assets/eva/bliss-point.jpg';
 import imgComidaReal from '@/assets/eva/comida-real-ancestral.jpg';
 import imgColor from '@/assets/eva/colorimetro-cor.jpg';
+import imgBiblioteca from '@/assets/eva/biblioteca-fontes.jpg';
+import imgInvestigacao from '@/assets/eva/investigacao-recorte.jpg';
+import imgEvidencias from '@/assets/eva/evidencias-knolling.jpg';
 
 /**
  * /soberania-organica/engenharia-vicio-alimentar
