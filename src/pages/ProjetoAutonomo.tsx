@@ -1432,6 +1432,71 @@ export default function ProjetoAutonomo() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
+         FASE 07 — COZINHA FUNCIONAL — SUBSTITUI A BIG PHARMA
+      ═══════════════════════════════════════════════════════════ */}
+      <section id="fase-07" className="relative z-10 scroll-mt-20 py-20 md:py-32">
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <img src={imgCozinhaFuncionalHero} alt="" className="absolute inset-0 w-full h-full object-cover opacity-[0.12]" style={{ filter: 'saturate(0.6)' }} />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#050808] via-transparent to-[#050808]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#050808] via-transparent to-[#050808]" />
+        </div>
+        <div className="max-w-7xl mx-auto px-6 md:px-10">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={scaleIn} custom={0}
+            className="relative rounded-3xl overflow-hidden mb-16 md:mb-20 h-72 md:h-[450px]"
+          >
+            <motion.img src={imgCozinhaFuncional} alt="Cozinha Funcional — sobremesa que substitui o Rivotril" className="absolute inset-0 w-full h-full object-cover"
+              whileInView={{ scale: [1.1, 1] }} viewport={{ once: true }} transition={{ duration: 1.5, ease: APPLE_EASE }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#050808] via-black/55 to-black/30" />
+            <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-14">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-8 h-[2px] bg-amber-400 rounded-full" />
+                <span className="text-amber-300 text-[10px] font-bold tracking-[0.5em] uppercase">Fase 07</span>
+              </div>
+              <h2 className="text-4xl md:text-7xl font-black tracking-tight text-white mb-3" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                COZINHA <span className="text-amber-300">FUNCIONAL</span>
+              </h2>
+              <p className="text-stone-300 text-sm md:text-base leading-relaxed max-w-2xl">
+                Receitas com ensaio clínico randomizado por trás de cada ingrediente. A cozinha que devolve à mesa o papel terapêutico que a indústria farmacêutica capturou — sono, cortisol, ansiedade e saciedade resolvidos por bioquímica aplicada.
+              </p>
+            </div>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
+            {[
+              { icon: Moon, label: 'A Sobremesa que Substitui o Rivotril', desc: 'Glicina (3g), Passiflora, camomila e chia hidratada. Quatro ativos, oito estudos primários. 30 a 60 min antes de dormir.', link: '/soberania-organica/cozinha-funcional/sobremesa-substitui-rivotril' },
+              { icon: FlaskConical, label: 'Coleção Cozinha Funcional', desc: 'Hub editorial com todas as receitas funcionais. Cada prato é um protocolo nutricional documentado, sem influencer e sem e-book pago.', link: '/soberania-organica/cozinha-funcional' },
+            ].map((item, i) => (
+              <motion.div key={item.label} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i * 0.15}>
+                <Link to={item.link}
+                  className="group block h-full relative overflow-hidden rounded-xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.05] hover:border-amber-500/25 transition-all duration-500 hover:-translate-y-1 p-6"
+                >
+                  <div className="absolute top-0 left-0 w-full h-[2px] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-700 bg-gradient-to-r from-amber-400 to-transparent" />
+                  <div className="flex items-start gap-4">
+                    <div className="p-2 rounded-lg bg-amber-500/8 border border-amber-500/15 shrink-0 group-hover:scale-110 transition-transform duration-500">
+                      <item.icon size={18} className="text-amber-300/80" />
+                    </div>
+                    <div>
+                      <h4 className="text-sm font-bold text-stone-200 mb-1 group-hover:text-white transition-colors">{item.label}</h4>
+                      <p className="text-stone-600 text-xs leading-relaxed group-hover:text-stone-500 transition-colors">{item.desc}</p>
+                    </div>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}>
+            <Link to="/soberania-organica/cozinha-funcional"
+              className="inline-flex items-center justify-center gap-3 bg-amber-400 text-black px-8 py-4 font-semibold text-sm tracking-wide rounded-xl hover:bg-amber-300 hover:shadow-xl hover:shadow-amber-500/25 hover:scale-[1.02] transition-all duration-500 group"
+            >
+              <Moon size={18} className="group-hover:rotate-12 transition-transform duration-500" /> Abrir hub Cozinha Funcional
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════
          FOOTER — COMPLETELY NEW LAYOUT
       ═══════════════════════════════════════════════════════════ */}
       <section className="relative z-10 border-t border-white/[0.04]">
@@ -1445,6 +1510,7 @@ export default function ProjetoAutonomo() {
               { phase: 'Conhecimento Perdido', accent: '#14b8a6' },
               { phase: 'Tóxicos Ocultos', accent: '#ef4444' },
               { phase: 'Mente Blindada', accent: '#a855f7' },
+              { phase: 'Cozinha Funcional', accent: '#fbbf24' },
             ].map((s) => (
               <div key={s.phase} className="flex items-center gap-2 border border-white/[0.06] bg-white/[0.02] px-4 py-2 rounded-full">
                 <div className="w-2 h-2 rounded-full" style={{ background: s.accent }} />
