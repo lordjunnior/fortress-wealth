@@ -18,7 +18,7 @@ import imgChia from '@/assets/receitas/ativo-chia-hidratada.jpg';
 import imgBiblioteca from '@/assets/receitas/biblioteca-evidencias-sono.jpg';
 
 /**
- * /receitas-funcionais/sobremesa-substitui-rivotril
+ * /soberania-organica/cozinha-funcional/sobremesa-substitui-rivotril
  * Padrão Apple Editorial — paleta NOTURNA (cobalt deep + amber soft).
  * Quarteto do Poder pleno. Híbrido editorial: receita + dossiê 4 ativos + biblioteca.
  */
@@ -170,7 +170,7 @@ export default function SobremesaSubstituiRivotril() {
           name="description"
           content="Receita funcional com 4 ativos validados em ensaio clínico: glicina (3g), Passiflora, camomila e chia. Reduz cortisol, melhora sono e mata craving noturno. Sem tarja preta."
         />
-        <link rel="canonical" href="https://www.lordjunnior.com.br/receitas-funcionais/sobremesa-substitui-rivotril" />
+        <link rel="canonical" href="https://www.lordjunnior.com.br/soberania-organica/cozinha-funcional/sobremesa-substitui-rivotril" />
         <meta property="og:title" content="A Sobremesa que Substitui o Rivotril" />
         <meta property="og:description" content="Glicina, Passiflora, camomila e chia. Quatro ativos. Oito ensaios clínicos. Uma receita." />
         <meta property="og:image" content="https://www.lordjunnior.com.br/og/sobremesa-rivotril.jpg" />
@@ -228,8 +228,8 @@ export default function SobremesaSubstituiRivotril() {
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 pb-16 md:pb-24 w-full">
           <motion.div {...fade(0)} className="mb-6">
-            <Link to="/receitas-funcionais" className="text-stone-400 hover:text-amber-400 text-xs transition-colors" style={mono}>
-              Receitas Funcionais ›
+            <Link to="/soberania-organica/cozinha-funcional" className="text-stone-400 hover:text-amber-400 text-xs transition-colors" style={mono}>
+              Soberania Orgânica › Cozinha Funcional ›
             </Link>
           </motion.div>
 
@@ -588,7 +588,7 @@ export default function SobremesaSubstituiRivotril() {
             <span className="text-amber-400" style={editorial}>Existem outras cinco.</span>
           </motion.h2>
           <motion.p {...fade(0.2)} className="text-stone-400 text-lg leading-relaxed mb-10 max-w-2xl mx-auto">
-            Sono ruim raramente é só falta de calmante. É também solo morto, comida industrial, cortisol crônico e desconhecimento sobre o próprio corpo. A Soberania Orgânica integra as seis frentes.
+            Sono ruim raramente é só falta de calmante. É também solo morto, comida industrial, cortisol crônico e desconhecimento sobre o próprio corpo. A Soberania Orgânica integra as sete frentes.
           </motion.p>
           <motion.div {...fade(0.3)} className="flex flex-wrap justify-center gap-4">
             <Link
@@ -596,11 +596,11 @@ export default function SobremesaSubstituiRivotril() {
               className="inline-flex items-center gap-3 px-8 py-4 bg-amber-500 hover:bg-amber-400 text-black rounded-full transition-all font-bold tracking-wider uppercase text-xs"
               style={mono}
             >
-              Ver as 6 frentes
+              Ver as 7 frentes
               <ArrowRight size={14} />
             </Link>
             <Link
-              to="/receitas-funcionais"
+              to="/soberania-organica/cozinha-funcional"
               className="inline-flex items-center gap-3 px-8 py-4 border border-amber-500/30 hover:border-amber-500/60 hover:bg-amber-500/5 rounded-full transition-all"
             >
               <span className="text-amber-300 text-xs font-bold tracking-wider uppercase" style={mono}>
