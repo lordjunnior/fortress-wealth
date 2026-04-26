@@ -8,6 +8,7 @@ import {
 } from 'lucide-react';
 import BackToHome from '@/components/BackToHome';
 import ScrollToTop from '@/components/ScrollToTop';
+import ChipDustBackground from '@/components/backgrounds/ChipDustBackground';
 
 import imgHero from '@/assets/eva/hero-lab-engenharia.jpg';
 import imgChip from '@/assets/eva/chip-macro-isolado.jpg';
@@ -170,7 +171,9 @@ const EngenhariaVicioAlimentar = () => {
         <BackToHome />
       </div>
 
-      <article className="min-h-screen" style={{ background: BONE, color: ONYX }}>
+      {/* Fundo temático persistente — pó/cristais de tempero industrial */}
+      <ChipDustBackground />
+      <article className="min-h-screen relative z-10" style={{ background: BONE, color: ONYX }}>
         {/* ═══ HERO 92vh ═══ */}
         <section className="relative w-full overflow-hidden" style={{ height: '92vh', minHeight: 720, background: ONYX }}>
           <img
