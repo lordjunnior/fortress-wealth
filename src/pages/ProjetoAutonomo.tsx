@@ -9,6 +9,8 @@ import imgSoberaniaAlimentar from '@/assets/fase03-soberania-alimentar.jpg';
 import imgBase72 from '@/assets/fase01-base72.jpg';
 import imgAutonomiaBiologica from '@/assets/fase02-autonomia-biologica.jpg';
 import imgConhecimentoPerdido from '@/assets/cp-hero-conhecimento.jpg';
+import imgCozinhaFuncional from '@/assets/receitas/hero-sobremesa-rivotril.jpg';
+import imgCozinhaFuncionalHero from '@/assets/receitas/hub-receitas-funcionais-hero.jpg';
 import bgFase01 from '@/assets/bg-fase01-base72.jpg';
 import bgFase02 from '@/assets/bg-fase02-autonomia.jpg';
 import bgFase03 from '@/assets/bg-fase03-alimentar.jpg';
@@ -75,7 +77,6 @@ const ALIMENTAR_LAYERS = [
   { icon: Layers, title: 'Produção em Pequenos Espaços', desc: 'Planejamento correto transforma 4m² em fonte de alimento.', details: 'Consórcio de culturas, rotação de canteiros e aproveitamento de microclimas urbanos.', slug: 'producao-pequenos-espacos' },
   { icon: FlaskConical, title: 'Engenharia do Vício Alimentar', desc: 'Por que você não consegue comer só um. Bliss point, crocância acústica e hand-to-mouth.', details: 'Investigação editorial sobre as quatro alavancas industriais que sequestram seu cérebro nos ultraprocessados.', slug: 'engenharia-vicio-alimentar' },
   { icon: Egg, title: 'Proteína Sustentável', desc: 'Galinhas, codornas, peixes e sistemas compactos de produção animal.', details: 'Aquaponia, galinheiro móvel e criação de tilápia em espaços reduzidos.', slug: 'proteina-sustentavel' },
-  { icon: Moon, title: 'Cozinha Funcional', desc: 'Receitas com ensaio clínico randomizado. Glicina, Passiflora, camomila — a sobremesa que substitui o Rivotril.', details: 'Coleção de protocolos nutricionais para sono, cortisol, ansiedade e saciedade. Bioquímica aplicada na cozinha.', slug: 'receitas-funcionais', externalRoute: '/receitas-funcionais' },
   { icon: Shovel, title: 'Solo e Fertilidade', desc: 'Compostagem, bokashi, húmus de minhoca. Terra viva gera alimento vivo.', details: 'Análise caseira de pH, cobertura morta, adubação verde e rotação de nutrientes.', slug: 'solo-fertilidade' },
   { icon: Flame, title: 'Conservação e Armazenamento', desc: 'Defumação, salga, fermentação, desidratação. Técnicas milenares validadas.', details: 'Compotas, conservas em vinagre, secagem solar e fermentação lactobacilar.', slug: 'conservacao-armazenamento' },
 ];
@@ -131,6 +132,7 @@ const TOC_ITEMS = [
   { id: "fase-04", label: "Fase 04: Conhecimento" },
   { id: "fase-05", label: "Fase 05: Discernimento" },
   { id: "fase-06", label: "Fase 06: Mente Blindada" },
+  { id: "fase-07", label: "Fase 07: Cozinha Funcional" },
 ];
 
 export default function ProjetoAutonomo() {
@@ -196,6 +198,13 @@ export default function ProjetoAutonomo() {
       ],
       fechamento: 'Sem mente livre, nenhuma soberania se sustenta.',
     },
+    {
+      num: '07', title: 'Cozinha Funcional', sub: 'Substitui a big pharma', accent: '#fbbf24',
+      sectionId: 'fase-07', icon: Moon, image: imgCozinhaFuncional, size: 'tall',
+      desc: 'Receitas com ensaio clínico randomizado por trás de cada ingrediente. Glicina para o sono, Passiflora para o cortisol, camomila para a ansiedade. A sobremesa que substitui o Rivotril abre uma coleção que devolve à cozinha o papel terapêutico que a indústria farmacêutica capturou.',
+      tag: 'Bioquímica aplicada',
+      externalRoute: '/soberania-organica/cozinha-funcional',
+    },
   ];
 
   return (
@@ -206,7 +215,7 @@ export default function ProjetoAutonomo() {
 
       <Helmet>
         <title>Soberania Orgânica — Manual da Terra: Curar, Alimentar e Proteger | Lord Junnior</title>
-        <meta name="description" content="Soberania Orgânica: o Manual da Terra definitivo. 6 frentes integradas para decifrar o código da natureza, curar, alimentar e proteger sua linhagem sem cadeias de suprimentos colapsáveis." />
+        <meta name="description" content="Soberania Orgânica: o Manual da Terra definitivo. 7 frentes integradas — incluindo a Cozinha Funcional que substitui a big pharma — para curar, alimentar e proteger sua linhagem sem depender de cadeias colapsáveis." />
         <link rel="canonical" href="https://lordjunnior.com.br/soberania-organica" />
       </Helmet>
 
@@ -348,7 +357,7 @@ export default function ProjetoAutonomo() {
             transition={{ duration: 0.8, delay: 0.6 }}
           >
             <p className="text-stone-300 text-sm md:text-base leading-relaxed mb-3 font-medium">
-              A Soberania Orgânica é o seu <span className="text-emerald-400 font-bold">Manual da Terra definitivo</span>. Um resgate da nossa herança nativa dividido em 6 frentes integradas. Este protocolo ensina você a decifrar o código da natureza para curar, alimentar e proteger sua linhagem sem depender de cadeias de suprimentos colapsáveis.
+              A Soberania Orgânica é o seu <span className="text-emerald-400 font-bold">Manual da Terra definitivo</span>. Um resgate da nossa herança nativa dividido em 7 frentes integradas. Este protocolo ensina você a decifrar o código da natureza para curar, alimentar e proteger sua linhagem sem depender de cadeias de suprimentos colapsáveis.
             </p>
             <p className="text-stone-400 text-sm leading-relaxed mb-2">
               Você terceiriza sua <span className="text-emerald-400 font-bold">nutrição</span> para uma indústria que desenha alimentos para viciar.
@@ -356,7 +365,7 @@ export default function ProjetoAutonomo() {
               E terceiriza seu <span className="text-emerald-400 font-bold">conhecimento</span> para algoritmos que escondem o que realmente importa.
             </p>
             <p className="text-stone-600 text-xs leading-relaxed">
-              Seis frentes. Uma blindagem. A construção metódica da sua <span className="font-semibold text-stone-300">independência física</span>.
+              Sete frentes. Uma blindagem. A construção metódica da sua <span className="font-semibold text-stone-300">independência física</span>.
               <SimboloOculto id="folha" className="ml-2 align-middle" />
             </p>
           </motion.div>
@@ -379,7 +388,7 @@ export default function ProjetoAutonomo() {
           initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1 }}
         >
           <div className="w-px h-20 bg-gradient-to-b from-transparent via-emerald-500/30 to-transparent" />
-          <span className="text-emerald-500/30 text-[9px] font-bold tracking-[0.3em] uppercase [writing-mode:vertical-lr]">6 Fases</span>
+          <span className="text-emerald-500/30 text-[9px] font-bold tracking-[0.3em] uppercase [writing-mode:vertical-lr]">7 Fases</span>
           <div className="w-px h-20 bg-gradient-to-b from-transparent via-emerald-500/30 to-transparent" />
         </motion.div>
       </section>
@@ -404,7 +413,7 @@ export default function ProjetoAutonomo() {
               <span className="text-emerald-500/70 text-[10px] font-bold uppercase tracking-[0.5em]">Progressão Estrutural</span>
             </div>
             <h2 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight text-white leading-[1.05]" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-              Seis frentes. <br className="hidden md:block" />
+              Sete frentes. <br className="hidden md:block" />
               <span className="bg-gradient-to-r from-emerald-400 via-emerald-300 to-teal-400 bg-clip-text text-transparent">Uma blindagem.</span>
             </h2>
             <p className="mt-8 text-stone-400 text-lg md:text-xl leading-relaxed max-w-2xl">
@@ -481,7 +490,9 @@ export default function ProjetoAutonomo() {
                     <button
                       type="button"
                       onClick={() => {
-                        if (phase.num === '04') {
+                        if ((phase as any).externalRoute) {
+                          window.location.href = (phase as any).externalRoute;
+                        } else if (phase.num === '04') {
                           window.location.href = '/soberania-organica/conhecimento-perdido';
                         } else {
                           document.getElementById(phase.sectionId)?.scrollIntoView({ behavior: 'smooth' });
@@ -1421,6 +1432,71 @@ export default function ProjetoAutonomo() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
+         FASE 07 — COZINHA FUNCIONAL — SUBSTITUI A BIG PHARMA
+      ═══════════════════════════════════════════════════════════ */}
+      <section id="fase-07" className="relative z-10 scroll-mt-20 py-20 md:py-32">
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <img src={imgCozinhaFuncionalHero} alt="" className="absolute inset-0 w-full h-full object-cover opacity-[0.12]" style={{ filter: 'saturate(0.6)' }} />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#050808] via-transparent to-[#050808]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#050808] via-transparent to-[#050808]" />
+        </div>
+        <div className="max-w-7xl mx-auto px-6 md:px-10">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={scaleIn} custom={0}
+            className="relative rounded-3xl overflow-hidden mb-16 md:mb-20 h-72 md:h-[450px]"
+          >
+            <motion.img src={imgCozinhaFuncional} alt="Cozinha Funcional — sobremesa que substitui o Rivotril" className="absolute inset-0 w-full h-full object-cover"
+              whileInView={{ scale: [1.1, 1] }} viewport={{ once: true }} transition={{ duration: 1.5, ease: APPLE_EASE }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#050808] via-black/55 to-black/30" />
+            <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-14">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-8 h-[2px] bg-amber-400 rounded-full" />
+                <span className="text-amber-300 text-[10px] font-bold tracking-[0.5em] uppercase">Fase 07</span>
+              </div>
+              <h2 className="text-4xl md:text-7xl font-black tracking-tight text-white mb-3" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                COZINHA <span className="text-amber-300">FUNCIONAL</span>
+              </h2>
+              <p className="text-stone-300 text-sm md:text-base leading-relaxed max-w-2xl">
+                Receitas com ensaio clínico randomizado por trás de cada ingrediente. A cozinha que devolve à mesa o papel terapêutico que a indústria farmacêutica capturou — sono, cortisol, ansiedade e saciedade resolvidos por bioquímica aplicada.
+              </p>
+            </div>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
+            {[
+              { icon: Moon, label: 'A Sobremesa que Substitui o Rivotril', desc: 'Glicina (3g), Passiflora, camomila e chia hidratada. Quatro ativos, oito estudos primários. 30 a 60 min antes de dormir.', link: '/soberania-organica/cozinha-funcional/sobremesa-substitui-rivotril' },
+              { icon: FlaskConical, label: 'Coleção Cozinha Funcional', desc: 'Hub editorial com todas as receitas funcionais. Cada prato é um protocolo nutricional documentado, sem influencer e sem e-book pago.', link: '/soberania-organica/cozinha-funcional' },
+            ].map((item, i) => (
+              <motion.div key={item.label} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i * 0.15}>
+                <Link to={item.link}
+                  className="group block h-full relative overflow-hidden rounded-xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.05] hover:border-amber-500/25 transition-all duration-500 hover:-translate-y-1 p-6"
+                >
+                  <div className="absolute top-0 left-0 w-full h-[2px] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-700 bg-gradient-to-r from-amber-400 to-transparent" />
+                  <div className="flex items-start gap-4">
+                    <div className="p-2 rounded-lg bg-amber-500/8 border border-amber-500/15 shrink-0 group-hover:scale-110 transition-transform duration-500">
+                      <item.icon size={18} className="text-amber-300/80" />
+                    </div>
+                    <div>
+                      <h4 className="text-sm font-bold text-stone-200 mb-1 group-hover:text-white transition-colors">{item.label}</h4>
+                      <p className="text-stone-600 text-xs leading-relaxed group-hover:text-stone-500 transition-colors">{item.desc}</p>
+                    </div>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}>
+            <Link to="/soberania-organica/cozinha-funcional"
+              className="inline-flex items-center justify-center gap-3 bg-amber-400 text-black px-8 py-4 font-semibold text-sm tracking-wide rounded-xl hover:bg-amber-300 hover:shadow-xl hover:shadow-amber-500/25 hover:scale-[1.02] transition-all duration-500 group"
+            >
+              <Moon size={18} className="group-hover:rotate-12 transition-transform duration-500" /> Abrir hub Cozinha Funcional
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════
          FOOTER — COMPLETELY NEW LAYOUT
       ═══════════════════════════════════════════════════════════ */}
       <section className="relative z-10 border-t border-white/[0.04]">
@@ -1434,6 +1510,7 @@ export default function ProjetoAutonomo() {
               { phase: 'Conhecimento Perdido', accent: '#14b8a6' },
               { phase: 'Tóxicos Ocultos', accent: '#ef4444' },
               { phase: 'Mente Blindada', accent: '#a855f7' },
+              { phase: 'Cozinha Funcional', accent: '#fbbf24' },
             ].map((s) => (
               <div key={s.phase} className="flex items-center gap-2 border border-white/[0.06] bg-white/[0.02] px-4 py-2 rounded-full">
                 <div className="w-2 h-2 rounded-full" style={{ background: s.accent }} />

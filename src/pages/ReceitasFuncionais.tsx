@@ -9,8 +9,9 @@ import imgHubHero from '@/assets/receitas/hub-receitas-funcionais-hero.jpg';
 import imgSobremesaRivotril from '@/assets/receitas/hero-sobremesa-rivotril.jpg';
 
 /**
- * /receitas-funcionais
- * Hub de receitas funcionais — primeira de uma série.
+ * /soberania-organica/cozinha-funcional
+ * Hub de Cozinha Funcional — 7ª frente da Soberania Orgânica.
+ * Primeira de uma série de receitas que excluem a indústria farmacêutica.
  * Padrão Apple Editorial. Bento grid expansível.
  * Quarteto do Poder: SEO + PNL + Curiosidade + Autoridade.
  */
@@ -59,22 +60,22 @@ export default function ReceitasFuncionais() {
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white">
       <Helmet>
-        <title>Receitas Funcionais | Cozinha que Devolve Hormônio | Lord Junnior</title>
+        <title>Cozinha Funcional | 7ª Frente — Soberania Orgânica | Lord Junnior</title>
         <meta
           name="description"
-          content="Receitas funcionais com base científica. Cada prato é um protocolo: glicina para sono, Passiflora para cortisol, fibra para saciedade. Cozinha que cura, não que entretém."
+          content="Cozinha Funcional: a 7ª frente da Soberania Orgânica. Receitas com base científica que substituem soluções da indústria farmacêutica. Glicina para sono, Passiflora para cortisol, fibra para saciedade."
         />
-        <link rel="canonical" href="https://www.lordjunnior.com.br/receitas-funcionais" />
-        <meta property="og:title" content="Receitas Funcionais — Cozinha que Devolve Hormônio" />
+        <link rel="canonical" href="https://www.lordjunnior.com.br/soberania-organica/cozinha-funcional" />
+        <meta property="og:title" content="Cozinha Funcional — 7ª Frente da Soberania Orgânica" />
         <meta property="og:description" content="Cada receita é um protocolo nutricional com ensaio clínico. Não é dieta. É bioquímica aplicada na cozinha." />
-        <meta property="og:image" content="https://www.lordjunnior.com.br/og/receitas-funcionais.jpg" />
+        <meta property="og:image" content="https://www.lordjunnior.com.br/og/cozinha-funcional.jpg" />
         <script type="application/ld+json">
           {JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'CollectionPage',
-            name: 'Receitas Funcionais',
-            description: 'Coleção de receitas funcionais com base em ensaios clínicos randomizados.',
-            url: 'https://www.lordjunnior.com.br/receitas-funcionais',
+            name: 'Cozinha Funcional — Soberania Orgânica',
+            description: 'Coleção de receitas funcionais com base em ensaios clínicos randomizados. 7ª frente da Soberania Orgânica.',
+            url: 'https://www.lordjunnior.com.br/soberania-organica/cozinha-funcional',
             isPartOf: {
               '@type': 'WebSite',
               name: 'Lord Junnior',
@@ -165,7 +166,7 @@ export default function ReceitasFuncionais() {
             {RECEITAS.map((r, i) => (
               <motion.div key={r.slug} {...fade(i * 0.1)} className={i === 0 ? 'md:col-span-2 lg:col-span-2' : ''}>
                 <Link
-                  to={`/receitas-funcionais/${r.slug}`}
+                  to={`/soberania-organica/cozinha-funcional/${r.slug}`}
                   className="group block h-full relative overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.02] hover:bg-white/[0.04] hover:border-amber-500/30 transition-all duration-700 ease-apple"
                 >
                   <div className={`relative ${i === 0 ? 'h-72 md:h-[440px]' : 'h-64'} overflow-hidden`}>

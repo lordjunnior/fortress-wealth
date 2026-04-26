@@ -343,8 +343,12 @@ const App = () => (
             <Route path="/soberania-organica/aquaponia-residencial" element={<AquaponiaResidencial />} />
             <Route path="/soberania-organica/preservacao-ancestral" element={<PreservacaoAncestral />} />
             <Route path="/soberania-organica/engenharia-vicio-alimentar" element={<EngenhariaVicioAlimentar />} />
-            <Route path="/receitas-funcionais" element={<ReceitasFuncionais />} />
-            <Route path="/receitas-funcionais/sobremesa-substitui-rivotril" element={<SobremesaSubstituiRivotril />} />
+            {/* Cozinha Funcional — 7ª frente da Soberania Orgânica */}
+            <Route path="/soberania-organica/cozinha-funcional" element={<ReceitasFuncionais />} />
+            <Route path="/soberania-organica/cozinha-funcional/sobremesa-substitui-rivotril" element={<SobremesaSubstituiRivotril />} />
+            {/* Redirects das URLs antigas (preserva SEO e bookmarks) */}
+            <Route path="/receitas-funcionais" element={<LegacyRedirect to="/soberania-organica/cozinha-funcional" />} />
+            <Route path="/receitas-funcionais/sobremesa-substitui-rivotril" element={<LegacyRedirect to="/soberania-organica/cozinha-funcional/sobremesa-substitui-rivotril" />} />
             <Route path="/soberania-organica/gestao-agua-micro" element={<GestaoAguaMicro />} />
             <Route path="/soberania-organica/primeiros-socorros-taticos" element={<PrimeirosSocorrosTaticos />} />
             <Route path="/soberania-organica/edc" element={<EDC />} />
