@@ -57,11 +57,11 @@ const INGREDIENTES = [
 
 const PREPARO = [
   { n: '01', titulo: 'Selecione e lave as folhas', desc: 'Lave bem as folhas de boldo, guaco e aroeira em água corrente. Seque levemente em pano limpo. Se possível, colha de manhã cedo, antes do sol forte (concentração maior de princípios ativos).' },
-  { n: '02', titulo: 'Monte na garrafa de vidro', desc: 'Use uma garrafa de vidro escura ou âmbar de pelo menos 700 ml. Coloque todas as folhas dentro, sem amassar. Acrescente o mel ou rapadura, se for usar.' },
-  { n: '03', titulo: 'Adicione o líquido', desc: 'Despeje os 500 ml de cachaça (versão tradicional) ou água filtrada fervida e já fria (versão sem álcool). Cubra todas as folhas. Tampe bem.' },
-  { n: '04', titulo: 'Macere no escuro', desc: 'Guarde em local fresco, escuro e seco por 7 a 10 dias. Agite a garrafa uma vez por dia, suavemente, para distribuir os ativos. A versão em água precisa de geladeira e pode durar no máximo 5 a 7 dias.' },
-  { n: '05', titulo: 'Coe e armazene', desc: 'Após o período, coe com pano limpo ou coador de papel e descarte as folhas. Transfira para outra garrafa de vidro escura, com tampa hermética. Rotule com data.' },
-  { n: '06', titulo: 'Tome com critério', desc: 'Versão tradicional: 1 colher de sopa diluída em meio copo de água, 2x ao dia, após o almoço e o jantar. Versão em água: 50 a 80 ml, 2x ao dia. Máximo de 15 dias seguidos. Pausa obrigatória de 15 dias antes de repetir.' },
+  { n: '02', titulo: 'Faça a infusão abafada', desc: 'Ferva 500 ml de água filtrada. Desligue o fogo, acrescente todas as folhas de uma vez, tampe a panela e deixe em infusão abafada por 15 a 20 minutos. Não ferva as folhas — o calor direto destrói os ativos voláteis (cumarina do guaco, óleos do boldo).' },
+  { n: '03', titulo: 'Coe e adoce ainda morno', desc: 'Coe com pano limpo ou coador de papel descartando as folhas. Ainda morno (não quente), dissolva 2 a 3 colheres de sopa de mel cru ou rapadura. O mel cru atua como conservante natural e potencializa a ação expectorante do guaco.' },
+  { n: '04', titulo: 'Envase em vidro âmbar', desc: 'Transfira para garrafa de vidro âmbar (ou escura) esterilizada, com tampa hermética. Rotule com data de preparo. Mantenha sempre na geladeira.' },
+  { n: '05', titulo: 'Validade curta, lote pequeno', desc: 'Por ser sem álcool, dura de 7 a 10 dias na geladeira. Faça em lote pequeno, mais vezes — fica mais fresco e ativo. Se notar mudança de cheiro, cor turva ou sabor azedo, descarte.' },
+  { n: '06', titulo: 'Tome com critério', desc: 'Adulto: 1 colher de sopa (15 ml) puro ou diluído em pouca água, 2 a 3 vezes ao dia, após as refeições. Crianças acima de 5 anos (com aval pediátrico): 1 colher de chá, 2x ao dia. Máximo de 15 dias seguidos. Pausa de 15 dias antes de repetir.' },
 ];
 
 const ATIVOS = [
