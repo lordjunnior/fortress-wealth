@@ -472,7 +472,7 @@ export default function GarrafadaDigestivaAncestral() {
                 <h3 className="text-2xl md:text-3xl mb-6 font-semibold" style={{ ...display, color: C.sage }}>O que fazer</h3>
                 <ul className="space-y-4 text-lg leading-relaxed font-light" style={{ color: C.inkSoft }}>
                   <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span> Tomar 2x ao dia, após almoço e jantar</li>
-                  <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span> Versão cachaça: sempre diluída em meio copo de água</li>
+                  <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span> Sempre coar bem e guardar na geladeira em vidro escuro</li>
                   <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span> Manter por 7 a 15 dias no máximo</li>
                   <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span> Pausa obrigatória de 15 dias antes de repetir</li>
                   <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span> Anotar como digestão, peso pós-refeição e disposição respondem</li>
