@@ -93,7 +93,6 @@ const PILARES = [
 ];
 
 const FAQ = [
-const FAQ = [
   { q: 'O que é Cozinha Funcional dentro da Soberania Orgânica?',
     a: 'É a 7ª frente. Aqui resgatamos o conhecimento ancestral da natureza brasileira (indígena, popular, quilombola) para cuidar da saúde com plantas, chás, garrafadas, gelatinas e fórmulas que nossos avós e povos originários já usavam, agora cruzados com evidência científica e com a Política Nacional de Plantas Medicinais e Fitoterápicos do SUS (RENISUS, Farmácias Vivas, desde 2006).' },
   { q: 'É medicina alternativa, esotérica ou anticientífica?',
