@@ -178,7 +178,7 @@ export default function ProjetoAutonomo() {
     },
     {
       num: '06', title: 'Mente Blindada', sub: 'Protege a soberania cognitiva', accent: '#a855f7',
-      sectionId: 'fase-06', icon: Brain, image: tlMente, size: 'pico',
+      sectionId: 'fase-06', icon: Brain, image: tlMente, size: 'tall',
       desc: 'Se a mente é manipulável, nenhuma autonomia é real. Você pode ter alimento, saúde e conhecimento, mas se sua percepção for controlada, tudo desmorona.',
       tag: 'Defesa cognitiva',
       hook: 'Defesa cognitiva não é sobre informação. É sobre interpretação.',
