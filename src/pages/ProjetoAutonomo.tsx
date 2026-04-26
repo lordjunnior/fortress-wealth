@@ -551,6 +551,11 @@ export default function ProjetoAutonomo() {
                             Pico da Jornada
                           </div>
                         )}
+                        {isEpilogue && (
+                          <div className="absolute bottom-6 right-6 px-4 py-2 rounded-full backdrop-blur-md border border-amber-300/40 bg-amber-500/15 text-amber-200 text-[10px] font-bold tracking-[0.3em] uppercase">
+                            Resolução Prática
+                          </div>
+                        )}
                       </div>
 
                       {/* Text block */}
