@@ -11,6 +11,7 @@ import ScrollToTop from '@/components/ScrollToTop';
 
 import imgHubHero from '@/assets/receitas/hub-cozinha-funcional-light.jpg';
 import imgSobremesa from '@/assets/receitas/hero-sobremesa-light.jpg';
+import imgGelatinaAntipara from '@/assets/receitas/hero-gelatina-antiparasitaria-light.jpg';
 
 /**
  * /soberania-organica/cozinha-funcional
@@ -56,6 +57,18 @@ const RECEITAS = [
     estudos: '8 estudos primários',
     disponivel: true,
     alt: 'Quatro potinhos de gelatina de maracujá com camada de chia hidratada decorados com flores de camomila e folhas de melissa sobre toalha de linho cor creme',
+  },
+  {
+    slug: 'gelatina-antiparasitaria',
+    titulo: 'A Gelatina que Expulsa os Parasitas',
+    pretitulo: 'Intestino · Vermífugo natural',
+    resumo: 'Sementes de mamão, sementes de abóbora e chá de cravo em formato palatável. Carpaína e cucurbitacina com evidência clínica contra Ascaris e Strongyloides. Ciclo de 7 a 10 dias.',
+    img: imgGelatinaAntipara,
+    tempo: '20 min de preparo',
+    porcoes: '8 a 10 doses',
+    estudos: '7 estudos primários',
+    disponivel: true,
+    alt: 'Pote de vidro com gelatina translúcida cor âmbar contendo sementes de mamão e abóbora visíveis ao lado de cravos da índia espalhados e xícara de chá quente sobre toalha de linho creme',
   },
 ];
 
@@ -272,11 +285,11 @@ export default function ReceitasFuncionais() {
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
               {RECEITAS.map((r, i) => (
-                <motion.article key={r.slug} {...fade(i * 0.1)} className="lg:col-span-8">
+                <motion.article key={r.slug} {...fade(i * 0.1)} className="lg:col-span-6">
                   <Link to={`/soberania-organica/cozinha-funcional/${r.slug}`}
                     className="group block h-full rounded-3xl overflow-hidden transition-all duration-700"
                     style={{ backgroundColor: C.sand, border: `1px solid ${C.borderLight}` }}>
-                    <div className="relative h-[360px] md:h-[480px] overflow-hidden">
+                    <div className="relative h-[320px] md:h-[420px] overflow-hidden">
                       <img src={r.img} alt={r.alt} loading="lazy" width={1920} height={1080}
                         className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105" />
                       <div className="absolute top-6 left-6 flex items-center gap-3">
@@ -286,11 +299,11 @@ export default function ReceitasFuncionais() {
                         </span>
                       </div>
                     </div>
-                    <div className="p-8 md:p-12">
-                      <h3 className="text-3xl md:text-5xl mb-6 leading-[1.05]" style={{ ...display, color: C.sage }}>
+                    <div className="p-8 md:p-10">
+                      <h3 className="text-3xl md:text-4xl mb-5 leading-[1.05]" style={{ ...display, color: C.sage }}>
                         {r.titulo}
                       </h3>
-                      <p className="text-lg md:text-xl leading-relaxed font-light mb-8" style={{ color: C.inkSoft }}>
+                      <p className="text-base md:text-lg leading-relaxed font-light mb-7" style={{ color: C.inkSoft }}>
                         {r.resumo}
                       </p>
                       <div className="flex flex-wrap gap-x-8 gap-y-3 mb-8 pb-8 border-b" style={{ borderColor: C.borderLight }}>
@@ -314,14 +327,16 @@ export default function ReceitasFuncionais() {
               ))}
 
               {/* Slot reservado */}
-              <motion.div {...fade(0.2)} className="lg:col-span-4">
-                <div className="h-full min-h-[400px] rounded-3xl flex flex-col items-center justify-center p-10 text-center"
+              <motion.div {...fade(0.2)} className="lg:col-span-12">
+                <div className="h-full min-h-[180px] rounded-3xl flex flex-col md:flex-row items-center justify-center gap-6 p-10 text-center md:text-left"
                   style={{ backgroundColor: C.sandDeep, border: `2px dashed ${C.borderLight}` }}>
-                  <FlaskConical size={36} className="mb-6" style={{ color: C.terracotta }} />
-                  <p className="text-xs font-bold mb-3" style={{ ...monoStyle, color: C.terracotta }}>Em desenvolvimento</p>
-                  <p className="text-base leading-relaxed max-w-xs" style={{ ...editorial, color: C.inkSoft }}>
-                    Próximo protocolo em validação. A coleção cresce devagar para entregar profundo.
-                  </p>
+                  <FlaskConical size={32} style={{ color: C.terracotta }} />
+                  <div>
+                    <p className="text-xs font-bold mb-2" style={{ ...monoStyle, color: C.terracotta }}>Próximo protocolo</p>
+                    <p className="text-base md:text-lg leading-relaxed max-w-2xl" style={{ ...editorial, color: C.inkSoft }}>
+                      Em validação clínica. A coleção cresce devagar para entregar profundo.
+                    </p>
+                  </div>
                 </div>
               </motion.div>
             </div>

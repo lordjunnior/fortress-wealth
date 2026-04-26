@@ -150,6 +150,7 @@ import EngenhariaVicioAlimentar from "./pages/alimentar/EngenhariaVicioAlimentar
 import GestaoAguaMicro from "./pages/alimentar/GestaoAguaMicro";
 import ReceitasFuncionais from "./pages/ReceitasFuncionais";
 import SobremesaSubstituiRivotril from "./pages/receitas/SobremesaSubstituiRivotril";
+import GelatinaAntiparasitaria from "./pages/receitas/GelatinaAntiparasitaria";
 import SeedPhraseAco from "./pages/autocustodia/SeedPhraseAco";
 import CoinjoinPrivacidade from "./pages/autocustodia/CoinjoinPrivacidade";
 import HerancaBitcoin from "./pages/autocustodia/HerancaBitcoin";
@@ -346,9 +347,11 @@ const App = () => (
             {/* Cozinha Funcional — 7ª frente da Soberania Orgânica */}
             <Route path="/soberania-organica/cozinha-funcional" element={<ReceitasFuncionais />} />
             <Route path="/soberania-organica/cozinha-funcional/sobremesa-substitui-rivotril" element={<SobremesaSubstituiRivotril />} />
+            <Route path="/soberania-organica/cozinha-funcional/gelatina-antiparasitaria" element={<GelatinaAntiparasitaria />} />
             {/* Redirects das URLs antigas (preserva SEO e bookmarks) */}
             <Route path="/receitas-funcionais" element={<LegacyRedirect to="/soberania-organica/cozinha-funcional" />} />
             <Route path="/receitas-funcionais/sobremesa-substitui-rivotril" element={<LegacyRedirect to="/soberania-organica/cozinha-funcional/sobremesa-substitui-rivotril" />} />
+            <Route path="/receitas-funcionais/gelatina-antiparasitaria" element={<LegacyRedirect to="/soberania-organica/cozinha-funcional/gelatina-antiparasitaria" />} />
             <Route path="/soberania-organica/gestao-agua-micro" element={<GestaoAguaMicro />} />
             <Route path="/soberania-organica/primeiros-socorros-taticos" element={<PrimeirosSocorrosTaticos />} />
             <Route path="/soberania-organica/edc" element={<EDC />} />
