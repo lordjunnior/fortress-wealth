@@ -1054,20 +1054,66 @@ export default function ProjetoAutonomo() {
             {ALIMENTAR_LAYERS.slice(2).map((layer, i) => (
               <motion.div key={layer.title} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={(i + 2) * 0.2}>
                 <Link to={`/soberania-organica/${layer.slug}`}
-                  className="group block h-full relative overflow-hidden rounded-xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.05] hover:border-amber-500/15 transition-all duration-500 hover:-translate-y-1 p-5"
+                  className={`group block h-full relative overflow-hidden rounded-xl border transition-all duration-500 hover:-translate-y-1 ${
+                    i === 0
+                      ? 'border-amber-500/20 bg-amber-500/[0.03] hover:bg-amber-500/[0.06] hover:border-amber-500/30 p-7'
+                      : 'border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.05] hover:border-amber-500/15 p-5'
+                  }`}
                 >
-                  <div className="flex items-start gap-4">
+                  {i === 0 && (
+                    <span className="absolute top-3 right-3 text-[9px] font-bold uppercase tracking-[0.2em] text-amber-400/70 px-2 py-1 rounded border border-amber-500/25 bg-amber-500/5">
+                      Investigação
+                    </span>
+                  )}
+                  <div className={`flex items-start ${i === 0 ? 'gap-5' : 'gap-4'}`}>
                     <div className="flex items-center gap-2 shrink-0">
-                      <span className="text-lg font-black text-stone-700 tabular-nums" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>0{i + 3}</span>
-                      <div className="p-2 rounded-lg bg-amber-500/8 border border-amber-500/10 group-hover:scale-110 transition-transform duration-500">
-                        <layer.icon size={16} className="text-amber-400/70" />
+                      <span
+                        className={`font-black tabular-nums ${i === 0 ? 'text-2xl text-amber-400/60' : 'text-lg text-stone-700'}`}
+                        style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+                      >
+                        0{i + 3}
+                      </span>
+                      <div
+                        className={`rounded-lg border group-hover:scale-110 transition-transform duration-500 ${
+                          i === 0
+                            ? 'p-3 bg-amber-500/15 border-amber-500/25'
+                            : 'p-2 bg-amber-500/8 border-amber-500/10'
+                        }`}
+                      >
+                        <layer.icon size={i === 0 ? 22 : 16} className={i === 0 ? 'text-amber-400' : 'text-amber-400/70'} />
                       </div>
                     </div>
-                    <div>
-                      <h4 className="text-sm font-bold text-stone-300 mb-1 group-hover:text-white transition-colors">{layer.title}</h4>
-                      <p className="text-stone-600 text-xs leading-relaxed group-hover:text-stone-500 transition-colors">{layer.details}</p>
+                    <div className="flex-1">
+                      <h4
+                        className={`font-bold tracking-tight mb-2 group-hover:text-white transition-colors ${
+                          i === 0 ? 'text-lg md:text-xl text-stone-100' : 'text-sm text-stone-300'
+                        }`}
+                      >
+                        {layer.title}
+                      </h4>
+                      {i === 0 && (
+                        <p className="text-amber-400/60 text-[10px] font-semibold uppercase tracking-wider mb-3">
+                          {layer.desc}
+                        </p>
+                      )}
+                      <p
+                        className={`leading-relaxed group-hover:text-stone-400 transition-colors ${
+                          i === 0 ? 'text-stone-400 text-sm' : 'text-stone-600 text-xs'
+                        }`}
+                      >
+                        {layer.details}
+                      </p>
+                      {i === 0 && (
+                        <div className="flex items-center gap-2 mt-4 text-amber-400/60 group-hover:text-amber-400 transition-colors">
+                          <span className="text-[10px] font-bold uppercase tracking-wider">Abrir dossiê</span>
+                          <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
+                        </div>
+                      )}
                     </div>
                   </div>
+                  {i === 0 && (
+                    <div className="absolute top-0 left-0 w-full h-[2px] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-700 bg-gradient-to-r from-amber-500 to-transparent" />
+                  )}
                 </Link>
               </motion.div>
             ))}
