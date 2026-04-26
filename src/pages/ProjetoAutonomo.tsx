@@ -9,7 +9,7 @@ import imgSoberaniaAlimentar from '@/assets/fase03-soberania-alimentar.jpg';
 import imgBase72 from '@/assets/fase01-base72.jpg';
 import imgAutonomiaBiologica from '@/assets/fase02-autonomia-biologica.jpg';
 import imgConhecimentoPerdido from '@/assets/cp-hero-conhecimento.jpg';
-import imgCozinhaFuncional from '@/assets/receitas/hero-sobremesa-rivotril.jpg';
+import imgCozinhaFuncional from '@/assets/receitas/hub-cozinha-funcional-vs-pharma.jpg';
 import imgCozinhaFuncionalHero from '@/assets/receitas/hub-receitas-funcionais-hero.jpg';
 import bgFase01 from '@/assets/bg-fase01-base72.jpg';
 import bgFase02 from '@/assets/bg-fase02-autonomia.jpg';
@@ -178,7 +178,7 @@ export default function ProjetoAutonomo() {
     },
     {
       num: '06', title: 'Mente Blindada', sub: 'Protege a soberania cognitiva', accent: '#a855f7',
-      sectionId: 'fase-06', icon: Brain, image: tlMente, size: 'pico',
+      sectionId: 'fase-06', icon: Brain, image: tlMente, size: 'tall',
       desc: 'Se a mente é manipulável, nenhuma autonomia é real. Você pode ter alimento, saúde e conhecimento, mas se sua percepção for controlada, tudo desmorona.',
       tag: 'Defesa cognitiva',
       hook: 'Defesa cognitiva não é sobre informação. É sobre interpretação.',
