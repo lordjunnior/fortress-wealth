@@ -694,6 +694,19 @@ export const SEO_DATA: Record<string, SeoPageData> = {
     clusterParent: '/soberania-organica',
     relatedPages: ['/soberania-organica/autonomia-biologica', '/soberania-organica/horta-urbana'],
   },
+  '/soberania-organica/engenharia-vicio-alimentar': {
+    title: 'Por Que Você Não Consegue Comer Só Um: A Engenharia do Vício',
+    description: 'Investigação editorial sobre engenharia alimentar: colorimetria, bliss point, crocância acústica e variabilidade randomizada nos ultraprocessados.',
+    canonical: `${BASE}/soberania-organica/engenharia-vicio-alimentar`,
+    primaryKeyword: 'engenharia do vício alimentar',
+    lsiKeywords: ['ultraprocessados vício', 'bliss point', 'hand to mouth', 'doritos engenharia', 'comida industrial', 'food engineering', 'vanishing caloric density', 'dopamina alimentar', 'robb wolf', 'mark schatzker', 'howard moskowitz'],
+    longTailKeywords: ['por que não consigo parar de comer salgadinho', 'como ultraprocessados viciam o cérebro', 'engenharia alimentar industrial bliss point', 'doritos roleta distribuição estatística vício'],
+    breadcrumbs: [{ name: 'Início', url: '/' }, { name: 'Soberania Orgânica', url: '/soberania-organica' }, { name: 'Alimentar & Cultivo', url: '/soberania-organica' }, { name: 'Engenharia do Vício Alimentar', url: '/soberania-organica/engenharia-vicio-alimentar' }],
+    schemaType: 'Article',
+    articleSection: 'Soberania Orgânica',
+    clusterParent: '/soberania-organica',
+    relatedPages: ['/soberania-organica/preservacao-ancestral', '/soberania-organica/toxicos-ocultos/toxinas-alimentares', '/soberania-organica/horta-urbana'],
+  },
 
   // ═══════════════════════════════════════════════════════
   // PAGES AVULSAS / EDUCAÇÃO / FERRAMENTAS
