@@ -206,11 +206,11 @@ export default function GarrafadaDigestivaAncestral() {
   return (
     <>
       <Helmet>
-        <title>Garrafada Ancestral de Boldo, Guaco e Aroeira | Lord Junnior</title>
-        <meta name="description" content="Receita ancestral indígena e popular brasileira para fígado, digestão e imunidade. Plantas listadas na RENISUS e dispensadas pelas Farmácias Vivas do SUS. Versão tradicional e sem álcool." />
+        <title>Lambedor Ancestral de Boldo, Guaco e Aroeira (sem álcool) | Lord Junnior</title>
+        <meta name="description" content="Receita ancestral indígena e popular brasileira sem álcool, com mel cru, para fígado, digestão, tosse e imunidade. Plantas listadas na RENISUS e dispensadas pelas Farmácias Vivas do SUS." />
         <link rel="canonical" href="https://www.lordjunnior.com.br/soberania-organica/cozinha-funcional/garrafada-digestiva-ancestral" />
-        <meta property="og:title" content="A Garrafada do Interior Brasileiro" />
-        <meta property="og:description" content="Boldo, guaco e aroeira: três plantas RENISUS na fórmula que vovó já fazia. Tradição com PubMed do lado." />
+        <meta property="og:title" content="O Lambedor Ancestral de Boldo, Guaco e Aroeira (sem álcool)" />
+        <meta property="og:description" content="Boldo, guaco e aroeira em infusão com mel cru. Três plantas RENISUS, zero álcool, fórmula segura para a família." />
         <meta property="og:image" content="https://www.lordjunnior.com.br/og/garrafada-ancestral.jpg" />
         <meta property="og:type" content="article" />
         <meta property="og:locale" content="pt_BR" />
@@ -220,14 +220,14 @@ export default function GarrafadaDigestivaAncestral() {
           {JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'Recipe',
-            name: 'Garrafada Digestiva e Imunológica Ancestral (Boldo + Guaco + Aroeira)',
+            name: 'Lambedor Ancestral de Boldo, Guaco e Aroeira (sem álcool, com mel cru)',
             author: { '@type': 'Person', name: 'Lord Junnior' },
-            description: 'Receita ancestral brasileira de garrafada com boldo, guaco e aroeira, em duas versões (tradicional com cachaça e sem álcool com água), baseada em saber indígena e popular e validada pela RENISUS.',
-            recipeYield: '1 garrafa de 500 ml · uso de 1 semana',
-            prepTime: 'PT15M', cookTime: 'PT0M', totalTime: 'P7D',
-            recipeCategory: 'Fitoterápico ancestral',
+            description: 'Receita ancestral brasileira em infusão sem álcool com mel cru, em duas versões (uso digestivo diário e lambedor concentrado para tosse), baseada em saber indígena e popular e validada pela RENISUS.',
+            recipeYield: '1 garrafa de 500 ml · 7 a 10 dias',
+            prepTime: 'PT15M', cookTime: 'PT20M', totalTime: 'PT35M',
+            recipeCategory: 'Fitoterápico ancestral sem álcool',
             recipeCuisine: 'Indígena e popular brasileira',
-            keywords: 'garrafada, boldo, guaco, aroeira, RENISUS, Farmácia Viva, fitoterapia brasileira, medicina indígena',
+            keywords: 'lambedor, boldo, guaco, aroeira, sem álcool, mel cru, RENISUS, Farmácia Viva, fitoterapia brasileira, medicina indígena',
             recipeIngredient: INGREDIENTES.map((i) => `${i.qtd} ${i.nome}`),
             recipeInstructions: PREPARO.map((p) => ({ '@type': 'HowToStep', name: p.titulo, text: p.desc })),
           })}
