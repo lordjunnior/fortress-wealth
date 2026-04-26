@@ -141,8 +141,9 @@ function Hero() {
           fetchPriority="high" className="w-full h-full object-cover scale-110"
           style={{ filter: 'saturate(1.05) contrast(1.02)' }} />
         <div className="absolute inset-0" style={{
-          background: `linear-gradient(180deg, rgba(61,74,54,0.5) 0%, rgba(61,74,54,0.28) 35%, rgba(250,246,240,0.05) 70%, ${C.cream} 100%)`,
+          background: `linear-gradient(180deg, rgba(28,38,24,0.35) 0%, rgba(28,38,24,0.45) 45%, rgba(28,38,24,0.78) 78%, rgba(20,28,18,0.92) 100%)`,
         }} />
+        <div className="absolute inset-x-0 bottom-0 h-2 pointer-events-none" style={{ background: C.cream }} />
       </motion.div>
 
       <motion.div className="relative z-10 h-full flex flex-col justify-end px-6 md:px-12 lg:px-20 pb-20 md:pb-28" style={{ opacity: opacityContent }}>
