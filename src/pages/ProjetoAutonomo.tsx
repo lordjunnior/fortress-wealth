@@ -2,7 +2,7 @@ import PageFloatingToc from "@/components/PageFloatingToc";
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { ArrowLeft, ArrowRight, Shield, Clock, Leaf, Wheat, AlertTriangle, Heart, Sprout, Package, Flame, Droplets, Wind, Sun, Tent, Siren, Cross, Egg, TreePine, Layers, Thermometer, Bug, Shovel, BookOpen, ChevronDown, Activity, Brain, Zap, Pill, Wind as WindIcon, ChevronRight, Eye, Target, Compass, FlaskConical } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Shield, Clock, Leaf, Wheat, AlertTriangle, Heart, Sprout, Package, Flame, Droplets, Wind, Sun, Tent, Siren, Cross, Egg, TreePine, Layers, Thermometer, Bug, Shovel, BookOpen, ChevronDown, Activity, Brain, Zap, Pill, Wind as WindIcon, ChevronRight, Eye, Target, Compass, FlaskConical, Moon } from 'lucide-react';
 import { motion, useScroll, useTransform, useMotionValue, useSpring, AnimatePresence } from 'framer-motion';
 
 import imgSoberaniaAlimentar from '@/assets/fase03-soberania-alimentar.jpg';
@@ -75,6 +75,7 @@ const ALIMENTAR_LAYERS = [
   { icon: Layers, title: 'Produção em Pequenos Espaços', desc: 'Planejamento correto transforma 4m² em fonte de alimento.', details: 'Consórcio de culturas, rotação de canteiros e aproveitamento de microclimas urbanos.', slug: 'producao-pequenos-espacos' },
   { icon: FlaskConical, title: 'Engenharia do Vício Alimentar', desc: 'Por que você não consegue comer só um. Bliss point, crocância acústica e hand-to-mouth.', details: 'Investigação editorial sobre as quatro alavancas industriais que sequestram seu cérebro nos ultraprocessados.', slug: 'engenharia-vicio-alimentar' },
   { icon: Egg, title: 'Proteína Sustentável', desc: 'Galinhas, codornas, peixes e sistemas compactos de produção animal.', details: 'Aquaponia, galinheiro móvel e criação de tilápia em espaços reduzidos.', slug: 'proteina-sustentavel' },
+  { icon: Moon, title: 'Cozinha Funcional', desc: 'Receitas com ensaio clínico randomizado. Glicina, Passiflora, camomila — a sobremesa que substitui o Rivotril.', details: 'Coleção de protocolos nutricionais para sono, cortisol, ansiedade e saciedade. Bioquímica aplicada na cozinha.', slug: 'receitas-funcionais', externalRoute: '/receitas-funcionais' },
   { icon: Shovel, title: 'Solo e Fertilidade', desc: 'Compostagem, bokashi, húmus de minhoca. Terra viva gera alimento vivo.', details: 'Análise caseira de pH, cobertura morta, adubação verde e rotação de nutrientes.', slug: 'solo-fertilidade' },
   { icon: Flame, title: 'Conservação e Armazenamento', desc: 'Defumação, salga, fermentação, desidratação. Técnicas milenares validadas.', details: 'Compotas, conservas em vinagre, secagem solar e fermentação lactobacilar.', slug: 'conservacao-armazenamento' },
 ];
@@ -1020,7 +1021,7 @@ export default function ProjetoAutonomo() {
               <motion.div key={layer.title} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={i * 0.3}
                 className={i === 0 ? 'lg:row-span-2' : ''}
               >
-                <Link to={`/soberania-organica/${layer.slug}`}
+                <Link to={(layer as any).externalRoute ?? `/soberania-organica/${layer.slug}`}
                   className={`group block h-full relative overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.05] hover:border-amber-500/20 transition-all duration-500 hover:-translate-y-1 ${i === 0 ? 'p-8 md:p-10' : 'p-6 md:p-8'}`}
                 >
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
@@ -1053,7 +1054,7 @@ export default function ProjetoAutonomo() {
             {/* Compact cards — remaining 3 */}
             {ALIMENTAR_LAYERS.slice(2).map((layer, i) => (
               <motion.div key={layer.title} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={(i + 2) * 0.2}>
-                <Link to={`/soberania-organica/${layer.slug}`}
+                <Link to={(layer as any).externalRoute ?? `/soberania-organica/${layer.slug}`}
                   className={`group block h-full relative overflow-hidden rounded-xl border transition-all duration-500 hover:-translate-y-1 ${
                     i === 0
                       ? 'border-amber-500/20 bg-amber-500/[0.03] hover:bg-amber-500/[0.06] hover:border-amber-500/30 p-7'

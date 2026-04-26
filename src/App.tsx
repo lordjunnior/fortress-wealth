@@ -148,6 +148,8 @@ import AquaponiaResidencial from "./pages/alimentar/AquaponiaResidencial";
 import PreservacaoAncestral from "./pages/alimentar/PreservacaoAncestral";
 import EngenhariaVicioAlimentar from "./pages/alimentar/EngenhariaVicioAlimentar";
 import GestaoAguaMicro from "./pages/alimentar/GestaoAguaMicro";
+import ReceitasFuncionais from "./pages/ReceitasFuncionais";
+import SobremesaSubstituiRivotril from "./pages/receitas/SobremesaSubstituiRivotril";
 import SeedPhraseAco from "./pages/autocustodia/SeedPhraseAco";
 import CoinjoinPrivacidade from "./pages/autocustodia/CoinjoinPrivacidade";
 import HerancaBitcoin from "./pages/autocustodia/HerancaBitcoin";
@@ -341,6 +343,8 @@ const App = () => (
             <Route path="/soberania-organica/aquaponia-residencial" element={<AquaponiaResidencial />} />
             <Route path="/soberania-organica/preservacao-ancestral" element={<PreservacaoAncestral />} />
             <Route path="/soberania-organica/engenharia-vicio-alimentar" element={<EngenhariaVicioAlimentar />} />
+            <Route path="/receitas-funcionais" element={<ReceitasFuncionais />} />
+            <Route path="/receitas-funcionais/sobremesa-substitui-rivotril" element={<SobremesaSubstituiRivotril />} />
             <Route path="/soberania-organica/gestao-agua-micro" element={<GestaoAguaMicro />} />
             <Route path="/soberania-organica/primeiros-socorros-taticos" element={<PrimeirosSocorrosTaticos />} />
             <Route path="/soberania-organica/edc" element={<EDC />} />
