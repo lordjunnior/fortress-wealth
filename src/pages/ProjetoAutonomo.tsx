@@ -148,7 +148,7 @@ export default function ProjetoAutonomo() {
   const phases = [
     {
       num: '01', title: 'Base 72', sub: 'Protege o corpo', accent: '#f43f5e',
-      sectionId: 'fase-01', icon: Clock, image: tlBase72, size: 'mega',
+      sectionId: 'fase-01', icon: Clock, image: tlBase72, size: 'tall',
       desc: 'Autonomia mínima nas primeiras 72 horas. Abrigo, água potável, comunicação resiliente, deslocamento e kit tático essencial para o intervalo crítico de qualquer ruptura urbana.',
       tag: 'Sobrevivência tática',
     },
@@ -200,9 +200,9 @@ export default function ProjetoAutonomo() {
     },
     {
       num: '07', title: 'Cozinha Funcional', sub: 'Substitui a big pharma', accent: '#fbbf24',
-      sectionId: 'fase-07', icon: Moon, image: imgCozinhaFuncional, size: 'tall',
-      desc: 'Receitas com ensaio clínico randomizado por trás de cada ingrediente. Glicina para o sono, Passiflora para o cortisol, camomila para a ansiedade. A sobremesa que substitui o Rivotril abre uma coleção que devolve à cozinha o papel terapêutico que a indústria farmacêutica capturou.',
-      tag: 'Bioquímica aplicada',
+      sectionId: 'fase-07', icon: Moon, image: imgCozinhaFuncional, size: 'mega',
+      desc: 'Depois da defesa cognitiva, a aplicação prática diária. Receitas com ensaio clínico randomizado por trás de cada ingrediente: glicina para o sono, Passiflora para o cortisol, camomila para a ansiedade. A sobremesa que substitui o Rivotril abre a coleção que devolve à cozinha o papel terapêutico que a indústria farmacêutica capturou.',
+      tag: 'Aplicação prática diária',
       externalRoute: '/soberania-organica/cozinha-funcional',
     },
   ];
