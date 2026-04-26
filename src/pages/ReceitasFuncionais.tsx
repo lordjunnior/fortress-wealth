@@ -16,6 +16,7 @@ import imgGelatinaAntipara from '@/assets/receitas/hero-gelatina-antiparasitaria
 import imgGarrafada from '@/assets/receitas/hero-garrafada-ancestral-light.jpg';
 import imgPressao from '@/assets/receitas/hero-pressao-hibisco-light.jpg';
 import imgDor from '@/assets/receitas/hero-dor-inflamacao-light.jpg';
+import imgRefluxo from '@/assets/receitas/hero-refluxo-azia-light.jpg';
 
 /**
  * /soberania-organica/cozinha-funcional
@@ -109,6 +110,18 @@ const RECEITAS = [
     estudos: 'RENISUS · 8 referências',
     disponivel: true,
     alt: 'Caneca de vidro com chá quente fumegante de gengibre cúrcuma e cravo de cor âmbar dourado ao lado de raiz de gengibre fresca tigela de cúrcuma em pó cravos espalhados meio limão e pote de mel cru sobre toalha de linho cor creme',
+  },
+  {
+    slug: 'suco-refluxo-espinheira-santa',
+    titulo: 'O Suco Ancestral que Apaga a Queimação sem Rebote',
+    pretitulo: 'Refluxo · Azia · Gastrite · Mucosa',
+    resumo: 'Espinheira-santa, batata crua, camomila e babosa. Mesmo terreno do omeprazol (proteção, neutralização e cicatrização da mucosa), sem dependência e sem efeito rebote. Tradição indígena, benzedeira e popular com ensaios clínicos do CEME.',
+    img: imgRefluxo,
+    tempo: '25 min de preparo',
+    porcoes: '800 ml · 3 a 4 dias',
+    estudos: 'RENISUS · 8 referências',
+    disponivel: true,
+    alt: 'Composição vista de cima com batata inglesa cortada folhas de espinheira-santa flores de camomila em tigela de cerâmica e folha de babosa cortada com gel exposto sobre toalha de linho cor creme em luz natural quente',
   },
 ];
 
