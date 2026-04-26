@@ -346,7 +346,7 @@ export default function ProjetoAutonomo() {
             transition={{ duration: 0.8, delay: 0.6 }}
           >
             <p className="text-stone-300 text-sm md:text-base leading-relaxed mb-3 font-medium">
-              A Soberania Orgânica é o seu <span className="text-emerald-400 font-bold">Manual da Terra definitivo</span>. Um resgate da nossa herança nativa dividido em 5 fases progressivas. Este protocolo ensina você a decifrar o código da natureza para curar, alimentar e proteger sua linhagem sem depender de cadeias de suprimentos colapsáveis.
+              A Soberania Orgânica é o seu <span className="text-emerald-400 font-bold">Manual da Terra definitivo</span>. Um resgate da nossa herança nativa dividido em 6 frentes integradas. Este protocolo ensina você a decifrar o código da natureza para curar, alimentar e proteger sua linhagem sem depender de cadeias de suprimentos colapsáveis.
             </p>
             <p className="text-stone-400 text-sm leading-relaxed mb-2">
               Você terceiriza sua <span className="text-emerald-400 font-bold">nutrição</span> para uma indústria que desenha alimentos para viciar.
