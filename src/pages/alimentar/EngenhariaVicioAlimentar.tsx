@@ -136,6 +136,12 @@ const EngenhariaVicioAlimentar = () => {
         dateModified: '2026-04-26',
         image: 'https://lordjunnior.com.br' + imgHero,
         keywords: 'engenharia alimentar, ultraprocessados, vício alimentar, doritos, bliss point, hand to mouth, dopamina, comida industrial, robb wolf',
+        citation: [
+          { '@type': 'Book', name: 'Wired to Eat', author: { '@type': 'Person', name: 'Robb Wolf' }, datePublished: '2017', isbn: '978-0451498564' },
+          { '@type': 'Book', name: 'The Dorito Effect', author: { '@type': 'Person', name: 'Mark Schatzker' }, datePublished: '2015', isbn: '978-1476724232' },
+          { '@type': 'Book', name: 'Salt Sugar Fat: How the Food Giants Hooked Us', author: { '@type': 'Person', name: 'Michael Moss' }, datePublished: '2013', isbn: '978-0812982190' },
+          { '@type': 'NewsArticle', headline: 'The Extraordinary Science of Addictive Junk Food', author: { '@type': 'Person', name: 'Michael Moss' }, publisher: { '@type': 'Organization', name: 'The New York Times' }, datePublished: '2013-02-20' },
+        ],
       },
       {
         '@type': 'BreadcrumbList',
