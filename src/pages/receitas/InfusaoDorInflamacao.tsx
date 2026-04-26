@@ -7,7 +7,7 @@ import {
   Leaf, Mountain, AlertTriangle, CheckCircle2,
   ScrollText, ExternalLink, Compass, Sprout, FlaskConical, Flame,
 } from 'lucide-react';
-import BackToHome from '@/components/BackToHome';
+import BackNav from '@/components/BackNav';
 import ScrollToTop from '@/components/ScrollToTop';
 
 import imgHero from '@/assets/receitas/hero-dor-inflamacao-light.jpg';
@@ -289,7 +289,7 @@ export default function InfusaoDorInflamacao() {
 
       <div className="relative min-h-screen" style={{ backgroundColor: C.cream, color: C.ink, fontFamily: "'Inter Tight', sans-serif" }}>
         <div className="absolute top-0 left-0 right-0 z-30 px-6 md:px-12 lg:px-20 pt-[52px]">
-          <BackToHome />
+          <BackNav backTo="/soberania-organica/cozinha-funcional" backLabel="Cozinha Funcional" />
         </div>
         <ScrollToTop />
 
