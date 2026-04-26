@@ -490,7 +490,9 @@ export default function ProjetoAutonomo() {
                     <button
                       type="button"
                       onClick={() => {
-                        if (phase.num === '04') {
+                        if ((phase as any).externalRoute) {
+                          window.location.href = (phase as any).externalRoute;
+                        } else if (phase.num === '04') {
                           window.location.href = '/soberania-organica/conhecimento-perdido';
                         } else {
                           document.getElementById(phase.sectionId)?.scrollIntoView({ behavior: 'smooth' });
