@@ -5,13 +5,15 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import {
   ArrowRight, ChevronDown, FlaskConical, BookOpen, Clock, Users,
   Leaf, ChefHat, Salad, AlertTriangle, CheckCircle2, Compass, Apple,
+  Sprout, Mountain, ScrollText,
 } from 'lucide-react';
 import BackToHome from '@/components/BackToHome';
 import ScrollToTop from '@/components/ScrollToTop';
 
-import imgHubHero from '@/assets/receitas/hub-cozinha-funcional-light.jpg';
+import imgHubHero from '@/assets/receitas/hub-cozinha-ancestral-light.jpg';
 import imgSobremesa from '@/assets/receitas/hero-sobremesa-light.jpg';
 import imgGelatinaAntipara from '@/assets/receitas/hero-gelatina-antiparasitaria-light.jpg';
+import imgGarrafada from '@/assets/receitas/hero-garrafada-ancestral-light.jpg';
 
 /**
  * /soberania-organica/cozinha-funcional
@@ -70,27 +72,40 @@ const RECEITAS = [
     disponivel: true,
     alt: 'Pote de vidro com gelatina translúcida cor âmbar contendo sementes de mamão e abóbora visíveis ao lado de cravos da índia espalhados e xícara de chá quente sobre toalha de linho creme',
   },
+  {
+    slug: 'garrafada-digestiva-ancestral',
+    titulo: 'Garrafada Digestiva e Imunológica Ancestral',
+    pretitulo: 'Fígado · Digestão · Imunidade',
+    resumo: 'Boldo, guaco e aroeira na fórmula ancestral indígena e popular brasileira. Versão tradicional em cachaça e versão sem álcool em água. Boldo e guaco constam na RENISUS, política do SUS de Plantas Medicinais.',
+    img: imgGarrafada,
+    tempo: '15 min de preparo',
+    porcoes: '1 garrafa · 1 semana',
+    estudos: 'RENISUS · 6 referências',
+    disponivel: true,
+    alt: 'Garrafa de vidro âmbar com tampa de cortiça contendo garrafada de boldo guaco e aroeira ao lado de folhas frescas e pote de mel sobre toalha de linho cor creme',
+  },
 ];
 
 const PILARES = [
-  { icon: Apple, titulo: 'Comida com função clínica', desc: 'Cada prato é montado para entregar uma dose bioativa específica, validada em literatura científica indexada. Não é dieta, é bioquímica aplicada na cozinha.' },
-  { icon: Leaf, titulo: 'Ativos da terra, não da farmácia', desc: 'Camomila, Passiflora, gengibre, chia, gelatina, mel cru. Substituem prescrições leves quando o problema é hábito ruim, e não doença instalada.' },
-  { icon: BookOpen, titulo: 'Cada receita é um dossiê', desc: 'Mecanismo, dose estudada, estudo-âncora, contraindicação. Sem modismo, sem influencer, sem e-book pago. PubMed e cozinha.' },
+  { icon: Mountain, titulo: 'Raiz indígena, popular e quilombola', desc: 'Cada receita resgata o uso ancestral brasileiro: cartilhas Kaxinawá, Pataxó, garrafadas do interior, chás de quintal e fórmulas das benzedeiras. Mais de 12 mil anos de uso documentado.' },
+  { icon: ScrollText, titulo: 'Validada pela ciência e pelo SUS', desc: 'Boldo, guaco, aroeira, sementes de mamão, Passiflora e camomila constam na RENISUS, lista oficial do SUS de plantas medicinais. As Farmácias Vivas (Política Nacional desde 2006) usam essas mesmas fórmulas.' },
+  { icon: Sprout, titulo: 'Cada receita é um dossiê honesto', desc: 'Tradição, mecanismo, dose, contraindicação, evidência. Sem modismo, sem influencer, sem promessa de cura mágica. Natureza é poderosa, mas não substitui exame ou médico em quadro grave.' },
 ];
 
 const FAQ = [
+const FAQ = [
   { q: 'O que é Cozinha Funcional dentro da Soberania Orgânica?',
-    a: 'É a 7ª frente. Onde as outras seis tratam de solo, água, plantas, abrigo, autonomia mental e fitoterapia, esta cuida especificamente de receitas com base científica que substituem soluções leves da indústria farmacêutica e da indústria alimentar ultraprocessada.' },
+    a: 'É a 7ª frente. Aqui resgatamos o conhecimento ancestral da natureza brasileira (indígena, popular, quilombola) para cuidar da saúde com plantas, chás, garrafadas, gelatinas e fórmulas que nossos avós e povos originários já usavam, agora cruzados com evidência científica e com a Política Nacional de Plantas Medicinais e Fitoterápicos do SUS (RENISUS, Farmácias Vivas, desde 2006).' },
+  { q: 'É medicina alternativa, esotérica ou anticientífica?',
+    a: 'Não. É etnofarmacologia: o estudo científico do que os povos tradicionais já sabiam. Boldo, guaco, aroeira, Passiflora, camomila, sementes de mamão e dezenas de outras plantas usadas aqui constam na RENISUS, a lista oficial de plantas medicinais do SUS. O Brasil tem mais de 600 Farmácias Vivas espalhadas pelo SUS dispensando essas mesmas fórmulas.' },
   { q: 'Substitui medicamento prescrito?',
-    a: 'Não. Nenhuma receita aqui substitui prescrição médica em vigor, diagnóstico clínico ou acompanhamento profissional. O foco é apoiar pessoas saudáveis a recuperar sono, saciedade, digestão e energia através de comida bem montada — antes que o problema vire receita azul.' },
-  { q: 'Por que comida pode ter função clínica?',
-    a: 'Porque alimentos contêm moléculas bioativas: glicina na gelatina age no SCN cerebral, flavonoides do maracujá modulam GABA-A, apigenina da camomila tem afinidade ansiolítica, fibra solúvel da chia modula glicemia. Quando você junta dose, horário e contexto certos, o efeito é mensurável e replicável.' },
+    a: 'Não. Natureza é poderosa, mas não é mágica. Receitas ancestrais funcionam muito bem para apoio digestivo, sono, ansiedade leve, parasitas leves, tosse, imunidade e cicatrização. Não substituem antibiótico em infecção grave, antineoplásico em câncer, anti-hipertensivo, insulina ou qualquer prescrição médica em uso. Doenças crônicas diagnosticadas exigem médico.' },
+  { q: 'De onde vêm as receitas desta coleção?',
+    a: 'De três fontes cruzadas: (1) cartilhas indígenas como a Rau Xarabu dos Kaxinawá e materiais do Pataxó, Guarani e Yanomami; (2) tradição popular brasileira (garrafadas do interior, chás de quintal, benzeduras com fórmula); (3) documentos do Ministério da Saúde, RENISUS, Farmácias Vivas e estudos etnofarmacológicos publicados em revistas indexadas.' },
   { q: 'Posso seguir mesmo morando em apartamento sem horta?',
-    a: 'Sim. Todos os ingredientes desta coleção são compráveis em mercado, feira ou empório. A horta é a 3ª frente da Soberania Orgânica e é um avanço posterior. Aqui você começa pela cozinha, com o que já está no carrinho.' },
-  { q: 'Em quanto tempo se sente diferença?',
-    a: 'A maioria dos protocolos pede de 7 a 14 dias de uso consistente para mostrar efeito mensurável. Resultado de uma noite ou um dia isolado é variável demais. O ganho real está na repetição e na higiene de hábito que vem junto.' },
+    a: 'Sim. Boa parte das ervas é comprável em mercado, feira, empório ou em Farmácia Viva pública. A horta é a 3ª frente da Soberania Orgânica e é um avanço posterior. Aqui você começa pela cozinha, com o que já está perto. Quando puder, planta uma muda de boldo, hortelã, capim-cidreira no vaso da janela.' },
   { q: 'Quem não deve seguir estas receitas?',
-    a: 'Gestantes, lactantes, pessoas em uso de medicação psiquiátrica ou cardiovascular contínua, alérgicos conhecidos a Asteraceae (camomila, margarida) e quem tem doença crônica diagnosticada devem conversar com seu médico antes. As receitas são educativas, não tratamento.' },
+    a: 'Gestantes, lactantes, crianças sem orientação pediátrica, pessoas em uso contínuo de medicação (anticoagulante, anti-hipertensivo, psiquiátrico, oncológico), portadores de doença hepática ou renal e alérgicos conhecidos. Em qualquer dúvida, fale com médico, fitoterapeuta ou enfermeiro de Farmácia Viva antes de iniciar.' },
 ];
 
 const TRILHA = [
