@@ -152,6 +152,8 @@ import ReceitasFuncionais from "./pages/ReceitasFuncionais";
 import SobremesaSubstituiRivotril from "./pages/receitas/SobremesaSubstituiRivotril";
 import GelatinaAntiparasitaria from "./pages/receitas/GelatinaAntiparasitaria";
 import GarrafadaDigestivaAncestral from "./pages/receitas/GarrafadaDigestivaAncestral";
+import ChaPressaoHibisco from "./pages/receitas/ChaPressaoHibisco";
+import InfusaoDorInflamacao from "./pages/receitas/InfusaoDorInflamacao";
 import SeedPhraseAco from "./pages/autocustodia/SeedPhraseAco";
 import CoinjoinPrivacidade from "./pages/autocustodia/CoinjoinPrivacidade";
 import HerancaBitcoin from "./pages/autocustodia/HerancaBitcoin";
@@ -350,6 +352,8 @@ const App = () => (
             <Route path="/soberania-organica/cozinha-funcional/sobremesa-substitui-rivotril" element={<SobremesaSubstituiRivotril />} />
             <Route path="/soberania-organica/cozinha-funcional/gelatina-antiparasitaria" element={<GelatinaAntiparasitaria />} />
             <Route path="/soberania-organica/cozinha-funcional/garrafada-digestiva-ancestral" element={<GarrafadaDigestivaAncestral />} />
+            <Route path="/soberania-organica/cozinha-funcional/cha-pressao-hibisco" element={<ChaPressaoHibisco />} />
+            <Route path="/soberania-organica/cozinha-funcional/infusao-dor-inflamacao" element={<InfusaoDorInflamacao />} />
             {/* Redirects das URLs antigas (preserva SEO e bookmarks) */}
             <Route path="/receitas-funcionais" element={<LegacyRedirect to="/soberania-organica/cozinha-funcional" />} />
             <Route path="/receitas-funcionais/sobremesa-substitui-rivotril" element={<LegacyRedirect to="/soberania-organica/cozinha-funcional/sobremesa-substitui-rivotril" />} />

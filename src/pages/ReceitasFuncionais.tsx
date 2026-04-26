@@ -14,6 +14,8 @@ import imgHubHero from '@/assets/receitas/hub-cozinha-ancestral-light.jpg';
 import imgSobremesa from '@/assets/receitas/hero-sobremesa-light.jpg';
 import imgGelatinaAntipara from '@/assets/receitas/hero-gelatina-antiparasitaria-light.jpg';
 import imgGarrafada from '@/assets/receitas/hero-garrafada-ancestral-light.jpg';
+import imgPressao from '@/assets/receitas/hero-pressao-hibisco-light.jpg';
+import imgDor from '@/assets/receitas/hero-dor-inflamacao-light.jpg';
 
 /**
  * /soberania-organica/cozinha-funcional
@@ -83,6 +85,30 @@ const RECEITAS = [
     estudos: 'RENISUS · 6 referências',
     disponivel: true,
     alt: 'Garrafa de vidro âmbar contendo infusão de boldo guaco e aroeira ao lado de folhas frescas e pote de mel cru sobre toalha de linho cor creme',
+  },
+  {
+    slug: 'cha-pressao-hibisco',
+    titulo: 'O Chá que Apoia a Pressão sem Tarja Preta',
+    pretitulo: 'Coração · Pressão arterial · Endotélio',
+    resumo: 'Hibisco, alho fresco e limão taiti. Mesmo mecanismo dos inibidores da ECA (losartana, enalapril), sem dependência. Apoio natural à hipertensão leve-moderada com evidência clínica e dispensação no SUS.',
+    img: imgPressao,
+    tempo: '20 min de preparo',
+    porcoes: '1 litro · 4 dias',
+    estudos: 'RENISUS · 7 referências',
+    disponivel: true,
+    alt: 'Jarra de vidro com chá vermelho rubi de hibisco fumegante ao lado de bulbos de alho descascados cálices secos de hibisco e limões taiti sobre toalha de linho cor creme',
+  },
+  {
+    slug: 'infusao-dor-inflamacao',
+    titulo: 'A Infusão Ancestral que Apaga a Dor sem Viciar',
+    pretitulo: 'Dor · Inflamação · Articulações · Músculos',
+    resumo: 'Gengibre, cúrcuma e cravo. Mesmo caminho enzimático da dipirona e da nimesulida (COX-2 e 5-LOX), sem destruir o estômago. Tradição quilombola e indígena com meta-análises do PubMed do lado.',
+    img: imgDor,
+    tempo: '25 min de preparo',
+    porcoes: '500 ml · 2 a 3 dias',
+    estudos: 'RENISUS · 8 referências',
+    disponivel: true,
+    alt: 'Caneca de vidro com chá quente fumegante de gengibre cúrcuma e cravo de cor âmbar dourado ao lado de raiz de gengibre fresca tigela de cúrcuma em pó cravos espalhados meio limão e pote de mel cru sobre toalha de linho cor creme',
   },
 ];
 
