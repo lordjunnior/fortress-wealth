@@ -171,9 +171,9 @@ const EngenhariaVicioAlimentar = () => {
         <BackToHome />
       </div>
 
-      {/* Fundo temático persistente — pó/cristais de tempero industrial */}
-      <ChipDustBackground />
-      <article className="min-h-screen relative z-10" style={{ background: BONE, color: ONYX }}>
+      <article className="min-h-screen relative" style={{ background: BONE, color: ONYX }}>
+        {/* Fundo temático persistente — pó/cristais de tempero industrial em overlay */}
+        <ChipDustBackground mode="overlay" />
         {/* ═══ HERO 92vh ═══ */}
         <section className="relative w-full overflow-hidden" style={{ height: '92vh', minHeight: 720, background: ONYX }}>
           <img
