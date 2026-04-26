@@ -5,13 +5,15 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import {
   ArrowRight, ChevronDown, FlaskConical, BookOpen, Clock, Users,
   Leaf, ChefHat, Salad, AlertTriangle, CheckCircle2, Compass, Apple,
+  Sprout, Mountain, ScrollText,
 } from 'lucide-react';
 import BackToHome from '@/components/BackToHome';
 import ScrollToTop from '@/components/ScrollToTop';
 
-import imgHubHero from '@/assets/receitas/hub-cozinha-funcional-light.jpg';
+import imgHubHero from '@/assets/receitas/hub-cozinha-ancestral-light.jpg';
 import imgSobremesa from '@/assets/receitas/hero-sobremesa-light.jpg';
 import imgGelatinaAntipara from '@/assets/receitas/hero-gelatina-antiparasitaria-light.jpg';
+import imgGarrafada from '@/assets/receitas/hero-garrafada-ancestral-light.jpg';
 
 /**
  * /soberania-organica/cozinha-funcional
@@ -70,27 +72,39 @@ const RECEITAS = [
     disponivel: true,
     alt: 'Pote de vidro com gelatina translúcida cor âmbar contendo sementes de mamão e abóbora visíveis ao lado de cravos da índia espalhados e xícara de chá quente sobre toalha de linho creme',
   },
+  {
+    slug: 'garrafada-digestiva-ancestral',
+    titulo: 'Garrafada Digestiva e Imunológica Ancestral',
+    pretitulo: 'Fígado · Digestão · Imunidade',
+    resumo: 'Boldo, guaco e aroeira na fórmula ancestral indígena e popular brasileira. Versão tradicional em cachaça e versão sem álcool em água. Boldo e guaco constam na RENISUS, política do SUS de Plantas Medicinais.',
+    img: imgGarrafada,
+    tempo: '15 min de preparo',
+    porcoes: '1 garrafa · 1 semana',
+    estudos: 'RENISUS · 6 referências',
+    disponivel: true,
+    alt: 'Garrafa de vidro âmbar com tampa de cortiça contendo garrafada de boldo guaco e aroeira ao lado de folhas frescas e pote de mel sobre toalha de linho cor creme',
+  },
 ];
 
 const PILARES = [
-  { icon: Apple, titulo: 'Comida com função clínica', desc: 'Cada prato é montado para entregar uma dose bioativa específica, validada em literatura científica indexada. Não é dieta, é bioquímica aplicada na cozinha.' },
-  { icon: Leaf, titulo: 'Ativos da terra, não da farmácia', desc: 'Camomila, Passiflora, gengibre, chia, gelatina, mel cru. Substituem prescrições leves quando o problema é hábito ruim, e não doença instalada.' },
-  { icon: BookOpen, titulo: 'Cada receita é um dossiê', desc: 'Mecanismo, dose estudada, estudo-âncora, contraindicação. Sem modismo, sem influencer, sem e-book pago. PubMed e cozinha.' },
+  { icon: Mountain, titulo: 'Raiz indígena, popular e quilombola', desc: 'Cada receita resgata o uso ancestral brasileiro: cartilhas Kaxinawá, Pataxó, garrafadas do interior, chás de quintal e fórmulas das benzedeiras. Mais de 12 mil anos de uso documentado.' },
+  { icon: ScrollText, titulo: 'Validada pela ciência e pelo SUS', desc: 'Boldo, guaco, aroeira, sementes de mamão, Passiflora e camomila constam na RENISUS, lista oficial do SUS de plantas medicinais. As Farmácias Vivas (Política Nacional desde 2006) usam essas mesmas fórmulas.' },
+  { icon: Sprout, titulo: 'Cada receita é um dossiê honesto', desc: 'Tradição, mecanismo, dose, contraindicação, evidência. Sem modismo, sem influencer, sem promessa de cura mágica. Natureza é poderosa, mas não substitui exame ou médico em quadro grave.' },
 ];
 
 const FAQ = [
   { q: 'O que é Cozinha Funcional dentro da Soberania Orgânica?',
-    a: 'É a 7ª frente. Onde as outras seis tratam de solo, água, plantas, abrigo, autonomia mental e fitoterapia, esta cuida especificamente de receitas com base científica que substituem soluções leves da indústria farmacêutica e da indústria alimentar ultraprocessada.' },
+    a: 'É a 7ª frente. Aqui resgatamos o conhecimento ancestral da natureza brasileira (indígena, popular, quilombola) para cuidar da saúde com plantas, chás, garrafadas, gelatinas e fórmulas que nossos avós e povos originários já usavam, agora cruzados com evidência científica e com a Política Nacional de Plantas Medicinais e Fitoterápicos do SUS (RENISUS, Farmácias Vivas, desde 2006).' },
+  { q: 'É medicina alternativa, esotérica ou anticientífica?',
+    a: 'Não. É etnofarmacologia: o estudo científico do que os povos tradicionais já sabiam. Boldo, guaco, aroeira, Passiflora, camomila, sementes de mamão e dezenas de outras plantas usadas aqui constam na RENISUS, a lista oficial de plantas medicinais do SUS. O Brasil tem mais de 600 Farmácias Vivas espalhadas pelo SUS dispensando essas mesmas fórmulas.' },
   { q: 'Substitui medicamento prescrito?',
-    a: 'Não. Nenhuma receita aqui substitui prescrição médica em vigor, diagnóstico clínico ou acompanhamento profissional. O foco é apoiar pessoas saudáveis a recuperar sono, saciedade, digestão e energia através de comida bem montada — antes que o problema vire receita azul.' },
-  { q: 'Por que comida pode ter função clínica?',
-    a: 'Porque alimentos contêm moléculas bioativas: glicina na gelatina age no SCN cerebral, flavonoides do maracujá modulam GABA-A, apigenina da camomila tem afinidade ansiolítica, fibra solúvel da chia modula glicemia. Quando você junta dose, horário e contexto certos, o efeito é mensurável e replicável.' },
+    a: 'Não. Natureza é poderosa, mas não é mágica. Receitas ancestrais funcionam muito bem para apoio digestivo, sono, ansiedade leve, parasitas leves, tosse, imunidade e cicatrização. Não substituem antibiótico em infecção grave, antineoplásico em câncer, anti-hipertensivo, insulina ou qualquer prescrição médica em uso. Doenças crônicas diagnosticadas exigem médico.' },
+  { q: 'De onde vêm as receitas desta coleção?',
+    a: 'De três fontes cruzadas: (1) cartilhas indígenas como a Rau Xarabu dos Kaxinawá e materiais do Pataxó, Guarani e Yanomami; (2) tradição popular brasileira (garrafadas do interior, chás de quintal, benzeduras com fórmula); (3) documentos do Ministério da Saúde, RENISUS, Farmácias Vivas e estudos etnofarmacológicos publicados em revistas indexadas.' },
   { q: 'Posso seguir mesmo morando em apartamento sem horta?',
-    a: 'Sim. Todos os ingredientes desta coleção são compráveis em mercado, feira ou empório. A horta é a 3ª frente da Soberania Orgânica e é um avanço posterior. Aqui você começa pela cozinha, com o que já está no carrinho.' },
-  { q: 'Em quanto tempo se sente diferença?',
-    a: 'A maioria dos protocolos pede de 7 a 14 dias de uso consistente para mostrar efeito mensurável. Resultado de uma noite ou um dia isolado é variável demais. O ganho real está na repetição e na higiene de hábito que vem junto.' },
+    a: 'Sim. Boa parte das ervas é comprável em mercado, feira, empório ou em Farmácia Viva pública. A horta é a 3ª frente da Soberania Orgânica e é um avanço posterior. Aqui você começa pela cozinha, com o que já está perto. Quando puder, planta uma muda de boldo, hortelã, capim-cidreira no vaso da janela.' },
   { q: 'Quem não deve seguir estas receitas?',
-    a: 'Gestantes, lactantes, pessoas em uso de medicação psiquiátrica ou cardiovascular contínua, alérgicos conhecidos a Asteraceae (camomila, margarida) e quem tem doença crônica diagnosticada devem conversar com seu médico antes. As receitas são educativas, não tratamento.' },
+    a: 'Gestantes, lactantes, crianças sem orientação pediátrica, pessoas em uso contínuo de medicação (anticoagulante, anti-hipertensivo, psiquiátrico, oncológico), portadores de doença hepática ou renal e alérgicos conhecidos. Em qualquer dúvida, fale com médico, fitoterapeuta ou enfermeiro de Farmácia Viva antes de iniciar.' },
 ];
 
 const TRILHA = [
@@ -117,9 +131,9 @@ function Hero() {
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: APPLE_EASE }}
           className="inline-flex items-center gap-3 mb-6 self-start px-4 py-2 rounded-full backdrop-blur-md"
           style={{ backgroundColor: 'rgba(250,246,240,0.18)', border: '1px solid rgba(250,246,240,0.28)' }}>
-          <ChefHat size={16} style={{ color: C.cream }} />
+          <Mountain size={16} style={{ color: C.cream }} />
           <span className="text-[11px] md:text-xs font-bold" style={{ ...monoStyle, color: C.cream }}>
-            7ª frente · Soberania Orgânica
+            Tradição ancestral · Validada pelo SUS · RENISUS
           </span>
         </motion.div>
 
@@ -129,9 +143,9 @@ function Hero() {
           transition={{ duration: 1, delay: 0.15, ease: APPLE_EASE }}
           className="text-[clamp(2.75rem,8.5vw,7.5rem)] max-w-[18ch]"
           style={{ ...display, color: C.cream }}>
-          Coma o que{' '}
+          A farmácia da{' '}
           <span style={{ ...editorial, color: C.terraSoft, fontWeight: 400, textShadow: '0 0 40px rgba(224,154,106,0.5), 0 0 80px rgba(224,154,106,0.25)' }}>
-            cura.
+            vovó indígena.
           </span>
         </motion.h1>
 
@@ -140,7 +154,7 @@ function Hero() {
           transition={{ duration: 0.8, delay: 0.5, ease: APPLE_EASE }}
           className="mt-8 max-w-2xl text-lg md:text-2xl leading-relaxed font-light"
           style={{ color: 'rgba(250,246,240,0.9)', fontFamily: "'Inter Tight', sans-serif" }}>
-          Receitas com base científica que devolvem hormônio, sono, saciedade e disposição. O oposto da prateleira da farmácia, montado dentro da sua geladeira.
+          Resgate vivo do conhecimento ancestral brasileiro: cartilhas Kaxinawá e Pataxó, garrafadas do interior, chás de quintal, fórmulas de benzedeiras. Cruzado com a RENISUS, Farmácias Vivas do SUS e literatura etnofarmacológica.
         </motion.p>
       </motion.div>
     </section>
@@ -154,11 +168,11 @@ export default function ReceitasFuncionais() {
   return (
     <>
       <Helmet>
-        <title>Cozinha Funcional: Receitas que Substituem a Farmácia | Lord Junnior</title>
-        <meta name="description" content="A 7ª frente da Soberania Orgânica: receitas com base científica que substituem ansiolíticos leves, ultraprocessados e dependência da indústria farmacêutica." />
+        <title>Cozinha Funcional: Receitas Ancestrais Brasileiras | Lord Junnior</title>
+        <meta name="description" content="Resgate do conhecimento indígena, popular e quilombola: garrafadas, chás, gelatinas funcionais validados pela RENISUS e Farmácias Vivas do SUS. 12 mil anos de tradição." />
         <link rel="canonical" href="https://www.lordjunnior.com.br/soberania-organica/cozinha-funcional" />
-        <meta property="og:title" content="Cozinha Funcional: Coma o que Cura" />
-        <meta property="og:description" content="7ª frente da Soberania Orgânica. Receitas com ensaio clínico que substituem soluções leves da indústria farmacêutica." />
+        <meta property="og:title" content="Cozinha Funcional: Sabedoria Ancestral Brasileira" />
+        <meta property="og:description" content="Receitas indígenas, populares e quilombolas validadas pelo SUS. Boldo, guaco, aroeira, sementes de mamão, Passiflora. Tradição com PubMed do lado." />
         <meta property="og:image" content="https://www.lordjunnior.com.br/og/cozinha-funcional.jpg" />
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="pt_BR" />
@@ -168,8 +182,8 @@ export default function ReceitasFuncionais() {
           {JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'CollectionPage',
-            name: 'Cozinha Funcional — 7ª frente da Soberania Orgânica',
-            description: 'Coleção de receitas com base científica que substituem soluções leves da indústria farmacêutica.',
+            name: 'Cozinha Funcional — Receitas ancestrais brasileiras validadas pelo SUS',
+            description: 'Coleção de receitas indígenas, populares e quilombolas para cuidar da saúde sem dependência da indústria farmacêutica. Cruzada com RENISUS, Farmácias Vivas e literatura etnofarmacológica.',
             url: 'https://www.lordjunnior.com.br/soberania-organica/cozinha-funcional',
             isPartOf: { '@type': 'WebSite', name: 'Lord Junnior', url: 'https://www.lordjunnior.com.br' },
             breadcrumb: {
@@ -215,19 +229,22 @@ export default function ReceitasFuncionais() {
             </motion.aside>
             <motion.div {...fade(0.1)} className="lg:col-span-8">
               <h2 className="text-[clamp(2.25rem,5.5vw,5rem)] leading-[1] tracking-tight mb-10" style={{ ...display, color: C.sage }}>
-                Não é dieta.{' '}
-                <span style={{ ...editorial, color: C.terracotta }}>É bioquímica.</span>
+                Doze mil anos{' '}
+                <span style={{ ...editorial, color: C.terracotta }}>de farmácia viva.</span>
               </h2>
               <div className="space-y-7 text-lg md:text-xl leading-[1.7] font-light" style={{ color: C.inkSoft }}>
                 <p>
-                  A indústria do diet vendeu a ideia de que comida saudável é privação. A indústria farmacêutica vendeu a ideia de que sono, ansiedade leve e cansaço são problemas de tarja preta. Aqui invertemos as duas mentiras ao mesmo tempo.
+                  Antes do paracetamol existir, o brasileiro já sabia que folha de boldo cuida do fígado. Antes do xarope industrial, o guaco já abria o peito. Antes do vermífugo de farmácia, semente de mamão já punha verme para fora. Esse conhecimento não é folclore: tem mais de doze mil anos de uso documentado por nossos povos originários.
                 </p>
                 <p>
-                  Cada receita desta coleção é um protocolo nutricional. Tem dose, tem horário, tem mecanismo bioquímico documentado. O sabor não é desculpa, é veículo. A geladeira deixa de ser depósito de ultraprocessado e vira a primeira linha de defesa do seu sistema nervoso.
+                  Em 2006 o próprio Ministério da Saúde formalizou o que os anciãos já sabiam, na <strong style={{ color: C.sage }}>Política Nacional de Plantas Medicinais e Fitoterápicos</strong>. A <strong style={{ color: C.terracotta }}>RENISUS</strong> lista 71 plantas com uso reconhecido pelo SUS. Existem mais de 600 <strong style={{ color: C.sage }}>Farmácias Vivas</strong> espalhadas pela rede pública dispensando garrafadas, chás e pomadas dessas mesmas plantas.
+                </p>
+                <p>
+                  Esta coleção resgata essas fórmulas. Indígena (Kaxinawá, Pataxó, Guarani), popular (garrafadas do interior, benzeduras, chás de quintal), quilombola e oficial (RENISUS, Farmácias Vivas). Sem misticismo, sem promessa de cura mágica, sem influencer vendendo e-book. Tradição com PubMed do lado.
                 </p>
                 <blockquote className="pl-8 py-2 my-10 text-2xl md:text-3xl leading-[1.4] font-light"
                   style={{ borderLeft: `3px solid ${C.terracotta}`, color: C.sage, ...editorial }}>
-                  Quem domina a própria cozinha, dispensa metade da farmácia.
+                  Sou neto de índio. Esse saber não é exótico, é meu. E é seu também, brasileiro.
                 </blockquote>
               </div>
             </motion.div>
@@ -240,11 +257,11 @@ export default function ReceitasFuncionais() {
             <motion.div {...fade(0)} className="mb-16 max-w-3xl">
               <span className="text-xs font-bold block mb-4" style={{ ...monoStyle, color: C.terraSoft }}>Capítulo 02 · Fundamento</span>
               <h2 className="text-[clamp(2.25rem,5.5vw,5rem)] leading-[1] tracking-tight" style={display}>
-                Três pilares,{' '}
-                <span style={{ ...editorial, color: C.terraSoft }}>uma cozinha.</span>
+                Três raízes,{' '}
+                <span style={{ ...editorial, color: C.terraSoft }}>uma farmácia viva.</span>
               </h2>
               <p className="mt-6 text-lg md:text-xl font-light leading-[1.6]" style={{ color: 'rgba(250,246,240,0.78)' }}>
-                Toda receita publicada aqui passa pelos três filtros antes de entrar na coleção. Sem um deles, vira modismo.
+                Toda receita publicada aqui precisa passar pelas três raízes antes de entrar na coleção. Sem uma delas, vira modismo de internet.
               </p>
             </motion.div>
 
