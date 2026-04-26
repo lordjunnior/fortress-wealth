@@ -167,10 +167,10 @@ function Hero() {
           animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
           transition={{ duration: 1, delay: 0.15, ease: APPLE_EASE }}
           className="text-[clamp(2.5rem,7.5vw,6.5rem)] max-w-[20ch]"
-          style={{ ...display, color: C.cream }}>
-          A garrafada{' '}
-          <span style={{ ...editorial, color: C.terraSoft, textShadow: '0 0 40px rgba(224,154,106,0.5), 0 0 80px rgba(224,154,106,0.25)' }}>
-            do interior brasileiro.
+          style={{ ...display, color: C.cream, textShadow: '0 2px 24px rgba(0,0,0,0.55)' }}>
+          O lambedor de boldo,{' '}
+          <span style={{ ...editorial, color: C.terraSoft, textShadow: '0 2px 28px rgba(0,0,0,0.6)' }}>
+            guaco e aroeira.
           </span>
         </motion.h1>
 
@@ -178,8 +178,8 @@ function Hero() {
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5, ease: APPLE_EASE }}
           className="mt-8 max-w-2xl text-lg md:text-2xl leading-relaxed font-light"
-          style={{ color: 'rgba(250,246,240,0.9)', fontFamily: "'Inter Tight', sans-serif" }}>
-          Boldo, guaco e aroeira maceradas em cachaça boa ou em água. Fórmula indígena e popular para fígado, digestão e imunidade. Três plantas listadas na RENISUS, dispensadas pelas Farmácias Vivas do SUS.
+          style={{ color: 'rgba(250,246,240,0.95)', fontFamily: "'Inter Tight', sans-serif", textShadow: '0 1px 12px rgba(0,0,0,0.55)' }}>
+          Infusão concentrada com mel cru. Sem álcool, sem dependência. Fórmula indígena e popular para fígado, digestão e imunidade — três plantas listadas na RENISUS e dispensadas pelas Farmácias Vivas do SUS.
         </motion.p>
 
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.7, ease: APPLE_EASE }}
