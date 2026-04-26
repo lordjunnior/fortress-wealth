@@ -11,6 +11,7 @@ import ScrollToTop from '@/components/ScrollToTop';
 
 import imgHubHero from '@/assets/receitas/hub-cozinha-funcional-light.jpg';
 import imgSobremesa from '@/assets/receitas/hero-sobremesa-light.jpg';
+import imgGelatinaAntipara from '@/assets/receitas/hero-gelatina-antiparasitaria-light.jpg';
 
 /**
  * /soberania-organica/cozinha-funcional
@@ -56,6 +57,18 @@ const RECEITAS = [
     estudos: '8 estudos primários',
     disponivel: true,
     alt: 'Quatro potinhos de gelatina de maracujá com camada de chia hidratada decorados com flores de camomila e folhas de melissa sobre toalha de linho cor creme',
+  },
+  {
+    slug: 'gelatina-antiparasitaria',
+    titulo: 'A Gelatina que Expulsa os Parasitas',
+    pretitulo: 'Intestino · Vermífugo natural',
+    resumo: 'Sementes de mamão, sementes de abóbora e chá de cravo em formato palatável. Carpaína e cucurbitacina com evidência clínica contra Ascaris e Strongyloides. Ciclo de 7 a 10 dias.',
+    img: imgGelatinaAntipara,
+    tempo: '20 min de preparo',
+    porcoes: '8 a 10 doses',
+    estudos: '7 estudos primários',
+    disponivel: true,
+    alt: 'Pote de vidro com gelatina translúcida cor âmbar contendo sementes de mamão e abóbora visíveis ao lado de cravos da índia espalhados e xícara de chá quente sobre toalha de linho creme',
   },
 ];
 
