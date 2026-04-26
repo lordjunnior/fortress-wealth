@@ -9,6 +9,8 @@ import imgSoberaniaAlimentar from '@/assets/fase03-soberania-alimentar.jpg';
 import imgBase72 from '@/assets/fase01-base72.jpg';
 import imgAutonomiaBiologica from '@/assets/fase02-autonomia-biologica.jpg';
 import imgConhecimentoPerdido from '@/assets/cp-hero-conhecimento.jpg';
+import imgCozinhaFuncional from '@/assets/receitas/hero-sobremesa-rivotril.jpg';
+import imgCozinhaFuncionalHero from '@/assets/receitas/hub-receitas-funcionais-hero.jpg';
 import bgFase01 from '@/assets/bg-fase01-base72.jpg';
 import bgFase02 from '@/assets/bg-fase02-autonomia.jpg';
 import bgFase03 from '@/assets/bg-fase03-alimentar.jpg';
@@ -75,7 +77,6 @@ const ALIMENTAR_LAYERS = [
   { icon: Layers, title: 'Produção em Pequenos Espaços', desc: 'Planejamento correto transforma 4m² em fonte de alimento.', details: 'Consórcio de culturas, rotação de canteiros e aproveitamento de microclimas urbanos.', slug: 'producao-pequenos-espacos' },
   { icon: FlaskConical, title: 'Engenharia do Vício Alimentar', desc: 'Por que você não consegue comer só um. Bliss point, crocância acústica e hand-to-mouth.', details: 'Investigação editorial sobre as quatro alavancas industriais que sequestram seu cérebro nos ultraprocessados.', slug: 'engenharia-vicio-alimentar' },
   { icon: Egg, title: 'Proteína Sustentável', desc: 'Galinhas, codornas, peixes e sistemas compactos de produção animal.', details: 'Aquaponia, galinheiro móvel e criação de tilápia em espaços reduzidos.', slug: 'proteina-sustentavel' },
-  { icon: Moon, title: 'Cozinha Funcional', desc: 'Receitas com ensaio clínico randomizado. Glicina, Passiflora, camomila — a sobremesa que substitui o Rivotril.', details: 'Coleção de protocolos nutricionais para sono, cortisol, ansiedade e saciedade. Bioquímica aplicada na cozinha.', slug: 'receitas-funcionais', externalRoute: '/receitas-funcionais' },
   { icon: Shovel, title: 'Solo e Fertilidade', desc: 'Compostagem, bokashi, húmus de minhoca. Terra viva gera alimento vivo.', details: 'Análise caseira de pH, cobertura morta, adubação verde e rotação de nutrientes.', slug: 'solo-fertilidade' },
   { icon: Flame, title: 'Conservação e Armazenamento', desc: 'Defumação, salga, fermentação, desidratação. Técnicas milenares validadas.', details: 'Compotas, conservas em vinagre, secagem solar e fermentação lactobacilar.', slug: 'conservacao-armazenamento' },
 ];
@@ -131,6 +132,7 @@ const TOC_ITEMS = [
   { id: "fase-04", label: "Fase 04: Conhecimento" },
   { id: "fase-05", label: "Fase 05: Discernimento" },
   { id: "fase-06", label: "Fase 06: Mente Blindada" },
+  { id: "fase-07", label: "Fase 07: Cozinha Funcional" },
 ];
 
 export default function ProjetoAutonomo() {
