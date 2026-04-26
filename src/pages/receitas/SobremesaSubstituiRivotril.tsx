@@ -265,7 +265,7 @@ export default function SobremesaSubstituiRivotril() {
 
         <Hero />
 
-        {/* CAPÍTULO 1 — Manifesto */}
+        {/* CAPÍTULO 1, Manifesto */}
         <section className="relative px-6 md:px-12 lg:px-20 py-24 md:py-36">
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 max-w-[1600px] mx-auto">
             <motion.aside {...fade(0)} className="lg:col-span-4">
@@ -299,7 +299,7 @@ export default function SobremesaSubstituiRivotril() {
           </div>
         </section>
 
-        {/* CAPÍTULO 2 — RECEITA (sand bg) */}
+        {/* CAPÍTULO 2, RECEITA (sand bg) */}
         <section id="receita" className="relative py-24 md:py-32 px-6 md:px-12 lg:px-20 scroll-mt-20" style={{ backgroundColor: C.sand }}>
           <div className="max-w-[1600px] mx-auto">
             <motion.div {...fade(0)} className="mb-16 md:mb-20">
@@ -368,7 +368,7 @@ export default function SobremesaSubstituiRivotril() {
           </div>
         </section>
 
-        {/* CAPÍTULO 3 — DOSSIÊ DOS 4 ATIVOS (sage escuro) */}
+        {/* CAPÍTULO 3, DOSSIÊ DOS 4 ATIVOS (sage escuro) */}
         <section className="relative py-24 md:py-36 px-6 md:px-12 lg:px-20" style={{ backgroundColor: C.sage, color: C.cream }}>
           <div className="max-w-[1600px] mx-auto">
             <motion.div {...fade(0)} className="mb-20 max-w-3xl">
@@ -435,7 +435,7 @@ export default function SobremesaSubstituiRivotril() {
           </div>
         </section>
 
-        {/* CAPÍTULO 4 — PROTOCOLO DE USO */}
+        {/* CAPÍTULO 4, PROTOCOLO DE USO */}
         <section className="relative py-24 md:py-36 px-6 md:px-12 lg:px-20">
           <div className="max-w-[1400px] mx-auto">
             <motion.div {...fade(0)} className="mb-16 max-w-3xl">
@@ -476,7 +476,7 @@ export default function SobremesaSubstituiRivotril() {
           </div>
         </section>
 
-        {/* CAPÍTULO 5 — BIBLIOTECA DE FONTES (sand) */}
+        {/* CAPÍTULO 5, BIBLIOTECA DE FONTES (sand) */}
         <section className="relative py-24 md:py-36 px-6 md:px-12 lg:px-20" style={{ backgroundColor: C.sand }}>
           <div className="max-w-[1600px] mx-auto">
             <motion.div {...fade(0)} className="mb-16 max-w-3xl">

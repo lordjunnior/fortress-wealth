@@ -17,7 +17,7 @@ import imgAroeira from '@/assets/receitas/ativo-aroeira-frutos.jpg';
 
 /**
  * /soberania-organica/cozinha-funcional/garrafada-digestiva-ancestral
- * Receita ancestral indígena/popular — Boldo + Guaco + Aroeira.
+ * Receita ancestral indígena/popular, Boldo + Guaco + Aroeira.
  * Versão exclusivamente sem álcool (infusão concentrada com mel cru).
  * Padrão Light Editorial obrigatório.
  */
@@ -51,16 +51,16 @@ const INGREDIENTES = [
   { qtd: '20 a 30 g', nome: 'Folhas de boldo fresco ou seco', detalhe: 'Plectranthus barbatus (boldo brasileiro). Cerca de 1 punhado generoso.' },
   { qtd: '20 g', nome: 'Folhas de guaco', detalhe: 'Mikania glomerata. 1 punhado de folhas frescas ou 2 colheres de sopa de folha seca.' },
   { qtd: '5 a 6 folhas', nome: 'Folhas de aroeira', detalhe: 'Schinus terebinthifolia. Pode substituir por 1 colher de chá de frutos rosados (pimenta-rosa).' },
-  { qtd: '500 ml', nome: 'Água filtrada', detalhe: 'Água filtrada fervida. Sem álcool, sem cachaça — versão segura para toda a família, gestantes e crianças (com orientação).' },
+  { qtd: '500 ml', nome: 'Água filtrada', detalhe: 'Água filtrada fervida. Sem álcool, sem cachaça, versão segura para toda a família, gestantes e crianças (com orientação).' },
   { qtd: '2 a 3 colheres de sopa', nome: 'Mel cru ou rapadura', detalhe: 'Mel cru de boa procedência (preserva enzimas) ou rapadura ralada. Conservante ancestral, suaviza o sabor das ervas e potencializa a ação expectorante.' },
 ];
 
 const PREPARO = [
   { n: '01', titulo: 'Selecione e lave as folhas', desc: 'Lave bem as folhas de boldo, guaco e aroeira em água corrente. Seque levemente em pano limpo. Se possível, colha de manhã cedo, antes do sol forte (concentração maior de princípios ativos).' },
-  { n: '02', titulo: 'Faça a infusão abafada', desc: 'Ferva 500 ml de água filtrada. Desligue o fogo, acrescente todas as folhas de uma vez, tampe a panela e deixe em infusão abafada por 15 a 20 minutos. Não ferva as folhas — o calor direto destrói os ativos voláteis (cumarina do guaco, óleos do boldo).' },
+  { n: '02', titulo: 'Faça a infusão abafada', desc: 'Ferva 500 ml de água filtrada. Desligue o fogo, acrescente todas as folhas de uma vez, tampe a panela e deixe em infusão abafada por 15 a 20 minutos. Não ferva as folhas, o calor direto destrói os ativos voláteis (cumarina do guaco, óleos do boldo).' },
   { n: '03', titulo: 'Coe e adoce ainda morno', desc: 'Coe com pano limpo ou coador de papel descartando as folhas. Ainda morno (não quente), dissolva 2 a 3 colheres de sopa de mel cru ou rapadura. O mel cru atua como conservante natural e potencializa a ação expectorante do guaco.' },
   { n: '04', titulo: 'Envase em vidro âmbar', desc: 'Transfira para garrafa de vidro âmbar (ou escura) esterilizada, com tampa hermética. Rotule com data de preparo. Mantenha sempre na geladeira.' },
-  { n: '05', titulo: 'Validade curta, lote pequeno', desc: 'Por ser sem álcool, dura de 7 a 10 dias na geladeira. Faça em lote pequeno, mais vezes — fica mais fresco e ativo. Se notar mudança de cheiro, cor turva ou sabor azedo, descarte.' },
+  { n: '05', titulo: 'Validade curta, lote pequeno', desc: 'Por ser sem álcool, dura de 7 a 10 dias na geladeira. Faça em lote pequeno, mais vezes, fica mais fresco e ativo. Se notar mudança de cheiro, cor turva ou sabor azedo, descarte.' },
   { n: '06', titulo: 'Tome com critério', desc: 'Adulto: 1 colher de sopa (15 ml) puro ou diluído em pouca água, 2 a 3 vezes ao dia, após as refeições. Crianças acima de 5 anos (com aval pediátrico): 1 colher de chá, 2x ao dia. Máximo de 15 dias seguidos. Pausa de 15 dias antes de repetir.' },
 ];
 
@@ -99,11 +99,11 @@ const ATIVOS = [
 
 const FONTES = [
   { autor: 'Ministério da Saúde', ano: '2006', titulo: 'Política Nacional de Plantas Medicinais e Fitoterápicos (Decreto nº 5.813)', revista: 'Brasil', tipo: 'Marco regulatório oficial', link: 'https://bvsms.saude.gov.br/bvs/publicacoes/politica_nacional_fitoterapicos.pdf' },
-  { autor: 'Ministério da Saúde', ano: '2009', titulo: 'RENISUS — Relação Nacional de Plantas Medicinais de Interesse ao SUS', revista: 'Brasil', tipo: 'Lista oficial de 71 plantas', link: 'https://www.gov.br/saude/pt-br/composicao/sectics/daf/pnpmf/plantas-medicinais-e-fitoterapicos-no-sus' },
+  { autor: 'Ministério da Saúde', ano: '2009', titulo: 'RENISUS, Relação Nacional de Plantas Medicinais de Interesse ao SUS', revista: 'Brasil', tipo: 'Lista oficial de 71 plantas', link: 'https://www.gov.br/saude/pt-br/composicao/sectics/daf/pnpmf/plantas-medicinais-e-fitoterapicos-no-sus' },
   { autor: 'Salah, S. M.; Jäger, A. K.', ano: '2005', titulo: 'Two flavonoids from Plectranthus barbatus with relaxant effects', revista: 'Journal of Ethnopharmacology', tipo: 'Estudo etnofarmacológico (boldo)', link: 'https://pubmed.ncbi.nlm.nih.gov/?term=Plectranthus+barbatus+ethnopharmacology' },
   { autor: 'Soares, A. K. A. et al.', ano: '2006', titulo: 'Avaliação da segurança clínica de um fitoterápico contendo Mikania glomerata Sprengel', revista: 'Revista Brasileira de Farmacognosia', tipo: 'Estudo clínico (guaco)', link: 'https://pubmed.ncbi.nlm.nih.gov/?term=Mikania+glomerata+clinical' },
   { autor: 'Carvalho, M. G. et al.', ano: '2013', titulo: 'Schinus terebinthifolius Raddi: chemical composition, biological properties and toxicity', revista: 'Revista Brasileira de Plantas Medicinais', tipo: 'Revisão sistemática (aroeira)', link: 'https://www.scielo.br/j/rbpm/a/wHbwRyRBTbCq3vh8VgpBzJk/' },
-  { autor: 'Cartilha Kaxinawá', ano: '1996', titulo: 'Una Isi Kayawa — Livro da Cura do Povo Huni Kuĩ', revista: 'Comissão Pró-Índio do Acre', tipo: 'Saber tradicional indígena', link: 'https://acervo.socioambiental.org/' },
+  { autor: 'Cartilha Kaxinawá', ano: '1996', titulo: 'Una Isi Kayawa, Livro da Cura do Povo Huni Kuĩ', revista: 'Comissão Pró-Índio do Acre', tipo: 'Saber tradicional indígena', link: 'https://acervo.socioambiental.org/' },
   { autor: 'Brandão, M. G. L. et al.', ano: '2008', titulo: 'Brazilian medicinal plants described by 19th century European naturalists in the Official Pharmacopoeia', revista: 'Revista Brasileira de Farmacognosia', tipo: 'Análise histórico-farmacêutica', link: 'https://www.scielo.br/j/rbfar/' },
 ];
 
@@ -169,7 +169,7 @@ function Hero() {
           transition={{ duration: 1, delay: 0.15, ease: APPLE_EASE }}
           className="text-[clamp(2.5rem,7.5vw,6.5rem)] max-w-[20ch]"
           style={{ ...display, color: C.cream, textShadow: '0 2px 24px rgba(0,0,0,0.55)' }}>
-          O lambedor de boldo,{' '}
+          O xarope de boldo,{' '}
           <span style={{ ...editorial, color: C.terraSoft, textShadow: '0 2px 28px rgba(0,0,0,0.6)' }}>
             guaco e aroeira.
           </span>
@@ -180,7 +180,7 @@ function Hero() {
           transition={{ duration: 0.8, delay: 0.5, ease: APPLE_EASE }}
           className="mt-8 max-w-2xl text-lg md:text-2xl leading-relaxed font-light"
           style={{ color: 'rgba(250,246,240,0.95)', fontFamily: "'Inter Tight', sans-serif", textShadow: '0 1px 12px rgba(0,0,0,0.55)' }}>
-          Infusão concentrada com mel cru. Sem álcool, sem dependência. Fórmula indígena e popular para fígado, digestão e imunidade — três plantas listadas na RENISUS e dispensadas pelas Farmácias Vivas do SUS.
+          Infusão concentrada com mel cru. Sem álcool, sem dependência. Fórmula indígena e popular para fígado, digestão e imunidade, três plantas listadas na RENISUS e dispensadas pelas Farmácias Vivas do SUS.
         </motion.p>
 
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.7, ease: APPLE_EASE }}
@@ -207,10 +207,10 @@ export default function GarrafadaDigestivaAncestral() {
   return (
     <>
       <Helmet>
-        <title>Lambedor Ancestral de Boldo, Guaco e Aroeira (sem álcool) | Lord Junnior</title>
+        <title>Xarope Ancestral de Boldo, Guaco e Aroeira (sem álcool) | Lord Junnior</title>
         <meta name="description" content="Receita ancestral indígena e popular brasileira sem álcool, com mel cru, para fígado, digestão, tosse e imunidade. Plantas listadas na RENISUS e dispensadas pelas Farmácias Vivas do SUS." />
         <link rel="canonical" href="https://www.lordjunnior.com.br/soberania-organica/cozinha-funcional/garrafada-digestiva-ancestral" />
-        <meta property="og:title" content="O Lambedor Ancestral de Boldo, Guaco e Aroeira (sem álcool)" />
+        <meta property="og:title" content="O Xarope Ancestral de Boldo, Guaco e Aroeira (sem álcool)" />
         <meta property="og:description" content="Boldo, guaco e aroeira em infusão com mel cru. Três plantas RENISUS, zero álcool, fórmula segura para a família." />
         <meta property="og:image" content="https://www.lordjunnior.com.br/og/garrafada-ancestral.jpg" />
         <meta property="og:type" content="article" />
@@ -221,14 +221,14 @@ export default function GarrafadaDigestivaAncestral() {
           {JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'Recipe',
-            name: 'Lambedor Ancestral de Boldo, Guaco e Aroeira (sem álcool, com mel cru)',
+            name: 'Xarope Ancestral de Boldo, Guaco e Aroeira (sem álcool, com mel cru)',
             author: { '@type': 'Person', name: 'Lord Junnior' },
-            description: 'Receita ancestral brasileira em infusão sem álcool com mel cru, em duas versões (uso digestivo diário e lambedor concentrado para tosse), baseada em saber indígena e popular e validada pela RENISUS.',
+            description: 'Receita ancestral brasileira em infusão sem álcool com mel cru, em duas versões (uso digestivo diário e xarope concentrado para tosse), baseada em saber indígena e popular e validada pela RENISUS.',
             recipeYield: '1 garrafa de 500 ml · 7 a 10 dias',
             prepTime: 'PT15M', cookTime: 'PT20M', totalTime: 'PT35M',
             recipeCategory: 'Fitoterápico ancestral sem álcool',
             recipeCuisine: 'Indígena e popular brasileira',
-            keywords: 'lambedor, boldo, guaco, aroeira, sem álcool, mel cru, RENISUS, Farmácia Viva, fitoterapia brasileira, medicina indígena',
+            keywords: 'xarope, boldo, guaco, aroeira, sem álcool, mel cru, RENISUS, Farmácia Viva, fitoterapia brasileira, medicina indígena',
             recipeIngredient: INGREDIENTES.map((i) => `${i.qtd} ${i.nome}`),
             recipeInstructions: PREPARO.map((p) => ({ '@type': 'HowToStep', name: p.titulo, text: p.desc })),
           })}
@@ -253,7 +253,7 @@ export default function GarrafadaDigestivaAncestral() {
 
         <Hero />
 
-        {/* CAPÍTULO 1 — Manifesto / contexto ancestral */}
+        {/* CAPÍTULO 1, Manifesto / contexto ancestral */}
         <section className="relative px-6 md:px-12 lg:px-20 py-24 md:py-36">
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 max-w-[1600px] mx-auto">
             <motion.aside {...fade(0)} className="lg:col-span-4">
@@ -287,7 +287,7 @@ export default function GarrafadaDigestivaAncestral() {
           </div>
         </section>
 
-        {/* CAPÍTULO 2 — RECEITA */}
+        {/* CAPÍTULO 2, RECEITA */}
         <section id="receita" className="relative py-24 md:py-32 px-6 md:px-12 lg:px-20 scroll-mt-20" style={{ backgroundColor: C.sand }}>
           <div className="max-w-[1600px] mx-auto">
             <motion.div {...fade(0)} className="mb-16 md:mb-20">
@@ -345,17 +345,17 @@ export default function GarrafadaDigestivaAncestral() {
           </div>
         </section>
 
-        {/* CAPÍTULO 3 — DUAS VERSÕES (infusão diária vs lambedor com mel) */}
+        {/* CAPÍTULO 3, DUAS VERSÕES (infusão diária vs xarope com mel) */}
         <section className="relative py-24 md:py-36 px-6 md:px-12 lg:px-20">
           <div className="max-w-[1400px] mx-auto">
             <motion.div {...fade(0)} className="mb-16 max-w-3xl">
               <span className="text-xs font-bold block mb-4" style={{ ...monoStyle, color: C.terracotta }}>Capítulo 03 · Duas versões</span>
               <h2 className="text-[clamp(2.25rem,5.5vw,5rem)] leading-[1] tracking-tight" style={{ ...display, color: C.sage }}>
                 Infusão{' '}
-                <span style={{ ...editorial, color: C.terracotta }}>ou lambedor.</span>
+                <span style={{ ...editorial, color: C.terracotta }}>ou xarope.</span>
               </h2>
               <p className="mt-6 text-lg md:text-xl font-light leading-[1.6]" style={{ color: C.inkSoft }}>
-                Duas formas seguras, sem álcool, da mesma fórmula. A infusão é o uso digestivo diário. O lambedor (mais concentrado e adoçado com mel cru) é a forma popular para tosse, garganta e imunidade.
+                Duas formas seguras, sem álcool, da mesma fórmula. A infusão é o uso digestivo diário. O xarope (mais concentrado e adoçado com mel cru) é a forma popular para tosse, garganta e imunidade.
               </p>
             </motion.div>
 
@@ -378,7 +378,7 @@ export default function GarrafadaDigestivaAncestral() {
                 style={{ backgroundColor: C.sand, border: `1px solid ${C.borderLight}` }}>
                 <Sprout size={32} style={{ color: C.sage }} className="mb-6" />
                 <p className="text-xs font-bold mb-3" style={{ ...monoStyle, color: C.sage }}>Versão B · tosse e garganta</p>
-                <h3 className="text-2xl md:text-3xl mb-6 font-semibold" style={{ ...display, color: C.sage }}>Lambedor (xarope ancestral)</h3>
+                <h3 className="text-2xl md:text-3xl mb-6 font-semibold" style={{ ...display, color: C.sage }}>Xarope (xarope ancestral)</h3>
                 <ul className="space-y-4 text-base md:text-lg leading-relaxed font-light" style={{ color: C.inkSoft }}>
                   <li className="flex gap-3"><span style={{ color: C.sage }}>·</span> Reduzir a infusão coada no fogo baixo até a metade do volume</li>
                   <li className="flex gap-3"><span style={{ color: C.sage }}>·</span> Acrescentar mel cru na proporção 1:1 fora do fogo, mexer até dissolver</li>
@@ -391,7 +391,7 @@ export default function GarrafadaDigestivaAncestral() {
           </div>
         </section>
 
-        {/* CAPÍTULO 4 — DOSSIÊ DAS PLANTAS */}
+        {/* CAPÍTULO 4, DOSSIÊ DAS PLANTAS */}
         <section className="relative py-24 md:py-36 px-6 md:px-12 lg:px-20" style={{ backgroundColor: C.sage, color: C.cream }}>
           <div className="max-w-[1600px] mx-auto">
             <motion.div {...fade(0)} className="mb-20 max-w-3xl">
@@ -455,7 +455,7 @@ export default function GarrafadaDigestivaAncestral() {
           </div>
         </section>
 
-        {/* CAPÍTULO 5 — PROTOCOLO DE USO */}
+        {/* CAPÍTULO 5, PROTOCOLO DE USO */}
         <section className="relative py-24 md:py-36 px-6 md:px-12 lg:px-20">
           <div className="max-w-[1400px] mx-auto">
             <motion.div {...fade(0)} className="mb-16 max-w-3xl">
@@ -496,7 +496,7 @@ export default function GarrafadaDigestivaAncestral() {
           </div>
         </section>
 
-        {/* CAPÍTULO 6 — BIBLIOTECA DE FONTES */}
+        {/* CAPÍTULO 6, BIBLIOTECA DE FONTES */}
         <section className="relative py-24 md:py-36 px-6 md:px-12 lg:px-20" style={{ backgroundColor: C.sand }}>
           <div className="max-w-[1600px] mx-auto">
             <motion.div {...fade(0)} className="mb-16 max-w-3xl">
