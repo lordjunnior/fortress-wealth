@@ -2,7 +2,7 @@ import PageFloatingToc from "@/components/PageFloatingToc";
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { ArrowLeft, ArrowRight, Shield, Clock, Leaf, Wheat, AlertTriangle, Heart, Sprout, Package, Flame, Droplets, Wind, Sun, Tent, Siren, Cross, Egg, TreePine, Layers, Thermometer, Bug, Shovel, BookOpen, ChevronDown, Activity, Brain, Zap, Pill, Wind as WindIcon, ChevronRight, Eye, Target, Compass } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Shield, Clock, Leaf, Wheat, AlertTriangle, Heart, Sprout, Package, Flame, Droplets, Wind, Sun, Tent, Siren, Cross, Egg, TreePine, Layers, Thermometer, Bug, Shovel, BookOpen, ChevronDown, Activity, Brain, Zap, Pill, Wind as WindIcon, ChevronRight, Eye, Target, Compass, FlaskConical } from 'lucide-react';
 import { motion, useScroll, useTransform, useMotionValue, useSpring, AnimatePresence } from 'framer-motion';
 
 import imgSoberaniaAlimentar from '@/assets/fase03-soberania-alimentar.jpg';
@@ -77,6 +77,7 @@ const ALIMENTAR_LAYERS = [
   { icon: Flame, title: 'Conservação e Armazenamento', desc: 'Defumação, salga, fermentação, desidratação. Técnicas milenares validadas.', details: 'Compotas, conservas em vinagre, secagem solar e fermentação lactobacilar.', slug: 'conservacao-armazenamento' },
   { icon: Egg, title: 'Proteína Sustentável', desc: 'Galinhas, codornas, peixes e sistemas compactos de produção animal.', details: 'Aquaponia, galinheiro móvel e criação de tilápia em espaços reduzidos.', slug: 'proteina-sustentavel' },
   { icon: Shovel, title: 'Solo e Fertilidade', desc: 'Compostagem, bokashi, húmus de minhoca. Terra viva gera alimento vivo.', details: 'Análise caseira de pH, cobertura morta, adubação verde e rotação de nutrientes.', slug: 'solo-fertilidade' },
+  { icon: FlaskConical, title: 'Engenharia do Vício Alimentar', desc: 'Por que você não consegue comer só um. Bliss point, crocância acústica e hand-to-mouth.', details: 'Investigação editorial sobre as quatro alavancas industriais que sequestram seu cérebro nos ultraprocessados.', slug: 'engenharia-vicio-alimentar' },
 ];
 
 const PLANTAS_SOBERANAS = [
