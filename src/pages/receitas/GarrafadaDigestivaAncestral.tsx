@@ -108,16 +108,16 @@ const FONTES = [
 ];
 
 const FAQ = [
-  { q: 'Posso fazer só a versão sem álcool?',
-    a: 'Sim, e em alguns casos é a única opção segura: gestantes, lactantes, crianças, pessoas em uso de medicação, abstêmios, hepatopatas. A versão em água tem validade muito menor (5 a 7 dias na geladeira) e extrai menos ativos lipossolúveis, mas funciona bem para uso digestivo de curto prazo. Faça em quantidade menor, mais vezes.' },
-  { q: 'É seguro tomar com cachaça todo dia?',
-    a: 'A garrafada tradicional concentra os ativos em álcool, mas a dose diária é de apenas 1 colher de sopa diluída em água, 2x ao dia. O equivalente alcoólico é menor que metade de um copo pequeno de cerveja por dia. Mesmo assim, evite se for abstêmio, gestante, lactante, hepatopata, em uso de psicotrópico ou anticoagulante.' },
+  { q: 'Por que a versão é só sem álcool?',
+    a: 'Por princípio: este projeto não recomenda nada que crie dependência, vício ou risco hepático adicional. Existem versões tradicionais com cachaça no interior brasileiro, mas a versão em infusão com mel cru atinge o mesmo objetivo digestivo, expectorante e imunológico, é segura para toda a família (com as ressalvas de uso) e respeita gestantes, crianças, abstêmios, hepatopatas e quem usa medicação contínua.' },
+  { q: 'Mel cru substitui o álcool como conservante?',
+    a: 'Em parte. O mel cru tem ação antimicrobiana natural (peróxido de hidrogênio enzimático, baixa atividade de água, pH ácido) e estende a validade da infusão para 7 a 10 dias na geladeira. Não é tão duradouro quanto a maceração alcoólica (que dura meses), mas é o suficiente porque o protocolo de uso é de no máximo 15 dias com pausa.' },
   { q: 'É medicina alternativa ou tem respaldo oficial?',
     a: 'Tem respaldo oficial. Boldo, guaco e aroeira constam na RENISUS (Relação Nacional de Plantas Medicinais de Interesse ao SUS) desde 2009. O Brasil tem mais de 600 Farmácias Vivas dispensando essas mesmas plantas pela rede pública. A Política Nacional de Plantas Medicinais e Fitoterápicos é de 2006.' },
   { q: 'Substitui omeprazol, antiácido ou laxante?',
     a: 'Para má digestão funcional leve (peso após refeição, gases, eructação, intestino preguiçoso), pode substituir uso ocasional de antiácidos comuns. Não substitui tratamento de úlcera diagnosticada, refluxo crônico, gastrite por H. pylori, doença de Crohn ou qualquer doença gastrointestinal estabelecida. Para isso, médico.' },
   { q: 'Qual é a dose certa e por quanto tempo?',
-    a: 'Versão em cachaça: 1 colher de sopa em meio copo de água, 2x ao dia (após almoço e jantar). Versão em água: 50 a 80 ml, 2x ao dia. Máximo de 15 dias seguidos. Pausa de 15 dias antes de repetir. Não use mais de 30 dias por mês total.' },
+    a: 'Adulto: 1 colher de sopa (15 ml) pura ou diluída em pouca água, 2 a 3 vezes ao dia, após as refeições. Crianças acima de 5 anos (com aval pediátrico): 1 colher de chá, 2x ao dia. Máximo de 15 dias seguidos, com pausa obrigatória de 15 dias antes de repetir. Não ultrapasse 30 dias de uso por mês.' },
   { q: 'Por que aroeira na fórmula? Não é “a árvore brava”?',
     a: 'A aroeira-vermelha (Schinus terebinthifolia) é diferente da aroeira-do-sertão (Myracrodruon urundeuva), que é mais cáustica. A primeira é a usada em fitoterapia oficial brasileira, com perfil de segurança documentado e ação anti-inflamatória, antimicrobiana e cicatrizante já confirmadas em revisão sistemática. Sempre identifique corretamente a espécie ou compre em Farmácia Viva.' },
 ];
