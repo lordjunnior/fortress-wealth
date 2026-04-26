@@ -148,7 +148,7 @@ export default function ProjetoAutonomo() {
   const phases = [
     {
       num: '01', title: 'Base 72', sub: 'Protege o corpo', accent: '#f43f5e',
-      sectionId: 'fase-01', icon: Clock, image: tlBase72, size: 'mega',
+      sectionId: 'fase-01', icon: Clock, image: tlBase72, size: 'tall',
       desc: 'Autonomia mínima nas primeiras 72 horas. Abrigo, água potável, comunicação resiliente, deslocamento e kit tático essencial para o intervalo crítico de qualquer ruptura urbana.',
       tag: 'Sobrevivência tática',
     },
@@ -200,9 +200,9 @@ export default function ProjetoAutonomo() {
     },
     {
       num: '07', title: 'Cozinha Funcional', sub: 'Substitui a big pharma', accent: '#fbbf24',
-      sectionId: 'fase-07', icon: Moon, image: imgCozinhaFuncional, size: 'tall',
-      desc: 'Receitas com ensaio clínico randomizado por trás de cada ingrediente. Glicina para o sono, Passiflora para o cortisol, camomila para a ansiedade. A sobremesa que substitui o Rivotril abre uma coleção que devolve à cozinha o papel terapêutico que a indústria farmacêutica capturou.',
-      tag: 'Bioquímica aplicada',
+      sectionId: 'fase-07', icon: Moon, image: imgCozinhaFuncional, size: 'mega',
+      desc: 'Depois da defesa cognitiva, a aplicação prática diária. Receitas com ensaio clínico randomizado por trás de cada ingrediente: glicina para o sono, Passiflora para o cortisol, camomila para a ansiedade. A sobremesa que substitui o Rivotril abre a coleção que devolve à cozinha o papel terapêutico que a indústria farmacêutica capturou.',
+      tag: 'Aplicação prática diária',
       externalRoute: '/soberania-organica/cozinha-funcional',
     },
   ];
@@ -441,14 +441,22 @@ export default function ProjetoAutonomo() {
               const isPico = size === 'pico';
               const isMega = size === 'mega';
               const isTall = size === 'tall' || isMega || isPico;
-              // Hierarquia de largura: pico ocupa full, mega 56%, tall 50%, short 42%
+              // Epílogo: mega que vem logo depois de um pico → tratamento centralizado e amplo
+              // (resolução prática do clímax, sem competir em altura com o pico)
+              const prevSize = i > 0 ? ((phases[i - 1] as any).size as string) : null;
+              const isEpilogue = isMega && prevSize === 'pico';
+              // Hierarquia de largura: pico 88%, epílogo 78% centralizado, mega 56%, tall 46%, short 38%
               const widthClass = isPico
                 ? 'md:w-[88%] md:mx-auto'
+                : isEpilogue
+                ? 'md:w-[78%] md:mx-auto'
                 : isMega
                 ? (isLeft ? 'md:w-[56%] md:pr-16' : 'md:w-[56%] md:pl-16 md:ml-auto')
                 : (isLeft ? 'md:w-[46%] md:pr-20' : 'md:w-[46%] md:pl-20 md:ml-auto');
               const imageHeight = isPico
                 ? 'h-[420px] md:h-[640px]'
+                : isEpilogue
+                ? 'h-[360px] md:h-[580px]'
                 : isMega
                 ? 'h-80 md:h-[520px]'
                 : isTall
@@ -456,11 +464,13 @@ export default function ProjetoAutonomo() {
                 : 'h-60 md:h-80';
               const titleSize = isPico
                 ? 'text-4xl md:text-6xl lg:text-7xl'
+                : isEpilogue
+                ? 'text-4xl md:text-6xl lg:text-[5.5rem]'
                 : isMega
                 ? 'text-3xl md:text-5xl lg:text-6xl'
                 : 'text-2xl md:text-4xl lg:text-5xl';
-              const padding = isPico ? 'p-10 md:p-16' : isMega ? 'p-8 md:p-12' : 'p-7 md:p-10';
-              const justify = isPico ? 'md:justify-center' : (isLeft ? 'md:justify-start' : 'md:justify-end');
+              const padding = isPico ? 'p-10 md:p-16' : isEpilogue ? 'p-9 md:p-14' : isMega ? 'p-8 md:p-12' : 'p-7 md:p-10';
+              const justify = isPico || isEpilogue ? 'md:justify-center' : (isLeft ? 'md:justify-start' : 'md:justify-end');
               return (
                 <motion.div
                   key={phase.num}
@@ -539,6 +549,11 @@ export default function ProjetoAutonomo() {
                         {isPico && (
                           <div className="absolute bottom-6 right-6 px-4 py-2 rounded-full backdrop-blur-md border border-purple-300/40 bg-purple-500/15 text-purple-200 text-[10px] font-bold tracking-[0.3em] uppercase">
                             Pico da Jornada
+                          </div>
+                        )}
+                        {isEpilogue && (
+                          <div className="absolute bottom-6 right-6 px-4 py-2 rounded-full backdrop-blur-md border border-amber-300/40 bg-amber-500/15 text-amber-200 text-[10px] font-bold tracking-[0.3em] uppercase">
+                            Resolução Prática
                           </div>
                         )}
                       </div>
