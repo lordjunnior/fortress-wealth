@@ -1013,6 +1013,120 @@ export default function ProjetoAutonomo() {
             ))}
           </motion.div>
 
+          {/* ═══ DOSSIÊ-ALARME — ENGENHARIA DO VÍCIO ALIMENTAR ═══ */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.8, ease: APPLE_EASE }}
+            className="mb-10"
+          >
+            <Link
+              to="/soberania-organica/engenharia-vicio-alimentar"
+              className="group relative block overflow-hidden rounded-2xl border border-red-500/25 bg-black/40 hover:border-red-500/50 transition-all duration-700 hover:-translate-y-1"
+              style={{ boxShadow: '0 0 60px -20px rgba(220,38,38,0.35), inset 0 0 0 1px rgba(220,38,38,0.08)' }}
+            >
+              {/* Background image */}
+              <div className="absolute inset-0 z-0">
+                <img
+                  src={imgEngVicio}
+                  alt="Engenharia industrial do vício alimentar — laboratório de ultraprocessados"
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-[2000ms] group-hover:scale-105"
+                  style={{ filter: 'brightness(0.32) saturate(0.85) contrast(1.1)' }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-black/30" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(220,38,38,0.18),_transparent_60%)]" />
+              </div>
+
+              {/* Pulsing red top bar — alarm */}
+              <div className="absolute top-0 left-0 right-0 h-[2px] z-20 bg-gradient-to-r from-transparent via-red-500 to-transparent"
+                style={{ animation: 'evaPulse 2.4s ease-in-out infinite' }} />
+
+              <div className="relative z-10 grid lg:grid-cols-[1.4fr_1fr] gap-8 p-8 md:p-12 lg:p-16 min-h-[420px] md:min-h-[460px]">
+                {/* LEFT — copy */}
+                <div className="flex flex-col justify-center">
+                  {/* Alarm chip */}
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="relative flex items-center justify-center">
+                      <div className="absolute inset-0 rounded-full bg-red-500/40 animate-[ping_2s_ease-in-out_infinite]" />
+                      <div className="relative w-2.5 h-2.5 rounded-full bg-red-500" />
+                    </div>
+                    <span className="font-mono text-[10px] md:text-xs tracking-[0.4em] text-red-400 uppercase font-bold">
+                      Dossiê-Alarme · Investigação Editorial
+                    </span>
+                    <span className="hidden md:inline-block px-2 py-0.5 text-[9px] font-bold tracking-widest uppercase bg-red-500/15 border border-red-500/30 text-red-300 rounded">
+                      Novo
+                    </span>
+                  </div>
+
+                  {/* Title — large, alarming */}
+                  <h3
+                    className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tight text-white mb-5 leading-[0.95]"
+                    style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+                  >
+                    Por que você <span className="text-red-400">não consegue</span><br className="hidden md:block" />
+                    comer <span className="italic font-editorial text-amber-300">só um</span>.
+                  </h3>
+
+                  <p className="text-stone-300 text-base md:text-lg leading-relaxed mb-6 max-w-2xl">
+                    Bliss point, crocância acústica, hand-to-mouth e a curva gaussiana do prazer.
+                    A investigação editorial sobre as quatro alavancas industriais que sequestram
+                    seu cérebro nos ultraprocessados, com bibliografia de Moss, Schatzker e Wolf.
+                  </p>
+
+                  {/* Tag pills */}
+                  <div className="flex flex-wrap gap-2 mb-8">
+                    {['Bliss Point', 'Crocância Acústica', 'Hand-to-Mouth', 'Dopamina', 'Bibliografia Verificada'].map((tag) => (
+                      <span key={tag} className="px-3 py-1 text-[10px] md:text-xs font-mono uppercase tracking-wider border border-white/10 bg-white/[0.03] text-stone-400 rounded">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* CTA */}
+                  <div className="flex items-center gap-4">
+                    <span className="inline-flex items-center gap-3 px-6 py-3 rounded-sm border border-red-500/40 bg-red-500/10 group-hover:bg-red-500/20 group-hover:border-red-500/60 text-red-200 font-bold tracking-widest text-xs uppercase transition-all">
+                      <FlaskConical size={14} />
+                      Abrir Dossiê Completo
+                      <ArrowRight size={14} className="group-hover:translate-x-1.5 transition-transform" />
+                    </span>
+                    <span className="hidden md:inline font-mono text-[10px] tracking-widest text-stone-500 uppercase">
+                      Leitura · 12 min
+                    </span>
+                  </div>
+                </div>
+
+                {/* RIGHT — stats / hook */}
+                <div className="hidden lg:flex flex-col justify-center gap-4 border-l border-red-500/15 pl-10">
+                  {[
+                    { n: '04', label: 'Alavancas industriais mapeadas' },
+                    { n: '03', label: 'Livros-fonte (Moss, Schatzker, Wolf)' },
+                    { n: '01', label: 'Reportagem NYT integrada' },
+                  ].map((item) => (
+                    <div key={item.n} className="flex items-baseline gap-4">
+                      <span className="text-4xl font-black text-red-400/80 tabular-nums" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                        {item.n}
+                      </span>
+                      <span className="text-stone-400 text-sm leading-snug">{item.label}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Pulsing red bottom bar */}
+              <div className="absolute bottom-0 left-0 right-0 h-[2px] z-20 bg-gradient-to-r from-transparent via-red-500/70 to-transparent"
+                style={{ animation: 'evaPulse 2.4s ease-in-out infinite reverse' }} />
+            </Link>
+
+            <style>{`
+              @keyframes evaPulse {
+                0%, 100% { opacity: 0.35; transform: scaleX(0.85); }
+                50% { opacity: 1; transform: scaleX(1); }
+              }
+            `}</style>
+          </motion.div>
+
           {/* BENTO GRID — 2 large featured + 3 compact */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
             {/* Featured cards — first 2 get large treatment */}
