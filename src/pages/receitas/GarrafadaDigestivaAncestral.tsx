@@ -18,7 +18,7 @@ import imgAroeira from '@/assets/receitas/ativo-aroeira-frutos.jpg';
 /**
  * /soberania-organica/cozinha-funcional/garrafada-digestiva-ancestral
  * Receita ancestral indígena/popular — Boldo + Guaco + Aroeira.
- * Apresenta versão tradicional (cachaça) e versão sem álcool (água).
+ * Versão exclusivamente sem álcool (infusão concentrada com mel cru).
  * Padrão Light Editorial obrigatório.
  */
 
@@ -51,8 +51,8 @@ const INGREDIENTES = [
   { qtd: '20 a 30 g', nome: 'Folhas de boldo fresco ou seco', detalhe: 'Plectranthus barbatus (boldo brasileiro). Cerca de 1 punhado generoso.' },
   { qtd: '20 g', nome: 'Folhas de guaco', detalhe: 'Mikania glomerata. 1 punhado de folhas frescas ou 2 colheres de sopa de folha seca.' },
   { qtd: '5 a 6 folhas', nome: 'Folhas de aroeira', detalhe: 'Schinus terebinthifolia. Pode substituir por 1 colher de chá de frutos rosados (pimenta-rosa).' },
-  { qtd: '500 ml', nome: 'Cachaça boa OU água filtrada', detalhe: 'Cachaça artesanal para a versão tradicional. Água para a versão sem álcool (gestantes, crianças, abstêmios).' },
-  { qtd: 'opcional', nome: 'Mel cru ou rapadura', detalhe: '1 a 2 colheres de sopa, apenas para suavizar. Adoçante ancestral, evita açúcar refinado.' },
+  { qtd: '500 ml', nome: 'Água filtrada', detalhe: 'Água filtrada fervida. Sem álcool, sem cachaça — versão segura para toda a família, gestantes e crianças (com orientação).' },
+  { qtd: '2 a 3 colheres de sopa', nome: 'Mel cru ou rapadura', detalhe: 'Mel cru de boa procedência (preserva enzimas) ou rapadura ralada. Conservante ancestral, suaviza o sabor das ervas e potencializa a ação expectorante.' },
 ];
 
 const PREPARO = [
