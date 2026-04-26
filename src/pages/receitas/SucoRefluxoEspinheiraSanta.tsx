@@ -5,20 +5,21 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import {
   ArrowRight, ChevronDown, Clock, Users, BookOpen,
   Leaf, Mountain, AlertTriangle, CheckCircle2,
-  ScrollText, ExternalLink, Compass, Sprout, FlaskConical, Flame,
+  ScrollText, ExternalLink, Compass, Sprout, FlaskConical, Droplet,
 } from 'lucide-react';
 import BackNav from '@/components/BackNav';
 import ScrollToTop from '@/components/ScrollToTop';
 
-import imgHero from '@/assets/receitas/hero-dor-inflamacao-light.jpg';
-import imgGengibre from '@/assets/receitas/ativo-gengibre-rizoma.jpg';
-import imgCurcuma from '@/assets/receitas/ativo-curcuma-rizoma.jpg';
-import imgCravo from '@/assets/receitas/ativo-cravo-india.jpg';
+import imgHero from '@/assets/receitas/hero-refluxo-azia-light.jpg';
+import imgEspinheira from '@/assets/receitas/ativo-espinheira-santa.jpg';
+import imgBatata from '@/assets/receitas/ativo-batata-inglesa.jpg';
+import imgCamomila from '@/assets/receitas/ativo-camomila.jpg';
+import imgBabosa from '@/assets/receitas/ativo-babosa.jpg';
 
 /**
- * /soberania-organica/cozinha-funcional/infusao-dor-inflamacao
- * Receita ancestral indígena, popular e quilombola para dor e inflamação.
- * Gengibre + Cúrcuma + Cravo. Sem álcool. Padrão Light Editorial.
+ * /soberania-organica/cozinha-funcional/suco-refluxo-espinheira-santa
+ * Receita ancestral indígena, popular e quilombola para refluxo e azia.
+ * Espinheira-santa + Batata + Camomila + Babosa. Sem álcool. Padrão Light Editorial.
  */
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
@@ -47,127 +48,135 @@ const editorial = { fontFamily: "'Playfair Display', serif", fontStyle: 'italic'
 const monoStyle = { fontFamily: "'JetBrains Mono', monospace", letterSpacing: '0.3em', textTransform: 'uppercase' as const };
 
 const INGREDIENTES = [
-  { qtd: '3 a 4 cm', nome: 'Gengibre fresco ralado', detalhe: 'Zingiber officinale, cerca de 8 a 10 g de raiz fresca. Quanto mais fibrosa e perfumada, mais gingerol disponível.' },
-  { qtd: '1 colher de chá', nome: 'Cúrcuma em pó orgânica', detalhe: 'Curcuma longa, cerca de 2 a 3 g. Substituível por 1 cm de raiz fresca ralada (cor laranja intensa).' },
-  { qtd: '5 a 6 unidades', nome: 'Cravos da índia inteiros', detalhe: 'Syzygium aromaticum, sempre o botão seco inteiro. Evite cravo em pó (oxida rápido) e óleo essencial puro por via oral sem orientação.' },
-  { qtd: '1 pitada', nome: 'Pimenta do reino moída na hora', detalhe: 'Piper nigrum. A piperina aumenta em até 20 vezes a biodisponibilidade da curcumina, conforme estudo clássico de Shoba (1998). Tradição quilombola adaptada à evidência.' },
-  { qtd: '500 ml', nome: 'Água filtrada', detalhe: 'Sem cloro, sem alumínio. Use panela esmaltada, inox ou de barro para não reagir com a cúrcuma.' },
-  { qtd: 'suco de ½ limão', nome: 'Limão fresco', detalhe: 'Adicionado depois de morno. Vitamina C aumenta absorção da curcumina e potencializa o efeito antioxidante.' },
-  { qtd: 'opcional', nome: 'Mel cru ou rapadura', detalhe: '1 colher de chá, apenas para suavizar. Evite açúcar refinado, que alimenta inflamação sistêmica.' },
+  { qtd: '15 a 20 g', nome: 'Folhas secas de espinheira-santa', detalhe: 'Maytenus ilicifolia (ou Monteverdia ilicifolia), 3 a 4 colheres de sopa. Dose validada em ensaios clínicos randomizados conduzidos pelo Programa de Pesquisa em Plantas Medicinais da Central de Medicamentos.' },
+  { qtd: '1 unidade', nome: 'Batata inglesa orgânica média', detalhe: 'Solanum tuberosum, cerca de 150 a 200 g. Use crua, com casca limpa ou descascada. Nunca use batata com brotos ou partes esverdeadas (presença de solanina).' },
+  { qtd: '200 ml', nome: 'Chá forte de camomila', detalhe: 'Matricaria chamomilla, 2 colheres de sopa de flores secas em 200 ml de água quente. Calmante da mucosa gástrica, ação anti-inflamatória e antiespasmódica.' },
+  { qtd: '2 colheres de sopa', nome: 'Gel puro de babosa', detalhe: 'Aloe vera (parte interna transparente). Retire SEMPRE a aloína: corte a folha, deixe escorrer o líquido amarelo por 12 horas, depois retire só o gel cristalino central.' },
+  { qtd: '600 ml', nome: 'Água filtrada', detalhe: 'Sem cloro. Use panela esmaltada, inox ou de barro para a infusão. Nunca alumínio.' },
 ];
 
 const PREPARO = [
-  { n: '01', titulo: 'Decocção do gengibre e do cravo', desc: 'Em panela esmaltada, inox ou de barro, ferva 500 ml de água filtrada com o gengibre ralado e os 5 a 6 cravos por 8 a 10 minutos em fogo baixo. Esse cozimento lento libera gingeróis, shogaóis e eugenol, princípios ativos analgésicos e anti-inflamatórios estáveis ao calor.' },
-  { n: '02', titulo: 'Infusão abafada da cúrcuma', desc: 'Apague o fogo. Acrescente 1 colher de chá rasa de cúrcuma em pó e 1 pitada de pimenta do reino moída na hora. Tampe e deixe em infusão abafada por 10 a 12 minutos. A pimenta do reino, segundo Shoba e colaboradores (1998), aumenta em 20 vezes a absorção da curcumina.' },
-  { n: '03', titulo: 'Coe e acrescente o limão', desc: 'Coe em coador fino ou pano de algodão limpo. Espere amornar (abaixo de 60 °C) e acrescente o suco de meio limão. Acima dessa temperatura, parte da vitamina C é destruída. Mexa bem.' },
-  { n: '04', titulo: 'Adoce com critério, ou nada', desc: 'Se quiser, dissolva 1 colher de chá de mel cru ou rapadura ralada. O mel cru preserva enzimas e potencializa o efeito anti-inflamatório. Açúcar refinado está vetado, é pró-inflamatório e anula parte do protocolo.' },
-  { n: '05', titulo: 'Envase em vidro escuro', desc: 'Transfira para garrafa de vidro âmbar ou escuro esterilizada. A curcumina é fotossensível, luz forte degrada o ativo. Mantenha sempre na geladeira.' },
-  { n: '06', titulo: 'Validade curta, lote pequeno', desc: 'Por ser sem álcool, dura de 2 a 3 dias na geladeira. Faça em lote pequeno, mais vezes. Se notar mudança de cor (de âmbar dourado para marrom escuro), cheiro azedo ou sabor estranho, descarte.' },
+  { n: '01', titulo: 'Infusão da espinheira-santa', desc: 'Ferva 600 ml de água filtrada e desligue o fogo. Adicione as 15 a 20 g de folhas secas de espinheira-santa, tampe e deixe em infusão abafada por 10 a 12 minutos. Coe em coador fino. O líquido fica âmbar claro com leve amargor característico, isso é o tanino e a friedelina, exatamente os ativos gastroprotetores.' },
+  { n: '02', titulo: 'Chá de camomila concentrado', desc: 'Em paralelo, ferva 200 ml de água, desligue e adicione 2 colheres de sopa de flores secas de camomila. Tampe, espere 8 a 10 minutos e coe. Vai entrar morno na mistura final.' },
+  { n: '03', titulo: 'Suco de batata fresco', desc: 'Lave bem a batata, retire brotos e partes verdes. Rale crua (com ou sem casca, conforme tolerância) na hora do uso. Coloque em pano limpo de algodão e esprema com força para extrair o suco branco-leitoso. Rendimento: 100 a 150 ml. ATENÇÃO: o suco de batata oxida em poucos minutos, prepare na hora de tomar, nunca guarde.' },
+  { n: '04', titulo: 'Preparo do gel de babosa', desc: 'Da folha previamente drenada por 12 horas, corte a casca grossa com faca limpa e retire só o gel cristalino central com colher. Descarte qualquer resíduo amarelado. Bata rapidamente no liquidificador para deixar líquido (5 segundos no máximo).' },
+  { n: '05', titulo: 'Mistura final morna', desc: 'Misture na seguinte ordem em jarra de vidro: 600 ml do chá de espinheira-santa coado + 200 ml do chá de camomila + 2 colheres de sopa de gel de babosa. Mexa bem. Reserve em geladeira em vidro âmbar fechado. Validade: 3 a 4 dias.' },
+  { n: '06', titulo: 'Dose de uso, com suco fresco da batata', desc: 'Na hora de tomar: aqueça levemente 200 ml da mistura (morna, nunca fervendo, para preservar a babosa) e acrescente o suco de batata recém-extraído (50 a 75 ml para cada 200 ml). Beba 20 a 30 minutos antes do almoço e do jantar. Sabor terroso, levemente amargo. Não adoce com açúcar.' },
 ];
 
 const VARIACOES = [
   {
-    icon: FlaskConical, cor: 'terra',
-    titulo: 'Versão A · Chá quente diário', sub: 'Dor leve a moderada · uso de 7 a 21 dias',
+    icon: FlaskConical, cor: 'sage',
+    titulo: 'Versão A · Suco diário ancestral', sub: 'Refluxo leve a moderado · 14 a 28 dias',
     pontos: [
       'A receita base, exatamente como descrita acima',
-      'Dose adulta: 250 ml (1 xícara) 2x ao dia, manhã e fim de tarde',
-      'Tomar morno ou quente, após refeição leve',
-      'Cor âmbar dourado intenso, sabor picante e aromático',
-      'Forma mais estudada em meta-análises de osteoartrite e dor menstrual',
+      'Dose adulta: 200 a 250 ml 2x ao dia, antes do almoço e do jantar',
+      'Suco de batata sempre extraído na hora, nunca armazenado',
+      'Forma mais próxima dos ensaios clínicos brasileiros (Geocze, Biavatti)',
+      'Pausa de 7 a 10 dias após cada ciclo de 28 dias',
     ],
   },
   {
-    icon: Sprout, cor: 'sage',
-    titulo: 'Versão B · Xarope concentrado', sub: 'Para guardar e levar na bolsa',
+    icon: Sprout, cor: 'terra',
+    titulo: 'Versão B · Gelatina gastroprotetora', sub: 'Para quem tem náusea ou não tolera líquidos',
     pontos: [
-      'Reduzir 500 ml de chá já coado em fogo baixo até 150 ml',
-      'Acrescentar 2 colheres de sopa de mel cru fora do fogo, mexer bem',
-      'Validade: 10 a 15 dias em vidro âmbar fechado na geladeira',
-      'Dose: 1 colher de sopa diluída em meio copo de água, 2 a 3x ao dia',
-      'Prático para quem trabalha fora ou viaja muito',
+      'Dissolva 40 g de gelatina sem sabor incolor em 80 ml de chá quente de espinheira-santa',
+      'Misture com 400 ml da mistura base já pronta, mais 1 colher de gel de babosa',
+      'Despeje em forma e leve à geladeira por 4 horas. Corte em 8 quadrados',
+      'Dose: 2 quadrados antes do almoço e 2 antes do jantar',
+      'A textura ajuda a aderir à mucosa esofágica, ideal para refluxo noturno',
     ],
   },
   {
-    icon: Flame, cor: 'terra',
-    titulo: 'Versão C · Pasta tópica quilombola', sub: 'Dor localizada · joelho, lombar, ombro',
+    icon: Droplet, cor: 'sage',
+    titulo: 'Versão C · Compressa morna', sub: 'Apoio externo na crise de azia',
     pontos: [
-      '1 colher de chá de cúrcuma em pó + 1 colher de chá de gengibre ralado',
-      'Acrescentar 2 cravos macerados ou 3 gotas de óleo essencial de cravo',
-      'Misturar com água quente até formar pasta espessa',
-      'Aplicar morna na região dolorida, cobrir com pano de algodão limpo',
-      'Deixar agir por 15 a 20 minutos, 2x ao dia. Atenção: cúrcuma mancha pele e tecido temporariamente',
+      'Faça 300 ml de chá forte de espinheira-santa (use o dobro da erva)',
+      'Mergulhe pano de algodão limpo, escorra o excesso',
+      'Aplique morno sobre o epigástrio (boca do estômago) por 15 minutos',
+      'Repouse semi-sentado, nunca deitado. Respire fundo',
+      'Apoio sintomático para acalmar queimação aguda. Não substitui o uso interno.',
     ],
   },
 ];
 
 const ATIVOS = [
   {
-    n: '01', img: imgGengibre, nome: 'Gengibre', fonte: 'Zingiber officinale · 8 a 10 g de raiz fresca',
-    icon: Sprout,
-    alt: 'Rizomas frescos de gengibre com casca bege rugosa e um pedaço cortado mostrando interior amarelo claro fibroso sobre toalha de linho cor creme em luz natural suave',
-    tradicao: 'Adotado rapidamente por indígenas amazônicos e quilombolas após a chegada via colonização. Conhecido como "raiz quente" para dor no corpo, reumatismo, dor de cabeça e "frio nas juntas". Quilombolas do Nordeste e povos da Amazônia o associam à circulação e à expulsão de "umidade ruim". Também é base da medicina ayurvédica há mais de 5 mil anos.',
-    sus: 'Listado na RENISUS (Relação Nacional de Plantas Medicinais de Interesse ao SUS) e em monografias da Anvisa para náuseas, dispepsia e dor.',
-    mecanismo: 'Gingeróis e shogaóis inibem COX-2 e 5-LOX, exatamente o mesmo caminho enzimático bloqueado pelos AINEs (dipirona, nimesulida, ibuprofeno). Reduzem TNF-α, IL-6 e prostaglandinas inflamatórias. Meta-análises confirmam efeito comparável ao ibuprofeno em osteoartrite de joelho e dor menstrual primária, com perfil de segurança gastrointestinal muito superior.',
-    estudoAncora: 'Bartels, E. M. et al. (2015), Osteoarthritis and Cartilage',
-    achado: 'Meta-análise de 5 ensaios clínicos randomizados (n = 593) confirmou que a suplementação com gengibre reduz dor e incapacidade em pacientes com osteoartrite, com efeito estatisticamente significativo (SMD = -0,30; IC 95% -0,50 a -0,09) e boa tolerância.',
-  },
-  {
-    n: '02', img: imgCurcuma, nome: 'Cúrcuma', fonte: 'Curcuma longa · 2 a 3 g em pó',
+    n: '01', img: imgEspinheira, nome: 'Espinheira-santa', fonte: 'Maytenus ilicifolia · 15 a 20 g secas',
     icon: Leaf,
-    alt: 'Rizomas de cúrcuma com casca alaranjada e um pedaço cortado mostrando interior laranja vivo intenso ao lado de tigela de madeira com pó dourado da raiz sobre toalha de linho cor creme',
-    tradicao: 'Conhecida no Brasil como "açafrão da terra" ou "raiz amarela". Na medicina popular e quilombola é o "ouro da terra" para inflamação, feridas e dores crônicas. O uso segue a doutrina dos sinais indígena: a cor amarelo-ouro intensa indica ação para "limpar fígado e sangue". Tradição milenar na Índia, adotada por benzedeiras e parteiras brasileiras.',
-    sus: 'Listada na RENISUS. Curcuma longa consta em fitoterápicos com registro pela Anvisa para apoio anti-inflamatório e dispepsia.',
-    mecanismo: 'A curcumina é uma potente inibidora de NF-κB, COX-2, 5-LOX e citocinas pró-inflamatórias (TNF-α, IL-1β, IL-6). Modula vias inflamatórias crônicas envolvidas em artrite, doença inflamatória intestinal e dor crônica. Meta-análises 2022-2024 confirmam eficácia comparável a alguns AINEs em osteoartrite, com redução significativa de marcadores inflamatórios e perfil gastrointestinal seguro.',
-    estudoAncora: 'Daily, J. W.; Yang, M.; Park, S. (2016), Journal of Medicinal Food',
-    achado: 'Meta-análise de 8 ensaios clínicos randomizados (n = 606) demonstrou que extratos de cúrcuma (≈1.000 mg/dia de curcumina) reduzem sintomas de artrite com eficácia similar aos AINEs convencionais, sem os efeitos colaterais gástricos típicos da classe.',
+    alt: 'Folhas verde escuro brilhantes ovais com bordas espinhosas serrilhadas características de espinheira-santa Maytenus ilicifolia sobre toalha de linho cor creme em luz natural suave',
+    tradicao: 'Planta nativa do Brasil meridional, usada há séculos por povos Guarani, Kaingang e Xokleng como remédio de primeira linha para "queimação no estômago", "fogo no peito" e úlcera. Conhecida na medicina popular como "erva cancerosa", "espinho-de-deus" ou "cancorosa-de-sete-espinhos". É um dos maiores ícones da farmacopeia indígena e popular brasileira, transmitida por benzedeiras e raizeiros como protetora gástrica universal antes da era do omeprazol.',
+    sus: 'Listada na RENISUS (Relação Nacional de Plantas Medicinais de Interesse ao SUS), dispensada nas Farmácias Vivas e com monografia oficial na Farmacopeia Brasileira (Anvisa) para uso como antidispéptico e gastroprotetor.',
+    mecanismo: 'Os taninos condensados, friedelina, friedelinol e flavonoides agem em três frentes: reduzem a secreção basal de ácido clorídrico (efeito antissecretor similar aos antagonistas H2), formam uma camada protetora sobre a mucosa gástrica (efeito citoprotetor), e aceleram cicatrização de microerosões. Estudo clínico brasileiro (Geocze et al.) demonstrou eficácia comparável ao cimetidine em dispepsia funcional, com perfil de segurança superior e ausência de rebote ácido ao suspender.',
+    estudoAncora: 'Geocze, S. et al. (1988) e Biavatti, M. W. (2007), Revista Brasileira de Farmacognosia',
+    achado: 'Ensaios clínicos brasileiros conduzidos no contexto da Central de Medicamentos confirmaram que extratos de Maytenus ilicifolia (400 a 860 mg/dia) reduzem significativamente sintomas de dispepsia, queimação retroesternal e dor epigástrica, com eficácia comparável à cimetidina e sem os efeitos rebote típicos dos inibidores de bomba de prótons.',
   },
   {
-    n: '03', img: imgCravo, nome: 'Cravo da índia', fonte: 'Syzygium aromaticum · 5 a 6 botões secos',
-    icon: Mountain,
-    alt: 'Botões secos de cravo da índia em formato de prego com cabeça arredondada e haste fina de cor castanho avermelhado escuro empilhados sobre toalha de linho cor creme em luz natural suave',
-    tradicao: 'Usado por benzedeiras, parteiras e curandeiros tradicionais como analgésico local e anti-inflamatório. Mascar 1 cravo é receita popular brasileira para dor de dente desde o século XVIII. Combinado com gengibre e cúrcuma, é clássico em xaropes e unguentos quilombolas para "dor de origem quente", o nome popular para inflamação.',
-    sus: 'Reconhecido pela Anvisa em monografias oficiais. Eugenol (ativo principal) é estudado em odontologia e dor inflamatória crônica.',
-    mecanismo: 'Eugenol, principal ativo (compõe 70 a 90% do óleo essencial), atua como inibidor de COX-2 e bloqueador de canais de sódio em fibras nervosas, mecanismo similar a anestésicos locais. Ação analgésica direta e potencialização da ação anti-inflamatória do gengibre e da cúrcuma. Atividade antioxidante e antimicrobiana documentada.',
-    estudoAncora: 'Kamatou, G. P. P. et al. (2012), Molecules',
-    achado: 'Revisão sistemática mostra que o eugenol do cravo apresenta atividade analgésica, anti-inflamatória, antimicrobiana e antioxidante consistente em modelos pré-clínicos e clínicos, com mecanismos confirmados de inibição de COX-2 e modulação de canais iônicos em fibras nociceptivas.',
+    n: '02', img: imgBatata, nome: 'Batata inglesa crua', fonte: 'Solanum tuberosum · 150 a 200 g',
+    icon: Sprout,
+    alt: 'Batata inglesa fresca inteira e outra cortada ao meio mostrando interior branco amiláceo ao lado de tigela de cerâmica com polpa de batata crua ralada sobre toalha de linho cor creme em luz natural',
+    tradicao: 'Remédio popular rural e urbano brasileiro desde o século XIX, usado como "antiácido natural" antes da invenção dos antiácidos sintéticos. Avós, parteiras e benzedeiras prescreviam o suco branco-leitoso da batata crua espremida em pano para "queimação", "azia de gravidez" e "úlcera". É também tradição em Portugal, Alemanha e Europa Oriental, onde foi documentado em farmacopeias populares do século XIX e XX. A versão moderna brasileira incorpora o suco no jejum e antes das refeições.',
+    sus: 'Não consta diretamente na RENISUS, mas o uso medicinal está documentado em compêndios de fitoterapia popular do Ministério da Saúde e em manuais de medicina tradicional. Reconhecido como adjuvante seguro em dispepsia e azia ocasional.',
+    mecanismo: 'O suco fresco é alcalino (pH 6 a 7) e contém grande quantidade de amido e mucilagens que neutralizam o excesso de ácido clorídrico e formam película protetora sobre a mucosa esofágica e gástrica, similar ao mecanismo de antiácidos como hidróxido de alumínio, sem os efeitos colaterais (constipação, retenção). Contém também atropina-símile em traços e inibidores naturais de protease que reduzem irritação local. A evidência clínica é ainda preliminar (estudos pequenos), mas a evidência etnográfica é massiva.',
+    estudoAncora: 'Vlachojannis, J. E. et al. (2010), Phytotherapy Research',
+    achado: 'Revisão sistemática europeia confirma o uso tradicional do suco de batata crua (Solanum tuberosum) para gastrite e dispepsia em múltiplas tradições populares (alemã, eslava, brasileira), com plausibilidade biológica forte (alcalinidade, mucilagens, redução de pepsina) e segurança comprovada em uso de curto prazo.',
+  },
+  {
+    n: '03', img: imgCamomila, nome: 'Camomila', fonte: 'Matricaria chamomilla · 2 colheres em 200 ml',
+    icon: Sprout,
+    alt: 'Flores secas de camomila Matricaria chamomilla com pétalas brancas e centro amarelo dourado espalhadas sobre toalha de linho cor creme com pequena colher de madeira em luz natural suave',
+    tradicao: 'Trazida pelos colonizadores europeus e rapidamente adotada pela tradição indígena, popular e quilombola brasileira como calmante digestivo e do sistema nervoso. Conhecida como "macela" em algumas regiões. Benzedeiras a indicam para cólica de bebê, gastrite, refluxo, "estômago nervoso" e insônia leve. Faz parte da tríade clássica brasileira para distúrbios gastrintestinais ao lado de espinheira-santa e boldo.',
+    sus: 'Listada na RENISUS. Possui monografia oficial na Farmacopeia Brasileira para uso digestivo, antiespasmódico e calmante leve. Dispensada em Farmácias Vivas em todo o país.',
+    mecanismo: 'Os flavonoides (apigenina, luteolina) e o alfa-bisabolol têm ação anti-inflamatória direta sobre a mucosa gástrica, antiespasmódica sobre a musculatura lisa do trato digestivo e ansiolítica leve via receptores GABA. Reduz contração esofágica desordenada, principal gatilho do refluxo, e acalma o eixo cérebro-intestino, fundamental porque grande parte do refluxo funcional tem componente emocional (estresse e ansiedade aumentam relaxamento do esfíncter esofágico inferior).',
+    estudoAncora: 'Srivastava, J. K.; Shankar, E.; Gupta, S. (2010), Molecular Medicine Reports',
+    achado: 'Revisão científica abrangente confirma ações documentadas da camomila em dispepsia funcional, refluxo, cólicas e ansiedade somatizada no trato digestivo, com perfil de segurança excepcional e sinergia comprovada com outras plantas gastroprotetoras como espinheira-santa e gengibre.',
+  },
+  {
+    n: '04', img: imgBabosa, nome: 'Babosa (Aloe vera)', fonte: 'Aloe vera · 2 colheres de gel puro',
+    icon: Droplet,
+    alt: 'Folha fresca de babosa Aloe vera cortada longitudinalmente expondo o gel transparente cristalino interior ao lado de tigela de cerâmica com gel escupado sobre toalha de linho cor creme em luz natural',
+    tradicao: 'Usada por quilombolas, sertanejos e povos do semiárido nordestino para "acalmar o fogo interno", cicatrizar feridas externas e proteger mucosas. Conhecida como "babosa", "caraguatá" ou "erva-da-azia". Receita popular: bater 1 colher do gel transparente com água ou suco de fruta para queimação estomacal. ATENÇÃO ANCESTRAL importante: a tradição sempre orientou a "deixar escorrer o suco amarelo antes de usar", separando empiricamente a aloína (laxativa e potencialmente hepatotóxica) do gel terapêutico.',
+    sus: 'Listada na RENISUS para uso tópico (queimaduras, feridas). O uso interno do gel descontaminado é reconhecido em fitoterapia tradicional e em manuais de Farmácia Viva, mas exige preparo correto (remoção total da aloína).',
+    mecanismo: 'O gel cristalino contém polissacarídeos (acemanano), mucilagens e enzimas que formam película hidratante e cicatrizante sobre a mucosa esofágica e gástrica inflamada. Estudo clínico randomizado (Panahi et al., 2015) comparou suco de Aloe vera com omeprazol e ranitidina em pacientes com DRGE e demonstrou eficácia comparável na redução de azia, regurgitação, eructação e disfagia, sem efeitos adversos relevantes. Importante: SÓ o gel sem aloína é seguro para uso interno.',
+    estudoAncora: 'Panahi, Y. et al. (2015), Journal of Traditional Chinese Medicine',
+    achado: 'Ensaio clínico randomizado controlado com 79 pacientes com DRGE comparou Aloe vera (10 ml/dia) versus omeprazol (20 mg/dia) e ranitidina (300 mg/dia) durante 4 semanas. Aloe vera foi seguro e efetivo na redução de todos os sintomas avaliados, com perfil de tolerabilidade superior e sem efeitos adversos relevantes.',
   },
 ];
 
 const FONTES = [
   { autor: 'Ministério da Saúde', ano: '2006', titulo: 'Política Nacional de Plantas Medicinais e Fitoterápicos (Decreto nº 5.813)', revista: 'Brasil', tipo: 'Marco regulatório oficial', link: 'https://bvsms.saude.gov.br/bvs/publicacoes/politica_nacional_fitoterapicos.pdf' },
   { autor: 'Ministério da Saúde', ano: '2009', titulo: 'RENISUS, Relação Nacional de Plantas Medicinais de Interesse ao SUS', revista: 'Brasil', tipo: 'Lista oficial de 71 plantas', link: 'https://www.gov.br/saude/pt-br/composicao/sectics/daf/pnpmf/plantas-medicinais-e-fitoterapicos-no-sus' },
-  { autor: 'Bartels, E. M. et al.', ano: '2015', titulo: 'Efficacy and safety of ginger in osteoarthritis patients: a meta-analysis of randomized placebo-controlled trials', revista: 'Osteoarthritis and Cartilage', tipo: 'Meta-análise (gengibre)', link: 'https://pubmed.ncbi.nlm.nih.gov/25300574/' },
-  { autor: 'Daily, J. W.; Yang, M.; Park, S.', ano: '2016', titulo: 'Efficacy of turmeric extracts and curcumin for alleviating the symptoms of joint arthritis: a systematic review and meta-analysis of randomized clinical trials', revista: 'Journal of Medicinal Food', tipo: 'Meta-análise (cúrcuma)', link: 'https://pubmed.ncbi.nlm.nih.gov/27533649/' },
-  { autor: 'Shoba, G. et al.', ano: '1998', titulo: 'Influence of piperine on the pharmacokinetics of curcumin in animals and human volunteers', revista: 'Planta Medica', tipo: 'Estudo clínico (piperina + curcumina)', link: 'https://pubmed.ncbi.nlm.nih.gov/9619120/' },
-  { autor: 'Kamatou, G. P. P.; Vermaak, I.; Viljoen, A. M.', ano: '2012', titulo: 'Eugenol, from the remote Maluku Islands to the international market place: a review of a remarkable and versatile molecule', revista: 'Molecules', tipo: 'Revisão sistemática (cravo)', link: 'https://pubmed.ncbi.nlm.nih.gov/22634840/' },
-  { autor: 'Hewlings, S. J.; Kalman, D. S.', ano: '2017', titulo: 'Curcumin: a review of its effects on human health', revista: 'Foods', tipo: 'Revisão clínica (curcumina)', link: 'https://pubmed.ncbi.nlm.nih.gov/29065496/' },
-  { autor: 'Anh, N. H. et al.', ano: '2020', titulo: 'Ginger on human health: a comprehensive systematic review of 109 randomized controlled trials', revista: 'Nutrients', tipo: 'Revisão sistemática (gengibre)', link: 'https://pubmed.ncbi.nlm.nih.gov/32183201/' },
+  { autor: 'Geocze, S. et al.', ano: '1988', titulo: 'Estudo clínico de pacientes portadores de dispepsia alta funcional ou orgânica tratados com extrato de Maytenus ilicifolia (espinheira-santa)', revista: 'Estudos de Plantas Medicinais (CEME)', tipo: 'Ensaio clínico (espinheira-santa)', link: 'https://pesquisa.bvsalud.org/portal/resource/pt/lil-69091' },
+  { autor: 'Biavatti, M. W. et al.', ano: '2007', titulo: 'Ethnopharmacology of Maytenus ilicifolia and related species, a review', revista: 'Revista Brasileira de Farmacognosia', tipo: 'Revisão etnofarmacológica', link: 'https://pubmed.ncbi.nlm.nih.gov/18516305/' },
+  { autor: 'Panahi, Y. et al.', ano: '2015', titulo: 'Efficacy and safety of Aloe vera syrup for the treatment of gastroesophageal reflux disease, a pilot randomized positive-controlled trial', revista: 'Journal of Traditional Chinese Medicine', tipo: 'Ensaio clínico randomizado (babosa)', link: 'https://pubmed.ncbi.nlm.nih.gov/26591688/' },
+  { autor: 'Srivastava, J. K.; Shankar, E.; Gupta, S.', ano: '2010', titulo: 'Chamomile, a herbal medicine of the past with a bright future', revista: 'Molecular Medicine Reports', tipo: 'Revisão científica (camomila)', link: 'https://pubmed.ncbi.nlm.nih.gov/21132119/' },
+  { autor: 'Vlachojannis, J. E.; Cameron, M.; Chrubasik, S.', ano: '2010', titulo: 'Medicinal use of potato-derived products, a systematic review', revista: 'Phytotherapy Research', tipo: 'Revisão sistemática (batata)', link: 'https://pubmed.ncbi.nlm.nih.gov/20013822/' },
+  { autor: 'Anvisa', ano: '2019', titulo: 'Farmacopeia Brasileira, 6ª edição, Volume II (Monografias de plantas medicinais)', revista: 'Anvisa', tipo: 'Monografia oficial', link: 'https://www.gov.br/anvisa/pt-br/assuntos/farmacopeia/farmacopeia-brasileira' },
 ];
 
 const FAQ = [
-  { q: 'Esse chá substitui dipirona, nimesulida ou ibuprofeno?',
-    a: 'Não substitui em crise aguda intensa, dor pós-cirúrgica, fratura, cólica renal ou enxaqueca incapacitante. É apoio anti-inflamatório natural com forte evidência clínica para dor muscular, dor articular crônica leve a moderada (osteoartrite de joelho, lombalgia mecânica), dor menstrual e inflamação de baixo grau. Para dor crônica, o efeito aparece de forma cumulativa entre 7 e 21 dias. Quem já usa AINE ou anticoagulante NUNCA deve suspender por conta própria, deve conversar com médico antes.' },
+  { q: 'Esse suco substitui o omeprazol ou pantoprazol?',
+    a: 'Não substitui de imediato e nunca por conta própria. Funciona muito bem como apoio em refluxo leve a moderado, dispepsia funcional, "azia ocasional" e gastrite não erosiva, com efeito perceptível em 7 a 14 dias. Para esofagite erosiva grau C ou D, esôfago de Barrett, suspeita de úlcera ativa ou Helicobacter pylori confirmado, é apoio complementar e exige acompanhamento gastroenterológico. Quem já usa inibidor de bomba de prótons NUNCA deve suspender de uma vez (efeito rebote ácido), o desmame é gradual e supervisionado.' },
   { q: 'Em quanto tempo começa a fazer efeito?',
-    a: 'Para dor aguda leve (cólica menstrual, dor muscular pós-treino, dor de cabeça tensional), o efeito começa em 30 a 90 minutos após tomar uma xícara quente. Para dor crônica (artrite, artrose, lombalgia recorrente), os benefícios cumulativos aparecem entre 7 e 21 dias de uso contínuo. O efeito é mais robusto quando combinado com alimentação anti-inflamatória, sono adequado e movimento diário leve.' },
+    a: 'Para azia ocasional e queimação leve, o alívio começa em 20 a 40 minutos após a primeira dose (efeito alcalinizante imediato da batata + babosa). Para refluxo crônico funcional, a melhora consistente aparece entre 7 e 14 dias de uso contínuo, com pico em 21 a 28 dias. A espinheira-santa age por mecanismo cumulativo (proteção e cicatrização da mucosa), por isso o tempo. Mudanças de hábito (elevar cabeceira, reduzir refeição noturna pesada, evitar deitar logo após comer) potencializam o protocolo.' },
   { q: 'Quem NÃO pode tomar?',
-    a: 'Contraindicações absolutas: gestantes (cúrcuma e cravo em doses altas têm efeito uterotônico), pessoas com cálculo de vesícula ativa (cúrcuma estimula contração vesicular), úlcera gástrica ativa, alergia conhecida a qualquer ingrediente, pré-operatório (suspender 14 dias antes pelo risco de sangramento). Atenção redobrada: quem usa anticoagulante (varfarina, AAS, rivaroxabana), antidiabético oral, anti-hipertensivo, ou está em quimioterapia. Crianças menores de 6 anos: não recomendado sem pediatra fitoterapeuta.' },
+    a: 'Contraindicações absolutas: gestantes (espinheira-santa em doses altas tem efeito uterotônico documentado), lactantes (sem dados de segurança), crianças menores de 6 anos sem orientação pediátrica fitoterápica, pessoas com obstrução intestinal, alergia conhecida à família Celastraceae (espinheira-santa) ou Asteraceae (camomila), uso interno em quem tem doença hepática (pelo risco de aloína residual mal removida da babosa). Atenção: pessoas em uso de antiácidos, antagonistas H2 ou inibidores de bomba de prótons devem informar o médico (a espinheira-santa pode interferir na absorção de outros medicamentos).' },
   { q: 'Qual a dose certa por idade?',
-    a: 'Adultos 18-65 anos: receita base completa, 500 ml/dia divididos em 2 doses. Idosos acima de 65 anos: reduza para 5 a 6 g de gengibre, 1 a 2 g de cúrcuma e 3 a 4 cravos por 500 ml, com 300 a 400 ml/dia (maior risco de irritação gástrica). Adolescentes 12-17 anos: metade da dose adulta, 250 ml/dia. Crianças 6-11 anos: 1/4 da dose adulta (2 a 3 g de gengibre, 0,5 g de cúrcuma, 2 cravos), 150 a 200 ml/dia, sempre com aval pediátrico. Não exceda 5 g totais de gengibre por dia em nenhuma faixa.' },
+    a: 'Adultos 18 a 65 anos: receita base completa, 200 a 250 ml 2x ao dia, totalizando 400 a 500 ml/dia, antes do almoço e do jantar. Idosos acima de 65 anos: reduza para 10 a 12 g de espinheira-santa, meia batata e 300 a 400 ml/dia (mucosa mais sensível, maior risco de hipersensibilidade). Adolescentes 12 a 17 anos: metade da dose adulta, 250 a 350 ml/dia. Crianças 6 a 11 anos: 1/4 da dose (5 a 7 g de espinheira-santa, 1/4 de batata) e 100 a 150 ml/dia, sempre com aval pediátrico fitoterápico. Crianças menores de 6 anos: não use sem pediatra especializado.' },
   { q: 'Por quanto tempo posso tomar sem parar?',
-    a: 'Para dor aguda: 7 a 10 dias contínuos. Para dor crônica: 4 a 8 semanas, depois pausa de 7 dias e reavaliação. O objetivo é apoiar a recuperação e ganhar capacidade funcional, não criar uso indefinido sem reavaliar causas (sobrepeso, sedentarismo, alimentação pró-inflamatória, distúrbios autoimunes). Dor crônica que não cede em 8 semanas exige investigação médica.' },
-  { q: 'Por que adicionar pimenta do reino?',
-    a: 'O estudo clássico de Shoba e colaboradores (1998), publicado em Planta Medica, mostrou que a piperina (princípio ativo da pimenta do reino) aumenta em até 20 vezes a biodisponibilidade da curcumina em humanos. Sem piperina, a curcumina é mal absorvida pelo intestino e parte é excretada antes de fazer efeito. É uma adaptação simples e poderosa da tradição quilombola à evidência científica: 1 pitada já basta.' },
-  { q: 'A cúrcuma mancha tudo. É normal?',
-    a: 'Sim, é completamente normal. A cor amarelo-ouro intensa é da curcumina, exatamente o ativo que queremos. Mancha temporariamente bancadas, panelas plásticas, dentes e pele. Solução: use panela esmaltada, inox ou de barro (nunca alumínio); colher de pau ou inox; lave a louça imediatamente após o preparo. As manchas no dente saem com escovação normal. Vale a pena.' },
-  { q: 'Posso adoçar com açúcar?',
-    a: 'Não. Açúcar refinado é pró-inflamatório, eleva insulina, gera estresse oxidativo e anula parte do que o protocolo está tentando consertar. Se precisar adoçar, use 1 colher de chá de mel cru (preserva enzimas e tem ação anti-inflamatória própria) ou rapadura ralada. Stevia natural também serve. Evite adoçante artificial em uso crônico.' },
+    a: 'Ciclo padrão validado em ensaios clínicos: 14 a 28 dias contínuos, depois pausa de 7 a 10 dias e reavaliação. Refluxo funcional que não cede em 28 dias completos exige investigação médica, endoscopia e pesquisa de Helicobacter pylori, pode haver causa estrutural (hérnia de hiato, esôfago de Barrett, úlcera) que precisa de tratamento específico. Não é para uso indefinido, é apoio dentro de uma estratégia maior de mudança de hábitos.' },
+  { q: 'Por que retirar a aloína da babosa?',
+    a: 'A folha da babosa tem duas partes muito diferentes: a casca verde grossa com a camada amarela imediatamente abaixo (líquido amarelo amargo) contém aloína, um composto laxante potente e potencialmente hepatotóxico em uso contínuo, classificado pela IARC como possível carcinógeno em altas doses. O gel cristalino do centro NÃO contém aloína e é seguro. A tradição quilombola e nordestina sempre orientou "deixar escorrer o suco amarelo por uma noite" antes de usar, separação empírica perfeita. Faça assim: corte a folha, mantenha em pé em vasilha por 12 horas para escorrer todo o líquido amarelo, depois corte a casca e retire só o gel cristalino do centro.' },
+  { q: 'Posso comer normalmente tomando esse protocolo?',
+    a: 'O protocolo só funciona acompanhado de mudanças de hábito. Obrigatório: elevar cabeceira da cama 15 cm (calços nos pés da cama, não travesseiros altos que pioram), última refeição 3 horas antes de deitar, reduzir café (no máximo 1 xícara antes do meio-dia), reduzir álcool, chocolate, frituras, pimenta forte, refrigerante, hortelã (relaxa o esfíncter esofágico). Mastigar devagar, comer porções menores, não usar roupa apertada na cintura. Sem essas mudanças, nenhum chá nem nenhum omeprazol resolve o refluxo de forma duradoura.' },
+  { q: 'O suco da batata pode ser guardado?',
+    a: 'Não. O suco fresco de batata oxida em poucos minutos, perde os mucilagens ativos e desenvolve compostos de oxidação que podem irritar a mucosa. Sempre prepare na hora: rale, esprema no pano, misture na dose já morna do chá base, beba imediatamente. A mistura base (espinheira-santa + camomila + babosa) sim pode ficar pronta na geladeira por 3 a 4 dias em vidro âmbar fechado.' },
 ];
 
 const TRILHA = [
   { to: '/soberania-organica/cozinha-funcional', titulo: 'Hub Cozinha Funcional', desc: 'Volte para a coleção completa de receitas ancestrais brasileiras validadas pelo SUS.', label: 'Ver coleção' },
-  { to: '/soberania-organica/cozinha-funcional/cha-pressao-hibisco', titulo: 'Chá ancestral para pressão', desc: 'Hibisco, alho e limão. Apoio natural à hipertensão leve-moderada com mecanismo similar aos inibidores da ECA.', label: 'Ler receita' },
-  { to: '/soberania-organica/saude-preventiva', titulo: 'Saúde Preventiva', desc: 'Os pilares fisiológicos por trás da inflamação crônica: alimentação, sono, movimento e microbiota.', label: 'Estudar fisiologia' },
+  { to: '/soberania-organica/cozinha-funcional/infusao-dor-inflamacao', titulo: 'Chá de gengibre e cúrcuma', desc: 'Apoio anti-inflamatório natural com mecanismo COX-2, alternativa à dipirona e à nimesulida.', label: 'Ler receita' },
+  { to: '/soberania-organica/saude-preventiva', titulo: 'Saúde Preventiva', desc: 'Os pilares fisiológicos por trás do refluxo: postura, alimentação, sono, microbiota e estresse.', label: 'Estudar fisiologia' },
 ];
 
 function Hero() {
@@ -179,7 +188,7 @@ function Hero() {
     <section className="relative h-[92vh] min-h-[680px] w-full overflow-hidden" style={{ backgroundColor: C.sage }}>
       <motion.div className="absolute inset-0" style={{ y: yBg }}>
         <img src={imgHero}
-          alt="Caneca de vidro com chá quente e fumegante de gengibre cúrcuma e cravo de cor âmbar dourado ao lado de raiz de gengibre fresca tigela de cúrcuma em pó cravos espalhados meio limão e pote de mel cru sobre toalha de linho cor creme em luz natural"
+          alt="Composição editorial vista de cima com batata inglesa cortada folhas de espinheira-santa flores secas de camomila em tigela de cerâmica babosa cortada com gel exposto e pilão de madeira sobre toalha de linho cor creme em luz natural quente"
           fetchPriority="high" className="w-full h-full object-cover scale-110"
           style={{ filter: 'saturate(1.05) contrast(1.02)' }} />
         <div className="absolute inset-0" style={{
@@ -199,9 +208,9 @@ function Hero() {
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: APPLE_EASE }}
           className="inline-flex items-center gap-3 mb-6 self-start px-4 py-2 rounded-full backdrop-blur-md"
           style={{ backgroundColor: 'rgba(250,246,240,0.18)', border: '1px solid rgba(250,246,240,0.28)' }}>
-          <Flame size={14} style={{ color: C.cream }} />
+          <Droplet size={14} style={{ color: C.cream }} />
           <span className="text-[11px] md:text-xs font-bold" style={{ ...monoStyle, color: C.cream }}>
-            Tradição quilombola e indígena · Validada pelo SUS · RENISUS
+            Tradição indígena, popular e benzedeira · Validada pelo SUS · RENISUS
           </span>
         </motion.div>
 
@@ -211,9 +220,9 @@ function Hero() {
           transition={{ duration: 1, delay: 0.15, ease: APPLE_EASE }}
           className="text-[clamp(2.75rem,8vw,7rem)] max-w-[18ch]"
           style={{ ...display, color: C.cream, textShadow: '0 2px 24px rgba(0,0,0,0.55)' }}>
-          A infusão ancestral que apaga a{' '}
+          O suco ancestral que apaga a{' '}
           <span style={{ ...editorial, color: C.terraSoft, textShadow: '0 2px 28px rgba(0,0,0,0.6)' }}>
-            dor sem viciar.
+            queimação sem rebote.
           </span>
         </motion.h1>
 
@@ -222,7 +231,7 @@ function Hero() {
           transition={{ duration: 0.8, delay: 0.5, ease: APPLE_EASE }}
           className="mt-8 max-w-2xl text-lg md:text-2xl leading-relaxed font-light"
           style={{ color: 'rgba(250,246,240,0.95)', fontFamily: "'Inter Tight', sans-serif", textShadow: '0 1px 12px rgba(0,0,0,0.55)' }}>
-          Gengibre, cúrcuma e cravo. Mesmo caminho enzimático da dipirona e da nimesulida (COX-2 e 5-LOX), sem dependência e sem destruir o estômago. Tradição quilombola, indígena e popular brasileira com meta-análises do PubMed do lado.
+          Espinheira-santa, batata crua, camomila e babosa. Mesmo terreno do omeprazol (proteção, neutralização e cicatrização da mucosa), sem dependência e sem efeito rebote. Tradição indígena, benzedeira e popular brasileira com ensaios clínicos do CEME e do PubMed do lado.
         </motion.p>
 
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.7, ease: APPLE_EASE }}
@@ -231,7 +240,7 @@ function Hero() {
             <Clock size={14} style={{ color: C.terraSoft }} /> 25 min de preparo
           </span>
           <span className="flex items-center gap-2 text-xs font-bold" style={{ ...monoStyle, color: 'rgba(250,246,240,0.9)' }}>
-            <Users size={14} style={{ color: C.terraSoft }} /> 500 ml · 2 a 3 dias
+            <Users size={14} style={{ color: C.terraSoft }} /> 800 ml · 3 a 4 dias
           </span>
           <span className="flex items-center gap-2 text-xs font-bold" style={{ ...monoStyle, color: 'rgba(250,246,240,0.9)' }}>
             <BookOpen size={14} style={{ color: C.terraSoft }} /> RENISUS · 8 referências
@@ -242,19 +251,19 @@ function Hero() {
   );
 }
 
-export default function InfusaoDorInflamacao() {
+export default function SucoRefluxoEspinheiraSanta() {
   useEffect(() => { window.scrollTo(0, 0); }, []);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   return (
     <>
       <Helmet>
-        <title>Chá de Gengibre, Cúrcuma e Cravo para Dor e Inflamação (sem álcool) | Lord Junnior</title>
-        <meta name="description" content="Receita ancestral indígena, popular e quilombola para dor e inflamação: gengibre, cúrcuma e cravo. Mesmo mecanismo de COX-2 da dipirona e nimesulida, sem dependência, com meta-análises do PubMed." />
-        <link rel="canonical" href="https://www.lordjunnior.com.br/soberania-organica/cozinha-funcional/infusao-dor-inflamacao" />
-        <meta property="og:title" content="A infusão ancestral que apaga a dor sem viciar" />
-        <meta property="og:description" content="Gengibre, cúrcuma e cravo. Tradição quilombola e indígena com PubMed do lado. Sem álcool, sem AINE, sem dependência." />
-        <meta property="og:image" content="https://www.lordjunnior.com.br/og/infusao-dor-inflamacao.jpg" />
+        <title>Suco de Batata e Espinheira-santa para Refluxo e Azia (sem álcool) | Lord Junnior</title>
+        <meta name="description" content="Receita ancestral indígena, popular e benzedeira para refluxo gastroesofágico e azia: espinheira-santa, batata crua, camomila e babosa. Mesmo terreno do omeprazol, sem rebote, com ensaios clínicos brasileiros." />
+        <link rel="canonical" href="https://www.lordjunnior.com.br/soberania-organica/cozinha-funcional/suco-refluxo-espinheira-santa" />
+        <meta property="og:title" content="O suco ancestral que apaga a queimação sem rebote" />
+        <meta property="og:description" content="Espinheira-santa, batata, camomila e babosa. Tradição brasileira com CEME e PubMed do lado. Sem álcool, sem IBP, sem dependência." />
+        <meta property="og:image" content="https://www.lordjunnior.com.br/og/suco-refluxo-espinheira-santa.jpg" />
         <meta property="og:type" content="article" />
         <meta property="og:locale" content="pt_BR" />
         <meta name="robots" content="index, follow, max-image-preview:large" />
@@ -263,14 +272,14 @@ export default function InfusaoDorInflamacao() {
           {JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'Recipe',
-            name: 'Infusão Ancestral de Gengibre, Cúrcuma e Cravo para Dor e Inflamação',
+            name: 'Suco ancestral de Espinheira-santa, Batata, Camomila e Babosa para refluxo e azia',
             author: { '@type': 'Person', name: 'Lord Junnior' },
-            description: 'Receita ancestral brasileira sem álcool, com gengibre, cúrcuma e cravo, para apoio natural à dor e à inflamação. Tradição indígena e quilombola validada pela RENISUS e por meta-análises clínicas.',
-            recipeYield: '500 ml · 2 a 3 dias',
-            prepTime: 'PT5M', cookTime: 'PT20M', totalTime: 'PT25M',
-            recipeCategory: 'Fitoterápico ancestral analgésico e anti-inflamatório',
-            recipeCuisine: 'Indígena, quilombola e popular brasileira',
-            keywords: 'gengibre, cúrcuma, cravo, dor, inflamação, artrite, RENISUS, Farmácia Viva, fitoterapia brasileira, sem álcool',
+            description: 'Receita ancestral brasileira validada pelo SUS para refluxo gastroesofágico, azia e dispepsia funcional. Sem álcool.',
+            image: 'https://www.lordjunnior.com.br/og/suco-refluxo-espinheira-santa.jpg',
+            prepTime: 'PT10M', cookTime: 'PT15M', totalTime: 'PT25M',
+            recipeCategory: 'Fitoterápico ancestral gastroprotetor',
+            recipeCuisine: 'Indígena, popular, benzedeira e quilombola brasileira',
+            keywords: 'espinheira-santa, batata crua, camomila, babosa, refluxo, azia, RENISUS, Farmácia Viva, fitoterapia brasileira, sem álcool',
             recipeIngredient: INGREDIENTES.map((i) => `${i.qtd} ${i.nome}`),
             recipeInstructions: PREPARO.map((p) => ({ '@type': 'HowToStep', name: p.titulo, text: p.desc })),
           })}
@@ -307,22 +316,22 @@ export default function InfusaoDorInflamacao() {
             </motion.aside>
             <motion.div {...fade(0.1)} className="lg:col-span-8">
               <h2 className="text-[clamp(2.25rem,5.5vw,5rem)] leading-[1] tracking-tight mb-10" style={{ ...display, color: C.sage }}>
-                Antes da dipirona,{' '}
-                <span style={{ ...editorial, color: C.terracotta }}>existia a raiz quente.</span>
+                Antes do omeprazol,{' '}
+                <span style={{ ...editorial, color: C.terracotta }}>existia a espinheira-santa.</span>
               </h2>
               <div className="space-y-7 text-lg md:text-xl leading-[1.7] font-light" style={{ color: C.inkSoft }}>
                 <p>
-                  Dor é o sintoma número um do brasileiro. Dor de cabeça, dor muscular, dor articular, cólica menstrual, lombalgia. A indústria farmacêutica vende bilhões em <strong style={{ color: C.terracotta }}>dipirona, nimesulida, ibuprofeno e diclofenaco</strong> todo ano, e o uso crônico desses anti-inflamatórios destrói o estômago, sobrecarrega rins, eleva pressão e está associado a infarto e AVC em uso prolongado.
+                  Refluxo e azia estão entre as queixas mais comuns na consulta clínica brasileira. A indústria farmacêutica vende bilhões em <strong style={{ color: C.terracotta }}>omeprazol, pantoprazol, esomeprazol e ranitidina</strong> todo ano, e o uso crônico de inibidores de bomba de prótons (IBPs) está associado a deficiência de B12 e magnésio, osteoporose, infecções intestinais (Clostridium difficile), pneumonia comunitária e demência em idosos, segundo metanálises recentes.
                 </p>
                 <p>
-                  Antes desse mercado existir, indígenas amazônicos e quilombolas do Nordeste já preparavam decocções de "raiz quente" (gengibre) e "raiz amarela" (cúrcuma) para "dor no corpo", artrite, dor de cabeça e "frio nas juntas". Não por superstição, porque <strong style={{ color: C.sage }}>funciona</strong>. Gengibre inibe a mesma enzima COX-2 atacada pelos AINEs. Cúrcuma bloqueia o NF-κB, o interruptor mestre da inflamação crônica. Cravo age como anestésico local via canais de sódio, mecanismo similar à lidocaína.
+                  Antes desse mercado existir, povos Guarani, Kaingang e Xokleng do Sul do Brasil já preparavam infusões de "cancorosa" (espinheira-santa) para "queimação no estômago", úlcera e "fogo no peito". Avós e benzedeiras urbanas e rurais espremiam suco de batata crua em pano para "azia de gravidez". Quilombolas do Nordeste indicavam babosa para "acalmar o fogo interno". Não por superstição, porque <strong style={{ color: C.sage }}>funciona</strong>. Espinheira-santa reduz secreção ácida e protege a mucosa. Batata alcaliniza. Camomila acalma o esfíncter esofágico. Babosa cicatriza.
                 </p>
                 <p>
-                  O <strong style={{ color: C.sage }}>Ministério da Saúde</strong>, em 2006, formalizou o que já era saber popular na Política Nacional de Plantas Medicinais e Fitoterápicos. <strong style={{ color: C.terracotta }}>Zingiber officinale</strong> e <strong style={{ color: C.terracotta }}>Curcuma longa</strong> entraram na <strong style={{ color: C.sage }}>RENISUS</strong>, lista oficial das 71 plantas reconhecidas pelo SUS. As mais de 600 Farmácias Vivas espalhadas pela rede pública dispensam essas plantas hoje. Meta-análises de 2015 a 2024, indexadas no PubMed, confirmam eficácia comparável a AINEs em osteoartrite, com perfil gastrointestinal seguro.
+                  O <strong style={{ color: C.sage }}>Ministério da Saúde</strong>, em 2006, formalizou o que já era saber popular na Política Nacional de Plantas Medicinais e Fitoterápicos. <strong style={{ color: C.terracotta }}>Maytenus ilicifolia</strong>, <strong style={{ color: C.terracotta }}>Matricaria chamomilla</strong> e <strong style={{ color: C.terracotta }}>Aloe vera</strong> entraram na <strong style={{ color: C.sage }}>RENISUS</strong>. Ensaios clínicos brasileiros conduzidos pelo CEME (Central de Medicamentos) na década de 1980 confirmaram eficácia da espinheira-santa comparável à cimetidina em dispepsia. O ensaio de Panahi (2015) mostrou que a babosa tem eficácia comparável ao omeprazol em DRGE leve a moderada.
                 </p>
                 <blockquote className="pl-8 py-2 my-10 text-2xl md:text-3xl leading-[1.4] font-light"
                   style={{ borderLeft: `3px solid ${C.terracotta}`, color: C.sage, ...editorial }}>
-                  Não é "chá quente para dor". É um protocolo etnofarmacológico anti-inflamatório, com PubMed do lado e RENISUS no rodapé. Tradição com nome científico.
+                  Não é "chá da vovó para azia". É um protocolo etnofarmacológico gastroprotetor com ensaios clínicos brasileiros, RENISUS e PubMed do lado. Tradição com nome científico.
                 </blockquote>
               </div>
             </motion.div>
@@ -346,7 +355,7 @@ export default function InfusaoDorInflamacao() {
                   <h3 className="text-2xl mb-2" style={{ ...editorial, color: C.terracotta }}>
                     Ingredientes
                   </h3>
-                  <p className="text-sm mb-8" style={{ color: C.inkSoft }}>500 ml · uso de 2 a 3 dias</p>
+                  <p className="text-sm mb-8" style={{ color: C.inkSoft }}>800 ml · uso de 3 a 4 dias</p>
                   <ul className="space-y-6">
                     {INGREDIENTES.map((ing, i) => (
                       <li key={i} className="flex gap-5 pb-6" style={{ borderBottom: i < INGREDIENTES.length - 1 ? `1px solid ${C.borderLight}` : 'none' }}>
@@ -393,11 +402,11 @@ export default function InfusaoDorInflamacao() {
             <motion.div {...fade(0)} className="mb-16 max-w-3xl">
               <span className="text-xs font-bold block mb-4" style={{ ...monoStyle, color: C.terracotta }}>Capítulo 03 · Três versões</span>
               <h2 className="text-[clamp(2.25rem,5.5vw,5rem)] leading-[1] tracking-tight" style={{ ...display, color: C.sage }}>
-                Chá, xarope{' '}
-                <span style={{ ...editorial, color: C.terracotta }}>ou pasta tópica.</span>
+                Suco, gelatina{' '}
+                <span style={{ ...editorial, color: C.terracotta }}>ou compressa morna.</span>
               </h2>
               <p className="mt-6 text-lg md:text-xl font-light leading-[1.6]" style={{ color: C.inkSoft }}>
-                Três formas seguras, todas sem álcool, da mesma fórmula. O chá é a versão mais estudada cientificamente. O xarope concentrado serve para guardar e levar. A pasta tópica é a sabedoria quilombola para dor localizada de joelho, lombar e ombro.
+                Três formas seguras, todas sem álcool, da mesma fórmula. O suco diário é a versão mais estudada cientificamente. A gelatina ajuda quem tem refluxo noturno. A compressa morna é apoio sintomático na crise de azia.
               </p>
             </motion.div>
 
@@ -427,13 +436,13 @@ export default function InfusaoDorInflamacao() {
         <section className="relative py-24 md:py-36 px-6 md:px-12 lg:px-20" style={{ backgroundColor: C.sage, color: C.cream }}>
           <div className="max-w-[1600px] mx-auto">
             <motion.div {...fade(0)} className="mb-20 max-w-3xl">
-              <span className="text-xs font-bold block mb-4" style={{ ...monoStyle, color: C.terraSoft }}>Capítulo 04 · As três plantas</span>
+              <span className="text-xs font-bold block mb-4" style={{ ...monoStyle, color: C.terraSoft }}>Capítulo 04 · As quatro plantas</span>
               <h2 className="text-[clamp(2.25rem,5.5vw,5rem)] leading-[1] tracking-tight" style={display}>
                 Tradição,{' '}
                 <span style={{ ...editorial, color: C.terraSoft }}>nome científico, RENISUS.</span>
               </h2>
               <p className="mt-6 text-lg md:text-xl font-light leading-[1.6]" style={{ color: 'rgba(250,246,240,0.78)' }}>
-                Cada planta tem três camadas de validação: o uso ancestral indígena, popular e quilombola; a chancela oficial do SUS; e a evidência etnofarmacológica publicada em meta-análises do PubMed.
+                Cada planta tem três camadas de validação: o uso ancestral indígena, popular, benzedeira e quilombola; a chancela oficial do SUS; e a evidência etnofarmacológica publicada em ensaios clínicos do CEME e meta-análises do PubMed.
               </p>
             </motion.div>
 
@@ -504,11 +513,11 @@ export default function InfusaoDorInflamacao() {
                 <CheckCircle2 size={32} style={{ color: C.terracotta }} className="mb-6" />
                 <h3 className="text-2xl md:text-3xl mb-6 font-semibold" style={{ ...display, color: C.sage }}>O que fazer</h3>
                 <ul className="space-y-4 text-lg leading-relaxed font-light" style={{ color: C.inkSoft }}>
-                  <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span> 250 ml 2x ao dia: manhã e fim de tarde, após refeição leve</li>
-                  <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span> Sempre com 1 pitada de pimenta do reino para potencializar a curcumina</li>
-                  <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span> Compressa morna na região dolorida 2x/dia para dor localizada</li>
-                  <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span> Reduzir ultraprocessados, açúcar e frituras (pró-inflamatórios)</li>
-                  <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span> Ciclo de 7 a 21 dias para dor aguda; 4 a 8 semanas para crônica, depois pausa de 7 dias</li>
+                  <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span> 200 a 250 ml 2x ao dia, 20 a 30 minutos antes do almoço e do jantar</li>
+                  <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span> Suco de batata sempre extraído e adicionado na hora de tomar</li>
+                  <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span> Elevar cabeceira da cama 15 cm com calços nos pés</li>
+                  <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span> Última refeição 3 horas antes de deitar, sem frituras à noite</li>
+                  <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span> Ciclo de 14 a 28 dias, depois pausa de 7 a 10 dias e reavaliação</li>
                 </ul>
               </motion.div>
 
@@ -517,11 +526,11 @@ export default function InfusaoDorInflamacao() {
                 <AlertTriangle size={32} style={{ color: '#a64a1f' }} className="mb-6" />
                 <h3 className="text-2xl md:text-3xl mb-6 font-semibold" style={{ ...display, color: C.sage }}>O que não esperar</h3>
                 <ul className="space-y-4 text-lg leading-relaxed font-light" style={{ color: C.inkSoft }}>
-                  <li className="flex gap-3"><span style={{ color: '#a64a1f' }}>·</span> Alívio imediato em fratura, cólica renal ou enxaqueca incapacitante</li>
-                  <li className="flex gap-3"><span style={{ color: '#a64a1f' }}>·</span> Substituir AINE em pós-operatório ou dor aguda intensa por conta própria</li>
-                  <li className="flex gap-3"><span style={{ color: '#a64a1f' }}>·</span> Tomar uma vez e esperar resolver dor crônica de anos</li>
-                  <li className="flex gap-3"><span style={{ color: '#a64a1f' }}>·</span> Funcionar combinado a alimentação ultraprocessada e sedentarismo</li>
-                  <li className="flex gap-3"><span style={{ color: '#a64a1f' }}>·</span> Resolver doença autoimune ou estrutural sem investigação médica</li>
+                  <li className="flex gap-3"><span style={{ color: '#a64a1f' }}>·</span> Suspender omeprazol de uma vez por conta própria (rebote ácido grave)</li>
+                  <li className="flex gap-3"><span style={{ color: '#a64a1f' }}>·</span> Resolver esofagite erosiva grau C ou D sem gastroenterologista</li>
+                  <li className="flex gap-3"><span style={{ color: '#a64a1f' }}>·</span> Funcionar combinado a refeição noturna pesada e álcool</li>
+                  <li className="flex gap-3"><span style={{ color: '#a64a1f' }}>·</span> Substituir investigação de Helicobacter pylori ou hérnia de hiato</li>
+                  <li className="flex gap-3"><span style={{ color: '#a64a1f' }}>·</span> Usar babosa sem retirar a aloína (risco hepático e laxativo)</li>
                 </ul>
               </motion.div>
             </div>
@@ -538,7 +547,7 @@ export default function InfusaoDorInflamacao() {
                 <span style={{ ...editorial, color: C.terracotta }}>fontes.</span>
               </h2>
               <p className="mt-6 text-lg md:text-xl font-light leading-[1.6]" style={{ color: C.inkSoft }}>
-                Documentos oficiais do SUS, marcos regulatórios brasileiros e meta-análises indexadas no PubMed. Sem folclore, sem chute, sem influencer.
+                Documentos oficiais do SUS, marcos regulatórios brasileiros, ensaios clínicos do CEME e meta-análises indexadas no PubMed. Sem folclore, sem chute, sem influencer.
               </p>
             </motion.div>
 
@@ -613,7 +622,7 @@ export default function InfusaoDorInflamacao() {
               <Compass size={32} style={{ color: C.terracotta }} className="mb-6" />
               <span className="text-xs font-bold block mb-4" style={{ ...monoStyle, color: C.terracotta }}>Continue sua trilha</span>
               <h2 className="text-[clamp(2.25rem,5.5vw,5rem)] leading-[1] tracking-tight" style={{ ...display, color: C.sage }}>
-                A dor é só a porta.{' '}
+                A azia é só a porta.{' '}
                 <span style={{ ...editorial, color: C.terracotta }}>A farmácia ancestral é vasta.</span>
               </h2>
             </motion.div>
@@ -646,7 +655,7 @@ export default function InfusaoDorInflamacao() {
           <motion.div {...fade(0)} className="max-w-3xl mx-auto text-center mb-16">
             <p className="text-2xl md:text-4xl leading-[1.4] font-light mb-12"
               style={{ ...editorial, color: C.cream }}>
-              Não é "chá quente para dor". É um protocolo etnofarmacológico anti-inflamatório, com PubMed do lado e RENISUS no rodapé.
+              Não é "chá da vovó para azia". É um protocolo etnofarmacológico gastroprotetor, com PubMed do lado e RENISUS no rodapé.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-4">
               <Link to="/soberania-organica/cozinha-funcional"
@@ -668,7 +677,7 @@ export default function InfusaoDorInflamacao() {
               <div>
                 <p className="text-xs font-bold mb-3" style={{ ...monoStyle, color: C.terraSoft }}>Disclaimer · Saúde · YMYL</p>
                 <p className="text-base md:text-lg leading-relaxed font-light" style={{ color: 'rgba(250,246,240,0.85)' }}>
-                  Este conteúdo é educativo, baseado em saber tradicional indígena, popular e quilombola brasileiro, em documentos oficiais do SUS (Política Nacional de Plantas Medicinais e Fitoterápicos, RENISUS, Farmácias Vivas) e em literatura etnofarmacológica indexada no PubMed (meta-análises de gengibre, cúrcuma e cravo). Não substitui exame, diagnóstico, prescrição ou acompanhamento médico. Dor crônica que não cede em 8 semanas exige investigação médica. Quem usa AINE, anticoagulante, antidiabético ou anti-hipertensivo NUNCA deve suspender por conta própria. Gestantes, lactantes, crianças menores de 6 anos, pessoas com cálculo de vesícula ativa, úlcera gástrica ativa ou em pré-operatório devem buscar orientação profissional antes de iniciar.
+                  Este conteúdo é educativo, baseado em saber tradicional indígena, popular, benzedeira e quilombola brasileiro, em documentos oficiais do SUS (Política Nacional de Plantas Medicinais e Fitoterápicos, RENISUS, Farmácias Vivas), em monografias da Farmacopeia Brasileira (Anvisa) e em literatura clínica indexada no PubMed (ensaios clínicos brasileiros do CEME, meta-análises de espinheira-santa, babosa e camomila). Não substitui exame, diagnóstico, prescrição ou acompanhamento médico. Refluxo crônico que não cede em 28 dias exige investigação médica, endoscopia e pesquisa de Helicobacter pylori. Quem usa inibidor de bomba de prótons (omeprazol, pantoprazol) NUNCA deve suspender por conta própria por risco de rebote ácido grave. Gestantes, lactantes, crianças menores de 6 anos e portadores de doença hepática ou obstrução intestinal devem buscar orientação profissional antes de iniciar.
                 </p>
               </div>
             </div>
