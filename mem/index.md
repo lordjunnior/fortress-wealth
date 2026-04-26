@@ -4,6 +4,7 @@
 Strict Bitcoin-maximalist. No altcoins.
 Never summarize technical content; only add depth/parameters.
 NEVER use emojis. NEVER write "Quarteto do Poder" or "Trio da Blindagem" in user UI.
+PROIBIDO álcool, cachaça, tinturas alcoólicas ou qualquer hábito viciante em receitas. Sempre usar versão sem álcool (infusão, lambedor com mel cru). Se o texto-fonte vier com álcool, corrigir.
 Remove 'Arena Bitcoin' brand from all content.
 HOMEPAGE/CORE shell: dark theme (#07080c), Bebas Neue + Inter Tight. Full-width.
 PÁGINAS PESADAS/MANUAIS/HUBS/RECEITAS: PROIBIDO dark. Padrão editorial CLARO obrigatório (sand+teal+copper) — referência /saida/jurisdicoes-amigaveis. Inter Tight 900 + Playfair italic. Alternar blocos sand e teal.
@@ -13,6 +14,7 @@ Mandatory "PIX NÃO É PRIVADO" warning on PIX guides.
 
 ## Memories
 - [PROIBIDO Páginas Dark - Padrão Editorial Universal](mem://constraints/design/no-dark-pages-mandate) — REGRA UNIVERSAL: nenhuma página pode ser dark, sempre paleta clara editorial sand+teal+copper, com checklist de 15 pontos
+- [PROIBIDO Álcool / Vícios](mem://constraints/content/no-alcohol-no-addiction) — Nenhuma receita pode usar cachaça, álcool ou substância viciante. Sempre infusão / lambedor com mel cru.
 - [Padrão Aprovado Jurisdições](mem://design/padrao-aprovado-jurisdicoes) — Referência canônica de excelência visual aprovada: hero full-bleed, paleta sand+teal+copper, Inter Tight 900 + Playfair italic
 - [Padrão Página Pesada](mem://design/padrao-pagina-pesada) — Estrutura obrigatória de manuais e dossiês
 - [Apple Visual Heavy Pages](mem://design/apple-visual-heavy-pages) — Páginas pesadas devem ser claras, padrão Apple, imagem real em cada bloco

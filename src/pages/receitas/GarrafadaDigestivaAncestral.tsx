@@ -18,7 +18,7 @@ import imgAroeira from '@/assets/receitas/ativo-aroeira-frutos.jpg';
 /**
  * /soberania-organica/cozinha-funcional/garrafada-digestiva-ancestral
  * Receita ancestral indígena/popular — Boldo + Guaco + Aroeira.
- * Apresenta versão tradicional (cachaça) e versão sem álcool (água).
+ * Versão exclusivamente sem álcool (infusão concentrada com mel cru).
  * Padrão Light Editorial obrigatório.
  */
 
@@ -51,17 +51,17 @@ const INGREDIENTES = [
   { qtd: '20 a 30 g', nome: 'Folhas de boldo fresco ou seco', detalhe: 'Plectranthus barbatus (boldo brasileiro). Cerca de 1 punhado generoso.' },
   { qtd: '20 g', nome: 'Folhas de guaco', detalhe: 'Mikania glomerata. 1 punhado de folhas frescas ou 2 colheres de sopa de folha seca.' },
   { qtd: '5 a 6 folhas', nome: 'Folhas de aroeira', detalhe: 'Schinus terebinthifolia. Pode substituir por 1 colher de chá de frutos rosados (pimenta-rosa).' },
-  { qtd: '500 ml', nome: 'Cachaça boa OU água filtrada', detalhe: 'Cachaça artesanal para a versão tradicional. Água para a versão sem álcool (gestantes, crianças, abstêmios).' },
-  { qtd: 'opcional', nome: 'Mel cru ou rapadura', detalhe: '1 a 2 colheres de sopa, apenas para suavizar. Adoçante ancestral, evita açúcar refinado.' },
+  { qtd: '500 ml', nome: 'Água filtrada', detalhe: 'Água filtrada fervida. Sem álcool, sem cachaça — versão segura para toda a família, gestantes e crianças (com orientação).' },
+  { qtd: '2 a 3 colheres de sopa', nome: 'Mel cru ou rapadura', detalhe: 'Mel cru de boa procedência (preserva enzimas) ou rapadura ralada. Conservante ancestral, suaviza o sabor das ervas e potencializa a ação expectorante.' },
 ];
 
 const PREPARO = [
   { n: '01', titulo: 'Selecione e lave as folhas', desc: 'Lave bem as folhas de boldo, guaco e aroeira em água corrente. Seque levemente em pano limpo. Se possível, colha de manhã cedo, antes do sol forte (concentração maior de princípios ativos).' },
-  { n: '02', titulo: 'Monte na garrafa de vidro', desc: 'Use uma garrafa de vidro escura ou âmbar de pelo menos 700 ml. Coloque todas as folhas dentro, sem amassar. Acrescente o mel ou rapadura, se for usar.' },
-  { n: '03', titulo: 'Adicione o líquido', desc: 'Despeje os 500 ml de cachaça (versão tradicional) ou água filtrada fervida e já fria (versão sem álcool). Cubra todas as folhas. Tampe bem.' },
-  { n: '04', titulo: 'Macere no escuro', desc: 'Guarde em local fresco, escuro e seco por 7 a 10 dias. Agite a garrafa uma vez por dia, suavemente, para distribuir os ativos. A versão em água precisa de geladeira e pode durar no máximo 5 a 7 dias.' },
-  { n: '05', titulo: 'Coe e armazene', desc: 'Após o período, coe com pano limpo ou coador de papel e descarte as folhas. Transfira para outra garrafa de vidro escura, com tampa hermética. Rotule com data.' },
-  { n: '06', titulo: 'Tome com critério', desc: 'Versão tradicional: 1 colher de sopa diluída em meio copo de água, 2x ao dia, após o almoço e o jantar. Versão em água: 50 a 80 ml, 2x ao dia. Máximo de 15 dias seguidos. Pausa obrigatória de 15 dias antes de repetir.' },
+  { n: '02', titulo: 'Faça a infusão abafada', desc: 'Ferva 500 ml de água filtrada. Desligue o fogo, acrescente todas as folhas de uma vez, tampe a panela e deixe em infusão abafada por 15 a 20 minutos. Não ferva as folhas — o calor direto destrói os ativos voláteis (cumarina do guaco, óleos do boldo).' },
+  { n: '03', titulo: 'Coe e adoce ainda morno', desc: 'Coe com pano limpo ou coador de papel descartando as folhas. Ainda morno (não quente), dissolva 2 a 3 colheres de sopa de mel cru ou rapadura. O mel cru atua como conservante natural e potencializa a ação expectorante do guaco.' },
+  { n: '04', titulo: 'Envase em vidro âmbar', desc: 'Transfira para garrafa de vidro âmbar (ou escura) esterilizada, com tampa hermética. Rotule com data de preparo. Mantenha sempre na geladeira.' },
+  { n: '05', titulo: 'Validade curta, lote pequeno', desc: 'Por ser sem álcool, dura de 7 a 10 dias na geladeira. Faça em lote pequeno, mais vezes — fica mais fresco e ativo. Se notar mudança de cheiro, cor turva ou sabor azedo, descarte.' },
+  { n: '06', titulo: 'Tome com critério', desc: 'Adulto: 1 colher de sopa (15 ml) puro ou diluído em pouca água, 2 a 3 vezes ao dia, após as refeições. Crianças acima de 5 anos (com aval pediátrico): 1 colher de chá, 2x ao dia. Máximo de 15 dias seguidos. Pausa de 15 dias antes de repetir.' },
 ];
 
 const ATIVOS = [
@@ -108,16 +108,16 @@ const FONTES = [
 ];
 
 const FAQ = [
-  { q: 'Posso fazer só a versão sem álcool?',
-    a: 'Sim, e em alguns casos é a única opção segura: gestantes, lactantes, crianças, pessoas em uso de medicação, abstêmios, hepatopatas. A versão em água tem validade muito menor (5 a 7 dias na geladeira) e extrai menos ativos lipossolúveis, mas funciona bem para uso digestivo de curto prazo. Faça em quantidade menor, mais vezes.' },
-  { q: 'É seguro tomar com cachaça todo dia?',
-    a: 'A garrafada tradicional concentra os ativos em álcool, mas a dose diária é de apenas 1 colher de sopa diluída em água, 2x ao dia. O equivalente alcoólico é menor que metade de um copo pequeno de cerveja por dia. Mesmo assim, evite se for abstêmio, gestante, lactante, hepatopata, em uso de psicotrópico ou anticoagulante.' },
+  { q: 'Por que a versão é só sem álcool?',
+    a: 'Por princípio: este projeto não recomenda nada que crie dependência, vício ou risco hepático adicional. Existem versões tradicionais com cachaça no interior brasileiro, mas a versão em infusão com mel cru atinge o mesmo objetivo digestivo, expectorante e imunológico, é segura para toda a família (com as ressalvas de uso) e respeita gestantes, crianças, abstêmios, hepatopatas e quem usa medicação contínua.' },
+  { q: 'Mel cru substitui o álcool como conservante?',
+    a: 'Em parte. O mel cru tem ação antimicrobiana natural (peróxido de hidrogênio enzimático, baixa atividade de água, pH ácido) e estende a validade da infusão para 7 a 10 dias na geladeira. Não é tão duradouro quanto a maceração alcoólica (que dura meses), mas é o suficiente porque o protocolo de uso é de no máximo 15 dias com pausa.' },
   { q: 'É medicina alternativa ou tem respaldo oficial?',
     a: 'Tem respaldo oficial. Boldo, guaco e aroeira constam na RENISUS (Relação Nacional de Plantas Medicinais de Interesse ao SUS) desde 2009. O Brasil tem mais de 600 Farmácias Vivas dispensando essas mesmas plantas pela rede pública. A Política Nacional de Plantas Medicinais e Fitoterápicos é de 2006.' },
   { q: 'Substitui omeprazol, antiácido ou laxante?',
     a: 'Para má digestão funcional leve (peso após refeição, gases, eructação, intestino preguiçoso), pode substituir uso ocasional de antiácidos comuns. Não substitui tratamento de úlcera diagnosticada, refluxo crônico, gastrite por H. pylori, doença de Crohn ou qualquer doença gastrointestinal estabelecida. Para isso, médico.' },
   { q: 'Qual é a dose certa e por quanto tempo?',
-    a: 'Versão em cachaça: 1 colher de sopa em meio copo de água, 2x ao dia (após almoço e jantar). Versão em água: 50 a 80 ml, 2x ao dia. Máximo de 15 dias seguidos. Pausa de 15 dias antes de repetir. Não use mais de 30 dias por mês total.' },
+    a: 'Adulto: 1 colher de sopa (15 ml) pura ou diluída em pouca água, 2 a 3 vezes ao dia, após as refeições. Crianças acima de 5 anos (com aval pediátrico): 1 colher de chá, 2x ao dia. Máximo de 15 dias seguidos, com pausa obrigatória de 15 dias antes de repetir. Não ultrapasse 30 dias de uso por mês.' },
   { q: 'Por que aroeira na fórmula? Não é “a árvore brava”?',
     a: 'A aroeira-vermelha (Schinus terebinthifolia) é diferente da aroeira-do-sertão (Myracrodruon urundeuva), que é mais cáustica. A primeira é a usada em fitoterapia oficial brasileira, com perfil de segurança documentado e ação anti-inflamatória, antimicrobiana e cicatrizante já confirmadas em revisão sistemática. Sempre identifique corretamente a espécie ou compre em Farmácia Viva.' },
 ];
@@ -167,10 +167,10 @@ function Hero() {
           animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
           transition={{ duration: 1, delay: 0.15, ease: APPLE_EASE }}
           className="text-[clamp(2.5rem,7.5vw,6.5rem)] max-w-[20ch]"
-          style={{ ...display, color: C.cream }}>
-          A garrafada{' '}
-          <span style={{ ...editorial, color: C.terraSoft, textShadow: '0 0 40px rgba(224,154,106,0.5), 0 0 80px rgba(224,154,106,0.25)' }}>
-            do interior brasileiro.
+          style={{ ...display, color: C.cream, textShadow: '0 2px 24px rgba(0,0,0,0.55)' }}>
+          O lambedor de boldo,{' '}
+          <span style={{ ...editorial, color: C.terraSoft, textShadow: '0 2px 28px rgba(0,0,0,0.6)' }}>
+            guaco e aroeira.
           </span>
         </motion.h1>
 
@@ -178,8 +178,8 @@ function Hero() {
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5, ease: APPLE_EASE }}
           className="mt-8 max-w-2xl text-lg md:text-2xl leading-relaxed font-light"
-          style={{ color: 'rgba(250,246,240,0.9)', fontFamily: "'Inter Tight', sans-serif" }}>
-          Boldo, guaco e aroeira maceradas em cachaça boa ou em água. Fórmula indígena e popular para fígado, digestão e imunidade. Três plantas listadas na RENISUS, dispensadas pelas Farmácias Vivas do SUS.
+          style={{ color: 'rgba(250,246,240,0.95)', fontFamily: "'Inter Tight', sans-serif", textShadow: '0 1px 12px rgba(0,0,0,0.55)' }}>
+          Infusão concentrada com mel cru. Sem álcool, sem dependência. Fórmula indígena e popular para fígado, digestão e imunidade — três plantas listadas na RENISUS e dispensadas pelas Farmácias Vivas do SUS.
         </motion.p>
 
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.7, ease: APPLE_EASE }}
@@ -206,11 +206,11 @@ export default function GarrafadaDigestivaAncestral() {
   return (
     <>
       <Helmet>
-        <title>Garrafada Ancestral de Boldo, Guaco e Aroeira | Lord Junnior</title>
-        <meta name="description" content="Receita ancestral indígena e popular brasileira para fígado, digestão e imunidade. Plantas listadas na RENISUS e dispensadas pelas Farmácias Vivas do SUS. Versão tradicional e sem álcool." />
+        <title>Lambedor Ancestral de Boldo, Guaco e Aroeira (sem álcool) | Lord Junnior</title>
+        <meta name="description" content="Receita ancestral indígena e popular brasileira sem álcool, com mel cru, para fígado, digestão, tosse e imunidade. Plantas listadas na RENISUS e dispensadas pelas Farmácias Vivas do SUS." />
         <link rel="canonical" href="https://www.lordjunnior.com.br/soberania-organica/cozinha-funcional/garrafada-digestiva-ancestral" />
-        <meta property="og:title" content="A Garrafada do Interior Brasileiro" />
-        <meta property="og:description" content="Boldo, guaco e aroeira: três plantas RENISUS na fórmula que vovó já fazia. Tradição com PubMed do lado." />
+        <meta property="og:title" content="O Lambedor Ancestral de Boldo, Guaco e Aroeira (sem álcool)" />
+        <meta property="og:description" content="Boldo, guaco e aroeira em infusão com mel cru. Três plantas RENISUS, zero álcool, fórmula segura para a família." />
         <meta property="og:image" content="https://www.lordjunnior.com.br/og/garrafada-ancestral.jpg" />
         <meta property="og:type" content="article" />
         <meta property="og:locale" content="pt_BR" />
@@ -220,14 +220,14 @@ export default function GarrafadaDigestivaAncestral() {
           {JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'Recipe',
-            name: 'Garrafada Digestiva e Imunológica Ancestral (Boldo + Guaco + Aroeira)',
+            name: 'Lambedor Ancestral de Boldo, Guaco e Aroeira (sem álcool, com mel cru)',
             author: { '@type': 'Person', name: 'Lord Junnior' },
-            description: 'Receita ancestral brasileira de garrafada com boldo, guaco e aroeira, em duas versões (tradicional com cachaça e sem álcool com água), baseada em saber indígena e popular e validada pela RENISUS.',
-            recipeYield: '1 garrafa de 500 ml · uso de 1 semana',
-            prepTime: 'PT15M', cookTime: 'PT0M', totalTime: 'P7D',
-            recipeCategory: 'Fitoterápico ancestral',
+            description: 'Receita ancestral brasileira em infusão sem álcool com mel cru, em duas versões (uso digestivo diário e lambedor concentrado para tosse), baseada em saber indígena e popular e validada pela RENISUS.',
+            recipeYield: '1 garrafa de 500 ml · 7 a 10 dias',
+            prepTime: 'PT15M', cookTime: 'PT20M', totalTime: 'PT35M',
+            recipeCategory: 'Fitoterápico ancestral sem álcool',
             recipeCuisine: 'Indígena e popular brasileira',
-            keywords: 'garrafada, boldo, guaco, aroeira, RENISUS, Farmácia Viva, fitoterapia brasileira, medicina indígena',
+            keywords: 'lambedor, boldo, guaco, aroeira, sem álcool, mel cru, RENISUS, Farmácia Viva, fitoterapia brasileira, medicina indígena',
             recipeIngredient: INGREDIENTES.map((i) => `${i.qtd} ${i.nome}`),
             recipeInstructions: PREPARO.map((p) => ({ '@type': 'HowToStep', name: p.titulo, text: p.desc })),
           })}
@@ -344,17 +344,17 @@ export default function GarrafadaDigestivaAncestral() {
           </div>
         </section>
 
-        {/* CAPÍTULO 3 — DUAS VERSÕES (cachaça vs água) */}
+        {/* CAPÍTULO 3 — DUAS VERSÕES (infusão diária vs lambedor com mel) */}
         <section className="relative py-24 md:py-36 px-6 md:px-12 lg:px-20">
           <div className="max-w-[1400px] mx-auto">
             <motion.div {...fade(0)} className="mb-16 max-w-3xl">
               <span className="text-xs font-bold block mb-4" style={{ ...monoStyle, color: C.terracotta }}>Capítulo 03 · Duas versões</span>
               <h2 className="text-[clamp(2.25rem,5.5vw,5rem)] leading-[1] tracking-tight" style={{ ...display, color: C.sage }}>
-                Cachaça{' '}
-                <span style={{ ...editorial, color: C.terracotta }}>ou água.</span>
+                Infusão{' '}
+                <span style={{ ...editorial, color: C.terracotta }}>ou lambedor.</span>
               </h2>
               <p className="mt-6 text-lg md:text-xl font-light leading-[1.6]" style={{ color: C.inkSoft }}>
-                A garrafada tradicional do interior é em cachaça. Para gestantes, crianças, abstêmios e quem usa medicação, a versão em água preserva grande parte do efeito digestivo.
+                Duas formas seguras, sem álcool, da mesma fórmula. A infusão é o uso digestivo diário. O lambedor (mais concentrado e adoçado com mel cru) é a forma popular para tosse, garganta e imunidade.
               </p>
             </motion.div>
 
@@ -362,28 +362,28 @@ export default function GarrafadaDigestivaAncestral() {
               <motion.div {...fade(0)} className="p-8 md:p-10 rounded-3xl"
                 style={{ backgroundColor: '#fff8ef', border: `1px solid ${C.borderLight}` }}>
                 <FlaskConical size={32} style={{ color: C.terracotta }} className="mb-6" />
-                <p className="text-xs font-bold mb-3" style={{ ...monoStyle, color: C.terracotta }}>Versão A · tradicional</p>
-                <h3 className="text-2xl md:text-3xl mb-6 font-semibold" style={{ ...display, color: C.sage }}>Em cachaça boa</h3>
+                <p className="text-xs font-bold mb-3" style={{ ...monoStyle, color: C.terracotta }}>Versão A · uso diário</p>
+                <h3 className="text-2xl md:text-3xl mb-6 font-semibold" style={{ ...display, color: C.sage }}>Infusão concentrada</h3>
                 <ul className="space-y-4 text-base md:text-lg leading-relaxed font-light" style={{ color: C.inkSoft }}>
-                  <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span> 500 ml de cachaça artesanal de boa procedência</li>
-                  <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span> Maceração de 7 a 10 dias em local escuro</li>
-                  <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span> Validade após coar: 6 a 12 meses na geladeira</li>
-                  <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span> Dose: 1 colher de sopa diluída em meio copo de água, 2x ao dia</li>
-                  <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span> Extrai melhor os ativos lipossolúveis (forskolina, schinol)</li>
+                  <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span> 500 ml de água filtrada fervida, em infusão abafada por 15 a 20 min</li>
+                  <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span> 2 a 3 colheres de mel cru dissolvidas ainda morno</li>
+                  <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span> Validade: 7 a 10 dias na geladeira (lote pequeno)</li>
+                  <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span> Dose adulta: 1 colher de sopa, 2 a 3x ao dia, após refeição</li>
+                  <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span> Foco digestivo, hepático e imunológico do dia a dia</li>
                 </ul>
               </motion.div>
 
               <motion.div {...fade(0.1)} className="p-8 md:p-10 rounded-3xl"
                 style={{ backgroundColor: C.sand, border: `1px solid ${C.borderLight}` }}>
                 <Sprout size={32} style={{ color: C.sage }} className="mb-6" />
-                <p className="text-xs font-bold mb-3" style={{ ...monoStyle, color: C.sage }}>Versão B · sem álcool</p>
-                <h3 className="text-2xl md:text-3xl mb-6 font-semibold" style={{ ...display, color: C.sage }}>Em água filtrada</h3>
+                <p className="text-xs font-bold mb-3" style={{ ...monoStyle, color: C.sage }}>Versão B · tosse e garganta</p>
+                <h3 className="text-2xl md:text-3xl mb-6 font-semibold" style={{ ...display, color: C.sage }}>Lambedor (xarope ancestral)</h3>
                 <ul className="space-y-4 text-base md:text-lg leading-relaxed font-light" style={{ color: C.inkSoft }}>
-                  <li className="flex gap-3"><span style={{ color: C.sage }}>·</span> 500 ml de água filtrada fervida e fria</li>
-                  <li className="flex gap-3"><span style={{ color: C.sage }}>·</span> Maceração de 24 a 48 h, sempre na geladeira</li>
-                  <li className="flex gap-3"><span style={{ color: C.sage }}>·</span> Validade após coar: 5 a 7 dias na geladeira (faça em lotes pequenos)</li>
-                  <li className="flex gap-3"><span style={{ color: C.sage }}>·</span> Dose: 50 a 80 ml puro, 2x ao dia, em jejum ou após refeição</li>
-                  <li className="flex gap-3"><span style={{ color: C.sage }}>·</span> Indicada para gestantes, crianças, abstêmios e em uso de medicação</li>
+                  <li className="flex gap-3"><span style={{ color: C.sage }}>·</span> Reduzir a infusão coada no fogo baixo até a metade do volume</li>
+                  <li className="flex gap-3"><span style={{ color: C.sage }}>·</span> Acrescentar mel cru na proporção 1:1 fora do fogo, mexer até dissolver</li>
+                  <li className="flex gap-3"><span style={{ color: C.sage }}>·</span> Validade: 20 a 30 dias na geladeira (mel concentrado conserva melhor)</li>
+                  <li className="flex gap-3"><span style={{ color: C.sage }}>·</span> Dose: 1 colher de chá, 3 a 4x ao dia, em crise de tosse seca</li>
+                  <li className="flex gap-3"><span style={{ color: C.sage }}>·</span> Forma popular do interior. Sempre sem álcool, sem cachaça</li>
                 </ul>
               </motion.div>
             </div>
@@ -472,7 +472,7 @@ export default function GarrafadaDigestivaAncestral() {
                 <h3 className="text-2xl md:text-3xl mb-6 font-semibold" style={{ ...display, color: C.sage }}>O que fazer</h3>
                 <ul className="space-y-4 text-lg leading-relaxed font-light" style={{ color: C.inkSoft }}>
                   <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span> Tomar 2x ao dia, após almoço e jantar</li>
-                  <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span> Versão cachaça: sempre diluída em meio copo de água</li>
+                  <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span> Sempre coar bem e guardar na geladeira em vidro escuro</li>
                   <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span> Manter por 7 a 15 dias no máximo</li>
                   <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span> Pausa obrigatória de 15 dias antes de repetir</li>
                   <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span> Anotar como digestão, peso pós-refeição e disposição respondem</li>

@@ -74,15 +74,15 @@ const RECEITAS = [
   },
   {
     slug: 'garrafada-digestiva-ancestral',
-    titulo: 'Garrafada Digestiva e Imunológica Ancestral',
-    pretitulo: 'Fígado · Digestão · Imunidade',
-    resumo: 'Boldo, guaco e aroeira na fórmula ancestral indígena e popular brasileira. Versão tradicional em cachaça e versão sem álcool em água. Boldo e guaco constam na RENISUS, política do SUS de Plantas Medicinais.',
+    titulo: 'Lambedor Ancestral de Boldo, Guaco e Aroeira',
+    pretitulo: 'Fígado · Digestão · Tosse · Imunidade',
+    resumo: 'Infusão concentrada com mel cru — sem álcool, sem dependência. Fórmula indígena e popular brasileira em duas versões seguras: uso digestivo diário e lambedor para tosse. Boldo, guaco e aroeira constam na RENISUS.',
     img: imgGarrafada,
-    tempo: '15 min de preparo',
-    porcoes: '1 garrafa · 1 semana',
+    tempo: '35 min de preparo',
+    porcoes: '500 ml · 7 a 10 dias',
     estudos: 'RENISUS · 6 referências',
     disponivel: true,
-    alt: 'Garrafa de vidro âmbar com tampa de cortiça contendo garrafada de boldo guaco e aroeira ao lado de folhas frescas e pote de mel sobre toalha de linho cor creme',
+    alt: 'Garrafa de vidro âmbar contendo infusão de boldo guaco e aroeira ao lado de folhas frescas e pote de mel cru sobre toalha de linho cor creme',
   },
 ];
 
@@ -94,7 +94,7 @@ const PILARES = [
 
 const FAQ = [
   { q: 'O que é Cozinha Funcional dentro da Soberania Orgânica?',
-    a: 'É a 7ª frente. Aqui resgatamos o conhecimento ancestral da natureza brasileira (indígena, popular, quilombola) para cuidar da saúde com plantas, chás, garrafadas, gelatinas e fórmulas que nossos avós e povos originários já usavam, agora cruzados com evidência científica e com a Política Nacional de Plantas Medicinais e Fitoterápicos do SUS (RENISUS, Farmácias Vivas, desde 2006).' },
+    a: 'É a 7ª frente. Aqui resgatamos o conhecimento ancestral da natureza brasileira (indígena, popular, quilombola) para cuidar da saúde com plantas, chás, lambedores, gelatinas e fórmulas que nossos avós e povos originários já usavam — sempre sem álcool e sem nada que crie dependência, cruzados com evidência científica e com a Política Nacional de Plantas Medicinais e Fitoterápicos do SUS (RENISUS, Farmácias Vivas, desde 2006).' },
   { q: 'É medicina alternativa, esotérica ou anticientífica?',
     a: 'Não. É etnofarmacologia: o estudo científico do que os povos tradicionais já sabiam. Boldo, guaco, aroeira, Passiflora, camomila, sementes de mamão e dezenas de outras plantas usadas aqui constam na RENISUS, a lista oficial de plantas medicinais do SUS. O Brasil tem mais de 600 Farmácias Vivas espalhadas pelo SUS dispensando essas mesmas fórmulas.' },
   { q: 'Substitui medicamento prescrito?',
@@ -123,8 +123,9 @@ function Hero() {
       <motion.div className="absolute inset-0" style={{ y: yBg }}>
         <img src={imgHubHero} alt="" fetchPriority="high" className="w-full h-full object-cover scale-110" style={{ filter: 'saturate(1.05) contrast(1.02)' }} />
         <div className="absolute inset-0" style={{
-          background: `linear-gradient(180deg, rgba(61,74,54,0.45) 0%, rgba(61,74,54,0.25) 35%, rgba(250,246,240,0.05) 70%, ${C.cream} 100%)`,
+          background: `linear-gradient(180deg, rgba(28,38,24,0.35) 0%, rgba(28,38,24,0.45) 45%, rgba(28,38,24,0.78) 78%, rgba(20,28,18,0.92) 100%)`,
         }} />
+        <div className="absolute inset-x-0 bottom-0 h-2 pointer-events-none" style={{ background: C.cream }} />
       </motion.div>
 
       <motion.div className="relative z-10 h-full flex flex-col justify-end px-6 md:px-12 lg:px-20 pb-20 md:pb-28" style={{ opacity: opacityContent }}>
@@ -142,10 +143,10 @@ function Hero() {
           animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
           transition={{ duration: 1, delay: 0.15, ease: APPLE_EASE }}
           className="text-[clamp(2.75rem,8.5vw,7.5rem)] max-w-[18ch]"
-          style={{ ...display, color: C.cream }}>
-          A farmácia da{' '}
-          <span style={{ ...editorial, color: C.terraSoft, fontWeight: 400, textShadow: '0 0 40px rgba(224,154,106,0.5), 0 0 80px rgba(224,154,106,0.25)' }}>
-            vovó indígena.
+          style={{ ...display, color: C.cream, textShadow: '0 2px 24px rgba(0,0,0,0.55)' }}>
+          A farmácia viva do{' '}
+          <span style={{ ...editorial, color: C.terraSoft, fontWeight: 400, textShadow: '0 2px 28px rgba(0,0,0,0.6)' }}>
+            Brasil ancestral.
           </span>
         </motion.h1>
 
@@ -153,7 +154,7 @@ function Hero() {
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5, ease: APPLE_EASE }}
           className="mt-8 max-w-2xl text-lg md:text-2xl leading-relaxed font-light"
-          style={{ color: 'rgba(250,246,240,0.9)', fontFamily: "'Inter Tight', sans-serif" }}>
+          style={{ color: 'rgba(250,246,240,0.95)', fontFamily: "'Inter Tight', sans-serif", textShadow: '0 1px 12px rgba(0,0,0,0.55)' }}>
           Resgate vivo do conhecimento ancestral brasileiro: cartilhas Kaxinawá e Pataxó, garrafadas do interior, chás de quintal, fórmulas de benzedeiras. Cruzado com a RENISUS, Farmácias Vivas do SUS e literatura etnofarmacológica.
         </motion.p>
       </motion.div>
