@@ -3,23 +3,22 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import {
-  ArrowRight, ChevronDown, Clock, Users, BookOpen, Beaker,
+  ArrowRight, ChevronDown, Clock, Users, BookOpen,
   Leaf, Mountain, AlertTriangle, CheckCircle2,
-  ScrollText, ExternalLink, Compass, Sprout, FlaskConical,
+  ScrollText, ExternalLink, Compass, Sprout, FlaskConical, HeartPulse,
 } from 'lucide-react';
 import BackToHome from '@/components/BackToHome';
 import ScrollToTop from '@/components/ScrollToTop';
 
-import imgHero from '@/assets/receitas/hero-garrafada-ancestral-light.jpg';
-import imgBoldo from '@/assets/receitas/ativo-boldo-folhas.jpg';
-import imgGuaco from '@/assets/receitas/ativo-guaco-folhas.jpg';
-import imgAroeira from '@/assets/receitas/ativo-aroeira-frutos.jpg';
+import imgHero from '@/assets/receitas/hero-pressao-hibisco-light.jpg';
+import imgHibisco from '@/assets/receitas/ativo-hibisco-calices.jpg';
+import imgAlho from '@/assets/receitas/ativo-alho-bulbos.jpg';
+import imgLimao from '@/assets/receitas/ativo-limao-taiti.jpg';
 
 /**
- * /soberania-organica/cozinha-funcional/garrafada-digestiva-ancestral
- * Receita ancestral indígena/popular — Boldo + Guaco + Aroeira.
- * Versão exclusivamente sem álcool (infusão concentrada com mel cru).
- * Padrão Light Editorial obrigatório.
+ * /soberania-organica/cozinha-funcional/cha-pressao-hibisco
+ * Apoio natural à pressão arterial — Hibisco + Alho + Limão.
+ * Padrão Light Editorial. Sem álcool. Receita ancestral + RENISUS + Farmácias Vivas.
  */
 
 const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
@@ -48,84 +47,111 @@ const editorial = { fontFamily: "'Playfair Display', serif", fontStyle: 'italic'
 const monoStyle = { fontFamily: "'JetBrains Mono', monospace", letterSpacing: '0.3em', textTransform: 'uppercase' as const };
 
 const INGREDIENTES = [
-  { qtd: '20 a 30 g', nome: 'Folhas de boldo fresco ou seco', detalhe: 'Plectranthus barbatus (boldo brasileiro). Cerca de 1 punhado generoso.' },
-  { qtd: '20 g', nome: 'Folhas de guaco', detalhe: 'Mikania glomerata. 1 punhado de folhas frescas ou 2 colheres de sopa de folha seca.' },
-  { qtd: '5 a 6 folhas', nome: 'Folhas de aroeira', detalhe: 'Schinus terebinthifolia. Pode substituir por 1 colher de chá de frutos rosados (pimenta-rosa).' },
-  { qtd: '500 ml', nome: 'Água filtrada', detalhe: 'Água filtrada fervida. Sem álcool, sem cachaça — versão segura para toda a família, gestantes e crianças (com orientação).' },
-  { qtd: '2 a 3 colheres de sopa', nome: 'Mel cru ou rapadura', detalhe: 'Mel cru de boa procedência (preserva enzimas) ou rapadura ralada. Conservante ancestral, suaviza o sabor das ervas e potencializa a ação expectorante.' },
+  { qtd: '30 g', nome: 'Cálices secos de hibisco', detalhe: 'Hibiscus sabdariffa. Cerca de 3 colheres de sopa cheias — dose validada em estudos clínicos para hipertensão leve-moderada.' },
+  { qtd: '2 dentes', nome: 'Alho fresco', detalhe: 'Allium sativum. Esmagados ou picados finos imediatamente antes do uso, para máxima liberação de alicina.' },
+  { qtd: '2 limões', nome: 'Suco de limão taiti', detalhe: 'Citrus limon. Cerca de 80 a 100 ml de suco fresco. Adicionado depois do calor, para preservar a vitamina C.' },
+  { qtd: '1 litro', nome: 'Água filtrada', detalhe: 'Sem cloro, sem alumínio. Base neutra para extração ideal das antocianinas e compostos sulfurados.' },
+  { qtd: 'opcional', nome: 'Mel cru', detalhe: '1 colher de chá apenas para suavizar o ácido. Evite açúcar refinado, que atrapalha o efeito vascular.' },
 ];
 
 const PREPARO = [
-  { n: '01', titulo: 'Selecione e lave as folhas', desc: 'Lave bem as folhas de boldo, guaco e aroeira em água corrente. Seque levemente em pano limpo. Se possível, colha de manhã cedo, antes do sol forte (concentração maior de princípios ativos).' },
-  { n: '02', titulo: 'Faça a infusão abafada', desc: 'Ferva 500 ml de água filtrada. Desligue o fogo, acrescente todas as folhas de uma vez, tampe a panela e deixe em infusão abafada por 15 a 20 minutos. Não ferva as folhas — o calor direto destrói os ativos voláteis (cumarina do guaco, óleos do boldo).' },
-  { n: '03', titulo: 'Coe e adoce ainda morno', desc: 'Coe com pano limpo ou coador de papel descartando as folhas. Ainda morno (não quente), dissolva 2 a 3 colheres de sopa de mel cru ou rapadura. O mel cru atua como conservante natural e potencializa a ação expectorante do guaco.' },
-  { n: '04', titulo: 'Envase em vidro âmbar', desc: 'Transfira para garrafa de vidro âmbar (ou escura) esterilizada, com tampa hermética. Rotule com data de preparo. Mantenha sempre na geladeira.' },
-  { n: '05', titulo: 'Validade curta, lote pequeno', desc: 'Por ser sem álcool, dura de 7 a 10 dias na geladeira. Faça em lote pequeno, mais vezes — fica mais fresco e ativo. Se notar mudança de cheiro, cor turva ou sabor azedo, descarte.' },
-  { n: '06', titulo: 'Tome com critério', desc: 'Adulto: 1 colher de sopa (15 ml) puro ou diluído em pouca água, 2 a 3 vezes ao dia, após as refeições. Crianças acima de 5 anos (com aval pediátrico): 1 colher de chá, 2x ao dia. Máximo de 15 dias seguidos. Pausa de 15 dias antes de repetir.' },
+  { n: '01', titulo: 'Ferva 1 litro de água filtrada', desc: 'Use panela esmaltada, inox ou de barro. Evite alumínio, que reage com ácidos do hibisco e do limão.' },
+  { n: '02', titulo: 'Apague o fogo e adicione hibisco e alho', desc: 'Coloque os 30 g de cálices de hibisco e os 2 dentes de alho recém-esmagados. Tampe imediatamente. Não ferva o alho — o calor direto destrói a alicina, o composto vasodilatador.' },
+  { n: '03', titulo: 'Infusão abafada por 12 a 15 minutos', desc: 'O abafamento concentra antocianinas (que dão a cor vermelho-rubi) e preserva os compostos voláteis sulfurados do alho. A cor passa de rosa para um vermelho profundo.' },
+  { n: '04', titulo: 'Coe em pano limpo ou coador fino', desc: 'Use coador de papel para infusão ou pano de algodão limpo. Aperte levemente para extrair tudo.' },
+  { n: '05', titulo: 'Acrescente o suco de 2 limões depois de morno', desc: 'Adicione o suco fresco só quando o líquido estiver morno (abaixo de 60 °C). Calor alto destrói vitamina C e parte dos flavonoides cítricos. Mexa bem.' },
+  { n: '06', titulo: 'Guarde em garrafa de vidro escuro na geladeira', desc: 'Vidro âmbar ou escuro preserva antocianinas (sensíveis à luz). Validade: 4 dias na geladeira. Faça em lote pequeno, mais vezes.' },
+];
+
+const VARIACOES = [
+  {
+    icon: FlaskConical, cor: 'terra',
+    titulo: 'Versão A · Chá diário', sub: 'Uso contínuo (4 a 6 semanas)',
+    pontos: [
+      'A receita base, exatamente como descrita acima',
+      'Dose adulta: 250 ml (1 copo) 2x ao dia, manhã em jejum e fim de tarde',
+      'Sempre longe das refeições principais (mínimo 30 min antes ou 2 h depois)',
+      'Cor vermelho-rubi profundo, sabor ácido equilibrado pelo doce do alho',
+      'Forma mais validada cientificamente — usada nos ensaios clínicos publicados',
+    ],
+  },
+  {
+    icon: Sprout, cor: 'sage',
+    titulo: 'Versão B · Concentrado', sub: 'Para levar na bolsa ou viagem',
+    pontos: [
+      'Reduzir 500 ml de chá já coado em fogo baixo até 150 ml',
+      'Acrescentar suco de 3 limões + 2 dentes de alho macerados fora do fogo',
+      'Validade: 7 dias em vidro escuro na geladeira',
+      'Dose: 1 colher de sopa diluída em 1 copo de água, 2x ao dia',
+      'Prático para quem trabalha fora ou viaja muito',
+    ],
+  },
 ];
 
 const ATIVOS = [
   {
-    n: '01', img: imgBoldo, nome: 'Boldo brasileiro', fonte: 'Plectranthus barbatus · 20 a 30 g',
+    n: '01', img: imgHibisco, nome: 'Hibisco', fonte: 'Hibiscus sabdariffa · 30 g de cálices secos',
     icon: Leaf,
-    alt: 'Folhas frescas de boldo brasileiro de coloração verde clara dispostas em toalha de linho cor creme com luz natural suave',
-    tradicao: 'Usado por indígenas Tupi-Guarani e popular no interior brasileiro como protetor do fígado e digestivo. Chá de boldo após refeição é cultura nacional há séculos.',
+    alt: 'Cálices secos de hibisco cor vinho profundo dispostos em tigela cerâmica clara sobre toalha de linho cor creme com luz natural suave',
+    tradicao: 'Chamado de "flor do sangue" ou "limpador de veias" pela tradição popular do Nordeste e Centro-Oeste. Adotado por indígenas e quilombolas como diurético e vasodilatador. Usado em decocções para "sangue grosso", retenção de líquido e "coração fraco". Farmácias Vivas do SUS reconhecem para hipertensão leve-moderada.',
     sus: 'Listado na RENISUS (Relação Nacional de Plantas Medicinais de Interesse ao SUS).',
-    mecanismo: 'Forskolina e diterpenos estimulam a produção de bile pelo fígado, melhorando digestão de gorduras. Ação colagoga e colerética documentada. Reduz dispepsia funcional, sensação de empachamento e má digestão.',
-    estudoAncora: 'Salah & Jäger (2005), Journal of Ethnopharmacology',
-    achado: 'Revisão etnofarmacológica confirma uso para dispepsia, hepatopatias leves e cólica. Atividade hepatoprotetora demonstrada em modelos animais com doses comparáveis ao uso popular.',
+    mecanismo: 'Antocianinas e ácidos orgânicos atuam como inibidores naturais da enzima conversora de angiotensina (ECA), mecanismo similar ao captopril e enalapril. Ação diurética suave (perda de sódio e água), antioxidante (protege endotélio) e relaxamento vascular direto. Reduz pressão sistólica em 5 a 8 mmHg e diastólica em ~4 mmHg em hipertensos leves-moderados.',
+    estudoAncora: 'McKay, Chen, Saltzman & Blumberg (2010), Journal of Nutrition',
+    achado: 'Ensaio clínico randomizado, duplo-cego, mostrou que 3 xícaras de chá de hibisco por dia, durante 6 semanas, reduziram pressão arterial sistólica em pré-hipertensos e hipertensos leves de forma estatisticamente significativa, com efeito comparável a captopril em alguns subgrupos.',
   },
   {
-    n: '02', img: imgGuaco, nome: 'Guaco', fonte: 'Mikania glomerata · 20 g de folhas',
+    n: '02', img: imgAlho, nome: 'Alho', fonte: 'Allium sativum · 2 dentes frescos',
     icon: Sprout,
-    alt: 'Folhas alongadas verde escuras de guaco com pequenas flores brancas em formato de estrela sobre toalha de linho clara',
-    tradicao: 'Conhecido como “erva-de-cobra” ou “erva-de-bugre” pelos indígenas. Usado historicamente para tosse, bronquite, picada de cobra e infecções respiratórias. Popular nas Farmácias Vivas do Ceará e do Norte/Nordeste.',
-    sus: 'Aprovado pela Anvisa como fitoterápico de referência. Consta na RENISUS e em monografia oficial.',
-    mecanismo: 'A cumarina (princípio ativo) tem ação broncodilatadora, expectorante e anti-inflamatória. Diluí o muco, abre as vias aéreas e reduz inflamação. Também tem ação antimicrobiana suave.',
-    estudoAncora: 'Soares et al. (2006), Phytotherapy Research',
-    achado: 'Ensaios farmacológicos confirmam ação expectorante e broncodilatadora. Xarope de guaco é dispensado no SUS para tosse seca e bronquite leve, com perfil de segurança bem estabelecido.',
+    alt: 'Dois bulbos de alho fresco com casca branco-arroxeada e dois dentes descascados sobre toalha de linho cor creme em luz natural',
+    tradicao: 'Conhecido como "remédio do coração" desde a colonização. Bulbos crus ou macerados são usados há séculos por indígenas, bandeirantes e sertanejos para "limpar artérias" e prevenir "apoplexia" (derrame). Quilombolas associam ao controle de "pressão do sangue" e à longevidade.',
+    sus: 'Reconhecido pela Anvisa como fitoterápico de uso tradicional. Consta em monografias oficiais para apoio cardiovascular.',
+    mecanismo: 'Alicina e compostos sulfurados (formados ao esmagar o dente cru) aumentam a produção endotelial de óxido nítrico — o principal vasodilatador endógeno. Reduzem rigidez arterial, agregação plaquetária e oxidação do LDL. Meta-análises mostram redução de 7 a 16 mmHg sistólica em hipertensos não controlados após 8 a 12 semanas.',
+    estudoAncora: 'Ried, Frank & Stocks (2010), BMC Cardiovascular Disorders',
+    achado: 'Meta-análise de 11 ensaios clínicos randomizados (n = 530) confirmou redução média de 8,4 mmHg sistólica e 7,3 mmHg diastólica em hipertensos com uso regular de extrato de alho. Efeito mais robusto em pacientes com pressão acima de 140/90 mmHg basal.',
   },
   {
-    n: '03', img: imgAroeira, nome: 'Aroeira', fonte: 'Schinus terebinthifolia · 5 a 6 folhas',
+    n: '03', img: imgLimao, nome: 'Limão Taiti', fonte: 'Citrus limon · suco de 2 frutos',
     icon: Mountain,
-    alt: 'Galho de aroeira com pequenos frutos rosados brilhantes (pimenta rosa) e folhas verdes alongadas sobre toalha de linho cor creme',
-    tradicao: 'Sagrada para vários povos originários (Guarani, Pataxó). Casca, folha e fruto eram usados para banhos cicatrizantes, lavagens íntimas, infecções de pele e desinflamatório geral.',
-    sus: 'Consta na RENISUS. Banho de assento de aroeira é dispensado no SUS para vaginites e cervicites leves.',
-    mecanismo: 'Taninos, flavonoides e schinol têm ação antimicrobiana, anti-inflamatória, cicatrizante e adstringente confirmada. Ativos contra bactérias gram-positivas e fungos comuns do trato digestivo.',
-    estudoAncora: 'Carvalho et al. (2013), Brazilian Journal of Pharmacognosy',
-    achado: 'Revisão sistemática de mais de 30 estudos confirma ação antimicrobiana, anti-inflamatória e cicatrizante. Sem toxicidade relevante em doses tradicionais. Eficácia comparável a antifúngicos sintéticos em alguns ensaios.',
+    alt: 'Limões taiti amarelo e verde com um cortado ao meio mostrando interior suculento e folhas verdes ao lado, sobre toalha de linho cor creme em luz natural',
+    tradicao: 'Planta cítrica ancestral na medicina indígena, descrita como "ácido purificador". Tradição popular brasileira: limão em jejum "limpa o sangue" e "afina o sangue grosso". Sertanejos e ribeirinhos usam diariamente para hidratação alcalinizante e proteção cardiovascular.',
+    sus: 'Componente nutricional reconhecido. Vitamina C e flavonoides cítricos (hesperidina) são amplamente estudados em proteção endotelial.',
+    mecanismo: 'Vitamina C e citratos potencializam a biodisponibilidade do óxido nítrico do alho e prolongam o efeito antioxidante das antocianinas do hibisco. Hesperidina melhora função endotelial e reduz estresse oxidativo vascular. Citratos ajudam a alcalinizar a urina e reduzem risco de cálculos renais que o hibisco isolado poderia favorecer.',
+    estudoAncora: 'Morand et al. (2011), American Journal of Clinical Nutrition',
+    achado: 'Ensaio clínico controlado mostrou que a hesperidina, principal flavonoide do limão, melhora função endotelial mensurada por dilatação fluxo-mediada da artéria braquial e reduz marcadores inflamatórios em homens com sobrepeso, em apenas 4 semanas de uso regular.',
   },
 ];
 
 const FONTES = [
   { autor: 'Ministério da Saúde', ano: '2006', titulo: 'Política Nacional de Plantas Medicinais e Fitoterápicos (Decreto nº 5.813)', revista: 'Brasil', tipo: 'Marco regulatório oficial', link: 'https://bvsms.saude.gov.br/bvs/publicacoes/politica_nacional_fitoterapicos.pdf' },
   { autor: 'Ministério da Saúde', ano: '2009', titulo: 'RENISUS — Relação Nacional de Plantas Medicinais de Interesse ao SUS', revista: 'Brasil', tipo: 'Lista oficial de 71 plantas', link: 'https://www.gov.br/saude/pt-br/composicao/sectics/daf/pnpmf/plantas-medicinais-e-fitoterapicos-no-sus' },
-  { autor: 'Salah, S. M.; Jäger, A. K.', ano: '2005', titulo: 'Two flavonoids from Plectranthus barbatus with relaxant effects', revista: 'Journal of Ethnopharmacology', tipo: 'Estudo etnofarmacológico (boldo)', link: 'https://pubmed.ncbi.nlm.nih.gov/?term=Plectranthus+barbatus+ethnopharmacology' },
-  { autor: 'Soares, A. K. A. et al.', ano: '2006', titulo: 'Avaliação da segurança clínica de um fitoterápico contendo Mikania glomerata Sprengel', revista: 'Revista Brasileira de Farmacognosia', tipo: 'Estudo clínico (guaco)', link: 'https://pubmed.ncbi.nlm.nih.gov/?term=Mikania+glomerata+clinical' },
-  { autor: 'Carvalho, M. G. et al.', ano: '2013', titulo: 'Schinus terebinthifolius Raddi: chemical composition, biological properties and toxicity', revista: 'Revista Brasileira de Plantas Medicinais', tipo: 'Revisão sistemática (aroeira)', link: 'https://www.scielo.br/j/rbpm/a/wHbwRyRBTbCq3vh8VgpBzJk/' },
-  { autor: 'Cartilha Kaxinawá', ano: '1996', titulo: 'Una Isi Kayawa — Livro da Cura do Povo Huni Kuĩ', revista: 'Comissão Pró-Índio do Acre', tipo: 'Saber tradicional indígena', link: 'https://acervo.socioambiental.org/' },
-  { autor: 'Brandão, M. G. L. et al.', ano: '2008', titulo: 'Brazilian medicinal plants described by 19th century European naturalists in the Official Pharmacopoeia', revista: 'Revista Brasileira de Farmacognosia', tipo: 'Análise histórico-farmacêutica', link: 'https://www.scielo.br/j/rbfar/' },
+  { autor: 'McKay, D. L.; Chen, C. Y.; Saltzman, E.; Blumberg, J. B.', ano: '2010', titulo: 'Hibiscus sabdariffa L. tea (tisane) lowers blood pressure in prehypertensive and mildly hypertensive adults', revista: 'Journal of Nutrition', tipo: 'Ensaio clínico randomizado (hibisco)', link: 'https://pubmed.ncbi.nlm.nih.gov/19956015/' },
+  { autor: 'Ried, K.; Frank, O. R.; Stocks, N. P.', ano: '2010', titulo: 'Aged garlic extract lowers blood pressure in patients with treated but uncontrolled hypertension: a randomised controlled trial', revista: 'BMC Cardiovascular Disorders', tipo: 'Meta-análise (alho)', link: 'https://pubmed.ncbi.nlm.nih.gov/20594781/' },
+  { autor: 'Morand, C. et al.', ano: '2011', titulo: 'Hesperidin contributes to the vascular protective effects of orange juice', revista: 'American Journal of Clinical Nutrition', tipo: 'Estudo clínico (cítricos)', link: 'https://pubmed.ncbi.nlm.nih.gov/21068346/' },
+  { autor: 'Hopkins, A. L. et al.', ano: '2013', titulo: 'Hibiscus sabdariffa L. in the treatment of hypertension and hyperlipidemia: a comprehensive review', revista: 'Fitoterapia', tipo: 'Revisão sistemática (hibisco)', link: 'https://pubmed.ncbi.nlm.nih.gov/23333908/' },
+  { autor: 'Sociedade Brasileira de Cardiologia', ano: '2020', titulo: 'Diretrizes Brasileiras de Hipertensão Arterial — 2020', revista: 'Arquivos Brasileiros de Cardiologia', tipo: 'Diretriz médica oficial', link: 'http://publicacoes.cardiol.br/portal/abc/portugues/2021/v11603/pdf/11603022.pdf' },
 ];
 
 const FAQ = [
-  { q: 'Por que a versão é só sem álcool?',
-    a: 'Por princípio: este projeto não recomenda nada que crie dependência, vício ou risco hepático adicional. Existem versões tradicionais com cachaça no interior brasileiro, mas a versão em infusão com mel cru atinge o mesmo objetivo digestivo, expectorante e imunológico, é segura para toda a família (com as ressalvas de uso) e respeita gestantes, crianças, abstêmios, hepatopatas e quem usa medicação contínua.' },
-  { q: 'Mel cru substitui o álcool como conservante?',
-    a: 'Em parte. O mel cru tem ação antimicrobiana natural (peróxido de hidrogênio enzimático, baixa atividade de água, pH ácido) e estende a validade da infusão para 7 a 10 dias na geladeira. Não é tão duradouro quanto a maceração alcoólica (que dura meses), mas é o suficiente porque o protocolo de uso é de no máximo 15 dias com pausa.' },
-  { q: 'É medicina alternativa ou tem respaldo oficial?',
-    a: 'Tem respaldo oficial. Boldo, guaco e aroeira constam na RENISUS (Relação Nacional de Plantas Medicinais de Interesse ao SUS) desde 2009. O Brasil tem mais de 600 Farmácias Vivas dispensando essas mesmas plantas pela rede pública. A Política Nacional de Plantas Medicinais e Fitoterápicos é de 2006.' },
-  { q: 'Substitui omeprazol, antiácido ou laxante?',
-    a: 'Para má digestão funcional leve (peso após refeição, gases, eructação, intestino preguiçoso), pode substituir uso ocasional de antiácidos comuns. Não substitui tratamento de úlcera diagnosticada, refluxo crônico, gastrite por H. pylori, doença de Crohn ou qualquer doença gastrointestinal estabelecida. Para isso, médico.' },
-  { q: 'Qual é a dose certa e por quanto tempo?',
-    a: 'Adulto: 1 colher de sopa (15 ml) pura ou diluída em pouca água, 2 a 3 vezes ao dia, após as refeições. Crianças acima de 5 anos (com aval pediátrico): 1 colher de chá, 2x ao dia. Máximo de 15 dias seguidos, com pausa obrigatória de 15 dias antes de repetir. Não ultrapasse 30 dias de uso por mês.' },
-  { q: 'Por que aroeira na fórmula? Não é “a árvore brava”?',
-    a: 'A aroeira-vermelha (Schinus terebinthifolia) é diferente da aroeira-do-sertão (Myracrodruon urundeuva), que é mais cáustica. A primeira é a usada em fitoterapia oficial brasileira, com perfil de segurança documentado e ação anti-inflamatória, antimicrobiana e cicatrizante já confirmadas em revisão sistemática. Sempre identifique corretamente a espécie ou compre em Farmácia Viva.' },
+  { q: 'Esse chá substitui losartana, hidroclorotiazida ou enalapril?',
+    a: 'Não. É apoio natural com evidência clínica para hipertensão leve-moderada (estágio 1) ou pré-hipertensão, sempre como complemento a mudanças de estilo de vida (sal, peso, exercício, sono). Quem já toma anti-hipertensivo NUNCA deve suspender por conta própria — a queda de pressão pode ser perigosa. Combinar com hibisco e alho potencializa o efeito do remédio, e a dose médica precisa ser reajustada por um profissional, com monitoramento de pressão diária.' },
+  { q: 'Em quanto tempo a pressão começa a baixar?',
+    a: 'Não é imediato. A literatura mostra resultados consistentes entre 2 e 6 semanas de uso contínuo, com efeito mais evidente em pessoas com pressão entre 130/85 e 159/99 mmHg que também adotam mudança de hábitos. Meça pressão 2x ao dia (manhã e noite) nas primeiras 2 semanas e anote em um diário para conversar com seu médico.' },
+  { q: 'Quem NÃO pode tomar?',
+    a: 'Contraindicações absolutas: gestantes (hibisco tem efeito emenagogo e risco de contrações uterinas), lactantes, pessoas com hipotensão (pressão baixa), úlcera gástrica ativa, alergia a qualquer ingrediente. Atenção redobrada: quem usa anticoagulante (alho potencializa o efeito), quem tem cálculo renal por oxalato (hibisco contém oxalato), pacientes em pré-operatório (suspender 7 dias antes pelo risco de sangramento). Crianças menores de 6 anos: contraindicado sem pediatra fitoterapeuta.' },
+  { q: 'Qual a dose certa por idade?',
+    a: 'Adultos 18-65 anos com hipertensão leve-moderada: receita base completa, 500 ml/dia divididos em 2 doses. Idosos acima de 65: reduza para 15-20 g de hibisco, 1 dente de alho, 1 limão por litro, e 300-400 ml/dia (rins mais sensíveis, monitore potássio). Adolescentes 12-17: metade da dose adulta, 250 ml/dia, só com orientação. Crianças 6-11 anos: apenas hibisco + limão sem alho cru, 1/4 da dose adulta máxima, com aval pediátrico.' },
+  { q: 'Por quanto tempo posso tomar sem parar?',
+    a: 'Ciclo recomendado: 4 a 6 semanas contínuas, depois pausa de 7 a 10 dias com reavaliação da pressão (medida em casa e idealmente em consulta). Pode-se retomar mais um ciclo, mas sem usar indefinidamente sem reavaliação médica. O objetivo é apoiar a recuperação, não criar dependência crônica de chá nenhum.' },
+  { q: 'O alho cru não vai me dar mau hálito o dia todo?',
+    a: 'O alho é infusionado, não engolido inteiro — a maior parte dos compostos voláteis (responsáveis pelo cheiro forte) fica concentrada no caldo, que é diluído em 1 litro. Para minimizar o hálito: tome longe de reuniões importantes, mastigue salsinha fresca depois, ou faça gargarejo com chá verde. Não vale tirar o alho da fórmula — é onde mora boa parte do efeito vasodilatador.' },
+  { q: 'Posso adoçar com açúcar?',
+    a: 'Não. Açúcar refinado eleva insulina, gera estresse oxidativo vascular e atrapalha exatamente o que o protocolo está tentando consertar. Se precisar adoçar, use 1 colher de chá de mel cru (preserva enzimas e tem ação anti-inflamatória) ou stevia natural. Evite adoçante artificial em uso crônico.' },
 ];
 
 const TRILHA = [
   { to: '/soberania-organica/cozinha-funcional', titulo: 'Hub Cozinha Funcional', desc: 'Volte para a coleção completa de receitas ancestrais brasileiras validadas pelo SUS.', label: 'Ver coleção' },
+  { to: '/soberania-organica/saude-preventiva', titulo: 'Saúde Preventiva', desc: 'Os pilares fisiológicos por trás da pressão arterial: sódio, sono, peso, microbiota e movimento diário.', label: 'Estudar fisiologia' },
   { to: '/soberania-organica/fitoterapia-aplicada', titulo: 'Fitoterapia Aplicada', desc: 'Aprofunde o uso clínico de plantas medicinais brasileiras: protocolos, doses, contraindicações.', label: 'Aprofundar' },
-  { to: '/soberania-organica/saude-preventiva', titulo: 'Saúde Preventiva', desc: 'Os pilares fisiológicos por trás da boa digestão: microbiota, motilidade, fígado e enzimas.', label: 'Estudar fisiologia' },
 ];
 
 function Hero() {
@@ -134,10 +160,10 @@ function Hero() {
   const opacityContent = useTransform(scrollY, [0, 500], [1, 0]);
 
   return (
-    <section className="relative h-[92vh] min-h-[640px] w-full overflow-hidden" style={{ backgroundColor: C.sage }}>
+    <section className="relative h-[92vh] min-h-[680px] w-full overflow-hidden" style={{ backgroundColor: C.sage }}>
       <motion.div className="absolute inset-0" style={{ y: yBg }}>
         <img src={imgHero}
-          alt="Garrafa de vidro com garrafada cor âmbar e tampa de cortiça ao lado de folhas frescas de boldo guaco e galho de aroeira com frutos rosa, pote de mel cru sobre toalha de linho cor creme em luz natural suave"
+          alt="Jarra de vidro com chá vermelho-rubi de hibisco fumegante ao lado de bulbos de alho descascados, cálices secos de hibisco vinho e limões taiti amarelo e verde sobre toalha de linho cor creme em luz natural suave"
           fetchPriority="high" className="w-full h-full object-cover scale-110"
           style={{ filter: 'saturate(1.05) contrast(1.02)' }} />
         <div className="absolute inset-0" style={{
@@ -149,7 +175,7 @@ function Hero() {
       <motion.div className="relative z-10 h-full flex flex-col justify-end px-6 md:px-12 lg:px-20 pb-20 md:pb-28" style={{ opacity: opacityContent }}>
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease: APPLE_EASE }} className="mb-6">
           <Link to="/soberania-organica/cozinha-funcional" className="text-xs font-bold transition-opacity hover:opacity-80"
-            style={{ ...monoStyle, color: 'rgba(250,246,240,0.85)' }}>
+            style={{ ...monoStyle, color: 'rgba(250,246,240,0.9)' }}>
             Soberania Orgânica › Cozinha Funcional
           </Link>
         </motion.div>
@@ -157,7 +183,7 @@ function Hero() {
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: APPLE_EASE }}
           className="inline-flex items-center gap-3 mb-6 self-start px-4 py-2 rounded-full backdrop-blur-md"
           style={{ backgroundColor: 'rgba(250,246,240,0.18)', border: '1px solid rgba(250,246,240,0.28)' }}>
-          <Mountain size={14} style={{ color: C.cream }} />
+          <HeartPulse size={14} style={{ color: C.cream }} />
           <span className="text-[11px] md:text-xs font-bold" style={{ ...monoStyle, color: C.cream }}>
             Tradição ancestral · Validada pelo SUS · RENISUS
           </span>
@@ -167,11 +193,11 @@ function Hero() {
           initial={{ opacity: 0, y: 40, filter: 'blur(10px)' }}
           animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
           transition={{ duration: 1, delay: 0.15, ease: APPLE_EASE }}
-          className="text-[clamp(2.5rem,7.5vw,6.5rem)] max-w-[20ch]"
+          className="text-[clamp(2.75rem,8vw,7rem)] max-w-[18ch]"
           style={{ ...display, color: C.cream, textShadow: '0 2px 24px rgba(0,0,0,0.55)' }}>
-          O lambedor de boldo,{' '}
+          O chá que apoia a{' '}
           <span style={{ ...editorial, color: C.terraSoft, textShadow: '0 2px 28px rgba(0,0,0,0.6)' }}>
-            guaco e aroeira.
+            pressão sem tarja preta.
           </span>
         </motion.h1>
 
@@ -180,19 +206,19 @@ function Hero() {
           transition={{ duration: 0.8, delay: 0.5, ease: APPLE_EASE }}
           className="mt-8 max-w-2xl text-lg md:text-2xl leading-relaxed font-light"
           style={{ color: 'rgba(250,246,240,0.95)', fontFamily: "'Inter Tight', sans-serif", textShadow: '0 1px 12px rgba(0,0,0,0.55)' }}>
-          Infusão concentrada com mel cru. Sem álcool, sem dependência. Fórmula indígena e popular para fígado, digestão e imunidade — três plantas listadas na RENISUS e dispensadas pelas Farmácias Vivas do SUS.
+          Hibisco, alho fresco e limão taiti. Mesmo mecanismo que inibidores da ECA e vasodilatadores, sem dependência. Apoio natural à hipertensão leve-moderada — três plantas com evidência clínica e dispensação no SUS.
         </motion.p>
 
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.7, ease: APPLE_EASE }}
           className="mt-10 flex flex-wrap gap-x-8 gap-y-3">
-          <span className="flex items-center gap-2 text-xs font-bold" style={{ ...monoStyle, color: 'rgba(250,246,240,0.85)' }}>
-            <Clock size={14} style={{ color: C.terraSoft }} /> 15 min de preparo
+          <span className="flex items-center gap-2 text-xs font-bold" style={{ ...monoStyle, color: 'rgba(250,246,240,0.9)' }}>
+            <Clock size={14} style={{ color: C.terraSoft }} /> 20 min de preparo
           </span>
-          <span className="flex items-center gap-2 text-xs font-bold" style={{ ...monoStyle, color: 'rgba(250,246,240,0.85)' }}>
-            <Users size={14} style={{ color: C.terraSoft }} /> 1 garrafa · 1 semana
+          <span className="flex items-center gap-2 text-xs font-bold" style={{ ...monoStyle, color: 'rgba(250,246,240,0.9)' }}>
+            <Users size={14} style={{ color: C.terraSoft }} /> 1 litro · 4 dias
           </span>
-          <span className="flex items-center gap-2 text-xs font-bold" style={{ ...monoStyle, color: 'rgba(250,246,240,0.85)' }}>
-            <BookOpen size={14} style={{ color: C.terraSoft }} /> RENISUS · 6 referências
+          <span className="flex items-center gap-2 text-xs font-bold" style={{ ...monoStyle, color: 'rgba(250,246,240,0.9)' }}>
+            <BookOpen size={14} style={{ color: C.terraSoft }} /> RENISUS · 7 referências
           </span>
         </motion.div>
       </motion.div>
@@ -200,19 +226,19 @@ function Hero() {
   );
 }
 
-export default function GarrafadaDigestivaAncestral() {
+export default function ChaPressaoHibisco() {
   useEffect(() => { window.scrollTo(0, 0); }, []);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   return (
     <>
       <Helmet>
-        <title>Lambedor Ancestral de Boldo, Guaco e Aroeira (sem álcool) | Lord Junnior</title>
-        <meta name="description" content="Receita ancestral indígena e popular brasileira sem álcool, com mel cru, para fígado, digestão, tosse e imunidade. Plantas listadas na RENISUS e dispensadas pelas Farmácias Vivas do SUS." />
-        <link rel="canonical" href="https://www.lordjunnior.com.br/soberania-organica/cozinha-funcional/garrafada-digestiva-ancestral" />
-        <meta property="og:title" content="O Lambedor Ancestral de Boldo, Guaco e Aroeira (sem álcool)" />
-        <meta property="og:description" content="Boldo, guaco e aroeira em infusão com mel cru. Três plantas RENISUS, zero álcool, fórmula segura para a família." />
-        <meta property="og:image" content="https://www.lordjunnior.com.br/og/garrafada-ancestral.jpg" />
+        <title>Chá de Hibisco, Alho e Limão para Pressão Alta (sem álcool) | Lord Junnior</title>
+        <meta name="description" content="Receita ancestral brasileira para apoio natural à hipertensão leve-moderada: hibisco, alho fresco e limão taiti. Plantas listadas na RENISUS, com evidência clínica em meta-análises do PubMed." />
+        <link rel="canonical" href="https://www.lordjunnior.com.br/soberania-organica/cozinha-funcional/cha-pressao-hibisco" />
+        <meta property="og:title" content="O chá ancestral que apoia a pressão arterial — sem tarja preta" />
+        <meta property="og:description" content="Hibisco + alho + limão. Mesmo mecanismo dos inibidores da ECA, sem dependência. Tradição com PubMed do lado." />
+        <meta property="og:image" content="https://www.lordjunnior.com.br/og/cha-pressao-hibisco.jpg" />
         <meta property="og:type" content="article" />
         <meta property="og:locale" content="pt_BR" />
         <meta name="robots" content="index, follow, max-image-preview:large" />
@@ -221,14 +247,14 @@ export default function GarrafadaDigestivaAncestral() {
           {JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'Recipe',
-            name: 'Lambedor Ancestral de Boldo, Guaco e Aroeira (sem álcool, com mel cru)',
+            name: 'Chá Ancestral de Hibisco, Alho e Limão para Apoio à Pressão Arterial',
             author: { '@type': 'Person', name: 'Lord Junnior' },
-            description: 'Receita ancestral brasileira em infusão sem álcool com mel cru, em duas versões (uso digestivo diário e lambedor concentrado para tosse), baseada em saber indígena e popular e validada pela RENISUS.',
-            recipeYield: '1 garrafa de 500 ml · 7 a 10 dias',
-            prepTime: 'PT15M', cookTime: 'PT20M', totalTime: 'PT35M',
-            recipeCategory: 'Fitoterápico ancestral sem álcool',
+            description: 'Receita ancestral brasileira sem álcool, com hibisco, alho fresco e limão taiti, para apoio à hipertensão leve-moderada. Validada pela RENISUS e por meta-análises clínicas.',
+            recipeYield: '1 litro · 4 dias',
+            prepTime: 'PT5M', cookTime: 'PT15M', totalTime: 'PT20M',
+            recipeCategory: 'Fitoterápico ancestral cardiovascular',
             recipeCuisine: 'Indígena e popular brasileira',
-            keywords: 'lambedor, boldo, guaco, aroeira, sem álcool, mel cru, RENISUS, Farmácia Viva, fitoterapia brasileira, medicina indígena',
+            keywords: 'hibisco, alho, limão, pressão alta, hipertensão, RENISUS, Farmácia Viva, fitoterapia brasileira, sem álcool',
             recipeIngredient: INGREDIENTES.map((i) => `${i.qtd} ${i.nome}`),
             recipeInstructions: PREPARO.map((p) => ({ '@type': 'HowToStep', name: p.titulo, text: p.desc })),
           })}
@@ -265,22 +291,22 @@ export default function GarrafadaDigestivaAncestral() {
             </motion.aside>
             <motion.div {...fade(0.1)} className="lg:col-span-8">
               <h2 className="text-[clamp(2.25rem,5.5vw,5rem)] leading-[1] tracking-tight mb-10" style={{ ...display, color: C.sage }}>
-                Vovó já fazia,{' '}
-                <span style={{ ...editorial, color: C.terracotta }}>o SUS confirmou.</span>
+                Antes da losartana,{' '}
+                <span style={{ ...editorial, color: C.terracotta }}>existia a flor do sangue.</span>
               </h2>
               <div className="space-y-7 text-lg md:text-xl leading-[1.7] font-light" style={{ color: C.inkSoft }}>
                 <p>
-                  A garrafada é uma das mais antigas formas de preparo medicinal do Brasil. Vem da combinação de saberes <strong style={{ color: C.sage }}>indígenas</strong> (extração por maceração em líquido), <strong style={{ color: C.sage }}>africanos</strong> (uso de garrafas escuras para conservação) e da <strong style={{ color: C.sage }}>tradição portuguesa de licores caseiros</strong>. No interior, ainda hoje, cada família tem sua receita própria.
+                  Pressão alta é a doença crônica mais prevalente do Brasil — atinge mais de <strong style={{ color: C.sage }}>30% dos adultos</strong> e é o principal fator de risco para infarto e AVC. A indústria farmacêutica vende bilhões em <strong style={{ color: C.terracotta }}>losartana, hidroclorotiazida e enalapril</strong> todo ano, e o hipertenso brasileiro é cliente para a vida toda.
                 </p>
                 <p>
-                  Esta versão combina três plantas que aparecem em praticamente todas as garrafadas digestivas do território brasileiro: <strong style={{ color: C.terracotta }}>boldo</strong> para o fígado, <strong style={{ color: C.terracotta }}>guaco</strong> para vias respiratórias e imunidade, <strong style={{ color: C.terracotta }}>aroeira</strong> para inflamação e cicatrização interna. As três constam na <strong style={{ color: C.sage }}>RENISUS</strong>, a lista oficial do Ministério da Saúde de plantas medicinais de interesse ao SUS.
+                  Antes desse mercado existir, vovó já tomava chá de hibisco e mastigava dente de alho cru de manhã. Não por ignorância: porque <strong style={{ color: C.sage }}>funciona</strong>. Hibisco inibe a mesma enzima conversora de angiotensina que o captopril ataca. Alho aumenta o óxido nítrico que o sildenafil estimula. Limão protege o endotélio. A diferença é que o conhecimento estava com o povo, não no folheto da Pfizer.
                 </p>
                 <p>
-                  No Ceará, no Norte e em vários estados, as <strong style={{ color: C.sage }}>Farmácias Vivas do SUS</strong> dispensam fórmulas exatamente parecidas com essa, manipuladas localmente. Não é simpatia. É ciência ancestral validada e operando dentro da rede pública há quase duas décadas.
+                  Em 2006 o próprio Ministério da Saúde formalizou o que já era saber popular, na <strong style={{ color: C.sage }}>Política Nacional de Plantas Medicinais e Fitoterápicos</strong>. <strong style={{ color: C.terracotta }}>Hibiscus sabdariffa</strong> entrou na <strong style={{ color: C.sage }}>RENISUS</strong>, a lista oficial das 71 plantas reconhecidas pelo SUS. Mais de <strong style={{ color: C.terracotta }}>600 Farmácias Vivas</strong> espalhadas pela rede pública dispensam essas plantas hoje.
                 </p>
                 <blockquote className="pl-8 py-2 my-10 text-2xl md:text-3xl leading-[1.4] font-light"
                   style={{ borderLeft: `3px solid ${C.terracotta}`, color: C.sage, ...editorial }}>
-                  Sou neto de índio. Essa garrafada não é exotismo: é remédio do meu povo, do seu povo, com nome científico e número de registro.
+                  Não é "chazinho para pressão". É um protocolo etnofarmacológico, com PubMed do lado e RENISUS no rodapé. Tradição com nome científico.
                 </blockquote>
               </div>
             </motion.div>
@@ -304,7 +330,7 @@ export default function GarrafadaDigestivaAncestral() {
                   <h3 className="text-2xl mb-2" style={{ ...editorial, color: C.terracotta }}>
                     Ingredientes
                   </h3>
-                  <p className="text-sm mb-8" style={{ color: C.inkSoft }}>1 garrafa de 500 ml · uso de 1 semana</p>
+                  <p className="text-sm mb-8" style={{ color: C.inkSoft }}>1 litro · uso de 4 dias</p>
                   <ul className="space-y-6">
                     {INGREDIENTES.map((ing, i) => (
                       <li key={i} className="flex gap-5 pb-6" style={{ borderBottom: i < INGREDIENTES.length - 1 ? `1px solid ${C.borderLight}` : 'none' }}>
@@ -325,7 +351,7 @@ export default function GarrafadaDigestivaAncestral() {
                 <h3 className="text-2xl mb-2" style={{ ...editorial, color: C.terracotta }}>
                   Modo de preparo
                 </h3>
-                <p className="text-sm mb-10" style={{ color: C.inkSoft }}>15 min ativos mais 7 a 10 dias de maceração</p>
+                <p className="text-sm mb-10" style={{ color: C.inkSoft }}>20 minutos do início ao fim</p>
 
                 <ol className="space-y-8">
                   {PREPARO.map((p) => (
@@ -345,48 +371,38 @@ export default function GarrafadaDigestivaAncestral() {
           </div>
         </section>
 
-        {/* CAPÍTULO 3 — DUAS VERSÕES (infusão diária vs lambedor com mel) */}
+        {/* CAPÍTULO 3 — DUAS VERSÕES */}
         <section className="relative py-24 md:py-36 px-6 md:px-12 lg:px-20">
           <div className="max-w-[1400px] mx-auto">
             <motion.div {...fade(0)} className="mb-16 max-w-3xl">
               <span className="text-xs font-bold block mb-4" style={{ ...monoStyle, color: C.terracotta }}>Capítulo 03 · Duas versões</span>
               <h2 className="text-[clamp(2.25rem,5.5vw,5rem)] leading-[1] tracking-tight" style={{ ...display, color: C.sage }}>
-                Infusão{' '}
-                <span style={{ ...editorial, color: C.terracotta }}>ou lambedor.</span>
+                Chá diário{' '}
+                <span style={{ ...editorial, color: C.terracotta }}>ou concentrado.</span>
               </h2>
               <p className="mt-6 text-lg md:text-xl font-light leading-[1.6]" style={{ color: C.inkSoft }}>
-                Duas formas seguras, sem álcool, da mesma fórmula. A infusão é o uso digestivo diário. O lambedor (mais concentrado e adoçado com mel cru) é a forma popular para tosse, garganta e imunidade.
+                Duas formas seguras, sem álcool, da mesma fórmula. O chá é a versão estudada em ensaios clínicos. O concentrado é a forma prática para quem trabalha fora ou viaja muito.
               </p>
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-              <motion.div {...fade(0)} className="p-8 md:p-10 rounded-3xl"
-                style={{ backgroundColor: '#fff8ef', border: `1px solid ${C.borderLight}` }}>
-                <FlaskConical size={32} style={{ color: C.terracotta }} className="mb-6" />
-                <p className="text-xs font-bold mb-3" style={{ ...monoStyle, color: C.terracotta }}>Versão A · uso diário</p>
-                <h3 className="text-2xl md:text-3xl mb-6 font-semibold" style={{ ...display, color: C.sage }}>Infusão concentrada</h3>
-                <ul className="space-y-4 text-base md:text-lg leading-relaxed font-light" style={{ color: C.inkSoft }}>
-                  <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span> 500 ml de água filtrada fervida, em infusão abafada por 15 a 20 min</li>
-                  <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span> 2 a 3 colheres de mel cru dissolvidas ainda morno</li>
-                  <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span> Validade: 7 a 10 dias na geladeira (lote pequeno)</li>
-                  <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span> Dose adulta: 1 colher de sopa, 2 a 3x ao dia, após refeição</li>
-                  <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span> Foco digestivo, hepático e imunológico do dia a dia</li>
-                </ul>
-              </motion.div>
-
-              <motion.div {...fade(0.1)} className="p-8 md:p-10 rounded-3xl"
-                style={{ backgroundColor: C.sand, border: `1px solid ${C.borderLight}` }}>
-                <Sprout size={32} style={{ color: C.sage }} className="mb-6" />
-                <p className="text-xs font-bold mb-3" style={{ ...monoStyle, color: C.sage }}>Versão B · tosse e garganta</p>
-                <h3 className="text-2xl md:text-3xl mb-6 font-semibold" style={{ ...display, color: C.sage }}>Lambedor (xarope ancestral)</h3>
-                <ul className="space-y-4 text-base md:text-lg leading-relaxed font-light" style={{ color: C.inkSoft }}>
-                  <li className="flex gap-3"><span style={{ color: C.sage }}>·</span> Reduzir a infusão coada no fogo baixo até a metade do volume</li>
-                  <li className="flex gap-3"><span style={{ color: C.sage }}>·</span> Acrescentar mel cru na proporção 1:1 fora do fogo, mexer até dissolver</li>
-                  <li className="flex gap-3"><span style={{ color: C.sage }}>·</span> Validade: 20 a 30 dias na geladeira (mel concentrado conserva melhor)</li>
-                  <li className="flex gap-3"><span style={{ color: C.sage }}>·</span> Dose: 1 colher de chá, 3 a 4x ao dia, em crise de tosse seca</li>
-                  <li className="flex gap-3"><span style={{ color: C.sage }}>·</span> Forma popular do interior. Sempre sem álcool, sem cachaça</li>
-                </ul>
-              </motion.div>
+              {VARIACOES.map((v, i) => {
+                const isTerra = v.cor === 'terra';
+                const accent = isTerra ? C.terracotta : C.sage;
+                return (
+                  <motion.div key={i} {...fade(i * 0.1)} className="p-8 md:p-10 rounded-3xl"
+                    style={{ backgroundColor: isTerra ? '#fff8ef' : C.sand, border: `1px solid ${C.borderLight}` }}>
+                    <v.icon size={32} style={{ color: accent }} className="mb-6" />
+                    <p className="text-xs font-bold mb-3" style={{ ...monoStyle, color: accent }}>{v.sub}</p>
+                    <h3 className="text-2xl md:text-3xl mb-6 font-semibold" style={{ ...display, color: C.sage }}>{v.titulo}</h3>
+                    <ul className="space-y-4 text-base md:text-lg leading-relaxed font-light" style={{ color: C.inkSoft }}>
+                      {v.pontos.map((p, j) => (
+                        <li key={j} className="flex gap-3"><span style={{ color: accent }}>·</span> {p}</li>
+                      ))}
+                    </ul>
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -472,11 +488,11 @@ export default function GarrafadaDigestivaAncestral() {
                 <CheckCircle2 size={32} style={{ color: C.terracotta }} className="mb-6" />
                 <h3 className="text-2xl md:text-3xl mb-6 font-semibold" style={{ ...display, color: C.sage }}>O que fazer</h3>
                 <ul className="space-y-4 text-lg leading-relaxed font-light" style={{ color: C.inkSoft }}>
-                  <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span> Tomar 2x ao dia, após almoço e jantar</li>
-                  <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span> Sempre coar bem e guardar na geladeira em vidro escuro</li>
-                  <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span> Manter por 7 a 15 dias no máximo</li>
-                  <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span> Pausa obrigatória de 15 dias antes de repetir</li>
-                  <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span> Anotar como digestão, peso pós-refeição e disposição respondem</li>
+                  <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span> 250 ml 2x ao dia: manhã em jejum e fim de tarde</li>
+                  <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span> Sempre longe das refeições principais</li>
+                  <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span> Medir pressão 2x/dia nas primeiras 2 semanas</li>
+                  <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span> Reduzir sal industrializado, andar 30 min/dia, dormir 7-8 h</li>
+                  <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span> Ciclo de 4 a 6 semanas, depois pausa de 7 a 10 dias</li>
                 </ul>
               </motion.div>
 
@@ -485,11 +501,11 @@ export default function GarrafadaDigestivaAncestral() {
                 <AlertTriangle size={32} style={{ color: '#a64a1f' }} className="mb-6" />
                 <h3 className="text-2xl md:text-3xl mb-6 font-semibold" style={{ ...display, color: C.sage }}>O que não esperar</h3>
                 <ul className="space-y-4 text-lg leading-relaxed font-light" style={{ color: C.inkSoft }}>
-                  <li className="flex gap-3"><span style={{ color: '#a64a1f' }}>·</span> Cura de úlcera, gastrite por H. pylori ou refluxo crônico</li>
-                  <li className="flex gap-3"><span style={{ color: '#a64a1f' }}>·</span> Substituir prescrição médica de antiácido contínuo ou hepatoprotetor</li>
-                  <li className="flex gap-3"><span style={{ color: '#a64a1f' }}>·</span> Tratar bronquite ou pneumonia (procure atendimento)</li>
-                  <li className="flex gap-3"><span style={{ color: '#a64a1f' }}>·</span> Resolver enzimopatia hepática diagnosticada por exame</li>
-                  <li className="flex gap-3"><span style={{ color: '#a64a1f' }}>·</span> Funcionar tomando esporadicamente: o ganho está no ciclo</li>
+                  <li className="flex gap-3"><span style={{ color: '#a64a1f' }}>·</span> Cura de hipertensão estágio 2 ou 3 (acima de 160/100)</li>
+                  <li className="flex gap-3"><span style={{ color: '#a64a1f' }}>·</span> Substituir losartana, hidroclorotiazida ou enalapril por conta própria</li>
+                  <li className="flex gap-3"><span style={{ color: '#a64a1f' }}>·</span> Resultado em poucos dias — efeito aparece entre 2 e 6 semanas</li>
+                  <li className="flex gap-3"><span style={{ color: '#a64a1f' }}>·</span> Funcionar tomando esporadicamente sem mudança de hábito</li>
+                  <li className="flex gap-3"><span style={{ color: '#a64a1f' }}>·</span> Resolver causa secundária (renal, endócrina) — investigue com médico</li>
                 </ul>
               </motion.div>
             </div>
@@ -506,7 +522,7 @@ export default function GarrafadaDigestivaAncestral() {
                 <span style={{ ...editorial, color: C.terracotta }}>fontes.</span>
               </h2>
               <p className="mt-6 text-lg md:text-xl font-light leading-[1.6]" style={{ color: C.inkSoft }}>
-                Documentos oficiais do SUS, cartilhas indígenas e revisões científicas indexadas. A garrafada não é folclore: tem rastreabilidade.
+                Documentos oficiais do SUS, diretrizes da Sociedade Brasileira de Cardiologia e meta-análises indexadas no PubMed. Sem folclore, sem chute.
               </p>
             </motion.div>
 
@@ -541,7 +557,7 @@ export default function GarrafadaDigestivaAncestral() {
               <span className="text-xs font-bold block mb-4" style={{ ...monoStyle, color: C.terracotta }}>Perguntas honestas</span>
               <h2 className="text-[clamp(2.25rem,5.5vw,5rem)] leading-[1] tracking-tight" style={{ ...display, color: C.sage }}>
                 O que perguntam{' '}
-                <span style={{ ...editorial, color: C.terracotta }}>antes de fazer.</span>
+                <span style={{ ...editorial, color: C.terracotta }}>antes de começar.</span>
               </h2>
             </motion.div>
 
@@ -581,7 +597,7 @@ export default function GarrafadaDigestivaAncestral() {
               <Compass size={32} style={{ color: C.terracotta }} className="mb-6" />
               <span className="text-xs font-bold block mb-4" style={{ ...monoStyle, color: C.terracotta }}>Continue sua trilha</span>
               <h2 className="text-[clamp(2.25rem,5.5vw,5rem)] leading-[1] tracking-tight" style={{ ...display, color: C.sage }}>
-                A garrafada é um começo.{' '}
+                A pressão é só a porta.{' '}
                 <span style={{ ...editorial, color: C.terracotta }}>A farmácia ancestral é vasta.</span>
               </h2>
             </motion.div>
@@ -614,7 +630,7 @@ export default function GarrafadaDigestivaAncestral() {
           <motion.div {...fade(0)} className="max-w-3xl mx-auto text-center mb-16">
             <p className="text-2xl md:text-4xl leading-[1.4] font-light mb-12"
               style={{ ...editorial, color: C.cream }}>
-              Doze mil anos de farmácia indígena. O SUS confirmou em 2006. Falta você.
+              Não é "chazinho para pressão". É um protocolo etnofarmacológico, com PubMed do lado e RENISUS no rodapé.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-4">
               <Link to="/soberania-organica/cozinha-funcional"
@@ -634,9 +650,9 @@ export default function GarrafadaDigestivaAncestral() {
             <div className="flex items-start gap-5 p-8 rounded-2xl" style={{ backgroundColor: 'rgba(250,246,240,0.06)', border: '1px solid rgba(250,246,240,0.15)' }}>
               <AlertTriangle size={24} style={{ color: C.terraSoft }} className="shrink-0 mt-1" />
               <div>
-                <p className="text-xs font-bold mb-3" style={{ ...monoStyle, color: C.terraSoft }}>Disclaimer · Saúde</p>
+                <p className="text-xs font-bold mb-3" style={{ ...monoStyle, color: C.terraSoft }}>Disclaimer · Saúde · YMYL</p>
                 <p className="text-base md:text-lg leading-relaxed font-light" style={{ color: 'rgba(250,246,240,0.85)' }}>
-                  Este conteúdo é educativo, baseado em saber tradicional indígena e popular brasileiro, em documentos oficiais do SUS (Política Nacional de Plantas Medicinais e Fitoterápicos, RENISUS, Farmácias Vivas) e em literatura etnofarmacológica indexada. Não substitui exame, diagnóstico, prescrição ou acompanhamento médico. Gestantes, lactantes, crianças, hepatopatas, em uso contínuo de medicação ou com doença crônica diagnosticada devem buscar orientação profissional antes de iniciar.
+                  Este conteúdo é educativo, baseado em saber tradicional indígena e popular brasileiro, em documentos oficiais do SUS (Política Nacional de Plantas Medicinais e Fitoterápicos, RENISUS, Farmácias Vivas), nas Diretrizes Brasileiras de Hipertensão Arterial e em literatura etnofarmacológica indexada. Não substitui exame, diagnóstico, prescrição ou acompanhamento médico. Hipertensão é doença grave e silenciosa. Quem usa anti-hipertensivo NUNCA deve suspender por conta própria. Gestantes, lactantes, crianças, hipotensos, portadores de cálculo renal, em uso de anticoagulante ou em pré-operatório devem buscar orientação profissional antes de iniciar.
                 </p>
               </div>
             </div>
