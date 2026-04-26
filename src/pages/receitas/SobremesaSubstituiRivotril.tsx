@@ -148,8 +148,9 @@ function Hero() {
           fetchPriority="high" className="w-full h-full object-cover scale-110"
           style={{ filter: 'saturate(1.05) contrast(1.02)' }} />
         <div className="absolute inset-0" style={{
-          background: `linear-gradient(180deg, rgba(61,74,54,0.45) 0%, rgba(61,74,54,0.25) 35%, rgba(250,246,240,0.05) 70%, ${C.cream} 100%)`,
+          background: `linear-gradient(180deg, rgba(28,38,24,0.35) 0%, rgba(28,38,24,0.45) 45%, rgba(28,38,24,0.78) 78%, rgba(20,28,18,0.92) 100%)`,
         }} />
+        <div className="absolute inset-x-0 bottom-0 h-2 pointer-events-none" style={{ background: C.cream }} />
       </motion.div>
 
       <motion.div className="relative z-10 h-full flex flex-col justify-end px-6 md:px-12 lg:px-20 pb-20 md:pb-28" style={{ opacity: opacityContent }}>
@@ -174,9 +175,9 @@ function Hero() {
           animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
           transition={{ duration: 1, delay: 0.15, ease: APPLE_EASE }}
           className="text-[clamp(2.75rem,8.5vw,7.5rem)] max-w-[16ch]"
-          style={{ ...display, color: C.cream }}>
+          style={{ ...display, color: C.cream, textShadow: '0 2px 24px rgba(0,0,0,0.55)' }}>
           A sobremesa que{' '}
-          <span style={{ ...editorial, color: C.terraSoft, textShadow: '0 0 40px rgba(224,154,106,0.5), 0 0 80px rgba(224,154,106,0.25)' }}>
+          <span style={{ ...editorial, color: C.terraSoft, textShadow: '0 2px 28px rgba(0,0,0,0.6)' }}>
             substitui o Rivotril.
           </span>
         </motion.h1>
@@ -185,7 +186,7 @@ function Hero() {
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5, ease: APPLE_EASE }}
           className="mt-8 max-w-2xl text-lg md:text-2xl leading-relaxed font-light"
-          style={{ color: 'rgba(250,246,240,0.9)', fontFamily: "'Inter Tight', sans-serif" }}>
+          style={{ color: 'rgba(250,246,240,0.95)', fontFamily: "'Inter Tight', sans-serif", textShadow: '0 1px 12px rgba(0,0,0,0.55)' }}>
           Quatro ativos. Mesmo receptor cerebral dos benzodiazepínicos. Sem tarja preta, sem dependência, sem ressaca matinal. Coma de 30 a 60 minutos antes de dormir.
         </motion.p>
 
