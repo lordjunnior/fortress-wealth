@@ -157,6 +157,7 @@ export const navGroups: NavGroup[] = [
       { label: "Conservação Longo Prazo", route: "/soberania-organica/armazenamento-longo-prazo" },
       { label: "Conservação de Alimentos", route: "/soberania-organica/conservacao", badge: "Novo" },
       { label: "Preservação Ancestral", route: "/soberania-organica/preservacao-ancestral", badge: "Novo" },
+      { label: "Engenharia do Vício Alimentar", route: "/soberania-organica/engenharia-vicio-alimentar", badge: "Novo" },
     ],
   },
   {
