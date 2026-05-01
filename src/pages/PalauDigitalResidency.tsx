@@ -923,6 +923,159 @@ const PalauDigitalResidency = () => {
           </div>
         </section>
 
+        {/* ════════ NOVO BLOCO 03 — PASSO A PASSO PRÁTICO (RNS) ════════ */}
+        <section className="bg-cream-tex grain relative px-6 md:px-12 lg:px-16 py-24 md:py-36 overflow-hidden">
+          <div className="max-w-[1500px] mx-auto relative z-10">
+            <div className="grid grid-cols-12 gap-8 lg:gap-12 items-center mb-14">
+              <div className="col-span-12 lg:col-span-7 reveal">
+                <div className="eyebrow text-[var(--terracotta)] mb-5">Operacional · RNS ID</div>
+                <h2 className="display text-[var(--ink)]" style={{ fontSize: "clamp(2.4rem, 5.5vw, 5rem)" }}>
+                  Como tirar na prática, <span className="display-italic" style={{ color: "var(--terracotta)" }}>sem sair de casa</span>.
+                </h2>
+              </div>
+              <div className="col-span-12 lg:col-span-5 reveal delay-1">
+                <p className="body-lg">
+                  O processo é 100% online, leva poucas semanas e o cartão físico chega no Brasil. Pague em cripto para não ligar o seu banco brasileiro ao seu novo documento.
+                </p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-12 gap-6 lg:gap-10 items-stretch">
+              <div className="col-span-12 lg:col-span-6 reveal relative h-[420px] md:h-[600px] rounded-sm overflow-hidden">
+                <img src={passoImg} alt="Notebook com formulário de identidade digital, cartão branco, passaporte e celular com carteira cripto sobre mesa de madeira" loading="lazy" width={1920} height={1080} className="absolute inset-0 w-full h-full object-cover" />
+              </div>
+              <div className="col-span-12 lg:col-span-6 space-y-4">
+                {[
+                  { n: "01", t: "Abra o RNS ID", d: "Plataforma oficial autorizada pelo governo de Palau. Crie conta e suba documento de identidade do seu país." },
+                  { n: "02", t: "Escolha o plano", d: "1 ano por USD 248 (recomendado para testar), 5 anos por USD 1.000 ou 10 anos por USD 2.000. O preço de longo prazo trava previsibilidade." },
+                  { n: "03", t: "Pague em cripto", d: "ETH, USDT, USDC ou BNB. Evite cartão de crédito brasileiro: ele cria rastro financeiro entre você e o Palau ID." },
+                  { n: "04", t: "Receba o NFT", d: "Cópia digital do documento na sua carteira. Útil em alguns serviços Web3, mas não é o que abre conta em exchange." },
+                  { n: "05", t: "Aguarde o cartão físico", d: "Chega em algumas semanas. Se for extraviado (raro no Brasil), há taxa de USD 50 para reemissão. Esse cartão é o que você realmente vai usar." },
+                ].map((s) => (
+                  <div key={s.n} className="grid grid-cols-12 gap-3 p-5 border border-[var(--line)] rounded-sm bg-[var(--cream-warm)] hover:border-[var(--terracotta)]/50 hover:translate-x-1 transition-all">
+                    <div className="col-span-2">
+                      <span className="display-italic text-[var(--terracotta)] text-3xl">{s.n}</span>
+                    </div>
+                    <div className="col-span-10">
+                      <h4 className="display text-[var(--ink)] mb-1.5" style={{ fontSize: "1.2rem", fontWeight: 500 }}>{s.t}</h4>
+                      <p className="body-sm">{s.d}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="mt-10 text-center reveal">
+              <a href="https://rnsid.id" target="_blank" rel="noopener noreferrer" className="btn-primary">
+                Abrir RNS ID oficial <ArrowUpRight size={16} />
+              </a>
+              <p className="body-sm mt-4 text-[var(--ink-soft)]">Sugestão tática: comece pelo plano de 1 ano. Você não pode cancelar nem reembolsar, então teste antes de comprometer 5 ou 10 anos.</p>
+            </div>
+          </div>
+        </section>
+
+        {/* ════════ NOVO BLOCO 04 — PARA QUEM SERVE / NÃO SERVE ════════ */}
+        <section className="bg-cream-deep grain relative px-6 md:px-12 lg:px-16 py-24 md:py-36 border-y border-[var(--line)] overflow-hidden">
+          <div className="max-w-[1500px] mx-auto relative z-10">
+            <div className="grid grid-cols-12 gap-8 lg:gap-12 items-end mb-14">
+              <div className="col-span-12 lg:col-span-7 reveal">
+                <div className="eyebrow text-[var(--terracotta)] mb-5">Segmentação · Honestidade Cirúrgica</div>
+                <h2 className="display text-[var(--ink)]" style={{ fontSize: "clamp(2.4rem, 5.5vw, 5rem)" }}>
+                  Para quem <span className="display-italic" style={{ color: "var(--navy)" }}>serve</span>.<br />
+                  Para quem <span className="display-italic" style={{ color: "var(--terracotta)" }}>não serve</span>.
+                </h2>
+              </div>
+              <div className="col-span-12 lg:col-span-5 reveal delay-1">
+                <p className="body-lg">
+                  Ferramenta certa, pessoa errada, virou frustração. Antes de pagar USD 248, descubra honestamente em qual coluna você está.
+                </p>
+              </div>
+            </div>
+
+            <div className="reveal relative h-[280px] md:h-[400px] rounded-sm overflow-hidden mb-10">
+              <img src={personasImg} alt="Trader cripto, nômade digital em aeroporto e empresário com passaporte: três perfis típicos de uso do Palau ID" loading="lazy" width={1920} height={1080} className="absolute inset-0 w-full h-full object-cover" />
+              <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(44,76,92,0.0) 50%, rgba(44,76,92,0.7) 100%)" }} />
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="reveal bg-[var(--cream-warm)] p-7 md:p-9 border-l-4 border-[var(--navy)] rounded-sm">
+                <div className="flex items-center gap-3 mb-6 pb-4 border-b border-[var(--line)]">
+                  <CheckCircle2 size={20} className="text-[var(--navy)]" />
+                  <span className="eyebrow text-[var(--navy)]">Faz sentido para</span>
+                </div>
+                <ul className="space-y-5">
+                  {[
+                    { t: "Trader cripto que cansou da Receita", d: "Quer abrir conta em Coinbase, Bitget, Gate.io ou KuCoin sem alimentar a CRS brasileira a cada cadastro novo." },
+                    { t: "Nômade digital com medo de adoxamento", d: "Já teve o CPF vazado, recebe ligações estranhas e quer parar de espalhar o documento brasileiro em toda plataforma internacional." },
+                    { t: "Comprador de privacidade documental", d: "Reconhece que privacidade hoje é luxo, e está disposto a pagar por uma camada extra que reduz exposição em verificações internacionais." },
+                  ].map((p, i) => (
+                    <li key={i}>
+                      <h4 className="display text-[var(--ink)] mb-1.5" style={{ fontSize: "1.15rem", fontWeight: 500 }}>{p.t}</h4>
+                      <p className="body-sm">{p.d}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="reveal delay-1 bg-[var(--cream-warm)] p-7 md:p-9 border-l-4 border-[var(--terracotta)] rounded-sm">
+                <div className="flex items-center gap-3 mb-6 pb-4 border-b border-[var(--line)]">
+                  <XCircle size={20} className="text-[var(--terracotta)]" />
+                  <span className="eyebrow text-[var(--terracotta)]">NÃO compre se você quer</span>
+                </div>
+                <ul className="space-y-5">
+                  {[
+                    { t: "Mudar residência fiscal", d: "Palau ID não tira você do reporte CRS brasileiro. Para isso existe Saída Definitiva e residência efetiva no Paraguai, Panamá ou Uruguai." },
+                    { t: "Abrir banco tradicional internacional", d: "Bancos sérios pedem passaporte e comprovante de endereço local. Aqui Palau ID não passa do filtro de compliance." },
+                    { t: "Plano B de fuga", d: "Não é cidadania, não é passaporte, não dá direito de residir lá. Se você quer um lugar real para chegar, precisa de outro documento." },
+                  ].map((p, i) => (
+                    <li key={i}>
+                      <h4 className="display text-[var(--ink)] mb-1.5" style={{ fontSize: "1.15rem", fontWeight: 500 }}>{p.t}</h4>
+                      <p className="body-sm">{p.d}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ════════ NOVO BLOCO 05 — CAMADA, NÃO FORTALEZA ════════ */}
+        <section className="bg-paper grain relative px-6 md:px-12 lg:px-16 py-24 md:py-36 overflow-hidden">
+          <div className="max-w-[1500px] mx-auto relative z-10">
+            <div className="grid grid-cols-12 gap-8 lg:gap-16 items-center">
+              <div className="col-span-12 lg:col-span-6 reveal relative h-[420px] md:h-[560px] rounded-sm overflow-hidden">
+                <img src={cebolaImg} alt="Camadas concêntricas, analogia da privacidade em camadas: Palau ID é uma camada externa, não o núcleo" loading="lazy" width={1920} height={1080} className="absolute inset-0 w-full h-full object-cover" />
+                <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(0,0,0,0.0) 50%, rgba(0,0,0,0.55) 100%)" }} />
+                <div className="absolute bottom-6 left-6 right-6">
+                  <div className="eyebrow text-[var(--yellow)] mb-2">Princípio</div>
+                  <div className="display-italic text-[var(--cream)] text-xl">Privacidade real é arquitetura em camadas.</div>
+                </div>
+              </div>
+              <div className="col-span-12 lg:col-span-6 reveal delay-1">
+                <div className="eyebrow text-[var(--terracotta)] mb-5">Fechamento Estratégico</div>
+                <h2 className="display text-[var(--ink)]" style={{ fontSize: "clamp(2.2rem, 4.8vw, 4.5rem)" }}>
+                  Palau ID é uma <span className="display-italic" style={{ color: "var(--terracotta)" }}>camada</span>.<br />
+                  Não é a <span className="display-italic" style={{ color: "var(--navy)" }}>fortaleza</span>.
+                </h2>
+                <p className="body-lg mt-7">
+                  Pense em privacidade como uma cebola. As camadas externas são baratas, descartáveis, fáceis de adicionar: Palau ID, e-mail temporário, número virtual, cartão pré-pago. O núcleo é caro e demora: residência fiscal real, segundo passaporte, estrutura corporativa internacional.
+                </p>
+                <p className="body-lg mt-5">
+                  O erro de quem trata o Palau ID como bala de prata é o mesmo de quem acha que cebola tem uma camada só. Você usa Palau onde ele resolve, e usa Paraguai, Panamá ou Uruguai para o que ele nunca vai resolver.
+                </p>
+                <div className="mt-9 flex flex-wrap gap-4">
+                  <Link to="/saida/jurisdicoes-amigaveis" className="btn-primary">
+                    Ver jurisdições reais <ArrowUpRight size={16} />
+                  </Link>
+                  <Link to="/saida/segundo-passaporte" className="btn-ghost">
+                    Segundo passaporte
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* ════════ CHAPTER 07 — PALAU CINEMATIC ════════ */}
         <section ref={islandRef} className="relative h-[100vh] min-h-[700px] overflow-hidden">
           <motion.div className="absolute inset-0" style={{ y: islandY }}>
