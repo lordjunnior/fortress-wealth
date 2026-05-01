@@ -476,6 +476,86 @@ const PalauDigitalResidency = () => {
           </div>
         </section>
 
+        {/* ════════ NOVO BLOCO 01 — PRIVACIDADE VIROU ARTIGO DE LUXO ════════ */}
+        <section className="bg-cream-tex grain relative px-6 md:px-12 lg:px-16 py-24 md:py-32 overflow-hidden">
+          <div className="max-w-[1500px] mx-auto relative z-10">
+            <div className="grid grid-cols-12 gap-8 lg:gap-16 items-center">
+              <div className="col-span-12 lg:col-span-6 reveal relative h-[420px] md:h-[560px] rounded-sm overflow-hidden">
+                <img src={vigilanciaImg} alt="Smartphone com QR code de check-in de hotel sobre balcão de mármore, baixa luz, ambiente de vigilância" loading="lazy" width={1920} height={1080} className="absolute inset-0 w-full h-full object-cover" />
+                <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(44,76,92,0.0) 30%, rgba(44,76,92,0.55) 100%)" }} />
+                <div className="absolute bottom-6 left-6 right-6">
+                  <div className="eyebrow text-[var(--yellow)] mb-2">Cena de 2026</div>
+                  <div className="display-italic text-[var(--cream)] text-xl">Toda noite num hotel, o Estado sabe.</div>
+                </div>
+              </div>
+              <div className="col-span-12 lg:col-span-6 reveal delay-1">
+                <div className="eyebrow text-[var(--terracotta)] mb-5">Cenário · Brasil 2026</div>
+                <h2 className="display text-[var(--ink)]" style={{ fontSize: "clamp(2.2rem, 4.8vw, 4.5rem)" }}>
+                  Privacidade virou <span className="display-italic" style={{ color: "var(--terracotta)" }}>artigo de luxo</span>.
+                </h2>
+                <p className="body-lg mt-7">
+                  Agora o check-in em hotéis e pousadas pode ser feito pelo app Gov.br. Muita gente vê praticidade. Quem entende vê uma ferramenta sendo testada e validada para, mais cedo ou mais tarde, saber cada lugar onde você dorme, com quem viaja e por quanto tempo.
+                </p>
+                <p className="body-lg mt-5">
+                  Não é teoria da conspiração: é o mesmo padrão de toda infraestrutura digital de identidade. Primeiro vira opcional, depois conveniente, depois padrão, depois obrigatório.
+                </p>
+                <div className="mt-8 grid grid-cols-3 gap-3">
+                  <div className="bg-[var(--cream-warm)] p-4 border-l-2 border-[var(--terracotta)]">
+                    <div className="display text-[var(--ink)] text-2xl">2024</div>
+                    <div className="body-sm">Opcional.</div>
+                  </div>
+                  <div className="bg-[var(--cream-warm)] p-4 border-l-2 border-[var(--terracotta)]">
+                    <div className="display text-[var(--ink)] text-2xl">2026</div>
+                    <div className="body-sm">Conveniente.</div>
+                  </div>
+                  <div className="bg-[var(--cream-warm)] p-4 border-l-2 border-[var(--terracotta)]">
+                    <div className="display text-[var(--ink)] text-2xl">2030</div>
+                    <div className="body-sm">Provavelmente padrão.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ════════ NOVO BLOCO 02 — NÃO-ADOXAR (UM COFRE x VÁRIOS) ════════ */}
+        <section className="bg-navy-tex grain relative text-[var(--cream)] px-6 md:px-12 lg:px-16 py-24 md:py-36 overflow-hidden">
+          <div className="max-w-[1500px] mx-auto relative z-10">
+            <div className="grid grid-cols-12 gap-8 lg:gap-12 items-end mb-14">
+              <div className="col-span-12 lg:col-span-7 reveal">
+                <div className="eyebrow text-[var(--clay)] mb-5">Princípio · Não-Adoxar</div>
+                <h2 className="display text-[var(--cream)]" style={{ fontSize: "clamp(2.4rem, 5.5vw, 5rem)" }}>
+                  Um cofre só é um <span className="display-italic" style={{ color: "var(--clay)" }}>alvo único</span>.
+                </h2>
+              </div>
+              <div className="col-span-12 lg:col-span-5 reveal delay-1">
+                <p className="body-lg text-[var(--cream)]/80">
+                  Quando todo cadastro do mundo aponta pro mesmo CPF, basta um vazamento (Serasa, Caixa, operadora, hotel) para que sua vida inteira esteja exposta. Não-adoxar é o ato deliberado de não deixar tudo num único documento.
+                </p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-12 gap-6 lg:gap-10 items-stretch">
+              <div className="col-span-12 lg:col-span-5 reveal relative h-[380px] md:h-[520px] rounded-sm overflow-hidden">
+                <img src={cofreImg} alt="Arquivo metálico com várias gavetas, uma iluminada em amarelo, simbolizando documentação compartimentada" loading="lazy" width={1920} height={1080} className="absolute inset-0 w-full h-full object-cover" />
+              </div>
+              <div className="col-span-12 lg:col-span-7 grid grid-cols-1 md:grid-cols-3 gap-4">
+                {[
+                  { n: "01", t: "Documento único", d: "Um vazamento (e eles acontecem todo ano) e tudo que você fez está mapeado." },
+                  { n: "02", t: "Múltiplos documentos", d: "Cada serviço internacional pega uma camada diferente da sua identidade. A correlação fica cara." },
+                  { n: "03", t: "Cada nova trincheira", d: "Cada cadastro com Palau ID é um cadastro a menos onde seu CPF aparece como porta de entrada." },
+                ].map((c) => (
+                  <div key={c.n} className="bg-[var(--cream)]/[0.04] border border-[var(--cream)]/10 p-6 rounded-sm hover:bg-[var(--cream)]/[0.08] hover:border-[var(--clay)]/40 transition-all">
+                    <span className="display-italic text-[var(--clay)] text-2xl block mb-3">{c.n}</span>
+                    <h4 className="display text-[var(--cream)] mb-2" style={{ fontSize: "1.25rem", fontWeight: 500 }}>{c.t}</h4>
+                    <p className="body-sm text-[var(--cream)]/65">{c.d}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* ════════ CHAPTER 01 — CLAREZA ════════ */}
         <section className="bg-cream-tex grain relative px-6 md:px-12 lg:px-16 py-24 md:py-36 overflow-hidden">
           <div className="max-w-[1500px] mx-auto relative z-10">
