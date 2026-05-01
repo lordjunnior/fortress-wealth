@@ -138,8 +138,23 @@ const PalauDigitalResidency = () => {
         <title>ID de Palau — Identidade Soberana Internacional | Lord Junnior</title>
         <meta
           name="description"
-          content="ID de Palau: identidade emitida por governo soberano. Entenda onde funciona, limites reais e como integrar a uma estratégia internacional."
+          content="ID de Palau na prática: como tirar online, onde funciona (Coinbase, Bitget, Gate.io, neobanks), o que NÃO resolve e por que ele é uma camada de privacidade, não uma fortaleza."
         />
+        <meta property="og:title" content="ID de Palau: Privacidade Documental para Brasileiros" />
+        <meta property="og:description" content="O guia honesto sobre o Palau ID: onde funciona, onde falha, e como usá-lo sem cair na ilusão de bala de prata." />
+        <link rel="canonical" href="https://lordjunnior.com.br/palau-id" />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {"@type":"Question","name":"O ID de Palau protege contra Gov.br e check-in obrigatório de hotel?","acceptedAnswer":{"@type":"Answer","text":"Não diretamente. Hotéis brasileiros, por lei, fazem check-in vinculado ao seu CPF e documento nacional. O ID de Palau ajuda em cadastros internacionais, exchanges e neobanks fora do Brasil, não substitui a identificação obrigatória dentro do território nacional."}},
+            {"@type":"Question","name":"Palau ID substitui a cédula paraguaia?","acceptedAnswer":{"@type":"Answer","text":"Não. A cédula paraguaia é residência efetiva, muda domicílio fiscal e abre bancos. O Palau ID é uma camada documental adicional, sem residência física e sem mudar reporte CRS."}},
+            {"@type":"Question","name":"O ID de Palau é reconhecido pela União Europeia?","acceptedAnswer":{"@type":"Answer","text":"Hoje é aceito em parte do mercado cripto e neobank. O reconhecimento institucional pode mudar no futuro: a UE e outros blocos podem pressionar pequenas jurisdições. Trate como ferramenta tática, não como fortaleza permanente."}},
+            {"@type":"Question","name":"Posso fazer check-in de hotel internacional com Palau ID?","acceptedAnswer":{"@type":"Answer","text":"Há relatos positivos em estadias e reservas em determinados países. A aceitação varia por hotel e legislação local. No Brasil, o check-in pelo app Gov.br exige CPF, então Palau ID não substitui."}},
+            {"@type":"Question","name":"Quanto custa o Palau ID e como pagar com privacidade?","acceptedAnswer":{"@type":"Answer","text":"Planos a partir de USD 248 (1 ano), USD 1.000 (5 anos) e USD 2.000 (10 anos). O pagamento em cripto é o caminho recomendado para não vincular rastro financeiro do banco brasileiro ao seu novo documento."}},
+            {"@type":"Question","name":"Para quem o Palau ID NÃO serve?","acceptedAnswer":{"@type":"Answer","text":"Não serve para mudar residência fiscal, abrir banco tradicional, viajar internacionalmente ou ser plano B de fuga. Para esses casos, vá direto para Paraguai, Panamá, Uruguai ou outro segundo passaporte real."}}
+          ]
+        })}</script>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link
