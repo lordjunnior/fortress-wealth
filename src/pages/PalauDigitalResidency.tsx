@@ -40,7 +40,7 @@ import personasImg from "@/assets/palau-personas.jpg";
 import cebolaImg from "@/assets/palau-cebola-camadas.jpg";
 
 /* ────────────────────────────────────────────────
-   PALAU — EDITORIAL EDITION (v6)
+   PALAU, EDITORIAL EDITION (v6)
    Backgrounds trabalhados + carrossel + hovers cinema
    ──────────────────────────────────────────────── */
 
@@ -51,21 +51,21 @@ const carouselSlides = [
     img: carousel1,
     eyebrow: "Documento Soberano",
     title: "Identidade emitida por Estado",
-    text: "Cartão físico oficial, emitido pela República de Palau — reconhecida como Estado soberano no sistema internacional.",
+    text: "Cartão físico oficial, emitido pela República de Palau, reconhecida como Estado soberano no sistema internacional.",
     accent: "Documento Oficial",
   },
   {
     img: carousel2,
     eyebrow: "Mercado Cripto",
     title: "Onboarding em exchanges globais",
-    text: "Coinbase, Bitget, Gate.io, KuCoin, CEX.IO, MEXC — utilidade real em verificação internacional sujeita a compliance.",
+    text: "Coinbase, Bitget, Gate.io, KuCoin, CEX.IO, MEXC, utilidade real em verificação internacional sujeita a compliance.",
     accent: "6+ Plataformas",
   },
   {
     img: carousel3,
     eyebrow: "Serviços Financeiros",
     title: "Neobanks & fintechs internacionais",
-    text: "Kingdom Bank, Vexel, Ultimopay, Blackcatcard — alternativas para operação financeira sem dependência exclusiva da jurisdição de origem.",
+    text: "Kingdom Bank, Vexel, Ultimopay, Blackcatcard, alternativas para operação financeira sem dependência exclusiva da jurisdição de origem.",
     accent: "Acesso Global",
   },
   {
@@ -135,7 +135,7 @@ const PalauDigitalResidency = () => {
   return (
     <>
       <Helmet>
-        <title>ID de Palau — Identidade Soberana Internacional | Lord Junnior</title>
+        <title>ID de Palau, Identidade Soberana Internacional | Lord Junnior</title>
         <meta
           name="description"
           content="ID de Palau na prática: como tirar online, onde funciona (Coinbase, Bitget, Gate.io, neobanks), o que NÃO resolve e por que ele é uma camada de privacidade, não uma fortaleza."
@@ -166,15 +166,15 @@ const PalauDigitalResidency = () => {
       <style>{`
         .palau-v6 {
           /* ─── Nova paleta solicitada ─── */
-          --yellow: #F3E308;          /* acento principal — substitui terracotta */
+          --yellow: #F3E308;          /* acento principal, substitui terracotta */
           --yellow-soft: #FFF06A;
-          --mist: #B8BFC1;            /* cinza-claro — fundo principal */
+          --mist: #B8BFC1;            /* cinza-claro, fundo principal */
           --mist-soft: #CFD4D6;
           --mist-deep: #A2AAAD;
           --mist-warm: #C7CDCF;
-          --steel: #6C8494;           /* azul-acinzentado — tons médios */
+          --steel: #6C8494;           /* azul-acinzentado, tons médios */
           --steel-soft: #8A9DAA;
-          --abyss: #2C4C5C;           /* azul-escuro — tinta principal */
+          --abyss: #2C4C5C;           /* azul-escuro, tinta principal */
           --abyss-deep: #1F3845;
 
           /* ─── Aliases para manter compatibilidade com a estrutura existente ─── */
@@ -367,7 +367,7 @@ const PalauDigitalResidency = () => {
       `}</style>
 
       <main className="palau-v6 min-h-screen">
-        {/* ════════ HERO — FULL BLEED EDITORIAL ════════ */}
+        {/* ════════ HERO, FULL BLEED EDITORIAL ════════ */}
         <section ref={heroRef} className="relative h-[100vh] min-h-[720px] overflow-hidden">
           <motion.div className="absolute inset-0 z-0" style={{ y: heroImgY }}>
             <img src={heroImg} alt="ID de Palau sobre mapa do Pacífico" className="w-full h-full object-cover" style={{ transform: "scale(1.15)" }} fetchPriority="high" />
@@ -440,7 +440,7 @@ const PalauDigitalResidency = () => {
                     className="display-italic text-[var(--ink-soft)] mt-5 max-w-2xl"
                     style={{ fontSize: "clamp(1.15rem, 1.8vw, 1.7rem)", lineHeight: 1.45 }}
                   >
-                    Uma identidade emitida por um governo soberano, fora da sua jurisdição principal — a ferramenta que poucos entendem e menos ainda usam corretamente.
+                    Uma identidade emitida por um governo soberano, fora da sua jurisdição principal, a ferramenta que poucos entendem e menos ainda usam corretamente.
                   </motion.p>
                 </div>
               </div>
@@ -476,7 +476,7 @@ const PalauDigitalResidency = () => {
           </div>
         </section>
 
-        {/* ════════ NOVO BLOCO 01 — PRIVACIDADE VIROU ARTIGO DE LUXO ════════ */}
+        {/* ════════ NOVO BLOCO 01, PRIVACIDADE VIROU ARTIGO DE LUXO ════════ */}
         <section className="bg-cream-tex grain relative px-6 md:px-12 lg:px-16 py-24 md:py-32 overflow-hidden">
           <div className="max-w-[1500px] mx-auto relative z-10">
             <div className="grid grid-cols-12 gap-8 lg:gap-16 items-center">
@@ -518,7 +518,7 @@ const PalauDigitalResidency = () => {
           </div>
         </section>
 
-        {/* ════════ NOVO BLOCO 02 — NÃO-ADOXAR (UM COFRE x VÁRIOS) ════════ */}
+        {/* ════════ NOVO BLOCO 02, NÃO-ADOXAR (UM COFRE x VÁRIOS) ════════ */}
         <section className="bg-navy-tex grain relative text-[var(--cream)] px-6 md:px-12 lg:px-16 py-24 md:py-36 overflow-hidden">
           <div className="max-w-[1500px] mx-auto relative z-10">
             <div className="grid grid-cols-12 gap-8 lg:gap-12 items-end mb-14">
@@ -556,7 +556,7 @@ const PalauDigitalResidency = () => {
           </div>
         </section>
 
-        {/* ════════ CHAPTER 01 — CLAREZA ════════ */}
+        {/* ════════ CHAPTER 01, CLAREZA ════════ */}
         <section className="bg-cream-tex grain relative px-6 md:px-12 lg:px-16 py-24 md:py-36 overflow-hidden">
           <div className="max-w-[1500px] mx-auto relative z-10">
             <div className="grid grid-cols-12 gap-6 lg:gap-12 mb-20">
@@ -569,12 +569,12 @@ const PalauDigitalResidency = () => {
               </div>
               <div className="col-span-12 lg:col-span-6 lg:col-start-7 reveal delay-1 flex items-end">
                 <p className="body-lg">
-                  A maioria erra porque não entende o documento antes de obtê-lo. Clareza primeiro — estrutura depois. Esse é o único caminho para extrair valor real de uma identidade internacional.
+                  A maioria erra porque não entende o documento antes de obtê-lo. Clareza primeiro, estrutura depois. Esse é o único caminho para extrair valor real de uma identidade internacional.
                 </p>
               </div>
             </div>
 
-            {/* STACK GROUP — 3 imagens sobrepostas que se abrem no hover */}
+            {/* STACK GROUP, 3 imagens sobrepostas que se abrem no hover */}
             <div className="grid grid-cols-12 gap-6 lg:gap-10">
               <div className="col-span-12 lg:col-span-5 reveal stack-group relative h-[520px] md:h-[620px]">
                 <div className="absolute inset-0 flex items-center justify-center">
@@ -647,7 +647,7 @@ const PalauDigitalResidency = () => {
           </div>
         </section>
 
-        {/* ════════ CHAPTER 02 — CARROSSEL DE APLICAÇÃO ════════ */}
+        {/* ════════ CHAPTER 02, CARROSSEL DE APLICAÇÃO ════════ */}
         <section className="bg-cream-deep grain relative px-6 md:px-12 lg:px-16 py-24 md:py-36 border-y border-[var(--line)] overflow-hidden">
           <div className="max-w-[1500px] mx-auto relative z-10">
             <div className="grid grid-cols-12 gap-6 mb-16 items-end">
@@ -660,7 +660,7 @@ const PalauDigitalResidency = () => {
               </div>
               <div className="col-span-12 lg:col-span-4 lg:col-start-9 reveal delay-1">
                 <p className="body-lg" style={{ borderLeft: "2px solid var(--terracotta)", paddingLeft: "1.25rem" }}>
-                  Nem toda utilidade é universal. O valor está em casos específicos — entender esses casos é o que diferencia o uso inteligente do ingênuo.
+                  Nem toda utilidade é universal. O valor está em casos específicos, entender esses casos é o que diferencia o uso inteligente do ingênuo.
                 </p>
               </div>
             </div>
@@ -714,7 +714,7 @@ const PalauDigitalResidency = () => {
                 </div>
               </div>
 
-              {/* Side list — sincronizada com carrossel */}
+              {/* Side list, sincronizada com carrossel */}
               <div className="col-span-12 lg:col-span-4 flex flex-col">
                 <div className="eyebrow text-[var(--ink-soft)] mb-5">Casos de uso</div>
                 <div className="space-y-1 flex-1">
@@ -757,7 +757,7 @@ const PalauDigitalResidency = () => {
           </div>
         </section>
 
-        {/* ════════ CHAPTER 03 — QUEBRA DE CRENÇA (99%) ════════ */}
+        {/* ════════ CHAPTER 03, QUEBRA DE CRENÇA (99%) ════════ */}
         <section className="bg-paper grain relative px-6 md:px-12 lg:px-16 py-24 md:py-36 overflow-hidden">
           <div className="max-w-[1500px] mx-auto relative z-10">
             <div className="grid grid-cols-12 gap-6 lg:gap-12 items-center">
@@ -782,9 +782,9 @@ const PalauDigitalResidency = () => {
 
                 <div className="space-y-1">
                   {[
-                    { n: "01", t: "Comprovante de endereço", d: "Plataformas exigem comprovante de residência válido — independente do documento de identidade." },
+                    { n: "01", t: "Comprovante de endereço", d: "Plataformas exigem comprovante de residência válido, independente do documento de identidade." },
                     { n: "02", t: "Número de telefone local", d: "Em alguns casos exige-se verificação por número da jurisdição declarada." },
-                    { n: "03", t: "Documentação complementar", d: "O ID raramente opera sozinho — precisa de documentos de suporte para ativação completa." },
+                    { n: "03", t: "Documentação complementar", d: "O ID raramente opera sozinho, precisa de documentos de suporte para ativação completa." },
                     { n: "04", t: "Alinhamento residência × identidade", d: "Report fiscal depende da residência informada e da política da instituição." },
                     { n: "05", t: "Estratégia estruturada", d: "Sem arquitetura clara, o documento é uma ferramenta sem contexto." },
                   ].map((item) => (
@@ -804,7 +804,7 @@ const PalauDigitalResidency = () => {
           </div>
         </section>
 
-        {/* ════════ CHAPTER 04 — LIMITAÇÕES ════════ */}
+        {/* ════════ CHAPTER 04, LIMITAÇÕES ════════ */}
         <section className="bg-navy-tex grain relative text-[var(--cream)] overflow-hidden">
           <div className="grid grid-cols-12 min-h-[100vh] relative z-10">
             <div className="col-span-12 lg:col-span-5 relative min-h-[400px] lg:min-h-[100vh] overflow-hidden group">
@@ -851,7 +851,7 @@ const PalauDigitalResidency = () => {
           </div>
         </section>
 
-        {/* ════════ NOVO BANNER — NÃO É BALA DE PRATA ════════ */}
+        {/* ════════ NOVO BANNER, NÃO É BALA DE PRATA ════════ */}
         <section className="relative h-[60vh] min-h-[440px] overflow-hidden">
           <img src={balaPrataImg} alt="Escudo metálico rachado com fenda iluminada em amarelo: Palau ID não é bala de prata" loading="lazy" width={1920} height={1080} className="absolute inset-0 w-full h-full object-cover" />
           <div className="absolute inset-0" style={{ background: "linear-gradient(90deg, rgba(20,28,35,0.85) 0%, rgba(20,28,35,0.55) 50%, rgba(20,28,35,0.85) 100%)" }} />
@@ -878,7 +878,7 @@ const PalauDigitalResidency = () => {
           </div>
         </section>
 
-        {/* ════════ CHAPTER 05 — VALOR ════════ */}
+        {/* ════════ CHAPTER 05, VALOR ════════ */}
         <section className="bg-cream-tex grain relative px-6 md:px-12 lg:px-16 py-28 md:py-40 overflow-hidden">
           <div className="max-w-[1500px] mx-auto relative z-10">
             <div className="reveal max-w-5xl">
@@ -911,7 +911,7 @@ const PalauDigitalResidency = () => {
           </div>
         </section>
 
-        {/* ════════ CHAPTER 06 — JORNADA ════════ */}
+        {/* ════════ CHAPTER 06, JORNADA ════════ */}
         <section className="bg-cream-deep grain relative px-6 md:px-12 lg:px-16 py-24 md:py-36 border-y border-[var(--line)] overflow-hidden">
           <div className="max-w-[1500px] mx-auto relative z-10">
             <div className="grid grid-cols-12 gap-6 mb-16">
@@ -950,7 +950,7 @@ const PalauDigitalResidency = () => {
           </div>
         </section>
 
-        {/* ════════ NOVO BLOCO 03 — PASSO A PASSO PRÁTICO (RNS) ════════ */}
+        {/* ════════ NOVO BLOCO 03, PASSO A PASSO PRÁTICO (RNS) ════════ */}
         <section className="bg-cream-tex grain relative px-6 md:px-12 lg:px-16 py-24 md:py-36 overflow-hidden">
           <div className="max-w-[1500px] mx-auto relative z-10">
             <div className="grid grid-cols-12 gap-8 lg:gap-12 items-center mb-14">
@@ -1001,7 +1001,7 @@ const PalauDigitalResidency = () => {
           </div>
         </section>
 
-        {/* ════════ NOVO BLOCO 04 — PARA QUEM SERVE / NÃO SERVE ════════ */}
+        {/* ════════ NOVO BLOCO 04, PARA QUEM SERVE / NÃO SERVE ════════ */}
         <section className="bg-cream-deep grain relative px-6 md:px-12 lg:px-16 py-24 md:py-36 border-y border-[var(--line)] overflow-hidden">
           <div className="max-w-[1500px] mx-auto relative z-10">
             <div className="grid grid-cols-12 gap-8 lg:gap-12 items-end mb-14">
@@ -1066,7 +1066,7 @@ const PalauDigitalResidency = () => {
           </div>
         </section>
 
-        {/* ════════ NOVO BLOCO 05 — CAMADA, NÃO FORTALEZA ════════ */}
+        {/* ════════ NOVO BLOCO 05, CAMADA, NÃO FORTALEZA ════════ */}
         <section className="bg-paper grain relative px-6 md:px-12 lg:px-16 py-24 md:py-36 overflow-hidden">
           <div className="max-w-[1500px] mx-auto relative z-10">
             <div className="grid grid-cols-12 gap-8 lg:gap-16 items-center">
@@ -1103,7 +1103,7 @@ const PalauDigitalResidency = () => {
           </div>
         </section>
 
-        {/* ════════ CHAPTER 07 — PALAU CINEMATIC ════════ */}
+        {/* ════════ CHAPTER 07, PALAU CINEMATIC ════════ */}
         <section ref={islandRef} className="relative h-[100vh] min-h-[700px] overflow-hidden">
           <motion.div className="absolute inset-0" style={{ y: islandY }}>
             <img src={islandImg} alt="Ilhas de Palau ao amanhecer" loading="lazy" className="w-full h-full object-cover" style={{ transform: "scale(1.25)" }} />
@@ -1118,7 +1118,7 @@ const PalauDigitalResidency = () => {
                   Palau
                 </h2>
                 <p className="display-italic text-[var(--cream)]/85 max-w-2xl" style={{ fontSize: "clamp(1.15rem, 1.8vw, 1.6rem)", lineHeight: 1.45 }}>
-                  Uma identidade emitida por um Estado soberano do Pacífico — com aplicação real no sistema global.
+                  Uma identidade emitida por um Estado soberano do Pacífico, com aplicação real no sistema global.
                 </p>
               </div>
               <div className="col-span-12 lg:col-span-4 lg:col-start-9 reveal delay-2 self-end">
@@ -1144,7 +1144,7 @@ const PalauDigitalResidency = () => {
           </div>
         </section>
 
-        {/* ════════ CHAPTER 08 — FAQ ════════ */}
+        {/* ════════ CHAPTER 08, FAQ ════════ */}
         <section className="bg-cream-tex grain relative px-6 md:px-12 lg:px-16 py-24 md:py-36 overflow-hidden">
           <div className="max-w-4xl mx-auto relative z-10">
             <div className="text-center mb-16 reveal">
@@ -1156,15 +1156,15 @@ const PalauDigitalResidency = () => {
 
             <div className="reveal delay-1 border-t border-[var(--line)]">
               {[
-                { q: "O ID de Palau é cidadania?", a: "Não. É uma identidade digital emitida pelo governo de Palau, não cidadania. Cidadania envolve direitos legais extensos, passaporte e proteção consular — nada disso está incluído." },
+                { q: "O ID de Palau é cidadania?", a: "Não. É uma identidade digital emitida pelo governo de Palau, não cidadania. Cidadania envolve direitos legais extensos, passaporte e proteção consular, nada disso está incluído." },
                 { q: "O ID de Palau é residência?", a: "Não. Não configura residência legal, não muda sua situação fiscal e não substitui visto ou permissão de residência em qualquer jurisdição." },
-                { q: "Posso usar em exchanges cripto?", a: "Em algumas, sim — Coinbase, Bitget, Gate.io, KuCoin, CEX.IO e MEXC são exemplos atuais. Mas as políticas de compliance mudam. Verifique a política vigente antes de depender disso." },
+                { q: "Posso usar em exchanges cripto?", a: "Em algumas, sim, Coinbase, Bitget, Gate.io, KuCoin, CEX.IO e MEXC são exemplos atuais. Mas as políticas de compliance mudam. Verifique a política vigente antes de depender disso." },
                 { q: "Posso abrir conta em qualquer banco?", a: "Não. Bancos tradicionais exigem passaporte e comprovante de residência robusto. O ID pode funcionar em neobanks e fintechs específicas, não em instituições convencionais." },
-                { q: "Preciso de comprovante de endereço?", a: "Na maioria dos casos, sim. O ID raramente opera como documento único — ele faz parte de um conjunto de documentação complementar." },
+                { q: "Preciso de comprovante de endereço?", a: "Na maioria dos casos, sim. O ID raramente opera como documento único, ele faz parte de um conjunto de documentação complementar." },
                 { q: "Substitui passaporte?", a: "Não. Não pode ser usado para viagens internacionais. Seu passaporte nacional continua sendo o documento principal para viagem e propósitos legais." },
                 { q: "Resolve minha vida financeira internacional?", a: "Não. É uma ferramenta dentro de uma estrutura maior. Sozinho tem utilidade limitada. Dentro de uma arquitetura de soberania bem construída, contribui significativamente." },
-                { q: "É legal?", a: "Sim. É emitido por um governo soberano reconhecido internacionalmente. O que varia é a aceitação de cada plataforma — uma decisão privada de compliance, não de legalidade do documento." },
-                { q: "Vale a pena?", a: "Depende do seu objetivo. Se você entende onde funciona, tem documentação complementar e o insere em uma estratégia maior — pode valer muito. Se espera que resolva tudo sozinho — não vale. A decisão inteligente começa com clareza." },
+                { q: "É legal?", a: "Sim. É emitido por um governo soberano reconhecido internacionalmente. O que varia é a aceitação de cada plataforma, uma decisão privada de compliance, não de legalidade do documento." },
+                { q: "Vale a pena?", a: "Depende do seu objetivo. Se você entende onde funciona, tem documentação complementar e o insere em uma estratégia maior, pode valer muito. Se espera que resolva tudo sozinho, não vale. A decisão inteligente começa com clareza." },
                 { q: "Palau ID protege contra check-in obrigatório no Gov.br?", a: "Não dentro do Brasil. Hotéis brasileiros são obrigados por lei a registrar hóspede com CPF e documento nacional. Palau ID resolve cadastros internacionais (exchanges, neobanks, alguns hotéis fora do país), não anula a identificação obrigatória em território nacional." },
                 { q: "Palau ID substitui a cédula paraguaia?", a: "Não. A cédula paraguaia é residência efetiva, abre bancos e muda domicílio fiscal com Saída Definitiva. O Palau ID é uma camada documental adicional, sem residência física, sem mudar reporte CRS, com aceitação restrita a alguns serviços." },
                 { q: "Como pagar com privacidade pelo ID?", a: "Pague em cripto (ETH, USDT, USDC ou BNB). Cartão de crédito brasileiro liga seu banco diretamente ao novo documento, o que destrói o propósito. Se for usar cartão, prefira cartão internacional pré-pago não vinculado ao seu CPF." },
@@ -1188,7 +1188,7 @@ const PalauDigitalResidency = () => {
           </div>
         </section>
 
-        {/* ════════ CHAPTER 09 — CTA FINAL ════════ */}
+        {/* ════════ CHAPTER 09, CTA FINAL ════════ */}
         <section ref={ctaRef} className="relative h-[100vh] min-h-[680px] overflow-hidden">
           <motion.div className="absolute inset-0" style={{ y: ctaY }}>
             <img src={ctaImg} alt="Estojo de viagem com passaporte e mapa" loading="lazy" className="w-full h-full object-cover" style={{ transform: "scale(1.2)" }} />
@@ -1202,7 +1202,7 @@ const PalauDigitalResidency = () => {
                 Clareza<br /><span className="display-italic" style={{ color: "var(--terracotta)" }}>primeiro</span>.
               </h2>
               <p className="display-italic text-[var(--ink-soft)] mt-7 max-w-2xl mx-auto" style={{ fontSize: "clamp(1.1rem, 1.6vw, 1.5rem)", lineHeight: 1.5 }}>
-                Você não precisa fazer tudo hoje. Mas precisa começar certo. O valor do ID de Palau não está no hype — está no uso correto.
+                Você não precisa fazer tudo hoje. Mas precisa começar certo. O valor do ID de Palau não está no hype, está no uso correto.
               </p>
               <div className="flex flex-wrap justify-center gap-4 mt-12">
                 <Link to="/teoria-das-bandeiras" className="btn-primary">
