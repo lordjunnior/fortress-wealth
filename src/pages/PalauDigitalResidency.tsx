@@ -32,6 +32,12 @@ import carousel3 from "@/assets/palau-v6-carousel-3.jpg";
 import carousel4 from "@/assets/palau-v6-carousel-4.jpg";
 import textureBg from "@/assets/palau-v6-texture.jpg";
 import mapImg from "@/assets/palau-v6-map.jpg";
+import vigilanciaImg from "@/assets/palau-checkin-vigilancia.jpg";
+import cofreImg from "@/assets/palau-cofre-multiplo.jpg";
+import balaPrataImg from "@/assets/palau-nao-bala-prata.jpg";
+import passoImg from "@/assets/palau-passo-a-passo.jpg";
+import personasImg from "@/assets/palau-personas.jpg";
+import cebolaImg from "@/assets/palau-cebola-camadas.jpg";
 
 /* ────────────────────────────────────────────────
    PALAU — EDITORIAL EDITION (v6)
