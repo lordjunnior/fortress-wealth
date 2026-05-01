@@ -32,9 +32,15 @@ import carousel3 from "@/assets/palau-v6-carousel-3.jpg";
 import carousel4 from "@/assets/palau-v6-carousel-4.jpg";
 import textureBg from "@/assets/palau-v6-texture.jpg";
 import mapImg from "@/assets/palau-v6-map.jpg";
+import vigilanciaImg from "@/assets/palau-checkin-vigilancia.jpg";
+import cofreImg from "@/assets/palau-cofre-multiplo.jpg";
+import balaPrataImg from "@/assets/palau-nao-bala-prata.jpg";
+import passoImg from "@/assets/palau-passo-a-passo.jpg";
+import personasImg from "@/assets/palau-personas.jpg";
+import cebolaImg from "@/assets/palau-cebola-camadas.jpg";
 
 /* ────────────────────────────────────────────────
-   PALAU — EDITORIAL EDITION (v6)
+   PALAU, EDITORIAL EDITION (v6)
    Backgrounds trabalhados + carrossel + hovers cinema
    ──────────────────────────────────────────────── */
 
@@ -45,21 +51,21 @@ const carouselSlides = [
     img: carousel1,
     eyebrow: "Documento Soberano",
     title: "Identidade emitida por Estado",
-    text: "Cartão físico oficial, emitido pela República de Palau — reconhecida como Estado soberano no sistema internacional.",
+    text: "Cartão físico oficial, emitido pela República de Palau, reconhecida como Estado soberano no sistema internacional.",
     accent: "Documento Oficial",
   },
   {
     img: carousel2,
     eyebrow: "Mercado Cripto",
     title: "Onboarding em exchanges globais",
-    text: "Coinbase, Bitget, Gate.io, KuCoin, CEX.IO, MEXC — utilidade real em verificação internacional sujeita a compliance.",
+    text: "Coinbase, Bitget, Gate.io, KuCoin, CEX.IO, MEXC, utilidade real em verificação internacional sujeita a compliance.",
     accent: "6+ Plataformas",
   },
   {
     img: carousel3,
     eyebrow: "Serviços Financeiros",
     title: "Neobanks & fintechs internacionais",
-    text: "Kingdom Bank, Vexel, Ultimopay, Blackcatcard — alternativas para operação financeira sem dependência exclusiva da jurisdição de origem.",
+    text: "Kingdom Bank, Vexel, Ultimopay, Blackcatcard, alternativas para operação financeira sem dependência exclusiva da jurisdição de origem.",
     accent: "Acesso Global",
   },
   {
@@ -129,11 +135,26 @@ const PalauDigitalResidency = () => {
   return (
     <>
       <Helmet>
-        <title>ID de Palau — Identidade Soberana Internacional | Lord Junnior</title>
+        <title>ID de Palau, Identidade Soberana Internacional | Lord Junnior</title>
         <meta
           name="description"
-          content="ID de Palau: identidade emitida por governo soberano. Entenda onde funciona, limites reais e como integrar a uma estratégia internacional."
+          content="ID de Palau na prática: como tirar online, onde funciona (Coinbase, Bitget, Gate.io, neobanks), o que NÃO resolve e por que ele é uma camada de privacidade, não uma fortaleza."
         />
+        <meta property="og:title" content="ID de Palau: Privacidade Documental para Brasileiros" />
+        <meta property="og:description" content="O guia honesto sobre o Palau ID: onde funciona, onde falha, e como usá-lo sem cair na ilusão de bala de prata." />
+        <link rel="canonical" href="https://lordjunnior.com.br/palau-id" />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {"@type":"Question","name":"O ID de Palau protege contra Gov.br e check-in obrigatório de hotel?","acceptedAnswer":{"@type":"Answer","text":"Não diretamente. Hotéis brasileiros, por lei, fazem check-in vinculado ao seu CPF e documento nacional. O ID de Palau ajuda em cadastros internacionais, exchanges e neobanks fora do Brasil, não substitui a identificação obrigatória dentro do território nacional."}},
+            {"@type":"Question","name":"Palau ID substitui a cédula paraguaia?","acceptedAnswer":{"@type":"Answer","text":"Não. A cédula paraguaia é residência efetiva, muda domicílio fiscal e abre bancos. O Palau ID é uma camada documental adicional, sem residência física e sem mudar reporte CRS."}},
+            {"@type":"Question","name":"O ID de Palau é reconhecido pela União Europeia?","acceptedAnswer":{"@type":"Answer","text":"Hoje é aceito em parte do mercado cripto e neobank. O reconhecimento institucional pode mudar no futuro: a UE e outros blocos podem pressionar pequenas jurisdições. Trate como ferramenta tática, não como fortaleza permanente."}},
+            {"@type":"Question","name":"Posso fazer check-in de hotel internacional com Palau ID?","acceptedAnswer":{"@type":"Answer","text":"Há relatos positivos em estadias e reservas em determinados países. A aceitação varia por hotel e legislação local. No Brasil, o check-in pelo app Gov.br exige CPF, então Palau ID não substitui."}},
+            {"@type":"Question","name":"Quanto custa o Palau ID e como pagar com privacidade?","acceptedAnswer":{"@type":"Answer","text":"Planos a partir de USD 248 (1 ano), USD 1.000 (5 anos) e USD 2.000 (10 anos). O pagamento em cripto é o caminho recomendado para não vincular rastro financeiro do banco brasileiro ao seu novo documento."}},
+            {"@type":"Question","name":"Para quem o Palau ID NÃO serve?","acceptedAnswer":{"@type":"Answer","text":"Não serve para mudar residência fiscal, abrir banco tradicional, viajar internacionalmente ou ser plano B de fuga. Para esses casos, vá direto para Paraguai, Panamá, Uruguai ou outro segundo passaporte real."}}
+          ]
+        })}</script>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link
@@ -145,15 +166,15 @@ const PalauDigitalResidency = () => {
       <style>{`
         .palau-v6 {
           /* ─── Nova paleta solicitada ─── */
-          --yellow: #F3E308;          /* acento principal — substitui terracotta */
+          --yellow: #F3E308;          /* acento principal, substitui terracotta */
           --yellow-soft: #FFF06A;
-          --mist: #B8BFC1;            /* cinza-claro — fundo principal */
+          --mist: #B8BFC1;            /* cinza-claro, fundo principal */
           --mist-soft: #CFD4D6;
           --mist-deep: #A2AAAD;
           --mist-warm: #C7CDCF;
-          --steel: #6C8494;           /* azul-acinzentado — tons médios */
+          --steel: #6C8494;           /* azul-acinzentado, tons médios */
           --steel-soft: #8A9DAA;
-          --abyss: #2C4C5C;           /* azul-escuro — tinta principal */
+          --abyss: #2C4C5C;           /* azul-escuro, tinta principal */
           --abyss-deep: #1F3845;
 
           /* ─── Aliases para manter compatibilidade com a estrutura existente ─── */
@@ -346,7 +367,7 @@ const PalauDigitalResidency = () => {
       `}</style>
 
       <main className="palau-v6 min-h-screen">
-        {/* ════════ HERO — FULL BLEED EDITORIAL ════════ */}
+        {/* ════════ HERO, FULL BLEED EDITORIAL ════════ */}
         <section ref={heroRef} className="relative h-[100vh] min-h-[720px] overflow-hidden">
           <motion.div className="absolute inset-0 z-0" style={{ y: heroImgY }}>
             <img src={heroImg} alt="ID de Palau sobre mapa do Pacífico" className="w-full h-full object-cover" style={{ transform: "scale(1.15)" }} fetchPriority="high" />
@@ -419,7 +440,7 @@ const PalauDigitalResidency = () => {
                     className="display-italic text-[var(--ink-soft)] mt-5 max-w-2xl"
                     style={{ fontSize: "clamp(1.15rem, 1.8vw, 1.7rem)", lineHeight: 1.45 }}
                   >
-                    Uma identidade emitida por um governo soberano, fora da sua jurisdição principal — a ferramenta que poucos entendem e menos ainda usam corretamente.
+                    Uma identidade emitida por um governo soberano, fora da sua jurisdição principal, a ferramenta que poucos entendem e menos ainda usam corretamente.
                   </motion.p>
                 </div>
               </div>
@@ -455,7 +476,87 @@ const PalauDigitalResidency = () => {
           </div>
         </section>
 
-        {/* ════════ CHAPTER 01 — CLAREZA ════════ */}
+        {/* ════════ NOVO BLOCO 01, PRIVACIDADE VIROU ARTIGO DE LUXO ════════ */}
+        <section className="bg-cream-tex grain relative px-6 md:px-12 lg:px-16 py-24 md:py-32 overflow-hidden">
+          <div className="max-w-[1500px] mx-auto relative z-10">
+            <div className="grid grid-cols-12 gap-8 lg:gap-16 items-center">
+              <div className="col-span-12 lg:col-span-6 reveal relative h-[420px] md:h-[560px] rounded-sm overflow-hidden">
+                <img src={vigilanciaImg} alt="Smartphone com QR code de check-in de hotel sobre balcão de mármore, baixa luz, ambiente de vigilância" loading="lazy" width={1920} height={1080} className="absolute inset-0 w-full h-full object-cover" />
+                <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(44,76,92,0.0) 30%, rgba(44,76,92,0.55) 100%)" }} />
+                <div className="absolute bottom-6 left-6 right-6">
+                  <div className="eyebrow text-[var(--yellow)] mb-2">Cena de 2026</div>
+                  <div className="display-italic text-[var(--cream)] text-xl">Toda noite num hotel, o Estado sabe.</div>
+                </div>
+              </div>
+              <div className="col-span-12 lg:col-span-6 reveal delay-1">
+                <div className="eyebrow text-[var(--terracotta)] mb-5">Cenário · Brasil 2026</div>
+                <h2 className="display text-[var(--ink)]" style={{ fontSize: "clamp(2.2rem, 4.8vw, 4.5rem)" }}>
+                  Privacidade virou <span className="display-italic" style={{ color: "var(--terracotta)" }}>artigo de luxo</span>.
+                </h2>
+                <p className="body-lg mt-7">
+                  Agora o check-in em hotéis e pousadas pode ser feito pelo app Gov.br. Muita gente vê praticidade. Quem entende vê uma ferramenta sendo testada e validada para, mais cedo ou mais tarde, saber cada lugar onde você dorme, com quem viaja e por quanto tempo.
+                </p>
+                <p className="body-lg mt-5">
+                  Não é teoria da conspiração: é o mesmo padrão de toda infraestrutura digital de identidade. Primeiro vira opcional, depois conveniente, depois padrão, depois obrigatório.
+                </p>
+                <div className="mt-8 grid grid-cols-3 gap-3">
+                  <div className="bg-[var(--cream-warm)] p-4 border-l-2 border-[var(--terracotta)]">
+                    <div className="display text-[var(--ink)] text-2xl">2024</div>
+                    <div className="body-sm">Opcional.</div>
+                  </div>
+                  <div className="bg-[var(--cream-warm)] p-4 border-l-2 border-[var(--terracotta)]">
+                    <div className="display text-[var(--ink)] text-2xl">2026</div>
+                    <div className="body-sm">Conveniente.</div>
+                  </div>
+                  <div className="bg-[var(--cream-warm)] p-4 border-l-2 border-[var(--terracotta)]">
+                    <div className="display text-[var(--ink)] text-2xl">2030</div>
+                    <div className="body-sm">Provavelmente padrão.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ════════ NOVO BLOCO 02, NÃO-ADOXAR (UM COFRE x VÁRIOS) ════════ */}
+        <section className="bg-navy-tex grain relative text-[var(--cream)] px-6 md:px-12 lg:px-16 py-24 md:py-36 overflow-hidden">
+          <div className="max-w-[1500px] mx-auto relative z-10">
+            <div className="grid grid-cols-12 gap-8 lg:gap-12 items-end mb-14">
+              <div className="col-span-12 lg:col-span-7 reveal">
+                <div className="eyebrow text-[var(--clay)] mb-5">Princípio · Não-Adoxar</div>
+                <h2 className="display text-[var(--cream)]" style={{ fontSize: "clamp(2.4rem, 5.5vw, 5rem)" }}>
+                  Um cofre só é um <span className="display-italic" style={{ color: "var(--clay)" }}>alvo único</span>.
+                </h2>
+              </div>
+              <div className="col-span-12 lg:col-span-5 reveal delay-1">
+                <p className="body-lg text-[var(--cream)]/80">
+                  Quando todo cadastro do mundo aponta pro mesmo CPF, basta um vazamento (Serasa, Caixa, operadora, hotel) para que sua vida inteira esteja exposta. Não-adoxar é o ato deliberado de não deixar tudo num único documento.
+                </p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-12 gap-6 lg:gap-10 items-stretch">
+              <div className="col-span-12 lg:col-span-5 reveal relative h-[380px] md:h-[520px] rounded-sm overflow-hidden">
+                <img src={cofreImg} alt="Arquivo metálico com várias gavetas, uma iluminada em amarelo, simbolizando documentação compartimentada" loading="lazy" width={1920} height={1080} className="absolute inset-0 w-full h-full object-cover" />
+              </div>
+              <div className="col-span-12 lg:col-span-7 grid grid-cols-1 md:grid-cols-3 gap-4">
+                {[
+                  { n: "01", t: "Documento único", d: "Um vazamento (e eles acontecem todo ano) e tudo que você fez está mapeado." },
+                  { n: "02", t: "Múltiplos documentos", d: "Cada serviço internacional pega uma camada diferente da sua identidade. A correlação fica cara." },
+                  { n: "03", t: "Cada nova trincheira", d: "Cada cadastro com Palau ID é um cadastro a menos onde seu CPF aparece como porta de entrada." },
+                ].map((c) => (
+                  <div key={c.n} className="bg-[var(--cream)]/[0.04] border border-[var(--cream)]/10 p-6 rounded-sm hover:bg-[var(--cream)]/[0.08] hover:border-[var(--clay)]/40 transition-all">
+                    <span className="display-italic text-[var(--clay)] text-2xl block mb-3">{c.n}</span>
+                    <h4 className="display text-[var(--cream)] mb-2" style={{ fontSize: "1.25rem", fontWeight: 500 }}>{c.t}</h4>
+                    <p className="body-sm text-[var(--cream)]/65">{c.d}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ════════ CHAPTER 01, CLAREZA ════════ */}
         <section className="bg-cream-tex grain relative px-6 md:px-12 lg:px-16 py-24 md:py-36 overflow-hidden">
           <div className="max-w-[1500px] mx-auto relative z-10">
             <div className="grid grid-cols-12 gap-6 lg:gap-12 mb-20">
@@ -468,12 +569,12 @@ const PalauDigitalResidency = () => {
               </div>
               <div className="col-span-12 lg:col-span-6 lg:col-start-7 reveal delay-1 flex items-end">
                 <p className="body-lg">
-                  A maioria erra porque não entende o documento antes de obtê-lo. Clareza primeiro — estrutura depois. Esse é o único caminho para extrair valor real de uma identidade internacional.
+                  A maioria erra porque não entende o documento antes de obtê-lo. Clareza primeiro, estrutura depois. Esse é o único caminho para extrair valor real de uma identidade internacional.
                 </p>
               </div>
             </div>
 
-            {/* STACK GROUP — 3 imagens sobrepostas que se abrem no hover */}
+            {/* STACK GROUP, 3 imagens sobrepostas que se abrem no hover */}
             <div className="grid grid-cols-12 gap-6 lg:gap-10">
               <div className="col-span-12 lg:col-span-5 reveal stack-group relative h-[520px] md:h-[620px]">
                 <div className="absolute inset-0 flex items-center justify-center">
@@ -546,7 +647,7 @@ const PalauDigitalResidency = () => {
           </div>
         </section>
 
-        {/* ════════ CHAPTER 02 — CARROSSEL DE APLICAÇÃO ════════ */}
+        {/* ════════ CHAPTER 02, CARROSSEL DE APLICAÇÃO ════════ */}
         <section className="bg-cream-deep grain relative px-6 md:px-12 lg:px-16 py-24 md:py-36 border-y border-[var(--line)] overflow-hidden">
           <div className="max-w-[1500px] mx-auto relative z-10">
             <div className="grid grid-cols-12 gap-6 mb-16 items-end">
@@ -559,7 +660,7 @@ const PalauDigitalResidency = () => {
               </div>
               <div className="col-span-12 lg:col-span-4 lg:col-start-9 reveal delay-1">
                 <p className="body-lg" style={{ borderLeft: "2px solid var(--terracotta)", paddingLeft: "1.25rem" }}>
-                  Nem toda utilidade é universal. O valor está em casos específicos — entender esses casos é o que diferencia o uso inteligente do ingênuo.
+                  Nem toda utilidade é universal. O valor está em casos específicos, entender esses casos é o que diferencia o uso inteligente do ingênuo.
                 </p>
               </div>
             </div>
@@ -613,7 +714,7 @@ const PalauDigitalResidency = () => {
                 </div>
               </div>
 
-              {/* Side list — sincronizada com carrossel */}
+              {/* Side list, sincronizada com carrossel */}
               <div className="col-span-12 lg:col-span-4 flex flex-col">
                 <div className="eyebrow text-[var(--ink-soft)] mb-5">Casos de uso</div>
                 <div className="space-y-1 flex-1">
@@ -656,7 +757,7 @@ const PalauDigitalResidency = () => {
           </div>
         </section>
 
-        {/* ════════ CHAPTER 03 — QUEBRA DE CRENÇA (99%) ════════ */}
+        {/* ════════ CHAPTER 03, QUEBRA DE CRENÇA (99%) ════════ */}
         <section className="bg-paper grain relative px-6 md:px-12 lg:px-16 py-24 md:py-36 overflow-hidden">
           <div className="max-w-[1500px] mx-auto relative z-10">
             <div className="grid grid-cols-12 gap-6 lg:gap-12 items-center">
@@ -681,9 +782,9 @@ const PalauDigitalResidency = () => {
 
                 <div className="space-y-1">
                   {[
-                    { n: "01", t: "Comprovante de endereço", d: "Plataformas exigem comprovante de residência válido — independente do documento de identidade." },
+                    { n: "01", t: "Comprovante de endereço", d: "Plataformas exigem comprovante de residência válido, independente do documento de identidade." },
                     { n: "02", t: "Número de telefone local", d: "Em alguns casos exige-se verificação por número da jurisdição declarada." },
-                    { n: "03", t: "Documentação complementar", d: "O ID raramente opera sozinho — precisa de documentos de suporte para ativação completa." },
+                    { n: "03", t: "Documentação complementar", d: "O ID raramente opera sozinho, precisa de documentos de suporte para ativação completa." },
                     { n: "04", t: "Alinhamento residência × identidade", d: "Report fiscal depende da residência informada e da política da instituição." },
                     { n: "05", t: "Estratégia estruturada", d: "Sem arquitetura clara, o documento é uma ferramenta sem contexto." },
                   ].map((item) => (
@@ -703,7 +804,7 @@ const PalauDigitalResidency = () => {
           </div>
         </section>
 
-        {/* ════════ CHAPTER 04 — LIMITAÇÕES ════════ */}
+        {/* ════════ CHAPTER 04, LIMITAÇÕES ════════ */}
         <section className="bg-navy-tex grain relative text-[var(--cream)] overflow-hidden">
           <div className="grid grid-cols-12 min-h-[100vh] relative z-10">
             <div className="col-span-12 lg:col-span-5 relative min-h-[400px] lg:min-h-[100vh] overflow-hidden group">
@@ -750,7 +851,34 @@ const PalauDigitalResidency = () => {
           </div>
         </section>
 
-        {/* ════════ CHAPTER 05 — VALOR ════════ */}
+        {/* ════════ NOVO BANNER, NÃO É BALA DE PRATA ════════ */}
+        <section className="relative h-[60vh] min-h-[440px] overflow-hidden">
+          <img src={balaPrataImg} alt="Escudo metálico rachado com fenda iluminada em amarelo: Palau ID não é bala de prata" loading="lazy" width={1920} height={1080} className="absolute inset-0 w-full h-full object-cover" />
+          <div className="absolute inset-0" style={{ background: "linear-gradient(90deg, rgba(20,28,35,0.85) 0%, rgba(20,28,35,0.55) 50%, rgba(20,28,35,0.85) 100%)" }} />
+          <div className="relative z-10 h-full flex items-center px-6 md:px-12 lg:px-16">
+            <div className="max-w-[1500px] mx-auto w-full grid grid-cols-12 gap-6 items-center">
+              <div className="col-span-12 lg:col-span-7 reveal">
+                <div className="eyebrow text-[var(--yellow)] mb-5">Aviso de Honestidade</div>
+                <h2 className="display text-[var(--cream)]" style={{ fontSize: "clamp(2.4rem, 5.5vw, 5rem)" }}>
+                  Palau ID não é <span className="display-italic" style={{ color: "var(--yellow)" }}>bala de prata</span>.
+                </h2>
+                <p className="display-italic text-[var(--cream)]/80 mt-6 max-w-2xl" style={{ fontSize: "clamp(1.05rem, 1.6vw, 1.4rem)", lineHeight: 1.5 }}>
+                  No futuro, União Europeia e outros blocos podem pressionar pequenas jurisdições. Use enquanto serve, sem se agarrar como se fosse permanente. Ferramenta tática, não fortaleza eterna.
+                </p>
+              </div>
+              <div className="col-span-12 lg:col-span-4 lg:col-start-9 reveal delay-1">
+                <div className="bg-[var(--cream)]/10 backdrop-blur-sm p-6 border-l-2 border-[var(--yellow)]">
+                  <div className="eyebrow text-[var(--yellow)] mb-2">Regra de Ouro</div>
+                  <p className="body text-[var(--cream)]/90">
+                    Se sua estratégia inteira depende exclusivamente do Palau ID, você não tem estratégia. Tem aposta.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ════════ CHAPTER 05, VALOR ════════ */}
         <section className="bg-cream-tex grain relative px-6 md:px-12 lg:px-16 py-28 md:py-40 overflow-hidden">
           <div className="max-w-[1500px] mx-auto relative z-10">
             <div className="reveal max-w-5xl">
@@ -783,7 +911,7 @@ const PalauDigitalResidency = () => {
           </div>
         </section>
 
-        {/* ════════ CHAPTER 06 — JORNADA ════════ */}
+        {/* ════════ CHAPTER 06, JORNADA ════════ */}
         <section className="bg-cream-deep grain relative px-6 md:px-12 lg:px-16 py-24 md:py-36 border-y border-[var(--line)] overflow-hidden">
           <div className="max-w-[1500px] mx-auto relative z-10">
             <div className="grid grid-cols-12 gap-6 mb-16">
@@ -822,7 +950,160 @@ const PalauDigitalResidency = () => {
           </div>
         </section>
 
-        {/* ════════ CHAPTER 07 — PALAU CINEMATIC ════════ */}
+        {/* ════════ NOVO BLOCO 03, PASSO A PASSO PRÁTICO (RNS) ════════ */}
+        <section className="bg-cream-tex grain relative px-6 md:px-12 lg:px-16 py-24 md:py-36 overflow-hidden">
+          <div className="max-w-[1500px] mx-auto relative z-10">
+            <div className="grid grid-cols-12 gap-8 lg:gap-12 items-center mb-14">
+              <div className="col-span-12 lg:col-span-7 reveal">
+                <div className="eyebrow text-[var(--terracotta)] mb-5">Operacional · RNS ID</div>
+                <h2 className="display text-[var(--ink)]" style={{ fontSize: "clamp(2.4rem, 5.5vw, 5rem)" }}>
+                  Como tirar na prática, <span className="display-italic" style={{ color: "var(--terracotta)" }}>sem sair de casa</span>.
+                </h2>
+              </div>
+              <div className="col-span-12 lg:col-span-5 reveal delay-1">
+                <p className="body-lg">
+                  O processo é 100% online, leva poucas semanas e o cartão físico chega no Brasil. Pague em cripto para não ligar o seu banco brasileiro ao seu novo documento.
+                </p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-12 gap-6 lg:gap-10 items-stretch">
+              <div className="col-span-12 lg:col-span-6 reveal relative h-[420px] md:h-[600px] rounded-sm overflow-hidden">
+                <img src={passoImg} alt="Notebook com formulário de identidade digital, cartão branco, passaporte e celular com carteira cripto sobre mesa de madeira" loading="lazy" width={1920} height={1080} className="absolute inset-0 w-full h-full object-cover" />
+              </div>
+              <div className="col-span-12 lg:col-span-6 space-y-4">
+                {[
+                  { n: "01", t: "Abra o RNS ID", d: "Plataforma oficial autorizada pelo governo de Palau. Crie conta e suba documento de identidade do seu país." },
+                  { n: "02", t: "Escolha o plano", d: "1 ano por USD 248 (recomendado para testar), 5 anos por USD 1.000 ou 10 anos por USD 2.000. O preço de longo prazo trava previsibilidade." },
+                  { n: "03", t: "Pague em cripto", d: "ETH, USDT, USDC ou BNB. Evite cartão de crédito brasileiro: ele cria rastro financeiro entre você e o Palau ID." },
+                  { n: "04", t: "Receba o NFT", d: "Cópia digital do documento na sua carteira. Útil em alguns serviços Web3, mas não é o que abre conta em exchange." },
+                  { n: "05", t: "Aguarde o cartão físico", d: "Chega em algumas semanas. Se for extraviado (raro no Brasil), há taxa de USD 50 para reemissão. Esse cartão é o que você realmente vai usar." },
+                ].map((s) => (
+                  <div key={s.n} className="grid grid-cols-12 gap-3 p-5 border border-[var(--line)] rounded-sm bg-[var(--cream-warm)] hover:border-[var(--terracotta)]/50 hover:translate-x-1 transition-all">
+                    <div className="col-span-2">
+                      <span className="display-italic text-[var(--terracotta)] text-3xl">{s.n}</span>
+                    </div>
+                    <div className="col-span-10">
+                      <h4 className="display text-[var(--ink)] mb-1.5" style={{ fontSize: "1.2rem", fontWeight: 500 }}>{s.t}</h4>
+                      <p className="body-sm">{s.d}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="mt-10 text-center reveal">
+              <a href="https://rnsid.id" target="_blank" rel="noopener noreferrer" className="btn-primary">
+                Abrir RNS ID oficial <ArrowUpRight size={16} />
+              </a>
+              <p className="body-sm mt-4 text-[var(--ink-soft)]">Sugestão tática: comece pelo plano de 1 ano. Você não pode cancelar nem reembolsar, então teste antes de comprometer 5 ou 10 anos.</p>
+            </div>
+          </div>
+        </section>
+
+        {/* ════════ NOVO BLOCO 04, PARA QUEM SERVE / NÃO SERVE ════════ */}
+        <section className="bg-cream-deep grain relative px-6 md:px-12 lg:px-16 py-24 md:py-36 border-y border-[var(--line)] overflow-hidden">
+          <div className="max-w-[1500px] mx-auto relative z-10">
+            <div className="grid grid-cols-12 gap-8 lg:gap-12 items-end mb-14">
+              <div className="col-span-12 lg:col-span-7 reveal">
+                <div className="eyebrow text-[var(--terracotta)] mb-5">Segmentação · Honestidade Cirúrgica</div>
+                <h2 className="display text-[var(--ink)]" style={{ fontSize: "clamp(2.4rem, 5.5vw, 5rem)" }}>
+                  Para quem <span className="display-italic" style={{ color: "var(--navy)" }}>serve</span>.<br />
+                  Para quem <span className="display-italic" style={{ color: "var(--terracotta)" }}>não serve</span>.
+                </h2>
+              </div>
+              <div className="col-span-12 lg:col-span-5 reveal delay-1">
+                <p className="body-lg">
+                  Ferramenta certa, pessoa errada, virou frustração. Antes de pagar USD 248, descubra honestamente em qual coluna você está.
+                </p>
+              </div>
+            </div>
+
+            <div className="reveal relative h-[280px] md:h-[400px] rounded-sm overflow-hidden mb-10">
+              <img src={personasImg} alt="Trader cripto, nômade digital em aeroporto e empresário com passaporte: três perfis típicos de uso do Palau ID" loading="lazy" width={1920} height={1080} className="absolute inset-0 w-full h-full object-cover" />
+              <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(44,76,92,0.0) 50%, rgba(44,76,92,0.7) 100%)" }} />
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="reveal bg-[var(--cream-warm)] p-7 md:p-9 border-l-4 border-[var(--navy)] rounded-sm">
+                <div className="flex items-center gap-3 mb-6 pb-4 border-b border-[var(--line)]">
+                  <CheckCircle2 size={20} className="text-[var(--navy)]" />
+                  <span className="eyebrow text-[var(--navy)]">Faz sentido para</span>
+                </div>
+                <ul className="space-y-5">
+                  {[
+                    { t: "Trader cripto que cansou da Receita", d: "Quer abrir conta em Coinbase, Bitget, Gate.io ou KuCoin sem alimentar a CRS brasileira a cada cadastro novo." },
+                    { t: "Nômade digital com medo de adoxamento", d: "Já teve o CPF vazado, recebe ligações estranhas e quer parar de espalhar o documento brasileiro em toda plataforma internacional." },
+                    { t: "Comprador de privacidade documental", d: "Reconhece que privacidade hoje é luxo, e está disposto a pagar por uma camada extra que reduz exposição em verificações internacionais." },
+                  ].map((p, i) => (
+                    <li key={i}>
+                      <h4 className="display text-[var(--ink)] mb-1.5" style={{ fontSize: "1.15rem", fontWeight: 500 }}>{p.t}</h4>
+                      <p className="body-sm">{p.d}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="reveal delay-1 bg-[var(--cream-warm)] p-7 md:p-9 border-l-4 border-[var(--terracotta)] rounded-sm">
+                <div className="flex items-center gap-3 mb-6 pb-4 border-b border-[var(--line)]">
+                  <XCircle size={20} className="text-[var(--terracotta)]" />
+                  <span className="eyebrow text-[var(--terracotta)]">NÃO compre se você quer</span>
+                </div>
+                <ul className="space-y-5">
+                  {[
+                    { t: "Mudar residência fiscal", d: "Palau ID não tira você do reporte CRS brasileiro. Para isso existe Saída Definitiva e residência efetiva no Paraguai, Panamá ou Uruguai." },
+                    { t: "Abrir banco tradicional internacional", d: "Bancos sérios pedem passaporte e comprovante de endereço local. Aqui Palau ID não passa do filtro de compliance." },
+                    { t: "Plano B de fuga", d: "Não é cidadania, não é passaporte, não dá direito de residir lá. Se você quer um lugar real para chegar, precisa de outro documento." },
+                  ].map((p, i) => (
+                    <li key={i}>
+                      <h4 className="display text-[var(--ink)] mb-1.5" style={{ fontSize: "1.15rem", fontWeight: 500 }}>{p.t}</h4>
+                      <p className="body-sm">{p.d}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ════════ NOVO BLOCO 05, CAMADA, NÃO FORTALEZA ════════ */}
+        <section className="bg-paper grain relative px-6 md:px-12 lg:px-16 py-24 md:py-36 overflow-hidden">
+          <div className="max-w-[1500px] mx-auto relative z-10">
+            <div className="grid grid-cols-12 gap-8 lg:gap-16 items-center">
+              <div className="col-span-12 lg:col-span-6 reveal relative h-[420px] md:h-[560px] rounded-sm overflow-hidden">
+                <img src={cebolaImg} alt="Camadas concêntricas, analogia da privacidade em camadas: Palau ID é uma camada externa, não o núcleo" loading="lazy" width={1920} height={1080} className="absolute inset-0 w-full h-full object-cover" />
+                <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(0,0,0,0.0) 50%, rgba(0,0,0,0.55) 100%)" }} />
+                <div className="absolute bottom-6 left-6 right-6">
+                  <div className="eyebrow text-[var(--yellow)] mb-2">Princípio</div>
+                  <div className="display-italic text-[var(--cream)] text-xl">Privacidade real é arquitetura em camadas.</div>
+                </div>
+              </div>
+              <div className="col-span-12 lg:col-span-6 reveal delay-1">
+                <div className="eyebrow text-[var(--terracotta)] mb-5">Fechamento Estratégico</div>
+                <h2 className="display text-[var(--ink)]" style={{ fontSize: "clamp(2.2rem, 4.8vw, 4.5rem)" }}>
+                  Palau ID é uma <span className="display-italic" style={{ color: "var(--terracotta)" }}>camada</span>.<br />
+                  Não é a <span className="display-italic" style={{ color: "var(--navy)" }}>fortaleza</span>.
+                </h2>
+                <p className="body-lg mt-7">
+                  Pense em privacidade como uma cebola. As camadas externas são baratas, descartáveis, fáceis de adicionar: Palau ID, e-mail temporário, número virtual, cartão pré-pago. O núcleo é caro e demora: residência fiscal real, segundo passaporte, estrutura corporativa internacional.
+                </p>
+                <p className="body-lg mt-5">
+                  O erro de quem trata o Palau ID como bala de prata é o mesmo de quem acha que cebola tem uma camada só. Você usa Palau onde ele resolve, e usa Paraguai, Panamá ou Uruguai para o que ele nunca vai resolver.
+                </p>
+                <div className="mt-9 flex flex-wrap gap-4">
+                  <Link to="/saida/jurisdicoes-amigaveis" className="btn-primary">
+                    Ver jurisdições reais <ArrowUpRight size={16} />
+                  </Link>
+                  <Link to="/saida/segundo-passaporte" className="btn-ghost">
+                    Segundo passaporte
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ════════ CHAPTER 07, PALAU CINEMATIC ════════ */}
         <section ref={islandRef} className="relative h-[100vh] min-h-[700px] overflow-hidden">
           <motion.div className="absolute inset-0" style={{ y: islandY }}>
             <img src={islandImg} alt="Ilhas de Palau ao amanhecer" loading="lazy" className="w-full h-full object-cover" style={{ transform: "scale(1.25)" }} />
@@ -837,7 +1118,7 @@ const PalauDigitalResidency = () => {
                   Palau
                 </h2>
                 <p className="display-italic text-[var(--cream)]/85 max-w-2xl" style={{ fontSize: "clamp(1.15rem, 1.8vw, 1.6rem)", lineHeight: 1.45 }}>
-                  Uma identidade emitida por um Estado soberano do Pacífico — com aplicação real no sistema global.
+                  Uma identidade emitida por um Estado soberano do Pacífico, com aplicação real no sistema global.
                 </p>
               </div>
               <div className="col-span-12 lg:col-span-4 lg:col-start-9 reveal delay-2 self-end">
@@ -863,7 +1144,7 @@ const PalauDigitalResidency = () => {
           </div>
         </section>
 
-        {/* ════════ CHAPTER 08 — FAQ ════════ */}
+        {/* ════════ CHAPTER 08, FAQ ════════ */}
         <section className="bg-cream-tex grain relative px-6 md:px-12 lg:px-16 py-24 md:py-36 overflow-hidden">
           <div className="max-w-4xl mx-auto relative z-10">
             <div className="text-center mb-16 reveal">
@@ -875,15 +1156,21 @@ const PalauDigitalResidency = () => {
 
             <div className="reveal delay-1 border-t border-[var(--line)]">
               {[
-                { q: "O ID de Palau é cidadania?", a: "Não. É uma identidade digital emitida pelo governo de Palau, não cidadania. Cidadania envolve direitos legais extensos, passaporte e proteção consular — nada disso está incluído." },
+                { q: "O ID de Palau é cidadania?", a: "Não. É uma identidade digital emitida pelo governo de Palau, não cidadania. Cidadania envolve direitos legais extensos, passaporte e proteção consular, nada disso está incluído." },
                 { q: "O ID de Palau é residência?", a: "Não. Não configura residência legal, não muda sua situação fiscal e não substitui visto ou permissão de residência em qualquer jurisdição." },
-                { q: "Posso usar em exchanges cripto?", a: "Em algumas, sim — Coinbase, Bitget, Gate.io, KuCoin, CEX.IO e MEXC são exemplos atuais. Mas as políticas de compliance mudam. Verifique a política vigente antes de depender disso." },
+                { q: "Posso usar em exchanges cripto?", a: "Em algumas, sim, Coinbase, Bitget, Gate.io, KuCoin, CEX.IO e MEXC são exemplos atuais. Mas as políticas de compliance mudam. Verifique a política vigente antes de depender disso." },
                 { q: "Posso abrir conta em qualquer banco?", a: "Não. Bancos tradicionais exigem passaporte e comprovante de residência robusto. O ID pode funcionar em neobanks e fintechs específicas, não em instituições convencionais." },
-                { q: "Preciso de comprovante de endereço?", a: "Na maioria dos casos, sim. O ID raramente opera como documento único — ele faz parte de um conjunto de documentação complementar." },
+                { q: "Preciso de comprovante de endereço?", a: "Na maioria dos casos, sim. O ID raramente opera como documento único, ele faz parte de um conjunto de documentação complementar." },
                 { q: "Substitui passaporte?", a: "Não. Não pode ser usado para viagens internacionais. Seu passaporte nacional continua sendo o documento principal para viagem e propósitos legais." },
                 { q: "Resolve minha vida financeira internacional?", a: "Não. É uma ferramenta dentro de uma estrutura maior. Sozinho tem utilidade limitada. Dentro de uma arquitetura de soberania bem construída, contribui significativamente." },
-                { q: "É legal?", a: "Sim. É emitido por um governo soberano reconhecido internacionalmente. O que varia é a aceitação de cada plataforma — uma decisão privada de compliance, não de legalidade do documento." },
-                { q: "Vale a pena?", a: "Depende do seu objetivo. Se você entende onde funciona, tem documentação complementar e o insere em uma estratégia maior — pode valer muito. Se espera que resolva tudo sozinho — não vale. A decisão inteligente começa com clareza." },
+                { q: "É legal?", a: "Sim. É emitido por um governo soberano reconhecido internacionalmente. O que varia é a aceitação de cada plataforma, uma decisão privada de compliance, não de legalidade do documento." },
+                { q: "Vale a pena?", a: "Depende do seu objetivo. Se você entende onde funciona, tem documentação complementar e o insere em uma estratégia maior, pode valer muito. Se espera que resolva tudo sozinho, não vale. A decisão inteligente começa com clareza." },
+                { q: "Palau ID protege contra check-in obrigatório no Gov.br?", a: "Não dentro do Brasil. Hotéis brasileiros são obrigados por lei a registrar hóspede com CPF e documento nacional. Palau ID resolve cadastros internacionais (exchanges, neobanks, alguns hotéis fora do país), não anula a identificação obrigatória em território nacional." },
+                { q: "Palau ID substitui a cédula paraguaia?", a: "Não. A cédula paraguaia é residência efetiva, abre bancos e muda domicílio fiscal com Saída Definitiva. O Palau ID é uma camada documental adicional, sem residência física, sem mudar reporte CRS, com aceitação restrita a alguns serviços." },
+                { q: "Como pagar com privacidade pelo ID?", a: "Pague em cripto (ETH, USDT, USDC ou BNB). Cartão de crédito brasileiro liga seu banco diretamente ao novo documento, o que destrói o propósito. Se for usar cartão, prefira cartão internacional pré-pago não vinculado ao seu CPF." },
+                { q: "Posso renovar o Palau ID depois?", a: "Sim, a renovação é simples no próprio RNS ID. Quem tira 10 anos paga USD 2.000 e trava o preço; quem tira 1 ano por USD 248 fica exposto a eventuais aumentos quando a legislação mudar. Para validar antes de comprometer, comece com 1 ano." },
+                { q: "Em quais exchanges Palau ID está funcionando hoje?", a: "Coinbase, Bitget, Gate.io, KuCoin, CEX.IO e MEXC têm relatos consistentes de aceitação. Bybit teve relatos contraditórios. Compliance muda mensalmente, então sempre teste o cadastro antes de depender da plataforma." },
+                { q: "Para quem o Palau ID NÃO serve?", a: "Não serve para quem quer mudar residência fiscal, abrir banco tradicional, viajar internacionalmente ou ter um plano B real de fuga. Para esses casos vá direto para Paraguai, Panamá, Uruguai ou outro segundo passaporte. Tentar resolver tudo com Palau ID é o erro mais comum de quem entra cru no tema." },
               ].map((f, i) => (
                 <details key={i}>
                   <summary>
@@ -901,7 +1188,7 @@ const PalauDigitalResidency = () => {
           </div>
         </section>
 
-        {/* ════════ CHAPTER 09 — CTA FINAL ════════ */}
+        {/* ════════ CHAPTER 09, CTA FINAL ════════ */}
         <section ref={ctaRef} className="relative h-[100vh] min-h-[680px] overflow-hidden">
           <motion.div className="absolute inset-0" style={{ y: ctaY }}>
             <img src={ctaImg} alt="Estojo de viagem com passaporte e mapa" loading="lazy" className="w-full h-full object-cover" style={{ transform: "scale(1.2)" }} />
@@ -915,7 +1202,7 @@ const PalauDigitalResidency = () => {
                 Clareza<br /><span className="display-italic" style={{ color: "var(--terracotta)" }}>primeiro</span>.
               </h2>
               <p className="display-italic text-[var(--ink-soft)] mt-7 max-w-2xl mx-auto" style={{ fontSize: "clamp(1.1rem, 1.6vw, 1.5rem)", lineHeight: 1.5 }}>
-                Você não precisa fazer tudo hoje. Mas precisa começar certo. O valor do ID de Palau não está no hype — está no uso correto.
+                Você não precisa fazer tudo hoje. Mas precisa começar certo. O valor do ID de Palau não está no hype, está no uso correto.
               </p>
               <div className="flex flex-wrap justify-center gap-4 mt-12">
                 <Link to="/teoria-das-bandeiras" className="btn-primary">
