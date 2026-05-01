@@ -851,6 +851,33 @@ const PalauDigitalResidency = () => {
           </div>
         </section>
 
+        {/* ════════ NOVO BANNER — NÃO É BALA DE PRATA ════════ */}
+        <section className="relative h-[60vh] min-h-[440px] overflow-hidden">
+          <img src={balaPrataImg} alt="Escudo metálico rachado com fenda iluminada em amarelo: Palau ID não é bala de prata" loading="lazy" width={1920} height={1080} className="absolute inset-0 w-full h-full object-cover" />
+          <div className="absolute inset-0" style={{ background: "linear-gradient(90deg, rgba(20,28,35,0.85) 0%, rgba(20,28,35,0.55) 50%, rgba(20,28,35,0.85) 100%)" }} />
+          <div className="relative z-10 h-full flex items-center px-6 md:px-12 lg:px-16">
+            <div className="max-w-[1500px] mx-auto w-full grid grid-cols-12 gap-6 items-center">
+              <div className="col-span-12 lg:col-span-7 reveal">
+                <div className="eyebrow text-[var(--yellow)] mb-5">Aviso de Honestidade</div>
+                <h2 className="display text-[var(--cream)]" style={{ fontSize: "clamp(2.4rem, 5.5vw, 5rem)" }}>
+                  Palau ID não é <span className="display-italic" style={{ color: "var(--yellow)" }}>bala de prata</span>.
+                </h2>
+                <p className="display-italic text-[var(--cream)]/80 mt-6 max-w-2xl" style={{ fontSize: "clamp(1.05rem, 1.6vw, 1.4rem)", lineHeight: 1.5 }}>
+                  No futuro, União Europeia e outros blocos podem pressionar pequenas jurisdições. Use enquanto serve, sem se agarrar como se fosse permanente. Ferramenta tática, não fortaleza eterna.
+                </p>
+              </div>
+              <div className="col-span-12 lg:col-span-4 lg:col-start-9 reveal delay-1">
+                <div className="bg-[var(--cream)]/10 backdrop-blur-sm p-6 border-l-2 border-[var(--yellow)]">
+                  <div className="eyebrow text-[var(--yellow)] mb-2">Regra de Ouro</div>
+                  <p className="body text-[var(--cream)]/90">
+                    Se sua estratégia inteira depende exclusivamente do Palau ID, você não tem estratégia. Tem aposta.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* ════════ CHAPTER 05 — VALOR ════════ */}
         <section className="bg-cream-tex grain relative px-6 md:px-12 lg:px-16 py-28 md:py-40 overflow-hidden">
           <div className="max-w-[1500px] mx-auto relative z-10">
