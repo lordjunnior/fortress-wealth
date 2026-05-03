@@ -119,6 +119,8 @@ const FAQ = [
     a: 'Não no sentido clínico. O título é editorial: chama atenção para o fato de que Passiflora e camomila atuam no mesmo receptor (GABA-A) que os benzodiazepínicos, com efeito mais leve, sem dependência e sem tarja preta. Para insônia crônica diagnosticada ou ansiedade clínica, mantenha o tratamento médico. Esta receita é uma intervenção nutricional para apoiar higiene do sono em pessoas saudáveis.' },
   { q: 'Em quanto tempo se sente efeito?',
     a: 'A maioria dos estudos mostra benefício mensurável entre 7 e 14 dias de uso consistente. Coma de 30 a 60 minutos antes de dormir, todas as noites. Resultado de uma noite isolada é variável: o que importa é o protocolo repetido.' },
+  { q: 'Comer 30 a 60 minutos antes de dormir não eleva a glicemia e prejudica o GH?',
+    a: 'Pergunta legítima e importante. A resposta curta: este protocolo não foi desenhado para gerar pico glicêmico relevante. A porção tem 80 a 120 kcal, 8 a 10 g de fibra solúvel da chia, 8 a 10 g de proteína (glicina) e nenhum açúcar de adição (mantenha sem mel ou com no máximo 1 colher de chá). Fibra solúvel forma gel no estômago, retarda esvaziamento gástrico e achata a curva glicêmica. A resposta hormonal noturna não depende exclusivamente da glicemia: o pico fisiológico de GH ocorre durante o sono profundo de ondas lentas (estágio N3), e o que mais sabota o GH é sono fragmentado, álcool, cortisol elevado e refeições grandes ricas em carboidrato refinado, não 100 kcal de fibra mais proteína. Indivíduos com resistência à insulina, diabetes ou jejum intermitente terapêutico podem antecipar a porção (2 a 3 horas antes de dormir) ou usar só o chá de Passiflora e camomila. Veja o bloco "Observação metabólica" acima para os ajustes.' },
   { q: 'Posso comer no lugar do jantar?',
     a: 'Sim, é uma das estratégias do protocolo. Cada porção tem cerca de 80 a 120 kcal, 8 a 10 g de proteína (glicina) e 8 a 10 g de fibra (chia), saciante o bastante para substituir um jantar pesado, especialmente para reduzir a ingestão calórica noturna ou trocar o lanche doce das 22h.' },
   { q: 'Por quanto tempo posso tomar?',
@@ -517,6 +519,61 @@ export default function SobremesaSubstituiRivotril() {
         {/* FAQ */}
         <section className="relative py-24 md:py-36 px-6 md:px-12 lg:px-20">
           <div className="max-w-[1100px] mx-auto">
+            {/* OBSERVAÇÃO METABÓLICA, resposta a dúvida sobre glicemia e GH */}
+            <motion.div {...fade(0)} className="mb-20 p-8 md:p-12 rounded-3xl"
+              style={{ backgroundColor: '#fff8ef', border: `1px solid ${C.terraSoft}` }}>
+              <div className="flex items-center gap-3 mb-5">
+                <Activity size={20} style={{ color: C.terracotta }} />
+                <span className="text-xs font-bold" style={{ ...monoStyle, color: C.terracotta }}>
+                  Observação metabólica
+                </span>
+              </div>
+              <h3 className="text-3xl md:text-5xl mb-8 leading-[1.05]" style={{ ...display, color: C.sage }}>
+                Glicemia, GH{' '}
+                <span style={{ ...editorial, color: C.terracotta }}>e janela noturna.</span>
+              </h3>
+              <div className="space-y-5 text-lg md:text-xl leading-[1.7] font-light" style={{ color: C.inkSoft }}>
+                <p>
+                  Este protocolo não tem como objetivo gerar resposta glicêmica elevada. A combinação de
+                  fibra solúvel da chia (8 a 10 g por porção), proteína da gelatina (cerca de 2,5 g de glicina bioativa)
+                  e ausência de açúcar de adição mantém a curva glicêmica achatada, mesmo consumida 30 a 60 minutos
+                  antes de dormir.
+                </p>
+                <p>
+                  A resposta hormonal noturna, incluindo o pico de hormônio do crescimento (GH), depende
+                  principalmente da arquitetura do sono profundo (estágio N3), do controle do cortisol e da ausência
+                  de álcool, não exclusivamente da glicemia. A literatura indexada no PubMed listada acima
+                  documenta o efeito da glicina, da Passiflora e da camomila sobre latência e qualidade do sono,
+                  variáveis que sustentam justamente esse pico fisiológico de GH.
+                </p>
+                <p>
+                  Ainda assim, indivíduos com sensibilidade metabólica, resistência à insulina, diabetes
+                  diagnosticado ou em protocolo de jejum intermitente terapêutico podem se beneficiar de
+                  ajustes simples:
+                </p>
+                <ul className="space-y-3 pl-1">
+                  <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span>
+                    Antecipar a porção para 2 a 3 horas antes de dormir, fora da janela de pico do GH.
+                  </li>
+                  <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span>
+                    Remover por completo o mel cru e qualquer adoçante calórico, mantendo só a base funcional.
+                  </li>
+                  <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span>
+                    Usar apenas o chá de Passiflora e camomila à noite, e consumir a gelatina com chia no
+                    fim do jantar.
+                  </li>
+                  <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span>
+                    Monitorar glicemia capilar de jejum por 7 a 14 dias se houver dúvida individual.
+                  </li>
+                </ul>
+                <p className="text-base italic" style={{ color: C.inkSoft }}>
+                  O protocolo funciona como base, não como regra rígida. Cada organismo responde de forma
+                  diferente, e o objetivo central permanece o mesmo: reduzir a dependência de psicofármacos
+                  prescritos sem necessidade clínica real.
+                </p>
+              </div>
+            </motion.div>
+
             <motion.div {...fade(0)} className="mb-14 max-w-3xl">
               <span className="text-xs font-bold block mb-4" style={{ ...monoStyle, color: C.terracotta }}>Perguntas honestas</span>
               <h2 className="text-[clamp(2.25rem,5.5vw,5rem)] leading-[1] tracking-tight" style={{ ...display, color: C.sage }}>
