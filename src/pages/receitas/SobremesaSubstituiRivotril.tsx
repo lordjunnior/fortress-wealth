@@ -572,6 +572,109 @@ export default function SobremesaSubstituiRivotril() {
                   prescritos sem necessidade clínica real.
                 </p>
               </div>
+
+              {/* TABELA, ajustes por perfil metabólico */}
+              <div className="mt-12">
+                <div className="flex items-center gap-3 mb-5">
+                  <Beaker size={18} style={{ color: C.terracotta }} />
+                  <span className="text-xs font-bold" style={{ ...monoStyle, color: C.terracotta }}>
+                    Ajustes por perfil metabólico
+                  </span>
+                </div>
+                <p className="text-base md:text-lg font-light leading-[1.65] mb-8" style={{ color: C.inkSoft }}>
+                  Quatro perfis, quatro versões do mesmo protocolo. Timing, composição e monitoramento
+                  calibrados para o estado metabólico real, sem abrir mão dos quatro ativos clínicos.
+                </p>
+
+                <div className="overflow-x-auto rounded-2xl" style={{ border: `1px solid ${C.borderLight}` }}>
+                  <table className="w-full text-left border-collapse" style={{ backgroundColor: C.cream }}>
+                    <thead>
+                      <tr style={{ backgroundColor: C.sage }}>
+                        {['Perfil', 'Timing ideal', 'Composição da porção', 'Mel cru', 'Monitoramento'].map((h) => (
+                          <th key={h}
+                            className="px-5 py-4 text-xs font-bold align-bottom"
+                            style={{ ...monoStyle, color: C.cream, letterSpacing: '0.18em' }}>
+                            {h}
+                          </th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody className="text-sm md:text-base" style={{ color: C.inkSoft }}>
+                      {[
+                        {
+                          perfil: 'Saudável, sem disglicemia',
+                          subtitulo: 'Linha de base do protocolo',
+                          timing: '30 a 60 min antes de dormir',
+                          composicao: 'Gelatina + chia + Passiflora + camomila, dose padrão',
+                          mel: 'Até 1 colher de chá, opcional',
+                          monitoramento: 'Diário de sono por 14 dias',
+                        },
+                        {
+                          perfil: 'Sensibilidade metabólica',
+                          subtitulo: 'Sono ruim após carboidrato à noite',
+                          timing: '60 a 90 min antes de dormir',
+                          composicao: 'Dose padrão, aumentar chia para 12 g, sem adoçante',
+                          mel: 'Suspender',
+                          monitoramento: 'Glicemia capilar de jejum semanal',
+                        },
+                        {
+                          perfil: 'Resistência à insulina',
+                          subtitulo: 'HOMA-IR alto, gordura visceral',
+                          timing: '2 h antes de dormir, após jantar leve',
+                          composicao: 'Reduzir gelatina para 30 g, manter chia 10 g, dobrar Passiflora no chá',
+                          mel: 'Suspender',
+                          monitoramento: 'Glicemia capilar de jejum 2x/semana, HOMA-IR a cada 90 dias',
+                        },
+                        {
+                          perfil: 'Diabetes diagnosticado',
+                          subtitulo: 'Tipo 2 ou pré-diabetes em tratamento',
+                          timing: 'Junto ou logo após o jantar, nunca em jejum prolongado noturno',
+                          composicao: 'Gelatina 30 g, chia 8 g, sem mel, sem frutas adicionadas',
+                          mel: 'Proibido',
+                          monitoramento: 'Glicemia capilar pós-prandial (1h e 2h) na primeira semana, avisar médico',
+                        },
+                        {
+                          perfil: 'Jejum intermitente 16:8 ou maior',
+                          subtitulo: 'Janela alimentar fechada antes do sono',
+                          timing: 'Dentro da janela alimentar, no fim do jantar',
+                          composicao: 'Porção completa no jantar; à noite, só chá de Passiflora e camomila',
+                          mel: 'Dentro da janela, opcional',
+                          monitoramento: 'Cetonemia ou cetonúria semanal se for protocolo low carb',
+                        },
+                      ].map((row, i) => (
+                        <tr key={i}
+                          style={{
+                            backgroundColor: i % 2 === 0 ? C.cream : '#f7efe2',
+                            borderTop: `1px solid ${C.borderLight}`,
+                          }}>
+                          <td className="px-5 py-5 align-top">
+                            <p className="font-semibold" style={{ color: C.sage }}>{row.perfil}</p>
+                            <p className="text-xs mt-1 italic" style={{ color: C.inkSoft, opacity: 0.75 }}>{row.subtitulo}</p>
+                          </td>
+                          <td className="px-5 py-5 align-top leading-[1.55]">{row.timing}</td>
+                          <td className="px-5 py-5 align-top leading-[1.55]">{row.composicao}</td>
+                          <td className="px-5 py-5 align-top">
+                            <span className="inline-block px-3 py-1 rounded-full text-xs font-bold"
+                              style={{
+                                backgroundColor: row.mel === 'Proibido' || row.mel === 'Suspender' ? '#f4d5c4' : '#e7e1cf',
+                                color: row.mel === 'Proibido' ? '#8a2f12' : (row.mel === 'Suspender' ? C.terracotta : C.sage),
+                              }}>
+                              {row.mel}
+                            </span>
+                          </td>
+                          <td className="px-5 py-5 align-top leading-[1.55] text-sm">{row.monitoramento}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+
+                <p className="mt-6 text-sm italic leading-[1.6]" style={{ color: C.inkSoft, opacity: 0.85 }}>
+                  Indivíduos em uso de insulina, sulfonilureia ou qualquer hipoglicemiante oral devem
+                  alinhar o ajuste com o médico responsável antes de iniciar o protocolo. A tabela é guia
+                  de calibração, não substitui acompanhamento clínico.
+                </p>
+              </div>
             </motion.div>
 
             <motion.div {...fade(0)} className="mb-14 max-w-3xl">
