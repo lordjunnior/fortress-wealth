@@ -519,6 +519,61 @@ export default function SobremesaSubstituiRivotril() {
         {/* FAQ */}
         <section className="relative py-24 md:py-36 px-6 md:px-12 lg:px-20">
           <div className="max-w-[1100px] mx-auto">
+            {/* OBSERVAÇÃO METABÓLICA, resposta a dúvida sobre glicemia e GH */}
+            <motion.div {...fade(0)} className="mb-20 p-8 md:p-12 rounded-3xl"
+              style={{ backgroundColor: '#fff8ef', border: `1px solid ${C.terraSoft}` }}>
+              <div className="flex items-center gap-3 mb-5">
+                <Activity size={20} style={{ color: C.terracotta }} />
+                <span className="text-xs font-bold" style={{ ...monoStyle, color: C.terracotta }}>
+                  Observação metabólica
+                </span>
+              </div>
+              <h3 className="text-3xl md:text-5xl mb-8 leading-[1.05]" style={{ ...display, color: C.sage }}>
+                Glicemia, GH{' '}
+                <span style={{ ...editorial, color: C.terracotta }}>e janela noturna.</span>
+              </h3>
+              <div className="space-y-5 text-lg md:text-xl leading-[1.7] font-light" style={{ color: C.inkSoft }}>
+                <p>
+                  Este protocolo não tem como objetivo gerar resposta glicêmica elevada. A combinação de
+                  fibra solúvel da chia (8 a 10 g por porção), proteína da gelatina (cerca de 2,5 g de glicina bioativa)
+                  e ausência de açúcar de adição mantém a curva glicêmica achatada, mesmo consumida 30 a 60 minutos
+                  antes de dormir.
+                </p>
+                <p>
+                  A resposta hormonal noturna, incluindo o pico de hormônio do crescimento (GH), depende
+                  principalmente da arquitetura do sono profundo (estágio N3), do controle do cortisol e da ausência
+                  de álcool, não exclusivamente da glicemia. A literatura indexada no PubMed listada acima
+                  documenta o efeito da glicina, da Passiflora e da camomila sobre latência e qualidade do sono,
+                  variáveis que sustentam justamente esse pico fisiológico de GH.
+                </p>
+                <p>
+                  Ainda assim, indivíduos com sensibilidade metabólica, resistência à insulina, diabetes
+                  diagnosticado ou em protocolo de jejum intermitente terapêutico podem se beneficiar de
+                  ajustes simples:
+                </p>
+                <ul className="space-y-3 pl-1">
+                  <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span>
+                    Antecipar a porção para 2 a 3 horas antes de dormir, fora da janela de pico do GH.
+                  </li>
+                  <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span>
+                    Remover por completo o mel cru e qualquer adoçante calórico, mantendo só a base funcional.
+                  </li>
+                  <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span>
+                    Usar apenas o chá de Passiflora e camomila à noite, e consumir a gelatina com chia no
+                    fim do jantar.
+                  </li>
+                  <li className="flex gap-3"><span style={{ color: C.terracotta }}>·</span>
+                    Monitorar glicemia capilar de jejum por 7 a 14 dias se houver dúvida individual.
+                  </li>
+                </ul>
+                <p className="text-base italic" style={{ color: C.inkSoft }}>
+                  O protocolo funciona como base, não como regra rígida. Cada organismo responde de forma
+                  diferente, e o objetivo central permanece o mesmo: reduzir a dependência de psicofármacos
+                  prescritos sem necessidade clínica real.
+                </p>
+              </div>
+            </motion.div>
+
             <motion.div {...fade(0)} className="mb-14 max-w-3xl">
               <span className="text-xs font-bold block mb-4" style={{ ...monoStyle, color: C.terracotta }}>Perguntas honestas</span>
               <h2 className="text-[clamp(2.25rem,5.5vw,5rem)] leading-[1] tracking-tight" style={{ ...display, color: C.sage }}>
