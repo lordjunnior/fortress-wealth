@@ -706,6 +706,52 @@ const Index = () => {
           <AlertBanner />
         </NobelSection>
 
+        {/* ── HOT NEWS HOOK: Bybit + Binance reportam brasileiros ── */}
+        <NobelSection className="section-divider px-5 md:px-10 lg:px-14" delay={0.05}>
+          <div className="max-w-6xl mx-auto">
+            <Link
+              to="/soberania-financeira/exchanges-privacidade-e-kyc/bybit-binance-reportam-brasileiros"
+              className="group block rounded-2xl overflow-hidden border transition-all hover:-translate-y-0.5"
+              style={{ backgroundColor: '#0e3b3a', borderColor: 'rgba(232,163,107,0.35)' }}
+            >
+              <div className="grid md:grid-cols-[1.1fr,1fr]">
+                <div className="p-7 md:p-10 flex flex-col justify-center">
+                  <div className="inline-flex items-center gap-2 self-start px-3 py-1.5 rounded-full mb-5"
+                    style={{ backgroundColor: 'rgba(232,163,107,0.15)', border: '1px solid rgba(232,163,107,0.35)' }}>
+                    <ShieldAlert size={14} style={{ color: '#ffb37a' }} />
+                    <span className="text-[10px] font-bold tracking-[0.3em] uppercase" style={{ color: '#ffb37a' }}>
+                      Notícia quente · 2026
+                    </span>
+                  </div>
+                  <h3 className="text-2xl md:text-4xl font-black leading-[1.05] mb-4"
+                    style={{ fontFamily: "'Inter Tight', sans-serif", color: '#f4ede4' }}>
+                    Bybit e Binance{' '}
+                    <span style={{ color: '#ffb37a', fontStyle: 'italic', fontWeight: 400, fontFamily: "'Playfair Display', serif" }}>
+                      passaram a reportar brasileiros.
+                    </span>
+                  </h3>
+                  <p className="text-base md:text-lg leading-relaxed mb-6 font-light" style={{ color: 'rgba(244,237,228,0.82)' }}>
+                    Quais são as alternativas reais que ainda funcionam, como blindar seu patrimônio em camadas e qual janela ainda está aberta antes da próxima fechar.
+                  </p>
+                  <span className="inline-flex items-center gap-2 text-sm font-bold transition-transform group-hover:translate-x-1" style={{ color: '#ffb37a' }}>
+                    Ler análise completa <ArrowRight size={16} />
+                  </span>
+                </div>
+                <div className="relative h-56 md:h-auto min-h-[260px] overflow-hidden order-first md:order-last">
+                  <img
+                    src="/src/assets/exchanges/bybit-binance-hero.jpg"
+                    alt="Globo terrestre representando o Brasil envolto em malha de vigilância digital"
+                    loading="lazy"
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    style={{ filter: 'brightness(0.85) saturate(1.05)' }}
+                  />
+                  <div className="absolute inset-0 md:bg-gradient-to-r md:from-[#0e3b3a] md:via-transparent md:to-transparent" />
+                </div>
+              </div>
+            </Link>
+          </div>
+        </NobelSection>
+
         <NobelSection id="manifesto" className="section-divider">
           <ManifestoSection />
         </NobelSection>
