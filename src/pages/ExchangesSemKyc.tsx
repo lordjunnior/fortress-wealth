@@ -27,6 +27,12 @@ const fadeUp = {
 /* ── Active Reviews ── */
 const ACTIVE_REVIEWS = [
   {
+    name: 'Bybit e Binance reportam brasileiros',
+    desc: 'Análise quente de 2026: o que mudou nas duas maiores corretoras e quais alternativas privadas ainda estão de pé.',
+    type: 'Notícia tática',
+    link: '/soberania-financeira/exchanges-privacidade-e-kyc/bybit-binance-reportam-brasileiros',
+  },
+  {
     name: 'KYCNot.me',
     desc: 'Diretório que agrega e ranqueia plataformas por nível de privacidade.',
     type: 'Diretório',
