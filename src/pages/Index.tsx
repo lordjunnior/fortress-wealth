@@ -8,6 +8,7 @@ import cardConfiscoBtc from "@/assets/card-confisco-bitcoin.jpg";
 import cardPixAnonimo from "@/assets/card-pix-anonimo.jpg";
 import cardMultisig from "@/assets/card-multisig.jpg";
 import cardLeiConta from "@/assets/card-lei-conta.jpg";
+import bybitBinanceHook from "@/assets/exchanges/bybit-binance-hero.jpg";
 import { Helmet } from "react-helmet-async";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { gsap } from "gsap";
@@ -739,7 +740,7 @@ const Index = () => {
                 </div>
                 <div className="relative h-56 md:h-auto min-h-[260px] overflow-hidden order-first md:order-last">
                   <img
-                    src="/src/assets/exchanges/bybit-binance-hero.jpg"
+                    src={bybitBinanceHook}
                     alt="Globo terrestre representando o Brasil envolto em malha de vigilância digital"
                     loading="lazy"
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
