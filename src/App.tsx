@@ -85,6 +85,7 @@ import DepixReporte from "./pages/DepixReporte";
 import OptimaExchange from "./pages/OptimaExchange";
 import PegasusSwap from "./pages/PegasusSwap";
 import BybitBinanceReportam from "./pages/exchanges/BybitBinanceReportam";
+import RicosNaoInvestemFiis from "./pages/mercado-tradicional/RicosNaoInvestemFiis";
 import GrabrFi from "./pages/GrabrFi";
 import ExchangesSemKyc from "./pages/ExchangesSemKyc";
 import KucoinPayPix from "./pages/KucoinPayPix";
