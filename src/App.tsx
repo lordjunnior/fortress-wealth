@@ -244,6 +244,7 @@ const App = () => (
           <Route path="/soberania-financeira/exchanges-privacidade-e-kyc/optima-exchange" element={<OptimaExchange />} />
           <Route path="/soberania-financeira/exchanges-privacidade-e-kyc/pegasus-swap" element={<PegasusSwap />} />
           <Route path="/soberania-financeira/exchanges-privacidade-e-kyc/bybit-binance-reportam-brasileiros" element={<BybitBinanceReportam />} />
+          <Route path="/mercado-tradicional/ricos-nao-investem-fiis" element={<RicosNaoInvestemFiis />} />
           <Route path="/soberania-financeira/exchanges-sem-kyc" element={<LegacyRedirect to="/soberania-financeira/exchanges-privacidade-e-kyc" />} />
           <Route path="/soberania-financeira/exchanges-sem-kyc/kycnot-me" element={<LegacyRedirect to="/soberania-financeira/exchanges-privacidade-e-kyc/kycnot-me" />} />
           <Route path="/soberania-financeira/exchanges-sem-kyc/optima-exchange" element={<LegacyRedirect to="/soberania-financeira/exchanges-privacidade-e-kyc/optima-exchange" />} />
