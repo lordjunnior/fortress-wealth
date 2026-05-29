@@ -754,6 +754,52 @@ const Index = () => {
           </div>
         </NobelSection>
 
+        {/* ── HOT NEWS HOOK: Por que os ricos não investem em FIIs ── */}
+        <NobelSection className="section-divider px-5 md:px-10 lg:px-14" delay={0.05}>
+          <div className="max-w-6xl mx-auto">
+            <Link
+              to="/mercado-tradicional/ricos-nao-investem-fiis"
+              className="group block rounded-2xl overflow-hidden border transition-all hover:-translate-y-0.5"
+              style={{ backgroundColor: '#faf6f0', borderColor: 'rgba(196,99,42,0.35)' }}
+            >
+              <div className="grid md:grid-cols-[1fr,1.1fr]">
+                <div className="relative h-56 md:h-auto min-h-[260px] overflow-hidden">
+                  <img
+                    src={fiisHook}
+                    alt="Jornal financeiro sobre mesa de mármore com óculos de leitura e xícara de café espresso, retrato do investidor analisando o mercado"
+                    loading="lazy"
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    style={{ filter: 'brightness(0.92) saturate(1.05)' }}
+                  />
+                  <div className="absolute inset-0 md:bg-gradient-to-l md:from-[#faf6f0] md:via-transparent md:to-transparent" />
+                </div>
+                <div className="p-7 md:p-10 flex flex-col justify-center">
+                  <div className="inline-flex items-center gap-2 self-start px-3 py-1.5 rounded-full mb-5"
+                    style={{ backgroundColor: 'rgba(196,99,42,0.12)', border: '1px solid rgba(196,99,42,0.35)' }}>
+                    <AlertTriangle size={14} style={{ color: '#c4632a' }} />
+                    <span className="text-[10px] font-bold tracking-[0.3em] uppercase" style={{ color: '#c4632a' }}>
+                      Mercado tradicional · Análise viral
+                    </span>
+                  </div>
+                  <h3 className="text-2xl md:text-4xl font-black leading-[1.05] mb-4"
+                    style={{ fontFamily: "'Inter Tight', sans-serif", color: '#171612' }}>
+                    Por que os ricos{' '}
+                    <span style={{ color: '#c4632a', fontStyle: 'italic', fontWeight: 400, fontFamily: "'Playfair Display', serif" }}>
+                      não investem em FIIs?
+                    </span>
+                  </h3>
+                  <p className="text-base md:text-lg leading-relaxed mb-6 font-light" style={{ color: '#3a3a3a' }}>
+                    74% dos cotistas são pessoa física. A manchete sugere conspiração. A verdade é outra: liquidez, escala e o motivo real de a baleia ficar fora dessa piscina.
+                  </p>
+                  <span className="inline-flex items-center gap-2 text-sm font-bold transition-transform group-hover:translate-x-1" style={{ color: '#c4632a' }}>
+                    Ler análise completa <ArrowRight size={16} />
+                  </span>
+                </div>
+              </div>
+            </Link>
+          </div>
+        </NobelSection>
+
         <NobelSection id="manifesto" className="section-divider">
           <ManifestoSection />
         </NobelSection>
