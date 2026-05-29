@@ -9,6 +9,7 @@ import cardPixAnonimo from "@/assets/card-pix-anonimo.jpg";
 import cardMultisig from "@/assets/card-multisig.jpg";
 import cardLeiConta from "@/assets/card-lei-conta.jpg";
 import bybitBinanceHook from "@/assets/exchanges/bybit-binance-hero.jpg";
+import fiisHook from "@/assets/mercado-tradicional/card-home-fiis.jpg";
 import { Helmet } from "react-helmet-async";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { gsap } from "gsap";
