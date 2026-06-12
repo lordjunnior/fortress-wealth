@@ -226,6 +226,19 @@ const FooterSection = () => {
            <p className="font-mono text-xs text-muted-foreground tracking-wider">
               &copy; LORD JUNNIOR &middot; 2026 <SimboloOculto id="raiz" className="ml-1.5 align-middle" />
             </p>
+            <div className="mt-3 flex items-center justify-center gap-4 text-xs">
+              <Link to="/sobre" className="text-muted-foreground hover:text-gold transition-colors tracking-wider uppercase">
+                Sobre
+              </Link>
+              <span className="text-muted-foreground/30">&middot;</span>
+              <Link to="/ferramentas" className="text-muted-foreground hover:text-gold transition-colors tracking-wider uppercase">
+                Ferramentas
+              </Link>
+              <span className="text-muted-foreground/30">&middot;</span>
+              <Link to="/ebooks" className="text-muted-foreground hover:text-gold transition-colors tracking-wider uppercase">
+                E-books
+              </Link>
+            </div>
           </div>
         </div>
       </div>
