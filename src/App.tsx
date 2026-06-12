@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import Index from "./pages/Index";
+import Sobre from "./pages/Sobre";
 import BitcoinVsImovel from "./pages/BitcoinVsImovel";
 import TaxaDeFuga from "./pages/TaxaDeFuga";
 import Economia from "./pages/Economia";
@@ -186,6 +187,7 @@ const App = () => (
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/sobre" element={<Sobre />} />
           <Route path="/bitcoin-vs-imovel" element={<BitcoinVsImovel />} />
           <Route path="/taxa-de-fuga" element={<TaxaDeFuga />} />
           <Route path="/economia" element={<Economia />} />
