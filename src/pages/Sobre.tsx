@@ -15,6 +15,13 @@ import {
   Target,
   Flag,
   Eye,
+  Award,
+  CalendarClock,
+  Newspaper,
+  Apple,
+  Code2,
+  Library as LibraryIcon,
+  Mic,
 } from "lucide-react";
 import heroImg from "@/assets/sobre/hero-lord-junnior.jpg";
 import bitcoinImg from "@/assets/sobre/missao-bitcoin.jpg";
@@ -469,12 +476,246 @@ const Sobre: React.FC = () => {
         </div>
       </section>
 
+      {/* CREDENCIAIS */}
+      <section className="py-24 md:py-40 px-6 md:px-10">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-12 gap-12 md:gap-16 mb-16">
+            <div className="md:col-span-5">
+              <Kicker>07. Credenciais</Kicker>
+              <div className="flex items-center gap-4 mb-6">
+                <Award className="w-10 h-10" style={{ color: COPPER }} />
+              </div>
+              <H2>Por que ouvir quem está falando.</H2>
+            </div>
+            <div className="md:col-span-7 md:pt-6">
+              <Body large>
+                Diploma não protege ninguém de confisco, de inflação ou de censura. O que protege é
+                tempo de banco apanhado, ferramenta construída, código escrito, manual publicado.
+                Aqui vai o histórico que sustenta cada linha desta plataforma.
+              </Body>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-5">
+            {[
+              {
+                icon: Apple,
+                title: "10 anos como técnico especializado Apple",
+                desc: "Década inteira dentro do ecossistema mais hermético do mercado, resolvendo o que ninguém mais resolveu, em hardware, software e logística de reparo.",
+              },
+              {
+                icon: Code2,
+                title: "Experiência profunda em tecnologia",
+                desc: "Vivência prática com redes, sistemas, hardware embarcado, criptografia aplicada e arquitetura de aplicações web modernas.",
+              },
+              {
+                icon: Wrench,
+                title: "Desenvolvimento de ferramentas próprias",
+                desc: "Simuladores, calculadoras de soberania, geradores de entropia e índices de risco — código próprio, hospedagem própria, sem dependência de terceiros.",
+              },
+              {
+                icon: Compass,
+                title: "Plataforma editorial proprietária",
+                desc: "Site, infraestrutura, design system, busca interna e progressão de leitura, tudo construído do zero para entregar conhecimento em alta densidade.",
+              },
+              {
+                icon: BookOpen,
+                title: "Produção autoral de e-books",
+                desc: "Manuais técnicos escritos, revisados e diagramados internamente, com profundidade de livro de referência, não de panfleto de curso.",
+              },
+              {
+                icon: Headphones,
+                title: "Produção autoral de audiobooks",
+                desc: "Roteiro, narração e edição feitos em casa, com padrão de estúdio, para entregar o mesmo conteúdo em formato auditivo.",
+              },
+              {
+                icon: Bitcoin,
+                title: "Estudos contínuos em Bitcoin e autocustódia",
+                desc: "Anos de leitura técnica, white papers, BIPs, debates de desenvolvedores, prática real com hardware wallets, multisig, Lightning e privacidade on-chain.",
+              },
+              {
+                icon: Globe2,
+                title: "Pesquisa aplicada em geopolítica e jurisdições",
+                desc: "Análise comparativa de regimes fiscais, programas de residência, rotas de saída e regulação global de cripto, com atualização semanal.",
+              },
+            ].map((c) => (
+              <div
+                key={c.title}
+                className="p-6 md:p-7 rounded-sm border flex gap-5"
+                style={{
+                  borderColor: "rgba(23,22,18,0.10)",
+                  background: SAND_DEEP,
+                }}
+              >
+                <div
+                  className="w-12 h-12 rounded-sm flex items-center justify-center flex-shrink-0"
+                  style={{ background: INK }}
+                >
+                  <c.icon className="w-5 h-5" style={{ color: COPPER_LIGHT }} />
+                </div>
+                <div>
+                  <h3
+                    className="text-lg md:text-xl mb-2 leading-tight"
+                    style={{ fontFamily: "'Inter Tight', sans-serif", fontWeight: 800, color: INK }}
+                  >
+                    {c.title}
+                  </h3>
+                  <p
+                    className="text-[15px] leading-relaxed"
+                    style={{ fontFamily: "'Inter Tight', sans-serif", color: "rgba(23,22,18,0.72)" }}
+                  >
+                    {c.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* LINHA DO TEMPO */}
+      <section className="py-24 md:py-40 px-6 md:px-10" style={{ background: INK, color: SAND }}>
+        <div className="max-w-6xl mx-auto">
+          <div className="max-w-3xl mb-20">
+            <Kicker light>08. Linha do tempo</Kicker>
+            <div className="flex items-center gap-4 mb-6">
+              <CalendarClock className="w-10 h-10" style={{ color: COPPER_LIGHT }} />
+            </div>
+            <H2 light>Doze anos de obsessão por soberania.</H2>
+            <div className="h-6" />
+            <Body light large>
+              Não foi do dia para a noite. Cada degrau abaixo representa anos de leitura, teste e
+              erro pago do bolso.
+            </Body>
+          </div>
+
+          <div className="relative">
+            {/* Vertical line */}
+            <div
+              className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px md:-translate-x-px"
+              style={{ background: "rgba(250,246,240,0.15)" }}
+            />
+
+            {[
+              { year: "2014", title: "Início dos estudos em Bitcoin", desc: "Primeiro contato sério com o white paper, com nodes, com hardware wallets e com a tese de reserva de valor digital." },
+              { year: "2018", title: "Primeiros materiais publicados", desc: "Conteúdo organizado começa a sair para amigos, clientes e comunidade. Surge o embrião do que viraria a plataforma." },
+              { year: "2024", title: "Lançamento das ferramentas", desc: "Vai ao ar o primeiro pacote de simuladores, calculadoras e índices de soberania, todos gratuitos e sem cadastro." },
+              { year: "2025", title: "Criação da biblioteca", desc: "Linha de e-books e audiobooks autorais nasce, transformando manuais soltos em obras completas, revisadas e diagramadas." },
+              { year: "2026", title: "Expansão da plataforma", desc: "Novos silos de conteúdo, dossiês investigativos, parcerias técnicas e construção da maior biblioteca em português sobre soberania individual." },
+            ].map((m, idx) => (
+              <div
+                key={m.year}
+                className={`relative mb-12 md:mb-16 grid md:grid-cols-2 gap-6 md:gap-16 items-start ${
+                  idx % 2 === 0 ? "" : "md:[&>*:first-child]:order-2"
+                }`}
+              >
+                {/* Dot */}
+                <div
+                  className="absolute left-4 md:left-1/2 -translate-x-1/2 w-3 h-3 rounded-full mt-3"
+                  style={{ background: COPPER, boxShadow: `0 0 0 4px ${INK}, 0 0 0 5px ${COPPER}` }}
+                />
+                <div className={`pl-12 md:pl-0 ${idx % 2 === 0 ? "md:text-right md:pr-12" : "md:pl-12"}`}>
+                  <div
+                    className="text-5xl md:text-6xl mb-2"
+                    style={{ fontFamily: "'Inter Tight', sans-serif", fontWeight: 900, color: COPPER_LIGHT, letterSpacing: "-0.03em" }}
+                  >
+                    {m.year}
+                  </div>
+                  <h3
+                    className="text-xl md:text-2xl"
+                    style={{ fontFamily: "'Inter Tight', sans-serif", fontWeight: 800, color: SAND }}
+                  >
+                    {m.title}
+                  </h3>
+                </div>
+                <div className={`pl-12 md:pl-0 ${idx % 2 === 0 ? "md:pl-12" : "md:text-right md:pr-12"}`}>
+                  <p
+                    className="text-base md:text-lg leading-relaxed"
+                    style={{ fontFamily: "'Inter Tight', sans-serif", color: "rgba(250,246,240,0.78)" }}
+                  >
+                    {m.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* NA MÍDIA */}
+      <section className="py-24 md:py-40 px-6 md:px-10">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-12 gap-12 md:gap-16 mb-16">
+            <div className="md:col-span-5">
+              <Kicker>09. Na mídia</Kicker>
+              <div className="flex items-center gap-4 mb-6">
+                <Newspaper className="w-10 h-10" style={{ color: COPPER }} />
+              </div>
+              <H2>Onde o projeto aparece.</H2>
+            </div>
+            <div className="md:col-span-7 md:pt-6">
+              <Body large>
+                Espaço reservado para podcasts, canais, artigos e veículos que citarem o trabalho.
+                A lista começa enxuta de propósito, vai crescendo na medida em que pessoas sérias
+                resolverem conversar.
+              </Body>
+              <div className="h-4" />
+              <Body>
+                Se você produz mídia e quer fazer uma conversa de profundidade, escreva diretamente
+                pelo contato no fim desta página.
+              </Body>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-5">
+            {[
+              { icon: Mic, label: "Podcast", desc: "Aguardando primeira participação confirmada." },
+              { icon: Eye, label: "Canal de vídeo", desc: "Aguardando primeira entrevista confirmada." },
+              { icon: Newspaper, label: "Artigo ou reportagem", desc: "Aguardando primeira citação editorial." },
+            ].map((m) => (
+              <div
+                key={m.label}
+                className="p-8 rounded-sm border border-dashed flex flex-col items-start"
+                style={{ borderColor: "rgba(23,22,18,0.18)", background: "rgba(23,22,18,0.02)" }}
+              >
+                <m.icon className="w-8 h-8 mb-5" style={{ color: COPPER }} />
+                <div
+                  className="text-[10px] font-bold tracking-[0.3em] uppercase mb-3"
+                  style={{ color: COPPER }}
+                >
+                  Em breve
+                </div>
+                <h3
+                  className="text-2xl mb-3"
+                  style={{ fontFamily: "'Inter Tight', sans-serif", fontWeight: 800, color: INK }}
+                >
+                  {m.label}
+                </h3>
+                <p
+                  className="text-base leading-relaxed"
+                  style={{ fontFamily: "'Inter Tight', sans-serif", color: "rgba(23,22,18,0.65)" }}
+                >
+                  {m.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <p
+            className="mt-12 text-sm tracking-[0.2em] uppercase text-center"
+            style={{ fontFamily: "'Inter Tight', sans-serif", color: "rgba(23,22,18,0.45)", fontWeight: 600 }}
+          >
+            Tem interesse em mencionar este trabalho? Escreva pelo contato abaixo.
+          </p>
+        </div>
+      </section>
+
       {/* FERRAMENTAS / EBOOKS / AUDIOBOOKS */}
       <section className="py-24 md:py-40 px-6 md:px-10" style={{ background: SAND_DEEP }}>
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-12 gap-12 md:gap-16 items-center mb-20">
             <div className="md:col-span-5">
-              <Kicker>07. Catálogo</Kicker>
+              <Kicker>10. Catálogo</Kicker>
               <H2>Ferramentas gratuitas, e-books e audiobooks.</H2>
             </div>
             <div className="md:col-span-7 md:pt-4">
@@ -617,7 +858,7 @@ const Sobre: React.FC = () => {
       {/* CONTATO */}
       <section className="py-24 md:py-40 px-6 md:px-10">
         <div className="max-w-5xl mx-auto text-center">
-          <Kicker>10. Contato</Kicker>
+          <Kicker>11. Contato</Kicker>
           <H2>Antes de escrever, leia o que já está escrito.</H2>
           <div className="h-8" />
           <div className="max-w-3xl mx-auto">
