@@ -191,7 +191,7 @@ function ProfileBlock() {
             style={{ borderColor: `${CYAN_DIM}80` }}
           >
             <img
-              src="[https://res.cloudinary.com/dcgkqpg2w/image/upload/v1781309270/Homem_quieto_em_foto_dram%C3%A1tica_ztrqxy.png](https://res.cloudinary.com/dcgkqpg2w/image/upload/v1781309270/Homem_quieto_em_foto_dram%C3%A1tica_ztrqxy.png)"
+              src="https://res.cloudinary.com/dcgkqpg2w/image/upload/v1781309270/Homem_quieto_em_foto_dram%C3%A1tica_ztrqxy.png"
               alt="Lord Junnior"
               className="w-full h-full object-cover grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
             />
@@ -238,9 +238,9 @@ function ProfileBlock() {
 
       <div className="flex items-center gap-3 mt-auto pt-2 border-t border-white/5">
         {[
-          { icon: Instagram, label: "Instagram", url: "[https://instagram.com/lordjunnior](https://instagram.com/lordjunnior)" },
-          { icon: Twitter, label: "X / Twitter", url: "[https://x.com/lordjunnior](https://x.com/lordjunnior)" },
-          { icon: Github, label: "GitHub", url: "[https://github.com/lordjunnior](https://github.com/lordjunnior)" },
+          { icon: Instagram, label: "Instagram", url: "https://instagram.com/lordjunnior" },
+          { icon: Twitter, label: "X / Twitter", url: "https://x.com/lordjunnior" },
+          { icon: Github, label: "GitHub", url: "https://github.com/lordjunnior" },
           { icon: Mail, label: "E-mail", url: "mailto:contato@lordjunnior.com.br" },
         ].map(({ icon: Icon, label, url }) => (
           <motion.a
@@ -788,12 +788,12 @@ function Footer() {
 // ─── MAIN PORTFOLIO COMPONENT ──────────────────────────────────────────────────
 export default function Sobre() {
   const personSchema = {
-    "@context": "[https://schema.org](https://schema.org)",
+    "@context": "https://schema.org",
     "@type": "Person",
     name: "Lord Junnior",
     alternateName: "Lord Junnior",
-    url: "[https://lordjunnior.com.br](https://lordjunnior.com.br)",
-    image: "[https://res.cloudinary.com/dcgkqpg2w/image/upload/v1781309270/Homem_quieto_em_foto_dram%C3%A1tica_ztrqxy.png](https://res.cloudinary.com/dcgkqpg2w/image/upload/v1781309270/Homem_quieto_em_foto_dram%C3%A1tica_ztrqxy.png)",
+    url: "https://lordjunnior.com.br",
+    image: "https://res.cloudinary.com/dcgkqpg2w/image/upload/v1781309270/Homem_quieto_em_foto_dram%C3%A1tica_ztrqxy.png",
     jobTitle: "Educador em Soberania Individual, Bitcoin e Geopolítica",
     description:
       "Lord Junnior é educador brasileiro focado em Bitcoin, autocustódia, geopolítica e privacidade digital. Constrói a maior plataforma em português sobre soberania individual.",
@@ -807,23 +807,23 @@ export default function Sobre() {
       "Desenvolvimento Web",
     ],
     sameAs: [
-      "[https://instagram.com/lordjunnior](https://instagram.com/lordjunnior)",
-      "[https://youtube.com/@lordjunnior](https://youtube.com/@lordjunnior)",
-      "[https://x.com/lordjunnior](https://x.com/lordjunnior)",
+      "https://instagram.com/lordjunnior",
+      "https://youtube.com/@lordjunnior",
+      "https://x.com/lordjunnior",
     ],
     worksFor: {
       "@type": "Organization",
       name: "Lord Junnior",
-      url: "[https://lordjunnior.com.br](https://lordjunnior.com.br)",
+      url: "https://lordjunnior.com.br",
     },
   };
 
   const breadcrumbSchema = {
-    "@context": "[https://schema.org](https://schema.org)",
+    "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Início", item: "[https://lordjunnior.com.br/](https://lordjunnior.com.br/)" },
-      { "@type": "ListItem", position: 2, name: "Sobre", item: "[https://lordjunnior.com.br/sobre](https://lordjunnior.com.br/sobre)" },
+      { "@type": "ListItem", position: 1, name: "Início", item: "https://lordjunnior.com.br/" },
+      { "@type": "ListItem", position: 2, name: "Sobre", item: "https://lordjunnior.com.br/sobre" },
     ],
   };
 
@@ -838,13 +838,13 @@ export default function Sobre() {
           name="description"
           content="Pesquisador, construtor e estrategista brasileiro. Conhecimento prático e ferramentas sobre autodefesa financeira, geopolítica e privacidade digital."
         />
-        <link rel="canonical" href="[https://lordjunnior.com.br/sobre](https://lordjunnior.com.br/sobre)" />
+        <link rel="canonical" href="https://lordjunnior.com.br/sobre" />
         <meta property="og:title" content="Sobre Lord Junnior" />
         <meta
           property="og:description"
           content="A história, a missão e o porquê do maior projeto em português sobre Bitcoin, geopolítica e soberania individual."
         />
-        <meta property="og:url" content="[https://lordjunnior.com.br/sobre](https://lordjunnior.com.br/sobre)" />
+        <meta property="og:url" content="https://lordjunnior.com.br/sobre" />
         <meta property="og:type" content="profile" />
         <script type="application/ld+json">{JSON.stringify(personSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
@@ -919,5 +919,3 @@ export default function Sobre() {
     </div>
   );
 }
-
-```
