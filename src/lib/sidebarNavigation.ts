@@ -5,7 +5,7 @@ import {
   Landmark, CreditCard, ArrowRightLeft, Building2, Wallet,
   Fingerprint, Radio, Droplets, Sun, Heart, Bug, Sprout,
   Package, Beef, Mountain, Scroll, Brain, Flame, FileWarning,
-  Smartphone, Factory, BookOpenCheck
+  Smartphone, Factory, BookOpenCheck, User
 } from "lucide-react";
 
 export interface NavItem {
@@ -29,6 +29,7 @@ export const topNavItems: NavItem[] = [
   { label: "Mapa da Soberania", route: "/mapa-da-soberania", icon: Map },
   { label: "Protocolo Inicial", route: "/protocolo-inicial", icon: ShieldAlert, alert: true },
   { label: "Manifesto", targetId: "manifesto", icon: LayoutGrid },
+  { label: "Sobre Lord Junnior", route: "/sobre", icon: User },
 ];
 
 export const navGroups: NavGroup[] = [
