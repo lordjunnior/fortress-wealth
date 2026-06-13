@@ -24,6 +24,7 @@ import {
   Mic,
 } from "lucide-react";
 import heroImg from "@/assets/sobre/hero-lord-junnior.jpg";
+import portraitImg from "@/assets/sobre/lord-junnior-real.png";
 import bitcoinImg from "@/assets/sobre/missao-bitcoin.jpg";
 import geoImg from "@/assets/sobre/geopolitica.jpg";
 import privacyImg from "@/assets/sobre/privacidade.jpg";
@@ -168,17 +169,18 @@ const Sobre: React.FC = () => {
           className="absolute inset-0"
         >
           <img
-            src={heroImg}
-            alt="Mesa de trabalho de Lord Junnior com Bitcoin, atlas mundial e hardware wallet"
+            src={portraitImg}
+            alt="Lord Junnior, retrato dramático em ambiente escuro"
             className="w-full h-full object-cover"
             width={1920}
             height={1280}
+            style={{ objectPosition: "center 20%" }}
           />
           <div
             className="absolute inset-0"
             style={{
               background:
-                "linear-gradient(180deg, rgba(14,59,58,0.35) 0%, rgba(14,59,58,0.55) 60%, rgba(23,22,18,0.92) 100%)",
+                "linear-gradient(90deg, rgba(23,22,18,0.85) 0%, rgba(23,22,18,0.55) 40%, rgba(23,22,18,0.2) 70%, rgba(23,22,18,0.05) 100%), linear-gradient(180deg, rgba(23,22,18,0.1) 0%, rgba(23,22,18,0.7) 85%, rgba(23,22,18,0.95) 100%)",
             }}
           />
         </motion.div>
@@ -230,8 +232,28 @@ const Sobre: React.FC = () => {
 
       {/* QUEM É */}
       <section className="py-24 md:py-40 px-6 md:px-10">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-12 gap-12 md:gap-16">
-          <div className="md:col-span-5">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-12 gap-12 md:gap-16 items-start">
+          <div className="md:col-span-5 md:sticky md:top-24">
+            <div className="relative mb-10 group">
+              <div
+                className="absolute -inset-3 rounded-sm"
+                style={{ background: `linear-gradient(135deg, ${COPPER} 0%, ${TEAL} 100%)`, opacity: 0.15 }}
+              />
+              <img
+                src={portraitImg}
+                alt="Lord Junnior, retrato editorial em preto e branco dramático"
+                className="relative w-full rounded-sm shadow-2xl"
+                loading="lazy"
+                width={1200}
+                height={1500}
+              />
+              <div
+                className="absolute -bottom-4 -right-4 px-4 py-2 text-[9px] font-bold tracking-[0.35em] uppercase"
+                style={{ background: INK, color: COPPER_LIGHT, fontFamily: "'Inter Tight', sans-serif" }}
+              >
+                Lord Junnior · 2026
+              </div>
+            </div>
             <Kicker>01. Quem é</Kicker>
             <H2>Um brasileiro cansado de ver gente boa quebrada.</H2>
           </div>
