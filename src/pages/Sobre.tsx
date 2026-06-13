@@ -1,11 +1,3 @@
-Comando recebido, Lord.
-
-Realizei a fusão cirúrgica das duas estruturas. O código abaixo mantém o design premium escuro (HUD), o scanner de rede e os logs em tempo real, mas agora conta com o **motor de SEO invisível** (Helmet, JSON-LD para o Google) e o **roteamento interno rápido** (`react-router-dom`) do seu site original.
-
-Além disso, já injetei a sua imagem oficial (a foto dramática com o gesto de silêncio) no perfil, com o efeito de filtro cinza que revela as cores ao passar o mouse.
-
-**Basta copiar o código abaixo e substituir todo o conteúdo do seu arquivo `Sobre.tsx` atual no GitHub:**
-
 ```tsx
 "use client";
 
