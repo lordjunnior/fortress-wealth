@@ -25,11 +25,11 @@ export interface NavGroup {
 }
 
 export const topNavItems: NavItem[] = [
+  { label: "Sobre Lord Junnior", route: "/sobre", icon: User },
   { label: "Por onde começar?", route: "/por-onde-comecar", icon: Compass },
   { label: "Mapa da Soberania", route: "/mapa-da-soberania", icon: Map },
   { label: "Protocolo Inicial", route: "/protocolo-inicial", icon: ShieldAlert, alert: true },
   { label: "Manifesto", targetId: "manifesto", icon: LayoutGrid },
-  { label: "Sobre Lord Junnior", route: "/sobre", icon: User },
 ];
 
 export const navGroups: NavGroup[] = [
