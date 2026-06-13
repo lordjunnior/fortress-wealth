@@ -1,4 +1,3 @@
-```tsx
 "use client";
 
 import React, { useRef, useState, useEffect } from "react";
@@ -31,6 +30,7 @@ import {
   Radio,
   BookOpen,
   Code2,
+  ChevronLeft // <-- IMPORT ADICIONADO AQUI
 } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
@@ -711,7 +711,6 @@ function SystemStatusBlock() {
         <p className="text-[10px] text-zinc-400 leading-snug mb-2">
           Acesse os manuais e ferramentas de autocustódia.
         </p>
-        {/* Transformado em Link do React Router para não recarregar a página */}
         <Link
           to="/ebooks"
           className="w-full flex items-center justify-center gap-1 rounded px-2 py-1.5 text-[10px] font-mono font-bold tracking-widest transition-all hover:scale-[1.02] active:scale-[0.97]"
@@ -788,7 +787,6 @@ function Footer() {
 
 // ─── MAIN PORTFOLIO COMPONENT ──────────────────────────────────────────────────
 export default function Sobre() {
-  // Configurações de SEO integradas do arquivo anterior para manter seu ranqueamento
   const personSchema = {
     "@context": "https://schema.org",
     "@type": "Person",
@@ -866,6 +864,17 @@ export default function Sobre() {
         />
       </div>
 
+      {/* NOVO: COMANDO DE RETORNO À BASE */}
+      <div className="relative z-20 max-w-[1280px] mx-auto px-4 sm:px-6 pt-6 pb-2">
+        <Link
+          to="/"
+          className="inline-flex items-center gap-2 text-[10px] font-mono tracking-widest uppercase text-zinc-500 hover:text-cyan-400 transition-colors"
+        >
+          <ChevronLeft size={14} />
+          Retornar à Base
+        </Link>
+      </div>
+
       <div className="relative z-10 max-w-[1280px] mx-auto px-4 sm:px-6 py-6 space-y-4">
 
         {/* ── ROW 1: Profile + Hero + System Status ─────────────────────── */}
@@ -910,5 +919,3 @@ export default function Sobre() {
     </div>
   );
 }
-
-```
