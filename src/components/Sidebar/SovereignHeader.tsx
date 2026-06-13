@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Instagram, Youtube, Twitter, Github, Zap } from "lucide-react";
+import { Link } from "react-router-dom";
 import profilePhoto from "@/assets/profile-photo.jpg";
 import { useReadingProgress } from "@/hooks/useReadingProgress";
 
@@ -62,8 +63,11 @@ const SovereignHeader = () => {
           />
         </svg>
 
-        {/* Square photo */}
-        <div className="rounded-2xl overflow-hidden border border-border/20 shadow-[0_0_50px_-8px_hsl(var(--gold)/0.35)] relative z-10"
+        {/* Square photo — links to /sobre */}
+        <Link
+          to="/sobre"
+          aria-label="Conheça Lord Junnior"
+          className="rounded-2xl overflow-hidden border border-border/20 shadow-[0_0_50px_-8px_hsl(var(--gold)/0.35)] relative z-10 block"
           style={{ width: `${imageSize}px`, height: `${imageSize}px` }}
         >
           <img
@@ -72,16 +76,21 @@ const SovereignHeader = () => {
             className="w-full h-full object-cover brightness-90 saturate-90 group-hover:brightness-100 group-hover:saturate-100 transition-all duration-700"
             onError={(e) => { e.currentTarget.style.display = "none"; }}
           />
-        </div>
+        </Link>
       </div>
 
       {/* Authority Title */}
-      <h2 className="text-lg font-black text-foreground tracking-tight mt-4 uppercase">
-        Lord Junnior
-      </h2>
-      <p className="font-mono text-[9px] tracking-[0.2em] text-muted-foreground/60 mt-0.5 uppercase">
-        Estrategista de Soberania
-      </p>
+      <Link to="/sobre" className="block mt-4 group/title">
+        <h2 className="text-lg font-black text-foreground tracking-tight uppercase group-hover/title:text-gold transition-colors">
+          Lord Junnior
+        </h2>
+        <p className="font-mono t-[9px] text-[9px] tracking-[0.2em] text-muted-foreground/60 mt-0.5 uppercase">
+          Estrategista de Soberania
+        </p>
+        <p className="font-mono text-[8px] tracking-[0.25em] text-gold/70 mt-1 uppercase opacity-70 group-hover/title:opacity-100 transition-opacity">
+          Conheça a história →
+        </p>
+      </Link>
 
       {/* Progress Badge */}
       <div className="flex items-center gap-1.5 mt-3 bg-card/80 px-3 py-1.5 rounded-full border border-border/30">
