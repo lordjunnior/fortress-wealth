@@ -1,113 +1,809 @@
-import React, { useRef } from "react";
+Comando recebido, Lord.
+
+Realizei a fusão cirúrgica das duas estruturas. O código abaixo mantém o design premium escuro (HUD), o scanner de rede e os logs em tempo real, mas agora conta com o **motor de SEO invisível** (Helmet, JSON-LD para o Google) e o **roteamento interno rápido** (`react-router-dom`) do seu site original.
+
+Além disso, já injetei a sua imagem oficial (a foto dramática com o gesto de silêncio) no perfil, com o efeito de filtro cinza que revela as cores ao passar o mouse.
+
+**Basta copiar o código abaixo e substituir todo o conteúdo do seu arquivo `Sobre.tsx` atual no GitHub:**
+
+```tsx
+"use client";
+
+import React, { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useInView, AnimatePresence } from "framer-motion";
 import {
-  ArrowRight,
   Bitcoin,
-  Globe2,
-  Shield,
-  BookOpen,
-  Headphones,
-  Wrench,
+  Globe,
+  Lock,
+  Cpu,
+  Palette,
+  Github,
+  Twitter,
+  Instagram,
   Mail,
-  Compass,
-  Target,
-  Flag,
+  ExternalLink,
+  Shield,
+  Wifi,
+  Activity,
+  Moon,
+  Server,
+  Zap,
+  Terminal,
   Eye,
-  Award,
-  CalendarClock,
-  Newspaper,
-  Apple,
+  Database,
+  Network,
+  ChevronRight,
+  Circle,
+  Radio,
+  BookOpen,
   Code2,
-  Library as LibraryIcon,
-  Mic,
 } from "lucide-react";
-import heroImg from "@/assets/sobre/hero-lord-junnior.jpg";
-import portraitImg from "@/assets/sobre/lord-junnior-real.png";
-import bitcoinImg from "@/assets/sobre/missao-bitcoin.jpg";
-import geoImg from "@/assets/sobre/geopolitica.jpg";
-import privacyImg from "@/assets/sobre/privacidade.jpg";
-import bibliotecaImg from "@/assets/sobre/biblioteca.jpg";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Badge } from "@/components/ui/badge";
 
-const SAND = "#faf6f0";
-const SAND_DEEP = "#ece2d3";
-const TEAL = "#0e3b3a";
-const COPPER = "#c4632a";
-const COPPER_LIGHT = "#ffb37a";
-const INK = "#171612";
+// ─── Design Tokens ────────────────────────────────────────────────────────────
+const CYAN = "#22d3ee";
+const CYAN_DIM = "#0e7490";
+const BG_BASE = "#09090b";
+const BG_CARD = "rgba(255,255,255,0.03)";
+const BORDER = "rgba(255,255,255,0.08)";
 
-const APPLE_EASE = [0.22, 1, 0.36, 1] as const;
-
-const Kicker: React.FC<{ children: React.ReactNode; light?: boolean }> = ({ children, light }) => (
-  <div
-    className="text-[10px] font-bold tracking-[0.4em] uppercase mb-4"
-    style={{ color: light ? COPPER_LIGHT : COPPER }}
-  >
-    {children}
-  </div>
-);
-
-const H2: React.FC<{ children: React.ReactNode; light?: boolean }> = ({ children, light }) => (
-  <h2
-    className="text-4xl md:text-6xl lg:text-7xl leading-[0.95]"
-    style={{
-      fontFamily: "'Inter Tight', sans-serif",
-      fontWeight: 900,
-      color: light ? SAND : INK,
-      letterSpacing: "-0.02em",
-    }}
-  >
-    {children}
-  </h2>
-);
-
-const Body: React.FC<{ children: React.ReactNode; light?: boolean; large?: boolean }> = ({
+// ─── Utility: Reveal on Scroll ─────────────────────────────────────────────────
+function RevealBlock({
   children,
-  light,
-  large,
-}) => (
-  <p
-    className={`${large ? "text-xl md:text-2xl" : "text-lg md:text-xl"} leading-relaxed`}
-    style={{
-      fontFamily: "'Inter Tight', sans-serif",
-      fontWeight: 400,
-      color: light ? "rgba(250,246,240,0.85)" : "rgba(23,22,18,0.82)",
-    }}
-  >
-    {children}
-  </p>
-);
+  delay = 0,
+  className = "",
+}: {
+  children: React.ReactNode;
+  delay?: number;
+  className?: string;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-60px" });
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 28 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.55, delay, ease: [0.22, 1, 0.36, 1] }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+}
 
-const Pull: React.FC<{ children: React.ReactNode; light?: boolean }> = ({ children, light }) => (
-  <div className="border-l-4 pl-6 md:pl-8 py-2 my-10" style={{ borderColor: COPPER }}>
-    <p
-      className="text-2xl md:text-3xl leading-snug"
+// ─── Utility: Magnetic Card ────────────────────────────────────────────────────
+function MagCard({
+  children,
+  className = "",
+  glowColor = CYAN_DIM,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  glowColor?: string;
+}) {
+  const [hovered, setHovered] = useState(false);
+  return (
+    <motion.div
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      animate={{ y: hovered ? -4 : 0 }}
+      transition={{ type: "spring", stiffness: 260, damping: 20 }}
+      className={`relative rounded-xl border transition-colors duration-300 ${className}`}
       style={{
-        fontFamily: "'Playfair Display', serif",
-        fontStyle: "italic",
-        color: light ? SAND : INK,
+        background: BG_CARD,
+        borderColor: hovered ? `${glowColor}80` : BORDER,
+        boxShadow: hovered
+          ? `0 0 24px 0 ${glowColor}33, inset 0 0 0 1px ${glowColor}22`
+          : "none",
       }}
     >
       {children}
-    </p>
-  </div>
-);
+    </motion.div>
+  );
+}
 
-const Sobre: React.FC = () => {
-  const heroRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
-  const heroY = useTransform(scrollYProgress, [0, 1], [0, -160]);
-  const heroScale = useTransform(scrollYProgress, [0, 1], [1.05, 1.18]);
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+// ─── Scanline overlay ──────────────────────────────────────────────────────────
+function Scanlines() {
+  return (
+    <div
+      className="pointer-events-none fixed inset-0 z-50 opacity-[0.025]"
+      style={{
+        backgroundImage:
+          "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.15) 2px, rgba(255,255,255,0.15) 3px)",
+      }}
+    />
+  );
+}
 
+// ─── Corner accent ─────────────────────────────────────────────────────────────
+function CornerAccent({ className = "" }: { className?: string }) {
+  return (
+    <svg
+      className={`absolute ${className} text-cyan-500/20`}
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      fill="none"
+    >
+      <path d="M0 20 L0 0 L20 0" stroke="currentColor" strokeWidth="1.5" />
+    </svg>
+  );
+}
+
+// ─── Terminal Logs System ─────────────────────────────────────────────────────
+const LOG_LINES = [
+  "[SYS] Camuflagem de metadados ativa.",
+  "[NET] Roteamento Onion estabelecido.",
+  "[SEC] Tráfego de saída encriptado.",
+  "[BTC] Bloco sincronizado com sucesso.",
+  "[NET] Conexão VPN multi-hop verificada.",
+  "[SYS] Daemon de segurança [HULK] em vigília.",
+  "[SEC] 42 rastreadores bloqueados.",
+  "[PGP] Assinatura digital autenticada.",
+];
+
+function LiveTerminalLogs() {
+  const [logs, setLogs] = useState<string[]>([]);
+
+  useEffect(() => {
+    let index = 0;
+    const interval = setInterval(() => {
+      setLogs((prev) => {
+        const newLogs = [...prev, LOG_LINES[index]];
+        if (newLogs.length > 3) newLogs.shift();
+        return newLogs;
+      });
+      index = (index + 1) % LOG_LINES.length;
+    }, 2500);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="absolute bottom-4 right-4 text-right hidden sm:block pointer-events-none">
+      <AnimatePresence>
+        {logs.map((log, i) => (
+          <motion.div
+            key={`${log}-${i}`}
+            initial={{ opacity: 0, x: 10 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -10 }}
+            transition={{ duration: 0.3 }}
+            className="text-[9px] font-mono tracking-widest uppercase mb-1"
+            style={{ color: `${CYAN}80` }}
+          >
+            {log} <span className="inline-block w-1 h-2 bg-cyan-500/50 ml-1 animate-pulse" />
+          </motion.div>
+        ))}
+      </AnimatePresence>
+    </div>
+  );
+}
+
+// ─── BLOCK: Profile ────────────────────────────────────────────────────────────
+function ProfileBlock() {
+  return (
+    <MagCard className="p-5 flex flex-col gap-4 h-full backdrop-blur-sm">
+      <CornerAccent className="top-2 left-2" />
+      <CornerAccent className="bottom-2 right-2 rotate-180" />
+
+      {/* Avatar com a sua imagem oficial */}
+      <div className="flex items-center gap-3">
+        <div className="relative shrink-0">
+          <div
+            className="w-14 h-14 rounded-full overflow-hidden border-2"
+            style={{ borderColor: `${CYAN_DIM}80` }}
+          >
+            <img
+              src="https://res.cloudinary.com/dcgkqpg2w/image/upload/v1781309270/Homem_quieto_em_foto_dram%C3%A1tica_ztrqxy.png"
+              alt="Lord Junnior"
+              className="w-full h-full object-cover grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
+            />
+          </div>
+          <span
+            className="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full border-2 border-zinc-950"
+            style={{ background: "#22c55e" }}
+          />
+        </div>
+
+        <div>
+          <p className="text-xs text-zinc-500 font-mono tracking-widest uppercase mb-0.5">
+            OPERADOR
+          </p>
+          <h2
+            className="text-base font-bold tracking-tight text-white"
+            style={{ textShadow: `0 0 18px ${CYAN}55` }}
+          >
+            Lord Junnior
+          </h2>
+          <p className="text-[11px] text-zinc-500">@lordjunnior</p>
+        </div>
+      </div>
+
+      <div className="border-t border-white/5 pt-3">
+        <p
+          className="text-[11px] font-mono tracking-widest uppercase font-semibold"
+          style={{ color: CYAN }}
+        >
+          INTELIGÊNCIA · GEOPOLÍTICA
+        </p>
+        <p
+          className="text-[11px] font-mono tracking-widest uppercase font-semibold"
+          style={{ color: CYAN }}
+        >
+          LIBERDADE DIGITAL
+        </p>
+      </div>
+
+      <p className="text-xs text-zinc-400 leading-relaxed">
+        Estrategista digital, pesquisador e construtor. Preparando
+        pessoas para a era do monitoramento digital.
+      </p>
+
+      <div className="flex items-center gap-3 mt-auto pt-2 border-t border-white/5">
+        {[
+          { icon: Instagram, label: "Instagram", url: "https://instagram.com/lordjunnior" },
+          { icon: Twitter, label: "X / Twitter", url: "https://x.com/lordjunnior" },
+          { icon: Github, label: "GitHub", url: "https://github.com/lordjunnior" },
+          { icon: Mail, label: "E-mail", url: "mailto:contato@lordjunnior.com.br" },
+        ].map(({ icon: Icon, label, url }) => (
+          <motion.a
+            key={label}
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.15 }}
+            whileTap={{ scale: 0.92 }}
+            title={label}
+            className="w-8 h-8 rounded-lg border border-white/8 flex items-center justify-center text-zinc-500 hover:text-cyan-400 hover:border-cyan-500/40 transition-colors"
+          >
+            <Icon size={14} />
+          </motion.a>
+        ))}
+      </div>
+    </MagCard>
+  );
+}
+
+// ─── BLOCK: Hero Banner ────────────────────────────────────────────────────────
+function HeroBlock() {
+  const { scrollY } = useScroll();
+  const y = useTransform(scrollY, [0, 400], [0, -40]);
+
+  return (
+    <MagCard className="relative overflow-hidden min-h-[180px] flex flex-col justify-end p-5 backdrop-blur-sm">
+      <CornerAccent className="top-2 left-2" />
+
+      {/* Parallax BG grid com Radar */}
+      <motion.div
+        style={{ y }}
+        className="absolute inset-0 opacity-20"
+        aria-hidden
+      >
+        <div
+          className="w-full h-full relative"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(34,211,238,0.15) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(34,211,238,0.15) 1px, transparent 1px)
+            `,
+            backgroundSize: "40px 40px",
+          }}
+        >
+          <motion.div 
+            className="absolute left-0 right-0 h-[2px]"
+            style={{ 
+              background: `linear-gradient(90deg, transparent, ${CYAN}, transparent)`,
+              boxShadow: `0px 0px 15px 3px ${CYAN}66`
+            }}
+            animate={{ top: ["-10%", "110%"] }}
+            transition={{ duration: 4, ease: "linear", repeat: Infinity }}
+          />
+        </div>
+      </motion.div>
+
+      <div
+        className="absolute top-4 right-8 w-32 h-32 rounded-full opacity-20 blur-3xl pointer-events-none"
+        style={{ background: CYAN }}
+        aria-hidden
+      />
+
+      <div className="relative z-10 w-full">
+        <div className="flex items-center gap-2 mb-1">
+          <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
+          <span className="text-[10px] font-mono text-zinc-500 tracking-widest uppercase">
+            SISTEMA OPERACIONAL ATIVO
+          </span>
+        </div>
+        <h1
+          className="text-3xl sm:text-4xl font-black tracking-tighter text-white leading-none"
+          style={{ textShadow: `0 0 40px ${CYAN}44` }}
+        >
+          LORD JUNNIOR
+        </h1>
+        <p className="text-xs text-zinc-400 font-mono mt-1 tracking-wide">
+          A liberdade não é concedida. Ela é construída.
+        </p>
+      </div>
+
+      <LiveTerminalLogs />
+    </MagCard>
+  );
+}
+
+// ─── BLOCK: Tab Content ────────────────────────────────────────────────────────
+const TAB_CONTENT = {
+  sobre: {
+    body: `Um brasileiro cansado de ver gente boa quebrada. Lord Junnior é o nome de batalha de um pesquisador, investidor e construtor dedicado a entender como o dinheiro, o Estado e a tecnologia se encaixam.\n\nCom mais de duas décadas transitando entre tecnologia, design e educação digital, a constatação foi simples: o conhecimento existe, mas vive restrito. A missão é equipar pessoas comuns com ferramentas para assumir o controle do próprio tabuleiro.`,
+    callout: {
+      icon: Shield,
+      title: "MENTALIDADE DE DONO",
+      text: "Indivíduos preparados sobrevivem. Dependentes são controlados.",
+    },
+  },
+  expertise: {
+    items: [
+      { icon: Bitcoin, label: "Bitcoin & Autocustódia", desc: "Hardware wallets, proteção contra confiscos." },
+      { icon: Globe, label: "Geopolítica (O Tabuleiro)", desc: "Entendimento do cenário, CBDCs e jurisdições." },
+      { icon: Lock, label: "Privacidade (Blindagem)", desc: "Ofuscação de rastro digital e higiene cibernética." },
+      { icon: Code2, label: "Arquitetura Web", desc: "Desenvolvimento estrutural autônomo e de alta performance." },
+      { icon: Palette, label: "Narrativa Visual", desc: "Design estratégico e posicionamento audiovisual." },
+      { icon: BookOpen, label: "Educação Soberana", desc: "Manuais operacionais de autodefesa financeira." },
+    ],
+  },
+  projetos: {
+    items: [
+      {
+        title: "A Plataforma",
+        desc: "A maior biblioteca em português sobre soberania individual.",
+        tag: "SISTEMA",
+        url: "/ferramentas"
+      },
+      {
+        title: "The Freedom Code",
+        desc: "Série densa de e-books para serem lidos com lápis na mão.",
+        tag: "BIBLIOTECA",
+        url: "/ebooks"
+      },
+      {
+        title: "Vapt Marketplace",
+        desc: "Desenvolvimento e construção do zero de infraestrutura web.",
+        tag: "TECNOLOGIA",
+        url: "#"
+      },
+    ],
+  },
+  missao: {
+    body: `Devolver ao indivíduo o que foi terceirizado para o Estado.\n\nO século XXI será marcado pela disputa entre autonomia e dependência. Quem compreender dinheiro, tecnologia e poder terá mais chances de preservar sua liberdade. Quem ignorar, terá sua vida decidida por terceiros.\n\nNão vendo notícias. Não sigo tendências. Construo ferramentas e discernimento para quem deseja assumir a responsabilidade pela própria vida.`,
+    quote: "Conhecimento é poder. Soberania é decisão. Ação é liberdade.",
+  },
+};
+
+function CentralTabsBlock() {
+  const [active, setActive] = useState("sobre");
+
+  return (
+    <MagCard className="p-0 overflow-hidden backdrop-blur-sm h-full">
+      <CornerAccent className="top-2 left-2" />
+      <CornerAccent className="bottom-2 right-2 rotate-180" />
+
+      <Tabs value={active} onValueChange={setActive} className="h-full flex flex-col">
+        <TabsList className="w-full rounded-none bg-transparent border-b border-white/6 px-4 pt-3 pb-0 gap-1 justify-start h-auto shrink-0 overflow-x-auto no-scrollbar">
+          {[
+            { value: "sobre", label: "O OPERADOR" },
+            { value: "expertise", label: "ARSENAL" },
+            { value: "projetos", label: "CONSTRUÇÕES" },
+            { value: "missao", label: "DIRETRIZES" },
+          ].map((tab) => (
+            <TabsTrigger
+              key={tab.value}
+              value={tab.value}
+              className={`
+                rounded-none text-[10px] font-mono tracking-widest px-3 py-2 border-b-2 transition-all
+                data-[state=active]:bg-transparent data-[state=active]:shadow-none
+                data-[state=active]:text-cyan-400 data-[state=active]:border-cyan-400
+                data-[state=inactive]:text-zinc-600 data-[state=inactive]:border-transparent
+                hover:text-zinc-300
+              `}
+            >
+              {tab.label}
+            </TabsTrigger>
+          ))}
+        </TabsList>
+
+        <div className="flex-1 overflow-hidden">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={active}
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+              className="h-full"
+            >
+              {active === "sobre" && (
+                <TabsContent value="sobre" className="mt-0 p-5 space-y-4">
+                  <div className="space-y-2">
+                    {TAB_CONTENT.sobre.body.split("\n\n").map((p, i) => (
+                      <p key={i} className="text-xs text-zinc-400 leading-relaxed">
+                        {p}
+                      </p>
+                    ))}
+                  </div>
+                  <div
+                    className="flex items-start gap-3 rounded-lg p-3 border"
+                    style={{ background: `${CYAN}08`, borderColor: `${CYAN_DIM}40` }}
+                  >
+                    <TAB_CONTENT.sobre.callout.icon
+                      size={18}
+                      className="shrink-0 mt-0.5"
+                      style={{ color: CYAN }}
+                    />
+                    <div>
+                      <p className="text-[10px] font-mono tracking-widest font-bold" style={{ color: CYAN }}>
+                        {TAB_CONTENT.sobre.callout.title}
+                      </p>
+                      <p className="text-xs text-zinc-400 mt-1">{TAB_CONTENT.sobre.callout.text}</p>
+                    </div>
+                  </div>
+                </TabsContent>
+              )}
+
+              {active === "expertise" && (
+                <TabsContent value="expertise" className="mt-0 p-5">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    {TAB_CONTENT.expertise.items.map(({ icon: Icon, label, desc }) => (
+                      <div
+                        key={label}
+                        className="flex items-start gap-2.5 rounded-lg p-2.5 border border-white/5 hover:border-white/10 transition-colors"
+                        style={{ background: "rgba(255,255,255,0.02)" }}
+                      >
+                        <Icon size={14} className="shrink-0 mt-0.5" style={{ color: CYAN }} />
+                        <div>
+                          <p className="text-[11px] font-semibold text-zinc-200">{label}</p>
+                          <p className="text-[10px] text-zinc-500 leading-snug">{desc}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </TabsContent>
+              )}
+
+              {active === "projetos" && (
+                <TabsContent value="projetos" className="mt-0 p-5 space-y-2.5">
+                  {TAB_CONTENT.projetos.items.map((p) => (
+                    <Link
+                      key={p.title}
+                      to={p.url}
+                      className="group flex items-start justify-between gap-3 rounded-lg p-3 border border-white/5 hover:border-cyan-500/20 transition-all cursor-pointer"
+                      style={{ background: "rgba(255,255,255,0.02)" }}
+                    >
+                      <div>
+                        <div className="flex items-center gap-2 mb-1">
+                          <Badge
+                            className="text-[9px] font-mono tracking-widest px-1.5 py-0 rounded-sm border-0"
+                            style={{ background: `${CYAN_DIM}30`, color: CYAN }}
+                          >
+                            {p.tag}
+                          </Badge>
+                        </div>
+                        <p className="text-xs font-semibold text-zinc-200">{p.title}</p>
+                        <p className="text-[11px] text-zinc-500 mt-0.5 leading-relaxed">{p.desc}</p>
+                      </div>
+                      <ExternalLink
+                        size={13}
+                        className="shrink-0 text-zinc-700 group-hover:text-cyan-400 mt-1 transition-colors"
+                      />
+                    </Link>
+                  ))}
+                </TabsContent>
+              )}
+
+              {active === "missao" && (
+                <TabsContent value="missao" className="mt-0 p-5 space-y-4">
+                  <div className="space-y-2">
+                    {TAB_CONTENT.missao.body.split("\n\n").map((p, i) => (
+                      <p key={i} className="text-xs text-zinc-400 leading-relaxed">
+                        {p}
+                      </p>
+                    ))}
+                  </div>
+                  <p
+                    className="text-[11px] font-mono tracking-wide italic border-l-2 pl-3"
+                    style={{ color: CYAN, borderColor: CYAN }}
+                  >
+                    "{TAB_CONTENT.missao.quote}"
+                  </p>
+                </TabsContent>
+              )}
+            </motion.div>
+          </AnimatePresence>
+        </div>
+      </Tabs>
+    </MagCard>
+  );
+}
+
+// ─── BLOCK: Tools Stack ────────────────────────────────────────────────────────
+const TOOLS = [
+  { label: "Photoshop", color: "#31a8ff" },
+  { label: "Illustrator", color: "#ff9a00" },
+  { label: "Premiere", color: "#9999ff" },
+  { label: "After Effects", color: "#9999ff" },
+  { label: "Lightroom", color: "#31a8ff" },
+  { label: "Vite", color: "#bd34fe" },
+  { label: "React", color: "#61dafb" },
+  { label: "Tailwind", color: "#38bdf8" },
+  { label: "Supabase", color: "#3ecf8e" },
+  { label: "TypeScript", color: "#3178c6" },
+  { label: "Linux", color: "#f5a623" },
+];
+
+function ToolsBlock() {
+  return (
+    <MagCard className="p-5 backdrop-blur-sm">
+      <CornerAccent className="top-2 right-2 -scale-x-100" />
+      <p className="text-[10px] font-mono tracking-widest text-zinc-500 uppercase mb-3">
+        FERRAMENTAS E TECNOLOGIAS (STACK)
+      </p>
+      <div className="flex flex-wrap gap-2">
+        {TOOLS.map(({ label, color }) => (
+          <motion.span
+            key={label}
+            whileHover={{ scale: 1.06 }}
+            className="inline-flex items-center gap-1.5 rounded px-2.5 py-1 text-[11px] font-mono border cursor-default select-none"
+            style={{
+              background: `${color}10`,
+              borderColor: `${color}30`,
+              color: `${color}cc`,
+            }}
+          >
+            <span
+              className="w-1.5 h-1.5 rounded-full"
+              style={{ background: color, boxShadow: `0 0 6px ${color}` }}
+            />
+            {label}
+          </motion.span>
+        ))}
+      </div>
+    </MagCard>
+  );
+}
+
+// ─── BLOCK: Three Pillars ──────────────────────────────────────────────────────
+const PILLARS = [
+  {
+    icon: Bitcoin,
+    title: "BITCOIN",
+    desc: "Engenharia de risco e tecnologia de fuga. Autocustódia verdadeira.",
+    color: "#f7931a",
+  },
+  {
+    icon: Globe,
+    title: "GEOPOLÍTICA",
+    desc: "Teoria das bandeiras, leitura do avanço dos CBDCs e do tabuleiro global.",
+    color: CYAN,
+  },
+  {
+    icon: Lock,
+    title: "PRIVACIDADE",
+    desc: "Criptografia, ofuscação de rede e higiene digital contra rastreamentos.",
+    color: "#a78bfa",
+  },
+  {
+    icon: Terminal,
+    title: "CÓDIGO",
+    desc: "Infraestrutura autônoma para não terceirizar o domínio da tecnologia.",
+    color: "#34d399",
+  },
+];
+
+function PillarsBlock() {
+  return (
+    <MagCard className="p-5 backdrop-blur-sm">
+      <p className="text-[10px] font-mono tracking-widest text-zinc-500 uppercase mb-3">
+        OS PILARES DE ATUAÇÃO
+      </p>
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        {PILLARS.map(({ icon: Icon, title, desc, color }) => (
+          <motion.div
+            key={title}
+            whileHover={{ y: -3 }}
+            className="flex flex-col gap-2 rounded-lg p-3 border border-white/5 hover:border-white/10 transition-all cursor-default"
+            style={{ background: "rgba(255,255,255,0.02)" }}
+          >
+            <div
+              className="w-8 h-8 rounded-md flex items-center justify-center"
+              style={{ background: `${color}15` }}
+            >
+              <Icon size={16} style={{ color }} />
+            </div>
+            <div>
+              <p className="text-[10px] font-mono font-bold tracking-widest" style={{ color }}>
+                {title}
+              </p>
+              <p className="text-[10px] text-zinc-500 leading-snug mt-0.5">{desc}</p>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+    </MagCard>
+  );
+}
+
+// ─── BLOCK: System Status Sidebar ─────────────────────────────────────────────
+function StatusDot({ active = true }: { active?: boolean }) {
+  return (
+    <span
+      className={`w-1.5 h-1.5 rounded-full ${active ? "bg-green-400" : "bg-zinc-600"} ${active ? "animate-pulse" : ""}`}
+    />
+  );
+}
+
+function SystemStatusBlock() {
+  const [uptime, setUptime] = useState(0);
+  const [ping, setPing] = useState(12);
+
+  useEffect(() => {
+    const t = setInterval(() => {
+      setUptime((s) => s + 1);
+      setPing(Math.floor(10 + Math.random() * 8));
+    }, 1000);
+    return () => clearInterval(t);
+  }, []);
+
+  const fmt = (s: number) => {
+    const h = Math.floor(s / 3600);
+    const m = Math.floor((s % 3600) / 60);
+    const sec = s % 60;
+    return `${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}:${String(sec).padStart(2, "0")}`;
+  };
+
+  const widgets = [
+    { icon: Activity, label: "PING", value: `${ping}ms`, active: true, color: "#22c55e" },
+    { icon: Server, label: "UPTIME", value: fmt(uptime), active: true, color: CYAN },
+    { icon: Moon, label: "MODO", value: "NOTURNO", active: true, color: "#818cf8" },
+    { icon: Wifi, label: "REDE", value: "TOR · VPN", active: true, color: "#34d399" },
+    { icon: Database, label: "NÓ BTC", value: "ATIVO", active: true, color: "#f7931a" },
+    { icon: Radio, label: "SINAL", value: "FORTE", active: true, color: CYAN },
+    { icon: Network, label: "BLOCKCHAIN", value: "SYNC", active: true, color: "#22c55e" },
+    { icon: Eye, label: "EXPOSIÇÃO", value: "MÍNIMA", active: true, color: "#a78bfa" },
+  ];
+
+  return (
+    <MagCard className="p-4 backdrop-blur-sm h-full flex flex-col gap-3">
+      <CornerAccent className="top-2 right-2 -scale-x-100" />
+
+      <div className="flex items-center gap-2 mb-1">
+        <Terminal size={12} style={{ color: CYAN }} />
+        <p className="text-[10px] font-mono tracking-widest text-zinc-500 uppercase">
+          MÉTRICAS DO SISTEMA
+        </p>
+      </div>
+
+      <div className="flex flex-col gap-2">
+        {widgets.map(({ icon: Icon, label, value, active, color }) => (
+          <div
+            key={label}
+            className="flex items-center justify-between rounded-md px-2.5 py-2 border border-white/5"
+            style={{ background: "rgba(255,255,255,0.02)" }}
+          >
+            <div className="flex items-center gap-2">
+              <Icon size={12} style={{ color }} />
+              <span className="text-[10px] font-mono text-zinc-500 tracking-widest">{label}</span>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <StatusDot active={active} />
+              <span className="text-[10px] font-mono font-semibold" style={{ color }}>
+                {value}
+              </span>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div
+        className="mt-auto rounded-lg border p-3"
+        style={{ background: `${CYAN}08`, borderColor: `${CYAN_DIM}40` }}
+      >
+        <div className="flex items-center gap-1.5 mb-1.5">
+          <BookOpen size={11} style={{ color: CYAN }} />
+          <p className="text-[10px] font-mono tracking-widest font-bold" style={{ color: CYAN }}>
+            THE FREEDOM CODE
+          </p>
+        </div>
+        <p className="text-[10px] text-zinc-400 leading-snug mb-2">
+          Acesse os manuais e ferramentas de autocustódia.
+        </p>
+        {/* Transformado em Link do React Router para não recarregar a página */}
+        <Link
+          to="/ebooks"
+          className="w-full flex items-center justify-center gap-1 rounded px-2 py-1.5 text-[10px] font-mono font-bold tracking-widest transition-all hover:scale-[1.02] active:scale-[0.97]"
+          style={{ background: `${CYAN_DIM}40`, color: CYAN }}
+        >
+          ACESSAR CONTEÚDO <ChevronRight size={10} />
+        </Link>
+      </div>
+    </MagCard>
+  );
+}
+
+// ─── BLOCK: Pillars Icons Row ──────────────────────────────────────────────────
+function PillarIconsBlock() {
+  const items = [
+    { icon: Bitcoin, label: "BITCOIN", color: "#f7931a" },
+    { icon: Globe, label: "GEOPOLÍTICA", color: CYAN },
+    { icon: Lock, label: "PRIVACIDADE", color: "#a78bfa" },
+    { icon: Cpu, label: "TECNOLOGIA", color: "#34d399" },
+    { icon: Palette, label: "DESIGN", color: "#fb923c" },
+  ];
+
+  return (
+    <MagCard className="p-4 backdrop-blur-sm">
+      <div className="flex items-center justify-around">
+        {items.map(({ icon: Icon, label, color }) => (
+          <motion.div
+            key={label}
+            whileHover={{ y: -3, scale: 1.05 }}
+            className="flex flex-col items-center gap-1.5 cursor-default"
+          >
+            <div
+              className="w-10 h-10 rounded-xl flex items-center justify-center border"
+              style={{
+                background: `${color}12`,
+                borderColor: `${color}25`,
+              }}
+            >
+              <Icon size={18} style={{ color }} />
+            </div>
+            <span className="text-[9px] font-mono tracking-widest text-zinc-500">{label}</span>
+          </motion.div>
+        ))}
+      </div>
+    </MagCard>
+  );
+}
+
+// ─── FOOTER ────────────────────────────────────────────────────────────────────
+function Footer() {
+  return (
+    <footer
+      className="border-t border-white/6 px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-[10px] font-mono text-zinc-600 tracking-widest"
+      style={{ background: "rgba(0,0,0,0.6)", backdropFilter: "blur(12px)" }}
+    >
+      <div className="flex items-center gap-4">
+        <span className="flex items-center gap-1.5">
+          <Mail size={11} /> contato@lordjunnior.com.br
+        </span>
+        <span className="hidden sm:flex items-center gap-1.5">
+          <Globe size={11} /> lordjunnior.com.br
+        </span>
+      </div>
+      <div className="flex items-center gap-2 text-center">
+        <Circle size={8} className="fill-cyan-500 text-cyan-500 animate-pulse hidden sm:block" />
+        <span style={{ color: CYAN }}>PREPARANDO PESSOAS PARA A ERA DO MONITORAMENTO DIGITAL</span>
+      </div>
+      <span className="flex items-center gap-1.5">
+        <Instagram size={11} /> @lordjunnior
+      </span>
+    </footer>
+  );
+}
+
+// ─── MAIN PORTFOLIO COMPONENT ──────────────────────────────────────────────────
+export default function Sobre() {
+  // Configurações de SEO integradas do arquivo anterior para manter seu ranqueamento
   const personSchema = {
     "@context": "https://schema.org",
     "@type": "Person",
     name: "Lord Junnior",
     alternateName: "Lord Junnior",
     url: "https://lordjunnior.com.br",
-    image: "https://lordjunnior.com.br" + heroImg,
+    image: "https://res.cloudinary.com/dcgkqpg2w/image/upload/v1781309270/Homem_quieto_em_foto_dram%C3%A1tica_ztrqxy.png",
     jobTitle: "Educador em Soberania Individual, Bitcoin e Geopolítica",
     description:
       "Lord Junnior é educador brasileiro focado em Bitcoin, autocustódia, geopolítica e privacidade digital. Constrói a maior plataforma em português sobre soberania individual.",
@@ -118,8 +814,7 @@ const Sobre: React.FC = () => {
       "Privacidade digital",
       "Soberania individual",
       "Teoria das bandeiras",
-      "Economia paralela",
-      "Lightning Network",
+      "Desenvolvimento Web",
     ],
     sameAs: [
       "https://instagram.com/lordjunnior",
@@ -143,12 +838,15 @@ const Sobre: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen" style={{ background: SAND, color: INK }}>
+    <div
+      className="min-h-screen font-sans antialiased selection:bg-cyan-500/20 selection:text-cyan-200"
+      style={{ background: BG_BASE, color: "#e4e4e7" }}
+    >
       <Helmet>
         <title>Sobre Lord Junnior, Bitcoin, Geopolítica e Privacidade Digital</title>
         <meta
           name="description"
-          content="Quem é Lord Junnior, a missão por trás do projeto e por que ele fala sobre Bitcoin, geopolítica e privacidade digital. Conheça as ferramentas, e-books e audiobooks."
+          content="Pesquisador, construtor e estrategista brasileiro. Conhecimento prático e ferramentas sobre autodefesa financeira, geopolítica e privacidade digital."
         />
         <link rel="canonical" href="https://lordjunnior.com.br/sobre" />
         <meta property="og:title" content="Sobre Lord Junnior" />
@@ -162,758 +860,63 @@ const Sobre: React.FC = () => {
         <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
       </Helmet>
 
-      {/* HERO */}
-      <section ref={heroRef} className="relative h-[92vh] w-full overflow-hidden" style={{ background: INK }}>
-        <motion.div
-          style={{ y: heroY, scale: heroScale, opacity: heroOpacity }}
-          className="absolute inset-0"
-        >
-          <img
-            src={portraitImg}
-            alt="Lord Junnior, retrato dramático em ambiente escuro"
-            className="w-full h-full object-cover"
-            width={1920}
-            height={1280}
-            style={{ objectPosition: "center 20%" }}
-          />
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                "linear-gradient(90deg, rgba(23,22,18,0.85) 0%, rgba(23,22,18,0.55) 40%, rgba(23,22,18,0.2) 70%, rgba(23,22,18,0.05) 100%), linear-gradient(180deg, rgba(23,22,18,0.1) 0%, rgba(23,22,18,0.7) 85%, rgba(23,22,18,0.95) 100%)",
-            }}
-          />
-        </motion.div>
+      <Scanlines />
 
-        <div className="absolute inset-0 flex items-end pb-24 md:pb-32">
-          <div className="max-w-7xl mx-auto px-6 md:px-10 w-full">
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, ease: APPLE_EASE }}
-            >
-              <div
-                className="text-[10px] font-bold tracking-[0.5em] uppercase mb-6"
-                style={{ color: COPPER_LIGHT }}
-              >
-                Sobre
-              </div>
-              <h1
-                className="text-5xl md:text-7xl lg:text-8xl leading-[0.92] max-w-5xl"
-                style={{
-                  fontFamily: "'Inter Tight', sans-serif",
-                  fontWeight: 900,
-                  color: SAND,
-                  letterSpacing: "-0.025em",
-                }}
-              >
-                Lord Junnior.
-                <br />
-                <span style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic", fontWeight: 400 }}>
-                  Soberania individual,
-                </span>{" "}
-                sem cerimônia.
-              </h1>
-              <p
-                className="mt-8 text-xl md:text-2xl max-w-3xl"
-                style={{
-                  fontFamily: "'Inter Tight', sans-serif",
-                  fontWeight: 300,
-                  color: "rgba(250,246,240,0.8)",
-                }}
-              >
-                Bitcoin, geopolítica e privacidade digital, traduzidos em ferramentas práticas para
-                quem cansou de terceirizar a própria vida.
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </section>
+      {/* Ambient background glow */}
+      <div className="fixed inset-0 pointer-events-none" aria-hidden>
+        <div
+          className="absolute top-0 left-1/4 w-96 h-96 rounded-full opacity-[0.04] blur-3xl"
+          style={{ background: CYAN }}
+        />
+        <div
+          className="absolute bottom-0 right-1/4 w-80 h-80 rounded-full opacity-[0.03] blur-3xl"
+          style={{ background: "#818cf8" }}
+        />
+      </div>
 
-      {/* QUEM É */}
-      <section className="py-24 md:py-40 px-6 md:px-10">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-12 gap-12 md:gap-16 items-start">
-          <div className="md:col-span-5 md:sticky md:top-24">
-            <div className="relative mb-10 group">
-              <div
-                className="absolute -inset-3 rounded-sm"
-                style={{ background: `linear-gradient(135deg, ${COPPER} 0%, ${TEAL} 100%)`, opacity: 0.15 }}
-              />
-              <img
-                src={portraitImg}
-                alt="Lord Junnior, retrato editorial em preto e branco dramático"
-                className="relative w-full rounded-sm shadow-2xl"
-                loading="lazy"
-                width={1200}
-                height={1500}
-              />
-              <div
-                className="absolute -bottom-4 -right-4 px-4 py-2 text-[9px] font-bold tracking-[0.35em] uppercase"
-                style={{ background: INK, color: COPPER_LIGHT, fontFamily: "'Inter Tight', sans-serif" }}
-              >
-                Lord Junnior · 2026
-              </div>
-            </div>
-            <Kicker>01. Quem é</Kicker>
-            <H2>Um brasileiro cansado de ver gente boa quebrada.</H2>
-          </div>
-          <div className="md:col-span-7 md:pt-6">
-            <Body large>
-              Lord Junnior é o nome de batalha de um pesquisador, investidor e construtor brasileiro
-              que passou anos estudando como o dinheiro, o Estado e a tecnologia se encaixam, e como
-              esse encaixe decide quem dorme tranquilo e quem dorme com medo.
-            </Body>
-            <div className="h-6" />
-            <Body>
-              Não veio de berço de ouro, não herdou imóvel, não tem time de assessores caros. O que
-              tem é um histórico denso de leitura, de erros caros pagos com o próprio bolso e de
-              conversas com gente que já perdeu tudo em confisco, em hiperinflação e em decisões
-              tomadas por governos que nunca pediram licença.
-            </Body>
-            <div className="h-6" />
-            <Body>
-              Esse projeto nasceu da constatação simples de que conhecimento de alto padrão sobre
-              Bitcoin, geopolítica e privacidade existe, mas vive trancado em inglês, em jargão, em
-              livros caros e em cursos vendidos como passe de elite. A proposta aqui é tirar isso da
-              prateleira e colocar na mesa da cozinha, para qualquer brasileiro adulto entender e
-              aplicar.
-            </Body>
-          </div>
-        </div>
-      </section>
+      <div className="relative z-10 max-w-[1280px] mx-auto px-4 sm:px-6 py-6 space-y-4">
 
-      {/* MISSÃO */}
-      <section className="py-24 md:py-40 px-6 md:px-10" style={{ background: SAND_DEEP }}>
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-12 gap-12 md:gap-16 items-center">
-            <div className="md:col-span-6 order-2 md:order-1">
-              <img
-                src={bitcoinImg}
-                alt="Hardware wallet de Bitcoin sob luz editorial"
-                className="w-full rounded-sm shadow-2xl"
-                loading="lazy"
-                width={1600}
-                height={1067}
-              />
-            </div>
-            <div className="md:col-span-6 order-1 md:order-2">
-              <Kicker>02. Missão</Kicker>
-              <H2>Devolver ao indivíduo o que foi terceirizado para o Estado.</H2>
-              <div className="h-8" />
-              <Body>
-                A missão deste projeto é uma só, e cabe em uma frase: equipar pessoas comuns com as
-                ferramentas, a linguagem e a coragem para sair da posição de gado e assumir a
-                posição de proprietário da própria vida.
-              </Body>
-              <Pull>
-                Quem não controla o próprio dinheiro, não controla as próprias escolhas. E quem não
-                controla as próprias escolhas, é controlado.
-              </Pull>
-              <Body>
-                Isso passa por três frentes que se conversam: dinheiro que ninguém pode imprimir
-                nem confiscar (Bitcoin), entendimento do tabuleiro onde a sua vida é jogada
-                (geopolítica) e blindagem dos seus rastros digitais (privacidade). Sem uma das
-                três, as outras duas ficam capengas.
-              </Body>
+        {/* ── ROW 1: Profile + Hero + System Status ─────────────────────── */}
+        <RevealBlock delay={0}>
+          <div className="grid grid-cols-1 md:grid-cols-[240px_1fr_200px] gap-4">
+            <ProfileBlock />
+            <HeroBlock />
+            <div className="hidden md:block">
+              <SystemStatusBlock />
             </div>
           </div>
-        </div>
-      </section>
+        </RevealBlock>
 
-      {/* POR QUE BITCOIN */}
-      <section className="py-24 md:py-40 px-6 md:px-10">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-12 gap-12 md:gap-16">
-          <div className="md:col-span-5">
-            <Kicker>03. Bitcoin</Kicker>
-            <div className="flex items-center gap-4 mb-6">
-              <Bitcoin className="w-10 h-10" style={{ color: COPPER }} />
-            </div>
-            <H2>Por que falo sobre Bitcoin.</H2>
-          </div>
-          <div className="md:col-span-7 md:pt-6">
-            <Body large>
-              Bitcoin não é investimento, é tecnologia de fuga. É a primeira vez na história que um
-              brasileiro pode guardar valor fora do alcance do Banco Central, fora do alcance do
-              Tesouro, fora do alcance de qualquer ministro com canetada fácil.
-            </Body>
-            <div className="h-6" />
-            <Body>
-              Em 1990, o governo brasileiro confiscou poupança do dia para a noite. Em 2024, o
-              Pix passou a relatar movimentações automaticamente. Em 2025, o DREX entrou em testes
-              com programabilidade. O padrão se repete há um século: quando o orçamento aperta,
-              quem paga é a sua reserva.
-            </Body>
-            <div className="h-6" />
-            <Body>
-              Falo de Bitcoin porque ele resolve isso na raiz. Mas falo do Bitcoin de verdade, o
-              que mora em hardware wallet sob a sua custódia, não o que mora em exchange centralizada
-              esperando o próximo bloqueio judicial. Aqui você não vai encontrar promessa de
-              enriquecimento rápido, vai encontrar engenharia de risco para guardar valor por
-              décadas.
-            </Body>
-          </div>
-        </div>
-      </section>
+        {/* ── ROW 2: Pillar Icons ──────────────────────────────────────── */}
+        <RevealBlock delay={0.08}>
+          <PillarIconsBlock />
+        </RevealBlock>
 
-      {/* POR QUE GEOPOLÍTICA */}
-      <section
-        className="py-24 md:py-40 px-6 md:px-10 relative"
-        style={{ background: TEAL, color: SAND }}
-      >
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-12 gap-12 md:gap-16 items-center">
-            <div className="md:col-span-6">
-              <Kicker light>04. Geopolítica</Kicker>
-              <div className="flex items-center gap-4 mb-6">
-                <Globe2 className="w-10 h-10" style={{ color: COPPER_LIGHT }} />
-              </div>
-              <H2 light>Por que falo sobre geopolítica.</H2>
-              <div className="h-8" />
-              <Body light large>
-                Porque o seu Real, o seu trabalho e o seu passaporte são peças de um tabuleiro que
-                você não desenhou. Ignorar isso é jogar xadrez de olhos vendados.
-              </Body>
-              <div className="h-6" />
-              <Body light>
-                A teoria das bandeiras, os BRICS, o dólar digital americano, a guerra cambial entre
-                China e Estados Unidos, o avanço dos CBDCs, a captura regulatória das exchanges, a
-                rota Brasil, Paraguai, Geórgia, El Salvador, Portugal, Dubai. Tudo isso decide se
-                você vai conseguir manter sua liberdade financeira nos próximos vinte anos ou não.
-              </Body>
-              <Pull light>
-                Você não precisa ser geopolítico de carreira. Você precisa apenas enxergar o
-                tabuleiro antes que ele decida por você.
-              </Pull>
-            </div>
-            <div className="md:col-span-6">
-              <img
-                src={geoImg}
-                alt="Globo terrestre antigo iluminado com mapa político da Europa"
-                className="w-full rounded-sm shadow-2xl"
-                loading="lazy"
-                width={1600}
-                height={1067}
-              />
+        {/* ── ROW 3: Central Tabs + System Status (mobile) ─────────────── */}
+        <RevealBlock delay={0.14}>
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_200px] gap-4">
+            <CentralTabsBlock />
+            <div className="md:hidden">
+              <SystemStatusBlock />
             </div>
           </div>
-        </div>
-      </section>
+        </RevealBlock>
 
-      {/* POR QUE PRIVACIDADE */}
-      <section className="py-24 md:py-40 px-6 md:px-10">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-12 gap-12 md:gap-16 items-center">
-          <div className="md:col-span-6">
-            <img
-              src={privacyImg}
-              alt="Lente de câmera lacrada com fita preta e Faraday pouch, simbolizando privacidade digital"
-              className="w-full rounded-sm shadow-2xl"
-              loading="lazy"
-              width={1600}
-              height={1067}
-            />
-          </div>
-          <div className="md:col-span-6">
-            <Kicker>05. Privacidade</Kicker>
-            <div className="flex items-center gap-4 mb-6">
-              <Shield className="w-10 h-10" style={{ color: COPPER }} />
-            </div>
-            <H2>Por que falo sobre privacidade digital.</H2>
-            <div className="h-8" />
-            <Body large>
-              Privacidade não é esconder. Privacidade é poder escolher quem vê o quê. Quem perde
-              esse direito, perde tudo o que vem em seguida, do crédito ao emprego, do plano de
-              saúde à reputação.
-            </Body>
-            <div className="h-6" />
-            <Body>
-              Cada Pix é catalogado. Cada login com Google é vendido. Cada metadado é guardado por
-              décadas em servidores que você nunca viu. Em um mundo de IA que cruza tudo com tudo, o
-              indivíduo sem higiene digital fica nu, sem perceber, na frente de pessoas que ele
-              nunca vai conhecer.
-            </Body>
-            <div className="h-6" />
-            <Body>
-              Aqui você aprende a separar identidade real de identidade pública, a configurar
-              navegadores, e-mails, telefones, redes e roteadores como um adulto, e a transformar o
-              seu rastro digital de pegada de elefante em pegada de gato.
-            </Body>
-          </div>
-        </div>
-      </section>
+        {/* ── ROW 4: Tools ─────────────────────────────────────────────── */}
+        <RevealBlock delay={0.2}>
+          <ToolsBlock />
+        </RevealBlock>
 
-      {/* OBJETIVO */}
-      <section className="py-24 md:py-40 px-6 md:px-10" style={{ background: INK, color: SAND }}>
-        <div className="max-w-7xl mx-auto">
-          <div className="max-w-4xl">
-            <Kicker light>06. Objetivo da plataforma</Kicker>
-            <H2 light>Construir a maior biblioteca em português sobre soberania individual.</H2>
-            <div className="h-8" />
-            <Body light large>
-              Não é canal de notícia. Não é blog de opinião. Não é newsletter de hype. É uma
-              plataforma editorial que funciona como manual de campo, atualizado capítulo a
-              capítulo, com texto denso, dados verificáveis e ferramentas prontas para serem
-              usadas hoje mesmo.
-            </Body>
-          </div>
+        {/* ── ROW 5: Pillars ───────────────────────────────────────────── */}
+        <RevealBlock delay={0.26}>
+          <PillarsBlock />
+        </RevealBlock>
 
-          <div className="grid md:grid-cols-3 gap-6 mt-16">
-            {[
-              {
-                icon: Compass,
-                title: "Trilhas guiadas",
-                desc: "Quatro níveis de leitura, do zero ao operador soberano, com progresso salvo.",
-              },
-              {
-                icon: Target,
-                title: "Manuais práticos",
-                desc: "Cada artigo termina em ação, não em teoria de novela.",
-              },
-              {
-                icon: Flag,
-                title: "Linguagem direta",
-                desc: "Sem rodeio acadêmico, sem promessa de enriquecimento, sem tom de seita.",
-              },
-            ].map((p) => (
-              <div
-                key={p.title}
-                className="p-8 rounded-sm border"
-                style={{ borderColor: "rgba(250,246,240,0.12)", background: "rgba(250,246,240,0.03)" }}
-              >
-                <p.icon className="w-8 h-8 mb-5" style={{ color: COPPER_LIGHT }} />
-                <h3
-                  className="text-2xl mb-3"
-                  style={{ fontFamily: "'Inter Tight', sans-serif", fontWeight: 800, color: SAND }}
-                >
-                  {p.title}
-                </h3>
-                <p
-                  className="text-base leading-relaxed"
-                  style={{ fontFamily: "'Inter Tight', sans-serif", color: "rgba(250,246,240,0.75)" }}
-                >
-                  {p.desc}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      </div>
 
-      {/* CREDENCIAIS */}
-      <section className="py-24 md:py-40 px-6 md:px-10">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-12 gap-12 md:gap-16 mb-16">
-            <div className="md:col-span-5">
-              <Kicker>07. Credenciais</Kicker>
-              <div className="flex items-center gap-4 mb-6">
-                <Award className="w-10 h-10" style={{ color: COPPER }} />
-              </div>
-              <H2>Por que ouvir quem está falando.</H2>
-            </div>
-            <div className="md:col-span-7 md:pt-6">
-              <Body large>
-                Diploma não protege ninguém de confisco, de inflação ou de censura. O que protege é
-                tempo de banco apanhado, ferramenta construída, código escrito, manual publicado.
-                Aqui vai o histórico que sustenta cada linha desta plataforma.
-              </Body>
-            </div>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-5">
-            {[
-              {
-                icon: Apple,
-                title: "10 anos como técnico especializado Apple",
-                desc: "Década inteira dentro do ecossistema mais hermético do mercado, resolvendo o que ninguém mais resolveu, em hardware, software e logística de reparo.",
-              },
-              {
-                icon: Code2,
-                title: "Experiência profunda em tecnologia",
-                desc: "Vivência prática com redes, sistemas, hardware embarcado, criptografia aplicada e arquitetura de aplicações web modernas.",
-              },
-              {
-                icon: Wrench,
-                title: "Desenvolvimento de ferramentas próprias",
-                desc: "Simuladores, calculadoras de soberania, geradores de entropia e índices de risco — código próprio, hospedagem própria, sem dependência de terceiros.",
-              },
-              {
-                icon: Compass,
-                title: "Plataforma editorial proprietária",
-                desc: "Site, infraestrutura, design system, busca interna e progressão de leitura, tudo construído do zero para entregar conhecimento em alta densidade.",
-              },
-              {
-                icon: BookOpen,
-                title: "Produção autoral de e-books",
-                desc: "Manuais técnicos escritos, revisados e diagramados internamente, com profundidade de livro de referência, não de panfleto de curso.",
-              },
-              {
-                icon: Headphones,
-                title: "Produção autoral de audiobooks",
-                desc: "Roteiro, narração e edição feitos em casa, com padrão de estúdio, para entregar o mesmo conteúdo em formato auditivo.",
-              },
-              {
-                icon: Bitcoin,
-                title: "Estudos contínuos em Bitcoin e autocustódia",
-                desc: "Anos de leitura técnica, white papers, BIPs, debates de desenvolvedores, prática real com hardware wallets, multisig, Lightning e privacidade on-chain.",
-              },
-              {
-                icon: Globe2,
-                title: "Pesquisa aplicada em geopolítica e jurisdições",
-                desc: "Análise comparativa de regimes fiscais, programas de residência, rotas de saída e regulação global de cripto, com atualização semanal.",
-              },
-            ].map((c) => (
-              <div
-                key={c.title}
-                className="p-6 md:p-7 rounded-sm border flex gap-5"
-                style={{
-                  borderColor: "rgba(23,22,18,0.10)",
-                  background: SAND_DEEP,
-                }}
-              >
-                <div
-                  className="w-12 h-12 rounded-sm flex items-center justify-center flex-shrink-0"
-                  style={{ background: INK }}
-                >
-                  <c.icon className="w-5 h-5" style={{ color: COPPER_LIGHT }} />
-                </div>
-                <div>
-                  <h3
-                    className="text-lg md:text-xl mb-2 leading-tight"
-                    style={{ fontFamily: "'Inter Tight', sans-serif", fontWeight: 800, color: INK }}
-                  >
-                    {c.title}
-                  </h3>
-                  <p
-                    className="text-[15px] leading-relaxed"
-                    style={{ fontFamily: "'Inter Tight', sans-serif", color: "rgba(23,22,18,0.72)" }}
-                  >
-                    {c.desc}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* LINHA DO TEMPO */}
-      <section className="py-24 md:py-40 px-6 md:px-10" style={{ background: INK, color: SAND }}>
-        <div className="max-w-6xl mx-auto">
-          <div className="max-w-3xl mb-20">
-            <Kicker light>08. Linha do tempo</Kicker>
-            <div className="flex items-center gap-4 mb-6">
-              <CalendarClock className="w-10 h-10" style={{ color: COPPER_LIGHT }} />
-            </div>
-            <H2 light>Doze anos de obsessão por soberania.</H2>
-            <div className="h-6" />
-            <Body light large>
-              Não foi do dia para a noite. Cada degrau abaixo representa anos de leitura, teste e
-              erro pago do bolso.
-            </Body>
-          </div>
-
-          <div className="relative">
-            {/* Vertical line */}
-            <div
-              className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px md:-translate-x-px"
-              style={{ background: "rgba(250,246,240,0.15)" }}
-            />
-
-            {[
-              { year: "2014", title: "Início dos estudos em Bitcoin", desc: "Primeiro contato sério com o white paper, com nodes, com hardware wallets e com a tese de reserva de valor digital." },
-              { year: "2018", title: "Primeiros materiais publicados", desc: "Conteúdo organizado começa a sair para amigos, clientes e comunidade. Surge o embrião do que viraria a plataforma." },
-              { year: "2024", title: "Lançamento das ferramentas", desc: "Vai ao ar o primeiro pacote de simuladores, calculadoras e índices de soberania, todos gratuitos e sem cadastro." },
-              { year: "2025", title: "Criação da biblioteca", desc: "Linha de e-books e audiobooks autorais nasce, transformando manuais soltos em obras completas, revisadas e diagramadas." },
-              { year: "2026", title: "Expansão da plataforma", desc: "Novos silos de conteúdo, dossiês investigativos, parcerias técnicas e construção da maior biblioteca em português sobre soberania individual." },
-            ].map((m, idx) => (
-              <div
-                key={m.year}
-                className={`relative mb-12 md:mb-16 grid md:grid-cols-2 gap-6 md:gap-16 items-start ${
-                  idx % 2 === 0 ? "" : "md:[&>*:first-child]:order-2"
-                }`}
-              >
-                {/* Dot */}
-                <div
-                  className="absolute left-4 md:left-1/2 -translate-x-1/2 w-3 h-3 rounded-full mt-3"
-                  style={{ background: COPPER, boxShadow: `0 0 0 4px ${INK}, 0 0 0 5px ${COPPER}` }}
-                />
-                <div className={`pl-12 md:pl-0 ${idx % 2 === 0 ? "md:text-right md:pr-12" : "md:pl-12"}`}>
-                  <div
-                    className="text-5xl md:text-6xl mb-2"
-                    style={{ fontFamily: "'Inter Tight', sans-serif", fontWeight: 900, color: COPPER_LIGHT, letterSpacing: "-0.03em" }}
-                  >
-                    {m.year}
-                  </div>
-                  <h3
-                    className="text-xl md:text-2xl"
-                    style={{ fontFamily: "'Inter Tight', sans-serif", fontWeight: 800, color: SAND }}
-                  >
-                    {m.title}
-                  </h3>
-                </div>
-                <div className={`pl-12 md:pl-0 ${idx % 2 === 0 ? "md:pl-12" : "md:text-right md:pr-12"}`}>
-                  <p
-                    className="text-base md:text-lg leading-relaxed"
-                    style={{ fontFamily: "'Inter Tight', sans-serif", color: "rgba(250,246,240,0.78)" }}
-                  >
-                    {m.desc}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* NA MÍDIA */}
-      <section className="py-24 md:py-40 px-6 md:px-10">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-12 gap-12 md:gap-16 mb-16">
-            <div className="md:col-span-5">
-              <Kicker>09. Na mídia</Kicker>
-              <div className="flex items-center gap-4 mb-6">
-                <Newspaper className="w-10 h-10" style={{ color: COPPER }} />
-              </div>
-              <H2>Onde o projeto aparece.</H2>
-            </div>
-            <div className="md:col-span-7 md:pt-6">
-              <Body large>
-                Espaço reservado para podcasts, canais, artigos e veículos que citarem o trabalho.
-                A lista começa enxuta de propósito, vai crescendo na medida em que pessoas sérias
-                resolverem conversar.
-              </Body>
-              <div className="h-4" />
-              <Body>
-                Se você produz mídia e quer fazer uma conversa de profundidade, escreva diretamente
-                pelo contato no fim desta página.
-              </Body>
-            </div>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-5">
-            {[
-              { icon: Mic, label: "Podcast", desc: "Aguardando primeira participação confirmada." },
-              { icon: Eye, label: "Canal de vídeo", desc: "Aguardando primeira entrevista confirmada." },
-              { icon: Newspaper, label: "Artigo ou reportagem", desc: "Aguardando primeira citação editorial." },
-            ].map((m) => (
-              <div
-                key={m.label}
-                className="p-8 rounded-sm border border-dashed flex flex-col items-start"
-                style={{ borderColor: "rgba(23,22,18,0.18)", background: "rgba(23,22,18,0.02)" }}
-              >
-                <m.icon className="w-8 h-8 mb-5" style={{ color: COPPER }} />
-                <div
-                  className="text-[10px] font-bold tracking-[0.3em] uppercase mb-3"
-                  style={{ color: COPPER }}
-                >
-                  Em breve
-                </div>
-                <h3
-                  className="text-2xl mb-3"
-                  style={{ fontFamily: "'Inter Tight', sans-serif", fontWeight: 800, color: INK }}
-                >
-                  {m.label}
-                </h3>
-                <p
-                  className="text-base leading-relaxed"
-                  style={{ fontFamily: "'Inter Tight', sans-serif", color: "rgba(23,22,18,0.65)" }}
-                >
-                  {m.desc}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          <p
-            className="mt-12 text-sm tracking-[0.2em] uppercase text-center"
-            style={{ fontFamily: "'Inter Tight', sans-serif", color: "rgba(23,22,18,0.45)", fontWeight: 600 }}
-          >
-            Tem interesse em mencionar este trabalho? Escreva pelo contato abaixo.
-          </p>
-        </div>
-      </section>
-
-      {/* FERRAMENTAS / EBOOKS / AUDIOBOOKS */}
-      <section className="py-24 md:py-40 px-6 md:px-10" style={{ background: SAND_DEEP }}>
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-12 gap-12 md:gap-16 items-center mb-20">
-            <div className="md:col-span-5">
-              <Kicker>10. Catálogo</Kicker>
-              <H2>Ferramentas gratuitas, e-books e audiobooks.</H2>
-            </div>
-            <div className="md:col-span-7 md:pt-4">
-              <Body large>
-                Tudo o que dá para entregar de graça, é entregue de graça. O que demanda produção
-                profunda vira e-book ou audiobook, com preço de livro, não de curso.
-              </Body>
-            </div>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            <Link to="/ferramentas" className="group block">
-              <div
-                className="p-8 md:p-10 rounded-sm border h-full transition-all duration-500 group-hover:-translate-y-1"
-                style={{
-                  borderColor: "rgba(23,22,18,0.12)",
-                  background: SAND,
-                  boxShadow: "0 10px 40px -20px rgba(23,22,18,0.2)",
-                }}
-              >
-                <Wrench className="w-9 h-9 mb-6" style={{ color: COPPER }} />
-                <div
-                  className="text-[10px] font-bold tracking-[0.3em] uppercase mb-3"
-                  style={{ color: COPPER }}
-                >
-                  Grátis
-                </div>
-                <h3
-                  className="text-3xl mb-4"
-                  style={{ fontFamily: "'Inter Tight', sans-serif", fontWeight: 900, color: INK }}
-                >
-                  Ferramentas
-                </h3>
-                <p
-                  className="text-base leading-relaxed mb-6"
-                  style={{ fontFamily: "'Inter Tight', sans-serif", color: "rgba(23,22,18,0.7)" }}
-                >
-                  Simuladores, calculadoras de soberania, geradores de entropia, índice de
-                  desespertar, mapa de jurisdições. Tudo gratuito, sem cadastro.
-                </p>
-                <div
-                  className="inline-flex items-center gap-2 text-sm font-semibold"
-                  style={{ color: COPPER }}
-                >
-                  Acessar <ArrowRight className="w-4 h-4" />
-                </div>
-              </div>
-            </Link>
-
-            <Link to="/ebooks" className="group block">
-              <div
-                className="p-8 md:p-10 rounded-sm border h-full transition-all duration-500 group-hover:-translate-y-1"
-                style={{
-                  borderColor: "rgba(23,22,18,0.12)",
-                  background: SAND,
-                  boxShadow: "0 10px 40px -20px rgba(23,22,18,0.2)",
-                }}
-              >
-                <BookOpen className="w-9 h-9 mb-6" style={{ color: COPPER }} />
-                <div
-                  className="text-[10px] font-bold tracking-[0.3em] uppercase mb-3"
-                  style={{ color: COPPER }}
-                >
-                  Biblioteca
-                </div>
-                <h3
-                  className="text-3xl mb-4"
-                  style={{ fontFamily: "'Inter Tight', sans-serif", fontWeight: 900, color: INK }}
-                >
-                  E-books
-                </h3>
-                <p
-                  className="text-base leading-relaxed mb-6"
-                  style={{ fontFamily: "'Inter Tight', sans-serif", color: "rgba(23,22,18,0.7)" }}
-                >
-                  Manuais densos sobre autocustódia, saída do Brasil, blindagem patrimonial e
-                  privacidade. Material para ler com lápis na mão.
-                </p>
-                <div
-                  className="inline-flex items-center gap-2 text-sm font-semibold"
-                  style={{ color: COPPER }}
-                >
-                  Ver biblioteca <ArrowRight className="w-4 h-4" />
-                </div>
-              </div>
-            </Link>
-
-            <Link to="/audiobooks" className="group block">
-              <div
-                className="p-8 md:p-10 rounded-sm border h-full transition-all duration-500 group-hover:-translate-y-1"
-                style={{
-                  borderColor: "rgba(23,22,18,0.12)",
-                  background: SAND,
-                  boxShadow: "0 10px 40px -20px rgba(23,22,18,0.2)",
-                }}
-              >
-                <Headphones className="w-9 h-9 mb-6" style={{ color: COPPER }} />
-                <div
-                  className="text-[10px] font-bold tracking-[0.3em] uppercase mb-3"
-                  style={{ color: COPPER }}
-                >
-                  Audiotec
-                </div>
-                <h3
-                  className="text-3xl mb-4"
-                  style={{ fontFamily: "'Inter Tight', sans-serif", fontWeight: 900, color: INK }}
-                >
-                  Audiobooks
-                </h3>
-                <p
-                  className="text-base leading-relaxed mb-6"
-                  style={{ fontFamily: "'Inter Tight', sans-serif", color: "rgba(23,22,18,0.7)" }}
-                >
-                  Mesmo conteúdo dos e-books, em formato para o trânsito, a caminhada e o
-                  treino. Para quem aprende com fone no ouvido.
-                </p>
-                <div
-                  className="inline-flex items-center gap-2 text-sm font-semibold"
-                  style={{ color: COPPER }}
-                >
-                  Ouvir <ArrowRight className="w-4 h-4" />
-                </div>
-              </div>
-            </Link>
-          </div>
-
-          <div className="mt-16">
-            <img
-              src={bibliotecaImg}
-              alt="Livros, kindle e fone, simbolizando a biblioteca digital de Lord Junnior"
-              className="w-full rounded-sm shadow-2xl"
-              loading="lazy"
-              width={1600}
-              height={1067}
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* CONTATO */}
-      <section className="py-24 md:py-40 px-6 md:px-10">
-        <div className="max-w-5xl mx-auto text-center">
-          <Kicker>11. Contato</Kicker>
-          <H2>Antes de escrever, leia o que já está escrito.</H2>
-          <div className="h-8" />
-          <div className="max-w-3xl mx-auto">
-            <Body>
-              A plataforma já responde quase tudo que entra na minha caixa. Antes de mandar
-              pergunta, vale dar uma volta pela trilha, pelo glossário e pelas ferramentas. O que
-              não estiver lá, manda direto.
-            </Body>
-          </div>
-          <div className="mt-12 flex flex-col md:flex-row gap-4 justify-center items-center">
-            <a
-              href="mailto:contato@lordjunnior.com.br"
-              className="inline-flex items-center gap-3 px-8 py-4 rounded-sm font-semibold text-sm tracking-wider uppercase transition-all hover:-translate-y-0.5"
-              style={{ background: INK, color: SAND }}
-            >
-              <Mail className="w-4 h-4" />
-              contato@lordjunnior.com.br
-            </a>
-            <a
-              href="https://instagram.com/lordjunnior"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-8 py-4 rounded-sm font-semibold text-sm tracking-wider uppercase transition-all hover:-translate-y-0.5 border-2"
-              style={{ borderColor: INK, color: INK }}
-            >
-              <Eye className="w-4 h-4" />
-              @lordjunnior
-            </a>
-          </div>
-        </div>
-      </section>
+      <Footer />
     </div>
   );
-};
+}
 
-export default Sobre;
+```
