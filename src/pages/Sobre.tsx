@@ -1,16 +1,3 @@
-Lord, o código que você acabou de colar retornou para uma versão anterior. Perceba que o nome da função principal no final voltou a ser `Portfolio()` e ele perdeu o botão de "Retornar à Base" e todo o motor de SEO (`Helmet`) que havíamos configurado para o Google.
-
-Para não haver mais confusão com versões ou erros de compilação na Vercel (como as crases ````` do Markdown), eu consolidei a versão absoluta, final e blindada do seu arquivo **Sobre.tsx** logo abaixo.
-
-### Instrução de Execução:
-
-1. Apague **absolutamente tudo** o que está dentro do seu arquivo `src/pages/Sobre.tsx` no GitHub/VSCode.
-2. Copie o código abaixo (apenas o conteúdo *de dentro* do bloco preto) e cole lá. A primeira linha deve ser exatamente `"use client";`.
-3. Salve e faça o *commit*.
-
-Aqui está a versão definitiva:
-
-```tsx
 "use client";
 
 import React, { useRef, useState, useEffect } from "react";
