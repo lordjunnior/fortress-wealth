@@ -145,6 +145,7 @@ import Propolis from "./pages/Propolis";
 import SegundoPassaporte from "./pages/saida/SegundoPassaporte";
 import ResidenciaFiscal from "./pages/saida/ResidenciaFiscal";
 import JurisdicoesAmigaveis from "./pages/saida/JurisdicoesAmigaveis";
+import CedulaResidenciaChile from "./pages/saida/CedulaResidenciaChile";
 import SementesCrioulas from "./pages/alimentar/SementesCrioulas";
 import ConservasFermentadas from "./pages/alimentar/ConservasFermentadas";
 import AquaponiaResidencial from "./pages/alimentar/AquaponiaResidencial";
