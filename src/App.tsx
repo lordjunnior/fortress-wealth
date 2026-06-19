@@ -146,6 +146,7 @@ import SegundoPassaporte from "./pages/saida/SegundoPassaporte";
 import ResidenciaFiscal from "./pages/saida/ResidenciaFiscal";
 import JurisdicoesAmigaveis from "./pages/saida/JurisdicoesAmigaveis";
 import CedulaResidenciaChile from "./pages/saida/CedulaResidenciaChile";
+import CartoesCriptoSemReporte from "./pages/CartoesCriptoSemReporte";
 import SementesCrioulas from "./pages/alimentar/SementesCrioulas";
 import ConservasFermentadas from "./pages/alimentar/ConservasFermentadas";
 import AquaponiaResidencial from "./pages/alimentar/AquaponiaResidencial";
@@ -351,6 +352,7 @@ const App = () => (
             <Route path="/saida/residencia-fiscal" element={<ResidenciaFiscal />} />
             <Route path="/saida/jurisdicoes-amigaveis" element={<JurisdicoesAmigaveis />} />
             <Route path="/saida/cedula-residencia-chile" element={<CedulaResidenciaChile />} />
+            <Route path="/soberania-financeira/cartoes-cripto-sem-reporte" element={<CartoesCriptoSemReporte />} />
             <Route path="/soberania-organica/sementes-crioulas" element={<SementesCrioulas />} />
             <Route path="/soberania-organica/conservas-fermentadas" element={<ConservasFermentadas />} />
             <Route path="/soberania-organica/aquaponia-residencial" element={<AquaponiaResidencial />} />
