@@ -240,9 +240,6 @@ const AppSidebar = () => {
         })}
 
         <div className="h-px bg-border/20 mx-2 my-3" />
-
-        {/* ── About / Profile — moved to the bottom per user request ── */}
-        <SovereignHeader />
       </nav>
 
 
@@ -259,6 +256,10 @@ const AppSidebar = () => {
           AUTOCUSTÓDIA É LIBERDADE
         </p>
       </div>
+
+      {/* ── About / Profile — moved to the bottom per user request ── */}
+      <SovereignHeader />
+
     </aside>
   );
 };
