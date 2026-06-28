@@ -252,7 +252,7 @@ const Audiobooks: React.FC<AudiobooksProps> = ({ onPlay }) => {
         <FilmGrain />
         <SoundWaveParticles />
         <LightBeams />
-        <audio ref={audioRef} src={activeTrack.audioUrl || ''} preload="metadata" />
+        <audio ref={audioRef} src={signedUrl || ''} preload="metadata" />
 
         {/* Cinematic Hero */}
         <motion.section 
@@ -373,9 +373,9 @@ const Audiobooks: React.FC<AudiobooksProps> = ({ onPlay }) => {
                       </button>
                       <motion.button 
                         onClick={togglePlayState}
-                        className={`w-12 h-12 rounded-full flex items-center justify-center transition-colors ${activeTrack.audioUrl ? 'bg-foreground text-background hover:bg-destructive' : 'bg-muted text-muted-foreground cursor-not-allowed'}`}
-                        whileHover={activeTrack.audioUrl ? { scale: 1.05 } : {}}
-                        whileTap={activeTrack.audioUrl ? { scale: 0.95 } : {}}
+                        className={`w-12 h-12 rounded-full flex items-center justify-center transition-colors ${(activeTrack as any).audioPath ? 'bg-foreground text-background hover:bg-destructive' : 'bg-muted text-muted-foreground cursor-not-allowed'}`}
+                        whileHover={(activeTrack as any).audioPath ? { scale: 1.05 } : {}}
+                        whileTap={(activeTrack as any).audioPath ? { scale: 0.95 } : {}}
                       >
                         {isPlaying ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5 translate-x-0.5" />}
                       </motion.button>
@@ -391,7 +391,7 @@ const Audiobooks: React.FC<AudiobooksProps> = ({ onPlay }) => {
                     </div>
                   </div>
                   
-                  {!activeTrack.audioUrl && (
+                  {!(activeTrack as any).audioPath && (
                     <p className="text-[10px] text-muted-foreground uppercase tracking-widest mt-4 text-center">
                       Em breve disponível
                     </p>
