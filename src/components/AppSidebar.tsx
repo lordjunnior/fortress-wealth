@@ -83,16 +83,9 @@ const AppSidebar = () => {
 
   return (
     <aside className="hidden lg:flex fixed left-0 top-[36px] bottom-0 w-[280px] z-50 flex-col border-r border-border/30 bg-[#060810]/95 backdrop-blur-2xl">
-      {/* ── Brand Header — compact identity at the top ── */}
-      <div className="px-4 py-3 border-b border-border/30 flex items-center gap-3">
-        <div className="w-8 h-8 rounded-lg bg-gold/10 flex items-center justify-center border border-gold/20">
-          <span className="text-gold font-black text-sm">LJ</span>
-        </div>
-        <div className="flex flex-col">
-          <span className="text-sm font-black text-foreground tracking-tight uppercase">Arsenal</span>
-          <span className="font-mono text-[8px] tracking-[0.2em] text-muted-foreground/60 uppercase">Soberania Individual</span>
-        </div>
-      </div>
+      {/* ── Identity Header — Sovereign Presence ── */}
+      <SovereignHeader />
+
 
 
       {/* ── Search ── */}
