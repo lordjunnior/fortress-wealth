@@ -23,7 +23,7 @@ const SovereignHeader = () => {
   const perimeter = (totalSize - strokeWidth) * 4;
 
   return (
-    <div className="px-3 pt-5 pb-4 border-b border-border/30 flex flex-col items-center text-center">
+    <div className="px-3 pt-5 pb-4 border-t border-border/30 flex flex-col items-center text-center">
       {/* Square Tactical Ring + Photo */}
       <div
         className="relative flex items-center justify-center group"
