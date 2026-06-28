@@ -93,12 +93,6 @@ const SovereignHeader = () => {
         </p>
       </Link>
 
-      {/* Progress Badge */}
-      <div className="flex items-center gap-1.5 mt-3 bg-card/80 px-3 py-1.5 rounded-full border border-border/30">
-        <Zap className="w-3.5 h-3.5 text-gold" />
-        <span className="text-xs font-bold text-foreground">{percent}%</span>
-        <span className="font-mono text-[8px] tracking-tight text-muted-foreground uppercase">Blindado</span>
-      </div>
 
       {/* Social Links */}
       <div className="flex items-center gap-3 mt-3">
