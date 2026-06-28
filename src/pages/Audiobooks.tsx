@@ -13,6 +13,7 @@ import coverEticaLiberdade from '@/assets/cover-etica-liberdade.jpg';
 import coverAnatomiaEstado from '@/assets/cover-anatomia-estado.jpg';
 import coverRiquezaNacoes from '@/assets/cover-riqueza-nacoes.jpg';
 import BackToHome from '@/components/BackToHome';
+import { supabase } from '@/integrations/supabase/client';
 
 const APPLE_EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
@@ -24,7 +25,7 @@ const AUDIOBOOKS_DB = [
     duration: '16:31:00',
     category: 'Educação Financeira',
     coverImage: coverPaiRico,
-    audioUrl: 'https://oytebhfcdnhpelaycvjd.supabase.co/storage/v1/object/public/audiobooks/pai-rico-pai-pobre.mp3'
+    audioPath: 'pai-rico-pai-pobre.mp3'
   },
   {
     id: 'padrao-bitcoin',
@@ -139,6 +140,7 @@ const Audiobooks: React.FC<AudiobooksProps> = ({ onPlay }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
+  const [signedUrl, setSignedUrl] = useState<string | null>(null);
   const audioRef = useRef<HTMLAudioElement>(null);
   const heroRef = useRef<HTMLDivElement>(null);
 
@@ -149,6 +151,30 @@ const Audiobooks: React.FC<AudiobooksProps> = ({ onPlay }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  // Mint short-lived signed URL whenever a track with audio becomes active.
+  useEffect(() => {
+    let cancelled = false;
+    const path = (activeTrack as any).audioPath as string | undefined;
+    if (!path) {
+      setSignedUrl(null);
+      return;
+    }
+    supabase.storage
+      .from('audiobooks')
+      .createSignedUrl(path, 60 * 60)
+      .then(({ data, error }) => {
+        if (cancelled) return;
+        if (error || !data?.signedUrl) {
+          setSignedUrl(null);
+          return;
+        }
+        setSignedUrl(data.signedUrl);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [activeTrack]);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -169,20 +195,20 @@ const Audiobooks: React.FC<AudiobooksProps> = ({ onPlay }) => {
   const handleTrackClick = (book: any) => {
     setActiveTrack(book);
     setCurrentTime(0);
-    if (book.audioUrl) {
+    if (book.audioPath) {
       setTimeout(() => {
         audioRef.current?.play();
         setIsPlaying(true);
-      }, 100);
+      }, 400);
     } else {
       setIsPlaying(false);
     }
-    onPlay?.({ id: book.id, title: book.title, author: book.author, url: book.audioUrl || '#' });
+    onPlay?.({ id: book.id, title: book.title, author: book.author, url: '#' });
   };
 
   const togglePlayState = () => {
     const audio = audioRef.current;
-    if (!audio || !activeTrack.audioUrl) return;
+    if (!audio || !(activeTrack as any).audioPath) return;
     if (isPlaying) audio.pause();
     else audio.play();
     setIsPlaying(!isPlaying);
