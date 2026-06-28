@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
-import { Instagram, Youtube, Twitter, Github, Zap } from "lucide-react";
+import { Instagram, Youtube, Twitter, Github } from "lucide-react";
 import { Link } from "react-router-dom";
 import profilePhoto from "@/assets/profile-photo.jpg";
 import { useReadingProgress } from "@/hooks/useReadingProgress";
+
 
 const socialLinks = [
   { icon: Instagram, url: "https://instagram.com/lordjunnior", label: "Instagram" },
