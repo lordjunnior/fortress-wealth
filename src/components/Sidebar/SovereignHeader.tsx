@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
-import { Instagram, Youtube, Twitter, Github, Zap } from "lucide-react";
+import { Instagram, Youtube, Twitter, Github } from "lucide-react";
 import { Link } from "react-router-dom";
 import profilePhoto from "@/assets/profile-photo.jpg";
 import { useReadingProgress } from "@/hooks/useReadingProgress";
+
 
 const socialLinks = [
   { icon: Instagram, url: "https://instagram.com/lordjunnior", label: "Instagram" },
@@ -22,7 +23,7 @@ const SovereignHeader = () => {
   const perimeter = (totalSize - strokeWidth) * 4;
 
   return (
-    <div className="px-3 pt-5 pb-4 border-b border-border/30 flex flex-col items-center text-center">
+    <div className="px-3 pt-5 pb-4 border-t border-border/30 flex flex-col items-center text-center">
       {/* Square Tactical Ring + Photo */}
       <div
         className="relative flex items-center justify-center group"
@@ -92,12 +93,6 @@ const SovereignHeader = () => {
         </p>
       </Link>
 
-      {/* Progress Badge */}
-      <div className="flex items-center gap-1.5 mt-3 bg-card/80 px-3 py-1.5 rounded-full border border-border/30">
-        <Zap className="w-3.5 h-3.5 text-gold" />
-        <span className="text-xs font-bold text-foreground">{percent}%</span>
-        <span className="font-mono text-[8px] tracking-tight text-muted-foreground uppercase">Blindado</span>
-      </div>
 
       {/* Social Links */}
       <div className="flex items-center gap-3 mt-3">
