@@ -250,8 +250,6 @@ const AppSidebar = () => {
         </p>
       </div>
 
-      {/* ── About / Profile — moved to the bottom per user request ── */}
-      <SovereignHeader />
 
     </aside>
   );
