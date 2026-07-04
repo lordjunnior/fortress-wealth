@@ -7,6 +7,7 @@ import cardPixSemBanco from "@/assets/card-pix-sem-banco.jpg";
 import cardConfiscoBtc from "@/assets/card-confisco-bitcoin.jpg";
 import cardPixAnonimo from "@/assets/card-pix-anonimo.jpg";
 import cardMultisig from "@/assets/card-multisig.jpg";
+import jadeCoreHook from "@/assets/jade-core/hero-device.jpg";
 import cardLeiConta from "@/assets/card-lei-conta.jpg";
 import bybitBinanceHook from "@/assets/exchanges/bybit-binance-hero.jpg";
 import fiisHook from "@/assets/mercado-tradicional/card-home-fiis.jpg";
@@ -584,6 +585,39 @@ const Index = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
             >
+              {/* JADE CORE REVIEW — Novo hook */}
+              <Link
+                to="/autocustodia/jade-core-review"
+                className="group relative block rounded-2xl border border-primary/20 bg-card/40 backdrop-blur-sm overflow-hidden hover:border-primary/50 transition-all duration-500 mb-8"
+              >
+                <div className="grid grid-cols-1 md:grid-cols-2">
+                  <div className="relative min-h-[260px] md:min-h-[340px]">
+                    <img src={jadeCoreHook} alt="Jade Core, novo hardware wallet Bitcoin da Blockstream" className="absolute inset-0 w-full h-full object-cover" loading="lazy" width={1920} height={1280} />
+                    <div className="absolute inset-0 bg-gradient-to-r from-card/80 via-card/20 to-transparent hidden md:block" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-card/60 via-transparent to-transparent md:hidden" />
+                  </div>
+                  <div className="relative p-8 md:p-10 lg:p-14 flex flex-col justify-center">
+                    <div className="absolute -top-12 -right-12 w-48 h-48 rounded-full bg-primary/10 blur-3xl pointer-events-none" />
+                    <div className="relative space-y-4">
+                      <div className="flex items-center gap-2">
+                        <p className="font-mono text-[9px] tracking-[0.3em] text-primary uppercase">[ REVIEW 2026 ]</p>
+                        <span className="px-2.5 py-1 rounded-full bg-primary/15 border border-primary/30 text-primary font-mono text-[9px] tracking-[0.3em] uppercase font-bold">Novo</span>
+                      </div>
+                      <h3 className="text-foreground font-bold text-2xl md:text-3xl lg:text-[2.2rem] tracking-tight leading-[1.2]" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+                        SAIA DA GAIOLA FIAT EM <span className="text-primary">5 MINUTOS</span>
+                      </h3>
+                      <p className="text-base text-muted-foreground leading-8">
+                        Jade Core, o novo hardware wallet de entrada da Blockstream. <span className="text-foreground font-semibold">Segurança de verdade, sem curva técnica.</span> Manual passo a passo, comparativo com Ledger, Trezor e ColdCard.
+                      </p>
+                      <span className="inline-flex items-center gap-2.5 px-6 py-3 rounded-lg bg-primary/10 border border-primary/30 text-primary text-xs font-bold tracking-[0.15em] uppercase transition-all duration-500 group-hover:bg-primary/20">
+                        LER O REVIEW COMPLETO
+                        <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+
               <Link
                 to="/multisig-bitcoin"
                 className="group relative block rounded-2xl overflow-hidden transition-all duration-500"
