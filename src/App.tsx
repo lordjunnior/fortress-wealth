@@ -147,6 +147,7 @@ import ResidenciaFiscal from "./pages/saida/ResidenciaFiscal";
 import JurisdicoesAmigaveis from "./pages/saida/JurisdicoesAmigaveis";
 import CedulaResidenciaChile from "./pages/saida/CedulaResidenciaChile";
 import CartoesCriptoSemReporte from "./pages/CartoesCriptoSemReporte";
+import JadeCoreReview from "./pages/JadeCoreReview";
 import SementesCrioulas from "./pages/alimentar/SementesCrioulas";
 import ConservasFermentadas from "./pages/alimentar/ConservasFermentadas";
 import AquaponiaResidencial from "./pages/alimentar/AquaponiaResidencial";
