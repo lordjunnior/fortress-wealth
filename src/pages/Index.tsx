@@ -7,6 +7,7 @@ import cardPixSemBanco from "@/assets/card-pix-sem-banco.jpg";
 import cardConfiscoBtc from "@/assets/card-confisco-bitcoin.jpg";
 import cardPixAnonimo from "@/assets/card-pix-anonimo.jpg";
 import cardMultisig from "@/assets/card-multisig.jpg";
+import jadeCoreHook from "@/assets/jade-core/hero-device.jpg";
 import cardLeiConta from "@/assets/card-lei-conta.jpg";
 import bybitBinanceHook from "@/assets/exchanges/bybit-binance-hero.jpg";
 import fiisHook from "@/assets/mercado-tradicional/card-home-fiis.jpg";
