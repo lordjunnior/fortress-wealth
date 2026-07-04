@@ -1,7 +1,5 @@
 ## Objetivo
 
-Expandir a página `/palau-id` com o conteúdo do vídeo de João TR (milhares de views), trazendo profundidade, analogias visuais e blocos com imagem real, sem mexer na estrutura/UI já aprovada. Quarteto do Poder (SEO, CTR, CTA, PNL) reforçado em cada bloco novo.
-
 ## Novos blocos (inseridos entre seções já existentes)
 
 1. **"Privacidade virou artigo de luxo"** (gatilho de abertura, logo após hero)
