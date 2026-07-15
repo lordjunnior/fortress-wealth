@@ -7,6 +7,11 @@ import {
   Cpu, Code2, Palette, Camera, Film, Layers, Server, Database, Wind,
 } from "lucide-react";
 import BackToHome from "@/components/BackToHome";
+import btcBackground from "@/assets/bitcoin-hero-coin.jpg";
+
+
+
+
 
 const ORANGE = "#f7931a";
 
@@ -124,9 +129,17 @@ export default function SobreMim() {
         <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
       </Helmet>
 
+
+
+
+
+
+
+
       <main className="relative min-h-screen bg-slate-50 text-slate-900 overflow-x-hidden">
         {/* Ambient background */}
         <div className="pointer-events-none fixed inset-0 -z-10">
+
           <div
             className="absolute inset-0 opacity-[0.06]"
             style={{
@@ -144,6 +157,7 @@ export default function SobreMim() {
           />
         </div>
 
+
         <div className="max-w-6xl mx-auto px-5 md:px-8 pt-8 pb-24">
           <div className="mb-10">
             <BackToHome />
@@ -151,8 +165,23 @@ export default function SobreMim() {
 
           {/* HERO */}
           <Reveal>
-            <section className="relative rounded-3xl border border-white/70 bg-white/70 backdrop-blur-xl p-8 md:p-14 shadow-[0_20px_60px_-30px_rgba(15,23,42,0.25)] overflow-hidden">
+            <section className="relative rounded-3xl border border-white/70 p-8 md:p-14 shadow-[0_20px_60px_-30px_rgba(15,23,42,0.25)] overflow-hidden">
+              {/* Bitcoin blurred background */}
+              <div className="absolute inset-0 -z-10">
+                <img
+                  src={btcBackground}
+                  alt=""
+                  className="absolute inset-0 w-full h-full object-cover scale-110 blur-2xl opacity-[0.22]"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-slate-50/88" />
+              </div>
               <div className="absolute -top-24 -right-24 w-72 h-72 rounded-full blur-3xl opacity-30" style={{ background: ORANGE }} />
+
+
+
+
+
               <div className="relative">
                 <div className="flex items-center gap-3 mb-6">
                   <span className="inline-flex items-center gap-2 rounded-full border border-orange-500/40 bg-orange-500/10 px-3 py-1">
