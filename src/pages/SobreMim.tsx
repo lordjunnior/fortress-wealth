@@ -127,6 +127,17 @@ export default function SobreMim() {
       </Helmet>
 
       <main className="relative min-h-screen bg-slate-50 text-slate-900 overflow-x-hidden">
+        {/* Bitcoin blurred background */}
+        <div className="pointer-events-none fixed inset-0 -z-20">
+          <img
+            src={btcBackground}
+            alt=""
+            className="absolute inset-0 w-full h-full object-cover scale-110 blur-3xl opacity-[0.14]"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-slate-50/85" />
+        </div>
+
         {/* Ambient background */}
         <div className="pointer-events-none fixed inset-0 -z-10">
           <div
@@ -145,6 +156,7 @@ export default function SobreMim() {
             }}
           />
         </div>
+
 
         <div className="max-w-6xl mx-auto px-5 md:px-8 pt-8 pb-24">
           <div className="mb-10">
