@@ -7,7 +7,8 @@ import {
   Cpu, Code2, Palette, Camera, Film, Layers, Server, Database, Wind,
 } from "lucide-react";
 import BackToHome from "@/components/BackToHome";
-import btcBackground from "@/assets/bitcoin-hero-coin.jpg";
+import btcBackground from "@/assets/bitcoin-bg-sobre-mim.jpg";
+
 
 
 const ORANGE = "#f7931a";
