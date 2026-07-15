@@ -30,6 +30,7 @@ export const topNavItems: NavItem[] = [
   { label: "Protocolo Inicial", route: "/protocolo-inicial", icon: ShieldAlert, alert: true },
   { label: "Manifesto", targetId: "manifesto", icon: LayoutGrid },
   { label: "Sobre Lord Junnior", route: "/sobre", icon: User },
+  { label: "Sobre Mim", route: "/sobre-mim", icon: User },
 ];
 
 
