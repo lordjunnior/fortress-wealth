@@ -128,17 +128,6 @@ export default function SobreMim() {
         <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
       </Helmet>
 
-      {/* Bitcoin blurred background */}
-      <div className="pointer-events-none fixed inset-0 -z-10">
-        <img
-          src={btcBackground}
-          alt=""
-          className="absolute inset-0 w-full h-full object-cover scale-110 blur-3xl opacity-[0.24]"
-          loading="lazy"
-          style={{ filter: "brightness(1.4)" }}
-        />
-        <div className="absolute inset-0 bg-white/92" />
-      </div>
 
 
 
