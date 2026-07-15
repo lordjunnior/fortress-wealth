@@ -133,11 +133,12 @@ export default function SobreMim() {
           <img
             src={btcBackground}
             alt=""
-            className="absolute inset-0 w-full h-full object-cover scale-125 blur-3xl opacity-[0.45]"
+            className="absolute inset-0 w-full h-full object-cover scale-110 blur-3xl opacity-[0.22]"
             loading="lazy"
           />
-          <div className="absolute inset-0 bg-slate-50/50" />
+          <div className="absolute inset-0 bg-slate-50/80" />
         </div>
+
 
 
 
