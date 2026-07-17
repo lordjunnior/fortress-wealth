@@ -64,9 +64,9 @@ const SovereignHeader = () => {
           />
         </svg>
 
-        {/* Square photo — links to /sobre */}
+        {/* Square photo — links to /sobre-mim */}
         <Link
-          to="/sobre"
+          to="/sobre-mim"
           aria-label="Conheça Lord Junnior"
           className="rounded-2xl overflow-hidden border border-border/20 shadow-[0_0_50px_-8px_hsl(var(--gold)/0.35)] relative z-10 block"
           style={{ width: `${imageSize}px`, height: `${imageSize}px` }}
@@ -81,7 +81,7 @@ const SovereignHeader = () => {
       </div>
 
       {/* Authority Title */}
-      <Link to="/sobre" className="block mt-4 group/title">
+      <Link to="/sobre-mim" className="block mt-4 group/title">
         <h2 className="text-lg font-black text-foreground tracking-tight uppercase group-hover/title:text-gold transition-colors">
           Lord Junnior
         </h2>
