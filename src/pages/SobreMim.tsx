@@ -135,21 +135,6 @@ const CREDENTIALS = [
   { title: "Editoria Técnica", text: "Da infraestrutura ao design system, a plataforma inteira é erguida manualmente. E-books e audiobooks são manuais de referência escritos, revisados e narrados com padrão de estúdio." },
 ];
 
-const SKILLS: { label: string; percent: number; Icon: any }[] = [
-  { label: "Photoshop", percent: 95, Icon: Palette },
-  { label: "Illustrator", percent: 90, Icon: Palette },
-  { label: "Premiere", percent: 88, Icon: Film },
-  { label: "After FX", percent: 82, Icon: Film },
-  { label: "Lightroom", percent: 92, Icon: Camera },
-  { label: "React", percent: 85, Icon: Code2 },
-  { label: "Tailwind", percent: 95, Icon: Wind },
-  { label: "TypeScript", percent: 85, Icon: Code2 },
-  { label: "Supabase", percent: 80, Icon: Database },
-  { label: "Vite", percent: 85, Icon: Layers },
-  { label: "Linux", percent: 90, Icon: Server },
-  { label: "Node.js", percent: 83, Icon: Cpu },
-];
-
 export default function SobreMim() {
   const [activeNode, setActiveNode] = useState<number | null>(null);
   const blob1 = useRef<HTMLDivElement>(null);
