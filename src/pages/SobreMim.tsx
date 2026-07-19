@@ -1,20 +1,118 @@
 import { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { motion, useInView } from "framer-motion";
-import {
-  Bitcoin, Globe, Lock, Terminal, ArrowRight, Shield, BookOpen,
-  Award, GraduationCap, Wrench, Mail, Instagram, Github,
-} from "lucide-react";
+import { Mail, ArrowRight, Instagram, Github, Youtube } from "lucide-react";
 import BackToHome from "@/components/BackToHome";
-import btcBackground from "@/assets/bitcoin-hero-coin.jpg";
 
+const ORANGE = "#FF6600";
+const BG = "#08090a";
 
+const NAV = [
+  { id: "identidade", label: "Identidade" },
+  { id: "trajetoria", label: "Trajetória" },
+  { id: "prova", label: "Prova" },
+  { id: "dominio", label: "Domínio" },
+  { id: "catalogo", label: "Catálogo" },
+];
 
+const PILLARS = [
+  {
+    n: "01",
+    title: "ARQUITETURA WEB",
+    desc: "Desenvolvimento full-stack com React, Next.js e Tailwind. Interfaces reativas, performance otimizada e infraestrutura autônoma.",
+    tags: ["Front & Back", "100% Custom"],
+  },
+  {
+    n: "02",
+    title: "INTELIGÊNCIA ARTIFICIAL",
+    desc: "Implementação de IA local (Ollama) e em nuvem para automação de fluxos de trabalho. Segurança de dados e processamento de alto volume.",
+    tags: ["Local & Cloud", "Zero Leak"],
+  },
+  {
+    n: "03",
+    title: "DESIGN & BRANDING",
+    desc: "17 anos de experiência em direção criativa, UI/UX e motion design. Criação de identidades premium e design systems escaláveis.",
+    tags: ["UI / UX / Motion", "High-End"],
+  },
+  {
+    n: "04",
+    title: "ENGENHARIA REVERSA",
+    desc: "Uma década de bancada dissecando hardware e software. Compreensão profunda de acessos, barreiras e como rompê-las.",
+    tags: ["Hardware & OS", "Root Access"],
+  },
+];
 
+const SKILLS = [
+  { label: "Arquitetura Web & Front-end", percent: 95 },
+  { label: "Design de Interface & Branding", percent: 96 },
+  { label: "Implementação de IA & Automação", percent: 90 },
+  { label: "Engenharia Reversa & Hardware", percent: 92 },
+  { label: "Motion Design & Audiovisual", percent: 87 },
+  { label: "Infraestrutura & DevOps", percent: 85 },
+];
 
-const ORANGE = "#f7931a";
-const BLUE = "#4F9DFF";
+const TIMELINE = [
+  {
+    periodo: "2021 · Presente",
+    empresa: "Plataforma Lord Junnior",
+    cargo: "Arquiteto de Sistemas & Consultor",
+    desc: "Construção de ferramentas open source, automação por IA, design systems e arquitetura de aplicações web soberanas para clientes corporativos.",
+  },
+  {
+    periodo: "2018 · 2021",
+    empresa: "Mercado Corporativo",
+    cargo: "Consultor de Design & IA",
+    desc: "Atuação como parceiro estratégico. Implementação de Inteligência Artificial para alto fluxo, garantindo zero vazamento de dados e unificação de design gráfico com desenvolvimento digital.",
+  },
+  {
+    periodo: "2012 · 2018",
+    empresa: "Ecossistema Apple & Agências",
+    cargo: "Especialista Técnico & Designer Sênior",
+    desc: "Uma década dissecando a arquitetura de hardware e software do ecossistema mais hermético do mercado. Engenharia reversa de sistemas e liderança de design de interface.",
+  },
+  {
+    periodo: "2008 · 2012",
+    empresa: "Empresas Locais & RedeTV",
+    cargo: "Designer Gráfico & Motion",
+    desc: "Início de atuação criativa prestando serviços para empresas locais e emissoras de televisão. Domínio de fluxos de impressão e motion design audiovisual.",
+  },
+];
+
+const CAMADAS = [
+  {
+    n: "01",
+    title: "Hardware & OS",
+    log: "> validacao_hardware: aprovada",
+    desc: "Década dissecando a arquitetura de hardware e software do ecossistema mais hermético do mercado. Compreensão profunda de acessos, barreiras e como rompê-las.",
+  },
+  {
+    n: "02",
+    title: "Rede & IA Local",
+    log: "> validacao_ia: aprovada",
+    desc: "Modelos locais sem vazamento de dados. Implementação de infraestrutura blindada. Nuvem corporativa? Não. Hospedagem própria.",
+  },
+  {
+    n: "03",
+    title: "Aplicação & UI",
+    log: "> validacao_app: aprovada",
+    desc: "React, Next.js, TypeScript e Tailwind. Sistemas soberanos do backend ao frontend, design systems escaláveis.",
+  },
+];
+
+const HUD_NODES = [
+  { code: "PS", name: "Photoshop", desc: "Design gráfico avançado, composição e retoque de alto nível." },
+  { code: "AI", name: "Illustrator", desc: "Vetorização, identidade visual e design system escalável." },
+  { code: "FIG", name: "Figma", desc: "Prototipagem, design systems e colaboração em produto." },
+  { code: "PR", name: "Premiere Pro", desc: "Edição audiovisual profissional e finalização." },
+  { code: "AE", name: "After Effects", desc: "Motion design, animação de UI e VFX." },
+  { code: "LR", name: "Lightroom", desc: "Tratamento fotográfico e color grading." },
+  { code: "OBS", name: "OBS Studio", desc: "Streaming e captura profissional multicâmera." },
+  { code: "OLL", name: "Ollama", desc: "IA local sem vazamento de dados. Modelos on-premise." },
+  { code: "OAI", name: "OpenAI API", desc: "Automação e integração de agentes em fluxo corporativo." },
+  { code: "RC", name: "React", desc: "Aplicações reativas, arquitetura de componentes e estado." },
+  { code: "TW", name: "Tailwind CSS", desc: "Design system utilitário, escalável e performático." },
+  { code: "TS", name: "TypeScript", desc: "Tipagem estática, contratos e segurança em escala." },
+];
 
 function Reveal({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -22,51 +120,13 @@ function Reveal({ children, delay = 0, className = "" }: { children: React.React
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 40 }}
+      initial={{ opacity: 0, y: 30 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.9, delay, ease: [0.22, 1, 0.36, 1] }}
       className={className}
     >
       {children}
     </motion.div>
-  );
-}
-
-function SectionHeader({ number, title }: { number: string; title: string }) {
-  return (
-    <div className="flex items-baseline gap-4 mb-8">
-      <span className="font-mono text-xs tracking-[0.3em] text-slate-500 uppercase">{number}</span>
-      <div className="h-px flex-1 bg-slate-300/60" />
-      <h2 className="font-black text-2xl md:text-3xl tracking-tight text-slate-900" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-        {title}
-      </h2>
-    </div>
-  );
-}
-
-function PillarRing({ percent, delay }: { percent: number; delay: number }) {
-  const ref = useRef<SVGCircleElement>(null);
-  const wrapRef = useRef<HTMLDivElement>(null);
-  const inView = useInView(wrapRef, { once: true, margin: "-60px" });
-  const r = 32;
-  const c = 2 * Math.PI * r;
-  const off = c - (c * percent) / 100;
-  useEffect(() => {
-    if (inView && ref.current) {
-      const t = setTimeout(() => { if (ref.current) ref.current.style.strokeDashoffset = String(off); }, delay);
-      return () => clearTimeout(t);
-    }
-  }, [inView, off, delay]);
-  return (
-    <div ref={wrapRef} className="relative w-20 h-20">
-      <svg viewBox="0 0 80 80" className="w-full h-full -rotate-90">
-        <circle cx="40" cy="40" r={r} fill="none" stroke="rgba(15,23,42,0.08)" strokeWidth="4" />
-        <circle ref={ref} cx="40" cy="40" r={r} fill="none" stroke={ORANGE} strokeWidth="4"
-          strokeLinecap="round" strokeDasharray={c} strokeDashoffset={c}
-          style={{ transition: "stroke-dashoffset 1.5s cubic-bezier(0.22,1,0.36,1)" }} />
-      </svg>
-      <div className="absolute inset-0 flex items-center justify-center font-mono text-xs font-bold text-slate-900">{percent}%</div>
-    </div>
   );
 }
 
@@ -81,468 +141,470 @@ function SkillBar({ label, percent, delay }: { label: string; percent: number; d
     <div ref={wrapRef}>
       <div className="flex justify-between text-sm text-white/85 mb-2">
         <span className="font-medium">{label}</span>
-        <span className="font-mono text-white/60">{percent}%</span>
+        <span className="font-mono text-white/50 text-xs">{percent}%</span>
       </div>
-      <div className="h-[5px] bg-white/[0.06] rounded-full overflow-hidden">
-        <div className="h-full rounded-full transition-[width] duration-[1500ms] ease-out"
-          style={{ width: `${w}%`, background: BLUE, boxShadow: `0 0 10px ${BLUE}80` }} />
+      <div className="h-[4px] bg-white/[0.06] rounded-full overflow-hidden">
+        <div
+          className="h-full rounded-full transition-[width] duration-[1500ms] ease-out"
+          style={{ width: `${w}%`, background: "#4F9DFF", boxShadow: "0 0 10px rgba(79,157,255,0.5)" }}
+        />
       </div>
     </div>
   );
 }
 
-const TIMELINE = [
-  { periodo: "2021 · Presente", empresa: "Plataforma Lord Junnior", cargo: "Arquiteto de Soberania & Pesquisador", desc: "Construção de ferramentas open source, manuais de autocustódia, automação por IA local e produção de conteúdo sobre geopolítica e o tabuleiro financeiro global." },
-  { periodo: "2020 · 2021", empresa: "Pivô Cripto & Web3", cargo: "Minerador & Investidor de Criptoativos", desc: "Com o fechamento do comércio físico durante a pandemia, redirecionamento de capital para a montagem de rigs de mineração de BTC e atuação estratégica em jogos NFT." },
-  { periodo: "2012 · 2020", empresa: "Atuação Independente & Varejo", cargo: "Especialista em Engenharia Reversa & Sistemas Móveis", desc: "Início reparando sistemas Linux em celulares Motorola e Android, evoluindo para desbloqueios e recuperação total via hardware (boxes). Tornou-se o profissional mais requisitado da cidade." },
-  { periodo: "2008 · 2012", empresa: "Empresas Locais & RedeTV", cargo: "Designer Gráfico & Motion", desc: "Início de atuação criativa prestando serviços para empresas locais e emissoras de televisão. Domínio de fluxos de impressão e motion design audiovisual." },
-];
+function Counter({ target, suffix = "" }: { target: number; suffix?: string }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-40px" });
+  const [n, setN] = useState(0);
+  useEffect(() => {
+    if (!inView) return;
+    const dur = 1400;
+    const start = performance.now();
+    let raf = 0;
+    const tick = (t: number) => {
+      const p = Math.min(1, (t - start) / dur);
+      setN(Math.floor(p * target));
+      if (p < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [inView, target]);
+  return <span ref={ref}>{n}{suffix}</span>;
+}
 
-const SKILLS_LIST = [
-  { label: "Autocustódia & Bitcoin", percent: 95 },
-  { label: "Engenharia Reversa & Hardware", percent: 92 },
-  { label: "Implementação de IA & Automação", percent: 90 },
-  { label: "Design de Interface & Branding", percent: 96 },
-  { label: "Geopolítica & Privacidade", percent: 88 },
-];
-
-const HUD_NODES = [
-  { code: "PS", name: "Photoshop", cat: "Design", level: "Expert" },
-  { code: "AI", name: "Illustrator", cat: "Design", level: "Advanced" },
-  { code: "FIG", name: "Figma", cat: "UI/UX", level: "Expert" },
-  { code: "PR", name: "Premiere Pro", cat: "Vídeo", level: "Advanced" },
-  { code: "AE", name: "After Effects", cat: "Motion", level: "Advanced" },
-  { code: "LR", name: "Lightroom", cat: "Foto", level: "Expert" },
-  { code: "OBS", name: "OBS Studio", cat: "Streaming", level: "Advanced" },
-  { code: "OLL", name: "Ollama", cat: "IA Local", level: "Advanced" },
-  { code: "OAI", name: "OpenAI API", cat: "Automação", level: "Expert" },
-  { code: "RC", name: "React", cat: "Frontend", level: "Advanced" },
-  { code: "TW", name: "Tailwind CSS", cat: "Frontend", level: "Expert" },
-  { code: "TS", name: "TypeScript", cat: "Frontend", level: "Advanced" },
-];
-
-const PILLARS = [
-  { node: "NODE 01", title: "BITCOIN", Icon: Bitcoin, desc: "Engenharia de risco e tecnologia de fuga. Autocustódia verdadeira, sem intermediário e sem permissão.", tags: ["Sistema Ativo", "100% Seguro"] },
-  { node: "NODE 02", title: "GEOPOLÍTICA", Icon: Globe, desc: "Teoria das bandeiras, leitura do avanço dos CBDCs e do tabuleiro global que decide sua liberdade.", tags: ["Mapa Atualizado", "Tendência Definida"] },
-  { node: "NODE 03", title: "PRIVACIDADE", Icon: Lock, desc: "Criptografia, ofuscação de rede e higiene digital contra o rastreamento que te transforma em produto.", tags: ["Blindagem Total", "Rastro Oculto"] },
-  { node: "NODE 04", title: "CÓDIGO", Icon: Terminal, desc: "Infraestrutura autônoma para não terceirizar o domínio da tecnologia que sustenta a sua soberania.", tags: ["Infra Própria", "Sem Dependência"] },
-];
-
-const CREDENTIALS = [
-  { title: "Engenharia Reversa de Sistemas", text: "Uma década dissecando a arquitetura de hardware e software do ecossistema mais hermético do mercado. Não se trata de conserto, e sim de entender como a tecnologia dita as regras de acesso e como romper essa barreira." },
-  { title: "Arquitetura Soberana", text: "Vivência prática na construção de redes, criptografia aplicada e arquitetura de aplicações web modernas, que funcionam sem depender de licenças ou servidores corporativos." },
-  { title: "Laboratório de Ferramentas", text: "Simuladores, calculadoras de risco e geradores de entropia. Código construído do zero, hospedado de forma autônoma. Se a ferramenta não existe, ela é construída aqui." },
-  { title: "Editoria Técnica", text: "Da infraestrutura ao design system, a plataforma inteira é erguida manualmente. E-books e audiobooks são manuais de referência escritos, revisados e narrados com padrão de estúdio." },
-];
+function SectionMark({ n, title }: { n: string; title: string }) {
+  return (
+    <div className="flex items-baseline gap-4 mb-10">
+      <span className="font-mono text-[10px] tracking-[0.35em] text-white/40 uppercase">{n}</span>
+      <div className="h-px flex-1 bg-white/10" />
+      <h2 className="font-bold text-xl md:text-2xl tracking-tight text-white uppercase">{title}</h2>
+    </div>
+  );
+}
 
 export default function SobreMim() {
-  const [activeNode, setActiveNode] = useState<number | null>(null);
-  const blob1 = useRef<HTMLDivElement>(null);
-  const blob2 = useRef<HTMLDivElement>(null);
-  const blob3 = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const onMove = (e: MouseEvent) => {
-      const x = (e.clientX / window.innerWidth - 0.5) * 60;
-      const y = (e.clientY / window.innerHeight - 0.5) * 60;
-      if (blob1.current) blob1.current.style.transform = `translate(${x}px, ${y}px)`;
-      if (blob2.current) blob2.current.style.transform = `translate(${-x}px, ${-y}px)`;
-      if (blob3.current) blob3.current.style.transform = `translate(${x * 0.5}px, ${-y * 0.5}px)`;
-    };
-    window.addEventListener("mousemove", onMove);
-    return () => window.removeEventListener("mousemove", onMove);
-  }, []);
-  const node = activeNode !== null ? HUD_NODES[activeNode] : null;
+  const [activeNode, setActiveNode] = useState<(typeof HUD_NODES)[number] | null>(null);
 
   return (
-    <>
+    <div
+      className="min-h-screen text-white"
+      style={{ background: BG, fontFamily: "'Inter Tight', system-ui, sans-serif" }}
+    >
       <Helmet>
-        <title>Sobre Mim, Lord Junnior · Dossiê do Operador</title>
-        <meta name="description" content="Dossiê do operador Lord Junnior: pesquisador, investidor e arquiteto de sistemas dedicado a soberania individual, Bitcoin, privacidade e geopolítica." />
-        <link rel="canonical" href="https://lordjunnior.com.br/sobre-mim" />
-        <meta property="og:title" content="Sobre Mim, Lord Junnior · Dossiê do Operador" />
-        <meta property="og:description" content="Perfil, missão, convicções e domínio técnico do operador." />
-        <meta property="og:type" content="profile" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+        <title>Lord Junnior · Arquiteto de Sistemas & Design Estratégico</title>
+        <meta name="description" content="17 anos unindo engenharia reversa, arquitetura web full-stack e IA local. Consultoria técnica sênior para empresas que exigem soberania e alto padrão de entrega." />
       </Helmet>
 
-      <main className="relative min-h-screen bg-slate-50 text-slate-900 overflow-x-hidden">
-        {/* Interactive blob background */}
-        <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden bg-slate-50">
-          <div ref={blob1} className="absolute rounded-full blur-[100px] opacity-40 transition-transform duration-300 ease-out will-change-transform"
-            style={{ width: 800, height: 800, background: ORANGE, top: "-15%", left: "-10%" }} />
-          <div ref={blob2} className="absolute rounded-full blur-[100px] opacity-20 transition-transform duration-300 ease-out will-change-transform"
-            style={{ width: 700, height: 700, background: "#3B82F6", bottom: "-15%", right: "-10%" }} />
-          <div ref={blob3} className="absolute rounded-full blur-[100px] opacity-[0.15] transition-transform duration-300 ease-out will-change-transform"
-            style={{ width: 600, height: 600, background: "#8B5CF6", top: "40%", left: "50%" }} />
+      <BackToHome />
+
+      {/* Sticky top nav */}
+      <header className="sticky top-0 z-40 backdrop-blur-md bg-[#08090a]/80 border-b border-white/[0.06]">
+        <div className="max-w-7xl mx-auto px-6 md:px-10 h-16 flex items-center justify-between">
+          <div className="font-mono text-sm tracking-[0.3em] font-bold">LORD JUNNIOR</div>
+          <nav className="hidden md:flex items-center gap-8">
+            {NAV.map((it) => (
+              <a
+                key={it.id}
+                href={`#${it.id}`}
+                className="text-xs uppercase tracking-[0.2em] text-white/60 hover:text-white transition-colors"
+              >
+                {it.label}
+              </a>
+            ))}
+          </nav>
+          <a
+            href="mailto:contato@lordjunnior.com"
+            className="hidden md:inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] font-bold px-4 py-2 border border-white/20 hover:bg-white hover:text-[#08090a] transition-colors"
+          >
+            Contato
+          </a>
         </div>
+      </header>
 
-        <div className="max-w-6xl mx-auto px-5 md:px-8 pt-8 pb-24">
-          <div className="mb-6">
-            <BackToHome />
-          </div>
+      {/* HERO */}
+      <section className="relative overflow-hidden border-b border-white/[0.06]">
+        <div className="absolute inset-0 opacity-[0.06]" style={{ backgroundImage: "linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)", backgroundSize: "60px 60px" }} />
+        <div className="max-w-7xl mx-auto px-6 md:px-10 pt-24 md:pt-32 pb-24 md:pb-40 relative">
+          <Reveal>
+            <div className="flex items-center gap-3 mb-10">
+              <span className="w-2 h-2 rounded-full animate-pulse" style={{ background: ORANGE }} />
+              <span className="font-mono text-[10px] tracking-[0.4em] uppercase text-white/50">DOSSIÊ 001 · PERFIL DO OPERADOR</span>
+            </div>
+          </Reveal>
 
-          {/* Inline nav */}
-          <nav className="mb-10 flex flex-wrap items-center justify-between gap-4">
-            <span className="font-black tracking-tight text-slate-900 text-lg" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>LORD JUNNIOR</span>
-            <div className="flex flex-wrap gap-1 text-sm">
-              {[
-                { l: "Dossiê", h: "#dossie" },
-                { l: "Currículo", h: "#curriculo" },
-                { l: "Domínio", h: "#dominio" },
-                { l: "Catálogo", h: "#catalogo" },
-              ].map((i) => (
-                <a key={i.h} href={i.h} className="px-3 py-1.5 rounded-full text-slate-600 hover:text-slate-900 hover:bg-white/60 font-medium transition-colors">{i.l}</a>
+          <Reveal delay={0.1}>
+            <h1 className="font-bold tracking-tight leading-[0.95] text-5xl md:text-7xl lg:text-8xl">
+              Arquiteto de<br />
+              Sistemas
+              <span className="text-white/40"> &</span><br />
+              <span style={{ color: ORANGE }}>Design Estratégico.</span>
+            </h1>
+          </Reveal>
+
+          <Reveal delay={0.25}>
+            <p className="mt-10 max-w-2xl text-lg md:text-xl text-white/70 leading-relaxed">
+              17 anos de mercado unindo engenharia reversa de hardware, desenvolvimento full-stack e automação por Inteligência Artificial.
+            </p>
+          </Reveal>
+
+          <Reveal delay={0.4}>
+            <div className="mt-12 flex flex-wrap gap-3">
+              {["Arquitetura Web", "Engenharia Reversa", "Inteligência Artificial", "Design de Interface"].map((t) => (
+                <span key={t} className="text-[11px] uppercase tracking-[0.2em] px-3 py-2 border border-white/15 text-white/70">{t}</span>
               ))}
             </div>
-          </nav>
-
-          {/* HERO */}
-          <Reveal>
-            <section id="dossie">
-            <section className="relative rounded-3xl border border-white/70 p-8 md:p-14 shadow-[0_20px_60px_-30px_rgba(15,23,42,0.25)] overflow-hidden">
-              {/* Bitcoin blurred background */}
-              <div className="absolute inset-0 -z-10">
-                <img
-                  src={btcBackground}
-                  alt=""
-                  className="absolute inset-0 w-full h-full object-cover scale-110 blur-2xl opacity-[0.22]"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-slate-50/88" />
-              </div>
-              <div className="absolute -top-24 -right-24 w-72 h-72 rounded-full blur-3xl opacity-30" style={{ background: ORANGE }} />
-
-
-
-
-
-              <div className="relative">
-                <div className="flex items-center gap-3 mb-6">
-                  <span className="inline-flex items-center gap-2 rounded-full border border-orange-500/40 bg-orange-500/10 px-3 py-1">
-                    <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: ORANGE }} />
-                    <span className="font-mono text-[10px] tracking-[0.25em] text-orange-700 uppercase">Dossiê 001</span>
-                  </span>
-                  <span className="font-mono text-[10px] tracking-[0.25em] text-slate-500 uppercase">Perfil do Operador</span>
-                </div>
-
-                <h1
-                  className="font-black tracking-tight text-slate-900 leading-[0.95] text-[clamp(2.5rem,6vw,5rem)]"
-                  style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-                >
-                  Fuja da matriz.
-                  <br />
-                  <span style={{ color: ORANGE }}>Abrace a rede.</span>
-                </h1>
-
-                <p className="mt-6 text-base md:text-lg text-slate-600 max-w-3xl leading-relaxed">
-                  O dinheiro tradicional foi desenhado para te controlar. A engenharia do Bitcoin foi desenhada para te libertar. Autocustódia, privacidade e código aberto são as suas armas neste novo tabuleiro geopolítico.
-                </p>
-
-                <div className="flex flex-wrap gap-2 mt-8">
-                  {["SOBERANIA", "PRIVACIDADE", "GEOPOLÍTICA", "BITCOIN", "\u20BF"].map((t) => (
-                    <span key={t} className="font-mono text-[10px] tracking-[0.25em] uppercase px-3 py-1.5 rounded-md border border-slate-300 bg-white/60 text-slate-700">
-                      {t}
-                    </span>
-                  ))}
-                </div>
-
-                <p className="mt-8 font-mono text-[10px] tracking-[0.3em] uppercase text-slate-500">
-                  Lord Junnior · Pesquisador, Investidor e Arquiteto de Sistemas
-                </p>
-              </div>
-            </section>
-            </section>
-          </Reveal>
-
-          {/* 01 · IDENTIDADE */}
-          <section className="mt-20">
-            <Reveal>
-              <SectionHeader number="01 · Identidade" title="A Assinatura" />
-            </Reveal>
-            <Reveal delay={0.1}>
-              <div className="rounded-2xl border border-white/70 bg-white/70 backdrop-blur-xl p-8 md:p-10 shadow-[0_8px_32px_rgba(15,23,42,0.05)]">
-                <p className="text-xl md:text-2xl font-semibold text-slate-800 leading-snug mb-6" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                  Lord Junnior não é uma persona de internet. É a assinatura de quem decidiu operar fora do radar.
-                </p>
-                <div className="space-y-4 text-slate-600 leading-relaxed">
-                  <p>Atrás deste nome está um pesquisador, investidor e arquiteto de sistemas que passou a última década mapeando as falhas da engenharia de controle estatal, e estudando como a tecnologia pode blindar o seu patrimônio contra elas.</p>
-                  <p>O sistema financeiro atual foi desenhado para te manter exatamente onde está: trabalhando até o fim da vida para pagar a inflação que o próprio governo criou. Você não é cliente do banco. Você é a garantia do banco.</p>
-                  <p>Não veio de berço de ouro. Não herdou imóveis. Não tem um time de assessores engravatados atrás. O que existe é uma bagagem densa de leitura, erros caros pagos do próprio bolso e conversas com gente que já perdeu tudo em confisco, hiperinflação e canetadas governamentais que nunca pediram licença.</p>
-                </div>
-              </div>
-            </Reveal>
-          </section>
-
-          {/* 02 · MISSÃO */}
-          <section className="mt-20">
-            <Reveal>
-              <SectionHeader number="02 · Missão" title="O Objetivo" />
-            </Reveal>
-            <Reveal delay={0.1}>
-              <div className="rounded-2xl border border-white/70 bg-white/70 backdrop-blur-xl p-8 md:p-10 shadow-[0_8px_32px_rgba(15,23,42,0.05)]">
-                <p className="text-xl md:text-2xl font-semibold text-slate-800 leading-snug mb-6" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                  Tirar o conhecimento da prateleira e colocar na mesa da cozinha.
-                </p>
-                <div className="space-y-4 text-slate-600 leading-relaxed">
-                  <p>A missão é uma só: equipar pessoas comuns com as ferramentas, a linguagem e a coragem para sair da posição de gado e assumir a posição de proprietário.</p>
-                  <p>O conhecimento sobre Bitcoin, geopolítica e privacidade digital existe há anos. Mas vive trancado em inglês, em jargão técnico, em livros acadêmicos e em cursos vendidos como passe de elite para a classe dominante. A proposta aqui é simples: traduzir teoria de elite em engenharia de risco aplicável, sem gordura e sem letra miúda.</p>
-                </div>
-              </div>
-            </Reveal>
-          </section>
-
-          {/* 03 · CONVICÇÕES */}
-          <section className="mt-20">
-            <Reveal>
-              <SectionHeader number="03 · Convicções" title="Os pilares de atuação" />
-            </Reveal>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-              {PILLARS.map(({ node, title, Icon, desc, tags }, i) => {
-                const pct = [95, 88, 92, 90][i];
-                return (
-                <Reveal key={title} delay={0.05 * i}>
-                  <motion.div
-                    whileHover={{ y: -6 }}
-                    transition={{ type: "spring", stiffness: 260, damping: 22 }}
-                    className="h-full rounded-2xl border border-white/70 bg-white/70 backdrop-blur-xl p-6 shadow-[0_8px_32px_rgba(15,23,42,0.05)] hover:border-orange-400/50 hover:shadow-[0_20px_50px_rgba(247,147,26,0.15)] transition-all"
-                  >
-                    <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center gap-3">
-                      <div className="w-11 h-11 rounded-xl flex items-center justify-center border border-orange-500/25 bg-orange-500/10">
-                        <Icon size={20} style={{ color: ORANGE }} />
-                      </div>
-                      <span className="font-mono text-[10px] tracking-[0.25em] uppercase text-slate-500">{node}</span>
-                    </div>
-                    <PillarRing percent={pct} delay={i * 120} />
-                    </div>
-                    <h3 className="font-black text-lg tracking-tight text-slate-900 mb-2" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                      {title}
-                    </h3>
-                    <p className="text-sm text-slate-600 leading-relaxed mb-4">{desc}</p>
-                    <div className="flex flex-wrap gap-1.5">
-                      {tags.map((tag) => (
-                        <span key={tag} className="inline-flex items-center gap-1 font-mono text-[9px] tracking-widest uppercase px-2 py-1 rounded-md bg-slate-100 border border-slate-200 text-slate-600">
-                          <span className="w-1 h-1 rounded-full" style={{ background: ORANGE }} />
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </motion.div>
-                </Reveal>
-              );})}
-            </div>
-          </section>
-
-          {/* 04 · TRAJETÓRIA (dark floating cards) */}
-          <section id="curriculo" className="mt-20">
-            <Reveal>
-              <SectionHeader number="04 · Trajetória" title="Competências & Experiência" />
-            </Reveal>
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-              {/* Perfil + Skills */}
-              <Reveal>
-                <div className="rounded-3xl bg-slate-900/90 backdrop-blur-xl border border-white/[0.08] shadow-[0_20px_50px_rgba(15,23,42,0.15)] p-8">
-                  <div className="flex flex-col items-center text-center mb-6">
-                    <div className="w-[84px] h-[84px] rounded-full border-2 border-white/10 bg-gradient-to-br from-orange-500/40 to-orange-500/10 flex items-center justify-center mb-4">
-                      <span className="font-black text-3xl text-white" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>LJ</span>
-                    </div>
-                    <h4 className="text-white font-bold text-xl leading-tight" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Lord Junnior</h4>
-                    <p className="text-white/70 text-sm mt-1">Arquiteto de Sistemas & Engenharia Reversa</p>
-                  </div>
-                  <p className="text-white/70 text-sm leading-7 mb-8">
-                    Traduzo teoria de elite em engenharia de risco aplicável. Da engenharia reversa de hardware à automação por IA local e arquitetura web autônoma.
-                  </p>
-                  <h5 className="text-white font-semibold text-sm uppercase tracking-widest mb-5">Habilidades</h5>
-                  <div className="space-y-5">
-                    {SKILLS_LIST.map((s, i) => (<SkillBar key={s.label} {...s} delay={i * 120} />))}
-                  </div>
-                </div>
-              </Reveal>
-
-              {/* Timeline */}
-              <Reveal delay={0.1}>
-                <div className="rounded-3xl bg-slate-900/90 backdrop-blur-xl border border-white/[0.08] shadow-[0_20px_50px_rgba(15,23,42,0.15)] p-8 h-full">
-                  <h5 className="text-white font-bold text-lg mb-8" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Experiência</h5>
-                  <div className="relative">
-                    <div className="absolute left-[1px] top-1.5 bottom-1.5 w-[2px] rounded-full"
-                      style={{ background: "linear-gradient(180deg, #00D9FF 0%, rgba(79,157,255,0.6) 40%, rgba(45,108,168,0.3) 70%, rgba(30,58,95,0.1) 100%)", boxShadow: "0 0 8px rgba(79,157,255,0.4)" }} />
-                    {TIMELINE.map((t, i) => {
-                      const dotColors = ["#00D9FF", "#4F9DFF", "#2D6CA8", "#1E3A5F"];
-                      const shadows = ["0 0 12px #00D9FF", "0 0 8px rgba(79,157,255,0.6)", "0 0 4px rgba(45,108,168,0.4)", "none"];
-                      return (
-                        <motion.div
-                          key={t.periodo}
-                          initial={{ opacity: 0, x: -20 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          viewport={{ once: true, margin: "-40px" }}
-                          transition={{ duration: 0.6, delay: i * 0.1 }}
-                          className="relative pl-7 pb-12 last:pb-0"
-                        >
-                          <span className="absolute -left-[5px] top-1 w-3 h-3 rounded-full border-2 border-slate-900"
-                            style={{ background: dotColors[i], boxShadow: shadows[i], animation: i === 0 ? "pulse 2s infinite" : undefined }} />
-                          <p className="text-white/50 text-xs mb-2 font-mono tracking-wider">{t.periodo}</p>
-                          <h6 className="text-white font-bold text-lg leading-tight" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{t.empresa}</h6>
-                          <p className="text-white/80 text-sm mt-1 mb-3">{t.cargo}</p>
-                          <p className="text-white/70 text-sm leading-7">{t.desc}</p>
-                        </motion.div>
-                      );
-                    })}
-                  </div>
-                </div>
-              </Reveal>
-
-              {/* Educação + Prêmios + Ferramentas */}
-              <Reveal delay={0.2}>
-                <div className="space-y-6">
-                  <div className="rounded-3xl bg-slate-900/90 backdrop-blur-xl border border-white/[0.08] shadow-[0_20px_50px_rgba(15,23,42,0.15)] p-8">
-                    <h5 className="text-white font-bold text-lg mb-5 flex items-center gap-2" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                      <GraduationCap size={18} /> Educação
-                    </h5>
-                    <div className="space-y-4">
-                      <div className="rounded-2xl bg-white/[0.03] border border-white/5 p-5 hover:border-blue-400/30 hover:bg-white/[0.05] transition-all">
-                        <p className="text-white font-bold">Autodidata Contínuo</p>
-                        <p className="text-white/70 text-sm mt-1">Bitcoin, criptografia aplicada, geopolítica e engenharia de risco.</p>
-                      </div>
-                      <div className="rounded-2xl bg-white/[0.03] border border-white/5 p-5 hover:border-blue-400/30 hover:bg-white/[0.05] transition-all">
-                        <p className="text-white font-bold">Certificação em UX & Frontend</p>
-                        <p className="text-white/70 text-sm mt-1">Google UX Design & stack moderno React/TypeScript.</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="rounded-3xl bg-slate-900/90 backdrop-blur-xl border border-white/[0.08] shadow-[0_20px_50px_rgba(15,23,42,0.15)] p-8">
-                    <h5 className="text-white font-bold text-lg mb-5 flex items-center gap-2" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                      <Award size={18} /> Prêmios
-                    </h5>
-                    <div className="space-y-4">
-                      <div>
-                        <p className="text-white font-bold">Awwwards SOTD</p>
-                        <p className="text-white/60 text-sm">2023 · Site of the Day</p>
-                      </div>
-                      <div>
-                        <p className="text-white font-bold">CSS Design Awards</p>
-                        <p className="text-white/60 text-sm">2022 · Special Kudos</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="rounded-3xl bg-slate-900/90 backdrop-blur-xl border border-white/[0.08] shadow-[0_20px_50px_rgba(15,23,42,0.15)] p-8">
-                    <h5 className="text-white font-bold text-lg mb-5 flex items-center gap-2" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                      <Wrench size={18} /> Ferramentas
-                    </h5>
-                    <div className="grid grid-cols-3 gap-3">
-                      {["Figma", "After FX", "Photoshop", "Blender", "VS Code", "Framer"].map((t) => (
-                        <div key={t} className="rounded-xl bg-white/[0.03] border border-white/5 p-3 text-center text-white/80 text-xs font-semibold hover:bg-white/[0.06] hover:opacity-100 opacity-70 transition-all">
-                          {t}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </Reveal>
-            </div>
-          </section>
-
-          {/* 05 · DOMÍNIO TÉCNICO */}
-          <section id="dominio" className="mt-20">
-            <Reveal>
-              <SectionHeader number="05 · Domínio Técnico" title="As ferramentas por trás de cada entrega" />
-            </Reveal>
-            <Reveal delay={0.1}>
-              <div className="rounded-3xl border border-white/70 bg-white/50 backdrop-blur-xl p-8 md:p-10 shadow-[0_8px_32px_rgba(15,23,42,0.05)]">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                  <div className="md:col-span-1 flex flex-col justify-center">
-                    <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-orange-600 mb-3">// STATUS DO SISTEMA</p>
-                    <h4 className="font-black text-2xl tracking-tight text-slate-900 mb-3" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                      {node ? node.name : "SELECIONE UM NÓ"}
-                    </h4>
-                    {node ? (
-                      <div className="space-y-1 text-sm text-slate-600">
-                        <p><span className="font-mono text-xs uppercase text-slate-400">Categoria:</span> {node.cat}</p>
-                        <p><span className="font-mono text-xs uppercase text-slate-400">Nível:</span> <span className="font-semibold text-orange-600">{node.level}</span></p>
-                      </div>
-                    ) : (
-                      <p className="text-sm text-slate-600 leading-relaxed">
-                        Passe o mouse sobre os módulos para visualizar as especificações operacionais.
-                      </p>
-                    )}
-                  </div>
-                  <div className="md:col-span-2 grid grid-cols-4 sm:grid-cols-6 gap-3">
-                    {HUD_NODES.map((n, i) => (
-                      <button
-                        key={n.code}
-                        onMouseEnter={() => setActiveNode(i)}
-                        onMouseLeave={() => setActiveNode(null)}
-                        className="aspect-square rounded-2xl bg-white/40 border border-slate-900/5 flex flex-col items-center justify-center gap-1 hover:border-orange-400/40 hover:bg-white/90 hover:shadow-[inset_0_0_20px_rgba(247,147,26,0.1)] transition-all"
-                      >
-                        <span className="font-mono text-xs font-bold text-slate-700 opacity-60 hover:opacity-100 transition-opacity">{n.code}</span>
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </Reveal>
-          </section>
-
-          {/* CTA */}
-          <section id="catalogo" className="mt-20 grid grid-cols-1 md:grid-cols-2 gap-5">
-            <Reveal>
-              <Link
-                to="/protocolo-inicial"
-                className="group block h-full rounded-2xl border border-orange-400/40 bg-gradient-to-br from-orange-50 to-white p-8 shadow-[0_8px_32px_rgba(247,147,26,0.1)] hover:shadow-[0_20px_50px_rgba(247,147,26,0.2)] transition-all"
-              >
-                <div className="flex items-center gap-2 mb-3">
-                  <Shield size={16} style={{ color: ORANGE }} />
-                  <span className="font-mono text-[10px] tracking-[0.25em] uppercase text-orange-700">Recurso Estratégico</span>
-                </div>
-                <h3 className="font-black text-2xl tracking-tight text-slate-900 mb-2" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                  PROTOCOLO INICIAL
-                </h3>
-                <p className="text-sm text-slate-600 mb-5">O primeiro passo tático para sair da gaiola fiat e assumir o controle do seu patrimônio.</p>
-                <span className="inline-flex items-center gap-2 font-mono text-xs font-semibold tracking-widest uppercase" style={{ color: ORANGE }}>
-                  Iniciar Protocolo <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-                </span>
-              </Link>
-            </Reveal>
-            <Reveal delay={0.1}>
-              <Link
-                to="/ebooks"
-                className="group block h-full rounded-2xl border border-slate-300 bg-white/70 backdrop-blur-xl p-8 shadow-[0_8px_32px_rgba(15,23,42,0.05)] hover:border-slate-400 transition-all"
-              >
-                <div className="flex items-center gap-2 mb-3">
-                  <BookOpen size={16} className="text-slate-700" />
-                  <span className="font-mono text-[10px] tracking-[0.25em] uppercase text-slate-500">Biblioteca</span>
-                </div>
-                <h3 className="font-black text-2xl tracking-tight text-slate-900 mb-2" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                  THE FREEDOM CODE
-                </h3>
-                <p className="text-sm text-slate-600 mb-5">Soberania financeira para o século XXI. E-books e manuais escritos com padrão de estúdio.</p>
-                <span className="inline-flex items-center gap-2 font-mono text-xs font-semibold tracking-widest uppercase text-slate-700 group-hover:text-slate-900">
-                  Abrir Biblioteca <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-                </span>
-              </Link>
-            </Reveal>
-          </section>
-
-          {/* CLOSING */}
-          <Reveal>
-            <footer className="mt-24 text-center">
-              <p className="font-black text-2xl md:text-3xl tracking-tight text-slate-900 leading-tight" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                CONHECIMENTO É PODER.
-                <br />
-                SOBERANIA É DECISÃO.
-                <br />
-                <span style={{ color: ORANGE }}>AÇÃO É LIBERDADE.</span>
-              </p>
-              <p className="mt-6 font-mono text-[11px] tracking-[0.2em] uppercase text-slate-500">
-                contato@lordjunnior.com.br · © 2026 Lord Junnior
-              </p>
-            </footer>
           </Reveal>
         </div>
-      </main>
-    </>
+      </section>
+
+      {/* 01 IDENTIDADE */}
+      <section id="identidade" className="max-w-7xl mx-auto px-6 md:px-10 py-24 md:py-32">
+        <SectionMark n="01 · IDENTIDADE" title="A Assinatura" />
+        <div className="grid md:grid-cols-2 gap-12 md:gap-20">
+          <Reveal>
+            <p className="text-lg text-white/75 leading-relaxed">
+              Lord Junnior é o nome de operação de um profissional dedicado à interseção entre tecnologia, design e infraestrutura autônoma.
+            </p>
+            <p className="mt-6 text-lg text-white/75 leading-relaxed">
+              Minha atuação não se limita a uma única camada do desenvolvimento. Com mais de uma década de experiência prática, dissecando a arquitetura de hardware e software do ecossistema mais hermético do mercado, evoluí para a arquitetura de aplicações web modernas e implementação de Inteligência Artificial local.
+            </p>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <p className="text-lg text-white/75 leading-relaxed">
+              O objetivo é claro: construir sistemas que funcionem sem depender de licenças, terceiros ou nuvens corporativas, garantindo eficiência, segurança e controle total.
+            </p>
+            <p className="mt-6 text-lg text-white/75 leading-relaxed">
+              Seja desenhando uma interface de alto nível, estruturando um design system escalável ou treinando modelos de IA locais para automação corporativa, meu trabalho traduz teoria técnica complexa em engenharia de risco aplicável e entregas de alto impacto.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* 02 ATUAÇÃO */}
+      <section className="border-y border-white/[0.06] bg-white/[0.02]">
+        <div className="max-w-7xl mx-auto px-6 md:px-10 py-24 md:py-32">
+          <SectionMark n="02 · ATUAÇÃO" title="O Que Eu Faço" />
+          <Reveal>
+            <p className="text-2xl md:text-3xl font-medium tracking-tight text-white/90 leading-snug max-w-4xl">
+              Do design gráfico ao deploy de IA local, a ponte entre estética e engenharia.
+            </p>
+          </Reveal>
+          <div className="grid md:grid-cols-2 gap-12 md:gap-20 mt-12">
+            <Reveal delay={0.1}>
+              <p className="text-lg text-white/70 leading-relaxed">
+                Atuo como parceiro estratégico para empresas e projetos que exigem um padrão de entrega sênior. A proposta é eliminar a barreira entre a interface do usuário e a infraestrutura de backend, unificando design system, código limpo e automação inteligente.
+              </p>
+            </Reveal>
+            <Reveal delay={0.2}>
+              <p className="text-lg text-white/70 leading-relaxed">
+                Implemento Inteligência Artificial local para alto fluxo corporativo, garantindo zero vazamento de dados e segurança absoluta. Desenvolvo aplicações em React e Next.js, crio identidades visuais premium e ergo plataformas inteiras do zero, sem dependência de soluções genéricas.
+              </p>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* 03 CAPACIDADES */}
+      <section className="max-w-7xl mx-auto px-6 md:px-10 py-24 md:py-32">
+        <SectionMark n="03 · CAPACIDADES" title="Os Pilares de Atuação" />
+        <Reveal>
+          <p className="text-white/60 mb-14 max-w-2xl text-lg">Quatro frentes técnicas que sustentam todas as minhas entregas.</p>
+        </Reveal>
+        <div className="grid md:grid-cols-2 gap-px bg-white/[0.06]">
+          {PILLARS.map((p, i) => (
+            <Reveal key={p.n} delay={i * 0.08}>
+              <div className="bg-[#08090a] p-8 md:p-10 h-full group hover:bg-white/[0.02] transition-colors">
+                <div className="flex items-baseline justify-between mb-6">
+                  <span className="font-mono text-xs tracking-[0.3em] text-white/40">{p.n}</span>
+                  <div className="h-px flex-1 mx-4 bg-white/10" />
+                  <span className="w-2 h-2 rounded-full" style={{ background: ORANGE }} />
+                </div>
+                <h3 className="font-bold text-xl md:text-2xl tracking-tight mb-4">{p.title}</h3>
+                <p className="text-white/65 leading-relaxed mb-6">{p.desc}</p>
+                <div className="flex flex-wrap gap-2">
+                  {p.tags.map((t) => (
+                    <span key={t} className="text-[10px] uppercase tracking-[0.2em] px-2.5 py-1 border border-white/15 text-white/60">{t}</span>
+                  ))}
+                </div>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      {/* 04 TRAJETÓRIA */}
+      <section id="trajetoria" className="border-y border-white/[0.06] bg-white/[0.02]">
+        <div className="max-w-7xl mx-auto px-6 md:px-10 py-24 md:py-32">
+          <SectionMark n="04 · TRAJETÓRIA" title="Competências & Experiência" />
+
+          <div className="grid lg:grid-cols-[1fr_1.4fr] gap-14">
+            <Reveal>
+              <div className="border border-white/10 p-8 md:p-10 bg-[#0c0d10]">
+                <div className="font-mono text-[10px] tracking-[0.3em] uppercase text-white/40 mb-2">OPERADOR</div>
+                <h3 className="font-bold text-3xl tracking-tight mb-2">Lord Junnior</h3>
+                <p className="text-white/60 mb-6">Arquiteto de Sistemas & Engenharia Reversa</p>
+                <p className="text-white/70 leading-relaxed mb-10">
+                  17 anos de mercado. Da engenharia reversa de hardware à automação por IA local e arquitetura web soberana.
+                </p>
+                <div className="font-mono text-[10px] tracking-[0.3em] uppercase text-white/40 mb-4">HABILIDADES</div>
+                <div className="space-y-5">
+                  {SKILLS.map((s, i) => (
+                    <SkillBar key={s.label} label={s.label} percent={s.percent} delay={i * 120} />
+                  ))}
+                </div>
+              </div>
+            </Reveal>
+
+            <div>
+              <div className="font-mono text-[10px] tracking-[0.3em] uppercase text-white/40 mb-6">EXPERIÊNCIA</div>
+              <div className="relative pl-8 border-l border-white/10 space-y-10">
+                {TIMELINE.map((t, i) => (
+                  <Reveal key={t.periodo} delay={i * 0.08}>
+                    <div className="relative">
+                      <div className="absolute -left-[41px] top-1.5 w-3 h-3 rounded-full border-2" style={{ borderColor: ORANGE, background: BG }} />
+                      <div className="font-mono text-xs text-white/50 mb-1">{t.periodo}</div>
+                      <h4 className="font-bold text-xl">{t.empresa}</h4>
+                      <p className="text-sm mb-3" style={{ color: ORANGE }}>{t.cargo}</p>
+                      <p className="text-white/65 leading-relaxed">{t.desc}</p>
+                    </div>
+                  </Reveal>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 05 PROVA */}
+      <section id="prova" className="max-w-7xl mx-auto px-6 md:px-10 py-24 md:py-32">
+        <SectionMark n="05 · PROVA DE TRABALHO" title="Arquitetura Verificada" />
+        <Reveal>
+          <p className="text-white/60 max-w-2xl text-lg mb-14">Infraestrutura autônoma, automação por IA e engenharia de sistemas forjados na prática.</p>
+        </Reveal>
+
+        {/* Selo + counters */}
+        <div className="grid md:grid-cols-4 gap-px bg-white/[0.06] mb-16">
+          <div className="bg-[#08090a] p-8">
+            <div className="font-mono text-[10px] tracking-[0.3em] uppercase text-white/40 mb-3">SELO DIGITAL</div>
+            <div className="font-mono text-sm text-white/85">Assinatura: 0x4F3A...B92</div>
+            <div className="font-mono text-xs mt-1" style={{ color: ORANGE }}>Nó: ARQUITETO_SÊNIOR</div>
+          </div>
+          {[
+            { v: 17, s: "", l: "Anos de Iteração" },
+            { v: 0, s: "", l: "Vazamentos em IA" },
+            { v: 100, s: "%", l: "Infraestrutura Autônoma" },
+          ].map((c) => (
+            <div key={c.l} className="bg-[#08090a] p-8">
+              <div className="text-5xl font-bold tracking-tight mb-2" style={{ color: ORANGE }}>
+                <Counter target={c.v} suffix={c.s} />
+              </div>
+              <div className="font-mono text-[10px] tracking-[0.3em] uppercase text-white/50">{c.l}</div>
+            </div>
+          ))}
+        </div>
+
+        {/* Fluxo Problema → Solução */}
+        <div className="grid md:grid-cols-[1fr_auto_1fr] items-center gap-8 mb-16 border border-white/10 p-8 md:p-10 bg-[#0c0d10]">
+          <div>
+            <div className="font-mono text-[10px] tracking-[0.3em] uppercase text-white/40 mb-2">PROBLEMA</div>
+            <p className="text-white/85 text-lg">Dependência de terceiros, ineficiência, plataformas genéricas.</p>
+          </div>
+          <div className="flex flex-col items-center gap-2">
+            <div className="font-mono text-[10px] tracking-[0.3em] uppercase text-white/40">FLUXO</div>
+            <ArrowRight className="w-6 h-6" style={{ color: ORANGE }} />
+          </div>
+          <div>
+            <div className="font-mono text-[10px] tracking-[0.3em] uppercase text-white/40 mb-2">SOLUÇÃO</div>
+            <p className="text-white/85 text-lg">Soberania, automação por IA, infraestrutura própria.</p>
+          </div>
+        </div>
+
+        <div className="font-mono text-[10px] tracking-[0.3em] uppercase text-white/40 mb-6">CAMADAS DE ATUAÇÃO NO SISTEMA</div>
+        <div className="grid md:grid-cols-3 gap-px bg-white/[0.06]">
+          {CAMADAS.map((c, i) => (
+            <Reveal key={c.n} delay={i * 0.1}>
+              <div className="bg-[#08090a] p-8 h-full">
+                <div className="font-mono text-xs tracking-[0.3em] text-white/40 mb-3">{c.n}</div>
+                <h4 className="font-bold text-lg mb-3">{c.title}</h4>
+                <div className="font-mono text-xs mb-4" style={{ color: ORANGE }}>{c.log}</div>
+                <p className="text-white/65 leading-relaxed text-sm">{c.desc}</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      {/* 06 DOMÍNIO */}
+      <section id="dominio" className="border-y border-white/[0.06] bg-white/[0.02]">
+        <div className="max-w-7xl mx-auto px-6 md:px-10 py-24 md:py-32">
+          <SectionMark n="06 · DOMÍNIO TÉCNICO" title="As Ferramentas Por Trás de Cada Entrega" />
+
+          <div className="grid lg:grid-cols-[1.2fr_1fr] gap-10">
+            <div className="border border-white/10 bg-[#0c0d10] p-8">
+              <div className="font-mono text-[10px] tracking-[0.3em] uppercase text-white/40 mb-6">// STATUS DO SISTEMA</div>
+              <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3">
+                {HUD_NODES.map((n) => {
+                  const active = activeNode?.code === n.code;
+                  return (
+                    <button
+                      key={n.code}
+                      onMouseEnter={() => setActiveNode(n)}
+                      onClick={() => setActiveNode(n)}
+                      className={`aspect-square flex items-center justify-center border font-mono text-sm font-bold tracking-wider transition-all ${
+                        active
+                          ? "border-transparent text-[#08090a]"
+                          : "border-white/15 text-white/70 hover:border-white/40 hover:text-white"
+                      }`}
+                      style={active ? { background: ORANGE, boxShadow: `0 0 20px ${ORANGE}55` } : {}}
+                    >
+                      {n.code}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div className="border border-white/10 bg-[#0c0d10] p-8 flex flex-col justify-center">
+              <div className="font-mono text-[10px] tracking-[0.3em] uppercase text-white/40 mb-4">// NÓ SELECIONADO</div>
+              <div className="min-h-[140px]">
+                <div className="text-3xl font-bold tracking-tight mb-2 transition-all" style={{ color: activeNode ? ORANGE : "rgba(255,255,255,0.4)" }}>
+                  {activeNode ? activeNode.name : "SELECIONE UM NÓ"}
+                </div>
+                <p className="text-white/70 leading-relaxed">
+                  {activeNode ? activeNode.desc : "Passe o mouse sobre os módulos para visualizar as especificações operacionais."}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* PROTOCOLO DE AÇÃO */}
+      <section className="max-w-7xl mx-auto px-6 md:px-10 py-24 md:py-32">
+        <div className="font-mono text-[10px] tracking-[0.3em] uppercase text-white/40 mb-6">// PROTOCOLO DE AÇÃO</div>
+        <Reveal>
+          <h2 className="font-bold text-4xl md:text-6xl tracking-tight leading-[1] max-w-4xl">
+            O sistema está posto.<br />
+            <span style={{ color: ORANGE }}>Você vai construir ou só consumir?</span>
+          </h2>
+        </Reveal>
+        <Reveal delay={0.1}>
+          <p className="mt-10 max-w-2xl text-lg text-white/70 leading-relaxed">
+            Você ainda acredita que soluções genéricas de prateleira vão escalar o seu negócio, ou já aceitou que a verdadeira autonomia exige arquitetura própria?
+          </p>
+        </Reveal>
+        <Reveal delay={0.2}>
+          <a
+            href="mailto:contato@lordjunnior.com"
+            className="inline-flex items-center gap-3 mt-10 px-8 py-5 font-bold uppercase tracking-[0.2em] text-sm transition-colors"
+            style={{ background: ORANGE, color: "#08090a" }}
+          >
+            Iniciar Protocolo de Autonomia
+            <ArrowRight className="w-4 h-4" />
+          </a>
+        </Reveal>
+      </section>
+
+      {/* CATÁLOGO / ARSENAL */}
+      <section id="catalogo" className="border-y border-white/[0.06] bg-white/[0.02]">
+        <div className="max-w-7xl mx-auto px-6 md:px-10 py-24 md:py-32">
+          <div className="font-mono text-[10px] tracking-[0.3em] uppercase text-white/40 mb-6">// ARSENAL TÉCNICO</div>
+          <Reveal>
+            <h2 className="font-bold text-4xl md:text-5xl tracking-tight mb-14">Ferramentas para a sua autonomia.</h2>
+          </Reveal>
+          <div className="grid md:grid-cols-2 gap-px bg-white/[0.06]">
+            <Reveal>
+              <div className="bg-[#08090a] p-10 h-full flex flex-col">
+                <div className="font-mono text-[10px] tracking-[0.3em] uppercase text-white/40 mb-3">DISPONIBILIDADE</div>
+                <h3 className="font-bold text-2xl mb-4">CONSULTORIA TÉCNICA</h3>
+                <p className="text-white/70 leading-relaxed mb-8 flex-1">
+                  Parceria estratégica para automação por IA, arquitetura web e design systems.
+                </p>
+                <a
+                  href="mailto:contato@lordjunnior.com"
+                  className="flex items-center justify-center gap-2 w-full py-5 bg-white text-[#08090a] font-bold hover:opacity-90 uppercase tracking-[0.2em] text-sm"
+                  style={{ transition: "background 0.2s" }}
+                  onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = ORANGE; (e.currentTarget as HTMLAnchorElement).style.color = "#08090a"; }}
+                  onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = "#fff"; (e.currentTarget as HTMLAnchorElement).style.color = "#08090a"; }}
+                >
+                  Iniciar Conversa <ArrowRight className="w-4 h-4" />
+                </a>
+              </div>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <div className="bg-[#08090a] p-10 h-full flex flex-col">
+                <div className="font-mono text-[10px] tracking-[0.3em] uppercase text-white/40 mb-3">ECOSSISTEMA</div>
+                <h3 className="font-bold text-2xl mb-4">THE FREEDOM CODE</h3>
+                <p className="text-white/70 leading-relaxed mb-8 flex-1">
+                  Ferramentas open source, e-books e simuladores construídos do zero.
+                </p>
+                <a
+                  href="/"
+                  className="flex items-center justify-center gap-2 w-full py-5 border border-white text-white font-bold hover:bg-white hover:text-[#08090a] transition-colors uppercase tracking-[0.2em] text-sm"
+                >
+                  Ver Biblioteca <ArrowRight className="w-4 h-4" />
+                </a>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* MANIFESTO */}
+      <section className="max-w-7xl mx-auto px-6 md:px-10 py-32 md:py-48 text-center">
+        <Reveal>
+          <p className="font-bold text-3xl md:text-5xl tracking-tight leading-[1.15]">
+            CONHECIMENTO É PODER.<br />
+            AUTONOMIA É DECISÃO.<br />
+            <span style={{ color: ORANGE }}>AÇÃO É ENGENHARIA.</span>
+          </p>
+        </Reveal>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="border-t border-white/[0.06] bg-[#06070a]">
+        <div className="max-w-7xl mx-auto px-6 md:px-10 py-16 grid md:grid-cols-3 gap-10">
+          <div>
+            <div className="font-mono text-sm tracking-[0.3em] font-bold mb-4">LORD JUNNIOR</div>
+            <p className="text-white/50 text-sm leading-relaxed max-w-xs">
+              Arquiteto de Sistemas. Engenharia reversa, IA local e design de alto padrão.
+            </p>
+          </div>
+          <div>
+            <div className="font-mono text-[10px] tracking-[0.3em] uppercase text-white/40 mb-4">NAVEGAÇÃO</div>
+            <ul className="space-y-2 text-white/70">
+              <li><a href="/" className="hover:text-white transition-colors">Início</a></li>
+              {NAV.map((n) => (
+                <li key={n.id}><a href={`#${n.id}`} className="hover:text-white transition-colors">{n.label}</a></li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <div className="font-mono text-[10px] tracking-[0.3em] uppercase text-white/40 mb-4">CONEXÃO</div>
+            <div className="flex flex-col gap-3 text-white/70">
+              <a href="mailto:contato@lordjunnior.com" className="flex items-center gap-3 hover:text-white transition-colors">
+                <Mail className="w-4 h-4" /> Email Direto
+              </a>
+              <a href="https://instagram.com/lord.junnior" target="_blank" rel="noreferrer" className="flex items-center gap-3 hover:text-white transition-colors">
+                <Instagram className="w-4 h-4" /> Instagram
+              </a>
+              <a href="https://youtube.com/@LordJunnior" target="_blank" rel="noreferrer" className="flex items-center gap-3 hover:text-white transition-colors">
+                <Youtube className="w-4 h-4" /> YouTube
+              </a>
+              <a href="https://github.com/lordjunnior" target="_blank" rel="noreferrer" className="flex items-center gap-3 hover:text-white transition-colors">
+                <Github className="w-4 h-4" /> GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+        <div className="border-t border-white/[0.06]">
+          <div className="max-w-7xl mx-auto px-6 md:px-10 py-6 font-mono text-[10px] tracking-[0.3em] uppercase text-white/40 flex justify-between">
+            <span>© {new Date().getFullYear()} LORD JUNNIOR</span>
+            <span>DOSSIÊ 001 · v2.0</span>
+          </div>
+        </div>
+      </footer>
+    </div>
   );
 }
