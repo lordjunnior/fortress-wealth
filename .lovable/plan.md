@@ -1,64 +1,67 @@
+# Plano de ajustes — /sobre-mim
+
 ## Objetivo
+Transformar a página de "portfólio de designer" em cartão de visita de autoridade do arquiteto de soberania, alinhada ao padrão das páginas pesadas do site (Jurisdições, Confisco 1990, Jade Core).
 
-Expandir a página `/palau-id` com o conteúdo do vídeo de João TR (milhares de views), trazendo profundidade, analogias visuais e blocos com imagem real, sem mexer na estrutura/UI já aprovada. Quarteto do Poder (SEO, CTR, CTA, PNL) reforçado em cada bloco novo.
+## Escopo
+Ajustes visuais, narrativos e de conversão na página `/sobre-mim`. Nenhuma alteração de backend ou schema.
 
-## Novos blocos (inseridos entre seções já existentes)
+## Fases
 
-1. **"Privacidade virou artigo de luxo"** (gatilho de abertura, logo após hero)
-   - Analogia: chequin de hotel no app do Gov.br como vetor de vigilância de movimento.
-   - PNL: dor presente + escassez ("toda noite que você dorme num hotel, o Estado sabe").
-   - Imagem real: smartphone com QR code de chequin sobre balcão de hotel, baixa luz.
+### Fase 1 — Hero de autoridade (Posicionamento + Percepção)
+- Reescrever headline do hero para vender o arquiteto de sistemas de soberania, não skills genéricos de designer.
+- Tornar a foto real (preto-e-branco, low-key) o protagonista visual do hero, com overlay gradiente escuro.
+- Substituir o fundo estático por vídeo loop macro de hardware (Bitcoin/infraestrutura) ou imagem cinematográfica real.
+- Adicionar grain sutil + brasas/partículas no hero para entrar no clima do site.
+- Garantir: a pessoa que chega de "Confisco 1990" ou "Jade Core" entenda em 5 segundos por que você é a autoridade daquele conteúdo.
 
-2. **"Não-adoxar: descentralizar o que o sistema agrupa"**
-   - Analogia: um único cofre vs. vários cofres pequenos. Vazamentos do Serasa, Caixa, Receita.
-   - Bloco com 3 cards: documento único = alvo único / múltiplos documentos = superfície reduzida / cada cadastro novo = nova trincheira.
-   - Imagem: arquivo metálico com gavetas separadas.
+### Fase 2 — Ponte narrativa (Posicionamento)
+- Inserir após o hero um bloco curto (2-3 parágrafos) que conecte a biografia técnica aos temas do site: jurisdição, autocustódia, infraestrutura, escape fiat.
+- Usar termos do universo do site ("gaiola", "blindagem", "jurisdição", "soberania") sem forçar.
+- Manter o tom de "operador que documenta o que viveu", não CV de freelancer.
 
-3. **"O que Palau É e o que NÃO é"** (matriz didática reforçada com base no vídeo)
-   - 2 colunas verde/vermelho:
-     - É: documento estatal real, KYC em exchanges, segundo documento para cadastros, NFT do ID, cartão físico.
-     - NÃO é: residência fiscal, plano B de fuga, substituto de Paraguai/Panamá, escudo se você usa o mesmo nome, válido em banco tradicional, garantia eterna (UE pode pressionar no futuro).
-   - PNL: anti-bala-de-prata (constraint de honestidade técnica).
+### Fase 3 — Prova viva (Prova + PNL)
+- Criar seção "Prova de Trabalho" com 3 projetos/cases reais e seus números (ex: crescimento de canal, views, ferramentas construídas, proteção estruturada).
+- Substituir os contadores genéricos por métricas que comprovem autoridade no nicho.
+- Adicionar foto real ou screenshot de cada projeto. Se não houver, gerar imagens cinematográficas.
 
-4. **"Como funciona na prática"** (passo a passo cinematográfico)
-   - 5 passos numerados com micro-ilustrações: abrir RNS ID, preencher cadastro, escolher prazo (1/5/10 anos), pagar em cripto (preferencial, sem rastro), receber NFT + aguardar cartão físico (taxa USD 50 se extraviado).
-   - CTA inline: "Comece pelo plano de 1 ano para testar antes de comprometer".
+### Fase 4 — Arsenal técnico (Produto + Percepção)
+- Manter o catálogo de serviços, mas reposicionar como "Arsenal de Autonomia" — cada skill vira uma ferramenta de construção de sistemas soberanos.
+- Substituir ícones genéricos por imagens macro/reais onde possível.
+- Ajustar a paleta dos gráficos de azul para âmbar/laranja Bitcoin para alinhar com o resto do site.
 
-5. **"Para quem serve / Para quem NÃO serve"** (segmentação que aumenta CTR e CTA)
-   - 3 personas que se beneficiam: trader cripto, nômade digital com receio de adoxamento, comprador de privacidade documental.
-   - 3 personas que devem buscar outra coisa: quem quer mudar residência fiscal, quem quer abrir banco tradicional, quem busca plano B de fuga.
+### Fase 5 — Domínio Técnico (Percepção + Efeitos)
+- Manter o HUD interativo, mas aplicar efeitos de scanline e glow âmbar.
+- Garantir que os nós de tecnologia sejam acionáveis por hover e teclado (acessibilidade).
+- Animar a ativação dos nós com sequência de "boot" ao entrar no viewport.
 
-6. **"Palau é uma camada, não a fortaleza"** (fechamento estratégico antes do CTA final)
-   - Analogia: cebola de privacidade. Palau é uma das camadas externas. Paraguai/Panamá/Uruguai são o núcleo se você quer residência fiscal real.
-   - Link interno para `/saida/jurisdicoes-amigaveis` (aproveita autoridade já construída).
-   - PNL: fecha o loop com humildade técnica + próximo passo claro.
+### Fase 6 — CTA final duplo (PNL/CTA)
+- Substituir o CTA único "Protocolo de Ação" por CTA duplo: "Trabalhar comigo" + "Explorar conteúdo".
+- Aplicar gatilhos de escassez e autoridade no copy (sem exagerar).
+- Garantir que os CTAs sejam visíveis no mobile e acessíveis por teclado.
 
-## Imagens a gerar (6 novas, padrão tactical/editorial)
+### Fase 7 — Assets visuais
+- Gerar imagens cinematográficas/vídeo para:
+  - Hero (macro hardware / Bitcoin / infraestrutura)
+  - Bloco Prova de Trabalho (3 projetos)
+  - Arsenal (se necessário)
+- Verificar se a foto real do usuário já está otimizada; se não, otimizar.
 
-- `palau-vigilancia-checkin.jpg` — QR code chequin hotel
-- `palau-cofre-multiplo.jpg` — gavetas de arquivo metálico
-- `palau-nao-bala-prata.jpg` — escudo rachado, luz dura
-- `palau-passo-a-passo.jpg` — laptop com formulário RNS, cartão físico ao lado
-- `palau-personas.jpg` — 3 silhuetas em diferentes contextos
-- `palau-cebola-camadas.jpg` — diagrama orgânico de camadas concêntricas
+### Fase 8 — Revisão e build
+- Revisar todos os textos para remover travessões longos e termos proibidos.
+- Verificar contraste, acessibilidade e responsividade.
+- Rodar build e verificar se não há erros de Tailwind/classes customizadas.
 
-## Quarteto do Poder reforçado
+## Entregáveis
+- `src/pages/SobreMim.tsx` reescrito e expandido.
+- Novas imagens/vídeo em `src/assets/` (ou asset pointers).
+- Atualização de links internos se necessário (nenhuma mudança de rota).
 
-- **SEO**: atualizar meta description e adicionar FAQs novas: "Palau ID protege contra Gov.br?", "Palau ID vale mais que cédula paraguaia?", "Palau ID é reconhecido pela União Europeia?", "Posso fazer chequin de hotel com Palau ID?". JSON-LD `FAQPage` ampliado.
-- **CTR**: novos H2 com gatilhos ("Privacidade virou artigo de luxo", "Palau não é bala de prata", "Para quem NÃO serve").
-- **CTA**: CTA contextual após cada bloco novo, link RNS oficial e link interno para `/saida/jurisdicoes-amigaveis`.
-- **PNL**: dor (vigilância gov.br) → contraste (cofre único vs vários) → realismo (não é bala de prata) → solução modular (camada, não fortaleza) → próximo passo.
+## O que NÃO será feito
+- Alterar rotas ou navegação.
+- Criar backend/Supabase/schema.
+- Adicionar novas páginas.
+- Copiar texto do usuário; tudo será reescrito para autoridade + CTA + SEO + PNL.
 
-## Constraints respeitadas
-
-- Sem travessão (—). Sem "lambedor". Sem emojis. Sem "Quarteto do Poder" / "Trio da Blindagem" no UI.
-- Padrão claro editorial mantido (sand+teal+copper já vigente na página).
-- Bebas Neue + Inter Tight, imagens reais, blocos cinematográficos.
-- Mantém `BackToHome` já presente; adiciono também link "Voltar ao hub" para padrão BackNav.
-
-## Arquivos a editar/criar
-
-- `src/pages/PalauDigitalResidency.tsx` (inserir 6 seções novas + FAQs)
-- `src/lib/palauData.ts` (novos arrays: PRIVACIDADE_LUXO, NAO_ADOXAR, E_NAO_E, PASSO_A_PASSO, PARA_QUEM, CAMADAS_CEBOLA, FAQ_PALAU expandido)
-- 6 novas imagens em `src/assets/`
-- Atualização opcional do componente `BackToHome` para `BackNav`
+## Critério de conclusão
+A página deve parecer, ao vivo, do mesmo time de produção de `Jade Core`, `Cartões Cripto Sem Reporte` e `Confisco 1990`: escura, real, prova, movimento, autoridade.

@@ -1,10 +1,16 @@
 import { useEffect, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { motion, useInView } from "framer-motion";
-import { Mail, ArrowRight, Instagram, Github, Youtube } from "lucide-react";
+import { Mail, ArrowRight, Instagram, Github, Youtube, Play } from "lucide-react";
 import BackToHome from "@/components/BackToHome";
+import heroProfile from "@/assets/sobre/lord-junnior-real.png";
+import heroBg from "@/assets/sobre/hero-bg-hardware.jpg";
+import provaChile from "@/assets/sobre/prova-chile.jpg";
+import provaJadeCore from "@/assets/sobre/prova-jade-core.jpg";
+import provaPlataforma from "@/assets/sobre/prova-plataforma.jpg";
 
 const ORANGE = "#FF6600";
+const AMBER = "#F59E0B";
 const BG = "#08090a";
 
 const NAV = [
@@ -19,26 +25,26 @@ const PILLARS = [
   {
     n: "01",
     title: "ARQUITETURA WEB",
-    desc: "Desenvolvimento full-stack com React, Next.js e Tailwind. Interfaces reativas, performance otimizada e infraestrutura autônoma.",
+    desc: "Sistemas reativos construídos com React, TypeScript e Tailwind. Da interface ao deploy, sem dependência de plataformas genéricas.",
     tags: ["Front & Back", "100% Custom"],
   },
   {
     n: "02",
     title: "INTELIGÊNCIA ARTIFICIAL",
-    desc: "Implementação de IA local (Ollama) e em nuvem para automação de fluxos de trabalho. Segurança de dados e processamento de alto volume.",
+    desc: "IA local e em nuvem para automação de alto fluxo. Dados dentro do seu perímetro, nada vaza, nada é vendido.",
     tags: ["Local & Cloud", "Zero Leak"],
   },
   {
     n: "03",
-    title: "DESIGN & BRANDING",
-    desc: "17 anos de experiência em direção criativa, UI/UX e motion design. Criação de identidades premium e design systems escaláveis.",
+    title: "DESIGN & MÍDIA",
+    desc: "Direção criativa, UI/UX, motion e edição audiovisual. Identidade visual que carrega peso, prova e autoridade.",
     tags: ["UI / UX / Motion", "High-End"],
   },
   {
     n: "04",
-    title: "ENGENHARIA REVERSA",
-    desc: "Uma década de bancada dissecando hardware e software. Compreensão profunda de acessos, barreiras e como rompê-las.",
-    tags: ["Hardware & OS", "Root Access"],
+    title: "SOBERANIA TÉCNICA",
+    desc: "Autocustódia, jurisdição, infraestrutura autônoma e engenharia reversa. O conhecimento que tira você da gaiola.",
+    tags: ["Bitcoin & Privacidade", "Root Access"],
   },
 ];
 
@@ -56,46 +62,61 @@ const TIMELINE = [
     periodo: "2021 · Presente",
     empresa: "Plataforma Lord Junnior",
     cargo: "Arquiteto de Sistemas & Consultor",
-    desc: "Construção de ferramentas open source, automação por IA, design systems e arquitetura de aplicações web soberanas para clientes corporativos.",
+    desc: "Ecosistema de ferramentas, conteúdo e produtos digitais voltados a soberania técnica, Bitcoin e autonomia pessoal.",
   },
   {
     periodo: "2018 · 2021",
     empresa: "Mercado Corporativo",
     cargo: "Consultor de Design & IA",
-    desc: "Atuação como parceiro estratégico. Implementação de Inteligência Artificial para alto fluxo, garantindo zero vazamento de dados e unificação de design gráfico com desenvolvimento digital.",
+    desc: "Parceiro estratégico para implementação de IA de alto fluxo, design system e unificação entre gráfico e desenvolvimento.",
   },
   {
     periodo: "2012 · 2018",
     empresa: "Ecossistema Apple & Agências",
     cargo: "Especialista Técnico & Designer Sênior",
-    desc: "Uma década dissecando a arquitetura de hardware e software do ecossistema mais hermético do mercado. Engenharia reversa de sistemas e liderança de design de interface.",
+    desc: "Década dissecando a arquitetura mais hermética do mercado. Engenharia reversa de hardware/software e liderança de design.",
   },
   {
     periodo: "2008 · 2012",
     empresa: "Empresas Locais & RedeTV",
     cargo: "Designer Gráfico & Motion",
-    desc: "Início de atuação criativa prestando serviços para empresas locais e emissoras de televisão. Domínio de fluxos de impressão e motion design audiovisual.",
+    desc: "Início prestando serviços para emissoras e empresas locais. Domínio de fluxos de impressão, motion e audiovisual.",
   },
 ];
 
-const CAMADAS = [
+const CASES = [
   {
     n: "01",
-    title: "Hardware & OS",
-    log: "> validacao_hardware: aprovada",
-    desc: "Década dissecando a arquitetura de hardware e software do ecossistema mais hermético do mercado. Compreensão profunda de acessos, barreiras e como rompê-las.",
+    title: "CONTEÚDO QUE ESCALA",
+    stat: "100K+",
+    label: "Visualizações em Vídeos de Saída",
+    desc: "Roteiros sobre cédula e residência no Chile, cartões cripto sem reporte e autocustódia transformados em páginas de autoridade com SEO, CTA e PNL.",
+    cta: "Ver Estratégias de Saída",
+    href: "/saida/cedula-residencia-chile",
+    image: provaChile,
+    alt: "Cordilheira dos Andes ao amanhecer, símbolo de liberdade de jurisdição",
   },
   {
     n: "02",
-    title: "Rede & IA Local",
-    log: "> validacao_ia: aprovada",
-    desc: "Modelos locais sem vazamento de dados. Implementação de infraestrutura blindada. Nuvem corporativa? Não. Hospedagem própria.",
+    title: "PLATAFORMA SOBERANA",
+    stat: "100%",
+    label: "Infraestrutura Autônoma",
+    desc: "Sistema próprio de conteúdo, biblioteca digital, simuladores e ferramentas open source. Sem depender de terceiros para entregar valor.",
+    cta: "Explorar o Arsenal",
+    href: "/recursos-e-ferramentas",
+    image: provaPlataforma,
+    alt: "Centro de comando digital com múltiplas telas e dados de Bitcoin",
   },
   {
     n: "03",
-    title: "Aplicação & UI",
-    log: "> validacao_app: aprovada",
-    desc: "React, Next.js, TypeScript e Tailwind. Sistemas soberanos do backend ao frontend, design systems escaláveis.",
+    title: "REVIEWS QUE SALVAM PATRIMÔNIO",
+    stat: "Jade",
+    label: "Hardware Wallet Revisado",
+    desc: "Análise técnica do Jade Core comparando segurança, usabilidade e preço contra Ledger e Trezor. Autocustódia acessível em menos de 5 minutos.",
+    cta: "Ler Jade Core Review",
+    href: "/autocustodia/jade-core-review",
+    image: provaJadeCore,
+    alt: "Hardware wallet Jade Core nas mãos com LED laranja",
   },
 ];
 
@@ -146,7 +167,7 @@ function SkillBar({ label, percent, delay }: { label: string; percent: number; d
       <div className="h-[4px] bg-white/[0.06] rounded-full overflow-hidden">
         <div
           className="h-full rounded-full transition-[width] duration-[1500ms] ease-out"
-          style={{ width: `${w}%`, background: "#4F9DFF", boxShadow: "0 0 10px rgba(79,157,255,0.5)" }}
+          style={{ width: `${w}%`, background: `linear-gradient(90deg, ${AMBER}, ${ORANGE})`, boxShadow: `0 0 14px ${ORANGE}66` }}
         />
       </div>
     </div>
@@ -183,6 +204,23 @@ function SectionMark({ n, title }: { n: string; title: string }) {
   );
 }
 
+function FloatingParticle({ delay, duration, left, size }: { delay: number; duration: number; left: string; size: number }) {
+  return (
+    <div
+      className="absolute rounded-full pointer-events-none"
+      style={{
+        left,
+        bottom: "-10%",
+        width: size,
+        height: size,
+        background: `radial-gradient(circle, ${ORANGE}88 0%, transparent 70%)`,
+        filter: "blur(2px)",
+        animation: `floatUp ${duration}s linear ${delay}s infinite`,
+      }}
+    />
+  );
+}
+
 export default function SobreMim() {
   const [activeNode, setActiveNode] = useState<(typeof HUD_NODES)[number] | null>(null);
 
@@ -192,9 +230,38 @@ export default function SobreMim() {
       style={{ background: BG, fontFamily: "'Inter Tight', system-ui, sans-serif" }}
     >
       <Helmet>
-        <title>Lord Junnior · Arquiteto de Sistemas & Design Estratégico</title>
-        <meta name="description" content="17 anos unindo engenharia reversa, arquitetura web full-stack e IA local. Consultoria técnica sênior para empresas que exigem soberania e alto padrão de entrega." />
+        <title>Sobre Mim | Lord Junnior · Arquiteto de Soberania</title>
+        <meta name="description" content="Arquiteto de sistemas, engenharia reversa, IA local e design estratégico. 17 anos construindo infraestrutura autônoma, conteúdo e ferramentas de soberania." />
+        <meta property="og:title" content="Sobre Mim | Lord Junnior · Arquiteto de Soberania" />
+        <meta property="og:description" content="Arquiteto de sistemas, engenharia reversa, IA local e design estratégico. 17 anos construindo infraestrutura autônoma." />
+        <meta property="og:type" content="profile" />
+        <meta name="twitter:card" content="summary_large_image" />
       </Helmet>
+
+      <style>{`
+        @keyframes floatUp {
+          0% { transform: translateY(0) scale(0.6); opacity: 0; }
+          10% { opacity: 1; }
+          90% { opacity: 0.7; }
+          100% { transform: translateY(-110vh) scale(1.2); opacity: 0; }
+        }
+        @keyframes scanline {
+          0% { transform: translateY(-100%); }
+          100% { transform: translateY(100%); }
+        }
+        @keyframes slowPulse {
+          0%, 100% { opacity: 0.3; }
+          50% { opacity: 0.6; }
+        }
+        @keyframes grain {
+          0%, 100% { transform: translate(0, 0); }
+          10% { transform: translate(-5%, -5%); }
+          30% { transform: translate(3%, -2%); }
+          50% { transform: translate(-2%, 5%); }
+          70% { transform: translate(4%, 3%); }
+          90% { transform: translate(-3%, -4%); }
+        }
+      `}</style>
 
       <BackToHome />
 
@@ -223,59 +290,109 @@ export default function SobreMim() {
       </header>
 
       {/* HERO */}
-      <section className="relative overflow-hidden border-b border-white/[0.06]">
-        <div className="absolute inset-0 opacity-[0.06]" style={{ backgroundImage: "linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)", backgroundSize: "60px 60px" }} />
-        <div className="max-w-7xl mx-auto px-6 md:px-10 pt-24 md:pt-32 pb-24 md:pb-40 relative">
-          <Reveal>
-            <div className="flex items-center gap-3 mb-10">
-              <span className="w-2 h-2 rounded-full animate-pulse" style={{ background: ORANGE }} />
-              <span className="font-mono text-[10px] tracking-[0.4em] uppercase text-white/50">DOSSIÊ 001 · PERFIL DO OPERADOR</span>
+      <section className="relative overflow-hidden min-h-[90vh] flex items-center">
+        {/* Background image with overlay */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src={heroBg}
+            alt="Hardware Bitcoin macro"
+            className="w-full h-full object-cover scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#08090a] via-[#08090a]/80 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#08090a] via-transparent to-[#08090a]/60" />
+          <div className="absolute inset-0 bg-[#08090a]/30" />
+        </div>
+
+        {/* Grain layer */}
+        <div
+          className="absolute inset-0 z-[1] opacity-[0.08] pointer-events-none mix-blend-overlay"
+          style={{
+            backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E\")",
+            animation: "grain 8s steps(10) infinite",
+          }}
+        />
+
+        {/* Floating particles */}
+        <div className="absolute inset-0 z-[2] overflow-hidden pointer-events-none">
+          {[
+            { d: 12, l: "10%", s: 4 },
+            { d: 18, l: "25%", s: 6 },
+            { d: 14, l: "40%", s: 5 },
+            { d: 20, l: "55%", s: 3 },
+            { d: 16, l: "70%", s: 5 },
+            { d: 13, l: "85%", s: 4 },
+            { d: 19, l: "95%", s: 3 },
+          ].map((p, i) => (
+            <FloatingParticle key={i} delay={i * 1.2} duration={p.d} left={p.l} size={p.s} />
+          ))}
+        </div>
+
+        <div className="max-w-7xl mx-auto px-6 md:px-10 w-full relative z-10 pt-20 md:pt-0">
+          <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
+            <div>
+              <Reveal>
+                <div className="flex items-center gap-3 mb-8">
+                  <span className="w-2 h-2 rounded-full animate-pulse" style={{ background: ORANGE }} />
+                  <span className="font-mono text-[10px] tracking-[0.4em] uppercase text-white/60">DOSSIÊ 001 · PERFIL DO OPERADOR</span>
+                </div>
+              </Reveal>
+
+              <Reveal delay={0.1}>
+                <h1 className="font-bold tracking-tight leading-[0.95] text-5xl md:text-7xl lg:text-8xl">
+                  Atrás de cada<br />
+                  <span style={{ color: ORANGE }}>sistema</span> que te<br />
+                  tira da gaiola.
+                </h1>
+              </Reveal>
+
+              <Reveal delay={0.25}>
+                <p className="mt-10 max-w-2xl text-lg md:text-xl text-white/75 leading-relaxed">
+                  Lord Junnior é o arquiteto por trás da plataforma, dos vídeos que bombaram e das ferramentas que provam que soberania técnica não é teoria: é engenharia aplicada.
+                </p>
+              </Reveal>
+
+              <Reveal delay={0.4}>
+                <div className="mt-12 flex flex-wrap gap-3">
+                  {["Arquitetura Web", "Engenharia Reversa", "Bitcoin & Autocustódia", "IA Local"].map((t) => (
+                    <span key={t} className="text-[11px] uppercase tracking-[0.2em] px-3 py-2 border border-white/15 text-white/70 bg-black/20 backdrop-blur-sm">{t}</span>
+                  ))}
+                </div>
+              </Reveal>
             </div>
-          </Reveal>
 
-          <Reveal delay={0.1}>
-            <h1 className="font-bold tracking-tight leading-[0.95] text-5xl md:text-7xl lg:text-8xl">
-              Arquiteto de<br />
-              Sistemas
-              <span className="text-white/40"> &</span><br />
-              <span style={{ color: ORANGE }}>Design Estratégico.</span>
-            </h1>
-          </Reveal>
-
-          <Reveal delay={0.25}>
-            <p className="mt-10 max-w-2xl text-lg md:text-xl text-white/70 leading-relaxed">
-              17 anos de mercado unindo engenharia reversa de hardware, desenvolvimento full-stack e automação por Inteligência Artificial.
-            </p>
-          </Reveal>
-
-          <Reveal delay={0.4}>
-            <div className="mt-12 flex flex-wrap gap-3">
-              {["Arquitetura Web", "Engenharia Reversa", "Inteligência Artificial", "Design de Interface"].map((t) => (
-                <span key={t} className="text-[11px] uppercase tracking-[0.2em] px-3 py-2 border border-white/15 text-white/70">{t}</span>
-              ))}
-            </div>
-          </Reveal>
+            {/* Hero portrait */}
+            <Reveal delay={0.3} className="hidden lg:flex justify-center">
+              <div className="relative w-[420px] h-[520px]">
+                <div className="absolute inset-0 bg-gradient-to-t from-[#08090a] via-transparent to-transparent z-10" />
+                <div className="absolute inset-0 border border-white/10 z-20" />
+                <div className="absolute -inset-3 border border-white/5 z-0" />
+                <div
+                  className="absolute -right-8 -bottom-8 w-48 h-48 z-0 opacity-40"
+                  style={{ background: `radial-gradient(circle, ${ORANGE} 0%, transparent 70%)`, filter: "blur(60px)" }}
+                />
+                <img
+                  src={heroProfile}
+                  alt="Lord Junnior, arquiteto de sistemas de soberania"
+                  className="w-full h-full object-cover grayscale contrast-110"
+                />
+              </div>
+            </Reveal>
+          </div>
         </div>
       </section>
 
-      {/* 01 IDENTIDADE */}
+      {/* 01 IDENTIDADE + PONTE NARRATIVA */}
       <section id="identidade" className="max-w-7xl mx-auto px-6 md:px-10 py-24 md:py-32">
         <SectionMark n="01 · IDENTIDADE" title="A Assinatura" />
         <div className="grid md:grid-cols-2 gap-12 md:gap-20">
           <Reveal>
             <p className="text-lg text-white/75 leading-relaxed">
-              Lord Junnior é o nome de operação de um profissional dedicado à interseção entre tecnologia, design e infraestrutura autônoma.
-            </p>
-            <p className="mt-6 text-lg text-white/75 leading-relaxed">
-              Minha atuação não se limita a uma única camada do desenvolvimento. Com mais de uma década de experiência prática, dissecando a arquitetura de hardware e software do ecossistema mais hermético do mercado, evoluí para a arquitetura de aplicações web modernas e implementação de Inteligência Artificial local.
+              Eu não vendo cursos, vendo arquitetura. Cada página, cada vídeo e cada ferramenta que você encontra aqui foi construída por um operador que testou na própria pele o que ensina: engenharia reversa, infraestrutura autônoma, Bitcoin, jurisdição e IA sem vazamento.
             </p>
           </Reveal>
           <Reveal delay={0.1}>
             <p className="text-lg text-white/75 leading-relaxed">
-              O objetivo é claro: construir sistemas que funcionem sem depender de licenças, terceiros ou nuvens corporativas, garantindo eficiência, segurança e controle total.
-            </p>
-            <p className="mt-6 text-lg text-white/75 leading-relaxed">
-              Seja desenhando uma interface de alto nível, estruturando um design system escalável ou treinando modelos de IA locais para automação corporativa, meu trabalho traduz teoria técnica complexa em engenharia de risco aplicável e entregas de alto impacto.
+              O diferencial não é a lista de habilidades. É a capacidade de unir design, código e estratégia de soberania em um sistema coeso que escala, protege e converte. De quem chega perdido na gaiola fiat a quem sai com chaves na mão.
             </p>
           </Reveal>
         </div>
@@ -284,21 +401,21 @@ export default function SobreMim() {
       {/* 02 ATUAÇÃO */}
       <section className="border-y border-white/[0.06] bg-white/[0.02]">
         <div className="max-w-7xl mx-auto px-6 md:px-10 py-24 md:py-32">
-          <SectionMark n="02 · ATUAÇÃO" title="O Que Eu Faço" />
+          <SectionMark n="02 · ATUAÇÃO" title="O Que Eu Construo" />
           <Reveal>
             <p className="text-2xl md:text-3xl font-medium tracking-tight text-white/90 leading-snug max-w-4xl">
-              Do design gráfico ao deploy de IA local, a ponte entre estética e engenharia.
+              Sistemas de autonomia, não apenas interfaces bonitas.
             </p>
           </Reveal>
           <div className="grid md:grid-cols-2 gap-12 md:gap-20 mt-12">
             <Reveal delay={0.1}>
               <p className="text-lg text-white/70 leading-relaxed">
-                Atuo como parceiro estratégico para empresas e projetos que exigem um padrão de entrega sênior. A proposta é eliminar a barreira entre a interface do usuário e a infraestrutura de backend, unificando design system, código limpo e automação inteligente.
+                Atuo como arquiteto técnico para projetos que exigem independência de infraestrutura, clareza narrativa e execução sênior. Unifico design system, desenvolvimento full-stack, automação por IA e estratégia de conteúdo em um único fluxo de entrega.
               </p>
             </Reveal>
             <Reveal delay={0.2}>
               <p className="text-lg text-white/70 leading-relaxed">
-                Implemento Inteligência Artificial local para alto fluxo corporativo, garantindo zero vazamento de dados e segurança absoluta. Desenvolvo aplicações em React e Next.js, crio identidades visuais premium e ergo plataformas inteiras do zero, sem dependência de soluções genéricas.
+                Seja para blindar patrimônio em Bitcoin, escapar de jurisdições nocivas, produzir conteúdo que educa e vende, ou erguer uma plataforma digital autônoma: o trabalho começa no diagnóstico e termina no deploy.
               </p>
             </Reveal>
           </div>
@@ -309,7 +426,7 @@ export default function SobreMim() {
       <section className="max-w-7xl mx-auto px-6 md:px-10 py-24 md:py-32">
         <SectionMark n="03 · CAPACIDADES" title="Os Pilares de Atuação" />
         <Reveal>
-          <p className="text-white/60 mb-14 max-w-2xl text-lg">Quatro frentes técnicas que sustentam todas as minhas entregas.</p>
+          <p className="text-white/60 mb-14 max-w-2xl text-lg">Quatro frentes técnicas que sustentam todas as entregas de soberania.</p>
         </Reveal>
         <div className="grid md:grid-cols-2 gap-px bg-white/[0.06]">
           {PILLARS.map((p, i) => (
@@ -376,20 +493,16 @@ export default function SobreMim() {
         </div>
       </section>
 
-      {/* 05 PROVA */}
+      {/* 05 PROVA VIVA */}
       <section id="prova" className="max-w-7xl mx-auto px-6 md:px-10 py-24 md:py-32">
         <SectionMark n="05 · PROVA DE TRABALHO" title="Arquitetura Verificada" />
         <Reveal>
-          <p className="text-white/60 max-w-2xl text-lg mb-14">Infraestrutura autônoma, automação por IA e engenharia de sistemas forjados na prática.</p>
+          <p className="text-white/60 max-w-2xl text-lg mb-14">
+            Não acredite em promessas. Acredite em sistemas que já existem, conteúdo que já viralizou e ferramentas que já protegeram gente real.
+          </p>
         </Reveal>
 
-        {/* Selo + counters */}
-        <div className="grid md:grid-cols-4 gap-px bg-white/[0.06] mb-16">
-          <div className="bg-[#08090a] p-8">
-            <div className="font-mono text-[10px] tracking-[0.3em] uppercase text-white/40 mb-3">SELO DIGITAL</div>
-            <div className="font-mono text-sm text-white/85">Assinatura: 0x4F3A...B92</div>
-            <div className="font-mono text-xs mt-1" style={{ color: ORANGE }}>Nó: ARQUITETO_SÊNIOR</div>
-          </div>
+        <div className="grid md:grid-cols-3 gap-px bg-white/[0.06]">
           {[
             { v: 17, s: "", l: "Anos de Iteração" },
             { v: 0, s: "", l: "Vazamentos em IA" },
@@ -404,31 +517,34 @@ export default function SobreMim() {
           ))}
         </div>
 
-        {/* Fluxo Problema → Solução */}
-        <div className="grid md:grid-cols-[1fr_auto_1fr] items-center gap-8 mb-16 border border-white/10 p-8 md:p-10 bg-[#0c0d10]">
-          <div>
-            <div className="font-mono text-[10px] tracking-[0.3em] uppercase text-white/40 mb-2">PROBLEMA</div>
-            <p className="text-white/85 text-lg">Dependência de terceiros, ineficiência, plataformas genéricas.</p>
-          </div>
-          <div className="flex flex-col items-center gap-2">
-            <div className="font-mono text-[10px] tracking-[0.3em] uppercase text-white/40">FLUXO</div>
-            <ArrowRight className="w-6 h-6" style={{ color: ORANGE }} />
-          </div>
-          <div>
-            <div className="font-mono text-[10px] tracking-[0.3em] uppercase text-white/40 mb-2">SOLUÇÃO</div>
-            <p className="text-white/85 text-lg">Soberania, automação por IA, infraestrutura própria.</p>
-          </div>
-        </div>
-
-        <div className="font-mono text-[10px] tracking-[0.3em] uppercase text-white/40 mb-6">CAMADAS DE ATUAÇÃO NO SISTEMA</div>
-        <div className="grid md:grid-cols-3 gap-px bg-white/[0.06]">
-          {CAMADAS.map((c, i) => (
+        <div className="mt-16 space-y-16">
+          {CASES.map((c, i) => (
             <Reveal key={c.n} delay={i * 0.1}>
-              <div className="bg-[#08090a] p-8 h-full">
-                <div className="font-mono text-xs tracking-[0.3em] text-white/40 mb-3">{c.n}</div>
-                <h4 className="font-bold text-lg mb-3">{c.title}</h4>
-                <div className="font-mono text-xs mb-4" style={{ color: ORANGE }}>{c.log}</div>
-                <p className="text-white/65 leading-relaxed text-sm">{c.desc}</p>
+              <div className={`grid lg:grid-cols-2 gap-0 border border-white/10 bg-[#0c0d10] overflow-hidden ${i % 2 === 1 ? "lg:flex-row-reverse" : ""}`}>
+                <div className={`relative h-[320px] lg:h-[420px] overflow-hidden ${i % 2 === 1 ? "lg:order-2" : ""}`}>
+                  <img
+                    src={c.image}
+                    alt={c.alt}
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0c0d10] via-transparent to-transparent opacity-60" />
+                </div>
+                <div className={`p-8 md:p-12 flex flex-col justify-center ${i % 2 === 1 ? "lg:order-1" : ""}`}>
+                  <div className="flex items-baseline justify-between mb-6">
+                    <span className="font-mono text-xs tracking-[0.3em] text-white/40">{c.n}</span>
+                    <div className="font-mono text-3xl font-bold" style={{ color: ORANGE }}>{c.stat}</div>
+                  </div>
+                  <h3 className="font-bold text-2xl md:text-3xl tracking-tight mb-3">{c.title}</h3>
+                  <div className="font-mono text-[10px] tracking-[0.3em] uppercase text-white/50 mb-4">{c.label}</div>
+                  <p className="text-white/70 leading-relaxed mb-8">{c.desc}</p>
+                  <a
+                    href={c.href}
+                    className="inline-flex items-center gap-3 text-sm font-bold uppercase tracking-[0.2em] px-6 py-4 border border-white/20 hover:border-white/50 hover:bg-white/5 transition-all self-start"
+                  >
+                    {c.cta} <ArrowRight className="w-4 h-4" />
+                  </a>
+                </div>
               </div>
             </Reveal>
           ))}
@@ -436,14 +552,21 @@ export default function SobreMim() {
       </section>
 
       {/* 06 DOMÍNIO */}
-      <section id="dominio" className="border-y border-white/[0.06] bg-white/[0.02]">
-        <div className="max-w-7xl mx-auto px-6 md:px-10 py-24 md:py-32">
+      <section id="dominio" className="border-y border-white/[0.06] bg-white/[0.02] relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 md:px-10 py-24 md:py-32 relative z-10">
           <SectionMark n="06 · DOMÍNIO TÉCNICO" title="As Ferramentas Por Trás de Cada Entrega" />
 
           <div className="grid lg:grid-cols-[1.2fr_1fr] gap-10">
-            <div className="border border-white/10 bg-[#0c0d10] p-8">
+            <div className="border border-white/10 bg-[#0c0d10] p-8 relative overflow-hidden">
               <div className="font-mono text-[10px] tracking-[0.3em] uppercase text-white/40 mb-6">// STATUS DO SISTEMA</div>
-              <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3">
+              <div
+                className="absolute inset-0 pointer-events-none opacity-20 z-0"
+                style={{
+                  background: "linear-gradient(transparent 50%, rgba(255, 102, 0, 0.03) 50%)",
+                  backgroundSize: "100% 4px",
+                }}
+              />
+              <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3 relative z-10">
                 {HUD_NODES.map((n) => {
                   const active = activeNode?.code === n.code;
                   return (
@@ -456,7 +579,7 @@ export default function SobreMim() {
                           ? "border-transparent text-[#08090a]"
                           : "border-white/15 text-white/70 hover:border-white/40 hover:text-white"
                       }`}
-                      style={active ? { background: ORANGE, boxShadow: `0 0 20px ${ORANGE}55` } : {}}
+                      style={active ? { background: `linear-gradient(135deg, ${AMBER}, ${ORANGE})`, boxShadow: `0 0 24px ${ORANGE}55` } : {}}
                     >
                       {n.code}
                     </button>
@@ -465,9 +588,9 @@ export default function SobreMim() {
               </div>
             </div>
 
-            <div className="border border-white/10 bg-[#0c0d10] p-8 flex flex-col justify-center">
+            <div className="border border-white/10 bg-[#0c0d10] p-8 flex flex-col justify-center relative overflow-hidden">
               <div className="font-mono text-[10px] tracking-[0.3em] uppercase text-white/40 mb-4">// NÓ SELECIONADO</div>
-              <div className="min-h-[140px]">
+              <div className="min-h-[140px] relative z-10">
                 <div className="text-3xl font-bold tracking-tight mb-2 transition-all" style={{ color: activeNode ? ORANGE : "rgba(255,255,255,0.4)" }}>
                   {activeNode ? activeNode.name : "SELECIONE UM NÓ"}
                 </div>
@@ -475,12 +598,20 @@ export default function SobreMim() {
                   {activeNode ? activeNode.desc : "Passe o mouse sobre os módulos para visualizar as especificações operacionais."}
                 </p>
               </div>
+              <div
+                className="absolute inset-0 pointer-events-none z-0"
+                style={{
+                  background: "linear-gradient(180deg, transparent 0%, rgba(255, 102, 0, 0.02) 50%, transparent 100%)",
+                  animation: activeNode ? "scanline 2.5s linear infinite" : "none",
+                  backgroundSize: "100% 4px",
+                }}
+              />
             </div>
           </div>
         </div>
       </section>
 
-      {/* PROTOCOLO DE AÇÃO */}
+      {/* CTA DUPLO */}
       <section className="max-w-7xl mx-auto px-6 md:px-10 py-24 md:py-32">
         <div className="font-mono text-[10px] tracking-[0.3em] uppercase text-white/40 mb-6">// PROTOCOLO DE AÇÃO</div>
         <Reveal>
@@ -491,27 +622,36 @@ export default function SobreMim() {
         </Reveal>
         <Reveal delay={0.1}>
           <p className="mt-10 max-w-2xl text-lg text-white/70 leading-relaxed">
-            Você ainda acredita que soluções genéricas de prateleira vão escalar o seu negócio, ou já aceitou que a verdadeira autonomia exige arquitetura própria?
+            Consultoria técnica sênior é para quem já entende que autonomia exige arquitetura. Se você quer copiar o que funciona por aqui, a biblioteca está aberta. Se quer executar ao lado de quem construiu, a porta está aberta.
           </p>
         </Reveal>
         <Reveal delay={0.2}>
-          <a
-            href="mailto:contato@lordjunnior.com"
-            className="inline-flex items-center gap-3 mt-10 px-8 py-5 font-bold uppercase tracking-[0.2em] text-sm transition-colors"
-            style={{ background: ORANGE, color: "#08090a" }}
-          >
-            Iniciar Protocolo de Autonomia
-            <ArrowRight className="w-4 h-4" />
-          </a>
+          <div className="flex flex-col sm:flex-wrap sm:flex-row gap-4 mt-10">
+            <a
+              href="mailto:contato@lordjunnior.com"
+              className="inline-flex items-center justify-center gap-3 px-8 py-5 font-bold uppercase tracking-[0.2em] text-sm transition-colors"
+              style={{ background: ORANGE, color: "#08090a" }}
+            >
+              Trabalhar Comigo
+              <ArrowRight className="w-4 h-4" />
+            </a>
+            <a
+              href="/"
+              className="inline-flex items-center justify-center gap-3 px-8 py-5 font-bold uppercase tracking-[0.2em] text-sm border border-white/20 text-white hover:bg-white/5 transition-colors"
+            >
+              <Play className="w-4 h-4" />
+              Explorar Conteúdo
+            </a>
+          </div>
         </Reveal>
       </section>
 
       {/* CATÁLOGO / ARSENAL */}
       <section id="catalogo" className="border-y border-white/[0.06] bg-white/[0.02]">
         <div className="max-w-7xl mx-auto px-6 md:px-10 py-24 md:py-32">
-          <div className="font-mono text-[10px] tracking-[0.3em] uppercase text-white/40 mb-6">// ARSENAL TÉCNICO</div>
+          <div className="font-mono text-[10px] tracking-[0.3em] uppercase text-white/40 mb-6">// ARSENAL DE AUTONOMIA</div>
           <Reveal>
-            <h2 className="font-bold text-4xl md:text-5xl tracking-tight mb-14">Ferramentas para a sua autonomia.</h2>
+            <h2 className="font-bold text-4xl md:text-5xl tracking-tight mb-14">Ferramentas para a sua independência.</h2>
           </Reveal>
           <div className="grid md:grid-cols-2 gap-px bg-white/[0.06]">
             <Reveal>
@@ -519,14 +659,11 @@ export default function SobreMim() {
                 <div className="font-mono text-[10px] tracking-[0.3em] uppercase text-white/40 mb-3">DISPONIBILIDADE</div>
                 <h3 className="font-bold text-2xl mb-4">CONSULTORIA TÉCNICA</h3>
                 <p className="text-white/70 leading-relaxed mb-8 flex-1">
-                  Parceria estratégica para automação por IA, arquitetura web e design systems.
+                  Parceria estratégica para automação por IA, arquitetura web, design systems e estratégia de conteúdo de soberania.
                 </p>
                 <a
                   href="mailto:contato@lordjunnior.com"
-                  className="flex items-center justify-center gap-2 w-full py-5 bg-white text-[#08090a] font-bold hover:opacity-90 uppercase tracking-[0.2em] text-sm"
-                  style={{ transition: "background 0.2s" }}
-                  onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = ORANGE; (e.currentTarget as HTMLAnchorElement).style.color = "#08090a"; }}
-                  onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = "#fff"; (e.currentTarget as HTMLAnchorElement).style.color = "#08090a"; }}
+                  className="flex items-center justify-center gap-2 w-full py-5 bg-white text-[#08090a] font-bold hover:opacity-90 uppercase tracking-[0.2em] text-sm transition-colors"
                 >
                   Iniciar Conversa <ArrowRight className="w-4 h-4" />
                 </a>
@@ -537,10 +674,10 @@ export default function SobreMim() {
                 <div className="font-mono text-[10px] tracking-[0.3em] uppercase text-white/40 mb-3">ECOSSISTEMA</div>
                 <h3 className="font-bold text-2xl mb-4">THE FREEDOM CODE</h3>
                 <p className="text-white/70 leading-relaxed mb-8 flex-1">
-                  Ferramentas open source, e-books e simuladores construídos do zero.
+                  Biblioteca, simuladores, e-books, audiobooks e ferramentas open source construídas do zero para quem quer sair da gaiola.
                 </p>
                 <a
-                  href="/"
+                  href="/recursos-e-ferramentas"
                   className="flex items-center justify-center gap-2 w-full py-5 border border-white text-white font-bold hover:bg-white hover:text-[#08090a] transition-colors uppercase tracking-[0.2em] text-sm"
                 >
                   Ver Biblioteca <ArrowRight className="w-4 h-4" />
@@ -566,9 +703,9 @@ export default function SobreMim() {
       <footer className="border-t border-white/[0.06] bg-[#06070a]">
         <div className="max-w-7xl mx-auto px-6 md:px-10 py-16 grid md:grid-cols-3 gap-10">
           <div>
-            <div className="font-mono text-sm tracking-[0.3em] font-bold mb-4">LORD JUNNIOR</div>
+            <div className="font-mono text-sm tracking-[0.3em] font-bold mb-4">LORD JUNIOR</div>
             <p className="text-white/50 text-sm leading-relaxed max-w-xs">
-              Arquiteto de Sistemas. Engenharia reversa, IA local e design de alto padrão.
+              Arquiteto de Sistemas. Engenharia reversa, IA local, Bitcoin e design de alto padrão.
             </p>
           </div>
           <div>
@@ -600,7 +737,7 @@ export default function SobreMim() {
         </div>
         <div className="border-t border-white/[0.06]">
           <div className="max-w-7xl mx-auto px-6 md:px-10 py-6 font-mono text-[10px] tracking-[0.3em] uppercase text-white/40 flex justify-between">
-            <span>© {new Date().getFullYear()} LORD JUNNIOR</span>
+            <span>© {new Date().getFullYear()} LORD JUNIOR</span>
             <span>DOSSIÊ 001 · v2.0</span>
           </div>
         </div>
