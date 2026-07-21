@@ -510,7 +510,7 @@ export default function SobreMim() {
           ].map((c) => (
             <div key={c.l} className="bg-[#08090a] p-8">
               <div className="text-5xl font-bold tracking-tight mb-2" style={{ color: ORANGE }}>
-                {c.v === 100 && c.s === "%" ? c.v + c.s : <Counter target={c.v} suffix={c.s} />}
+                <Counter target={c.v} suffix={c.s} />
               </div>
               <div className="font-mono text-[10px] tracking-[0.3em] uppercase text-white/50">{c.l}</div>
             </div>
